@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:paddingTop="7sp"
+                android:paddingBottom="7sp"
+                android:paddingLeft="7sp"
+                android:paddingRight="7sp"
+                android:layout_width="220sp"
+                android:layout_height="wrap_content">
+
+    <TextView android:id="@+id/title_t"
+	      android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:paddingBottom="2sp"
+              android:textColor="#fff"
+	      android:textSize="16sp"
+              android:text="Battery Indicator is Active"
+     />
+
+    <TextView android:id="@+id/status_since_t"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:paddingBottom="5sp"
+	      android:paddingLeft="8sp"
+              android:textColor="#A4C639"
+	      android:textSize="12sp"
+    />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:paddingTop="0sp"
+                  android:paddingBottom="0sp"
+                  android:paddingLeft="0sp"
+                  android:paddingRight="0sp"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
+
+      <Button android:id="@+id/more_info_b"
+              android:layout_height="43sp"
+	      android:layout_width="101sp"
+              android:text="About..."
+      />
+
+      <View android:layout_height="fill_parent"
+	    android:layout_width="4sp"
+      />
+
+      <Button android:id="@+id/edit_settings_b"
+              android:layout_height="43sp"
+	      android:layout_width="101sp"
+              android:text="Settings..."
+      />
+    </LinearLayout>
+
+    <View android:layout_width="fill_parent"
+          android:layout_height="4sp"
+    />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:paddingTop="0sp"
+                  android:paddingBottom="0sp"
+                  android:paddingLeft="0sp"
+                  android:paddingRight="0sp"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
+
+      <Button android:id="@+id/battery_use_b"
+              android:layout_height="55sp"
+	      android:layout_width="101sp"
+              android:layout_gravity="center_horizontal"
+              android:singleLine="false"
+              android:text="Battery\n   Usage..."
+      />
+
+      <View android:layout_height="fill_parent"
+	    android:layout_width="4sp"
+      />
+
+      <Button android:id="@+id/toggle_lock_screen_b"
+              android:layout_height="55sp"
+	      android:layout_width="101sp"
+              android:layout_gravity="center_horizontal"
+              android:singleLine="false"
+      />
+    </LinearLayout>
+
+    <View android:layout_width="fill_parent"
+          android:layout_height="4sp"
+    />
+
+    <Button android:id="@+id/stop_service_b"
+            android:layout_width="fill_parent"
+            android:layout_height="43sp"
+            android:layout_gravity="center_horizontal"
+            android:text="Close Battery Indicator"
+    />
+
+    <View android:layout_width="fill_parent"
+          android:layout_height="4sp"
+    />
+
+    <Button android:id="@+id/hide_window_b"
+            android:layout_width="fill_parent"
+            android:layout_height="43sp"
+            android:layout_gravity="center_horizontal"
+            android:text="Hide This Window"
+    />
+  </LinearLayout>
+</ScrollView>

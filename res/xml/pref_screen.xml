@@ -1,0 +1,90 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory android:title="Logging">
+    <CheckBoxPreference
+       android:key="enable_logging"
+       android:title="Enable Logging"
+       android:summary="Log battery state changes?"
+       android:defaultValue="false"
+    />
+
+    <PreferenceScreen
+       android:key="log_screen"
+       android:title="View Logs..."
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="Lock Screen / Keyguard">
+    <CheckBoxPreference
+       android:key="auto_disable_lock_screen"
+       android:title="Auto Disable Lock Screen"
+       android:summary="Disable the lock screen when charging?"
+       android:defaultValue="false"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="Temperature Unit">
+    <CheckBoxPreference
+       android:key="convert_to_fahrenheit"
+       android:title="Convert to Fahrenheit"
+       android:defaultValue="false"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="Autostart">
+    <ListPreference
+       android:key="autostart"
+       android:title="Autostart at Boot"
+       android:entries="@array/boot_pref_entries" 
+       android:entryValues="@array/boot_pref_values"
+       android:dialogTitle="Start Battery Indicator When Device Boots?"
+       android:defaultValue="auto"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="Status Duration (For/Since...)">
+    <ListPreference
+       android:key="status_dur_est"
+       android:title="When to Estimate Hours"
+       android:entries="@array/status_dur_est_pref_entries" 
+       android:entryValues="@array/status_dur_est_pref_values"
+       android:dialogTitle="Stop Showing Time and Start Estimating Hours"
+       android:defaultValue="12"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="Color">
+    <CheckBoxPreference
+       android:key="use_red"
+       android:title="Use Red Icon"
+       android:summary="Use red icon when charge is low?"
+    />
+    <ListPreference
+       android:key="red_threshold"
+       android:title="Red Threshold"
+       android:dialogTitle="Make Icon Red Below What Charge Percentage?"
+       android:defaultValue="10"
+    />
+    <CheckBoxPreference
+       android:key="use_amber"
+       android:title="Use Amber Icon"
+       android:summary="Use amber icon when charge is medium?"
+    />
+    <ListPreference
+       android:key="amber_threshold"
+       android:title="Amber Threshold"
+       android:dialogTitle="Make Icon Amber Below What Charge Percentage?"
+       android:defaultValue="40"
+    />
+    <CheckBoxPreference
+       android:key="use_green"
+       android:title="Use Green Icon"
+       android:summary="Use green icon when charge is high?"
+    />
+    <ListPreference
+       android:key="green_threshold"
+       android:title="Green Threshold"
+       android:dialogTitle="Make Icon Green Above What Charge Percentage?"
+       android:defaultValue="40"
+    />
+  </PreferenceCategory>
+</PreferenceScreen>
