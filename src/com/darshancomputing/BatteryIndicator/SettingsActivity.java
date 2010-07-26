@@ -30,6 +30,7 @@ import android.preference.PreferenceScreen;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
+    public static final String KEY_AUTO_DISABLE_LOCKING = "auto_disable_lock_screen";
     public static final String KEY_LOG_SCREEN = "log_screen";
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
     public static final String KEY_AUTOSTART = "autostart";
@@ -122,7 +123,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         /* Restart service for those that require it */
         if (key.equals(KEY_CONVERT_F) || key.equals(KEY_RED) || key.equals(KEY_RED_THRESH) ||
-                   key.equals(KEY_STATUS_DUR_EST) || key.equals(KEY_DISABLE_LOCKING) ||
+                   key.equals(KEY_STATUS_DUR_EST) || key.equals(KEY_AUTO_DISABLE_LOCKING) ||
                    key.equals(KEY_AMBER) || key.equals(KEY_AMBER_THRESH) ||
                    key.equals(KEY_GREEN) || key.equals(KEY_GREEN_THRESH)) {
             stopService(biServiceIntent);

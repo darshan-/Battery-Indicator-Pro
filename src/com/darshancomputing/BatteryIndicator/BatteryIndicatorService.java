@@ -131,10 +131,21 @@ public class BatteryIndicatorService extends Service{
                     editor.putLong("last_status_cTM", currentTM);
                     editor.putInt("last_status", status);
                     editor.putInt("last_percent", percent);
-                    editor.commit();
 
                     /* If this was -1, this is the first run with this feature. Treat the status as having begun now. */
                     last_status_cTM = currentTM;
+
+                    if (last_status != status && settings.getBoolean(SettingsActivity.KEY_AUTO_DISABLE_LOCKING, false)) {
+                        if (last_status == 0) {
+                            editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, true);
+                            kl.disableKeyguard();
+                        } else if (status == 0) {
+                            editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false);
+                            kl.reenableKeyguard();
+                        }
+                    }
+
+                    editor.commit();
                 }
 
                 if (last_status_cTM > currentTM) {

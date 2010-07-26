@@ -40,6 +40,7 @@ public class BatteryIndicator extends Activity {
     final Runnable mUpdateStatus = new Runnable() {
         public void run() {
             updateStatus();
+            updateLockscreenButton();
         }
     };
 
