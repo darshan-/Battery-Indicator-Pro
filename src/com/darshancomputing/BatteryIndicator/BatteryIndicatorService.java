@@ -27,6 +27,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import java.util.Date;
 
@@ -142,6 +143,19 @@ public class BatteryIndicatorService extends Service{
                         } else if (status == 0) {
                             editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false);
                             kl.reenableKeyguard();
+                            /* If the screen was on (no active keyguard) when the device was plugged in (disabling the
+                                 keyguard), and the screen is off now, then the keyguard is still disabled. That's
+                                 stupid.  As a workaround, let's aquire a wakelock that forces the screen to turn on,
+                                 then release it. This is unfortunate but seems better than not doing it, which would
+                                 result in no screen lock when you unplug and throw your phone in your pocket.
+                            */
+                            PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+                            PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK |
+                                                                      PowerManager.ACQUIRE_CAUSES_WAKEUP |
+                                                                      PowerManager.ON_AFTER_RELEASE, getPackageName());
+                            wl.acquire();
+                            System.out.println(".................................. I have a wake lock...");
+                            wl.release();
                         }
                     }
 
