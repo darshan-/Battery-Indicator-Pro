@@ -148,7 +148,7 @@ public class BatteryIndicatorService extends Service{
                                  keyguard), and the screen is off now, then the keyguard is still disabled. That's
                                  stupid.  As a workaround, let's aquire a wakelock that forces the screen to turn on,
                                  then release it. This is unfortunate but seems better than not doing it, which would
-                                 result in no screen lock when you unplug and throw your phone in your pocket. */
+                                 result in no keyguard when you unplug and throw your phone in your pocket. */
 
                             PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
                             PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK |
@@ -161,6 +161,11 @@ public class BatteryIndicatorService extends Service{
 
                     editor.commit();
                 }
+
+
+                /* Compare current charge to previous charge -- if the device is unplugged, but the current charge is
+                   higher, then the device must have been turned off and either plugged in or had a new (fuller)
+                   battery put in.  If so, then let's reset the status timer. */
 
                 if (last_status_cTM > currentTM) {
                     /* This can happen by travelling west by enough timezones quickly enough, or simply by manually
