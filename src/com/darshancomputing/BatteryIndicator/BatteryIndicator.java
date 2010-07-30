@@ -15,9 +15,14 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
+//import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -36,6 +41,9 @@ import android.widget.Toast;
 public class BatteryIndicator extends Activity {
     Intent biServiceIntent;
     SharedPreferences settings;
+
+    static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
+
     final Handler mHandler = new Handler();
     final Runnable mUpdateStatus = new Runnable() {
         public void run() {
@@ -55,7 +63,7 @@ public class BatteryIndicator extends Activity {
     };
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         startService(biServiceIntent);
 
@@ -93,7 +101,7 @@ public class BatteryIndicator extends Activity {
     }
 
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
         updateStatus();
         updateLockscreenButton();
@@ -101,9 +109,40 @@ public class BatteryIndicator extends Activity {
     }
 
     @Override
-    public void onPause() {
+    protected void onPause() {
         super.onPause();
         unregisterReceiver(mBatteryInfoReceiver);
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        Dialog dialog;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        switch (id) {
+        case DIALOG_CONFIRM_DISABLE_KEYGUARD:
+            builder.setTitle("Really disable lock screen?")
+                .setMessage("Hint: Disable this confirmation dialog in the settings...")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            setEnablednessOfKG(true);
+                            di.cancel();
+                        }
+                    })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            di.cancel();
+                        }
+                    });
+
+            dialog = builder.create();
+            break;
+        default:
+            dialog = null;
+        }
+
+        return dialog;
     }
 
     private void updateStatus() {
@@ -146,6 +185,17 @@ public class BatteryIndicator extends Activity {
             button.setText("Disable\nLock Screen");
     }
 
+    private void setEnablednessOfKG(boolean b) {
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, b);
+        editor.commit();
+        stopService(biServiceIntent);
+        startService(biServiceIntent);
+        /* Now that I've decided to call finish() here, there's no need to call this anymore */
+        //updateLockscreenButton();
+        finish();
+    }
+
     /* More Info (Now called "About") */
     private OnClickListener miButtonListener = new OnClickListener() {
         public void onClick(View v) {
@@ -174,19 +224,16 @@ public class BatteryIndicator extends Activity {
     private OnClickListener tlsButtonListener = new OnClickListener() {
         public void onClick(View v) {
             Button button = (Button)findViewById(R.id.toggle_lock_screen_b);
-            SharedPreferences.Editor editor = settings.edit();
 
-            if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
-                editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false);
-            else
-                editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, true);
-
-            editor.commit();
-            stopService(biServiceIntent);
-            startService(biServiceIntent);
-            /* Now that I've decided to call finish() here, there's no need to call this anymore */
-            //updateLockscreenButton();
-            finish();
+            if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false)) {
+                setEnablednessOfKG(false);
+            } else {
+                if (settings.getBoolean(SettingsActivity.KEY_CONFIRM_DISABLE_LOCKING, true)) {
+                    showDialog(DIALOG_CONFIRM_DISABLE_KEYGUARD);
+                } else {
+                    setEnablednessOfKG(true);
+                }
+            }
         }
     };
 

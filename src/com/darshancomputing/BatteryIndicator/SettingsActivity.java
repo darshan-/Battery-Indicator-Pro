@@ -30,6 +30,7 @@ import android.preference.PreferenceScreen;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
+    public static final String KEY_CONFIRM_DISABLE_LOCKING = "confirm_disable_lock_screen";
     public static final String KEY_AUTO_DISABLE_LOCKING = "auto_disable_lock_screen";
     public static final String KEY_LOG_SCREEN = "log_screen";
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";

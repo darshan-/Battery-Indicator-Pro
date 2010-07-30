@@ -15,6 +15,13 @@
 
   <PreferenceCategory android:title="Lock Screen / Keyguard">
     <CheckBoxPreference
+       android:key="confirm_disable_lock_screen"
+       android:title="Confirm Manual Disable"
+       android:summary="Confirm when manually disabling lock screen?"
+       android:defaultValue="true"
+    />
+
+    <CheckBoxPreference
        android:key="auto_disable_lock_screen"
        android:title="Auto-disable Lock Screen"
        android:summary="Disable the lock screen when charging?"
