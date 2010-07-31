@@ -126,7 +126,7 @@ public class BatteryIndicator extends Activity {
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
-                            setEnablednessOfKG(true);
+                            setDisableLocking(true);
                             di.cancel();
                         }
                     })
@@ -185,7 +185,7 @@ public class BatteryIndicator extends Activity {
             button.setText("Disable\nLock Screen");
     }
 
-    private void setEnablednessOfKG(boolean b) {
+    private void setDisableLocking(boolean b) {
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, b);
         editor.commit();
@@ -226,12 +226,12 @@ public class BatteryIndicator extends Activity {
             Button button = (Button)findViewById(R.id.toggle_lock_screen_b);
 
             if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false)) {
-                setEnablednessOfKG(false);
+                setDisableLocking(false);
             } else {
                 if (settings.getBoolean(SettingsActivity.KEY_CONFIRM_DISABLE_LOCKING, true)) {
                     showDialog(DIALOG_CONFIRM_DISABLE_KEYGUARD);
                 } else {
-                    setEnablednessOfKG(true);
+                    setDisableLocking(true);
                 }
             }
         }
