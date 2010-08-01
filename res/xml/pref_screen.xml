@@ -68,7 +68,7 @@
     <ListPreference
        android:key="red_threshold"
        android:title="Red Threshold"
-       android:dialogTitle="Make Icon Red Below What Charge Percentage?"
+       android:dialogTitle="Red Icon Below What Charge Percentage?"
        android:defaultValue="10"
     />
     <CheckBoxPreference
@@ -79,7 +79,7 @@
     <ListPreference
        android:key="amber_threshold"
        android:title="Amber Threshold"
-       android:dialogTitle="Make Icon Amber Below What Charge Percentage?"
+       android:dialogTitle="Amber Icon Below What Charge Percentage?"
        android:defaultValue="40"
     />
     <CheckBoxPreference
@@ -90,7 +90,7 @@
     <ListPreference
        android:key="green_threshold"
        android:title="Green Threshold"
-       android:dialogTitle="Make Icon Green Above What Charge Percentage?"
+       android:dialogTitle="Green Icon At or Above What Charge Percentage?"
        android:defaultValue="40"
     />
   </PreferenceCategory>

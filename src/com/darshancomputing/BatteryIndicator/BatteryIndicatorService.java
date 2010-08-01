@@ -82,16 +82,18 @@ public class BatteryIndicatorService extends Service{
 
                 int icon;
                 if (settings.getBoolean(SettingsActivity.KEY_RED, false) &&
-                    (percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, "0"))) &&
-                    (percent < SettingsActivity.RED_MAX)){ /* Red max has decreased in newer version, so we must check */
-                    icon = R.drawable.r000 + percent;
+                    percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, "0")) &&
+                    percent <= SettingsActivity.RED_ICON_MAX) {
+                    icon = R.drawable.r000 + percent - 0;
                 } else if (settings.getBoolean(SettingsActivity.KEY_AMBER, false) &&
-                           (percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_AMBER_THRESH, "0")))){
-                    icon = R.drawable.a010 + percent - 10;
+                           percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_AMBER_THRESH, "0")) &&
+                           percent <= SettingsActivity.AMBER_ICON_MAX &&
+                           percent >= SettingsActivity.AMBER_ICON_MIN){
+                    icon = R.drawable.a000 + percent - 0;
                 } else if (settings.getBoolean(SettingsActivity.KEY_GREEN, false) &&
-                           (percent >= Integer.valueOf(settings.getString(SettingsActivity.KEY_GREEN_THRESH, "101"))) &&
-                           (percent >= SettingsActivity.GREEN_MIN)) {
-                    icon = R.drawable.g030 + percent - 30;
+                           percent >= Integer.valueOf(settings.getString(SettingsActivity.KEY_GREEN_THRESH, "101")) &&
+                           percent >= SettingsActivity.GREEN_ICON_MIN) {
+                    icon = R.drawable.g020 + percent - 20;
                 } else {
                   icon = R.drawable.b000 + percent;
                 }

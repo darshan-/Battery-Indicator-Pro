@@ -42,10 +42,17 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_AMBER_THRESH = "amber_threshold";
     public static final String KEY_GREEN = "use_green";
     public static final String KEY_GREEN_THRESH = "green_threshold";
-    public static final int RED_MAX   = 30;
-    public static final int AMBER_MIN = 10;
-    public static final int AMBER_MAX = 50;
-    public static final int GREEN_MIN = 30;
+
+    public static final int   RED_ICON_MAX = 30;
+    public static final int AMBER_ICON_MIN =  0;
+    public static final int AMBER_ICON_MAX = 50;
+    public static final int GREEN_ICON_MIN = 20;
+
+    public static final int   RED_SETTING_MIN =  5;
+    public static final int   RED_SETTING_MAX = 30;
+    public static final int AMBER_SETTING_MIN = 10;
+    public static final int AMBER_SETTING_MAX = 50;
+    public static final int GREEN_SETTING_MIN = 20;
 
     private Intent biServiceIntent;
 
@@ -158,16 +165,16 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (getPreferenceScreen().getSharedPreferences().getBoolean(KEY_RED, false)) {
             redThresh.setEnabled(true);
 
-            a = xToYBy5(5, RED_MAX);
+            a = xToYBy5(RED_SETTING_MIN, RED_SETTING_MAX);
             redThresh.setEntries(a);
             redThresh.setEntryValues(a);
 
-            /* Older version had max of 50; so it might be too high */
-            if (Integer.valueOf(redThresh.getValue()) > RED_MAX) {
-                redThresh.setValue("30");
+            /* Older version had a higher max; user's setting could be too high. */
+            if (Integer.valueOf(redThresh.getValue()) > RED_SETTING_MAX) {
+                redThresh.setValue("" + RED_SETTING_MAX);
             }
 
-            a = xToYBy5(java.lang.Math.max(Integer.valueOf(redThresh.getValue()) + 5, AMBER_MIN), AMBER_MAX);
+            a = xToYBy5(java.lang.Math.max(Integer.valueOf(redThresh.getValue()) + 5, AMBER_SETTING_MIN), AMBER_SETTING_MAX);
             amberThresh.setEntries(a);
             amberThresh.setEntryValues(a);
 
@@ -176,7 +183,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else {
             redThresh.setEnabled(false);
 
-            a = xToYBy5(AMBER_MIN, AMBER_MAX);
+            a = xToYBy5(AMBER_SETTING_MIN, AMBER_SETTING_MAX);
             amberThresh.setEntries(a);
             amberThresh.setEntryValues(a);
         }
@@ -184,7 +191,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (getPreferenceScreen().getSharedPreferences().getBoolean(KEY_AMBER, false)) {
             amberThresh.setEnabled(true);
 
-            a = xToYBy5(java.lang.Math.max(Integer.valueOf(amberThresh.getValue()), GREEN_MIN), 100);
+            a = xToYBy5(java.lang.Math.max(Integer.valueOf(amberThresh.getValue()), GREEN_SETTING_MIN), 100);
             greenThresh.setEntries(a);
             greenThresh.setEntryValues(a);
 
@@ -194,7 +201,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else {
             amberThresh.setEnabled(false);
 
-            a = xToYBy5(GREEN_MIN, 100);
+            a = xToYBy5(GREEN_SETTING_MIN, 100);
             greenThresh.setEntries(a);
             greenThresh.setEntryValues(a);
         }
