@@ -46,12 +46,12 @@ public class BatteryIndicatorService extends Service{
         kl = km.newKeyguardLock(getPackageName());
 
         if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
-            kl.disableKeyguard();
+            setEnablednessOfKeyguard(false);
     }
 
     @Override
     public void onDestroy() {
-        kl.reenableKeyguard();
+        setEnablednessOfKeyguard(true);
 
         unregisterReceiver(mBatteryInfoReceiver);
         mNotificationManager.cancelAll();
@@ -141,10 +141,10 @@ public class BatteryIndicatorService extends Service{
                     if (last_status != status && settings.getBoolean(SettingsActivity.KEY_AUTO_DISABLE_LOCKING, false)) {
                         if (last_status == 0) {
                             editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, true);
-                            kl.disableKeyguard();
+                            setEnablednessOfKeyguard(false);
                         } else if (status == 0) {
                             editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false);
-                            kl.reenableKeyguard();
+                            setEnablednessOfKeyguard(true);
 
                             /* If the screen was on (no active keyguard) when the device was plugged in (disabling the
                                  keyguard), and the screen is off now, then the keyguard is still disabled. That's
@@ -219,6 +219,25 @@ public class BatteryIndicatorService extends Service{
                                                         java.util.Locale.getDefault()).format(d);
         } else {
             return (new java.text.SimpleDateFormat("HH:mm")).format(d);
+        }
+    }
+
+    /* Old versions of Android (haven't experimented to determine exactly which are included), at least on
+         the emulator, really don't want you to call reenableKeyguard() if you haven't first disabled it.
+         So to stay compatible with older devices, let's add an extra setting and add this function. */
+    private void setEnablednessOfKeyguard(boolean enabled) {
+        SharedPreferences.Editor editor = settings.edit();
+
+        if (enabled) {
+            if (settings.getBoolean("keyguard_disabled", false)) {
+                kl.reenableKeyguard();
+                editor.putBoolean("keyguard_disabled", false);
+                editor.commit();
+            }
+        } else {
+            kl.disableKeyguard();
+            editor.putBoolean("keyguard_disabled", true);
+            editor.commit();
         }
     }
 }
