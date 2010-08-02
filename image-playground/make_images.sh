@@ -33,7 +33,6 @@ for i in [0-9]*.png;              do cp $i ../../res/drawable-mdpi/b$i; done
 for i in 0[0-2][0-9].png 030.png; do cp $i ../../res/drawable-mdpi/r$i; done
 for i in 0[0-4][0-9].png 050.png; do cp $i ../../res/drawable-mdpi/a$i; done
 for i in 0[2-9][0-9].png 100.png; do cp $i ../../res/drawable-mdpi/g$i; done
-cp 100.png ../../res/drawable-mdpi/g100.png
 
 cd $d
 for i in ../res/drawable-mdpi/b[0-9]*.png; do composite $i battery-outline24.png $i; done
