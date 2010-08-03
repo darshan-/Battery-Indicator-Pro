@@ -2,6 +2,10 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
        android:shape="rectangle"
 >
+  <!-- Note that there's an Android bug where bottomLeft and bottomRight are switched! -->
+  <corners android:topRightRadius="5sp"
+           android:bottomLeftRadius="5sp"
+  />
   <size android:height="10sp"
         android:width="14sp"
   />
