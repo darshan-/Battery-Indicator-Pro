@@ -42,6 +42,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_AMBER_THRESH = "amber_threshold";
     public static final String KEY_GREEN = "use_green";
     public static final String KEY_GREEN_THRESH = "green_threshold";
+    public static final String KEY_COLOR_PREVIEW = "color_preview";
 
     public static final int   RED = 0;
     public static final int AMBER = 1;
@@ -77,6 +78,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.pref_screen);
+
+        Preference colorPreview = getPreferenceScreen().findPreference(KEY_COLOR_PREVIEW);
+        colorPreview.setLayoutResource(R.layout.color_preview);
 
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
     }

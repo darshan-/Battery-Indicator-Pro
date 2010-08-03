@@ -60,6 +60,10 @@
   </PreferenceCategory>
 
   <PreferenceCategory android:title="Color">
+    <Preference
+       android:key="color_preview"
+       android:title="Color Preview"
+    />
     <CheckBoxPreference
        android:key="use_red"
        android:title="Use Red Icon"
