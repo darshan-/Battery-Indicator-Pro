@@ -20,6 +20,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -79,8 +81,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         addPreferencesFromResource(R.xml.pref_screen);
 
-        Preference colorPreview = getPreferenceScreen().findPreference(KEY_COLOR_PREVIEW);
-        colorPreview.setLayoutResource(R.layout.color_preview);
+        //ColorPreviewBarPreference colorPreview = (ColorPreviewBarPreference) getPreferenceScreen().findPreference(KEY_COLOR_PREVIEW);
+        //colorPreview.setLayoutResource(R.layout.color_preview);
 
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
     }
@@ -165,12 +167,17 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private void validateColorPrefs() {
-        ListPreference redThresh = (ListPreference) getPreferenceScreen().findPreference(KEY_RED_THRESH);
+        ListPreference   redThresh = (ListPreference) getPreferenceScreen().findPreference(KEY_RED_THRESH);
         ListPreference amberThresh = (ListPreference) getPreferenceScreen().findPreference(KEY_AMBER_THRESH);
         ListPreference greenThresh = (ListPreference) getPreferenceScreen().findPreference(KEY_GREEN_THRESH);
+
+        Boolean redEnabled = getPreferenceScreen().getSharedPreferences().getBoolean(KEY_RED, false);
+        Boolean amberEnabled = getPreferenceScreen().getSharedPreferences().getBoolean(KEY_AMBER, false);
+        Boolean greenEnabled = getPreferenceScreen().getSharedPreferences().getBoolean(KEY_GREEN, false);
+
         String [] a;
 
-        if (getPreferenceScreen().getSharedPreferences().getBoolean(KEY_RED, false)) {
+        if (redEnabled) {
             redThresh.setEnabled(true);
 
             a = xToYBy5(determineMin(RED), RED_SETTING_MAX);
@@ -185,7 +192,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             redThresh.setEnabled(false);
         }
 
-        if (getPreferenceScreen().getSharedPreferences().getBoolean(KEY_AMBER, false)) {
+        if (amberEnabled) {
             amberThresh.setEnabled(true);
 
             a = xToYBy5(determineMin(AMBER), AMBER_SETTING_MAX);
@@ -198,7 +205,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             amberThresh.setEnabled(false);
         }
 
-        if (getPreferenceScreen().getSharedPreferences().getBoolean(KEY_GREEN, false)) {
+        if (greenEnabled) {
             greenThresh.setEnabled(true);
 
             a = xToYBy5(determineMin(GREEN), 100);
@@ -210,6 +217,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else {
             greenThresh.setEnabled(false);
         }
+
+        updateColorPreviewBar(  redEnabled ? Integer.valueOf(  redThresh.getValue()) : 0,
+                              amberEnabled ? Integer.valueOf(amberThresh.getValue()) : 0,
+                              greenEnabled ? Integer.valueOf(greenThresh.getValue()) : 100);
     }
 
     /* Determine the minimum valid threshold setting for a particular color, based on other active settings,
@@ -247,5 +258,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         System.arraycopy(fivePercents, i, a, 0, a.length);
 
         return a;
+    }
+
+    private void updateColorPreviewBar(int redThresh, int amberThresh, int greenThresh) {
+        ColorPreviewBarPreference cpbPref = (ColorPreviewBarPreference) getPreferenceScreen().findPreference(KEY_COLOR_PREVIEW);
+        cpbPref.updateView(redThresh, amberThresh, greenThresh);
     }
 }
