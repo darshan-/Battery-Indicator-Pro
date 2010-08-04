@@ -1,7 +1,9 @@
 #!/bin/bash
 
-SRC="src/com/darshancomputing/BatteryIndicator"
-DSRC="../DROID/src/com/darshancomputing/BatteryIndicator"
+# This is intended to help me keep ProDROID in sync with Pro
+
+SRC="src/com/darshancomputing/BatteryIndicatorPro"
+DSRC="../DROID/src/com/darshancomputing/BatteryIndicatorProDROID"
 
 rm -rf ../DROID
 mkdir ../DROID
