@@ -133,7 +133,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        validateColorPrefs();
+        if (key.equals(KEY_RED) || key.equals(KEY_RED_THRESH) ||
+            key.equals(KEY_AMBER) || key.equals(KEY_AMBER_THRESH) ||
+            key.equals(KEY_GREEN) || key.equals(KEY_GREEN_THRESH)) {
+            validateColorPrefs();
+        }
 
         if (key.equals(KEY_CONVERT_F)) {
             updateConvertFSummary();
