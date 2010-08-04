@@ -26,12 +26,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -44,7 +42,6 @@ public class BatteryIndicator extends Activity {
     Intent biServiceIntent;
     SharedPreferences settings;
     BIServiceConnection biServiceConnection;
-    BIServiceInterface biServiceInterface;
 
     static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
 
@@ -70,12 +67,9 @@ public class BatteryIndicator extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         startService(biServiceIntent);
+
         biServiceConnection = new BIServiceConnection();
-        System.out.println("............................... Attempting to bind");
-        System.out.println("............................... biServiceInterface = " + biServiceInterface);
-        if (! bindService(biServiceIntent, biServiceConnection, 0))
-            System.out.println("............................... Failed to bind! ");
-        System.out.println("............................... biServiceInterface = " + biServiceInterface);
+        bindService(biServiceIntent, biServiceConnection, 0);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
@@ -206,16 +200,8 @@ public class BatteryIndicator extends Activity {
         editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, b);
         editor.commit();
 
-        //stopService(biServiceIntent);
-        //startService(biServiceIntent);
-
-        System.out.println("................................... Attempting soft reset");
-
-        try {
-            biServiceInterface.reloadSettings();
-        } catch (android.os.RemoteException e) {
-        }
-        
+        try {biServiceConnection.biServiceInterface.reloadSettings();
+        } catch (android.os.RemoteException e) {}
 
         /* Now that I've decided to call finish() here, there's no need to call this anymore */
         //updateLockscreenButton();
@@ -291,21 +277,4 @@ public class BatteryIndicator extends Activity {
             finish();
         }
     };
-
-    private class BIServiceConnection implements ServiceConnection {
-        public BIServiceConnection() {
-            super();
-            System.out.println("............................... BIServiceConnection.BIServiceConnection() ");
-        }
-
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            biServiceInterface = BIServiceInterface.Stub.asInterface(service);
-            System.out.println("............................... BIServiceConnection.onServiceConnected() ");
-        }
-
-        public void onServiceDisconnected(ComponentName name) {
-            biServiceInterface = null;
-            System.out.println("............................... BIServiceConnection.onServiceDisconnected() ");
-        }
-    }
 }

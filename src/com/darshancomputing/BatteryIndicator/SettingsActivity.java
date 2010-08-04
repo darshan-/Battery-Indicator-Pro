@@ -62,6 +62,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final int GREEN_SETTING_MIN = 20;
 
     private Intent biServiceIntent;
+    private BIServiceConnection biServiceConnection;
 
     private static final String[] fivePercents = {
         "5", "10",
@@ -85,6 +86,14 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         //colorPreview.setLayoutResource(R.layout.color_preview);
 
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
+        biServiceConnection = new BIServiceConnection();
+        bindService(biServiceIntent, biServiceConnection, 0);
+    }
+
+    @Override
+    protected void onDestroy() {
+        unbindService(biServiceConnection);
+        super.onDestroy();
     }
 
     @Override
@@ -144,8 +153,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                    key.equals(KEY_STATUS_DUR_EST) || key.equals(KEY_AUTO_DISABLE_LOCKING) ||
                    key.equals(KEY_AMBER) || key.equals(KEY_AMBER_THRESH) ||
                    key.equals(KEY_GREEN) || key.equals(KEY_GREEN_THRESH)) {
-            stopService(biServiceIntent);
-            startService(biServiceIntent);
+            try {biServiceConnection.biServiceInterface.reloadSettings();
+            } catch (android.os.RemoteException e) {}
         }           
     }
 

@@ -60,7 +60,6 @@ public class BatteryIndicatorService extends Service{
     }
 
     private void mReloadSettings() {
-        System.out.println("................................... Reloading settings");
         if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
             setEnablednessOfKeyguard(false);
         else
@@ -71,8 +70,6 @@ public class BatteryIndicatorService extends Service{
     }
 
     public IBinder onBind(Intent intent) {
-        System.out.println("................................... Bound");
-        
         return mBinder;
     }
 
