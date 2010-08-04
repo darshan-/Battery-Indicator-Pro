@@ -21,8 +21,7 @@
              android:layout_height="30sp"
              android:paddingTop="8sp"
              android:paddingBottom="12sp"
-             android:paddingLeft="13sp"
-             android:paddingRight="13sp"
+             android:paddingLeft="10sp"
              android:gravity="fill_horizontal"
   />
 

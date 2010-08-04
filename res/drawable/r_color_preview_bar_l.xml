@@ -14,5 +14,9 @@
   <size android:height="10sp"
         android:width="14sp"
   />
-  <solid android:color="#CA2020" />
+  <!--solid android:color="#CA2020" /-->
+  <gradient android:startColor="#A00808"
+            android:endColor="#DA3030"
+            android:angle="90"
+  />
 </shape>

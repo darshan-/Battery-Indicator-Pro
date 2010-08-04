@@ -5,5 +5,9 @@
   <size android:height="10sp"
         android:width="14sp"
   />
-  <solid android:color="#7FB119" />
+  <!--solid android:color="#7FB119" /-->
+  <gradient android:startColor="#589206"
+            android:endColor="#92C129"
+            android:angle="90"
+  />
 </shape>

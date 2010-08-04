@@ -63,6 +63,7 @@
     <com.darshancomputing.BatteryIndicatorPro.ColorPreviewBarPreference
        android:key="color_preview"
        android:title="Color Preview"
+       android:enabled="false"
     />
     <CheckBoxPreference
        android:key="use_red"
