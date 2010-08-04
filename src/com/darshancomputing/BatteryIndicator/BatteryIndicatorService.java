@@ -35,11 +35,13 @@ public class BatteryIndicatorService extends Service{
     private NotificationManager mNotificationManager;
     private SharedPreferences settings;
     private KeyguardLock kl;
+    private IntentFilter batteryChanged;
 
     @Override
     public void onCreate() {
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        registerReceiver(mBatteryInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        registerReceiver(mBatteryInfoReceiver, batteryChanged);
         settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         KeyguardManager km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
@@ -57,10 +59,28 @@ public class BatteryIndicatorService extends Service{
         mNotificationManager.cancelAll();
     }
 
-    /* Apparently I need this... */
-    public IBinder onBind(Intent intent) {
-        return null;
+    private void mReloadSettings() {
+        System.out.println("................................... Reloading settings");
+        if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
+            setEnablednessOfKeyguard(false);
+        else
+            setEnablednessOfKeyguard(true);
+
+        unregisterReceiver(mBatteryInfoReceiver);
+        registerReceiver(mBatteryInfoReceiver, batteryChanged);
     }
+
+    public IBinder onBind(Intent intent) {
+        System.out.println("................................... Bound");
+        
+        return mBinder;
+    }
+
+    private final BIServiceInterface.Stub mBinder = new BIServiceInterface.Stub() {
+        public void reloadSettings() {
+            mReloadSettings();
+        }
+    };
 
     private BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
