@@ -4,7 +4,7 @@
     <string name="app_name">Battery Indicator</string>
     <string name="settings_activity_name">Battery Indicator Settings</string>
     <string name="info_activity_name">About Battery Indicator</string>
-    <string name="view_logs_activity_name">Battery Indicator Logs</string>
+    <string name="log_view_activity_name">Battery Indicator Logs</string>
 
     <string name="degree_symbol">°</string>
     <string name="fahrenheit">Fahrenheit</string>

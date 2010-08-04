@@ -252,6 +252,12 @@ public class BatteryIndicatorService extends Service{
                 editor.commit();
             }
         } else {
+            /* Calling disableKeyguard() on an already disabled keyguard doesn't seem to cause any problems,
+                 in the way that reenablKeyguard() on older versions of Android does.  Since the service is
+                 sometimes killed without onDestroy() being called, it's possible to think we're disabled
+                 when we're not, so it's better to call this whenever we want to be disabled.  (The converse
+                 situation isn't a problem -- we won't think we're enabled when we're not, because if the
+                 service is killed, the keyguard is reenabled, whether onDestroy() is called or not. */
             kl.disableKeyguard();
             editor.putBoolean("keyguard_disabled", true);
             editor.commit();

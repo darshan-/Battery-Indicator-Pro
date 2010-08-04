@@ -31,9 +31,8 @@
 	      android:excludeFromRecents="true">
     </activity>
 
-    <activity android:name=".ViewLogsActivity"
-              android:label="@string/view_logs_activity_name"
-              android:theme="@android:style/Theme.Light"
+    <activity android:name=".LogViewActivity"
+              android:label="@string/log_view_activity_name"
               android:launchMode="singleInstance"
 	      android:excludeFromRecents="true">
     </activity>

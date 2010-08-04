@@ -123,7 +123,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference.getKey().equals(KEY_LOG_SCREEN)) {
             ComponentName comp = new ComponentName(getPackageName(),
-                                                   ViewLogsActivity.class.getName());
+                                                   LogViewActivity.class.getName());
             startActivity(new Intent().setComponent(comp));
 
             return false; // I'm guessing that returning false prevents Android from trying to process this...

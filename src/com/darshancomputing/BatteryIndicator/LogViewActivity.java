@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009, 2010 Josiah Barber (aka Darshan)
+    Copyright (c) 2010 Josiah Barber (aka Darshan)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,8 +20,7 @@ import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
-
-public class ViewLogsActivity extends Activity {
+public class LogViewActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
