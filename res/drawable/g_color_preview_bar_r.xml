@@ -3,7 +3,12 @@
        android:shape="rectangle"
 >
   <!-- Note that there's an Android bug where bottomLeft and bottomRight are switched! -->
-  <corners android:topRightRadius="5sp"
+  <!-- There's another bug where earlier versions of Android need a radius greater than 1
+       for every corner in order for any corners to show up. -->
+  <corners android:radius="2sp"
+           android:topLeftRadius="0sp"
+           android:bottomRightRadius="0sp"
+           android:topRightRadius="5sp"
            android:bottomLeftRadius="5sp"
   />
   <size android:height="10sp"
