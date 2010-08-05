@@ -82,9 +82,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         addPreferencesFromResource(R.xml.pref_screen);
 
-        //ColorPreviewBarPreference colorPreview = (ColorPreviewBarPreference) getPreferenceScreen().findPreference(KEY_COLOR_PREVIEW);
-        //colorPreview.setLayoutResource(R.layout.color_preview);
-
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         biServiceConnection = new BIServiceConnection();
         bindService(biServiceIntent, biServiceConnection, 0);
@@ -274,7 +271,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private void updateColorPreviewBar(int redThresh, int amberThresh, int greenThresh) {
-        ColorPreviewBarPreference cpbPref = (ColorPreviewBarPreference) getPreferenceScreen().findPreference(KEY_COLOR_PREVIEW);
+        ColorPreviewPreference cpbPref = (ColorPreviewPreference) getPreferenceScreen().findPreference(KEY_COLOR_PREVIEW);
         cpbPref.updateView(redThresh, amberThresh, greenThresh);
     }
 }

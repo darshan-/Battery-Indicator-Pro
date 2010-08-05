@@ -24,20 +24,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-public class ColorPreviewBarPreference extends Preference {
+public class ColorPreviewPreference extends Preference {
     private int redThresh;
     private int amberThresh;
     private int greenThresh;
 
-    public ColorPreviewBarPreference(Context context) {
+    public ColorPreviewPreference(Context context) {
         super(context);
     }
 
-    public ColorPreviewBarPreference(Context context, AttributeSet attrs) {
+    public ColorPreviewPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public ColorPreviewBarPreference(Context context, AttributeSet attrs, int defStyle) {
+    public ColorPreviewPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
@@ -54,17 +54,14 @@ public class ColorPreviewBarPreference extends Preference {
         ImageView iv = (ImageView) view.findViewById(R.id.color_preview_bar_v);
 
         LayerDrawable ld = (LayerDrawable) iv.getDrawable();
-        //Drawable d1 = ld.getDrawable(0); /* 0-19 */
-        //Drawable d20 = ld.getDrawable(19); /* 0-19 */
-        //if (d1.setLevel(1)) {d1.invalidateSelf();}
-        //d20.setLevel(3);
+        /* ld.getDrawable(int index) is indexed from 0-19 */
 
-        if (greenThresh <= 20) ld.getDrawable(4).setLevel(3);
-        if (greenThresh <= 25) ld.getDrawable(5).setLevel(3);
-        if (greenThresh <= 30) ld.getDrawable(6).setLevel(3);
-        if (greenThresh <= 35) ld.getDrawable(7).setLevel(3);
-        if (greenThresh <= 40) ld.getDrawable(8).setLevel(3);
-        if (greenThresh <= 45) ld.getDrawable(9).setLevel(3);
+        if (greenThresh <= 20) ld.getDrawable( 4).setLevel(3);
+        if (greenThresh <= 25) ld.getDrawable( 5).setLevel(3);
+        if (greenThresh <= 30) ld.getDrawable( 6).setLevel(3);
+        if (greenThresh <= 35) ld.getDrawable( 7).setLevel(3);
+        if (greenThresh <= 40) ld.getDrawable( 8).setLevel(3);
+        if (greenThresh <= 45) ld.getDrawable( 9).setLevel(3);
         if (greenThresh <= 50) ld.getDrawable(10).setLevel(3);
         if (greenThresh <= 55) ld.getDrawable(11).setLevel(3);
         if (greenThresh <= 60) ld.getDrawable(12).setLevel(3);
@@ -75,22 +72,22 @@ public class ColorPreviewBarPreference extends Preference {
         if (greenThresh <= 85) ld.getDrawable(17).setLevel(3);
         if (greenThresh <= 90) ld.getDrawable(18).setLevel(3);
         if (greenThresh <= 95) ld.getDrawable(19).setLevel(3);
-        if (amberThresh > 0) ld.getDrawable(0).setLevel(2);
-        if (amberThresh > 5) ld.getDrawable(1).setLevel(2);
-        if (amberThresh > 10) ld.getDrawable(2).setLevel(2);
-        if (amberThresh > 15) ld.getDrawable(3).setLevel(2);
-        if (amberThresh > 20) ld.getDrawable(4).setLevel(2);
-        if (amberThresh > 25) ld.getDrawable(5).setLevel(2);
-        if (amberThresh > 30) ld.getDrawable(6).setLevel(2);
-        if (amberThresh > 35) ld.getDrawable(7).setLevel(2);
-        if (amberThresh > 40) ld.getDrawable(8).setLevel(2);
-        if (amberThresh > 45) ld.getDrawable(9).setLevel(2);
-        if (redThresh > 0) ld.getDrawable(0).setLevel(1);
-        if (redThresh > 5) ld.getDrawable(1).setLevel(1);
-        if (redThresh > 10) ld.getDrawable(2).setLevel(1);
-        if (redThresh > 15) ld.getDrawable(3).setLevel(1);
-        if (redThresh > 20) ld.getDrawable(4).setLevel(1);
-        if (redThresh > 25) ld.getDrawable(5).setLevel(1);
+        if (amberThresh >   0) ld.getDrawable( 0).setLevel(2);
+        if (amberThresh >   5) ld.getDrawable( 1).setLevel(2);
+        if (amberThresh >  10) ld.getDrawable( 2).setLevel(2);
+        if (amberThresh >  15) ld.getDrawable( 3).setLevel(2);
+        if (amberThresh >  20) ld.getDrawable( 4).setLevel(2);
+        if (amberThresh >  25) ld.getDrawable( 5).setLevel(2);
+        if (amberThresh >  30) ld.getDrawable( 6).setLevel(2);
+        if (amberThresh >  35) ld.getDrawable( 7).setLevel(2);
+        if (amberThresh >  40) ld.getDrawable( 8).setLevel(2);
+        if (amberThresh >  45) ld.getDrawable( 9).setLevel(2);
+        if (redThresh   >   0) ld.getDrawable( 0).setLevel(1);
+        if (redThresh   >   5) ld.getDrawable( 1).setLevel(1);
+        if (redThresh   >  10) ld.getDrawable( 2).setLevel(1);
+        if (redThresh   >  15) ld.getDrawable( 3).setLevel(1);
+        if (redThresh   >  20) ld.getDrawable( 4).setLevel(1);
+        if (redThresh   >  25) ld.getDrawable( 5).setLevel(1);
     }
 
     public void updateView(int red, int amber, int green) {

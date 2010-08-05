@@ -60,7 +60,7 @@
   </PreferenceCategory>
 
   <PreferenceCategory android:title="Color">
-    <com.darshancomputing.BatteryIndicatorPro.ColorPreviewBarPreference
+    <com.darshancomputing.BatteryIndicatorPro.ColorPreviewPreference
        android:key="color_preview"
        android:title="Color Preview"
        android:enabled="false"
