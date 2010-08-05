@@ -63,8 +63,16 @@
     <com.darshancomputing.BatteryIndicatorPro.ColorPreviewPreference
        android:key="color_preview"
        android:title="Color Preview"
-       android:enabled="false"
+       android:selectable="false"
     />
+
+    <!-- Added to get the grey separator beneath color_preview pref. The
+           trade-off is that if this is selectable, then when scrolling
+           with the trackball, it's confusing to scroll over this, since
+           you don't see it but it takes focus.  If it's not selectable,
+           then there's still no gray bar, destroying the point. I may be
+           better off leaving color_preview selectable but disabled. -->
+    <Preference android:key="empty_pref01" />
     <CheckBoxPreference
        android:key="use_red"
        android:title="Use Red Icon"

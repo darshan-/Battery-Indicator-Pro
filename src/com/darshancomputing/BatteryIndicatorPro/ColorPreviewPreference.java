@@ -43,7 +43,7 @@ public class ColorPreviewPreference extends Preference {
 
     @Override
     protected View onCreateView(ViewGroup parent){
-        setLayoutResource(R.layout.color_preview);
+        setLayoutResource(R.layout.color_preview_pref);
         return super.onCreateView(parent);
     }
 
