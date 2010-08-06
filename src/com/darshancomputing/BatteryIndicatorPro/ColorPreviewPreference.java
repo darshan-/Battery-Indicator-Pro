@@ -43,7 +43,6 @@ public class ColorPreviewPreference extends Preference {
 
     @Override
     protected View onCreateView(ViewGroup parent){
-        setLayoutResource(R.layout.color_preview_pref);
         return super.onCreateView(parent);
     }
 
@@ -56,6 +55,7 @@ public class ColorPreviewPreference extends Preference {
         LayerDrawable ld = (LayerDrawable) iv.getDrawable();
         /* ld.getDrawable(int index) is indexed from 0-19 */
 
+        /* TODO: Rewrite this with loops, based on MAX and MIN icons for each color */
         if (greenThresh <= 20) ld.getDrawable( 4).setLevel(3);
         if (greenThresh <= 25) ld.getDrawable( 5).setLevel(3);
         if (greenThresh <= 30) ld.getDrawable( 6).setLevel(3);
