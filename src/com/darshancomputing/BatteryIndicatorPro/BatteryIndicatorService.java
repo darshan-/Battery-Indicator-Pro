@@ -36,6 +36,7 @@ public class BatteryIndicatorService extends Service{
     private SharedPreferences settings;
     private KeyguardLock kl;
     private IntentFilter batteryChanged;
+    private Boolean keyguardDisabled;
 
     @Override
     public void onCreate() {
@@ -243,13 +244,10 @@ public class BatteryIndicatorService extends Service{
          the emulator, really don't want you to call reenableKeyguard() if you haven't first disabled it.
          So to stay compatible with older devices, let's add an extra setting and add this function. */
     private void setEnablednessOfKeyguard(boolean enabled) {
-        SharedPreferences.Editor editor = settings.edit();
-
         if (enabled) {
-            if (settings.getBoolean("keyguard_disabled", false)) {
+            if (keyguardDisabled) {
                 kl.reenableKeyguard();
-                editor.putBoolean("keyguard_disabled", false);
-                editor.commit();
+                keyguardDisabled = false;
             }
         } else {
             /* Calling disableKeyguard() on an already disabled keyguard doesn't seem to cause any problems,
@@ -259,8 +257,7 @@ public class BatteryIndicatorService extends Service{
                  situation isn't a problem -- we won't think we're enabled when we're not, because if the
                  service is killed, the keyguard is reenabled, whether onDestroy() is called or not. */
             kl.disableKeyguard();
-            editor.putBoolean("keyguard_disabled", true);
-            editor.commit();
+            keyguardDisabled = true;
         }
     }
 }

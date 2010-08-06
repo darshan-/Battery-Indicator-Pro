@@ -25,9 +25,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 public class ColorPreviewPreference extends Preference {
-    private int redThresh;
-    private int amberThresh;
-    private int greenThresh;
+    public int redThresh;
+    public int amberThresh;
+    public int greenThresh;
 
     public ColorPreviewPreference(Context context) {
         super(context);
@@ -89,11 +89,4 @@ public class ColorPreviewPreference extends Preference {
         if (redThresh   >  20) ld.getDrawable( 4).setLevel(1);
         if (redThresh   >  25) ld.getDrawable( 5).setLevel(1);
     }
-
-    public void updateView(int red, int amber, int green) {
-        redThresh = red;
-        amberThresh = amber;
-        greenThresh = green;
-    }
-
 }

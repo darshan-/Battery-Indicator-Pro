@@ -64,6 +64,23 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private Intent biServiceIntent;
     private BIServiceConnection biServiceConnection;
 
+    private PreferenceScreen mPreferenceScreen;
+    private SharedPreferences mSharedPreferences;
+
+    private ColorPreviewPreference cpbPref;
+
+    private ListPreference   redThresh;
+    private ListPreference amberThresh;
+    private ListPreference greenThresh;
+
+    private Boolean   redEnabled;
+    private Boolean amberEnabled;
+    private Boolean greenEnabled;
+
+    private int   iRedThresh;
+    private int iAmberThresh;
+    private int iGreenThresh;
+
     private static final String[] fivePercents = {
         "5", "10",
         "15", "20",
@@ -79,17 +96,36 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //android.os.Debug.startMethodTracing();
 
         addPreferencesFromResource(R.xml.pref_screen);
 
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         biServiceConnection = new BIServiceConnection();
         bindService(biServiceIntent, biServiceConnection, 0);
+
+        mPreferenceScreen  = getPreferenceScreen();
+        mSharedPreferences = mPreferenceScreen.getSharedPreferences();
+
+        cpbPref     = (ColorPreviewPreference) mPreferenceScreen.findPreference(KEY_COLOR_PREVIEW);
+
+        redThresh   = (ListPreference) mPreferenceScreen.findPreference(KEY_RED_THRESH);
+        amberThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_AMBER_THRESH);
+        greenThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_GREEN_THRESH);
+
+        redEnabled   = mSharedPreferences.getBoolean(  KEY_RED, false);
+        amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
+        greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
+
+        iRedThresh   = Integer.valueOf(  redThresh.getValue());
+        iAmberThresh = Integer.valueOf(amberThresh.getValue());
+        iGreenThresh = Integer.valueOf(greenThresh.getValue());
     }
 
     @Override
     protected void onDestroy() {
         unbindService(biServiceConnection);
+        //android.os.Debug.stopMethodTracing();
         super.onDestroy();
     }
 
@@ -107,14 +143,14 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         updateListPrefSummary(KEY_AMBER_THRESH);
         updateListPrefSummary(KEY_GREEN_THRESH);
 
-        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+        mPreferenceScreen.getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-        getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);    
+        mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);    
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
@@ -130,6 +166,20 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals(KEY_RED)) {
+            redEnabled = mSharedPreferences.getBoolean(KEY_RED, false);
+        } else if (key.equals(KEY_AMBER)) {
+            amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
+        } else if (key.equals(KEY_GREEN)) {
+            greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
+        } else if (key.equals(KEY_RED_THRESH)) {
+            iRedThresh = Integer.valueOf(redThresh.getValue());
+        } else if (key.equals(KEY_AMBER_THRESH)) {
+            iAmberThresh = Integer.valueOf(amberThresh.getValue());
+        } else if (key.equals(KEY_GREEN_THRESH)) {
+            iGreenThresh = Integer.valueOf(greenThresh.getValue());
+        }
+
         if (key.equals(KEY_RED) || key.equals(KEY_RED_THRESH) ||
             key.equals(KEY_AMBER) || key.equals(KEY_AMBER_THRESH) ||
             key.equals(KEY_GREEN) || key.equals(KEY_GREEN_THRESH)) {
@@ -154,20 +204,20 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                    key.equals(KEY_STATUS_DUR_EST) || key.equals(KEY_AUTO_DISABLE_LOCKING) ||
                    key.equals(KEY_AMBER) || key.equals(KEY_AMBER_THRESH) ||
                    key.equals(KEY_GREEN) || key.equals(KEY_GREEN_THRESH)) {
-            try {biServiceConnection.biServiceInterface.reloadSettings();
+            try {biServiceConnection.biServiceInterface.reloadSettings(); /* New soft reset */
             } catch (android.os.RemoteException e) {}
         }           
     }
 
     private void updateConvertFSummary() {
-        Preference pref = (CheckBoxPreference) getPreferenceScreen().findPreference(KEY_CONVERT_F);
+        Preference pref = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_CONVERT_F);
         pref.setSummary(getResources().getString(R.string.currently_using) + " " +
-                        (getPreferenceScreen().getSharedPreferences().getBoolean(KEY_CONVERT_F, false) ?
+                        (mSharedPreferences.getBoolean(KEY_CONVERT_F, false) ?
                          getResources().getString(R.string.fahrenheit) : getResources().getString(R.string.celsius)));
     }
 
     private void updateListPrefSummary(String key) {
-        ListPreference pref = (ListPreference)getPreferenceScreen().findPreference(key);
+        ListPreference pref = (ListPreference) mPreferenceScreen.findPreference(key);
 
         if (pref.isEnabled()) {
             pref.setSummary(getResources().getString(R.string.currently_set_to) + " " + pref.getEntry());
@@ -177,24 +227,12 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private void validateColorPrefs() {
-        ListPreference   redThresh = (ListPreference) getPreferenceScreen().findPreference(KEY_RED_THRESH);
-        ListPreference amberThresh = (ListPreference) getPreferenceScreen().findPreference(KEY_AMBER_THRESH);
-        ListPreference greenThresh = (ListPreference) getPreferenceScreen().findPreference(KEY_GREEN_THRESH);
-
-        Boolean   redEnabled = getPreferenceScreen().getSharedPreferences().getBoolean(  KEY_RED, false);
-        Boolean amberEnabled = getPreferenceScreen().getSharedPreferences().getBoolean(KEY_AMBER, false);
-        Boolean greenEnabled = getPreferenceScreen().getSharedPreferences().getBoolean(KEY_GREEN, false);
-
-        int   iRedThresh = Integer.valueOf(  redThresh.getValue());
-        int iAmberThresh = Integer.valueOf(amberThresh.getValue());
-        int iGreenThresh = Integer.valueOf(greenThresh.getValue());
-
         String [] a;
 
         if (redEnabled) {
             redThresh.setEnabled(true);
 
-            a = xToYBy5(determineMin(RED, redEnabled, amberEnabled, iRedThresh, iAmberThresh), RED_SETTING_MAX);
+            a = xToYBy5(determineMin(RED), RED_SETTING_MAX);
             redThresh.setEntries(a);
             redThresh.setEntryValues(a);
 
@@ -210,7 +248,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (amberEnabled) {
             amberThresh.setEnabled(true);
 
-            a = xToYBy5(determineMin(AMBER, redEnabled, amberEnabled, iRedThresh, iAmberThresh), AMBER_SETTING_MAX);
+            a = xToYBy5(determineMin(AMBER), AMBER_SETTING_MAX);
             amberThresh.setEntries(a);
             amberThresh.setEntryValues(a);
 
@@ -225,7 +263,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (greenEnabled) {
             greenThresh.setEnabled(true);
 
-            a = xToYBy5(determineMin(GREEN, redEnabled, amberEnabled, iRedThresh, iAmberThresh), 100);
+            a = xToYBy5(determineMin(GREEN), 100);
             greenThresh.setEntries(a);
             greenThresh.setEntryValues(a);
 
@@ -237,27 +275,25 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             greenThresh.setEnabled(false);
         }
 
-        updateColorPreviewBar(  redEnabled ?   iRedThresh : 0,
-                              amberEnabled ? iAmberThresh : 0,
-                              greenEnabled ? iGreenThresh : 100);
+        updateColorPreviewBar();
     }
 
     /* Determine the minimum valid threshold setting for a particular color, based on other active settings,
          with red being independent, amber depending on red, and green depending on both others. */
-    private static int determineMin(int color, Boolean redEnabled, Boolean amberEnabled, int redThresh, int amberThresh) {
+    private int determineMin(int color) {
         switch (color) {
         case RED:
             return RED_SETTING_MIN;
         case AMBER:
             if (redEnabled)
-                return java.lang.Math.max(redThresh + 5, AMBER_SETTING_MIN);
+                return java.lang.Math.max(iRedThresh + 5, AMBER_SETTING_MIN);
             else
                 return AMBER_SETTING_MIN;
         case GREEN:
             if (amberEnabled)
-                return java.lang.Math.max(amberThresh, GREEN_SETTING_MIN);
+                return java.lang.Math.max(iAmberThresh, GREEN_SETTING_MIN);
             if (redEnabled)
-                return java.lang.Math.max(redThresh, GREEN_SETTING_MIN);
+                return java.lang.Math.max(iRedThresh, GREEN_SETTING_MIN);
             else
                 return GREEN_SETTING_MIN;
         default:
@@ -276,8 +312,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         return a;
     }
 
-    private void updateColorPreviewBar(int redThresh, int amberThresh, int greenThresh) {
-        ColorPreviewPreference cpbPref = (ColorPreviewPreference) getPreferenceScreen().findPreference(KEY_COLOR_PREVIEW);
-        cpbPref.updateView(redThresh, amberThresh, greenThresh);
+    private void updateColorPreviewBar() {
+        cpbPref.redThresh   =   redEnabled ?   iRedThresh : 0;
+        cpbPref.amberThresh = amberEnabled ? iAmberThresh : 0;
+        cpbPref.greenThresh = greenEnabled ? iGreenThresh : 100;
     }
 }
