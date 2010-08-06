@@ -143,14 +143,14 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         updateListPrefSummary(KEY_AMBER_THRESH);
         updateListPrefSummary(KEY_GREEN_THRESH);
 
-        mPreferenceScreen.getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+        mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-        mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);    
+        mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
@@ -166,6 +166,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
+
         if (key.equals(KEY_RED)) {
             redEnabled = mSharedPreferences.getBoolean(KEY_RED, false);
         } else if (key.equals(KEY_AMBER)) {
@@ -206,7 +208,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                    key.equals(KEY_GREEN) || key.equals(KEY_GREEN_THRESH)) {
             try {biServiceConnection.biServiceInterface.reloadSettings(); /* New soft reset */
             } catch (android.os.RemoteException e) {}
-        }           
+        }
+
+        mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
     private void updateConvertFSummary() {

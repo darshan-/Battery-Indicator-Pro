@@ -36,7 +36,7 @@ public class BatteryIndicatorService extends Service{
     private SharedPreferences settings;
     private KeyguardLock kl;
     private IntentFilter batteryChanged;
-    private Boolean keyguardDisabled;
+    private Boolean keyguardDisabled = false;
 
     @Override
     public void onCreate() {
@@ -66,7 +66,7 @@ public class BatteryIndicatorService extends Service{
         else
             setEnablednessOfKeyguard(true);
 
-        unregisterReceiver(mBatteryInfoReceiver);
+        //unregisterReceiver(mBatteryInfoReceiver); /* It appears that there's no need to unregister first */
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
     }
 
@@ -250,14 +250,10 @@ public class BatteryIndicatorService extends Service{
                 keyguardDisabled = false;
             }
         } else {
-            /* Calling disableKeyguard() on an already disabled keyguard doesn't seem to cause any problems,
-                 in the way that reenablKeyguard() on older versions of Android does.  Since the service is
-                 sometimes killed without onDestroy() being called, it's possible to think we're disabled
-                 when we're not, so it's better to call this whenever we want to be disabled.  (The converse
-                 situation isn't a problem -- we won't think we're enabled when we're not, because if the
-                 service is killed, the keyguard is reenabled, whether onDestroy() is called or not. */
-            kl.disableKeyguard();
-            keyguardDisabled = true;
+            if (! keyguardDisabled) {
+                kl.disableKeyguard();
+                keyguardDisabled = true;
+            }
         }
     }
 }
