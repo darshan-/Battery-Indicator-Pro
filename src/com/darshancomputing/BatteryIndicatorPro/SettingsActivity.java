@@ -181,22 +181,27 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         ListPreference amberThresh = (ListPreference) getPreferenceScreen().findPreference(KEY_AMBER_THRESH);
         ListPreference greenThresh = (ListPreference) getPreferenceScreen().findPreference(KEY_GREEN_THRESH);
 
-        Boolean redEnabled = getPreferenceScreen().getSharedPreferences().getBoolean(KEY_RED, false);
+        Boolean   redEnabled = getPreferenceScreen().getSharedPreferences().getBoolean(  KEY_RED, false);
         Boolean amberEnabled = getPreferenceScreen().getSharedPreferences().getBoolean(KEY_AMBER, false);
         Boolean greenEnabled = getPreferenceScreen().getSharedPreferences().getBoolean(KEY_GREEN, false);
+
+        int   iRedThresh = Integer.valueOf(  redThresh.getValue());
+        int iAmberThresh = Integer.valueOf(amberThresh.getValue());
+        int iGreenThresh = Integer.valueOf(greenThresh.getValue());
 
         String [] a;
 
         if (redEnabled) {
             redThresh.setEnabled(true);
 
-            a = xToYBy5(determineMin(RED), RED_SETTING_MAX);
+            a = xToYBy5(determineMin(RED, redEnabled, amberEnabled, iRedThresh, iAmberThresh), RED_SETTING_MAX);
             redThresh.setEntries(a);
             redThresh.setEntryValues(a);
 
             /* Older version had a higher max; user's setting could be too high. */
-            if (Integer.valueOf(redThresh.getValue()) > RED_SETTING_MAX) {
+            if (iRedThresh > RED_SETTING_MAX) {
                 redThresh.setValue("" + RED_SETTING_MAX);
+                iRedThresh = RED_SETTING_MAX;
             }
         } else {
             redThresh.setEnabled(false);
@@ -205,12 +210,14 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (amberEnabled) {
             amberThresh.setEnabled(true);
 
-            a = xToYBy5(determineMin(AMBER), AMBER_SETTING_MAX);
+            a = xToYBy5(determineMin(AMBER, redEnabled, amberEnabled, iRedThresh, iAmberThresh), AMBER_SETTING_MAX);
             amberThresh.setEntries(a);
             amberThresh.setEntryValues(a);
 
-            if (Integer.valueOf(amberThresh.getValue()) < Integer.valueOf(a[0]))
+            if (iAmberThresh < Integer.valueOf(a[0])) {
                 amberThresh.setValue(a[0]);
+                iAmberThresh = Integer.valueOf(a[0]);
+            }
         } else {
             amberThresh.setEnabled(false);
         }
@@ -218,40 +225,39 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (greenEnabled) {
             greenThresh.setEnabled(true);
 
-            a = xToYBy5(determineMin(GREEN), 100);
+            a = xToYBy5(determineMin(GREEN, redEnabled, amberEnabled, iRedThresh, iAmberThresh), 100);
             greenThresh.setEntries(a);
             greenThresh.setEntryValues(a);
 
-            if (Integer.valueOf(greenThresh.getValue()) < Integer.valueOf(a[0]))
+            if (iGreenThresh < Integer.valueOf(a[0])) {
                 greenThresh.setValue(a[0]);
+                iGreenThresh = Integer.valueOf(a[0]);
+            }
         } else {
             greenThresh.setEnabled(false);
         }
 
-        updateColorPreviewBar(  redEnabled ? Integer.valueOf(  redThresh.getValue()) : 0,
-                              amberEnabled ? Integer.valueOf(amberThresh.getValue()) : 0,
-                              greenEnabled ? Integer.valueOf(greenThresh.getValue()) : 100);
+        updateColorPreviewBar(  redEnabled ?   iRedThresh : 0,
+                              amberEnabled ? iAmberThresh : 0,
+                              greenEnabled ? iGreenThresh : 100);
     }
 
     /* Determine the minimum valid threshold setting for a particular color, based on other active settings,
          with red being independent, amber depending on red, and green depending on both others. */
-    private int determineMin(int color) {
-        ListPreference redThresh = (ListPreference) getPreferenceScreen().findPreference(KEY_RED_THRESH);
-        ListPreference amberThresh = (ListPreference) getPreferenceScreen().findPreference(KEY_AMBER_THRESH);
-
+    private static int determineMin(int color, Boolean redEnabled, Boolean amberEnabled, int redThresh, int amberThresh) {
         switch (color) {
         case RED:
             return RED_SETTING_MIN;
         case AMBER:
-            if (getPreferenceScreen().getSharedPreferences().getBoolean(KEY_RED, false))
-                return java.lang.Math.max(Integer.valueOf(redThresh.getValue()) + 5, AMBER_SETTING_MIN);
+            if (redEnabled)
+                return java.lang.Math.max(redThresh + 5, AMBER_SETTING_MIN);
             else
                 return AMBER_SETTING_MIN;
         case GREEN:
-            if (getPreferenceScreen().getSharedPreferences().getBoolean(KEY_AMBER, false))
-                return java.lang.Math.max(Integer.valueOf(amberThresh.getValue()), GREEN_SETTING_MIN);
-            if (getPreferenceScreen().getSharedPreferences().getBoolean(KEY_RED, false))
-                return java.lang.Math.max(Integer.valueOf(redThresh.getValue()), GREEN_SETTING_MIN);
+            if (amberEnabled)
+                return java.lang.Math.max(amberThresh, GREEN_SETTING_MIN);
+            if (redEnabled)
+                return java.lang.Math.max(redThresh, GREEN_SETTING_MIN);
             else
                 return GREEN_SETTING_MIN;
         default:
@@ -259,7 +265,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         }
     }
 
-    private String[] xToYBy5(int x, int y) {
+    private static String[] xToYBy5(int x, int y) {
         int i = (x / 5) - 1;
         int j = (100 - y) / 5;
 
