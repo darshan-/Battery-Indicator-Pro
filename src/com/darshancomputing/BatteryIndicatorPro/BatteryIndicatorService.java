@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Binder;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
@@ -40,6 +41,7 @@ public class BatteryIndicatorService extends Service{
 
     @Override
     public void onCreate() {
+        //android.os.Debug.startMethodTracing();
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
@@ -58,9 +60,10 @@ public class BatteryIndicatorService extends Service{
 
         unregisterReceiver(mBatteryInfoReceiver);
         mNotificationManager.cancelAll();
+        //android.os.Debug.stopMethodTracing();dumpHprofData
     }
 
-    private void mReloadSettings() {
+    public void reloadSettings() {
         if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
             setEnablednessOfKeyguard(false);
         else
@@ -75,14 +78,13 @@ public class BatteryIndicatorService extends Service{
         return mBinder;
     }
 
-    /* TODO: See http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/app/LocalService.html
-         for a much simpler way to do this, since we don't need IPC!
-     */ 
-    private final BIServiceInterface.Stub mBinder = new BIServiceInterface.Stub() {
-        public void reloadSettings() {
-            mReloadSettings();
+    public class LocalBinder extends Binder {
+        BatteryIndicatorService getService() {
+            return BatteryIndicatorService.this;
         }
-    };
+    }
+
+    private final IBinder mBinder = new LocalBinder();
 
     private BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override

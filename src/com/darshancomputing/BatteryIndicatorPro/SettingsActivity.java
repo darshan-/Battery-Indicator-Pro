@@ -206,8 +206,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                    key.equals(KEY_STATUS_DUR_EST) || key.equals(KEY_AUTO_DISABLE_LOCKING) ||
                    key.equals(KEY_AMBER) || key.equals(KEY_AMBER_THRESH) ||
                    key.equals(KEY_GREEN) || key.equals(KEY_GREEN_THRESH)) {
-            try {biServiceConnection.biServiceInterface.reloadSettings(); /* New soft reset */
-            } catch (android.os.RemoteException e) {}
+            biServiceConnection.biService.reloadSettings(); /* New soft reset */
         }
 
         mSharedPreferences.registerOnSharedPreferenceChangeListener(this);

@@ -39,11 +39,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class BatteryIndicator extends Activity {
-    Intent biServiceIntent;
-    SharedPreferences settings;
-    BIServiceConnection biServiceConnection;
+    private Intent biServiceIntent;
+    private SharedPreferences settings;
+    private final BIServiceConnection biServiceConnection = new BIServiceConnection();
 
-    static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
+    private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
 
     final Handler mHandler = new Handler();
     final Runnable mUpdateStatus = new Runnable() {
@@ -68,7 +68,7 @@ public class BatteryIndicator extends Activity {
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         startService(biServiceIntent);
 
-        biServiceConnection = new BIServiceConnection();
+        //biServiceConnection = 
         bindService(biServiceIntent, biServiceConnection, 0);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -106,8 +106,8 @@ public class BatteryIndicator extends Activity {
 
     @Override
     protected void onDestroy() {
-        unbindService(biServiceConnection);
         super.onDestroy();
+        unbindService(biServiceConnection);
     }
 
     @Override
@@ -187,7 +187,7 @@ public class BatteryIndicator extends Activity {
     }
 
     private void updateLockscreenButton() {
-        Button button = (Button)findViewById(R.id.toggle_lock_screen_b);
+        Button button = (Button) findViewById(R.id.toggle_lock_screen_b);
 
         if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
             button.setText("Reenable\nLock Screen");
@@ -200,8 +200,7 @@ public class BatteryIndicator extends Activity {
         editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, b);
         editor.commit();
 
-        try {biServiceConnection.biServiceInterface.reloadSettings();
-        } catch (android.os.RemoteException e) {}
+        biServiceConnection.biService.reloadSettings();
 
         /* Now that I've decided to call finish() here, there's no need to call this anymore */
         //updateLockscreenButton();
@@ -211,8 +210,7 @@ public class BatteryIndicator extends Activity {
     /* More Info (Now called "About") */
     private OnClickListener miButtonListener = new OnClickListener() {
         public void onClick(View v) {
-            ComponentName comp = new ComponentName(getPackageName(),
-                                                   InfoActivity.class.getName());
+            ComponentName comp = new ComponentName(getPackageName(), InfoActivity.class.getName());
             startActivity(new Intent().setComponent(comp));
             finish();
         }
@@ -235,7 +233,7 @@ public class BatteryIndicator extends Activity {
     /* Toggle Lock Screen */
     private OnClickListener tlsButtonListener = new OnClickListener() {
         public void onClick(View v) {
-            Button button = (Button)findViewById(R.id.toggle_lock_screen_b);
+            Button button = (Button) findViewById(R.id.toggle_lock_screen_b);
 
             if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false)) {
                 setDisableLocking(false);
@@ -252,8 +250,7 @@ public class BatteryIndicator extends Activity {
     /* Edit Settings */
     private OnClickListener esButtonListener = new OnClickListener() {
         public void onClick(View v) {
-            ComponentName comp = new ComponentName(getPackageName(),
-                                                   SettingsActivity.class.getName());
+            ComponentName comp = new ComponentName(getPackageName(), SettingsActivity.class.getName());
             startActivity(new Intent().setComponent(comp));
             finish();
         }
