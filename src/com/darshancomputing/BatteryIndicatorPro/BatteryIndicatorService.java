@@ -70,10 +70,14 @@ public class BatteryIndicatorService extends Service{
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
     }
 
+    @Override
     public IBinder onBind(Intent intent) {
         return mBinder;
     }
 
+    /* TODO: See http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/app/LocalService.html
+         for a much simpler way to do this, since we don't need IPC!
+     */ 
     private final BIServiceInterface.Stub mBinder = new BIServiceInterface.Stub() {
         public void reloadSettings() {
             mReloadSettings();
@@ -142,7 +146,9 @@ public class BatteryIndicatorService extends Service{
                 long currentTM = System.currentTimeMillis();
                 long statusDuration = 0;
                 String last_status_since = "";
-                String curTimeStr = formatTime(new Date());
+                String curTimeStr = formatTime(new Date()); /* TODO: Look at this... seems weird to call it every time,
+                                                               and then to have two different conditionals about if the
+                                                               status changed, so they use it... */
 
                 /* Main activity assumes that last_percent is always above -1 if service is running --
                    if it gets a negative value, it restarts until it gets a non-negative value */

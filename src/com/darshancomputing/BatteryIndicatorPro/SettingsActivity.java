@@ -259,6 +259,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             if (iAmberThresh < Integer.valueOf(a[0])) {
                 amberThresh.setValue(a[0]);
                 iAmberThresh = Integer.valueOf(a[0]);
+                updateListPrefSummary(KEY_AMBER_THRESH);
             }
         } else {
             amberThresh.setEnabled(false);
@@ -274,6 +275,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             if (iGreenThresh < Integer.valueOf(a[0])) {
                 greenThresh.setValue(a[0]);
                 iGreenThresh = Integer.valueOf(a[0]);
+                updateListPrefSummary(KEY_GREEN_THRESH);
             }
         } else {
             greenThresh.setEnabled(false);
