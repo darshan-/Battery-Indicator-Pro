@@ -133,7 +133,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     protected void onResume() {
         super.onResume();
 
-        validateColorPrefs();
+        validateColorPrefs(null);
 
         updateConvertFSummary();
 
@@ -185,7 +185,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (key.equals(KEY_RED) || key.equals(KEY_RED_THRESH) ||
             key.equals(KEY_AMBER) || key.equals(KEY_AMBER_THRESH) ||
             key.equals(KEY_GREEN) || key.equals(KEY_GREEN_THRESH)) {
-            validateColorPrefs();
+            validateColorPrefs(key);
         }
 
         if (key.equals(KEY_CONVERT_F)) {
@@ -229,55 +229,62 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         }
     }
 
-    private void validateColorPrefs() {
+    private void validateColorPrefs(String changedKey) {
         String [] a;
 
-        if (redEnabled) {
-            redThresh.setEnabled(true);
+        if (changedKey == null || changedKey.equals(KEY_RED)) {
+            if (redEnabled) {
+                redThresh.setEnabled(true);
 
-            a = xToYBy5(determineMin(RED), RED_SETTING_MAX);
-            redThresh.setEntries(a);
-            redThresh.setEntryValues(a);
+                a = xToYBy5(determineMin(RED), RED_SETTING_MAX);
+                redThresh.setEntries(a);
+                redThresh.setEntryValues(a);
 
-            /* Older version had a higher max; user's setting could be too high. */
-            if (iRedThresh > RED_SETTING_MAX) {
-                redThresh.setValue("" + RED_SETTING_MAX);
-                iRedThresh = RED_SETTING_MAX;
+                /* Older version had a higher max; user's setting could be too high. */
+                if (iRedThresh > RED_SETTING_MAX) {
+                    redThresh.setValue("" + RED_SETTING_MAX);
+                    iRedThresh = RED_SETTING_MAX;
+                }
+            } else {
+                redThresh.setEnabled(false);
             }
-        } else {
-            redThresh.setEnabled(false);
         }
 
-        if (amberEnabled) {
-            amberThresh.setEnabled(true);
+        if (changedKey == null || changedKey.equals(KEY_RED) || changedKey.equals(KEY_RED_THRESH) ||
+            changedKey.equals(KEY_AMBER)) {
+            if (amberEnabled) {
+                amberThresh.setEnabled(true);
 
-            a = xToYBy5(determineMin(AMBER), AMBER_SETTING_MAX);
-            amberThresh.setEntries(a);
-            amberThresh.setEntryValues(a);
+                a = xToYBy5(determineMin(AMBER), AMBER_SETTING_MAX);
+                amberThresh.setEntries(a);
+                amberThresh.setEntryValues(a);
 
-            if (iAmberThresh < Integer.valueOf(a[0])) {
-                amberThresh.setValue(a[0]);
-                iAmberThresh = Integer.valueOf(a[0]);
-                updateListPrefSummary(KEY_AMBER_THRESH);
+                if (iAmberThresh < Integer.valueOf(a[0])) {
+                    amberThresh.setValue(a[0]);
+                    iAmberThresh = Integer.valueOf(a[0]);
+                    updateListPrefSummary(KEY_AMBER_THRESH);
+                }
+            } else {
+                amberThresh.setEnabled(false);
             }
-        } else {
-            amberThresh.setEnabled(false);
         }
 
-        if (greenEnabled) {
-            greenThresh.setEnabled(true);
+        if (changedKey != null && !changedKey.equals(KEY_GREEN_THRESH)) {
+            if (greenEnabled) {
+                greenThresh.setEnabled(true);
 
-            a = xToYBy5(determineMin(GREEN), 100);
-            greenThresh.setEntries(a);
-            greenThresh.setEntryValues(a);
+                a = xToYBy5(determineMin(GREEN), 100);
+                greenThresh.setEntries(a);
+                greenThresh.setEntryValues(a);
 
-            if (iGreenThresh < Integer.valueOf(a[0])) {
-                greenThresh.setValue(a[0]);
-                iGreenThresh = Integer.valueOf(a[0]);
-                updateListPrefSummary(KEY_GREEN_THRESH);
+                if (iGreenThresh < Integer.valueOf(a[0])) {
+                    greenThresh.setValue(a[0]);
+                    iGreenThresh = Integer.valueOf(a[0]);
+                    updateListPrefSummary(KEY_GREEN_THRESH);
+                }
+            } else {
+                greenThresh.setEnabled(false);
             }
-        } else {
-            greenThresh.setEnabled(false);
         }
 
         updateColorPreviewBar();
@@ -318,8 +325,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private void updateColorPreviewBar() {
-        cpbPref.redThresh   =   redEnabled ?   iRedThresh : 0;
-        cpbPref.amberThresh = amberEnabled ? iAmberThresh : 0;
+        cpbPref.redThresh   =   redEnabled ?   iRedThresh :   0;
+        cpbPref.amberThresh = amberEnabled ? iAmberThresh :   0;
         cpbPref.greenThresh = greenEnabled ? iGreenThresh : 100;
     }
 }
