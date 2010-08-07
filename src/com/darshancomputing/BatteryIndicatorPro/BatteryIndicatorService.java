@@ -32,18 +32,20 @@ import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import java.util.Date;
 
-public class BatteryIndicatorService extends Service{
+public class BatteryIndicatorService extends Service {
+    private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+
     private NotificationManager mNotificationManager;
     private SharedPreferences settings;
     private KeyguardLock kl;
-    private IntentFilter batteryChanged;
+
     private Boolean keyguardDisabled = false;
 
     @Override
     public void onCreate() {
         //android.os.Debug.startMethodTracing();
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
         settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 

@@ -45,15 +45,15 @@ public class BatteryIndicator extends Activity {
 
     private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
 
-    final Handler mHandler = new Handler();
-    final Runnable mUpdateStatus = new Runnable() {
+    private final Handler mHandler = new Handler();
+    private final Runnable mUpdateStatus = new Runnable() {
         public void run() {
             updateStatus();
             updateLockscreenButton();
         }
     };
 
-    private BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             /* Give the service a second to process the update first */
@@ -68,33 +68,32 @@ public class BatteryIndicator extends Activity {
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         startService(biServiceIntent);
 
-        //biServiceConnection = 
         bindService(biServiceIntent, biServiceConnection, 0);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        Button button = (Button)findViewById(R.id.stop_service_b);
+        Button button = (Button) findViewById(R.id.stop_service_b);
         button.setOnClickListener(ssButtonListener);
 
-        button = (Button)findViewById(R.id.hide_window_b);
+        button = (Button) findViewById(R.id.hide_window_b);
         button.setOnClickListener(hwButtonListener);
 
-        button = (Button)findViewById(R.id.more_info_b);
+        button = (Button) findViewById(R.id.more_info_b);
         button.setOnClickListener(miButtonListener);
 
-        button = (Button)findViewById(R.id.battery_use_b);
+        button = (Button) findViewById(R.id.battery_use_b);
         if (getPackageManager().resolveActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY),0) == null) {
             button.setEnabled(false);
         } else {
             button.setOnClickListener(buButtonListener);
         }
 
-        button = (Button)findViewById(R.id.toggle_lock_screen_b);
+        button = (Button) findViewById(R.id.toggle_lock_screen_b);
         button.setOnClickListener(tlsButtonListener);
 
-        button = (Button)findViewById(R.id.edit_settings_b);
+        button = (Button) findViewById(R.id.edit_settings_b);
         button.setOnClickListener(esButtonListener);
 
         settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

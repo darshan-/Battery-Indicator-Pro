@@ -124,9 +124,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     @Override
     protected void onDestroy() {
+        super.onDestroy();
         unbindService(biServiceConnection);
         //android.os.Debug.stopMethodTracing();
-        super.onDestroy();
     }
 
     @Override
