@@ -37,75 +37,69 @@
     />
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="Autostart">
+  <PreferenceCategory android:title="@string/pref_cat_autostart">
     <ListPreference
        android:key="autostart"
-       android:title="Autostart at Boot"
+       android:title="@string/pref_autostart_at_boot"
        android:entries="@array/boot_pref_entries" 
        android:entryValues="@array/boot_pref_values"
-       android:dialogTitle="Start Battery Indicator When Device Boots?"
+       android:dialogTitle="@string/pref_autostart_at_boot_summary"
        android:defaultValue="auto"
     />
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="Status Duration (For/Since...)">
+  <PreferenceCategory android:title="@string/pref_cat_status_duration">
     <ListPreference
        android:key="status_dur_est"
-       android:title="When to Estimate Hours"
+       android:title="@string/pref_status_dur_est"
        android:entries="@array/status_dur_est_pref_entries" 
        android:entryValues="@array/status_dur_est_pref_values"
-       android:dialogTitle="Stop Showing Time and Start Estimating Hours"
+       android:dialogTitle="@string/pref_status_dur_est_summary"
        android:defaultValue="12"
     />
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="Color">
+  <PreferenceCategory android:title="@string/pref_cat_color">
     <com.darshancomputing.BatteryIndicatorPro.ColorPreviewPreference
        android:key="color_preview"
-       android:title="Color Preview"
+       android:title="@string/pref_color_preview"
        android:layout="@layout/color_preview_pref"
        android:enabled="false"
     />
-       <!--android:selectable="false"-->
-
-    <!-- Added to get the grey separator beneath color_preview pref. The
-           trade-off is that if this is selectable, then when scrolling
-           with the trackball, it's confusing to scroll over this, since
-           you don't see it but it takes focus.  If it's not selectable,
-           then there's still no gray bar, destroying the point. I may be
-           better off leaving color_preview selectable but disabled. -->
-    <!--Preference android:key="empty_pref01" android:layout="@layout/empty_pref" /-->
     <CheckBoxPreference
        android:key="use_red"
-       android:title="Use Red Icon"
-       android:summary="Use red icon when charge is low?"
+       android:title="@string/pref_red"
+       android:summary="@string/pref_red_summary"
+       android:defaultValue="true"
     />
     <ListPreference
        android:key="red_threshold"
-       android:title="Red Threshold"
-       android:dialogTitle="Red Icon Below What Charge Percentage?"
-       android:defaultValue="10"
+       android:title="@string/pref_red_thresh"
+       android:dialogTitle="@string/pref_red_thresh_summary"
+       android:defaultValue="15"
     />
     <CheckBoxPreference
        android:key="use_amber"
-       android:title="Use Amber Icon"
-       android:summary="Use amber icon when charge is medium?"
+       android:title="@string/pref_amber"
+       android:summary="@string/pref_amber_summary"
+       android:defaultValue="true"
     />
     <ListPreference
        android:key="amber_threshold"
-       android:title="Amber Threshold"
-       android:dialogTitle="Amber Icon Below What Charge Percentage?"
+       android:title="@string/pref_amber_thresh"
+       android:dialogTitle="@string/pref_amber_thresh_summary"
        android:defaultValue="40"
     />
     <CheckBoxPreference
        android:key="use_green"
-       android:title="Use Green Icon"
-       android:summary="Use green icon when charge is high?"
+       android:title="@string/pref_green"
+       android:summary="@string/pref_green_summary"
+       android:defaultValue="false"
     />
     <ListPreference
        android:key="green_threshold"
-       android:title="Green Threshold"
-       android:dialogTitle="Green Icon At or Above What Charge Percentage?"
+       android:title="@string/pref_green_thresh"
+       android:dialogTitle="@string/pref_green_thresh_summary"
        android:defaultValue="40"
     />
   </PreferenceCategory>
