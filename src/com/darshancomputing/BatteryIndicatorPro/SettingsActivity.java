@@ -293,7 +293,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             }
         }
 
-        if (changedKey != null && !changedKey.equals(KEY_GREEN_THRESH)) {
+        if (changedKey == null || !changedKey.equals(KEY_GREEN_THRESH)) {
             if (greenEnabled) {
                 greenThresh.setEnabled(true);
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+>
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:paddingTop="12sp"
+                android:paddingBottom="12sp"
+                android:paddingLeft="12sp"
+                android:paddingRight="12sp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+  >
+    <TextView style="@style/help_cat"  android:text="@string/pref_cat_logging" />
+    <TextView style="@style/help_pref" android:text="@string/pref_enable_logging" />
+    <TextView style="@style/help_text" android:text="@string/pref_enable_logging_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_view_logs" />
+    <TextView style="@style/help_text" android:text="@string/pref_view_logs_help" />
+
+    <View style="@style/help_cat_pre_margin" />
+    <TextView style="@style/help_cat"  android:text="@string/pref_cat_keyguard" />
+    <View style="@style/help_cat_post_margin" />
+    <TextView style="@style/help_text" android:text="@string/pref_cat_keyguard_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_confirm_manual_disable" />
+    <TextView style="@style/help_text" android:text="@string/pref_confirm_manual_disable_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_auto_disable" />
+    <TextView style="@style/help_text" android:text="@string/pref_auto_disable_help" />
+
+    <View style="@style/help_cat_pre_margin" />
+    <TextView style="@style/help_cat"  android:text="@string/pref_cat_temperature_unit" />
+    <TextView style="@style/help_pref" android:text="@string/pref_convert_to_fahrenheit" />
+    <TextView style="@style/help_text" android:text="@string/pref_convert_to_fahrenheit_help" />
+  </LinearLayout>
+</ScrollView>

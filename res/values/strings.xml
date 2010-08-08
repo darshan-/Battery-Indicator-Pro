@@ -111,7 +111,4 @@
           degrees Celsius.  If you prefer to see the battery temperature in degrees
           Fahrenheit, check this option, and the app will convert for you.
   </string>
-
-  <string name="settings_help">TODO
-  </string>
 </resources>
