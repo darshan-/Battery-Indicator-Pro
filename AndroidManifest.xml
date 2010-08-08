@@ -24,6 +24,13 @@
 	      android:excludeFromRecents="true">
     </activity>
 
+    <activity android:name=".SettingsHelpActivity"
+              android:label="@string/settings_help_activity_name"
+              android:theme="@android:style/Theme.Light"
+              android:launchMode="singleInstance"
+	      android:excludeFromRecents="true">
+    </activity>
+
     <activity android:name=".InfoActivity"
               android:label="@string/info_activity_name"
               android:theme="@android:style/Theme.Light"

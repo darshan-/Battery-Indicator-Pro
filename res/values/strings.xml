@@ -1,85 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_full_name">Battery Indicator Pro</string>
-    <string name="app_name">Battery Indicator</string>
-    <string name="settings_activity_name">Battery Indicator Settings</string>
-    <string name="info_activity_name">About Battery Indicator</string>
-    <string name="log_view_activity_name">Battery Indicator Logs</string>
+  <string name="app_full_name">Battery Indicator Pro</string>
+  <string name="app_name">Battery Indicator</string>
+  <string name="settings_activity_name">Battery Indicator Settings</string>
+  <string name="settings_help_activity_name">Battery Indicator Settings Help</string>
+  <string name="info_activity_name">About Battery Indicator</string>
+  <string name="log_view_activity_name">Battery Indicator Logs</string>
 
-    <string name="degree_symbol">°</string>
-    <string name="fahrenheit">Fahrenheit</string>
-    <string name="celsius">Celsius</string>
+  <string name="menu_help">Help</string>
 
-    <string name="discharging_from">Discharging from</string>
-    <string name="charging_from">Charging from</string>
-    <string name="fully_charged">Fully Charged</string>
+  <string name="degree_symbol">°</string>
+  <string name="fahrenheit">Fahrenheit</string>
+  <string name="celsius">Celsius</string>
 
-    <string name="one_six_needed">Sorry, Android 1.6+ needed!</string>
+  <string name="discharging_from">Discharging from</string>
+  <string name="charging_from">Charging from</string>
+  <string name="fully_charged">Fully Charged</string>
 
-    <string name="currently_using">Currently using</string>
-    <string name="currently_set_to">Currently set to:</string>
-    <string name="currently_disabled">Currently Disabled</string>
+  <string name="one_six_needed">Sorry, Android 1.6+ needed!</string>
 
-    <string name="info"><b>Intro</b>
-      \nThis is <i>Battery Indicator Pro</i>, the \"pro\"
-      version of the popular free app, <i>Battery Indicator</i>.
-      It\'s available from the Android Market for US$0.99, but it\'s
-      an open source project, which means you can download the source
-      for free
-      from <a href="http://www.darshancomputing.com/android/battery_indicator/">the
-	project website</a>.\n
+  <string name="currently_using">Currently using</string>
+  <string name="currently_set_to">Currently set to:</string>
+  <string name="currently_disabled">Currently Disabled</string>
 
-      \n<b>Summary</b>
-      \n<i>Battery Indicator</i> is a small, simple application
-      for the Android mobile operating system. It\'s simply a little icon
-      that lives in the status bar and shows you the percentage of battery
-      charge left.\n
+  <string name="info"><b>Intro</b>
+    \nThis is <i>Battery Indicator Pro</i>, the \"pro\"
+    version of the popular free app, <i>Battery Indicator</i>.
+    It\'s available from the Android Market for US$0.99, but it\'s
+    an open source project, which means you can download the source
+    for free
+    from <a href="http://www.darshancomputing.com/android/battery_indicator/">the
+      project website</a>.\n
 
-      \n<b>Limitations</b>
-      \n(<i>These are out of my control.</i>)
-      \n• The app can only display what the phone tells it. Most phones report
-      every 1%, but a few (notably the Motorola Droid) only report every
-      10%.
-      \n• There\'s no way to remove the built-in battery icon.\n
+    \n<b>Summary</b>
+    \n<i>Battery Indicator</i> is a small, simple application
+    for the Android mobile operating system. It\'s simply a little icon
+    that lives in the status bar and shows you the percentage of battery
+    charge left.\n
 
-      \n<b>Features</b>
-      \n• Small, simple, and easy to read.
-      \n• It doesn\'t do any polling. It receives a broadcast message from the OS
-      when the battery status changes, then it simply updates the icon and
-      goes back to sleep. What this means is that it will take up a small
-      amount of RAM, but essentially 0 CPU cycles, so it can\'t drain your
-      battery.
-      \n• Automatically starts when the phone boots up if it was running when the
-      phone shut down.\n
+    \n<b>Limitations</b>
+    \n(<i>These are out of my control.</i>)
+    \n• The app can only display what the phone tells it. Most phones report
+    every 1%, but a few (notably the Motorola Droid) only report every
+    10%.
+    \n• There\'s no way to remove the built-in battery icon.\n
 
-      \n<b>Pro-only Features</b>
-      \n• High-resolution images (on devices that support them).
-      \n• Easy access to Battery Use screen (requires Android 1.6+).
-      \n• Configure to use Fahrenheit or Celsius as the battery temperature unit.
-      \n• Configure to always start on boot, never start on boot, or start on boot
-      if the app was running on shutdown.
-      \n• Configure the icon to turn red below a configurable threshold and/or turn
-      green above a configurable threshold.
-      \n• The satisfaction of supporting the developer.\n
+    \n<b>Features</b>
+    \n• Small, simple, and easy to read.
+    \n• It doesn\'t do any polling. It receives a broadcast message from the OS
+    when the battery status changes, then it simply updates the icon and
+    goes back to sleep. What this means is that it will take up a small
+    amount of RAM, but essentially 0 CPU cycles, so it can\'t drain your
+    battery.
+    \n• Automatically starts when the phone boots up if it was running when the
+    phone shut down.\n
 
-      \n<b>No Warranty</b>
-      \nThis software is distributed in the hope that it will be useful, but
-      WITHOUT ANY WARRANTY; without even the implied warranty of
-      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n
-      \nWhile I do my best to make sure that it works well and does not
-      cause problems, I am not responsible for any damage or inconvenience
-      it may cause under any circumstance.\n
+    \n<b>Pro-only Features</b>
+    \n• High-resolution images (on devices that support them).
+    \n• Easy access to Battery Use screen (requires Android 1.6+).
+    \n• Configure to use Fahrenheit or Celsius as the battery temperature unit.
+    \n• Configure to always start on boot, never start on boot, or start on boot
+    if the app was running on shutdown.
+    \n• Configure the icon to turn red below a configurable threshold and/or turn
+    green above a configurable threshold.
+    \n• The satisfaction of supporting the developer.\n
 
-      \n<b>Acknowledgments</b>
-      \nMany thanks are due to Google and all of the open-source coders who made
-      the Android platform and this app possible.\n
+    \n<b>No Warranty</b>
+    \nThis software is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n
+    \nWhile I do my best to make sure that it works well and does not
+    cause problems, I am not responsible for any damage or inconvenience
+    it may cause under any circumstance.\n
 
-      \n<b>Translations</b>
-      \nI need help translating this app to other languages.  If you would like to
-      help, please send me an email.\n
+    \n<b>Acknowledgments</b>
+    \nMany thanks are due to Google and all of the open-source coders who made
+    the Android platform and this app possible.\n
 
-      \n<b>Contact</b>
-      \nIf you have questions, comments, problems, or feedback of any other sort,
-      please email me at <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>.
-</string>
+    \n<b>Translations</b>
+    \nI need help translating this app to other languages.  If you would like to
+    help, please send me an email.\n
+
+    \n<b>Contact</b>
+    \nIf you have questions, comments, problems, or feedback of any other sort,
+    please email me at <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>.
+  </string>
+
+  <string name="pref_cat_logging">Logging</string>
+  <string name="pref_cat_logging_help">Settings about logging.</string>
+  <string name="pref_enable_logging">Enable Logging</string>
+  <string name="pref_enable_logging_summary">Log battery state changes?</string>
+  <string name="pref_enable_logging_help">Turns on logging of battery state changes
+          (e.g., the phone is unpluggedd or becomes fully charged).</string>
+  <string name="pref_view_logs">View Logs...</string>
+  <string name="pref_view_logs_summary"></string>
+  <string name="pref_view_logs_help">Displays the logs.</string>
+
+  <string name="pref_cat_keyguard">Lock Screen / Keyguard</string>
+  <string name="pref_cat_keyguard_help">Lock Screen / Keyguard</string>
+  <string name="pref_confirm_manual_disable">Confirm Manual Disable</string>
+  <string name="pref_confirm_manual_disable_summary">Confirm when manually disabling lock screen?</string>
+  <string name="pref_confirm_manual_disable_help">If checked, a confirmation dialog will pop up
+          when you try to manually disable the lock screen.</string>
+  <string name="pref_auto_disable">Auto-disable Lock Screen</string>
+  <string name="pref_auto_disable_summary">Disable the lock screen when charging?</string>
+  <string name="pref_auto_disable_help">If checked, the lock screen will be disabled whenever the phone
+          is plugged in, and enabled whenever the phone is unplugged.</string>
+
+  <string name="pref_cat_"></string>
+  <string name="pref_"></string>
+
+  <string name="pref_cat_"></string>
+  <string name="pref_"></string>
+
+  <string name="pref_cat_"></string>
+  <string name="pref_"></string>
+
+  <string name="pref_cat_"></string>
+  <string name="pref_"></string>
+
+  <string name="pref_cat_"></string>
+  <string name="pref_"></string>
+
+  <string name="settings_help">
+    \n<b>Confirm Manual Disable</b>\n
+    ...\n
+
+    \n<b>Auto-disable Lock Screen</b>\n
+    ...\n
+
+    \n<b>Convert to Fahrenheit</b>\n
+    ...\n
+
+    \n<b>Autostart at Boot</b>\n
+    ...\n
+
+    \n<b>When to Estimate Hours</b>\n
+    ...\n
+
+    \n<b>Color Preview</b>\n
+    ...\n
+
+    \n<b>Use Red Icon</b>\n
+    ...\n
+
+    \n<b>Red Threshold</b>\n
+    ...\n
+
+    \n<b>Use Amber Icon</b>\n
+    ...\n
+
+    \n<b>Amber Threshold</b>\n
+    ...\n
+
+    \n<b>Use Green Icon</b>\n
+    ...\n
+
+    \n<b>Green Threshold</b>\n
+    ...
+  </string>
 </resources>

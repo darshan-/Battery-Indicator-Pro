@@ -29,6 +29,9 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
@@ -151,6 +154,27 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         super.onPause();
 
         mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.menu_help:
+            ComponentName comp = new ComponentName(getPackageName(),
+                                                   SettingsHelpActivity.class.getName());
+            startActivity(new Intent().setComponent(comp));
+
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
