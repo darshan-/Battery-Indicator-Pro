@@ -112,6 +112,12 @@ public class BatteryIndicatorService extends Service {
 
             int percent = level * 100 / scale;
 
+            if (percent % 5 == 0) {
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putInt("previous_charge", percent);
+                editor.commit();
+            }
+
             /* I Take advantage of (count on) R.java having resources alphabetical and incrementing by one */
 
             int icon;
@@ -150,14 +156,14 @@ public class BatteryIndicatorService extends Service {
             int last_status = settings.getInt("last_status", -1);
             long last_status_cTM = settings.getLong("last_status_cTM", -1);
             int last_percent = settings.getInt("last_percent", -1);
+            int previous_charge = settings.getInt("previous_charge", 100);
             long currentTM = System.currentTimeMillis();
             long statusDuration;
             String last_status_since = settings.getString("last_status_since", null);
 
-            /* Main activity assumes that last_percent is always above -1 if service is running --
-               if it gets a negative value, it restarts until it gets a non-negative value */
             if (last_status != status || last_status_cTM == -1 || last_percent == -1 ||
-                last_status_cTM > currentTM || last_status_since == null)
+                last_status_cTM > currentTM || last_status_since == null ||
+                (plugged == 0 && percent > previous_charge + 1))
             {
                 last_status_since = formatTime(new Date());
                 statusDuration = 0;
@@ -167,8 +173,8 @@ public class BatteryIndicatorService extends Service {
                 editor.putLong("last_status_cTM", currentTM);
                 editor.putInt("last_status", status);
                 editor.putInt("last_percent", percent);
+                editor.putInt("previous_charge", percent);
 
-                /* If this was -1, this is the first run with this feature. Treat the status as having begun now. */
                 last_status_cTM = currentTM;
 
                 if (last_status != status && settings.getBoolean(SettingsActivity.KEY_AUTO_DISABLE_LOCKING, false)) {
@@ -198,11 +204,6 @@ public class BatteryIndicatorService extends Service {
             } else {
                 statusDuration = currentTM - last_status_cTM;
             }
-
-            /* Compare current charge to previous charge -- if the device is unplugged, but the current charge is
-               higher, then the device must have been turned off and either plugged in or had a new (fuller)
-               battery put in.  If so, then let's reset the status timer. */
-
 
             /* Add half an hour, then divide.  Should end up rounding to the closest hour. */
             int statusDurationHours = (int)((statusDuration + (1000 * 60 * 30)) / (1000 * 60 * 60));
