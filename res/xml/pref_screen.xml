@@ -1,38 +1,38 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-  <PreferenceCategory android:title="Logging">
+  <PreferenceCategory android:title="@string/pref_cat_logging">
     <CheckBoxPreference
        android:key="enable_logging"
-       android:title="Enable Logging"
-       android:summary="Log battery state changes?"
+       android:title="@string/pref_enable_logging"
+       android:summary="@string/pref_enable_logging_summary"
        android:defaultValue="false"
     />
 
     <PreferenceScreen
        android:key="log_screen"
-       android:title="View Logs..."
+       android:title="@string/pref_view_logs"
     />
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="Lock Screen / Keyguard">
+  <PreferenceCategory android:title="@string/pref_cat_keyguard">
     <CheckBoxPreference
        android:key="confirm_disable_lock_screen"
-       android:title="Confirm Manual Disable"
-       android:summary="Confirm when manually disabling lock screen?"
+       android:title="@string/pref_confirm_manual_disable"
+       android:summary="@string/pref_confirm_manual_disable_summary"
        android:defaultValue="true"
     />
 
     <CheckBoxPreference
        android:key="auto_disable_lock_screen"
-       android:title="Auto-disable Lock Screen"
-       android:summary="Disable the lock screen when charging?"
+       android:title="@string/pref_auto_disable"
+       android:summary="@string/pref_auto_disable_summary"
        android:defaultValue="false"
     />
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="Temperature Unit">
+  <PreferenceCategory android:title="@string/pref_cat_temperature_unit">
     <CheckBoxPreference
        android:key="convert_to_fahrenheit"
-       android:title="Convert to Fahrenheit"
+       android:title="@string/pref_convert_to_fahrenheit"
        android:defaultValue="false"
     />
   </PreferenceCategory>

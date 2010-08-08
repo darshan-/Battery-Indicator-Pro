@@ -87,17 +87,15 @@
   </string>
 
   <string name="pref_cat_logging">Logging</string>
-  <string name="pref_cat_logging_help">Settings about logging.</string>
   <string name="pref_enable_logging">Enable Logging</string>
   <string name="pref_enable_logging_summary">Log battery state changes?</string>
   <string name="pref_enable_logging_help">Turns on logging of battery state changes
-          (e.g., the phone is unpluggedd or becomes fully charged).</string>
+          (e.g., the phone is unplugged or becomes fully charged).</string>
   <string name="pref_view_logs">View Logs...</string>
-  <string name="pref_view_logs_summary"></string>
-  <string name="pref_view_logs_help">Displays the logs.</string>
+  <string name="pref_view_logs_help">Select this to access the logs that have been collected.</string>
 
   <string name="pref_cat_keyguard">Lock Screen / Keyguard</string>
-  <string name="pref_cat_keyguard_help">Lock Screen / Keyguard</string>
+  <string name="pref_cat_keyguard_help">TODO: explain stuff about the lock screen.</string>
   <string name="pref_confirm_manual_disable">Confirm Manual Disable</string>
   <string name="pref_confirm_manual_disable_summary">Confirm when manually disabling lock screen?</string>
   <string name="pref_confirm_manual_disable_help">If checked, a confirmation dialog will pop up
@@ -107,56 +105,13 @@
   <string name="pref_auto_disable_help">If checked, the lock screen will be disabled whenever the phone
           is plugged in, and enabled whenever the phone is unplugged.</string>
 
-  <string name="pref_cat_"></string>
-  <string name="pref_"></string>
+  <string name="pref_cat_temperature_unit">Temperature Unit</string>
+  <string name="pref_convert_to_fahrenheit">Convert to Fahrenheit</string>
+  <string name="pref_convert_to_fahrenheit_help">Android reports the battery temperature in
+          degrees Celsius.  If you prefer to see the battery temperature in degrees
+          Fahrenheit, check this option, and the app will convert for you.
+  </string>
 
-  <string name="pref_cat_"></string>
-  <string name="pref_"></string>
-
-  <string name="pref_cat_"></string>
-  <string name="pref_"></string>
-
-  <string name="pref_cat_"></string>
-  <string name="pref_"></string>
-
-  <string name="pref_cat_"></string>
-  <string name="pref_"></string>
-
-  <string name="settings_help">
-    \n<b>Confirm Manual Disable</b>\n
-    ...\n
-
-    \n<b>Auto-disable Lock Screen</b>\n
-    ...\n
-
-    \n<b>Convert to Fahrenheit</b>\n
-    ...\n
-
-    \n<b>Autostart at Boot</b>\n
-    ...\n
-
-    \n<b>When to Estimate Hours</b>\n
-    ...\n
-
-    \n<b>Color Preview</b>\n
-    ...\n
-
-    \n<b>Use Red Icon</b>\n
-    ...\n
-
-    \n<b>Red Threshold</b>\n
-    ...\n
-
-    \n<b>Use Amber Icon</b>\n
-    ...\n
-
-    \n<b>Amber Threshold</b>\n
-    ...\n
-
-    \n<b>Use Green Icon</b>\n
-    ...\n
-
-    \n<b>Green Threshold</b>\n
-    ...
+  <string name="settings_help">TODO
   </string>
 </resources>
