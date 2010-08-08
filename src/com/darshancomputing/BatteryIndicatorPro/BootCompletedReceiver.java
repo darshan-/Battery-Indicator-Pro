@@ -27,7 +27,6 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
 
         String startPref = settings.getString(SettingsActivity.KEY_AUTOSTART, "auto");
-        System.out.println(startPref);
 
         if (startPref.equals("always") ||
             (startPref.equals("auto") && settings.getBoolean("serviceDesired", false))){
