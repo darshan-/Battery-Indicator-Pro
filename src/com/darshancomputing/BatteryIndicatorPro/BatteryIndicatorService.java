@@ -151,17 +151,19 @@ public class BatteryIndicatorService extends Service {
             long last_status_cTM = settings.getLong("last_status_cTM", -1);
             int last_percent = settings.getInt("last_percent", -1);
             long currentTM = System.currentTimeMillis();
-            long statusDuration = 0;
-            String last_status_since = "";
-            String curTimeStr = formatTime(new Date()); /* TODO: Look at this... seems weird to call it every time,
-                                                           and then to have two different conditionals about if the
-                                                           status changed, so they use it... */
+            long statusDuration;
+            String last_status_since = settings.getString("last_status_since", null);
 
             /* Main activity assumes that last_percent is always above -1 if service is running --
                if it gets a negative value, it restarts until it gets a non-negative value */
-            if (last_status != status || last_status_cTM == -1 || last_percent == -1) {
+            if (last_status != status || last_status_cTM == -1 || last_percent == -1 ||
+                last_status_cTM > currentTM || last_status_since == null)
+            {
+                last_status_since = formatTime(new Date());
+                statusDuration = 0;
+
                 SharedPreferences.Editor editor = settings.edit();
-                editor.putString("last_status_since", curTimeStr);
+                editor.putString("last_status_since", last_status_since);
                 editor.putLong("last_status_cTM", currentTM);
                 editor.putInt("last_status", status);
                 editor.putInt("last_percent", percent);
@@ -193,23 +195,14 @@ public class BatteryIndicatorService extends Service {
                 }
 
                 editor.commit();
+            } else {
+                statusDuration = currentTM - last_status_cTM;
             }
-
 
             /* Compare current charge to previous charge -- if the device is unplugged, but the current charge is
                higher, then the device must have been turned off and either plugged in or had a new (fuller)
                battery put in.  If so, then let's reset the status timer. */
 
-            if (last_status_cTM > currentTM) {
-                /* This can happen by travelling west by enough timezones quickly enough, or simply by manually
-                     setting the clock earlier.  Either way, the simplest thing to do, and what I'll do for now,
-                     is to just start counting from now.  I may eventually try to keep track of timezones. */
-                statusDuration = 0;
-                last_status_since = curTimeStr;
-            } else {
-                statusDuration = currentTM - last_status_cTM;
-                last_status_since = settings.getString("last_status_since", curTimeStr);
-            }
 
             /* Add half an hour, then divide.  Should end up rounding to the closest hour. */
             int statusDurationHours = (int)((statusDuration + (1000 * 60 * 30)) / (1000 * 60 * 60));
