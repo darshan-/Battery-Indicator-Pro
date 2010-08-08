@@ -34,6 +34,7 @@ import java.util.Date;
 
 public class BatteryIndicatorService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+    private Intent notificationIntent;
 
     private NotificationManager mNotificationManager;
     private SharedPreferences settings;
@@ -48,6 +49,8 @@ public class BatteryIndicatorService extends Service {
 
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
         settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        notificationIntent = new Intent(getApplicationContext(), BatteryIndicator.class);
 
         KeyguardManager km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         kl = km.newKeyguardLock(getPackageName());
@@ -92,7 +95,6 @@ public class BatteryIndicatorService extends Service {
         private final String[] statuses = {"Unplugged", "", "Charging", "Discharging", "Not Charging", "Fully Charged"};
         private final String[] healths = {"", "", "Good Health", "Overheat", "Dead", "Overvoltage", "Failure"};
         private final String[] pluggeds = {"", " (AC)", " (USB)"};
-        private String statusStr;
 
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -134,8 +136,8 @@ public class BatteryIndicatorService extends Service {
                Note that the main activity now assumes that the status is always 0, 2, or 5 */
             if (plugged == 0) status = 0;
 
-            statusStr = statuses[status];
-            if (status == 2 /* Charging */) statusStr += pluggeds[plugged];
+            String statusStr = statuses[status];
+            if (status == 2) statusStr += pluggeds[plugged]; /* Add '(AC)' or '(USB)' if charging */
 
             String temp_s;
             if (settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false)){
@@ -228,7 +230,6 @@ public class BatteryIndicatorService extends Service {
             Notification notification = new Notification(icon, null, System.currentTimeMillis());
 
             notification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
-            Intent notificationIntent = new Intent(context, BatteryIndicator.class);
             PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
 
             notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
