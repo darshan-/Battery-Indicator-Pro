@@ -95,16 +95,16 @@
   </string>
   <string name="pref_view_logs">View Logs...</string>
   <string name="pref_view_logs_help">
-    This isn't a setting; just select (press) this to access the logs
+    This isn\'t a setting; just select (press) this to access the logs
     that have been collected.
   </string>
 
   <string name="pref_cat_keyguard">Lock Screen / Keyguard</string>
   <string name="pref_cat_keyguard_help">
     Android allows apps to disable and reenable what it calls the
-    "keyguard", which you probably think of as the lock sreen.  Beyond
-    simply disabling and reenabling it, however, there is no more
-    control — I can't control which keys turn the screen on, for
+    \"keyguard\", which you probably think of as the lock sreen.
+    Beyond simply disabling and reenabling it, however, there is no
+    more control — I can\'t control which keys turn the screen on, for
     example.
   </string>
   <string name="pref_confirm_manual_disable">Confirm Manual Disable</string>
@@ -114,7 +114,7 @@
     manually disable the lock screen.  This is primarily intended to
     prevent new users from accidentally disabling their lock screen
     without knowing it.  If you disable the lock screen with any
-    regularity, you'll probably want to turn this off.
+    regularity, you\'ll probably want to turn this off.
   </string>
   <string name="pref_auto_disable">Auto-disable Lock Screen</string>
   <string name="pref_auto_disable_summary">Disable the lock screen when charging?</string>
@@ -137,12 +137,12 @@
   <string name="pref_autostart_at_boot_summary">Start Battery Indicator When Device Boots?</string>
   <string name="pref_autostart_at_boot_help">
     Controls whether Battery Indicator should start itself
-    automatically when the device boots up.\n\nThe "If Running on
-    Shutdown" option works with regard to whether you've most recently
-    manually started or stopped Battery Indicator.  So if you kill
-    Battery Indicator through some other means, like a task killer,
-    then Battery Indicator doesn't know you stopped it, and it will
-    still start at boot up if you have it set to this.
+    automatically when the device boots up.\n\nThe \"If Running on
+    Shutdown\" option works with regard to whether you\'ve most
+    recently manually started or stopped Battery Indicator.  So if you
+    kill Battery Indicator through some other means, like a task
+    killer, then Battery Indicator doesn\'t know you stopped it, and
+    it will still start at boot up if you have it set to this.
   </string>
 
   <string name="pref_cat_status_duration">Status Duration (For/Since...)</string>
@@ -150,26 +150,78 @@
   <string name="pref_status_dur_est_summary">Stop Showing Time and Start Estimating Hours</string>
   <string name="pref_status_dur_est_help">
     Determines when the notification switches from saying, e.g.,
-    "Unplugged Since 1:10 PM" to saying something like "Unplugged for
-    1 Hour".  The first way is more accurate, because it tells you
-    exactly (to the minute) when the status changed, but many people
-    prefer the simpler to comprehend estimate of the number of elapsed
-    hours, so they make that happen sooner than the default of 12
-    hours.
+    \"Unplugged Since 1:10 PM\" to saying something like \"Unplugged
+    for 1 Hour\".  The first way is more accurate, because it tells
+    you exactly (to the minute) when the status changed, but many
+    people prefer the simpler to comprehend estimate of the number of
+    elapsed hours, so they make that happen sooner than the default of
+    12 hours.
   </string>
 
   <string name="pref_cat_color">Color</string>
+  <string name="pref_cat_color_help">
+    In order to keep the binary package for Battery Indicator
+    reasonably small, there are some limitations for the colors.  At
+    the time of writing, you can have a red icon as high as 30%, an
+    amber icon as high as 50%, and a green icon as low as 20%.  I
+    think these are reasonable compromises that should work for 99% of
+    users.\n\n
+
+    To give you maximum control, the colors can be turned on or off
+    independently.  This means that you can have as much as a
+    four-tiered color scheme, where the icon is green when it is very
+    full, then grayscale, then amber, then red.  I personally have
+    green turned off, with the icon turning amber at 50% and red at
+    30%.
+  </string>
   <string name="pref_color_preview">Color Preview</string>
+  <string name="pref_color_preview_help">
+    The color preview will hopefully make it really easy to visualize
+    what effect your color settings will have.
+  </string>
   <string name="pref_red">Use Red Icon</string>
   <string name="pref_red_summary">Use red icon when charge is low?</string>
+  <string name="pref_red_help">
+    Whether or not to use a red icon below the specified threshold.
+  </string>
   <string name="pref_red_thresh">Red Threshold</string>
   <string name="pref_red_thresh_summary">Red Icon Below What Charge Percentage?</string>
+  <string name="pref_red_thresh_help">
+    Specifies the charge level which the icon should turn red below.\n\n
+
+    The options for the red threshold include all the values (in
+    multiples of 5) for which there are red icons available.
+  </string>
   <string name="pref_amber">Use Amber Icon</string>
   <string name="pref_amber_summary">Use amber icon when charge is medium?</string>
+  <string name="pref_amber_help">
+    Whether or not to use an amber icon below the specified threshold.
+  </string>
   <string name="pref_amber_thresh">Amber Threshold</string>
   <string name="pref_amber_thresh_summary">Amber Icon Below What Charge Percentage?</string>
+  <string name="pref_amber_thresh_help">
+    Specifies the charge level which the icon should turn amber below.\n\n
+
+    The options for the amber threshold include all the values (in
+    multiples of 5) for which there are amber icons available,
+    starting 5 percentage points above the red threshold (if there is
+    one).  For example, if you have the red threshold set to 15, then
+    your lowest option here will be 20.
+  </string>
   <string name="pref_green">Use Green Icon</string>
   <string name="pref_green_summary">Use green icon when charge is high?</string>
+  <string name="pref_green_help">
+    Whether or not to use a green icon at or above the specified threshold.
+  </string>
   <string name="pref_green_thresh">Green Threshold</string>
   <string name="pref_green_thresh_summary">Green Icon At or Above What Charge Percentage?</string>
+  <string name="pref_green_thresh_help">
+    Specifies the charge level which the icon should be green at or above.\n\n
+
+    The options for the green threshold include all the values (in
+    multiples of 5) for which there are green icons available,
+    starting at the highest active threshold you have set for red or
+    amber.  For example, if you have the amber threshold set to 40,
+    then your lowest option here will be 40.
+  </string>
 </resources>
