@@ -7,8 +7,24 @@
   <string name="info_activity_name">About Battery Indicator</string>
   <string name="log_view_activity_name">Battery Indicator Logs</string>
 
+  <string name="main_window_title">Battery Indicator is Active</string>
+  <string name="about_b">About...</string>
+  <string name="settings_b">Settings...</string>
+  <string name="battery_usage_b">"Battery\n   Usage..."</string>
+  <string name="reenable_lock_screen">Reenable\nLock Screen</string>
+  <string name="disable_lock_screen">Disable\nLock Screen</string>
+  <string name="close_battery_indicator">Close Battery Indicator</string>
+  <string name="hide_this_window">Hide This Window</string>
+  <string name="confirm_disable">Really disable lock screen?</string>
+  <string name="confirm_disable_hint">
+    Hint: Disable this confirmation dialog in the settings...
+  </string>
+  <string name="yes">Yes</string>
+  <string name="cancel">Cancel</string>
+
   <string name="menu_help">Help</string>
 
+  <string name="percent_symbol">%</string>
   <string name="degree_symbol">°</string>
   <string name="fahrenheit">Fahrenheit</string>
   <string name="fahrenheit_symbol">F</string>

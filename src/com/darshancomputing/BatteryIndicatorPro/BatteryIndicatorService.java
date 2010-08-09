@@ -43,16 +43,13 @@ public class BatteryIndicatorService extends Service {
 
     private Boolean keyguardDisabled = false;
 
-    private String degree_symbol;
-    private String fahrenheit_symbol;
-    private String celsius_symbol;
-    private String volt_symbol;
+    private Str str;
 
     @Override
     public void onCreate() {
         //android.os.Debug.startMethodTracing();
 
-        loadResources();
+        str = new Str(getResources());
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -148,9 +145,9 @@ public class BatteryIndicatorService extends Service {
             String temp_s;
             if (settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false)){
                 temp_s = String.valueOf((java.lang.Math.round(temperature * 9 / 5.0) / 10.0) + 32.0) +
-                    degree_symbol + fahrenheit_symbol;
+                    str.degree_symbol + str.fahrenheit_symbol;
             } else {
-                temp_s = String.valueOf(temperature / 10.0) + degree_symbol + celsius_symbol;
+                temp_s = String.valueOf(temperature / 10.0) + str.degree_symbol + str.celsius_symbol;
             }
 
             int last_status = settings.getInt("last_status", -1);
@@ -219,7 +216,7 @@ public class BatteryIndicatorService extends Service {
             }
 
             CharSequence contentText = healths[health] + " / " + temp_s + " / " +
-                                       String.valueOf(voltage / 1000.0) + volt_symbol;
+                                       String.valueOf(voltage / 1000.0) + str.volt_symbol;
 
             Notification notification = new Notification(icon, null, System.currentTimeMillis());
 
@@ -270,12 +267,17 @@ public class BatteryIndicatorService extends Service {
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
     }
 
-    private void loadResources() {
-        Resources r = getResources();
+    private class Str {
+        public String degree_symbol;
+        public String fahrenheit_symbol;
+        public String celsius_symbol;
+        public String volt_symbol;
 
-        degree_symbol = r.getString(R.string.degree_symbol);
-        fahrenheit_symbol = r.getString(R.string.fahrenheit_symbol);
-        celsius_symbol = r.getString(R.string.celsius_symbol);
-        volt_symbol = r.getString(R.string.volt_symbol);
+        public Str(Resources  r) {
+            degree_symbol     = r.getString(R.string.degree_symbol);
+            fahrenheit_symbol = r.getString(R.string.fahrenheit_symbol);
+            celsius_symbol    = r.getString(R.string.celsius_symbol);
+            volt_symbol       = r.getString(R.string.volt_symbol);
+        }
     }
 }

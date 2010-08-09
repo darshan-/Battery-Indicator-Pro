@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
+            android:layout_height="fill_parent"
+>
+  <LinearLayout android:orientation="vertical"
                 android:paddingTop="7dp"
                 android:paddingBottom="7dp"
                 android:paddingLeft="7dp"
                 android:paddingRight="7dp"
                 android:layout_width="220dp"
-                android:layout_height="wrap_content">
-
+                android:layout_height="wrap_content"
+  >
     <TextView android:id="@+id/title_t"
 	      android:layout_width="fill_parent"
               android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
               android:paddingBottom="2dp"
               android:textColor="#fff"
 	      android:textSize="16sp"
-              android:text="Battery Indicator is Active"
+              android:text="@string/main_window_title"
      />
 
     <TextView android:id="@+id/status_since_t"
@@ -31,19 +31,18 @@
 	      android:textSize="12sp"
     />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="horizontal"
+    <LinearLayout android:orientation="horizontal"
                   android:paddingTop="0dp"
                   android:paddingBottom="0dp"
                   android:paddingLeft="0dp"
                   android:paddingRight="0dp"
                   android:layout_width="fill_parent"
-                  android:layout_height="wrap_content">
-
+                  android:layout_height="wrap_content"
+    >
       <Button android:id="@+id/more_info_b"
               android:layout_height="43dp"
 	      android:layout_width="101dp"
-              android:text="About..."
+              android:text="@string/about_b"
       />
 
       <View android:layout_height="fill_parent"
@@ -53,7 +52,7 @@
       <Button android:id="@+id/edit_settings_b"
               android:layout_height="43dp"
 	      android:layout_width="101dp"
-              android:text="Settings..."
+              android:text="@string/settings_b"
       />
     </LinearLayout>
 
@@ -75,7 +74,7 @@
 	      android:layout_width="101dp"
               android:layout_gravity="center_horizontal"
               android:singleLine="false"
-              android:text="Battery\n   Usage..."
+              android:text="@string/battery_usage_b"
       />
 
       <View android:layout_height="fill_parent"
@@ -98,7 +97,7 @@
             android:layout_width="fill_parent"
             android:layout_height="43dp"
             android:layout_gravity="center_horizontal"
-            android:text="Close Battery Indicator"
+            android:text="@string/close_battery_indicator"
     />
 
     <View android:layout_width="fill_parent"
@@ -109,7 +108,7 @@
             android:layout_width="fill_parent"
             android:layout_height="43dp"
             android:layout_gravity="center_horizontal"
-            android:text="Hide This Window"
+            android:text="@string/hide_this_window"
     />
   </LinearLayout>
 </ScrollView>

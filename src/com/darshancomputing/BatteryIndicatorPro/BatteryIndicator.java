@@ -26,6 +26,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -44,6 +45,8 @@ public class BatteryIndicator extends Activity {
     private final BIServiceConnection biServiceConnection = new BIServiceConnection();
 
     private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
+
+    private Str str;
 
     private final Handler mHandler = new Handler();
     private final Runnable mUpdateStatus = new Runnable() {
@@ -65,6 +68,8 @@ public class BatteryIndicator extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        str = new Str(getResources());
+
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         startService(biServiceIntent);
 
@@ -130,16 +135,16 @@ public class BatteryIndicator extends Activity {
 
         switch (id) {
         case DIALOG_CONFIRM_DISABLE_KEYGUARD:
-            builder.setTitle("Really disable lock screen?") /* TODO: strings.xml */
-                .setMessage("Hint: Disable this confirmation dialog in the settings...")  /* TODO */
+            builder.setTitle(str.confirm_disable) /* TODO: strings.xml */
+                .setMessage(str.confirm_disable_hint)  /* TODO */
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() { /* TODO */
+                .setPositiveButton(str.yes, new DialogInterface.OnClickListener() { /* TODO */
                         public void onClick(DialogInterface di, int id) {
                             setDisableLocking(true);
                             di.cancel();
                         }
                     })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() { /* TODO */
+                .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() { /* TODO */
                         public void onClick(DialogInterface di, int id) {
                             di.cancel();
                         }
@@ -163,17 +168,16 @@ public class BatteryIndicator extends Activity {
             startActivity(getIntent());
         }
 
-        TextView status_since = (TextView)findViewById(R.id.status_since_t);
-        TextView title = (TextView)findViewById(R.id.title_t);
+        TextView status_since = (TextView) findViewById(R.id.status_since_t);
+        TextView title = (TextView) findViewById(R.id.title_t);
         if (last_percent >= 0 && last_status >= 0) {
             String s = "";
-            String lp = "" + last_percent + "%"; /* TODO */
             if (last_status == 0)
-                s = getResources().getString(R.string.discharging_from) + " " + lp;
+                s = str.discharging_from + " " + last_percent + str.percent_symbol;
             else if (last_status == 2)
-                s = getResources().getString(R.string.charging_from) + " " + lp;
+                s = str.charging_from + " " + last_percent + str.percent_symbol;
             else
-                s = getResources().getString(R.string.fully_charged);
+                s = str.fully_charged;
 
             status_since.setText(s);
 
@@ -189,9 +193,9 @@ public class BatteryIndicator extends Activity {
         Button button = (Button) findViewById(R.id.toggle_lock_screen_b);
 
         if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
-            button.setText("Reenable\nLock Screen"); /* TODO */
+            button.setText(str.reenable_lock_screen);
         else
-            button.setText("Disable\nLock Screen"); /* TODO */
+            button.setText(str.disable_lock_screen);
     }
 
     private void setDisableLocking(boolean b) {
@@ -222,7 +226,7 @@ public class BatteryIndicator extends Activity {
                 startActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY));
                 finish();
             } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.one_six_needed), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), str.one_six_needed, Toast.LENGTH_SHORT).show();
                 ((Button)findViewById(R.id.battery_use_b)).setEnabled(false);
             }
         }
@@ -272,4 +276,32 @@ public class BatteryIndicator extends Activity {
             finish();
         }
     };
+
+    private class Str {
+        public String discharging_from;
+        public String charging_from;
+        public String fully_charged;
+        public String percent_symbol;
+        public String reenable_lock_screen;
+        public String disable_lock_screen;
+        public String one_six_needed;
+        public String confirm_disable;
+        public String confirm_disable_hint;
+        public String yes;
+        public String cancel;
+
+        public Str(Resources  r) {
+            discharging_from     = r.getString(R.string.discharging_from);
+            charging_from        = r.getString(R.string.charging_from);
+            fully_charged        = r.getString(R.string.fully_charged);
+            percent_symbol       = r.getString(R.string.percent_symbol);
+            reenable_lock_screen = r.getString(R.string.reenable_lock_screen);
+            disable_lock_screen  = r.getString(R.string.disable_lock_screen);
+            one_six_needed       = r.getString(R.string.one_six_needed);
+            confirm_disable      = r.getString(R.string.confirm_disable);
+            confirm_disable_hint = r.getString(R.string.confirm_disable_hint);
+            yes                  = r.getString(R.string.yes);
+            cancel               = r.getString(R.string.cancel);
+        }
+    }
 }
