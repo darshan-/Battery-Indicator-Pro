@@ -102,7 +102,7 @@
   <string name="pref_cat_keyguard">Lock Screen / Keyguard</string>
   <string name="pref_cat_keyguard_help">
     Android allows apps to disable and reenable what it calls the
-    \"keyguard\", which you probably think of as the lock sreen.
+    \"keyguard\", which you probably think of as the lock screen.
     Beyond simply disabling and reenabling it, however, there is no
     more control — I can\'t control which keys turn the screen on, for
     example.
@@ -172,9 +172,9 @@
     \nTo give you maximum control, the colors can be turned on or off
     independently.  This means that you can have as much as a
     four-tiered color scheme, where the icon is green when it is very
-    full, then grayscale, then amber, then red.  I personally have
-    green turned off, with the icon turning amber at 50% and red at
-    30%.
+    full, then grayscale, then amber, then red.  Of course, most
+    people probably have the amber and green thresholds set to the
+    same value, so that the icon is never grayscale.
   </string>
   <string name="pref_color_preview">Color Preview</string>
   <string name="pref_color_preview_help">
