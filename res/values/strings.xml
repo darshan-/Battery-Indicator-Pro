@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_full_name">Battery Indicator Pro</string>
-  <string name="app_name">Battery Indicator</string>
+  <string name="app_launcher_name">Battery Indicator</string>
   <string name="settings_activity_name">Battery Indicator Settings</string>
   <string name="settings_help_activity_name">Battery Indicator Settings Help</string>
   <string name="info_activity_name">About Battery Indicator</string>
@@ -11,7 +11,10 @@
 
   <string name="degree_symbol">°</string>
   <string name="fahrenheit">Fahrenheit</string>
+  <string name="fahrenheit_symbol">F</string>
   <string name="celsius">Celsius</string>
+  <string name="celsius_symbol">C</string>
+  <string name="volt_symbol">V</string>
 
   <string name="discharging_from">Discharging from</string>
   <string name="charging_from">Charging from</string>
@@ -226,4 +229,32 @@
     amber.  For example, if you have the amber threshold set to 40,
     then your lowest option here will be 40.
   </string>
+
+  <string-array name="boot_pref_entries">
+    <item>Always</item>
+    <item>Never</item>
+    <item>If Running on Shutdown</item>
+  </string-array>
+  <string-array name="boot_pref_values">
+    <item>always</item>
+    <item>never</item>
+    <item>auto</item>
+  </string-array>
+
+  <string-array name="status_dur_est_pref_entries">
+    <item>Always</item>
+    <item>After 1 Hour</item>
+    <item>After 2 Hours</item>
+    <item>After 3 Hours</item>
+    <item>After 6 Hours</item>
+    <item>After 12 Hours</item>
+  </string-array>
+  <string-array name="status_dur_est_pref_values">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>6</item>
+    <item>12</item>
+  </string-array>
 </resources>

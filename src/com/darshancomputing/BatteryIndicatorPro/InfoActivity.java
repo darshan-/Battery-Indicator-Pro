@@ -26,6 +26,7 @@ public class InfoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.info);
 
+        /* Make links clickable */
         TextView info = (TextView) findViewById(R.id.info_tv);
         info.setMovementMethod(LinkMovementMethod.getInstance());
     }

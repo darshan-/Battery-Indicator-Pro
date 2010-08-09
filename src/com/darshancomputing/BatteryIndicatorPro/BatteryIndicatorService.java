@@ -24,6 +24,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Binder;
@@ -42,9 +43,17 @@ public class BatteryIndicatorService extends Service {
 
     private Boolean keyguardDisabled = false;
 
+    private String degree_symbol;
+    private String fahrenheit_symbol;
+    private String celsius_symbol;
+    private String volt_symbol;
+
     @Override
     public void onCreate() {
         //android.os.Debug.startMethodTracing();
+
+        loadResources();
+
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
@@ -68,16 +77,6 @@ public class BatteryIndicatorService extends Service {
         //android.os.Debug.stopMethodTracing();
     }
 
-    public void reloadSettings() {
-        if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
-            setEnablednessOfKeyguard(false);
-        else
-            setEnablednessOfKeyguard(true);
-
-        //unregisterReceiver(mBatteryInfoReceiver); /* It appears that there's no need to unregister first */
-        registerReceiver(mBatteryInfoReceiver, batteryChanged);
-    }
-
     @Override
     public IBinder onBind(Intent intent) {
         return mBinder;
@@ -92,6 +91,7 @@ public class BatteryIndicatorService extends Service {
     private final IBinder mBinder = new LocalBinder();
 
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
+        /* TODO: move these to strings.xml */
         private final String[] statuses = {"Unplugged", "", "Charging", "Discharging", "Not Charging", "Fully Charged"};
         private final String[] healths = {"", "", "Good Health", "Overheat", "Dead", "Overvoltage", "Failure"};
         private final String[] pluggeds = {"", " (AC)", " (USB)"};
@@ -148,9 +148,9 @@ public class BatteryIndicatorService extends Service {
             String temp_s;
             if (settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false)){
                 temp_s = String.valueOf((java.lang.Math.round(temperature * 9 / 5.0) / 10.0) + 32.0) +
-                    getResources().getString(R.string.degree_symbol) + "F";
+                    degree_symbol + fahrenheit_symbol;
             } else {
-                temp_s = String.valueOf(temperature / 10.0) + getResources().getString(R.string.degree_symbol) + "C";
+                temp_s = String.valueOf(temperature / 10.0) + degree_symbol + celsius_symbol;
             }
 
             int last_status = settings.getInt("last_status", -1);
@@ -211,7 +211,7 @@ public class BatteryIndicatorService extends Service {
             CharSequence contentTitle;
 
             int status_dur_est = Integer.valueOf(settings.getString(SettingsActivity.KEY_STATUS_DUR_EST, "12"));
-            if (statusDurationHours < status_dur_est) {
+            if (statusDurationHours < status_dur_est) { /* TODO: Since, For, Hour, Hours (use Plurals) */
                 contentTitle = statusStr + " Since " + last_status_since;
             } else {
                 contentTitle = statusStr + " For " + String.valueOf(statusDurationHours) + " Hour";
@@ -219,7 +219,7 @@ public class BatteryIndicatorService extends Service {
             }
 
             CharSequence contentText = healths[health] + " / " + temp_s + " / " +
-                                       String.valueOf(voltage / 1000.0) + "V";
+                                       String.valueOf(voltage / 1000.0) + volt_symbol;
 
             Notification notification = new Notification(icon, null, System.currentTimeMillis());
 
@@ -258,5 +258,24 @@ public class BatteryIndicatorService extends Service {
                 keyguardDisabled = true;
             }
         }
+    }
+
+    public void reloadSettings() {
+        if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
+            setEnablednessOfKeyguard(false);
+        else
+            setEnablednessOfKeyguard(true);
+
+        //unregisterReceiver(mBatteryInfoReceiver); /* It appears that there's no need to unregister first */
+        registerReceiver(mBatteryInfoReceiver, batteryChanged);
+    }
+
+    private void loadResources() {
+        Resources r = getResources();
+
+        degree_symbol = r.getString(R.string.degree_symbol);
+        fahrenheit_symbol = r.getString(R.string.fahrenheit_symbol);
+        celsius_symbol = r.getString(R.string.celsius_symbol);
+        volt_symbol = r.getString(R.string.volt_symbol);
     }
 }

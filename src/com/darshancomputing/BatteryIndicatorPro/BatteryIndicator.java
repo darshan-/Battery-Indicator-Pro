@@ -130,16 +130,16 @@ public class BatteryIndicator extends Activity {
 
         switch (id) {
         case DIALOG_CONFIRM_DISABLE_KEYGUARD:
-            builder.setTitle("Really disable lock screen?")
-                .setMessage("Hint: Disable this confirmation dialog in the settings...")
+            builder.setTitle("Really disable lock screen?") /* TODO: strings.xml */
+                .setMessage("Hint: Disable this confirmation dialog in the settings...")  /* TODO */
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() { /* TODO */
                         public void onClick(DialogInterface di, int id) {
                             setDisableLocking(true);
                             di.cancel();
                         }
                     })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() { /* TODO */
                         public void onClick(DialogInterface di, int id) {
                             di.cancel();
                         }
@@ -167,7 +167,7 @@ public class BatteryIndicator extends Activity {
         TextView title = (TextView)findViewById(R.id.title_t);
         if (last_percent >= 0 && last_status >= 0) {
             String s = "";
-            String lp = "" + last_percent + "%";
+            String lp = "" + last_percent + "%"; /* TODO */
             if (last_status == 0)
                 s = getResources().getString(R.string.discharging_from) + " " + lp;
             else if (last_status == 2)
@@ -189,9 +189,9 @@ public class BatteryIndicator extends Activity {
         Button button = (Button) findViewById(R.id.toggle_lock_screen_b);
 
         if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
-            button.setText("Reenable\nLock Screen");
+            button.setText("Reenable\nLock Screen"); /* TODO */
         else
-            button.setText("Disable\nLock Screen");
+            button.setText("Disable\nLock Screen"); /* TODO */
     }
 
     private void setDisableLocking(boolean b) {
@@ -221,7 +221,6 @@ public class BatteryIndicator extends Activity {
             try {
                 startActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY));
                 finish();
-                //} catch (android.content.ActivityNotFoundException e) {
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.one_six_needed), Toast.LENGTH_SHORT).show();
                 ((Button)findViewById(R.id.battery_use_b)).setEnabled(false);
