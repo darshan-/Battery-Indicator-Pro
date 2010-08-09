@@ -5,14 +5,15 @@
 >
   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
-                android:paddingTop="12sp"
-                android:paddingBottom="12sp"
-                android:paddingLeft="12sp"
-                android:paddingRight="12sp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
   >
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_logging" />
+    <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_enable_logging" />
     <TextView style="@style/help_text" android:text="@string/pref_enable_logging_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_view_logs" />
@@ -20,7 +21,6 @@
 
     <View style="@style/help_cat_pre_margin" />
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_keyguard" />
-    <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_text" android:text="@string/pref_cat_keyguard_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_confirm_manual_disable" />
     <TextView style="@style/help_text" android:text="@string/pref_confirm_manual_disable_help" />
@@ -29,22 +29,24 @@
 
     <View style="@style/help_cat_pre_margin" />
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_temperature_unit" />
+    <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_convert_to_fahrenheit" />
     <TextView style="@style/help_text" android:text="@string/pref_convert_to_fahrenheit_help" />
 
     <View style="@style/help_cat_pre_margin" />
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_autostart" />
+    <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_autostart_at_boot" />
     <TextView style="@style/help_text" android:text="@string/pref_autostart_at_boot_help" />
 
     <View style="@style/help_cat_pre_margin" />
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_status_duration" />
+    <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_status_dur_est" />
     <TextView style="@style/help_text" android:text="@string/pref_status_dur_est_help" />
 
     <View style="@style/help_cat_pre_margin" />
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_color" />
-    <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_text" android:text="@string/pref_cat_color_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_color_preview" />
     <TextView style="@style/help_text" android:text="@string/pref_color_preview_help" />

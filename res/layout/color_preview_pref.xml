@@ -8,7 +8,7 @@
   <TextView android:id="@+android:id/title"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="8sp"
+            android:paddingTop="8dp"
             android:singleLine="true"
             android:textSize="18sp"
             android:textColor="#fff"
@@ -18,10 +18,10 @@
   <ImageView android:id="@+id/color_preview_bar_v"
              android:src="@drawable/color_preview_bar"
              android:layout_width="fill_parent"
-             android:layout_height="30sp"
-             android:paddingTop="8sp"
-             android:paddingBottom="12sp"
-             android:paddingLeft="10sp"
+             android:layout_height="30dp"
+             android:paddingTop="8dp"
+             android:paddingBottom="12dp"
+             android:paddingLeft="10dp"
              android:gravity="fill_horizontal"
   />
 </LinearLayout>

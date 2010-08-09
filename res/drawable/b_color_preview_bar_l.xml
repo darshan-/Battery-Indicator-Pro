@@ -5,14 +5,14 @@
   <!-- Note that there's an Android bug where bottomLeft and bottomRight are switched! -->
   <!-- There's another bug where earlier versions of Android need a radius greater than 1
        for every corner in order for any corners to show up. -->
-  <corners android:radius="2sp"
-           android:topLeftRadius="5sp"
-           android:bottomRightRadius="5sp"
-           android:topRightRadius="0sp"
-           android:bottomLeftRadius="0sp"
+  <corners android:radius="2dp"
+           android:topLeftRadius="5dp"
+           android:bottomRightRadius="5dp"
+           android:topRightRadius="0dp"
+           android:bottomLeftRadius="0dp"
   />
-  <size android:height="10sp"
-        android:width="14sp"
+  <size android:height="10dp"
+        android:width="14dp"
   />
   <solid android:color="#555" />
 </shape>

@@ -137,12 +137,14 @@
   <string name="pref_autostart_at_boot_summary">Start Battery Indicator When Device Boots?</string>
   <string name="pref_autostart_at_boot_help">
     Controls whether Battery Indicator should start itself
-    automatically when the device boots up.\n\nThe \"If Running on
-    Shutdown\" option works with regard to whether you\'ve most
-    recently manually started or stopped Battery Indicator.  So if you
-    kill Battery Indicator through some other means, like a task
-    killer, then Battery Indicator doesn\'t know you stopped it, and
-    it will still start at boot up if you have it set to this.
+    automatically when the device boots up.\n
+
+    \nThe \"If Running on Shutdown\" option works with regard to
+    whether you\'ve most recently manually started or stopped Battery
+    Indicator.  So if you kill Battery Indicator through some other
+    means, like a task killer, then Battery Indicator doesn\'t know
+    you stopped it, and it will still start at boot up if you have it
+    set to this.
   </string>
 
   <string name="pref_cat_status_duration">Status Duration (For/Since...)</string>
@@ -165,9 +167,9 @@
     the time of writing, you can have a red icon as high as 30%, an
     amber icon as high as 50%, and a green icon as low as 20%.  I
     think these are reasonable compromises that should work for 99% of
-    users.\n\n
+    users.\n
 
-    To give you maximum control, the colors can be turned on or off
+    \nTo give you maximum control, the colors can be turned on or off
     independently.  This means that you can have as much as a
     four-tiered color scheme, where the icon is green when it is very
     full, then grayscale, then amber, then red.  I personally have
@@ -187,9 +189,9 @@
   <string name="pref_red_thresh">Red Threshold</string>
   <string name="pref_red_thresh_summary">Red Icon Below What Charge Percentage?</string>
   <string name="pref_red_thresh_help">
-    Specifies the charge level which the icon should turn red below.\n\n
+    Specifies the charge level which the icon should turn red below.\n
 
-    The options for the red threshold include all the values (in
+    \nThe options for the red threshold include all the values (in
     multiples of 5) for which there are red icons available.
   </string>
   <string name="pref_amber">Use Amber Icon</string>
@@ -200,9 +202,9 @@
   <string name="pref_amber_thresh">Amber Threshold</string>
   <string name="pref_amber_thresh_summary">Amber Icon Below What Charge Percentage?</string>
   <string name="pref_amber_thresh_help">
-    Specifies the charge level which the icon should turn amber below.\n\n
+    Specifies the charge level which the icon should turn amber below.\n
 
-    The options for the amber threshold include all the values (in
+    \nThe options for the amber threshold include all the values (in
     multiples of 5) for which there are amber icons available,
     starting 5 percentage points above the red threshold (if there is
     one).  For example, if you have the red threshold set to 15, then
@@ -216,9 +218,9 @@
   <string name="pref_green_thresh">Green Threshold</string>
   <string name="pref_green_thresh_summary">Green Icon At or Above What Charge Percentage?</string>
   <string name="pref_green_thresh_help">
-    Specifies the charge level which the icon should be green at or above.\n\n
+    Specifies the charge level which the icon should be green at or above.\n
 
-    The options for the green threshold include all the values (in
+    \nThe options for the green threshold include all the values (in
     multiples of 5) for which there are green icons available,
     starting at the highest active threshold you have set for red or
     amber.  For example, if you have the amber threshold set to 40,
