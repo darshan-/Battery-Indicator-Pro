@@ -25,9 +25,6 @@ public class LogViewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_item);
-
-        //TextView log_item = (TextView) findViewById(R.id.log_item);
-        //log_item.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     @Override

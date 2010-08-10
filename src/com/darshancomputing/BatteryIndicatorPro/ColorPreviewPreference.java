@@ -51,42 +51,12 @@ public class ColorPreviewPreference extends Preference {
         super.onBindView(view);
 
         ImageView iv = (ImageView) view.findViewById(R.id.color_preview_bar_v);
-
         LayerDrawable ld = (LayerDrawable) iv.getDrawable();
-        /* ld.getDrawable(int index) is indexed from 0-19 */
 
-        /* TODO: Rewrite this with loops, based on MAX and MIN icons for each color */
-        if (greenThresh <= 20) ld.getDrawable( 4).setLevel(3);
-        if (greenThresh <= 25) ld.getDrawable( 5).setLevel(3);
-        if (greenThresh <= 30) ld.getDrawable( 6).setLevel(3);
-        if (greenThresh <= 35) ld.getDrawable( 7).setLevel(3);
-        if (greenThresh <= 40) ld.getDrawable( 8).setLevel(3);
-        if (greenThresh <= 45) ld.getDrawable( 9).setLevel(3);
-        if (greenThresh <= 50) ld.getDrawable(10).setLevel(3);
-        if (greenThresh <= 55) ld.getDrawable(11).setLevel(3);
-        if (greenThresh <= 60) ld.getDrawable(12).setLevel(3);
-        if (greenThresh <= 65) ld.getDrawable(13).setLevel(3);
-        if (greenThresh <= 70) ld.getDrawable(14).setLevel(3);
-        if (greenThresh <= 75) ld.getDrawable(15).setLevel(3);
-        if (greenThresh <= 80) ld.getDrawable(16).setLevel(3);
-        if (greenThresh <= 85) ld.getDrawable(17).setLevel(3);
-        if (greenThresh <= 90) ld.getDrawable(18).setLevel(3);
-        if (greenThresh <= 95) ld.getDrawable(19).setLevel(3);
-        if (amberThresh >   0) ld.getDrawable( 0).setLevel(2);
-        if (amberThresh >   5) ld.getDrawable( 1).setLevel(2);
-        if (amberThresh >  10) ld.getDrawable( 2).setLevel(2);
-        if (amberThresh >  15) ld.getDrawable( 3).setLevel(2);
-        if (amberThresh >  20) ld.getDrawable( 4).setLevel(2);
-        if (amberThresh >  25) ld.getDrawable( 5).setLevel(2);
-        if (amberThresh >  30) ld.getDrawable( 6).setLevel(2);
-        if (amberThresh >  35) ld.getDrawable( 7).setLevel(2);
-        if (amberThresh >  40) ld.getDrawable( 8).setLevel(2);
-        if (amberThresh >  45) ld.getDrawable( 9).setLevel(2);
-        if (redThresh   >   0) ld.getDrawable( 0).setLevel(1);
-        if (redThresh   >   5) ld.getDrawable( 1).setLevel(1);
-        if (redThresh   >  10) ld.getDrawable( 2).setLevel(1);
-        if (redThresh   >  15) ld.getDrawable( 3).setLevel(1);
-        if (redThresh   >  20) ld.getDrawable( 4).setLevel(1);
-        if (redThresh   >  25) ld.getDrawable( 5).setLevel(1);
+        for (int i = 0; i < 20; i++) {
+            if      (redThresh    > i*5) ld.getDrawable(i).setLevel(1);
+            else if (amberThresh  > i*5) ld.getDrawable(i).setLevel(2);
+            else if (greenThresh <= i*5) ld.getDrawable(i).setLevel(3);
+        }
     }
 }
