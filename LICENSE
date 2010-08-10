@@ -1,0 +1,30 @@
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+The file 'res/drawable[mh]dpi/battery.png' is taken from the Oxygen icon
+theme at [ http://www.oxygen-icons.org ].  You may copy it under the
+Creative Commons Attribution-ShareAlike 3.0 License
+[ http://creativecommons.org/licenses/by-sa/3.0/ ].
+
+The other icons/artwork are copyright © 2009-2010 Josiah Barber and also
+released under the Creative Commons Attribution-ShareAlike 3.0 License
+[ http://creativecommons.org/licenses/by-sa/3.0/ ].  If you use the icons,
+please attribute them as coming from: 
+"The Android application Battery Indicator Pro by Darshan Computing".  Of
+course you must include the copyright and license information as well.
+
+All of the code is copyright © 2009-2010 Josiah Barber and released as follows:
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  See 'gpl-3.0.txt' for the full license.
+
+
+
+If you have any questions about the licensing terms or would like
+permission to use code or artwork under some other license, please
+contact me at android@darshancomputing.com.
