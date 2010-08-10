@@ -42,4 +42,8 @@
     <item name="android:textSize">14sp</item>
     <item name="android:lineSpacingMultiplier">1.1</item>
   </style>
+
+  <style name="bi_Theme.Dialog" parent="@android:style/Theme.Dialog">
+    <item name="android:windowNoTitle">true</item>
+  </style>
 </resources>

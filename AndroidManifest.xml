@@ -9,7 +9,7 @@
 
     <activity android:name=".BatteryIndicator"
               android:label="@string/app_launcher_name"
-              android:theme="@android:style/Theme.Dialog"
+              android:theme="@style/bi_Theme.Dialog"
               android:launchMode="singleInstance"
 	      android:excludeFromRecents="true">
       <intent-filter>

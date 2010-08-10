@@ -68,16 +68,14 @@ public class BatteryIndicator extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+
         str = new Str(getResources());
 
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         startService(biServiceIntent);
-
         bindService(biServiceIntent, biServiceConnection, 0);
-
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
 
         Button button = (Button) findViewById(R.id.stop_service_b);
         button.setOnClickListener(ssButtonListener);

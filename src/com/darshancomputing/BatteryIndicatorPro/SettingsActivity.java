@@ -261,25 +261,44 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             if (redEnabled) {
                 redThresh.setEnabled(true);
 
-                a = xToYBy5(determineMin(RED), RED_SETTING_MAX);
-                redThresh.setEntries(a);
-                redThresh.setEntryValues(a);
-
-                /* Older version had a higher max; user's setting could be too high. */
-                if (iRedThresh > RED_SETTING_MAX) {
-                    redThresh.setValue("" + RED_SETTING_MAX);
-                    iRedThresh = RED_SETTING_MAX;
-                }
             } else {
                 redThresh.setEnabled(false);
+            }
+        }
+
+        if (changedKey == null || changedKey.equals(KEY_AMBER)) {
+            if (amberEnabled) {
+                amberThresh.setEnabled(true);
+
+            } else {
+                amberThresh.setEnabled(false);
+            }
+        }
+
+        if (changedKey == null || changedKey.equals(KEY_GREEN)) {
+            if (greenEnabled) {
+                greenThresh.setEnabled(true);
+
+            } else {
+                greenThresh.setEnabled(false);
+            }
+        }
+
+        if (changedKey == null) {
+            a = xToYBy5(RED_SETTING_MIN, RED_SETTING_MAX);
+            redThresh.setEntries(a);
+            redThresh.setEntryValues(a);
+
+            /* Older version had a higher max; user's setting could be too high. */
+            if (iRedThresh > RED_SETTING_MAX) {
+                redThresh.setValue("" + RED_SETTING_MAX);
+                iRedThresh = RED_SETTING_MAX;
             }
         }
 
         if (changedKey == null || changedKey.equals(KEY_RED) || changedKey.equals(KEY_RED_THRESH) ||
             changedKey.equals(KEY_AMBER)) {
             if (amberEnabled) {
-                amberThresh.setEnabled(true);
-
                 a = xToYBy5(determineMin(AMBER), AMBER_SETTING_MAX);
                 amberThresh.setEntries(a);
                 amberThresh.setEntryValues(a);
@@ -289,15 +308,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                     iAmberThresh = Integer.valueOf(a[0]);
                     updateListPrefSummary(KEY_AMBER_THRESH);
                 }
-            } else {
-                amberThresh.setEnabled(false);
             }
         }
 
         if (changedKey == null || !changedKey.equals(KEY_GREEN_THRESH)) {
             if (greenEnabled) {
-                greenThresh.setEnabled(true);
-
                 a = xToYBy5(determineMin(GREEN), 100);
                 greenThresh.setEntries(a);
                 greenThresh.setEntryValues(a);
@@ -307,8 +322,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                     iGreenThresh = Integer.valueOf(a[0]);
                     updateListPrefSummary(KEY_GREEN_THRESH);
                 }
-            } else {
-                greenThresh.setEnabled(false);
             }
         }
 
