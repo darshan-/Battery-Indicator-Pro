@@ -15,6 +15,7 @@
   <string name="disable_lock_screen">Disable\nLock Screen</string>
   <string name="close_battery_indicator">Close Battery Indicator</string>
   <string name="hide_this_window">Hide This Window</string>
+
   <string name="confirm_disable">Really disable lock screen?</string>
   <string name="confirm_disable_hint">
     Hint: Disable this confirmation dialog in the settings...
@@ -35,6 +36,12 @@
   <string name="discharging_from">Discharging from</string>
   <string name="charging_from">Charging from</string>
   <string name="fully_charged">Fully Charged</string>
+
+  <string name="since">Since</string>
+  <plurals name="for_n_hours">
+    <item quantity="one">For %d Hour</item>
+    <item quantity="other">For %d Hours</item>
+  </plurals>
 
   <string name="one_six_needed">Sorry, Android 1.6+ needed!</string>
 
