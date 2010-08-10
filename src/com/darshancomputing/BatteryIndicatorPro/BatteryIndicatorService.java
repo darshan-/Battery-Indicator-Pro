@@ -88,11 +88,6 @@ public class BatteryIndicatorService extends Service {
     private final IBinder mBinder = new LocalBinder();
 
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
-        /* TODO: move these to strings.xml */
-        private final String[] statuses = {"Unplugged", "", "Charging", "Discharging", "Not Charging", "Fully Charged"};
-        private final String[] healths = {"", "", "Good Health", "Overheat", "Dead", "Overvoltage", "Failure"};
-        private final String[] pluggeds = {"", " (AC)", " (USB)"};
-
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
@@ -139,8 +134,8 @@ public class BatteryIndicatorService extends Service {
                Note that the main activity now assumes that the status is always 0, 2, or 5 */
             if (plugged == 0) status = 0;
 
-            String statusStr = statuses[status];
-            if (status == 2) statusStr += pluggeds[plugged]; /* Add '(AC)' or '(USB)' if charging */
+            String statusStr = str.statuses[status];
+            if (status == 2) statusStr += str.pluggeds[plugged]; /* Add '(AC)' or '(USB)' if charging */
 
             String temp_s;
             if (settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false)){
@@ -208,13 +203,13 @@ public class BatteryIndicatorService extends Service {
             CharSequence contentTitle;
 
             int status_dur_est = Integer.valueOf(settings.getString(SettingsActivity.KEY_STATUS_DUR_EST, "12"));
-            if (statusDurationHours < status_dur_est) { /* TODO: Since, For, Hour, Hours (use Plurals) */
+            if (statusDurationHours < status_dur_est) {
                 contentTitle = statusStr + " " + str.since + " " + last_status_since;
             } else {
                 contentTitle = statusStr + " " + str.for_n_hours(statusDurationHours);
             }
 
-            CharSequence contentText = healths[health] + " / " + temp_s + " / " +
+            CharSequence contentText = str.healths[health] + " / " + temp_s + " / " +
                                        String.valueOf(voltage / 1000.0) + str.volt_symbol;
 
             Notification notification = new Notification(icon, null, System.currentTimeMillis());
@@ -267,7 +262,7 @@ public class BatteryIndicatorService extends Service {
     }
 
     private class Str {
-        private Resources mR;
+        public Resources r;
 
         public String degree_symbol;
         public String fahrenheit_symbol;
@@ -275,22 +270,26 @@ public class BatteryIndicatorService extends Service {
         public String volt_symbol;
         public String since;
 
-        public Str(Resources  r) {
-            mR = r;
+        private String[] statuses;
+        private String[] healths;
+        private String[] pluggeds;
+
+        public Str(Resources  res) {
+            r = res;
 
             degree_symbol     = r.getString(R.string.degree_symbol);
             fahrenheit_symbol = r.getString(R.string.fahrenheit_symbol);
             celsius_symbol    = r.getString(R.string.celsius_symbol);
             volt_symbol       = r.getString(R.string.volt_symbol);
             since             = r.getString(R.string.since);
+
+            statuses = r.getStringArray(R.array.statuses);
+            healths  = r.getStringArray(R.array.healths);
+            pluggeds = r.getStringArray(R.array.pluggeds);
         }
 
         public String for_n_hours(int n) {
-            return String.format(mR.getQuantityString(R.plurals.for_n_hours, n), n);
+            return String.format(r.getQuantityString(R.plurals.for_n_hours, n), n);
         }
-
-        //public String plu(int id, int quantity) {
-        //    return String.format(mR.getQuantityString(id, quantity), quantity);
-        //}
     }
 }

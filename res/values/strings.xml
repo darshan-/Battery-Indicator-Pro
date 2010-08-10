@@ -33,6 +33,29 @@
   <string name="celsius_symbol">C</string>
   <string name="volt_symbol">V</string>
 
+  <string-array name="statuses">
+    <item>Unplugged</item>
+    <item></item><!-- Intentionally empty -->
+    <item>Charging</item>
+    <item>Discharging</item>
+    <item>Not Charging</item>
+    <item>Fully Charged</item>
+  </string-array>
+  <string-array name="healths">
+    <item></item><!-- Intentionally empty -->
+    <item></item><!-- Intentionally empty -->
+    <item>Good Health</item>
+    <item>Overheat</item>
+    <item>Dead</item>
+    <item>Overvoltage</item>
+    <item>Failure</item>
+  </string-array>
+  <string-array name="pluggeds">
+    <item></item><!-- Intentionally empty -->
+    <item> (AC)</item>
+    <item> (USB)</item>
+  </string-array>
+
   <string name="discharging_from">Discharging from</string>
   <string name="charging_from">Charging from</string>
   <string name="fully_charged">Fully Charged</string>
