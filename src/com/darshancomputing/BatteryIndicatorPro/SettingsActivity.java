@@ -145,6 +145,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         updateConvertFSummary();
 
         updateListPrefSummary(KEY_AUTOSTART);
+        updateListPrefSummary(KEY_MW_THEME);
         updateListPrefSummary(KEY_STATUS_DUR_EST);
         updateListPrefSummary(KEY_RED_THRESH);
         updateListPrefSummary(KEY_AMBER_THRESH);
@@ -217,7 +218,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (key.equals(KEY_CONVERT_F)) {
             updateConvertFSummary();
         } else if (key.equals(KEY_AUTOSTART) || key.equals(KEY_STATUS_DUR_EST) ||
-                   key.equals(KEY_RED_THRESH) ||
+                   key.equals(KEY_MW_THEME) || key.equals(KEY_RED_THRESH) ||
                    key.equals(KEY_AMBER_THRESH) || key.equals(KEY_GREEN_THRESH)) {
             updateListPrefSummary(key);
         }

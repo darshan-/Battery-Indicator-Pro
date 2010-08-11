@@ -38,6 +38,10 @@
             android:text="@string/battery_use_b"
     />
 
+    <View android:layout_width="fill_parent"
+          android:layout_height="2dp"
+    />
+
     <Button android:id="@+id/toggle_lock_screen_b"
             android:layout_height="43dp"
 	    android:layout_width="fill_parent"

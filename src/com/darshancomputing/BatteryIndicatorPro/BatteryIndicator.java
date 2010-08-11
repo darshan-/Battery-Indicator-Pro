@@ -73,19 +73,13 @@ public class BatteryIndicator extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
 
         settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         theme = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
         if (theme.equals("battery01")){
-            getWindow().setBackgroundDrawableResource(R.drawable.bi_theme_bg);
-
-            setContentView(R.layout.main);
-
-            LinearLayout ll = (LinearLayout) findViewById(R.id.main_ll);
-            ll.setPadding(ll.getPaddingLeft(), 14, ll.getPaddingRight(), ll.getPaddingBottom());
-        } else {
-            setContentView(R.layout.main);
+            setTheme();
         }
 
         str = new Str(getResources());
@@ -187,10 +181,11 @@ public class BatteryIndicator extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String new_theme = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
+        String old_theme = theme;
+        theme = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
 
-        if (! new_theme.equals(theme)) {
-            finish(); /* There doesn't appear to be a way to restart the activity, so just finish it. */
+        if (! old_theme.equals(theme)) {
+            setTheme();
         }
     }
 
@@ -349,6 +344,20 @@ public class BatteryIndicator extends Activity {
         //startActivity(new Intent().setComponent(comp));
         startActivityForResult(new Intent().setComponent(comp), 1);
         //finish();
+    }
+
+    private void setTheme() {
+        if (theme.equals("battery01")){
+            getWindow().setBackgroundDrawableResource(R.drawable.bi_theme_bg);
+
+            LinearLayout ll = (LinearLayout) findViewById(R.id.main_ll);
+            ll.setPadding(ll.getPaddingLeft(), 14, ll.getPaddingRight(), ll.getPaddingBottom());
+        } else {
+            getWindow().setBackgroundDrawableResource(R.drawable.panel_background);
+
+            LinearLayout ll = (LinearLayout) findViewById(R.id.main_ll);
+            ll.setPadding(ll.getPaddingLeft(), 2, ll.getPaddingRight(), ll.getPaddingBottom());
+        }
     }
 
     private class Str {
