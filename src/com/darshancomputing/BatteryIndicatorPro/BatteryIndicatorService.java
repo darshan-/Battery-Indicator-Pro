@@ -104,12 +104,6 @@ public class BatteryIndicatorService extends Service {
 
             int percent = level * 100 / scale;
 
-            if (percent % 10 == 0) {
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putInt("previous_charge", percent);
-                editor.commit();
-            }
-
             /* I Take advantage of (count on) R.java having resources alphabetical and incrementing by one */
 
             int icon;
@@ -197,6 +191,12 @@ public class BatteryIndicatorService extends Service {
                 editor.commit();
             } else {
                 statusDuration = currentTM - last_status_cTM;
+
+                if (percent % 10 == 0) {
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putInt("previous_charge", percent);
+                    editor.commit();
+                }
             }
 
             /* Add half an hour, then divide.  Should end up rounding to the closest hour. */
