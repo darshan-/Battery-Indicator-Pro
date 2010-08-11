@@ -40,15 +40,15 @@
 
   <string-array name="statuses">
     <item>Unplugged</item>
-    <item></item><!-- Intentionally empty -->
+    <item>Unknown</item>
     <item>Charging</item>
     <item>Discharging</item>
     <item>Not Charging</item>
     <item>Fully Charged</item>
   </string-array>
   <string-array name="healths">
-    <item></item><!-- Intentionally empty -->
-    <item></item><!-- Intentionally empty -->
+    <item>Unknown</item>
+    <item>Unknown</item>
     <item>Good Health</item>
     <item>Overheat</item>
     <item>Dead</item>
@@ -56,9 +56,9 @@
     <item>Failure</item>
   </string-array>
   <string-array name="pluggeds">
-    <item></item><!-- Intentionally empty -->
-    <item> (AC)</item>
-    <item> (USB)</item>
+    <item>Unknown</item>
+    <item>(AC)</item>
+    <item>(USB)</item>
   </string-array>
 
   <string name="discharging_from">Discharging from</string>
@@ -138,6 +138,15 @@
     \n<b>Contact</b>
     \nIf you have questions, comments, problems, or feedback of any other sort,
     please email me at <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>.
+  </string>
+
+  <string name="pref_cat_themes">Themes</string>
+  <string name="pref_main_window_theme">Main Window Theme</string>
+  <string name="pref_main_window_theme_help">
+    Sets the theme for the main window.  Applying a theme other than
+    the default may make the main window start slightly slower on
+    older devices, but it won\'t slow the service down or use any
+    extra battery.
   </string>
 
   <string name="pref_cat_logging">Logging</string>
@@ -280,6 +289,15 @@
     amber.  For example, if you have the amber threshold set to 40,
     then your lowest option here will be 40.
   </string>
+
+  <string-array name="mw_theme_pref_entries">
+    <item>Default</item>
+    <item>Battery</item>
+  </string-array>
+  <string-array name="mw_theme_pref_values">
+    <item>default</item>
+    <item>battery01</item>
+  </string-array>
 
   <string-array name="boot_pref_entries">
     <item>Always</item>

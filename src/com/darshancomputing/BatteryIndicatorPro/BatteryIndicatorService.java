@@ -104,7 +104,7 @@ public class BatteryIndicatorService extends Service {
 
             int percent = level * 100 / scale;
 
-            if (percent % 5 == 0) {
+            if (percent % 10 == 0) {
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putInt("previous_charge", percent);
                 editor.commit();
@@ -134,6 +134,8 @@ public class BatteryIndicatorService extends Service {
                Note that the main activity now assumes that the status is always 0, 2, or 5 */
             if (plugged == 0) status = 0;
 
+            /* TODO: I guess I should make sure status, plugged, and health are all within array limits...
+                     If one is out of bounds, set it to 1, which is "Unknown" for all three arrays...*/
             String statusStr = str.statuses[status];
             if (status == 2) statusStr += " " + str.pluggeds[plugged]; /* Add '(AC)' or '(USB)' if charging */
 
@@ -155,7 +157,7 @@ public class BatteryIndicatorService extends Service {
 
             if (last_status != status || last_status_cTM == -1 || last_percent == -1 ||
                 last_status_cTM > currentTM || last_status_since == null ||
-                (plugged == 0 && percent > previous_charge + 1))
+                (plugged == 0 && percent > previous_charge + 3))
             {
                 last_status_since = formatTime(new Date());
                 statusDuration = 0;

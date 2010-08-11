@@ -39,6 +39,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,10 +47,10 @@ public class BatteryIndicator extends Activity {
     private Intent biServiceIntent;
     private SharedPreferences settings;
     private final BIServiceConnection biServiceConnection = new BIServiceConnection();
+    private Str str;
+    private String theme;
 
     private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
-
-    private Str str;
 
     private final Handler mHandler = new Handler();
     private final Runnable mUpdateStatus = new Runnable() {
@@ -72,7 +73,20 @@ public class BatteryIndicator extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+
+        settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        theme = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
+        if (theme.equals("battery01")){
+            getWindow().setBackgroundDrawableResource(R.drawable.bi_theme_bg);
+
+            setContentView(R.layout.main);
+
+            LinearLayout ll = (LinearLayout) findViewById(R.id.main_ll);
+            ll.setPadding(ll.getPaddingLeft(), 14, ll.getPaddingRight(), ll.getPaddingBottom());
+        } else {
+            setContentView(R.layout.main);
+        }
 
         str = new Str(getResources());
 
@@ -90,7 +104,6 @@ public class BatteryIndicator extends Activity {
         //button = (Button) findViewById(R.id.more_info_b);
         //button.setOnClickListener(miButtonListener);
 
-        /* TODO: do something like this to disable the menu item */
         button = (Button) findViewById(R.id.battery_use_b);
         if (getPackageManager().resolveActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY),0) == null) {
             button.setEnabled(false);
@@ -103,8 +116,6 @@ public class BatteryIndicator extends Activity {
 
         //button = (Button) findViewById(R.id.edit_settings_b);
         //button.setOnClickListener(esButtonListener);
-
-        settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("serviceDesired", true);
@@ -175,6 +186,15 @@ public class BatteryIndicator extends Activity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        String new_theme = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
+
+        if (! new_theme.equals(theme)) {
+            finish(); /* There doesn't appear to be a way to restart the activity, so just finish it. */
+        }
+    }
+
+    @Override
     protected Dialog onCreateDialog(int id) {
         Dialog dialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -227,10 +247,10 @@ public class BatteryIndicator extends Activity {
 
             status_since.setText(s);
 
-            title.setPadding(title.getPaddingLeft(), title.getPaddingRight(), title.getPaddingTop(), 2);
+            title.setPadding(title.getPaddingLeft(), title.getPaddingTop(), title.getPaddingRight(), 2);
             status_since.setVisibility(android.view.View.VISIBLE);
         } else {
-            title.setPadding(title.getPaddingLeft(), title.getPaddingRight(), title.getPaddingTop(), 10);
+            title.setPadding(title.getPaddingLeft(), title.getPaddingTop(), title.getPaddingRight(), 10);
             status_since.setVisibility(android.view.View.GONE);
         }
     }

@@ -45,9 +45,11 @@
 
   <style name="bi_theme" parent="@android:style/Theme.Dialog">
     <item name="android:windowNoTitle">true</item>
-    <item name="android:windowFrame">@null</item>
-    <item name="android:windowBackground">@drawable/bi_theme_bg</item>
+    <!--item name="android:windowBackground">@drawable/bi_theme_bg</item-->
   </style>
+
+  <dimen name="main_padding_top">2dp</dimen>
+  <dimen name="main_padding_top_battery">12dp</dimen>
 
   <color name="light_usage">#A4C639</color>
   <color name="normal_usage">#E8D018</color>
