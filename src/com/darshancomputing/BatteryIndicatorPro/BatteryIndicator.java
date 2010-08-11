@@ -32,6 +32,9 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -77,27 +80,29 @@ public class BatteryIndicator extends Activity {
         startService(biServiceIntent);
         bindService(biServiceIntent, biServiceConnection, 0);
 
-        Button button = (Button) findViewById(R.id.stop_service_b);
-        button.setOnClickListener(ssButtonListener);
+        Button button;
+        //Button button = (Button) findViewById(R.id.stop_service_b);
+        //button.setOnClickListener(ssButtonListener);
 
-        button = (Button) findViewById(R.id.hide_window_b);
-        button.setOnClickListener(hwButtonListener);
+        //button = (Button) findViewById(R.id.hide_window_b);
+        //button.setOnClickListener(hwButtonListener);
 
-        button = (Button) findViewById(R.id.more_info_b);
-        button.setOnClickListener(miButtonListener);
+        //button = (Button) findViewById(R.id.more_info_b);
+        //button.setOnClickListener(miButtonListener);
 
-        button = (Button) findViewById(R.id.battery_use_b);
-        if (getPackageManager().resolveActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY),0) == null) {
-            button.setEnabled(false);
-        } else {
-            button.setOnClickListener(buButtonListener);
-        }
+        /* TODO: do something like this to disable the menu item */
+        //button = (Button) findViewById(R.id.battery_use_b);
+        //if (getPackageManager().resolveActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY),0) == null) {
+        //    button.setEnabled(false);
+        //} else {
+        //    button.setOnClickListener(buButtonListener);
+        //}
 
         button = (Button) findViewById(R.id.toggle_lock_screen_b);
         button.setOnClickListener(tlsButtonListener);
 
-        button = (Button) findViewById(R.id.edit_settings_b);
-        button.setOnClickListener(esButtonListener);
+        //button = (Button) findViewById(R.id.edit_settings_b);
+        //button.setOnClickListener(esButtonListener);
 
         settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
@@ -124,6 +129,49 @@ public class BatteryIndicator extends Activity {
     protected void onPause() {
         super.onPause();
         unregisterReceiver(mBatteryInfoReceiver);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.menu_logs:
+            mStartActivity(LogViewActivity.class);
+            return true;
+        case R.id.menu_battery_use:
+            startActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY));
+            return true;
+        case R.id.menu_settings:
+            mStartActivity(SettingsActivity.class);
+            /* TODO: onActivityResult() should reload this page (probably just launch an intent)
+                 at least if the requestcode was for the settings activity. */
+            return true;
+        case R.id.menu_about:
+            mStartActivity(InfoActivity.class);
+            return true;
+        case R.id.menu_close:
+            /* TODO: confirm */
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("serviceDesired", false);
+            editor.commit();
+
+            finishActivity(1);
+            stopService(biServiceIntent);
+            finish();
+
+            return true;
+        case R.id.menu_help:
+            mStartActivity(InfoActivity.class);
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -218,7 +266,7 @@ public class BatteryIndicator extends Activity {
     };
 
     /* Battery Use */
-    private OnClickListener buButtonListener = new OnClickListener() {
+    /*private OnClickListener buButtonListener = new OnClickListener() {
         public void onClick(View v) {
             try {
                 startActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY));
@@ -228,7 +276,7 @@ public class BatteryIndicator extends Activity {
                 ((Button)findViewById(R.id.battery_use_b)).setEnabled(false);
             }
         }
-    };
+        };*/
 
     /* Toggle Lock Screen */
     private OnClickListener tlsButtonListener = new OnClickListener() {
@@ -256,6 +304,7 @@ public class BatteryIndicator extends Activity {
         }
     };
 
+    /* TODO: delete unnecessary onclicklisteners */
     /* Stop Service */
     private OnClickListener ssButtonListener = new OnClickListener() {
         public void onClick(View v) {
@@ -274,6 +323,13 @@ public class BatteryIndicator extends Activity {
             finish();
         }
     };
+
+    private void mStartActivity(Class c) {
+        ComponentName comp = new ComponentName(getPackageName(), c.getName());
+        //startActivity(new Intent().setComponent(comp));
+        startActivityForResult(new Intent().setComponent(comp), 1);
+        //finish();
+    }
 
     private class Str {
         public String discharging_from;

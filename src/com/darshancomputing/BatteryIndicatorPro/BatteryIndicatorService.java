@@ -135,7 +135,7 @@ public class BatteryIndicatorService extends Service {
             if (plugged == 0) status = 0;
 
             String statusStr = str.statuses[status];
-            if (status == 2) statusStr += str.pluggeds[plugged]; /* Add '(AC)' or '(USB)' if charging */
+            if (status == 2) statusStr += " " + str.pluggeds[plugged]; /* Add '(AC)' or '(USB)' if charging */
 
             String temp_s;
             if (settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false)){

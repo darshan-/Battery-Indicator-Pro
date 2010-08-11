@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.darshancomputing.BatteryIndicatorPro"
-          android:versionCode="18"
+          android:versionCode="19"
           android:versionName="3.0.0-dev">
 
   <application android:label="@string/app_full_name"
@@ -9,8 +9,8 @@
 
     <activity android:name=".BatteryIndicator"
               android:label="@string/app_launcher_name"
-              android:theme="@style/bi_Theme.Dialog"
-              android:launchMode="singleInstance"
+              android:theme="@style/bi_theme"
+              android:launchMode="singleTask"
 	      android:excludeFromRecents="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -20,27 +20,23 @@
 
     <activity android:name=".SettingsActivity"
               android:label="@string/settings_activity_name"
-              android:launchMode="singleInstance"
 	      android:excludeFromRecents="true">
     </activity>
 
     <activity android:name=".SettingsHelpActivity"
               android:label="@string/settings_help_activity_name"
               android:theme="@android:style/Theme.Light"
-              android:launchMode="singleInstance"
 	      android:excludeFromRecents="true">
     </activity>
 
     <activity android:name=".InfoActivity"
               android:label="@string/info_activity_name"
               android:theme="@android:style/Theme.Light"
-              android:launchMode="singleInstance"
 	      android:excludeFromRecents="true">
     </activity>
 
     <activity android:name=".LogViewActivity"
               android:label="@string/log_view_activity_name"
-              android:launchMode="singleInstance"
 	      android:excludeFromRecents="true">
     </activity>
 
@@ -63,6 +59,4 @@
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
   <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
   <uses-permission android:name="android.permission.WAKE_LOCK" />
-  <!-- Only used for debugging (traces written to sdcard) (TODO: remove before building release) -->
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>
