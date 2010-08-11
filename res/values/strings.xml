@@ -7,10 +7,10 @@
   <string name="info_activity_name">About Battery Indicator</string>
   <string name="log_view_activity_name">Battery Indicator Logs</string>
 
-  <string name="main_window_title">Battery Indicator is Active</string>
+  <string name="main_window_title">Battery Indicator Pro</string>
   <string name="about_b">About...</string>
   <string name="settings_b">Settings...</string>
-  <string name="battery_usage_b">View Battery Use</string>
+  <string name="battery_use_b">View Battery Use</string>
   <string name="reenable_lock_screen">Reenable Lock Screen</string>
   <string name="disable_lock_screen">Disable Lock Screen</string>
   <string name="close_battery_indicator">Close Battery Indicator</string>

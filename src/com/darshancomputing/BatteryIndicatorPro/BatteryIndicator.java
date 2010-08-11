@@ -91,12 +91,12 @@ public class BatteryIndicator extends Activity {
         //button.setOnClickListener(miButtonListener);
 
         /* TODO: do something like this to disable the menu item */
-        //button = (Button) findViewById(R.id.battery_use_b);
-        //if (getPackageManager().resolveActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY),0) == null) {
-        //    button.setEnabled(false);
-        //} else {
-        //    button.setOnClickListener(buButtonListener);
-        //}
+        button = (Button) findViewById(R.id.battery_use_b);
+        if (getPackageManager().resolveActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY),0) == null) {
+            button.setEnabled(false);
+        } else {
+            button.setOnClickListener(buButtonListener);
+        }
 
         button = (Button) findViewById(R.id.toggle_lock_screen_b);
         button.setOnClickListener(tlsButtonListener);
@@ -144,9 +144,9 @@ public class BatteryIndicator extends Activity {
         case R.id.menu_logs:
             mStartActivity(LogViewActivity.class);
             return true;
-        case R.id.menu_battery_use:
-            startActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY));
-            return true;
+        //case R.id.menu_battery_use:
+            //startActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY));
+            //return true;
         case R.id.menu_settings:
             mStartActivity(SettingsActivity.class);
             /* TODO: onActivityResult() should reload this page (probably just launch an intent)
@@ -266,17 +266,17 @@ public class BatteryIndicator extends Activity {
     };
 
     /* Battery Use */
-    /*private OnClickListener buButtonListener = new OnClickListener() {
+    private OnClickListener buButtonListener = new OnClickListener() {
         public void onClick(View v) {
             try {
                 startActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY));
-                finish();
+                //finish();
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), str.one_six_needed, Toast.LENGTH_SHORT).show();
                 ((Button)findViewById(R.id.battery_use_b)).setEnabled(false);
             }
         }
-        };*/
+    };
 
     /* Toggle Lock Screen */
     private OnClickListener tlsButtonListener = new OnClickListener() {
