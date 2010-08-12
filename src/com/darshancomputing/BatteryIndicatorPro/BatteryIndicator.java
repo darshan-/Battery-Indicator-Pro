@@ -39,6 +39,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -78,9 +79,7 @@ public class BatteryIndicator extends Activity {
         settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         theme = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
-        if (theme.equals("battery01")){
-            setTheme();
-        }
+        setTheme();
 
         str = new Str(getResources());
 
@@ -100,7 +99,7 @@ public class BatteryIndicator extends Activity {
 
         button = (Button) findViewById(R.id.battery_use_b);
         if (getPackageManager().resolveActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY),0) == null) {
-            button.setEnabled(false);
+            button.setEnabled(false); /* TODO: change how the disabled button looks */
         } else {
             button.setOnClickListener(buButtonListener);
         }
@@ -266,11 +265,14 @@ public class BatteryIndicator extends Activity {
 
         biServiceConnection.biService.reloadSettings();
 
+        /* TODO: Default behavior should be to leave window open, since most other things leave
+         it open now, but you should add an option to "Exit Immediately after manually dis/reenabling" */
         /* Now that I've decided to call finish() here, there's no need to call this anymore */
-        //updateLockscreenButton();
-        finish();
+        updateLockscreenButton();
+        //finish();
     }
 
+    /* TODO: get rid of most of these OnClickListeners, since most are no longer needed. */
     /* More Info (Now called "About") */
     private OnClickListener miButtonListener = new OnClickListener() {
         public void onClick(View v) {
@@ -346,14 +348,19 @@ public class BatteryIndicator extends Activity {
         //finish();
     }
 
+    /* TODO: Clean this up */
     private void setTheme() {
         if (theme.equals("battery01")){
-            getWindow().setBackgroundDrawableResource(R.drawable.bi_theme_bg);
+            //getWindow().setBackgroundDrawableResource(R.drawable.bi_theme_bg);
+            FrameLayout fl = (FrameLayout) findViewById(R.id.main_frame);
+            fl.setBackgroundResource(R.drawable.bi_theme_layers); /* TODO: move bi_theme_layers.xml to battery01_theme_bg */
 
             LinearLayout ll = (LinearLayout) findViewById(R.id.main_ll);
             ll.setPadding(ll.getPaddingLeft(), 14, ll.getPaddingRight(), ll.getPaddingBottom());
         } else {
-            getWindow().setBackgroundDrawableResource(R.drawable.panel_background);
+            //getWindow().setBackgroundDrawableResource(R.drawable.panel_background);
+            FrameLayout fl = (FrameLayout) findViewById(R.id.main_frame);
+            fl.setBackgroundResource(R.drawable.panel_background);
 
             LinearLayout ll = (LinearLayout) findViewById(R.id.main_ll);
             ll.setPadding(ll.getPaddingLeft(), 2, ll.getPaddingRight(), ll.getPaddingBottom());

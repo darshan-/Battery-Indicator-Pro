@@ -2,16 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.darshancomputing.BatteryIndicatorPro"
           android:versionCode="19"
-          android:versionName="3.0.0-dev">
-
+          android:versionName="3.0.0-dev"
+>
   <application android:label="@string/app_full_name"
-               android:icon="@drawable/battery">
-
+               android:icon="@drawable/battery"
+  >
     <activity android:name=".BatteryIndicator"
               android:label="@string/app_launcher_name"
               android:theme="@style/bi_theme"
               android:launchMode="singleTask"
-	      android:excludeFromRecents="true">
+	      android:excludeFromRecents="true"
+    >
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
@@ -20,25 +21,25 @@
 
     <activity android:name=".SettingsActivity"
               android:label="@string/settings_activity_name"
-	      android:excludeFromRecents="true">
-    </activity>
+	      android:excludeFromRecents="true"
+    />
 
     <activity android:name=".SettingsHelpActivity"
               android:label="@string/settings_help_activity_name"
               android:theme="@android:style/Theme.Light"
-	      android:excludeFromRecents="true">
-    </activity>
+	      android:excludeFromRecents="true"
+    />
 
     <activity android:name=".InfoActivity"
               android:label="@string/info_activity_name"
               android:theme="@android:style/Theme.Light"
-	      android:excludeFromRecents="true">
-    </activity>
+	      android:excludeFromRecents="true"
+    />
 
     <activity android:name=".LogViewActivity"
               android:label="@string/log_view_activity_name"
-	      android:excludeFromRecents="true">
-    </activity>
+	      android:excludeFromRecents="true"
+    />
 
     <service android:name=".BatteryIndicatorService" />
 
@@ -50,11 +51,11 @@
         <action android:name="android.intent.action.BOOT_COMPLETED" />
       </intent-filter>
     </receiver>
-
   </application>
 
   <uses-sdk android:minSdkVersion="3"
-            android:targetSdkVersion="4" />
+            android:targetSdkVersion="4"
+  />
 
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
   <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />

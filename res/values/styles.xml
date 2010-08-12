@@ -43,8 +43,9 @@
     <item name="android:lineSpacingMultiplier">1.1</item>
   </style>
 
-  <style name="bi_theme" parent="@android:style/Theme.Dialog">
+  <style name="bi_theme" parent="@android:style/Theme.Translucent">
     <item name="android:windowNoTitle">true</item>
+    <!--item name="android:windowBackground">@drawable/panel_background</item-->
     <!--item name="android:windowBackground">@drawable/bi_theme_bg</item-->
   </style>
 
