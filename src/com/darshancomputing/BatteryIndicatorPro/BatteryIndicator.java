@@ -388,18 +388,26 @@ public class BatteryIndicator extends Activity {
         main_layout.addView(main_frame);
 
         //LinearLayout main_content = (LinearLayout) findViewById(R.id.main_content);
+        TextView title = (TextView) findViewById(R.id.title_t);
+        TextView status_since = (TextView) findViewById(R.id.status_since_t);
 
         if (theme.equals("battery01")){
             main_frame.setBackgroundResource(R.drawable.bi_theme_layers); /* TODO: move bi_theme_layers.xml to battery01_theme_bg */
             setPaddingDp(main_content, 7, 10, 7, 7);
+            title.setTextSize(11*density);
+            status_since.setTextSize(8*density);
             //ll.setPadding((int) (7*density), (int) (12*density), (int) (7*density), (int) (7*density));
         } else if (theme.equals("full-dark")) {
             main_frame.setBackgroundColor(0xff111111);
-            setPaddingDp(main_content, 5, 5, 5, 5);
+            setPaddingDp(main_content, 7, 5, 5, 5);
             main_content.setMinimumWidth((int) (280 * density));
+            title.setTextSize(18*density);
+            status_since.setTextSize(10*density);
         } else {
             main_frame.setBackgroundResource(R.drawable.panel_background);
             setPaddingDp(main_content, 7, 2, 7, 7);
+            title.setTextSize(11*density);
+            status_since.setTextSize(8*density);
             //ll.setPadding((int) (7*density), (int) (2*density), (int) (7*density), (int) (7*density));
         }
     }
