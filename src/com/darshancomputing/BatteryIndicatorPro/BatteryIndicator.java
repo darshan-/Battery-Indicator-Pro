@@ -37,6 +37,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -303,49 +304,47 @@ public class BatteryIndicator extends Activity {
 
     /* TODO: Clean this up */
     private void setTheme() {
+        float density = metrics.density;
+        int[] themeValues;
+        int[] altThemeValues; /* Values that may vary based on screen orientation or size */
+
         LinearLayout main_frame = (LinearLayout) View.inflate(getApplicationContext(), R.layout.main_frame, null);
         LinearLayout main_content = (LinearLayout) View.inflate(getApplicationContext(), R.layout.main_content, null);
         LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
-        float density = metrics.density;
 
-        if (theme.equals("full-dark")) {
-            main_frame.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.FILL_PARENT,
-                                                                    FrameLayout.LayoutParams.FILL_PARENT));
-            main_content.setLayoutParams(new FrameLayout.LayoutParams((int) (280*density),
-                                                                      FrameLayout.LayoutParams.WRAP_CONTENT));
-            main_layout.setPadding(0, 0, 0, 0);
+        if (theme.equals("battery01")) {
+            themeValues = res.getIntArray(R.array.theme_battery01);
+            altThemeValues = res.getIntArray(R.array.alt_theme_battery01);
+        } else if (theme.equals("full-dark")) {
+            themeValues = res.getIntArray(R.array.theme_full_dark);
+            altThemeValues = res.getIntArray(R.array.alt_theme_full_dark);
         } else {
-            main_frame.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,
-                                                                    FrameLayout.LayoutParams.WRAP_CONTENT));
-            main_content.setLayoutParams(new FrameLayout.LayoutParams((int) (180*density),
-                                                                    FrameLayout.LayoutParams.WRAP_CONTENT));
-            setPaddingDp(main_layout, 0, res.getInteger(R.integer.floating_padding_top_dp),
-                                      0, res.getInteger(R.integer.floating_padding_bottom_dp));
+            themeValues = res.getIntArray(R.array.theme_default);
+            altThemeValues = res.getIntArray(R.array.alt_theme_default);
         }
+
+        main_frame.setLayoutParams(new LayoutParams(themeValues[0], themeValues[1]));
+        main_content.setLayoutParams(new LayoutParams((int) (themeValues[2]*density), themeValues[3]));
+        setPaddingDp(main_layout, 0, altThemeValues[0], 0, altThemeValues[1]);
 
         main_layout.removeAllViews();
         main_frame.addView(main_content);
+        /* TODO: add ScrollView if full size (for landscape) */
         main_layout.addView(main_frame);
 
-        //LinearLayout main_content = (LinearLayout) findViewById(R.id.main_content);
         TextView title = (TextView) findViewById(R.id.title_t);
         TextView status_since = (TextView) findViewById(R.id.status_since_t);
 
+        setPaddingDp(main_content, themeValues[4], themeValues[5], themeValues[6], themeValues[7]);
+        title.setTextSize(themeValues[8]*density);
+        status_since.setTextSize(themeValues[9]*density);
+
         if (theme.equals("battery01")){
             main_frame.setBackgroundResource(R.drawable.battery01_theme_bg);
-            setPaddingDp(main_content, 7, 10, 7, 7);
-            title.setTextSize(11*density);
-            status_since.setTextSize(8*density);
         } else if (theme.equals("full-dark")) {
             main_frame.setBackgroundColor(0xff111111);
-            setPaddingDp(main_content, 7, 5, 5, 5);
-            title.setTextSize(18*density);
-            status_since.setTextSize(10*density);
         } else {
             main_frame.setBackgroundResource(R.drawable.panel_background);
-            setPaddingDp(main_content, 7, 2, 7, 7);
-            title.setTextSize(11*density);
-            status_since.setTextSize(8*density);
         }
     }
 

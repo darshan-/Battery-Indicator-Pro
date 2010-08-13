@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <integer name="floating_padding_bottom_dp">125</integer>
-  <integer name="floating_padding_top_dp">0</integer>
+  <array name="alt_theme_default">
+    <item>0</item>   <!--main_layout_padding_top_dp-->
+    <item>125</item> <!--main_layout_padding_bottom_dp-->
+  </array>
+
+  <array name="alt_theme_battery01">
+    <item>0</item>   <!--main_layout_padding_top_dp-->
+    <item>125</item> <!--main_layout_padding_bottom_dp-->
+  </array>
 </resources>

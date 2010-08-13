@@ -46,17 +46,66 @@
   <style name="bi_theme" parent="@android:style/Theme.Translucent">
     <item name="android:windowNoTitle">true</item>
     <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
-    <!--item name="android:windowBackground">@drawable/panel_background</item-->
-    <!--item name="android:windowBackground">@drawable/bi_theme_bg</item-->
   </style>
-
-  <dimen name="main_padding_top">2dp</dimen>
-  <dimen name="main_padding_top_battery">12dp</dimen>
-
-  <integer name="floating_padding_bottom_dp">143</integer>
-  <integer name="floating_padding_top_dp">0</integer>
 
   <color name="light_usage">#A4C639</color>
   <color name="normal_usage">#E8D018</color>
   <color name="constant_usage">#DD6D1D</color>
+
+
+  <!-- For layout dimensions, fill_parent = -1 and wrap_content = -2 -->
+
+  <array name="alt_theme_default">
+    <item>0</item>   <!--main_layout_padding_top_dp-->
+    <item>143</item> <!--main_layout_padding_bottom_dp-->
+  </array>
+
+  <array name="theme_default">
+    <item>-2</item>  <!--main_frame_layout_width-->
+    <item>-2</item>  <!--main_frame_layout_height-->
+    <item>180</item> <!--main_content_layout_width-->
+    <item>-2</item>  <!--main_content_layout_height-->
+    <item>7</item>   <!--main_content_padding_left-->
+    <item>2</item>   <!--main_content_padding_top-->
+    <item>7</item>   <!--main_content_padding_right-->
+    <item>7</item>   <!--main_content_padding_bottom-->
+    <item>11</item>  <!--title_text_size-->
+    <item>8</item>   <!--small_text_size-->
+  </array>
+
+  <array name="alt_theme_battery01">
+    <item>0</item>   <!--main_layout_padding_top_dp-->
+    <item>143</item> <!--main_layout_padding_bottom_dp-->
+  </array>
+
+  <array name="theme_battery01">
+    <item>-2</item>  <!--main_frame_layout_width-->
+    <item>-2</item>  <!--main_frame_layout_height-->
+    <item>180</item> <!--main_content_layout_width-->
+    <item>-2</item>  <!--main_content_layout_height-->
+    <item>7</item>   <!--main_content_padding_left-->
+    <item>10</item>  <!--main_content_padding_top-->
+    <item>7</item>   <!--main_content_padding_right-->
+    <item>7</item>   <!--main_content_padding_bottom-->
+    <item>11</item>  <!--title_text_size-->
+    <item>8</item>   <!--small_text_size-->
+  </array>
+
+  <array name="alt_theme_full_dark">
+    <item>0</item>   <!--main_layout_padding_top_dp-->
+    <item>0</item>   <!--main_layout_padding_bottom_dp-->
+  </array>
+
+  <array name="theme_full_dark">
+    <item>-1</item>  <!--main_frame_layout_width-->
+    <item>-1</item>  <!--main_frame_layout_height-->
+    <item>280</item> <!--main_content_layout_width-->
+    <item>-2</item>  <!--main_content_layout_height-->
+    <item>7</item>   <!--main_content_padding_left-->
+    <item>5</item>   <!--main_content_padding_top-->
+    <item>5</item>   <!--main_content_padding_right-->
+    <item>5</item>   <!--main_content_padding_bottom-->
+    <item>18</item>  <!--title_text_size-->
+    <item>10</item>  <!--small_text_size-->
+  </array>
 </resources>
