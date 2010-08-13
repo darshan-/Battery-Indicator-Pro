@@ -51,7 +51,7 @@ public class BatteryIndicator extends Activity {
     private final BIServiceConnection biServiceConnection = new BIServiceConnection();
     private Resources res;
     private Str str;
-    private String theme;
+    private String themeName;
     private DisplayMetrics metrics;
 
     private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
@@ -85,7 +85,7 @@ public class BatteryIndicator extends Activity {
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        theme = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
+        themeName = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
         setTheme();
 
         str = new Str();
@@ -174,10 +174,10 @@ public class BatteryIndicator extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String old_theme = theme;
-        theme = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
+        String oldThemeName = themeName;
+        themeName = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
 
-        if (! old_theme.equals(theme)) {
+        if (! oldThemeName.equals(themeName)) {
             setTheme();
         }
     }
@@ -305,26 +305,24 @@ public class BatteryIndicator extends Activity {
     /* TODO: Clean this up */
     private void setTheme() {
         float density = metrics.density;
-        int[] themeValues;
         int[] altThemeValues; /* Values that may vary based on screen orientation or size */
 
         LinearLayout main_frame = (LinearLayout) View.inflate(getApplicationContext(), R.layout.main_frame, null);
         LinearLayout main_content = (LinearLayout) View.inflate(getApplicationContext(), R.layout.main_content, null);
         LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
 
-        if (theme.equals("battery01")) {
-            themeValues = res.getIntArray(R.array.theme_battery01);
+        MainWindowTheme.Theme theme = (new MainWindowTheme(themeName, metrics)).theme;
+
+        if (themeName.equals("battery01")) {
             altThemeValues = res.getIntArray(R.array.alt_theme_battery01);
-        } else if (theme.equals("full-dark")) {
-            themeValues = res.getIntArray(R.array.theme_full_dark);
+        } else if (themeName.equals("full-dark")) {
             altThemeValues = res.getIntArray(R.array.alt_theme_full_dark);
         } else {
-            themeValues = res.getIntArray(R.array.theme_default);
             altThemeValues = res.getIntArray(R.array.alt_theme_default);
         }
 
-        main_frame.setLayoutParams(new LayoutParams(themeValues[0], themeValues[1]));
-        main_content.setLayoutParams(new LayoutParams((int) (themeValues[2]*density), themeValues[3]));
+        main_frame.setLayoutParams(theme.mainFrameLayoutParams);
+        main_content.setLayoutParams(theme.mainContentLayoutParams);
         setPaddingDp(main_layout, 0, altThemeValues[0], 0, altThemeValues[1]);
 
         main_layout.removeAllViews();
@@ -335,13 +333,14 @@ public class BatteryIndicator extends Activity {
         TextView title = (TextView) findViewById(R.id.title_t);
         TextView status_since = (TextView) findViewById(R.id.status_since_t);
 
-        setPaddingDp(main_content, themeValues[4], themeValues[5], themeValues[6], themeValues[7]);
-        title.setTextSize(themeValues[8]*density);
-        status_since.setTextSize(themeValues[9]*density);
+        main_content.setPadding(theme.mainContentPaddingLeft, theme.mainContentPaddingTop,
+                                theme.mainContentPaddingRight, theme.mainContentPaddingBottom);
+        title.setTextSize(theme.titleTextSize);
+        status_since.setTextSize(theme.smallTextSize);
 
-        if (theme.equals("battery01")){
+        if (themeName.equals("battery01")){
             main_frame.setBackgroundResource(R.drawable.battery01_theme_bg);
-        } else if (theme.equals("full-dark")) {
+        } else if (themeName.equals("full-dark")) {
             main_frame.setBackgroundColor(0xff111111);
         } else {
             main_frame.setBackgroundResource(R.drawable.panel_background);

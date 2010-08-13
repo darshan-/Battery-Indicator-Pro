@@ -11,7 +11,6 @@
               android:gravity="center_horizontal"
               android:paddingBottom="2dp"
               android:textColor="#fff"
-	      android:textSize="16sp"
               android:text="@string/main_window_title"
         />
 
@@ -21,7 +20,6 @@
                   android:gravity="center_horizontal"
                   android:paddingBottom="5dp"
                   android:textColor="#A4C639"
-	          android:textSize="12sp"
         />
 
         <Button android:id="@+id/battery_use_b"
