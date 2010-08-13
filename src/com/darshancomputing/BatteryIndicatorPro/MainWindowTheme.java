@@ -14,19 +14,23 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup.LayoutParams;
 
 public class MainWindowTheme {
     private float density;
+    private Resources res;
+
     public Theme theme;
 
-    public MainWindowTheme(String themeName, DisplayMetrics metrics) {
+    public MainWindowTheme(String themeName, DisplayMetrics metrics, Resources r) {
         density = metrics.density;
+        res = r;
 
         if (themeName.equals("battery01")) {
             theme = new Battery01Theme();
-        } else if (themeNzame.equals("full-dark")) {
+        } else if (themeName.equals("full-dark")) {
             theme = new FullDarkTheme();
         } else {
             theme = new DefaultTheme();
@@ -41,6 +45,10 @@ public class MainWindowTheme {
         public int mainContentPaddingTop;
         public int mainContentPaddingRight;
         public int mainContentPaddingBottom;
+        public int mainLayoutPaddingLeft;
+        public int mainLayoutPaddingTop;
+        public int mainLayoutPaddingRight;
+        public int mainLayoutPaddingBottom;
         public float titleTextSize;
         public float smallTextSize;
     }
@@ -56,6 +64,13 @@ public class MainWindowTheme {
             mainContentPaddingBottom = (int) (7 * density);
             titleTextSize = 11 * density;
             smallTextSize = 8 * density;
+
+            int[] mainLayoutPadding = res.getIntArray(R.array.theme_default_main_layout_padding);
+
+            mainLayoutPaddingLeft = (int) (mainLayoutPadding[0] * density);
+            mainLayoutPaddingTop = (int) (mainLayoutPadding[1] * density);
+            mainLayoutPaddingRight = (int) (mainLayoutPadding[2] * density);
+            mainLayoutPaddingBottom = (int) (mainLayoutPadding[3] * density);
         }
     }
 
@@ -76,6 +91,11 @@ public class MainWindowTheme {
             mainContentPaddingBottom = (int) (5 * density);
             titleTextSize = 18 * density;
             smallTextSize = 10 * density;
+
+            mainLayoutPaddingLeft = 0;
+            mainLayoutPaddingTop = 0;
+            mainLayoutPaddingRight = 0;
+            mainLayoutPaddingBottom = 0;
         }
     }
 }

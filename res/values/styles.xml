@@ -53,59 +53,11 @@
   <color name="constant_usage">#DD6D1D</color>
 
 
-  <!-- For layout dimensions, fill_parent = -1 and wrap_content = -2 -->
-
-  <array name="alt_theme_default">
-    <item>0</item>   <!--main_layout_padding_top_dp-->
-    <item>143</item> <!--main_layout_padding_bottom_dp-->
-  </array>
-
-  <array name="theme_default">
-    <item>-2</item>  <!--main_frame_layout_width-->
-    <item>-2</item>  <!--main_frame_layout_height-->
-    <item>180</item> <!--main_content_layout_width-->
-    <item>-2</item>  <!--main_content_layout_height-->
-    <item>7</item>   <!--main_content_padding_left-->
-    <item>2</item>   <!--main_content_padding_top-->
-    <item>7</item>   <!--main_content_padding_right-->
-    <item>7</item>   <!--main_content_padding_bottom-->
-    <item>11</item>  <!--title_text_size-->
-    <item>8</item>   <!--small_text_size-->
-  </array>
-
-  <array name="alt_theme_battery01">
-    <item>0</item>   <!--main_layout_padding_top_dp-->
-    <item>143</item> <!--main_layout_padding_bottom_dp-->
-  </array>
-
-  <array name="theme_battery01">
-    <item>-2</item>  <!--main_frame_layout_width-->
-    <item>-2</item>  <!--main_frame_layout_height-->
-    <item>180</item> <!--main_content_layout_width-->
-    <item>-2</item>  <!--main_content_layout_height-->
-    <item>7</item>   <!--main_content_padding_left-->
-    <item>10</item>  <!--main_content_padding_top-->
-    <item>7</item>   <!--main_content_padding_right-->
-    <item>7</item>   <!--main_content_padding_bottom-->
-    <item>11</item>  <!--title_text_size-->
-    <item>8</item>   <!--small_text_size-->
-  </array>
-
-  <array name="alt_theme_full_dark">
-    <item>0</item>   <!--main_layout_padding_top_dp-->
-    <item>0</item>   <!--main_layout_padding_bottom_dp-->
-  </array>
-
-  <array name="theme_full_dark">
-    <item>-1</item>  <!--main_frame_layout_width-->
-    <item>-1</item>  <!--main_frame_layout_height-->
-    <item>280</item> <!--main_content_layout_width-->
-    <item>-2</item>  <!--main_content_layout_height-->
-    <item>7</item>   <!--main_content_padding_left-->
-    <item>5</item>   <!--main_content_padding_top-->
-    <item>5</item>   <!--main_content_padding_right-->
-    <item>5</item>   <!--main_content_padding_bottom-->
-    <item>18</item>  <!--title_text_size-->
-    <item>10</item>  <!--small_text_size-->
+  <!-- Left, Top, Right, Bottom, just like setPadding() -->
+  <array name="theme_default_main_layout_padding">
+    <item>0</item>
+    <item>0</item>
+    <item>0</item>
+    <item>143</item>
   </array>
 </resources>

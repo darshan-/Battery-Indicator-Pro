@@ -304,26 +304,16 @@ public class BatteryIndicator extends Activity {
 
     /* TODO: Clean this up */
     private void setTheme() {
-        float density = metrics.density;
-        int[] altThemeValues; /* Values that may vary based on screen orientation or size */
-
         LinearLayout main_frame = (LinearLayout) View.inflate(getApplicationContext(), R.layout.main_frame, null);
         LinearLayout main_content = (LinearLayout) View.inflate(getApplicationContext(), R.layout.main_content, null);
         LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
 
-        MainWindowTheme.Theme theme = (new MainWindowTheme(themeName, metrics)).theme;
-
-        if (themeName.equals("battery01")) {
-            altThemeValues = res.getIntArray(R.array.alt_theme_battery01);
-        } else if (themeName.equals("full-dark")) {
-            altThemeValues = res.getIntArray(R.array.alt_theme_full_dark);
-        } else {
-            altThemeValues = res.getIntArray(R.array.alt_theme_default);
-        }
+        MainWindowTheme.Theme theme = (new MainWindowTheme(themeName, metrics, res)).theme;
 
         main_frame.setLayoutParams(theme.mainFrameLayoutParams);
         main_content.setLayoutParams(theme.mainContentLayoutParams);
-        setPaddingDp(main_layout, 0, altThemeValues[0], 0, altThemeValues[1]);
+        main_layout.setPadding(theme.mainLayoutPaddingLeft, theme.mainLayoutPaddingTop,
+                                theme.mainLayoutPaddingRight, theme.mainLayoutPaddingBottom);
 
         main_layout.removeAllViews();
         main_frame.addView(main_content);
@@ -345,11 +335,6 @@ public class BatteryIndicator extends Activity {
         } else {
             main_frame.setBackgroundResource(R.drawable.panel_background);
         }
-    }
-
-    private void setPaddingDp(View view, int left, int top, int right, int bottom) {
-        float density = metrics.density;
-        view.setPadding((int) (left*density), (int) (top*density), (int) (right*density), (int) (bottom*density));
     }
 
     private class Str {

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <array name="alt_theme_default">
-    <item>5</item> <!--main_layout_padding_top_dp-->
-    <item>0</item> <!--main_layout_padding_bottom_dp-->
-  </array>
-
-  <array name="alt_theme_battery01">
-    <item>5</item> <!--main_layout_padding_top_dp-->
-    <item>0</item> <!--main_layout_padding_bottom_dp-->
+  <!-- Left, Top, Right, Bottom, just like setPadding() -->
+  <array name="theme_default_main_layout_padding">
+    <item>0</item>
+    <item>5</item>
+    <item>0</item>
+    <item>0</item>
   </array>
 </resources>
