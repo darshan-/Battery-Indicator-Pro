@@ -4,9 +4,10 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
   >
-    <!--ScrollView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-    -->
+    <LinearLayout android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:gravity="center_horizontal|top"
+    >
       <LinearLayout android:id="@+id/main_ll"
                     android:orientation="vertical"
                     android:paddingTop="@dimen/main_padding_top"
@@ -136,5 +137,5 @@
               android:layout_height="2dp"
         />
       </LinearLayout>
-    <!--/ScrollView-->
+    </LinearLayout>
   </FrameLayout>

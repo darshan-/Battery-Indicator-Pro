@@ -32,6 +32,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -48,8 +49,10 @@ public class BatteryIndicator extends Activity {
     private Intent biServiceIntent;
     private SharedPreferences settings;
     private final BIServiceConnection biServiceConnection = new BIServiceConnection();
+    private Resources res;
     private Str str;
     private String theme;
+    private DisplayMetrics metrics;
 
     private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
 
@@ -57,7 +60,7 @@ public class BatteryIndicator extends Activity {
     private final Runnable mUpdateStatus = new Runnable() {
         public void run() {
             updateStatus();
-            updateLockscreenButton();
+            //updateLockscreenButton(); /* TODO: Do I need this here?  I don't think so... */
         }
     };
 
@@ -75,13 +78,20 @@ public class BatteryIndicator extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
+        /* 
+           Instead of <include>-ing main_frame, use View.inflate() to inflate it,
+           set it's layoutParams, then add it to main... ??
+         */
         settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        res = getResources();
+        metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
         theme = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
         setTheme();
 
-        str = new Str(getResources());
+        str = new Str();
 
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         startService(biServiceIntent);
@@ -350,19 +360,34 @@ public class BatteryIndicator extends Activity {
 
     /* TODO: Clean this up */
     private void setTheme() {
-        if (theme.equals("battery01")){
-            //getWindow().setBackgroundDrawableResource(R.drawable.bi_theme_bg);
-            FrameLayout fl = (FrameLayout) findViewById(R.id.main_frame);
-            fl.setBackgroundResource(R.drawable.bi_theme_layers); /* TODO: move bi_theme_layers.xml to battery01_theme_bg */
+        //FrameLayout fl = (FrameLayout) findViewById(R.id.main_frame);
+        FrameLayout main_frame = (FrameLayout) View.inflate(getApplicationContext(), R.layout.main_frame, null);
+        //main_frame.setLayoutParams(new FrameLayout.LayoutParams(400,600));
+        LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
 
-            LinearLayout ll = (LinearLayout) findViewById(R.id.main_ll);
-            ll.setPadding(ll.getPaddingLeft(), 14, ll.getPaddingRight(), ll.getPaddingBottom());
+        if (theme.equals("full-dark")) {
+            main_frame.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.FILL_PARENT,
+                                                                    FrameLayout.LayoutParams.FILL_PARENT));
+            main_layout.setPadding(0, 0, 0, 0);
         } else {
-            //getWindow().setBackgroundDrawableResource(R.drawable.panel_background);
-            FrameLayout fl = (FrameLayout) findViewById(R.id.main_frame);
-            fl.setBackgroundResource(R.drawable.panel_background);
+            main_frame.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,
+                                                                    FrameLayout.LayoutParams.WRAP_CONTENT));
+            main_layout.setPadding(0, (int) (res.getInteger(R.integer.floating_padding_top_dp)*metrics.density),
+                                   0, (int) (res.getInteger(R.integer.floating_padding_bottom_dp)*metrics.density));
+        }
 
-            LinearLayout ll = (LinearLayout) findViewById(R.id.main_ll);
+        main_layout.removeAllViews();
+        main_layout.addView(main_frame);
+
+        LinearLayout ll = (LinearLayout) findViewById(R.id.main_ll);
+
+        if (theme.equals("battery01")){
+            main_frame.setBackgroundResource(R.drawable.bi_theme_layers); /* TODO: move bi_theme_layers.xml to battery01_theme_bg */
+            ll.setPadding(ll.getPaddingLeft(), 14, ll.getPaddingRight(), ll.getPaddingBottom());
+        } else if (theme.equals("full-dark")) {
+            main_frame.setBackgroundColor(0xff111111);
+        } else {
+            main_frame.setBackgroundResource(R.drawable.panel_background);
             ll.setPadding(ll.getPaddingLeft(), 2, ll.getPaddingRight(), ll.getPaddingBottom());
         }
     }
@@ -380,18 +405,18 @@ public class BatteryIndicator extends Activity {
         public String yes;
         public String cancel;
 
-        public Str(Resources  r) {
-            discharging_from     = r.getString(R.string.discharging_from);
-            charging_from        = r.getString(R.string.charging_from);
-            fully_charged        = r.getString(R.string.fully_charged);
-            percent_symbol       = r.getString(R.string.percent_symbol);
-            reenable_lock_screen = r.getString(R.string.reenable_lock_screen);
-            disable_lock_screen  = r.getString(R.string.disable_lock_screen);
-            one_six_needed       = r.getString(R.string.one_six_needed);
-            confirm_disable      = r.getString(R.string.confirm_disable);
-            confirm_disable_hint = r.getString(R.string.confirm_disable_hint);
-            yes                  = r.getString(R.string.yes);
-            cancel               = r.getString(R.string.cancel);
+        public Str() {
+            discharging_from     = res.getString(R.string.discharging_from);
+            charging_from        = res.getString(R.string.charging_from);
+            fully_charged        = res.getString(R.string.fully_charged);
+            percent_symbol       = res.getString(R.string.percent_symbol);
+            reenable_lock_screen = res.getString(R.string.reenable_lock_screen);
+            disable_lock_screen  = res.getString(R.string.disable_lock_screen);
+            one_six_needed       = res.getString(R.string.one_six_needed);
+            confirm_disable      = res.getString(R.string.confirm_disable);
+            confirm_disable_hint = res.getString(R.string.confirm_disable_hint);
+            yes                  = res.getString(R.string.yes);
+            cancel               = res.getString(R.string.cancel);
         }
     }
 }

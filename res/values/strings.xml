@@ -23,7 +23,7 @@
   <string name="yes">Yes</string>
   <string name="cancel">Cancel</string>
 
-  <string name="menu_logs">View Logs</string>
+  <string name="menu_logs">Logs</string>
   <string name="menu_battery_use">Battery Use</string>
   <string name="menu_settings">Settings</string>
   <string name="menu_about">About</string>
@@ -291,12 +291,14 @@
   </string>
 
   <string-array name="mw_theme_pref_entries">
-    <item>Default</item>
-    <item>Battery</item>
+    <item>Default (Dialog)</item>
+    <item>Colorful Battery</item>
+    <item>Normal App (Dark)</item>
   </string-array>
   <string-array name="mw_theme_pref_values">
     <item>default</item>
     <item>battery01</item>
+    <item>full-dark</item>
   </string-array>
 
   <string-array name="boot_pref_entries">
