@@ -22,7 +22,6 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
-//import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -60,7 +59,7 @@ public class BatteryIndicator extends Activity {
     private final Runnable mUpdateStatus = new Runnable() {
         public void run() {
             updateStatus();
-            //updateLockscreenButton(); /* TODO: Do I need this here?  I don't think so... */
+            //updateLockscreenButton();
         }
     };
 
@@ -78,10 +77,7 @@ public class BatteryIndicator extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        /* 
-           Instead of <include>-ing main_frame, use View.inflate() to inflate it,
-           set it's layoutParams, then add it to main... ??
-         */
+
         settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         res = getResources();
@@ -97,17 +93,7 @@ public class BatteryIndicator extends Activity {
         startService(biServiceIntent);
         bindService(biServiceIntent, biServiceConnection, 0);
 
-        Button button;
-        //Button button = (Button) findViewById(R.id.stop_service_b);
-        //button.setOnClickListener(ssButtonListener);
-
-        //button = (Button) findViewById(R.id.hide_window_b);
-        //button.setOnClickListener(hwButtonListener);
-
-        //button = (Button) findViewById(R.id.more_info_b);
-        //button.setOnClickListener(miButtonListener);
-
-        button = (Button) findViewById(R.id.battery_use_b);
+        Button button = (Button) findViewById(R.id.battery_use_b);
         if (getPackageManager().resolveActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY),0) == null) {
             button.setEnabled(false); /* TODO: change how the disabled button looks */
         } else {
@@ -116,9 +102,6 @@ public class BatteryIndicator extends Activity {
 
         button = (Button) findViewById(R.id.toggle_lock_screen_b);
         button.setOnClickListener(tlsButtonListener);
-
-        //button = (Button) findViewById(R.id.edit_settings_b);
-        //button.setOnClickListener(esButtonListener);
 
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("serviceDesired", true);
@@ -277,20 +260,9 @@ public class BatteryIndicator extends Activity {
 
         /* TODO: Default behavior should be to leave window open, since most other things leave
          it open now, but you should add an option to "Exit Immediately after manually dis/reenabling" */
-        /* Now that I've decided to call finish() here, there's no need to call this anymore */
         updateLockscreenButton();
         //finish();
     }
-
-    /* TODO: get rid of most of these OnClickListeners, since most are no longer needed. */
-    /* More Info (Now called "About") */
-    private OnClickListener miButtonListener = new OnClickListener() {
-        public void onClick(View v) {
-            ComponentName comp = new ComponentName(getPackageName(), InfoActivity.class.getName());
-            startActivity(new Intent().setComponent(comp));
-            finish();
-        }
-    };
 
     /* Battery Use */
     private OnClickListener buButtonListener = new OnClickListener() {
@@ -322,35 +294,6 @@ public class BatteryIndicator extends Activity {
         }
     };
 
-    /* Edit Settings */
-    private OnClickListener esButtonListener = new OnClickListener() {
-        public void onClick(View v) {
-            ComponentName comp = new ComponentName(getPackageName(), SettingsActivity.class.getName());
-            startActivity(new Intent().setComponent(comp));
-            finish();
-        }
-    };
-
-    /* TODO: delete unnecessary onclicklisteners */
-    /* Stop Service */
-    private OnClickListener ssButtonListener = new OnClickListener() {
-        public void onClick(View v) {
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putBoolean("serviceDesired", false);
-            editor.commit();
-
-            stopService(biServiceIntent);
-            finish();
-        }
-    };
-
-    /* Hide Window */
-    private OnClickListener hwButtonListener = new OnClickListener() {
-        public void onClick(View v) {
-            finish();
-        }
-    };
-
     private void mStartActivity(Class c) {
         ComponentName comp = new ComponentName(getPackageName(), c.getName());
         //startActivity(new Intent().setComponent(comp));
@@ -360,7 +303,6 @@ public class BatteryIndicator extends Activity {
 
     /* TODO: Clean this up */
     private void setTheme() {
-        //FrameLayout main_frame = (FrameLayout) View.inflate(getApplicationContext(), R.layout.main_frame, null);
         LinearLayout main_frame = (LinearLayout) View.inflate(getApplicationContext(), R.layout.main_frame, null);
         LinearLayout main_content = (LinearLayout) View.inflate(getApplicationContext(), R.layout.main_content, null);
         LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
@@ -379,8 +321,6 @@ public class BatteryIndicator extends Activity {
                                                                     FrameLayout.LayoutParams.WRAP_CONTENT));
             setPaddingDp(main_layout, 0, res.getInteger(R.integer.floating_padding_top_dp),
                                       0, res.getInteger(R.integer.floating_padding_bottom_dp));
-            //main_layout.setPadding(0, (int) (res.getInteger(R.integer.floating_padding_top_dp)*density),
-            //                       0, (int) (res.getInteger(R.integer.floating_padding_bottom_dp)*density));
         }
 
         main_layout.removeAllViews();
@@ -392,15 +332,13 @@ public class BatteryIndicator extends Activity {
         TextView status_since = (TextView) findViewById(R.id.status_since_t);
 
         if (theme.equals("battery01")){
-            main_frame.setBackgroundResource(R.drawable.bi_theme_layers); /* TODO: move bi_theme_layers.xml to battery01_theme_bg */
+            main_frame.setBackgroundResource(R.drawable.battery01_theme_bg);
             setPaddingDp(main_content, 7, 10, 7, 7);
             title.setTextSize(11*density);
             status_since.setTextSize(8*density);
-            //ll.setPadding((int) (7*density), (int) (12*density), (int) (7*density), (int) (7*density));
         } else if (theme.equals("full-dark")) {
             main_frame.setBackgroundColor(0xff111111);
             setPaddingDp(main_content, 7, 5, 5, 5);
-            main_content.setMinimumWidth((int) (280 * density));
             title.setTextSize(18*density);
             status_since.setTextSize(10*density);
         } else {
@@ -408,7 +346,6 @@ public class BatteryIndicator extends Activity {
             setPaddingDp(main_content, 7, 2, 7, 7);
             title.setTextSize(11*density);
             status_since.setTextSize(8*density);
-            //ll.setPadding((int) (7*density), (int) (2*density), (int) (7*density), (int) (7*density));
         }
     }
 

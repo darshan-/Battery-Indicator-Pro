@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<inset
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:drawable="@drawable/bi_theme_layers"
-    android:insetTop="0dp"
-    android:insetBottom="40dp"
-    android:insetRight="0dp"
-    android:insetLeft="0dp"
-/>
