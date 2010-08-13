@@ -360,36 +360,53 @@ public class BatteryIndicator extends Activity {
 
     /* TODO: Clean this up */
     private void setTheme() {
-        //FrameLayout fl = (FrameLayout) findViewById(R.id.main_frame);
-        FrameLayout main_frame = (FrameLayout) View.inflate(getApplicationContext(), R.layout.main_frame, null);
-        //main_frame.setLayoutParams(new FrameLayout.LayoutParams(400,600));
+        //FrameLayout main_frame = (FrameLayout) View.inflate(getApplicationContext(), R.layout.main_frame, null);
+        LinearLayout main_frame = (LinearLayout) View.inflate(getApplicationContext(), R.layout.main_frame, null);
+        LinearLayout main_content = (LinearLayout) View.inflate(getApplicationContext(), R.layout.main_content, null);
         LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
+        float density = metrics.density;
 
         if (theme.equals("full-dark")) {
             main_frame.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.FILL_PARENT,
                                                                     FrameLayout.LayoutParams.FILL_PARENT));
+            main_content.setLayoutParams(new FrameLayout.LayoutParams((int) (280*density),
+                                                                      FrameLayout.LayoutParams.WRAP_CONTENT));
             main_layout.setPadding(0, 0, 0, 0);
         } else {
             main_frame.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,
                                                                     FrameLayout.LayoutParams.WRAP_CONTENT));
-            main_layout.setPadding(0, (int) (res.getInteger(R.integer.floating_padding_top_dp)*metrics.density),
-                                   0, (int) (res.getInteger(R.integer.floating_padding_bottom_dp)*metrics.density));
+            main_content.setLayoutParams(new FrameLayout.LayoutParams((int) (180*density),
+                                                                    FrameLayout.LayoutParams.WRAP_CONTENT));
+            setPaddingDp(main_layout, 0, res.getInteger(R.integer.floating_padding_top_dp),
+                                      0, res.getInteger(R.integer.floating_padding_bottom_dp));
+            //main_layout.setPadding(0, (int) (res.getInteger(R.integer.floating_padding_top_dp)*density),
+            //                       0, (int) (res.getInteger(R.integer.floating_padding_bottom_dp)*density));
         }
 
         main_layout.removeAllViews();
+        main_frame.addView(main_content);
         main_layout.addView(main_frame);
 
-        LinearLayout ll = (LinearLayout) findViewById(R.id.main_ll);
+        //LinearLayout main_content = (LinearLayout) findViewById(R.id.main_content);
 
         if (theme.equals("battery01")){
             main_frame.setBackgroundResource(R.drawable.bi_theme_layers); /* TODO: move bi_theme_layers.xml to battery01_theme_bg */
-            ll.setPadding(ll.getPaddingLeft(), 14, ll.getPaddingRight(), ll.getPaddingBottom());
+            setPaddingDp(main_content, 7, 10, 7, 7);
+            //ll.setPadding((int) (7*density), (int) (12*density), (int) (7*density), (int) (7*density));
         } else if (theme.equals("full-dark")) {
             main_frame.setBackgroundColor(0xff111111);
+            setPaddingDp(main_content, 5, 5, 5, 5);
+            main_content.setMinimumWidth((int) (280 * density));
         } else {
             main_frame.setBackgroundResource(R.drawable.panel_background);
-            ll.setPadding(ll.getPaddingLeft(), 2, ll.getPaddingRight(), ll.getPaddingBottom());
+            setPaddingDp(main_content, 7, 2, 7, 7);
+            //ll.setPadding((int) (7*density), (int) (2*density), (int) (7*density), (int) (7*density));
         }
+    }
+
+    private void setPaddingDp(View view, int left, int top, int right, int bottom) {
+        float density = metrics.density;
+        view.setPadding((int) (left*density), (int) (top*density), (int) (right*density), (int) (bottom*density));
     }
 
     private class Str {

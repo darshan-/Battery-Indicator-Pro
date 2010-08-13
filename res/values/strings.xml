@@ -293,7 +293,7 @@
   <string-array name="mw_theme_pref_entries">
     <item>Default (Dialog)</item>
     <item>Colorful Battery</item>
-    <item>Normal App (Dark)</item>
+    <item>Full Size (Dark)</item>
   </string-array>
   <string-array name="mw_theme_pref_values">
     <item>default</item>
