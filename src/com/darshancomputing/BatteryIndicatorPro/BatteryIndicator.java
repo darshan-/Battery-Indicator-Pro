@@ -301,53 +301,21 @@ public class BatteryIndicator extends Activity {
     }
 
     private void setTheme() {
-        LinearLayout main_frame = (LinearLayout) View.inflate(context, R.layout.main_frame, null);
-        LinearLayout main_content = (LinearLayout) View.inflate(context, R.layout.main_content, null); /* TODO: can I move main_content and main_frame back into just one main.xml file (or at least content back into frame, since main.xml does change based on orientation) and use View.findViewById rather than another inflate? */
-        LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
-
         MainWindowTheme.Theme theme = (new MainWindowTheme(themeName, metrics, res)).theme;
 
-        main_content.setLayoutParams(theme.mainContentLayoutParams);
+        LinearLayout main_frame = (LinearLayout) View.inflate(context, theme.mainFrameLayout, null);
+        LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
+
         main_frame.setLayoutParams(theme.mainFrameLayoutParams);
         main_layout.setPadding(theme.mainLayoutPaddingLeft, theme.mainLayoutPaddingTop,
-                                theme.mainLayoutPaddingRight, theme.mainLayoutPaddingBottom);
-
-        battery_use_b = new Button(context);
-        battery_use_b.setLayoutParams(theme.buttonLayoutParams);
-        battery_use_b.setText(str.battery_use_b);
-        battery_use_b.setTextSize(theme.buttonTextSize);
-        main_content.addView(battery_use_b, 2);
-
-        View view = new View(context);
-        view.setLayoutParams(theme.buttonSeparatorLayoutParams);
-        main_content.addView(view, 3);
-
-        toggle_lock_screen_b = new Button(context);
-        toggle_lock_screen_b.setLayoutParams(theme.buttonLayoutParams);
-        toggle_lock_screen_b.setTextSize(theme.buttonTextSize);
-        main_content.addView(toggle_lock_screen_b, 4);
+                               theme.mainLayoutPaddingRight, theme.mainLayoutPaddingBottom);
 
         main_layout.removeAllViews();
-        main_frame.addView(main_content);
-        /* TODO: add ScrollView if full size (for landscape) */
+        /* TODO: add ScrollView if full size (for landscape) -- no, do it in layout-land/main_frame_full_dark.xml */
         main_layout.addView(main_frame);
 
-        TextView tv = (TextView) findViewById(R.id.title_t);
-        tv.setTextSize(theme.titleTextSize);
-
-        tv = (TextView) findViewById(R.id.status_since_t);
-        tv.setTextSize(theme.normalTextSize);
-
-        main_content.setPadding(theme.mainContentPaddingLeft, theme.mainContentPaddingTop,
-                                theme.mainContentPaddingRight, theme.mainContentPaddingBottom);
-        
-        if (themeName.equals("battery01")){
-            main_frame.setBackgroundResource(R.drawable.battery01_theme_bg);
-        } else if (themeName.equals("full-dark")) { /* TODO: Can I use a color resource?  If not, just make simple shape drawable; would be nice to add this to theme */;
-            main_frame.setBackgroundColor(0xff111111);
-        } else {
-            main_frame.setBackgroundResource(R.drawable.panel_background);
-        }
+        battery_use_b = (Button) main_frame.findViewById(R.id.battery_use_b);
+        toggle_lock_screen_b = (Button) main_frame.findViewById(R.id.toggle_lock_screen_b);
 
         bindButtons();
     }

@@ -16,7 +16,6 @@ package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.ViewGroup.LayoutParams;
 
 public class MainWindowTheme {
@@ -39,42 +38,21 @@ public class MainWindowTheme {
     }
 
     public abstract class Theme {
-        public LayoutParams mainFrameLayoutParams;
-        public LayoutParams mainContentLayoutParams;
-        public LayoutParams buttonLayoutParams;
-        public LayoutParams buttonSeparatorLayoutParams;
+        public int mainFrameLayout;
 
-        public int mainContentPaddingLeft;
-        public int mainContentPaddingTop;
-        public int mainContentPaddingRight;
-        public int mainContentPaddingBottom;
+        public LayoutParams mainFrameLayoutParams;
+
         public int mainLayoutPaddingLeft;
         public int mainLayoutPaddingTop;
         public int mainLayoutPaddingRight;
         public int mainLayoutPaddingBottom;
-        public float titleTextSize;
-        public float normalTextSize;
-        public float buttonTextSize;
-        public int buttonGravity = Gravity.CENTER_HORIZONTAL;
     }
 
     private class DefaultTheme extends Theme {
         public DefaultTheme() {
+            mainFrameLayout = R.layout.main_frame_default;
+
             mainFrameLayoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-            mainContentLayoutParams = new LayoutParams((int) (180*density), LayoutParams.WRAP_CONTENT);
-            buttonLayoutParams = new LayoutParams(LayoutParams.FILL_PARENT, (int) (43 * density));
-            buttonSeparatorLayoutParams = new LayoutParams(LayoutParams.FILL_PARENT, (int) (3 * density));
-            //timeRemainingLabelLayoutParams;
-            //timeRemainingTimeLayoutParams;
-
-            mainContentPaddingLeft = (int) (7 * density);
-            mainContentPaddingTop = (int) (2 * density);
-            mainContentPaddingRight = (int) (7 * density);
-            mainContentPaddingBottom = (int) (7 * density);
-
-            titleTextSize = 16;
-            normalTextSize = 12;
-            buttonTextSize = 14;
 
             int[] mainLayoutPadding = res.getIntArray(R.array.theme_default_main_layout_padding);
 
@@ -87,25 +65,15 @@ public class MainWindowTheme {
 
     private class Battery01Theme extends DefaultTheme {
         public Battery01Theme() {
-            mainContentPaddingTop = (int) (10 * density);
+            mainFrameLayout = R.layout.main_frame_battery01;
         }
     }
 
     private class FullDarkTheme extends Theme {
         public FullDarkTheme() {
+            mainFrameLayout = R.layout.main_frame_full_dark;
+
             mainFrameLayoutParams = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
-            mainContentLayoutParams = new LayoutParams((int) (280 * density), LayoutParams.WRAP_CONTENT);
-            buttonLayoutParams = new LayoutParams(LayoutParams.FILL_PARENT, (int) (55 * density));
-            buttonSeparatorLayoutParams = new LayoutParams(LayoutParams.FILL_PARENT, (int) (6 * density));
-
-            mainContentPaddingLeft = (int) (7 * density);
-            mainContentPaddingTop = (int) (5 * density);
-            mainContentPaddingRight = (int) (5 * density);
-            mainContentPaddingBottom = (int) (5 * density);
-
-            titleTextSize = 28;
-            normalTextSize = 18;
-            buttonTextSize = 20;
 
             mainLayoutPaddingLeft = 0;
             mainLayoutPaddingTop = 0;
