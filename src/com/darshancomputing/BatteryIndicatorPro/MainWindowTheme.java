@@ -64,11 +64,14 @@ public class MainWindowTheme {
             mainContentLayoutParams = new LayoutParams((int) (180*density), LayoutParams.WRAP_CONTENT);
             buttonLayoutParams = new LayoutParams(LayoutParams.FILL_PARENT, (int) (43 * density));
             buttonSeparatorLayoutParams = new LayoutParams(LayoutParams.FILL_PARENT, (int) (3 * density));
+            //timeRemainingLabelLayoutParams;
+            //timeRemainingTimeLayoutParams;
 
             mainContentPaddingLeft = (int) (7 * density);
             mainContentPaddingTop = (int) (2 * density);
             mainContentPaddingRight = (int) (7 * density);
             mainContentPaddingBottom = (int) (7 * density);
+
             titleTextSize = 16;
             normalTextSize = 12;
             buttonTextSize = 14;
@@ -99,6 +102,7 @@ public class MainWindowTheme {
             mainContentPaddingTop = (int) (5 * density);
             mainContentPaddingRight = (int) (5 * density);
             mainContentPaddingBottom = (int) (5 * density);
+
             titleTextSize = 28;
             normalTextSize = 18;
             buttonTextSize = 20;

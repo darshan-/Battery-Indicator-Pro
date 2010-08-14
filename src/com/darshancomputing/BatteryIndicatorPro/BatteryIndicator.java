@@ -50,8 +50,10 @@ public class BatteryIndicator extends Activity {
     private SharedPreferences settings;
     private final BIServiceConnection biServiceConnection = new BIServiceConnection();
     private Resources res;
+    private Context context;
     private Str str;
     private String themeName;
+    private Intent batteryUseIntent;
     private DisplayMetrics metrics;
     private Button battery_use_b;
     private Button toggle_lock_screen_b;
@@ -62,7 +64,7 @@ public class BatteryIndicator extends Activity {
     private final Runnable mUpdateStatus = new Runnable() {
         public void run() {
             updateStatus();
-            //updateLockscreenButton();
+            updateLockscreenButton();
         }
     };
 
@@ -83,10 +85,12 @@ public class BatteryIndicator extends Activity {
 
         res = getResources();
         str = new Str();
+        context = getApplicationContext();
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY);
 
-        settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        settings = PreferenceManager.getDefaultSharedPreferences(context);
 
         themeName = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
         setTheme();
@@ -133,9 +137,6 @@ public class BatteryIndicator extends Activity {
         case R.id.menu_logs:
             mStartActivity(LogViewActivity.class);
             return true;
-        //case R.id.menu_battery_use:
-            //startActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY));
-            //return true;
         case R.id.menu_settings:
             mStartActivity(SettingsActivity.class);
             /* TODO: onActivityResult() should reload this page (probably just launch an intent)
@@ -258,10 +259,10 @@ public class BatteryIndicator extends Activity {
     private OnClickListener buButtonListener = new OnClickListener() {
         public void onClick(View v) {
             try {
-                startActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY));
+                startActivity(batteryUseIntent);
                 //finish();
             } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), str.one_six_needed, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, str.one_six_needed, Toast.LENGTH_SHORT).show();
                 battery_use_b.setEnabled(false);
             }
         }
@@ -290,7 +291,7 @@ public class BatteryIndicator extends Activity {
     }
 
     private void bindButtons() {
-        if (getPackageManager().resolveActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY),0) == null) {
+        if (getPackageManager().resolveActivity(batteryUseIntent,0) == null) {
             battery_use_b.setEnabled(false); /* TODO: change how the disabled button looks */
         } else {
             battery_use_b.setOnClickListener(buButtonListener);
@@ -300,8 +301,6 @@ public class BatteryIndicator extends Activity {
     }
 
     private void setTheme() {
-        Context context = getApplicationContext();
-
         LinearLayout main_frame = (LinearLayout) View.inflate(context, R.layout.main_frame, null);
         LinearLayout main_content = (LinearLayout) View.inflate(context, R.layout.main_content, null); /* TODO: can I move main_content and main_frame back into just one main.xml file (or at least content back into frame, since main.xml does change based on orientation) and use View.findViewById rather than another inflate? */
         LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
