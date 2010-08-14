@@ -22,22 +22,22 @@
                   android:textColor="#A4C639"
         />
 
-        <Button android:id="@+id/battery_use_b"
+        <!--Button android:id="@+id/battery_use_b"
                 android:layout_height="43dp"
 	        android:layout_width="fill_parent"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/battery_use_b"
-        />
+        /-->
 
-        <View android:layout_width="fill_parent"
+        <!--View android:layout_width="fill_parent"
               android:layout_height="2dp"
-        />
+        /-->
 
-        <Button android:id="@+id/toggle_lock_screen_b"
+        <!--Button android:id="@+id/toggle_lock_screen_b"
                 android:layout_height="43dp"
 	        android:layout_width="fill_parent"
                 android:layout_gravity="center_horizontal"
-        />
+        /-->
 
         <LinearLayout android:layout_width="fill_parent"
                       android:layout_height="wrap_content"

@@ -53,6 +53,8 @@ public class BatteryIndicator extends Activity {
     private Str str;
     private String themeName;
     private DisplayMetrics metrics;
+    private Button battery_use_b;
+    private Button toggle_lock_screen_b;
 
     private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
 
@@ -79,30 +81,19 @@ public class BatteryIndicator extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
         res = getResources();
+        str = new Str();
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+        settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         themeName = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
         setTheme();
 
-        str = new Str();
-
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         startService(biServiceIntent);
         bindService(biServiceIntent, biServiceConnection, 0);
-
-        Button button = (Button) findViewById(R.id.battery_use_b);
-        if (getPackageManager().resolveActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY),0) == null) {
-            button.setEnabled(false); /* TODO: change how the disabled button looks */
-        } else {
-            button.setOnClickListener(buButtonListener);
-        }
-
-        button = (Button) findViewById(R.id.toggle_lock_screen_b);
-        button.setOnClickListener(tlsButtonListener);
 
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("serviceDesired", true);
@@ -244,12 +235,10 @@ public class BatteryIndicator extends Activity {
     }
 
     private void updateLockscreenButton() {
-        Button button = (Button) findViewById(R.id.toggle_lock_screen_b);
-
         if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
-            button.setText(str.reenable_lock_screen);
+            toggle_lock_screen_b.setText(str.reenable_lock_screen);
         else
-            button.setText(str.disable_lock_screen);
+            toggle_lock_screen_b.setText(str.disable_lock_screen);
     }
 
     private void setDisableLocking(boolean b) {
@@ -273,7 +262,7 @@ public class BatteryIndicator extends Activity {
                 //finish();
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), str.one_six_needed, Toast.LENGTH_SHORT).show();
-                ((Button)findViewById(R.id.battery_use_b)).setEnabled(false);
+                battery_use_b.setEnabled(false);
             }
         }
     };
@@ -281,8 +270,6 @@ public class BatteryIndicator extends Activity {
     /* Toggle Lock Screen */
     private OnClickListener tlsButtonListener = new OnClickListener() {
         public void onClick(View v) {
-            Button button = (Button) findViewById(R.id.toggle_lock_screen_b);
-
             if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false)) {
                 setDisableLocking(false);
             } else {
@@ -302,39 +289,68 @@ public class BatteryIndicator extends Activity {
         //finish();
     }
 
-    /* TODO: Clean this up */
+    private void bindButtons() {
+        if (getPackageManager().resolveActivity(new Intent(Intent.ACTION_POWER_USAGE_SUMMARY),0) == null) {
+            battery_use_b.setEnabled(false); /* TODO: change how the disabled button looks */
+        } else {
+            battery_use_b.setOnClickListener(buButtonListener);
+        }
+
+        toggle_lock_screen_b.setOnClickListener(tlsButtonListener);
+    }
+
     private void setTheme() {
-        LinearLayout main_frame = (LinearLayout) View.inflate(getApplicationContext(), R.layout.main_frame, null);
-        LinearLayout main_content = (LinearLayout) View.inflate(getApplicationContext(), R.layout.main_content, null);
+        Context context = getApplicationContext();
+
+        LinearLayout main_frame = (LinearLayout) View.inflate(context, R.layout.main_frame, null);
+        LinearLayout main_content = (LinearLayout) View.inflate(context, R.layout.main_content, null); /* TODO: can I move main_content and main_frame back into just one main.xml file (or at least content back into frame, since main.xml does change based on orientation) and use View.findViewById rather than another inflate? */
         LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
 
         MainWindowTheme.Theme theme = (new MainWindowTheme(themeName, metrics, res)).theme;
 
-        main_frame.setLayoutParams(theme.mainFrameLayoutParams);
         main_content.setLayoutParams(theme.mainContentLayoutParams);
+        main_frame.setLayoutParams(theme.mainFrameLayoutParams);
         main_layout.setPadding(theme.mainLayoutPaddingLeft, theme.mainLayoutPaddingTop,
                                 theme.mainLayoutPaddingRight, theme.mainLayoutPaddingBottom);
+
+        battery_use_b = new Button(context);
+        battery_use_b.setLayoutParams(theme.buttonLayoutParams);
+        battery_use_b.setText(str.battery_use_b);
+        battery_use_b.setTextSize(theme.buttonTextSize);
+        main_content.addView(battery_use_b, 2);
+
+        View view = new View(context);
+        view.setLayoutParams(theme.buttonSeparatorLayoutParams);
+        main_content.addView(view, 3);
+
+        toggle_lock_screen_b = new Button(context);
+        toggle_lock_screen_b.setLayoutParams(theme.buttonLayoutParams);
+        toggle_lock_screen_b.setTextSize(theme.buttonTextSize);
+        main_content.addView(toggle_lock_screen_b, 4);
 
         main_layout.removeAllViews();
         main_frame.addView(main_content);
         /* TODO: add ScrollView if full size (for landscape) */
         main_layout.addView(main_frame);
 
-        TextView title = (TextView) findViewById(R.id.title_t);
-        TextView status_since = (TextView) findViewById(R.id.status_since_t);
+        TextView tv = (TextView) findViewById(R.id.title_t);
+        tv.setTextSize(theme.titleTextSize);
+
+        tv = (TextView) findViewById(R.id.status_since_t);
+        tv.setTextSize(theme.normalTextSize);
 
         main_content.setPadding(theme.mainContentPaddingLeft, theme.mainContentPaddingTop,
                                 theme.mainContentPaddingRight, theme.mainContentPaddingBottom);
-        title.setTextSize(theme.titleTextSize);
-        status_since.setTextSize(theme.smallTextSize);
-
+        
         if (themeName.equals("battery01")){
             main_frame.setBackgroundResource(R.drawable.battery01_theme_bg);
-        } else if (themeName.equals("full-dark")) {
+        } else if (themeName.equals("full-dark")) { /* TODO: Can I use a color resource?  If not, just make simple shape drawable; would be nice to add this to theme */;
             main_frame.setBackgroundColor(0xff111111);
         } else {
             main_frame.setBackgroundResource(R.drawable.panel_background);
         }
+
+        bindButtons();
     }
 
     private class Str {
@@ -349,6 +365,7 @@ public class BatteryIndicator extends Activity {
         public String confirm_disable_hint;
         public String yes;
         public String cancel;
+        public String battery_use_b;
 
         public Str() {
             discharging_from     = res.getString(R.string.discharging_from);
@@ -362,6 +379,7 @@ public class BatteryIndicator extends Activity {
             confirm_disable_hint = res.getString(R.string.confirm_disable_hint);
             yes                  = res.getString(R.string.yes);
             cancel               = res.getString(R.string.cancel);
+            battery_use_b        = res.getString(R.string.battery_use_b);
         }
     }
 }

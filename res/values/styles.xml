@@ -60,4 +60,7 @@
     <item>0</item>
     <item>143</item>
   </array>
+
+  <!--item type="id" name="battery_use_b" />
+  <item type="id" name="toggle_lock_screen_b" /-->
 </resources>
