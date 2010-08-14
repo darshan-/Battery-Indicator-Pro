@@ -40,8 +40,6 @@ public class MainWindowTheme {
     public abstract class Theme {
         public int mainFrameLayout;
 
-        public LayoutParams mainFrameLayoutParams;
-
         public int mainLayoutPaddingLeft;
         public int mainLayoutPaddingTop;
         public int mainLayoutPaddingRight;
@@ -51,8 +49,6 @@ public class MainWindowTheme {
     private class DefaultTheme extends Theme {
         public DefaultTheme() {
             mainFrameLayout = R.layout.main_frame_default;
-
-            mainFrameLayoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
             int[] mainLayoutPadding = res.getIntArray(R.array.theme_default_main_layout_padding);
 
@@ -72,8 +68,6 @@ public class MainWindowTheme {
     private class FullDarkTheme extends Theme {
         public FullDarkTheme() {
             mainFrameLayout = R.layout.main_frame_full_dark;
-
-            mainFrameLayoutParams = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
 
             mainLayoutPaddingLeft = 0;
             mainLayoutPaddingTop = 0;

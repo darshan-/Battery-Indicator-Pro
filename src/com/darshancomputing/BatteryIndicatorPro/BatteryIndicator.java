@@ -303,16 +303,14 @@ public class BatteryIndicator extends Activity {
     private void setTheme() {
         MainWindowTheme.Theme theme = (new MainWindowTheme(themeName, metrics, res)).theme;
 
-        LinearLayout main_frame = (LinearLayout) View.inflate(context, theme.mainFrameLayout, null);
         LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
+        main_layout.removeAllViews();
+        LinearLayout main_frame = (LinearLayout) View.inflate(context, theme.mainFrameLayout, main_layout);
 
-        main_frame.setLayoutParams(theme.mainFrameLayoutParams);
         main_layout.setPadding(theme.mainLayoutPaddingLeft, theme.mainLayoutPaddingTop,
                                theme.mainLayoutPaddingRight, theme.mainLayoutPaddingBottom);
 
-        main_layout.removeAllViews();
         /* TODO: add ScrollView if full size (for landscape) -- no, do it in layout-land/main_frame_full_dark.xml */
-        main_layout.addView(main_frame);
 
         battery_use_b = (Button) main_frame.findViewById(R.id.battery_use_b);
         toggle_lock_screen_b = (Button) main_frame.findViewById(R.id.toggle_lock_screen_b);

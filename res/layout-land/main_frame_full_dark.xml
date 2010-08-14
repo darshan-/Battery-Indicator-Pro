@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/main_frame"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:background="@drawable/panel_background"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fadingEdge="none"
 >
+  <LinearLayout android:id="@+id/main_frame"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center_horizontal|top"
+                android:background="#111"
+  >
       <LinearLayout android:id="@+id/main_content"
                     android:orientation="vertical"
-                    android:layout_width="180dp"
+                    android:layout_width="280dp"
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
-                    android:paddingTop="0dp"
+                    android:paddingTop="5dp"
                     android:paddingRight="5dp"
                     android:paddingBottom="5dp"
       >
@@ -20,7 +25,7 @@
                   android:gravity="center_horizontal"
                   android:paddingBottom="2dp"
                   android:textColor="#fff"
-                  android:textSize="16sp"
+                  android:textSize="28sp"
                   android:text="@string/main_window_title"
         />
 
@@ -28,45 +33,48 @@
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:gravity="center_horizontal"
-                  android:paddingBottom="5dp"
+                  android:paddingBottom="10dp"
                   android:textColor="#A4C639"
-                  android:textSize="12sp"
+                  android:textSize="18sp"
         />
 
         <Button android:id="@+id/battery_use_b"
-                android:layout_height="43dp"
+                android:layout_height="55dp"
 	        android:layout_width="fill_parent"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/battery_use_b"
+                android:textSize="20sp"
         />
 
         <View android:layout_width="fill_parent"
-              android:layout_height="3dp"
+              android:layout_height="6dp"
         />
 
         <Button android:id="@+id/toggle_lock_screen_b"
-                android:layout_height="43dp"
+                android:layout_height="55dp"
 	        android:layout_width="fill_parent"
                 android:layout_gravity="center_horizontal"
+                android:textSize="20sp"
         />
 
         <LinearLayout android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       android:gravity="center_horizontal"
+                      android:paddingTop="10dp"
                       android:paddingBottom="2dp"
         >
-          <TextView android:layout_width="100dp"
+          <TextView android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:textColor="@color/light_usage"
-	            android:textSize="12sp"
+	            android:textSize="18sp"
                     android:text="Light Usage:"
           />
-          <TextView android:layout_width="58dp"
+          <TextView android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:textColor="@color/light_usage"
-	            android:textSize="12sp"
+	            android:textSize="18sp"
                     android:text="27:42h"
           />
         </LinearLayout>
@@ -76,18 +84,18 @@
                       android:gravity="center_horizontal"
                       android:paddingBottom="2dp"
         >
-          <TextView android:layout_width="100dp"
+          <TextView android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:textColor="@color/normal_usage"
-	            android:textSize="12sp"
+	            android:textSize="18sp"
                     android:text="Normal Usage:"
           />
-          <TextView android:layout_width="58dp"
+          <TextView android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:textColor="@color/normal_usage"
-	            android:textSize="12sp"
+	            android:textSize="18sp"
                     android:text="12:17h"
           />
         </LinearLayout>
@@ -95,20 +103,20 @@
         <LinearLayout android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       android:gravity="center_horizontal"
-                      android:paddingBottom="5dp"
+                      android:paddingBottom="10dp"
         >
-          <TextView android:layout_width="100dp"
+          <TextView android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:textColor="@color/constant_usage"
-	            android:textSize="12sp"
+	            android:textSize="18sp"
                     android:text="Constant Usage:"
           />
-          <TextView android:layout_width="58dp"
+          <TextView android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:textColor="@color/constant_usage"
-	            android:textSize="12sp"
+	            android:textSize="18sp"
                     android:text="3:31h"
           />
         </LinearLayout>
@@ -118,7 +126,7 @@
                   android:paddingLeft="4dp"
                   android:paddingBottom="3dp"
                   android:textColor="#FFF"
-                  android:textSize="12sp"
+                  android:textSize="18sp"
                   android:text="Press BACK to leave."
         />
 
@@ -126,7 +134,7 @@
                   android:layout_height="wrap_content"
                   android:paddingLeft="4dp"
                   android:textColor="#FFF"
-                  android:textSize="12sp"
+                  android:textSize="18sp"
                   android:text="Press MENU for more items."
         />
 
@@ -134,5 +142,5 @@
               android:layout_height="2dp"
         />
       </LinearLayout>
-
-</LinearLayout>
+  </LinearLayout>
+</ScrollView>
