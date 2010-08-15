@@ -293,13 +293,13 @@
   </string>
 
   <string-array name="mw_theme_pref_entries">
-    <item>Default (Dialog)</item>
-    <item>Colorful Battery</item>
+    <item>Default Small</item>
+    <item>Colorful Small</item>
     <item>Full Window</item>
   </string-array>
   <string-array name="mw_theme_pref_values">
     <item>default</item>
-    <item>battery01</item>
+    <item>colorful</item>
     <item>full-dark</item>
   </string-array>
 

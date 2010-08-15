@@ -310,8 +310,6 @@ public class BatteryIndicator extends Activity {
         main_layout.setPadding(theme.mainLayoutPaddingLeft, theme.mainLayoutPaddingTop,
                                theme.mainLayoutPaddingRight, theme.mainLayoutPaddingBottom);
 
-        /* TODO: add ScrollView if full size (for landscape) -- no, do it in layout-land/main_frame_full_dark.xml */
-
         battery_use_b = (Button) main_frame.findViewById(R.id.battery_use_b);
         toggle_lock_screen_b = (Button) main_frame.findViewById(R.id.toggle_lock_screen_b);
 

@@ -28,8 +28,8 @@ public class MainWindowTheme {
         density = metrics.density;
         res = r;
 
-        if (themeName.equals("battery01")) {
-            theme = new Battery01Theme();
+        if (themeName.equals("colorful")) {
+            theme = new ColorfulTheme();
         } else if (themeName.equals("full-dark")) {
             theme = new FullDarkTheme();
         } else {
@@ -59,9 +59,9 @@ public class MainWindowTheme {
         }
     }
 
-    private class Battery01Theme extends DefaultTheme {
-        public Battery01Theme() {
-            mainFrameLayout = R.layout.main_frame_battery01;
+    private class ColorfulTheme extends DefaultTheme {
+        public ColorfulTheme() {
+            mainFrameLayout = R.layout.main_frame_colorful;
         }
     }
 

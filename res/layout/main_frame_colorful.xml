@@ -4,7 +4,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:gravity="center_horizontal|top"
-              android:background="@drawable/battery01_theme_bg"
+              android:background="@drawable/colorful_theme_bg"
 >
       <LinearLayout android:id="@+id/main_content"
                     android:orientation="vertical"
@@ -90,6 +90,27 @@
                     android:textColor="@color/normal_usage"
 	            android:textSize="12sp"
                     android:text="12:17h"
+          />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center_horizontal"
+                      android:paddingBottom="2dp"
+        >
+          <TextView android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:textColor="@color/normal_usage"
+	            android:textSize="12sp"
+                    android:text="Heavy Usage:"
+          />
+          <TextView android:layout_width="58dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:textColor="@color/normal_usage"
+	            android:textSize="12sp"
+                    android:text="6:17h"
           />
         </LinearLayout>
 
