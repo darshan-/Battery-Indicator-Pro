@@ -37,7 +37,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_CONFIRM_DISABLE_LOCKING = "confirm_disable_lock_screen";
     public static final String KEY_AUTO_DISABLE_LOCKING = "auto_disable_lock_screen";
-    public static final String KEY_LOG_SCREEN = "log_screen";
+    public static final String KEY_ENABLE_LOGGING = "enable_logging";
+    public static final String KEY_LOG_EVERYTHING = "log_everything";
     public static final String KEY_MW_THEME = "main_window_theme";
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
     public static final String KEY_AUTOSTART = "autostart";
@@ -143,6 +144,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         validateColorPrefs(null);
 
         updateConvertFSummary();
+        updateLogEverythingEnabledness();
 
         updateListPrefSummary(KEY_AUTOSTART);
         updateListPrefSummary(KEY_MW_THEME);
@@ -181,17 +183,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         }
     }
 
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference.getKey().equals(KEY_LOG_SCREEN)) {
-            ComponentName comp = new ComponentName(getPackageName(), LogViewActivity.class.getName());
-            startActivity(new Intent().setComponent(comp));
-
-            return false; // I'm guessing that returning false prevents Android from trying to process this...
-        }
-
-        return true;
-    }
-
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
 
@@ -214,6 +205,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             key.equals(KEY_GREEN) || key.equals(KEY_GREEN_THRESH)) {
             validateColorPrefs(key);
         }
+
+        if (key.equals(KEY_ENABLE_LOGGING)) updateLogEverythingEnabledness();
 
         if (key.equals(KEY_CONVERT_F)) {
             updateConvertFSummary();
@@ -244,6 +237,13 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         pref.setSummary(getResources().getString(R.string.currently_using) + " " +
                         (mSharedPreferences.getBoolean(KEY_CONVERT_F, false) ?
                          getResources().getString(R.string.fahrenheit) : getResources().getString(R.string.celsius)));
+    }
+
+    private void updateLogEverythingEnabledness() {
+        if (mSharedPreferences.getBoolean(KEY_ENABLE_LOGGING, false))
+            mPreferenceScreen.findPreference(KEY_LOG_EVERYTHING).setEnabled(true);
+        else
+            mPreferenceScreen.findPreference(KEY_LOG_EVERYTHING).setEnabled(false);
     }
 
     private void updateListPrefSummary(String key) {

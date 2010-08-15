@@ -1,4 +1,10 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <Preference
+     android:title="@string/pref_hint"
+     android:layout="@layout/hint_pref"
+     android:enabled="false"
+  />
+
   <PreferenceCategory android:title="@string/pref_cat_themes">
     <ListPreference
        android:key="main_window_theme"
@@ -17,9 +23,12 @@
        android:defaultValue="false"
     />
 
-    <PreferenceScreen
-       android:key="log_screen"
-       android:title="@string/pref_view_logs"
+    <CheckBoxPreference
+       android:key="log_everything"
+       android:title="@string/pref_log_everything"
+       android:summary="@string/pref_log_everything_summary"
+       android:defaultValue="false"
+       android:enabled="false"
     />
   </PreferenceCategory>
 

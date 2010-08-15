@@ -2,19 +2,15 @@
 <resources>
   <string name="app_full_name">Battery Indicator Pro</string>
   <string name="app_launcher_name">Battery Indicator</string>
-  <string name="settings_activity_name">Battery Indicator Settings</string>
-  <string name="settings_help_activity_name">Battery Indicator Settings Help</string>
-  <string name="info_activity_name">About Battery Indicator</string>
-  <string name="log_view_activity_name">Battery Indicator Logs</string>
+  <string name="settings_activity_name">Battery Indicator Pro - Settings</string>
+  <string name="settings_help_activity_name">Battery Indicator Pro - Settings - Help</string>
+  <string name="info_activity_name">About Battery Indicator Pro</string>
+  <string name="log_view_activity_name">Battery Indicator Pro - Logs</string>
 
   <string name="main_window_title">Battery Indicator Pro</string>
-  <string name="about_b">About...</string>
-  <string name="settings_b">Settings...</string>
   <string name="battery_use_b">View Battery Use</string>
   <string name="reenable_lock_screen">Reenable Lock Screen</string>
   <string name="disable_lock_screen">Disable Lock Screen</string>
-  <string name="close_battery_indicator">Close Battery Indicator</string>
-  <string name="hide_this_window">Hide This Window</string>
 
   <string name="confirm_disable">Really disable lock screen?</string>
   <string name="confirm_disable_hint">
@@ -140,13 +136,15 @@
     please email me at <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>.
   </string>
 
+  <string name="pref_hint"><b>Hint:</b> Press MENU for help.</string>
+
   <string name="pref_cat_themes">Themes</string>
   <string name="pref_main_window_theme">Main Window Theme</string>
   <string name="pref_main_window_theme_help">
-    Sets the theme for the main window.  Applying a theme other than
-    the default may make the main window start slightly slower on
-    older devices, but it won\'t slow the service down or use any
-    extra battery.
+    Sets the theme for the main window.  By default, the theme will
+    roughly match a standard Android dialog, like Battery Indicator
+    always has.  The Full Window theme is useful if you like things
+    big and easy to read.  Other themes are just for fun.
   </string>
 
   <string name="pref_cat_logging">Logging</string>
@@ -156,10 +154,14 @@
     If enabled, Battery Indicator will log battery state changes
     (e.g., the phone is unplugged or becomes fully charged).
   </string>
-  <string name="pref_view_logs">View Logs...</string>
-  <string name="pref_view_logs_help">
-    This isn\'t a setting; just select (press) this to access the logs
-    that have been collected.
+  <string name="pref_log_everything">Log Everything</string>
+  <string name="pref_log_everything_summary">Log charge changes, too?</string>
+  <string name="pref_log_everything_help">
+    If enabled, Battery Indicator will also log every change in the
+    charge level, as well (e.g., going from 57% to 56% or vice versa).
+    Most users probably have no need for this, but you can turn it on
+    if you really want to keep an eye on things.  Keep in mind that
+    doing so will come with a slight performance hit.
   </string>
 
   <string name="pref_cat_keyguard">Lock Screen / Keyguard</string>
@@ -223,7 +225,7 @@
     12 hours.
   </string>
 
-  <string name="pref_cat_color">Color</string>
+  <string name="pref_cat_color">Icon Color</string>
   <string name="pref_cat_color_help">
     In order to keep the binary package for Battery Indicator
     reasonably small, there are some limitations for the colors.  At

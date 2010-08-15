@@ -11,7 +11,7 @@
     <item name="android:paddingTop">2dp</item>
     <item name="android:paddingBottom">2dp</item>
     <item name="android:gravity">center_horizontal</item>
-    <item name="android:background">#A4C639</item>
+    <item name="android:background">@color/android_green</item>
     <item name="android:textColor">#111</item>
     <item name="android:textSize">16sp</item>
     <item name="android:textStyle">bold</item>
@@ -49,7 +49,9 @@
     <!--item name="android:windowAnimationStyle">@android:style/Animation.Activity</item-->
   </style>
 
-  <color name="light_usage">#A4C639</color>
+  <color name="android_green">#A4C639</color>
+
+  <color name="light_usage">@color/android_green</color>
   <color name="normal_usage">#E8D018</color>
   <color name="constant_usage">#DD6D1D</color>
 
