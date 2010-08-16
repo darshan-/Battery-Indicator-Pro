@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
   <item android:left="0dp"
-        android:top="8dp"
+        android:top="0dp"
         android:right="0dp"
         android:bottom="0dp"
         android:drawable="@drawable/drop_shadow_bg"
   />
   <item android:left="1dp"
-        android:top="9dp"
+        android:top="1dp"
         android:right="1dp"
         android:bottom="1dp"
         android:drawable="@drawable/colorful_theme_border2"
   />
   <item android:left="1dp"
-        android:top="9dp"
+        android:top="1dp"
         android:right="1dp"
         android:bottom="1dp"
         android:drawable="@drawable/colorful_theme_border"
   />
   <item android:left="3dp"
-        android:top="11dp"
+        android:top="3dp"
         android:right="3dp"
         android:bottom="3dp"
         android:drawable="@drawable/colorful_theme_inner_bg"

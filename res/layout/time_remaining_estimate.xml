@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:paddingBottom="2dp"
+>
+  <TextView android:id="@+id/label"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+	    android:textSize="12sp"
+  />
+  <TextView android:id="@+id/time"
+            android:layout_width="58dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+	    android:textSize="12sp"
+  />
+</LinearLayout>

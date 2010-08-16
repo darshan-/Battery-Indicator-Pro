@@ -310,6 +310,49 @@ public class BatteryIndicator extends Activity {
         main_layout.setPadding(theme.mainLayoutPaddingLeft, theme.mainLayoutPaddingTop,
                                theme.mainLayoutPaddingRight, theme.mainLayoutPaddingBottom);
 
+        LinearLayout ll;
+        TextView label, time;
+
+        ll = (LinearLayout) findViewById(R.id.time_til_charged);
+        if (ll != null) {
+            label = (TextView) ll.findViewById(R.id.label);
+            time = (TextView) ll.findViewById(R.id.time);
+            label.setText("Fully Charged in:");
+            time.setText("1:27h");
+        }
+
+        ll = (LinearLayout) findViewById(R.id.light_usage);
+        if (ll != null) {
+            label = (TextView) ll.findViewById(R.id.label);
+            time = (TextView) ll.findViewById(R.id.time);
+            label.setText("Light Usage:");
+            time.setText("48:33h");
+        }
+
+        ll = (LinearLayout) findViewById(R.id.normal_usage);
+        if (ll != null) {
+            label = (TextView) ll.findViewById(R.id.label);
+            time = (TextView) ll.findViewById(R.id.time);
+            label.setText("Normal Usage:");
+            time.setText("12:17h");
+        }
+
+        ll = (LinearLayout) findViewById(R.id.heavy_usage);
+        if (ll != null) {
+            label = (TextView) ll.findViewById(R.id.label);
+            time = (TextView) ll.findViewById(R.id.time);
+            label.setText("Heavy Usage:");
+            time.setText("6:17h");
+        }
+
+        ll = (LinearLayout) findViewById(R.id.constant_usage);
+        if (ll != null) {
+            label = (TextView) ll.findViewById(R.id.label);
+            time = (TextView) ll.findViewById(R.id.time);
+            label.setText("Constant Usage:");
+            time.setText("3:31h");
+        }
+
         battery_use_b = (Button) main_frame.findViewById(R.id.battery_use_b);
         toggle_lock_screen_b = (Button) main_frame.findViewById(R.id.toggle_lock_screen_b);
 
