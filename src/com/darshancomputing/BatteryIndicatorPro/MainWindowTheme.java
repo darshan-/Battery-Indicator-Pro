@@ -15,6 +15,7 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.res.Resources;
+import android.content.SharedPreferences;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup.LayoutParams;
 
@@ -44,6 +45,24 @@ public class MainWindowTheme {
         public int mainLayoutPaddingTop;
         public int mainLayoutPaddingRight;
         public int mainLayoutPaddingBottom;
+
+        public int[] timeRemainingIds = {R.id.time_til_charged, R.id.light_usage, R.id.normal_usage,
+                                         R.id.heavy_usage, R.id.constant_usage};
+        public int[] timeRemainingStrings = {R.string.fully_charged_in, R.string.light_usage, R.string.normal_usage,
+                                             R.string.heavy_usage, R.string.constant_usage};
+        public int[] timeRemainingColors = {R.color.time_til_charged, R.color.light_usage, R.color.normal_usage,
+                                             R.color.heavy_usage, R.color.constant_usage};
+
+        public boolean timeRemainingVisible(int index, SharedPreferences settings) {
+            int last_status = settings.getInt("last_status", 0);
+
+            if (index == 0) {
+                if (last_status == 2) return true; /* TODO: update to use Service's constants */
+                else return false;
+            } else {
+                return true;
+            }
+        }
     }
 
     private class DefaultTheme extends Theme {

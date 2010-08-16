@@ -3,23 +3,21 @@
               android:id="@+id/main_frame"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:gravity="center_horizontal|top"
               android:background="@drawable/colorful_theme_bg"
 >
       <LinearLayout android:id="@+id/main_content"
                     android:orientation="vertical"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="2dp"
-                    android:paddingRight="5dp"
-                    android:paddingBottom="5dp"
+                    android:paddingLeft="7dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="7dp"
       >
         <TextView android:id="@+id/title_t"
 	          android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:gravity="center_horizontal"
-                  android:paddingBottom="2dp"
                   android:textColor="#fff"
                   android:textSize="16sp"
                   android:text="@string/main_window_title"
@@ -34,10 +32,12 @@
                   android:textSize="12sp"
         />
 
-        <include layout="@layout/time_remaining_estimate"
+        <include layout="@layout/time_remaining_estimate_small"
                  android:id="@+id/time_til_charged"
-                 android:paddingBottom="5dp"
-                 android:textColor="#ccc"
+        />
+
+        <View android:layout_width="fill_parent"
+              android:layout_height="2dp"
         />
 
         <Button android:id="@+id/battery_use_b"
@@ -57,28 +57,20 @@
                 android:layout_gravity="center_horizontal"
         />
 
-        <include layout="@layout/time_remaining_estimate"
+        <include layout="@layout/time_remaining_estimate_small"
                  android:id="@+id/light_usage"
-                 android:paddingBottom="5dp"
-                 android:textColor="@color/light_usage"
         />
 
-        <include layout="@layout/time_remaining_estimate"
+        <include layout="@layout/time_remaining_estimate_small"
                  android:id="@+id/normal_usage"
-                 android:paddingBottom="5dp"
-                 android:textColor="@color/normal_usage"
         />
 
-        <include layout="@layout/time_remaining_estimate"
+        <include layout="@layout/time_remaining_estimate_small"
                  android:id="@+id/heavy_usage"
-                 android:paddingBottom="5dp"
-                 android:textColor="@color/normal_usage"
         />
 
-        <include layout="@layout/time_remaining_estimate"
+        <include layout="@layout/time_remaining_estimate_small"
                  android:id="@+id/constant_usage"
-                 android:paddingBottom="5dp"
-                 android:textColor="@color/constant_usage"
         />
 
         <TextView android:layout_width="fill_parent"
@@ -87,7 +79,7 @@
                   android:paddingBottom="3dp"
                   android:textColor="#FFF"
                   android:textSize="12sp"
-                  android:text="Press BACK to leave."
+                  android:text="@string/press_back_to_leave"
         />
 
         <TextView android:layout_width="fill_parent"
@@ -95,12 +87,11 @@
                   android:paddingLeft="4dp"
                   android:textColor="#FFF"
                   android:textSize="12sp"
-                  android:text="Press MENU for more items."
+                  android:text="@string/press_menu_for_more"
         />
 
         <View android:layout_width="fill_parent"
               android:layout_height="2dp"
         />
       </LinearLayout>
-
 </LinearLayout>

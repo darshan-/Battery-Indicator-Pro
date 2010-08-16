@@ -32,9 +32,17 @@
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:gravity="center_horizontal"
-                  android:paddingBottom="10dp"
+                  android:paddingBottom="3dp"
                   android:textColor="#A4C639"
                   android:textSize="18sp"
+        />
+
+        <include layout="@layout/time_remaining_estimate_full"
+                 android:id="@+id/time_til_charged"
+        />
+
+        <View android:layout_width="fill_parent"
+              android:layout_height="5dp"
         />
 
         <Button android:id="@+id/battery_use_b"
@@ -56,69 +64,29 @@
                 android:textSize="20sp"
         />
 
-        <LinearLayout android:layout_width="fill_parent"
-                      android:layout_height="wrap_content"
-                      android:gravity="center_horizontal"
-                      android:paddingTop="10dp"
-                      android:paddingBottom="2dp"
-        >
-          <TextView android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:textColor="@color/light_usage"
-	            android:textSize="18sp"
-                    android:text="Light Usage:"
-          />
-          <TextView android:layout_width="88dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textColor="@color/light_usage"
-	            android:textSize="18sp"
-                    android:text="27:42h"
-          />
-        </LinearLayout>
+        <View android:layout_width="fill_parent"
+              android:layout_height="5dp"
+        />
 
-        <LinearLayout android:layout_width="fill_parent"
-                      android:layout_height="wrap_content"
-                      android:gravity="center_horizontal"
-                      android:paddingBottom="2dp"
-        >
-          <TextView android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:textColor="@color/normal_usage"
-	            android:textSize="18sp"
-                    android:text="Normal Usage:"
-          />
-          <TextView android:layout_width="88dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textColor="@color/normal_usage"
-	            android:textSize="18sp"
-                    android:text="12:17h"
-          />
-        </LinearLayout>
+        <include layout="@layout/time_remaining_estimate_full"
+                 android:id="@+id/light_usage"
+        />
 
-        <LinearLayout android:layout_width="fill_parent"
-                      android:layout_height="wrap_content"
-                      android:gravity="center_horizontal"
-                      android:paddingBottom="10dp"
-        >
-          <TextView android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:textColor="@color/constant_usage"
-	            android:textSize="18sp"
-                    android:text="Constant Usage:"
-          />
-          <TextView android:layout_width="88dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textColor="@color/constant_usage"
-	            android:textSize="18sp"
-                    android:text="3:31h"
-          />
-        </LinearLayout>
+        <include layout="@layout/time_remaining_estimate_full"
+                 android:id="@+id/normal_usage"
+        />
+
+        <include layout="@layout/time_remaining_estimate_full"
+                 android:id="@+id/heavy_usage"
+        />
+
+        <include layout="@layout/time_remaining_estimate_full"
+                 android:id="@+id/constant_usage"
+        />
+
+        <View android:layout_width="fill_parent"
+              android:layout_height="5dp"
+        />
 
         <TextView android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
@@ -126,7 +94,7 @@
                   android:paddingBottom="3dp"
                   android:textColor="#FFF"
                   android:textSize="18sp"
-                  android:text="Press BACK to leave."
+                  android:text="@string/press_back_to_leave"
         />
 
         <TextView android:layout_width="fill_parent"
@@ -134,12 +102,11 @@
                   android:paddingLeft="4dp"
                   android:textColor="#FFF"
                   android:textSize="18sp"
-                  android:text="Press MENU for more items."
+                  android:text="@string/press_menu_for_more"
         />
 
         <View android:layout_width="fill_parent"
               android:layout_height="2dp"
         />
       </LinearLayout>
-
 </LinearLayout>

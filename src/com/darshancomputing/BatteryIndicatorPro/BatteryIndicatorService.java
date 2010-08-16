@@ -126,10 +126,10 @@ public class BatteryIndicatorService extends Service {
 
             /* Just treating any unplugged status as simply "Unplugged" now.
                Note that the main activity now assumes that the status is always 0, 2, or 5 */
-            if (plugged == 0) status = 0;
+            if (plugged == 0) status = 0; /* TODO: use static class CONSTANTS instead of numbers */
 
             /* TODO: I guess I should make sure status, plugged, and health are all within array limits...
-                     If one is out of bounds, set it to 1, which is "Unknown" for all three arrays...*/
+                     If one is out of bounds, set it to 1 or 0, whichever is "Unknown"... */
             String statusStr = str.statuses[status];
             if (status == 2) statusStr += " " + str.pluggeds[plugged]; /* Add '(AC)' or '(USB)' if charging */
 

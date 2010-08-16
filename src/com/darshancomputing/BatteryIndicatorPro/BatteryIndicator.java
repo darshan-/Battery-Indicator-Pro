@@ -53,6 +53,7 @@ public class BatteryIndicator extends Activity {
     private Context context;
     private Str str;
     private String themeName;
+    MainWindowTheme.Theme theme;
     private Intent batteryUseIntent;
     private DisplayMetrics metrics;
     private Button battery_use_b;
@@ -65,6 +66,7 @@ public class BatteryIndicator extends Activity {
         public void run() {
             updateStatus();
             updateLockscreenButton();
+            updateTimes();
         }
     };
 
@@ -207,32 +209,19 @@ public class BatteryIndicator extends Activity {
 
     private void updateStatus() {
         int last_percent = settings.getInt("last_percent", -1);
-        int last_status = settings.getInt("last_status", -1);
-
-        if (last_percent < 0) {
-            finish();
-            startActivity(getIntent());
-        }
+        int last_status = settings.getInt("last_status", 0);
 
         TextView status_since = (TextView) findViewById(R.id.status_since_t);
-        TextView title = (TextView) findViewById(R.id.title_t);
-        if (last_percent >= 0 && last_status >= 0) {
-            String s = "";
-            if (last_status == 0)
-                s = str.discharging_from + " " + last_percent + str.percent_symbol;
-            else if (last_status == 2)
-                s = str.charging_from + " " + last_percent + str.percent_symbol;
-            else
-                s = str.fully_charged;
 
-            status_since.setText(s);
+        String s;
+        if (last_status == 0)
+            s = str.discharging_from + " " + last_percent + str.percent_symbol;
+        else if (last_status == 2)
+            s = str.charging_from + " " + last_percent + str.percent_symbol;
+        else
+            s = str.fully_charged;
 
-            title.setPadding(title.getPaddingLeft(), title.getPaddingTop(), title.getPaddingRight(), 2);
-            status_since.setVisibility(android.view.View.VISIBLE);
-        } else {
-            title.setPadding(title.getPaddingLeft(), title.getPaddingTop(), title.getPaddingRight(), 10);
-            status_since.setVisibility(android.view.View.GONE);
-        }
+        status_since.setText(s);
     }
 
     private void updateLockscreenButton() {
@@ -301,7 +290,7 @@ public class BatteryIndicator extends Activity {
     }
 
     private void setTheme() {
-        MainWindowTheme.Theme theme = (new MainWindowTheme(themeName, metrics, res)).theme;
+        theme = (new MainWindowTheme(themeName, metrics, res)).theme;
 
         LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
         main_layout.removeAllViews();
@@ -310,53 +299,34 @@ public class BatteryIndicator extends Activity {
         main_layout.setPadding(theme.mainLayoutPaddingLeft, theme.mainLayoutPaddingTop,
                                theme.mainLayoutPaddingRight, theme.mainLayoutPaddingBottom);
 
-        LinearLayout ll;
-        TextView label, time;
-
-        ll = (LinearLayout) findViewById(R.id.time_til_charged);
-        if (ll != null) {
-            label = (TextView) ll.findViewById(R.id.label);
-            time = (TextView) ll.findViewById(R.id.time);
-            label.setText("Fully Charged in:");
-            time.setText("1:27h");
-        }
-
-        ll = (LinearLayout) findViewById(R.id.light_usage);
-        if (ll != null) {
-            label = (TextView) ll.findViewById(R.id.label);
-            time = (TextView) ll.findViewById(R.id.time);
-            label.setText("Light Usage:");
-            time.setText("48:33h");
-        }
-
-        ll = (LinearLayout) findViewById(R.id.normal_usage);
-        if (ll != null) {
-            label = (TextView) ll.findViewById(R.id.label);
-            time = (TextView) ll.findViewById(R.id.time);
-            label.setText("Normal Usage:");
-            time.setText("12:17h");
-        }
-
-        ll = (LinearLayout) findViewById(R.id.heavy_usage);
-        if (ll != null) {
-            label = (TextView) ll.findViewById(R.id.label);
-            time = (TextView) ll.findViewById(R.id.time);
-            label.setText("Heavy Usage:");
-            time.setText("6:17h");
-        }
-
-        ll = (LinearLayout) findViewById(R.id.constant_usage);
-        if (ll != null) {
-            label = (TextView) ll.findViewById(R.id.label);
-            time = (TextView) ll.findViewById(R.id.time);
-            label.setText("Constant Usage:");
-            time.setText("3:31h");
-        }
+        updateTimes();
 
         battery_use_b = (Button) main_frame.findViewById(R.id.battery_use_b);
         toggle_lock_screen_b = (Button) main_frame.findViewById(R.id.toggle_lock_screen_b);
 
         bindButtons();
+    }
+
+    private void updateTimes() {
+        for (int i = 0; i < theme.timeRemainingIds.length; i++) {
+            LinearLayout ll = (LinearLayout) findViewById(theme.timeRemainingIds[i]);
+            if (ll != null) {
+                TextView label = (TextView) ll.findViewById(R.id.label);
+                TextView time = (TextView) ll.findViewById(R.id.time);
+
+                if (theme.timeRemainingVisible(i, settings)) {
+                    label.setText(res.getString(theme.timeRemainingStrings[i]));
+                    label.setTextColor(res.getColor(theme.timeRemainingColors[i]));
+                    time.setText("12:34h");
+                    time.setTextColor(res.getColor(theme.timeRemainingColors[i]));
+                    label.setVisibility(View.VISIBLE);
+                    time.setVisibility(View.VISIBLE);
+                } else {
+                    label.setVisibility(View.GONE);
+                    time.setVisibility(View.GONE);
+                }
+            }
+        }
     }
 
     private class Str {

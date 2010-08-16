@@ -34,6 +34,15 @@
   <string name="celsius_symbol">C</string>
   <string name="volt_symbol">V</string>
 
+  <string name="fully_charged_in">Fully Charged in:</string>
+  <string name="light_usage">Light Usage Left:</string>
+  <string name="normal_usage">Normal Usage Left:</string>
+  <string name="heavy_usage">Heavy Usage Left:</string>
+  <string name="constant_usage">Constant Usage Left:</string>
+
+  <string name="press_back_to_leave">Press BACK to leave.</string>
+  <string name="press_menu_for_more">Press MENU for more items.</string>
+
   <string-array name="statuses">
     <item>Unplugged</item>
     <item>Unknown</item>
