@@ -52,9 +52,40 @@ public class MainWindowTheme {
                                              R.string.heavy_usage, R.string.constant_usage};
         public int[] timeRemainingColors = {R.color.time_til_charged, R.color.light_usage, R.color.normal_usage,
                                              R.color.heavy_usage, R.color.constant_usage};
+        public String[] timeRemainingKeys = {"", SettingsActivity.KEY_LIGHT_REMAINING, SettingsActivity.KEY_NORMAL_REMAINING,
+                                             SettingsActivity.KEY_HEAVY_REMAINING, SettingsActivity.KEY_CONSTANT_REMAINING};
+        public int[] timeRemainingDefaults = {0, R.string.light_usage, R.string.normal_usage,
+                                              R.string.heavy_usage, R.string.constant_usage};
+
+        public String timeRemaining(int index, SharedPreferences settings, int percent) {
+            String s;
+            int t;
+
+            if (index == 0) {
+                int last_plugged = settings.getInt("last_plugged", 2);
+                if (last_plugged == 1) {
+                    s = settings.getString(SettingsActivity.KEY_AC_CHARGE_REMAINING,
+                                           res.getString(R.string.default_ac_charge_remaining));
+                } else {
+                    s = settings.getString(SettingsActivity.KEY_USB_CHARGE_REMAINING,
+                                           res.getString(R.string.default_usb_charge_remaining));
+                }
+                t = 100 - percent;
+            } else {
+                s = settings.getString(timeRemainingKeys[index],
+                                       res.getString(timeRemainingDefaults[index]));
+                t = percent;
+            }
+
+            return formatTimeRemaining(t * Integer.valueOf(s) / 100);
+        }
+
+        protected String formatTimeRemaining(int t) {
+            return  "" + (t / 60) + ":" + String.format("%02d", t % 60) + "h";
+        }
 
         public boolean timeRemainingVisible(int index, SharedPreferences settings) {
-            int last_status = settings.getInt("last_status", 0);
+            int last_status = settings.getInt("last_status", 0); /* TODO this should also be a contant in Service*/
 
             if (index == 0) {
                 if (last_status == 2) return true; /* TODO: update to use Service's constants */

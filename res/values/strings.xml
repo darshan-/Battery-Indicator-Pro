@@ -221,6 +221,8 @@
     set to this.
   </string>
 
+  <string name="pref_cat_time_remaining_estimates">Time Remaining Estimates</string>
+
   <string name="pref_cat_status_duration">Status Duration (For/Since...)</string>
   <string name="pref_status_dur_est">When to Estimate Hours</string>
   <string name="pref_status_dur_est_summary">Stop Showing Time and Start Estimating Hours</string>

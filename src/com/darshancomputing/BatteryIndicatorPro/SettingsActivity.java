@@ -50,6 +50,12 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_GREEN = "use_green";
     public static final String KEY_GREEN_THRESH = "green_threshold";
     public static final String KEY_COLOR_PREVIEW = "color_preview";
+    public static final String KEY_USB_CHARGE_REMAINING = "usb_charge_time_remaining";
+    public static final String KEY_AC_CHARGE_REMAINING = "ac_charge_time_remaining";
+    public static final String KEY_LIGHT_REMAINING = "light_time_remaining";
+    public static final String KEY_NORMAL_REMAINING = "normal_time_remaining";
+    public static final String KEY_HEAVY_REMAINING = "heavy_time_remaining";
+    public static final String KEY_CONSTANT_REMAINING = "constant_time_remaining";
 
     public static final int   RED = 0;
     public static final int AMBER = 1;
@@ -152,6 +158,12 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         updateListPrefSummary(KEY_RED_THRESH);
         updateListPrefSummary(KEY_AMBER_THRESH);
         updateListPrefSummary(KEY_GREEN_THRESH);
+        updateListPrefSummary(KEY_USB_CHARGE_REMAINING);
+        updateListPrefSummary(KEY_AC_CHARGE_REMAINING);
+        updateListPrefSummary(KEY_LIGHT_REMAINING);
+        updateListPrefSummary(KEY_NORMAL_REMAINING);
+        updateListPrefSummary(KEY_HEAVY_REMAINING);
+        updateListPrefSummary(KEY_CONSTANT_REMAINING);
 
         mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }

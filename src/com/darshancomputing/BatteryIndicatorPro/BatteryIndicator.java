@@ -54,6 +54,7 @@ public class BatteryIndicator extends Activity {
     private Str str;
     private String themeName;
     MainWindowTheme.Theme theme;
+    private int percent;
     private Intent batteryUseIntent;
     private DisplayMetrics metrics;
     private Button battery_use_b;
@@ -73,6 +74,14 @@ public class BatteryIndicator extends Activity {
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (! Intent.ACTION_BATTERY_CHANGED.equals(action)) return;
+
+            int level = intent.getIntExtra("level", 0);
+            int scale = intent.getIntExtra("scale", 100);
+
+            percent = level * 100 / scale;
+
             /* Give the service a second to process the update first */
             mHandler.postDelayed(mUpdateStatus, 1 * 1000);
             /* Just in case 1 second wasn't enough */
@@ -117,6 +126,7 @@ public class BatteryIndicator extends Activity {
         super.onResume();
         updateStatus();
         updateLockscreenButton();
+        updateTimes();
         registerReceiver(mBatteryInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
     }
 
@@ -317,7 +327,7 @@ public class BatteryIndicator extends Activity {
                 if (theme.timeRemainingVisible(i, settings)) {
                     label.setText(res.getString(theme.timeRemainingStrings[i]));
                     label.setTextColor(res.getColor(theme.timeRemainingColors[i]));
-                    time.setText("12:34h");
+                    time.setText(theme.timeRemaining(i, settings, percent));
                     time.setTextColor(res.getColor(theme.timeRemainingColors[i]));
                     label.setVisibility(View.VISIBLE);
                     time.setVisibility(View.VISIBLE);

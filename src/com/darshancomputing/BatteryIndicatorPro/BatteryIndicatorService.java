@@ -161,6 +161,7 @@ public class BatteryIndicatorService extends Service {
                 editor.putLong("last_status_cTM", currentTM);
                 editor.putInt("last_status", status);
                 editor.putInt("last_percent", percent);
+                editor.putInt("last_plugged", plugged);
                 editor.putInt("previous_charge", percent);
 
                 last_status_cTM = currentTM;
