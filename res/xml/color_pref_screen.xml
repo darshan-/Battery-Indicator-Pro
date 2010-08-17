@@ -1,0 +1,62 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <Preference
+     android:title="@string/pref_hint"
+     android:layout="@layout/hint_pref"
+     android:enabled="false"
+  />
+
+  <PreferenceCategory android:title="@string/pref_cat_themes">
+    <ListPreference
+       android:key="main_window_theme"
+       android:title="@string/pref_main_window_theme"
+       android:entries="@array/mw_theme_pref_entries" 
+       android:entryValues="@array/mw_theme_pref_values"
+       android:defaultValue="default"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/pref_cat_color">
+    <com.darshancomputing.BatteryIndicatorPro.ColorPreviewPreference
+       android:key="color_preview"
+       android:title="@string/pref_color_preview"
+       android:layout="@layout/color_preview_pref"
+       android:enabled="false"
+    />
+    <CheckBoxPreference
+       android:key="use_red"
+       android:title="@string/pref_red"
+       android:summary="@string/pref_red_summary"
+       android:defaultValue="true"
+    />
+    <ListPreference
+       android:key="red_threshold"
+       android:title="@string/pref_red_thresh"
+       android:dialogTitle="@string/pref_red_thresh_summary"
+       android:defaultValue="15"
+    />
+    <CheckBoxPreference
+       android:key="use_amber"
+       android:title="@string/pref_amber"
+       android:summary="@string/pref_amber_summary"
+       android:defaultValue="true"
+    />
+    <ListPreference
+       android:key="amber_threshold"
+       android:title="@string/pref_amber_thresh"
+       android:dialogTitle="@string/pref_amber_thresh_summary"
+       android:defaultValue="40"
+    />
+    <CheckBoxPreference
+       android:key="use_green"
+       android:title="@string/pref_green"
+       android:summary="@string/pref_green_summary"
+       android:defaultValue="false"
+    />
+    <ListPreference
+       android:key="green_threshold"
+       android:title="@string/pref_green_thresh"
+       android:dialogTitle="@string/pref_green_thresh_summary"
+       android:defaultValue="40"
+    />
+  </PreferenceCategory>
+</PreferenceScreen>

@@ -147,6 +147,10 @@
 
   <string name="pref_hint"><b>Hint:</b> Press MENU for help.</string>
 
+  <string name="color_settings">Color and Themes</string>
+  <string name="time_settings">Time Estimates</string>
+  <string name="other_settings">Other Settings</string>
+
   <string name="pref_cat_themes">Themes</string>
   <string name="pref_main_window_theme">Main Window Theme</string>
   <string name="pref_main_window_theme_help">

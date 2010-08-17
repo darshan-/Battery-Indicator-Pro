@@ -1,0 +1,63 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <Preference
+     android:title="@string/pref_hint"
+     android:layout="@layout/hint_pref"
+     android:enabled="false"
+  />
+
+  <PreferenceCategory android:title="@string/pref_cat_status_duration">
+    <ListPreference
+       android:key="status_dur_est"
+       android:title="@string/pref_status_dur_est"
+       android:entries="@array/status_dur_est_pref_entries" 
+       android:entryValues="@array/status_dur_est_pref_values"
+       android:dialogTitle="@string/pref_status_dur_est_summary"
+       android:defaultValue="12"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/pref_cat_time_remaining_estimates">
+    <ListPreference
+       android:key="usb_charge_time_remaining"
+       android:title="USB Charge Time"
+       android:entries="@array/time_entries" 
+       android:entryValues="@array/time_values"
+       android:defaultValue="@string/default_usb_charge_remaining"
+    />
+    <ListPreference
+       android:key="ac_charge_time_remaining"
+       android:title="AC Charge Time"
+       android:entries="@array/time_entries" 
+       android:entryValues="@array/time_values"
+       android:defaultValue="@string/default_ac_charge_remaining"
+    />
+    <ListPreference
+       android:key="light_time_remaining"
+       android:title="Light Usage"
+       android:entries="@array/time_entries" 
+       android:entryValues="@array/time_values"
+       android:defaultValue="@string/default_light_remaining"
+    />
+    <ListPreference
+       android:key="normal_time_remaining"
+       android:title="Normal Usage"
+       android:entries="@array/time_entries" 
+       android:entryValues="@array/time_values"
+       android:defaultValue="@string/default_normal_remaining"
+    />
+    <ListPreference
+       android:key="heavy_time_remaining"
+       android:title="Heavy Usage"
+       android:entries="@array/time_entries" 
+       android:entryValues="@array/time_values"
+       android:defaultValue="@string/default_heavy_remaining"
+    />
+    <ListPreference
+       android:key="constant_time_remaining"
+       android:title="Constant Usage"
+       android:entries="@array/time_entries" 
+       android:entryValues="@array/time_values"
+       android:defaultValue="@string/default_constant_remaining"
+    />
+    </PreferenceCategory>
+</PreferenceScreen>

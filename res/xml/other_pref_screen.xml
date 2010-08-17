@@ -1,0 +1,59 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <Preference
+     android:title="@string/pref_hint"
+     android:layout="@layout/hint_pref"
+     android:enabled="false"
+  />
+
+  <PreferenceCategory android:title="@string/pref_cat_logging">
+    <CheckBoxPreference
+       android:key="enable_logging"
+       android:title="@string/pref_enable_logging"
+       android:summary="@string/pref_enable_logging_summary"
+       android:defaultValue="false"
+    />
+
+    <CheckBoxPreference
+       android:key="log_everything"
+       android:title="@string/pref_log_everything"
+       android:summary="@string/pref_log_everything_summary"
+       android:defaultValue="false"
+       android:enabled="false"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/pref_cat_keyguard">
+    <CheckBoxPreference
+       android:key="confirm_disable_lock_screen"
+       android:title="@string/pref_confirm_manual_disable"
+       android:summary="@string/pref_confirm_manual_disable_summary"
+       android:defaultValue="true"
+    />
+
+    <CheckBoxPreference
+       android:key="auto_disable_lock_screen"
+       android:title="@string/pref_auto_disable"
+       android:summary="@string/pref_auto_disable_summary"
+       android:defaultValue="false"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/pref_cat_temperature_unit">
+    <CheckBoxPreference
+       android:key="convert_to_fahrenheit"
+       android:title="@string/pref_convert_to_fahrenheit"
+       android:defaultValue="false"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/pref_cat_autostart">
+    <ListPreference
+       android:key="autostart"
+       android:title="@string/pref_autostart_at_boot"
+       android:entries="@array/boot_pref_entries" 
+       android:entryValues="@array/boot_pref_values"
+       android:dialogTitle="@string/pref_autostart_at_boot_summary"
+       android:defaultValue="auto"
+    />
+  </PreferenceCategory>
+</PreferenceScreen>

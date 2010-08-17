@@ -152,8 +152,6 @@ public class BatteryIndicator extends Activity {
             return true;
         case R.id.menu_settings:
             mStartActivity(SettingsActivity.class);
-            /* TODO: onActivityResult() should reload this page (probably just launch an intent)
-                 at least if the requestcode was for the settings activity. */
             return true;
         case R.id.menu_about:
             mStartActivity(InfoActivity.class);

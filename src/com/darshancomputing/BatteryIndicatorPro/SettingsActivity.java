@@ -34,6 +34,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
+    public static final String KEY_COLOR_SETTINGS = "color_settings";
+    public static final String KEY_TIME_SETTINGS = "time_settings";
+    public static final String KEY_OTHER_SETTINGS = "other_settings";
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_CONFIRM_DISABLE_LOCKING = "confirm_disable_lock_screen";
     public static final String KEY_AUTO_DISABLE_LOCKING = "auto_disable_lock_screen";
@@ -56,6 +59,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_NORMAL_REMAINING = "normal_time_remaining";
     public static final String KEY_HEAVY_REMAINING = "heavy_time_remaining";
     public static final String KEY_CONSTANT_REMAINING = "constant_time_remaining";
+
+    public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
 
     public static final int   RED = 0;
     public static final int AMBER = 1;
@@ -112,29 +117,47 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         super.onCreate(savedInstanceState);
         //android.os.Debug.startMethodTracing();
 
-        addPreferencesFromResource(R.xml.pref_screen);
+        Intent intent = getIntent();
+        String pref_screen = intent.getStringExtra(EXTRA_SCREEN);
+
+        if (pref_screen == null) {
+            setPrefScreen(R.xml.main_pref_screen);
+        } else if (pref_screen.equals(KEY_COLOR_SETTINGS)) {
+            setPrefScreen(R.xml.color_pref_screen);
+
+            cpbPref     = (ColorPreviewPreference) mPreferenceScreen.findPreference(KEY_COLOR_PREVIEW);
+
+            redThresh   = (ListPreference) mPreferenceScreen.findPreference(KEY_RED_THRESH);
+            amberThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_AMBER_THRESH);
+            greenThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_GREEN_THRESH);
+
+            redEnabled   = mSharedPreferences.getBoolean(  KEY_RED, false);
+            amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
+            greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
+
+            iRedThresh   = Integer.valueOf(  redThresh.getValue());
+            iAmberThresh = Integer.valueOf(amberThresh.getValue());
+            iGreenThresh = Integer.valueOf(greenThresh.getValue());
+        } else if (pref_screen.equals(KEY_TIME_SETTINGS)) {
+            setPrefScreen(R.xml.time_pref_screen);
+        } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
+            setPrefScreen(R.xml.other_pref_screen);
+        } else {
+            setPrefScreen(R.xml.main_pref_screen);
+        }
 
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         biServiceConnection = new BIServiceConnection();
         bindService(biServiceIntent, biServiceConnection, 0);
+    }
+
+    private void setPrefScreen(int resource) {
+        addPreferencesFromResource(resource);
 
         mPreferenceScreen  = getPreferenceScreen();
         mSharedPreferences = mPreferenceScreen.getSharedPreferences();
-
-        cpbPref     = (ColorPreviewPreference) mPreferenceScreen.findPreference(KEY_COLOR_PREVIEW);
-
-        redThresh   = (ListPreference) mPreferenceScreen.findPreference(KEY_RED_THRESH);
-        amberThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_AMBER_THRESH);
-        greenThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_GREEN_THRESH);
-
-        redEnabled   = mSharedPreferences.getBoolean(  KEY_RED, false);
-        amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
-        greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
-
-        iRedThresh   = Integer.valueOf(  redThresh.getValue());
-        iAmberThresh = Integer.valueOf(amberThresh.getValue());
-        iGreenThresh = Integer.valueOf(greenThresh.getValue());
     }
+
 
     @Override
     protected void onDestroy() {
@@ -195,11 +218,19 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         }
     }
 
-    //@Override
-    //public boolean onKeyUp(int keyCode, android.view.KeyEvent event) {
-    //    openOptionsMenu();
-    //    return true;
-    //}
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        String key = preference.getKey();
+        if (key == null) return false;
+
+        if (key.equals(KEY_COLOR_SETTINGS) || key.equals(KEY_TIME_SETTINGS) || key.equals(KEY_OTHER_SETTINGS)) {
+            ComponentName comp = new ComponentName(getPackageName(), SettingsActivity.class.getName());
+            startActivity(new Intent().setComponent(comp).putExtra(EXTRA_SCREEN, key));
+
+            return true;
+        }
+
+        return false;
+    }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
@@ -263,20 +294,26 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     private void updateConvertFSummary() {
         Preference pref = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_CONVERT_F);
+        if (pref == null) return;
+
         pref.setSummary(getResources().getString(R.string.currently_using) + " " +
                         (mSharedPreferences.getBoolean(KEY_CONVERT_F, false) ?
                          getResources().getString(R.string.fahrenheit) : getResources().getString(R.string.celsius)));
     }
 
     private void updateLogEverythingEnabledness() {
+        Preference pref = mPreferenceScreen.findPreference(KEY_LOG_EVERYTHING);
+        if (pref == null) return;
+
         if (mSharedPreferences.getBoolean(KEY_ENABLE_LOGGING, false))
-            mPreferenceScreen.findPreference(KEY_LOG_EVERYTHING).setEnabled(true);
+            pref.setEnabled(true);
         else
-            mPreferenceScreen.findPreference(KEY_LOG_EVERYTHING).setEnabled(false);
+            pref.setEnabled(false);
     }
 
     private void updateListPrefSummary(String key) {
         ListPreference pref = (ListPreference) mPreferenceScreen.findPreference(key);
+        if (pref == null) return;
 
         if (pref.isEnabled()) {
             pref.setSummary(getResources().getString(R.string.currently_set_to) + " " + pref.getEntry());
@@ -286,6 +323,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private void validateColorPrefs(String changedKey) {
+        if (cpbPref == null) return;
         String [] a;
 
         if (changedKey == null || changedKey.equals(KEY_RED)) {
