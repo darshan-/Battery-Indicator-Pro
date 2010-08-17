@@ -224,9 +224,20 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             updateConvertFSummary();
         } else if (key.equals(KEY_AUTOSTART) || key.equals(KEY_STATUS_DUR_EST) ||
                    key.equals(KEY_MW_THEME) || key.equals(KEY_RED_THRESH) ||
-                   key.equals(KEY_AMBER_THRESH) || key.equals(KEY_GREEN_THRESH)) {
+                   key.equals(KEY_AMBER_THRESH) || key.equals(KEY_GREEN_THRESH) ||
+                   key.equals(KEY_USB_CHARGE_REMAINING) || key.equals(KEY_AC_CHARGE_REMAINING) ||
+                   key.equals(KEY_LIGHT_REMAINING) || key.equals(KEY_NORMAL_REMAINING) ||
+                   key.equals(KEY_HEAVY_REMAINING) || key.equals(KEY_CONSTANT_REMAINING)) {
             updateListPrefSummary(key);
         }
+
+        updateListPrefSummary(KEY_USB_CHARGE_REMAINING);
+        updateListPrefSummary(KEY_AC_CHARGE_REMAINING);
+        updateListPrefSummary(KEY_LIGHT_REMAINING);
+        updateListPrefSummary(KEY_NORMAL_REMAINING);
+        updateListPrefSummary(KEY_HEAVY_REMAINING);
+        updateListPrefSummary(KEY_CONSTANT_REMAINING);
+
 
         /* Update dependent's summary as well */
         if (key.equals(KEY_RED)) updateListPrefSummary(KEY_RED_THRESH);
