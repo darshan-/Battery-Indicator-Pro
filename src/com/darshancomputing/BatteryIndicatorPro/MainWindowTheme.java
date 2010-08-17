@@ -54,12 +54,14 @@ public class MainWindowTheme {
                                              R.color.heavy_usage, R.color.constant_usage};
         public String[] timeRemainingKeys = {"", SettingsActivity.KEY_LIGHT_REMAINING, SettingsActivity.KEY_NORMAL_REMAINING,
                                              SettingsActivity.KEY_HEAVY_REMAINING, SettingsActivity.KEY_CONSTANT_REMAINING};
-        public int[] timeRemainingDefaults = {0, R.string.light_usage, R.string.normal_usage,
-                                              R.string.heavy_usage, R.string.constant_usage};
+        public int[] timeRemainingDefaults = {0, R.string.default_light_remaining, R.string.default_normal_remaining,
+                                              R.string.default_heavy_remaining, R.string.default_constant_remaining};
 
         public String timeRemaining(int index, SharedPreferences settings, int percent) {
             String s;
             int t;
+
+            if (percent == -1) return "...";
 
             if (index == 0) {
                 int last_plugged = settings.getInt("last_plugged", 2);
@@ -81,7 +83,7 @@ public class MainWindowTheme {
         }
 
         protected String formatTimeRemaining(int t) {
-            return  "" + (t / 60) + ":" + String.format("%02d", t % 60) + "h";
+            return  "" + (t / 60) + ":" + String.format("%02d", t % 60);// + "h";
         }
 
         public boolean timeRemainingVisible(int index, SharedPreferences settings) {

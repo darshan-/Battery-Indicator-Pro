@@ -195,6 +195,12 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         }
     }
 
+    //@Override
+    //public boolean onKeyUp(int keyCode, android.view.KeyEvent event) {
+    //    openOptionsMenu();
+    //    return true;
+    //}
+
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
 

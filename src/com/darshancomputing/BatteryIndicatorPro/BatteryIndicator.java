@@ -54,7 +54,7 @@ public class BatteryIndicator extends Activity {
     private Str str;
     private String themeName;
     MainWindowTheme.Theme theme;
-    private int percent;
+    private int percent = -1;
     private Intent batteryUseIntent;
     private DisplayMetrics metrics;
     private Button battery_use_b;
@@ -77,15 +77,16 @@ public class BatteryIndicator extends Activity {
             String action = intent.getAction();
             if (! Intent.ACTION_BATTERY_CHANGED.equals(action)) return;
 
-            int level = intent.getIntExtra("level", 0);
+            int level = intent.getIntExtra("level", -1);
             int scale = intent.getIntExtra("scale", 100);
 
             percent = level * 100 / scale;
 
-            /* Give the service a second to process the update first */
+            mHandler.post(mUpdateStatus);
+            /* Give the service a second to process the update */
             mHandler.postDelayed(mUpdateStatus, 1 * 1000);
             /* Just in case 1 second wasn't enough */
-            mHandler.postDelayed(mUpdateStatus, 3 * 1000);
+            mHandler.postDelayed(mUpdateStatus, 4 * 1000);
         }
     };
 
