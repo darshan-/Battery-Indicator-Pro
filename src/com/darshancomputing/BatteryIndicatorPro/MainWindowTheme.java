@@ -52,10 +52,10 @@ public class MainWindowTheme {
                                              R.string.heavy_usage, R.string.constant_usage};
         public int[] timeRemainingColors = {R.color.time_til_charged, R.color.light_usage, R.color.normal_usage,
                                              R.color.heavy_usage, R.color.constant_usage};
-        public String[] timeRemainingKeys = {"", SettingsActivity.KEY_LIGHT_REMAINING, SettingsActivity.KEY_NORMAL_REMAINING,
-                                             SettingsActivity.KEY_HEAVY_REMAINING, SettingsActivity.KEY_CONSTANT_REMAINING};
-        public int[] timeRemainingDefaults = {0, R.string.default_light_remaining, R.string.default_normal_remaining,
-                                              R.string.default_heavy_remaining, R.string.default_constant_remaining};
+        public String[] timeRemainingKeys = {"", SettingsActivity.KEY_LIGHT_USAGE_TIME, SettingsActivity.KEY_NORMAL_USAGE_TIME,
+                                             SettingsActivity.KEY_HEAVY_USAGE_TIME, SettingsActivity.KEY_CONSTANT_USAGE_TIME};
+        public int[] timeRemainingDefaults = {0, R.string.default_light_usage_time, R.string.default_normal_usage_time,
+                                              R.string.default_heavy_usage_time, R.string.default_constant_usage_time};
 
         public String timeRemaining(int index, SharedPreferences settings, int percent) {
             String s;
@@ -66,11 +66,11 @@ public class MainWindowTheme {
             if (index == 0) {
                 int last_plugged = settings.getInt("last_plugged", 2);
                 if (last_plugged == 1) {
-                    s = settings.getString(SettingsActivity.KEY_AC_CHARGE_REMAINING,
-                                           res.getString(R.string.default_ac_charge_remaining));
+                    s = settings.getString(SettingsActivity.KEY_AC_CHARGE_TIME,
+                                           res.getString(R.string.default_ac_charge_time));
                 } else {
-                    s = settings.getString(SettingsActivity.KEY_USB_CHARGE_REMAINING,
-                                           res.getString(R.string.default_usb_charge_remaining));
+                    s = settings.getString(SettingsActivity.KEY_USB_CHARGE_TIME,
+                                           res.getString(R.string.default_usb_charge_time));
                 }
                 t = 100 - percent;
             } else {
@@ -83,18 +83,33 @@ public class MainWindowTheme {
         }
 
         protected String formatTimeRemaining(int t) {
-            return  "" + (t / 60) + ":" + String.format("%02d", t % 60);// + "h";
+            return  "" + (t / 60) + ":" + String.format("%02d", t % 60) + "h"; /* TODO: Make the h optional? translatable! */
         }
 
         public boolean timeRemainingVisible(int index, SharedPreferences settings) {
-            int last_status = settings.getInt("last_status", 0); /* TODO this should also be a contant in Service*/
+            int last_status = settings.getInt("last_status", 0); /* TODO this should be a contant in Service */
 
-            if (index == 0) {
-                if (last_status == 2) return true; /* TODO: update to use Service's constants */
-                else return false;
-            } else {
+            switch (index) {
+            case 0:
+                if (last_status == 2 && settings.getBoolean(SettingsActivity.KEY_SHOW_CHARGE_TIME, true)) return true; /* TODO: Service constant */
+                break;
+            case 1:
+                if (settings.getBoolean(SettingsActivity.KEY_SHOW_LIGHT_USAGE, true)) return true;
+                break;
+            case 2:
+                if (settings.getBoolean(SettingsActivity.KEY_SHOW_NORMAL_USAGE, true)) return true;
+                break;
+            case 3:
+                if (settings.getBoolean(SettingsActivity.KEY_SHOW_HEAVY_USAGE, true)) return true;
+                break;
+            case 4:
+                if (settings.getBoolean(SettingsActivity.KEY_SHOW_CONSTANT_USAGE, true)) return true;
+                break;
+            default:
                 return true;
             }
+
+            return false;
         }
     }
 

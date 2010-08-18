@@ -53,14 +53,36 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_GREEN = "use_green";
     public static final String KEY_GREEN_THRESH = "green_threshold";
     public static final String KEY_COLOR_PREVIEW = "color_preview";
-    public static final String KEY_USB_CHARGE_REMAINING = "usb_charge_time_remaining";
-    public static final String KEY_AC_CHARGE_REMAINING = "ac_charge_time_remaining";
-    public static final String KEY_LIGHT_REMAINING = "light_time_remaining";
-    public static final String KEY_NORMAL_REMAINING = "normal_time_remaining";
-    public static final String KEY_HEAVY_REMAINING = "heavy_time_remaining";
-    public static final String KEY_CONSTANT_REMAINING = "constant_time_remaining";
+    public static final String KEY_USB_CHARGE_TIME = "usb_charge_time";
+    public static final String KEY_AC_CHARGE_TIME = "ac_charge_time";
+    public static final String KEY_LIGHT_USAGE_TIME = "light_usage_time";
+    public static final String KEY_NORMAL_USAGE_TIME = "normal_usage_time";
+    public static final String KEY_HEAVY_USAGE_TIME = "heavy_usage_time";
+    public static final String KEY_CONSTANT_USAGE_TIME = "constant_usage_time";
+    public static final String KEY_SHOW_CHARGE_TIME = "show_charge_time";
+    public static final String KEY_SHOW_LIGHT_USAGE = "show_light_usage";
+    public static final String KEY_SHOW_NORMAL_USAGE = "show_normal_usage";
+    public static final String KEY_SHOW_HEAVY_USAGE = "show_heavy_usage";
+    public static final String KEY_SHOW_CONSTANT_USAGE = "show_constant_usage";
 
-    public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
+    private static final String[] PARENTS = {KEY_SHOW_CHARGE_TIME, KEY_SHOW_CHARGE_TIME, /* Keep this doubled key first! */
+                                             KEY_RED, KEY_AMBER, KEY_GREEN,
+                                             KEY_SHOW_LIGHT_USAGE, KEY_SHOW_NORMAL_USAGE,
+                                             KEY_SHOW_HEAVY_USAGE, KEY_SHOW_CONSTANT_USAGE,
+                                             KEY_ENABLE_LOGGING};
+    private static final String[] DEPENDENTS = {KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
+                                                KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
+                                                KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
+                                                KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME,
+                                                KEY_LOG_EVERYTHING};
+
+    private static final String[] LISTPREFS = {KEY_AUTOSTART, KEY_MW_THEME, KEY_STATUS_DUR_EST,
+                                               KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
+                                               KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
+                                               KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
+                                               KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME};
+
+    private static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
 
     public static final int   RED = 0;
     public static final int AMBER = 1;
@@ -146,6 +168,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             setPrefScreen(R.xml.main_pref_screen);
         }
 
+        for (int i=0; i < PARENTS.length; i++) setEnablednessOfDeps(i);
+        validateColorPrefs(null);
+        for (int i=0; i < LISTPREFS.length; i++) updateListPrefSummary(LISTPREFS[i]);
+        updateConvertFSummary();
+
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         biServiceConnection = new BIServiceConnection();
         bindService(biServiceIntent, biServiceConnection, 0);
@@ -169,24 +196,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     @Override
     protected void onResume() {
         super.onResume();
-
-        validateColorPrefs(null);
-
-        updateConvertFSummary();
-        updateLogEverythingEnabledness();
-
-        updateListPrefSummary(KEY_AUTOSTART);
-        updateListPrefSummary(KEY_MW_THEME);
-        updateListPrefSummary(KEY_STATUS_DUR_EST);
-        updateListPrefSummary(KEY_RED_THRESH);
-        updateListPrefSummary(KEY_AMBER_THRESH);
-        updateListPrefSummary(KEY_GREEN_THRESH);
-        updateListPrefSummary(KEY_USB_CHARGE_REMAINING);
-        updateListPrefSummary(KEY_AC_CHARGE_REMAINING);
-        updateListPrefSummary(KEY_LIGHT_REMAINING);
-        updateListPrefSummary(KEY_NORMAL_REMAINING);
-        updateListPrefSummary(KEY_HEAVY_REMAINING);
-        updateListPrefSummary(KEY_CONSTANT_REMAINING);
 
         mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
@@ -255,31 +264,24 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             validateColorPrefs(key);
         }
 
-        if (key.equals(KEY_ENABLE_LOGGING)) updateLogEverythingEnabledness();
+        for (int i=0; i < PARENTS.length; i++) {
+            if (key.equals(PARENTS[i])) {
+                setEnablednessOfDeps(i);
+                if (i == 0) setEnablednessOfDeps(1); /* Doubled charge key */
+                break;
+            }
+        }
+
+        for (int i=0; i < LISTPREFS.length; i++) {
+            if (key.equals(LISTPREFS[i])) {
+                updateListPrefSummary(LISTPREFS[i]);
+                break;
+            }
+        }
 
         if (key.equals(KEY_CONVERT_F)) {
             updateConvertFSummary();
-        } else if (key.equals(KEY_AUTOSTART) || key.equals(KEY_STATUS_DUR_EST) ||
-                   key.equals(KEY_MW_THEME) || key.equals(KEY_RED_THRESH) ||
-                   key.equals(KEY_AMBER_THRESH) || key.equals(KEY_GREEN_THRESH) ||
-                   key.equals(KEY_USB_CHARGE_REMAINING) || key.equals(KEY_AC_CHARGE_REMAINING) ||
-                   key.equals(KEY_LIGHT_REMAINING) || key.equals(KEY_NORMAL_REMAINING) ||
-                   key.equals(KEY_HEAVY_REMAINING) || key.equals(KEY_CONSTANT_REMAINING)) {
-            updateListPrefSummary(key);
         }
-
-        updateListPrefSummary(KEY_USB_CHARGE_REMAINING);
-        updateListPrefSummary(KEY_AC_CHARGE_REMAINING);
-        updateListPrefSummary(KEY_LIGHT_REMAINING);
-        updateListPrefSummary(KEY_NORMAL_REMAINING);
-        updateListPrefSummary(KEY_HEAVY_REMAINING);
-        updateListPrefSummary(KEY_CONSTANT_REMAINING);
-
-
-        /* Update dependent's summary as well */
-        if (key.equals(KEY_RED)) updateListPrefSummary(KEY_RED_THRESH);
-        else if (key.equals(KEY_AMBER)) updateListPrefSummary(KEY_AMBER_THRESH);
-        else if (key.equals(KEY_GREEN)) updateListPrefSummary(KEY_GREEN_THRESH);
 
         /* Restart service for those that require it */
         if (key.equals(KEY_CONVERT_F) || key.equals(KEY_RED) || key.equals(KEY_RED_THRESH) ||
@@ -301,18 +303,26 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                          getResources().getString(R.string.fahrenheit) : getResources().getString(R.string.celsius)));
     }
 
-    private void updateLogEverythingEnabledness() {
-        Preference pref = mPreferenceScreen.findPreference(KEY_LOG_EVERYTHING);
-        if (pref == null) return;
+    private void setEnablednessOfDeps(int index) {
+        Preference dependent = mPreferenceScreen.findPreference(DEPENDENTS[index]);
+        if (dependent == null) return;
 
-        if (mSharedPreferences.getBoolean(KEY_ENABLE_LOGGING, false))
-            pref.setEnabled(true);
+        if (mSharedPreferences.getBoolean(PARENTS[index], false))
+            dependent.setEnabled(true);
         else
-            pref.setEnabled(false);
+            dependent.setEnabled(false);
+
+        updateListPrefSummary(DEPENDENTS[index]);
     }
 
     private void updateListPrefSummary(String key) {
-        ListPreference pref = (ListPreference) mPreferenceScreen.findPreference(key);
+        ListPreference pref;
+        try { /* Code is simplest elsewhere if we call this on all dependents, but some aren't ListPreferences. */
+            pref = (ListPreference) mPreferenceScreen.findPreference(key);
+        } catch (java.lang.ClassCastException e) {
+            return;
+        }
+
         if (pref == null) return;
 
         if (pref.isEnabled()) {
@@ -325,33 +335,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private void validateColorPrefs(String changedKey) {
         if (cpbPref == null) return;
         String [] a;
-
-        if (changedKey == null || changedKey.equals(KEY_RED)) {
-            if (redEnabled) {
-                redThresh.setEnabled(true);
-
-            } else {
-                redThresh.setEnabled(false);
-            }
-        }
-
-        if (changedKey == null || changedKey.equals(KEY_AMBER)) {
-            if (amberEnabled) {
-                amberThresh.setEnabled(true);
-
-            } else {
-                amberThresh.setEnabled(false);
-            }
-        }
-
-        if (changedKey == null || changedKey.equals(KEY_GREEN)) {
-            if (greenEnabled) {
-                greenThresh.setEnabled(true);
-
-            } else {
-                greenThresh.setEnabled(false);
-            }
-        }
 
         if (changedKey == null) {
             a = xToYBy5(RED_SETTING_MIN, RED_SETTING_MAX);

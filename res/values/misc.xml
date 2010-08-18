@@ -205,10 +205,10 @@
     <item>5880</item>
   </string-array>
 
-  <string name="default_usb_charge_remaining">240</string>
-  <string name="default_ac_charge_remaining">120</string>
-  <string name="default_light_remaining">2880</string>
-  <string name="default_normal_remaining">1440</string>
-  <string name="default_heavy_remaining">720</string>
-  <string name="default_constant_remaining">240</string>
+  <string name="default_usb_charge_time">240</string>
+  <string name="default_ac_charge_time">120</string>
+  <string name="default_light_usage_time">2880</string>
+  <string name="default_normal_usage_time">1440</string>
+  <string name="default_heavy_usage_time">720</string>
+  <string name="default_constant_usage_time">240</string>
 </resources>
