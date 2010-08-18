@@ -8,15 +8,18 @@
   <Preference
      android:key="color_settings"
      android:title="@string/color_settings"
+     android:summary="@string/color_settings_summary"
   />
 
   <Preference
      android:key="time_settings"
      android:title="@string/time_settings"
+     android:summary="@string/time_settings_summary"
   />
 
   <Preference
      android:key="other_settings"
      android:title="@string/other_settings"
+     android:summary="@string/other_settings_summary"
   />
 </PreferenceScreen>

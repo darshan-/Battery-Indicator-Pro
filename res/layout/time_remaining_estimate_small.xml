@@ -3,17 +3,18 @@
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:gravity="center_horizontal"
-              android:paddingBottom="2dp"
 >
   <TextView android:id="@+id/label"
             android:layout_width="114dp"
             android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
             android:gravity="left"
 	    android:textSize="12sp"
   />
   <TextView android:id="@+id/time"
             android:layout_width="44dp"
             android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
             android:gravity="right"
 	    android:textSize="12sp"
   />

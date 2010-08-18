@@ -79,7 +79,8 @@ public class MainWindowTheme {
                 t = percent;
             }
 
-            return formatTimeRemaining(Math.round(t * Integer.valueOf(s) / (float) 100.0));
+            //return formatTimeRemaining(Math.round(t * Integer.valueOf(s) / (float) 100.0));
+            return formatTimeRemaining((t * Integer.valueOf(s) + 50) / 100);
         }
 
         /* Takes time as a whole number of minutes */
