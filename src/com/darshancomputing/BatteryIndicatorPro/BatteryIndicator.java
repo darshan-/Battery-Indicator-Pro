@@ -247,10 +247,9 @@ public class BatteryIndicator extends Activity {
 
         biServiceConnection.biService.reloadSettings();
 
-        /* TODO: Default behavior should be to leave window open, since most other things leave
-         it open now, but you should add an option to "Exit Immediately after manually dis/reenabling" */
         updateLockscreenButton();
-        //finish();
+
+        if (settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_TOGGLE_LOCK, false)) finish();
     }
 
     /* Battery Use */
@@ -258,7 +257,6 @@ public class BatteryIndicator extends Activity {
         public void onClick(View v) {
             try {
                 startActivity(batteryUseIntent);
-                //finish();
             } catch (Exception e) {
                 Toast.makeText(context, str.one_six_needed, Toast.LENGTH_SHORT).show();
                 battery_use_b.setEnabled(false);

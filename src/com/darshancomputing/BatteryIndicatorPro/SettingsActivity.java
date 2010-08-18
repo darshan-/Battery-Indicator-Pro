@@ -39,6 +39,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_OTHER_SETTINGS = "other_settings";
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_CONFIRM_DISABLE_LOCKING = "confirm_disable_lock_screen";
+    public static final String KEY_FINISH_AFTER_TOGGLE_LOCK = "finish_after_toggle_lock";
     public static final String KEY_AUTO_DISABLE_LOCKING = "auto_disable_lock_screen";
     public static final String KEY_ENABLE_LOGGING = "enable_logging";
     public static final String KEY_LOG_EVERYTHING = "log_everything";
@@ -105,6 +106,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private Intent biServiceIntent;
     private BIServiceConnection biServiceConnection;
 
+    private Resources res;
     private PreferenceScreen mPreferenceScreen;
     private SharedPreferences mSharedPreferences;
 
@@ -141,11 +143,13 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         Intent intent = getIntent();
         String pref_screen = intent.getStringExtra(EXTRA_SCREEN);
+        res = getResources();
 
         if (pref_screen == null) {
             setPrefScreen(R.xml.main_pref_screen);
         } else if (pref_screen.equals(KEY_COLOR_SETTINGS)) {
             setPrefScreen(R.xml.color_pref_screen);
+            setWindowSubtitle(res.getString(R.string.color_settings));
 
             cpbPref     = (ColorPreviewPreference) mPreferenceScreen.findPreference(KEY_COLOR_PREVIEW);
 
@@ -162,8 +166,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             iGreenThresh = Integer.valueOf(greenThresh.getValue());
         } else if (pref_screen.equals(KEY_TIME_SETTINGS)) {
             setPrefScreen(R.xml.time_pref_screen);
+            setWindowSubtitle(res.getString(R.string.time_settings));
         } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
             setPrefScreen(R.xml.other_pref_screen);
+            setWindowSubtitle(res.getString(R.string.other_settings));
         } else {
             setPrefScreen(R.xml.main_pref_screen);
         }
@@ -172,10 +178,15 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         validateColorPrefs(null);
         for (int i=0; i < LISTPREFS.length; i++) updateListPrefSummary(LISTPREFS[i]);
         updateConvertFSummary();
+        setEnablednessOfMutuallyExclusive(KEY_CONFIRM_DISABLE_LOCKING, KEY_FINISH_AFTER_TOGGLE_LOCK);
 
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         biServiceConnection = new BIServiceConnection();
         bindService(biServiceIntent, biServiceConnection, 0);
+    }
+
+    private void setWindowSubtitle(String subtitle) {
+        setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
     }
 
     private void setPrefScreen(int resource) {
@@ -279,6 +290,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             }
         }
 
+        if (key.equals(KEY_CONFIRM_DISABLE_LOCKING) || key.equals(KEY_FINISH_AFTER_TOGGLE_LOCK))
+            setEnablednessOfMutuallyExclusive(KEY_CONFIRM_DISABLE_LOCKING, KEY_FINISH_AFTER_TOGGLE_LOCK);
+
         if (key.equals(KEY_CONVERT_F)) {
             updateConvertFSummary();
         }
@@ -298,9 +312,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         Preference pref = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_CONVERT_F);
         if (pref == null) return;
 
-        pref.setSummary(getResources().getString(R.string.currently_using) + " " +
+        pref.setSummary(res.getString(R.string.currently_using) + " " +
                         (mSharedPreferences.getBoolean(KEY_CONVERT_F, false) ?
-                         getResources().getString(R.string.fahrenheit) : getResources().getString(R.string.celsius)));
+                         res.getString(R.string.fahrenheit) : res.getString(R.string.celsius)));
     }
 
     private void setEnablednessOfDeps(int index) {
@@ -315,6 +329,22 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         updateListPrefSummary(DEPENDENTS[index]);
     }
 
+    private void setEnablednessOfMutuallyExclusive(String key1, String key2) {
+        Preference pref1 = mPreferenceScreen.findPreference(key1);
+        Preference pref2 = mPreferenceScreen.findPreference(key2);
+
+        if (pref1 == null) return;
+
+        if (mSharedPreferences.getBoolean(key1, false))
+            pref2.setEnabled(false);
+        else if (mSharedPreferences.getBoolean(key2, false))
+            pref1.setEnabled(false);
+        else {
+            pref1.setEnabled(true);
+            pref2.setEnabled(true);
+        }
+    }
+
     private void updateListPrefSummary(String key) {
         ListPreference pref;
         try { /* Code is simplest elsewhere if we call this on all dependents, but some aren't ListPreferences. */
@@ -326,9 +356,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (pref == null) return;
 
         if (pref.isEnabled()) {
-            pref.setSummary(getResources().getString(R.string.currently_set_to) + " " + pref.getEntry());
+            pref.setSummary(res.getString(R.string.currently_set_to) + " " + pref.getEntry());
         } else {
-            pref.setSummary(getResources().getString(R.string.currently_disabled));
+            pref.setSummary(res.getString(R.string.currently_disabled));
         }
     }
 

@@ -197,6 +197,20 @@
     without knowing it.  If you disable the lock screen with any
     regularity, you\'ll probably want to turn this off.
   </string>
+  <string name="pref_finish_after_toggle_lock">Exit After Toggling</string>
+  <string name="pref_finish_after_toggle_lock_summary">Exit main window immediately after dis/reenabling?</string>
+  <string name="pref_finish_after_toggle_lock_help">
+    If you\'re someone for whom every keystroke (or touchscreen press)
+    matters, you\'ll probably want to enable this.  If your goal is to
+    simply disable or reenable the lock screen and then get back to
+    what you\'re doing, this keeps you from having to press the BACK
+    key.  Just pull down the notification bar, press on Battery
+    Indicator, and press the button to toggle the lock screen: three
+    screen presses and you\'re back to what you were doing.\n
+
+    \nFor obvious reasons, you can only enable this if the previous
+    setting is disabled, and vice versa.
+  </string>
   <string name="pref_auto_disable">Auto-disable Lock Screen</string>
   <string name="pref_auto_disable_summary">Disable the lock screen when charging?</string>
   <string name="pref_auto_disable_help">
