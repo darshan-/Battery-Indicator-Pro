@@ -148,7 +148,7 @@
   <string name="pref_hint"><b>Hint:</b> Press MENU for help.</string>
 
   <string name="color_settings">Colors and Themes</string>
-  <string name="time_settings">Time Estimates</string>
+  <string name="time_settings">Time Settings</string>
   <string name="other_settings">Other Settings</string>
 
   <string name="pref_cat_themes">Themes</string>
@@ -226,16 +226,16 @@
   </string>
 
   <string name="pref_cat_status_duration">Status Duration (For/Since...)</string>
-  <string name="pref_status_dur_est">When to Estimate Hours</string>
-  <string name="pref_status_dur_est_summary">Stop Showing Time and Start Estimating Hours</string>
+  <string name="pref_status_dur_est">When to Approximate</string>
+  <string name="pref_status_dur_est_summary">Start Approximating Hours Since Status Change</string>
   <string name="pref_status_dur_est_help">
     Determines when the notification switches from saying, e.g.,
     \"Unplugged Since 1:10 PM\" to saying something like \"Unplugged
     for 1 Hour\".  The first way is more accurate, because it tells
     you exactly (to the minute) when the status changed, but many
-    people prefer the simpler to comprehend estimate of the number of
-    elapsed hours, so they make that happen sooner than the default of
-    12 hours.
+    people prefer the simpler to comprehend approximation of the
+    number of elapsed hours, so they make that happen sooner than the
+    default of 12 hours.
   </string>
 
   <string name="pref_cat_time_remaining_estimates">Time Remaining Estimates</string>
