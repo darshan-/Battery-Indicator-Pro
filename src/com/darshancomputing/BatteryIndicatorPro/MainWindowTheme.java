@@ -79,9 +79,10 @@ public class MainWindowTheme {
                 t = percent;
             }
 
-            return formatTimeRemaining(t * Integer.valueOf(s) / 100);
+            return formatTimeRemaining(Math.round(t * Integer.valueOf(s) / (float) 100.0));
         }
 
+        /* Takes time as a whole number of minutes */
         protected String formatTimeRemaining(int t) {
             return  "" + (t / 60) + ":" + String.format("%02d", t % 60) + "h"; /* TODO: Make the h optional? translatable! */
         }
