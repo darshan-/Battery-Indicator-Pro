@@ -46,6 +46,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_MW_THEME = "main_window_theme";
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
     public static final String KEY_AUTOSTART = "autostart";
+    public static final String KEY_CHARGE_AS_TEXT = "charge_as_text";
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
     public static final String KEY_RED = "use_red";
     public static final String KEY_RED_THRESH = "red_threshold";
@@ -77,11 +78,15 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME,
                                                 KEY_LOG_EVERYTHING};
 
-    private static final String[] LISTPREFS = {KEY_AUTOSTART, KEY_MW_THEME, KEY_STATUS_DUR_EST,
+    private static final String[] LIST_PREFS = {KEY_AUTOSTART, KEY_MW_THEME, KEY_STATUS_DUR_EST,
                                                KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
                                                KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
                                                KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
                                                KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME};
+
+    private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_CHARGE_AS_TEXT, KEY_STATUS_DUR_EST,
+                                                   KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
+                                                   KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH};
 
     private static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
 
@@ -176,7 +181,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         for (int i=0; i < PARENTS.length; i++) setEnablednessOfDeps(i);
         validateColorPrefs(null);
-        for (int i=0; i < LISTPREFS.length; i++) updateListPrefSummary(LISTPREFS[i]);
+        for (int i=0; i < LIST_PREFS.length; i++) updateListPrefSummary(LIST_PREFS[i]);
         updateConvertFSummary();
         setEnablednessOfMutuallyExclusive(KEY_CONFIRM_DISABLE_LOCKING, KEY_FINISH_AFTER_TOGGLE_LOCK);
 
@@ -283,9 +288,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             }
         }
 
-        for (int i=0; i < LISTPREFS.length; i++) {
-            if (key.equals(LISTPREFS[i])) {
-                updateListPrefSummary(LISTPREFS[i]);
+        for (int i=0; i < LIST_PREFS.length; i++) {
+            if (key.equals(LIST_PREFS[i])) {
+                updateListPrefSummary(LIST_PREFS[i]);
                 break;
             }
         }
@@ -297,12 +302,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             updateConvertFSummary();
         }
 
-        /* Restart service for those that require it */
-        if (key.equals(KEY_CONVERT_F) || key.equals(KEY_RED) || key.equals(KEY_RED_THRESH) ||
-                   key.equals(KEY_STATUS_DUR_EST) || key.equals(KEY_AUTO_DISABLE_LOCKING) ||
-                   key.equals(KEY_AMBER) || key.equals(KEY_AMBER_THRESH) ||
-                   key.equals(KEY_GREEN) || key.equals(KEY_GREEN_THRESH)) {
-            biServiceConnection.biService.reloadSettings(); /* New soft reset */
+        for (int i=0; i < RESET_SERVICE.length; i++) {
+            if (key.equals(RESET_SERVICE[i])) {
+                biServiceConnection.biService.reloadSettings();
+                break;
+            }
         }
 
         mSharedPreferences.registerOnSharedPreferenceChangeListener(this);

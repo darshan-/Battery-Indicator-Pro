@@ -242,6 +242,26 @@
     set to this.
   </string>
 
+  <string name="pref_cat_charge_as_text">Textual Charge Level</string>
+  <string name="pref_charge_as_text">Textual Charge Level</string>
+  <string name="pref_charge_as_text_summary">Show the charge level as larger text next to icon?</string>
+  <string name="pref_charge_as_text_help">
+    I\'ve had a few users with poorer eyesight ask me to add this
+    option, whereby the charge level is displayed as text (which is a
+    bit larger and easier to read) right next to the icon when you
+    pull down the notification area.  The actual icon won\'t be any
+    different, so this will only help when you pull down the
+    notification tray, but it\'s better than nothing, and easy enough
+    to add for those that want it.\n
+
+    \nTo save precious space, I\'ve done this in a very unglamorous
+    fashion, simply plopping the number in there and carrying on. This
+    turns out to be easier to read than if I included the percent
+    symbol, and means that the text should all fit.  It is possible
+    that if you have particularly small device, enabling this might
+    make the AM/PM at the far right not quite fit.
+  </string>
+
   <string name="pref_cat_status_duration">Status Duration (For/Since...)</string>
   <string name="pref_status_dur_est">When to Approximate</string>
   <string name="pref_status_dur_est_summary">Start Approximating Hours Since Status Change</string>

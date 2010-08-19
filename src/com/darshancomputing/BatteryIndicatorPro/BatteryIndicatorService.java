@@ -203,13 +203,16 @@ public class BatteryIndicatorService extends Service {
             /* Add half an hour, then divide.  Should end up rounding to the closest hour. */
             int statusDurationHours = (int)((statusDuration + (1000 * 60 * 30)) / (1000 * 60 * 60));
 
-            CharSequence contentTitle;
+            String contentTitle = "";
+
+            if (settings.getBoolean(SettingsActivity.KEY_CHARGE_AS_TEXT, false))
+                contentTitle += percent + " ";
 
             int status_dur_est = Integer.valueOf(settings.getString(SettingsActivity.KEY_STATUS_DUR_EST, "12"));
             if (statusDurationHours < status_dur_est) {
-                contentTitle = statusStr + " " + str.since + " " + last_status_since;
+                contentTitle += statusStr + " " + str.since + " " + last_status_since;
             } else {
-                contentTitle = statusStr + " " + str.for_n_hours(statusDurationHours);
+                contentTitle += statusStr + " " + str.for_n_hours(statusDurationHours);
             }
 
             CharSequence contentText = str.healths[health] + " / " + temp_s + " / " +
@@ -271,6 +274,7 @@ public class BatteryIndicatorService extends Service {
         public String fahrenheit_symbol;
         public String celsius_symbol;
         public String volt_symbol;
+        public String percent_symbol;
         public String since;
 
         private String[] statuses;
@@ -284,6 +288,7 @@ public class BatteryIndicatorService extends Service {
             fahrenheit_symbol = r.getString(R.string.fahrenheit_symbol);
             celsius_symbol    = r.getString(R.string.celsius_symbol);
             volt_symbol       = r.getString(R.string.volt_symbol);
+            percent_symbol    = r.getString(R.string.percent_symbol);
             since             = r.getString(R.string.since);
 
             statuses = r.getStringArray(R.array.statuses);

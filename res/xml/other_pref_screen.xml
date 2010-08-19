@@ -63,4 +63,13 @@
        android:defaultValue="auto"
     />
   </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/pref_cat_charge_as_text">
+    <CheckBoxPreference
+       android:key="charge_as_text"
+       android:title="@string/pref_charge_as_text"
+       android:summary="@string/pref_charge_as_text_summary"
+       android:defaultValue="false"
+    />
+  </PreferenceCategory>
 </PreferenceScreen>
