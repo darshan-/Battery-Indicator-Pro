@@ -3,8 +3,8 @@
   <!-- Left, Top, Right, Bottom, just like setPadding() -->
   <array name="theme_default_main_layout_padding">
     <item>0</item>
+    <item>5</item>
     <item>0</item>
     <item>0</item>
-    <item>125</item>
   </array>
 </resources>
