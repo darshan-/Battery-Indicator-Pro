@@ -142,6 +142,9 @@ public class BatteryIndicatorService extends Service {
             }
 
             int last_status = settings.getInt("last_status", -1);
+            /* There's a bug, at least on 1.5, or maybe depending on the hardware (I've noticed it on the MyTouch with 1.5)
+               where USB is recognized as AC at first, then quickly changed to USB.  So we need to test if plugged changed. */
+            int last_plugged = settings.getInt("last_plugged", -1);
             long last_status_cTM = settings.getLong("last_status_cTM", -1);
             int last_percent = settings.getInt("last_percent", -1);
             int previous_charge = settings.getInt("previous_charge", 100);
@@ -150,7 +153,7 @@ public class BatteryIndicatorService extends Service {
             String last_status_since = settings.getString("last_status_since", null);
 
             if (last_status != status || last_status_cTM == -1 || last_percent == -1 ||
-                last_status_cTM > currentTM || last_status_since == null ||
+                last_status_cTM > currentTM || last_status_since == null || last_plugged != plugged ||
                 (plugged == 0 && percent > previous_charge + 3))
             {
                 last_status_since = formatTime(new Date());
