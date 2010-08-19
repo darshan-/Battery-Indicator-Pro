@@ -88,7 +88,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH};
 
-    private static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
+    public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
 
     public static final int   RED = 0;
     public static final int AMBER = 1;
@@ -114,6 +114,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private Resources res;
     private PreferenceScreen mPreferenceScreen;
     private SharedPreferences mSharedPreferences;
+
+    private String pref_screen;
 
     private ColorPreviewPreference cpbPref;
 
@@ -144,10 +146,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //android.os.Debug.startMethodTracing();
 
         Intent intent = getIntent();
-        String pref_screen = intent.getStringExtra(EXTRA_SCREEN);
+        pref_screen = intent.getStringExtra(EXTRA_SCREEN);
         res = getResources();
 
         if (pref_screen == null) {
@@ -205,8 +206,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
         unbindService(biServiceConnection);
-        //android.os.Debug.stopMethodTracing();
     }
 
     @Override
@@ -235,7 +236,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         switch (item.getItemId()) {
         case R.id.menu_help:
             ComponentName comp = new ComponentName(getPackageName(), SettingsHelpActivity.class.getName());
-            startActivity(new Intent().setComponent(comp));
+            Intent intent = new Intent().setComponent(comp);
+
+            if (pref_screen != null) intent.putExtra(EXTRA_SCREEN, pref_screen);
+
+            startActivity(intent);
 
             return true;
         default:
