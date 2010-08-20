@@ -49,13 +49,20 @@ public class BatteryIndicator extends Activity {
     private Intent biServiceIntent;
     private SharedPreferences settings;
     private final BIServiceConnection biServiceConnection = new BIServiceConnection();
+
+    /* These flags finally fixed the noticeably laggy start time for Battery Use screen -- since this main
+       activity is now a singleTask rather than a singleInstance, it was being launched into the same task,
+       which for whatever reason is a good 50-100% slower (~800-1000 ms instead of ~500).  We again have an
+       instantaneous start animation rather than a half-second delay before the start animation. */
+    private static final Intent batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY)
+        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+    private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private Resources res;
     private Context context;
     private Str str;
     private String themeName;
     MainWindowTheme.Theme theme;
     private int percent = -1;
-    private Intent batteryUseIntent;
     private DisplayMetrics metrics;
     private Button battery_use_b;
     private Button toggle_lock_screen_b;
@@ -100,7 +107,6 @@ public class BatteryIndicator extends Activity {
         context = getApplicationContext();
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY);
 
         settings = PreferenceManager.getDefaultSharedPreferences(context);
 
@@ -125,10 +131,10 @@ public class BatteryIndicator extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        updateStatus();
-        updateLockscreenButton();
-        updateTimes();
-        registerReceiver(mBatteryInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        //updateStatus();
+        //updateLockscreenButton();
+        //updateTimes();
+        registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
     }
 
     @Override
@@ -152,9 +158,6 @@ public class BatteryIndicator extends Activity {
             return true;
         case R.id.menu_settings:
             mStartActivity(SettingsActivity.class);
-            return true;
-        case R.id.menu_about:
-            mStartActivity(InfoActivity.class);
             return true;
         case R.id.menu_close:
             /* TODO: confirm */
@@ -192,16 +195,16 @@ public class BatteryIndicator extends Activity {
 
         switch (id) {
         case DIALOG_CONFIRM_DISABLE_KEYGUARD:
-            builder.setTitle(str.confirm_disable) /* TODO: strings.xml */
-                .setMessage(str.confirm_disable_hint)  /* TODO */
+            builder.setTitle(str.confirm_disable)
+                .setMessage(str.confirm_disable_hint)
                 .setCancelable(false)
-                .setPositiveButton(str.yes, new DialogInterface.OnClickListener() { /* TODO */
+                .setPositiveButton(str.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             setDisableLocking(true);
                             di.cancel();
                         }
                     })
-                .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() { /* TODO */
+                .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             di.cancel();
                         }
@@ -253,7 +256,7 @@ public class BatteryIndicator extends Activity {
     }
 
     /* Battery Use */
-    private OnClickListener buButtonListener = new OnClickListener() {
+    private final OnClickListener buButtonListener = new OnClickListener() {
         public void onClick(View v) {
             try {
                 startActivity(batteryUseIntent);
@@ -265,7 +268,7 @@ public class BatteryIndicator extends Activity {
     };
 
     /* Toggle Lock Screen */
-    private OnClickListener tlsButtonListener = new OnClickListener() {
+    private final OnClickListener tlsButtonListener = new OnClickListener() {
         public void onClick(View v) {
             if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false)) {
                 setDisableLocking(false);
@@ -287,7 +290,7 @@ public class BatteryIndicator extends Activity {
     }
 
     private void bindButtons() {
-        if (getPackageManager().resolveActivity(batteryUseIntent,0) == null) {
+        if (getPackageManager().resolveActivity(batteryUseIntent, 0) == null) {
             battery_use_b.setEnabled(false); /* TODO: change how the disabled button looks */
         } else {
             battery_use_b.setOnClickListener(buButtonListener);

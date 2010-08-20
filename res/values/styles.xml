@@ -45,8 +45,9 @@
 
   <style name="bi_theme" parent="@android:style/Theme.Translucent">
     <item name="android:windowNoTitle">true</item>
-    <!--item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item-->
+    <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
     <!--item name="android:windowAnimationStyle">@android:style/Animation.Activity</item-->
+    <!--item name="android:windowAnimationStyle">@null</item-->
   </style>
 
   <color name="android_green">#A4C639</color>
