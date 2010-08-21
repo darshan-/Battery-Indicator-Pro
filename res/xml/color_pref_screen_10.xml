@@ -16,12 +16,6 @@
   </PreferenceCategory>
 
   <PreferenceCategory android:title="@string/pref_cat_color">
-    <com.darshancomputing.BatteryIndicatorPro.ColorPreviewPreference
-       android:key="color_preview"
-       android:title="@string/pref_color_preview"
-       android:layout="@layout/color_preview_pref"
-       android:enabled="false"
-    />
     <CheckBoxPreference
        android:key="use_red"
        android:title="@string/pref_red"
@@ -56,7 +50,7 @@
        android:key="green_threshold"
        android:title="@string/pref_green_thresh"
        android:dialogTitle="@string/pref_green_thresh_summary"
-       android:defaultValue="@string/default_green_thresh"
+       android:defaultValue="@string/default_green_thresh10"
     />
   </PreferenceCategory>
 </PreferenceScreen>

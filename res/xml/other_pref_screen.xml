@@ -72,4 +72,13 @@
        android:defaultValue="false"
     />
   </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/pref_cat_device_specific">
+    <CheckBoxPreference
+       android:key="ten_percent_mode"
+       android:title="@string/pref_ten_percent_mode"
+       android:summary="@string/pref_ten_percent_mode_summary"
+       android:defaultValue="false"
+    />
+  </PreferenceCategory>
 </PreferenceScreen>

@@ -424,6 +424,26 @@
     then your lowest option here will be 40.
   </string>
 
+  <string name="pref_cat_device_specific">Device Specific Settings</string>
+  <string name="pref_cat_device_specific_help"></string>
+  <string name="pref_ten_percent_mode">10% Mode</string>
+  <string name="pref_ten_percent_mode_summary">Read the help first!</string>
+  <string name="pref_ten_percent_mode_help"><b>Note:</b>
+    Checking or unchecking this will reset your icon color settings!\n
+
+    \nThis setting cleans up the Icon Color settings to make more sense
+    on devices that only show their charge level in 10% increments.
+    According to user reports, that includes these devices:\n
+
+    \n• Motorola Droid (original)
+    \n• Motorola Droid X
+    \n• Motorola Droid 2
+    \n• Samsung Moment\n
+
+    \nAs far as I\'m aware, all other devices report every 1%, and so
+    should <i>not</i> turn this on.
+  </string>
+
   <string-array name="mw_theme_pref_entries">
     <item>Default Small</item>
     <item>Colorful Small</item>

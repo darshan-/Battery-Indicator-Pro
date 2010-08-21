@@ -47,6 +47,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_CHARGE_AS_TEXT = "charge_as_text";
+    public static final String KEY_TEN_PERCENT_MODE = "ten_percent_mode";
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
     public static final String KEY_RED = "use_red";
     public static final String KEY_RED_THRESH = "red_threshold";
@@ -86,7 +87,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_CHARGE_AS_TEXT, KEY_STATUS_DUR_EST,
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
-                                                   KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH};
+                                                   KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
+                                                   KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
 
     public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
 
@@ -132,16 +134,14 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private int iGreenThresh;
 
     private static final String[] fivePercents = {
-        "5", "10",
-        "15", "20",
-        "25", "30",
-        "35", "40",
-        "45", "50",
-        "55", "60",
-        "65", "70",
-        "75", "80",
-        "85", "90",
-        "95", "100"};
+        "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
+        "55", "60", "65", "70", "75", "80", "85", "90", "95", "100"};
+
+    /* Also includes 5 and 15, as the orginal Droid (and presumably similarly crippled devices)
+       goes by 5% once you get below 20%. */
+    private static final String[] tenPercents = {
+	"5", "10", "15", "20", "30", "40", "50",
+	"60", "70", "80", "90", "100"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,10 +151,16 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         pref_screen = intent.getStringExtra(EXTRA_SCREEN);
         res = getResources();
 
+        mSharedPreferences = getPreferenceManager().getSharedPreferences();
+
         if (pref_screen == null) {
             setPrefScreen(R.xml.main_pref_screen);
         } else if (pref_screen.equals(KEY_COLOR_SETTINGS)) {
-            setPrefScreen(R.xml.color_pref_screen);
+            if (mSharedPreferences.getBoolean(KEY_TEN_PERCENT_MODE, false))
+                setPrefScreen(R.xml.color_pref_screen_10);
+            else
+                setPrefScreen(R.xml.color_pref_screen);
+
             setWindowSubtitle(res.getString(R.string.color_settings));
 
             cpbPref     = (ColorPreviewPreference) mPreferenceScreen.findPreference(KEY_COLOR_PREVIEW);
@@ -199,7 +205,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         addPreferencesFromResource(resource);
 
         mPreferenceScreen  = getPreferenceScreen();
-        mSharedPreferences = mPreferenceScreen.getSharedPreferences();
+        // mSharedPreferences = mPreferenceScreen.getSharedPreferences();
     }
 
 
@@ -284,6 +290,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             key.equals(KEY_GREEN) || key.equals(KEY_GREEN_THRESH)) {
             validateColorPrefs(key);
         }
+
+        if (key.equals(KEY_TEN_PERCENT_MODE))
+            resetColorsToDefaults();
 
         for (int i=0; i < PARENTS.length; i++) {
             if (key.equals(PARENTS[i])) {
@@ -372,11 +381,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private void validateColorPrefs(String changedKey) {
-        if (cpbPref == null) return;
+        if (redThresh == null) return;
         String [] a;
 
         if (changedKey == null) {
-            a = xToYBy5(RED_SETTING_MIN, RED_SETTING_MAX);
+            a = xToY(RED_SETTING_MIN, RED_SETTING_MAX);
             redThresh.setEntries(a);
             redThresh.setEntryValues(a);
 
@@ -390,7 +399,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (changedKey == null || changedKey.equals(KEY_RED) || changedKey.equals(KEY_RED_THRESH) ||
             changedKey.equals(KEY_AMBER)) {
             if (amberEnabled) {
-                a = xToYBy5(determineMin(AMBER), AMBER_SETTING_MAX);
+                a = xToY(determineMin(AMBER), AMBER_SETTING_MAX);
                 amberThresh.setEntries(a);
                 amberThresh.setEntryValues(a);
 
@@ -404,7 +413,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         if (changedKey == null || !changedKey.equals(KEY_GREEN_THRESH)) {
             if (greenEnabled) {
-                a = xToYBy5(determineMin(GREEN), 100);
+                a = xToY(determineMin(GREEN), 100);
                 greenThresh.setEntries(a);
                 greenThresh.setEntryValues(a);
 
@@ -417,6 +426,23 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         }
 
         updateColorPreviewBar();
+    }
+
+    private void resetColorsToDefaults() {
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+
+        editor.putBoolean(KEY_RED,   res.getBoolean(R.bool.default_use_red));
+        editor.putBoolean(KEY_AMBER, res.getBoolean(R.bool.default_use_amber));
+        editor.putBoolean(KEY_GREEN, res.getBoolean(R.bool.default_use_green));
+
+        editor.putString(  KEY_RED_THRESH, res.getString(R.string.default_red_thresh));
+        editor.putString(KEY_AMBER_THRESH, res.getString(R.string.default_amber_thresh));
+        if (mSharedPreferences.getBoolean(KEY_TEN_PERCENT_MODE, false))
+            editor.putString(KEY_GREEN_THRESH, res.getString(R.string.default_green_thresh10));
+        else
+            editor.putString(KEY_GREEN_THRESH, res.getString(R.string.default_green_thresh));
+
+        editor.commit();
     }
 
     /* Determine the minimum valid threshold setting for a particular color, based on other active settings,
@@ -442,7 +468,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         }
     }
 
-    private static String[] xToYBy5(int x, int y) {
+    private static String[] xToY(int x, int y) {
         int i = (x / 5) - 1;
         int j = (100 - y) / 5;
 
@@ -454,6 +480,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private void updateColorPreviewBar() {
+        if (cpbPref == null) return;
+
         cpbPref.redThresh   =   redEnabled ?   iRedThresh :   0;
         cpbPref.amberThresh = amberEnabled ? iAmberThresh :   0;
         cpbPref.greenThresh = greenEnabled ? iGreenThresh : 100;

@@ -215,4 +215,12 @@
   <string name="default_normal_usage_time">1440</string>
   <string name="default_heavy_usage_time">720</string>
   <string name="default_constant_usage_time">240</string>
+
+  <bool   name="default_use_red">true</bool>
+  <string name="default_red_thresh">15</string>
+  <bool   name="default_use_amber">true</bool>
+  <string name="default_amber_thresh">40</string>
+  <bool   name="default_use_green">false</bool>
+  <string name="default_green_thresh">@string/default_amber_thresh</string>
+  <string name="default_green_thresh10">50</string>
 </resources>
