@@ -14,17 +14,31 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
-import android.app.Activity;
+import android.app.ListActivity;
+import android.content.Context;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
+//import android.widget.ListAdapter;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-public class LogViewActivity extends Activity {
+public class LogViewActivity extends ListActivity {
+    private LogDatabase logs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.log_item);
+        Context context = getApplicationContext();
+
+        logs = new LogDatabase(context);
+        Cursor mCursor = logs.getAllLogs();
+        startManagingCursor(mCursor);
+
+        setListAdapter(new SimpleCursorAdapter(context, R.layout.log_item, mCursor,
+                                               new String[] {LogDatabase.KEY_STATUS, LogDatabase.KEY_CHARGE},
+                                               new int[]    {R.id.status, R.id.percent}));
     }
 
     @Override
