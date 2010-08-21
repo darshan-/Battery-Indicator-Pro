@@ -133,15 +133,42 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private int iAmberThresh;
     private int iGreenThresh;
 
+    private Boolean ten_percent_mode;
+
     private static final String[] fivePercents = {
         "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
         "55", "60", "65", "70", "75", "80", "85", "90", "95", "100"};
 
     /* Also includes 5 and 15, as the orginal Droid (and presumably similarly crippled devices)
        goes by 5% once you get below 20%. */
-    private static final String[] tenPercents = {
+    private static final String[] tenPercentEntries = {
 	"5", "10", "15", "20", "30", "40", "50",
 	"60", "70", "80", "90", "100"};
+
+    /* Setting Red and Amber values like this allows the Service to follow the same algorithm no matter what. */
+    private static final String[] tenPercentValues = {
+	"6", "11", "16", "21", "31", "41", "51",
+	"61", "71", "81", "91", "101"};
+
+    /* Returns a two-item array of the start and end indices into the above arrays. */
+    private int[] indices(int x, int y) {
+        int [] a = new int[2];
+        int i; /* How many values to remove from the front */
+        int j; /* How many values to remove from the end   */
+
+        if (ten_percent_mode) {
+            for (i = 0; i < tenPercentEntries.length - 1; i++)
+                if (Integer.valueOf(tenPercentEntries[i]) >= Integer.valueOf(x)) break;
+            j = (100 - y) / 10;
+        } else {
+            i = (x / 5) - 1;
+            j = (100 - y) / 5;
+        }
+
+        a[0] = i;
+        a[1] = j;
+        return a;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,9 +200,17 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
             greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
 
-            iRedThresh   = Integer.valueOf(  redThresh.getValue());
+            iRedThresh   = Integer.valueOf(  redThresh.getValue()); /* Entries don't exist yet */
             iAmberThresh = Integer.valueOf(amberThresh.getValue());
             iGreenThresh = Integer.valueOf(greenThresh.getValue());
+
+            ten_percent_mode = mSharedPreferences.getBoolean(KEY_TEN_PERCENT_MODE, false);
+
+            if (ten_percent_mode) {
+                /* These should always correspond to the logical (entry) value, not the actual stored value. */
+                iRedThresh--;
+                iAmberThresh--;
+            }
         } else if (pref_screen.equals(KEY_TIME_SETTINGS)) {
             setPrefScreen(R.xml.time_pref_screen);
             setWindowSubtitle(res.getString(R.string.time_settings));
@@ -278,11 +313,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else if (key.equals(KEY_GREEN)) {
             greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
         } else if (key.equals(KEY_RED_THRESH)) {
-            iRedThresh = Integer.valueOf(redThresh.getValue());
+            iRedThresh = Integer.valueOf((String) redThresh.getEntry());
         } else if (key.equals(KEY_AMBER_THRESH)) {
-            iAmberThresh = Integer.valueOf(amberThresh.getValue());
+            iAmberThresh = Integer.valueOf((String) amberThresh.getEntry());
         } else if (key.equals(KEY_GREEN_THRESH)) {
-            iGreenThresh = Integer.valueOf(greenThresh.getValue());
+            iGreenThresh = Integer.valueOf((String) greenThresh.getEntry());
         }
 
         if (key.equals(KEY_RED) || key.equals(KEY_RED_THRESH) ||
@@ -382,30 +417,28 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     private void validateColorPrefs(String changedKey) {
         if (redThresh == null) return;
-        String [] a;
+        String lowest;
 
         if (changedKey == null) {
-            a = xToY(RED_SETTING_MIN, RED_SETTING_MAX);
-            redThresh.setEntries(a);
-            redThresh.setEntryValues(a);
+            setEntriesAndValues(redThresh, RED_SETTING_MIN, RED_SETTING_MAX);
 
             /* Older version had a higher max; user's setting could be too high. */
             if (iRedThresh > RED_SETTING_MAX) {
                 redThresh.setValue("" + RED_SETTING_MAX);
                 iRedThresh = RED_SETTING_MAX;
+                if (ten_percent_mode) iRedThresh--;
             }
         }
 
         if (changedKey == null || changedKey.equals(KEY_RED) || changedKey.equals(KEY_RED_THRESH) ||
             changedKey.equals(KEY_AMBER)) {
             if (amberEnabled) {
-                a = xToY(determineMin(AMBER), AMBER_SETTING_MAX);
-                amberThresh.setEntries(a);
-                amberThresh.setEntryValues(a);
+                lowest = setEntriesAndValues(amberThresh, determineMin(AMBER), AMBER_SETTING_MAX);
 
-                if (iAmberThresh < Integer.valueOf(a[0])) {
-                    amberThresh.setValue(a[0]);
-                    iAmberThresh = Integer.valueOf(a[0]);
+                if (iAmberThresh < Integer.valueOf(lowest)) {
+                    amberThresh.setValue(lowest);
+                    iAmberThresh = Integer.valueOf(lowest);
+                    if (ten_percent_mode) iAmberThresh--;
                     updateListPrefSummary(KEY_AMBER_THRESH);
                 }
             }
@@ -413,19 +446,44 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         if (changedKey == null || !changedKey.equals(KEY_GREEN_THRESH)) {
             if (greenEnabled) {
-                a = xToY(determineMin(GREEN), 100);
-                greenThresh.setEntries(a);
-                greenThresh.setEntryValues(a);
+                lowest = setEntriesAndValues(greenThresh, determineMin(GREEN), 100);
 
-                if (iGreenThresh < Integer.valueOf(a[0])) {
-                    greenThresh.setValue(a[0]);
-                    iGreenThresh = Integer.valueOf(a[0]);
+                if (iGreenThresh < Integer.valueOf(lowest)) {
+                    greenThresh.setValue(lowest);
+                    iGreenThresh = Integer.valueOf(lowest);
                     updateListPrefSummary(KEY_GREEN_THRESH);
                 }
             }
         }
 
         updateColorPreviewBar();
+    }
+
+    /* Does the obvious and returns the lowest value. */
+    private String setEntriesAndValues(ListPreference lpref, int min, int max) {
+        String[] entries, values;
+        int i, j;
+        int[] a;
+
+        a = indices(min, max);
+        i = a[0];
+        j = a[1];
+
+        if (ten_percent_mode) {
+            entries = new String[tenPercentEntries.length - i - j];
+            values  = new String[tenPercentEntries.length - i - j];
+            System.arraycopy(tenPercentEntries, i, entries, 0, entries.length);
+            System.arraycopy(tenPercentValues , i,  values, 0,  values.length);
+            if (lpref.equals(greenThresh)) values = entries;
+        } else {
+            entries = values = new String[fivePercents.length - i - j];
+            System.arraycopy(fivePercents, i, entries, 0, entries.length);
+        }
+
+        lpref.setEntries(entries);
+        lpref.setEntryValues(values);
+
+        return values[0];
     }
 
     private void resetColorsToDefaults() {
@@ -435,12 +493,15 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         editor.putBoolean(KEY_AMBER, res.getBoolean(R.bool.default_use_amber));
         editor.putBoolean(KEY_GREEN, res.getBoolean(R.bool.default_use_green));
 
-        editor.putString(  KEY_RED_THRESH, res.getString(R.string.default_red_thresh));
-        editor.putString(KEY_AMBER_THRESH, res.getString(R.string.default_amber_thresh));
-        if (mSharedPreferences.getBoolean(KEY_TEN_PERCENT_MODE, false))
+        if (mSharedPreferences.getBoolean(KEY_TEN_PERCENT_MODE, false)){
+            editor.putString(  KEY_RED_THRESH, res.getString(R.string.default_red_thresh10  ));
+            editor.putString(KEY_AMBER_THRESH, res.getString(R.string.default_amber_thresh10));
             editor.putString(KEY_GREEN_THRESH, res.getString(R.string.default_green_thresh10));
-        else
+        } else {
+            editor.putString(  KEY_RED_THRESH, res.getString(R.string.default_red_thresh  ));
+            editor.putString(KEY_AMBER_THRESH, res.getString(R.string.default_amber_thresh));
             editor.putString(KEY_GREEN_THRESH, res.getString(R.string.default_green_thresh));
+        }
 
         editor.commit();
     }
@@ -453,30 +514,28 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             return RED_SETTING_MIN;
         case AMBER:
             if (redEnabled)
+                /* In 10% mode, we might want +10, but xToY10() will sort it out if +5 is too small. */
                 return java.lang.Math.max(iRedThresh + 5, AMBER_SETTING_MIN);
             else
                 return AMBER_SETTING_MIN;
         case GREEN:
+            int i;
+
             if (amberEnabled)
-                return java.lang.Math.max(iAmberThresh, GREEN_SETTING_MIN);
-            if (redEnabled)
-                return java.lang.Math.max(iRedThresh, GREEN_SETTING_MIN);
+                i = iAmberThresh;
+            else if (redEnabled)
+                i = iRedThresh;
             else
                 return GREEN_SETTING_MIN;
+
+            if (ten_percent_mode)
+                /* We'll usually want +10, but it could be just +5. xToY10() will sort it out if +5 is too small. */
+                return java.lang.Math.max(i + 5, GREEN_SETTING_MIN);
+            else
+                return java.lang.Math.max(i, GREEN_SETTING_MIN);
         default:
                 return GREEN_SETTING_MIN;
         }
-    }
-
-    private static String[] xToY(int x, int y) {
-        int i = (x / 5) - 1;
-        int j = (100 - y) / 5;
-
-        String[] a = new String[fivePercents.length - i - j];
-
-        System.arraycopy(fivePercents, i, a, 0, a.length);
-
-        return a;
     }
 
     private void updateColorPreviewBar() {

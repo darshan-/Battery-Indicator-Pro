@@ -25,7 +25,7 @@
     <ListPreference
        android:key="red_threshold"
        android:title="@string/pref_red_thresh"
-       android:dialogTitle="@string/pref_red_thresh_summary"
+       android:dialogTitle="@string/pref_red_thresh_summary10"
        android:defaultValue="@string/default_red_thresh"
     />
     <CheckBoxPreference
@@ -37,7 +37,7 @@
     <ListPreference
        android:key="amber_threshold"
        android:title="@string/pref_amber_thresh"
-       android:dialogTitle="@string/pref_amber_thresh_summary"
+       android:dialogTitle="@string/pref_amber_thresh_summary10"
        android:defaultValue="@string/default_amber_thresh"
     />
     <CheckBoxPreference

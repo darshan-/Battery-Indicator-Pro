@@ -385,11 +385,14 @@
   </string>
   <string name="pref_red_thresh">Red Threshold</string>
   <string name="pref_red_thresh_summary">Red Icon Below What Charge Percentage?</string>
-  <string name="pref_red_thresh_help">
-    Specifies the charge level which the icon should turn red below.\n
+  <string name="pref_red_thresh_summary10">Red Icon At or Below What Charge Percentage?</string>
+  <string name="pref_red_thresh_help">Specifies the charge level which
+    the icon should turn red below (or <i>at</i>, in 10% Mode).\n
 
     \nThe options for the red threshold include all the values (in
-    multiples of 5) for which there are red icons available.
+    multiples of 5) for which there are red icons available.\n
+
+    \nIn 10% Mode, things work slightly differently, but should be self-explanatory.
   </string>
   <string name="pref_amber">Use Amber Icon</string>
   <string name="pref_amber_summary">Use amber icon when charge is medium?</string>
@@ -398,14 +401,18 @@
   </string>
   <string name="pref_amber_thresh">Amber Threshold</string>
   <string name="pref_amber_thresh_summary">Amber Icon Below What Charge Percentage?</string>
-  <string name="pref_amber_thresh_help">
-    Specifies the charge level which the icon should turn amber below.\n
+  <string name="pref_amber_thresh_summary10">Amber Icon At or Below What Charge Percentage?</string>
+  <string name="pref_amber_thresh_help">Specifies the charge level
+    which the icon should turn amber below (or <i>at</i>, in 10%
+    Mode).\n
 
     \nThe options for the amber threshold include all the values (in
     multiples of 5) for which there are amber icons available,
     starting 5 percentage points above the red threshold (if there is
     one).  For example, if you have the red threshold set to 15, then
-    your lowest option here will be 20.
+    your lowest option here will be 20.\n
+
+    \nIn 10% Mode, things work slightly differently, but should be self-explanatory.
   </string>
   <string name="pref_green">Use Green Icon</string>
   <string name="pref_green_summary">Use green icon when charge is high?</string>
@@ -414,14 +421,16 @@
   </string>
   <string name="pref_green_thresh">Green Threshold</string>
   <string name="pref_green_thresh_summary">Green Icon At or Above What Charge Percentage?</string>
-  <string name="pref_green_thresh_help">
-    Specifies the charge level which the icon should be green at or above.\n
+  <string name="pref_green_thresh_help">Specifies the charge level
+    which the icon should be green at or above.\n
 
     \nThe options for the green threshold include all the values (in
     multiples of 5) for which there are green icons available,
     starting at the highest active threshold you have set for red or
     amber.  For example, if you have the amber threshold set to 40,
-    then your lowest option here will be 40.
+    then your lowest option here will be 40.\n
+
+    \nIn 10% Mode, things work slightly differently, but should be self-explanatory.
   </string>
 
   <string name="pref_cat_device_specific">Device Specific Settings</string>
