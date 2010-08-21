@@ -376,7 +376,10 @@
   <string name="pref_color_preview">Color Preview</string>
   <string name="pref_color_preview_help">
     The color preview will hopefully make it really easy to visualize
-    what effect your color settings will have.
+    what effect your color settings will have.\n
+
+    \nThis doesn\'t exist in 10% mode, because it just wouldn\'t make
+    sense.
   </string>
   <string name="pref_red">Use Red Icon</string>
   <string name="pref_red_summary">Use red icon when charge is low?</string>
@@ -392,7 +395,8 @@
     \nThe options for the red threshold include all the values (in
     multiples of 5) for which there are red icons available.\n
 
-    \nIn 10% Mode, things work slightly differently, but should be self-explanatory.
+    \nIn 10% Mode, things work slightly differently but should be
+    self-explanatory.
   </string>
   <string name="pref_amber">Use Amber Icon</string>
   <string name="pref_amber_summary">Use amber icon when charge is medium?</string>
@@ -412,7 +416,8 @@
     one).  For example, if you have the red threshold set to 15, then
     your lowest option here will be 20.\n
 
-    \nIn 10% Mode, things work slightly differently, but should be self-explanatory.
+    \nIn 10% Mode, things work slightly differently but should be
+    self-explanatory.
   </string>
   <string name="pref_green">Use Green Icon</string>
   <string name="pref_green_summary">Use green icon when charge is high?</string>
@@ -430,7 +435,8 @@
     amber.  For example, if you have the amber threshold set to 40,
     then your lowest option here will be 40.\n
 
-    \nIn 10% Mode, things work slightly differently, but should be self-explanatory.
+    \nIn 10% Mode, things work slightly differently but should be
+    self-explanatory.
   </string>
 
   <string name="pref_cat_device_specific">Device Specific Settings</string>

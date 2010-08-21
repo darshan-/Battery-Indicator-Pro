@@ -43,13 +43,15 @@ public class BatteryIndicatorService extends Service {
 
     private Boolean keyguardDisabled = false;
 
+    private Resources res;
     private Str str;
 
     @Override
     public void onCreate() {
         //android.os.Debug.startMethodTracing();
 
-        str = new Str(getResources());
+        res = getResources();
+        str = new Str();
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -107,17 +109,17 @@ public class BatteryIndicatorService extends Service {
             /* I Take advantage of (count on) R.java having resources alphabetical and incrementing by one */
 
             int icon;
-            if (settings.getBoolean(SettingsActivity.KEY_RED, false) &&
-                percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, "0")) &&
+            if (settings.getBoolean(SettingsActivity.KEY_RED, res.getBoolean(R.bool.default_use_red)) &&
+                percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, str.default_red_thresh)) &&
                 percent <= SettingsActivity.RED_ICON_MAX) {
                 icon = R.drawable.r000 + percent - 0;
-            } else if (settings.getBoolean(SettingsActivity.KEY_AMBER, false) &&
-                       percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_AMBER_THRESH, "0")) &&
+            } else if (settings.getBoolean(SettingsActivity.KEY_AMBER, res.getBoolean(R.bool.default_use_amber)) &&
+                       percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_AMBER_THRESH, str.default_amber_thresh)) &&
                        percent <= SettingsActivity.AMBER_ICON_MAX &&
                        percent >= SettingsActivity.AMBER_ICON_MIN){
                 icon = R.drawable.a000 + percent - 0;
-            } else if (settings.getBoolean(SettingsActivity.KEY_GREEN, false) &&
-                       percent >= Integer.valueOf(settings.getString(SettingsActivity.KEY_GREEN_THRESH, "101")) &&
+            } else if (settings.getBoolean(SettingsActivity.KEY_GREEN, res.getBoolean(R.bool.default_use_green)) &&
+                       percent >= Integer.valueOf(settings.getString(SettingsActivity.KEY_GREEN_THRESH, str.default_green_thresh)) &&
                        percent >= SettingsActivity.GREEN_ICON_MIN) {
                 icon = R.drawable.g020 + percent - 20;
             } else {
@@ -211,7 +213,8 @@ public class BatteryIndicatorService extends Service {
             if (settings.getBoolean(SettingsActivity.KEY_CHARGE_AS_TEXT, false))
                 contentTitle += percent + " ";
 
-            int status_dur_est = Integer.valueOf(settings.getString(SettingsActivity.KEY_STATUS_DUR_EST, "12"));
+            int status_dur_est = Integer.valueOf(settings.getString(SettingsActivity.KEY_STATUS_DUR_EST,
+                                        str.default_status_dur_est));
             if (statusDurationHours < status_dur_est) {
                 contentTitle += statusStr + " " + str.since + " " + last_status_since;
             } else {
@@ -279,28 +282,34 @@ public class BatteryIndicatorService extends Service {
         public String volt_symbol;
         public String percent_symbol;
         public String since;
+        public String default_status_dur_est;
+        public String default_red_thresh;
+        public String default_amber_thresh;
+        public String default_green_thresh;
 
         private String[] statuses;
         private String[] healths;
         private String[] pluggeds;
 
-        public Str(Resources  res) {
-            r = res;
+        public Str() {
+            degree_symbol          = res.getString(R.string.degree_symbol);
+            fahrenheit_symbol      = res.getString(R.string.fahrenheit_symbol);
+            celsius_symbol         = res.getString(R.string.celsius_symbol);
+            volt_symbol            = res.getString(R.string.volt_symbol);
+            percent_symbol         = res.getString(R.string.percent_symbol);
+            since                  = res.getString(R.string.since);
+            default_status_dur_est = res.getString(R.string.default_status_dur_est);
+            default_red_thresh     = res.getString(R.string.default_red_thresh);
+            default_amber_thresh   = res.getString(R.string.default_amber_thresh);
+            default_green_thresh   = res.getString(R.string.default_green_thresh);
 
-            degree_symbol     = r.getString(R.string.degree_symbol);
-            fahrenheit_symbol = r.getString(R.string.fahrenheit_symbol);
-            celsius_symbol    = r.getString(R.string.celsius_symbol);
-            volt_symbol       = r.getString(R.string.volt_symbol);
-            percent_symbol    = r.getString(R.string.percent_symbol);
-            since             = r.getString(R.string.since);
-
-            statuses = r.getStringArray(R.array.statuses);
-            healths  = r.getStringArray(R.array.healths);
-            pluggeds = r.getStringArray(R.array.pluggeds);
+            statuses = res.getStringArray(R.array.statuses);
+            healths  = res.getStringArray(R.array.healths);
+            pluggeds = res.getStringArray(R.array.pluggeds);
         }
 
         public String for_n_hours(int n) {
-            return String.format(r.getQuantityString(R.plurals.for_n_hours, n), n);
+            return String.format(res.getQuantityString(R.plurals.for_n_hours, n), n);
         }
     }
 }

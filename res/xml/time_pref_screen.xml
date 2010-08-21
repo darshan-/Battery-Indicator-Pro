@@ -12,17 +12,16 @@
        android:entries="@array/status_dur_est_pref_entries" 
        android:entryValues="@array/status_dur_est_pref_values"
        android:dialogTitle="@string/pref_status_dur_est_summary"
-       android:defaultValue="12"
+       android:defaultValue="@string/default_status_dur_est"
     />
   </PreferenceCategory>
 
-  <!-- Add checkbox preferences to make these all optional -->
   <PreferenceCategory android:title="@string/pref_cat_time_remaining_estimates">
     <CheckBoxPreference
        android:key="show_charge_time"
        android:title="@string/pref_show_charge_time"
        android:summary="@string/pref_show_charge_time_summary"
-       android:defaultValue="true"
+       android:defaultValue="@bool/default_show_charge_time"
     />
     <ListPreference
        android:key="usb_charge_time"
@@ -44,7 +43,7 @@
        android:key="show_light_usage"
        android:title="@string/pref_show_light_usage"
        android:summary="@string/pref_show_light_usage_summary"
-       android:defaultValue="true"
+       android:defaultValue="@bool/default_show_light_usage"
     />
     <ListPreference
        android:key="light_usage_time"
@@ -58,7 +57,7 @@
        android:key="show_normal_usage"
        android:title="@string/pref_show_normal_usage"
        android:summary="@string/pref_show_normal_usage_summary"
-       android:defaultValue="true"
+       android:defaultValue="@bool/default_show_normal_usage"
     />
     <ListPreference
        android:key="normal_usage_time"
@@ -72,7 +71,7 @@
        android:key="show_heavy_usage"
        android:title="@string/pref_show_heavy_usage"
        android:summary="@string/pref_show_heavy_usage_summary"
-       android:defaultValue="true"
+       android:defaultValue="@bool/default_show_heavy_usage"
     />
     <ListPreference
        android:key="heavy_usage_time"
@@ -86,7 +85,7 @@
        android:key="show_constant_usage"
        android:title="@string/pref_show_constant_usage"
        android:summary="@string/pref_show_constant_usage_summary"
-       android:defaultValue="true"
+       android:defaultValue="@bool/default_show_constant_usage"
     />
     <ListPreference
        android:key="constant_usage_time"

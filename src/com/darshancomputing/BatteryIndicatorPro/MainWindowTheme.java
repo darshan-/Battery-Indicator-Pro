@@ -93,19 +93,24 @@ public class MainWindowTheme {
 
             switch (index) {
             case 0:
-                if (last_status == 2 && settings.getBoolean(SettingsActivity.KEY_SHOW_CHARGE_TIME, true)) return true; /* TODO: Service constant */
+                if (last_status == 2 && settings.getBoolean(SettingsActivity.KEY_SHOW_CHARGE_TIME, /* TODO: Service constant */
+                                                            res.getBoolean(R.bool.default_show_charge_time))) return true;
                 break;
             case 1:
-                if (settings.getBoolean(SettingsActivity.KEY_SHOW_LIGHT_USAGE, true)) return true;
+                if (settings.getBoolean(SettingsActivity.KEY_SHOW_LIGHT_USAGE,
+                                        res.getBoolean(R.bool.default_show_light_usage))) return true;
                 break;
             case 2:
-                if (settings.getBoolean(SettingsActivity.KEY_SHOW_NORMAL_USAGE, true)) return true;
+                if (settings.getBoolean(SettingsActivity.KEY_SHOW_NORMAL_USAGE,
+                                        res.getBoolean(R.bool.default_show_normal_usage))) return true;
                 break;
             case 3:
-                if (settings.getBoolean(SettingsActivity.KEY_SHOW_HEAVY_USAGE, true)) return true;
+                if (settings.getBoolean(SettingsActivity.KEY_SHOW_HEAVY_USAGE,
+                                        res.getBoolean(R.bool.default_show_heavy_usage))) return true;
                 break;
             case 4:
-                if (settings.getBoolean(SettingsActivity.KEY_SHOW_CONSTANT_USAGE, true)) return true;
+                if (settings.getBoolean(SettingsActivity.KEY_SHOW_CONSTANT_USAGE,
+                                        res.getBoolean(R.bool.default_show_constant_usage))) return true;
                 break;
             default:
                 return true;
