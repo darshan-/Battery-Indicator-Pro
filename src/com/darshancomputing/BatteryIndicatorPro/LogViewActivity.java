@@ -23,18 +23,21 @@ import android.text.method.LinkMovementMethod;
 import android.view.ViewGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import java.util.Date;
 
 public class LogViewActivity extends ListActivity {
     private LogDatabase logs;
-    private Resources   res;
+    private Resources res;
+    private Context context;
 
-    private static final String[] KEYS = {LogDatabase.KEY_STATUS, LogDatabase.KEY_PLUGGED, LogDatabase.KEY_CHARGE};
-    private static final int[]     IDS = {R.id.status, R.id.plugged, R.id.percent};
+    private static final String[] KEYS = {LogDatabase.KEY_STATUS, LogDatabase.KEY_PLUGGED,
+                                          LogDatabase.KEY_CHARGE, LogDatabase.KEY_TIME};
+    private static final int[]     IDS = {R.id.status, R.id.plugged, R.id.percent, R.id.time};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Context context = getApplicationContext();
+        context = getApplicationContext();
         res = getResources();
 
         logs = new LogDatabase(context);
@@ -65,7 +68,6 @@ public class LogViewActivity extends ListActivity {
             if (tv.getId() == R.id.status ) {
                 tv.setText(statuses[Integer.valueOf(text)]);
             } else if (tv.getId() == R.id.plugged) {
-                System.out.println("...................................................... " + text);
                 int plugged = Integer.valueOf(text);
                 if (plugged < 1) return;
 
@@ -73,9 +75,16 @@ public class LogViewActivity extends ListActivity {
                 status.setText(status.getText() + " " + pluggeds[plugged]);
             } else if (tv.getId() == R.id.percent) {
                 tv.setText(text + "%");
+            } else if (tv.getId() == R.id.time) {
+                tv.setText(formatTime(new Date(Long.valueOf(text))));
             } else {
                 tv.setText(text);
             }
+        }
+
+        private String formatTime(Date d) {
+            return android.text.format.DateFormat.getDateFormat(context).format(d) + " "
+                 + android.text.format.DateFormat.getTimeFormat(context).format(d);
         }
     }
 }

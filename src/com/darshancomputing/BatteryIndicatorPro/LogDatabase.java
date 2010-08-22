@@ -44,36 +44,38 @@ public class LogDatabase {
                                                          KEY_TIME);
     }
 
-    private static class SQLOpenHelper extends SQLiteOpenHelper {
-        private SQLiteDatabase db;
+    public void logStatus(int status, int plugged, int charge, long time) {
+        mSQLOpenHelper.logStatus(status, plugged, charge, time);
+    }
 
+    private static class SQLOpenHelper extends SQLiteOpenHelper {
         public SQLOpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
         @Override
-        public void onCreate(SQLiteDatabase database) {
-            db = database;
-
+        public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE " + LOG_TABLE_NAME + " ("
-                    + KEY_ID      + " INTEGER PRIMARY KEY,"
-                    + KEY_STATUS  + " INTEGER,"
-                    + KEY_PLUGGED + " INTEGER,"
-                    + KEY_CHARGE  + " INTEGER,"
-                    + KEY_TIME    + " INTEGER"
-                    + ");");
-
-            db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (1, 2, 1, 57,  99999)");
-            db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (2, 0, 0, 59, 109999)");
-            db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (3, 2, 2, 57, 119999)");
-            db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (4, 0, 0, 59, 129999)");
-            db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (5, 2, 1, 57, 139999)");
+                       + KEY_ID      + " INTEGER PRIMARY KEY,"
+                       + KEY_STATUS  + " INTEGER,"
+                       + KEY_PLUGGED + " INTEGER,"
+                       + KEY_CHARGE  + " INTEGER,"
+                       + KEY_TIME    + " INTEGER"
+                       + ");");
         }
 
         @Override
-        public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
-            database.execSQL("DROP TABLE IF EXISTS " + LOG_TABLE_NAME);
-            onCreate(database);
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            db.execSQL("DROP TABLE IF EXISTS " + LOG_TABLE_NAME);
+            onCreate(db);
+        }
+
+        public void logStatus(int status, int plugged, int charge, long time) {
+            getWritableDatabase().execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (NULL, "
+                                           + status  + " ,"
+                                           + plugged + " ,"
+                                           + charge  + " ,"
+                                           + time    + ")");
         }
     }
 }
