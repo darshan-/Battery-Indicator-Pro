@@ -51,6 +51,14 @@
     <item>Not Charging</item>
     <item>Fully Charged</item>
   </string-array>
+  <string-array name="log_statuses"><!-- The same as above, worded for the Log screen -->
+    <item>Unplugged</item>
+    <item>Unknown</item>
+    <item>Plugged In</item>
+    <item>Unknown</item>
+    <item>Unknown</item>
+    <item>Fully Charged</item>
+  </string-array>
   <string-array name="healths">
     <item>Unknown</item>
     <item>Unknown</item>

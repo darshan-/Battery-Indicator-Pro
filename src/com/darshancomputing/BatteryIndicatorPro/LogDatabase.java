@@ -25,9 +25,10 @@ public class LogDatabase {
     private static final int DATABASE_VERSION = 1;
     private static final String LOG_TABLE_NAME = "logs";
     private static final String KEY_ID = "_id";
-    public  static final String KEY_STATUS = "status";
-    public  static final String KEY_CHARGE = "charge";
-    public  static final String KEY_TIME   = "time";
+    public  static final String KEY_STATUS  = "status";
+    public  static final String KEY_PLUGGED = "plugged";
+    public  static final String KEY_CHARGE  = "charge";
+    public  static final String KEY_TIME    = "time";
 
     private final SQLOpenHelper mSQLOpenHelper;
 
@@ -55,13 +56,18 @@ public class LogDatabase {
             db = database;
 
             db.execSQL("CREATE TABLE " + LOG_TABLE_NAME + " ("
-                    + KEY_ID     + " INTEGER PRIMARY KEY,"
-                    + KEY_STATUS + " INTEGER,"
-                    + KEY_CHARGE + " INTEGER,"
-                    + KEY_TIME   + " INTEGER"
+                    + KEY_ID      + " INTEGER PRIMARY KEY,"
+                    + KEY_STATUS  + " INTEGER,"
+                    + KEY_PLUGGED + " INTEGER,"
+                    + KEY_CHARGE  + " INTEGER,"
+                    + KEY_TIME    + " INTEGER"
                     + ");");
 
-            db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (1, 2, 57, 99999)");
+            db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (1, 2, 1, 57,  99999)");
+            db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (2, 0, 0, 59, 109999)");
+            db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (3, 2, 2, 57, 119999)");
+            db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (4, 0, 0, 59, 129999)");
+            db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (5, 2, 1, 57, 139999)");
         }
 
         @Override
