@@ -161,6 +161,7 @@ public class BatteryIndicatorService extends Service {
                 last_status_since = formatTime(new Date());
                 statusDuration = 0;
 
+                /* TODO: obviously only do this if settings say to do so. */
                 ((LogDatabase) new LogDatabase(context)).logStatus(status, plugged, percent, currentTM);
 
                 SharedPreferences.Editor editor = settings.edit();

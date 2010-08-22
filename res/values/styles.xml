@@ -52,12 +52,17 @@
 
   <color name="android_green">#A4C639</color>
   <color name="my_yellow">#E8D018</color>
+  <color name="my_darker_yellow">#D0BF27</color>
 
   <color name="time_til_charged">@color/my_yellow</color>
   <color name="light_usage">#cccc7e</color>
   <color name="normal_usage">@color/android_green</color>
   <color name="heavy_usage">@color/my_yellow</color>
   <color name="constant_usage">#DD961B</color>
+
+  <color name="unplugged">@color/my_darker_yellow</color>
+  <color name="plugged">#5f97ac</color>
+  <color name="charged">@color/android_green</color>
 
   <!--color name="heavy_usage">#DD901C</color-->
 

@@ -20,6 +20,9 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -29,6 +32,9 @@ public class LogViewActivity extends ListActivity {
     private LogDatabase logs;
     private Resources res;
     private Context context;
+    private Cursor mCursor;
+    private SimpleCursorAdapter mAdapter;
+    private Boolean reversed = false;
 
     private static final String[] KEYS = {LogDatabase.KEY_STATUS, LogDatabase.KEY_PLUGGED,
                                           LogDatabase.KEY_CHARGE, LogDatabase.KEY_TIME};
@@ -41,15 +47,49 @@ public class LogViewActivity extends ListActivity {
         res = getResources();
 
         logs = new LogDatabase(context);
-        Cursor mCursor = logs.getAllLogs();
+        mCursor = logs.getAllLogs(false);
         startManagingCursor(mCursor);
 
-        setListAdapter(new LogCursorAdapter(context, R.layout.log_item, mCursor, KEYS, IDS));
+        mAdapter = new LogCursorAdapter(context, R.layout.log_item, mCursor, KEYS, IDS);
+        setListAdapter(mAdapter);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.logs, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.menu_clear:
+            //logs.clear();
+            //reloadList();
+
+            return true;
+        case R.id.menu_reverse:
+            reversed = (reversed) ? false : true;
+            reloadList();
+
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void reloadList(){
+        stopManagingCursor(mCursor);
+        mCursor = logs.getAllLogs(reversed);
+        startManagingCursor(mCursor);
+
+        mAdapter.changeCursor(mCursor);
     }
 
     /* Extending SimpleCursorAdapter and overriding setViewText is the simplest way I could think
@@ -65,21 +105,49 @@ public class LogViewActivity extends ListActivity {
             String[] statuses = res.getStringArray(R.array.log_statuses);
             String[] pluggeds = res.getStringArray(R.array.pluggeds);
 
-            if (tv.getId() == R.id.status ) {
-                tv.setText(statuses[Integer.valueOf(text)]);
-            } else if (tv.getId() == R.id.plugged) {
+            switch (tv.getId()) {
+            case R.id.status:
+                int status = Integer.valueOf(text);
+                tv.setText(statuses[status]);
+                TextView percent_tv = getSibling(tv, R.id.percent);
+
+                switch (status) {
+                case 5:
+                            tv.setTextColor(res.getColor(R.color.charged));
+                    percent_tv.setTextColor(res.getColor(R.color.charged));
+                    break;
+                case 0:
+                            tv.setTextColor(res.getColor(R.color.unplugged));
+                    percent_tv.setTextColor(res.getColor(R.color.unplugged));
+                    break;
+                case 2:
+                default:
+                            tv.setTextColor(res.getColor(R.color.plugged));
+                    percent_tv.setTextColor(res.getColor(R.color.plugged));
+                }
+
+                break;
+            case R.id.plugged:
                 int plugged = Integer.valueOf(text);
                 if (plugged < 1) return;
 
-                TextView status = (TextView) ((ViewGroup) tv.getParent()).findViewById(R.id.status);
-                status.setText(status.getText() + " " + pluggeds[plugged]);
-            } else if (tv.getId() == R.id.percent) {
+                TextView status_tv = getSibling(tv, R.id.status);
+                status_tv.setText(status_tv.getText() + " " + pluggeds[plugged]);
+
+                break;
+            case R.id.percent:
                 tv.setText(text + "%");
-            } else if (tv.getId() == R.id.time) {
+                break;
+            case R.id.time:
                 tv.setText(formatTime(new Date(Long.valueOf(text))));
-            } else {
+                break;
+            default:
                 tv.setText(text);
             }
+        }
+
+        private TextView getSibling(TextView myself, int siblingId) {
+            return (TextView) ((ViewGroup) myself.getParent()).findViewById(siblingId);
         }
 
         private String formatTime(Date d) {

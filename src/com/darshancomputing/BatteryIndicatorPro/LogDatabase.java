@@ -36,12 +36,15 @@ public class LogDatabase {
         mSQLOpenHelper = new SQLOpenHelper(context);
     }
 
-    public Cursor getAllLogs() {
+    public Cursor getAllLogs(Boolean reversed) {
+        String order = "DESC";
+        if (reversed) order = "ASC";
+
         return mSQLOpenHelper.getReadableDatabase().query(LOG_TABLE_NAME,
                                                          null,
                                                          null, null,
                                                          null, null,
-                                                         KEY_TIME);
+                                                         KEY_TIME + " " + order);
     }
 
     public void logStatus(int status, int plugged, int charge, long time) {
