@@ -217,7 +217,9 @@
   <string name="pref_enable_logging_summary">Log battery state changes?</string>
   <string name="pref_enable_logging_help">
     If enabled, Battery Indicator will log battery state changes
-    (e.g., the phone is unplugged or becomes fully charged).
+    (e.g., the phone is unplugged or becomes fully charged). You can
+    view the logs from the main window (press MENU and then select
+    Logs).
   </string>
   <string name="pref_log_everything">Log Everything</string>
   <string name="pref_log_everything_summary">Log charge changes, too?</string>
@@ -225,8 +227,13 @@
     If enabled, Battery Indicator will also log every change in the
     charge level, as well (e.g., going from 57% to 56% or vice versa).
     Most users probably have no need for this, but you can turn it on
-    if you really want to keep an eye on things.  Keep in mind that
-    doing so will come with a slight performance hit.
+    if you really want to keep an eye on things.
+  </string>
+  <string name="pref_max_log_age">Maximum Log Age</string>
+  <string name="pref_max_log_age_summary">@string/pref_max_log_age</string>
+  <string name="pref_max_log_age_help">
+    If logging is enabled, then whenever you plug in your phone, logs
+    older than this will be deleted.
   </string>
 
   <string name="pref_cat_keyguard">Lock Screen / Keyguard</string>
@@ -505,7 +512,7 @@
     <item>auto</item>
   </string-array>
 
-  <string-array name="status_dur_est_pref_entries">
+  <string-array name="status_dur_est_entries">
     <item>Always</item>
     <item>After 1 Hour</item>
     <item>After 2 Hours</item>
@@ -513,12 +520,25 @@
     <item>After 6 Hours</item>
     <item>After 12 Hours</item>
   </string-array>
-  <string-array name="status_dur_est_pref_values">
+  <string-array name="status_dur_est_values">
     <item>0</item>
     <item>1</item>
     <item>2</item>
     <item>3</item>
     <item>6</item>
     <item>12</item>
+  </string-array>
+
+  <string-array name="max_log_age_entries">
+    <item>1 Day</item>
+    <item>2 Days</item>
+    <item>4 Days</item>
+    <item>1 Week</item>
+  </string-array>
+  <string-array name="max_log_age_values">
+    <item>24</item>
+    <item>48</item>
+    <item>96</item>
+    <item>168</item>
   </string-array>
 </resources>

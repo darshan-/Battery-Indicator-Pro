@@ -12,7 +12,7 @@
                     android:paddingLeft="7dp"
                     android:paddingTop="5dp"
                     android:paddingRight="7dp"
-                    android:paddingBottom="7dp"
+                    android:paddingBottom="5dp"
       >
         <TextView android:id="@+id/title_t"
 	          android:layout_width="fill_parent"

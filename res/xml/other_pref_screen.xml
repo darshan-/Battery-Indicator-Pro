@@ -20,6 +20,15 @@
        android:defaultValue="false"
        android:enabled="false"
     />
+
+    <ListPreference
+       android:key="max_log_age"
+       android:title="@string/pref_max_log_age"
+       android:entries="@array/max_log_age_entries" 
+       android:entryValues="@array/max_log_age_values"
+       android:dialogTitle="@string/pref_max_log_age_summary"
+       android:defaultValue="@string/default_max_log_age"
+    />
   </PreferenceCategory>
 
   <PreferenceCategory android:title="@string/pref_cat_keyguard">

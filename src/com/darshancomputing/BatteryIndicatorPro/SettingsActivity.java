@@ -43,6 +43,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_AUTO_DISABLE_LOCKING = "auto_disable_lock_screen";
     public static final String KEY_ENABLE_LOGGING = "enable_logging";
     public static final String KEY_LOG_EVERYTHING = "log_everything";
+    public static final String KEY_MAX_LOG_AGE = "max_log_age";
     public static final String KEY_MW_THEME = "main_window_theme";
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
     public static final String KEY_AUTOSTART = "autostart";
@@ -68,22 +69,22 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_SHOW_HEAVY_USAGE = "show_heavy_usage";
     public static final String KEY_SHOW_CONSTANT_USAGE = "show_constant_usage";
 
-    private static final String[] PARENTS = {KEY_SHOW_CHARGE_TIME, KEY_SHOW_CHARGE_TIME, /* Keep this doubled key first! */
+    private static final String[] PARENTS = {KEY_SHOW_CHARGE_TIME, KEY_SHOW_CHARGE_TIME, /* Keep these doubled keys first! */
+                                             KEY_ENABLE_LOGGING, KEY_ENABLE_LOGGING,
                                              KEY_RED, KEY_AMBER, KEY_GREEN,
                                              KEY_SHOW_LIGHT_USAGE, KEY_SHOW_NORMAL_USAGE,
-                                             KEY_SHOW_HEAVY_USAGE, KEY_SHOW_CONSTANT_USAGE,
-                                             KEY_ENABLE_LOGGING};
+                                             KEY_SHOW_HEAVY_USAGE, KEY_SHOW_CONSTANT_USAGE};
     private static final String[] DEPENDENTS = {KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
+                                                KEY_LOG_EVERYTHING, KEY_MAX_LOG_AGE,
                                                 KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
                                                 KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
-                                                KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME,
-                                                KEY_LOG_EVERYTHING};
+                                                KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME,};
 
     private static final String[] LIST_PREFS = {KEY_AUTOSTART, KEY_MW_THEME, KEY_STATUS_DUR_EST,
-                                               KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
-                                               KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
-                                               KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
-                                               KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME};
+                                                KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
+                                                KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
+                                                KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
+                                                KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME};
 
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_CHARGE_AS_TEXT, KEY_STATUS_DUR_EST,
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
@@ -221,9 +222,14 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             setPrefScreen(R.xml.main_pref_screen);
         }
 
-        for (int i=0; i < PARENTS.length; i++) setEnablednessOfDeps(i);
+        for (int i=0; i < PARENTS.length; i++)
+            setEnablednessOfDeps(i);
+
         validateColorPrefs(null);
-        for (int i=0; i < LIST_PREFS.length; i++) updateListPrefSummary(LIST_PREFS[i]);
+
+        for (int i=0; i < LIST_PREFS.length; i++)
+            updateListPrefSummary(LIST_PREFS[i]);
+
         updateConvertFSummary();
         setEnablednessOfMutuallyExclusive(KEY_CONFIRM_DISABLE_LOCKING, KEY_FINISH_AFTER_TOGGLE_LOCK);
 
@@ -240,7 +246,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         addPreferencesFromResource(resource);
 
         mPreferenceScreen  = getPreferenceScreen();
-        // mSharedPreferences = mPreferenceScreen.getSharedPreferences();
     }
 
 
@@ -333,6 +338,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             if (key.equals(PARENTS[i])) {
                 setEnablednessOfDeps(i);
                 if (i == 0) setEnablednessOfDeps(1); /* Doubled charge key */
+                if (i == 2) setEnablednessOfDeps(3); /* Doubled charge key */
                 break;
             }
         }

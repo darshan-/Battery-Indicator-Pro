@@ -59,6 +59,12 @@ public class LogDatabase {
                                                      + ")");
     }
 
+    public void prune() {
+        /* Do this in a separate thread? */
+
+        long currentTM = System.currentTimeMillis();
+    }
+
     /* My cursor adapter was getting a bit complicated since it could only see one datum at a time, and
        how I want to present the data depends on several interrelated factors.  Storing all three of
        these items together simplifies things. */

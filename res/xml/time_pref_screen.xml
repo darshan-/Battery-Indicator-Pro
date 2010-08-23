@@ -9,8 +9,8 @@
     <ListPreference
        android:key="status_dur_est"
        android:title="@string/pref_status_dur_est"
-       android:entries="@array/status_dur_est_pref_entries" 
-       android:entryValues="@array/status_dur_est_pref_values"
+       android:entries="@array/status_dur_est_entries" 
+       android:entryValues="@array/status_dur_est_values"
        android:dialogTitle="@string/pref_status_dur_est_summary"
        android:defaultValue="@string/default_status_dur_est"
     />
