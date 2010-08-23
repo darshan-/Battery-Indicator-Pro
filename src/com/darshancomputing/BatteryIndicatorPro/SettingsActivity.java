@@ -152,7 +152,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     /* Returns a two-item array of the start and end indices into the above arrays. */
     private int[] indices(int x, int y) {
-        int [] a = new int[2];
+        int[] a = new int[2];
         int i; /* How many values to remove from the front */
         int j; /* How many values to remove from the end   */
 

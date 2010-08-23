@@ -15,14 +15,19 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.ListActivity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -32,19 +37,43 @@ public class LogViewActivity extends ListActivity {
     private LogDatabase logs;
     private Resources res;
     private Context context;
+    private Str str;
     private Cursor mCursor;
-    private SimpleCursorAdapter mAdapter;
+    private LogCursorAdapter mAdapter;
+    private TextView logs_header;
     private Boolean reversed = false;
 
-    private static final String[] KEYS = {LogDatabase.KEY_STATUS, LogDatabase.KEY_PLUGGED,
-                                          LogDatabase.KEY_CHARGE, LogDatabase.KEY_TIME};
-    private static final int[]     IDS = {R.id.status, R.id.plugged, R.id.percent, R.id.time};
+    private static final String[] KEYS = {LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, LogDatabase.KEY_TIME};
+    private static final int[]     IDS = {R.id.status, R.id.percent, R.id.time};
+
+    private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+    private final Handler mHandler = new Handler();
+    private final Runnable mUpdateStatus = new Runnable() {
+        public void run() {
+            reloadList(false);
+        }
+    };
+
+    private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (! Intent.ACTION_BATTERY_CHANGED.equals(action)) return;
+
+            /* Give the service a couple seconds to process the update */
+            mHandler.postDelayed(mUpdateStatus, 2 * 1000);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
         res = getResources();
+        str = new Str();
+
+        logs_header = (TextView) View.inflate(context, R.layout.logs_header, null);
+        getListView().addHeaderView(logs_header);
 
         logs = new LogDatabase(context);
         mCursor = logs.getAllLogs(false);
@@ -52,17 +81,48 @@ public class LogViewActivity extends ListActivity {
 
         mAdapter = new LogCursorAdapter(context, R.layout.log_item, mCursor, KEYS, IDS);
         setListAdapter(mAdapter);
+
+        setHeaderText();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(mBatteryInfoReceiver);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.logs, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+
+        switch (mCursor.getCount()) {
+        case 0:
+            menu.findItem(R.id.menu_clear).setEnabled(false);
+            menu.findItem(R.id.menu_reverse).setEnabled(false);
+            break;
+        case 1:
+            menu.findItem(R.id.menu_clear).setEnabled(true);
+            menu.findItem(R.id.menu_reverse).setEnabled(false);
+            break;
+        default:
+            menu.findItem(R.id.menu_clear).setEnabled(true);
+            menu.findItem(R.id.menu_reverse).setEnabled(true);
+        }
         return true;
     }
 
@@ -70,13 +130,13 @@ public class LogViewActivity extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case R.id.menu_clear:
-            //logs.clear();
-            //reloadList();
+            logs.clearAllLogs();
+            reloadList(false);
 
             return true;
         case R.id.menu_reverse:
             reversed = (reversed) ? false : true;
-            reloadList();
+            reloadList(true);
 
             return true;
         default:
@@ -84,56 +144,73 @@ public class LogViewActivity extends ListActivity {
         }
     }
 
-    private void reloadList(){
-        stopManagingCursor(mCursor);
-        mCursor = logs.getAllLogs(reversed);
-        startManagingCursor(mCursor);
+    private void reloadList(Boolean newQuery){
+        if (newQuery) {
+            stopManagingCursor(mCursor);
+            mCursor = logs.getAllLogs(reversed);
+            startManagingCursor(mCursor);
 
-        mAdapter.changeCursor(mCursor);
+            mAdapter.changeCursor(mCursor);
+        } else {
+            mCursor.requery();
+        }
+
+        setHeaderText();
     }
 
-    /* Extending SimpleCursorAdapter and overriding setViewText is the simplest way I could think
-       of to post-process (interpret and format) the data from the cursor.  I have no idea if
-       there's a better way that I'm missing or if this is the obvious and expected way to do so. */
+    private void setHeaderText() {
+        int count = mCursor.getCount();
+
+        if (count == 0)
+            logs_header.setText(str.logs_empty);
+        else
+            logs_header.setText(str.n_log_items(count));
+    }
+
     private class LogCursorAdapter extends SimpleCursorAdapter {
         public LogCursorAdapter(Context context, int layout, Cursor c, String[] from, int[] to){
             super(context, layout, c, from, to);
         }
 
-        //@Override
+        @Override
         public void setViewText(TextView tv, String text){
-            String[] statuses = res.getStringArray(R.array.log_statuses);
-            String[] pluggeds = res.getStringArray(R.array.pluggeds);
-
             switch (tv.getId()) {
             case R.id.status:
-                int status = Integer.valueOf(text);
-                tv.setText(statuses[status]);
-                TextView percent_tv = getSibling(tv, R.id.percent);
+                int[] statusCodes = LogDatabase.decodeStatus(Integer.valueOf(text));
+                int status     = statusCodes[0];
+                int plugged    = statusCodes[1];
+                int status_age = statusCodes[2];
 
-                switch (status) {
-                case 5:
-                            tv.setTextColor(res.getColor(R.color.charged));
-                    percent_tv.setTextColor(res.getColor(R.color.charged));
-                    break;
-                case 0:
-                            tv.setTextColor(res.getColor(R.color.unplugged));
-                    percent_tv.setTextColor(res.getColor(R.color.unplugged));
-                    break;
-                case 2:
-                default:
-                            tv.setTextColor(res.getColor(R.color.plugged));
-                    percent_tv.setTextColor(res.getColor(R.color.plugged));
+                TextView percent_tv = getSibling(tv, R.id.percent);
+                String s;
+
+                if (status_age == LogDatabase.STATUS_OLD) {
+                            tv.setTextColor(res.getColor(R.color.old_status));
+                    percent_tv.setTextColor(res.getColor(R.color.old_status));
+                    s = str.statuses_old[status];
+                } else {
+                    switch (status) {
+                    case 5:
+                                tv.setTextColor(res.getColor(R.color.charged));
+                        percent_tv.setTextColor(res.getColor(R.color.charged));
+                        break;
+                    case 0:
+                                tv.setTextColor(res.getColor(R.color.unplugged));
+                        percent_tv.setTextColor(res.getColor(R.color.unplugged));
+                        break;
+                    case 2:
+                    default:
+                        tv.setTextColor(res.getColor(R.color.plugged));
+                        percent_tv.setTextColor(res.getColor(R.color.plugged));
+                    }
+
+                    s = str.statuses[status];
                 }
 
-                break;
-            case R.id.plugged:
-                int plugged = Integer.valueOf(text);
-                if (plugged < 1) return;
+                if (plugged > 0)
+                    s += " " + str.pluggeds[plugged];
 
-                TextView status_tv = getSibling(tv, R.id.status);
-                status_tv.setText(status_tv.getText() + " " + pluggeds[plugged]);
-
+                tv.setText(s);
                 break;
             case R.id.percent:
                 tv.setText(text + "%");
@@ -151,8 +228,28 @@ public class LogViewActivity extends ListActivity {
         }
 
         private String formatTime(Date d) {
-            return android.text.format.DateFormat.getDateFormat(context).format(d) + " "
+            return android.text.format.DateFormat.getDateFormat(context).format(d) + "  "
                  + android.text.format.DateFormat.getTimeFormat(context).format(d);
+        }
+    }
+
+    private class Str {
+        public String logs_empty;
+
+        private String[] pluggeds;
+        private String[] statuses;
+        private String[] statuses_old;
+
+        public Str() {
+            logs_empty = res.getString(R.string.logs_empty);
+
+            pluggeds     = res.getStringArray(R.array.pluggeds);
+            statuses     = res.getStringArray(R.array.log_statuses);
+            statuses_old = res.getStringArray(R.array.log_statuses_old);
+        }
+
+        public String n_log_items(int n) {
+            return String.format(res.getQuantityString(R.plurals.n_log_items, n), n);
         }
     }
 }

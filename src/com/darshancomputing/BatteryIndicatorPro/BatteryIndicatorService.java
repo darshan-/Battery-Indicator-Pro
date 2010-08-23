@@ -153,7 +153,9 @@ public class BatteryIndicatorService extends Service {
             long currentTM = System.currentTimeMillis();
             long statusDuration;
             String last_status_since = settings.getString("last_status_since", null);
+            LogDatabase logs = new LogDatabase(context);
 
+            SharedPreferences.Editor editor = settings.edit();
             if (last_status != status || last_status_cTM == -1 || last_percent == -1 ||
                 last_status_cTM > currentTM || last_status_since == null || last_plugged != plugged ||
                 (plugged == 0 && percent > previous_charge + 3))
@@ -161,10 +163,11 @@ public class BatteryIndicatorService extends Service {
                 last_status_since = formatTime(new Date());
                 statusDuration = 0;
 
-                /* TODO: obviously only do this if settings say to do so. */
-                ((LogDatabase) new LogDatabase(context)).logStatus(status, plugged, percent, currentTM);
+                if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, false)) {
+                    logs.logStatus(status, plugged, percent, currentTM, LogDatabase.STATUS_NEW);
+                    //logs.prune();
+                }
 
-                SharedPreferences.Editor editor = settings.edit();
                 editor.putString("last_status_since", last_status_since);
                 editor.putLong("last_status_cTM", currentTM);
                 editor.putInt("last_status", status);
@@ -187,7 +190,6 @@ public class BatteryIndicatorService extends Service {
                              stupid.  As a workaround, let's aquire a wakelock that forces the screen to turn on,
                              then release it. This is unfortunate but seems better than not doing it, which would
                              result in no keyguard when you unplug and throw your phone in your pocket. */
-
                         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
                         PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK |
                                                                   PowerManager.ACQUIRE_CAUSES_WAKEUP |
@@ -196,17 +198,16 @@ public class BatteryIndicatorService extends Service {
                         wl.release();
                     }
                 }
-
-                editor.commit();
             } else {
                 statusDuration = currentTM - last_status_cTM;
 
-                if (percent % 10 == 0) {
-                    SharedPreferences.Editor editor = settings.edit();
+                if (settings.getBoolean(SettingsActivity.KEY_LOG_EVERYTHING, false))
+                    logs.logStatus(status, plugged, percent, currentTM, LogDatabase.STATUS_OLD);
+
+                if (percent % 10 == 0)
                     editor.putInt("previous_charge", percent);
-                    editor.commit();
-                }
             }
+            editor.commit();
 
             /* Add half an hour, then divide.  Should end up rounding to the closest hour. */
             int statusDurationHours = (int)((statusDuration + (1000 * 60 * 30)) / (1000 * 60 * 60));

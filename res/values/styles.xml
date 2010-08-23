@@ -63,6 +63,7 @@
   <color name="unplugged">@color/my_darker_yellow</color>
   <color name="plugged">#5f97ac</color>
   <color name="charged">@color/android_green</color>
+  <color name="old_status">#ccc</color>
 
   <!--color name="heavy_usage">#DD901C</color-->
 

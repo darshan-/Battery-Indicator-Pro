@@ -50,10 +50,8 @@ public class BatteryIndicator extends Activity {
     private SharedPreferences settings;
     private final BIServiceConnection biServiceConnection = new BIServiceConnection();
 
-    /* These flags finally fixed the noticeably laggy start time for Battery Use screen -- since this main
-       activity is now a singleTask rather than a singleInstance, it was being launched into the same task,
-       which for whatever reason is a good 50-100% slower (~800-1000 ms instead of ~500).  We again have an
-       instantaneous start animation rather than a half-second delay before the start animation. */
+    /* For whatever reason, starting Battery Use in a new task like this allows it to start much more
+       quickly than if we left the flags off, starting it in our task. */
     private static final Intent batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY)
         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
     private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
@@ -131,9 +129,6 @@ public class BatteryIndicator extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        //updateStatus();
-        //updateLockscreenButton();
-        //updateTimes();
         registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
     }
 

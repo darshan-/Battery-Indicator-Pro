@@ -61,6 +61,14 @@
     <item>Unknown</item>
     <item>Fully Charged</item>
   </string-array>
+  <string-array name="log_statuses_old"><!-- The same as above, worded for old Log screen statuses -->
+    <item>Discharging</item>
+    <item>Unknown</item>
+    <item>Charging</item>
+    <item>Unknown</item>
+    <item>Unknown</item>
+    <item>Fully Charged</item>
+  </string-array>
   <string-array name="healths">
     <item>Unknown</item>
     <item>Unknown</item>
@@ -75,6 +83,12 @@
     <item>(AC)</item>
     <item>(USB)</item>
   </string-array>
+
+  <string name="logs_empty">Logs Are Empty</string>
+  <plurals name="n_log_items">
+    <item quantity="one">%d Log Item</item>
+    <item quantity="other">%d Log Items</item>
+  </plurals>
 
   <string name="discharging_from">Discharging from</string>
   <string name="charging_from">Charging from</string>

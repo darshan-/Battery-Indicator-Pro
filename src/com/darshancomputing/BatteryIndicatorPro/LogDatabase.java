@@ -22,13 +22,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class LogDatabase {
     private static final String DATABASE_NAME = "logs.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
     private static final String LOG_TABLE_NAME = "logs";
+
     private static final String KEY_ID = "_id";
-    public  static final String KEY_STATUS  = "status";
-    public  static final String KEY_PLUGGED = "plugged";
-    public  static final String KEY_CHARGE  = "charge";
-    public  static final String KEY_TIME    = "time";
+    public  static final String KEY_STATUS_CODE = "status";
+    public  static final String KEY_CHARGE      = "charge";
+    public  static final String KEY_TIME        = "time";
+
+    public static final int STATUS_NEW = 0;
+    public static final int STATUS_OLD = 1;
 
     private final SQLOpenHelper mSQLOpenHelper;
 
@@ -47,8 +50,37 @@ public class LogDatabase {
                                                          KEY_TIME + " " + order);
     }
 
-    public void logStatus(int status, int plugged, int charge, long time) {
-        mSQLOpenHelper.logStatus(status, plugged, charge, time);
+    public void logStatus(int status, int plugged, int charge, long time, int status_age) {
+        mSQLOpenHelper.getReadableDatabase().execSQL("INSERT INTO " + LOG_TABLE_NAME
+                                                     + " VALUES (NULL, "
+                                                     + encodeStatus(status, plugged, status_age) + " ,"
+                                                     + charge + " ,"
+                                                     + time
+                                                     + ")");
+    }
+
+    /* My cursor adapter was getting a bit complicated since it could only see one datum at a time, and
+       how I want to present the data depends on several interrelated factors.  Storing all three of
+       these items together simplifies things. */
+    private static int encodeStatus(int status, int plugged, int status_age) {
+        return status + (plugged * 10) + (status_age * 100);
+    }
+
+    /* Returns [status, plugged, status_age] */
+    public static int[] decodeStatus(int statusCode) {
+        int[] a = new int[3];
+
+        a[2] = statusCode / 100;
+        statusCode -= a[2] * 100;
+        a[1] = statusCode / 10;
+        statusCode -= a[1] * 10;
+        a[0] = statusCode;
+
+        return a;
+    }
+
+    public void clearAllLogs() {
+        mSQLOpenHelper.reset();
     }
 
     private static class SQLOpenHelper extends SQLiteOpenHelper {
@@ -59,11 +91,10 @@ public class LogDatabase {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE " + LOG_TABLE_NAME + " ("
-                       + KEY_ID      + " INTEGER PRIMARY KEY,"
-                       + KEY_STATUS  + " INTEGER,"
-                       + KEY_PLUGGED + " INTEGER,"
-                       + KEY_CHARGE  + " INTEGER,"
-                       + KEY_TIME    + " INTEGER"
+                       + KEY_ID          + " INTEGER PRIMARY KEY,"
+                       + KEY_STATUS_CODE + " INTEGER,"
+                       + KEY_CHARGE      + " INTEGER,"
+                       + KEY_TIME        + " INTEGER"
                        + ");");
         }
 
@@ -73,12 +104,10 @@ public class LogDatabase {
             onCreate(db);
         }
 
-        public void logStatus(int status, int plugged, int charge, long time) {
-            getWritableDatabase().execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (NULL, "
-                                           + status  + " ,"
-                                           + plugged + " ,"
-                                           + charge  + " ,"
-                                           + time    + ")");
+        public void reset() {
+            SQLiteDatabase db = getWritableDatabase();
+            db.execSQL("DROP TABLE IF EXISTS " + LOG_TABLE_NAME);
+            onCreate(db);
         }
     }
 }
