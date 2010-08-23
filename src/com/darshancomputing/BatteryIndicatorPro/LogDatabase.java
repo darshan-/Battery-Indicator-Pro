@@ -59,10 +59,12 @@ public class LogDatabase {
                                                      + ")");
     }
 
-    public void prune() {
-        /* Do this in a separate thread? */
-
+    public void prune(int max_hours) {
         long currentTM = System.currentTimeMillis();
+        long oldest_log = currentTM - (max_hours * 60 * 60 * 1000);
+
+        mSQLOpenHelper.getReadableDatabase().execSQL("DELETE FROM " + LOG_TABLE_NAME + " WHERE "
+                                                     + KEY_TIME + " < " + oldest_log);
     }
 
     /* My cursor adapter was getting a bit complicated since it could only see one datum at a time, and

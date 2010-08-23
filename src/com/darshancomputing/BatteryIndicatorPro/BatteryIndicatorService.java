@@ -165,7 +165,8 @@ public class BatteryIndicatorService extends Service {
 
                 if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, false)) {
                     logs.logStatus(status, plugged, percent, currentTM, LogDatabase.STATUS_NEW);
-                    //logs.prune();
+                    if (status != last_status && last_status == 0)
+                        logs.prune(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAX_LOG_AGE, str.default_max_log_age)));
                 }
 
                 editor.putString("last_status_since", last_status_since);
@@ -201,7 +202,10 @@ public class BatteryIndicatorService extends Service {
             } else {
                 statusDuration = currentTM - last_status_cTM;
 
-                if (settings.getBoolean(SettingsActivity.KEY_LOG_EVERYTHING, false))
+                if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, false) &&
+                    settings.getBoolean(SettingsActivity.KEY_LOG_EVERYTHING, false) &&
+                    /* Don't show duplicates which show up when changing settings that restart service. */
+                    (status != last_status || plugged != last_plugged || percent != last_percent))
                     logs.logStatus(status, plugged, percent, currentTM, LogDatabase.STATUS_OLD);
 
                 if (percent % 10 == 0)
@@ -290,6 +294,7 @@ public class BatteryIndicatorService extends Service {
         public String default_red_thresh;
         public String default_amber_thresh;
         public String default_green_thresh;
+        public String default_max_log_age;
 
         private String[] statuses;
         private String[] healths;
@@ -306,6 +311,7 @@ public class BatteryIndicatorService extends Service {
             default_red_thresh     = res.getString(R.string.default_red_thresh);
             default_amber_thresh   = res.getString(R.string.default_amber_thresh);
             default_green_thresh   = res.getString(R.string.default_green_thresh);
+            default_max_log_age    = res.getString(R.string.default_max_log_age);
 
             statuses = res.getStringArray(R.array.statuses);
             healths  = res.getStringArray(R.array.healths);

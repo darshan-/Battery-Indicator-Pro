@@ -209,11 +209,11 @@
     <item>5880</item>
   </string-array>
 
-  <string name="default_usb_charge_time">300</string>
-  <string name="default_ac_charge_time">150</string>
-  <string name="default_light_usage_time">2880</string>
-  <string name="default_normal_usage_time">1440</string>
-  <string name="default_heavy_usage_time">720</string>
+  <string name="default_usb_charge_time">360</string>
+  <string name="default_ac_charge_time">180</string>
+  <string name="default_light_usage_time">2160</string>
+  <string name="default_normal_usage_time">960</string>
+  <string name="default_heavy_usage_time">480</string>
   <string name="default_constant_usage_time">240</string>
 
   <bool   name="default_use_red">true</bool>

@@ -69,8 +69,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_SHOW_HEAVY_USAGE = "show_heavy_usage";
     public static final String KEY_SHOW_CONSTANT_USAGE = "show_constant_usage";
 
-    private static final String[] PARENTS = {KEY_SHOW_CHARGE_TIME, KEY_SHOW_CHARGE_TIME, /* Keep these doubled keys first! */
-                                             KEY_ENABLE_LOGGING, KEY_ENABLE_LOGGING,
+    private static final String[] PARENTS = {KEY_SHOW_CHARGE_TIME, KEY_SHOW_CHARGE_TIME, /* Keep these doubled */
+                                             KEY_ENABLE_LOGGING, KEY_ENABLE_LOGGING,     /*  keys first!       */
                                              KEY_RED, KEY_AMBER, KEY_GREEN,
                                              KEY_SHOW_LIGHT_USAGE, KEY_SHOW_NORMAL_USAGE,
                                              KEY_SHOW_HEAVY_USAGE, KEY_SHOW_CONSTANT_USAGE};
@@ -84,7 +84,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
                                                 KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
                                                 KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
-                                                KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME};
+                                                KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME,
+                                                KEY_MAX_LOG_AGE};
 
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_CHARGE_AS_TEXT, KEY_STATUS_DUR_EST,
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
