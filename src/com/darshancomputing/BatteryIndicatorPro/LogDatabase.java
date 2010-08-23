@@ -43,27 +43,33 @@ public class LogDatabase {
         String order = "DESC";
         if (reversed) order = "ASC";
 
-        return mSQLOpenHelper.getReadableDatabase().query(LOG_TABLE_NAME,
-                                                         null,
-                                                         null, null,
-                                                         null, null,
-                                                         KEY_TIME + " " + order);
+        return mSQLOpenHelper.getReadableDatabase().rawQuery("SELECT * FROM " + LOG_TABLE_NAME
+                                                             + " ORDER BY " + KEY_TIME + " " + order, null);
     }
 
     public void logStatus(int status, int plugged, int charge, long time, int status_age) {
-        mSQLOpenHelper.getReadableDatabase().execSQL("INSERT INTO " + LOG_TABLE_NAME
-                                                     + " VALUES (NULL, "
-                                                     + encodeStatus(status, plugged, status_age) + " ,"
-                                                     + charge + " ,"
-                                                     + time
-                                                     + ")");
+        SQLiteDatabase db = mSQLOpenHelper.getWritableDatabase();
+        Cursor lastLog = db.rawQuery("SELECT * FROM " + LOG_TABLE_NAME
+                                     + " ORDER BY " + KEY_TIME + " DESC LIMIT 1", null);
+        lastLog.moveToFirst();
+
+        int statusCode = lastLog.getInt(lastLog.getColumnIndexOrThrow(KEY_STATUS_CODE));
+        int lastCharge = lastLog.getInt(lastLog.getColumnIndexOrThrow(KEY_CHARGE));
+        int[] a = decodeStatus(statusCode);
+        int lastStatus  = a[0];
+        int lastPlugged = a[1];
+
+        if (charge == lastCharge && status == lastStatus && plugged == lastPlugged) return;
+
+        db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (NULL, "
+                   + encodeStatus(status, plugged, status_age) + " ," + charge + " ," + time + ")");
     }
 
     public void prune(int max_hours) {
         long currentTM = System.currentTimeMillis();
         long oldest_log = currentTM - (max_hours * 60 * 60 * 1000);
 
-        mSQLOpenHelper.getReadableDatabase().execSQL("DELETE FROM " + LOG_TABLE_NAME + " WHERE "
+        mSQLOpenHelper.getWritableDatabase().execSQL("DELETE FROM " + LOG_TABLE_NAME + " WHERE "
                                                      + KEY_TIME + " < " + oldest_log);
     }
 
