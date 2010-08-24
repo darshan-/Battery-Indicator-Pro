@@ -19,7 +19,7 @@
 
     <View style="@style/help_cat_pre_margin" />
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_time_remaining_estimates" />
-    <View style="@style/help_cat_post_margin" />
+    <TextView style="@style/help_text" android:text="@string/pref_cat_time_remaining_estimates_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_show_charge_time" />
     <TextView style="@style/help_text" android:text="@string/pref_show_charge_time_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_usb_charge_time" />

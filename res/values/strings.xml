@@ -339,60 +339,88 @@
   </string>
 
   <string name="pref_cat_time_remaining_estimates">Time Remaining Estimates</string>
+  <string name="pref_cat_time_remaining_estimates_help">
+    I\'ve done these time remaining estimates a bit differently than
+    you might be used to, but I think for the better.  You control
+    what the app uses as a basis to estimate battery life, so if you
+    think it\'s wrong, you can fix it.  I\'ve used what I think are
+    reasonable defaults, but phones vary quite a bit, and how we use
+    our phones varies even more, so you\'re going to have to tweak
+    these settings.  But that\'s a good thing, because only you know
+    what \"Normal Usage\" (et al) means to you, and you can actually
+    put in times that work for you, rather than being annoyed if the
+    estimates are wrong.
+  </string>
   <string name="pref_show_charge_time">Show Charge Time</string>
   <string name="pref_show_charge_time_summary">Show charge time remaining while charging?</string>
   <string name="pref_show_charge_time_help">
-    ...
+    If enabled, then while the phone is charging, the main window will
+    show an estimate (based on your settings below) as to how long it will be
+    until the phone is fully charged.
   </string>
   <string name="pref_usb_charge_time">USB Charge</string>
   <string name="pref_usb_charge_time_summary">USB Charge Time From 0% to 100% in Hours</string>
   <string name="pref_usb_charge_time_help">
-    ...
+    Enter how long you think your battery would take to completely
+    charge from 0% to 100% on USB power.
   </string>
   <string name="pref_ac_charge_time">AC Charge</string>
   <string name="pref_ac_charge_time_summary">AC Charge Time From 0% to 100% in Hours</string>
   <string name="pref_ac_charge_time_help">
-    ...
+    Enter how long you think your battery would take to completely
+    charge from 0% to 100% on AC power.
   </string>
   <string name="pref_show_light_usage">Show Light Usage</string>
   <string name="pref_show_light_usage_summary">Show light usage time remaining?</string>
   <string name="pref_show_light_usage_help">
-    ...
+    Whether or not to show an estimate (in the main window) as to how
+    long it will take to drain your battery at whatever you consider
+    \"Light Usage\".
   </string>
   <string name="pref_light_usage_time">Light Usage</string>
   <string name="pref_light_usage_time_summary">Light Usage Time From 100% to 0% in Hours</string>
   <string name="pref_light_usage_time_help">
-    ...
+    Enter how long you think your battery would take to completely
+    discharge from 100% to 0% at whatever you consider \"Light Usage\".
   </string>
   <string name="pref_show_normal_usage">Show Normal Usage</string>
   <string name="pref_show_normal_usage_summary">Show normal usage time remaining?</string>
   <string name="pref_show_normal_usage_help">
-    ...
+    Whether or not to show an estimate (in the main window) as to how
+    long it will take to drain your battery at whatever you consider
+    \"Normal Usage\".
   </string>
   <string name="pref_normal_usage_time">Normal Usage</string>
   <string name="pref_normal_usage_time_summary">Normal Usage Time From 100% to 0% in Hours</string>
   <string name="pref_normal_usage_time_help">
-    ...
+    Enter how long you think your battery would take to completely
+    discharge from 100% to 0% at whatever you consider \"Normal Usage\".
   </string>
   <string name="pref_show_heavy_usage">Show Heavy Usage</string>
   <string name="pref_show_heavy_usage_summary">Show heavy usage time remaining?</string>
   <string name="pref_show_heavy_usage_help">
-    ...
+    Whether or not to show an estimate (in the main window) as to how
+    long it will take to drain your battery at whatever you consider
+    \"Heavy Usage\".
   </string>
   <string name="pref_heavy_usage_time">Heavy Usage</string>
   <string name="pref_heavy_usage_time_summary">Heavy Usage Time From 100% to 0% in Hours</string>
   <string name="pref_heavy_usage_time_help">
-    ...
+    Enter how long you think your battery would take to completely
+    discharge from 100% to 0% at whatever you consider \"Heavy Usage\".
   </string>
   <string name="pref_show_constant_usage">Show Constant Usage</string>
   <string name="pref_show_constant_usage_summary">Show constant usage time remaining?</string>
   <string name="pref_show_constant_usage_help">
-    ...
+    Whether or not to show an estimate (in the main window) as to how
+    long it will take to drain your battery at whatever you consider
+    \"Constant Usage\".
   </string>
   <string name="pref_constant_usage_time">Constant Usage</string>
   <string name="pref_constant_usage_time_summary">Constant Usage Time From 100% to 0% in Hours</string>
   <string name="pref_constant_usage_time_help">
-    ...
+    Enter how long you think your battery would take to completely
+    discharge from 100% to 0% at whatever you consider \"Constant Usage\".
   </string>
 
   <string name="pref_cat_color">Icon Color</string>

@@ -38,6 +38,7 @@ public class LogViewActivity extends ListActivity {
     private Resources res;
     private Context context;
     private Str str;
+    private Col col;
     private Cursor mCursor;
     private LogCursorAdapter mAdapter;
     private TextView logs_header;
@@ -71,6 +72,7 @@ public class LogViewActivity extends ListActivity {
         context = getApplicationContext();
         res = getResources();
         str = new Str();
+        col = new Col();
 
         logs_header = (TextView) View.inflate(context, R.layout.logs_header, null);
         getListView().addHeaderView(logs_header);
@@ -185,23 +187,23 @@ public class LogViewActivity extends ListActivity {
                 String s;
 
                 if (status_age == LogDatabase.STATUS_OLD) {
-                            tv.setTextColor(res.getColor(R.color.old_status));
-                    percent_tv.setTextColor(res.getColor(R.color.old_status));
+                            tv.setTextColor(col.old_status);
+                    percent_tv.setTextColor(col.old_status);
                     s = str.statuses_old[status];
                 } else {
                     switch (status) {
                     case 5:
-                                tv.setTextColor(res.getColor(R.color.charged));
-                        percent_tv.setTextColor(res.getColor(R.color.charged));
+                                tv.setTextColor(col.charged);
+                        percent_tv.setTextColor(col.charged);
                         break;
                     case 0:
-                                tv.setTextColor(res.getColor(R.color.unplugged));
-                        percent_tv.setTextColor(res.getColor(R.color.unplugged));
+                                tv.setTextColor(col.unplugged);
+                        percent_tv.setTextColor(col.unplugged);
                         break;
                     case 2:
                     default:
-                        tv.setTextColor(res.getColor(R.color.plugged));
-                        percent_tv.setTextColor(res.getColor(R.color.plugged));
+                                tv.setTextColor(col.plugged);
+                        percent_tv.setTextColor(col.plugged);
                     }
 
                     s = str.statuses[status];
@@ -250,6 +252,20 @@ public class LogViewActivity extends ListActivity {
 
         public String n_log_items(int n) {
             return String.format(res.getQuantityString(R.plurals.n_log_items, n), n);
+        }
+    }
+
+    private class Col {
+        public int old_status;
+        public int charged;
+        public int plugged;
+        public int unplugged;
+
+        public Col() {
+            old_status = res.getColor(R.color.old_status);
+            charged    = res.getColor(R.color.charged);
+            plugged    = res.getColor(R.color.plugged);
+            unplugged  = res.getColor(R.color.unplugged);
         }
     }
 }
