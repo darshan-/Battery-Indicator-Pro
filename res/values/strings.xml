@@ -4,7 +4,7 @@
   <string name="app_launcher_name">Battery Indicator</string>
   <string name="settings_activity_name">Battery Indicator Pro - Settings</string>
   <string name="settings_help_activity_name">Battery Indicator Pro - Settings</string>
-  <string name="info_activity_name">About Battery Indicator Pro</string>
+  <string name="help_activity_name">Battery Indicator Pro - Help</string>
   <string name="log_view_activity_name">Battery Indicator Pro - Logs</string>
 
   <string name="main_window_title">Battery Indicator Pro</string>
@@ -118,67 +118,115 @@
   <string name="currently_set_to">Currently set to:</string>
   <string name="currently_disabled">Currently Disabled</string>
 
-  <string name="info"><b>Intro</b>
-    \nThis is <i>Battery Indicator Pro</i>, the \"pro\"
-    version of the popular free app, <i>Battery Indicator</i>.
-    It\'s available from the Android Market for US$0.99, but it\'s
-    an open source project, which means you can download the source
-    for free
-    from <a href="http://www.darshancomputing.com/android/battery_indicator/">the
-      project website</a>.\n
+  <string name="help_cat_version">Version</string>
 
-    \n<b>Summary</b>
-    \n<i>Battery Indicator</i> is a small, simple application
-    for the Android mobile operating system. It\'s simply a little icon
-    that lives in the status bar and shows you the percentage of battery
-    charge left.\n
+  <string name="help_cat_introduction">Introduction</string>
+  <string name="help_introduction">This
+    is <i>Battery Indicator Pro</i>, the \"Pro\" version of the
+    popular free app, <i>Battery Indicator</i>.  It\'s available from
+    the Android Market for US$0.99, but it\'s an open source project,
+    which means you can download the source for free
+    from <a href="http://code.google.com/p/battery-indicator/">the
+    project website</a>.
+  </string>
 
-    \n<b>Limitations</b>
-    \n(<i>These are out of my control.</i>)
+  <string name="help_cat_summary">Summary</string>
+  <string name="help_summary"><i>Battery
+    Indicator Pro</i> is a lightweight battery indicator for the
+    Android™ mobile operating system.  Its core feature is that it
+    provides an icon that lives in the status bar and shows you the
+    percentage of battery charge left.\n
+
+    \nThis Pro version offers a great deal more utility than that,
+    however.  Besides offering red, amber, and green icons, it also
+    has the following key features as of version 3.0:\n
+
+    \n• Fully configurable estimated charge/discharge time left.
+    \n• Logging of battery state.
+    \n• Themes for the main window (including a full-size window with
+    large, easy-to-read text).
+    \n• Manually disable/reenable the device lock screen, with the option
+    to automatically disable it when plugged in and reenable it when unplugged.
+    \n• Many more useful things that you\'ll discover throughout.
+  </string>
+
+  <string name="help_cat_limitations">Limitations</string>
+  <string name="help_limitations">(<i>These
+    are out of my control.</i>)\n
+
     \n• The app can only display what the phone tells it. Most phones report
-    every 1%, but a few (notably the Motorola Droid) only report every
+    every 1%, but a few (notably the Motorola Droid models) only report every
     10%.
-    \n• There\'s no way to remove the built-in battery icon.\n
+    \n• There\'s no way to remove the built-in battery icon.
+    \n• The notification icon in the status bar and the message you see in the
+    notification tray are tied together — you can\'t have one without the other.
+    \n• Many apps should allow installation to removable storage (SD card); some
+    should not.  Battery Indicator is of the latter group.  See
+    <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">the project
+      FAQ</a> if you\'d like further explanation.
+  </string>
 
-    \n<b>Features</b>
-    \n• Small, simple, and easy to read.
+  <string name="help_cat_features">Features</string>
+  <string name="help_features">
+    • Small, simple, and easy to read.
     \n• It doesn\'t do any polling. It receives a broadcast message from the OS
     when the battery status changes, then it simply updates the icon and
     goes back to sleep. What this means is that it will take up a small
     amount of RAM, but essentially 0 CPU cycles, so it can\'t drain your
-    battery.
-    \n• Automatically starts when the phone boots up if it was running when the
-    phone shut down.\n
-
-    \n<b>Pro-only Features</b>
-    \n• High-resolution images (on devices that support them).
+    battery.  I estimate that it will cost you about 1 minute of usage time
+    off of a full discharge as a worst case scenario.  If you are experiencing
+    anything worse than that, you probably have another app (such as a \"task
+    killer\" app of some kind) interfering with Battery Indicator\'s normal
+    operation.
     \n• Easy access to Battery Use screen (requires Android 1.6+).
-    \n• Configure to use Fahrenheit or Celsius as the battery temperature unit.
     \n• Configure to always start on boot, never start on boot, or start on boot
     if the app was running on shutdown.
-    \n• Configure the icon to turn red below a configurable threshold and/or turn
-    green above a configurable threshold.
-    \n• The satisfaction of supporting the developer.\n
+    \n• Lots more that I\'m either forgetting or seem too minor to mention on
+    their on, but that add up to a great app.
+    \n• The satisfaction of supporting the developer. (I really appreciate it!)
+  </string>
 
-    \n<b>No Warranty</b>
-    \nThis software is distributed in the hope that it will be useful, but
+  <string name="help_cat_no_warranty">No Warranty</string>
+  <string name="help_no_warranty">
+    This software is distributed in the hope that it will be useful, but
     WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n
+
     \nWhile I do my best to make sure that it works well and does not
     cause problems, I am not responsible for any damage or inconvenience
-    it may cause under any circumstance.\n
+    it may cause under any circumstance.
+  </string>
 
-    \n<b>Acknowledgments</b>
-    \nMany thanks are due to Google and all of the open-source coders who made
+  <string name="help_cat_acknowledgments">Acknowledgments</string>
+  <string name="help_acknowledgments">Many
+    thanks are due to Google and all of the open-source coders who made
     the Android platform and this app possible.\n
 
-    \n<b>Translations</b>
-    \nI need help translating this app to other languages.  If you would like to
-    help, please send me an email.\n
+    \nThe launcher icon (the upright battery you see in the Market) is
+    based on an icon from <a href="http://www.oxygen-icons.org">the
+    Oxygen icon theme</a> and used under the
+    <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common
+      Attribution-ShareAlike 3.0 License</a>.
+  </string>
 
-    \n<b>Contact</b>
-    \nIf you have questions, comments, problems, or feedback of any other sort,
-    please email me at <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>.
+  <string name="help_cat_translations">Translations</string>
+  <string name="help_translations">I
+    need help translating this app to other languages.  If you would
+    like to help, please send me
+    an <a href="mailto:android@darshancomputing.com">email</a>.
+    Unless you prefer me not to, I will add your name to this section
+    in acknowledgment of your assistance.
+  </string>
+
+  <string name="help_cat_contact">Contact</string>
+  <string name="help_contact">If
+    you have questions or problems, please
+    check <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">the
+      project FAQ</a> first.\n
+
+    \nIf you have comments or feedback, or if you have questions or
+    problems that weren\'t resolved by the FAQ, please email me
+    at <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>.
   </string>
 
   <string name="pref_hint"><b>Hint:</b> Press MENU for help.</string>

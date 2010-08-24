@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.darshancomputing.BatteryIndicatorPro"
-          android:versionCode="19"
-          android:versionName="3.0.0-dev"
+          android:versionCode="20"
+          android:versionName="3.0.0"
 >
   <application android:label="@string/app_full_name"
                android:icon="@drawable/battery"
@@ -33,8 +33,8 @@
 	      android:excludeFromRecents="true"
     />
 
-    <activity android:name=".InfoActivity"
-              android:label="@string/info_activity_name"
+    <activity android:name=".HelpActivity"
+              android:label="@string/help_activity_name"
               android:theme="@android:style/Theme.Light"
               android:stateNotNeeded="true"
 	      android:excludeFromRecents="true"
@@ -65,7 +65,4 @@
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
   <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
   <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-  <!-- Only used for debugging (traces, etc. written to sdcard) (TODO: remove before building release) -->
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

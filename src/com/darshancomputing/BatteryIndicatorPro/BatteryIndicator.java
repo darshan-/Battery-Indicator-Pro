@@ -159,7 +159,7 @@ public class BatteryIndicator extends Activity {
             showDialog(DIALOG_CONFIRM_CLOSE);
             return true;
         case R.id.menu_help:
-            mStartActivity(InfoActivity.class);
+            mStartActivity(HelpActivity.class);
             return true;
         default:
             return super.onOptionsItemSelected(item);
