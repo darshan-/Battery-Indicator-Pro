@@ -19,6 +19,8 @@
   <string name="yes">Yes</string>
   <string name="cancel">Cancel</string>
 
+  <string name="confirm_clear_logs">Really clear all logs?</string>
+
   <string name="menu_logs">Logs</string>
   <!--string name="menu_battery_use">Battery Use</string-->
   <string name="menu_settings">Settings</string>

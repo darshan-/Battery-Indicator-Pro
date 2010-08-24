@@ -51,15 +51,16 @@ public class LogDatabase {
         SQLiteDatabase db = mSQLOpenHelper.getWritableDatabase();
         Cursor lastLog = db.rawQuery("SELECT * FROM " + LOG_TABLE_NAME
                                      + " ORDER BY " + KEY_TIME + " DESC LIMIT 1", null);
-        lastLog.moveToFirst();
 
-        int statusCode = lastLog.getInt(lastLog.getColumnIndexOrThrow(KEY_STATUS_CODE));
-        int lastCharge = lastLog.getInt(lastLog.getColumnIndexOrThrow(KEY_CHARGE));
-        int[] a = decodeStatus(statusCode);
-        int lastStatus  = a[0];
-        int lastPlugged = a[1];
+        if (lastLog.moveToFirst()){
+            int statusCode = lastLog.getInt(lastLog.getColumnIndexOrThrow(KEY_STATUS_CODE));
+            int lastCharge = lastLog.getInt(lastLog.getColumnIndexOrThrow(KEY_CHARGE));
+            int[] a = decodeStatus(statusCode);
+            int lastStatus  = a[0];
+            int lastPlugged = a[1];
 
-        if (charge == lastCharge && status == lastStatus && plugged == lastPlugged) return;
+            if (charge == lastCharge && status == lastStatus && plugged == lastPlugged) return;
+        }
 
         db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (NULL, "
                    + encodeStatus(status, plugged, status_age) + " ," + charge + " ," + time + ")");

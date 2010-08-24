@@ -14,10 +14,13 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
@@ -31,6 +34,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import java.text.DateFormat;
 import java.util.Date;
 
 public class LogViewActivity extends ListActivity {
@@ -40,9 +44,11 @@ public class LogViewActivity extends ListActivity {
     private Str str;
     private Col col;
     private Cursor mCursor;
-    private LogCursorAdapter mAdapter;
+    private SimpleCursorAdapter mAdapter;
     private TextView logs_header;
     private Boolean reversed = false;
+
+    private static final int DIALOG_CONFIRM_CLEAR_LOGS = 0;
 
     private static final String[] KEYS = {LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, LogDatabase.KEY_TIME};
     private static final int[]     IDS = {R.id.status, R.id.percent, R.id.time};
@@ -81,7 +87,8 @@ public class LogViewActivity extends ListActivity {
         mCursor = logs.getAllLogs(false);
         startManagingCursor(mCursor);
 
-        mAdapter = new LogCursorAdapter(context, R.layout.log_item, mCursor, KEYS, IDS);
+        mAdapter = new SimpleCursorAdapter(context, R.layout.log_item, mCursor, KEYS, IDS);
+        mAdapter.setViewBinder(new LogViewBinder(context, mCursor));
         setListAdapter(mAdapter);
 
         setHeaderText();
@@ -97,6 +104,37 @@ public class LogViewActivity extends ListActivity {
     protected void onPause() {
         super.onPause();
         unregisterReceiver(mBatteryInfoReceiver);
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        Dialog dialog;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        switch (id) {
+        case DIALOG_CONFIRM_CLEAR_LOGS:
+            builder.setTitle(str.confirm_clear_logs)
+                .setPositiveButton(str.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            logs.clearAllLogs();
+                            reloadList(false);
+
+                            di.cancel();
+                        }
+                    })
+                .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            di.cancel();
+                        }
+                    });
+
+            dialog = builder.create();
+            break;
+        default:
+            dialog = null;
+        }
+
+        return dialog;
     }
 
     @Override
@@ -132,8 +170,7 @@ public class LogViewActivity extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case R.id.menu_clear:
-            logs.clearAllLogs();
-            reloadList(false);
+            showDialog(DIALOG_CONFIRM_CLEAR_LOGS);
 
             return true;
         case R.id.menu_reverse:
@@ -169,16 +206,31 @@ public class LogViewActivity extends ListActivity {
             logs_header.setText(str.n_log_items(count));
     }
 
-    private class LogCursorAdapter extends SimpleCursorAdapter {
-        public LogCursorAdapter(Context context, int layout, Cursor c, String[] from, int[] to){
-            super(context, layout, c, from, to);
+    private class LogViewBinder implements SimpleCursorAdapter.ViewBinder {
+        private int statusCodeIndex;
+        private int chargeIndex;
+        private int timeIndex;
+
+        private DateFormat dateFormat;
+        private DateFormat timeFormat;
+        private Date d = new Date();
+
+        public LogViewBinder(Context context, Cursor cursor) {
+            dateFormat = android.text.format.DateFormat.getDateFormat(context);
+            timeFormat = android.text.format.DateFormat.getTimeFormat(context);
+
+            statusCodeIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_STATUS_CODE);
+                chargeIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_CHARGE);
+                  timeIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_TIME);
         }
 
         @Override
-        public void setViewText(TextView tv, String text){
-            switch (tv.getId()) {
-            case R.id.status:
-                int[] statusCodes = LogDatabase.decodeStatus(Integer.valueOf(text));
+        public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
+            TextView tv = (TextView) view;
+
+            if (columnIndex == statusCodeIndex) {
+                int statusCode = cursor.getInt(columnIndex);
+                int[] statusCodes = LogDatabase.decodeStatus(statusCode);
                 int status     = statusCodes[0];
                 int plugged    = statusCodes[1];
                 int status_age = statusCodes[2];
@@ -213,37 +265,39 @@ public class LogViewActivity extends ListActivity {
                     s += " " + str.pluggeds[plugged];
 
                 tv.setText(s);
-                break;
-            case R.id.percent:
-                tv.setText(text + "%");
-                break;
-            case R.id.time:
-                tv.setText(formatTime(new Date(Long.valueOf(text))));
-                break;
-            default:
-                tv.setText(text);
+                return true;
+            } else if (columnIndex == chargeIndex) {
+                tv.setText("" + cursor.getInt(columnIndex) + "%");
+                return true;
+            } else if (columnIndex == timeIndex) {
+                d.setTime(cursor.getLong(columnIndex));
+                tv.setText(dateFormat.format(d) + "  " + timeFormat.format(d));
+                return true;
+            } else {
+                return false;
             }
         }
+    }
 
-        private TextView getSibling(TextView myself, int siblingId) {
-            return (TextView) ((ViewGroup) myself.getParent()).findViewById(siblingId);
-        }
-
-        private String formatTime(Date d) {
-            return android.text.format.DateFormat.getDateFormat(context).format(d) + "  "
-                 + android.text.format.DateFormat.getTimeFormat(context).format(d);
-        }
+    private static TextView getSibling(TextView myself, int siblingId) {
+        return (TextView) ((ViewGroup) myself.getParent()).findViewById(siblingId);
     }
 
     private class Str {
         public String logs_empty;
+        public String confirm_clear_logs;
+        public String yes;
+        public String cancel;
 
         private String[] pluggeds;
         private String[] statuses;
         private String[] statuses_old;
 
         public Str() {
-            logs_empty = res.getString(R.string.logs_empty);
+            logs_empty         = res.getString(R.string.logs_empty);
+            confirm_clear_logs = res.getString(R.string.confirm_clear_logs);
+            yes                = res.getString(R.string.yes);
+            cancel             = res.getString(R.string.cancel);
 
             pluggeds     = res.getStringArray(R.array.pluggeds);
             statuses     = res.getStringArray(R.array.log_statuses);
