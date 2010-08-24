@@ -66,6 +66,7 @@ public class BatteryIndicator extends Activity {
     private Button toggle_lock_screen_b;
 
     private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
+    private static final int DIALOG_CONFIRM_CLOSE = 1;
 
     private final Handler mHandler = new Handler();
     private final Runnable mUpdateStatus = new Runnable() {
@@ -155,15 +156,7 @@ public class BatteryIndicator extends Activity {
             mStartActivity(SettingsActivity.class);
             return true;
         case R.id.menu_close:
-            /* TODO: confirm */
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putBoolean("serviceDesired", false);
-            editor.commit();
-
-            finishActivity(1);
-            stopService(biServiceIntent);
-            finish();
-
+            showDialog(DIALOG_CONFIRM_CLOSE);
             return true;
         case R.id.menu_help:
             mStartActivity(InfoActivity.class);
@@ -196,6 +189,30 @@ public class BatteryIndicator extends Activity {
                 .setPositiveButton(str.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             setDisableLocking(true);
+                            di.cancel();
+                        }
+                    })
+                .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            di.cancel();
+                        }
+                    });
+
+            dialog = builder.create();
+            break;
+        case DIALOG_CONFIRM_CLOSE:
+            builder.setTitle(str.confirm_close)
+                .setMessage(str.confirm_close_hint)
+                .setPositiveButton(str.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            SharedPreferences.Editor editor = settings.edit();
+                            editor.putBoolean("serviceDesired", false);
+                            editor.commit();
+
+                            finishActivity(1);
+                            stopService(biServiceIntent);
+                            finish();
+
                             di.cancel();
                         }
                     })
@@ -344,6 +361,8 @@ public class BatteryIndicator extends Activity {
         public String one_six_needed;
         public String confirm_disable;
         public String confirm_disable_hint;
+        public String confirm_close;
+        public String confirm_close_hint;
         public String yes;
         public String cancel;
         public String battery_use_b;
@@ -358,6 +377,8 @@ public class BatteryIndicator extends Activity {
             one_six_needed       = res.getString(R.string.one_six_needed);
             confirm_disable      = res.getString(R.string.confirm_disable);
             confirm_disable_hint = res.getString(R.string.confirm_disable_hint);
+            confirm_close      = res.getString(R.string.confirm_close);
+            confirm_close_hint = res.getString(R.string.confirm_close_hint);
             yes                  = res.getString(R.string.yes);
             cancel               = res.getString(R.string.cancel);
             battery_use_b        = res.getString(R.string.battery_use_b);

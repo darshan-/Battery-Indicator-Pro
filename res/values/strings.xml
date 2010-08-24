@@ -19,6 +19,16 @@
   <string name="yes">Yes</string>
   <string name="cancel">Cancel</string>
 
+  <string name="confirm_close">Really Close Battery Indicator?</string>
+  <string name="confirm_close_hint">
+    Battery Indicator will be completely closed, and you won\'t see it
+    in your status bar any more.\n
+
+    \nIf you just want to leave the main window and keep the indicator
+    running, press Cancel and then just press your phone\'s BACK
+    button to leave the main window.
+  </string>
+
   <string name="confirm_clear_logs">Really clear all logs?</string>
 
   <string name="menu_logs">Logs</string>
