@@ -3,12 +3,18 @@
   <string name="app_full_name">Battery Indicator Pro</string>
   <string name="app_launcher_name">Battery Indicator</string>
   <string name="settings_activity_name">Battery Indicator Pro - Settings</string>
-  <string name="settings_help_activity_name">Battery Indicator Pro - Settings</string>
+  <string name="settings_help_activity_name">@string/settings_activity_name</string>
   <string name="help_activity_name">Battery Indicator Pro - Help</string>
   <string name="log_view_activity_name">Battery Indicator Pro - Logs</string>
 
-  <string name="main_window_title">Battery Indicator Pro</string>
+  <string name="app_full_name_free">Battery Indicator</string>
+  <string name="settings_activity_name_free">Battery Indicator - Settings</string>
+  <string name="settings_help_activity_name_free">@string/settings_activity_name_free</string>
+  <string name="help_activity_name_free">Battery Indicator - Help</string>
+
+  <string name="main_window_title">@string/app_full_name</string>
   <string name="battery_use_b">View Battery Use</string>
+  <string name="upgrade_donate_b">Upgrade/Donate...</string>
   <string name="reenable_lock_screen">Reenable Lock Screen</string>
   <string name="disable_lock_screen">Disable Lock Screen</string>
 
@@ -19,7 +25,7 @@
   <string name="yes">Yes</string>
   <string name="cancel">Cancel</string>
 
-  <string name="confirm_close">Really Close Battery Indicator?</string>
+  <string name="confirm_close">Really Close?</string>
   <string name="confirm_close_hint">
     Battery Indicator will be completely closed, and you won\'t see it
     in your status bar any more.\n
@@ -128,6 +134,18 @@
     which means you can download the source for free
     from <a href="http://code.google.com/p/battery-indicator/">the
     project website</a>.
+  </string>
+  <string name="help_introduction_free">This
+    is <i>Battery Indicator</i>, the free version of the
+    <i>Battery Indicator</i> family of apps.  It\'s available from
+    the Android Market, and it\'s an open source project,
+    which means you can download the source for free
+    from <a href="http://code.google.com/p/battery-indicator/">the
+    project website</a>.\n
+
+    \nPlease consider donating by upgrading to the
+    <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro
+      Version</a>.
   </string>
 
   <string name="help_cat_summary">Summary</string>
@@ -340,6 +358,17 @@
     If checked, then whenever the device is plugged in, Battery
     Indicator with disable the lock screen, and whenever the device is
     unplugged, it will enable it again.
+  </string>
+
+  <string name="pref_cat_battery_use">Battery Use</string>
+  <string name="pref_finish_after_battery_use">Exit After Launching</string>
+  <string name="pref_finish_after_battery_use_summary">Exit main window immediately after launching Battery Use?</string>
+  <string name="pref_finish_after_battery_use_help">
+    If you\'re someone for whom every keystroke (or touchscreen press)
+    matters, you\'ll probably want to enable this.  If your goal is to
+    simply view the Battery Use screen and then get back to what
+    you\'re doing, this keeps you from having to press the BACK key to
+    exit Battery Indicator when you\'re done with Battery Use.
   </string>
 
   <string name="pref_cat_temperature_unit">Temperature Unit</string>
