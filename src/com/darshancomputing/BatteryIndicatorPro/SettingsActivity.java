@@ -40,6 +40,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_CONFIRM_DISABLE_LOCKING = "confirm_disable_lock_screen";
     public static final String KEY_FINISH_AFTER_TOGGLE_LOCK = "finish_after_toggle_lock";
+    public static final String KEY_FINISH_AFTER_BATTERY_USE = "finish_after_battery_use";
     public static final String KEY_AUTO_DISABLE_LOCKING = "auto_disable_lock_screen";
     public static final String KEY_ENABLE_LOGGING = "enable_logging";
     public static final String KEY_LOG_EVERYTHING = "log_everything";

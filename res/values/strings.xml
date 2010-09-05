@@ -13,6 +13,7 @@
   <string name="help_activity_name_free">Battery Indicator - Help</string>
 
   <string name="main_window_title">@string/app_full_name</string>
+  <string name="main_window_title_free">@string/app_full_name_free</string>
   <string name="battery_use_b">View Battery Use</string>
   <string name="upgrade_donate_b">Upgrade/Donate...</string>
   <string name="reenable_lock_screen">Reenable Lock Screen</string>
@@ -129,9 +130,9 @@
   <string name="help_cat_introduction">Introduction</string>
   <string name="help_introduction">This
     is <i>Battery Indicator Pro</i>, the \"Pro\" version of the
-    popular free app, <i>Battery Indicator</i>.  It\'s available from
-    the Android Market for US$0.99, but it\'s an open source project,
-    which means you can download the source for free
+    popular free app, <i>Battery Indicator</i>.  It\'s available for
+    purchase from the Android Market, but it\'s an open source
+    project, which means you can download the source for free
     from <a href="http://code.google.com/p/battery-indicator/">the
     project website</a>.
   </string>
@@ -156,6 +157,24 @@
     percentage of battery charge left.\n
 
     \nThis Pro version offers a great deal more utility than that,
+    however.  Besides offering red, amber, and green icons, it also
+    has the following key features as of version 3.0:\n
+
+    \n• Fully configurable estimated charge/discharge time left.
+    \n• Logging of battery state.
+    \n• Themes for the main window (including a full-size window with
+    large, easy-to-read text).
+    \n• Manually disable/reenable the device lock screen, with the option
+    to automatically disable it when plugged in and reenable it when unplugged.
+    \n• Many more useful things that you\'ll discover throughout.
+  </string>
+  <string name="help_summary_free"><i>Battery
+    Indicator</i> is a lightweight battery indicator for the
+    Android™ mobile operating system.  Its core feature is that it
+    provides an icon that lives in the status bar and shows you the
+    percentage of battery charge left.\n
+
+    \nThe Pro version offers a great deal more utility than that,
     however.  Besides offering red, amber, and green icons, it also
     has the following key features as of version 3.0:\n
 
@@ -281,6 +300,14 @@
     screen, temperature unit, autostart, and more.
   </string>
 
+  <string name="pref_cat_more_settings_in_pro">More Settings in Pro</string>
+  <string name="pref_please_upgrade">
+    The Pro version has many more settings and features, including
+    green, amber, and red icons, window themes, battery state logging,
+    auto/manual lock screen disable, charge/discharge remaining
+    estimates, and more.
+  </string>
+
   <string name="pref_cat_themes">Themes</string>
   <string name="pref_main_window_theme">Main Window Theme</string>
   <string name="pref_main_window_theme_help">
@@ -365,10 +392,9 @@
   <string name="pref_finish_after_battery_use_summary">Exit main window immediately after launching Battery Use?</string>
   <string name="pref_finish_after_battery_use_help">
     If you\'re someone for whom every keystroke (or touchscreen press)
-    matters, you\'ll probably want to enable this.  If your goal is to
-    simply view the Battery Use screen and then get back to what
-    you\'re doing, this keeps you from having to press the BACK key to
-    exit Battery Indicator when you\'re done with Battery Use.
+    matters, you might want to enable this.  Enabling this preserves
+    the old behavior of closing Battery Indicator\'s main window
+    immediately after launching the Battery Use screen.
   </string>
 
   <string name="pref_cat_temperature_unit">Temperature Unit</string>

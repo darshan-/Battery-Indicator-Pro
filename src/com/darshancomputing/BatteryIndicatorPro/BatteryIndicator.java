@@ -272,6 +272,7 @@ public class BatteryIndicator extends Activity {
         public void onClick(View v) {
             try {
                 startActivity(batteryUseIntent);
+                if (settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_BATTERY_USE, false)) finish();
             } catch (Exception e) {
                 Toast.makeText(context, str.one_six_needed, Toast.LENGTH_SHORT).show();
                 battery_use_b.setEnabled(false);
