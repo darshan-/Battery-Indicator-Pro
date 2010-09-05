@@ -1,0 +1,91 @@
+/*
+    Copyright (c) 2010 Josiah Barber (aka Darshan)
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+*/
+
+package com.darshancomputing.BatteryIndicatorPro;
+
+import android.content.res.Resources;
+
+/* TODO?: have a public instance in the service and grab the server's instance from all other classes? */
+public class Str {
+    private Resources res;
+
+    public String degree_symbol;
+    public String fahrenheit_symbol;
+    public String celsius_symbol;
+    public String volt_symbol;
+    public String percent_symbol;
+    public String since;
+    public String default_status_dur_est;
+    public String default_red_thresh;
+    public String default_amber_thresh;
+    public String default_green_thresh;
+    public String default_max_log_age;
+
+    public String logs_empty;
+    public String confirm_clear_logs;
+    public String yes;
+    public String cancel;
+
+    public String[] statuses;
+    public String[] statuses_old;
+    public String[] healths;
+    public String[] pluggeds;
+
+    public Str(Resources r) {
+        res = r;
+
+        degree_symbol          = res.getString(R.string.degree_symbol);
+        fahrenheit_symbol      = res.getString(R.string.fahrenheit_symbol);
+        celsius_symbol         = res.getString(R.string.celsius_symbol);
+        volt_symbol            = res.getString(R.string.volt_symbol);
+        percent_symbol         = res.getString(R.string.percent_symbol);
+        since                  = res.getString(R.string.since);
+        default_status_dur_est = res.getString(R.string.default_status_dur_est);
+        default_red_thresh     = res.getString(R.string.default_red_thresh);
+        default_amber_thresh   = res.getString(R.string.default_amber_thresh);
+        default_green_thresh   = res.getString(R.string.default_green_thresh);
+        default_max_log_age    = res.getString(R.string.default_max_log_age);
+
+        logs_empty         = res.getString(R.string.logs_empty);
+        confirm_clear_logs = res.getString(R.string.confirm_clear_logs);
+        yes                = res.getString(R.string.yes);
+        cancel             = res.getString(R.string.cancel);
+
+        statuses     = res.getStringArray(R.array.statuses);
+        statuses_old = res.getStringArray(R.array.log_statuses_old);
+        healths      = res.getStringArray(R.array.healths);
+        pluggeds     = res.getStringArray(R.array.pluggeds);
+    }
+
+    public String for_n_hours(int n) {
+        return String.format(res.getQuantityString(R.plurals.for_n_hours, n), n);
+    }
+
+    public String n_log_items(int n) {
+        return String.format(res.getQuantityString(R.plurals.n_log_items, n), n);
+    }
+
+    public String formatTemp(int temperature, boolean convertF) {
+        if (convertF){
+            return String.valueOf((java.lang.Math.round(temperature * 9 / 5.0) / 10.0) + 32.0) +
+                degree_symbol + fahrenheit_symbol;
+        } else {
+            return String.valueOf(temperature / 10.0) + degree_symbol + celsius_symbol;
+        }
+    }
+
+    public String formatVoltage(int voltage) {
+        return String.valueOf(voltage / 1000.0) + volt_symbol;
+    }
+}

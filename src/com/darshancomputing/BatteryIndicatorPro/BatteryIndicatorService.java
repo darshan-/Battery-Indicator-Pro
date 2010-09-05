@@ -48,10 +48,8 @@ public class BatteryIndicatorService extends Service {
 
     @Override
     public void onCreate() {
-        //android.os.Debug.startMethodTracing();
-
         res = getResources();
-        str = new Str();
+        str = new Str(res);
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -73,7 +71,6 @@ public class BatteryIndicatorService extends Service {
 
         unregisterReceiver(mBatteryInfoReceiver);
         mNotificationManager.cancelAll();
-        //android.os.Debug.stopMethodTracing();
     }
 
     @Override
@@ -135,14 +132,6 @@ public class BatteryIndicatorService extends Service {
             String statusStr = str.statuses[status];
             if (status == 2) statusStr += " " + str.pluggeds[plugged]; /* Add '(AC)' or '(USB)' if charging */
 
-            String temp_s;
-            if (settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false)){
-                temp_s = String.valueOf((java.lang.Math.round(temperature * 9 / 5.0) / 10.0) + 32.0) +
-                    str.degree_symbol + str.fahrenheit_symbol;
-            } else {
-                temp_s = String.valueOf(temperature / 10.0) + str.degree_symbol + str.celsius_symbol;
-            }
-
             int last_status = settings.getInt("last_status", -1);
             /* There's a bug, at least on 1.5, or maybe depending on the hardware (I've noticed it on the MyTouch with 1.5)
                where USB is recognized as AC at first, then quickly changed to USB.  So we need to test if plugged changed. */
@@ -164,7 +153,7 @@ public class BatteryIndicatorService extends Service {
                 statusDuration = 0;
 
                 if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, false)) {
-                    logs.logStatus(status, plugged, percent, currentTM, LogDatabase.STATUS_NEW);
+                    logs.logStatus(status, plugged, percent, temperature, voltage, currentTM, LogDatabase.STATUS_NEW);
                     if (status != last_status && last_status == 0)
                         logs.prune(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAX_LOG_AGE, str.default_max_log_age)));
                 }
@@ -204,7 +193,7 @@ public class BatteryIndicatorService extends Service {
 
                 if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, false) &&
                     settings.getBoolean(SettingsActivity.KEY_LOG_EVERYTHING, false))
-                    logs.logStatus(status, plugged, percent, currentTM, LogDatabase.STATUS_OLD);
+                    logs.logStatus(status, plugged, percent, temperature, voltage, currentTM, LogDatabase.STATUS_OLD);
 
                 if (percent % 10 == 0)
                     editor.putInt("previous_charge", percent);
@@ -227,8 +216,10 @@ public class BatteryIndicatorService extends Service {
                 contentTitle += statusStr + " " + str.for_n_hours(statusDurationHours);
             }
 
-            CharSequence contentText = str.healths[health] + " / " + temp_s + " / " +
-                                       String.valueOf(voltage / 1000.0) + str.volt_symbol;
+            Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
+            CharSequence contentText = str.healths[health] + " / " +
+                                       str.formatTemp(temperature, convertF) + " / " +
+                                       str.formatVoltage(voltage);
 
             Notification notification = new Notification(icon, null, System.currentTimeMillis());
 
@@ -277,47 +268,5 @@ public class BatteryIndicatorService extends Service {
 
         //unregisterReceiver(mBatteryInfoReceiver); /* It appears that there's no need to unregister first */
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
-    }
-
-    private class Str {
-        public Resources r;
-
-        public String degree_symbol;
-        public String fahrenheit_symbol;
-        public String celsius_symbol;
-        public String volt_symbol;
-        public String percent_symbol;
-        public String since;
-        public String default_status_dur_est;
-        public String default_red_thresh;
-        public String default_amber_thresh;
-        public String default_green_thresh;
-        public String default_max_log_age;
-
-        private String[] statuses;
-        private String[] healths;
-        private String[] pluggeds;
-
-        public Str() {
-            degree_symbol          = res.getString(R.string.degree_symbol);
-            fahrenheit_symbol      = res.getString(R.string.fahrenheit_symbol);
-            celsius_symbol         = res.getString(R.string.celsius_symbol);
-            volt_symbol            = res.getString(R.string.volt_symbol);
-            percent_symbol         = res.getString(R.string.percent_symbol);
-            since                  = res.getString(R.string.since);
-            default_status_dur_est = res.getString(R.string.default_status_dur_est);
-            default_red_thresh     = res.getString(R.string.default_red_thresh);
-            default_amber_thresh   = res.getString(R.string.default_amber_thresh);
-            default_green_thresh   = res.getString(R.string.default_green_thresh);
-            default_max_log_age    = res.getString(R.string.default_max_log_age);
-
-            statuses = res.getStringArray(R.array.statuses);
-            healths  = res.getStringArray(R.array.healths);
-            pluggeds = res.getStringArray(R.array.pluggeds);
-        }
-
-        public String for_n_hours(int n) {
-            return String.format(res.getQuantityString(R.plurals.for_n_hours, n), n);
-        }
     }
 }

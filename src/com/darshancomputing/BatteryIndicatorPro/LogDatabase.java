@@ -22,13 +22,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class LogDatabase {
     private static final String DATABASE_NAME = "logs.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     private static final String LOG_TABLE_NAME = "logs";
 
     private static final String KEY_ID = "_id";
     public  static final String KEY_STATUS_CODE = "status";
     public  static final String KEY_CHARGE      = "charge";
     public  static final String KEY_TIME        = "time";
+    public  static final String KEY_TEMPERATURE = "temperature";
+    public  static final String KEY_VOLTAGE     = "voltage";
 
     public static final int STATUS_NEW = 0;
     public static final int STATUS_OLD = 1;
@@ -47,7 +49,7 @@ public class LogDatabase {
                                                              + " ORDER BY " + KEY_TIME + " " + order, null);
     }
 
-    public void logStatus(int status, int plugged, int charge, long time, int status_age) {
+    public void logStatus(int status, int plugged, int charge, int temp, int voltage, long time, int status_age) {
         SQLiteDatabase db = mSQLOpenHelper.getWritableDatabase();
         Cursor lastLog = db.rawQuery("SELECT * FROM " + LOG_TABLE_NAME
                                      + " ORDER BY " + KEY_TIME + " DESC LIMIT 1", null);
@@ -63,7 +65,8 @@ public class LogDatabase {
         }
 
         db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (NULL, "
-                   + encodeStatus(status, plugged, status_age) + " ," + charge + " ," + time + ")");
+                   + encodeStatus(status, plugged, status_age) + " ," + charge + " ," + time
+                   + " ," + temp + " ," + voltage + ")");
     }
 
     public void prune(int max_hours) {
@@ -109,14 +112,21 @@ public class LogDatabase {
                        + KEY_ID          + " INTEGER PRIMARY KEY,"
                        + KEY_STATUS_CODE + " INTEGER,"
                        + KEY_CHARGE      + " INTEGER,"
-                       + KEY_TIME        + " INTEGER"
+                       + KEY_TIME        + " INTEGER,"
+                       + KEY_TEMPERATURE + " INTEGER,"
+                       + KEY_VOLTAGE     + " INTEGER"
                        + ");");
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL("DROP TABLE IF EXISTS " + LOG_TABLE_NAME);
-            onCreate(db);
+            if (oldVersion == 3 && newVersion == 4) {
+                db.execSQL("ALTER TABLE " + LOG_TABLE_NAME + " ADD COLUMN " + KEY_TEMPERATURE + " INTEGER;");
+                db.execSQL("ALTER TABLE " + LOG_TABLE_NAME + " ADD COLUMN " + KEY_VOLTAGE     + " INTEGER;");
+            } else {
+                db.execSQL("DROP TABLE IF EXISTS " + LOG_TABLE_NAME);
+                onCreate(db);
+            }
         }
 
         public void reset() {

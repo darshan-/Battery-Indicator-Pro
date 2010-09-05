@@ -23,9 +23,11 @@ import android.content.res.Resources;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,17 +43,20 @@ public class LogViewActivity extends ListActivity {
     private LogDatabase logs;
     private Resources res;
     private Context context;
+    private SharedPreferences settings;
     private Str str;
     private Col col;
     private Cursor mCursor;
     private SimpleCursorAdapter mAdapter;
     private TextView logs_header;
     private Boolean reversed = false;
+    private Boolean convertF;
 
     private static final int DIALOG_CONFIRM_CLEAR_LOGS = 0;
 
-    private static final String[] KEYS = {LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, LogDatabase.KEY_TIME};
-    private static final int[]     IDS = {R.id.status, R.id.percent, R.id.time};
+    private static final String[] KEYS = {LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, LogDatabase.KEY_TIME,
+                                          LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE};
+    private static final int[]     IDS = {R.id.status, R.id.percent, R.id.time, R.id.temp_volt, R.id.temp_volt};
 
     private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private final Handler mHandler = new Handler();
@@ -77,7 +82,9 @@ public class LogViewActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
         res = getResources();
-        str = new Str();
+        settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
+        str = new Str(res);
         col = new Col();
 
         logs_header = (TextView) View.inflate(context, R.layout.logs_header, null);
@@ -207,21 +214,20 @@ public class LogViewActivity extends ListActivity {
     }
 
     private class LogViewBinder implements SimpleCursorAdapter.ViewBinder {
-        private int statusCodeIndex;
-        private int chargeIndex;
-        private int timeIndex;
+        private int statusCodeIndex, chargeIndex, timeIndex, temperatureIndex, voltageIndex;
+        private DateFormat dateFormat, timeFormat;
 
-        private DateFormat dateFormat;
-        private DateFormat timeFormat;
         private Date d = new Date();
 
         public LogViewBinder(Context context, Cursor cursor) {
             dateFormat = android.text.format.DateFormat.getDateFormat(context);
             timeFormat = android.text.format.DateFormat.getTimeFormat(context);
 
-            statusCodeIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_STATUS_CODE);
-                chargeIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_CHARGE);
-                  timeIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_TIME);
+             statusCodeIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_STATUS_CODE);
+                 chargeIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_CHARGE);
+                   timeIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_TIME);
+            temperatureIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_TEMPERATURE);
+                voltageIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_VOLTAGE);
         }
 
         @Override
@@ -273,6 +279,15 @@ public class LogViewActivity extends ListActivity {
                 d.setTime(cursor.getLong(columnIndex));
                 tv.setText(dateFormat.format(d) + "  " + timeFormat.format(d));
                 return true;
+            } else if (columnIndex == temperatureIndex) {
+                int temperature = cursor.getInt(columnIndex);
+                if (temperature != 0) tv.setText("" + str.formatTemp(temperature, convertF));
+                else tv.setText(""); /* TextView are reused */
+                return true;
+            } else if (columnIndex == voltageIndex) {
+                int voltage = cursor.getInt(columnIndex);
+                if (voltage != 0) tv.setText(((String) tv.getText()) + " / " + str.formatVoltage(voltage));
+                return true;
             } else {
                 return false;
             }
@@ -281,32 +296,6 @@ public class LogViewActivity extends ListActivity {
 
     private static TextView getSibling(TextView myself, int siblingId) {
         return (TextView) ((ViewGroup) myself.getParent()).findViewById(siblingId);
-    }
-
-    private class Str {
-        public String logs_empty;
-        public String confirm_clear_logs;
-        public String yes;
-        public String cancel;
-
-        private String[] pluggeds;
-        private String[] statuses;
-        private String[] statuses_old;
-
-        public Str() {
-            logs_empty         = res.getString(R.string.logs_empty);
-            confirm_clear_logs = res.getString(R.string.confirm_clear_logs);
-            yes                = res.getString(R.string.yes);
-            cancel             = res.getString(R.string.cancel);
-
-            pluggeds     = res.getStringArray(R.array.pluggeds);
-            statuses     = res.getStringArray(R.array.log_statuses);
-            statuses_old = res.getStringArray(R.array.log_statuses_old);
-        }
-
-        public String n_log_items(int n) {
-            return String.format(res.getQuantityString(R.plurals.n_log_items, n), n);
-        }
     }
 
     private class Col {
