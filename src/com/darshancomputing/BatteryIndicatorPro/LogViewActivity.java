@@ -26,6 +26,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.method.LinkMovementMethod;
@@ -36,6 +37,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -48,6 +53,7 @@ public class LogViewActivity extends ListActivity {
     private Col col;
     private Cursor mCursor;
     private SimpleCursorAdapter mAdapter;
+    private LogViewBinder mBinder;
     private TextView logs_header;
     private Boolean reversed = false;
     private Boolean convertF;
@@ -57,6 +63,9 @@ public class LogViewActivity extends ListActivity {
     private static final String[] KEYS = {LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, LogDatabase.KEY_TIME,
                                           LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE};
     private static final int[]     IDS = {R.id.status, R.id.percent, R.id.time, R.id.temp_volt, R.id.temp_volt};
+
+    private static final String[] CSV_ORDER = {LogDatabase.KEY_TIME, LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, 
+                                               LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE};
 
     private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private final Handler mHandler = new Handler();
@@ -95,7 +104,8 @@ public class LogViewActivity extends ListActivity {
         startManagingCursor(mCursor);
 
         mAdapter = new SimpleCursorAdapter(context, R.layout.log_item, mCursor, KEYS, IDS);
-        mAdapter.setViewBinder(new LogViewBinder(context, mCursor));
+        mBinder  = new LogViewBinder(context, mCursor);
+        mAdapter.setViewBinder(mBinder);
         setListAdapter(mAdapter);
 
         setHeaderText();
@@ -160,14 +170,17 @@ public class LogViewActivity extends ListActivity {
         switch (mCursor.getCount()) {
         case 0:
             menu.findItem(R.id.menu_clear).setEnabled(false);
+            menu.findItem(R.id.menu_export).setEnabled(false);
             menu.findItem(R.id.menu_reverse).setEnabled(false);
             break;
         case 1:
             menu.findItem(R.id.menu_clear).setEnabled(true);
+            menu.findItem(R.id.menu_export).setEnabled(true);
             menu.findItem(R.id.menu_reverse).setEnabled(false);
             break;
         default:
             menu.findItem(R.id.menu_clear).setEnabled(true);
+            menu.findItem(R.id.menu_export).setEnabled(true);
             menu.findItem(R.id.menu_reverse).setEnabled(true);
         }
         return true;
@@ -178,6 +191,10 @@ public class LogViewActivity extends ListActivity {
         switch (item.getItemId()) {
         case R.id.menu_clear:
             showDialog(DIALOG_CONFIRM_CLEAR_LOGS);
+
+            return true;
+        case R.id.menu_export:
+            exportCSV();
 
             return true;
         case R.id.menu_reverse:
@@ -213,9 +230,89 @@ public class LogViewActivity extends ListActivity {
             logs_header.setText(str.n_log_items(count));
     }
 
+    private void exportCSV() {
+        String state = Environment.getExternalStorageState();
+
+        if (state != null && state.equals(Environment.MEDIA_MOUNTED_READ_ONLY)) {
+            Toast.makeText(context, str.read_only_storage, Toast.LENGTH_SHORT).show();
+            return;
+        } else if (state == null || !state.equals(Environment.MEDIA_MOUNTED)) {
+            Toast.makeText(context, str.inaccessible_storage + ": " + state, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Date d = new Date();
+        String csvFileName = "BatteryIndicatorPro-Logs-" + d.getTime() + ".csv";
+
+        File root    = Environment.getExternalStorageDirectory();
+        File csvFile = new File(root, csvFileName);
+
+        String[] csvFields = {str.date, str.time, str.status, str.charge, str.temperature, str.voltage};
+
+        try {
+            if (!csvFile.createNewFile() || !csvFile.canWrite()) {
+                Toast.makeText(context, str.inaccessible_storage, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            BufferedWriter buf = new BufferedWriter(new FileWriter(csvFile));
+
+            int cols = csvFields.length;
+            int i;
+            for (i = 0; i < cols; i++) {
+                buf.write(csvFields[i]);
+                if (i != cols - 1) buf.write(",");
+            }
+            buf.write("\r\n");
+
+            int statusCode;
+            int[] statusCodes;
+            int status, plugged, status_age;
+            String s;
+
+            for (mCursor.moveToFirst(); !mCursor.isAfterLast(); mCursor.moveToNext()) {
+                cols = CSV_ORDER.length;
+                for (i = 0; i < cols; i++) {
+                    if (CSV_ORDER[i].equals(LogDatabase.KEY_TIME)) {
+                        d.setTime(mCursor.getLong(mBinder.timeIndex));
+                        buf.write(mBinder.dateFormat.format(d) + "," + mBinder.timeFormat.format(d) + ",");
+                    } else if (CSV_ORDER[i].equals(LogDatabase.KEY_STATUS_CODE)) {
+                        statusCode  = mCursor.getInt(mBinder.statusCodeIndex);
+                        statusCodes = LogDatabase.decodeStatus(statusCode);
+                        status      = statusCodes[0];
+                        plugged     = statusCodes[1];
+                        status_age  = statusCodes[2];
+
+                        if (status_age == LogDatabase.STATUS_OLD)
+                            s = str.log_statuses_old[status];
+                        else
+                            s = str.log_statuses[status];
+                        if (plugged > 0)
+                            s += " " + str.pluggeds[plugged];
+
+                        buf.write(s + ",");
+                    } else if (CSV_ORDER[i].equals(LogDatabase.KEY_CHARGE)) {
+                        buf.write(String.valueOf(mCursor.getInt(mBinder.chargeIndex)) + ",");
+                    } else if (CSV_ORDER[i].equals(LogDatabase.KEY_TEMPERATURE)) {
+                        buf.write(String.valueOf(mCursor.getInt(mBinder.temperatureIndex) / 10.0) + ",");
+                    } else if (CSV_ORDER[i].equals(LogDatabase.KEY_VOLTAGE)) {
+                        buf.write(String.valueOf(mCursor.getInt(mBinder.voltageIndex) / 1000.0));
+                    }
+                }
+                buf.write("\r\n");
+            }
+            buf.close();
+        } catch (Exception e) {
+            Toast.makeText(context, str.inaccessible_storage, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Toast.makeText(context, str.file_written, Toast.LENGTH_SHORT).show();
+    }
+
     private class LogViewBinder implements SimpleCursorAdapter.ViewBinder {
-        private int statusCodeIndex, chargeIndex, timeIndex, temperatureIndex, voltageIndex;
-        private DateFormat dateFormat, timeFormat;
+        public int statusCodeIndex, chargeIndex, timeIndex, temperatureIndex, voltageIndex;
+        public DateFormat dateFormat, timeFormat;
 
         private Date d = new Date();
 
@@ -247,7 +344,7 @@ public class LogViewActivity extends ListActivity {
                 if (status_age == LogDatabase.STATUS_OLD) {
                             tv.setTextColor(col.old_status);
                     percent_tv.setTextColor(col.old_status);
-                    s = str.statuses_old[status];
+                    s = str.log_statuses_old[status];
                 } else {
                     switch (status) {
                     case 5:
@@ -264,7 +361,7 @@ public class LogViewActivity extends ListActivity {
                         percent_tv.setTextColor(col.plugged);
                     }
 
-                    s = str.statuses[status];
+                    s = str.log_statuses[status];
                 }
 
                 if (plugged > 0)

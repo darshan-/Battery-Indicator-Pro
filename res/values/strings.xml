@@ -59,6 +59,7 @@
   <string name="menu_help">Help</string>
   <string name="menu_clear">Clear</string>
   <string name="menu_reverse">Reverse Order</string>
+  <string name="menu_export">Export CSV</string>
 
   <string name="percent_symbol">%</string>
   <string name="degree_symbol">°</string>
@@ -76,6 +77,17 @@
 
   <string name="press_back_to_leave">Press BACK to leave.</string>
   <string name="press_menu_for_more">Press MENU for more items.</string>
+
+  <string name="inaccessible_storage">SD Card is inaccessible</string>
+  <string name="read_only_storage">SD Card is read only</string>
+  <string name="file_written">File written successfully</string>
+
+  <string name="date">date</string>
+  <string name="time">time</string>
+  <string name="status">status</string>
+  <string name="charge">charge_percentage</string>
+  <string name="temperature">degrees_celsius</string>
+  <string name="voltage">volts</string>
 
   <string-array name="statuses">
     <item>Unplugged</item>

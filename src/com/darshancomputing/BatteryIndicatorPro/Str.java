@@ -37,8 +37,20 @@ public class Str {
     public String yes;
     public String cancel;
 
+    public String read_only_storage;
+    public String inaccessible_storage;
+    public String file_written;
+
+    public String time;
+    public String date;
+    public String status;
+    public String charge;
+    public String temperature;
+    public String voltage;
+    
     public String[] statuses;
-    public String[] statuses_old;
+    public String[] log_statuses;
+    public String[] log_statuses_old;
     public String[] healths;
     public String[] pluggeds;
 
@@ -62,10 +74,22 @@ public class Str {
         yes                = res.getString(R.string.yes);
         cancel             = res.getString(R.string.cancel);
 
-        statuses     = res.getStringArray(R.array.statuses);
-        statuses_old = res.getStringArray(R.array.log_statuses_old);
-        healths      = res.getStringArray(R.array.healths);
-        pluggeds     = res.getStringArray(R.array.pluggeds);
+        inaccessible_storage = res.getString(R.string.inaccessible_storage);
+        read_only_storage    = res.getString(R.string.read_only_storage);
+        file_written         = res.getString(R.string.file_written);
+
+        date        = res.getString(R.string.date);
+        time        = res.getString(R.string.time);
+        status      = res.getString(R.string.status);
+        charge      = res.getString(R.string.charge);
+        temperature = res.getString(R.string.temperature);
+        voltage     = res.getString(R.string.voltage);
+
+        statuses         = res.getStringArray(R.array.statuses);
+        log_statuses     = res.getStringArray(R.array.log_statuses);
+        log_statuses_old = res.getStringArray(R.array.log_statuses_old);
+        healths          = res.getStringArray(R.array.healths);
+        pluggeds         = res.getStringArray(R.array.pluggeds);
     }
 
     public String for_n_hours(int n) {
