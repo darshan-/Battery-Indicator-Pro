@@ -60,6 +60,7 @@ public class BatteryIndicator extends Activity {
     private Context context;
     private Str str;
     private String themeName;
+    private Boolean disallowLockButton;
     MainWindowTheme.Theme theme;
     private int percent = -1;
     private DisplayMetrics metrics;
@@ -111,6 +112,7 @@ public class BatteryIndicator extends Activity {
 
         settings = PreferenceManager.getDefaultSharedPreferences(context);
 
+        disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
         themeName = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
         setTheme();
 
@@ -173,9 +175,11 @@ public class BatteryIndicator extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         String oldThemeName = themeName;
+        Boolean oldDisallow = disallowLockButton;
         themeName = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
+        disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
 
-        if (! oldThemeName.equals(themeName)) {
+        if (! oldThemeName.equals(themeName) || oldDisallow != disallowLockButton) {
             setTheme();
         }
     }
@@ -348,6 +352,8 @@ public class BatteryIndicator extends Activity {
 
         battery_use_b = (Button) main_frame.findViewById(R.id.battery_use_b);
         toggle_lock_screen_b = (Button) main_frame.findViewById(R.id.toggle_lock_screen_b);
+        if (disallowLockButton)
+            toggle_lock_screen_b.setEnabled(false);
 
         bindButtons();
     }

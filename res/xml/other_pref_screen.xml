@@ -52,6 +52,13 @@
        android:summary="@string/pref_auto_disable_summary"
        android:defaultValue="false"
     />
+
+    <CheckBoxPreference
+       android:key="disallow_disable_lock_screen"
+       android:title="@string/pref_disallow_disable_lock_screen"
+       android:summary="@string/pref_disallow_disable_lock_screen_summary"
+       android:defaultValue="false"
+    />
   </PreferenceCategory>
 
   <PreferenceCategory android:title="@string/pref_cat_battery_use">

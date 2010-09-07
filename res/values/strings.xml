@@ -399,6 +399,13 @@
     Indicator with disable the lock screen, and whenever the device is
     unplugged, it will enable it again.
   </string>
+  <string name="pref_disallow_disable_lock_screen">Disallow Manual Disable</string>
+  <string name="pref_disallow_disable_lock_screen_summary">Disallow use of the disable lock screen button?</string>
+  <string name="pref_disallow_disable_lock_screen_help">
+    If you have an alternative lock screen that allows access to the
+    notification tray when the screen is locked, you might want to
+    enabled this option for security reasons.
+  </string>
 
   <string name="pref_cat_battery_use">Battery Use</string>
   <string name="pref_finish_after_battery_use">Exit After Launching</string>

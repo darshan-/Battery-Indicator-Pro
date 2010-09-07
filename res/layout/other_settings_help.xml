@@ -29,6 +29,8 @@
     <TextView style="@style/help_text" android:text="@string/pref_finish_after_toggle_lock_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_auto_disable" />
     <TextView style="@style/help_text" android:text="@string/pref_auto_disable_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_disallow_disable_lock_screen" />
+    <TextView style="@style/help_text" android:text="@string/pref_disallow_disable_lock_screen_help" />
 
     <View style="@style/help_cat_pre_margin" />
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_battery_use" />
