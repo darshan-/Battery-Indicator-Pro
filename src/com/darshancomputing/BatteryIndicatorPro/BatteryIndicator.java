@@ -114,6 +114,8 @@ public class BatteryIndicator extends Activity {
         themeName = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
         setTheme();
 
+        if (settings.getInt("last_percent", -1) == -1) showDialog(DIALOG_FIRST_RUN);
+
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         startService(biServiceIntent);
         bindService(biServiceIntent, biServiceConnection, 0);
@@ -121,8 +123,6 @@ public class BatteryIndicator extends Activity {
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("serviceDesired", true);
         editor.commit();
-
-        showDialog(DIALOG_FIRST_RUN);
     }
 
     @Override
