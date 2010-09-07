@@ -32,6 +32,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -67,6 +68,7 @@ public class BatteryIndicator extends Activity {
 
     private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
     private static final int DIALOG_CONFIRM_CLOSE = 1;
+    private static final int DIALOG_FIRST_RUN = 2;
 
     private final Handler mHandler = new Handler();
     private final Runnable mUpdateStatus = new Runnable() {
@@ -119,6 +121,8 @@ public class BatteryIndicator extends Activity {
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("serviceDesired", true);
         editor.commit();
+
+        showDialog(DIALOG_FIRST_RUN);
     }
 
     @Override
@@ -218,6 +222,24 @@ public class BatteryIndicator extends Activity {
                     })
                 .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
+                            di.cancel();
+                        }
+                    });
+
+            dialog = builder.create();
+            break;
+        case DIALOG_FIRST_RUN:
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
+            View layout = inflater.inflate(R.layout.first_run_message, (LinearLayout) findViewById(R.id.layout_root));
+
+            builder.setTitle(str.first_run_title)
+                .setView(layout)
+                .setPositiveButton(str.okay, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            //SharedPreferences.Editor editor = settings.edit();
+                            //editor.putBoolean("serviceDesired", false);
+                            //editor.commit();
+
                             di.cancel();
                         }
                     });
@@ -367,6 +389,9 @@ public class BatteryIndicator extends Activity {
         public String yes;
         public String cancel;
         public String battery_use_b;
+        public String first_run_title;
+        public String first_run_message;
+        public String okay;
 
         public Str() {
             discharging_from     = res.getString(R.string.discharging_from);
@@ -383,6 +408,9 @@ public class BatteryIndicator extends Activity {
             yes                  = res.getString(R.string.yes);
             cancel               = res.getString(R.string.cancel);
             battery_use_b        = res.getString(R.string.battery_use_b);
+            first_run_title      = res.getString(R.string.first_run_title);
+            first_run_message     = res.getString(R.string.first_run_message);
+            okay                 = res.getString(R.string.okay);
         }
     }
 }
