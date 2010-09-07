@@ -45,7 +45,7 @@
     \n• If you have a \"<b>task killer</b>\" / process manager of some kind, you should either
       uninstall it or try to get it to ignore Battery Indicator Pro.  Even if you
       have it set to ignore the free version, <i>you still need to tell it to
-      ignore this Pro version</i>!\n
+      ignore this Pro version</i> !\n
 
     \n• If you have a <b>Motorola Droid</b>, <b>Motorola Droid X</b>,
       <b>Motorola Droid 2</b>, or <b>Samsung Moment</b>, you should turn on
@@ -78,9 +78,10 @@
   <string name="press_back_to_leave">Press BACK to leave.</string>
   <string name="press_menu_for_more">Press MENU for more items.</string>
 
-  <string name="inaccessible_storage">SD Card is inaccessible</string>
-  <string name="read_only_storage">SD Card is read only</string>
-  <string name="file_written">File written successfully</string>
+  <string name="inaccessible_storage">SD Card is inaccessible.</string>
+  <string name="inaccessible_w_reason">SD Card inaccessible: </string>
+  <string name="read_only_storage">SD Card is read only.</string>
+  <string name="file_written">File successfully written to root of SD card.</string>
 
   <string name="date">date</string>
   <string name="time">time</string>
@@ -151,6 +152,12 @@
   <string name="currently_disabled">Currently Disabled</string>
 
   <string name="help_cat_version">Version</string>
+
+  <string name="help_cat_changelog">Changelog</string>
+  <string name="help_changelog">
+    See the <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">version
+      history on the project FAQ</a>.
+  </string>
 
   <string name="help_cat_introduction">Introduction</string>
   <string name="help_introduction">This

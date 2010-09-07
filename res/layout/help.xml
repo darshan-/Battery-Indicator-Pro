@@ -14,6 +14,9 @@
     <TextView style="@style/help_cat" android:text="@string/help_cat_version" />
     <TextView android:id="@+id/version" style="@style/help_text" />
 
+    <TextView style="@style/help_cat"  android:text="@string/help_cat_changelog" />
+    <TextView android:id="@+id/changelog" style="@style/help_text" android:text="@string/help_changelog" />
+
     <TextView style="@style/help_cat"  android:text="@string/help_cat_introduction" />
     <TextView android:id="@+id/introduction" style="@style/help_text" android:text="@string/help_introduction" />
 

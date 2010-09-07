@@ -37,8 +37,9 @@ public class Str {
     public String yes;
     public String cancel;
 
-    public String read_only_storage;
     public String inaccessible_storage;
+    public String inaccessible_w_reason;
+    public String read_only_storage;
     public String file_written;
 
     public String time;
@@ -74,9 +75,10 @@ public class Str {
         yes                = res.getString(R.string.yes);
         cancel             = res.getString(R.string.cancel);
 
-        inaccessible_storage = res.getString(R.string.inaccessible_storage);
-        read_only_storage    = res.getString(R.string.read_only_storage);
-        file_written         = res.getString(R.string.file_written);
+        inaccessible_storage  = res.getString(R.string.inaccessible_storage);
+        inaccessible_w_reason = res.getString(R.string.inaccessible_w_reason);
+        read_only_storage     = res.getString(R.string.read_only_storage);
+        file_written          = res.getString(R.string.file_written);
 
         date        = res.getString(R.string.date);
         time        = res.getString(R.string.time);

@@ -237,7 +237,7 @@ public class LogViewActivity extends ListActivity {
             Toast.makeText(context, str.read_only_storage, Toast.LENGTH_SHORT).show();
             return;
         } else if (state == null || !state.equals(Environment.MEDIA_MOUNTED)) {
-            Toast.makeText(context, str.inaccessible_storage + ": " + state, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, str.inaccessible_w_reason + state, Toast.LENGTH_SHORT).show();
             return;
         }
 

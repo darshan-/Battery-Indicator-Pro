@@ -23,9 +23,9 @@ import android.text.util.Linkify;
 import android.widget.TextView;
 
 public class HelpActivity extends Activity {
-    private static final int[] HAS_LINKS = {R.id.introduction, R.id.limitations,
-                                            R.id.acknowledgments, R.id.translations,
-                                            R.id.contact};
+    private static final int[] HAS_LINKS = {R.id.introduction, R.id.changelog,
+                                            R.id.limitations, R.id.acknowledgments,
+                                            R.id.translations, R.id.contact};
 
 
     @Override
