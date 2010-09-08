@@ -36,22 +36,30 @@ public class LogDatabase {
     public static final int STATUS_OLD = 1;
 
     private final SQLOpenHelper mSQLOpenHelper;
+    private SQLiteDatabase rdb;
+    private SQLiteDatabase wdb;
 
     public LogDatabase(Context context) {
         mSQLOpenHelper = new SQLOpenHelper(context);
+        rdb = mSQLOpenHelper.getReadableDatabase();
+        wdb = mSQLOpenHelper.getWritableDatabase();
+    }
+
+    public void close() {
+        rdb.close();
+        wdb.close();
     }
 
     public Cursor getAllLogs(Boolean reversed) {
         String order = "DESC";
         if (reversed) order = "ASC";
 
-        return mSQLOpenHelper.getReadableDatabase().rawQuery("SELECT * FROM " + LOG_TABLE_NAME
-                                                             + " ORDER BY " + KEY_TIME + " " + order, null);
+        return rdb.rawQuery("SELECT * FROM " + LOG_TABLE_NAME + " ORDER BY " + KEY_TIME + " " + order, null);
     }
 
     public void logStatus(int status, int plugged, int charge, int temp, int voltage, long time, int status_age) {
-        SQLiteDatabase db = mSQLOpenHelper.getWritableDatabase();
-        Cursor lastLog = db.rawQuery("SELECT * FROM " + LOG_TABLE_NAME
+        Boolean duplicate = false;
+        Cursor lastLog = rdb.rawQuery("SELECT * FROM " + LOG_TABLE_NAME
                                      + " ORDER BY " + KEY_TIME + " DESC LIMIT 1", null);
 
         if (lastLog.moveToFirst()){
@@ -61,20 +69,23 @@ public class LogDatabase {
             int lastStatus  = a[0];
             int lastPlugged = a[1];
 
-            if (charge == lastCharge && status == lastStatus && plugged == lastPlugged) return;
+            if (charge == lastCharge && status == lastStatus && plugged == lastPlugged)
+                duplicate = true;
         }
 
-        db.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (NULL, "
-                   + encodeStatus(status, plugged, status_age) + " ," + charge + " ," + time
-                   + " ," + temp + " ," + voltage + ")");
+        if (! duplicate)
+            wdb.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (NULL, "
+                       + encodeStatus(status, plugged, status_age) + " ," + charge + " ," + time
+                       + " ," + temp + " ," + voltage + ")");
+
+        lastLog.close();
     }
 
     public void prune(int max_hours) {
         long currentTM = System.currentTimeMillis();
         long oldest_log = currentTM - (max_hours * 60 * 60 * 1000);
 
-        mSQLOpenHelper.getWritableDatabase().execSQL("DELETE FROM " + LOG_TABLE_NAME + " WHERE "
-                                                     + KEY_TIME + " < " + oldest_log);
+        wdb.execSQL("DELETE FROM " + LOG_TABLE_NAME + " WHERE " + KEY_TIME + " < " + oldest_log);
     }
 
     /* My cursor adapter was getting a bit complicated since it could only see one datum at a time, and

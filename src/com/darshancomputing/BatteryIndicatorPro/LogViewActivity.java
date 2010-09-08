@@ -112,6 +112,13 @@ public class LogViewActivity extends ListActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mCursor.close();
+        logs.close();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);

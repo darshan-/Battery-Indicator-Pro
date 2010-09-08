@@ -199,6 +199,7 @@ public class BatteryIndicatorService extends Service {
                     editor.putInt("previous_charge", percent);
             }
             editor.commit();
+            logs.close();
 
             /* Add half an hour, then divide.  Should end up rounding to the closest hour. */
             int statusDurationHours = (int)((statusDuration + (1000 * 60 * 30)) / (1000 * 60 * 60));
