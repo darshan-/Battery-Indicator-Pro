@@ -28,6 +28,7 @@ import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Binder;
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
@@ -40,6 +41,7 @@ public class BatteryIndicatorService extends Service {
     private NotificationManager mNotificationManager;
     private SharedPreferences settings;
     private KeyguardLock kl;
+    private KeyguardManager km;
 
     private Boolean keyguardDisabled = false;
 
@@ -58,7 +60,7 @@ public class BatteryIndicatorService extends Service {
 
         notificationIntent = new Intent(getApplicationContext(), BatteryIndicator.class);
 
-        KeyguardManager km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
+        km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         kl = km.newKeyguardLock(getPackageName());
 
         if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
@@ -255,11 +257,26 @@ public class BatteryIndicatorService extends Service {
             }
         } else {
             if (! keyguardDisabled) {
-                kl.disableKeyguard();
-                keyguardDisabled = true;
+                if (km.inKeyguardRestrictedInputMode()) {
+                    mHandler.postDelayed(disableWhenNotRestricted, 2000);
+                } else {
+                    kl.disableKeyguard();
+                    keyguardDisabled = true;
+                }
             }
         }
     }
+
+    private final Handler mHandler = new Handler();
+    private final Runnable disableWhenNotRestricted = new Runnable() {
+        public void run() {
+            if (km.inKeyguardRestrictedInputMode()) {
+                mHandler.postDelayed(this, 2000);
+            } else {
+                setEnablednessOfKeyguard(false);
+            }
+        }
+    };
 
     public void reloadSettings() {
         if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
