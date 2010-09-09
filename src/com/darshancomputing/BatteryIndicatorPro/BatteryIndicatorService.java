@@ -277,7 +277,7 @@ public class BatteryIndicatorService extends Service {
     private final Runnable disableWhenNotRestricted = new Runnable() {
         public void run() {
             if (km.inKeyguardRestrictedInputMode()) {
-                mHandler.postDelayed(this, 500);
+                mHandler.postDelayed(this, 250);
             } else {
                 unregisterReceiver(mScreenOnOffReceiver);
                 setEnablednessOfKeyguard(false);
@@ -291,7 +291,7 @@ public class BatteryIndicatorService extends Service {
             String action = intent.getAction();
             if (Intent.ACTION_SCREEN_ON.equals(action)){
                 mHandler.removeCallbacks(disableWhenNotRestricted);
-                mHandler.postDelayed(disableWhenNotRestricted, 500);
+                mHandler.postDelayed(disableWhenNotRestricted, 250);
             } else if (Intent.ACTION_SCREEN_OFF.equals(action)){
                 mHandler.removeCallbacks(disableWhenNotRestricted);
             }
