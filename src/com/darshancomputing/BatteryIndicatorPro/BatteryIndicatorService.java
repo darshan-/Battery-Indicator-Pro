@@ -36,6 +36,7 @@ import java.util.Date;
 
 public class BatteryIndicatorService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+    private IntentFilter screenOnOff = new IntentFilter();
     private Intent notificationIntent;
 
     private NotificationManager mNotificationManager;
@@ -54,6 +55,9 @@ public class BatteryIndicatorService extends Service {
         str = new Str(res);
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        screenOnOff.addAction(Intent.ACTION_SCREEN_ON);
+        screenOnOff.addAction(Intent.ACTION_SCREEN_OFF);
 
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
         settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -177,11 +181,12 @@ public class BatteryIndicatorService extends Service {
                         editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false);
                         setEnablednessOfKeyguard(true);
 
-                        /* If the screen was on (no active keyguard) when the device was plugged in (disabling the
-                             keyguard), and the screen is off now, then the keyguard is still disabled. That's
-                             stupid.  As a workaround, let's aquire a wakelock that forces the screen to turn on,
-                             then release it. This is unfortunate but seems better than not doing it, which would
-                             result in no keyguard when you unplug and throw your phone in your pocket. */
+                        /* If the screen was on, "inside" the keyguard, when the keyguard was disabled, then we're
+                             still inside it now, even if the screen is off.  So we aquire a wakelock that forces the
+                             screen to turn on, then release it.  If the screen is on now, this has no effect, but
+                             if it's off, then either the user will press the power button or the screen will turn
+                             itself off after the normal timeout.  Either way, when the screen goes off, the keyguard
+                             will now be enabled properly. */
                         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
                         PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK |
                                                                   PowerManager.ACQUIRE_CAUSES_WAKEUP |
@@ -258,7 +263,8 @@ public class BatteryIndicatorService extends Service {
         } else {
             if (! keyguardDisabled) {
                 if (km.inKeyguardRestrictedInputMode()) {
-                    mHandler.postDelayed(disableWhenNotRestricted, 2000);
+                    mHandler.postDelayed(disableWhenNotRestricted, 500);
+                    registerReceiver(mScreenOnOffReceiver, screenOnOff);
                 } else {
                     kl.disableKeyguard();
                     keyguardDisabled = true;
@@ -271,9 +277,23 @@ public class BatteryIndicatorService extends Service {
     private final Runnable disableWhenNotRestricted = new Runnable() {
         public void run() {
             if (km.inKeyguardRestrictedInputMode()) {
-                mHandler.postDelayed(this, 2000);
+                mHandler.postDelayed(this, 500);
             } else {
+                unregisterReceiver(mScreenOnOffReceiver);
                 setEnablednessOfKeyguard(false);
+            }
+        }
+    };
+
+    private final BroadcastReceiver mScreenOnOffReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (Intent.ACTION_SCREEN_ON.equals(action)){
+                mHandler.removeCallbacks(disableWhenNotRestricted);
+                mHandler.postDelayed(disableWhenNotRestricted, 500);
+            } else if (Intent.ACTION_SCREEN_OFF.equals(action)){
+                mHandler.removeCallbacks(disableWhenNotRestricted);
             }
         }
     };
