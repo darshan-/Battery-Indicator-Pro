@@ -27,7 +27,6 @@ public class HelpActivity extends Activity {
                                             R.id.limitations, R.id.acknowledgments,
                                             R.id.translations, R.id.contact};
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

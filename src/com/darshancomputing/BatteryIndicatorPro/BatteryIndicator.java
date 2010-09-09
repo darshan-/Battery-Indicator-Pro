@@ -240,10 +240,6 @@ public class BatteryIndicator extends Activity {
                 .setView(layout)
                 .setPositiveButton(str.okay, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
-                            //SharedPreferences.Editor editor = settings.edit();
-                            //editor.putBoolean("serviceDesired", false);
-                            //editor.commit();
-
                             di.cancel();
                         }
                     });
@@ -409,13 +405,13 @@ public class BatteryIndicator extends Activity {
             one_six_needed       = res.getString(R.string.one_six_needed);
             confirm_disable      = res.getString(R.string.confirm_disable);
             confirm_disable_hint = res.getString(R.string.confirm_disable_hint);
-            confirm_close      = res.getString(R.string.confirm_close);
-            confirm_close_hint = res.getString(R.string.confirm_close_hint);
+            confirm_close        = res.getString(R.string.confirm_close);
+            confirm_close_hint   = res.getString(R.string.confirm_close_hint);
             yes                  = res.getString(R.string.yes);
             cancel               = res.getString(R.string.cancel);
             battery_use_b        = res.getString(R.string.battery_use_b);
             first_run_title      = res.getString(R.string.first_run_title);
-            first_run_message     = res.getString(R.string.first_run_message);
+            first_run_message    = res.getString(R.string.first_run_message);
             okay                 = res.getString(R.string.okay);
         }
     }

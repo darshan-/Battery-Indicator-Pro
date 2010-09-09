@@ -51,6 +51,12 @@
       <b>Motorola Droid 2</b>, or <b>Samsung Moment</b>, you should turn on
       \"10% Mode\" in the \"Other Settings\".
   </string>
+  <string name="first_run_message_free">Thanks
+    for downloading Battery Indicator!  <b><i>This is important</i> :</b>\n
+
+    \nIf you have a \"<b>task killer</b>\" / process manager of some kind, you should either
+      uninstall it or try to get it to ignore Battery Indicator.
+  </string>
   <string name="okay">Okay</string>
 
   <string name="menu_logs">Logs</string>
