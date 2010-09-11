@@ -54,7 +54,8 @@ public class BatteryIndicator extends Activity {
     /* For whatever reason, starting Battery Use in a new task like this allows it to start much more
        quickly than if we left the flags off, starting it in our task. */
     private static final Intent batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY)
-        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    // | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED); /* Second flag doesn't seem to be needed, and might cause problems. */
     private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private Resources res;
     private Context context;
