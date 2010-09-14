@@ -80,13 +80,6 @@
   <string name="read_only_storage">SD卡已设置为“只读”模式。</string>
   <string name="file_written">文件已在SD卡根目录成功创建。</string>
 
-  <string name="date">date</string>
-  <string name="time">time</string>
-  <string name="status">status</string>
-  <string name="charge">charge_percentage</string>
-  <string name="temperature">degrees_celsius</string>
-  <string name="voltage">volts</string>
-
   <string-array name="statuses">
     <item>拔下电源</item>
     <item>未知</item>
@@ -214,7 +207,8 @@
   </string>
 
   <string name="help_cat_acknowledgments">声明</string>
-  <string name="help_acknowledgments">得益于Google及其他开源项目，本软件功能得以实现。\n
+  <string name="help_acknowledgments">由于暂无慷慨的翻译者协助，本程序仅提供英文版本，非常感谢您的支持！\n
+    \n得益于Google及其他开源项目，本软件功能得以实现。\n
     \n软件图标（可见于电子市场软件主页右上角）的设计灵感来源于<a href="http://www.oxygen-icons.org">
     	Oxygen图标主题</a>并在<a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common
       Attribution-ShareAlike 3.0 License</a>的规范下有限使用。
@@ -222,6 +216,8 @@
 
   <string name="help_cat_translations">多语言化</string>
   <string name="help_translations">开发者需要更多的帮助以实现将软件翻译成除英文外的其他语言。如果您乐于提供帮助，请联系开发者的 <a href="mailto:android@darshancomputing.com">电子邮件</a>。开发者将随后在软件帮助中的“声明”项加入帮助者的名字。</string>
+  <string name="help_subcat_translators">翻译志愿者名单</string>
+
   <string name="help_cat_contact">联系方式</string>
   <string name="help_contact">如果您在使用中遇到任何疑问，请先参阅<a href="http://code.google.com/p/battery-indicator/wiki/FAQ">软件FAQ</a>。\n
     \n如果您有任何反馈信息，或FAQ中无法解答的任何疑问，请联系开发者的电子邮件<a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>。
@@ -485,21 +481,11 @@
     <item>彩色小窗口</item>
     <item>全屏窗口</item>
   </string-array>
-  <string-array name="mw_theme_pref_values">
-    <item>default</item>
-    <item>colorful</item>
-    <item>full-dark</item>
-  </string-array>
 
   <string-array name="boot_pref_entries">
     <item>始终</item>
     <item>从不</item>
     <item>关机时运行</item>
-  </string-array>
-  <string-array name="boot_pref_values">
-    <item>always</item>
-    <item>never</item>
-    <item>auto</item>
   </string-array>
 
   <string-array name="status_dur_est_entries">
@@ -510,25 +496,11 @@
     <item>六小时后</item>
     <item>十二小时后</item>
   </string-array>
-  <string-array name="status_dur_est_values">
-    <item>0</item>
-    <item>1</item>
-    <item>2</item>
-    <item>3</item>
-    <item>6</item>
-    <item>12</item>
-  </string-array>
 
   <string-array name="max_log_age_entries">
     <item>一天</item>
     <item>两天</item>
     <item>四天</item>
     <item>一周</item>
-  </string-array>
-  <string-array name="max_log_age_values">
-    <item>24</item>
-    <item>48</item>
-    <item>96</item>
-    <item>168</item>
   </string-array>
 </resources>

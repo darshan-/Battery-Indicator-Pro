@@ -273,9 +273,12 @@
   </string>
 
   <string name="help_cat_acknowledgments">Acknowledgments</string>
-  <string name="help_acknowledgments">Many
-    thanks are due to Google and all of the open-source coders who made
-    the Android platform and this app possible.\n
+  <string name="help_acknowledgments">This
+    app would only be available in English without the generous
+    assistance of the volunteer translators.  Thanks!\n
+
+    \nMany thanks are due to Google and all of the open-source coders
+    who made the Android platform and this app possible.\n
 
     \nThe launcher icon (the upright battery you see in the Market) is
     based on an icon from <a href="http://www.oxygen-icons.org">the
@@ -291,6 +294,11 @@
     an <a href="mailto:android@darshancomputing.com">email</a>.
     Unless you prefer me not to, I will add your name to this section
     in acknowledgment of your assistance.
+  </string>
+
+  <string name="help_subcat_translators">Translators</string>
+  <string name="help_translators_list">
+    Matthew McBaul(包明)
   </string>
 
   <string name="help_cat_contact">Contact</string>
