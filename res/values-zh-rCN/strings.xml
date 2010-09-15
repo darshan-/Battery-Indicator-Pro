@@ -86,7 +86,7 @@
     <item>充电中</item>
     <item>放电中</item>
     <item>未充电</item>
-    <item>已充满</item>
+    <item>电池充满</item>
   </string-array>
   <string-array name="log_statuses"><!-- The same as above, worded for the Log screen -->
     <item>拔下电源</item>
@@ -111,7 +111,7 @@
     <item>过热</item>
     <item>损坏</item>
     <item>超压</item>
-    <item>Failure</item>
+    <item>错误</item>
   </string-array>
   <string-array name="pluggeds">
     <item>未知</item>
@@ -125,14 +125,14 @@
     <item quantity="other">%d项日志记录</item>
   </plurals>
 
-  <string name="discharging_from">放电起始时间</string>
-  <string name="charging_from">充电起始时间</string>
+  <string name="discharging_from">放电起始电量</string>
+  <string name="charging_from">充电起始电量</string>
   <string name="fully_charged">完全充满</string>
 
-  <string name="since">已</string>
+  <string name="since">开始于</string>
   <plurals name="for_n_hours">
-    <item quantity="one">%d小时</item>
-    <item quantity="other">%d小时</item>
+    <item quantity="one">已%d小时</item>
+    <item quantity="other">已%d小时</item>
   </plurals>
 
   <string name="one_six_needed">对不起，此功能仅支持Android 1.6+版本系统！</string>
@@ -394,7 +394,7 @@
   <string name="pref_heavy_usage_time_help">
     输入以您所认为的“频繁使用”方式将电量从100%消耗至0%所需时间？
   </string>
-  <string name="pref_show_constant_usage">Show Constant Usage</string>
+  <string name="pref_show_constant_usage">显示持续使用时间</string>
   <string name="pref_show_constant_usage_summary">确认持续持续使用剩余时间？</string>
   <string name="pref_show_constant_usage_help">
     是否在主窗口显示您所认为的“持续使用”方式剩余电量持续时间？
