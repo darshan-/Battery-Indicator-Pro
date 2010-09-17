@@ -150,7 +150,7 @@ public class BatteryIndicatorService extends Service {
             SharedPreferences.Editor editor = settings.edit();
             if (last_status != status || last_status_cTM == -1 || last_percent == -1 ||
                 last_status_cTM > currentTM || last_status_since == null || last_plugged != plugged ||
-                (plugged == 0 && percent > previous_charge + 3))
+                (plugged == 0 && percent > previous_charge + 20))
             {
                 last_status_since = formatTime(new Date());
                 statusDuration = 0;
