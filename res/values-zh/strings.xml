@@ -253,7 +253,7 @@
     专业版包含了以红色、黄色及绿色图标提示剩余电量等级、电池状态记录、自动/手动关闭锁屏、充电/放电剩余时间预估等多种高级功能。
   </string>
 
-  <string name="pref_cat_themes">主题s</string>
+  <string name="pref_cat_themes">主题</string>
   <string name="pref_main_window_theme">主窗口显示主题</string>
   <string name="pref_main_window_theme_help">
     设置主窗口显示主题，默认以传统Android系统小窗口方式显示。如果您希望文字信息更便于阅读，可选择全屏窗口主题。其他主题仅供娱乐。
@@ -342,7 +342,7 @@
   <string name="pref_status_dur_est">估算前持续时间</string>
   <string name="pref_status_dur_est_summary">开始估算剩余时间前持续时间</string>
   <string name="pref_status_dur_est_help">
-    设置通知信息从诸如“拔下电源时间：1:10 PM”到“拔下电源已1小时”的转换前持续时间。第一种显示精确到分钟的状态变化信息显示更为准确，但多数用户喜欢更简便的方式以估计状态持续时间，因此更乐于使用比默认12小时计时法更简便的提示信息。    
+    设置通知信息从诸如“拔下电源开始于1:10 PM”到“拔下电源已1小时”的转换前持续时间。第一种显示精确到分钟的状态变化信息显示更为准确，但多数用户喜欢更简便的方式以估计状态持续时间，因此更乐于使用比默认12小时计时法更简便的提示信息。    
   </string>
 
   <string name="pref_cat_time_remaining_estimates">剩余时间预估</string>
