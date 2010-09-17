@@ -36,7 +36,7 @@ import java.util.Date;
 
 public class BatteryIndicatorService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-    private IntentFilter screenOnOff = new IntentFilter();
+    private final IntentFilter userPresent    = new IntentFilter(Intent.ACTION_USER_PRESENT);
     private Intent notificationIntent;
 
     private NotificationManager mNotificationManager;
@@ -55,9 +55,6 @@ public class BatteryIndicatorService extends Service {
         str = new Str(res);
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-        screenOnOff.addAction(Intent.ACTION_SCREEN_ON);
-        screenOnOff.addAction(Intent.ACTION_SCREEN_OFF);
 
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
         settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -263,8 +260,7 @@ public class BatteryIndicatorService extends Service {
         } else {
             if (! keyguardDisabled) {
                 if (km.inKeyguardRestrictedInputMode()) {
-                    mHandler.postDelayed(disableWhenNotRestricted, 500);
-                    registerReceiver(mScreenOnOffReceiver, screenOnOff);
+                    registerReceiver(mUserPresentReceiver, userPresent);
                 } else {
                     kl.disableKeyguard();
                     keyguardDisabled = true;
@@ -273,27 +269,12 @@ public class BatteryIndicatorService extends Service {
         }
     }
 
-    private final Handler mHandler = new Handler();
-    private final Runnable disableWhenNotRestricted = new Runnable() {
-        public void run() {
-            if (km.inKeyguardRestrictedInputMode()) {
-                mHandler.postDelayed(this, 250);
-            } else {
-                unregisterReceiver(mScreenOnOffReceiver);
-                setEnablednessOfKeyguard(false);
-            }
-        }
-    };
-
-    private final BroadcastReceiver mScreenOnOffReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver mUserPresentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (Intent.ACTION_SCREEN_ON.equals(action)){
-                mHandler.removeCallbacks(disableWhenNotRestricted);
-                mHandler.postDelayed(disableWhenNotRestricted, 250);
-            } else if (Intent.ACTION_SCREEN_OFF.equals(action)){
-                mHandler.removeCallbacks(disableWhenNotRestricted);
+            if (Intent.ACTION_USER_PRESENT.equals(intent.getAction())){
+                unregisterReceiver(mUserPresentReceiver);
+                setEnablednessOfKeyguard(false);
             }
         }
     };
