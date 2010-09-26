@@ -74,4 +74,7 @@
     <item>0</item>
     <item>143</item>
   </array>
+
+  <dimen name="main_frame_width">180dp</dimen>
+  <dimen name="time_remaining_label_width">114dp</dimen>
 </resources>

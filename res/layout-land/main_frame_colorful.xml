@@ -11,7 +11,7 @@
 >
       <LinearLayout android:id="@+id/main_content"
                     android:orientation="vertical"
-                    android:layout_width="180dp"
+                    android:layout_width="@dimen/main_frame_width"
                     android:layout_height="wrap_content"
                     android:paddingLeft="7dp"
                     android:paddingTop="5dp"
