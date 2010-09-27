@@ -51,6 +51,12 @@ public class BatteryIndicator extends Activity {
     private SharedPreferences settings;
     private final BIServiceConnection biServiceConnection = new BIServiceConnection();
 
+    private static final Intent batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY)
+        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    private static final Intent batteryUseIntentAlt = new Intent()
+        .setAction(Intent.ACTION_MAIN)
+        .addCategory("com.android.settings.SHORTCUT")
+        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private Resources res;
     private Context context;
@@ -289,7 +295,7 @@ public class BatteryIndicator extends Activity {
     private final OnClickListener buButtonListener = new OnClickListener() {
         public void onClick(View v) {
             try {
-                startActivity(new Intent().setClass(context, BatteryUseLauncher.class));
+                startActivity(batteryUseIntent);
                 if (settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_BATTERY_USE, false)) finish();
             } catch (Exception e) {
                 Toast.makeText(context, str.one_six_needed, Toast.LENGTH_SHORT).show();
@@ -321,7 +327,7 @@ public class BatteryIndicator extends Activity {
     }
 
     private void bindButtons() {
-        if (getPackageManager().resolveActivity(BatteryUseLauncher.batteryUseIntent, 0) == null) {
+        if (getPackageManager().resolveActivity(batteryUseIntent, 0) == null) {
             battery_use_b.setEnabled(false); /* TODO: change how the disabled button looks */
         } else {
             battery_use_b.setOnClickListener(buButtonListener);

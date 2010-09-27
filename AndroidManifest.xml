@@ -21,14 +21,6 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".BatteryUseLauncher"
-              android:launchMode="singleInstance"
-              android:theme="@android:style/Theme.NoDisplay"
-              android:stateNotNeeded="true"
-              android:excludeFromRecents="true"
-              android:noHistory="true"
-    />
-
     <activity android:name=".SettingsActivity"
               android:label="@string/settings_activity_name"
 	      android:excludeFromRecents="true"
