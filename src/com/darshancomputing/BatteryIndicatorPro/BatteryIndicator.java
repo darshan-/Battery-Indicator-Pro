@@ -53,10 +53,6 @@ public class BatteryIndicator extends Activity {
 
     private static final Intent batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY)
         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    private static final Intent batteryUseIntentAlt = new Intent()
-        .setAction(Intent.ACTION_MAIN)
-        .addCategory("com.android.settings.SHORTCUT")
-        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private Resources res;
     private Context context;
