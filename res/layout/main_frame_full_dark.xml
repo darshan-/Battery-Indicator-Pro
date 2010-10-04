@@ -58,7 +58,7 @@
         />
 
         <Button android:id="@+id/toggle_lock_screen_b"
-                android:layout_height="55dp"
+                android:layout_height="@dimen/tls_button_height_fs"
 	        android:layout_width="fill_parent"
                 android:layout_gravity="center_horizontal"
                 android:textSize="20sp"

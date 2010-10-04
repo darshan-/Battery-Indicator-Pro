@@ -19,7 +19,7 @@
   <string name="reenable_lock_screen">Reactivar Pantalla de Bloqueo</string>
   <string name="disable_lock_screen">Desactivar Pantalla de Bloqueo</string>
 
-  <string name="confirm_disable">¿Está seguro de que desea desactivar la pantalla de bloqueo?</string>
+  <string name="confirm_disable">¿Desea desactivar la pantalla de bloqueo?</string>
   <string name="confirm_disable_hint">
     Consejo: Puede desactivar este cuadro de confirmación en los Ajustes.
   </string>
@@ -70,7 +70,7 @@
   <string name="celsius_symbol">C</string>
   <string name="volt_symbol">V</string>
 
-  <string name="fully_charged_in">Completamente cargado en:</string>
+  <string name="fully_charged_in">Cargado en:</string>
   <string name="light_usage">Uso ligero restante:</string>
   <string name="normal_usage">Uso normal restante:</string>
   <string name="heavy_usage">Uso intensivo restante:</string>
@@ -97,7 +97,7 @@
     <item>Cargando</item>
     <item>Descargando</item>
     <item>No está cargando</item>
-    <item>Completamente cargado</item>
+    <item>Cargado</item>
   </string-array>
   <string-array name="log_statuses"><!-- The same as above, worded for the Log screen -->
     <item>Desenchufado</item>
@@ -105,7 +105,7 @@
     <item>Enchufado</item>
     <item>Desconocido</item>
     <item>Desconocido</item>
-    <item>Completamente cargado</item>
+    <item>Cargado</item>
   </string-array>
   <string-array name="log_statuses_old"><!-- The same as above, worded for old Log screen statuses -->
     <item>Descargando</item>
@@ -113,7 +113,7 @@
     <item>Cargando</item>
     <item>Desconocido</item>
     <item>Desconocido</item>
-    <item>Completamente cargado</item>
+    <item>Cargado</item>
   </string-array>
   <string-array name="healths">
     <item>Desconocido</item>
@@ -138,12 +138,12 @@
 
   <string name="discharging_from">Descargando desde</string>
   <string name="charging_from">Cargando desde</string>
-  <string name="fully_charged">Completamente cargado</string>
+  <string name="fully_charged">Cargado</string>
 
-  <string name="since">Desde</string>
+  <string name="since">desde</string>
   <plurals name="for_n_hours">
-    <item quantity="one">Hace %d hora</item>
-    <item quantity="other">Hace %d horas</item>
+    <item quantity="one">hace %d hora</item>
+    <item quantity="other">hace %d horas</item>
   </plurals>
 
   <string name="one_six_needed">Lo siento, se requiere Android 1.6 o superior</string>
@@ -252,6 +252,7 @@ cuando el teléfono esté enchufado y desactivarla cuando ya no lo esté.
     <a href="mailto:android@darshancomputing.com">email</a>.
     Salvo que prefieras que no lo haga, añadiré tu nombre a esta sección como agradecimiento por tu ayuda.
   </string>
+  <string name="help_subcat_translators">Traductores</string>
 
   <string name="help_cat_contact">Contacto</string>
   <string name="help_contact">Si tienes alguna duda o algún problema, por favor mira el 
@@ -261,7 +262,7 @@ cuando el teléfono esté enchufado y desactivarla cuando ya no lo esté.
     <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>.
   </string>
 
-  <string name="pref_hint"><b>Consejo:</b> Pulse MENU para ver la ayuda.</string>
+  <string name="pref_hint">Pulse MENU para ver la ayuda.</string>
 
   <string name="settings_overview">Visión general</string>
   <string name="settings_overview_help">
@@ -303,7 +304,7 @@ cuando el teléfono esté enchufado y desactivarla cuando ya no lo esté.
   </string>
 
   <string name="pref_cat_themes">Temas</string>
-  <string name="pref_main_window_theme">Temas de la ventana principal</string>
+  <string name="pref_main_window_theme">Temas de la ventana</string>
   <string name="pref_main_window_theme_help">
     Establece el tema para la ventana principal. Por defecto, el tema es aproximadamente el de un cuadro de
     diálogo estándar de Android, como ha sido siempre. El tema Pantalla completa es útil si le gustan las cosas
@@ -330,7 +331,7 @@ cuando el teléfono esté enchufado y desactivarla cuando ya no lo esté.
     cuando haya terminado. En cualquier caso, aun con la opción activada, Battery Indicador no debería consumir más
     de un minuto de una batería completamente cargada en el caso peor.
   </string>
-  <string name="pref_max_log_age">Antigüedad máxima del registro</string>
+  <string name="pref_max_log_age">Antigüedad máxima</string>
   <string name="pref_max_log_age_summary">Borrar logs anteriores a:</string>
   <string name="pref_max_log_age_help">
     Si el registro está activado, cada vez que enchufe el teléfono se borrarán los logs anteriores al tiempo seleccionado.
@@ -341,14 +342,14 @@ cuando el teléfono esté enchufado y desactivarla cuando ya no lo esté.
     Android permite a las aplicaciones activar y desactivar la pantalla de bloqueo (\"Keyguard\"), pero solamente permite
     activarla y desactivarla, no se puede controlar, por ejemplo, qué teclas activan la pantalla.
   </string>
-  <string name="pref_confirm_manual_disable">Confirmar desactivación manual</string>
+  <string name="pref_confirm_manual_disable">Confirmar desactivación</string>
   <string name="pref_confirm_manual_disable_summary">¿Pedir confirmación cuando se desactive manualmente la pantalla de bloqueo?</string>
   <string name="pref_confirm_manual_disable_help">
     Si está marcada, se mostrará un diálogo de confirmación cuando intente desactivar manualmente la pantalla de bloqueo. Esto está
     hecho así para impedir que usuarios nuevos puedan desactivar accidentalmente la pantalla de bloqueo. Si lo haces con una cierta 
     regularidad, probablemente querrás desactivar esta confirmación.
   </string>
-  <string name="pref_finish_after_toggle_lock">Salir tras activar/desactivar</string>
+  <string name="pref_finish_after_toggle_lock">Cerrar ventana</string>
   <string name="pref_finish_after_toggle_lock_summary">¿Cerrar la ventana principal inmediatamente después de activar/desactivar?</string>
   <string name="pref_finish_after_toggle_lock_help">
     Si quiere simplemente poder activar o desactivar la pantalla de bloqueo y
@@ -360,7 +361,7 @@ cuando el teléfono esté enchufado y desactivarla cuando ya no lo esté.
     \nPor motivos obvios, sólo puede activar esto si la opción anterior está
     desactivada, y viceversa.
   </string>
-  <string name="pref_auto_disable">Desactivar automáticamente pantalla de bloqueo</string>
+  <string name="pref_auto_disable">Desactivar en carga</string>
   <string name="pref_auto_disable_summary">¿Desactivar automáticamente la pantalla de bloqueo cuando el teléfono esté cargando?</string>
   <string name="pref_auto_disable_help">
     Si está activa, siempre que el dispositivo se esté cargando Battery
@@ -371,7 +372,7 @@ cuando el teléfono esté enchufado y desactivarla cuando ya no lo esté.
     por la pantalla de bloqueo una primera vez antes de que se
     desactive automáticamente.
   </string>
-  <string name="pref_disallow_disable_lock_screen">Impedir desactivación automática</string>
+  <string name="pref_disallow_disable_lock_screen">Impedir desactivación</string>
   <string name="pref_disallow_disable_lock_screen_summary">¿Impedir el uso del botón de desactivación de la pantalla de bloqueo?</string>
   <string name="pref_disallow_disable_lock_screen_help">
     Si tiene una pantalla de bloqueo alternativa que permite el acceso
@@ -380,8 +381,8 @@ cuando el teléfono esté enchufado y desactivarla cuando ya no lo esté.
   </string>
 
   <string name="pref_cat_battery_use">Uso de batería</string>
-  <string name="pref_finish_after_battery_use">Salir tras abrir Uso de batería</string>
-  <string name="pref_finish_after_battery_use_summary">¿Salir de la ventana principal tras abrir Uso de batería?</string>
+  <string name="pref_finish_after_battery_use">Cerrar ventana</string>
+  <string name="pref_finish_after_battery_use_summary">¿Cerrar la ventana principal tras abrir Uso de batería?</string>
   <string name="pref_finish_after_battery_use_help">
     Activando esta opción se vuelve al antiguo comportamiento de Battery Indicator,
     que cerraba la ventana principal inmediatamente después de abrir la ventana
