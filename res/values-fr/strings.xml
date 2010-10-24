@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_full_name">Battery Indicator Pro</string>
+  <string name="app_launcher_name">Battery Indicator</string>
+  <string name="settings_activity_name">Battery Indicator Pro - Réglages</string>
+  <string name="settings_help_activity_name">@string/settings_activity_name</string>
+  <string name="help_activity_name">Battery Indicator Pro - Aide</string>
+  <string name="log_view_activity_name">Battery Indicator Pro - Journaux</string>
+
+  <string name="app_full_name_free">Battery Indicator</string>
+  <string name="settings_activity_name_free">Battery Indicator - Réglages</string>
+  <string name="settings_help_activity_name_free">@string/settings_activity_name_free</string>
+  <string name="help_activity_name_free">Battery Indicator - Aide</string>
+
+  <string name="main_window_title">@string/app_full_name</string>
+  <string name="main_window_title_free">@string/app_full_name_free</string>
+  <string name="battery_use_b">Utilisation de la batterie</string>
+  <string name="upgrade_donate_b">Mettre à niveau/Faire un don...</string>
+  <string name="reenable_lock_screen">Réactiver l\'écran de verrouillage</string>
+  <string name="disable_lock_screen">Désactiver l\'écran de verrouillage</string>
+
+  <string name="confirm_disable">Désactiver l\'écran de verrouillage ?</string>
+  <string name="confirm_disable_hint">
+    Conseil : Vous pouvez désactiver ce message dans les paramètres...
+  </string>
+  <string name="yes">Oui</string>
+  <string name="cancel">Annuler</string>
+
+  <string name="confirm_close">Fermer l\'application ?</string>
+  <string name="confirm_close_hint">
+  	Battery Indicator va être complètement fermé 
+  	et l\'indicateur de batterie va être retiré de la barre de status.\n
+  	
+  	\nSi vous souhaitez juste fermer la fenêtre principale et garder l\'indicateur de batterie démarré,
+  	appuyez sur Annuler et pressez simplement le bouton retour de votre téléphone.
+  </string>
+
+  <string name="confirm_clear_logs">Vider les journaux ?</string>
+
+  <string name="first_run_title">Merci!</string>
+  <string name="first_run_message">Merci
+  	pour votre don/achat !  <b><i>Les deux points suivants sont très importants</i> :</b>\n
+
+    \n• Si vous avez un \"<b>task killer</b>\" / gestionnaire de processus de quelque sorte, 
+    vous devriez le désinstaller au préalable ou lui indiquer d\'ignorer Battery Indicator Pro.
+      Si vous l\'aviez déjà fait pour la version gratuite, <i>vous devez lui indiquer d\'ignorer également la version Pro </i> !\n
+
+    \n• Si vous possédez un <b>Motorola Droid</b>, <b>Motorola Droid X</b>,
+      <b>Motorola Droid 2</b>, ou un <b>Samsung Moment</b>, vous devez activer le
+      \"Mode 10%\" dans \"Autres réglages\".
+  </string>
+  <string name="first_run_message_free">Merci
+    d\'avoir téléchargé Battery Indicator !  <b><i>Important</i> :</b>\n
+
+	\nSi vous avez un \"<b>task killer</b>\" / gestionnaire de processus de quelque sorte, 
+    vous devriez le désinstaller au préalable ou lui indiquer d\'ignorer Battery Indicator Pro.
+  </string>
+  <string name="okay">Ok</string>
+
+  <string name="menu_logs">Journaux</string>
+  <string name="menu_settings">Paramètres</string>
+  <string name="menu_close">Fermer</string>
+  <string name="menu_help">Aide</string>
+  <string name="menu_clear">Vider</string>
+  <string name="menu_reverse">Inverser l\'ordre</string>
+  <string name="menu_export">Exporter en CSV</string>
+
+  <string name="percent_symbol">%</string>
+  <string name="degree_symbol">°</string>
+  <string name="fahrenheit">Fahrenheit</string>
+  <string name="fahrenheit_symbol">F</string>
+  <string name="celsius">Celsius</string>
+  <string name="celsius_symbol">C</string>
+  <string name="volt_symbol">V</string>
+
+  <string name="fully_charged_in">Chargé dans :</string>
+  <string name="light_usage">Faible utilisation :</string>
+  <string name="normal_usage">Utilisation normale :</string>
+  <string name="heavy_usage">Utilisation intense :</string>
+  <string name="constant_usage">Utilisation constante :</string>
+
+  <string name="press_back_to_leave">Appuyez sur RETOUR pour quitter.</string>
+  <string name="press_menu_for_more">Appuyez sur MENU pour plus d\'options.</string>
+
+  <string name="inaccessible_storage">Carte SD inaccessible.</string>
+  <string name="inaccessible_w_reason">Carte SD inaccessible : </string>
+  <string name="read_only_storage">Carte SD en lecture seule.</string>
+  <string name="file_written">Fichier correctement écrit à la racine de la carte SD.</string>
+
+  <string name="date">date</string>
+  <string name="time">temps</string>
+  <string name="status">statut</string>
+  <string name="charge">pourcentage_de_charge</string>
+  <string name="temperature">degres_celsius</string>
+  <string name="voltage">volts</string>
+
+  <string-array name="statuses">
+    <item>Débranché</item>
+    <item>Inconnu</item>
+    <item>En charge</item>
+    <item>En décharge</item>
+    <item>Pas de charge</item>
+    <item>Complètement chargé</item>
+  </string-array>
+  <string-array name="log_statuses"><!-- The same as above, worded for the Log screen -->
+    <item>Débranché</item>
+    <item>Inconnu</item>
+    <item>Branché</item>
+    <item>Inconnu</item>
+    <item>Inconnu</item>
+    <item>Complètement chargé</item>
+  </string-array>
+  <string-array name="log_statuses_old"><!-- The same as above, worded for old Log screen statuses -->
+    <item>En décharge</item>
+    <item>Inconnu</item>
+    <item>En charge</item>
+    <item>Inconnu</item>
+    <item>Inconnu</item>
+    <item>Complètement chargé</item>
+  </string-array>
+  <string-array name="healths">
+    <item>Inconnu</item>
+    <item>Inconnu</item>
+    <item>Bon état</item>
+    <item>Surchauffe</item>
+    <item>Usée</item>
+    <item>Surtension</item>
+    <item>Défaut</item>
+  </string-array>
+  <string-array name="pluggeds">
+    <item>Inconnu</item>
+    <item>(AC)</item>
+    <item>(USB)</item>
+  </string-array>
+
+  <string name="logs_empty">Pas de journaux</string>
+  <plurals name="n_log_items">
+    <item quantity="one">%d journal</item>
+    <item quantity="other">%d journaux</item>
+  </plurals>
+
+  <string name="discharging_from">En décharge depuis</string>
+  <string name="charging_from">En charge depuis</string>
+  <string name="fully_charged">Complètement chargé</string>
+
+  <string name="since">Depuis</string>
+  <plurals name="for_n_hours">
+    <item quantity="one">Pour %d heure</item>
+    <item quantity="other">Pour %d heures</item>
+  </plurals>
+
+  <string name="one_six_needed">Désolé, Android 1.6 ou plus est nécessaire !</string>
+
+  <string name="currently_using">Actuellement utilisé depuis</string>
+  <string name="currently_set_to">Actuellement défini à :</string>
+  <string name="currently_disabled">Actuellement désactivé</string>
+
+  <string name="help_cat_version">Version</string>
+
+  <string name="help_cat_changelog">Changelog</string>
+  <string name="help_changelog">
+    Consultez <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">l\'historique des versions sur la FAQ du projet</a>.
+  </string>
+
+  <string name="help_cat_introduction">Introduction</string>
+  <string name="help_introduction"><i>Battery Indicator Pro</i>, est la version \"Pro\" de la célèbre application gratuite, <i>Battery Indicator</i>.  
+  	Vous pouvez l\'acheter sur l\'Android Market cependant il s\'agit d\'un projet OpenSource,
+  	ce qui signifie que vous pouvez télécharger gratuitement les sources sur 
+    <a href="http://code.google.com/p/battery-indicator/">le site internet du projet</a>.
+  </string>
+  <string name="help_introduction_free"><i>Battery Indicator</i>, est la version gratuite de l\'ensemble d\'applications 
+    <i>Battery Indicator</i>.  L\'application est disponible sur l\'Android Market,
+    et, comme il s\'agit d\'un projet OpenSource, vous pouvez télécharger gratuitement les sources sur
+    <a href="http://code.google.com/p/battery-indicator/">le site internet du projet</a>.\n
+
+    \nVous pouvez faire un don afin d\'obtenir la 
+    <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">version Pro</a>.
+  </string>
+
+  <string name="help_cat_summary">Résumé</string>
+  <string name="help_summary"><i>Battery
+    Indicator Pro</i> est un indicateur de batterie très léger pour les systèmes d\'exploitation mobile 
+    Android™.  L\'application ajoute une icône sur la gauche de la barre d\'état vous indiquant le pourcentage de charge de la batterie.\n
+
+    \nCette version Pro offre cependant beaucoup plus que ça. En plus de la présence d\'icône colorées (rouge, orange, vert), la version 3.0 possède les caractéristiques suivantes :\n
+
+    \n• Temps estimé de charge/décharge configurable
+    \n• Journalisation de l\'état de la batterie
+    \n• Thèmes pour la fenêtre principale (y compris une version plein écran avec un texte plus gros, plus lisible).
+    \n• Activation/désactivation manuelle de l\'écran de verrouillage, avec la possibilité de le désactiver automatiquement lorsque l\'appareil est branché
+    et de le réactiver lorsque l\'appareil est débranché.
+    \n• Beaucoup d\'autres choses utiles que vous pourrez découvrir lors de l\'utilisation de l\'application.
+  </string>
+  <string name="help_summary_free"><i>Battery
+    Indicator</i> est un indicateur de batterie très léger pour les systèmes d\'exploitation mobile 
+    Android™.  L\'application ajoute une icône sur la gauche de la barre d\'état vous indiquant le pourcentage de charge de la batterie.\n
+
+    \nLa version Pro offre beaucoup plus que ça. En plus de la présence d\'icône colorées (rouge, orange, vert), la version 3.0 possède les caractéristiques suivantes :\n
+
+    \n• Temps estimé de charge/décharge configurable
+    \n• Journalisation de l\'état de la batterie
+    \n• Thèmes pour la fenêtre principale (y compris une version plein écran avec un texte plus gros, plus lisible).
+    \n• Activation/désactivation manuelle de l\'écran de verrouillage, avec la possibilité de le désactiver automatiquement lorsque l\'appareil est branché
+    et de le réactiver lorsque l\'appareil est débranché.
+    \n• Beaucoup d\'autres choses utiles que vous pourrez découvrir lors de l\'utilisation de l\'application.
+  </string>
+
+  <string name="help_cat_limitations">Limites</string>
+  <string name="help_limitations">(<i>Indépendantes de ma volonté.</i>)\n
+
+    \n• L\'application ne peux afficher que les informations retournées par le téléphone.
+    La plupart des téléphones reportent la charge à 1% près, cependant une partie (notemment les modèles Motorola Droid) ne reportent la charge qu\'à 10% près.
+    \n• Il est impossible de masquer l\'icône de batterie du système.
+    \n• L\'icône dans la barre d\'état et le message dans la zone de notification sont dépendants l\'un de l\'autre. Vous ne pouvez donc pas avoir l\'un sans l\'autre.
+    \n• De nombreuses applications peuvent être déplacées sur la carte SD cependant ce n\'est pas possible pour Battery Indicator. 
+    Lisez <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">la FAQ du projet</a> pour de plus amples explications.
+  </string>
+
+  <string name="help_cat_features">Fonctionnalités</string>
+  <string name="help_features">
+    • Léger, simple et lecture facile.
+    \n• L\'application n\'est pas active tout le temps. Elle reçoit l\'information de l\'OS lorsque le statut de la batterie change, met à jour l\'icône et se rendort.
+    Ce qui signifie que l\'application nécessite très peu de RAM et ne charge pas le CPU, elle ne vide donc pas votre batterie.  
+    J\'ai calculé qu\'elle n\'utilise, dans le pire des cas, qu\'une minute de batterie lors d\'une décharge complète.  
+    Si vous remarquez une différence c\'est que vous avez une autre application (comme un \"task killer\" par exemple) qui interfère avec Battery Indicator.
+    \n• Accès facile à l\'écran d\'utilisation de la batterie (nécessite Android 1.6 ou plus récent).
+    \n• Peut être configuré pour se lancer ou pas au démarrage du système ou encore se lancer si l\'application était active lors de l\'extinction du téléphone.
+    \n• Beaucoup d\'autres fonctionnalités que j\'oublie ou que j\'estime assez insignifiantes pour ne pas en parler mais qui en font une excellente application.
+    \n• La satisfaction de soutenir le développeur (ce que j\'apprécie vraiment !).
+  </string>
+
+  <string name="help_cat_no_warranty">Garantie</string>
+  <string name="help_no_warranty">
+    Ce logiciel est distribué dans l\'espoir qu\'il vous sera utile, mais SANS AUCUNE GARANTIE, sans même la garantie implicite de
+    COMMERCIALISATION ou D\'ADAPTATION À UN USAGE PARTICULIER.\n
+    
+    \nCependant je fais de mon mieux pour m\'assurer qu\'il fonctionne correctement et qu\'il ne cause aucun problème 
+    mais je ne peux être tenu pour responsable de tout dysfonctionnement ou dommage qu\'il pourrait causer.
+  </string>
+
+  <string name="help_cat_acknowledgments">Remerciements</string>
+  <string name="help_acknowledgments">Cette application ne serait disponible qu\'en anglais sans l\'aide généreuse des traducteurs bénévoles. Merci !\n
+
+    \nJe remercie également Google et tous les développeurs OpenSource qui ont créés l\'a plateforme Android et qui ont rendu la création de cette application possible.\n
+
+    \nL\'icône de l\'application (la batterie verticale que vous vouyez sur le Market) est basée sur une icône 
+    <a href="http://www.oxygen-icons.org">du thème Oxygen</a> et utilisé sous la licence
+    <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common
+      Attribution-ShareAlike 3.0 License</a>.
+  </string>
+
+  <string name="help_cat_translations">Traductions</string>
+  <string name="help_translations">J\'ai besoin d\'aide pour traduire l\'application dans d\'autres langues.  Si vous souhaitez m\'aider vous pouvez m\'envoyer un 
+    <a href="mailto:android@darshancomputing.com">email</a>.
+    Sauf si vous ne le souhaitez pas, j\'ajouterai votre nom à la section suivante en reconnaissance pour votre aide.
+  </string>
+
+  <string name="help_subcat_translators">Traducteurs</string>
+
+  <string name="help_cat_contact">Contact</string>
+  <string name="help_contact">Si vous avez des questions ou des problèmes
+    merci de lire en priorité <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">la FAQ du projet</a>.\n
+
+    \nSi vous avez des commentaires ou retours, ou si vous avez des questions ou des problèmes 
+    qui ne sont pas résolus dans la FAQ, envoyez-moi un email à l\'adresse 
+    <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>.
+  </string>
+
+  <string name="pref_hint">Appuyez sur MENU pour l\'aide.</string>
+
+  <string name="settings_overview">Aperçu</string>
+  <string name="settings_overview_help">
+  	Les paramètres sont organisés en trois pages (décrites ci-dessous).  
+    Chaque page a sa propre page d\'aide la décrivant.  
+    Appuyez simplement sur MENU->Help pour obtenir de l\'aide sur la page sur laquelle vous êtes.
+  </string>
+
+  <string name="color_settings">Thèmes et couleurs</string>
+  <string name="color_settings_summary">Changez la couleur et le thème de l\'icône et de la fenêtre</string>
+  <string name="color_settings_help">
+  	Vous pouvez changer le thème de la fenêtre principale et choisir si et quand la couleur de l\'icône doit changer.
+  </string>
+  <string name="time_settings">Réglages du temps</string>
+  <string name="time_settings_summary">Réglez les estimations de temps et les approximations</string>
+  <string name="time_settings_help">
+  	Sur cette page vous pouvez contrôler quand notifier un changement de statut du téléphone (débranché par exemple)
+  	afin d\'estimer approximativement depuis combien de temps le changement a eu lieu.\n
+
+    \nVous pouvez aussi contrôler les estimations que vous souhaitez voir pour le temps restant de charge 
+    ainsi que la base des estimations de décharge en utilisation légère/normale/lourde ou constante.
+  </string>
+  <string name="other_settings">Autres réglages</string>
+  <string name="other_settings_summary"></string>
+  <string name="other_settings_help">
+    Tous les autres réglages sont sur cette page, y compris la journalisation, la gestion de l\'écran de verrouillage,
+    l\'unité de température, le démarrage automatique, etc...
+  </string>
+
+  <string name="pref_cat_more_settings_in_pro">Autres réglages (version Pro)</string>
+  <string name="pref_please_upgrade">
+  	La version Pro possède de nombreux autres réglages et fonctionnalités, comme la couleur de l\'icône,
+  	les thèmes de la fenêtre principale, et bien plus...
+  </string>
+
+  <string name="pref_cat_themes">Thèmes</string>
+  <string name="pref_main_window_theme">Thème de la fenêtre principale</string>
+  <string name="pref_main_window_theme_help">
+  	Définit le thème de la fenêtre principale. Par défaut, le thème correspond à peu près au thème standard d\'Android.  
+  	Le thème \"Plein écran\" est utile si vous souhaitez que l\'application soit plus grosse/facile à lire.  
+  	Les autres thèmes sont présents juste pour le plaisir.
+  </string>
+
+  <string name="pref_cat_logging">Journalisation</string>
+  <string name="pref_enable_logging">Activer la journalisation</string>
+  <string name="pref_enable_logging_summary">Enregistrer les états de la batterie ?</string>
+  <string name="pref_enable_logging_help">
+  	Si l\'option est active, Battery Indicator enregistre tous les changements d\'état de la batterie 
+  	(comme quand le téléphone est débranché ou a fini sa charge). Vous pouvez consulter les journaux 
+  	depuis la fenêtre principale (en appuyant sur MENU et en sélectionnant Journaux).
+  </string>
+  <string name="pref_log_everything">Tout enregistrer</string>
+  <string name="pref_log_everything_summary">Enregistrer les changements de charge également ?</string>
+  <string name="pref_log_everything_help">
+  	Si l\'option est active, Battery Indicator enregistre également tous les changements sur le niveau de charge 
+  	(comme le passage de 57% à 56% et vice versa).
+  	La plupart des utilisateurs n\'auront pas besoin de cette option, cependant vous pouvez l\'activer 
+  	afin de garder un oeil constamment sur votre appareil.\n
+
+    \nGardez à l\'esprit qu\'utiliser cette option utilise plus votre téléphone, pensez donc à bien désactiver l\'option 
+    dès que vous n\'en avez plus besoin. Le cas échéant l\'application risque d\'accélérer la décharge de la batterie du téléphone.
+  </string>
+  <string name="pref_max_log_age">Âge maximal du journal</string>
+  <string name="pref_max_log_age_summary">Supprimer les vieux journaux :</string>
+  <string name="pref_max_log_age_help">
+  	Si la journalisation est activée et à chaque fois que vous branchez votre téléphone les journaux les plus vieux sont supprimés.
+  </string>
+
+  <string name="pref_cat_keyguard">Écran de verrouillage</string>
+  <string name="pref_cat_keyguard_help">
+  	Android autorise les applications à désactiver/réactiver l\'écran de verrouillage.
+	On peux désactiver/réactiver le verrouillage mais pas plus, par exemple on ne peut pas 
+	allumer ou éteindre l\'écran.
+  </string>
+  <string name="pref_confirm_manual_disable">Confirmer la désactivation</string>
+  <string name="pref_confirm_manual_disable_summary">Confirmer lorsque l\'écran de verrouillage est manuellement désactivé ?</string>
+  <string name="pref_confirm_manual_disable_help">
+  	Si l\'option est cochée un message de confirmation sera affiché quand vous essayerez de désactiver 
+  	l\'écran de verrouillage.  Cela permet aux nouveaux utilisateurs de ne pas désactiver l\'écran de verrouillage sans le savoir.
+  	Si vous êtes ammenés à désactiver régulièrement l\'écran de verrouillage vous devriez peut-être décocher cette option.
+  </string>
+  <string name="pref_finish_after_toggle_lock">Quitter la fenêtre principale</string>
+  <string name="pref_finish_after_toggle_lock_summary">Quitter la fenêtre principale lors d\'une désactivation/réactivation ?</string>
+  <string name="pref_finish_after_toggle_lock_help">
+  	Si vous êtes quelqu\'un pour qui chaque geste compte vous activerez probablement cette option.  Si votre but 
+  	est de désactiver/réactiver simplement l\'écran de verrouillage et de retourner à ce que vous faisiez, 
+  	cette option vous permettra de ne pas à avoir à presser la touche retour. 
+  	Dépliez juste la barre de notification, touchez l\'icône de Battery Indicator et 
+  	pressez le bouton pour désactiver/réactiver l\'écran de verrouillage : En trois pressions sur l\'écran 
+  	vous êtes de retour à ce que vous faisiez.\n
+
+    \nPour des raisons évidentes vous pouvez activer cette option seulement si l\'option précédente est 
+    désactivée et vice versa.
+  </string>
+  <string name="pref_auto_disable">Auto-désactivation de l\'écran de verrouillage</string>
+  <string name="pref_auto_disable_summary">Désactiver automatiquement l\'écran de verrouillage lors de la charge ?</string>
+  <string name="pref_auto_disable_help">
+  	Si l\'option est cochée et que le téléphone est branché, Battery Indicator désactivera l\'écran de verrouillage 
+  	et si le téléphone est débranché l\'écran de verrouillage sera réactivé.\n
+
+    \nSi cette option est activée vous aurez à déverrouiller manuellement l\'écran de verrouillage une fois 
+    avant que l\'auto-désactivation prenne effet.
+  </string>
+  <string name="pref_disallow_disable_lock_screen">Interdire la désactivation manuelle</string>
+  <string name="pref_disallow_disable_lock_screen_summary">Désactive le bouton de désactivation manuelle de l\'écran de verrouillage.</string>
+  <string name="pref_disallow_disable_lock_screen_help">
+  	Si vous avez un écran de verrouillage alternatif qui autorise l\'accès à la barre de notification 
+  	lorsque le téléphone est verrouillé, vous aurez à activer cette option pour des raisons 
+  	de sécurité.
+  </string>
+
+  <string name="pref_cat_battery_use">Utilisation de la Batterie</string>
+  <string name="pref_finish_after_battery_use">Quitter après le lancement</string>
+  <string name="pref_finish_after_battery_use_summary">Quitter la fenêtre principale lorsque l\'utilisation de la batterie est lancé ?</string>
+  <string name="pref_finish_after_battery_use_help">
+  	Si vous êtes quelqu\'un pour qui chaque geste compte vous activerez probablement cette option.  Cette option 
+  	fermera la fenêtre principale de l\'application lorsque vous lancez l\'écran d\'utilisation de la batterie.
+  </string>
+
+  <string name="pref_cat_temperature_unit">Unité de température</string>
+  <string name="pref_convert_to_fahrenheit">Convertir en Fahrenheit</string>
+  <string name="pref_convert_to_fahrenheit_help">
+  	Android donne la température de la batterie en degré Celsius.  Si vous préférez avoir la température 
+  	en degrés Fahrenheit, cochez cette option et l\'application changera l\'unité pour vous.
+  </string>
+
+  <string name="pref_cat_autostart">Démarrage automatique</string>
+  <string name="pref_autostart_at_boot">Démarrage automatique au lancement</string>
+  <string name="pref_autostart_at_boot_summary">Démarrer Battery Indicator lorsque le téléphone s\'allume ?</string>
+  <string name="pref_autostart_at_boot_help">
+  	Choisissez si l\'application doit démarrer automatiquement lorsque le téléphone démarre.\n
+
+    \nL\'option \"Si lancé à l\'extinction\" est active l\'application démarrera 
+    automatiquement au démarrage de l\'appareil si elle était lancée lors de l\'extinction.  Si vous 
+    quittez l\'application par un autre moyen que par elle-même (comme par exemple grâce à un task killer) 
+    elle se relancera automatiquement lors du prochain démarrage du téléphone.
+  </string>
+
+  <string name="pref_cat_charge_as_text">Niveau de charge textuel</string>
+  <string name="pref_charge_as_text">Niveau de charge textuel</string>
+  <string name="pref_charge_as_text_summary">Voir le niveau de charge sous forme d\'un texte près de l\'icône ?</string>
+  <string name="pref_charge_as_text_help">
+    I\'ve had a few users with poorer eyesight ask me to add this
+    option, whereby the charge level is displayed as text (which is a
+    bit larger and easier to read) right next to the icon when you
+    pull down the notification area.  The actual icon won\'t be any
+    different, so this will only help when you pull down the
+    notification tray, but it\'s better than nothing, and easy enough
+    to add for those that want it.\n
+
+    \nTo save precious space, I\'ve done this in a very unglamorous
+    fashion, simply plopping the number in there and carrying on. This
+    turns out to be easier to read than if I included the percent
+    symbol, and means that the text should all fit.  It is possible
+    that if you have a particularly small device, enabling this might
+    make the AM/PM at the far right not quite fit.
+  </string>
+
+  <string name="pref_cat_status_duration">Status Duration (For/Since...)</string>
+  <string name="pref_status_dur_est">When to Approximate</string>
+  <string name="pref_status_dur_est_summary">Start Approximating Hours Since Status Change</string>
+  <string name="pref_status_dur_est_help">
+    Determines when the notification switches from saying, e.g.,
+    \"Unplugged Since 1:10 PM\" to saying something like \"Unplugged
+    for 1 Hour\".  The first way is more accurate, because it tells
+    you exactly (to the minute) when the status changed, but many
+    people prefer the simpler to comprehend approximation of the
+    number of elapsed hours, so they make that happen sooner than the
+    default of 12 hours.
+  </string>
+
+  <string name="pref_cat_time_remaining_estimates">Time Remaining Estimates</string>
+  <string name="pref_cat_time_remaining_estimates_help">
+    I\'ve done these time remaining estimates a bit differently than
+    you might be used to, but I think for the better.  You control
+    what the app uses as a basis to estimate battery life, so if you
+    think it\'s wrong, you can fix it.  I\'ve used what I think are
+    reasonable defaults, but phones vary quite a bit, and how we use
+    our phones varies even more, so you\'re going to have to tweak
+    these settings.  But that\'s a good thing, because only you know
+    what \"Normal Usage\" (et al) means to you, and you can actually
+    put in times that work for you, rather than being annoyed if the
+    estimates are wrong.
+  </string>
+  <string name="pref_show_charge_time">Show Charge Time</string>
+  <string name="pref_show_charge_time_summary">Show charge time remaining while charging?</string>
+  <string name="pref_show_charge_time_help">
+    If enabled, then while the phone is charging, the main window will
+    show an estimate (based on your settings below) as to how long it will be
+    until the phone is fully charged.
+  </string>
+  <string name="pref_usb_charge_time">USB Charge</string>
+  <string name="pref_usb_charge_time_summary">USB Charge Time From 0% to 100% in Hours</string>
+  <string name="pref_usb_charge_time_help">
+    Enter how long you think your battery would take to completely
+    charge from 0% to 100% on USB power.
+  </string>
+  <string name="pref_ac_charge_time">AC Charge</string>
+  <string name="pref_ac_charge_time_summary">AC Charge Time From 0% to 100% in Hours</string>
+  <string name="pref_ac_charge_time_help">
+    Enter how long you think your battery would take to completely
+    charge from 0% to 100% on AC power.
+  </string>
+  <string name="pref_show_light_usage">Show Light Usage</string>
+  <string name="pref_show_light_usage_summary">Show light usage time remaining?</string>
+  <string name="pref_show_light_usage_help">
+    Whether or not to show an estimate (in the main window) as to how
+    long it will take to drain your battery at whatever you consider
+    \"Light Usage\".
+  </string>
+  <string name="pref_light_usage_time">Light Usage</string>
+  <string name="pref_light_usage_time_summary">Light Usage Time From 100% to 0% in Hours</string>
+  <string name="pref_light_usage_time_help">
+    Enter how long you think your battery would take to completely
+    discharge from 100% to 0% at whatever you consider \"Light Usage\".
+  </string>
+  <string name="pref_show_normal_usage">Show Normal Usage</string>
+  <string name="pref_show_normal_usage_summary">Show normal usage time remaining?</string>
+  <string name="pref_show_normal_usage_help">
+    Whether or not to show an estimate (in the main window) as to how
+    long it will take to drain your battery at whatever you consider
+    \"Normal Usage\".
+  </string>
+  <string name="pref_normal_usage_time">Normal Usage</string>
+  <string name="pref_normal_usage_time_summary">Normal Usage Time From 100% to 0% in Hours</string>
+  <string name="pref_normal_usage_time_help">
+    Enter how long you think your battery would take to completely
+    discharge from 100% to 0% at whatever you consider \"Normal Usage\".
+  </string>
+  <string name="pref_show_heavy_usage">Show Heavy Usage</string>
+  <string name="pref_show_heavy_usage_summary">Show heavy usage time remaining?</string>
+  <string name="pref_show_heavy_usage_help">
+    Whether or not to show an estimate (in the main window) as to how
+    long it will take to drain your battery at whatever you consider
+    \"Heavy Usage\".
+  </string>
+  <string name="pref_heavy_usage_time">Heavy Usage</string>
+  <string name="pref_heavy_usage_time_summary">Heavy Usage Time From 100% to 0% in Hours</string>
+  <string name="pref_heavy_usage_time_help">
+    Enter how long you think your battery would take to completely
+    discharge from 100% to 0% at whatever you consider \"Heavy Usage\".
+  </string>
+  <string name="pref_show_constant_usage">Show Constant Usage</string>
+  <string name="pref_show_constant_usage_summary">Show constant usage time remaining?</string>
+  <string name="pref_show_constant_usage_help">
+    Whether or not to show an estimate (in the main window) as to how
+    long it will take to drain your battery at whatever you consider
+    \"Constant Usage\".
+  </string>
+  <string name="pref_constant_usage_time">Constant Usage</string>
+  <string name="pref_constant_usage_time_summary">Constant Usage Time From 100% to 0% in Hours</string>
+  <string name="pref_constant_usage_time_help">
+    Enter how long you think your battery would take to completely
+    discharge from 100% to 0% at whatever you consider \"Constant Usage\".
+  </string>
+
+  <string name="pref_cat_color">Icon Color</string>
+  <string name="pref_cat_color_help">
+    In order to keep the binary package for Battery Indicator
+    reasonably small, there are some limitations for the colors.  At
+    the time of writing, you can have a red icon as high as 30%, an
+    amber icon as high as 50%, and a green icon as low as 20%.  I
+    think these are reasonable compromises that should work for 99% of
+    users.\n
+
+    \nTo give you maximum control, the colors can be turned on or off
+    independently.  This means that you can have as much as a
+    four-tiered color scheme, where the icon is green when it is very
+    full, then grayscale, then amber, then red.  Of course, most
+    people probably have the amber and green thresholds set to the
+    same value, so that the icon is never grayscale.
+  </string>
+  <string name="pref_color_preview">Color Preview</string>
+  <string name="pref_color_preview_help">
+    The color preview will hopefully make it really easy to visualize
+    what effect your color settings will have.\n
+
+    \nThis doesn\'t exist in 10% mode, because it just wouldn\'t make
+    sense.
+  </string>
+  <string name="pref_red">Use Red Icon</string>
+  <string name="pref_red_summary">Use red icon when charge is low?</string>
+  <string name="pref_red_help">
+    Whether or not to use a red icon below the specified threshold.
+  </string>
+  <string name="pref_red_thresh">Red Threshold</string>
+  <string name="pref_red_thresh_summary">Red Icon Below What Charge Percentage?</string>
+  <string name="pref_red_thresh_summary10">Red Icon At or Below What Charge Percentage?</string>
+  <string name="pref_red_thresh_help">Specifies the charge level which
+    the icon should turn red below (or <i>at</i>, in 10% Mode).\n
+
+    \nThe options for the red threshold include all the values (in
+    multiples of 5) for which there are red icons available.\n
+
+    \nIn 10% Mode, things work slightly differently but should be
+    self-explanatory.
+  </string>
+  <string name="pref_amber">Use Amber Icon</string>
+  <string name="pref_amber_summary">Use amber icon when charge is medium?</string>
+  <string name="pref_amber_help">
+    Whether or not to use an amber icon below the specified threshold.
+  </string>
+  <string name="pref_amber_thresh">Amber Threshold</string>
+  <string name="pref_amber_thresh_summary">Amber Icon Below What Charge Percentage?</string>
+  <string name="pref_amber_thresh_summary10">Amber Icon At or Below What Charge Percentage?</string>
+  <string name="pref_amber_thresh_help">Specifies the charge level
+    which the icon should turn amber below (or <i>at</i>, in 10%
+    Mode).\n
+
+    \nThe options for the amber threshold include all the values (in
+    multiples of 5) for which there are amber icons available,
+    starting 5 percentage points above the red threshold (if there is
+    one).  For example, if you have the red threshold set to 15, then
+    your lowest option here will be 20.\n
+
+    \nIn 10% Mode, things work slightly differently but should be
+    self-explanatory.
+  </string>
+  <string name="pref_green">Use Green Icon</string>
+  <string name="pref_green_summary">Use green icon when charge is high?</string>
+  <string name="pref_green_help">
+    Whether or not to use a green icon at or above the specified threshold.
+  </string>
+  <string name="pref_green_thresh">Green Threshold</string>
+  <string name="pref_green_thresh_summary">Green Icon At or Above What Charge Percentage?</string>
+  <string name="pref_green_thresh_help">Specifies the charge level
+    which the icon should be green at or above.\n
+
+    \nThe options for the green threshold include all the values (in
+    multiples of 5) for which there are green icons available,
+    starting at the highest active threshold you have set for red or
+    amber.  For example, if you have the amber threshold set to 40,
+    then your lowest option here will be 40.\n
+
+    \nIn 10% Mode, things work slightly differently but should be
+    self-explanatory.
+  </string>
+
+  <string name="pref_cat_device_specific">Device Specific Settings</string>
+  <string name="pref_cat_device_specific_help"></string>
+  <string name="pref_ten_percent_mode">10% Mode</string>
+  <string name="pref_ten_percent_mode_summary">Read the help first!</string>
+  <string name="pref_ten_percent_mode_help"><b>Note:</b>
+    Checking or unchecking this will reset your icon color settings!\n
+
+    \nThis setting cleans up the Icon Color settings to make more sense
+    on devices that only show their charge level in 10% increments.
+    According to user reports, that includes these devices:\n
+
+    \n• Motorola Droid (original)
+    \n• Motorola Droid X
+    \n• Motorola Droid 2
+    \n• Samsung Moment\n
+
+    \nAs far as I\'m aware, all other devices report every 1%, and so
+    should <i>not</i> turn this on.
+  </string>
+
+  <string-array name="mw_theme_pref_entries">
+    <item>Défaut (petit)</item>
+    <item>Coloré (petit)</item>
+    <item>Plein écran</item>
+  </string-array>
+
+  <string-array name="boot_pref_entries">
+    <item>Toujours</item>
+    <item>Jamais</item>
+    <item>Si démarré à l\'arrêt</item>
+  </string-array>
+
+  <string-array name="status_dur_est_entries">
+    <item>Toujours</item>
+    <item>Après 1 heure</item>
+    <item>Après 2 heures</item>
+    <item>Après 3 heures</item>
+    <item>Après 6 heures</item>
+    <item>Après 12 heures</item>
+  </string-array>
+
+  <string-array name="max_log_age_entries">
+    <item>1 Jour</item>
+    <item>2 Jours</item>
+    <item>4 Jours</item>
+    <item>1 Semaine</item>
+  </string-array>
+</resources>
