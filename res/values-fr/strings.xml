@@ -21,7 +21,7 @@
 
   <string name="confirm_disable">Désactiver l\'écran de verrouillage ?</string>
   <string name="confirm_disable_hint">
-    Conseil : Vous pouvez désactiver ce message dans les paramètres...
+    Conseil : Vous pouvez désactiver ce message dans les paramètres.
   </string>
   <string name="yes">Oui</string>
   <string name="cancel">Annuler</string>
@@ -74,7 +74,7 @@
   <string name="volt_symbol">V</string>
 
   <string name="fully_charged_in">Chargé dans :</string>
-  <string name="light_usage">Faible utilisation :</string>
+  <string name="light_usage">Utilisation légère :</string>
   <string name="normal_usage">Utilisation normale :</string>
   <string name="heavy_usage">Utilisation intense :</string>
   <string name="constant_usage">Utilisation constante :</string>
@@ -179,10 +179,10 @@
 
   <string name="help_cat_summary">Résumé</string>
   <string name="help_summary"><i>Battery
-    Indicator Pro</i> est un indicateur de batterie très léger pour les systèmes d\'exploitation mobile 
-    Android™.  L\'application ajoute une icône sur la gauche de la barre d\'état vous indiquant le pourcentage de charge de la batterie.\n
+    Indicator Pro</i> est un indicateur de batterie très léger conçu pour le système d\'exploitation mobile 
+    Google Android™.  L\'application ajoute une icône sur la gauche de la barre d\'état vous indiquant le pourcentage de charge de la batterie.\n
 
-    \nCette version Pro offre cependant beaucoup plus que ça. En plus de la présence d\'icône colorées (rouge, orange, vert), la version 3.0 possède les caractéristiques suivantes :\n
+    \nCette version Pro offre cependant beaucoup plus que cela. En plus de la présence d\'icônes colorées (rouge, orange, vert), la version 3.0 possède les caractéristiques suivantes :\n
 
     \n• Temps estimé de charge/décharge configurable
     \n• Journalisation de l\'état de la batterie
@@ -209,7 +209,7 @@
   <string name="help_limitations">(<i>Indépendantes de ma volonté.</i>)\n
 
     \n• L\'application ne peux afficher que les informations retournées par le téléphone.
-    La plupart des téléphones reportent la charge à 1% près, cependant une partie (notemment les modèles Motorola Droid) ne reportent la charge qu\'à 10% près.
+    La plupart des téléphones reportent la charge à 1% près, cependant une partie (notamment les modèles Motorola Droid) ne reportent la charge qu\'à 10% près.
     \n• Il est impossible de masquer l\'icône de batterie du système.
     \n• L\'icône dans la barre d\'état et le message dans la zone de notification sont dépendants l\'un de l\'autre. Vous ne pouvez donc pas avoir l\'un sans l\'autre.
     \n• De nombreuses applications peuvent être déplacées sur la carte SD cependant ce n\'est pas possible pour Battery Indicator. 
@@ -218,10 +218,10 @@
 
   <string name="help_cat_features">Fonctionnalités</string>
   <string name="help_features">
-    • Léger, simple et lecture facile.
+    • Léger, simple et lecture aisée.
     \n• L\'application n\'est pas active tout le temps. Elle reçoit l\'information de l\'OS lorsque le statut de la batterie change, met à jour l\'icône et se rendort.
-    Ce qui signifie que l\'application nécessite très peu de RAM et ne charge pas le CPU, elle ne vide donc pas votre batterie.  
-    J\'ai calculé qu\'elle n\'utilise, dans le pire des cas, qu\'une minute de batterie lors d\'une décharge complète.  
+    Ce qui signifie qu\'elle ne nécessite que très peu de RAM pour fonctionner et ne charge pas le CPU. Elle ne vide donc pas votre batterie.  
+    J\'ai calculé qu\'elle utilise, dans le pire des cas, une seule minute de batterie lors d\'une décharge complète.  
     Si vous remarquez une différence c\'est que vous avez une autre application (comme un \"task killer\" par exemple) qui interfère avec Battery Indicator.
     \n• Accès facile à l\'écran d\'utilisation de la batterie (nécessite Android 1.6 ou plus récent).
     \n• Peut être configuré pour se lancer ou pas au démarrage du système ou encore se lancer si l\'application était active lors de l\'extinction du téléphone.
@@ -241,17 +241,17 @@
   <string name="help_cat_acknowledgments">Remerciements</string>
   <string name="help_acknowledgments">Cette application ne serait disponible qu\'en anglais sans l\'aide généreuse des traducteurs bénévoles. Merci !\n
 
-    \nJe remercie également Google et tous les développeurs OpenSource qui ont créés l\'a plateforme Android et qui ont rendu la création de cette application possible.\n
+    \nJe remercie également Google et tous les développeurs OpenSource qui ont créés la plateforme Android et qui ont rendu la création de cette application possible.\n
 
-    \nL\'icône de l\'application (la batterie verticale que vous vouyez sur le Market) est basée sur une icône 
+    \nL\'icône de l\'application (la batterie verticale que vous voyez sur le Market) est basée sur une icône 
     <a href="http://www.oxygen-icons.org">du thème Oxygen</a> et utilisé sous la licence
     <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common
       Attribution-ShareAlike 3.0 License</a>.
   </string>
 
   <string name="help_cat_translations">Traductions</string>
-  <string name="help_translations">J\'ai besoin d\'aide pour traduire l\'application dans d\'autres langues.  Si vous souhaitez m\'aider vous pouvez m\'envoyer un 
-    <a href="mailto:android@darshancomputing.com">email</a>.
+  <string name="help_translations">J\'ai besoin d\'aide pour traduire l\'application dans d\'autres langues.  Si vous souhaitez m\'aider, vous pouvez m\'envoyer un 
+    <a href="mailto:android@darshancomputing.com">email</a>.\n
     Sauf si vous ne le souhaitez pas, j\'ajouterai votre nom à la section suivante en reconnaissance pour votre aide.
   </string>
 
@@ -261,7 +261,7 @@
   <string name="help_contact">Si vous avez des questions ou des problèmes
     merci de lire en priorité <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">la FAQ du projet</a>.\n
 
-    \nSi vous avez des commentaires ou retours, ou si vous avez des questions ou des problèmes 
+    \nSi vous avez des commentaires ou retours, ou bien encore des questions ou des problèmes 
     qui ne sont pas résolus dans la FAQ, envoyez-moi un email à l\'adresse 
     <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>.
   </string>
@@ -270,9 +270,9 @@
 
   <string name="settings_overview">Aperçu</string>
   <string name="settings_overview_help">
-  	Les paramètres sont organisés en trois pages (décrites ci-dessous).  
-    Chaque page a sa propre page d\'aide la décrivant.  
-    Appuyez simplement sur MENU->Help pour obtenir de l\'aide sur la page sur laquelle vous êtes.
+  	Les paramètres sont organisés en trois parties (décrites ci-dessous).  
+    Chaque partie possède sa propre page d\'aide la décrivant.  
+    Appuyez simplement sur MENU > Help pour obtenir de l\'aide sur la page sur laquelle vous êtes.
   </string>
 
   <string name="color_settings">Thèmes et couleurs</string>
@@ -283,7 +283,7 @@
   <string name="time_settings">Réglages du temps</string>
   <string name="time_settings_summary">Réglez les estimations de temps et les approximations</string>
   <string name="time_settings_help">
-  	Sur cette page vous pouvez contrôler quand notifier un changement de statut du téléphone (débranché par exemple)
+  	Dans cette partie vous pouvez contrôler quand notifier un changement de statut du téléphone (débranché par exemple)
   	afin d\'estimer approximativement depuis combien de temps le changement a eu lieu.\n
 
     \nVous pouvez aussi contrôler les estimations que vous souhaitez voir pour le temps restant de charge 
@@ -292,7 +292,7 @@
   <string name="other_settings">Autres réglages</string>
   <string name="other_settings_summary"></string>
   <string name="other_settings_help">
-    Tous les autres réglages sont sur cette page, y compris la journalisation, la gestion de l\'écran de verrouillage,
+    Tous les autres réglages sont dans cette partie, y compris la journalisation, la gestion de l\'écran de verrouillage,
     l\'unité de température, le démarrage automatique, etc...
   </string>
 
@@ -305,8 +305,8 @@
   <string name="pref_cat_themes">Thèmes</string>
   <string name="pref_main_window_theme">Thème de la fenêtre principale</string>
   <string name="pref_main_window_theme_help">
-  	Définit le thème de la fenêtre principale. Par défaut, le thème correspond à peu près au thème standard d\'Android.  
-  	Le thème \"Plein écran\" est utile si vous souhaitez que l\'application soit plus grosse/facile à lire.  
+  	Définit le thème de la fenêtre principale.\nPar défaut, le thème correspond à peu près au thème standard d\'Android.  
+  	Le thème \"Plein écran\" est utile si vous souhaitez que l\'application soit plus grosse et facile à lire.  
   	Les autres thèmes sont présents juste pour le plaisir.
   </string>
 
@@ -523,55 +523,50 @@
     discharge from 100% to 0% at whatever you consider \"Constant Usage\".
   </string>
 
-  <string name="pref_cat_color">Icon Color</string>
+  <string name="pref_cat_color">Couleur de l\'icône</string>
   <string name="pref_cat_color_help">
-    In order to keep the binary package for Battery Indicator
-    reasonably small, there are some limitations for the colors.  At
-    the time of writing, you can have a red icon as high as 30%, an
-    amber icon as high as 50%, and a green icon as low as 20%.  I
-    think these are reasonable compromises that should work for 99% of
-    users.\n
+  	Afin de garder le fichier de l\'application le plus petit possible, j\'ai posé quelques 
+  	limitations pour les couleurs. À l\'heure où j'écris, vous pouvez assigner l\'icône rouge jusqu\'à 
+  	un maximum de 30%, l\'icône orange jusqu\'à un maximum de 50% et l\'icone verte entre 20% et 100%.
+  	Je pense que ces limitations sont raisonables et qu\'elles conviendront à 99% des utilisateurs.\n
 
-    \nTo give you maximum control, the colors can be turned on or off
-    independently.  This means that you can have as much as a
-    four-tiered color scheme, where the icon is green when it is very
-    full, then grayscale, then amber, then red.  Of course, most
-    people probably have the amber and green thresholds set to the
-    same value, so that the icon is never grayscale.
+    \nAfin de vous laisser un maximum de contrôle, les couleurs peuvent être activées/désactivées 
+    indépendamment.  Ce qui veux dire que vous pouvez avoir jusqu\'à 4 niveaux de couleurs, partant 
+    du vert quand la batterie est complètement chargée, puis grise, puis orange et enfin rouge. Biensûr 
+    la plupart des utilisateurs auront fixés la limite inférieure du vert et supérieure de l\'orange 
+    à la même valeur ce qui fait que l\'icône ne sera jamais grise.
   </string>
-  <string name="pref_color_preview">Color Preview</string>
+  <string name="pref_color_preview">Aperçu des couleurs</string>
   <string name="pref_color_preview_help">
-    The color preview will hopefully make it really easy to visualize
-    what effect your color settings will have.\n
+  	L\'aperçu des couleurs est prévu pour visualiser facilement vos réglages afin de déterminer 
+  	s\'ils vous conviennent.\n
 
-    \nThis doesn\'t exist in 10% mode, because it just wouldn\'t make
-    sense.
+    \nL\'aperçu n\'existe pas avec le mode 10% car le résultat n\'aurait pas de sens.
   </string>
-  <string name="pref_red">Use Red Icon</string>
-  <string name="pref_red_summary">Use red icon when charge is low?</string>
+  <string name="pref_red">Utiliser l\'icône rouge</string>
+  <string name="pref_red_summary">Utiliser l\'icône rouge lorsque la charge est faible ?</string>
   <string name="pref_red_help">
-    Whether or not to use a red icon below the specified threshold.
+    Utiliser ou non l\'icône rouge en dessous du seuil spécifié.
   </string>
-  <string name="pref_red_thresh">Red Threshold</string>
-  <string name="pref_red_thresh_summary">Red Icon Below What Charge Percentage?</string>
-  <string name="pref_red_thresh_summary10">Red Icon At or Below What Charge Percentage?</string>
-  <string name="pref_red_thresh_help">Specifies the charge level which
-    the icon should turn red below (or <i>at</i>, in 10% Mode).\n
+  <string name="pref_red_thresh">Seuil rouge</string>
+  <string name="pref_red_thresh_summary">Afficher l\'icône rouge en dessous de quel pourcentage ?</string>
+  <string name="pref_red_thresh_summary10">Afficher l\'icône rouge en dessous ou à quel pourcentage ?</string>
+  <string name="pref_red_thresh_help">Spécifie le niveau de charge en dessous duquel (ou <i>auquel</i>, 
+  	en mode 10%) l'icône doit passer au rouge.\n
 
-    \nThe options for the red threshold include all the values (in
-    multiples of 5) for which there are red icons available.\n
+    \nVous pouvez choisir n\'importe quel nombre (multiple de 5) pour lequel l\'icône rouge sera 
+    affichée\n
 
-    \nIn 10% Mode, things work slightly differently but should be
-    self-explanatory.
+    \nEn mode 10% les choses sont un peu différentes mais restent triviales.
   </string>
-  <string name="pref_amber">Use Amber Icon</string>
-  <string name="pref_amber_summary">Use amber icon when charge is medium?</string>
+  <string name="pref_amber">Utiliser l\'icône orange</string>
+  <string name="pref_amber_summary">Utiliser l\'icône orange lorsque la charge est moyenne ?</string>
   <string name="pref_amber_help">
-    Whether or not to use an amber icon below the specified threshold.
+    Utiliser ou non l\'icône orange en dessous du seuil spécifié.
   </string>
-  <string name="pref_amber_thresh">Amber Threshold</string>
-  <string name="pref_amber_thresh_summary">Amber Icon Below What Charge Percentage?</string>
-  <string name="pref_amber_thresh_summary10">Amber Icon At or Below What Charge Percentage?</string>
+  <string name="pref_amber_thresh">Seuil orange</string>
+  <string name="pref_amber_thresh_summary">Afficher l\'icône orange en dessous de quel pourcentage ?</string>
+  <string name="pref_amber_thresh_summary10">Afficher l\'icône orange en dessous ou à quel pourcentage ?</string>
   <string name="pref_amber_thresh_help">Specifies the charge level
     which the icon should turn amber below (or <i>at</i>, in 10%
     Mode).\n

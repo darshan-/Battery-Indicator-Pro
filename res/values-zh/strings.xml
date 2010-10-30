@@ -97,9 +97,9 @@
     <item>已充满</item>
   </string-array>
   <string-array name="log_statuses_old"><!-- The same as above, worded for old Log screen statuses -->
-    <item>充电中</item>
-    <item>未知</item>
     <item>放电中</item>
+    <item>未知</item>
+    <item>充电中</item>
     <item>未知</item>
     <item>未知</item>
     <item>已充满</item>
