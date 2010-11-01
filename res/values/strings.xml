@@ -316,7 +316,7 @@
     at <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>.
   </string>
 
-  <string name="pref_hint"><b>Hint:</b> Press MENU for help.</string>
+  <string name="pref_hint">Hint: Press MENU for help.</string>
 
   <string name="settings_overview">Overview</string>
   <string name="settings_overview_help">
@@ -343,6 +343,13 @@
     time remaining for USB/AC charging and light/normal/heavy/constant
     usage, and adjust the basis for these estimates.
   </string>
+  <string name="alarm_settings">Alarms</string>
+  <string name="alarm_settings_summary">Control notifications for low/full battery</string>
+  <string name="alarm_settings_help">
+    You can have Battery Indicator notify you when your battery level
+    reaches a certain point (e.g., the battery becomes fully charged,
+    the battery level drops below 20%).
+  </string>
   <string name="other_settings">Other Settings</string>
   <string name="other_settings_summary"></string>
   <string name="other_settings_help">
@@ -357,6 +364,8 @@
     auto/manual lock screen disable, charge/discharge remaining
     estimates, and more.
   </string>
+
+  <string name="add_alarm">Add alarm</string>
 
   <string name="pref_cat_themes">Themes</string>
   <string name="pref_main_window_theme">Main Window Theme</string>

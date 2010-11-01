@@ -20,6 +20,9 @@
     <TextView style="@style/help_pref" android:text="@string/time_settings" />
     <TextView style="@style/help_text" android:text="@string/time_settings_help" />
 
+    <TextView style="@style/help_pref" android:text="@string/alarm_settings" />
+    <TextView style="@style/help_text" android:text="@string/alarm_settings_help" />
+
     <TextView style="@style/help_pref" android:text="@string/other_settings" />
     <TextView style="@style/help_text" android:text="@string/other_settings_help" />
   </LinearLayout>

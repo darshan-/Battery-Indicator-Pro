@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.darshancomputing.BatteryIndicatorPro"
           android:versionCode="33"
-          android:versionName="3.0.7"
+          android:versionName="3.0.7-dev"
 >
   <application android:label="@string/app_full_name"
                android:icon="@drawable/battery"
@@ -22,6 +22,11 @@
     </activity>
 
     <activity android:name=".SettingsActivity"
+              android:label="@string/settings_activity_name"
+	      android:excludeFromRecents="true"
+    />
+
+    <activity android:name=".AlarmsActivity"
               android:label="@string/settings_activity_name"
 	      android:excludeFromRecents="true"
     />

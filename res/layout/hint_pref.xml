@@ -14,5 +14,6 @@
             android:textSize="18sp"
             android:textColor="@color/android_green"
             android:gravity="center_horizontal"
+            android:text="@string/pref_hint"
   />
 </LinearLayout>

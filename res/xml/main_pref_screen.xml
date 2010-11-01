@@ -18,6 +18,12 @@
   />
 
   <Preference
+     android:key="alarm_settings"
+     android:title="@string/alarm_settings"
+     android:summary="@string/alarm_settings_summary"
+  />
+
+  <Preference
      android:key="other_settings"
      android:title="@string/other_settings"
      android:summary="@string/other_settings_summary"

@@ -36,6 +36,7 @@ import android.view.MenuItem;
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
     public static final String KEY_COLOR_SETTINGS = "color_settings";
     public static final String KEY_TIME_SETTINGS = "time_settings";
+    public static final String KEY_ALARM_SETTINGS = "alarm_settings";
     public static final String KEY_OTHER_SETTINGS = "other_settings";
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_CONFIRM_DISABLE_LOCKING = "confirm_disable_lock_screen";
@@ -299,16 +300,21 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         String key = preference.getKey();
-        if (key == null) return false;
-
-        if (key.equals(KEY_COLOR_SETTINGS) || key.equals(KEY_TIME_SETTINGS) || key.equals(KEY_OTHER_SETTINGS)) {
+        if (key == null) {
+            return false;
+        } else if (key.equals(KEY_COLOR_SETTINGS) || key.equals(KEY_TIME_SETTINGS) || key.equals(KEY_OTHER_SETTINGS)) {
             ComponentName comp = new ComponentName(getPackageName(), SettingsActivity.class.getName());
             startActivity(new Intent().setComponent(comp).putExtra(EXTRA_SCREEN, key));
 
             return true;
-        }
+        } else if (key.equals(KEY_ALARM_SETTINGS)) {
+            ComponentName comp = new ComponentName(getPackageName(), AlarmsActivity.class.getName());
+            startActivity(new Intent().setComponent(comp));
 
-        return false;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
