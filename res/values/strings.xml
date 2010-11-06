@@ -89,6 +89,7 @@
   <string name="read_only_storage">SD Card is read only.</string>
   <string name="file_written">File successfully written to root of SD card.</string>
 
+  <!-- These are used for the CSV export. -->
   <string name="date">date</string>
   <string name="time">time</string>
   <string name="status">status</string>
@@ -133,6 +134,14 @@
     <item>Unknown</item>
     <item>(AC)</item>
     <item>(USB)</item>
+  </string-array>
+
+  <string-array name="alarm_types">
+    <item>becomes fully charged.</item>
+    <item>charge drops below...</item>
+    <item>charge rises above...</item>
+    <item>temperature rises above...</item>
+    <item>health fails.</item>
   </string-array>
 
   <string name="logs_empty">Logs Are Empty</string>

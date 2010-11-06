@@ -19,14 +19,23 @@ import android.content.res.Resources;
 import android.os.Bundle;
 
 public class AlarmsActivity extends Activity {
+    private Resources res;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        res = getResources();
         setContentView(R.layout.alarms);
+        setWindowSubtitle(res.getString(R.string.alarm_settings));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    private void setWindowSubtitle(String subtitle) {
+        setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
     }
 }
