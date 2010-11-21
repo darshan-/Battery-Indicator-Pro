@@ -30,12 +30,13 @@ import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SimpleCursorAdapter;
+import android.widget.CursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.BufferedWriter;
@@ -52,17 +53,13 @@ public class LogViewActivity extends ListActivity {
     private Str str;
     private Col col;
     private Cursor mCursor;
-    private SimpleCursorAdapter mAdapter;
-    private LogViewBinder mBinder;
+    private LayoutInflater mInflater;
+    private LogAdapter mAdapter;
     private TextView logs_header;
     private Boolean reversed = false;
     private Boolean convertF;
 
     private static final int DIALOG_CONFIRM_CLEAR_LOGS = 0;
-
-    private static final String[] KEYS = {LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, LogDatabase.KEY_TIME,
-                                          LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE};
-    private static final int[]     IDS = {R.id.status, R.id.percent, R.id.time, R.id.temp_volt, R.id.temp_volt};
 
     private static final String[] CSV_ORDER = {LogDatabase.KEY_TIME, LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, 
                                                LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE};
@@ -103,9 +100,9 @@ public class LogViewActivity extends ListActivity {
         mCursor = logs.getAllLogs(false);
         startManagingCursor(mCursor);
 
-        mAdapter = new SimpleCursorAdapter(context, R.layout.log_item, mCursor, KEYS, IDS);
-        mBinder  = new LogViewBinder(context, mCursor);
-        mAdapter.setViewBinder(mBinder);
+        mInflater = LayoutInflater.from(this);
+
+        mAdapter = new LogAdapter(context, mCursor);
         setListAdapter(mAdapter);
 
         setHeaderText();
@@ -281,10 +278,10 @@ public class LogViewActivity extends ListActivity {
                 cols = CSV_ORDER.length;
                 for (i = 0; i < cols; i++) {
                     if (CSV_ORDER[i].equals(LogDatabase.KEY_TIME)) {
-                        d.setTime(mCursor.getLong(mBinder.timeIndex));
-                        buf.write(mBinder.dateFormat.format(d) + "," + mBinder.timeFormat.format(d) + ",");
+                        d.setTime(mCursor.getLong(mAdapter.timeIndex));
+                        buf.write(mAdapter.dateFormat.format(d) + "," + mAdapter.timeFormat.format(d) + ",");
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_STATUS_CODE)) {
-                        statusCode  = mCursor.getInt(mBinder.statusCodeIndex);
+                        statusCode  = mCursor.getInt(mAdapter.statusCodeIndex);
                         statusCodes = LogDatabase.decodeStatus(statusCode);
                         status      = statusCodes[0];
                         plugged     = statusCodes[1];
@@ -299,11 +296,11 @@ public class LogViewActivity extends ListActivity {
 
                         buf.write(s + ",");
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_CHARGE)) {
-                        buf.write(String.valueOf(mCursor.getInt(mBinder.chargeIndex)) + ",");
+                        buf.write(String.valueOf(mCursor.getInt(mAdapter.chargeIndex)) + ",");
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_TEMPERATURE)) {
-                        buf.write(String.valueOf(mCursor.getInt(mBinder.temperatureIndex) / 10.0) + ",");
+                        buf.write(String.valueOf(mCursor.getInt(mAdapter.temperatureIndex) / 10.0) + ",");
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_VOLTAGE)) {
-                        buf.write(String.valueOf(mCursor.getInt(mBinder.voltageIndex) / 1000.0));
+                        buf.write(String.valueOf(mCursor.getInt(mAdapter.voltageIndex) / 1000.0));
                     }
                 }
                 buf.write("\r\n");
@@ -317,13 +314,15 @@ public class LogViewActivity extends ListActivity {
         Toast.makeText(context, str.file_written, Toast.LENGTH_SHORT).show();
     }
 
-    private class LogViewBinder implements SimpleCursorAdapter.ViewBinder {
+    private class LogAdapter extends CursorAdapter {
         public int statusCodeIndex, chargeIndex, timeIndex, temperatureIndex, voltageIndex;
         public DateFormat dateFormat, timeFormat;
 
         private Date d = new Date();
 
-        public LogViewBinder(Context context, Cursor cursor) {
+        public LogAdapter(Context context, Cursor cursor) {
+            super(context, cursor);
+
             dateFormat = android.text.format.DateFormat.getDateFormat(context);
             timeFormat = android.text.format.DateFormat.getTimeFormat(context);
 
@@ -334,72 +333,64 @@ public class LogViewActivity extends ListActivity {
                 voltageIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_VOLTAGE);
         }
 
-        @Override
-        public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-            TextView tv = (TextView) view;
+        public View newView(Context context, Cursor cursor, ViewGroup parent) {
+            return mInflater.inflate(R.layout.log_item , parent, false);
+        }
 
-            if (columnIndex == statusCodeIndex) {
-                int statusCode = cursor.getInt(columnIndex);
-                int[] statusCodes = LogDatabase.decodeStatus(statusCode);
-                int status     = statusCodes[0];
-                int plugged    = statusCodes[1];
-                int status_age = statusCodes[2];
+        public void bindView(View view, Context context, Cursor cursor) {
+            TextView    status_tv = (TextView) view.findViewById(R.id.status);
+            TextView   percent_tv = (TextView) view.findViewById(R.id.percent);
+            TextView      time_tv = (TextView) view.findViewById(R.id.time);
+            TextView temp_volt_tv = (TextView) view.findViewById(R.id.temp_volt);
 
-                TextView percent_tv = getSibling(tv, R.id.percent);
-                String s;
+            int statusCode = cursor.getInt(statusCodeIndex);
+            int[] statusCodes = LogDatabase.decodeStatus(statusCode);
+            int status     = statusCodes[0];
+            int plugged    = statusCodes[1];
+            int status_age = statusCodes[2];
 
-                if (status_age == LogDatabase.STATUS_OLD) {
-                            tv.setTextColor(col.old_status);
-                    percent_tv.setTextColor(col.old_status);
-                    s = str.log_statuses_old[status];
-                } else {
-                    switch (status) {
-                    case 5:
-                                tv.setTextColor(col.charged);
-                        percent_tv.setTextColor(col.charged);
-                        break;
-                    case 0:
-                                tv.setTextColor(col.unplugged);
-                        percent_tv.setTextColor(col.unplugged);
-                        break;
-                    case 2:
-                    default:
-                                tv.setTextColor(col.plugged);
-                        percent_tv.setTextColor(col.plugged);
-                    }
+            String s;
 
-                    s = str.log_statuses[status];
+            if (status_age == LogDatabase.STATUS_OLD) {
+                 status_tv.setTextColor(col.old_status);
+                percent_tv.setTextColor(col.old_status);
+                s = str.log_statuses_old[status];
+            } else {
+                switch (status) {
+                case 5:
+                     status_tv.setTextColor(col.charged);
+                    percent_tv.setTextColor(col.charged);
+                    break;
+                case 0:
+                     status_tv.setTextColor(col.unplugged);
+                    percent_tv.setTextColor(col.unplugged);
+                    break;
+                case 2:
+                default:
+                     status_tv.setTextColor(col.plugged);
+                    percent_tv.setTextColor(col.plugged);
                 }
 
-                if (plugged > 0)
-                    s += " " + str.pluggeds[plugged];
-
-                tv.setText(s);
-                return true;
-            } else if (columnIndex == chargeIndex) {
-                tv.setText("" + cursor.getInt(columnIndex) + "%");
-                return true;
-            } else if (columnIndex == timeIndex) {
-                d.setTime(cursor.getLong(columnIndex));
-                tv.setText(dateFormat.format(d) + "  " + timeFormat.format(d));
-                return true;
-            } else if (columnIndex == temperatureIndex) {
-                int temperature = cursor.getInt(columnIndex);
-                if (temperature != 0) tv.setText("" + str.formatTemp(temperature, convertF));
-                else tv.setText(""); /* TextView are reused */
-                return true;
-            } else if (columnIndex == voltageIndex) {
-                int voltage = cursor.getInt(columnIndex);
-                if (voltage != 0) tv.setText(((String) tv.getText()) + " / " + str.formatVoltage(voltage));
-                return true;
-            } else {
-                return false;
+                s = str.log_statuses[status];
             }
-        }
-    }
 
-    private static TextView getSibling(TextView myself, int siblingId) {
-        return (TextView) ((ViewGroup) myself.getParent()).findViewById(siblingId);
+            if (plugged > 0)
+                s += " " + str.pluggeds[plugged];
+
+            status_tv.setText(s);
+
+            percent_tv.setText("" + cursor.getInt(chargeIndex) + "%");
+
+            d.setTime(cursor.getLong(timeIndex));
+            time_tv.setText(dateFormat.format(d) + "  " + timeFormat.format(d));
+
+            int temperature = cursor.getInt(temperatureIndex);
+            if (temperature != 0) temp_volt_tv.setText("" + str.formatTemp(temperature, convertF));
+            else temp_volt_tv.setText(""); /* TextViews are reused */
+
+            int voltage = cursor.getInt(voltageIndex);
+            if (voltage != 0) temp_volt_tv.setText(((String) temp_volt_tv.getText()) + " / " + str.formatVoltage(voltage));
+        }
     }
 
     private class Col {

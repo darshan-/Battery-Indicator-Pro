@@ -50,6 +50,11 @@
     <!--item name="android:windowAnimationStyle">@null</item-->
   </style>
 
+  <style name="alarm_list_left_column">
+    <item name="android:layout_width">68dp</item>
+    <item name="android:layout_height">68dp</item>
+  </style>
+
   <color name="android_green">#A4C639</color>
   <color name="my_yellow">#E8D018</color>
   <color name="my_darker_yellow">#D0BF27</color>

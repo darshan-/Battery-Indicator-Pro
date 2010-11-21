@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Based on code from the Android Open Source Project, 
+      originally licensed under the Apache License, Version 2.0 -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+>
+  <com.darshancomputing.BatteryIndicatorPro.DontPressWithParentLayout
+      android:id="@+id/indicator"
+      style="@style/alarm_list_left_column"
+      android:background="@drawable/clock_selector"
+      android:gravity="center"
+      android:orientation="vertical"
+  >
+    <CheckBox android:id="@+id/clock_onoff"
+              android:focusable="false"
+              android:clickable="false"
+              android:background="@drawable/indicator_clock_onoff"
+              android:duplicateParentState="true"
+              android:layout_height="wrap_content"
+              android:layout_width="wrap_content"
+              android:layout_gravity="center"
+              android:button="@null"
+    />
+
+    <ImageView android:id="@+id/bar_onoff"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:paddingTop="4dp"
+               android:src="@drawable/ic_indicator_off"
+    />
+  </com.darshancomputing.BatteryIndicatorPro.DontPressWithParentLayout>
+
+  <ImageView android:src="@drawable/divider_vertical_dark"
+             android:background="?android:attr/windowBackground"
+             android:layout_width="wrap_content"
+             android:layout_height="fill_parent"
+             android:paddingTop="4dp"
+             android:paddingBottom="4dp"
+             android:scaleType="fitXY"
+             android:gravity="fill_vertical"
+  />
+
+  <TextView android:id="@+id/alarmSummary"
+            android:includeFontPadding="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="6dp"
+            android:textSize="24sp"
+            android:textColor="?android:attr/textColorPrimary"
+  />
+</LinearLayout>
