@@ -54,7 +54,7 @@ public class AlarmDatabase {
 
     public void addAlarm(int type, int threshold, Boolean enabled) {
         wdb.execSQL("INSERT INTO " + ALARM_TABLE_NAME + " VALUES (NULL, "
-                    + type + " ," + threshold + " ," + enabled + ")");
+                    + type + " ," + threshold + " ," + (enabled ? 1 : 0) + ")");
     }
 
     public void deleteAlarm(int id) {
@@ -76,7 +76,7 @@ public class AlarmDatabase {
                        + KEY_ID        + " INTEGER PRIMARY KEY,"
                        + KEY_TYPE      + " INTEGER,"
                        + KEY_THRESHOLD + " INTEGER,"
-                       + KEY_ENABLED   + " BOOLEAN"
+                       + KEY_ENABLED   + " INTEGER"
                        + ");");
         }
 
