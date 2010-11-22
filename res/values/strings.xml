@@ -66,6 +66,7 @@
   <string name="menu_clear">Clear</string>
   <string name="menu_reverse">Reverse Order</string>
   <string name="menu_export">Export CSV</string>
+  <string name="menu_delete_alarm">Delete Alarm</string>
 
   <string name="percent_symbol">%</string>
   <string name="degree_symbol">°</string>
@@ -136,12 +137,26 @@
     <item>(USB)</item>
   </string-array>
 
-  <string-array name="alarm_types">
+  <string-array name="alarm_types_select">
     <item>becomes fully charged.</item>
     <item>charge drops below...</item>
     <item>charge rises above...</item>
     <item>temperature rises above...</item>
     <item>health fails.</item>
+  </string-array>
+  <string-array name="alarm_types_display">
+    <item>Fully charged</item>
+    <item>Charge drops below</item>
+    <item>Charge rises above</item>
+    <item>Temperature rises above</item>
+    <item>Health failure</item>
+  </string-array>
+  <string-array name="alarm_type_values">
+    <item>fully_charged</item>
+    <item>charge_drops</item>
+    <item>charge_rises</item>
+    <item>temp_rises</item>
+    <item>health_failure</item>
   </string-array>
 
   <string name="logs_empty">Logs Are Empty</string>

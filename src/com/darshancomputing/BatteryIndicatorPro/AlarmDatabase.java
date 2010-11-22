@@ -25,10 +25,10 @@ public class AlarmDatabase {
     private static final int    DATABASE_VERSION = 1;
     private static final String ALARM_TABLE_NAME = "alarms";
 
-    private static final String KEY_ID        = "_id";
-    public  static final String KEY_TYPE      = "type";
-    public  static final String KEY_THRESHOLD = "threshold";
-    public  static final String KEY_ENABLED   = "enabled";
+    public static final String KEY_ID        = "_id";
+    public static final String KEY_TYPE      = "type";
+    public static final String KEY_THRESHOLD = "threshold";
+    public static final String KEY_ENABLED   = "enabled";
 
     private final SQLOpenHelper mSQLOpenHelper;
     private SQLiteDatabase rdb;

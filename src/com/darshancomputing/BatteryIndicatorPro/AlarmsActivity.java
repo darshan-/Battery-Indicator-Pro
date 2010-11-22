@@ -19,8 +19,12 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -34,6 +38,7 @@ public class AlarmsActivity extends Activity implements OnItemClickListener {
     private AlarmDatabase alarms;
     private Resources res;
     private Context context;
+    private Str str;
     private Cursor mCursor;
     private LayoutInflater mInflater;
     private AlarmAdapter mAdapter;
@@ -45,6 +50,7 @@ public class AlarmsActivity extends Activity implements OnItemClickListener {
 
         context = getApplicationContext();
         res = getResources();
+        str = new Str(res);
 
         setContentView(R.layout.alarms);
         setWindowSubtitle(res.getString(R.string.alarm_settings));
@@ -54,8 +60,11 @@ public class AlarmsActivity extends Activity implements OnItemClickListener {
         startManagingCursor(mCursor);
 
         alarms.clearAllAlarms();
+        alarms.addAlarm(0,  0, true);
         alarms.addAlarm(1, 15, true);
-        alarms.addAlarm(2, 45, false);
+        alarms.addAlarm(2, 95, false);
+        alarms.addAlarm(3, 58, false);
+        alarms.addAlarm(4,  0, false);
 
         mInflater = LayoutInflater.from(this);
         mAdapter = new AlarmAdapter(context, mCursor);
@@ -84,11 +93,12 @@ public class AlarmsActivity extends Activity implements OnItemClickListener {
     }
 
     private class AlarmAdapter extends CursorAdapter {
-        public int typeIndex, thresholdIndex, enabledIndex;
+        public int idIndex, typeIndex, thresholdIndex, enabledIndex;
 
         public AlarmAdapter(Context context, Cursor cursor) {
             super(context, cursor);
 
+                    idIndex = cursor.getColumnIndexOrThrow(AlarmDatabase.KEY_ID);
                   typeIndex = cursor.getColumnIndexOrThrow(AlarmDatabase.KEY_TYPE);
              thresholdIndex = cursor.getColumnIndexOrThrow(AlarmDatabase.KEY_THRESHOLD);
                enabledIndex = cursor.getColumnIndexOrThrow(AlarmDatabase.KEY_ENABLED);
@@ -99,27 +109,46 @@ public class AlarmsActivity extends Activity implements OnItemClickListener {
         }
 
         public void bindView(View view, Context context, Cursor cursor) {
-            TextView summary_tv = (TextView)       view.findViewById(R.id.alarm_summary);
-                View  indicator =                  view.findViewById(R.id.indicator);
-            ImageView barOnOff  = (ImageView) indicator.findViewById(R.id.bar_onoff);
-            CheckBox clockOnOff = (CheckBox)  indicator.findViewById(R.id.clock_onoff);
+            final  TextView summary_tv = (TextView)       view.findViewById(R.id.alarm_summary);
+            final      View indicator  =                  view.findViewById(R.id.indicator);
+            final ImageView barOnOff   = (ImageView) indicator.findViewById(R.id.bar_onoff);
+            final  CheckBox clockOnOff = (CheckBox)  indicator.findViewById(R.id.clock_onoff);
 
-            int      type = cursor.getInt(typeIndex);
-            int threshold = cursor.getInt(thresholdIndex);
+            final int    id = cursor.getInt(idIndex);
+            int        type = cursor.getInt(typeIndex);
+            int   threshold = cursor.getInt(thresholdIndex);
             Boolean enabled = (cursor.getInt(enabledIndex) == 1);
 
             barOnOff.setImageResource(enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
             clockOnOff.setChecked(enabled);
 
-            /*indicator.setOnClickListener(new OnClickListener() {
-                    public void onClick(View v) {
-                        clockOnOff.toggle();
-                        updateIndicatorAndAlarm(clockOnOff.isChecked(),
-                                barOnOff, alarm);
-                    }
-            });*/
+            indicator.setOnClickListener(new OnClickListener() {
+                public void onClick(View v) {
+                    clockOnOff.toggle();
+                    Boolean enabled = clockOnOff.isChecked();
+                    barOnOff.setImageResource(enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
+                    //alarms.setEnabledness(id, enabled);
+                }
+            });
 
-            String s;
+            summary_tv.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+                public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                    //((AdapterView.AdapterContextMenuInfo) menuInfo).id = id;
+                }
+            });
+
+            String s = str.alarm_types_display[type];
+
+            if (str.alarm_type_values[type].equals("temp_rises")) {
+                s += " " + threshold + str.degree_symbol + "C";
+                // TODO: Convert to F if pref is to do so
+            }
+            if (str.alarm_type_values[type].equals("charge_rises") ||
+                str.alarm_type_values[type].equals("charge_drops")) {
+                s += " " + threshold + "%";
+            }
+
+            summary_tv.setText(s);
         }
     }
 
