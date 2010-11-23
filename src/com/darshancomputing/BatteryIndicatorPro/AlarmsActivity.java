@@ -22,19 +22,20 @@ import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+//import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CheckBox;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class AlarmsActivity extends Activity implements OnItemClickListener {
+public class AlarmsActivity extends Activity /* implements OnItemClickListener */ {
     private AlarmDatabase alarms;
     private Resources res;
     private Context context;
@@ -43,6 +44,8 @@ public class AlarmsActivity extends Activity implements OnItemClickListener {
     private LayoutInflater mInflater;
     private AlarmAdapter mAdapter;
     private ListView mAlarmsList;
+
+    private int curId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,7 @@ public class AlarmsActivity extends Activity implements OnItemClickListener {
         setWindowSubtitle(res.getString(R.string.alarm_settings));
 
         alarms = new AlarmDatabase(context);
-        mCursor = alarms.getAllAlarms(false);
+        mCursor = alarms.getAllAlarms(true);
         startManagingCursor(mCursor);
 
         alarms.clearAllAlarms();
@@ -72,8 +75,9 @@ public class AlarmsActivity extends Activity implements OnItemClickListener {
         mAlarmsList = (ListView) findViewById(R.id.alarms_list);
         mAlarmsList.setAdapter(mAdapter);
         mAlarmsList.setVerticalScrollBarEnabled(true);
-        mAlarmsList.setOnItemClickListener(this);
-        mAlarmsList.setOnCreateContextMenuListener(this);
+        mAlarmsList.setOnItemClickListener(null);
+        mAlarmsList.setOnItemLongClickListener(null);
+        mAlarmsList.setOnCreateContextMenuListener(null);
     }
 
     @Override
@@ -90,6 +94,25 @@ public class AlarmsActivity extends Activity implements OnItemClickListener {
 
     private void setWindowSubtitle(String subtitle) {
         setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.alarm_item_context, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(final MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.delete_alarm:
+                System.out.println("..................................... Attempting to delete " + curId);
+                alarms.deleteAlarm(curId);
+                mCursor.requery();
+                return true;
+            default:
+                break;
+        }
+        return super.onContextItemSelected(item);
     }
 
     private class AlarmAdapter extends CursorAdapter {
@@ -109,10 +132,11 @@ public class AlarmsActivity extends Activity implements OnItemClickListener {
         }
 
         public void bindView(View view, Context context, Cursor cursor) {
-            final  TextView summary_tv = (TextView)       view.findViewById(R.id.alarm_summary);
-            final      View indicator  =                  view.findViewById(R.id.indicator);
-            final ImageView barOnOff   = (ImageView) indicator.findViewById(R.id.bar_onoff);
-            final  CheckBox clockOnOff = (CheckBox)  indicator.findViewById(R.id.clock_onoff);
+            final  TextView summary_tv  = (TextView)       view.findViewById(R.id.alarm_summary);
+            final      View summary_box =                  view.findViewById(R.id.alarm_summary_box);
+            final      View indicator   =                  view.findViewById(R.id.indicator);
+            final ImageView barOnOff    = (ImageView) indicator.findViewById(R.id.bar_onoff);
+            //final  CheckBox clockOnOff = (CheckBox)  indicator.findViewById(R.id.clock_onoff);
 
             final int    id = cursor.getInt(idIndex);
             int        type = cursor.getInt(typeIndex);
@@ -120,20 +144,32 @@ public class AlarmsActivity extends Activity implements OnItemClickListener {
             Boolean enabled = (cursor.getInt(enabledIndex) == 1);
 
             barOnOff.setImageResource(enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
-            clockOnOff.setChecked(enabled);
+            //clockOnOff.setChecked(enabled);
 
             indicator.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
-                    clockOnOff.toggle();
-                    Boolean enabled = clockOnOff.isChecked();
-                    barOnOff.setImageResource(enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
-                    //alarms.setEnabledness(id, enabled);
+                    //clockOnOff.toggle();
+                    //Boolean enabled = clockOnOff.isChecked();
+                    Boolean enabled = alarms.getEnabledness(id);
+                    alarms.setEnabledness(id, ! enabled);
+
+                    barOnOff.setImageResource(! enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
                 }
             });
 
-            summary_tv.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+            summary_box.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
                 public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-                    //((AdapterView.AdapterContextMenuInfo) menuInfo).id = id;
+                    System.out.println(".................................. Creating context menu for id = " + id);
+                    getMenuInflater().inflate(R.menu.alarm_item_context, menu);
+                    curId = id;
+                }
+            });
+
+            summary_box.setOnClickListener(new OnClickListener() {
+                public void onClick(View v) {
+                    System.out.println(".................................. Pressed: id = " + id);
+                    //alarms.deleteAlarm(id);
+                    //mCursor.requery();
                 }
             });
 
@@ -152,9 +188,9 @@ public class AlarmsActivity extends Activity implements OnItemClickListener {
         }
     }
 
-    public void onItemClick(AdapterView parent, View v, int pos, long id) {
+    //public void onItemClick(AdapterView parent, View v, int pos, long id) {
         /*Intent intent = new Intent(this, SetAlarm.class);
         intent.putExtra(Alarms.ALARM_ID, (int) id);
         startActivity(intent);*/
-    }
+    //}
 }

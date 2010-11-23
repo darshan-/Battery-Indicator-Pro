@@ -54,5 +54,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:clickable="false"
+            android:longClickable="false"
   />
 </LinearLayout>
