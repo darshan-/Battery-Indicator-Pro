@@ -2,24 +2,26 @@
 <!-- Based on code from the Android Open Source Project, 
       originally licensed under the Apache License, Version 2.0 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+  >
+<LinearLayout android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal"
               android:focusable="false"
               android:clickable="false"
               android:longClickable="false"
 >
-  <!--com.darshancomputing.BatteryIndicatorPro.DontPressWithParentLayout-->
-  <LinearLayout
-      android:id="@+id/indicator"
-      style="@style/alarm_list_left_column"
-      android:background="@drawable/list_selector_background"
-      android:gravity="center"
-      android:orientation="vertical"
-      android:focusable="true"
-      android:clickable="true"
-      android:longClickable="true"
+  <LinearLayout android:id="@+id/indicator"
+                style="@style/alarm_list_left_column"
+                android:background="@drawable/list_selector_background"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:focusable="true"
+                android:clickable="true"
+                android:longClickable="true"
   >
     <!--CheckBox android:id="@+id/clock_onoff"
               android:focusable="false"
@@ -54,7 +56,6 @@
                android:longClickable="false"
     />
   </LinearLayout>
-  <!--/com.darshancomputing.BatteryIndicatorPro.DontPressWithParentLayout-->
 
   <ImageView android:src="@drawable/divider_vertical_dark"
              android:background="?android:attr/windowBackground"
@@ -90,3 +91,11 @@
     />
   </LinearLayout>
 </LinearLayout>
+
+  <ImageView android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:scaleType="fitXY"
+             android:gravity="fill_horizontal"
+             android:src="@android:drawable/divider_horizontal_dark"
+  />
+  </LinearLayout>
