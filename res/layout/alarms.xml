@@ -50,11 +50,9 @@
              android:src="@android:drawable/divider_horizontal_dark"
   />
 
-  <ListView android:id="@+id/alarms_list"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="false"
-            android:longClickable="false"
+  <LinearLayout android:id="@+id/alarms_list"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
   />
 </LinearLayout>

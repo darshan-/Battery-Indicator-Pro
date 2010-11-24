@@ -6,6 +6,9 @@
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal"
+              android:focusable="false"
+              android:clickable="false"
+              android:longClickable="false"
 >
   <!--com.darshancomputing.BatteryIndicatorPro.DontPressWithParentLayout-->
   <LinearLayout
@@ -14,6 +17,9 @@
       android:background="@drawable/clock_selector"
       android:gravity="center"
       android:orientation="vertical"
+      android:focusable="true"
+      android:clickable="true"
+      android:longClickable="true"
   >
     <!--CheckBox android:id="@+id/clock_onoff"
               android:focusable="false"
@@ -32,6 +38,9 @@
                android:layout_width="wrap_content"
                android:layout_gravity="center"
                android:button="@null"
+               android:focusable="false"
+               android:clickable="false"
+               android:longClickable="false"
     />
 
     <ImageView android:id="@+id/bar_onoff"
@@ -40,6 +49,9 @@
                android:layout_gravity="center"
                android:paddingTop="4dp"
                android:src="@drawable/ic_indicator_off"
+               android:focusable="false"
+               android:clickable="false"
+               android:longClickable="false"
     />
   </LinearLayout>
   <!--/com.darshancomputing.BatteryIndicatorPro.DontPressWithParentLayout-->
@@ -59,6 +71,9 @@
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
+                android:focusable="true"
+                android:clickable="true"
+                android:longClickable="true"
   >
   <TextView android:id="@+id/alarm_summary"
             android:includeFontPadding="false"
@@ -68,6 +83,9 @@
             android:textSize="16sp"
             android:layout_gravity="center_vertical"
             android:textColor="?android:attr/textColorPrimary"
+            android:focusable="false"
+            android:clickable="false"
+            android:longClickable="false"
   />
   </LinearLayout>
 </LinearLayout>

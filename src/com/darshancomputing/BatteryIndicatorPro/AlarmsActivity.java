@@ -17,8 +17,10 @@ package com.darshancomputing.BatteryIndicatorPro;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.database.DataSetObserver;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
@@ -28,14 +30,14 @@ import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-//import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CheckBox;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class AlarmsActivity extends Activity /* implements OnItemClickListener */ {
+public class AlarmsActivity extends Activity {
     private AlarmDatabase alarms;
     private Resources res;
     private Context context;
@@ -43,7 +45,7 @@ public class AlarmsActivity extends Activity /* implements OnItemClickListener *
     private Cursor mCursor;
     private LayoutInflater mInflater;
     private AlarmAdapter mAdapter;
-    private ListView mAlarmsList;
+    private LinearLayout mAlarmsList;
 
     private int curId;
 
@@ -71,13 +73,22 @@ public class AlarmsActivity extends Activity /* implements OnItemClickListener *
 
         mInflater = LayoutInflater.from(this);
         mAdapter = new AlarmAdapter(context, mCursor);
+        mAlarmsList = (LinearLayout) findViewById(R.id.alarms_list);
+        populateList();
+        mCursor.registerDataSetObserver(new AlarmsObserver());
+    }
 
-        mAlarmsList = (ListView) findViewById(R.id.alarms_list);
-        mAlarmsList.setAdapter(mAdapter);
-        mAlarmsList.setVerticalScrollBarEnabled(true);
-        mAlarmsList.setOnItemClickListener(null);
-        mAlarmsList.setOnItemLongClickListener(null);
-        mAlarmsList.setOnCreateContextMenuListener(null);
+    private void populateList() {
+        mAlarmsList.removeAllViews();
+
+        if (mCursor.moveToFirst()) {
+            while (! mCursor.isAfterLast()) {
+                View v = mAdapter.newView(context, mCursor, mAlarmsList);
+                mAdapter.bindView(v, context, mCursor);
+                mAlarmsList.addView(v, mAlarmsList.getChildCount());
+                mCursor.moveToNext();
+            }
+        }
     }
 
     @Override
@@ -105,14 +116,27 @@ public class AlarmsActivity extends Activity /* implements OnItemClickListener *
     public boolean onContextItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case R.id.delete_alarm:
-                System.out.println("..................................... Attempting to delete " + curId);
                 alarms.deleteAlarm(curId);
                 mCursor.requery();
+
                 return true;
             default:
                 break;
         }
+
         return super.onContextItemSelected(item);
+    }
+
+    private class AlarmsObserver extends DataSetObserver {
+        public AlarmsObserver(){
+            super();
+        }
+
+        @Override
+        public void onChanged() {
+            super.onChanged();
+            populateList();
+        }
     }
 
     private class AlarmAdapter extends CursorAdapter {
@@ -146,33 +170,6 @@ public class AlarmsActivity extends Activity /* implements OnItemClickListener *
             barOnOff.setImageResource(enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
             //clockOnOff.setChecked(enabled);
 
-            indicator.setOnClickListener(new OnClickListener() {
-                public void onClick(View v) {
-                    //clockOnOff.toggle();
-                    //Boolean enabled = clockOnOff.isChecked();
-                    Boolean enabled = alarms.getEnabledness(id);
-                    alarms.setEnabledness(id, ! enabled);
-
-                    barOnOff.setImageResource(! enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
-                }
-            });
-
-            summary_box.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
-                public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-                    System.out.println(".................................. Creating context menu for id = " + id);
-                    getMenuInflater().inflate(R.menu.alarm_item_context, menu);
-                    curId = id;
-                }
-            });
-
-            summary_box.setOnClickListener(new OnClickListener() {
-                public void onClick(View v) {
-                    System.out.println(".................................. Pressed: id = " + id);
-                    //alarms.deleteAlarm(id);
-                    //mCursor.requery();
-                }
-            });
-
             String s = str.alarm_types_display[type];
 
             if (str.alarm_type_values[type].equals("temp_rises")) {
@@ -184,7 +181,39 @@ public class AlarmsActivity extends Activity /* implements OnItemClickListener *
                 s += " " + threshold + "%";
             }
 
-            summary_tv.setText(s);
+            final String summary = s;
+
+            summary_tv.setText(summary);
+
+            indicator.setOnClickListener(new OnClickListener() {
+                public void onClick(View v) {
+                    //clockOnOff.toggle();
+                    //Boolean enabled = clockOnOff.isChecked();
+                    Boolean enabled = alarms.getEnabledness(id);
+                    alarms.setEnabledness(id, ! enabled);
+
+                    barOnOff.setImageResource(! enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
+                }
+            });
+
+            indicator.setFocusable(true);
+
+            summary_box.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+                public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                    System.out.println(".................................. Creating context menu for id = " + id);
+                    getMenuInflater().inflate(R.menu.alarm_item_context, menu);
+                    menu.setHeaderTitle(summary);
+                    curId = id;
+                }
+            });
+
+            summary_box.setOnClickListener(new OnClickListener() {
+                public void onClick(View v) {
+                    System.out.println(".................................. Pressed: id = " + id);
+                    //alarms.deleteAlarm(id);
+                    //mCursor.requery();
+                }
+            });
         }
     }
 
