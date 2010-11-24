@@ -14,7 +14,7 @@
   <LinearLayout
       android:id="@+id/indicator"
       style="@style/alarm_list_left_column"
-      android:background="@drawable/clock_selector"
+      android:background="@drawable/list_selector_background"
       android:gravity="center"
       android:orientation="vertical"
       android:focusable="true"
@@ -67,6 +67,7 @@
   />
 
   <LinearLayout android:id="@+id/alarm_summary_box"
+                android:background="@drawable/list_selector_background"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
@@ -75,17 +76,17 @@
                 android:clickable="true"
                 android:longClickable="true"
   >
-  <TextView android:id="@+id/alarm_summary"
-            android:includeFontPadding="false"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="6dp"
-            android:textSize="16sp"
-            android:layout_gravity="center_vertical"
-            android:textColor="?android:attr/textColorPrimary"
-            android:focusable="false"
-            android:clickable="false"
-            android:longClickable="false"
-  />
+    <TextView android:id="@+id/alarm_summary"
+              android:includeFontPadding="false"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:padding="6dp"
+              android:textSize="16sp"
+              android:layout_gravity="center_vertical"
+              android:textColor="?android:attr/textColorPrimary"
+              android:focusable="false"
+              android:clickable="false"
+              android:longClickable="false"
+    />
   </LinearLayout>
 </LinearLayout>

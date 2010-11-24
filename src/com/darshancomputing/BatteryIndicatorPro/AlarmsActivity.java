@@ -17,10 +17,9 @@ package com.darshancomputing.BatteryIndicatorPro;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.database.DataSetObserver;
 import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
@@ -31,7 +30,6 @@ import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
-import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -71,8 +69,8 @@ public class AlarmsActivity extends Activity {
         alarms.addAlarm(3, 58, false);
         alarms.addAlarm(4,  0, false);
 
-        mInflater = LayoutInflater.from(this);
-        mAdapter = new AlarmAdapter(context, mCursor);
+        mInflater = LayoutInflater.from(context);
+        mAdapter = new AlarmAdapter();
         mAlarmsList = (LinearLayout) findViewById(R.id.alarms_list);
         populateList();
         mCursor.registerDataSetObserver(new AlarmsObserver());
@@ -83,8 +81,8 @@ public class AlarmsActivity extends Activity {
 
         if (mCursor.moveToFirst()) {
             while (! mCursor.isAfterLast()) {
-                View v = mAdapter.newView(context, mCursor, mAlarmsList);
-                mAdapter.bindView(v, context, mCursor);
+                View v = mInflater.inflate(R.layout.alarm_item , mAlarmsList, false);
+                mAdapter.bindView(v);
                 mAlarmsList.addView(v, mAlarmsList.getChildCount());
                 mCursor.moveToNext();
             }
@@ -139,39 +137,29 @@ public class AlarmsActivity extends Activity {
         }
     }
 
-    private class AlarmAdapter extends CursorAdapter {
+    private class AlarmAdapter {
         public int idIndex, typeIndex, thresholdIndex, enabledIndex;
 
-        public AlarmAdapter(Context context, Cursor cursor) {
-            super(context, cursor);
-
-                    idIndex = cursor.getColumnIndexOrThrow(AlarmDatabase.KEY_ID);
-                  typeIndex = cursor.getColumnIndexOrThrow(AlarmDatabase.KEY_TYPE);
-             thresholdIndex = cursor.getColumnIndexOrThrow(AlarmDatabase.KEY_THRESHOLD);
-               enabledIndex = cursor.getColumnIndexOrThrow(AlarmDatabase.KEY_ENABLED);
+        public AlarmAdapter() {
+                   idIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_ID);
+                 typeIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_TYPE);
+            thresholdIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_THRESHOLD);
+              enabledIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_ENABLED);
         }
 
-        public View newView(Context context, Cursor cursor, ViewGroup parent) {
-            return mInflater.inflate(R.layout.alarm_item , parent, false);
-        }
-
-        public void bindView(View view, Context context, Cursor cursor) {
+        public void bindView(View view) {
             final  TextView summary_tv  = (TextView)       view.findViewById(R.id.alarm_summary);
             final      View summary_box =                  view.findViewById(R.id.alarm_summary_box);
             final      View indicator   =                  view.findViewById(R.id.indicator);
             final ImageView barOnOff    = (ImageView) indicator.findViewById(R.id.bar_onoff);
             //final  CheckBox clockOnOff = (CheckBox)  indicator.findViewById(R.id.clock_onoff);
 
-            final int    id = cursor.getInt(idIndex);
-            int        type = cursor.getInt(typeIndex);
-            int   threshold = cursor.getInt(thresholdIndex);
-            Boolean enabled = (cursor.getInt(enabledIndex) == 1);
-
-            barOnOff.setImageResource(enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
-            //clockOnOff.setChecked(enabled);
+            final int    id = mCursor.getInt(idIndex);
+            int        type = mCursor.getInt(typeIndex);
+            int   threshold = mCursor.getInt(thresholdIndex);
+            Boolean enabled = (mCursor.getInt(enabledIndex) == 1);
 
             String s = str.alarm_types_display[type];
-
             if (str.alarm_type_values[type].equals("temp_rises")) {
                 s += " " + threshold + str.degree_symbol + "C";
                 // TODO: Convert to F if pref is to do so
@@ -180,9 +168,10 @@ public class AlarmsActivity extends Activity {
                 str.alarm_type_values[type].equals("charge_drops")) {
                 s += " " + threshold + "%";
             }
-
             final String summary = s;
 
+            barOnOff.setImageResource(enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
+            //clockOnOff.setChecked(enabled);
             summary_tv.setText(summary);
 
             indicator.setOnClickListener(new OnClickListener() {
@@ -196,11 +185,8 @@ public class AlarmsActivity extends Activity {
                 }
             });
 
-            indicator.setFocusable(true);
-
             summary_box.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
                 public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-                    System.out.println(".................................. Creating context menu for id = " + id);
                     getMenuInflater().inflate(R.menu.alarm_item_context, menu);
                     menu.setHeaderTitle(summary);
                     curId = id;
@@ -210,16 +196,8 @@ public class AlarmsActivity extends Activity {
             summary_box.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
                     System.out.println(".................................. Pressed: id = " + id);
-                    //alarms.deleteAlarm(id);
-                    //mCursor.requery();
                 }
             });
         }
     }
-
-    //public void onItemClick(AdapterView parent, View v, int pos, long id) {
-        /*Intent intent = new Intent(this, SetAlarm.class);
-        intent.putExtra(Alarms.ALARM_ID, (int) id);
-        startActivity(intent);*/
-    //}
 }
