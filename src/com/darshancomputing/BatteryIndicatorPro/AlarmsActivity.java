@@ -20,7 +20,6 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
@@ -28,7 +27,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
@@ -47,9 +45,7 @@ public class AlarmsActivity extends Activity {
     private AlarmAdapter mAdapter;
     private LinearLayout mAlarmsList;
 
-    /* The alarm id view that were just long-pressed */
-    private int  curId;
-    private View curView;
+    private int curId; /* The alarm id for the View that was just long-pressed */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,8 +150,6 @@ public class AlarmsActivity extends Activity {
                 break;
         }
 
-        //curView.setBackgroundResource(R.drawable.list_selector_background);
-        
         return super.onContextItemSelected(item);
     }
 
@@ -173,13 +167,6 @@ public class AlarmsActivity extends Activity {
 
     private class AlarmAdapter {
         private int idIndex, typeIndex, thresholdIndex, enabledIndex;
-
-        private final Handler mHandler = new Handler();
-        private final Runnable mRevertBackground = new Runnable() {
-            public void run() {
-                curView.setBackgroundResource(android.R.drawable.list_selector_background);
-            }
-        };
 
         public AlarmAdapter() {
                    idIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_ID);
@@ -223,16 +210,6 @@ public class AlarmsActivity extends Activity {
                     alarms.setEnabledness(id, ! enabled);
 
                     barOnOff.setImageResource(! enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
-                }
-            });
-
-            summary_box.setOnLongClickListener(new OnLongClickListener() {
-                public boolean onLongClick(View v){
-                    System.out.println("............................... LongClick");
-                    v.setBackgroundResource(android.R.color.white);
-                    curView = v;
-                    mHandler.postDelayed(mRevertBackground, 250);
-                    return false;
                 }
             });
 
