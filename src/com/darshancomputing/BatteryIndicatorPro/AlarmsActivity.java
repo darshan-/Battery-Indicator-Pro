@@ -19,6 +19,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.DataSetObserver;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -27,6 +28,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
@@ -46,6 +48,7 @@ public class AlarmsActivity extends Activity {
     private LinearLayout mAlarmsList;
 
     private int curId; /* The alarm id for the View that was just long-pressed */
+    private TransitionDrawable curTrans = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -221,11 +224,26 @@ public class AlarmsActivity extends Activity {
                 }
             });
 
-            summary_box.setOnClickListener(new OnClickListener() {
-                public void onClick(View v) {
-                    System.out.println(".................................. Pressed: id = " + id);
+            summary_box.setOnTouchListener(new OnTouchListener() {
+                public boolean onTouch(View v, android.view.MotionEvent m) {
+                    if (v.isPressed() && curTrans == null ) {
+                        System.out.println("............................... Starting transition...");
+                        curTrans = (TransitionDrawable) v.getBackground().getCurrent();
+                        curTrans.startTransition(250);
+                    } else if (! v.isPressed() && curTrans != null) {
+                        System.out.println("............................... Resetting transition...");
+                        curTrans.resetTransition();
+                        curTrans = null;
+                    }
+
+                    return false;
                 }
             });
+
+            //summary_box.setOnClickListener(new OnClickListener() {
+            //    public void onClick(View v) {
+            //    }
+            //});
         }
     }
 }
