@@ -3,6 +3,7 @@
      android:title="@string/pref_hint"
      android:layout="@layout/hint_pref"
      android:enabled="false"
+     android:selectable="false"
   />
 
   <PreferenceCategory android:title="@string/pref_cat_themes">

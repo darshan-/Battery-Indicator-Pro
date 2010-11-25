@@ -16,4 +16,11 @@
             android:gravity="center_horizontal"
             android:text="@string/pref_hint"
   />
+
+  <ImageView android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:scaleType="fitXY"
+             android:gravity="fill_horizontal"
+             android:src="@android:drawable/divider_horizontal_dark"
+  />
 </LinearLayout>

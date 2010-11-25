@@ -62,6 +62,7 @@ public class AlarmDatabase {
                     (enabled ? 1 : 0) + " WHERE " + KEY_ID + "=" + id);
     }
 
+    // TODO: get rid of this and go back to using CheckBox to cache state?
     public Boolean getEnabledness(int id) {
         Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE " + KEY_ID + "=" + id, null);
         c.moveToFirst();
