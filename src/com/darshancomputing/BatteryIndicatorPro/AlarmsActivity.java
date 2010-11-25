@@ -62,18 +62,21 @@ public class AlarmsActivity extends Activity {
         mCursor = alarms.getAllAlarms(true);
         startManagingCursor(mCursor);
 
-        alarms.clearAllAlarms();
-        alarms.addAlarm(0,  0, true);
-        alarms.addAlarm(1, 15, true);
-        alarms.addAlarm(2, 95, false);
-        alarms.addAlarm(3, 58, false);
-        alarms.addAlarm(4,  0, false);
+        //alarms.clearAllAlarms();
 
         mInflater = LayoutInflater.from(context);
         mAdapter = new AlarmAdapter();
         mAlarmsList = (LinearLayout) findViewById(R.id.alarms_list);
         populateList();
         mCursor.registerDataSetObserver(new AlarmsObserver());
+
+        View addAlarm = findViewById(R.id.add_alarm);
+        addAlarm.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                addAlarm();
+                mCursor.requery();
+            }
+        });
     }
 
     private void populateList() {
@@ -86,6 +89,31 @@ public class AlarmsActivity extends Activity {
                 mAlarmsList.addView(v, mAlarmsList.getChildCount());
                 mCursor.moveToNext();
             }
+        }
+    }
+
+    // TODO: delete this
+    private void addAlarm() {
+        int i = (new java.util.Random()).nextInt(5);
+
+        switch(i) {
+        case 0:
+            alarms.addAlarm(0,  0, true);
+            break;
+        case 1:
+            alarms.addAlarm(1, 15, true);
+            break;
+        case 2:
+            alarms.addAlarm(2, 95, false);
+            break;
+        case 3:
+            alarms.addAlarm(3, 58, false);
+            break;
+        case 4:
+            alarms.addAlarm(4,  0, false);
+            break;
+        default:
+            break;
         }
     }
 

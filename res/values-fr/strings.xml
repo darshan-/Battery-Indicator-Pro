@@ -524,9 +524,9 @@
   </string>
 
   <string name="pref_cat_color">Couleur de l\'icône</string>
-  <string name="pref_cat_color_help">
-  	Afin de garder le fichier de l\'application le plus petit possible, j\'ai posé quelques 
-  	limitations pour les couleurs. À l\'heure où j'écris, vous pouvez assigner l\'icône rouge jusqu\'à 
+  <string name="pref_cat_color_help">Afin
+        de garder le fichier de l\'application le plus petit possible, j\'ai posé quelques 
+  	limitations pour les couleurs. À l\'heure où j\'écris, vous pouvez assigner l\'icône rouge jusqu\'à 
   	un maximum de 30%, l\'icône orange jusqu\'à un maximum de 50% et l\'icone verte entre 20% et 100%.
   	Je pense que ces limitations sont raisonables et qu\'elles conviendront à 99% des utilisateurs.\n
 
@@ -552,7 +552,7 @@
   <string name="pref_red_thresh_summary">Afficher l\'icône rouge en dessous de quel pourcentage ?</string>
   <string name="pref_red_thresh_summary10">Afficher l\'icône rouge en dessous ou à quel pourcentage ?</string>
   <string name="pref_red_thresh_help">Spécifie le niveau de charge en dessous duquel (ou <i>auquel</i>, 
-  	en mode 10%) l'icône doit passer au rouge.\n
+  	en mode 10%) l\'icône doit passer au rouge.\n
 
     \nVous pouvez choisir n\'importe quel nombre (multiple de 5) pour lequel l\'icône rouge sera 
     affichée\n

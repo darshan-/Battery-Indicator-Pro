@@ -55,7 +55,7 @@ public class LogViewActivity extends ListActivity {
     private Cursor mCursor;
     private LayoutInflater mInflater;
     private LogAdapter mAdapter;
-    private TextView logs_header;
+    private TextView header_text;
     private Boolean reversed = false;
     private Boolean convertF;
 
@@ -93,8 +93,9 @@ public class LogViewActivity extends ListActivity {
         str = new Str(res);
         col = new Col();
 
-        logs_header = (TextView) View.inflate(context, R.layout.logs_header, null);
-        getListView().addHeaderView(logs_header);
+        View logs_header = View.inflate(context, R.layout.logs_header, null);
+        getListView().addHeaderView(logs_header, null, false);
+        header_text = (TextView) logs_header.findViewById(R.id.header_text);
 
         logs = new LogDatabase(context);
         mCursor = logs.getAllLogs(false);
@@ -229,9 +230,9 @@ public class LogViewActivity extends ListActivity {
         int count = mCursor.getCount();
 
         if (count == 0)
-            logs_header.setText(str.logs_empty);
+            header_text.setText(str.logs_empty);
         else
-            logs_header.setText(str.n_log_items(count));
+            header_text.setText(str.n_log_items(count));
     }
 
     private void exportCSV() {
