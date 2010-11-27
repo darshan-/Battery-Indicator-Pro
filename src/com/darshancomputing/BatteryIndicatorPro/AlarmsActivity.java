@@ -49,7 +49,8 @@ public class AlarmsActivity extends Activity {
     private LinearLayout mAlarmsList;
 
     private int curId; /* The alarm id for the View that was just long-pressed */
-    private TransitionDrawable curTrans = null;
+    private TransitionDrawable curTrans = null; /* The currently active TransitionDrawable */
+    private int curIndex; /* The ViewGroup index of the currently focused item (to set focus after deletion) */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +66,6 @@ public class AlarmsActivity extends Activity {
         alarms = new AlarmDatabase(context);
         mCursor = alarms.getAllAlarms(true);
         startManagingCursor(mCursor);
-
-        //alarms.clearAllAlarms();
 
         mInflater = LayoutInflater.from(context);
         mAdapter = new AlarmAdapter();
@@ -96,7 +95,7 @@ public class AlarmsActivity extends Activity {
         }
     }
 
-    // TODO: delete this
+    // TODO: Delete this once you've implemented proper adding of alarms
     private void addAlarm() {
         int i = (new java.util.Random()).nextInt(5);
 
@@ -137,17 +136,18 @@ public class AlarmsActivity extends Activity {
         setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
     }
 
-    //@Override
-    //public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo menuInfo) {
-    //    getMenuInflater().inflate(R.menu.alarm_item_context, menu);
-    //}
-
     @Override
     public boolean onContextItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case R.id.delete_alarm:
                 alarms.deleteAlarm(curId);
                 mCursor.requery();
+
+                int childCount = mAlarmsList.getChildCount();
+                if (curIndex < childCount)
+                    mAlarmsList.getChildAt(curIndex).findViewById(R.id.alarm_summary_box).requestFocus();
+                else if (childCount > 0)
+                    mAlarmsList.getChildAt(curIndex - 1).findViewById(R.id.alarm_summary_box).requestFocus();
 
                 return true;
             default:
@@ -219,14 +219,16 @@ public class AlarmsActivity extends Activity {
 
             summary_box.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
                 public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-                    getMenuInflater().inflate(R.menu.alarm_item_context, menu);
-                    menu.setHeaderTitle(summary);
                     curId = id;
+                    curIndex = mAlarmsList.indexOfChild((View) v.getParent().getParent());
 
                     if (curTrans != null) {
                         curTrans.resetTransition();
                         curTrans = null;
                     }
+
+                    getMenuInflater().inflate(R.menu.alarm_item_context, menu);
+                    menu.setHeaderTitle(summary);
                 }
             });
 
@@ -246,8 +248,8 @@ public class AlarmsActivity extends Activity {
 
             summary_box.setOnKeyListener(new OnKeyListener() {
                 public boolean onKey(View v, int keyCode, android.view.KeyEvent event) {
-                    if (keyCode == android.view.KeyEvent.KEYCODE_DPAD_CENTER &&
-                        event.getAction() == android.view.KeyEvent.ACTION_DOWN) v.setPressed(true);
+                    if (keyCode == event.KEYCODE_DPAD_CENTER && event.getAction() == event.ACTION_DOWN)
+                        v.setPressed(true);
 
                     if (v.isPressed() && curTrans == null) {
                         curTrans = (TransitionDrawable) v.getBackground().getCurrent();
