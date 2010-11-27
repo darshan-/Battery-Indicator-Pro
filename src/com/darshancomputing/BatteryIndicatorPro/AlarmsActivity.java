@@ -28,6 +28,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
+import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -221,17 +222,35 @@ public class AlarmsActivity extends Activity {
                     getMenuInflater().inflate(R.menu.alarm_item_context, menu);
                     menu.setHeaderTitle(summary);
                     curId = id;
+                    curTrans.resetTransition();
+                    curTrans = null;
                 }
             });
 
             summary_box.setOnTouchListener(new OnTouchListener() {
                 public boolean onTouch(View v, android.view.MotionEvent m) {
                     if (v.isPressed() && curTrans == null ) {
-                        System.out.println("............................... Starting transition...");
                         curTrans = (TransitionDrawable) v.getBackground().getCurrent();
-                        curTrans.startTransition(250);
+                        curTrans.startTransition(350);
                     } else if (! v.isPressed() && curTrans != null) {
-                        System.out.println("............................... Resetting transition...");
+                        curTrans.resetTransition();
+                        curTrans = null;
+                    }
+
+                    return false;
+                }
+            });
+
+            summary_box.setOnKeyListener(new OnKeyListener() {
+                public boolean onKey(View v, int keyCode, android.view.KeyEvent event) {
+                    if (keyCode == android.view.KeyEvent.KEYCODE_DPAD_CENTER &&
+                        event.getAction() == android.view.KeyEvent.ACTION_DOWN) v.setPressed(true);
+                    else v.setPressed(false);
+
+                    if (v.isPressed() && curTrans == null ) {
+                        curTrans = (TransitionDrawable) v.getBackground().getCurrent();
+                        curTrans.startTransition(350);
+                    } else if (! v.isPressed() && curTrans != null) {
                         curTrans.resetTransition();
                         curTrans = null;
                     }
