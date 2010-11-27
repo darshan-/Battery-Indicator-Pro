@@ -43,6 +43,7 @@
                  android:focusable="false"
                  android:clickable="false"
                  android:longClickable="false"
+                 android:duplicateParentState="true"
       />
 
       <ImageView android:id="@+id/bar_onoff"
@@ -84,7 +85,7 @@
                 android:padding="6dp"
                 android:textSize="16sp"
                 android:layout_gravity="center_vertical"
-                android:textColor="@color/alarm_item"
+                android:textColor="@color/list_item"
                 android:duplicateParentState="true"
                 android:focusable="false"
                 android:clickable="false"

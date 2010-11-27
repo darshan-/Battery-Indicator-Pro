@@ -222,8 +222,11 @@ public class AlarmsActivity extends Activity {
                     getMenuInflater().inflate(R.menu.alarm_item_context, menu);
                     menu.setHeaderTitle(summary);
                     curId = id;
-                    curTrans.resetTransition();
-                    curTrans = null;
+
+                    if (curTrans != null) {
+                        curTrans.resetTransition();
+                        curTrans = null;
+                    }
                 }
             });
 
@@ -245,12 +248,11 @@ public class AlarmsActivity extends Activity {
                 public boolean onKey(View v, int keyCode, android.view.KeyEvent event) {
                     if (keyCode == android.view.KeyEvent.KEYCODE_DPAD_CENTER &&
                         event.getAction() == android.view.KeyEvent.ACTION_DOWN) v.setPressed(true);
-                    else v.setPressed(false);
 
-                    if (v.isPressed() && curTrans == null ) {
+                    if (v.isPressed() && curTrans == null) {
                         curTrans = (TransitionDrawable) v.getBackground().getCurrent();
                         curTrans.startTransition(350);
-                    } else if (! v.isPressed() && curTrans != null) {
+                    } else if (curTrans != null) {
                         curTrans.resetTransition();
                         curTrans = null;
                     }
