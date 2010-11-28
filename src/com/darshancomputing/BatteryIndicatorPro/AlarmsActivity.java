@@ -169,6 +169,14 @@ public class AlarmsActivity extends Activity {
         }
     }
 
+    private TransitionDrawable castToTransitionDrawable(android.graphics.drawable.Drawable d) {
+        try {
+            return (TransitionDrawable) d;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     private class AlarmAdapter {
         private int idIndex, typeIndex, thresholdIndex, enabledIndex;
 
@@ -235,8 +243,8 @@ public class AlarmsActivity extends Activity {
             summary_box.setOnTouchListener(new OnTouchListener() {
                 public boolean onTouch(View v, android.view.MotionEvent m) {
                     if (v.isPressed() && curTrans == null ) {
-                        curTrans = (TransitionDrawable) v.getBackground().getCurrent();
-                        curTrans.startTransition(350);
+                        curTrans = castToTransitionDrawable(v.getBackground().getCurrent());
+                        if (curTrans != null) curTrans.startTransition(350);
                     } else if (! v.isPressed() && curTrans != null) {
                         curTrans.resetTransition();
                         curTrans = null;
@@ -252,8 +260,8 @@ public class AlarmsActivity extends Activity {
                         v.setPressed(true);
 
                     if (v.isPressed() && curTrans == null) {
-                        curTrans = (TransitionDrawable) v.getBackground().getCurrent();
-                        curTrans.startTransition(350);
+                        curTrans = castToTransitionDrawable(v.getBackground().getCurrent());
+                        if (curTrans != null) curTrans.startTransition(350);
                     } else if (curTrans != null) {
                         curTrans.resetTransition();
                         curTrans = null;

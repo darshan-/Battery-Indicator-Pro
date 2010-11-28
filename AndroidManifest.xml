@@ -64,7 +64,7 @@
   </application>
 
   <uses-sdk android:minSdkVersion="3"
-            android:targetSdkVersion="8"
+            android:targetSdkVersion="4"
   />
 
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -73,4 +73,10 @@
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
   <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+
+  <supports-screens android:smallScreens="true"
+                    android:normalScreens="true"
+                    android:largeScreens="true"
+                    android:anyDensity="true"
+  />
 </manifest>
