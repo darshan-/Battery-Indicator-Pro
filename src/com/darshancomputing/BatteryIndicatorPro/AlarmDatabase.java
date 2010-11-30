@@ -57,16 +57,15 @@ public class AlarmDatabase {
                     + type + " ," + threshold + " ," + (enabled ? 1 : 0) + ")");
     }
 
-    public void setEnabledness(int id, Boolean enabled) {
-        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_ENABLED + "=" +
-                    (enabled ? 1 : 0) + " WHERE " + KEY_ID + "=" + id);
-    }
-
-    // TODO: get rid of this and go back to using CheckBox to cache state?
-    public Boolean getEnabledness(int id) {
+    public Boolean toggle(int id) {
         Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE " + KEY_ID + "=" + id, null);
         c.moveToFirst();
-        return (c.getInt(c.getColumnIndexOrThrow(KEY_ENABLED)) == 1);
+        Boolean newEnabled = !(c.getInt(c.getColumnIndexOrThrow(KEY_ENABLED)) == 1);
+
+        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_ENABLED + "=" +
+                    (newEnabled ? 1 : 0) + " WHERE " + KEY_ID + "=" + id);
+
+        return newEnabled;
     }
 
     public void deleteAlarm(int id) {

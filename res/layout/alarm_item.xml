@@ -23,17 +23,6 @@
                   android:clickable="true"
                   android:longClickable="true"
     >
-      <!--CheckBox android:id="@+id/clock_onoff"
-                   android:focusable="false"
-                   android:clickable="false"
-                   android:background="@drawable/indicator_clock_onoff"
-                   android:duplicateParentState="true"
-                   android:layout_height="wrap_content"
-                   android:layout_width="wrap_content"
-                   android:layout_gravity="center"
-                   android:button="@null"
-      /-->
-
       <ImageView android:id="@+id/clock_onoff"
                  android:src="@drawable/indicator_clock_onoff"
                  android:layout_height="wrap_content"

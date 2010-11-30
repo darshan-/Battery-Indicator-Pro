@@ -192,7 +192,6 @@ public class AlarmsActivity extends Activity {
             final      View summary_box =                  view.findViewById(R.id.alarm_summary_box);
             final      View indicator   =                  view.findViewById(R.id.indicator);
             final ImageView barOnOff    = (ImageView) indicator.findViewById(R.id.bar_onoff);
-            //final  CheckBox clockOnOff = (CheckBox)  indicator.findViewById(R.id.clock_onoff);
 
             final int    id = mCursor.getInt(idIndex);
             int        type = mCursor.getInt(typeIndex);
@@ -211,17 +210,11 @@ public class AlarmsActivity extends Activity {
             final String summary = s;
 
             barOnOff.setImageResource(enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
-            //clockOnOff.setChecked(enabled);
             summary_tv.setText(summary);
 
             indicator.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
-                    //clockOnOff.toggle();
-                    //Boolean enabled = clockOnOff.isChecked();
-                    Boolean enabled = alarms.getEnabledness(id);
-                    alarms.setEnabledness(id, ! enabled);
-
-                    barOnOff.setImageResource(! enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
+                    barOnOff.setImageResource(alarms.toggle(id) ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
                 }
             });
 
