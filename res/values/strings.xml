@@ -749,7 +749,8 @@
   <string name="pref_alarm_type_summary">Trigger alarm when battery:</string>
   <string name="pref_alarm_type_help"></string>
   <string name="pref_alarm_threshold">Threshold</string>
-  <string name="pref_alarm_threshold_summary"></string>
+  <string name="threshold_not_used">Not used for this alarm type</string>
+  <string name="pref_alarm_threshold_summary">@string/threshold_not_used</string>
   <string name="pref_alarm_threshold_help"></string>
 
   <string-array name="mw_theme_pref_entries">
