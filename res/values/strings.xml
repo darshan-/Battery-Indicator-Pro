@@ -137,19 +137,19 @@
     <item>(USB)</item>
   </string-array>
 
-  <string-array name="alarm_types_select">
-    <item>becomes fully charged.</item>
-    <item>charge drops below...</item>
-    <item>charge rises above...</item>
-    <item>temperature rises above...</item>
-    <item>health fails.</item>
-  </string-array>
   <string-array name="alarm_types_display">
     <item>Fully charged</item>
     <item>Charge drops below</item>
     <item>Charge rises above</item>
     <item>Temperature rises above</item>
     <item>Health failure</item>
+  </string-array>
+  <string-array name="alarm_type_entries">
+    <item>Becomes fully charged</item>
+    <item>Charge drops below...</item>
+    <item>Charge rises above...</item>
+    <item>Temperature rises above...</item>
+    <item>Health fails</item>
   </string-array>
   <string-array name="alarm_type_values">
     <item>fully_charged</item>
@@ -425,7 +425,7 @@
     charge as a worst case.
   </string>
   <string name="pref_max_log_age">Maximum Log Age</string>
-  <string name="pref_max_log_age_summary">Delete Logs Older Than:</string>
+  <string name="pref_max_log_age_summary">Delete logs older than:</string>
   <string name="pref_max_log_age_help">
     If logging is enabled, then whenever you plug in your phone, logs
     older than this will be deleted.
@@ -501,7 +501,7 @@
 
   <string name="pref_cat_autostart">Autostart</string>
   <string name="pref_autostart_at_boot">Autostart at Boot</string>
-  <string name="pref_autostart_at_boot_summary">Start Battery Indicator When Device Boots?</string>
+  <string name="pref_autostart_at_boot_summary">Start Battery Indicator when device boots:</string>
   <string name="pref_autostart_at_boot_help">
     Controls whether Battery Indicator should start itself
     automatically when the device boots up.\n
@@ -536,7 +536,7 @@
 
   <string name="pref_cat_status_duration">Status Duration (For/Since...)</string>
   <string name="pref_status_dur_est">When to Approximate</string>
-  <string name="pref_status_dur_est_summary">Start Approximating Hours Since Status Change</string>
+  <string name="pref_status_dur_est_summary">Start approximating hours since status change:</string>
   <string name="pref_status_dur_est_help">
     Determines when the notification switches from saying, e.g.,
     \"Unplugged Since 1:10 PM\" to saying something like \"Unplugged
@@ -568,13 +568,13 @@
     until the phone is fully charged.
   </string>
   <string name="pref_usb_charge_time">USB Charge</string>
-  <string name="pref_usb_charge_time_summary">USB Charge Time From 0% to 100% in Hours</string>
+  <string name="pref_usb_charge_time_summary">USB charge time from 0% to 100% in hours:</string>
   <string name="pref_usb_charge_time_help">
     Enter how long you think your battery would take to completely
     charge from 0% to 100% on USB power.
   </string>
   <string name="pref_ac_charge_time">AC Charge</string>
-  <string name="pref_ac_charge_time_summary">AC Charge Time From 0% to 100% in Hours</string>
+  <string name="pref_ac_charge_time_summary">AC charge time from 0% to 100% in hours:</string>
   <string name="pref_ac_charge_time_help">
     Enter how long you think your battery would take to completely
     charge from 0% to 100% on AC power.
@@ -587,7 +587,7 @@
     \"Light Usage\".
   </string>
   <string name="pref_light_usage_time">Light Usage</string>
-  <string name="pref_light_usage_time_summary">Light Usage Time From 100% to 0% in Hours</string>
+  <string name="pref_light_usage_time_summary">Light usage time from 100% to 0% in hours:</string>
   <string name="pref_light_usage_time_help">
     Enter how long you think your battery would take to completely
     discharge from 100% to 0% at whatever you consider \"Light Usage\".
@@ -600,7 +600,7 @@
     \"Normal Usage\".
   </string>
   <string name="pref_normal_usage_time">Normal Usage</string>
-  <string name="pref_normal_usage_time_summary">Normal Usage Time From 100% to 0% in Hours</string>
+  <string name="pref_normal_usage_time_summary">Normal usage time from 100% to 0% in hours:</string>
   <string name="pref_normal_usage_time_help">
     Enter how long you think your battery would take to completely
     discharge from 100% to 0% at whatever you consider \"Normal Usage\".
@@ -613,7 +613,7 @@
     \"Heavy Usage\".
   </string>
   <string name="pref_heavy_usage_time">Heavy Usage</string>
-  <string name="pref_heavy_usage_time_summary">Heavy Usage Time From 100% to 0% in Hours</string>
+  <string name="pref_heavy_usage_time_summary">Heavy usage time from 100% to 0% in hours:</string>
   <string name="pref_heavy_usage_time_help">
     Enter how long you think your battery would take to completely
     discharge from 100% to 0% at whatever you consider \"Heavy Usage\".
@@ -626,7 +626,7 @@
     \"Constant Usage\".
   </string>
   <string name="pref_constant_usage_time">Constant Usage</string>
-  <string name="pref_constant_usage_time_summary">Constant Usage Time From 100% to 0% in Hours</string>
+  <string name="pref_constant_usage_time_summary">Constant usage time from 100% to 0% in hours:</string>
   <string name="pref_constant_usage_time_help">
     Enter how long you think your battery would take to completely
     discharge from 100% to 0% at whatever you consider \"Constant Usage\".
@@ -662,8 +662,8 @@
     Whether or not to use a red icon below the specified threshold.
   </string>
   <string name="pref_red_thresh">Red Threshold</string>
-  <string name="pref_red_thresh_summary">Red Icon Below What Charge Percentage?</string>
-  <string name="pref_red_thresh_summary10">Red Icon At or Below What Charge Percentage?</string>
+  <string name="pref_red_thresh_summary">Red icon below what charge percentage:</string>
+  <string name="pref_red_thresh_summary10">Red icon at or below what charge percentage:</string>
   <string name="pref_red_thresh_help">Specifies the charge level which
     the icon should turn red below (or <i>at</i>, in 10% Mode).\n
 
@@ -679,8 +679,8 @@
     Whether or not to use an amber icon below the specified threshold.
   </string>
   <string name="pref_amber_thresh">Amber Threshold</string>
-  <string name="pref_amber_thresh_summary">Amber Icon Below What Charge Percentage?</string>
-  <string name="pref_amber_thresh_summary10">Amber Icon At or Below What Charge Percentage?</string>
+  <string name="pref_amber_thresh_summary">Amber icon below what charge percentage:</string>
+  <string name="pref_amber_thresh_summary10">Amber icon at or below what charge percentage:</string>
   <string name="pref_amber_thresh_help">Specifies the charge level
     which the icon should turn amber below (or <i>at</i>, in 10%
     Mode).\n
@@ -700,7 +700,7 @@
     Whether or not to use a green icon at or above the specified threshold.
   </string>
   <string name="pref_green_thresh">Green Threshold</string>
-  <string name="pref_green_thresh_summary">Green Icon At or Above What Charge Percentage?</string>
+  <string name="pref_green_thresh_summary">Green icon at or above what charge percentage:</string>
   <string name="pref_green_thresh_help">Specifies the charge level
     which the icon should be green at or above.\n
 
@@ -734,6 +734,24 @@
     should <i>not</i> turn this on.
   </string>
 
+  <string name="pref_alarm_enabled">Enable Alarm</string>
+  <string name="pref_alarm_summary"></string>
+  <string name="pref_alarm_help">If you want to temporarily disable an
+  alarm without having to recreate it when you want it again, you can
+  turn it off and on either here or on the main alarms page.
+  </string>
+
+  <string name="pref_cat_alarm_conditions">Alarm Conditions</string>
+  <string name="pref_cat_alarm_conditions_help">This is where you
+  control what conditions trigger the alarm.
+  </string>
+  <string name="pref_alarm_type">Alarm Type</string>
+  <string name="pref_alarm_type_summary">Trigger alarm when battery:</string>
+  <string name="pref_alarm_type_help"></string>
+  <string name="pref_alarm_threshold">Threshold</string>
+  <string name="pref_alarm_threshold_summary"></string>
+  <string name="pref_alarm_threshold_help"></string>
+
   <string-array name="mw_theme_pref_entries">
     <item>Default Small</item>
     <item>Colorful Small</item>
@@ -748,7 +766,7 @@
   <string-array name="boot_pref_entries">
     <item>Always</item>
     <item>Never</item>
-    <item>If Running on Shutdown</item>
+    <item>If running on shutdown</item>
   </string-array>
   <string-array name="boot_pref_values">
     <item>always</item>
@@ -758,11 +776,11 @@
 
   <string-array name="status_dur_est_entries">
     <item>Always</item>
-    <item>After 1 Hour</item>
-    <item>After 2 Hours</item>
-    <item>After 3 Hours</item>
-    <item>After 6 Hours</item>
-    <item>After 12 Hours</item>
+    <item>After 1 hour</item>
+    <item>After 2 hours</item>
+    <item>After 3 hours</item>
+    <item>After 6 hours</item>
+    <item>After 12 hours</item>
   </string-array>
   <string-array name="status_dur_est_values">
     <item>0</item>
@@ -774,10 +792,10 @@
   </string-array>
 
   <string-array name="max_log_age_entries">
-    <item>1 Day</item>
-    <item>2 Days</item>
-    <item>4 Days</item>
-    <item>1 Week</item>
+    <item>1 day</item>
+    <item>2 days</item>
+    <item>4 days</item>
+    <item>1 week</item>
   </string-array>
   <string-array name="max_log_age_values">
     <item>24</item>

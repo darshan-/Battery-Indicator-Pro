@@ -54,8 +54,8 @@ public class Str {
     public String[] log_statuses_old;
     public String[] healths;
     public String[] pluggeds;
-    public String[] alarm_types_select;
     public String[] alarm_types_display;
+    public String[] alarm_type_entries;
     public String[] alarm_type_values;
 
     public Str(Resources r) {
@@ -95,8 +95,8 @@ public class Str {
         log_statuses_old    = res.getStringArray(R.array.log_statuses_old);
         healths             = res.getStringArray(R.array.healths);
         pluggeds            = res.getStringArray(R.array.pluggeds);
-        alarm_types_select  = res.getStringArray(R.array.alarm_types_select);
         alarm_types_display = res.getStringArray(R.array.alarm_types_display);
+        alarm_type_entries  = res.getStringArray(R.array.alarm_type_entries);
         alarm_type_values   = res.getStringArray(R.array.alarm_type_values);
     }
 

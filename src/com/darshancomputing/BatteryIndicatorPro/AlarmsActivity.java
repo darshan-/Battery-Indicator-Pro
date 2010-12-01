@@ -15,7 +15,9 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.DataSetObserver;
@@ -76,8 +78,10 @@ public class AlarmsActivity extends Activity {
         View addAlarm = findViewById(R.id.add_alarm);
         addAlarm.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                addAlarm();
-                mCursor.requery();
+                ComponentName comp = new ComponentName(getPackageName(), AlarmEditActivity.class.getName());
+                startActivity(new Intent().setComponent(comp));
+                //addAlarm();
+                //mCursor.requery();
             }
         });
     }
@@ -264,10 +268,12 @@ public class AlarmsActivity extends Activity {
                 }
             });
 
-            //summary_box.setOnClickListener(new OnClickListener() {
-            //    public void onClick(View v) {
-            //    }
-            //});
+            summary_box.setOnClickListener(new OnClickListener() {
+                public void onClick(View v) {
+                    ComponentName comp = new ComponentName(getPackageName(), AlarmEditActivity.class.getName());
+                    startActivity(new Intent().setComponent(comp));
+                }
+            });
         }
     }
 }

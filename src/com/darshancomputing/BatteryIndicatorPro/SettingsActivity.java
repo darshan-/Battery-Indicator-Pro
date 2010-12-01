@@ -184,6 +184,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         res = getResources();
 
         mSharedPreferences = getPreferenceManager().getSharedPreferences();
+
+        // TODO: Do it this way?  Get rid of line at bottom?
         //getListView().addHeaderView(android.view.View.inflate(getListView().getContext(), R.layout.hint_pref, null), null, false);
 
         if (pref_screen == null) {
@@ -252,7 +254,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         mPreferenceScreen  = getPreferenceScreen();
     }
-
 
     @Override
     protected void onDestroy() {
