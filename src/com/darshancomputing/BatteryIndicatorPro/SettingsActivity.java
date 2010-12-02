@@ -14,8 +14,10 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ComponentName;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
@@ -114,6 +116,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final int AMBER_SETTING_MAX = 50;
     public static final int GREEN_SETTING_MIN = 20;
     /* public static final int GREEN_SETTING_MAX = 100; /* TODO: use this, and possibly set it to 95. */
+
+    private static final int DIALOG_CONFIRM_TEN_PERCENT_ENABLE  = 0;
+    private static final int DIALOG_CONFIRM_TEN_PERCENT_DISABLE = 1;
 
     private Intent biServiceIntent;
     private BIServiceConnection biServiceConnection;
@@ -222,6 +227,17 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
             setPrefScreen(R.xml.other_pref_screen);
             setWindowSubtitle(res.getString(R.string.other_settings));
+
+            ten_percent_mode = mSharedPreferences.getBoolean(KEY_TEN_PERCENT_MODE, false);
+
+            mPreferenceScreen.findPreference(KEY_TEN_PERCENT_MODE)
+                .setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
+            {
+                public boolean onPreferenceChange(final Preference preference, final Object newValue) {
+                    showDialog((Boolean) newValue ? DIALOG_CONFIRM_TEN_PERCENT_ENABLE : DIALOG_CONFIRM_TEN_PERCENT_DISABLE);
+                    return false;
+                }
+            });
         } else {
             setPrefScreen(R.xml.main_pref_screen);
         }
@@ -295,6 +311,41 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         default:
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        Dialog dialog;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        Str str = new Str(getResources());
+
+        switch (id) {
+        /* Android saves and reuses these dialogs; we want different titles for each, hence two IDs */
+        case DIALOG_CONFIRM_TEN_PERCENT_ENABLE:
+        case DIALOG_CONFIRM_TEN_PERCENT_DISABLE:
+            builder.setTitle(ten_percent_mode ? str.confirm_ten_percent_disable : str.confirm_ten_percent_enable)
+                .setMessage(str.confirm_ten_percent_hint)
+                .setCancelable(false)
+                .setPositiveButton(str.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface di, int id) {
+                        ten_percent_mode = ! ten_percent_mode;
+                        ((CheckBoxPreference) mPreferenceScreen.findPreference(KEY_TEN_PERCENT_MODE)).setChecked(ten_percent_mode);
+                        di.cancel();
+                    }
+                })
+                .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface di, int id) {
+                        di.cancel();
+                    }
+                });
+
+            dialog = builder.create();
+            break;
+        default:
+            dialog = null;
+        }
+
+        return dialog;
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {

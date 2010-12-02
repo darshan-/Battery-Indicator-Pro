@@ -16,7 +16,6 @@ package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -193,16 +192,16 @@ public class BatteryIndicator extends Activity {
                 .setMessage(str.confirm_disable_hint)
                 .setCancelable(false)
                 .setPositiveButton(str.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface di, int id) {
-                            setDisableLocking(true);
-                            di.cancel();
-                        }
-                    })
+                    public void onClick(DialogInterface di, int id) {
+                        setDisableLocking(true);
+                        di.cancel();
+                    }
+                })
                 .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface di, int id) {
-                            di.cancel();
-                        }
-                    });
+                    public void onClick(DialogInterface di, int id) {
+                        di.cancel();
+                    }
+                });
 
             dialog = builder.create();
             break;
@@ -210,23 +209,23 @@ public class BatteryIndicator extends Activity {
             builder.setTitle(str.confirm_close)
                 .setMessage(str.confirm_close_hint)
                 .setPositiveButton(str.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface di, int id) {
-                            SharedPreferences.Editor editor = settings.edit();
-                            editor.putBoolean("serviceDesired", false);
-                            editor.commit();
+                    public void onClick(DialogInterface di, int id) {
+                        SharedPreferences.Editor editor = settings.edit();
+                        editor.putBoolean("serviceDesired", false);
+                        editor.commit();
 
-                            finishActivity(1);
-                            stopService(biServiceIntent);
-                            finish();
+                        finishActivity(1);
+                        stopService(biServiceIntent);
+                        finish();
 
-                            di.cancel();
-                        }
-                    })
+                        di.cancel();
+                    }
+                })
                 .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface di, int id) {
-                            di.cancel();
-                        }
-                    });
+                    public void onClick(DialogInterface di, int id) {
+                        di.cancel();
+                    }
+                });
 
             dialog = builder.create();
             break;
@@ -237,10 +236,10 @@ public class BatteryIndicator extends Activity {
             builder.setTitle(str.first_run_title)
                 .setView(layout)
                 .setPositiveButton(str.okay, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface di, int id) {
-                            di.cancel();
-                        }
-                    });
+                    public void onClick(DialogInterface di, int id) {
+                        di.cancel();
+                    }
+                });
 
             dialog = builder.create();
             break;

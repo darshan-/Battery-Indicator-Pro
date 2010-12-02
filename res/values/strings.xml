@@ -38,6 +38,17 @@
 
   <string name="confirm_clear_logs">Really clear all logs?</string>
 
+  <string name="confirm_ten_percent_enable">Really enable 10% Mode?</string>
+  <string name="confirm_ten_percent_disable">Really disable 10% Mode?</string>
+  <string name="confirm_ten_percent_hint"><b><i>Warning</i>:</b>
+    Changing this setting (both enabling and disabling it) will reset your color settings.\n
+
+    \nIf you have a <b>Motorola Droid</b>, <b>Motorola Droid X</b>,
+    <b>Motorola Droid 2</b>, or <b>Samsung Moment</b>, you should turn
+    this on when you first get the app, and then leave it alone.  All
+    other phones, as far as I know, should always leave this off.
+  </string>
+
   <string name="first_run_title">Thank you!</string>
   <string name="first_run_message">Thanks
     for your donation/purchase!  <b><i>These two points are very important</i> :</b>\n

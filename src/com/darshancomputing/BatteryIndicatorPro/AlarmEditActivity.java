@@ -19,10 +19,12 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 
-public class AlarmEditActivity extends PreferenceActivity /* implements Preference.OnPreferenceChangeListener */ {
+public class AlarmEditActivity extends PreferenceActivity implements OnPreferenceChangeListener {
     private Resources res;
     private Context context;
     private Str str;
@@ -42,7 +44,10 @@ public class AlarmEditActivity extends PreferenceActivity /* implements Preferen
         Intent intent = getIntent();
         alarmID = intent.getIntExtra(EXTRA_ALARM_ID, -1);
 
-        setPrefScreen(R.xml.alarm_pref_screen);
+        addPreferencesFromResource(R.xml.alarm_pref_screen);
+
+        mPreferenceScreen = getPreferenceScreen();
+        setOnPreferenceChangeListeners(mPreferenceScreen);
     }
 
     @Override
@@ -59,9 +64,18 @@ public class AlarmEditActivity extends PreferenceActivity /* implements Preferen
         setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
     }
 
-    private void setPrefScreen(int resource) {
-        addPreferencesFromResource(resource);
+    private void setOnPreferenceChangeListeners(Preference p) {
+        if (p instanceof PreferenceGroup) {
+            PreferenceGroup pg = (PreferenceGroup) p;
 
-        mPreferenceScreen  = getPreferenceScreen();
+            for (int i=0, count = pg.getPreferenceCount(); i < count; i++)
+                setOnPreferenceChangeListeners(pg.getPreference(i));
+        } else {
+            p.setOnPreferenceChangeListener(this);
+        }
+    }
+
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        return true;
     }
 }

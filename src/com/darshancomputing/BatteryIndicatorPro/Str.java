@@ -34,6 +34,9 @@ public class Str {
 
     public String logs_empty;
     public String confirm_clear_logs;
+    public String confirm_ten_percent_enable;
+    public String confirm_ten_percent_disable;
+    public String confirm_ten_percent_hint;
     public String yes;
     public String cancel;
 
@@ -77,6 +80,10 @@ public class Str {
         confirm_clear_logs = res.getString(R.string.confirm_clear_logs);
         yes                = res.getString(R.string.yes);
         cancel             = res.getString(R.string.cancel);
+
+        confirm_ten_percent_enable  = res.getString(R.string.confirm_ten_percent_enable);
+        confirm_ten_percent_disable = res.getString(R.string.confirm_ten_percent_disable);
+        confirm_ten_percent_hint    = res.getString(R.string.confirm_ten_percent_hint);
 
         inaccessible_storage  = res.getString(R.string.inaccessible_storage);
         inaccessible_w_reason = res.getString(R.string.inaccessible_w_reason);
