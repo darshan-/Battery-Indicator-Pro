@@ -15,8 +15,9 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.Context;
-import android.content.Intent;
+//import android.content.Intent;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -29,7 +30,9 @@ public class AlarmEditActivity extends PreferenceActivity implements OnPreferenc
     private Context context;
     private Str str;
     private PreferenceScreen mPreferenceScreen;
-    private int alarmID;
+    private AlarmDatabase alarms;
+    private Cursor mCursor;
+    private AlarmAdapter mAdapter;
 
     public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
 
@@ -40,9 +43,12 @@ public class AlarmEditActivity extends PreferenceActivity implements OnPreferenc
         context = getApplicationContext();
         res = getResources();
         str = new Str(res);
+        alarms = new AlarmDatabase(context);
 
-        Intent intent = getIntent();
-        alarmID = intent.getIntExtra(EXTRA_ALARM_ID, -1);
+        mCursor = alarms.getAlarm(getIntent().getIntExtra(EXTRA_ALARM_ID, -1));
+        mAdapter = new AlarmAdapter();
+
+        System.out.println("........................ id=" + mAdapter.id + " enabled=" + mAdapter.enabled);
 
         addPreferencesFromResource(R.xml.alarm_pref_screen);
 
@@ -53,11 +59,22 @@ public class AlarmEditActivity extends PreferenceActivity implements OnPreferenc
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mCursor.close();
+        alarms.close();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        mCursor.requery();
+        mCursor.moveToFirst();
+        mAdapter.requery();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mCursor.deactivate();
     }
 
     private void setWindowSubtitle(String subtitle) {
@@ -77,5 +94,27 @@ public class AlarmEditActivity extends PreferenceActivity implements OnPreferenc
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         return true;
+    }
+
+    private class AlarmAdapter {
+        public int id, type, threshold;
+        public Boolean enabled;
+        private int idIndex, typeIndex, thresholdIndex, enabledIndex;
+
+        public AlarmAdapter() {
+                   idIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_ID);
+                 typeIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_TYPE);
+            thresholdIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_THRESHOLD);
+              enabledIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_ENABLED);
+
+            requery();
+        }
+
+        public void requery() {
+                   id = mCursor.getInt(idIndex);
+                 type = mCursor.getInt(typeIndex);
+            threshold = mCursor.getInt(thresholdIndex);
+              enabled = (mCursor.getInt(enabledIndex) == 1);
+        }
     }
 }

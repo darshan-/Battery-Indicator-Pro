@@ -78,10 +78,9 @@ public class AlarmsActivity extends Activity {
         View addAlarm = findViewById(R.id.add_alarm);
         addAlarm.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
+                int id = alarms.addAlarm();
                 ComponentName comp = new ComponentName(getPackageName(), AlarmEditActivity.class.getName());
-                startActivity(new Intent().setComponent(comp));
-                //addAlarm();
-                //mCursor.requery();
+                startActivity(new Intent().setComponent(comp).putExtra(AlarmEditActivity.EXTRA_ALARM_ID, id));
             }
         });
     }
@@ -99,31 +98,6 @@ public class AlarmsActivity extends Activity {
         }
     }
 
-    // TODO: Delete this once you've implemented proper adding of alarms
-    private void addAlarm() {
-        int i = (new java.util.Random()).nextInt(5);
-
-        switch(i) {
-        case 0:
-            alarms.addAlarm(0,  0, true);
-            break;
-        case 1:
-            alarms.addAlarm(1, 15, true);
-            break;
-        case 2:
-            alarms.addAlarm(2, 95, false);
-            break;
-        case 3:
-            alarms.addAlarm(3, 58, false);
-            break;
-        case 4:
-            alarms.addAlarm(4,  0, false);
-            break;
-        default:
-            break;
-        }
-    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -134,6 +108,13 @@ public class AlarmsActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        mCursor.requery();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mCursor.deactivate();
     }
 
     private void setWindowSubtitle(String subtitle) {
@@ -271,7 +252,7 @@ public class AlarmsActivity extends Activity {
             summary_box.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
                     ComponentName comp = new ComponentName(getPackageName(), AlarmEditActivity.class.getName());
-                    startActivity(new Intent().setComponent(comp));
+                    startActivity(new Intent().setComponent(comp).putExtra(AlarmEditActivity.EXTRA_ALARM_ID, id));
                 }
             });
         }

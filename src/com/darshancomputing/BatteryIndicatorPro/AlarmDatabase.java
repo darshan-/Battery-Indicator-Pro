@@ -52,15 +52,33 @@ public class AlarmDatabase {
         return rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " ORDER BY " + KEY_ID + " " + order, null);
     }
 
+    public Cursor getAlarm(int id) {
+        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_ID + "=" + id + " LIMIT 1", null);
+        c.moveToFirst();
+        return c;
+    }
+
     public void addAlarm(int type, int threshold, Boolean enabled) {
         wdb.execSQL("INSERT INTO " + ALARM_TABLE_NAME + " VALUES (NULL, "
                     + type + " ," + threshold + " ," + (enabled ? 1 : 0) + ")");
+    }
+
+    public int addAlarm() {
+        addAlarm(0, 0, true);
+
+        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE " + KEY_ID + "= last_insert_rowid()", null);
+        c.moveToFirst();
+        int i = c.getInt(c.getColumnIndexOrThrow(KEY_ID));
+        c.close();
+
+        return i;
     }
 
     public Boolean toggle(int id) {
         Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE " + KEY_ID + "=" + id, null);
         c.moveToFirst();
         Boolean newEnabled = !(c.getInt(c.getColumnIndexOrThrow(KEY_ENABLED)) == 1);
+        c.close();
 
         wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_ENABLED + "=" +
                     (newEnabled ? 1 : 0) + " WHERE " + KEY_ID + "=" + id);
