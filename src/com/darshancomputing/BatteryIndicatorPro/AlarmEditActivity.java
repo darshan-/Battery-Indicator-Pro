@@ -20,6 +20,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
@@ -36,6 +37,7 @@ public class AlarmEditActivity extends PreferenceActivity {
     private AlarmAdapter mAdapter;
 
     public static final String KEY_ENABLED = "enabled";
+    public static final String KEY_TYPE = "type";
 
     public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
 
@@ -88,11 +90,30 @@ public class AlarmEditActivity extends PreferenceActivity {
         CheckBoxPreference enabledCB = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_ENABLED);
         enabledCB.setChecked(mAdapter.enabled);
         enabledCB.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                alarms.setEnabledness(mAdapter.id, (Boolean) newValue);
+            public boolean onPreferenceChange(Preference pref, Object newValue) {
+                mAdapter.setEnabledness((Boolean) newValue);
                 return true;
             }
         });
+
+        ListPreference typeLP = (ListPreference) mPreferenceScreen.findPreference(KEY_TYPE);
+        typeLP.setValue(str.alarm_type_values[mAdapter.type]);
+        updateSummary(typeLP);
+        typeLP.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            public boolean onPreferenceChange(Preference pref, Object newValue) {
+                mAdapter.setType((String) newValue);
+
+                ListPreference typeLP = (ListPreference) pref;
+                typeLP.setValue((String) newValue);
+                updateSummary(typeLP);
+
+                return false;
+            }
+        });
+    }
+
+    private void updateSummary(ListPreference lp) {
+        lp.setSummary(str.currently_set_to + " " + lp.getEntry());
     }
 
     private class AlarmAdapter {
@@ -114,6 +135,23 @@ public class AlarmEditActivity extends PreferenceActivity {
                  type = mCursor.getInt(typeIndex);
             threshold = mCursor.getInt(thresholdIndex);
               enabled = (mCursor.getInt(enabledIndex) == 1);
+        }
+
+        public void setEnabledness(Boolean b) {
+            enabled = b;
+            alarms.setEnabledness(id, enabled);
+        }
+
+        public void setType(String s) {
+            type = indexOf(str.alarm_type_values, s);
+            alarms.setType(id, type);
+        }
+
+        private int indexOf(String[] a, String key) {
+            for (int i=0, size=a.length; i < size; i++)
+                if (key.equals(a[i])) return i;
+
+            return -1;
         }
     }
 }

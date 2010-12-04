@@ -90,6 +90,11 @@ public class AlarmDatabase {
         return newEnabled;
     }
 
+    public void setType(int id, int type) {
+        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_TYPE + "=" +
+                    type + " WHERE " + KEY_ID + "=" + id);
+    }
+
     public void deleteAlarm(int id) {
         wdb.execSQL("DELETE FROM " + ALARM_TABLE_NAME + " WHERE _id = " + id);
     }

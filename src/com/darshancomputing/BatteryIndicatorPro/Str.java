@@ -40,6 +40,8 @@ public class Str {
     public String yes;
     public String cancel;
 
+    public String currently_set_to;
+
     public String inaccessible_storage;
     public String inaccessible_w_reason;
     public String read_only_storage;
@@ -84,6 +86,8 @@ public class Str {
         confirm_ten_percent_enable  = res.getString(R.string.confirm_ten_percent_enable);
         confirm_ten_percent_disable = res.getString(R.string.confirm_ten_percent_disable);
         confirm_ten_percent_hint    = res.getString(R.string.confirm_ten_percent_hint);
+
+        currently_set_to = res.getString(R.string.currently_set_to);
 
         inaccessible_storage  = res.getString(R.string.inaccessible_storage);
         inaccessible_w_reason = res.getString(R.string.inaccessible_w_reason);
