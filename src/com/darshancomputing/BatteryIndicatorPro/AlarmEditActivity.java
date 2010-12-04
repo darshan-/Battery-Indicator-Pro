@@ -36,8 +36,9 @@ public class AlarmEditActivity extends PreferenceActivity {
     private Cursor mCursor;
     private AlarmAdapter mAdapter;
 
-    public static final String KEY_ENABLED = "enabled";
-    public static final String KEY_TYPE = "type";
+    public static final String KEY_ENABLED   = "enabled";
+    public static final String KEY_TYPE      = "type";
+    public static final String KEY_THRESHOLD = "threshold";
 
     public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
 
@@ -110,10 +111,46 @@ public class AlarmEditActivity extends PreferenceActivity {
                 return false;
             }
         });
+
+        /*
+        ListPreference threshLP = (ListPreference) mPreferenceScreen.findPreference(KEY_THRESHOLD);
+        typeLP.setValue(str.alarm_type_values[mAdapter.type]);
+        updateSummary(typeLP);
+        typeLP.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            public boolean onPreferenceChange(Preference pref, Object newValue) {
+                mAdapter.setType((String) newValue);
+
+                ListPreference typeLP = (ListPreference) pref;
+                typeLP.setValue((String) newValue);
+                updateSummary(typeLP);
+
+                return false;
+            }
+        });
+        */
     }
 
     private void updateSummary(ListPreference lp) {
         lp.setSummary(str.currently_set_to + " " + lp.getEntry());
+    }
+
+    private void setUpThresholdList() {
+        ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_THRESHOLD);
+
+        switch (mAdapter.type) {
+        case 1:
+        case 2:
+            // Charge
+            lp.setEnabled(true);
+            break;
+        case 3:
+            lp.setEntries(str.temp_alarm_entries);
+            lp.setEntryValues(str.temp_alarm_values);
+            lp.setEnabled(true);
+            break;
+        default:
+            lp.setEnabled(false);
+        }
     }
 
     private class AlarmAdapter {
@@ -145,6 +182,11 @@ public class AlarmEditActivity extends PreferenceActivity {
         public void setType(String s) {
             type = indexOf(str.alarm_type_values, s);
             alarms.setType(id, type);
+        }
+
+        public void setThreshold(int i) {
+            threshold = i;
+            //alarms.setThreshold(id, threshold);
         }
 
         private int indexOf(String[] a, String key) {

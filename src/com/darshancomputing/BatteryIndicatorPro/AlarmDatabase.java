@@ -30,6 +30,12 @@ public class AlarmDatabase {
     public static final String KEY_THRESHOLD = "threshold";
     public static final String KEY_ENABLED   = "enabled";
 
+    /* I'm not sure if this is considered safe practice -- do I really need to use Cursor.getColumnIndexOrThrow()? */
+    public static final int INDEX_ID        = 0;
+    public static final int INDEX_TYPE      = 1;
+    public static final int INDEX_THRESHOLD = 2;
+    public static final int INDEX_ENABLED   = 3;
+
     private final SQLOpenHelper mSQLOpenHelper;
     private SQLiteDatabase rdb;
     private SQLiteDatabase wdb;
@@ -68,7 +74,7 @@ public class AlarmDatabase {
 
         Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE " + KEY_ID + "= last_insert_rowid()", null);
         c.moveToFirst();
-        int i = c.getInt(c.getColumnIndexOrThrow(KEY_ID));
+        int i = c.getInt(INDEX_ID);
         c.close();
 
         return i;
@@ -82,7 +88,7 @@ public class AlarmDatabase {
     public Boolean toggle(int id) {
         Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE " + KEY_ID + "=" + id, null);
         c.moveToFirst();
-        Boolean newEnabled = !(c.getInt(c.getColumnIndexOrThrow(KEY_ENABLED)) == 1);
+        Boolean newEnabled = !(c.getInt(INDEX_ENABLED) == 1);
         c.close();
 
         setEnabledness(id, newEnabled);

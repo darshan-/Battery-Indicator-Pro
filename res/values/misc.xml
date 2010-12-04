@@ -209,7 +209,7 @@
     <item>5880</item>
   </string-array>
 
-  <string-array name="temperature_alarm_entries">
+  <string-array name="temp_alarm_entries">
     <item>40°C / 104°F</item>
     <item>42°C / 108°F</item>
     <item>44°C / 111°F</item>
@@ -222,7 +222,7 @@
     <item>58°C / 136°F</item>
     <item>60°C / 140°F</item>
   </string-array>
-  <string-array name="temperature_alarm_values">
+  <string-array name="temp_alarm_values">
     <item>40</item>
     <item>42</item>
     <item>44</item>

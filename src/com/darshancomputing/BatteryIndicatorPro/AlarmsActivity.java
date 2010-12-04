@@ -33,7 +33,6 @@ import android.view.View.OnCreateContextMenuListener;
 import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -47,7 +46,6 @@ public class AlarmsActivity extends Activity {
     private Str str;
     private Cursor mCursor;
     private LayoutInflater mInflater;
-    private AlarmAdapter mAdapter;
     private LinearLayout mAlarmsList;
 
     private int curId; /* The alarm id for the View that was just long-pressed */
@@ -70,7 +68,6 @@ public class AlarmsActivity extends Activity {
         startManagingCursor(mCursor);
 
         mInflater = LayoutInflater.from(context);
-        mAdapter = new AlarmAdapter();
         mAlarmsList = (LinearLayout) findViewById(R.id.alarms_list);
         populateList();
         mCursor.registerDataSetObserver(new AlarmsObserver());
@@ -91,7 +88,7 @@ public class AlarmsActivity extends Activity {
         if (mCursor.moveToFirst()) {
             while (! mCursor.isAfterLast()) {
                 View v = mInflater.inflate(R.layout.alarm_item , mAlarmsList, false);
-                mAdapter.bindView(v);
+                bindView(v);
                 mAlarmsList.addView(v, mAlarmsList.getChildCount());
                 mCursor.moveToNext();
             }
@@ -162,99 +159,88 @@ public class AlarmsActivity extends Activity {
         }
     }
 
-    private class AlarmAdapter {
-        private int idIndex, typeIndex, thresholdIndex, enabledIndex;
+    private void bindView(View view) {
+        final  TextView summary_tv  = (TextView)       view.findViewById(R.id.alarm_summary);
+        final      View summary_box =                  view.findViewById(R.id.alarm_summary_box);
+        final      View indicator   =                  view.findViewById(R.id.indicator);
+        final ImageView barOnOff    = (ImageView) indicator.findViewById(R.id.bar_onoff);
 
-        public AlarmAdapter() {
-                   idIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_ID);
-                 typeIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_TYPE);
-            thresholdIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_THRESHOLD);
-              enabledIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_ENABLED);
+        final int    id = mCursor.getInt(AlarmDatabase.INDEX_ID);
+        int        type = mCursor.getInt(AlarmDatabase.INDEX_TYPE);
+        int   threshold = mCursor.getInt(AlarmDatabase.INDEX_THRESHOLD);
+        Boolean enabled = (mCursor.getInt(AlarmDatabase.INDEX_ENABLED) == 1);
+
+        String s = str.alarm_types_display[type];
+        if (str.alarm_type_values[type].equals("temp_rises")) {
+            s += " " + threshold + str.degree_symbol + "C";
+            // TODO: Convert to F if pref is to do so
         }
-
-        public void bindView(View view) {
-            final  TextView summary_tv  = (TextView)       view.findViewById(R.id.alarm_summary);
-            final      View summary_box =                  view.findViewById(R.id.alarm_summary_box);
-            final      View indicator   =                  view.findViewById(R.id.indicator);
-            final ImageView barOnOff    = (ImageView) indicator.findViewById(R.id.bar_onoff);
-
-            final int    id = mCursor.getInt(idIndex);
-            int        type = mCursor.getInt(typeIndex);
-            int   threshold = mCursor.getInt(thresholdIndex);
-            Boolean enabled = (mCursor.getInt(enabledIndex) == 1);
-
-            String s = str.alarm_types_display[type];
-            if (str.alarm_type_values[type].equals("temp_rises")) {
-                s += " " + threshold + str.degree_symbol + "C";
-                // TODO: Convert to F if pref is to do so
-            }
-            if (str.alarm_type_values[type].equals("charge_rises") ||
-                str.alarm_type_values[type].equals("charge_drops")) {
-                s += " " + threshold + "%";
-            }
-            final String summary = s;
-
-            barOnOff.setImageResource(enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
-            summary_tv.setText(summary);
-
-            indicator.setOnClickListener(new OnClickListener() {
-                public void onClick(View v) {
-                    barOnOff.setImageResource(alarms.toggle(id) ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
-                }
-            });
-
-            summary_box.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
-                public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-                    curId = id;
-                    curIndex = mAlarmsList.indexOfChild((View) v.getParent().getParent());
-
-                    if (curTrans != null) {
-                        curTrans.resetTransition();
-                        curTrans = null;
-                    }
-
-                    getMenuInflater().inflate(R.menu.alarm_item_context, menu);
-                    menu.setHeaderTitle(summary);
-                }
-            });
-
-            summary_box.setOnTouchListener(new OnTouchListener() {
-                public boolean onTouch(View v, android.view.MotionEvent m) {
-                    if (v.isPressed() && curTrans == null ) {
-                        curTrans = castToTransitionDrawable(v.getBackground().getCurrent());
-                        if (curTrans != null) curTrans.startTransition(350);
-                    } else if (! v.isPressed() && curTrans != null) {
-                        curTrans.resetTransition();
-                        curTrans = null;
-                    }
-
-                    return false;
-                }
-            });
-
-            summary_box.setOnKeyListener(new OnKeyListener() {
-                public boolean onKey(View v, int keyCode, android.view.KeyEvent event) {
-                    if (keyCode == event.KEYCODE_DPAD_CENTER && event.getAction() == event.ACTION_DOWN)
-                        v.setPressed(true);
-
-                    if (v.isPressed() && curTrans == null) {
-                        curTrans = castToTransitionDrawable(v.getBackground().getCurrent());
-                        if (curTrans != null) curTrans.startTransition(350);
-                    } else if (curTrans != null) {
-                        curTrans.resetTransition();
-                        curTrans = null;
-                    }
-
-                    return false;
-                }
-            });
-
-            summary_box.setOnClickListener(new OnClickListener() {
-                public void onClick(View v) {
-                    ComponentName comp = new ComponentName(getPackageName(), AlarmEditActivity.class.getName());
-                    startActivity(new Intent().setComponent(comp).putExtra(AlarmEditActivity.EXTRA_ALARM_ID, id));
-                }
-            });
+        if (str.alarm_type_values[type].equals("charge_rises") ||
+            str.alarm_type_values[type].equals("charge_drops")) {
+            s += " " + threshold + "%";
         }
+        final String summary = s;
+
+        barOnOff.setImageResource(enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
+        summary_tv.setText(summary);
+
+        indicator.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                barOnOff.setImageResource(alarms.toggle(id) ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
+            }
+        });
+
+        summary_box.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                curId = id;
+                curIndex = mAlarmsList.indexOfChild((View) v.getParent().getParent());
+
+                if (curTrans != null) {
+                    curTrans.resetTransition();
+                    curTrans = null;
+                }
+
+                getMenuInflater().inflate(R.menu.alarm_item_context, menu);
+                menu.setHeaderTitle(summary);
+            }
+        });
+
+        summary_box.setOnTouchListener(new OnTouchListener() {
+            public boolean onTouch(View v, android.view.MotionEvent m) {
+                if (v.isPressed() && curTrans == null ) {
+                    curTrans = castToTransitionDrawable(v.getBackground().getCurrent());
+                    if (curTrans != null) curTrans.startTransition(350);
+                } else if (! v.isPressed() && curTrans != null) {
+                    curTrans.resetTransition();
+                    curTrans = null;
+                }
+
+                return false;
+            }
+        });
+
+        summary_box.setOnKeyListener(new OnKeyListener() {
+            public boolean onKey(View v, int keyCode, android.view.KeyEvent event) {
+                if (keyCode == event.KEYCODE_DPAD_CENTER && event.getAction() == event.ACTION_DOWN)
+                    v.setPressed(true);
+
+                if (v.isPressed() && curTrans == null) {
+                    curTrans = castToTransitionDrawable(v.getBackground().getCurrent());
+                    if (curTrans != null) curTrans.startTransition(350);
+                } else if (curTrans != null) {
+                    curTrans.resetTransition();
+                    curTrans = null;
+                }
+
+                return false;
+            }
+        });
+
+        summary_box.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                ComponentName comp = new ComponentName(getPackageName(), AlarmEditActivity.class.getName());
+                startActivity(new Intent().setComponent(comp).putExtra(AlarmEditActivity.EXTRA_ALARM_ID, id));
+            }
+        });
     }
 }
