@@ -19,13 +19,14 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 
-public class AlarmEditActivity extends PreferenceActivity implements OnPreferenceChangeListener {
+public class AlarmEditActivity extends PreferenceActivity {
     private Resources res;
     private Context context;
     private Str str;
@@ -33,6 +34,8 @@ public class AlarmEditActivity extends PreferenceActivity implements OnPreferenc
     private AlarmDatabase alarms;
     private Cursor mCursor;
     private AlarmAdapter mAdapter;
+
+    public static final String KEY_ENABLED = "enabled";
 
     public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
 
@@ -48,12 +51,12 @@ public class AlarmEditActivity extends PreferenceActivity implements OnPreferenc
         mCursor = alarms.getAlarm(getIntent().getIntExtra(EXTRA_ALARM_ID, -1));
         mAdapter = new AlarmAdapter();
 
-        System.out.println("........................ id=" + mAdapter.id + " enabled=" + mAdapter.enabled);
+        setWindowSubtitle(res.getString(R.string.alarm_settings_subtitle));
 
         addPreferencesFromResource(R.xml.alarm_pref_screen);
-
         mPreferenceScreen = getPreferenceScreen();
-        setOnPreferenceChangeListeners(mPreferenceScreen);
+
+        syncValuesAndSetListeners();
     }
 
     @Override
@@ -81,19 +84,15 @@ public class AlarmEditActivity extends PreferenceActivity implements OnPreferenc
         setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
     }
 
-    private void setOnPreferenceChangeListeners(Preference p) {
-        if (p instanceof PreferenceGroup) {
-            PreferenceGroup pg = (PreferenceGroup) p;
-
-            for (int i=0, count = pg.getPreferenceCount(); i < count; i++)
-                setOnPreferenceChangeListeners(pg.getPreference(i));
-        } else {
-            p.setOnPreferenceChangeListener(this);
-        }
-    }
-
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        return true;
+    private void syncValuesAndSetListeners() {
+        CheckBoxPreference enabledCB = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_ENABLED);
+        enabledCB.setChecked(mAdapter.enabled);
+        enabledCB.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                alarms.setEnabledness(mAdapter.id, (Boolean) newValue);
+                return true;
+            }
+        });
     }
 
     private class AlarmAdapter {

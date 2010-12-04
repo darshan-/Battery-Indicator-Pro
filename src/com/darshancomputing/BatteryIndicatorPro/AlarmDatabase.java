@@ -74,14 +74,18 @@ public class AlarmDatabase {
         return i;
     }
 
+    public void setEnabledness(int id, Boolean enabled) {
+        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_ENABLED + "=" +
+                    (enabled ? 1 : 0) + " WHERE " + KEY_ID + "=" + id);
+    }
+
     public Boolean toggle(int id) {
         Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE " + KEY_ID + "=" + id, null);
         c.moveToFirst();
         Boolean newEnabled = !(c.getInt(c.getColumnIndexOrThrow(KEY_ENABLED)) == 1);
         c.close();
 
-        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_ENABLED + "=" +
-                    (newEnabled ? 1 : 0) + " WHERE " + KEY_ID + "=" + id);
+        setEnabledness(id, newEnabled);
 
         return newEnabled;
     }

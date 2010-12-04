@@ -379,6 +379,7 @@
     time remaining for USB/AC charging and light/normal/heavy/constant
     usage, and adjust the basis for these estimates.
   </string>
+  <string name="alarm_settings_subtitle">Alarm Settings</string>
   <string name="alarm_settings">Alarms</string>
   <string name="alarm_settings_summary">Control notifications for low/full battery</string>
   <string name="alarm_settings_help">
