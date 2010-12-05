@@ -64,13 +64,13 @@ public class AlarmDatabase {
         return c;
     }
 
-    public void addAlarm(int type, int threshold, Boolean enabled) {
-        wdb.execSQL("INSERT INTO " + ALARM_TABLE_NAME + " VALUES (NULL, "
-                    + type + " ," + threshold + " ," + (enabled ? 1 : 0) + ")");
+    public void addAlarm(String type, String threshold, Boolean enabled) {
+        wdb.execSQL("INSERT INTO " + ALARM_TABLE_NAME + " VALUES (NULL, '"
+                    + type + "' ,'" + threshold + "' ," + (enabled ? 1 : 0) + ")");
     }
 
     public int addAlarm() {
-        addAlarm(0, 0, true);
+        addAlarm("fully_charged", "", true);
 
         Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE " + KEY_ID + "= last_insert_rowid()", null);
         c.moveToFirst();
@@ -96,16 +96,21 @@ public class AlarmDatabase {
         return newEnabled;
     }
 
-    public void setType(int id, int type) {
-        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_TYPE + "=" +
-                    type + " WHERE " + KEY_ID + "=" + id);
+    public void setType(int id, String type) {
+        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_TYPE + "='" +
+                    type + "' WHERE " + KEY_ID + "=" + id);
+    }
+
+    public void setThreshold(int id, String threshold) {
+        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_THRESHOLD + "='" +
+                    threshold + "' WHERE " + KEY_ID + "=" + id);
     }
 
     public void deleteAlarm(int id) {
         wdb.execSQL("DELETE FROM " + ALARM_TABLE_NAME + " WHERE _id = " + id);
     }
 
-    public void clearAllAlarms() {
+    public void deleteAllAlarms() {
         mSQLOpenHelper.reset();
     }
 
@@ -118,8 +123,8 @@ public class AlarmDatabase {
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE " + ALARM_TABLE_NAME + " ("
                        + KEY_ID        + " INTEGER PRIMARY KEY,"
-                       + KEY_TYPE      + " INTEGER,"
-                       + KEY_THRESHOLD + " INTEGER,"
+                       + KEY_TYPE      + " STRING,"
+                       + KEY_THRESHOLD + " STRING,"
                        + KEY_ENABLED   + " INTEGER"
                        + ");");
         }

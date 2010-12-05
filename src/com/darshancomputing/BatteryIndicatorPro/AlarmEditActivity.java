@@ -42,6 +42,10 @@ public class AlarmEditActivity extends PreferenceActivity {
 
     public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
 
+    private static final String[] fivePercents = {
+        "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
+        "55", "60", "65", "70", "75", "80", "85", "90", "95"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,63 +102,86 @@ public class AlarmEditActivity extends PreferenceActivity {
         });
 
         ListPreference typeLP = (ListPreference) mPreferenceScreen.findPreference(KEY_TYPE);
-        typeLP.setValue(str.alarm_type_values[mAdapter.type]);
+        typeLP.setValue(mAdapter.type);
         updateSummary(typeLP);
         typeLP.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference pref, Object newValue) {
+                if (mAdapter.type.equals((String) newValue)) return false;
+
                 mAdapter.setType((String) newValue);
 
                 ListPreference typeLP = (ListPreference) pref;
                 typeLP.setValue((String) newValue);
                 updateSummary(typeLP);
 
+                setUpThresholdList(true);
+
                 return false;
             }
         });
 
-        /*
         ListPreference threshLP = (ListPreference) mPreferenceScreen.findPreference(KEY_THRESHOLD);
-        typeLP.setValue(str.alarm_type_values[mAdapter.type]);
-        updateSummary(typeLP);
-        typeLP.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+        setUpThresholdList(false);
+        threshLP.setValue(mAdapter.threshold);
+        updateSummary(threshLP);
+        threshLP.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference pref, Object newValue) {
-                mAdapter.setType((String) newValue);
+                if (mAdapter.threshold.equals((String) newValue)) return false;
 
-                ListPreference typeLP = (ListPreference) pref;
-                typeLP.setValue((String) newValue);
-                updateSummary(typeLP);
+                mAdapter.setThreshold((String) newValue);
+
+                ListPreference threshLP = (ListPreference) pref;
+                threshLP.setValue((String) newValue);
+                updateSummary(threshLP);
 
                 return false;
             }
         });
-        */
     }
 
     private void updateSummary(ListPreference lp) {
-        lp.setSummary(str.currently_set_to + " " + lp.getEntry());
+        if (lp.isEnabled())
+            lp.setSummary(str.currently_set_to + " " + lp.getEntry());
+        else
+            lp.setSummary(str.threshold_not_used);
     }
 
-    private void setUpThresholdList() {
+    private void setUpThresholdList(Boolean resetValue) {
         ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_THRESHOLD);
 
-        switch (mAdapter.type) {
-        case 1:
-        case 2:
-            // Charge
-            lp.setEnabled(true);
-            break;
-        case 3:
+        if (mAdapter.type.equals("temp_rises")) {
             lp.setEntries(str.temp_alarm_entries);
             lp.setEntryValues(str.temp_alarm_values);
             lp.setEnabled(true);
-            break;
-        default:
+
+            //if (str.indexOf(str.temp_alarm_values, mAdapter.threshold) == -1) {
+            if (resetValue) {
+                mAdapter.setThreshold(str.temp_alarm_values[3]);
+                lp.setValue(mAdapter.threshold);
+            }
+        } else if (mAdapter.type.equals("charge_drops") || mAdapter.type.equals("charge_rises")) {
+            lp.setEntries(fivePercents);
+            lp.setEntryValues(fivePercents);
+            lp.setEnabled(true);
+
+            if (resetValue) {
+                if (mAdapter.type.equals("charge_drops"))
+                    mAdapter.setThreshold("20");
+                else
+                    mAdapter.setThreshold("90");
+                        
+                lp.setValue(mAdapter.threshold);
+            }
+        } else {
             lp.setEnabled(false);
         }
+
+        updateSummary(lp);
     }
 
     private class AlarmAdapter {
-        public int id, type, threshold;
+        public int id;
+        public String type, threshold;
         public Boolean enabled;
 
         public AlarmAdapter() {
@@ -162,9 +189,9 @@ public class AlarmEditActivity extends PreferenceActivity {
         }
 
         public void requery() {
-                   id = mCursor.getInt(AlarmDatabase.INDEX_ID);
-                 type = mCursor.getInt(AlarmDatabase.INDEX_TYPE);
-            threshold = mCursor.getInt(AlarmDatabase.INDEX_THRESHOLD);
+                   id = mCursor.getInt   (AlarmDatabase.INDEX_ID);
+                 type = mCursor.getString(AlarmDatabase.INDEX_TYPE);
+            threshold = mCursor.getString(AlarmDatabase.INDEX_THRESHOLD);
               enabled = (mCursor.getInt(AlarmDatabase.INDEX_ENABLED) == 1);
         }
 
@@ -174,20 +201,13 @@ public class AlarmEditActivity extends PreferenceActivity {
         }
 
         public void setType(String s) {
-            type = indexOf(str.alarm_type_values, s);
+            type = s;
             alarms.setType(id, type);
         }
 
-        public void setThreshold(int i) {
-            threshold = i;
-            //alarms.setThreshold(id, threshold);
-        }
-
-        private int indexOf(String[] a, String key) {
-            for (int i=0, size=a.length; i < size; i++)
-                if (key.equals(a[i])) return i;
-
-            return -1;
+        public void setThreshold(String s) {
+            threshold = s;
+            alarms.setThreshold(id, threshold);
         }
     }
 }

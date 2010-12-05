@@ -41,6 +41,7 @@ public class Str {
     public String cancel;
 
     public String currently_set_to;
+    public String threshold_not_used;
 
     public String inaccessible_storage;
     public String inaccessible_w_reason;
@@ -89,7 +90,8 @@ public class Str {
         confirm_ten_percent_disable = res.getString(R.string.confirm_ten_percent_disable);
         confirm_ten_percent_hint    = res.getString(R.string.confirm_ten_percent_hint);
 
-        currently_set_to = res.getString(R.string.currently_set_to);
+        currently_set_to   = res.getString(R.string.currently_set_to);
+        threshold_not_used = res.getString(R.string.threshold_not_used);
 
         inaccessible_storage  = res.getString(R.string.inaccessible_storage);
         inaccessible_w_reason = res.getString(R.string.inaccessible_w_reason);
@@ -134,5 +136,12 @@ public class Str {
 
     public String formatVoltage(int voltage) {
         return String.valueOf(voltage / 1000.0) + volt_symbol;
+    }
+
+    public static int indexOf(String[] a, String key) {
+        for (int i=0, size=a.length; i < size; i++)
+            if (key.equals(a[i])) return i;
+
+        return -1;
     }
 }

@@ -64,6 +64,7 @@ public class AlarmsActivity extends Activity {
         setWindowSubtitle(res.getString(R.string.alarm_settings));
 
         alarms = new AlarmDatabase(context);
+        //alarms.deleteAllAlarms();
         mCursor = alarms.getAllAlarms(true);
         startManagingCursor(mCursor);
 
@@ -165,18 +166,16 @@ public class AlarmsActivity extends Activity {
         final      View indicator   =                  view.findViewById(R.id.indicator);
         final ImageView barOnOff    = (ImageView) indicator.findViewById(R.id.bar_onoff);
 
-        final int    id = mCursor.getInt(AlarmDatabase.INDEX_ID);
-        int        type = mCursor.getInt(AlarmDatabase.INDEX_TYPE);
-        int   threshold = mCursor.getInt(AlarmDatabase.INDEX_THRESHOLD);
-        Boolean enabled = (mCursor.getInt(AlarmDatabase.INDEX_ENABLED) == 1);
+        final int    id  = mCursor.getInt   (AlarmDatabase.INDEX_ID);
+        String     type  = mCursor.getString(AlarmDatabase.INDEX_TYPE);
+        String threshold = mCursor.getString(AlarmDatabase.INDEX_THRESHOLD);
+        Boolean enabled  = (mCursor.getInt(AlarmDatabase.INDEX_ENABLED) == 1);
 
-        String s = str.alarm_types_display[type];
-        if (str.alarm_type_values[type].equals("temp_rises")) {
+        String s = str.alarm_types_display[str.indexOf(str.alarm_type_values, type)];
+        if (type.equals("temp_rises")) {
             s += " " + threshold + str.degree_symbol + "C";
             // TODO: Convert to F if pref is to do so
-        }
-        if (str.alarm_type_values[type].equals("charge_rises") ||
-            str.alarm_type_values[type].equals("charge_drops")) {
+        } else if (type.equals("charge_drops") || type.equals("charge_rises")) {
             s += " " + threshold + "%";
         }
         final String summary = s;
