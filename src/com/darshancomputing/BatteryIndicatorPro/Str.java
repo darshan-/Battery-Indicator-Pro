@@ -125,13 +125,26 @@ public class Str {
         return String.format(res.getQuantityString(R.plurals.n_log_items, n), n);
     }
 
-    public String formatTemp(int temperature, boolean convertF) {
+    /* temperature is the integer number of tenths of degrees Celcius, as returned by BatteryManager */
+    public String formatTemp(int temperature, boolean convertF, boolean includeTenths) {
+        double d;
+        String s;
+
         if (convertF){
-            return String.valueOf((java.lang.Math.round(temperature * 9 / 5.0) / 10.0) + 32.0) +
-                degree_symbol + fahrenheit_symbol;
+            d = java.lang.Math.round(temperature * 9 / 5.0) / 10.0 + 32.0;
+            s = degree_symbol + fahrenheit_symbol;
         } else {
-            return String.valueOf(temperature / 10.0) + degree_symbol + celsius_symbol;
+            d = temperature / 10.0;
+            s = degree_symbol + celsius_symbol;
         }
+
+        // Weird: the ternary operator seems to compile down to a "function" that has to return a single particular type
+        //return "" + (includeTenths ? d : java.lang.Math.round(d)) + s;
+        return (includeTenths ? String.valueOf(d) : String.valueOf(java.lang.Math.round(d))) + s;
+    }
+
+    public String formatTemp(int temperature, boolean convertF) {
+        return formatTemp(temperature, convertF, true);
     }
 
     public String formatVoltage(int voltage) {

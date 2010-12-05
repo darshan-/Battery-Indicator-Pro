@@ -173,8 +173,9 @@ public class AlarmsActivity extends Activity {
 
         String s = str.alarm_types_display[str.indexOf(str.alarm_type_values, type)];
         if (type.equals("temp_rises")) {
-            s += " " + threshold + str.degree_symbol + "C";
-            // TODO: Convert to F if pref is to do so
+            Boolean convertF = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+                .getBoolean(SettingsActivity.KEY_CONVERT_F, false);
+            s += " " + str.formatTemp(Integer.valueOf(threshold) * 10, convertF, false);
         } else if (type.equals("charge_drops") || type.equals("charge_rises")) {
             s += " " + threshold + "%";
         }
