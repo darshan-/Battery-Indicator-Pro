@@ -156,22 +156,16 @@ public class AlarmEditActivity extends PreferenceActivity {
     private class AlarmAdapter {
         public int id, type, threshold;
         public Boolean enabled;
-        private int idIndex, typeIndex, thresholdIndex, enabledIndex;
 
         public AlarmAdapter() {
-                   idIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_ID);
-                 typeIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_TYPE);
-            thresholdIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_THRESHOLD);
-              enabledIndex = mCursor.getColumnIndexOrThrow(AlarmDatabase.KEY_ENABLED);
-
             requery();
         }
 
         public void requery() {
-                   id = mCursor.getInt(idIndex);
-                 type = mCursor.getInt(typeIndex);
-            threshold = mCursor.getInt(thresholdIndex);
-              enabled = (mCursor.getInt(enabledIndex) == 1);
+                   id = mCursor.getInt(AlarmDatabase.INDEX_ID);
+                 type = mCursor.getInt(AlarmDatabase.INDEX_TYPE);
+            threshold = mCursor.getInt(AlarmDatabase.INDEX_THRESHOLD);
+              enabled = (mCursor.getInt(AlarmDatabase.INDEX_ENABLED) == 1);
         }
 
         public void setEnabledness(Boolean b) {

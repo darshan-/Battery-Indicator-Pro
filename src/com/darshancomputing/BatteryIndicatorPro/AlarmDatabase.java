@@ -30,7 +30,7 @@ public class AlarmDatabase {
     public static final String KEY_THRESHOLD = "threshold";
     public static final String KEY_ENABLED   = "enabled";
 
-    /* I'm not sure if this is considered safe practice -- do I really need to use Cursor.getColumnIndexOrThrow()? */
+    /* Is this a safe practice, or do I need to use Cursor.getColumnIndexOrThrow()? */
     public static final int INDEX_ID        = 0;
     public static final int INDEX_TYPE      = 1;
     public static final int INDEX_THRESHOLD = 2;
