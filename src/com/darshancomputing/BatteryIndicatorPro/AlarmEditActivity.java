@@ -42,7 +42,10 @@ public class AlarmEditActivity extends PreferenceActivity {
 
     public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
 
-    private static final String[] fivePercents = {
+    private static final String[] chargeEntries = {
+        "5%", "10%", "15%", "20%", "25%", "30%", "35%", "40%", "45%", "50%",
+        "55%", "60%", "65%", "70%", "75%", "80%", "85%", "90%", "95%"};
+    private static final String[] chargeValues = {
         "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
         "55", "60", "65", "70", "75", "80", "85", "90", "95"};
 
@@ -143,7 +146,7 @@ public class AlarmEditActivity extends PreferenceActivity {
         if (lp.isEnabled())
             lp.setSummary(str.currently_set_to + " " + lp.getEntry());
         else
-            lp.setSummary(str.threshold_not_used);
+            lp.setSummary(str.alarm_pref_not_used);
     }
 
     private void setUpThresholdList(Boolean resetValue) {
@@ -160,8 +163,8 @@ public class AlarmEditActivity extends PreferenceActivity {
                 lp.setValue(mAdapter.threshold);
             }
         } else if (mAdapter.type.equals("charge_drops") || mAdapter.type.equals("charge_rises")) {
-            lp.setEntries(fivePercents);
-            lp.setEntryValues(fivePercents);
+            lp.setEntries(chargeEntries);
+            lp.setEntryValues(chargeValues);
             lp.setEnabled(true);
 
             if (resetValue) {

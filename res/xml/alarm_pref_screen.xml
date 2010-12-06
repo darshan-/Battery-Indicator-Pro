@@ -30,9 +30,8 @@
     <ListPreference
         android:key="threshold"
         android:persistent="false"
+        android:dialogTitle="@string/pref_alarm_threshold_summary"
         android:title="@string/pref_alarm_threshold"
-        android:summary="@string/pref_alarm_threshold_summary"
-        android:enabled="false"
     />
   </PreferenceCategory>
 

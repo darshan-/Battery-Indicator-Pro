@@ -41,7 +41,7 @@ public class Str {
     public String cancel;
 
     public String currently_set_to;
-    public String threshold_not_used;
+    public String alarm_pref_not_used;
 
     public String inaccessible_storage;
     public String inaccessible_w_reason;
@@ -90,8 +90,8 @@ public class Str {
         confirm_ten_percent_disable = res.getString(R.string.confirm_ten_percent_disable);
         confirm_ten_percent_hint    = res.getString(R.string.confirm_ten_percent_hint);
 
-        currently_set_to   = res.getString(R.string.currently_set_to);
-        threshold_not_used = res.getString(R.string.threshold_not_used);
+        currently_set_to    = res.getString(R.string.currently_set_to);
+        alarm_pref_not_used = res.getString(R.string.alarm_pref_not_used);
 
         inaccessible_storage  = res.getString(R.string.inaccessible_storage);
         inaccessible_w_reason = res.getString(R.string.inaccessible_w_reason);
