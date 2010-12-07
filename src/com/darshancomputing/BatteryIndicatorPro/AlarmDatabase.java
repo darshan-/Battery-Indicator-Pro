@@ -64,6 +64,38 @@ public class AlarmDatabase {
         return c;
     }
 
+    public Boolean anyActiveAlarms() {
+        return true;
+    }
+
+    public Cursor activeAlarmFull() {
+        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE + "='fully_charged' AND ENABLED=1 LIMIT 1", null);
+
+        if (c.getCount() == 0) {
+            c.close();
+            return null;
+        }
+
+        c.moveToFirst();
+        return c;
+    }
+
+    public Cursor activeAlarmFailure() {
+        return null;
+    }
+
+    public Cursor activeAlarmsChargeDrops() {
+        return null;
+    }
+
+    public Cursor activeAlarmsChargeRises() {
+        return null;
+    }
+
+    public Cursor activeAlarmsTempRises() {
+        return null;
+    }
+
     public void addAlarm(String type, String threshold, Boolean enabled) {
         wdb.execSQL("INSERT INTO " + ALARM_TABLE_NAME + " VALUES (NULL, '"
                     + type + "' ,'" + threshold + "' ," + (enabled ? 1 : 0) + ")");

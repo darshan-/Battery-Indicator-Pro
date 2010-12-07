@@ -48,18 +48,25 @@ public class BatteryIndicatorService extends Service {
 
     private Resources res;
     private Str str;
+    private AlarmDatabase alarms;
+
+    private static final int NOTIFICATION_PRIMARY = 1;
+    private static final int NOTIFICATION_ALARM   = 2;
 
     @Override
     public void onCreate() {
         res = getResources();
         str = new Str(res);
+        Context context = getApplicationContext();
+
+        alarms = new AlarmDatabase(context);
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
-        settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        settings = PreferenceManager.getDefaultSharedPreferences(context);
 
-        notificationIntent = new Intent(getApplicationContext(), BatteryIndicator.class);
+        notificationIntent = new Intent(context, BatteryIndicator.class);
 
         km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         kl = km.newKeyguardLock(getPackageName());
@@ -233,7 +240,14 @@ public class BatteryIndicatorService extends Service {
 
             notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
 
-            mNotificationManager.notify(1, notification);
+            mNotificationManager.notify(NOTIFICATION_PRIMARY, notification);
+
+            if (alarms.activeAlarmFull() != null) {
+                notification = new Notification(icon, null, System.currentTimeMillis());
+                notification.defaults |= Notification.DEFAULT_ALL;
+                notification.setLatestEventInfo(context, "Alarm Title", "Alarm text", contentIntent);
+                mNotificationManager.notify(NOTIFICATION_ALARM, notification);
+            }
         }
     };
 
