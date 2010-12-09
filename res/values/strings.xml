@@ -766,6 +766,20 @@
   <string name="pref_alarm_threshold_summary">Alarm threshold:</string>
   <string name="pref_alarm_threshold_help"></string>
 
+  <string name="pref_cat_notification_settings">Notification Settings</string>
+  <string name="pref_cat_notification_settings_help">This is where you
+  control aspects of the alarm notification.
+  </string>
+  <string name="pref_alarm_vibrate">Vibrate</string>
+  <string name="pref_alarm_vibrate_summary"></string>
+  <string name="pref_alarm_vibrate_help">
+    If all goes well, setting this option will make the device vibrate
+    when the alarm is triggered, unless the device is in Silent Mode,
+    unless you have the device set up to vibrate even in Silent Mode.
+    In other words, it should do what you expect.  Please email me if
+    something goes astray.
+  </string>
+
   <string-array name="mw_theme_pref_entries">
     <item>Default Small</item>
     <item>Colorful Small</item>

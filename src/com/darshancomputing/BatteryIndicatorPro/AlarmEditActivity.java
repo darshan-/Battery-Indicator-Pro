@@ -39,6 +39,7 @@ public class AlarmEditActivity extends PreferenceActivity {
     public static final String KEY_ENABLED   = "enabled";
     public static final String KEY_TYPE      = "type";
     public static final String KEY_THRESHOLD = "threshold";
+    public static final String KEY_VIBRATE   = "vibrate";
 
     public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
 
@@ -140,6 +141,15 @@ public class AlarmEditActivity extends PreferenceActivity {
                 return false;
             }
         });
+
+        CheckBoxPreference vibrateCB = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_VIBRATE);
+        vibrateCB.setChecked(mAdapter.vibrate);
+        vibrateCB.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            public boolean onPreferenceChange(Preference pref, Object newValue) {
+                mAdapter.setVibrate((Boolean) newValue);
+                return true;
+            }
+        });
     }
 
     private void updateSummary(ListPreference lp) {
@@ -186,6 +196,7 @@ public class AlarmEditActivity extends PreferenceActivity {
         public int id;
         public String type, threshold;
         public Boolean enabled;
+        public Boolean vibrate;
 
         public AlarmAdapter() {
             requery();
@@ -196,11 +207,17 @@ public class AlarmEditActivity extends PreferenceActivity {
                  type = mCursor.getString(AlarmDatabase.INDEX_TYPE);
             threshold = mCursor.getString(AlarmDatabase.INDEX_THRESHOLD);
               enabled = (mCursor.getInt(AlarmDatabase.INDEX_ENABLED) == 1);
+              vibrate = (mCursor.getInt(AlarmDatabase.INDEX_VIBRATE) == 1);
         }
 
         public void setEnabledness(Boolean b) {
             enabled = b;
             alarms.setEnabledness(id, enabled);
+        }
+
+        public void setVibrate(Boolean b) {
+            vibrate = b;
+            alarms.setVibrate(id, vibrate);
         }
 
         public void setType(String s) {

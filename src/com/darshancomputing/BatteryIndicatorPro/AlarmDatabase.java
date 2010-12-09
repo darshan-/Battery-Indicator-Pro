@@ -22,19 +22,21 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AlarmDatabase {
     private static final String DATABASE_NAME    = "alarms.db";
-    private static final int    DATABASE_VERSION = 1;
+    private static final int    DATABASE_VERSION = 2;
     private static final String ALARM_TABLE_NAME = "alarms";
 
     public static final String KEY_ID        = "_id";
     public static final String KEY_TYPE      = "type";
     public static final String KEY_THRESHOLD = "threshold";
     public static final String KEY_ENABLED   = "enabled";
+    public static final String KEY_VIBRATE   = "vibrate";
 
     /* Is this a safe practice, or do I need to use Cursor.getColumnIndexOrThrow()? */
     public static final int INDEX_ID        = 0;
     public static final int INDEX_TYPE      = 1;
     public static final int INDEX_THRESHOLD = 2;
     public static final int INDEX_ENABLED   = 3;
+    public static final int INDEX_VIBRATE   = 4;
 
     private final SQLOpenHelper mSQLOpenHelper;
     private SQLiteDatabase rdb;
@@ -96,13 +98,13 @@ public class AlarmDatabase {
         return null;
     }
 
-    public void addAlarm(String type, String threshold, Boolean enabled) {
+    public void addAlarm(String type, String threshold, Boolean enabled, Boolean vibrate) {
         wdb.execSQL("INSERT INTO " + ALARM_TABLE_NAME + " VALUES (NULL, '"
-                    + type + "' ,'" + threshold + "' ," + (enabled ? 1 : 0) + ")");
+                    + type + "' ,'" + threshold + "' ," + (enabled ? 1 : 0) + " ," + (vibrate ? 1 : 0) + ")");
     }
 
     public int addAlarm() {
-        addAlarm("fully_charged", "", true);
+        addAlarm("fully_charged", "", true, false);
 
         Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE " + KEY_ID + "= last_insert_rowid()", null);
         c.moveToFirst();
@@ -115,6 +117,11 @@ public class AlarmDatabase {
     public void setEnabledness(int id, Boolean enabled) {
         wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_ENABLED + "=" +
                     (enabled ? 1 : 0) + " WHERE " + KEY_ID + "=" + id);
+    }
+
+    public void setVibrate(int id, Boolean vibrate) {
+        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_VIBRATE + "=" +
+                    (vibrate ? 1 : 0) + " WHERE " + KEY_ID + "=" + id);
     }
 
     public Boolean toggle(int id) {
@@ -157,7 +164,8 @@ public class AlarmDatabase {
                        + KEY_ID        + " INTEGER PRIMARY KEY,"
                        + KEY_TYPE      + " STRING,"
                        + KEY_THRESHOLD + " STRING,"
-                       + KEY_ENABLED   + " INTEGER"
+                       + KEY_ENABLED   + " INTEGER,"
+                       + KEY_VIBRATE   + " INTEGER"
                        + ");");
         }
 

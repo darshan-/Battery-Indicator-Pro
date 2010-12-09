@@ -17,6 +17,7 @@
       android:persistent="false"
       android:title="@string/pref_alarm_enabled"
   />
+
   <PreferenceCategory android:title="@string/pref_cat_alarm_conditions">
     <ListPreference
         android:key="type"
@@ -34,5 +35,14 @@
         android:title="@string/pref_alarm_threshold"
     />
   </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/pref_cat_notification_settings">
+    <CheckBoxPreference
+        android:key="vibrate"
+        android:persistent="false"
+        android:title="@string/pref_alarm_vibrate"
+    />
+  </PreferenceCategory>
+
 
 </PreferenceScreen>

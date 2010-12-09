@@ -27,6 +27,7 @@ import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.database.Cursor;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
@@ -43,6 +44,8 @@ public class BatteryIndicatorService extends Service {
     private SharedPreferences settings;
     private KeyguardLock kl;
     private KeyguardManager km;
+    private android.os.Vibrator mVibrator;
+    private android.media.AudioManager mAudioManager;
 
     private Boolean keyguardDisabled = false;
 
@@ -62,6 +65,8 @@ public class BatteryIndicatorService extends Service {
         alarms = new AlarmDatabase(context);
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mVibrator = (android.os.Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        mAudioManager = (android.media.AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
         settings = PreferenceManager.getDefaultSharedPreferences(context);
@@ -242,14 +247,27 @@ public class BatteryIndicatorService extends Service {
 
             mNotificationManager.notify(NOTIFICATION_PRIMARY, notification);
 
-            if (alarms.activeAlarmFull() != null) {
-                notification = new Notification(icon, null, System.currentTimeMillis());
-                notification.defaults |= Notification.DEFAULT_ALL;
+            Cursor c = alarms.activeAlarmFull();
+            if (c != null) {
+                notification = parseAlarmCursor(c);
                 notification.setLatestEventInfo(context, "Alarm Title", "Alarm text", contentIntent);
                 mNotificationManager.notify(NOTIFICATION_ALARM, notification);
             }
         }
     };
+
+    private Notification parseAlarmCursor(Cursor c) {
+        Notification notification = new Notification(R.drawable.stat_notify_alarm, null, System.currentTimeMillis());
+        notification.flags    |= Notification.FLAG_SHOW_LIGHTS | Notification.FLAG_AUTO_CANCEL;
+        notification.defaults |= Notification.DEFAULT_SOUND | Notification.DEFAULT_LIGHTS;
+
+        if (c.getInt(alarms.INDEX_VIBRATE) == 1)
+            if (mAudioManager.getRingerMode() != mAudioManager.RINGER_MODE_SILENT)
+                /* I couldn't get the Notification to vibrate, so I do it myself... */
+                mVibrator.vibrate(new long[] {0, 200, 200, 400}, -1);
+
+        return notification;
+    }
 
     private String formatTime(Date d) {
         String format = android.provider.Settings.System.getString(getContentResolver(),
