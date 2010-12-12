@@ -190,7 +190,7 @@
   <string name="one_six_needed">Sorry, Android 1.6+ needed!</string>
 
   <string name="currently_using">Currently using</string>
-  <string name="currently_set_to">Currently set to:</string>
+  <string name="currently_set_to">"Currently set to: "</string>
   <string name="currently_disabled">Currently Disabled</string>
 
   <string name="help_cat_version">Version</string>
@@ -779,6 +779,14 @@
     In other words, it should do what you expect.  Please email me if
     something goes astray.
   </string>
+  <string name="pref_alarm_ringtone">Ringtone</string>
+  <string name="pref_alarm_ringtone_summary"></string>
+  <string name="pref_alarm_ringtone_help">
+    Here you can control which sound to play when the alarm is
+    triggered.  Select \'Silent\' if you don\'t want a sound to be
+    played.
+  </string>
+  <string name="silent">Silent</string>
 
   <string-array name="mw_theme_pref_entries">
     <item>Default Small</item>

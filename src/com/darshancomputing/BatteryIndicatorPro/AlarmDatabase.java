@@ -22,7 +22,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AlarmDatabase {
     private static final String DATABASE_NAME    = "alarms.db";
-    private static final int    DATABASE_VERSION = 2;
+    private static final int    DATABASE_VERSION = 3;
     private static final String ALARM_TABLE_NAME = "alarms";
 
     public static final String KEY_ID        = "_id";
@@ -30,6 +30,7 @@ public class AlarmDatabase {
     public static final String KEY_THRESHOLD = "threshold";
     public static final String KEY_ENABLED   = "enabled";
     public static final String KEY_VIBRATE   = "vibrate";
+    public static final String KEY_RINGTONE  = "ringtone";
 
     /* Is this a safe practice, or do I need to use Cursor.getColumnIndexOrThrow()? */
     public static final int INDEX_ID        = 0;
@@ -37,6 +38,7 @@ public class AlarmDatabase {
     public static final int INDEX_THRESHOLD = 2;
     public static final int INDEX_ENABLED   = 3;
     public static final int INDEX_VIBRATE   = 4;
+    public static final int INDEX_RINGTONE  = 5;
 
     private final SQLOpenHelper mSQLOpenHelper;
     private SQLiteDatabase rdb;
@@ -98,13 +100,13 @@ public class AlarmDatabase {
         return null;
     }
 
-    public void addAlarm(String type, String threshold, Boolean enabled, Boolean vibrate) {
+    public void addAlarm(String type, String threshold, Boolean enabled, Boolean vibrate, String ringtone) {
         wdb.execSQL("INSERT INTO " + ALARM_TABLE_NAME + " VALUES (NULL, '"
-                    + type + "' ,'" + threshold + "' ," + (enabled ? 1 : 0) + " ," + (vibrate ? 1 : 0) + ")");
+                    + type + "' ,'" + threshold + "' ," + (enabled ? 1 : 0) + " ," + (vibrate ? 1 : 0) + " ,'" + ringtone + "')");
     }
 
     public int addAlarm() {
-        addAlarm("fully_charged", "", true, false);
+        addAlarm("fully_charged", "", true, false, android.provider.Settings.System.DEFAULT_NOTIFICATION_URI.toString());
 
         Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE " + KEY_ID + "= last_insert_rowid()", null);
         c.moveToFirst();
@@ -145,6 +147,11 @@ public class AlarmDatabase {
                     threshold + "' WHERE " + KEY_ID + "=" + id);
     }
 
+    public void setRingtone(int id, String ringtone) {
+        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_RINGTONE + "='" +
+                    ringtone + "' WHERE " + KEY_ID + "=" + id);
+    }
+
     public void deleteAlarm(int id) {
         wdb.execSQL("DELETE FROM " + ALARM_TABLE_NAME + " WHERE _id = " + id);
     }
@@ -165,7 +172,8 @@ public class AlarmDatabase {
                        + KEY_TYPE      + " STRING,"
                        + KEY_THRESHOLD + " STRING,"
                        + KEY_ENABLED   + " INTEGER,"
-                       + KEY_VIBRATE   + " INTEGER"
+                       + KEY_VIBRATE   + " INTEGER,"
+                       + KEY_RINGTONE  + " STRING"
                        + ");");
         }
 

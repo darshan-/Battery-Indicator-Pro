@@ -474,7 +474,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (pref == null) return;
 
         if (pref.isEnabled()) {
-            pref.setSummary(res.getString(R.string.currently_set_to) + " " + pref.getEntry());
+            pref.setSummary(res.getString(R.string.currently_set_to) + pref.getEntry());
         } else {
             pref.setSummary(res.getString(R.string.currently_disabled));
         }

@@ -43,6 +43,8 @@ public class Str {
     public String currently_set_to;
     public String alarm_pref_not_used;
 
+    public String silent;
+
     public String inaccessible_storage;
     public String inaccessible_w_reason;
     public String read_only_storage;
@@ -92,6 +94,8 @@ public class Str {
 
         currently_set_to    = res.getString(R.string.currently_set_to);
         alarm_pref_not_used = res.getString(R.string.alarm_pref_not_used);
+
+        silent = res.getString(R.string.silent);
 
         inaccessible_storage  = res.getString(R.string.inaccessible_storage);
         inaccessible_w_reason = res.getString(R.string.inaccessible_w_reason);

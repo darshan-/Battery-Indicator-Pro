@@ -15,9 +15,9 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.Context;
-//import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -40,6 +40,7 @@ public class AlarmEditActivity extends PreferenceActivity {
     public static final String KEY_TYPE      = "type";
     public static final String KEY_THRESHOLD = "threshold";
     public static final String KEY_VIBRATE   = "vibrate";
+    public static final String KEY_RINGTONE  = "ringtone";
 
     public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
 
@@ -150,11 +151,24 @@ public class AlarmEditActivity extends PreferenceActivity {
                 return true;
             }
         });
+
+        AlarmRingtonePreference ringtoneP = (AlarmRingtonePreference) mPreferenceScreen.findPreference(KEY_RINGTONE);
+        ringtoneP.setValue(mAdapter.ringtone);
+        ringtoneP.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            public boolean onPreferenceChange(Preference pref, Object newValue) {
+                if (mAdapter.ringtone.equals(newValue)) return false;
+
+                mAdapter.setRingtone((String) newValue);
+                ((AlarmRingtonePreference) pref).setValue((String) newValue);
+
+                return false;
+            }
+        });
     }
 
     private void updateSummary(ListPreference lp) {
         if (lp.isEnabled())
-            lp.setSummary(str.currently_set_to + " " + lp.getEntry());
+            lp.setSummary(str.currently_set_to + lp.getEntry());
         else
             lp.setSummary(str.alarm_pref_not_used);
     }
@@ -194,9 +208,8 @@ public class AlarmEditActivity extends PreferenceActivity {
 
     private class AlarmAdapter {
         public int id;
-        public String type, threshold;
-        public Boolean enabled;
-        public Boolean vibrate;
+        public String type, threshold, ringtone;
+        public Boolean enabled, vibrate;
 
         public AlarmAdapter() {
             requery();
@@ -206,9 +219,10 @@ public class AlarmEditActivity extends PreferenceActivity {
                    id = mCursor.getInt   (AlarmDatabase.INDEX_ID);
                  type = mCursor.getString(AlarmDatabase.INDEX_TYPE);
             threshold = mCursor.getString(AlarmDatabase.INDEX_THRESHOLD);
+             ringtone = mCursor.getString(AlarmDatabase.INDEX_RINGTONE);
               enabled = (mCursor.getInt(AlarmDatabase.INDEX_ENABLED) == 1);
               vibrate = (mCursor.getInt(AlarmDatabase.INDEX_VIBRATE) == 1);
-        }
+         }
 
         public void setEnabledness(Boolean b) {
             enabled = b;
@@ -228,6 +242,11 @@ public class AlarmEditActivity extends PreferenceActivity {
         public void setThreshold(String s) {
             threshold = s;
             alarms.setThreshold(id, threshold);
+        }
+
+        public void setRingtone(String s) {
+            ringtone = s;
+            alarms.setRingtone(id, ringtone);
         }
     }
 }

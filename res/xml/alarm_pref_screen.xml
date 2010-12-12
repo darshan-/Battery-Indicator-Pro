@@ -42,7 +42,14 @@
         android:persistent="false"
         android:title="@string/pref_alarm_vibrate"
     />
+
+    <com.darshancomputing.BatteryIndicatorPro.AlarmRingtonePreference
+        android:key="ringtone"
+        android:persistent="false"
+        android:ringtoneType="notification|alarm"
+        android:showDefault="true"
+        android:showSilent="true"
+        android:title="@string/pref_alarm_ringtone"
+    />
   </PreferenceCategory>
-
-
 </PreferenceScreen>
