@@ -38,7 +38,8 @@ import java.util.Date;
 public class BatteryIndicatorService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private final IntentFilter userPresent    = new IntentFilter(Intent.ACTION_USER_PRESENT);
-    private Intent notificationIntent;
+    private Intent mainWindowIntent;
+    private Intent alarmsIntent;
 
     private NotificationManager mNotificationManager;
     private SharedPreferences settings;
@@ -71,7 +72,8 @@ public class BatteryIndicatorService extends Service {
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
         settings = PreferenceManager.getDefaultSharedPreferences(context);
 
-        notificationIntent = new Intent(context, BatteryIndicator.class);
+        mainWindowIntent = new Intent(context, BatteryIndicator.class);
+        alarmsIntent = new Intent(context, AlarmsActivity.class);
 
         km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         kl = km.newKeyguardLock(getPackageName());
@@ -104,6 +106,7 @@ public class BatteryIndicatorService extends Service {
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            Notification notification;
             String action = intent.getAction();
             if (! Intent.ACTION_BATTERY_CHANGED.equals(action)) return;
 
@@ -238,20 +241,22 @@ public class BatteryIndicatorService extends Service {
                                        str.formatTemp(temperature, convertF) + " / " +
                                        str.formatVoltage(voltage);
 
-            Notification notification = new Notification(icon, null, System.currentTimeMillis());
+            notification = new Notification(icon, null, System.currentTimeMillis());
 
             notification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
-            PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
+            PendingIntent contentIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
 
             notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
-
             mNotificationManager.notify(NOTIFICATION_PRIMARY, notification);
 
-            Cursor c = alarms.activeAlarmFull();
-            if (c != null) {
-                notification = parseAlarmCursor(c);
-                notification.setLatestEventInfo(context, "Alarm Title", "Alarm text", contentIntent);
-                mNotificationManager.notify(NOTIFICATION_ALARM, notification);
+            contentIntent = PendingIntent.getActivity(context, 0, alarmsIntent, 0);
+            if (status == 5 && last_status != 5) {
+                Cursor c = alarms.activeAlarmFull();
+                if (c != null) {
+                    notification = parseAlarmCursor(c);
+                    notification.setLatestEventInfo(context, str.alarm_fully_charged, str.alarm_text, contentIntent);
+                    mNotificationManager.notify(NOTIFICATION_ALARM, notification);
+                }
             }
         }
     };

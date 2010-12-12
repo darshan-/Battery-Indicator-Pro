@@ -45,6 +45,13 @@ public class Str {
 
     public String silent;
 
+    public String alarm_fully_charged;
+    public String alarm_charge_drops;
+    public String alarm_charge_rises;
+    public String alarm_temp_rises;
+    public String alarm_health_failure;
+    public String alarm_text;
+
     public String inaccessible_storage;
     public String inaccessible_w_reason;
     public String read_only_storage;
@@ -96,6 +103,13 @@ public class Str {
         alarm_pref_not_used = res.getString(R.string.alarm_pref_not_used);
 
         silent = res.getString(R.string.silent);
+
+        alarm_fully_charged  = res.getString(R.string.alarm_fully_charged);
+        alarm_charge_drops   = res.getString(R.string.alarm_charge_drops);
+        alarm_charge_rises   = res.getString(R.string.alarm_charge_rises);
+        alarm_temp_rises     = res.getString(R.string.alarm_temp_rises);
+        alarm_health_failure = res.getString(R.string.alarm_health_failure);
+        alarm_text           = res.getString(R.string.alarm_text);
 
         inaccessible_storage  = res.getString(R.string.inaccessible_storage);
         inaccessible_w_reason = res.getString(R.string.inaccessible_w_reason);
