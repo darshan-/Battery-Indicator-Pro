@@ -186,7 +186,7 @@ public class AlarmsActivity extends Activity {
 
         indicator.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                barOnOff.setImageResource(alarms.toggle(id) ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
+                barOnOff.setImageResource(alarms.toggleEnabled(id) ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
             }
         });
 

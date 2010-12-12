@@ -37,12 +37,6 @@
   </PreferenceCategory>
 
   <PreferenceCategory android:title="@string/pref_cat_notification_settings">
-    <CheckBoxPreference
-        android:key="vibrate"
-        android:persistent="false"
-        android:title="@string/pref_alarm_vibrate"
-    />
-
     <com.darshancomputing.BatteryIndicatorPro.AlarmRingtonePreference
         android:key="ringtone"
         android:persistent="false"
@@ -50,6 +44,18 @@
         android:showDefault="true"
         android:showSilent="true"
         android:title="@string/pref_alarm_ringtone"
+    />
+
+    <CheckBoxPreference
+        android:key="vibrate"
+        android:persistent="false"
+        android:title="@string/pref_alarm_vibrate"
+    />
+
+    <CheckBoxPreference
+        android:key="lights"
+        android:persistent="false"
+        android:title="@string/pref_alarm_lights"
     />
   </PreferenceCategory>
 </PreferenceScreen>

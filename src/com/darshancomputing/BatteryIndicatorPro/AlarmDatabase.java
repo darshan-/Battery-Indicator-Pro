@@ -22,23 +22,25 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AlarmDatabase {
     private static final String DATABASE_NAME    = "alarms.db";
-    private static final int    DATABASE_VERSION = 3;
+    private static final int    DATABASE_VERSION = 5;
     private static final String ALARM_TABLE_NAME = "alarms";
 
     public static final String KEY_ID        = "_id";
+    public static final String KEY_ENABLED   = "enabled";
     public static final String KEY_TYPE      = "type";
     public static final String KEY_THRESHOLD = "threshold";
-    public static final String KEY_ENABLED   = "enabled";
-    public static final String KEY_VIBRATE   = "vibrate";
     public static final String KEY_RINGTONE  = "ringtone";
+    public static final String KEY_VIBRATE   = "vibrate";
+    public static final String KEY_LIGHTS    = "lights";
 
     /* Is this a safe practice, or do I need to use Cursor.getColumnIndexOrThrow()? */
     public static final int INDEX_ID        = 0;
-    public static final int INDEX_TYPE      = 1;
-    public static final int INDEX_THRESHOLD = 2;
-    public static final int INDEX_ENABLED   = 3;
-    public static final int INDEX_VIBRATE   = 4;
-    public static final int INDEX_RINGTONE  = 5;
+    public static final int INDEX_ENABLED   = 1;
+    public static final int INDEX_TYPE      = 2;
+    public static final int INDEX_THRESHOLD = 3;
+    public static final int INDEX_RINGTONE  = 4;
+    public static final int INDEX_VIBRATE   = 5;
+    public static final int INDEX_LIGHTS    = 6;
 
     private final SQLOpenHelper mSQLOpenHelper;
     private SQLiteDatabase rdb;
@@ -100,13 +102,19 @@ public class AlarmDatabase {
         return null;
     }
 
-    public void addAlarm(String type, String threshold, Boolean enabled, Boolean vibrate, String ringtone) {
-        wdb.execSQL("INSERT INTO " + ALARM_TABLE_NAME + " VALUES (NULL, '"
-                    + type + "' ,'" + threshold + "' ," + (enabled ? 1 : 0) + " ," + (vibrate ? 1 : 0) + " ,'" + ringtone + "')");
+    public void addAlarm(Boolean enabled, String type, String threshold, String ringtone, Boolean vibrate, Boolean lights) {
+        wdb.execSQL("INSERT INTO " + ALARM_TABLE_NAME + " VALUES (NULL, " +
+                    (enabled ? 1 : 0) + " ," +
+                    "'" + type      + "'" + " ," +
+                    "'" + threshold + "'" + " ," +
+                    "'" + ringtone  + "'" + " ," +
+                    (vibrate ? 1 : 0) + " ," +
+                    (lights  ? 1 : 0) +
+                    ")");
     }
 
     public int addAlarm() {
-        addAlarm("fully_charged", "", true, false, android.provider.Settings.System.DEFAULT_NOTIFICATION_URI.toString());
+        addAlarm(true, "fully_charged", "", android.provider.Settings.System.DEFAULT_NOTIFICATION_URI.toString(), false, true);
 
         Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE " + KEY_ID + "= last_insert_rowid()", null);
         c.moveToFirst();
@@ -116,7 +124,7 @@ public class AlarmDatabase {
         return i;
     }
 
-    public void setEnabledness(int id, Boolean enabled) {
+    public void setEnabled(int id, Boolean enabled) {
         wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_ENABLED + "=" +
                     (enabled ? 1 : 0) + " WHERE " + KEY_ID + "=" + id);
     }
@@ -126,13 +134,18 @@ public class AlarmDatabase {
                     (vibrate ? 1 : 0) + " WHERE " + KEY_ID + "=" + id);
     }
 
-    public Boolean toggle(int id) {
+    public void setLights(int id, Boolean lights) {
+        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_LIGHTS + "=" +
+                    (lights ? 1 : 0) + " WHERE " + KEY_ID + "=" + id);
+    }
+
+    public Boolean toggleEnabled(int id) {
         Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE " + KEY_ID + "=" + id, null);
         c.moveToFirst();
         Boolean newEnabled = !(c.getInt(INDEX_ENABLED) == 1);
         c.close();
 
-        setEnabledness(id, newEnabled);
+        setEnabled(id, newEnabled);
 
         return newEnabled;
     }
@@ -169,11 +182,12 @@ public class AlarmDatabase {
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE " + ALARM_TABLE_NAME + " ("
                        + KEY_ID        + " INTEGER PRIMARY KEY,"
+                       + KEY_ENABLED   + " INTEGER,"
                        + KEY_TYPE      + " STRING,"
                        + KEY_THRESHOLD + " STRING,"
-                       + KEY_ENABLED   + " INTEGER,"
+                       + KEY_RINGTONE  + " STRING,"
                        + KEY_VIBRATE   + " INTEGER,"
-                       + KEY_RINGTONE  + " STRING"
+                       + KEY_LIGHTS    + " INTEGER"
                        + ");");
         }
 

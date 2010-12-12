@@ -770,6 +770,14 @@
   <string name="pref_cat_notification_settings_help">This is where you
   control aspects of the alarm notification.
   </string>
+  <string name="pref_alarm_ringtone">Ringtone</string>
+  <string name="pref_alarm_ringtone_summary"></string>
+  <string name="pref_alarm_ringtone_help">
+    Here you can control which sound to play when the alarm is
+    triggered.  Select \'Silent\' if you don\'t want a sound to be
+    played.
+  </string>
+  <string name="silent">Silent</string>
   <string name="pref_alarm_vibrate">Vibrate</string>
   <string name="pref_alarm_vibrate_summary"></string>
   <string name="pref_alarm_vibrate_help">
@@ -779,14 +787,12 @@
     In other words, it should do what you expect.  Please email me if
     something goes astray.
   </string>
-  <string name="pref_alarm_ringtone">Ringtone</string>
-  <string name="pref_alarm_ringtone_summary"></string>
-  <string name="pref_alarm_ringtone_help">
-    Here you can control which sound to play when the alarm is
-    triggered.  Select \'Silent\' if you don\'t want a sound to be
-    played.
+  <string name="pref_alarm_lights">Flash Lights</string>
+  <string name="pref_alarm_lights_summary"></string>
+  <string name="pref_alarm_lights_help">
+    Sets whether the notification should enable the device\'s default
+    lights.  This generally flashes an LED or trackball.
   </string>
-  <string name="silent">Silent</string>
 
   <string-array name="mw_theme_pref_entries">
     <item>Default Small</item>

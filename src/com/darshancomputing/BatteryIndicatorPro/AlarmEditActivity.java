@@ -39,8 +39,9 @@ public class AlarmEditActivity extends PreferenceActivity {
     public static final String KEY_ENABLED   = "enabled";
     public static final String KEY_TYPE      = "type";
     public static final String KEY_THRESHOLD = "threshold";
-    public static final String KEY_VIBRATE   = "vibrate";
     public static final String KEY_RINGTONE  = "ringtone";
+    public static final String KEY_VIBRATE   = "vibrate";
+    public static final String KEY_LIGHTS    = "lights";
 
     public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
 
@@ -97,27 +98,26 @@ public class AlarmEditActivity extends PreferenceActivity {
     }
 
     private void syncValuesAndSetListeners() {
-        CheckBoxPreference enabledCB = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_ENABLED);
-        enabledCB.setChecked(mAdapter.enabled);
-        enabledCB.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+        CheckBoxPreference cb = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_ENABLED);
+        cb.setChecked(mAdapter.enabled);
+        cb.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference pref, Object newValue) {
-                mAdapter.setEnabledness((Boolean) newValue);
+                mAdapter.setEnabled((Boolean) newValue);
                 return true;
             }
         });
 
-        ListPreference typeLP = (ListPreference) mPreferenceScreen.findPreference(KEY_TYPE);
-        typeLP.setValue(mAdapter.type);
-        updateSummary(typeLP);
-        typeLP.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+        ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_TYPE);
+        lp.setValue(mAdapter.type);
+        updateSummary(lp);
+        lp.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference pref, Object newValue) {
                 if (mAdapter.type.equals((String) newValue)) return false;
 
                 mAdapter.setType((String) newValue);
 
-                ListPreference typeLP = (ListPreference) pref;
-                typeLP.setValue((String) newValue);
-                updateSummary(typeLP);
+                ((ListPreference) pref).setValue((String) newValue);
+                updateSummary((ListPreference) pref);
 
                 setUpThresholdList(true);
 
@@ -125,36 +125,26 @@ public class AlarmEditActivity extends PreferenceActivity {
             }
         });
 
-        ListPreference threshLP = (ListPreference) mPreferenceScreen.findPreference(KEY_THRESHOLD);
+        lp = (ListPreference) mPreferenceScreen.findPreference(KEY_THRESHOLD);
         setUpThresholdList(false);
-        threshLP.setValue(mAdapter.threshold);
-        updateSummary(threshLP);
-        threshLP.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+        lp.setValue(mAdapter.threshold);
+        updateSummary(lp);
+        lp.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference pref, Object newValue) {
                 if (mAdapter.threshold.equals((String) newValue)) return false;
 
                 mAdapter.setThreshold((String) newValue);
 
-                ListPreference threshLP = (ListPreference) pref;
-                threshLP.setValue((String) newValue);
-                updateSummary(threshLP);
+                ((ListPreference) pref).setValue((String) newValue);
+                updateSummary((ListPreference) pref);
 
                 return false;
             }
         });
 
-        CheckBoxPreference vibrateCB = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_VIBRATE);
-        vibrateCB.setChecked(mAdapter.vibrate);
-        vibrateCB.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-            public boolean onPreferenceChange(Preference pref, Object newValue) {
-                mAdapter.setVibrate((Boolean) newValue);
-                return true;
-            }
-        });
-
-        AlarmRingtonePreference ringtoneP = (AlarmRingtonePreference) mPreferenceScreen.findPreference(KEY_RINGTONE);
-        ringtoneP.setValue(mAdapter.ringtone);
-        ringtoneP.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+        AlarmRingtonePreference rp = (AlarmRingtonePreference) mPreferenceScreen.findPreference(KEY_RINGTONE);
+        rp.setValue(mAdapter.ringtone);
+        rp.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference pref, Object newValue) {
                 if (mAdapter.ringtone.equals(newValue)) return false;
 
@@ -162,6 +152,24 @@ public class AlarmEditActivity extends PreferenceActivity {
                 ((AlarmRingtonePreference) pref).setValue((String) newValue);
 
                 return false;
+            }
+        });
+
+        cb = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_VIBRATE);
+        cb.setChecked(mAdapter.vibrate);
+        cb.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            public boolean onPreferenceChange(Preference pref, Object newValue) {
+                mAdapter.setVibrate((Boolean) newValue);
+                return true;
+            }
+        });
+
+        cb = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_LIGHTS);
+        cb.setChecked(mAdapter.lights);
+        cb.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            public boolean onPreferenceChange(Preference pref, Object newValue) {
+                mAdapter.setLights((Boolean) newValue);
+                return true;
             }
         });
     }
@@ -209,7 +217,7 @@ public class AlarmEditActivity extends PreferenceActivity {
     private class AlarmAdapter {
         public int id;
         public String type, threshold, ringtone;
-        public Boolean enabled, vibrate;
+        public Boolean enabled, vibrate, lights;
 
         public AlarmAdapter() {
             requery();
@@ -222,16 +230,22 @@ public class AlarmEditActivity extends PreferenceActivity {
              ringtone = mCursor.getString(AlarmDatabase.INDEX_RINGTONE);
               enabled = (mCursor.getInt(AlarmDatabase.INDEX_ENABLED) == 1);
               vibrate = (mCursor.getInt(AlarmDatabase.INDEX_VIBRATE) == 1);
+              lights = (mCursor.getInt(AlarmDatabase.INDEX_LIGHTS) == 1);
          }
 
-        public void setEnabledness(Boolean b) {
+        public void setEnabled(Boolean b) {
             enabled = b;
-            alarms.setEnabledness(id, enabled);
+            alarms.setEnabled(id, enabled);
         }
 
         public void setVibrate(Boolean b) {
             vibrate = b;
             alarms.setVibrate(id, vibrate);
+        }
+
+        public void setLights(Boolean b) {
+            lights = b;
+            alarms.setLights(id, lights);
         }
 
         public void setType(String s) {
