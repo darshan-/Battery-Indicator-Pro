@@ -258,13 +258,21 @@ public class BatteryIndicatorService extends Service {
 
     private Notification parseAlarmCursor(Cursor c) {
         Notification notification = new Notification(R.drawable.stat_notify_alarm, null, System.currentTimeMillis());
-        notification.flags    |= Notification.FLAG_SHOW_LIGHTS | Notification.FLAG_AUTO_CANCEL;
-        notification.defaults |= Notification.DEFAULT_SOUND | Notification.DEFAULT_LIGHTS;
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+
+        String ringtone = c.getString(alarms.INDEX_RINGTONE);
+        if (! ringtone.equals(""))
+            notification.sound = android.net.Uri.parse(ringtone);
 
         if (c.getInt(alarms.INDEX_VIBRATE) == 1)
             if (mAudioManager.getRingerMode() != mAudioManager.RINGER_MODE_SILENT)
                 /* I couldn't get the Notification to vibrate, so I do it myself... */
                 mVibrator.vibrate(new long[] {0, 200, 200, 400}, -1);
+
+        if (c.getInt(alarms.INDEX_LIGHTS) == 1) {
+            notification.flags    |= Notification.FLAG_SHOW_LIGHTS;
+            notification.defaults |= Notification.DEFAULT_LIGHTS;
+        }
 
         return notification;
     }
