@@ -54,8 +54,10 @@ public class BatteryIndicatorService extends Service {
     private Str str;
     private AlarmDatabase alarms;
 
-    private static final int NOTIFICATION_PRIMARY = 1;
-    private static final int NOTIFICATION_ALARM   = 2;
+    private static final int NOTIFICATION_PRIMARY      = 1;
+    private static final int NOTIFICATION_ALARM_CHARGE = 2;
+    private static final int NOTIFICATION_ALARM_HEALTH = 3;
+    private static final int NOTIFICATION_ALARM_TEMP   = 4;
 
     @Override
     public void onCreate() {
@@ -185,6 +187,9 @@ public class BatteryIndicatorService extends Service {
 
                 last_status_cTM = currentTM;
 
+                /* TODO: Af first glance, I think I want to do this, but think about it a bit and decide for sure... */
+                mNotificationManager.cancel(NOTIFICATION_ALARM_CHARGE);
+
                 if (last_status != status && settings.getBoolean(SettingsActivity.KEY_AUTO_DISABLE_LOCKING, false)) {
                     if (last_status == 0) {
                         editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, true);
@@ -249,25 +254,36 @@ public class BatteryIndicatorService extends Service {
             mNotificationManager.notify(NOTIFICATION_PRIMARY, notification);
 
             if (alarms.anyActiveAlarms()) {
+                Cursor c;
                 contentIntent = PendingIntent.getActivity(context, 0, alarmsIntent, 0);
 
                 if (status == 5 && last_status != 5) {
-                    Cursor c = alarms.activeAlarmFull();
+                    c = alarms.activeAlarmFull();
                     if (c != null) {
                         notification = parseAlarmCursor(c);
                         notification.setLatestEventInfo(context, str.alarm_fully_charged, str.alarm_text, contentIntent);
-                        mNotificationManager.notify(NOTIFICATION_ALARM, notification);
+                        mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, notification);
                         c.close();
                     }
                 }
 
-                Cursor c = alarms.activeAlarmChargeDrops(percent, previous_charge);
+                c = alarms.activeAlarmChargeDrops(percent, previous_charge);
                 if (c != null) {
                     editor.putInt("previous_charge", percent);
                     notification = parseAlarmCursor(c);
                     notification.setLatestEventInfo(context, str.alarm_charge_drops + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
                                                     str.alarm_text, contentIntent);
-                    mNotificationManager.notify(NOTIFICATION_ALARM, notification);
+                    mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, notification);
+                    c.close();
+                }                
+
+                c = alarms.activeAlarmChargeRises(percent, previous_charge);
+                if (c != null) {
+                    editor.putInt("previous_charge", percent);
+                    notification = parseAlarmCursor(c);
+                    notification.setLatestEventInfo(context, str.alarm_charge_rises + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
+                                                    str.alarm_text, contentIntent);
+                    mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, notification);
                     c.close();
                 }                
             }

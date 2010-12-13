@@ -105,8 +105,20 @@ public class AlarmDatabase {
         return c;
     }
 
-    public Cursor activeAlarmChargeRises() {
-        return null;
+    public Cursor activeAlarmChargeRises(int current, int previous) {
+        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE +
+                                "='charge_drops' AND ENABLED=1 AND " +
+                                KEY_THRESHOLD + "<"  + current + " AND " +
+                                KEY_THRESHOLD + ">=" + previous + 
+                                " LIMIT 1", null);
+
+        if (c.getCount() == 0) {
+            c.close();
+            return null;
+        }
+
+        c.moveToFirst();
+        return c;
     }
 
     public Cursor activeAlarmTempRises() {
