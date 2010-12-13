@@ -106,6 +106,7 @@ public class BatteryIndicatorService extends Service {
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            SharedPreferences.Editor editor = settings.edit();
             Notification notification;
             String action = intent.getAction();
             if (! Intent.ACTION_BATTERY_CHANGED.equals(action)) return;
@@ -162,7 +163,6 @@ public class BatteryIndicatorService extends Service {
             String last_status_since = settings.getString("last_status_since", null);
             LogDatabase logs = new LogDatabase(context);
 
-            SharedPreferences.Editor editor = settings.edit();
             if (last_status != status || last_status_cTM == -1 || last_percent == -1 ||
                 last_status_cTM > currentTM || last_status_since == null || last_plugged != plugged ||
                 (plugged == 0 && percent > previous_charge + 20))
@@ -217,7 +217,6 @@ public class BatteryIndicatorService extends Service {
                 if (percent % 10 == 0)
                     editor.putInt("previous_charge", percent);
             }
-            editor.commit();
             logs.close();
 
             /* Add half an hour, then divide.  Should end up rounding to the closest hour. */
@@ -249,15 +248,31 @@ public class BatteryIndicatorService extends Service {
             notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
             mNotificationManager.notify(NOTIFICATION_PRIMARY, notification);
 
-            contentIntent = PendingIntent.getActivity(context, 0, alarmsIntent, 0);
-            if (status == 5 && last_status != 5) {
-                Cursor c = alarms.activeAlarmFull();
-                if (c != null) {
-                    notification = parseAlarmCursor(c);
-                    notification.setLatestEventInfo(context, str.alarm_fully_charged, str.alarm_text, contentIntent);
-                    mNotificationManager.notify(NOTIFICATION_ALARM, notification);
+            if (alarms.anyActiveAlarms()) {
+                contentIntent = PendingIntent.getActivity(context, 0, alarmsIntent, 0);
+
+                if (status == 5 && last_status != 5) {
+                    Cursor c = alarms.activeAlarmFull();
+                    if (c != null) {
+                        notification = parseAlarmCursor(c);
+                        notification.setLatestEventInfo(context, str.alarm_fully_charged, str.alarm_text, contentIntent);
+                        mNotificationManager.notify(NOTIFICATION_ALARM, notification);
+                        c.close();
+                    }
                 }
+
+                Cursor c = alarms.activeAlarmChargeDrops(percent, previous_charge);
+                if (c != null) {
+                    editor.putInt("previous_charge", percent);
+                    notification = parseAlarmCursor(c);
+                    notification.setLatestEventInfo(context, str.alarm_charge_drops + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
+                                                    str.alarm_text, contentIntent);
+                    mNotificationManager.notify(NOTIFICATION_ALARM, notification);
+                    c.close();
+                }                
             }
+
+            editor.commit();
         }
     };
 

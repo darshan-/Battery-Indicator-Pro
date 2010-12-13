@@ -71,7 +71,10 @@ public class AlarmDatabase {
     }
 
     public Boolean anyActiveAlarms() {
-        return true;
+        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE ENABLED=1 LIMIT 1", null);
+        Boolean b = (c.getCount() > 0);
+        c.close();
+        return b;
     }
 
     public Cursor activeAlarmFull() {
@@ -86,19 +89,31 @@ public class AlarmDatabase {
         return c;
     }
 
+    public Cursor activeAlarmChargeDrops(int current, int previous) {
+        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE +
+                                "='charge_drops' AND ENABLED=1 AND " +
+                                KEY_THRESHOLD + ">"  + current + " AND " +
+                                KEY_THRESHOLD + "<=" + previous + 
+                                " LIMIT 1", null);
+
+        if (c.getCount() == 0) {
+            c.close();
+            return null;
+        }
+
+        c.moveToFirst();
+        return c;
+    }
+
+    public Cursor activeAlarmChargeRises() {
+        return null;
+    }
+
+    public Cursor activeAlarmTempRises() {
+        return null;
+    }
+
     public Cursor activeAlarmFailure() {
-        return null;
-    }
-
-    public Cursor activeAlarmsChargeDrops() {
-        return null;
-    }
-
-    public Cursor activeAlarmsChargeRises() {
-        return null;
-    }
-
-    public Cursor activeAlarmsTempRises() {
         return null;
     }
 
