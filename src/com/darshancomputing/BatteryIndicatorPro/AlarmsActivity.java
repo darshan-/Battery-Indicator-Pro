@@ -175,7 +175,7 @@ public class AlarmsActivity extends Activity {
         if (type.equals("temp_rises")) {
             Boolean convertF = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
                 .getBoolean(SettingsActivity.KEY_CONVERT_F, false);
-            s += " " + str.formatTemp(Integer.valueOf(threshold) * 10, convertF, false);
+            s += " " + str.formatTemp(Integer.valueOf(threshold), convertF, false);
         } else if (type.equals("charge_drops") || type.equals("charge_rises")) {
             s += " " + threshold + "%";
         }

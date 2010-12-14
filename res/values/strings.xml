@@ -174,7 +174,7 @@
   <string name="alarm_fully_charged">Battery is now fully charged</string>
   <string name="alarm_charge_drops">"Battery charge is below "</string>
   <string name="alarm_charge_rises">"Battery charge is above "</string>
-  <string name="alarm_temp_rises">"Battery temperature is above "</string>
+  <string name="alarm_temp_rises">"Battery temp. is above "</string>
   <string name="alarm_health_failure">Battery health has failed</string>
   <string name="alarm_text">Select to edit alarms.</string>
 

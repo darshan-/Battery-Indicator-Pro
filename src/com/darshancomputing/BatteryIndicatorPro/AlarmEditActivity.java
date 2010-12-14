@@ -189,7 +189,6 @@ public class AlarmEditActivity extends PreferenceActivity {
             lp.setEntryValues(str.temp_alarm_values);
             lp.setEnabled(true);
 
-            //if (str.indexOf(str.temp_alarm_values, mAdapter.threshold) == -1) {
             if (resetValue) {
                 mAdapter.setThreshold(str.temp_alarm_values[3]);
                 lp.setValue(mAdapter.threshold);

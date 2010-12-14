@@ -184,6 +184,7 @@ public class BatteryIndicatorService extends Service {
                 editor.putInt("last_percent", percent);
                 editor.putInt("last_plugged", plugged);
                 editor.putInt("previous_charge", percent);
+                editor.putInt("previous_temp", temperature);
 
                 last_status_cTM = currentTM;
 
@@ -219,8 +220,10 @@ public class BatteryIndicatorService extends Service {
                     settings.getBoolean(SettingsActivity.KEY_LOG_EVERYTHING, false))
                     logs.logStatus(status, plugged, percent, temperature, voltage, currentTM, LogDatabase.STATUS_OLD);
 
-                if (percent % 10 == 0)
+                if (percent % 10 == 0) {
                     editor.putInt("previous_charge", percent);
+                    editor.putInt("previous_temp", temperature);
+                }
             }
             logs.close();
 
@@ -284,6 +287,17 @@ public class BatteryIndicatorService extends Service {
                     notification.setLatestEventInfo(context, str.alarm_charge_rises + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
                                                     str.alarm_text, contentIntent);
                     mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, notification);
+                    c.close();
+                }                
+
+                c = alarms.activeAlarmTempRises(temperature, settings.getInt("previous_temp", 1));
+                if (c != null) {
+                    editor.putInt("previous_temp", temperature);
+                    notification = parseAlarmCursor(c);
+                    notification.setLatestEventInfo(context, str.alarm_temp_rises +
+                                                    str.formatTemp(c.getInt(alarms.INDEX_THRESHOLD), convertF, false),
+                                                    str.alarm_text, contentIntent);
+                    mNotificationManager.notify(NOTIFICATION_ALARM_TEMP, notification);
                     c.close();
                 }                
             }

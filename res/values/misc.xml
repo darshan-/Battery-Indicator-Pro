@@ -223,17 +223,17 @@
     <item>60°C / 140°F</item>
   </string-array>
   <string-array name="temp_alarm_values">
-    <item>40</item>
-    <item>42</item>
-    <item>44</item>
-    <item>46</item>
-    <item>48</item>
-    <item>50</item>
-    <item>52</item>
-    <item>54</item>
-    <item>56</item>
-    <item>58</item>
-    <item>60</item>
+    <item>400</item>
+    <item>420</item>
+    <item>440</item>
+    <item>460</item>
+    <item>480</item>
+    <item>500</item>
+    <item>520</item>
+    <item>540</item>
+    <item>560</item>
+    <item>580</item>
+    <item>600</item>
   </string-array>
 
   <string name="default_usb_charge_time">360</string>

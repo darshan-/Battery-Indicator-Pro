@@ -107,7 +107,7 @@ public class AlarmDatabase {
 
     public Cursor activeAlarmChargeRises(int current, int previous) {
         Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE +
-                                "='charge_drops' AND ENABLED=1 AND " +
+                                "='charge_rises' AND ENABLED=1 AND " +
                                 KEY_THRESHOLD + "<"  + current + " AND " +
                                 KEY_THRESHOLD + ">=" + previous + 
                                 " LIMIT 1", null);
@@ -121,8 +121,20 @@ public class AlarmDatabase {
         return c;
     }
 
-    public Cursor activeAlarmTempRises() {
-        return null;
+    public Cursor activeAlarmTempRises(int current, int previous) {
+        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE +
+                                "='temp_rises' AND ENABLED=1 AND " +
+                                KEY_THRESHOLD + "<"  + current + " AND " +
+                                KEY_THRESHOLD + ">=" + previous + 
+                                " LIMIT 1", null);
+
+        if (c.getCount() == 0) {
+            c.close();
+            return null;
+        }
+
+        c.moveToFirst();
+        return c;
     }
 
     public Cursor activeAlarmFailure() {
