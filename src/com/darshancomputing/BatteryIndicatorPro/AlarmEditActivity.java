@@ -14,7 +14,9 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
@@ -26,6 +28,9 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 public class AlarmEditActivity extends PreferenceActivity {
     private Resources res;
@@ -91,6 +96,31 @@ public class AlarmEditActivity extends PreferenceActivity {
     protected void onPause() {
         super.onPause();
         mCursor.deactivate();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.alarm_edit, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.menu_delete:
+            alarms.deleteAlarm(mAdapter.id);
+            finish();
+            return true;
+        case R.id.menu_help:
+            ComponentName comp = new ComponentName(getPackageName(), SettingsHelpActivity.class.getName());
+            Intent intent = new Intent().setComponent(comp).putExtra(SettingsActivity.EXTRA_SCREEN, SettingsActivity.KEY_ALARM_EDIT_SETTINGS);
+            startActivity(intent);
+
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     private void setWindowSubtitle(String subtitle) {

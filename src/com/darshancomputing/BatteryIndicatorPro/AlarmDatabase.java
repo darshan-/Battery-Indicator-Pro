@@ -138,7 +138,15 @@ public class AlarmDatabase {
     }
 
     public Cursor activeAlarmFailure() {
-        return null;
+        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE + "='health_failure' AND ENABLED=1 LIMIT 1", null);
+
+        if (c.getCount() == 0) {
+            c.close();
+            return null;
+        }
+
+        c.moveToFirst();
+        return c;
     }
 
     public void addAlarm(Boolean enabled, String type, String threshold, String ringtone, Boolean vibrate, Boolean lights) {

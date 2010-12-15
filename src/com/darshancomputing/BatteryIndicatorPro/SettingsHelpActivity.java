@@ -43,6 +43,12 @@ public class SettingsHelpActivity extends Activity {
         } else if (pref_screen.equals(SettingsActivity.KEY_OTHER_SETTINGS)) {
             setContentView(R.layout.other_settings_help);
             setWindowSubtitle(res.getString(R.string.other_settings));
+        } else if (pref_screen.equals(SettingsActivity.KEY_ALARM_SETTINGS)) {
+            setContentView(R.layout.alarm_settings_help);
+            setWindowSubtitle(res.getString(R.string.alarm_settings));
+        } else if (pref_screen.equals(SettingsActivity.KEY_ALARM_EDIT_SETTINGS)) {
+            setContentView(R.layout.alarm_edit_help);
+            setWindowSubtitle(res.getString(R.string.alarm_settings_subtitle));
         } else {
             setContentView(R.layout.main_settings_help);
         }

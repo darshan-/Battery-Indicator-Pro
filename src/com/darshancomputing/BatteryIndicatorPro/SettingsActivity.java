@@ -39,6 +39,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_COLOR_SETTINGS = "color_settings";
     public static final String KEY_TIME_SETTINGS = "time_settings";
     public static final String KEY_ALARM_SETTINGS = "alarm_settings";
+    public static final String KEY_ALARM_EDIT_SETTINGS = "alarm_edit_settings";
     public static final String KEY_OTHER_SETTINGS = "other_settings";
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_CONFIRM_DISABLE_LOCKING = "confirm_disable_lock_screen";

@@ -175,7 +175,7 @@
   <string name="alarm_charge_drops">"Battery charge is below "</string>
   <string name="alarm_charge_rises">"Battery charge is above "</string>
   <string name="alarm_temp_rises">"Battery temp. is above "</string>
-  <string name="alarm_health_failure">Battery health has failed</string>
+  <string name="alarm_health_failure">"Battery health is: "</string>
   <string name="alarm_text">Select to edit alarms.</string>
 
   <string name="logs_empty">Logs Are Empty</string>
@@ -754,28 +754,69 @@
     should <i>not</i> turn this on.
   </string>
 
+  <string name="alarms_overview">Alarms Overview</string>
+  <string name="alarms_overview_help">
+    This page allows you to add new alarms, quickly enable or disable
+    existing alarms, or delete alarms.\n
+
+    \nTo add a new alarm, press \"Add alarm\" — this will create a new
+    alarm and take you to the alarm settings page, where you can
+    control the settings for the new alarm.  See the help on that page
+    for more details.\n
+
+    \nBelow the \"Add alarm\" button is a list of any alarms you have
+    created.\n
+
+    \n• To edit an existing alarm, just press it.
+    \n• To delete an alarm, long-press it, then select \"Delete
+    Alarm\".  (You can also delete an alarm from the individual alarm
+    settings page by pressing MENU then \"Delete Alarm\".)
+    \n• To quickly toggle whether an alarm is enabled, press the alarm
+    clock icon to the left of the alarm text.  (You can also enable or
+    disable an alarm from the individual alarm settings page.)
+  </string>
+
   <string name="pref_alarm_enabled">Enable Alarm</string>
-  <string name="pref_alarm_summary"></string>
-  <string name="pref_alarm_help">If you want to temporarily disable an
-  alarm without having to recreate it when you want it again, you can
-  turn it off and on either here or on the main alarms page.
+  <string name="pref_alarm_enabled_summary"></string>
+  <string name="pref_alarm_enabled_help">If you want to temporarily
+  disable an alarm without having to recreate it when you want it
+  again, you can turn it off and on either here or on the main alarms
+  page.
   </string>
 
   <string name="pref_cat_alarm_conditions">Alarm Conditions</string>
-  <string name="pref_cat_alarm_conditions_help">This is where you
+  <string name="pref_cat_alarm_conditions_help">This is where you can
   control what conditions trigger the alarm.
   </string>
   <string name="pref_alarm_type">Alarm Type</string>
   <string name="pref_alarm_type_summary">Trigger alarm when battery:</string>
-  <string name="pref_alarm_type_help"></string>
+  <string name="pref_alarm_type_help">There are currently five types
+    of alarm that you can choose from.\n
+
+    \nThe \"Becomes fully charged\" alarm will notify you when the
+    status of your battery changes from \"Charging\" to \"Fully
+    Charged\".  Note that on many devices, this isn\'t necessarily the
+    same thing as being at 100% charge.\n
+
+    \nThe charge and temperature alarms require you to set a threshold
+    below, after choosing that alarm type.\n
+
+    \nThe \"Health Fails\" alarm will notify you if your battery health
+    becomes something other than \"Unknown\" or \"Good Health\", as
+    reported by Android.
+  </string>
   <string name="pref_alarm_threshold">Threshold</string>
   <string name="alarm_pref_not_used">Not used for this alarm type</string>
   <string name="pref_alarm_threshold_summary">Alarm threshold:</string>
-  <string name="pref_alarm_threshold_help"></string>
+  <string name="pref_alarm_threshold_help">
+    For charge and temperature alarms, you need to set the temperature
+    or charge level that will trigger the alarm.
+  </string>
 
   <string name="pref_cat_notification_settings">Notification Settings</string>
   <string name="pref_cat_notification_settings_help">This is where you
-  control aspects of the alarm notification.
+  can control various aspects of the alarm notification that is
+  created to notify you when an alarm has been triggered.
   </string>
   <string name="pref_alarm_ringtone">Ringtone</string>
   <string name="pref_alarm_ringtone_summary"></string>
@@ -798,7 +839,11 @@
   <string name="pref_alarm_lights_summary"></string>
   <string name="pref_alarm_lights_help">
     Sets whether the notification should enable the device\'s default
-    lights.  This generally flashes an LED or trackball.
+    lights.  This generally flashes an LED or trackball.  Note that
+    every Android device I\'ve used has been slightly buggy in this
+    department.  If you have this checked, then the notification will
+    request Android to flash lights, but it might not always actually
+    happen.
   </string>
 
   <string-array name="mw_theme_pref_entries">

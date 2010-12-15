@@ -26,6 +26,8 @@ import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -115,8 +117,25 @@ public class AlarmsActivity extends Activity {
         mCursor.deactivate();
     }
 
-    private void setWindowSubtitle(String subtitle) {
-        setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.menu_help:
+            ComponentName comp = new ComponentName(getPackageName(), SettingsHelpActivity.class.getName());
+            Intent intent = new Intent().setComponent(comp).putExtra(SettingsActivity.EXTRA_SCREEN, SettingsActivity.KEY_ALARM_SETTINGS);
+            startActivity(intent);
+
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -138,6 +157,10 @@ public class AlarmsActivity extends Activity {
         }
 
         return super.onContextItemSelected(item);
+    }
+
+    private void setWindowSubtitle(String subtitle) {
+        setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
     }
 
     private class AlarmsObserver extends DataSetObserver {

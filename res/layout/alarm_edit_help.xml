@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+>
+  <LinearLayout android:orientation="vertical"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+  >
+    <TextView style="@style/help_pref" android:text="@string/pref_alarm_enabled" />
+    <TextView style="@style/help_text" android:text="@string/pref_alarm_enabled_help" />
+
+    <View style="@style/help_cat_pre_margin" />
+    <TextView style="@style/help_cat"  android:text="@string/pref_cat_alarm_conditions" />
+    <TextView style="@style/help_text" android:text="@string/pref_cat_alarm_conditions_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_alarm_type" />
+    <TextView style="@style/help_text" android:text="@string/pref_alarm_type_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_alarm_threshold" />
+    <TextView style="@style/help_text" android:text="@string/pref_alarm_threshold_help" />
+
+    <View style="@style/help_cat_pre_margin" />
+    <TextView style="@style/help_cat"  android:text="@string/pref_cat_notification_settings" />
+    <TextView style="@style/help_text" android:text="@string/pref_cat_notification_settings_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_alarm_ringtone" />
+    <TextView style="@style/help_text" android:text="@string/pref_alarm_ringtone_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_alarm_vibrate" />
+    <TextView style="@style/help_text" android:text="@string/pref_alarm_vibrate_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_alarm_lights" />
+    <TextView style="@style/help_text" android:text="@string/pref_alarm_lights_help" />
+  </LinearLayout>
+</ScrollView>

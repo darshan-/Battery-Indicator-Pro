@@ -124,7 +124,7 @@ public class BatteryIndicatorService extends Service {
 
             int percent = level * 100 / scale;
 
-            /* I Take advantage of (count on) R.java having resources alphabetical and incrementing by one */
+            /* I take advantage of (count on) R.java having resources alphabetical and incrementing by one */
 
             int icon;
             if (settings.getBoolean(SettingsActivity.KEY_RED, res.getBoolean(R.bool.default_use_red)) &&
@@ -185,6 +185,7 @@ public class BatteryIndicatorService extends Service {
                 editor.putInt("last_plugged", plugged);
                 editor.putInt("previous_charge", percent);
                 editor.putInt("previous_temp", temperature);
+                editor.putInt("previous_health", health);
 
                 last_status_cTM = currentTM;
 
@@ -223,6 +224,7 @@ public class BatteryIndicatorService extends Service {
                 if (percent % 10 == 0) {
                     editor.putInt("previous_charge", percent);
                     editor.putInt("previous_temp", temperature);
+                    editor.putInt("previous_health", health);
                 }
             }
             logs.close();
@@ -260,7 +262,7 @@ public class BatteryIndicatorService extends Service {
                 Cursor c;
                 contentIntent = PendingIntent.getActivity(context, 0, alarmsIntent, 0);
 
-                if (status == 5 && last_status != 5) {
+                if (status == 5 && last_status == 2) {
                     c = alarms.activeAlarmFull();
                     if (c != null) {
                         notification = parseAlarmCursor(c);
@@ -300,6 +302,18 @@ public class BatteryIndicatorService extends Service {
                     mNotificationManager.notify(NOTIFICATION_ALARM_TEMP, notification);
                     c.close();
                 }                
+
+                if (health > 2 && health != settings.getInt("previous_health", 2)) {
+                    c = alarms.activeAlarmFailure();
+                    if (c != null) {
+                        editor.putInt("previous_health", health);
+                        notification = parseAlarmCursor(c);
+                        notification.setLatestEventInfo(context, str.alarm_health_failure + str.healths[health],
+                                                        str.alarm_text, contentIntent);
+                        mNotificationManager.notify(NOTIFICATION_ALARM_HEALTH, notification);
+                        c.close();
+                    }
+                }
             }
 
             editor.commit();
