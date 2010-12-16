@@ -38,7 +38,7 @@ public class AlarmRingtonePreference extends RingtonePreference {
     public void setValue(String s) {
         String summary = str.currently_set_to;
 
-        if (s.equals("")) {
+        if (s.equals("") || s == null) {
             ringtone = null;
             summary += str.silent;
         } else {
