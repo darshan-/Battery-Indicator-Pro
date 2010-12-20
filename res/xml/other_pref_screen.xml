@@ -106,5 +106,12 @@
        android:summary="@string/pref_ten_percent_mode_summary"
        android:defaultValue="false"
     />
+
+    <CheckBoxPreference
+       android:key="summaries_use_formatter"
+       android:title="@string/pref_summaries_use_formatter"
+       android:summary="@string/pref_summaries_use_formatter_summary"
+       android:defaultValue="false"
+    />
   </PreferenceCategory>
 </PreferenceScreen>

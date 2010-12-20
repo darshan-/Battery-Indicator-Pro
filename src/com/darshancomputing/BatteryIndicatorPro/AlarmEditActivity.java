@@ -18,6 +18,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
+import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,6 +39,7 @@ public class AlarmEditActivity extends PreferenceActivity {
     private Context context;
     private Str str;
     private PreferenceScreen mPreferenceScreen;
+    private SharedPreferences settings;
     private AlarmDatabase alarms;
     private Cursor mCursor;
     private AlarmAdapter mAdapter;
@@ -65,6 +68,7 @@ public class AlarmEditActivity extends PreferenceActivity {
         res = getResources();
         str = new Str(res);
         alarms = new AlarmDatabase(context);
+        settings = PreferenceManager.getDefaultSharedPreferences(context);
 
         mCursor = alarms.getAlarm(getIntent().getIntExtra(EXTRA_ALARM_ID, -1));
         mAdapter = new AlarmAdapter();
@@ -205,8 +209,13 @@ public class AlarmEditActivity extends PreferenceActivity {
     }
 
     private void updateSummary(ListPreference lp) {
+        String entry = (String) lp.getEntry();
+        if (entry == null) entry = "";
+        if (settings.getBoolean(SettingsActivity.KEY_SUMMARIES_USE_FORMATTER, false))
+            entry = entry.replace("%", "%%");
+
         if (lp.isEnabled())
-            lp.setSummary(str.currently_set_to + lp.getEntry());
+            lp.setSummary(str.currently_set_to + entry);
         else
             lp.setSummary(str.alarm_pref_not_used);
     }

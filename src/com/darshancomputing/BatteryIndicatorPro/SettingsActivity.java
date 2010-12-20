@@ -55,6 +55,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_CHARGE_AS_TEXT = "charge_as_text";
     public static final String KEY_TEN_PERCENT_MODE = "ten_percent_mode";
+    public static final String KEY_SUMMARIES_USE_FORMATTER = "summaries_use_formatter";
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
     public static final String KEY_RED = "use_red";
     public static final String KEY_RED_THRESH = "red_threshold";

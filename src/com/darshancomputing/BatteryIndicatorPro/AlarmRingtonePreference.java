@@ -38,12 +38,18 @@ public class AlarmRingtonePreference extends RingtonePreference {
     public void setValue(String s) {
         String summary = str.currently_set_to;
 
-        if (s.equals("") || s == null) {
+        if (s == null || s.equals("")) {
             ringtone = null;
             summary += str.silent;
         } else {
             ringtone = Uri.parse(s);
-            summary += android.media.RingtoneManager.getRingtone(context, ringtone).getTitle(context);
+            android.media.Ringtone r = android.media.RingtoneManager.getRingtone(context, ringtone);
+            if (r == null) {
+                ringtone = null;
+                summary += str.silent;
+            } else {
+                summary += r.getTitle(context);
+            }
         }
 
         setSummary(summary);

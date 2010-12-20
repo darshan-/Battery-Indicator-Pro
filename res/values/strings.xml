@@ -753,6 +753,18 @@
     \nAs far as I\'m aware, all other devices report every 1%, and so
     should <i>not</i> turn this on.
   </string>
+  <string name="pref_summaries_use_formatter">Summaries Use Formatter</string>
+  <string name="pref_summaries_use_formatter_summary">A workaround for a FC on CyanogenMod</string>
+  <string name="pref_summaries_use_formatter_help">Due to a bug in
+    CyanogenMod (CM), if you use CM, you will probably need to check
+    this to avoid the Force Close that happens when editing certain
+    settings in this app.  Since this bug is probably present in only
+    certain versions of CM, and since the bug will hopefully be fixed,
+    this workaround is optional.\n
+
+    \nIn short, you should check this box if you use CyanogenMod and
+    get a Force Close when editing certain Battery Indicator settings.
+  </string>
 
   <string name="alarms_overview">Alarms Overview</string>
   <string name="alarms_overview_help">
