@@ -1,117 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_full_name">电量指示器专业版</string>
-  <string name="app_launcher_name">电量指示器</string>
-  <string name="settings_activity_name">电量指示器专业版 - 设置项</string>
+  <string name="app_full_name">電量指示器專業版</string>
+  <string name="app_launcher_name">電量指示器</string>
+  <string name="settings_activity_name">電量指示器專業版 - 設定</string>
   <string name="settings_help_activity_name">@string/settings_activity_name</string>
-  <string name="help_activity_name">电量指示器专业版 - 帮助</string>
-  <string name="log_view_activity_name">电量指示器专业版 - 日志</string>
+  <string name="help_activity_name">電量指示器專業版 - 說明</string>
+  <string name="log_view_activity_name">電量指示器專業版 - 日誌</string>
 
-  <string name="app_full_name_free">电量指示器</string>
-  <string name="settings_activity_name_free">电量指示器 - 设置项</string>
+  <string name="app_full_name_free">電量指示器</string>
+  <string name="settings_activity_name_free">電量指示器 - 設定</string>
   <string name="settings_help_activity_name_free">@string/settings_activity_name_free</string>
-  <string name="help_activity_name_free">电量指示器 - 帮助</string>
+  <string name="help_activity_name_free">電量指示器 - 說明</string>
 
   <string name="main_window_title">@string/app_full_name</string>
   <string name="main_window_title_free">@string/app_full_name_free</string>
-  <string name="battery_use_b">查看电量使用情况</string>
-  <string name="upgrade_donate_b">升级/捐助...</string>
-  <string name="reenable_lock_screen">恢复自动锁屏</string>
-  <string name="disable_lock_screen">关闭自动锁屏</string>
+  <string name="battery_use_b">查看電量使用情況</string>
+  <string name="upgrade_donate_b">升級/捐助...</string>
+  <string name="reenable_lock_screen">恢復自動鎖屏</string>
+  <string name="disable_lock_screen">關閉自動鎖屏</string>
 
-  <string name="confirm_disable">确认禁止自动锁屏？</string>
+  <string name="confirm_disable">確認禁止自動鎖屏？</string>
   <string name="confirm_disable_hint">
-    提示：可在“设置项”中关闭此提示信息。
+    提示：可在「設定」中關閉此提示信息。
   </string>
-  <string name="yes">确认</string>
+  <string name="yes">確認</string>
   <string name="cancel">取消</string>
 
-  <string name="confirm_close">确认退出？</string>
+  <string name="confirm_close">確認退出？</string>
   <string name="confirm_close_hint">
-    电量指示器将完全退出，通知栏电量指示图标将不再显示。\n
+    電量指示器將完全退出，狀態列電量指示圖標將不再顯示。\n
 
-    \n如果您想让本程序后台运行，可以单击手机“返回”键关闭主窗口。
+    \n如果您想讓本程序背景運行，可以單擊手機「返回」鍵關閉主視窗。
   </string>
 
-  <string name="confirm_clear_logs">确认清理所有日志？</string>
+  <string name="confirm_clear_logs">確認清理所有日誌？</string>
 
-  <string name="first_run_title">非常感谢！</string>
-  <string name="first_run_message">非常感谢您的购买或捐助！<b><i>您的支持对我们来说非常重要！</i></b>\n
+  <string name="first_run_title">非常感謝！</string>
+  <string name="first_run_message">非常感謝您的購買或捐助！<b><i>您的支持對我們來說非常重要！</i></b>\n
 
    
-    \n• 如果您安装了“<b>任务杀手</b>”之类的进程管理工具，请卸载或将“电量指示器专业版”加入到自动关闭排除列表中。如果您曾使用过免费版的该软件，<i>您仍然需要将此专业版加入到排除列表</i> ！\n
+    \n‧ 如果您安裝了「<b>任務殺手</b>」之類的程序管理工具，請卸載或將「電量指示器專業版」加入到自動關閉排除列表中。如果您曾使用過免費版的該軟體，<i>您仍然需要將此專業版加入到排除列表</i> ！\n
 
-    \n• 如果您使用的是<b>Motorola Droid</b>、<b>Motorola Droid X</b>、
-      <b>Motorola Droid 2</b>或<b>Samsung Moment</b>机型，请在“其他设置”中勾选“10%步进模式”。
+    \n‧ 如果您使用的是<b>Motorola Droid</b>、<b>Motorola Droid X</b>、
+      <b>Motorola Droid 2</b>或<b>Samsung Moment</b>機型，請在「其他設定」中勾選「10%步進模式」。
   </string>
-  <string name="first_run_message_free">感谢下载试用“电量指示器”!  <b><i>重要提示：</i></b>\n
+  <string name="first_run_message_free">感謝下載試用「電量指示器」!  <b><i>重要提示：</i></b>\n
 
-    \n如果您安装了“<b>任务杀手</b>”之类的进程管理工具，请将其卸载或将“电量指示器专业版”加入到自动关闭排除列表中。
+    \n如果您安裝了「<b>任務殺手</b>」之類的程序管理工具，請將其卸載或將「電量指示器專業版」加入到自動關閉排除列表中。
   </string>
   <string name="okay">完成</string>
 
-  <string name="menu_logs">日志</string>
-  <string name="menu_settings">设置项</string>
-  <string name="menu_close">关闭</string>
-  <string name="menu_help">帮助</string>
+  <string name="menu_logs">日誌</string>
+  <string name="menu_settings">設定</string>
+  <string name="menu_close">關閉</string>
+  <string name="menu_help">說明</string>
   <string name="menu_clear">清理</string>
   <string name="menu_reverse">反向排序</string>
-  <string name="menu_export">导出至CSV</string>
+  <string name="menu_export">匯出至CSV</string>
 
   <string name="percent_symbol">%</string>
   <string name="degree_symbol">°</string>
-  <string name="fahrenheit">华氏温度</string>
+  <string name="fahrenheit">華氏溫度</string>
   <string name="fahrenheit_symbol">F</string>
-  <string name="celsius">摄氏温度</string>
+  <string name="celsius">攝氏溫度</string>
   <string name="celsius_symbol">C</string>
   <string name="volt_symbol">V</string>
 
-  <string name="fully_charged_in">完全充满剩余时间：</string>
-  <string name="light_usage">省电使用剩余时间：</string>
-  <string name="normal_usage">正常使用剩余时间：</string>
-  <string name="heavy_usage">频繁使用剩余时间：</string>
-  <string name="constant_usage">持续使用剩余时间：</string>
+  <string name="fully_charged_in">完全充滿剩餘時間：</string>
+  <string name="light_usage">省電使用剩餘時間：</string>
+  <string name="normal_usage">正常使用剩餘時間：</string>
+  <string name="heavy_usage">頻繁使用剩餘時間：</string>
+  <string name="constant_usage">持續使用剩餘時間：</string>
 
-  <string name="press_back_to_leave">单击“返回”键退出。</string>
-  <string name="press_menu_for_more">单击“菜单”查看更多选项。</string>
+  <string name="press_back_to_leave">單擊「返回」鍵退出。</string>
+  <string name="press_menu_for_more">單擊「選單」查看更多選項。</string>
 
-  <string name="inaccessible_storage">SD卡无法访问。</string>
-  <string name="inaccessible_w_reason">SD卡无法访问：</string>
-  <string name="read_only_storage">SD卡已设置为“只读”模式。</string>
-  <string name="file_written">文件已在SD卡根目录成功创建。</string>
+  <string name="inaccessible_storage">SD卡無法存取。</string>
+  <string name="inaccessible_w_reason">SD卡無法存取：</string>
+  <string name="read_only_storage">SD卡已設定為「唯讀」模式。</string>
+  <string name="file_written">文件已在SD卡根目錄成功創建。</string>
 
   <string-array name="statuses">
-    <item>拔下电源</item>
+    <item>拔下電源</item>
     <item>未知</item>
-    <item>充电中</item>
-    <item>放电中</item>
-    <item>未充电</item>
-    <item>电池充满</item>
+    <item>充電中</item>
+    <item>放電中</item>
+    <item>未充電</item>
+    <item>電池充滿</item>
   </string-array>
   <string-array name="log_statuses"><!-- The same as above, worded for the Log screen -->
-    <item>拔下电源</item>
+    <item>拔下電源</item>
     <item>未知</item>
-    <item>插入电源</item>
+    <item>插入電源</item>
     <item>未知</item>
     <item>未知</item>
-    <item>已充满</item>
+    <item>已充滿</item>
   </string-array>
   <string-array name="log_statuses_old"><!-- The same as above, worded for old Log screen statuses -->
-    <item>放电中</item>
+    <item>充電中</item>
     <item>未知</item>
-    <item>充电中</item>
+    <item>放電中</item>
     <item>未知</item>
     <item>未知</item>
-    <item>已充满</item>
+    <item>已充滿</item>
   </string-array>
   <string-array name="healths">
     <item>未知</item>
     <item>未知</item>
     <item>正常</item>
-    <item>过热</item>
-    <item>损坏</item>
-    <item>超压</item>
-    <item>错误</item>
+    <item>過熱</item>
+    <item>損壞</item>
+    <item>超壓</item>
+    <item>錯誤</item>
   </string-array>
   <string-array name="pluggeds">
     <item>未知</item>
@@ -119,387 +119,388 @@
     <item>(USB)</item>
   </string-array>
 
-  <string name="logs_empty">日志记录为空</string>
+  <string name="logs_empty">日誌記錄為空</string>
   <plurals name="n_log_items">
-    <item quantity="one">%d项日志记录</item>
-    <item quantity="other">%d项日志记录</item>
+    <item quantity="one">%d項日誌記錄</item>
+    <item quantity="other">%d項日誌記錄</item>
   </plurals>
 
-  <string name="discharging_from">放电起始电量</string>
-  <string name="charging_from">充电起始电量</string>
-  <string name="fully_charged">完全充满</string>
+  <string name="discharging_from">放電起始電量</string>
+  <string name="charging_from">充電起始電量</string>
+  <string name="fully_charged">完全充滿</string>
 
-  <string name="since">开始于</string>
+  <string name="since">開始於</string>
   <plurals name="for_n_hours">
-    <item quantity="one">已%d小时</item>
-    <item quantity="other">已%d小时</item>
+    <item quantity="one">已%d小時</item>
+    <item quantity="other">已%d小時</item>
   </plurals>
 
-  <string name="one_six_needed">对不起，此功能仅支持Android 1.6+版本系统！</string>
+  <string name="one_six_needed">對不起，此功能僅支持Android 1.6+版本系統！</string>
 
-  <string name="currently_using">当前使用</string>
-  <string name="currently_set_to">当前设置为</string>
-  <string name="currently_disabled">当前不可用</string>
+  <string name="currently_using">當前使用</string>
+  <string name="currently_set_to">當前設定為</string>
+  <string name="currently_disabled">當前不可用</string>
 
   <string name="help_cat_version">版本</string>
 
-  <string name="help_cat_changelog">更新日志</string>
+  <string name="help_cat_changelog">更新日誌</string>
   <string name="help_changelog">
-    请访问<a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">项目FAQ</a>以获取版本历史。
+    請訪問<a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">專案FAQ</a>以獲取版本歷史。
   </string>
 
-  <string name="help_cat_introduction">软件介绍</string>
-  <string name="help_introduction">本软件为<i>电量指示器专业版</i>，是热门免费软件<i>电量指示器</i>的专业版本，
-  目前已在电子市场上提供购买服务。本软件为开源项目，您可在<a href="http://code.google.com/p/battery-indicator/">项目网站</a>下载免费开源代码。
+  <string name="help_cat_introduction">軟體介紹</string>
+  <string name="help_introduction">本軟體為<i>電量指示器專業版</i>，是熱門免費軟體<i>電量指示器</i>的專業版本，
+  目前已在Android Market上提供購買服務。本軟體為開源專案，您可在<a href="http://code.google.com/p/battery-indicator/">專案網站</a>下載免費開源代碼。
   </string>
-  <string name="help_introduction_free">本软件为<i>电量指示器</i>，<i>电量指示器</i>系列软件的免费版本。
-  目前已在电子市场上提供下载服务。本软件为开源项目，您可在<a href="http://code.google.com/p/battery-indicator/">项目网站</a>下载免费开源代码。
-  \n请考虑购买以升级至<a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">专业版本</a>。
-  </string>
-
-  <string name="help_cat_summary">综述</string>
-  <string name="help_summary"><i>电量指示器</i>是应用于Android™手机操作系统的小型软件，主要功能即在系统状态栏中以图标形式显示电池剩余电量信息。\n
-    \n免费版本可以红色、黄色及绿色图标提示剩余电量等级，3.0专业版更包含了以下多种高级功能：\n
-    \n• 可定制的预估充电/放电剩余时间。
-    \n• 将电池状态通过日志进行记录。
-    \n• 多种窗口主题（包括便于阅读的大字体文本全屏窗口）。
-    \n• 可手动禁用/启用自动锁屏功能，以实现在充电时禁止系统自动锁屏，并在拔下电源后恢复系统默认值的功能。
-    \n• 更多的惊喜等待您的发掘。
-  </string>
-  <string name="help_summary_free"><i>电量指示器</i>是应用于Android™手机操作系统的小型软件，主要功能即在系统状态栏中以图标形式显示电池剩余电量信息。\n
-
-    \n免费版本可以红色、黄色及绿色图标提示剩余电量等级，3.0专业版更包含了以下多种高级功能：\n
-    \n• 可定制的预估充电/放电剩余时间。
-    \n• 将电池状态通过日志进行记录。
-    \n• 多种窗口主题（包括便于阅读的大字体文本全屏窗口）。
-    \n• 可手动禁用/启用自动锁屏功能，以实现在充电时禁止系统自动锁屏，并在拔下电源后恢复系统默认值的功能。
-    \n• 更多的惊喜等待您的发掘。
+  <string name="help_introduction_free">本軟體為<i>電量指示器</i>，<i>電量指示器</i>系列軟體的免費版本。
+  目前已在Android Market上提供下載服務。本軟體為開源專案，您可在<a href="http://code.google.com/p/battery-indicator/">專案網站</a>下載免費開源代碼。
+  \n請考慮購買以升級至<a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">專業版本</a>。
   </string>
 
-  <string name="help_cat_limitations">软件局限</string>
-  <string name="help_limitations">(<i>以下所述功能受多方面局限</i>)\n
+  <string name="help_cat_summary">摘要</string>
+  <string name="help_summary"><i>電量指示器專業版</i>是應用於Android™手機作業系統的小型軟體，主要功能即在系統狀態列中以圖標形式顯示電池剩餘電量信息。\n
 
-    \n• 本软件以被动形式收集系统信息。大部分手机以%1的步进报告电量剩余信息，但少部分机型（以Motorola Droid机型为主）
-    则以10%的步进报告电量剩余信息。
-    \n• 无法实现移除系统自带电量图标。
-    \n• 通知栏图标和通知栏托盘文本信息为统一的整体，无法单独使用其中的任意一项。
-    \n• 部分软件允许安装到SD卡存储空间，但有些软件则无法实现，电量指示器则为一例。具体缘由请参考
-    <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">项目FAQ</a>。
+    \n此專業版提供了更多功能。除了可以紅色、黃色及綠色圖標提示剩餘電量等級，更包含了以下3.0版多種高級功能：\n
+    \n‧ 可設定的預估充電/放電剩餘時間。
+    \n‧ 將電池狀態通過日誌進行記錄。
+    \n‧ 多種視窗主題（包括便於閱讀的大字體文本全屏視窗）。
+    \n‧ 可手動禁用/啟用自動鎖屏功能，以實現在充電時禁止系統自動鎖屏，並在拔下電源後恢復系統預設值的功能。
+    \n‧ 更多的驚喜等待您的發掘。
+  </string>
+  <string name="help_summary_free"><i>電量指示器</i>是應用於Android™手機作業系統的小型軟體，主要功能即在系統狀態列中以圖標形式顯示電池剩餘電量信息。\n
+
+    \n專業版提供了更多功能。除了可以紅色、黃色及綠色圖標提示剩餘電量等級，更包含了以下3.0版多種高級功能：\n
+    \n‧ 可定制的預估充電/放電剩餘時間。
+    \n‧ 將電池狀態通過日誌進行記錄。
+    \n‧ 多種視窗主題（包括便於閱讀的大字體文本全屏視窗）。
+    \n‧ 可手動禁用/啟用自動鎖屏功能，以實現在充電時禁止系統自動鎖屏，並在拔下電源後恢復系統預設值的功能。
+    \n‧ 更多的驚喜等待您的發掘。
+  </string>
+
+  <string name="help_cat_limitations">軟體侷限</string>
+  <string name="help_limitations">(<i>以下所述功能受多方面侷限</i>)\n
+
+    \n‧ 本軟體以被動形式收集系統信息。大部分手機以%1的步進報告電量剩餘信息，但少部分機型（以Motorola Droid機型為主）
+    則以10%的步進報告電量剩餘信息。
+    \n‧ 無法移除系統自帶電量圖標。
+    \n‧ 狀態列圖標和狀態列托盤文本信息為統一的整體，無法單獨使用其中的任意一項。
+    \n‧ 部分軟體允許安裝到SD卡存儲空間，但有些軟體則無法實現，電量指示器則為一例。具體緣由請參考
+    <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">專案FAQ</a>。
   </string>
 
   <string name="help_cat_features">特性</string>
   <string name="help_features">
-    • 精简并便于阅读。
-    \n• 本软件不进行主动扫描，仅在电池状态改变时收集系统广播信息作为依据来更新图标显示并即时转入省电模式。从而实现节约
-    运行内存和几乎不使用CPU的省电特性。估计在使一块正常电池完全放电的时间内，本软件仅使用了约一分钟时间的电量。如果您
-    发现软件运行异常，请检查是否安装了其他（如“任务杀手”之类的）软件干扰电量指示器的正常运行。
-    \n• 快捷访问系统电量使用详情界面（需要Android 1.6以上版本支持）。
-    \n• 可设置为“始终自动启动”、“从不自动启动”或“关机前运行中”三种软件自启动方式。
-    \n• 更多其他未包含在此介绍内的小特性，等待着您的发掘。
-    \n• 支持开发者的荣耀感。（在此表示非常感谢！）
+    ‧ 精簡並便於閱讀。
+    \n‧ 本軟體不進行主動掃瞄，僅在電池狀態改變時收集系統廣播信息作為依據來更新圖標顯示並即時轉入省電模式。從而實現節約
+    運行記憶體和幾乎不使用CPU的省電特性。估計在使一塊正常電池完全放電的時間內，本軟體僅使用了約一分鐘時間的電量。如果您
+    發現軟體運行異常，請檢查是否安裝了其他（如「任務殺手」之類的）軟體干擾電量指示器的正常運行。
+    \n‧ 快捷訪問系統電量使用詳情界面（需要Android 1.6以上版本支持）。
+    \n‧ 可設定為「始終自動啟動」、「從不自動啟動」或「關機前運行中」三種軟體自動啟動方式。
+    \n‧ 更多其他未包含在此介紹內的小特性，等待著您的發掘。
+    \n‧ 支持開發者的榮耀感。（在此表示非常感謝！）
   </string>
 
-  <string name="help_cat_no_warranty">免责申明</string>
+  <string name="help_cat_no_warranty">免責申明</string>
   <string name="help_no_warranty">
-    本软件旨在提高系统的易用性，并<b>无任何承担责任的义务</b>。<b>不对使用软件实现特殊功能的实用性做任何承诺</b>。\n
+    本軟體旨在提高系統的易用性，並<b>無任何承擔責任的義務</b>。<b>不對使用軟體實現特殊功能的實用性做任何承諾</b>。\n
 
-    \n软件开发者将尽其所能最求软件的正常工作及流畅运行，但对任何情况下可能导致的使用者的不适或设备损坏不承担任何责任。
+    \n軟體開發者將盡其所能最求軟體的正常工作及流暢運行，但對任何情況下可能導致的使用者的不適或設備損壞不承擔任何責任。
   </string>
 
-  <string name="help_cat_acknowledgments">声明</string>
-  <string name="help_acknowledgments">由于暂无慷慨的翻译者协助，本程序仅提供英文版本，非常感谢您的支持！\n
-    \n得益于Google及其他开源项目，本软件功能得以实现。\n
-    \n软件图标（可见于电子市场软件主页右上角）的设计灵感来源于<a href="http://www.oxygen-icons.org">
-    	Oxygen图标主题</a>并在<a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common
-      Attribution-ShareAlike 3.0 License</a>的规范下有限使用。
+  <string name="help_cat_acknowledgments">聲明</string>
+  <string name="help_acknowledgments">由於暫無慷慨的翻譯者協助，本程序僅提供英文版本，非常感謝您的支持！\n
+    \n得益於Google及其他開源專案，本軟體功能得以實現。\n
+    \n軟體圖標（可見於Android Market軟體主頁右上角）的設計靈感來源於<a href="http://www.oxygen-icons.org">
+    	Oxygen圖標主題</a>並在<a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common
+      Attribution-ShareAlike 3.0 License</a>的規範下有限使用。
   </string>
 
-  <string name="help_cat_translations">多语言化</string>
-  <string name="help_translations">开发者需要更多的帮助以实现将软件翻译成除英文外的其他语言。如果您乐于提供帮助，请联系开发者的 <a href="mailto:android@darshancomputing.com">电子邮件</a>。开发者将随后在软件帮助中的“声明”项加入帮助者的名字。</string>
-  <string name="help_subcat_translators">翻译志愿者名单</string>
+  <string name="help_cat_translations">多語言化</string>
+  <string name="help_translations">開發者需要更多的幫助以實現將軟體翻譯成除英文外的其他語言。如果您樂於提供幫助，請聯繫開發者的 <a href="mailto:android@darshancomputing.com">電子郵件</a>。開發者將隨後在軟體幫助中的「聲明」項加入幫助者的名字。</string>
+  <string name="help_subcat_translators">翻譯志願者名單</string>
 
-  <string name="help_cat_contact">联系方式</string>
-  <string name="help_contact">如果您在使用中遇到任何疑问，请先参阅<a href="http://code.google.com/p/battery-indicator/wiki/FAQ">软件FAQ</a>。\n
-    \n如果您有任何反馈信息，或FAQ中无法解答的任何疑问，请联系开发者的电子邮件<a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>。
+  <string name="help_cat_contact">聯繫方式</string>
+  <string name="help_contact">如果您在使用中遇到任何疑問，請先參閱<a href="http://code.google.com/p/battery-indicator/wiki/FAQ">軟體FAQ</a>。\n
+    \n如果您有任何反饋信息，或FAQ中無法解答的任何疑問，請聯繫開發者的電子郵件<a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>。
   </string>
 
-  <string name="pref_hint"><b>提示：</b>单击“菜单”获取帮助。</string>
+  <string name="pref_hint"><b>提示：</b>單擊「選單」獲取說明。</string>
 
-  <string name="settings_overview">预览</string>
+  <string name="settings_overview">預覽</string>
   <string name="settings_overview_help">
-    设置项包括如下所述的三个独立页面。各页面的帮助信息独立显示，在“菜单”->“帮助”内容中可获取当前页面的帮助信息。
+    設定包括如下所述的三個獨立頁面。各頁面的說明信息獨立顯示，在「選單」->「說明」內容中可獲取當前頁面的說明信息。
   </string>
 
-  <string name="color_settings">色彩主题</string>
-  <string name="color_settings_summary">设置图标色彩及窗口主题</string>
+  <string name="color_settings">色彩主題</string>
+  <string name="color_settings_summary">設定圖標色彩及視窗主題</string>
   <string name="color_settings_help">
-    您可以选择主窗口显示主题及设置图标变化色彩。
+    您可以選擇主視窗顯示主題及設定圖標變化色彩。
   </string>
-  <string name="time_settings">时间设置</string>
-  <string name="time_settings_summary">定制时间预估方式</string>
+  <string name="time_settings">時間設定</string>
+  <string name="time_settings_summary">定制時間預估方式</string>
   <string name="time_settings_help">
-    您可在此界面可设置电池状态变化后（例如：拔下电源）所经历时间估计方式。\n
+    您可在此界面可設定電池狀態變化後（例如：拔下電源）所經歷時間估計方式。\n
 
-    \n您也可以设置预估USB/AC方式充电、省电/正常/频繁/持续使用手机剩余时间的基准值。
+    \n您也可以設定預估USB/AC方式充電、省電/正常/頻繁/持續使用手機剩餘時間的基準值。
   </string>
-  <string name="other_settings">其他设置</string>
+  <string name="other_settings">其他設定</string>
   <string name="other_settings_summary"></string>
   <string name="other_settings_help">
-    此页面包含其他的设置项，包括日志功能、屏幕锁功能、温度单位、自启动方式等。
+    此頁面包含其他的設定，包括日誌功能、螢幕鎖功能、溫度單位、自動啟動方式等。
   </string>
 
-  <string name="pref_cat_more_settings_in_pro">专业版的更多设置项</string>
+  <string name="pref_cat_more_settings_in_pro">專業版的更多設定</string>
   <string name="pref_please_upgrade">
-    专业版包含了以红色、黄色及绿色图标提示剩余电量等级、电池状态记录、自动/手动关闭锁屏、充电/放电剩余时间预估等多种高级功能。
+    專業版包含了以紅色、黃色及綠色圖標提示剩餘電量等級、電池狀態記錄、自動/手動關閉鎖屏、充電/放電剩餘時間預估等多種高級功能。
   </string>
 
-  <string name="pref_cat_themes">主题</string>
-  <string name="pref_main_window_theme">主窗口显示主题</string>
+  <string name="pref_cat_themes">主題</string>
+  <string name="pref_main_window_theme">主視窗顯示主題</string>
   <string name="pref_main_window_theme_help">
-    设置主窗口显示主题，默认以传统Android系统小窗口方式显示。如果您希望文字信息更便于阅读，可选择全屏窗口主题。其他主题仅供娱乐。
+    設定主視窗顯示主題，預設以傳統Android系統小視窗方式顯示。如果您希望文字信息更便於閱讀，可選擇全屏視窗主題。其他主題僅供娛樂。
   </string>
 
-  <string name="pref_cat_logging">日志记录</string>
-  <string name="pref_enable_logging">启用日志记录功能</string>
-  <string name="pref_enable_logging_summary">确认记录电池状态信息？</string>
+  <string name="pref_cat_logging">日誌記錄</string>
+  <string name="pref_enable_logging">啟用日誌記錄功能</string>
+  <string name="pref_enable_logging_summary">確認記錄電池狀態信息？</string>
   <string name="pref_enable_logging_help">
-    若启用本功能，电量指示器将以日志方式记录电池状态信息（例如拔下电源或电池充满）。您可通过单击“菜单”键和“日志”按钮查看日志记录。
+    若啟用本功能，電量指示器將以日誌方式記錄電池狀態信息（例如拔下電源或電池充滿）。您可通過單擊「選單」鍵和「日誌」按鈕查看日誌記錄。
   </string>
-  <string name="pref_log_everything">记录所有信息</string>
-  <string name="pref_log_everything_summary">确认记录电量变化信息？</string>
+  <string name="pref_log_everything">記錄所有信息</string>
+  <string name="pref_log_everything_summary">確認記錄電量變化信息？</string>
   <string name="pref_log_everything_help">
-    若启用本功能，电量指示器将记录电池电量的所有变化信息比如（剩余电量从57%变为56%，反之亦然）。多数用户并不需要次功能，但如果您喜欢更细节的信息，请开启此项。\n
+    若啟用本功能，電量指示器將記錄電池電量的所有變化信息比如（剩餘電量從57%變為56%，反之亦然）。多數用戶並不需要此功能，但如果您喜歡更細節的信息，請開啟此項。\n
 
-    \n启用本功能将增加少许功耗。但即使启用本功能，电量指示器在电池完全放电时间内所消耗的电量仍仅有约一分钟。
+    \n啟用本功能將增加少許功耗。但即使啟用本功能，電量指示器在電池完全放電時間內所消耗的電量仍僅有約一分鐘。
   </string>
-  <string name="pref_max_log_age">日志记录有效期</string>
-  <string name="pref_max_log_age_summary">日志记录有效期限：</string>
+  <string name="pref_max_log_age">日誌記錄有效期</string>
+  <string name="pref_max_log_age_summary">日誌記錄有效期限：</string>
   <string name="pref_max_log_age_help">
-    若启用本功能，过期日志将在手机充电时被清除。
+    若啟用本功能，過期日誌將在手機充電時被清除。
   </string>
 
-  <string name="pref_cat_keyguard">屏幕/键盘锁</string>
+  <string name="pref_cat_keyguard">螢幕/鍵盤鎖</string>
   <string name="pref_cat_keyguard_help">
-    Android系统允许软件禁用或恢复所谓的“键盘/屏幕锁”功能。除此之外，其他诸如设置唤醒快捷键的功能均无法实现。
+    Android系統允許軟體禁用或恢復所謂的「鍵盤/螢幕鎖」功能。除此之外，其他諸如設定喚醒快捷鍵的功能均無法實現。
   </string>
-  <string name="pref_confirm_manual_disable">手动禁用确认</string>
-  <string name="pref_confirm_manual_disable_summary">手动禁用自动锁屏时进行提示确认？</string>
+  <string name="pref_confirm_manual_disable">手動禁用確認</string>
+  <string name="pref_confirm_manual_disable_summary">手動禁用自動鎖屏時進行提示確認？</string>
   <string name="pref_confirm_manual_disable_help">
-    若勾选此项，您在手动禁用自动锁屏时将弹出确认信息。旨在防止用户误操作禁用了自动锁屏。若禁用自动锁屏后软件运行不正常，请去掉此项勾选。
+    若勾選此項，您在手動禁用自動鎖屏時將彈出確認信息。旨在防止用戶誤操作禁用了自動鎖屏。若禁用自動鎖屏後軟體運行不正常，請去掉此項勾選。
   </string>
-  <string name="pref_finish_after_toggle_lock">切换后退出</string>
-  <string name="pref_finish_after_toggle_lock_summary">确认在禁用/恢复自动锁屏后退出主窗口？</string>
+  <string name="pref_finish_after_toggle_lock">切換後退出</string>
+  <string name="pref_finish_after_toggle_lock_summary">確認在禁用/恢復自動鎖屏後退出主視窗？</string>
   <string name="pref_finish_after_toggle_lock_help">
-    如果您发现按键（或触摸屏点击）异常，可勾选此项以实现快速禁用/恢复自动锁屏功能并返回之前行为。您仅需下拉通知栏，点击电量指示器图标，触摸切换按钮，三次点击即可进行切换并返回之前的行为。
+    如果您發現按鍵（或觸摸屏點擊）異常，可勾選此項以實現快速禁用/恢復自動鎖屏功能並返回之前行為。您僅需下拉狀態列，點擊電量指示器圖標，觸摸切換按鈕，三次點擊即可進行切換並返回之前的行為。
 
-    \n由于系统原因，您仅在勾选了前一选项后，本选项才可用。
+    \n由於系統原因，您僅在勾選了前一選項後，本選項才可用。
   </string>
-  <string name="pref_auto_disable">自动禁用自动锁屏</string>
-  <string name="pref_auto_disable_summary">确认在充电式禁用自动锁屏？</string>
+  <string name="pref_auto_disable">自動禁用自動鎖屏</string>
+  <string name="pref_auto_disable_summary">確認在充電式禁用自動鎖屏？</string>
   <string name="pref_auto_disable_help">
-    若勾选此项，则在充电时，电量指示器将禁用自动锁屏功能，并在拔下电源后恢复系统默认值。\n
+    若勾選此項，則在充電時，電量指示器將禁用自動鎖屏功能，並在拔下電源後恢復系統預設值。\n
 
-    \n需注意的是，即使勾选了此项，自动禁用自动锁屏前，屏幕锁界面仍将出现一次。
+    \n需注意的是，即使勾選了此項，自動禁用自動鎖屏前，螢幕鎖界面仍將出現一次。
   </string>
-  <string name="pref_disallow_disable_lock_screen">禁止手动禁用</string>
-  <string name="pref_disallow_disable_lock_screen_summary">确认禁止使用“禁用自动锁屏”按钮？</string>
+  <string name="pref_disallow_disable_lock_screen">禁止手動禁用</string>
+  <string name="pref_disallow_disable_lock_screen_summary">確認禁止使用「禁用自動鎖屏」按鈕？</string>
   <string name="pref_disallow_disable_lock_screen_help">
-    若您使用第三方锁屏工具实现锁屏后访问通知栏，鉴于安全原因，请勾选此项。
+    若您使用第三方鎖屏工具實現鎖屏後訪問狀態列，鑒於安全原因，請勾選此項。
   </string>
 
-  <string name="pref_cat_battery_use">电池使用情况</string>
-  <string name="pref_finish_after_battery_use">启动后退出</string>
-  <string name="pref_finish_after_battery_use_summary">确认启动电量使用情况界面后退出主窗口？</string>
+  <string name="pref_cat_battery_use">電池使用情況</string>
+  <string name="pref_finish_after_battery_use">啟動後退出</string>
+  <string name="pref_finish_after_battery_use_summary">確認啟動電量使用情況界面後退出主視窗？</string>
   <string name="pref_finish_after_battery_use_help">
-    如果您发现按键（或触摸屏点击）异常，可勾选此项可在启动电量使用情况界面后退出电量指示器主窗口。
+    如果您發現按鍵（或觸摸屏點擊）異常，可勾選此項可在啟動電量使用情況界面後退出電量指示器主視窗。
   </string>
 
-  <string name="pref_cat_temperature_unit">温度显示单位</string>
-  <string name="pref_convert_to_fahrenheit">确认切换到华氏单位？</string>
+  <string name="pref_cat_temperature_unit">溫度顯示單位</string>
+  <string name="pref_convert_to_fahrenheit">確認切換到華氏單位？</string>
   <string name="pref_convert_to_fahrenheit_help">
-    Android系统以摄氏单位报告电池温度信息。若您想使温度信息以华氏单位显示，请勾选此项。
+    Android系統以攝氏單位報告電池溫度信息。若您想使溫度信息以華氏單位顯示，請勾選此項。
   </string>
 
-  <string name="pref_cat_autostart">自启动</string>
-  <string name="pref_autostart_at_boot">开机自启动方式</string>
-  <string name="pref_autostart_at_boot_summary">确认允许电量指示器开机时自启动？</string>
+  <string name="pref_cat_autostart">自動啟動</string>
+  <string name="pref_autostart_at_boot">開機自動啟動方式</string>
+  <string name="pref_autostart_at_boot_summary">確認允許電量指示器開機時自動啟動？</string>
   <string name="pref_autostart_at_boot_help">
-    设置是否允许电量指示器在开机时自启动。\n
+    設定是否允許電量指示器在開機時自動啟動。\n
 
-    \n”关机前运行中”选项仅在手动关闭电量指示器时有效。若您使用其他方式，如使用任务杀手进行关闭，则本程序无法确认是否由您关闭，选择该方式后仍会在开机时自启动。
+    \n」關機前運行中」選項僅在手動關閉電量指示器時有效。若您使用其他方式，如使用任務殺手進行關閉，則本程序無法確認是否由您關閉，選擇該方式後仍會在開機時自動啟動。
   </string>
 
-  <string name="pref_cat_charge_as_text">文本显示电量</string>
-  <string name="pref_charge_as_text">文本显示电量</string>
-  <string name="pref_charge_as_text_summary">确认以大字体文本在图标旁显示剩余电量？</string>
+  <string name="pref_cat_charge_as_text">文本顯示電量</string>
+  <string name="pref_charge_as_text">文本顯示電量</string>
+  <string name="pref_charge_as_text_summary">確認以大字體文本在圖標旁顯示剩餘電量？</string>
   <string name="pref_charge_as_text_help">
-    鉴于部分视力不佳用户的要求，此功能可在通知栏下拉托盘中电量指示器图标右侧以易阅读的大字体显示剩余电量信息，原电量图标无任何改变。勾选/取消此项只能在通知栏下拉托盘中看到变化，但此功能有胜于无，且对有需求的用户而言易于实现。\n
+    鑒於部分視力不佳用戶的要求，此功能可在狀態列下拉托盤中電量指示器圖標右側以易閱讀的大字體顯示剩餘電量信息，原電量圖標無任何改變。勾選/取消此項只能在狀態列下拉托盤中看到變化，但此功能有勝於無，且對有需求的用戶而言易於實現。\n
 
-    \n为节约宝贵的显示空间，经过多次单调乏味的调试实现此功能，在不使用百分符号的前提下，文本已能完美的显示并易于阅读。对于部分非常小型的设备而言，开启此功能可能导致AM/PM字符偏离原位导致不协调。
+    \n為節約寶貴的顯示空間，經過多次單調乏味的調試實現此功能，在不使用百分符號的前提下，文本已能完美的顯示並易於閱讀。對於部分非常小型的設備而言，開啟此功能可能導致AM/PM字符偏離原位導致不協調。
   </string>
 
-  <string name="pref_cat_status_duration">状态时长</string>
-  <string name="pref_status_dur_est">估算前持续时间</string>
-  <string name="pref_status_dur_est_summary">开始估算剩余时间前持续时间</string>
+  <string name="pref_cat_status_duration">狀態時長</string>
+  <string name="pref_status_dur_est">估算前持續時間</string>
+  <string name="pref_status_dur_est_summary">開始估算剩餘時間前持續時間</string>
   <string name="pref_status_dur_est_help">
-    设置通知信息从诸如“拔下电源开始于1:10 PM”到“拔下电源已1小时”的转换前持续时间。第一种显示精确到分钟的状态变化信息显示更为准确，但多数用户喜欢更简便的方式以估计状态持续时间，因此更乐于使用比默认12小时计时法更简便的提示信息。    
+    設定通知信息從諸如「拔下電源開始於1:10 PM」到「拔下電源已1小時」的轉換前持續時間。第一種顯示精確到分鐘的狀態變化信息顯示更為準確，但多數用戶喜歡更簡便的方式以估計狀態持續時間，因此更樂於使用比預設12小時計時法更簡便的提示信息。    
   </string>
 
-  <string name="pref_cat_time_remaining_estimates">剩余时间预估</string>
+  <string name="pref_cat_time_remaining_estimates">剩餘時間預估</string>
   <string name="pref_cat_time_remaining_estimates_help">
-    该剩余时间预估功能可能与传统功能有所不同，但更为优秀，您能根据使用的情况调整电池使用时间基准值并及时修正。默认基准时间为大量统计结果，由于机型种类、使用习惯的不同，您可能需要修正这些基准值。但好处是只有您才知道诸如“正常使用”分类的含义，并使用自定义的基准值，以避免被错误的预估值所迷惑。
+    該剩餘時間預估功能可能與傳統功能有所不同，但更為優秀，您能根據使用的情況調整電池使用時間基準值並及時修正。預設基準時間為大量統計結果，由於機型種類、使用習慣的不同，您可能需要修正這些基準值。但好處是只有您才知道諸如「正常使用」分類的含義，並使用自定義的基準值，以避免被錯誤的預估值所迷惑。
   </string>
-  <string name="pref_show_charge_time">显示充电时间</string>
-  <string name="pref_show_charge_time_summary">确认充电时显示剩余时间？</string>
+  <string name="pref_show_charge_time">顯示充電時間</string>
+  <string name="pref_show_charge_time_summary">確認充電時顯示剩餘時間？</string>
   <string name="pref_show_charge_time_help">
-    若启用次功能，则主窗口会在您充电时显示预估的充满剩余时间（基于您在下方的设置值）。
+    若啟用此功能，則主視窗會在您充電時顯示預估的充滿剩餘時間（基於您在下方的設定值）。
   </string>
-  <string name="pref_usb_charge_time">USB充电模式</string>
-  <string name="pref_usb_charge_time_summary">从0%到100%电量USB充电所需时间</string>
+  <string name="pref_usb_charge_time">USB充電模式</string>
+  <string name="pref_usb_charge_time_summary">從0%到100%電量USB充電所需時間</string>
   <string name="pref_usb_charge_time_help">
-    输入您估计的使用USB接口充电时剩余电量从0%到100%所需时长。
+    輸入您估計的使用USB接口充電時剩餘電量從0%到100%所需時長。
   </string>
-  <string name="pref_ac_charge_time">AC充电模式</string>
-  <string name="pref_ac_charge_time_summary">从0%到100%电量AC充电所需时间</string>
+  <string name="pref_ac_charge_time">AC充電模式</string>
+  <string name="pref_ac_charge_time_summary">從0%到100%電量AC充電所需時間</string>
   <string name="pref_ac_charge_time_help">
-    输入您估计的使用AC适配器充电时剩余电量从0%到100%所需时长。
+    輸入您估計的使用AC適配器充電時剩餘電量從0%到100%所需時長。
   </string>
-  <string name="pref_show_light_usage">显示省电使用时间</string>
-  <string name="pref_show_light_usage_summary">确认显示省电使用剩余时间？</string>
+  <string name="pref_show_light_usage">顯示省電使用時間</string>
+  <string name="pref_show_light_usage_summary">確認顯示省電使用剩餘時間？</string>
   <string name="pref_show_light_usage_help">
-    是否在主窗口显示您所认为的“省电使用”方式剩余电量持续时间？
+    是否在主視窗顯示您所認為的「省電使用」方式剩餘電量持續時間？
   </string>
-  <string name="pref_light_usage_time">省电使用</string>
-  <string name="pref_light_usage_time_summary">省电使用时电量从100%到0%放电时间</string>
+  <string name="pref_light_usage_time">省電使用</string>
+  <string name="pref_light_usage_time_summary">省電使用時電量從100%到0%放電時間</string>
   <string name="pref_light_usage_time_help">
-    输入以您所认为的“省电使用”方式将电量从100%消耗至0%所需时间？
+    輸入以您所認為的「省電使用」方式將電量從100%消耗至0%所需時間？
   </string>
-  <string name="pref_show_normal_usage">显示正常使用时间</string>
-  <string name="pref_show_normal_usage_summary">确认正常使用剩余时间？</string>
+  <string name="pref_show_normal_usage">顯示正常使用時間</string>
+  <string name="pref_show_normal_usage_summary">確認正常使用剩餘時間？</string>
   <string name="pref_show_normal_usage_help">
-   是否在主窗口显示您所认为的“正常使用”方式剩余电量持续时间？
+   是否在主視窗顯示您所認為的「正常使用」方式剩餘電量持續時間？
   </string>
   <string name="pref_normal_usage_time">正常使用</string>
-  <string name="pref_normal_usage_time_summary">正常使用时电量从100%到0%放电时间</string>
+  <string name="pref_normal_usage_time_summary">正常使用時電量從100%到0%放電時間</string>
   <string name="pref_normal_usage_time_help">
-    输入以您所认为的“正常使用”方式将电量从100%消耗至0%所需时间？
+    輸入以您所認為的「正常使用」方式將電量從100%消耗至0%所需時間？
   </string>
-  <string name="pref_show_heavy_usage">显示频繁使用时间</string>
-  <string name="pref_show_heavy_usage_summary">确认频繁使用剩余时间？</string>
+  <string name="pref_show_heavy_usage">顯示頻繁使用時間</string>
+  <string name="pref_show_heavy_usage_summary">確認頻繁使用剩餘時間？</string>
   <string name="pref_show_heavy_usage_help">
-   是否在主窗口显示您所认为的“频繁使用”方式剩余电量持续时间？
+   是否在主視窗顯示您所認為的「頻繁使用」方式剩餘電量持續時間？
   </string>
-  <string name="pref_heavy_usage_time">频繁使用</string>
-  <string name="pref_heavy_usage_time_summary">频繁使用时电量从100%到0%放电时间</string>
+  <string name="pref_heavy_usage_time">頻繁使用</string>
+  <string name="pref_heavy_usage_time_summary">頻繁使用時電量從100%到0%放電時間</string>
   <string name="pref_heavy_usage_time_help">
-    输入以您所认为的“频繁使用”方式将电量从100%消耗至0%所需时间？
+    輸入以您所認為的「頻繁使用」方式將電量從100%消耗至0%所需時間？
   </string>
-  <string name="pref_show_constant_usage">显示持续使用时间</string>
-  <string name="pref_show_constant_usage_summary">确认持续持续使用剩余时间？</string>
+  <string name="pref_show_constant_usage">顯示持續使用時間</string>
+  <string name="pref_show_constant_usage_summary">確認持續持續使用剩餘時間？</string>
   <string name="pref_show_constant_usage_help">
-    是否在主窗口显示您所认为的“持续使用”方式剩余电量持续时间？
+    是否在主視窗顯示您所認為的「持續使用」方式剩餘電量持續時間？
   </string>
-  <string name="pref_constant_usage_time">持续使用</string>
-  <string name="pref_constant_usage_time_summary">持续使用时电量从100%到0%放电时间</string>
+  <string name="pref_constant_usage_time">持續使用</string>
+  <string name="pref_constant_usage_time_summary">持續使用時電量從100%到0%放電時間</string>
   <string name="pref_constant_usage_time_help">
-    输入以您所认为的“持续使用”方式将电量从100%消耗至0%所需时间？
+    輸入以您所認為的「持續使用」方式將電量從100%消耗至0%所需時間？
   </string>
 
-  <string name="pref_cat_color">图标颜色</string>
+  <string name="pref_cat_color">圖標顏色</string>
   <string name="pref_cat_color_help">
-    为保证电量指示器的二进制数据包尺寸最小化，对图标颜色做出如下限制：红色图标标示最大值为30%剩余电量，黄色图标标示最大值为50%剩余电量，绿色图标标示最小值为20%剩余电量。开发者相信如此的限制能满足99%的用户需求。\n
+    為保證電量指示器的二進制數據包尺寸最小化，對圖標顏色做出如下限制：紅色圖標標示最大值為30%剩餘電量，黃色圖標標示最大值為50%剩餘電量，綠色圖標標示最小值為20%剩餘電量。開發者相信如此的限制能滿足99%的用戶需求。\n
 
-    \n为保证用户能够最大限度的自定义该软件，各色彩等级可单独的开启或关闭。最高可实现四级色彩显示，绿色图标表示电量充足，接着以灰色、黄色和红色显示剩余电量等级。大部分用户会将黄色标示上限及绿色标示下限设置为相同值，这样将跳过灰色标示。
+    \n為保證用戶能夠最大限度的自定義該軟體，各色彩等級可單獨的開啟或關閉。最高可實現四級色彩顯示，綠色圖標表示電量充足，接著以灰色、黃色和紅色顯示剩餘電量等級。大部分用戶會將黃色標示上限及綠色標示下限設定為相同值，這樣將跳過灰色標示。
   </string>
-  <string name="pref_color_preview">色彩预览</string>
+  <string name="pref_color_preview">色彩預覽</string>
   <string name="pref_color_preview_help">
-    色彩预览功能可将您的设置效果及时以视觉方式呈现。\n
+    色彩預覽功能可將您的設定效果及時以視覺方式呈現。\n
 
-    \n该功能在10%步进模式下无实际意义，将不可用。
+    \n該功能在10%步進模式下無實際意義，將不可用。
   </string>
-  <string name="pref_red">使用红色图标</string>
-  <string name="pref_red_summary">确认在电量低时使用红色图标？</string>
+  <string name="pref_red">使用紅色圖標</string>
+  <string name="pref_red_summary">確認在電量低時使用紅色圖標？</string>
   <string name="pref_red_help">
-    设置是否在剩余电量低于设置阀值时使用红色图标。
+    設定是否在剩餘電量低於設定閥值時使用紅色圖標。
   </string>
-  <string name="pref_red_thresh">红色图标阀值</string>
-  <string name="pref_red_thresh_summary">剩余电量低于多少百分比时使用红色图标？</string>
-  <string name="pref_red_thresh_summary10">剩余电量等于或低于多少百分比时使用红色图标？</string>
-  <string name="pref_red_thresh_help">设置剩余电量低于（10%步进模式中为“等于或低于”）该设置值时使用红色图标。\n
+  <string name="pref_red_thresh">紅色圖標閥值</string>
+  <string name="pref_red_thresh_summary">剩餘電量低於多少百分比時使用紅色圖標？</string>
+  <string name="pref_red_thresh_summary10">剩餘電量等於或低於多少百分比時使用紅色圖標？</string>
+  <string name="pref_red_thresh_help">設定剩餘電量低於（10%步進模式中為「等於或低於」）該設定值時使用紅色圖標。\n
 
-    \n该选项能在可选范围内（5%步进）提供红色图标阀值设置值选项。\n
+    \n該選項能在可選範圍內（5%步進）提供紅色圖標閥值設定值選項。\n
 
-    \n在10%步进模式下，该设置项内容可能略有不同。
+    \n在10%步進模式下，該設定內容可能略有不同。
   </string>
-  <string name="pref_amber">使用黄色图标</string>
-  <string name="pref_amber_summary">确认在电量较少时使用黄色图标？</string>
+  <string name="pref_amber">使用黃色圖標</string>
+  <string name="pref_amber_summary">確認在電量較少時使用黃色圖標？</string>
   <string name="pref_amber_help">
-    设置是否在剩余电量低于设置阀值时使用黄色图标。
+    設定是否在剩餘電量低於設定閥值時使用黃色圖標。
   </string>
-  <string name="pref_amber_thresh">黄色图标阀值</string>
-  <string name="pref_amber_thresh_summary">剩余电量低于多少百分比时使用黄色图标？</string>
-  <string name="pref_amber_thresh_summary10">剩余电量等于或低于多少百分比时使用黄色图标？</string>
-  <string name="pref_amber_thresh_help">设置剩余电量低于（10%步进模式中为“等于或低于”）该设置值时使用黄色图标。\n
+  <string name="pref_amber_thresh">黃色圖標閥值</string>
+  <string name="pref_amber_thresh_summary">剩餘電量低於多少百分比時使用黃色圖標？</string>
+  <string name="pref_amber_thresh_summary10">剩餘電量等於或低於多少百分比時使用黃色圖標？</string>
+  <string name="pref_amber_thresh_help">設定剩餘電量低於（10%步進模式中為「等於或低於」）該設定值時使用黃色圖標。\n
 
-    \n该选项能在可选范围内（5%步进）提供黄色图标阀值设置值选项。设置值下限为红色图标（若已开启）设置阀值+5%，例如红色图标阀值为15%，则该设置项选择下限为20%。\
+    \n該選項能在可選範圍內（5%步進）提供黃色圖標閥值設定值選項。設定值下限為紅色圖標（若已開啟）設定閥值+5%，例如紅色圖標閥值為15%，則該設定選擇下限為20%。\
 
-    \n在10%步进模式下，该设置项内容可能略有不同。
+    \n在10%步進模式下，該設定內容可能略有不同。
   </string>
-  <string name="pref_green">使用绿色图标</string>
-  <string name="pref_green_summary">确认在电量充足时使用绿色图标？</string>
+  <string name="pref_green">使用綠色圖標</string>
+  <string name="pref_green_summary">確認在電量充足時使用綠色圖標？</string>
   <string name="pref_green_help">
-    设置是否在剩余电量高于设置阀值时使用绿色图标。
+    設定是否在剩餘電量高於設定閥值時使用綠色圖標。
   </string>
-  <string name="pref_green_thresh">绿色图标阀值</string>
-  <string name="pref_green_thresh_summary">剩余电量等于或高于多少百分比时使用绿色图标？</string>
-  <string name="pref_green_thresh_help">设置剩余电量等于或高于该设置值时使用绿色图标。\n
+  <string name="pref_green_thresh">綠色圖標閥值</string>
+  <string name="pref_green_thresh_summary">剩餘電量等於或高於多少百分比時使用綠色圖標？</string>
+  <string name="pref_green_thresh_help">設定剩餘電量等於或高於該設定值時使用綠色圖標。\n
 
-    \n该选项能在可选范围内（5%步进）提供绿色图标阀值设置值选项。设置值下限为红色或黄色图标最大阀值，例如黄色图标阀值为40%，则设置项选择下限为40%。\
+    \n該選項能在可選範圍內（5%步進）提供綠色圖標閥值設定值選項。設定值下限為紅色或黃色圖標最大閥值，例如黃色圖標閥值為40%，則設定選擇下限為40%。\
 
-    \n在10%步进模式下，该设置项内容可能略有不同。
+    \n在10%步進模式下，該設定內容可能略有不同。
   </string>
 
-  <string name="pref_cat_device_specific">特殊设备设置</string>
+  <string name="pref_cat_device_specific">特殊設備設定</string>
   <string name="pref_cat_device_specific_help"></string>
-  <string name="pref_ten_percent_mode">10%步进模式</string>
-  <string name="pref_ten_percent_mode_summary">请先阅读帮助信息！</string>
+  <string name="pref_ten_percent_mode">10%步進模式</string>
+  <string name="pref_ten_percent_mode_summary">請先閱讀說明信息！</string>
   <string name="pref_ten_percent_mode_help"><b>注意：</b>
-    改动该选项设置状态将重置图标颜色设置内容！\n
+    改動該選項設定狀態將重置圖標顏色設定內容！\n
 
-    \n该选项将清除图标色彩设置内容以保证10%步进类型设备显示正常。根据用户反馈，该类设备包括以下型号：\n
+    \n該選項將清除圖標色彩設定內容以保證10%步進類型設備顯示正常。根據用戶反饋，該類設備包括以下型號：\n
 
-    \n• Motorola Droid （最初版本）
-    \n• Motorola Droid X
-    \n• Motorola Droid 2
-    \n• Samsung Moment\n
+    \n‧ Motorola Droid （最初版本）
+    \n‧ Motorola Droid X
+    \n‧ Motorola Droid 2
+    \n‧ Samsung Moment\n
 
-    \n除以上型号之外，其余设备均为1%步进报告类型，因此均<i>不用</i>开启此项功能。
+    \n除以上型號之外，其餘設備均為1%步進報告類型，因此均<i>不用</i>開啟此項功能。
   </string>
 
   <string-array name="mw_theme_pref_entries">
-    <item>默认小窗口</item>
-    <item>彩色小窗口</item>
-    <item>全屏窗口</item>
+    <item>預設小視窗</item>
+    <item>彩色小視窗</item>
+    <item>全屏視窗</item>
   </string-array>
 
   <string-array name="boot_pref_entries">
-    <item>始终</item>
-    <item>从不</item>
-    <item>关机时运行</item>
+    <item>始終</item>
+    <item>從不</item>
+    <item>關機時運行</item>
   </string-array>
 
   <string-array name="status_dur_est_entries">
-    <item>始终</item>
-    <item>一小时后</item>
-    <item>两小时后</item>
-    <item>三小时后</item>
-    <item>六小时后</item>
-    <item>十二小时后</item>
+    <item>始終</item>
+    <item>一小時後</item>
+    <item>兩小時後</item>
+    <item>三小時後</item>
+    <item>六小時後</item>
+    <item>十二小時後</item>
   </string-array>
 
   <string-array name="max_log_age_entries">
     <item>一天</item>
-    <item>两天</item>
+    <item>兩天</item>
     <item>四天</item>
     <item>一周</item>
   </string-array>

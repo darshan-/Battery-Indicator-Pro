@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_full_name">电量指示器专业版</string>
+  <string name="app_launcher_name">电量指示器</string>
+  <string name="settings_activity_name">电量指示器专业版 - 设置项</string>
+  <string name="settings_help_activity_name">@string/settings_activity_name</string>
+  <string name="help_activity_name">电量指示器专业版 - 帮助</string>
+  <string name="log_view_activity_name">电量指示器专业版 - 日志</string>
+
+  <string name="app_full_name_free">电量指示器</string>
+  <string name="settings_activity_name_free">电量指示器 - 设置项</string>
+  <string name="settings_help_activity_name_free">@string/settings_activity_name_free</string>
+  <string name="help_activity_name_free">电量指示器 - 帮助</string>
+
+  <string name="main_window_title">@string/app_full_name</string>
+  <string name="main_window_title_free">@string/app_full_name_free</string>
+  <string name="battery_use_b">查看电量使用情况</string>
+  <string name="upgrade_donate_b">升级/捐助...</string>
+  <string name="reenable_lock_screen">恢复自动锁屏</string>
+  <string name="disable_lock_screen">关闭自动锁屏</string>
+
+  <string name="confirm_disable">确认禁止自动锁屏？</string>
+  <string name="confirm_disable_hint">
+    提示：可在“设置项”中关闭此提示信息。
+  </string>
+  <string name="yes">确认</string>
+  <string name="cancel">取消</string>
+
+  <string name="confirm_close">确认退出？</string>
+  <string name="confirm_close_hint">
+    电量指示器将完全退出，通知栏电量指示图标将不再显示。\n
+
+    \n如果您想让本程序后台运行，可以单击手机“返回”键关闭主窗口。
+  </string>
+
+  <string name="confirm_clear_logs">确认清理所有日志？</string>
+
+  <string name="first_run_title">非常感谢！</string>
+  <string name="first_run_message">非常感谢您的购买或捐助！<b><i>您的支持对我们来说非常重要！</i></b>\n
+
+   
+    \n• 如果您安装了“<b>任务杀手</b>”之类的进程管理工具，请卸载或将“电量指示器专业版”加入到自动关闭排除列表中。如果您曾使用过免费版的该软件，<i>您仍然需要将此专业版加入到排除列表</i> ！\n
+
+    \n• 如果您使用的是<b>Motorola Droid</b>、<b>Motorola Droid X</b>、
+      <b>Motorola Droid 2</b>或<b>Samsung Moment</b>机型，请在“其他设置”中勾选“10%步进模式”。
+  </string>
+  <string name="first_run_message_free">感谢下载试用“电量指示器”!  <b><i>重要提示：</i></b>\n
+
+    \n如果您安装了“<b>任务杀手</b>”之类的进程管理工具，请将其卸载或将“电量指示器专业版”加入到自动关闭排除列表中。
+  </string>
+  <string name="okay">完成</string>
+
+  <string name="menu_logs">日志</string>
+  <string name="menu_settings">设置项</string>
+  <string name="menu_close">关闭</string>
+  <string name="menu_help">帮助</string>
+  <string name="menu_clear">清理</string>
+  <string name="menu_reverse">反向排序</string>
+  <string name="menu_export">导出至CSV</string>
+
+  <string name="percent_symbol">%</string>
+  <string name="degree_symbol">°</string>
+  <string name="fahrenheit">华氏温度</string>
+  <string name="fahrenheit_symbol">F</string>
+  <string name="celsius">摄氏温度</string>
+  <string name="celsius_symbol">C</string>
+  <string name="volt_symbol">V</string>
+
+  <string name="fully_charged_in">完全充满剩余时间：</string>
+  <string name="light_usage">省电使用剩余时间：</string>
+  <string name="normal_usage">正常使用剩余时间：</string>
+  <string name="heavy_usage">频繁使用剩余时间：</string>
+  <string name="constant_usage">持续使用剩余时间：</string>
+
+  <string name="press_back_to_leave">单击“返回”键退出。</string>
+  <string name="press_menu_for_more">单击“菜单”查看更多选项。</string>
+
+  <string name="inaccessible_storage">SD卡无法访问。</string>
+  <string name="inaccessible_w_reason">SD卡无法访问：</string>
+  <string name="read_only_storage">SD卡已设置为“只读”模式。</string>
+  <string name="file_written">文件已在SD卡根目录成功创建。</string>
+
+  <string-array name="statuses">
+    <item>拔下电源</item>
+    <item>未知</item>
+    <item>充电中</item>
+    <item>放电中</item>
+    <item>未充电</item>
+    <item>电池充满</item>
+  </string-array>
+  <string-array name="log_statuses"><!-- The same as above, worded for the Log screen -->
+    <item>拔下电源</item>
+    <item>未知</item>
+    <item>插入电源</item>
+    <item>未知</item>
+    <item>未知</item>
+    <item>已充满</item>
+  </string-array>
+  <string-array name="log_statuses_old"><!-- The same as above, worded for old Log screen statuses -->
+    <item>放电中</item>
+    <item>未知</item>
+    <item>充电中</item>
+    <item>未知</item>
+    <item>未知</item>
+    <item>已充满</item>
+  </string-array>
+  <string-array name="healths">
+    <item>未知</item>
+    <item>未知</item>
+    <item>正常</item>
+    <item>过热</item>
+    <item>损坏</item>
+    <item>超压</item>
+    <item>错误</item>
+  </string-array>
+  <string-array name="pluggeds">
+    <item>未知</item>
+    <item>(AC)</item>
+    <item>(USB)</item>
+  </string-array>
+
+  <string name="logs_empty">日志记录为空</string>
+  <plurals name="n_log_items">
+    <item quantity="one">%d项日志记录</item>
+    <item quantity="other">%d项日志记录</item>
+  </plurals>
+
+  <string name="discharging_from">放电起始电量</string>
+  <string name="charging_from">充电起始电量</string>
+  <string name="fully_charged">完全充满</string>
+
+  <string name="since">开始于</string>
+  <plurals name="for_n_hours">
+    <item quantity="one">已%d小时</item>
+    <item quantity="other">已%d小时</item>
+  </plurals>
+
+  <string name="one_six_needed">对不起，此功能仅支持Android 1.6+版本系统！</string>
+
+  <string name="currently_using">当前使用</string>
+  <string name="currently_set_to">当前设置为</string>
+  <string name="currently_disabled">当前不可用</string>
+
+  <string name="help_cat_version">版本</string>
+
+  <string name="help_cat_changelog">更新日志</string>
+  <string name="help_changelog">
+    请访问<a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">项目FAQ</a>以获取版本历史。
+  </string>
+
+  <string name="help_cat_introduction">软件介绍</string>
+  <string name="help_introduction">本软件为<i>电量指示器专业版</i>，是热门免费软件<i>电量指示器</i>的专业版本，
+  目前已在电子市场上提供购买服务。本软件为开源项目，您可在<a href="http://code.google.com/p/battery-indicator/">项目网站</a>下载免费开源代码。
+  </string>
+  <string name="help_introduction_free">本软件为<i>电量指示器</i>，<i>电量指示器</i>系列软件的免费版本。
+  目前已在电子市场上提供下载服务。本软件为开源项目，您可在<a href="http://code.google.com/p/battery-indicator/">项目网站</a>下载免费开源代码。
+  \n请考虑购买以升级至<a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">专业版本</a>。
+  </string>
+
+  <string name="help_cat_summary">综述</string>
+  <string name="help_summary"><i>电量指示器</i>是应用于Android™手机操作系统的小型软件，主要功能即在系统状态栏中以图标形式显示电池剩余电量信息。\n
+    \n免费版本可以红色、黄色及绿色图标提示剩余电量等级，3.0专业版更包含了以下多种高级功能：\n
+    \n• 可定制的预估充电/放电剩余时间。
+    \n• 将电池状态通过日志进行记录。
+    \n• 多种窗口主题（包括便于阅读的大字体文本全屏窗口）。
+    \n• 可手动禁用/启用自动锁屏功能，以实现在充电时禁止系统自动锁屏，并在拔下电源后恢复系统默认值的功能。
+    \n• 更多的惊喜等待您的发掘。
+  </string>
+  <string name="help_summary_free"><i>电量指示器</i>是应用于Android™手机操作系统的小型软件，主要功能即在系统状态栏中以图标形式显示电池剩余电量信息。\n
+
+    \n免费版本可以红色、黄色及绿色图标提示剩余电量等级，3.0专业版更包含了以下多种高级功能：\n
+    \n• 可定制的预估充电/放电剩余时间。
+    \n• 将电池状态通过日志进行记录。
+    \n• 多种窗口主题（包括便于阅读的大字体文本全屏窗口）。
+    \n• 可手动禁用/启用自动锁屏功能，以实现在充电时禁止系统自动锁屏，并在拔下电源后恢复系统默认值的功能。
+    \n• 更多的惊喜等待您的发掘。
+  </string>
+
+  <string name="help_cat_limitations">软件局限</string>
+  <string name="help_limitations">(<i>以下所述功能受多方面局限</i>)\n
+
+    \n• 本软件以被动形式收集系统信息。大部分手机以%1的步进报告电量剩余信息，但少部分机型（以Motorola Droid机型为主）
+    则以10%的步进报告电量剩余信息。
+    \n• 无法实现移除系统自带电量图标。
+    \n• 通知栏图标和通知栏托盘文本信息为统一的整体，无法单独使用其中的任意一项。
+    \n• 部分软件允许安装到SD卡存储空间，但有些软件则无法实现，电量指示器则为一例。具体缘由请参考
+    <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">项目FAQ</a>。
+  </string>
+
+  <string name="help_cat_features">特性</string>
+  <string name="help_features">
+    • 精简并便于阅读。
+    \n• 本软件不进行主动扫描，仅在电池状态改变时收集系统广播信息作为依据来更新图标显示并即时转入省电模式。从而实现节约
+    运行内存和几乎不使用CPU的省电特性。估计在使一块正常电池完全放电的时间内，本软件仅使用了约一分钟时间的电量。如果您
+    发现软件运行异常，请检查是否安装了其他（如“任务杀手”之类的）软件干扰电量指示器的正常运行。
+    \n• 快捷访问系统电量使用详情界面（需要Android 1.6以上版本支持）。
+    \n• 可设置为“始终自动启动”、“从不自动启动”或“关机前运行中”三种软件自启动方式。
+    \n• 更多其他未包含在此介绍内的小特性，等待着您的发掘。
+    \n• 支持开发者的荣耀感。（在此表示非常感谢！）
+  </string>
+
+  <string name="help_cat_no_warranty">免责申明</string>
+  <string name="help_no_warranty">
+    本软件旨在提高系统的易用性，并<b>无任何承担责任的义务</b>。<b>不对使用软件实现特殊功能的实用性做任何承诺</b>。\n
+
+    \n软件开发者将尽其所能最求软件的正常工作及流畅运行，但对任何情况下可能导致的使用者的不适或设备损坏不承担任何责任。
+  </string>
+
+  <string name="help_cat_acknowledgments">声明</string>
+  <string name="help_acknowledgments">由于暂无慷慨的翻译者协助，本程序仅提供英文版本，非常感谢您的支持！\n
+    \n得益于Google及其他开源项目，本软件功能得以实现。\n
+    \n软件图标（可见于电子市场软件主页右上角）的设计灵感来源于<a href="http://www.oxygen-icons.org">
+    	Oxygen图标主题</a>并在<a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common
+      Attribution-ShareAlike 3.0 License</a>的规范下有限使用。
+  </string>
+
+  <string name="help_cat_translations">多语言化</string>
+  <string name="help_translations">开发者需要更多的帮助以实现将软件翻译成除英文外的其他语言。如果您乐于提供帮助，请联系开发者的 <a href="mailto:android@darshancomputing.com">电子邮件</a>。开发者将随后在软件帮助中的“声明”项加入帮助者的名字。</string>
+  <string name="help_subcat_translators">翻译志愿者名单</string>
+
+  <string name="help_cat_contact">联系方式</string>
+  <string name="help_contact">如果您在使用中遇到任何疑问，请先参阅<a href="http://code.google.com/p/battery-indicator/wiki/FAQ">软件FAQ</a>。\n
+    \n如果您有任何反馈信息，或FAQ中无法解答的任何疑问，请联系开发者的电子邮件<a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>。
+  </string>
+
+  <string name="pref_hint"><b>提示：</b>单击“菜单”获取帮助。</string>
+
+  <string name="settings_overview">预览</string>
+  <string name="settings_overview_help">
+    设置项包括如下所述的三个独立页面。各页面的帮助信息独立显示，在“菜单”->“帮助”内容中可获取当前页面的帮助信息。
+  </string>
+
+  <string name="color_settings">色彩主题</string>
+  <string name="color_settings_summary">设置图标色彩及窗口主题</string>
+  <string name="color_settings_help">
+    您可以选择主窗口显示主题及设置图标变化色彩。
+  </string>
+  <string name="time_settings">时间设置</string>
+  <string name="time_settings_summary">定制时间预估方式</string>
+  <string name="time_settings_help">
+    您可在此界面可设置电池状态变化后（例如：拔下电源）所经历时间估计方式。\n
+
+    \n您也可以设置预估USB/AC方式充电、省电/正常/频繁/持续使用手机剩余时间的基准值。
+  </string>
+  <string name="other_settings">其他设置</string>
+  <string name="other_settings_summary"></string>
+  <string name="other_settings_help">
+    此页面包含其他的设置项，包括日志功能、屏幕锁功能、温度单位、自启动方式等。
+  </string>
+
+  <string name="pref_cat_more_settings_in_pro">专业版的更多设置项</string>
+  <string name="pref_please_upgrade">
+    专业版包含了以红色、黄色及绿色图标提示剩余电量等级、电池状态记录、自动/手动关闭锁屏、充电/放电剩余时间预估等多种高级功能。
+  </string>
+
+  <string name="pref_cat_themes">主题</string>
+  <string name="pref_main_window_theme">主窗口显示主题</string>
+  <string name="pref_main_window_theme_help">
+    设置主窗口显示主题，默认以传统Android系统小窗口方式显示。如果您希望文字信息更便于阅读，可选择全屏窗口主题。其他主题仅供娱乐。
+  </string>
+
+  <string name="pref_cat_logging">日志记录</string>
+  <string name="pref_enable_logging">启用日志记录功能</string>
+  <string name="pref_enable_logging_summary">确认记录电池状态信息？</string>
+  <string name="pref_enable_logging_help">
+    若启用本功能，电量指示器将以日志方式记录电池状态信息（例如拔下电源或电池充满）。您可通过单击“菜单”键和“日志”按钮查看日志记录。
+  </string>
+  <string name="pref_log_everything">记录所有信息</string>
+  <string name="pref_log_everything_summary">确认记录电量变化信息？</string>
+  <string name="pref_log_everything_help">
+    若启用本功能，电量指示器将记录电池电量的所有变化信息比如（剩余电量从57%变为56%，反之亦然）。多数用户并不需要次功能，但如果您喜欢更细节的信息，请开启此项。\n
+
+    \n启用本功能将增加少许功耗。但即使启用本功能，电量指示器在电池完全放电时间内所消耗的电量仍仅有约一分钟。
+  </string>
+  <string name="pref_max_log_age">日志记录有效期</string>
+  <string name="pref_max_log_age_summary">日志记录有效期限：</string>
+  <string name="pref_max_log_age_help">
+    若启用本功能，过期日志将在手机充电时被清除。
+  </string>
+
+  <string name="pref_cat_keyguard">屏幕/键盘锁</string>
+  <string name="pref_cat_keyguard_help">
+    Android系统允许软件禁用或恢复所谓的“键盘/屏幕锁”功能。除此之外，其他诸如设置唤醒快捷键的功能均无法实现。
+  </string>
+  <string name="pref_confirm_manual_disable">手动禁用确认</string>
+  <string name="pref_confirm_manual_disable_summary">手动禁用自动锁屏时进行提示确认？</string>
+  <string name="pref_confirm_manual_disable_help">
+    若勾选此项，您在手动禁用自动锁屏时将弹出确认信息。旨在防止用户误操作禁用了自动锁屏。若禁用自动锁屏后软件运行不正常，请去掉此项勾选。
+  </string>
+  <string name="pref_finish_after_toggle_lock">切换后退出</string>
+  <string name="pref_finish_after_toggle_lock_summary">确认在禁用/恢复自动锁屏后退出主窗口？</string>
+  <string name="pref_finish_after_toggle_lock_help">
+    如果您发现按键（或触摸屏点击）异常，可勾选此项以实现快速禁用/恢复自动锁屏功能并返回之前行为。您仅需下拉通知栏，点击电量指示器图标，触摸切换按钮，三次点击即可进行切换并返回之前的行为。
+
+    \n由于系统原因，您仅在勾选了前一选项后，本选项才可用。
+  </string>
+  <string name="pref_auto_disable">自动禁用自动锁屏</string>
+  <string name="pref_auto_disable_summary">确认在充电式禁用自动锁屏？</string>
+  <string name="pref_auto_disable_help">
+    若勾选此项，则在充电时，电量指示器将禁用自动锁屏功能，并在拔下电源后恢复系统默认值。\n
+
+    \n需注意的是，即使勾选了此项，自动禁用自动锁屏前，屏幕锁界面仍将出现一次。
+  </string>
+  <string name="pref_disallow_disable_lock_screen">禁止手动禁用</string>
+  <string name="pref_disallow_disable_lock_screen_summary">确认禁止使用“禁用自动锁屏”按钮？</string>
+  <string name="pref_disallow_disable_lock_screen_help">
+    若您使用第三方锁屏工具实现锁屏后访问通知栏，鉴于安全原因，请勾选此项。
+  </string>
+
+  <string name="pref_cat_battery_use">电池使用情况</string>
+  <string name="pref_finish_after_battery_use">启动后退出</string>
+  <string name="pref_finish_after_battery_use_summary">确认启动电量使用情况界面后退出主窗口？</string>
+  <string name="pref_finish_after_battery_use_help">
+    如果您发现按键（或触摸屏点击）异常，可勾选此项可在启动电量使用情况界面后退出电量指示器主窗口。
+  </string>
+
+  <string name="pref_cat_temperature_unit">温度显示单位</string>
+  <string name="pref_convert_to_fahrenheit">确认切换到华氏单位？</string>
+  <string name="pref_convert_to_fahrenheit_help">
+    Android系统以摄氏单位报告电池温度信息。若您想使温度信息以华氏单位显示，请勾选此项。
+  </string>
+
+  <string name="pref_cat_autostart">自启动</string>
+  <string name="pref_autostart_at_boot">开机自启动方式</string>
+  <string name="pref_autostart_at_boot_summary">确认允许电量指示器开机时自启动？</string>
+  <string name="pref_autostart_at_boot_help">
+    设置是否允许电量指示器在开机时自启动。\n
+
+    \n”关机前运行中”选项仅在手动关闭电量指示器时有效。若您使用其他方式，如使用任务杀手进行关闭，则本程序无法确认是否由您关闭，选择该方式后仍会在开机时自启动。
+  </string>
+
+  <string name="pref_cat_charge_as_text">文本显示电量</string>
+  <string name="pref_charge_as_text">文本显示电量</string>
+  <string name="pref_charge_as_text_summary">确认以大字体文本在图标旁显示剩余电量？</string>
+  <string name="pref_charge_as_text_help">
+    鉴于部分视力不佳用户的要求，此功能可在通知栏下拉托盘中电量指示器图标右侧以易阅读的大字体显示剩余电量信息，原电量图标无任何改变。勾选/取消此项只能在通知栏下拉托盘中看到变化，但此功能有胜于无，且对有需求的用户而言易于实现。\n
+
+    \n为节约宝贵的显示空间，经过多次单调乏味的调试实现此功能，在不使用百分符号的前提下，文本已能完美的显示并易于阅读。对于部分非常小型的设备而言，开启此功能可能导致AM/PM字符偏离原位导致不协调。
+  </string>
+
+  <string name="pref_cat_status_duration">状态时长</string>
+  <string name="pref_status_dur_est">估算前持续时间</string>
+  <string name="pref_status_dur_est_summary">开始估算剩余时间前持续时间</string>
+  <string name="pref_status_dur_est_help">
+    设置通知信息从诸如“拔下电源开始于1:10 PM”到“拔下电源已1小时”的转换前持续时间。第一种显示精确到分钟的状态变化信息显示更为准确，但多数用户喜欢更简便的方式以估计状态持续时间，因此更乐于使用比默认12小时计时法更简便的提示信息。    
+  </string>
+
+  <string name="pref_cat_time_remaining_estimates">剩余时间预估</string>
+  <string name="pref_cat_time_remaining_estimates_help">
+    该剩余时间预估功能可能与传统功能有所不同，但更为优秀，您能根据使用的情况调整电池使用时间基准值并及时修正。默认基准时间为大量统计结果，由于机型种类、使用习惯的不同，您可能需要修正这些基准值。但好处是只有您才知道诸如“正常使用”分类的含义，并使用自定义的基准值，以避免被错误的预估值所迷惑。
+  </string>
+  <string name="pref_show_charge_time">显示充电时间</string>
+  <string name="pref_show_charge_time_summary">确认充电时显示剩余时间？</string>
+  <string name="pref_show_charge_time_help">
+    若启用次功能，则主窗口会在您充电时显示预估的充满剩余时间（基于您在下方的设置值）。
+  </string>
+  <string name="pref_usb_charge_time">USB充电模式</string>
+  <string name="pref_usb_charge_time_summary">从0%到100%电量USB充电所需时间</string>
+  <string name="pref_usb_charge_time_help">
+    输入您估计的使用USB接口充电时剩余电量从0%到100%所需时长。
+  </string>
+  <string name="pref_ac_charge_time">AC充电模式</string>
+  <string name="pref_ac_charge_time_summary">从0%到100%电量AC充电所需时间</string>
+  <string name="pref_ac_charge_time_help">
+    输入您估计的使用AC适配器充电时剩余电量从0%到100%所需时长。
+  </string>
+  <string name="pref_show_light_usage">显示省电使用时间</string>
+  <string name="pref_show_light_usage_summary">确认显示省电使用剩余时间？</string>
+  <string name="pref_show_light_usage_help">
+    是否在主窗口显示您所认为的“省电使用”方式剩余电量持续时间？
+  </string>
+  <string name="pref_light_usage_time">省电使用</string>
+  <string name="pref_light_usage_time_summary">省电使用时电量从100%到0%放电时间</string>
+  <string name="pref_light_usage_time_help">
+    输入以您所认为的“省电使用”方式将电量从100%消耗至0%所需时间？
+  </string>
+  <string name="pref_show_normal_usage">显示正常使用时间</string>
+  <string name="pref_show_normal_usage_summary">确认正常使用剩余时间？</string>
+  <string name="pref_show_normal_usage_help">
+   是否在主窗口显示您所认为的“正常使用”方式剩余电量持续时间？
+  </string>
+  <string name="pref_normal_usage_time">正常使用</string>
+  <string name="pref_normal_usage_time_summary">正常使用时电量从100%到0%放电时间</string>
+  <string name="pref_normal_usage_time_help">
+    输入以您所认为的“正常使用”方式将电量从100%消耗至0%所需时间？
+  </string>
+  <string name="pref_show_heavy_usage">显示频繁使用时间</string>
+  <string name="pref_show_heavy_usage_summary">确认频繁使用剩余时间？</string>
+  <string name="pref_show_heavy_usage_help">
+   是否在主窗口显示您所认为的“频繁使用”方式剩余电量持续时间？
+  </string>
+  <string name="pref_heavy_usage_time">频繁使用</string>
+  <string name="pref_heavy_usage_time_summary">频繁使用时电量从100%到0%放电时间</string>
+  <string name="pref_heavy_usage_time_help">
+    输入以您所认为的“频繁使用”方式将电量从100%消耗至0%所需时间？
+  </string>
+  <string name="pref_show_constant_usage">显示持续使用时间</string>
+  <string name="pref_show_constant_usage_summary">确认持续持续使用剩余时间？</string>
+  <string name="pref_show_constant_usage_help">
+    是否在主窗口显示您所认为的“持续使用”方式剩余电量持续时间？
+  </string>
+  <string name="pref_constant_usage_time">持续使用</string>
+  <string name="pref_constant_usage_time_summary">持续使用时电量从100%到0%放电时间</string>
+  <string name="pref_constant_usage_time_help">
+    输入以您所认为的“持续使用”方式将电量从100%消耗至0%所需时间？
+  </string>
+
+  <string name="pref_cat_color">图标颜色</string>
+  <string name="pref_cat_color_help">
+    为保证电量指示器的二进制数据包尺寸最小化，对图标颜色做出如下限制：红色图标标示最大值为30%剩余电量，黄色图标标示最大值为50%剩余电量，绿色图标标示最小值为20%剩余电量。开发者相信如此的限制能满足99%的用户需求。\n
+
+    \n为保证用户能够最大限度的自定义该软件，各色彩等级可单独的开启或关闭。最高可实现四级色彩显示，绿色图标表示电量充足，接着以灰色、黄色和红色显示剩余电量等级。大部分用户会将黄色标示上限及绿色标示下限设置为相同值，这样将跳过灰色标示。
+  </string>
+  <string name="pref_color_preview">色彩预览</string>
+  <string name="pref_color_preview_help">
+    色彩预览功能可将您的设置效果及时以视觉方式呈现。\n
+
+    \n该功能在10%步进模式下无实际意义，将不可用。
+  </string>
+  <string name="pref_red">使用红色图标</string>
+  <string name="pref_red_summary">确认在电量低时使用红色图标？</string>
+  <string name="pref_red_help">
+    设置是否在剩余电量低于设置阀值时使用红色图标。
+  </string>
+  <string name="pref_red_thresh">红色图标阀值</string>
+  <string name="pref_red_thresh_summary">剩余电量低于多少百分比时使用红色图标？</string>
+  <string name="pref_red_thresh_summary10">剩余电量等于或低于多少百分比时使用红色图标？</string>
+  <string name="pref_red_thresh_help">设置剩余电量低于（10%步进模式中为“等于或低于”）该设置值时使用红色图标。\n
+
+    \n该选项能在可选范围内（5%步进）提供红色图标阀值设置值选项。\n
+
+    \n在10%步进模式下，该设置项内容可能略有不同。
+  </string>
+  <string name="pref_amber">使用黄色图标</string>
+  <string name="pref_amber_summary">确认在电量较少时使用黄色图标？</string>
+  <string name="pref_amber_help">
+    设置是否在剩余电量低于设置阀值时使用黄色图标。
+  </string>
+  <string name="pref_amber_thresh">黄色图标阀值</string>
+  <string name="pref_amber_thresh_summary">剩余电量低于多少百分比时使用黄色图标？</string>
+  <string name="pref_amber_thresh_summary10">剩余电量等于或低于多少百分比时使用黄色图标？</string>
+  <string name="pref_amber_thresh_help">设置剩余电量低于（10%步进模式中为“等于或低于”）该设置值时使用黄色图标。\n
+
+    \n该选项能在可选范围内（5%步进）提供黄色图标阀值设置值选项。设置值下限为红色图标（若已开启）设置阀值+5%，例如红色图标阀值为15%，则该设置项选择下限为20%。\
+
+    \n在10%步进模式下，该设置项内容可能略有不同。
+  </string>
+  <string name="pref_green">使用绿色图标</string>
+  <string name="pref_green_summary">确认在电量充足时使用绿色图标？</string>
+  <string name="pref_green_help">
+    设置是否在剩余电量高于设置阀值时使用绿色图标。
+  </string>
+  <string name="pref_green_thresh">绿色图标阀值</string>
+  <string name="pref_green_thresh_summary">剩余电量等于或高于多少百分比时使用绿色图标？</string>
+  <string name="pref_green_thresh_help">设置剩余电量等于或高于该设置值时使用绿色图标。\n
+
+    \n该选项能在可选范围内（5%步进）提供绿色图标阀值设置值选项。设置值下限为红色或黄色图标最大阀值，例如黄色图标阀值为40%，则设置项选择下限为40%。\
+
+    \n在10%步进模式下，该设置项内容可能略有不同。
+  </string>
+
+  <string name="pref_cat_device_specific">特殊设备设置</string>
+  <string name="pref_cat_device_specific_help"></string>
+  <string name="pref_ten_percent_mode">10%步进模式</string>
+  <string name="pref_ten_percent_mode_summary">请先阅读帮助信息！</string>
+  <string name="pref_ten_percent_mode_help"><b>注意：</b>
+    改动该选项设置状态将重置图标颜色设置内容！\n
+
+    \n该选项将清除图标色彩设置内容以保证10%步进类型设备显示正常。根据用户反馈，该类设备包括以下型号：\n
+
+    \n• Motorola Droid （最初版本）
+    \n• Motorola Droid X
+    \n• Motorola Droid 2
+    \n• Samsung Moment\n
+
+    \n除以上型号之外，其余设备均为1%步进报告类型，因此均<i>不用</i>开启此项功能。
+  </string>
+
+  <string-array name="mw_theme_pref_entries">
+    <item>默认小窗口</item>
+    <item>彩色小窗口</item>
+    <item>全屏窗口</item>
+  </string-array>
+
+  <string-array name="boot_pref_entries">
+    <item>始终</item>
+    <item>从不</item>
+    <item>关机时运行</item>
+  </string-array>
+
+  <string-array name="status_dur_est_entries">
+    <item>始终</item>
+    <item>一小时后</item>
+    <item>两小时后</item>
+    <item>三小时后</item>
+    <item>六小时后</item>
+    <item>十二小时后</item>
+  </string-array>
+
+  <string-array name="max_log_age_entries">
+    <item>一天</item>
+    <item>两天</item>
+    <item>四天</item>
+    <item>一周</item>
+  </string-array>
+</resources>
