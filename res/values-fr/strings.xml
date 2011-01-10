@@ -409,49 +409,49 @@
   <string name="pref_charge_as_text">Niveau de charge textuel</string>
   <string name="pref_charge_as_text_summary">Voir le niveau de charge sous forme d\'un texte près de l\'icône ?</string>
   <string name="pref_charge_as_text_help">
-	Quelques utilisateurs malvoyants m\'ont demandé d'ajouter cette 
+	Quelques utilisateurs malvoyants m\'ont demandé d\'ajouter cette 
 	option, qui affiche le niveau de charge sous forme de texte (ce qui est 
-	plus facile à lire) à droite de l'icône située dans la zone
+	plus facile à lire) à droite de l\'icône située dans la zone
 	de notification. L\'icône actuelle n\'est pas différente, l\'option
-	n\'affecte que celle de la zone de notification, mais c'est mieux que rien, et 
+	n\'affecte que celle de la zone de notification, mais c\'est mieux que rien, et 
 	assez facile à ajouter pour ceux qui le souhaitent.\n
 
-    \n Afin de gagner une précieuse place, j'ai réalisé celà de manière peu esthétique
-	en mettant juste le nombre à droite. Ceci est plus lisible que si j'avais ajouté le symbole
-	pourcent et permet à tout le texte d'être affiché à l'écran. Cependant il est possible 
-	que sur les appreils particulièrement petits, qu'activer cette option éloigne trop 
-	les symboles AM/PM et les fasse sortir du bord de l'écran.
+        \nAfin de gagner une précieuse place, j\'ai réalisé celà de manière peu esthétique
+	en mettant juste le nombre à droite. Ceci est plus lisible que si j\'avais ajouté le symbole
+	pourcent et permet à tout le texte d\'être affiché à l\'écran. Cependant il est possible 
+	que sur les appreils particulièrement petits, qu\'activer cette option éloigne trop 
+	les symboles AM/PM et les fasse sortir du bord de l\'écran.
   </string>
 
   <string name="pref_cat_status_duration">Statut durée</string>
   <string name="pref_status_dur_est">Quand utiliser l\'approximation</string>
-  <string name="pref_status_dur_est_summary">Utilisation de l\'approximation de l'heure de changement de statut</string>
+  <string name="pref_status_dur_est_summary">Utilisation de l\'approximation de l\'heure de changement de statut</string>
   <string name="pref_status_dur_est_help">
 	Détermine à partir de quand le temps indiqué dans la zone de notification
 	doit être une approximation. Par exemple : \"Débranché depuis 1:10 PM\" deviendra
 	"Débranché depuis 1 heure". La première phrase est plus précise et donne
 	exactement quand le changement a eu lieu, mais beaucoup de gens comprennent mieux
-	la seconde, qui est une approximation du nombre d'heure(s) écoulées depuis ce changement,
+	la seconde, qui est une approximation du nombre d\'heure(s) écoulées depuis ce changement,
 	lorsque ce changement a eu lieu (au moins) 12 heures plus tôt.
   </string>
 
   <string name="pref_cat_time_remaining_estimates">Estimation du temps restant</string>
   <string name="pref_cat_time_remaining_estimates_help">
-	J'ai fait cette option de temps restant un peu différemment de 
+	J\'ai fait cette option de temps restant un peu différemment de 
 	ce que vous avez l\'habitude de voir/utiliser, mais je pense que 
-	c'est mieux. Vous décidez quelle estimation l\'application utilise
-	par défaut, et si vous pensez que l'estimation est fausse vous pouvez
+	c\'est mieux. Vous décidez quelle estimation l\'application utilise
+	par défaut, et si vous pensez que l\'estimation est fausse vous pouvez
 	la corriger. J\'ai défini des valeurs par défaut qui me semblent 
 	raisonables mais les valeurs changent un peu suivant le téléphone et
-	la manière dont vous l'utilisez. Vous serez donc ammené à redéfinir les
+	la manière dont vous l\'utilisez. Vous serez donc ammené à redéfinir les
 	valeurs vous-même. Cependant ceci est une bonne chose car vous seul 
 	savez ce que signifie \"Utilisation Normale\", etc... pour vous. Vous avez
-	donc une estimation plus précise qu'avec des valeurs par défaut.
+	donc une estimation plus précise qu\'avec des valeurs par défaut.
   </string>
   <string name="pref_show_charge_time">Afficher le temps de charge</string>
   <string name="pref_show_charge_time_summary">Afficher le temps de charge restant ?</string>
   <string name="pref_show_charge_time_help">
-	Si l'option est active et que le téléphone est en charge, la fenêtre principale
+	Si l\'option est active et que le téléphone est en charge, la fenêtre principale
 	Vous indiquera une approximation du temps de charge restant avant que le téléphone
 	soit complètement chargé.
   </string>
@@ -481,7 +481,7 @@
   <string name="pref_show_normal_usage">Afficher \"l\'usage normal\"</string>
   <string name="pref_show_normal_usage_summary">Afficher le temps restant en utilisation normale ?</string>
   <string name="pref_show_normal_usage_help">
-    Affiche ou non sur la fenêtre principale une estimation du temps d'utilisation
+    Affiche ou non sur la fenêtre principale une estimation du temps d\'utilisation
 	restant lorsque le téléphone est sollicité \"normalement\".
   </string>
   <string name="pref_normal_usage_time">Utilisation normale</string>
@@ -515,7 +515,7 @@
   <string name="pref_cat_color">Couleur de l\'icône</string>
   <string name="pref_cat_color_help">
   	Afin de garder le fichier de l\'application le plus petit possible, j\'ai posé quelques 
-  	limitations pour les couleurs. À l\'heure où j'écris, vous pouvez assigner l\'icône rouge jusqu\'à 
+  	limitations pour les couleurs. À l\'heure où j\'écris, vous pouvez assigner l\'icône rouge jusqu\'à 
   	un maximum de 30%, l\'icône orange jusqu\'à un maximum de 50% et l\'icone verte entre 20% et 100%.
   	Je pense que ces limitations sont raisonables et qu\'elles conviendront à 99% des utilisateurs.\n
 
@@ -599,7 +599,7 @@
     \n• Samsung Moment\n
 
 	\nAutant que je sache tous les autres téléphones délivrent leur taux de charge
-	tous les 1%, cependant si ce n'est pas le cas pour le votre activez cette option.
+	tous les 1%, cependant si ce n\'est pas le cas pour le votre activez cette option.
   </string>
 
   <string-array name="mw_theme_pref_entries">
