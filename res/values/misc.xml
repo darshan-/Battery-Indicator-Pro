@@ -261,4 +261,47 @@
   <bool   name="default_show_constant_usage">true</bool>
 
   <string name="default_max_log_age">48</string>
+
+
+  <string name="settings_help_activity_name">@string/settings_activity_name</string>
+  <string name="settings_help_activity_name_free">@string/settings_activity_name_free</string>
+  <string name="main_window_title">@string/app_full_name</string>
+  <string name="main_window_title_free">@string/app_full_name_free</string>
+
+  <string-array name="alarm_type_values">
+    <item>fully_charged</item>
+    <item>charge_drops</item>
+    <item>charge_rises</item>
+    <item>temp_rises</item>
+    <item>health_failure</item>
+  </string-array>
+
+  <string-array name="mw_theme_pref_values">
+    <item>default</item>
+    <item>colorful</item>
+    <item>full-dark</item>
+  </string-array>
+
+  <string-array name="boot_pref_values">
+    <item>always</item>
+    <item>never</item>
+    <item>auto</item>
+  </string-array>
+
+  <string-array name="status_dur_est_values">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>6</item>
+    <item>12</item>
+  </string-array>
+
+  <string-array name="max_log_age_values">
+    <item>24</item>
+    <item>48</item>
+    <item>96</item>
+    <item>168</item>
+  </string-array>
+
 </resources>

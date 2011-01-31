@@ -290,7 +290,6 @@
     ainsi que la base des estimations de décharge en utilisation légère/normale/lourde ou constante.
   </string>
   <string name="other_settings">Autres réglages</string>
-  <string name="other_settings_summary"></string>
   <string name="other_settings_help">
     Tous les autres réglages sont dans cette partie, y compris la journalisation, la gestion de l\'écran de verrouillage,
     l\'unité de température, le démarrage automatique, etc...
@@ -582,7 +581,6 @@
   </string>
 
   <string name="pref_cat_device_specific">Réglages spécifiques au matériel</string>
-  <string name="pref_cat_device_specific_help"></string>
   <string name="pref_ten_percent_mode">Mode 10%</string>
   <string name="pref_ten_percent_mode_summary">Lisez l\'aide avant toute chose !</string>
   <string name="pref_ten_percent_mode_help"><b>Note:</b>

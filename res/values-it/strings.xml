@@ -337,7 +337,6 @@
     , e regolarle in base a queste stime.
   </string>
   <string name="other_settings">Altre Impostazioni</string>
-  <string name="other_settings_summary"></string>
   <string name="other_settings_help">
     Tutte le altre impostazioni sono su questa pagina, compresi il logging, blocco 
     schermo, unità temperatura, autostart, e altro.
@@ -673,7 +672,6 @@
   </string>
 
   <string name="pref_cat_device_specific">Impostazioni Specifiche Dispositivo</string>
-  <string name="pref_cat_device_specific_help"></string>
   <string name="pref_ten_percent_mode">Modalità 10%</string>
   <string name="pref_ten_percent_mode_summary">Leggi prima l\' help!</string>
   <string name="pref_ten_percent_mode_help"><b>Nota:</b>

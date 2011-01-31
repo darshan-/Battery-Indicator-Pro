@@ -243,7 +243,6 @@
     \n您也可以设置预估USB/AC方式充电、省电/正常/频繁/持续使用手机剩余时间的基准值。
   </string>
   <string name="other_settings">其他设置</string>
-  <string name="other_settings_summary"></string>
   <string name="other_settings_help">
     此页面包含其他的设置项，包括日志功能、屏幕锁功能、温度单位、自启动方式等。
   </string>
@@ -460,7 +459,6 @@
   </string>
 
   <string name="pref_cat_device_specific">特殊设备设置</string>
-  <string name="pref_cat_device_specific_help"></string>
   <string name="pref_ten_percent_mode">10%步进模式</string>
   <string name="pref_ten_percent_mode_summary">请先阅读帮助信息！</string>
   <string name="pref_ten_percent_mode_help"><b>注意：</b>

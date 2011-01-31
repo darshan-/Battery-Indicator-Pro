@@ -3,17 +3,13 @@
   <string name="app_full_name">Battery Indicator Pro</string>
   <string name="app_launcher_name">Battery Indicator</string>
   <string name="settings_activity_name">Battery Indicator Pro - Settings</string>
-  <string name="settings_help_activity_name">@string/settings_activity_name</string>
   <string name="help_activity_name">Battery Indicator Pro - Help</string>
   <string name="log_view_activity_name">Battery Indicator Pro - Logs</string>
 
   <string name="app_full_name_free">Battery Indicator</string>
   <string name="settings_activity_name_free">Battery Indicator - Settings</string>
-  <string name="settings_help_activity_name_free">@string/settings_activity_name_free</string>
   <string name="help_activity_name_free">Battery Indicator - Help</string>
 
-  <string name="main_window_title">@string/app_full_name</string>
-  <string name="main_window_title_free">@string/app_full_name_free</string>
   <string name="battery_use_b">View Battery Use</string>
   <string name="upgrade_donate_b">Upgrade/Donate...</string>
   <string name="reenable_lock_screen">Reenable Lock Screen</string>
@@ -162,13 +158,6 @@
     <item>Charge rises above...</item>
     <item>Temperature rises above...</item>
     <item>Health fails</item>
-  </string-array>
-  <string-array name="alarm_type_values">
-    <item>fully_charged</item>
-    <item>charge_drops</item>
-    <item>charge_rises</item>
-    <item>temp_rises</item>
-    <item>health_failure</item>
   </string-array>
 
   <string name="alarm_fully_charged">Battery is now fully charged</string>
@@ -395,7 +384,7 @@
     the battery level drops below 20%).
   </string>
   <string name="other_settings">Other Settings</string>
-  <string name="other_settings_summary"></string>
+  <!--string name="other_settings_summary"></string-->
   <string name="other_settings_help">
     All other settings are on this page, including logging, lock
     screen, temperature unit, autostart, and more.
@@ -404,8 +393,8 @@
   <string name="pref_cat_more_settings_in_pro">More Settings in Pro</string>
   <string name="pref_please_upgrade">
     The Pro version has many more settings and features, including
-    green, amber, and red icons, window themes, battery state logging,
-    auto/manual lock screen disable, charge/discharge remaining
+    green, amber, and red icons, alarms, window themes, battery state
+    logging, auto/manual lock screen disable, charge/discharge remaining
     estimates, and more.
   </string>
 
@@ -735,7 +724,7 @@
   </string>
 
   <string name="pref_cat_device_specific">Device Specific Settings</string>
-  <string name="pref_cat_device_specific_help"></string>
+  <!--string name="pref_cat_device_specific_help"></string-->
   <string name="pref_ten_percent_mode">10% Mode</string>
   <string name="pref_ten_percent_mode_summary">Read the help first!</string>
   <string name="pref_ten_percent_mode_help"><b>Note:</b>
@@ -789,7 +778,7 @@
   </string>
 
   <string name="pref_alarm_enabled">Enable Alarm</string>
-  <string name="pref_alarm_enabled_summary"></string>
+  <!--string name="pref_alarm_enabled_summary"></string-->
   <string name="pref_alarm_enabled_help">If you want to temporarily
   disable an alarm without having to recreate it when you want it
   again, you can turn it off and on either here or on the main alarms
@@ -831,7 +820,7 @@
   created to notify you when an alarm has been triggered.
   </string>
   <string name="pref_alarm_ringtone">Ringtone</string>
-  <string name="pref_alarm_ringtone_summary"></string>
+  <!--string name="pref_alarm_ringtone_summary"></string-->
   <string name="pref_alarm_ringtone_help">
     Here you can control which sound to play when the alarm is
     triggered.  Select \'Silent\' if you don\'t want a sound to be
@@ -839,7 +828,7 @@
   </string>
   <string name="silent">Silent</string>
   <string name="pref_alarm_vibrate">Vibrate</string>
-  <string name="pref_alarm_vibrate_summary"></string>
+  <!--string name="pref_alarm_vibrate_summary"></string-->
   <string name="pref_alarm_vibrate_help">
     If all goes well, setting this option will make the device vibrate
     when the alarm is triggered, unless the device is in Silent Mode,
@@ -848,7 +837,7 @@
     something goes astray.
   </string>
   <string name="pref_alarm_lights">Flash Lights</string>
-  <string name="pref_alarm_lights_summary"></string>
+  <!--string name="pref_alarm_lights_summary"></string-->
   <string name="pref_alarm_lights_help">
     Sets whether the notification should enable the device\'s default
     lights.  This generally flashes an LED or trackball.  Note that
@@ -863,21 +852,11 @@
     <item>Colorful Small</item>
     <item>Full Window</item>
   </string-array>
-  <string-array name="mw_theme_pref_values">
-    <item>default</item>
-    <item>colorful</item>
-    <item>full-dark</item>
-  </string-array>
 
   <string-array name="boot_pref_entries">
     <item>Always</item>
     <item>Never</item>
     <item>If running on shutdown</item>
-  </string-array>
-  <string-array name="boot_pref_values">
-    <item>always</item>
-    <item>never</item>
-    <item>auto</item>
   </string-array>
 
   <string-array name="status_dur_est_entries">
@@ -888,25 +867,11 @@
     <item>After 6 hours</item>
     <item>After 12 hours</item>
   </string-array>
-  <string-array name="status_dur_est_values">
-    <item>0</item>
-    <item>1</item>
-    <item>2</item>
-    <item>3</item>
-    <item>6</item>
-    <item>12</item>
-  </string-array>
 
   <string-array name="max_log_age_entries">
     <item>1 day</item>
     <item>2 days</item>
     <item>4 days</item>
     <item>1 week</item>
-  </string-array>
-  <string-array name="max_log_age_values">
-    <item>24</item>
-    <item>48</item>
-    <item>96</item>
-    <item>168</item>
   </string-array>
 </resources>

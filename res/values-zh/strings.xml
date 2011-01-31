@@ -244,7 +244,6 @@
     \n您也可以設定預估USB/AC方式充電、省電/正常/頻繁/持續使用手機剩餘時間的基準值。
   </string>
   <string name="other_settings">其他設定</string>
-  <string name="other_settings_summary"></string>
   <string name="other_settings_help">
     此頁面包含其他的設定，包括日誌功能、螢幕鎖功能、溫度單位、自動啟動方式等。
   </string>
@@ -461,7 +460,6 @@
   </string>
 
   <string name="pref_cat_device_specific">特殊設備設定</string>
-  <string name="pref_cat_device_specific_help"></string>
   <string name="pref_ten_percent_mode">10%步進模式</string>
   <string name="pref_ten_percent_mode_summary">請先閱讀說明信息！</string>
   <string name="pref_ten_percent_mode_help"><b>注意：</b>

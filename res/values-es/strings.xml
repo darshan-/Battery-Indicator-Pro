@@ -289,7 +289,6 @@ cuando el teléfono esté enchufado y desactivarla cuando ya no lo esté.
     los parámetros para estas estimaciones.
   </string>
   <string name="other_settings">Otros ajustes</string>
-  <string name="other_settings_summary"></string>
   <string name="other_settings_help">
     Todos los demás ajustes están en esta página, incluyendo el registro, la pantalla de bloqueo, la unidad de 
     temperatura, el autoarranque de la aplicación, y mucho más.
@@ -604,7 +603,6 @@ cuando el teléfono esté enchufado y desactivarla cuando ya no lo esté.
   </string>
 
   <string name="pref_cat_device_specific">Ajustes para dispositivos específicos</string>
-  <string name="pref_cat_device_specific_help"></string>
   <string name="pref_ten_percent_mode">Modo 10%</string>
   <string name="pref_ten_percent_mode_summary">¡Lea la ayuda primero!</string>
   <string name="pref_ten_percent_mode_help"><b>Nota:</b>
