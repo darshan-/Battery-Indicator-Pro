@@ -304,4 +304,12 @@
     <item>168</item>
   </string-array>
 
+  <string name="help_translators_list">
+    Matthew McBaul(包明)\n
+    Gonzalo Rodríguez Píriz\n
+    skwt\n
+    Gabriele Ravanetti\n
+    Paul Fiorentino\n
+    Petr BOHM
+  </string>
 </resources>
