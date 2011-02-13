@@ -23,7 +23,7 @@
   <string name="confirm_ten_percent_disable">Naozaj vypnúť 10% mód?</string>
   <string name="confirm_ten_percent_hint">Upozornenie: Zmena tohto nastavenia (zapnutie aj vypnutie) resetuje vaše nastavenia farieb.\n\nAk máte Motorola Droid, Motorola Droid X, Motorola Droid 2, alebo Samsung Moment, mali by ste to zapnúť keď prvý krát spúšťate túto aplikáciu, a potom to nechať tak. VŠETKY ostatné telefóny, pokiaľ viem, by mali vždy nechať toto vypnuté.</string>
   <string name="first_run_title">Ďakujeme Vám!</string>
-  <string name="first_run_message">Ďakujeme Vám za Vašu podporu/zakúpenie! <b><i>Tieto dva body, sú veľmi dôležité</i> :</b>\n\nâ€˘ Ak máte \"<b>správcu úloh</b>\" / správcu procesov nejakého druhu, mali by ste ho buď odinštalovať alebo skúsiť zaradiť Battery Indicator Pro do zoznamu ignorovaných. Hoci ste mali verziu zdarma v zozname ignorovaných, <i>potrebujete pridať aj verziu Pro</i> !\n\nâ€˘ Ak máte <b>Motorola Droid</b>, <b>Motorola Droid X</b>, <b>Motorola Droid 2</b>, alebo <b>Samsung Moment</b>, mali by ste zapnúť \"10% mód\" v \"Ostatných nastaveniach\".</string>
+  <string name="first_run_message">Ďakujeme Vám za Vašu podporu/zakúpenie! <b><i>Tieto dva body, sú veľmi dôležité</i> :</b>\n\n• Ak máte \"<b>správcu úloh</b>\" / správcu procesov nejakého druhu, mali by ste ho buď odinštalovať alebo skúsiť zaradiť Battery Indicator Pro do zoznamu ignorovaných. Hoci ste mali verziu zdarma v zozname ignorovaných, <i>potrebujete pridať aj verziu Pro</i> !\n\n• Ak máte <b>Motorola Droid</b>, <b>Motorola Droid X</b>, <b>Motorola Droid 2</b>, alebo <b>Samsung Moment</b>, mali by ste zapnúť \"10% mód\" v \"Ostatných nastaveniach\".</string>
   <string name="first_run_message_free">Ďakujeme za stiahnutie Battery Indicator! <b><i>Toto je dôležité</i> :</b>\n\nAk máte \"<b>správcu úloh</b>\" / správcu procesov nejakého druhu, mali by ste ho buď odinštalovať alebo skúsiť zaradiť Battery Indicator do zoznamu ignorovaných.</string>
   <string name="okay">Oukey</string>
   <string name="menu_logs">Záznamy</string>
@@ -80,7 +80,17 @@
   <string name="help_introduction">Toto je <i>Battery Indicator Pro</i>, \"Pro\" verzia populárnej aplikácie zdarma, <i>Battery Indicator</i>. Je dostupná na zakúpenie z Android Marketu, ale je to otvorený projekt, čo znamená, že si zdrojový kód môžete zdarma stiahnuť z <a href="http://code.google.com/p/battery-indicator/">stránka projektu</a>.</string>
   <string name="help_introduction_free">Toto je <i>Battery Indicator</i>, verzia zdarma rodiny aplikácií <i>Battery Indicator</i> . Je dostupná z Android Marketu, a je to otvorený projekt, čo znamená, že si zdrojový kód môžete zdarma stiahnuť z <a href="http://code.google.com/p/battery-indicator/">stránka projektu</a>.\n\nProsím zvážte podporu tým, že prejdete na verziu <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro </a>.</string>
   <string name="help_cat_summary">Zhrnutie</string>
-  <string name="help_summary"><i>Battery Indicator Pro</i> je nenáročný indikátor batérie pre mobilný operačný systém Android. Jeho základnou funkciou je, že poskytuje ikonu, ktorá leží v notifikačnej lište a ukazuje zostavajúce nabitie v percentách.\n\nTáto verzia Pro okrem toho ponúka veľa utilít. Okrem toho ponúka červenú, oranžovú a zelenú ikonku ale aj nasledujúce kľúčové vlastnosti od verzie 3.0:\n\nâ€˘ Plne konfigurovateľný odhad času nabítia / vybitia.\nâ€˘ Zaznamenávanie stavu batérie.\nâ€˘ Témy pre hlavné okno (zahŕňa okno v plnej veľkosti s veľkým, ľahko čitateľným textom).\nâ€˘ Manuálne vypnúť / zapnúť zámok obrazovky s možnosťou automaticky ho vypnúť keď je v nabíjačke a zapnúť keď je z nej odpojený.\nâ€˘ Mnoho ďalších užitočných vecí, ktoré všade objavíte.</string>
+  <string name="help_summary"><i>Battery Indicator Pro</i> je nenáročný indikátor batérie pre mobilný operačný systém Android. Jeho základnou funkciou je, že poskytuje ikonu, ktorá leží v notifikačnej lište a ukazuje zostavajúce nabitie v percentách.\n\nTáto verzia Pro okrem toho ponúka veľa utilít. Okrem toho ponúka červenú, oranžovú a zelenú ikonku ale aj nasledujúce kľúčové vlastnosti od verzie 3.0:\n\n• Plne konfigurovateľný odhad času nabítia / vybitia.\n• Zaznamenávanie stavu batérie.\n• Témy pre hlavné okno (zahŕňa okno v plnej veľkosti s veľkým, ľahko čitateľným textom).\n• Manuálne vypnúť / zapnúť zámok obrazovky s možnosťou automaticky ho vypnúť keď je v nabíjačke a zapnúť keď je z nej odpojený.\n• Mnoho ďalších užitočných vecí, ktoré všade objavíte.</string>
+  <string name="help_summary_free"><i>Battery Indicator</i> je nenáročný indikátor batérie pre mobilný operačný systém Android™. Jeho základnou funkciou je, že poskytuje ikonu, ktorá leží v notifikačnej lište a ukazuje zostávajúce nabitie v percentách.\n\nVerzia Pro ponúka veľa utilít. Okrem toho ponúka červenú, oranžovú a zelenú ikonku ale aj nasledujúce kľúčové vlastnosti od verzie 3.0:\n\n• Plne konfigurovateľný odhad času nabítia / vybitia.\n• Zaznamenávanie stavu batérie.\n• Témy pre hlavné okno (zahŕňa okno v plnej veľkosti s veľkým, ľahko čitateľným textom).\n• Manuálne vypnúť / zapnúť zámok obrazovky s možnosťou automaticky ho vypnúť keď je v nabíjačke a zapnúť keď je z nej odpojený.\n• Mnoho ďalších užitočných vecí, ktoré všade objavíte.</string>
+  <string name="help_cat_limitations">Obmedzenia</string>
+  <string name="help_cat_features">Funkcie</string>
+  <string name="pref_alarm_type">Typ alarmu</string>
+  <string name="pref_alarm_type_summary">Spustiť alarm keď batéria:</string>
+  <string name="pref_cat_notification_settings">Nastavenia oznámení</string>
+  <string name="pref_alarm_ringtone">Zvonenie</string>
+  <string name="silent">Tichý</string>
+  <string name="pref_alarm_vibrate">Vibrovať</string>
+  <string name="pref_alarm_lights">Blikať svetlom</string>
   <string-array name="statuses">
     <item>Odpojený</item>
     <item>Neznámy</item>
@@ -141,15 +151,15 @@
   <string-array name="boot_pref_entries">
     <item>Vždy</item>
     <item>Nikdy</item>
-    <item>Ak je zapnutý pri vypínaní</item>
+    <item>Ak je spustený pri vypínaní</item>
   </string-array>
   <string-array name="status_dur_est_entries">
-    <item>Always</item>
-    <item>After 1 hodinu</item>
-    <item>After 2 hodiny</item>
-    <item>After 3 hodiny</item>
-    <item>After 6 hodín</item>
-    <item>After 12 hodín</item>
+    <item>Vždy</item>
+    <item>Po 1 hodine</item>
+    <item>Po 2 hodinách</item>
+    <item>Po 3 hodinách</item>
+    <item>Po 6 hodinách</item>
+    <item>Po 12 hodinách</item>
   </string-array>
   <string-array name="max_log_age_entries">
     <item>1 deň</item>
