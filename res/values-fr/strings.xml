@@ -17,11 +17,14 @@
   <string name="yes">Oui</string>
   <string name="cancel">Annuler</string>
   <string name="confirm_close">Fermer l\'application ?</string>
-  <string name="confirm_close_hint">Battery Indicator va être complètement fermé et l\'indicateur de batterie va être retiré de la barre de status.\n\nSi vous souhaitez juste fermer la fenêtre principale et garder l\'indicateur de batterie démarré, appuyez sur Annuler et pressez simplement le bouton retour de votre téléphone.</string>
+  <string name="confirm_close_hint">Battery Indicator va être complètement fermé et l\'indicateur de batterie va être retiré de la barre de status.\n\nSi vous souhaitez juste fermer la fenêtre principale et garder l\'indicateur de batterie affiché, appuyez sur Annuler et pressez simplement le bouton retour de votre téléphone.</string>
   <string name="confirm_clear_logs">Vider les journaux ?</string>
-  <string name="first_run_title">Merci!</string>
-  <string name="first_run_message">Merci pour votre don/achat ! <b><i>Les deux points suivants sont très importants</i> :</b>\n\n• Si vous avez un \"<b>task killer</b>\" / gestionnaire de processus de quelque sorte, vous devriez le désinstaller au préalable ou lui indiquer d\'ignorer Battery Indicator Pro. Si vous l\'aviez déjà fait pour la version gratuite, <i>vous devez lui indiquer d\'ignorer également la version Pro </i> !\n\n• Si vous possédez un <b>Motorola Droid</b>, <b>Motorola Droid X</b>, <b>Motorola Droid 2</b>, ou un <b>Samsung Moment</b>, vous devez activer le \"Mode 10%\" dans \"Autres réglages\".</string>
-  <string name="first_run_message_free">Merci d\'avoir téléchargé Battery Indicator ! <b><i>Important</i> :</b>\n\nSi vous avez un \"<b>task killer</b>\" / gestionnaire de processus de quelque sorte, vous devriez le désinstaller au préalable ou lui indiquer d\'ignorer Battery Indicator Pro.</string>
+  <string name="confirm_ten_percent_enable">Activer le \"Mode 10%\" ?</string>
+  <string name="confirm_ten_percent_disable">Désactiver le \"Mode 10%\" ?</string>
+  <string name="confirm_ten_percent_hint">Attention : Activer ou désactiver ce paramètre réinitialisera vos paramètres de couleurs.\n\nSi vous avez un Motorola Droid, Motorola Droid X, Motorola Droid 2 ou un Samsung Moment, vous devirez activer cette option dès le début et la laisser activée. Pour tous les autres téléphones, autant que je sache, vous devriez la laissée désactivée.</string>
+  <string name="first_run_title">Merci !</string>
+  <string name="first_run_message">Merci pour votre don/achat ! <b><i>Les deux points suivants sont très importants</i> :</b>\n\n• Si vous avez un \"<b>task killer</b>\" / gestionnaire de processus de quelque sorte, vous devriez le désinstaller ou lui indiquer d\'ignorer Battery Indicator Pro. Si vous l\'aviez déjà fait pour la version gratuite, <i>vous devez lui indiquer d\'ignorer également la version Pro</i> !\n\n• Si vous possédez un <b>Motorola Droid</b>, <b>Motorola Droid X</b>, <b>Motorola Droid 2</b>, ou un <b>Samsung Moment</b>, vous devez activer le \"Mode 10%\" dans \"Autres réglages\".</string>
+  <string name="first_run_message_free">Merci d\'avoir téléchargé Battery Indicator ! <b><i>Important</i> :</b>\n\nSi vous avez un \"<b>task killer</b>\" / gestionnaire de processus de quelque sorte, vous devriez le désinstaller ou lui indiquer d\'ignorer Battery Indicator Pro.</string>
   <string name="okay">Ok</string>
   <string name="menu_logs">Journaux</string>
   <string name="menu_settings">Paramètres</string>
@@ -54,12 +57,18 @@
   <string name="charge">pourcentage_de_charge</string>
   <string name="temperature">degres_celsius</string>
   <string name="voltage">volts</string>
+  <string name="alarm_fully_charged">La batterie est complètement chargée</string>
+  <string name="alarm_charge_drops">"Charge de la batterie inférieure à "</string>
+  <string name="alarm_charge_rises">"Charge de la batterie supérieure à "</string>
+  <string name="alarm_temp_rises">"T° de la batterie supérieure à "</string>
+  <string name="alarm_health_failure">"Santé de la batterie: "</string>
+  <string name="alarm_text">Sélectionnez pour modifier l\'alarme.</string>
   <string name="logs_empty">Pas de journaux</string>
   <string name="discharging_from">En décharge depuis</string>
   <string name="charging_from">En charge depuis</string>
   <string name="fully_charged">Complètement chargé</string>
-  <string name="since">Depuis</string>
-  <string name="one_six_needed">Désolé, Android 1.6 ou plus est nécessaire !</string>
+  <string name="since">depuis</string>
+  <string name="one_six_needed">Désolé, Android 1.6 ou plus est requis !</string>
   <string name="currently_using">Actuellement utilisé depuis</string>
   <string name="currently_set_to">"Actuellement défini à :"</string>
   <string name="currently_disabled">Actuellement désactivé</string>
@@ -67,37 +76,42 @@
   <string name="help_cat_changelog">Changelog</string>
   <string name="help_changelog">Consultez <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">l\'historique des versions sur la FAQ du projet</a>.</string>
   <string name="help_cat_introduction">Introduction</string>
-  <string name="help_introduction"><i>Battery Indicator Pro</i>, est la version \"Pro\" de la célèbre application gratuite, <i>Battery Indicator</i>. Vous pouvez l\'acheter sur l\'Android Market cependant il s\'agit d\'un projet OpenSource, ce qui signifie que vous pouvez télécharger gratuitement les sources sur <a href="http://code.google.com/p/battery-indicator/">le site internet du projet</a>.</string>
-  <string name="help_introduction_free"><i>Battery Indicator</i>, est la version gratuite de l\'ensemble d\'applications <i>Battery Indicator</i>. L\'application est disponible sur l\'Android Market, et, comme il s\'agit d\'un projet OpenSource, vous pouvez télécharger gratuitement les sources sur <a href="http://code.google.com/p/battery-indicator/">le site internet du projet</a>.\n\nVous pouvez faire un don afin d\'obtenir la <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">version Pro</a>.</string>
+  <string name="help_introduction"><i>Battery Indicator Pro</i> est la version \"Pro\" de la célèbre application gratuite <i>Battery Indicator</i>. Vous pouvez l\'acheter sur l\'Android Market. Comme il s\'agit d\'un projet OpenSource vous pouvez télécharger gratuitement les sources sur <a href="http://code.google.com/p/battery-indicator/">le site internet du projet</a>.</string>
+  <string name="help_introduction_free"><i>Battery Indicator</i>, est la version gratuite de l\'ensemble d\'applications <i>Battery Indicator</i>. L\'application est disponible sur l\'Android Market et, comme il s\'agit d\'un projet OpenSource, vous pouvez télécharger gratuitement les sources sur <a href="http://code.google.com/p/battery-indicator/">le site internet du projet</a>.\n\nVous pouvez faire un don afin d\'obtenir la <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">version Pro</a>.</string>
   <string name="help_cat_summary">Résumé</string>
-  <string name="help_summary"><i>Battery Indicator Pro</i> est un indicateur de batterie très léger conçu pour le système d\'exploitation mobile Google Android™. L\'application ajoute une icône sur la gauche de la barre d\'état vous indiquant le pourcentage de charge de la batterie.\n\nCette version Pro offre cependant beaucoup plus que cela. En plus de la présence d\'icônes colorées (rouge, orange, vert), la version 3.0 possède les caractéristiques suivantes :\n\n• Temps estimé de charge/décharge configurable\n• Journalisation de l\'état de la batterie\n• Thèmes pour la fenêtre principale (y compris une version plein écran avec un texte plus gros, plus lisible).\n• Activation/désactivation manuelle de l\'écran de verrouillage, avec la possibilité de le désactiver automatiquement lorsque l\'appareil est branché et de le réactiver lorsque l\'appareil est débranché.\n• Beaucoup d\'autres choses utiles que vous pourrez découvrir lors de l\'utilisation de l\'application.</string>
-  <string name="help_summary_free"><i>Battery Indicator</i> est un indicateur de batterie très léger pour les systèmes d\'exploitation mobile Android™. L\'application ajoute une icône sur la gauche de la barre d\'état vous indiquant le pourcentage de charge de la batterie.\n\nLa version Pro offre beaucoup plus que ça. En plus de la présence d\'icône colorées (rouge, orange, vert), la version 3.0 possède les caractéristiques suivantes :\n\n• Temps estimé de charge/décharge configurable\n• Journalisation de l\'état de la batterie\n• Thèmes pour la fenêtre principale (y compris une version plein écran avec un texte plus gros, plus lisible).\n• Activation/désactivation manuelle de l\'écran de verrouillage, avec la possibilité de le désactiver automatiquement lorsque l\'appareil est branché et de le réactiver lorsque l\'appareil est débranché.\n• Beaucoup d\'autres choses utiles que vous pourrez découvrir lors de l\'utilisation de l\'application.</string>
+  <string name="help_summary"><i>Battery Indicator Pro</i> est un indicateur de batterie très léger conçu pour le système d\'exploitation mobile Google Android™. L\'application ajoute une icône sur la gauche de la barre d\'état vous indiquant le pourcentage de charge de la batterie.\n\nCette version Pro offre cependant beaucoup plus. En plus de la présence d\'icônes colorées (rouge, orange, vert), la version 3.0 possède les caractéristiques suivantes :\n\n• Temps estimé de charge/décharge configurable\n• Journalisation de l\'état de la batterie\n• Thèmes pour la fenêtre principale (y compris une version plein écran avec un texte plus gros, plus lisible).\n• Activation/désactivation manuelle de l\'écran de verrouillage, avec la possibilité de le désactiver automatiquement lorsque l\'appareil est branché et de le réactiver lorsque l\'appareil est débranché.\n• Beaucoup d\'autres choses utiles que vous pourrez découvrir lors de l\'utilisation de l\'application.</string>
+  <string name="help_summary_free"><i>Battery Indicator</i> est un indicateur de batterie très léger pour le système d\'exploitation mobile Google Android™. L\'application ajoute une icône sur la gauche de la barre d\'état vous indiquant le pourcentage de charge de la batterie.\n\nLa version Pro offre beaucoup plus. En plus de la présence d\'icône colorées (rouge, orange, vert), la version 3.0 possède les caractéristiques suivantes :\n\n• Temps estimé de charge/décharge configurable\n• Journalisation de l\'état de la batterie\n• Thèmes pour la fenêtre principale (y compris une version plein écran avec un texte plus gros, plus lisible).\n• Activation/désactivation manuelle de l\'écran de verrouillage, avec la possibilité de le désactiver automatiquement lorsque l\'appareil est branché et de le réactiver lorsque l\'appareil est débranché.\n• Beaucoup d\'autres choses utiles que vous pourrez découvrir lors de l\'utilisation de l\'application.</string>
   <string name="help_cat_limitations">Limites</string>
-  <string name="help_limitations">(<i>Indépendantes de ma volonté.</i>)\n\n• L\'application ne peux afficher que les informations retournées par le téléphone. La plupart des téléphones reportent la charge à 1% près, cependant une partie (notamment les modèles Motorola Droid) ne reportent la charge qu\'à 10% près.\n• Il est impossible de masquer l\'icône de batterie du système.\n• L\'icône dans la barre d\'état et le message dans la zone de notification sont dépendants l\'un de l\'autre. Vous ne pouvez donc pas avoir l\'un sans l\'autre.\n• De nombreuses applications peuvent être déplacées sur la carte SD cependant ce n\'est pas possible pour Battery Indicator. Lisez <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">la FAQ du projet</a> pour de plus amples explications.</string>
+  <string name="help_limitations">(<i>Indépendantes de ma volonté.</i>)\n\n• L\'application ne peux afficher que les informations retournées par le téléphone. La plupart des téléphones reportent la charge à 1% près, cependant une partie (notamment les modèles Motorola Droid) ne reportent la charge qu\'à 10% près.\n• Il est impossible de masquer l\'icône de batterie du système.\n• L\'icône dans la barre d\'état et le message dans la zone de notification sont dépendants l\'un de l\'autre. Vous ne pouvez donc pas avoir l\'un sans l\'autre.\n• De nombreuses applications peuvent être déplacées sur la carte SD cependant ce n\'est pas possible pour Battery Indicator. Lisez <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">la FAQ du projet</a> pour de plus amples informations.</string>
   <string name="help_cat_features">Fonctionnalités</string>
-  <string name="help_features">• Léger, simple et lecture aisée.\n• L\'application n\'est pas active tout le temps. Elle reçoit l\'information de l\'OS lorsque le statut de la batterie change, met à jour l\'icône et se rendort. Ce qui signifie qu\'elle ne nécessite que très peu de RAM pour fonctionner et ne charge pas le CPU. Elle ne vide donc pas votre batterie. J\'ai calculé qu\'elle utilise, dans le pire des cas, une seule minute de batterie lors d\'une décharge complète. Si vous remarquez une différence c\'est que vous avez une autre application (comme un \"task killer\" par exemple) qui interfère avec Battery Indicator.\n• Accès facile à l\'écran d\'utilisation de la batterie (nécessite Android 1.6 ou plus récent).\n• Peut être configuré pour se lancer ou pas au démarrage du système ou encore se lancer si l\'application était active lors de l\'extinction du téléphone.\n• Beaucoup d\'autres fonctionnalités que j\'oublie ou que j\'estime assez insignifiantes pour ne pas en parler mais qui en font une excellente application.\n• La satisfaction de soutenir le développeur (ce que j\'apprécie vraiment !).</string>
+  <string name="help_features">• Léger, simple et lecture aisée.\n• L\'application ne reste pas active tout le temps. Elle reçoit l\'information de l\'OS lorsque le statut de la batterie change, met à jour l\'icône et se \"rendort\". Ce qui signifie qu\'elle ne nécessite que très peu de RAM pour fonctionner et ne charge pas le CPU. Elle ne vide donc pas votre batterie. J\'ai calculé qu\'elle utilise, dans le pire des cas, une seule minute de batterie lors d\'une décharge complète. Si vous remarquez une différence c\'est que vous avez une autre application (comme un \"task killer\" par exemple) qui interfère avec Battery Indicator.\n• Accès facile à l\'écran d\'utilisation de la batterie (nécessite Android 1.6 ou plus récent).\n• Peut être configuré pour se lancer ou pas au démarrage du système ou encore se lancer si l\'application était active lors de l\'extinction du téléphone.\n• Beaucoup d\'autres fonctionnalités que j\'oublie ou que j\'estime assez insignifiantes pour ne pas en parler mais qui en font une excellente application.\n• La satisfaction de soutenir le développeur (ce que j\'apprécie vraiment !).</string>
   <string name="help_cat_no_warranty">Garantie</string>
   <string name="help_no_warranty">Ce logiciel est distribué dans l\'espoir qu\'il vous sera utile, mais SANS AUCUNE GARANTIE, sans même la garantie implicite de COMMERCIALISATION ou D\'ADAPTATION À UN USAGE PARTICULIER.\n\nCependant je fais de mon mieux pour m\'assurer qu\'il fonctionne correctement et qu\'il ne cause aucun problème mais je ne peux être tenu pour responsable de tout dysfonctionnement ou dommage qu\'il pourrait causer.</string>
   <string name="help_cat_acknowledgments">Remerciements</string>
-  <string name="help_acknowledgments">Cette application ne serait disponible qu\'en anglais sans l\'aide généreuse des traducteurs bénévoles. Merci !\n\nJe remercie également Google et tous les développeurs OpenSource qui ont créés la plateforme Android et qui ont rendu la création de cette application possible.\n\nL\'icône de l\'application (la batterie verticale que vous voyez sur le Market) est basée sur une icône <a href="http://www.oxygen-icons.org">du thème Oxygen</a> et utilisé sous la licence <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-ShareAlike 3.0 License</a>.</string>
+  <string name="help_acknowledgments">Cette application ne serait disponible qu\'en anglais sans l\'aide généreuse des traducteurs bénévoles. Merci à eux !\n\nJe remercie également Google et tous les développeurs OpenSource qui ont créés la plateforme Android et qui ont rendu la création de cette application possible.\n\nL\'icône de l\'application (la batterie verticale que vous voyez sur le Market) est basée sur une icône <a href="http://www.oxygen-icons.org">du thème Oxygen</a> et utilisé sous la licence <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-ShareAlike 3.0</a>.</string>
   <string name="help_cat_translations">Traductions</string>
   <string name="help_translations">J\'ai besoin d\'aide pour traduire l\'application dans d\'autres langues. Si vous souhaitez m\'aider, vous pouvez m\'envoyer un <a href="mailto:android@darshancomputing.com">email</a>.\nSauf si vous ne le souhaitez pas, j\'ajouterai votre nom à la section suivante en reconnaissance pour votre aide.</string>
   <string name="help_subcat_translators">Traducteurs</string>
   <string name="help_cat_contact">Contact</string>
   <string name="help_contact">Si vous avez des questions ou des problèmes merci de lire en priorité <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">la FAQ du projet</a>.\n\nSi vous avez des commentaires ou retours, ou bien encore des questions ou des problèmes qui ne sont pas résolus dans la FAQ, envoyez-moi un email à l\'adresse <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>.</string>
-  <string name="pref_hint">Appuyez sur MENU pour l\'aide.</string>
+  <string name="pref_hint">Appuyez sur MENU pour afficher l\'aide.</string>
   <string name="settings_overview">Aperçu</string>
-  <string name="settings_overview_help">Les paramètres sont organisés en trois parties (décrites ci-dessous). Chaque partie possède sa propre page d\'aide la décrivant. Appuyez simplement sur MENU > Help pour obtenir de l\'aide sur la page sur laquelle vous êtes.</string>
+  <string name="settings_overview_help">Les paramètres sont organisés en quatre parties (décrites ci-dessous). Chaque partie possède sa propre page d\'aide la décrivant. Appuyez simplement sur MENU puis Help pour obtenir de l\'aide sur la page sur laquelle vous êtes.</string>
   <string name="color_settings">Thèmes et couleurs</string>
-  <string name="color_settings_summary">Changez la couleur et le thème de l\'icône et de la fenêtre</string>
+  <string name="color_settings_summary">Changez la couleur de l\'icône et le thème de la fenêtre</string>
   <string name="color_settings_help">Vous pouvez changer le thème de la fenêtre principale et choisir si et quand la couleur de l\'icône doit changer.</string>
   <string name="time_settings">Réglages du temps</string>
   <string name="time_settings_summary">Réglez les estimations de temps et les approximations</string>
   <string name="time_settings_help">Dans cette partie vous pouvez contrôler quand notifier un changement de statut du téléphone (débranché par exemple) afin d\'estimer approximativement depuis combien de temps le changement a eu lieu.\n\nVous pouvez aussi contrôler les estimations que vous souhaitez voir pour le temps restant de charge ainsi que la base des estimations de décharge en utilisation légère/normale/lourde ou constante.</string>
+  <string name="alarm_settings_subtitle">Réglages des alarmes</string>
+  <string name="alarm_settings">Alarmes</string>
+  <string name="alarm_settings_summary">Réglez les notifications de batterie faible/chargée</string>
+  <string name="alarm_settings_help">Vous pouvez configurer Battery Indicator pour qu\'il vous signale dès que la batterie a atteint un certain point (exemple : La batterie est complètement chargée, le niveau de charge a atteins 20%, etc...).</string>
   <string name="other_settings">Autres réglages</string>
   <string name="other_settings_help">Tous les autres réglages sont dans cette partie, y compris la journalisation, la gestion de l\'écran de verrouillage, l\'unité de température, le démarrage automatique, etc...</string>
   <string name="pref_cat_more_settings_in_pro">Autres réglages (version Pro)</string>
   <string name="pref_please_upgrade">La version Pro possède de nombreux autres réglages et fonctionnalités, comme la couleur de l\'icône, les thèmes de la fenêtre principale, et bien plus...</string>
+  <string name="add_alarm">Ajoutez une alarme</string>
   <string name="pref_cat_themes">Thèmes</string>
   <string name="pref_main_window_theme">Thème de la fenêtre principale</string>
   <string name="pref_main_window_theme_help">Définit le thème de la fenêtre principale.\nPar défaut, le thème correspond à peu près au thème standard d\'Android. Le thème \"Plein écran\" est utile si vous souhaitez que l\'application soit plus grosse et facile à lire. Les autres thèmes sont présents juste pour le plaisir.</string>
@@ -107,10 +121,10 @@
   <string name="pref_enable_logging_help">Si l\'option est active, Battery Indicator enregistre tous les changements d\'état de la batterie (comme quand le téléphone est débranché ou a fini sa charge). Vous pouvez consulter les journaux depuis la fenêtre principale (en appuyant sur MENU et en sélectionnant Journaux).</string>
   <string name="pref_log_everything">Tout enregistrer</string>
   <string name="pref_log_everything_summary">Enregistrer les changements de charge également ?</string>
-  <string name="pref_log_everything_help">Si l\'option est active, Battery Indicator enregistre également tous les changements sur le niveau de charge (comme le passage de 57% à 56% et vice versa). La plupart des utilisateurs n\'auront pas besoin de cette option, cependant vous pouvez l\'activer afin de garder un oeil constamment sur votre appareil.\n\nGardez à l\'esprit qu\'utiliser cette option utilise plus votre téléphone, pensez donc à bien désactiver l\'option dès que vous n\'en avez plus besoin. Le cas échéant l\'application risque d\'accélérer la décharge de la batterie du téléphone.</string>
+  <string name="pref_log_everything_help">Si l\'option est active, Battery Indicator enregistre également tous les changements sur le niveau de charge (comme le passage de 57% à 56% et vice versa). La plupart des utilisateurs n\'auront pas besoin de cette option, cependant vous pouvez l\'activer afin de garder un oeil constamment sur votre appareil.\n\nGardez à l\'esprit qu\'utiliser cette option utilise plus votre téléphone, pensez donc à bien la désactiver dès que vous n\'en avez plus besoin. Le cas échéant l\'application risque d\'accélérer la décharge de la batterie du téléphone.</string>
   <string name="pref_max_log_age">Âge maximal du journal</string>
   <string name="pref_max_log_age_summary">Supprimer les vieux journaux :</string>
-  <string name="pref_max_log_age_help">Si la journalisation est activée et à chaque fois que vous branchez votre téléphone les journaux les plus vieux sont supprimés.</string>
+  <string name="pref_max_log_age_help">Lorsque la journalisation est activée que vous branchez votre téléphone les journaux les plus vieux sont supprimés.</string>
   <string name="pref_cat_keyguard">Écran de verrouillage</string>
   <string name="pref_cat_keyguard_help">Android autorise les applications à désactiver/réactiver l\'écran de verrouillage. On peux désactiver/réactiver le verrouillage mais pas plus, par exemple on ne peut pas allumer ou éteindre l\'écran.</string>
   <string name="pref_confirm_manual_disable">Confirmer la désactivation</string>
@@ -244,6 +258,20 @@
     <item>Inconnu</item>
     <item>(AC)</item>
     <item>(USB)</item>
+  </string-array>
+  <string-array name="alarm_types_display">
+    <item>Complètement chargé</item>
+    <item>Charge inférieure à</item>
+    <item>Charge supérieure à</item>
+    <item>Température supérieure à</item>
+    <item>Santé critique</item>
+  </string-array>
+  <string-array name="alarm_type_entries">
+    <item>Charge terminée</item>
+    <item>Charge inférieure à...</item>
+    <item>Charge supérieure à...</item>
+    <item>Température supérieure à...</item>
+    <item>Santé critique</item>
   </string-array>
   <string-array name="mw_theme_pref_entries">
     <item>Défaut (petit)</item>
