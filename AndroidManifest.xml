@@ -8,6 +8,7 @@
   <application
       android:label="@string/app_full_name"
       android:icon="@drawable/battery"
+      android:hardwareAccelerated="true"
   >
     <activity
         android:name=".BatteryIndicator"
@@ -34,6 +35,7 @@
         android:name=".AlarmsActivity"
         android:label="@string/settings_activity_name"
         android:excludeFromRecents="true"
+        android:hardwareAccelerated="false"
     />
 
     <activity
@@ -45,7 +47,7 @@
     <activity
         android:name=".SettingsHelpActivity"
         android:label="@string/settings_help_activity_name"
-        android:theme="@android:style/Theme.Light"
+        android:theme="@style/bi_help_theme"
         android:stateNotNeeded="true"
         android:excludeFromRecents="true"
     />
@@ -53,7 +55,7 @@
     <activity
         android:name=".HelpActivity"
         android:label="@string/help_activity_name"
-        android:theme="@android:style/Theme.Light"
+        android:theme="@style/bi_help_theme"
         android:stateNotNeeded="true"
         android:excludeFromRecents="true"
     />

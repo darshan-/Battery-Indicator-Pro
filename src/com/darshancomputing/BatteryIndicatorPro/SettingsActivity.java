@@ -310,6 +310,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             startActivity(intent);
 
             return true;
+        case android.R.id.home:
+            startActivity(new Intent(this, BatteryIndicator.class));
+            return true;
         default:
             return super.onOptionsItemSelected(item);
         }

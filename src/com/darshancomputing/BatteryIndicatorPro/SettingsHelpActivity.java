@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class SettingsHelpActivity extends Activity {
@@ -57,6 +58,17 @@ public class SettingsHelpActivity extends Activity {
 
     private void setWindowSubtitle(String subtitle) {
         setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            startActivity(new Intent(this, BatteryIndicator.class));
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

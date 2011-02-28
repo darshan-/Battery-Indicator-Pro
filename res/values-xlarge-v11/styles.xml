@@ -13,6 +13,9 @@
     <item name="android:background">@android:color/black</item>
   </style>
 
+  <style name="bi_help_theme" parent="@android:style/Theme.Holo.Light">
+  </style>
+
   <dimen name="main_frame_width">240dp</dimen>
 
   <!-- Left, Top, Right, Bottom, just like setPadding() -->

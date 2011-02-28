@@ -207,6 +207,9 @@ public class LogViewActivity extends ListActivity {
             reloadList(true);
 
             return true;
+        case android.R.id.home:
+            startActivity(new Intent(this, BatteryIndicator.class));
+            return true;
         default:
             return super.onOptionsItemSelected(item);
         }

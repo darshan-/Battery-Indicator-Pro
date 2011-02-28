@@ -133,6 +133,9 @@ public class AlarmsActivity extends Activity {
             startActivity(intent);
 
             return true;
+        case android.R.id.home:
+            startActivity(new Intent(this, BatteryIndicator.class));
+            return true;
         default:
             return super.onOptionsItemSelected(item);
         }

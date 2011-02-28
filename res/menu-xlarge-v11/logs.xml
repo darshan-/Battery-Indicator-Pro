@@ -4,14 +4,14 @@
       android:id="@+id/menu_clear"
       android:icon="@+android:drawable/ic_menu_delete"
       android:title="@string/menu_clear"
-      android:showAsAction="always|withText"
+      android:showAsAction="never"
   />
 
   <item
       android:id="@+id/menu_export"
       android:icon="@+android:drawable/ic_menu_save"
       android:title="@string/menu_export"
-      android:showAsAction="always|withText"
+      android:showAsAction="never"
   />
 
   <item
