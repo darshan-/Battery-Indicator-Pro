@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_full_name" formatted="false">Batterij Indicator Pro</string>
+  <string name="app_launcher_name" formatted="false">Batterij Indicator</string>
+  <string name="settings_activity_name" formatted="false">Batterij Indicator Pro - Instellingen</string>
+  <string name="help_activity_name" formatted="false">Batterij Indicator Pro - Help</string>
+  <string name="log_view_activity_name" formatted="false">Batterij Indicator Pro - Logboeken</string>
+  <string name="app_full_name_free" formatted="false">Batterij Indicator</string>
+  <string name="settings_activity_name_free" formatted="false">Batterij Indicator - Instellingen</string>
+  <string name="help_activity_name_free" formatted="false">Batterij Indicator - Help</string>
+  <string name="battery_use_b" formatted="false">Bekijk batterij gebruik</string>
+  <string name="upgrade_donate_b" formatted="false">Upgrade/Doneer...</string>
+  <string name="reenable_lock_screen" formatted="false">Blokkeer scherm</string>
+  <string name="disable_lock_screen" formatted="false">Deblokkeer scherm</string>
+  <string name="confirm_disable" formatted="false">Deblokkeren scherm bevestigen?</string>
+  <string name="yes" formatted="false">Ja</string>
+  <string name="cancel" formatted="false">Annuleer</string>
+  <string name="confirm_close" formatted="false">Echt afsluiten?</string>
+  <string name="confirm_close_hint" formatted="false">Batterij Indicator zal volledig worden afgesloten, ook in de statusbalk.\n\nWil je terug naar het hoofdscherm en Batterij Indicator actief houden, ddruk dan op Annuleer en druk de Home/Back knop om naar het hoofdscherm te gaan.\n</string>
+  <string name="confirm_clear_logs" formatted="false">Alle logboeken verwijderen?</string>
+  <string name="confirm_ten_percent_enable" formatted="false">Wil je echt de 10% mode activeren?</string>
+  <string name="confirm_ten_percent_disable" formatted="false">Wil je echt de 10% mode deactiveren?</string>
+  <string name="confirm_ten_percent_hint" formatted="false">Waarschuwing: Met deze setting (activeren en deactiveren) zullen de kleurinstellingen gereset worden.\n\nAls je een Motorola Droid, Motorola Droid X, Motorola Droid 2, of Samsung Moment hebt: deze functie na installatie van de app aanzetten.\nAlle andere telefoons: deze functie uit laten staan.</string>
+  <string name="first_run_title" formatted="false">Bedankt!</string>
+  <string name="first_run_message" formatted="false">Bedankt voor je donatie/aanschaf! <b> <i>Let op deze twee punten:</i>:</b>\n• Bij gebruik van een \"<b>task killer</b>\" / process manager, zet Batterij Indicator Pro op de Ignore/Negeer lijst. <i>(Ook al staat de gratis versie al op de Ignore/Negeer lijst!)</i>\n\n• Bij gebruik van een <b>Motorola Droid</b>, <b>Motorola Droid X</b>, <b>Motorola Droid 2</b>, of <b>Samsung Moment</b>, zet dan de \"10% mode\" aan in het menu \"Extra Instellingen\".</string>
+  <string name="first_run_message_free" formatted="false">Bedankt voor het downloaden van Batterij Indicator! <b><i>Let op het volgende:</i>:</b>\nBij gebruik van een \"<b>task killer</b>\" / process manager, zet Batterij Indicator op de Ignore/Negeer lijst.</string>
+  <string name="okay" formatted="false">Oké</string>
+  <string name="menu_logs" formatted="false">Logboeken</string>
+  <string name="menu_settings" formatted="false">Instellingen</string>
+  <string name="menu_close" formatted="false">Sluiten</string>
+  <string name="menu_help" formatted="false">Help</string>
+  <string name="menu_clear" formatted="false">Wissen</string>
+  <string name="menu_reverse" formatted="false">Volgorde omkeren</string>
+  <string name="menu_export" formatted="false">Exporteer CSV</string>
+  <string name="menu_delete_alarm" formatted="false">Verwijder Alarm</string>
+  <string name="percent_symbol" formatted="false">%</string>
+  <string name="degree_symbol" formatted="false">°</string>
+  <string name="fahrenheit" formatted="false">Fahrenheit</string>
+  <string name="fahrenheit_symbol" formatted="false">F</string>
+  <string name="celsius" formatted="false">Celsius</string>
+  <string name="celsius_symbol" formatted="false">C</string>
+  <string name="volt_symbol" formatted="false">V</string>
+  <string name="fully_charged_in" formatted="false">Volledig opgeladen in:</string>
+  <string name="light_usage" formatted="false">Bij licht gebruik:</string>
+  <string name="normal_usage" formatted="false">Bij normaal gebruik:</string>
+  <string name="heavy_usage" formatted="false">Bij intensief gebruik:</string>
+  <string name="constant_usage" formatted="false">Bij continu gebruik:</string>
+  <string name="press_back_to_leave" formatted="false">Druk op TERUG om af te sluiten.</string>
+  <string name="press_menu_for_more" formatted="false">Druk op Menu voor meer opties.</string>
+  <string name="inaccessible_storage" formatted="false">SD Card is niet toegankelijk.</string>
+  <string name="inaccessible_w_reason" formatted="false">SD Card niet toegankelijk:</string>
+  <string name="read_only_storage" formatted="false">SD Card ingesteld op \'alleen lezen\'</string>
+  <string name="file_written" formatted="false">Bestand is succesvol opgeslagen op de root van de SD Card</string>
+  <string name="date" formatted="false">datum</string>
+  <string name="time" formatted="false">rijd</string>
+  <string name="status" formatted="false">status</string>
+  <string name="charge" formatted="false">laad_percentage</string>
+  <string name="temperature" formatted="false">graden_celsius</string>
+  <string name="voltage" formatted="false">volt</string>
+  <string name="alarm_fully_charged" formatted="false">Batterij is nu volledig opgeladen</string>
+  <string name="alarm_charge_drops" formatted="false">"Batterijlading is onder"</string>
+  <string name="alarm_charge_rises" formatted="false">"Batterijlading is boven"</string>
+  <string name="alarm_temp_rises" formatted="false">"Batterij temperatuur is boven"</string>
+  <string name="alarm_health_failure" formatted="false">"Batterij conditie is:"</string>
+  <string name="alarm_text" formatted="false">Alarm aanpassen.</string>
+  <string name="logs_empty" formatted="false">Logboeken zijn leeg</string>
+  <string name="discharging_from" formatted="false">Ontladen van</string>
+  <string name="charging_from" formatted="false">Opladen van</string>
+  <string name="fully_charged" formatted="false">Volledig opgeladen</string>
+  <string name="since" formatted="false">Sinds</string>
+  <string name="one_six_needed" formatted="false">Sorry, Android 1.6 of hoger!</string>
+  <string name="currently_using" formatted="false">Huidig verbruik</string>
+  <string name="currently_set_to" formatted="false">"Ingesteld op:"</string>
+  <string name="currently_disabled" formatted="false">Momenteel uitgeschakeld</string>
+  <string name="help_cat_version" formatted="false">Versie</string>
+  <string name="help_cat_changelog" formatted="false">Changelogboek</string>
+  <string name="pref_hint" formatted="false">Hint: Druk MENU voor help.</string>
+  <string name="settings_overview" formatted="false">Overzicht</string>
+  <string name="color_settings" formatted="false">Kleuren en thema\'s</string>
+  <string name="color_settings_summary" formatted="false">Beheer icoon kleurinstellingen en thema\'s</string>
+  <string name="time_settings" formatted="false">Tijd Instellingen</string>
+  <string name="time_settings_summary" formatted="false">Beheer tijd schattingen</string>
+  <string name="alarm_settings_subtitle" formatted="false">Alarm Instellingen</string>
+  <string name="alarm_settings" formatted="false">Alarmen</string>
+  <string name="alarm_settings_summary" formatted="false">Beheer notificaties voor vol/lege batterij</string>
+  <string name="other_settings" formatted="false">Extra Instellingen</string>
+  <string name="pref_cat_more_settings_in_pro" formatted="false">Meer Instellingen in Pro</string>
+  <string name="add_alarm" formatted="false">Voeg Alarm toe</string>
+  <string name="pref_cat_themes" formatted="false">Thema</string>
+  <string name="pref_main_window_theme" formatted="false">Hoofdscherm Thema</string>
+  <string name="pref_enable_logging" formatted="false">Zet Loggen aan</string>
+  <string name="pref_enable_logging_summary" formatted="false">Log batterij veranderingen?</string>
+  <string name="pref_log_everything" formatted="false">Log alles</string>
+  <string name="pref_log_everything_summary" formatted="false">Log laadveranderingen?</string>
+  <string-array name="statuses">
+    <item>Losgekoppeld</item>
+    <item>Onbekend</item>
+    <item>Opladen</item>
+    <item>Ontladen</item>
+    <item>Wordt niet opgeladen</item>
+    <item>Volledig opgeladen</item>
+  </string-array>
+  <string-array name="log_statuses">
+    <item>Losgekoppeld</item>
+    <item>Onbekend</item>
+    <item>Aangesloten</item>
+    <item>Onbekend</item>
+    <item>Onbekend</item>
+    <item>Volledig opgeladen</item>
+  </string-array>
+  <string-array name="log_statuses_old">
+    <item>Ontladen</item>
+    <item>Onbekend</item>
+    <item>Opladen</item>
+    <item>Onbekend</item>
+    <item>Onbekend</item>
+    <item>Volledig Opgeladen</item>
+  </string-array>
+  <string-array name="healths">
+    <item>Onbekend</item>
+    <item>Onbekend</item>
+    <item>Goede staat</item>
+    <item>Overvehit</item>
+    <item>Dood</item>
+    <item>Overvoltage</item>
+    <item>Fout</item>
+  </string-array>
+  <string-array name="pluggeds">
+    <item>Onbekend</item>
+    <item>(AC)</item>
+    <item>(USB)</item>
+  </string-array>
+  <string-array name="alarm_types_display">
+    <item>Volledig opgeladen</item>
+    <item>Lading onder</item>
+    <item>Lading boven</item>
+    <item>Temperatuur boven</item>
+    <item>Slechte staat</item>
+  </string-array>
+  <string-array name="alarm_type_entries">
+    <item>Bijna volledig opgeladen</item>
+    <item>Lading onder</item>
+    <item>Lading boven</item>
+    <item>Temperatuur boven</item>
+    <item>Slechte staat</item>
+  </string-array>
+  <string-array name="mw_theme_pref_entries">
+    <item>Klein (standaard)</item>
+    <item></item>
+    <item>Volledig scherm</item>
+  </string-array>
+  <string-array name="boot_pref_entries">
+    <item>Altijd</item>
+    <item>Nooit</item>
+    <item>Indien actief bij afsluiten</item>
+  </string-array>
+  <string-array name="status_dur_est_entries">
+    <item>Altijd</item>
+    <item>Na 1 uur</item>
+    <item>Na 2 uur</item>
+    <item>Na 3 uur</item>
+    <item>Na 6 uur</item>
+    <item>Na 12 uur</item>
+  </string-array>
+  <string-array name="max_log_age_entries">
+    <item>1 dag</item>
+    <item>2 dagen</item>
+    <item>4 dagen</item>
+    <item>1 week</item>
+  </string-array>
+</resources>

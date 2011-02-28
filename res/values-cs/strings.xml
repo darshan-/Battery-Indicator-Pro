@@ -1,210 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_full_name">Battery Indicator Pro</string>
-  <string name="app_launcher_name">Battery Indicator</string>
-  <string name="settings_activity_name">Battery Indicator Pro - Nastavení</string>
-  <string name="help_activity_name">Battery Indicator Pro - Nápověda</string>
-  <string name="log_view_activity_name">Battery Indicator Pro - Záznamy</string>
-  <string name="app_full_name_free">Battery Indicator</string>
-  <string name="settings_activity_name_free">Battery Indicator - Nastavení</string>
-  <string name="help_activity_name_free">Battery Indicator - Nápověda</string>
-  <string name="battery_use_b">Zobrazit využití baterie</string>
-  <string name="upgrade_donate_b">Upgrade/Podpořit vývoj...</string>
-  <string name="reenable_lock_screen">Opět povolit zámek obrazovky</string>
-  <string name="disable_lock_screen">Zakázat zámek obrazovky</string>
-  <string name="confirm_disable">Skutečně zakázat zámek obrazovky</string>
-  <string name="confirm_disable_hint">Nápověda: Zakázat tento potvrzovací dialog v nastavení...</string>
-  <string name="yes">Ano</string>
-  <string name="cancel">Zrušit</string>
-  <string name="confirm_close">Opravdu ukončit ?</string>
-  <string name="confirm_close_hint">Battery Indicator bude ukončen a již více neuvidíte stav baterie.\n\nPro návrat zpět bez ukončení aplikace stiskněte Zrušit a poté klávesu ZPĚT na přístroji.</string>
-  <string name="confirm_clear_logs">Opravdu vymazat všechny záznamy ?</string>
-  <string name="confirm_ten_percent_enable">Opravdu povolit 10% Mode?</string>
-  <string name="confirm_ten_percent_disable">Opravdu zakázat 10% Mode?</string>
-  <string name="confirm_ten_percent_hint">Upozornění: Změnou tohoto nastavení resetujete nastavení barevného schématu.\n\nPokud vlastníte přístroj Motorola Droid, Motorola Droid X, Motorola Droid 2 nebo Samsung Moment, měli by jste toto nastavení zapnout při prvním spuštění aplikace a ponechat zapnuté. Všechny ostatní telefony, pokud vím, by měly mít toto nastavení vypnuto.</string>
-  <string name="first_run_title">Děkuji !</string>
-  <string name="first_run_message">Děkuji za podporu nákupem !<b><i>Následující dva body jsou velice důležité</i> :</b>\n\n• Pokud používáte \"<b>task killer</b>\" / nějaký druh process manageru měli by jste jej odinstalovat nebo zkusit nastavit ingnorovat pro Battery Indicator Pro<i>a to i přesto, že jste již nastavili ignorovat pro FREE verzi Battery Indicator.</i> !\n\n• Pokud vlastníte následující přístroje:<b>Motorola Droid</b>, <b>Motorola Droid X</b>, <b>Motorola Droid 2</b>, nebo <b>Samsung Moment</b>, měli by jste zapnout volbu \"10% Mód\" v oddíle \"Ostatní nastavení\".</string>
-  <string name="first_run_message_free">Děkuji za stažení aplikace Battery Indicator! <b><i>Toto je důležitá informace</i> :</b>\n\nPokud používáte \"<b>task killer</b>\" / nějaký druh process manageru měli by jste jej odinstalovat nebo zkusit nastavit ingnorovat pro Battery Indicator.</string>
-  <string name="okay">O.K.</string>
-  <string name="menu_logs">Záznamy</string>
-  <string name="menu_settings">Nastavení</string>
-  <string name="menu_close">Zavřít</string>
-  <string name="menu_help">Nápověda</string>
-  <string name="menu_clear">Smazat</string>
-  <string name="menu_reverse">Opačné pořadí</string>
-  <string name="menu_export">Exportovat do CSV</string>
-  <string name="menu_delete_alarm">Smazat upozornění</string>
-  <string name="percent_symbol">%</string>
-  <string name="degree_symbol">°</string>
-  <string name="fahrenheit">Fahrenheit</string>
-  <string name="fahrenheit_symbol">F</string>
-  <string name="celsius">Celsius</string>
-  <string name="celsius_symbol">C</string>
-  <string name="volt_symbol">V</string>
-  <string name="fully_charged_in">Plně nabito za:</string>
-  <string name="light_usage">Při občasném používání:</string>
-  <string name="normal_usage">Při normálním používání:</string>
-  <string name="heavy_usage">Při častém používání:</string>
-  <string name="constant_usage">Při nepřetržitém používání:</string>
-  <string name="press_back_to_leave">Stiskni ZPĚT pro návrat.</string>
-  <string name="press_menu_for_more">Stiskni MENU pro více položek.</string>
-  <string name="inaccessible_storage">SD Karta je nedostupná.</string>
-  <string name="inaccessible_w_reason">SD Karta je nedostupná:</string>
-  <string name="read_only_storage">SD Karta pouze pro čtení</string>
-  <string name="file_written">Soubor byl úspěšně vytvořen v kořenovém adresáři SD Karty.</string>
-  <string name="date">datum</string>
-  <string name="time">čas</string>
-  <string name="status">status</string>
-  <string name="charge">procento nabití</string>
-  <string name="temperature">stupně Celsia</string>
-  <string name="voltage">voltů</string>
-  <string name="alarm_fully_charged">Baterie je plně nabitá</string>
-  <string name="alarm_charge_drops">"Stav baterie klesl pod "</string>
-  <string name="alarm_charge_rises">"Stav baterie překročil "</string>
-  <string name="alarm_temp_rises">"Teplota baterie překročila "</string>
-  <string name="alarm_health_failure">"Kondice baterie: "</string>
-  <string name="alarm_text">Změnit upozornění.</string>
-  <string name="logs_empty">Záznamy jsou prázdné</string>
-  <string name="discharging_from">Vybíjení od</string>
-  <string name="charging_from">Nabíjení od</string>
-  <string name="fully_charged">Plně nabito</string>
-  <string name="since">od</string>
-  <string name="one_six_needed">Sorry, potřebuješ Android 1.6 a vyšší !</string>
-  <string name="currently_using">Aktuální používání</string>
-  <string name="currently_set_to">"Aktuálně nastaveno: "</string>
-  <string name="currently_disabled">Aktuálně zakázáno</string>
-  <string name="help_cat_version">Verze</string>
-  <string name="help_cat_changelog">Changelog</string>
-  <string name="help_changelog">Více zde<a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">historie verzí je dostupná na FAQ projektu</a>.</string>
-  <string name="help_cat_introduction">Úvod</string>
-  <string name="help_introduction">Toto je<i>Battery Indicator Pro</i>, \"Pro\" verze populární bezplatné aplikace<i>Battery Indicator</i>. a je dostupná zakoupením z Android Marketu, nicméně toto je open source projekt a můžete si zdroje aplikace bezplatně stáhnout ze stránek projektu na <a href="http://code.google.com/p/battery-indicator/"/>.</string>
-  <string name="help_introduction_free">Toto je<i>Battery Indicator</i>, bezplatná verze aplikace<i>Battery Indicator</i>a je dostupná bezplatně stažením z Android Marketu, toto je open source projekt a můžete si zdroje aplikace bezplatně stáhnout ze stránek projektu na <a href="http://code.google.com/p/battery-indicator/"/>.\n\nPlease consider donating by upgrading to the <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Version</a>.</string>
-  <string name="help_cat_summary">Shrnutí</string>
-  <string name="help_summary"><i>Battery Indicator Pro</i> je nenáročná aplikace indikace stavu baterie pro Android™ mobile operační systém. Hlavní funkcionalitou je \"živá\" ikona baterie ve stavovém řádku zobrazující údaj zbývající energie baterie v procentech.\n\nTato Pro verze nabízí větší funkcionalitu než Free verze, jako jsou širší možnosti nastavení. Vedle toho také barevné ikony červená, oranžová a zelená. Klíčové možnosti verze 3.0 Pro:\n\n• Plně konfigurovatelné nastavení zbývajícího času nabití/vybití.\n• Záznamy stavu baterie.\n• Témata pro hlavní okno(včetně plné velikosti okna s velkým snadno čitelným textem).\n• Manuálně nastavitelný zámek obrazovky s možností automatického odemčení/zamčení při připojení/odpojení nabíječky.\n• Mnoho dalších užitečných věcí, které záhy objevíte...</string>
-  <string name="help_summary_free"><i>Battery Indicator</i>je nenáročná aplikace indikace stavu baterie pro Android™ mobile operační systém. Hlavní funkcionalitou je \"živá\" ikona baterie ve stavovém řádku zobrazující údaj zbývající energie baterie v procentech.\n\nTato Pro verze nabízí větší funkcionalitu než Free verze, jako jsou širší možnosti nastavení. Vedle toho také barevné ikony červená, oranžová a zelená. Klíčové možnosti verze 3.0 Pro:\n\n• Plně konfigurovatelné nastavení zbývajícího času nabití/vybití.\n• Záznamy stavu baterie.\n• Témata pro hlavní okno(včetně plné velikosti okna s velkým snadno čitelným textem).\n• Manuálně nastavitelný zámek obrazovky s možností automatického odemčení/zamčení při připojení/odpojení nabíječky.\n• Mnoho dalších užitečných věcí, které záhy objevíte...</string>
-  <string name="help_cat_limitations">Omezení</string>
-  <string name="help_limitations">(<i>Tato jsou mimo mou kontrolu.</i>)\n\n• Aplikace může zobrazovat pouze informace které jí telefon poskytne. Většina telefonů poskytuje report každé 1%, nicméně některé telefony (většinou Motorola Droid) reportují pouze co 10%.\n• Neexistuje možnost odstranit původní ukazatel stavu baterie z lišty.\n• Ikona upozornění ve stavové liště a zpráva kterou vidíte v okně upozornění jsou provázány - nemůžete mít jednu bez druhé.\n• Battery Indicator není možno instalovat na SD Kartu. Pro více informací navštivte stránky projektu.<a href="http://code.google.com/p/battery-indicator/wiki/FAQ">Často kladené otázky a odpovědi</a>k projektu.</string>
-  <string name="help_cat_features">Vlastnosti</string>
-  <string name="help_cat_no_warranty">Bez záruky</string>
-  <string name="help_no_warranty">Tento software je distribuován v dobré víře v jeho užitečnost, nicméně BEZ JAKÉKOLIV ZÁRUKY\n\nUčinil jsem vše pro zajištění bezproblémové funkčnosti, nejsem ovšem zodpovědný za jakékoliv škody nebo nepohodlí způsobené případnou chybou v tomto software.</string>
-  <string name="help_cat_acknowledgments">Poděkování</string>
-  <string name="help_cat_translations">Překlady</string>
-  <string name="help_subcat_translators">Překladatelé</string>
-  <string name="help_cat_contact">Kontakt</string>
-  <string name="pref_hint">Tip: Stiskněte MENU pro nápovědu.</string>
-  <string name="settings_overview">Přehled</string>
-  <string name="settings_overview_help">Nastavení jsou rozdělena do tří oddělených stránek, tak jak je popsáno níže. Každá stránka má svou vlastní nápovědu popisující dostupná nastavení. Jednoduše stikněte MENU pro popis jednotlivých nastavení dostupných na stránce nastavení.</string>
-  <string name="color_settings">Barvy a témata</string>
-  <string name="color_settings_summary">Barvy ikon a témata oken</string>
-  <string name="color_settings_help">Můžete změnit témata pro zobrazení hlavního okna a nastavit barvy pro ikonu při změně stavu.</string>
-  <string name="time_settings">Nastavení časů</string>
-  <string name="time_settings_summary">Nastavení časů pro odhady a průměrování</string>
-  <string name="time_settings_help">Zde můžete ovládat kdy se oznámení přepne z přesného zobrazení času kdy se změnil stav telefonu (připojen / nepřipojen) na průměrný stav kolik času (hodin) uběhlo od změny stavu.\n\nMůžete také ovládat který odhad chcete zobrazit pro zbývající čas při nabíjení přes USB nebo nabíječku a občasném/běžném/častém/nepřetržitém použití a upravit principy odhadů.</string>
-  <string name="alarm_settings_subtitle">Nastavení upozornění</string>
-  <string name="alarm_settings">Upozornění</string>
-  <string name="alarm_settings_summary">Ovládání oznámení pro nízký stav nebo plně nabitou baterii.</string>
-  <string name="alarm_settings_help">Můžete nastavit upozornění aplikace Battery Indicator jakmile stav baterie dosáhne určité hodnoty(např., Baterie je plně nabitá, Stav baterie klesl 20% atd.).</string>
-  <string name="other_settings">Ostatní nastavení</string>
-  <string name="other_settings_help">Všechna ostatní nastavení jsou na této stránce. Zahrnují například záznamy, zámek obrazovky, měrné jednotky, automatické spuštění atd.</string>
-  <string name="pref_cat_more_settings_in_pro">Více nastavení pouze ve verzi Pro</string>
-  <string name="pref_please_upgrade">Pro verze obsahuje mnohem více nastavení a funkcí, včetně zelené, oranžové a červené ikony stavu, témata pro okno, záznamy stavu baterie, nastavení zámku obrazovky, odhady časů zbývající energie atd.</string>
-  <string name="add_alarm">Přidat upozornění</string>
-  <string name="pref_cat_themes">Témata</string>
-  <string name="pref_main_window_theme">Téma hlavního okna</string>
-  <string name="pref_cat_logging">Záznamy</string>
-  <string name="pref_enable_logging">Povolit záznamy</string>
-  <string name="pref_enable_logging_summary">Záznamy změnu stavu baterie ?</string>
-  <string name="pref_log_everything">Záznamy všech aktivit</string>
-  <string name="pref_log_everything_summary">Zaznamenávat také změny stavu při nabíjení ?</string>
-  <string name="pref_max_log_age">Maximální stáří záznamů</string>
-  <string name="pref_max_log_age_summary">Vymazat záznamy starší než:</string>
-  <string name="pref_max_log_age_help">Pokud jsou záznamy povoleny, pak všechny starší budou vždy vymazány.</string>
-  <string name="pref_cat_keyguard">Zámek obrazovky / Ochrana klávesnice</string>
-  <string name="pref_cat_keyguard_help">Android dovoluje aplikaci zakázat a obnovit zámek obrazovky. Kromě této jednoduché funkcionality není možno nastavit nic víc. Nemůžete nastavit například která klávesa bude bude zámek ovládat.</string>
-  <string name="pref_confirm_manual_disable">Potvrdit ruční vypnutí</string>
-  <string name="pref_confirm_manual_disable_summary">Vyžádat potvrzení pro ruční vypnutí zámku obrazovky ?</string>
-  <string name="pref_confirm_manual_disable_help">Pokud je tato volba vybrána, bude vždy při pokusu o ruční vypnutí zámku obrazovky zobrazen potvrzovací dialog. Toto je primárně určeno pro nové uživatele, abychom předešli nechtěnému zakázání zámku obrazovky. Pokud víte co děláte, pak tuto volbu vypněte.</string>
-  <string name="pref_finish_after_toggle_lock">Ukončit po přepnutí</string>
-  <string name="pref_finish_after_toggle_lock_summary">Ukončit hlavní okno okamžitě po zakázání/obnovení ?</string>
-  <string name="pref_auto_disable">Automaticky zakázat zámek obrazovky</string>
-  <string name="pref_auto_disable_summary">Zakázat zámek obrazovky v průběhu nabíjení ?</string>
-  <string name="pref_disallow_disable_lock_screen">Nepovolit ruční vypnutí</string>
-  <string name="pref_disallow_disable_lock_screen_summary">Nepovolit použití tlačítka pro ruční vypnutí zámku obrazovky ?</string>
-  <string name="pref_cat_battery_use">Využití baterie</string>
-  <string name="pref_finish_after_battery_use">Ukončit po spuštění</string>
-  <string name="pref_finish_after_battery_use_summary">Ukončit hlavní okno ihned jakmile je zobrazeno Využití baterie.</string>
-  <string name="pref_cat_temperature_unit">Měrná jednotka teploty</string>
-  <string name="pref_convert_to_fahrenheit">Změnit na Fahrenheity</string>
-  <string name="pref_cat_autostart">Automatické spuštění</string>
-  <string name="pref_autostart_at_boot">Automatické spuštění při startu telefonu</string>
-  <string name="pref_autostart_at_boot_summary">Spustit Battery Indicator jakmile je zařízení spuštěno:</string>
-  <string name="pref_cat_charge_as_text">Textové zobrazení úrovně nabití</string>
-  <string name="pref_charge_as_text">Textové zobrazení úrovně nabití</string>
-  <string name="pref_charge_as_text_summary">Zobrazit úroveň nabití jako text vedle ikony ?</string>
-  <string name="pref_cat_status_duration">Stav trvání</string>
-  <string name="pref_status_dur_est">Kdy odhadovat</string>
-  <string name="pref_status_dur_est_summary">Začít odhadovat hodiny jakmile se stav změní:</string>
-  <string name="pref_cat_time_remaining_estimates">Odhad zbývajícího času</string>
-  <string name="pref_show_charge_time">Zobrazit čas plného nabití</string>
-  <string name="pref_show_charge_time_summary">Zobrazit čas zbývající do plného nabití ?</string>
-  <string name="pref_usb_charge_time">Nabíjení přes USB</string>
-  <string name="pref_usb_charge_time_summary">Čas který je zapotřebí k nabítí z 0% do 100% při nabíjení přes USB:</string>
-  <string name="pref_ac_charge_time">Nabíjení přes nabíječku</string>
-  <string name="pref_ac_charge_time_summary">Čas který je zapotřebí k nabití z 0% do 100% při nabíjení přes nabíječku:</string>
-  <string name="pref_show_light_usage">Zobrazit občasné používání</string>
-  <string name="pref_show_light_usage_summary">Zobrazit zbývající čas při občasném používání ?</string>
-  <string name="pref_light_usage_time">Občasné používání</string>
-  <string name="pref_light_usage_time_summary">Čas do vybití ze 100% na 0% v hodinách při občasném používání:</string>
-  <string name="pref_show_normal_usage">Zobrazit běžné používání</string>
-  <string name="pref_show_normal_usage_summary">Zobrazit zbývající čas při běžném používání ?</string>
-  <string name="pref_normal_usage_time">Běžné používání</string>
-  <string name="pref_normal_usage_time_summary">Čas do vybití ze 100% na 0% v hodinách při běžném používání:</string>
-  <string name="pref_show_heavy_usage">Zobrazit časté používání</string>
-  <string name="pref_show_heavy_usage_summary">Zobrazit zbývající čas při častém používání ?</string>
-  <string name="pref_heavy_usage_time">Časté používání</string>
-  <string name="pref_heavy_usage_time_summary">Čas do vybití ze 100% na 0% v hodinách při častém používání:</string>
-  <string name="pref_show_constant_usage">Zobrazit nepřetržité používání</string>
-  <string name="pref_show_constant_usage_summary">Zobrazit zbývající čas při nepřetržitém používání ?</string>
-  <string name="pref_constant_usage_time">Nepřetržité používání</string>
-  <string name="pref_constant_usage_time_summary">Čas do vybití ze 100% na 0% v hodinách při nepřetržitém používání:</string>
-  <string name="pref_cat_color">Barva Ikony</string>
-  <string name="pref_color_preview">Náhled barev</string>
-  <string name="pref_red">Použít červenou ikonu</string>
-  <string name="pref_red_summary">Použít červenou ikonu jakmile je stav nabití nízký ?</string>
-  <string name="pref_red_thresh">Práh pro červenou ikonu</string>
-  <string name="pref_red_thresh_summary">Použít červenou ikonu jakmile je nabití níže než:</string>
-  <string name="pref_red_thresh_summary10">Použít červenou ikonu jakmile je nabití níže než:</string>
-  <string name="pref_amber">Použít oranžovou ikonu</string>
-  <string name="pref_amber_summary">Použít oranžovou ikonu když je stav nabití střední ?</string>
-  <string name="pref_amber_thresh">Práh pro oranžovou ikonu</string>
-  <string name="pref_amber_thresh_summary">Použít oranžovou ikonu jakmile je nabití níže než:</string>
-  <string name="pref_amber_thresh_summary10">Použít oraznžovou ikonu jakmile je nabití níže než:</string>
-  <string name="pref_green">Použít zelenou ikonu</string>
-  <string name="pref_green_summary">Použít zelenou ikonu když je stav nabití vysoký ?</string>
-  <string name="pref_green_thresh">Práh pro zelenou ikonu</string>
-  <string name="pref_green_thresh_summary">Použít zelenou ikonu jakmile je nabití vyšší než:</string>
-  <string name="pref_cat_device_specific">Nastavení specifických přístrojů</string>
-  <string name="alarms_overview">Přehled upozornění</string>
-  <string name="pref_alarm_enabled">Povolit upozorňování</string>
-  <string name="pref_alarm_enabled_help">Pokud potřebujete dočasně zakázat upozorňování. Stávající upozornění nebudou smazána ani upravena. Dojde pouze k vypnutí funkce upozorňování.</string>
-  <string name="pref_cat_alarm_conditions">Podmínky pro upozornění</string>
-  <string name="pref_cat_alarm_conditions_help">Zde můžeze měnit nastavení podmínek pro spuštění upozornění.</string>
-  <string name="pref_alarm_type">Druh upozornění</string>
-  <string name="pref_alarm_type_summary">Spustit upozornění jakmile baterie:</string>
-  <string name="pref_alarm_type_help">Můžete nastavit pět různých typů upozornění.\n\n\"Jakmile je plně nabito\" upozornění se spustí jakmile se stav baterie změní z\"Nabíjí se\" na \"Plně nabito\". Pozor u spousty zařízení toto nemá stejný význam jako když baterie ukazuje stav nabití 100%.\n\nUpozorňování vzathující se k úrovni nabití nebo teplotě vyžaduje nastavení prahu, který upozornění spustí.\n\n\"Špatný stav baterie\" upozornění se spustí jakmile se stav baterie změní na cokoliv jiného než \"Neznámo\" nebo \"Stav dobrý\", tak jak je oznámováno systémem Android</string>
-  <string name="pref_alarm_threshold">Práh</string>
-  <string name="alarm_pref_not_used">Není použito pro tento druh upozornění.</string>
-  <string name="pref_alarm_threshold_summary">Práh pro upozornění:</string>
-  <string name="pref_alarm_threshold_help">Pro upozorňování vzathující se k úrovni nabití nebo teplotě musíte nastavit práh, který spustí upozornění.</string>
-  <string name="pref_cat_notification_settings">Nastavení upozorňování</string>
-  <string name="pref_cat_notification_settings_help">Zde můžete nastavit různé aspekty chování při upozornění, které jste si předem nastavili.</string>
-  <string name="pref_alarm_ringtone">Vyzvánění</string>
-  <string name="pref_alarm_ringtone_help">Zde můžete nastavit jaký zvuk bude přehrán při alarmu. Zvolte Ticho pokud si nepřejete žádný zvuk.</string>
-  <string name="silent">Ticho</string>
-  <string name="pref_alarm_vibrate">Vibrace</string>
-  <string name="pref_alarm_vibrate_help">Pokud vše poběží tak jak má, pak toto nastavení zapne vibrace při spuštění alarmu, pokud ovšem není aktuálně nastaven Silent Mode, pokud tedy nemáte ovšem povoleny vibrace v Silent Modu. Jinými slovy, mělo by to dělat co od této funkce očekávate. Pokud ne, pak mi napište email.</string>
-  <string name="pref_alarm_lights">Blikání osvětlení</string>
-  <string name="pref_alarm_lights_help">Nastavte jestliže chcete použít upozornění pomocí osvětlení. Standardně bliká LED dioda nebo trackball. Mé zkušenosti ovšem ukazují, že skoro každé zařízení mělo problémy s tímto nastavením. Pokud tedy zaškrtnete používání této funkce, pak systém upozornění bude žádat Váš Android o blikání osvětlení, ale je bez záruky, že to bude fungovat...</string>
+  <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
+  <string name="app_launcher_name" formatted="false">Battery Indicator</string>
+  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Nastavení</string>
+  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Nápověda</string>
+  <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Záznamy</string>
+  <string name="app_full_name_free" formatted="false">Battery Indicator</string>
+  <string name="settings_activity_name_free" formatted="false">Battery Indicator - Nastavení</string>
+  <string name="help_activity_name_free" formatted="false">Battery Indicator - Nápověda</string>
+  <string name="battery_use_b" formatted="false">Zobrazit využití baterie</string>
+  <string name="upgrade_donate_b" formatted="false">Upgrade/Podpořit vývoj...</string>
+  <string name="reenable_lock_screen" formatted="false">Opět povolit zámek obrazovky</string>
+  <string name="disable_lock_screen" formatted="false">Zakázat zámek obrazovky</string>
+  <string name="confirm_disable" formatted="false">Skutečně zakázat zámek obrazovky</string>
+  <string name="confirm_disable_hint" formatted="false">Nápověda: Zakázat tento potvrzovací dialog v nastavení...</string>
+  <string name="yes" formatted="false">Ano</string>
+  <string name="cancel" formatted="false">Zrušit</string>
+  <string name="confirm_close" formatted="false">Opravdu ukončit ?</string>
+  <string name="confirm_close_hint" formatted="false">Battery Indicator bude ukončen a již více neuvidíte stav baterie.\n\nPro návrat zpět bez ukončení aplikace stiskněte Zrušit a poté klávesu ZPĚT na přístroji.</string>
+  <string name="confirm_clear_logs" formatted="false">Opravdu vymazat všechny záznamy ?</string>
+  <string name="confirm_ten_percent_enable" formatted="false">Opravdu povolit 10% Mode?</string>
+  <string name="confirm_ten_percent_disable" formatted="false">Opravdu zakázat 10% Mode?</string>
+  <string name="confirm_ten_percent_hint" formatted="false">Upozornění: Změnou tohoto nastavení resetujete nastavení barevného schématu.\n\nPokud vlastníte přístroj Motorola Droid, Motorola Droid X, Motorola Droid 2 nebo Samsung Moment, měli by jste toto nastavení zapnout při prvním spuštění aplikace a ponechat zapnuté. Všechny ostatní telefony, pokud vím, by měly mít toto nastavení vypnuto.</string>
+  <string name="first_run_title" formatted="false">Děkuji !</string>
+  <string name="first_run_message" formatted="false">Děkuji za podporu nákupem !<b><i>Následující dva body jsou velice důležité</i> :</b>\n\n• Pokud používáte \"<b>task killer</b>\" / nějaký druh process manageru měli by jste jej odinstalovat nebo zkusit nastavit ingnorovat pro Battery Indicator Pro<i>a to i přesto, že jste již nastavili ignorovat pro FREE verzi Battery Indicator.</i> !\n\n• Pokud vlastníte následující přístroje:<b>Motorola Droid</b>, <b>Motorola Droid X</b>, <b>Motorola Droid 2</b>, nebo <b>Samsung Moment</b>, měli by jste zapnout volbu \"10% Mód\" v oddíle \"Ostatní nastavení\".</string>
+  <string name="first_run_message_free" formatted="false">Děkuji za stažení aplikace Battery Indicator! <b><i>Toto je důležitá informace</i> :</b>\n\nPokud používáte \"<b>task killer</b>\" / nějaký druh process manageru měli by jste jej odinstalovat nebo zkusit nastavit ingnorovat pro Battery Indicator.</string>
+  <string name="okay" formatted="false">O.K.</string>
+  <string name="menu_logs" formatted="false">Záznamy</string>
+  <string name="menu_settings" formatted="false">Nastavení</string>
+  <string name="menu_close" formatted="false">Zavřít</string>
+  <string name="menu_help" formatted="false">Nápověda</string>
+  <string name="menu_clear" formatted="false">Smazat</string>
+  <string name="menu_reverse" formatted="false">Opačné pořadí</string>
+  <string name="menu_export" formatted="false">Exportovat do CSV</string>
+  <string name="menu_delete_alarm" formatted="false">Smazat upozornění</string>
+  <string name="percent_symbol" formatted="false">%</string>
+  <string name="degree_symbol" formatted="false">°</string>
+  <string name="fahrenheit" formatted="false">Fahrenheit</string>
+  <string name="fahrenheit_symbol" formatted="false">F</string>
+  <string name="celsius" formatted="false">Celsius</string>
+  <string name="celsius_symbol" formatted="false">C</string>
+  <string name="volt_symbol" formatted="false">V</string>
+  <string name="fully_charged_in" formatted="false">Plně nabito za:</string>
+  <string name="light_usage" formatted="false">Při občasném používání:</string>
+  <string name="normal_usage" formatted="false">Při normálním používání:</string>
+  <string name="heavy_usage" formatted="false">Při častém používání:</string>
+  <string name="constant_usage" formatted="false">Při nepřetržitém používání:</string>
+  <string name="press_back_to_leave" formatted="false">Stiskni ZPĚT pro návrat.</string>
+  <string name="press_menu_for_more" formatted="false">Stiskni MENU pro více položek.</string>
+  <string name="inaccessible_storage" formatted="false">SD Karta je nedostupná.</string>
+  <string name="inaccessible_w_reason" formatted="false">SD Karta je nedostupná:</string>
+  <string name="read_only_storage" formatted="false">SD Karta pouze pro čtení</string>
+  <string name="file_written" formatted="false">Soubor byl úspěšně vytvořen v kořenovém adresáři SD Karty.</string>
+  <string name="date" formatted="false">datum</string>
+  <string name="time" formatted="false">čas</string>
+  <string name="status" formatted="false">status</string>
+  <string name="charge" formatted="false">procento nabití</string>
+  <string name="temperature" formatted="false">stupně Celsia</string>
+  <string name="voltage" formatted="false">voltů</string>
+  <string name="alarm_fully_charged" formatted="false">Baterie je plně nabitá</string>
+  <string name="alarm_charge_drops" formatted="false">"Stav baterie klesl pod "</string>
+  <string name="alarm_charge_rises" formatted="false">"Stav baterie překročil "</string>
+  <string name="alarm_temp_rises" formatted="false">"Teplota baterie překročila "</string>
+  <string name="alarm_health_failure" formatted="false">"Kondice baterie: "</string>
+  <string name="alarm_text" formatted="false">Změnit upozornění.</string>
+  <string name="logs_empty" formatted="false">Záznamy jsou prázdné</string>
+  <string name="discharging_from" formatted="false">Vybíjení od</string>
+  <string name="charging_from" formatted="false">Nabíjení od</string>
+  <string name="fully_charged" formatted="false">Plně nabito</string>
+  <string name="since" formatted="false">od</string>
+  <string name="one_six_needed" formatted="false">Sorry, potřebuješ Android 1.6 a vyšší !</string>
+  <string name="currently_using" formatted="false">Aktuální používání</string>
+  <string name="currently_set_to" formatted="false">"Aktuálně nastaveno: "</string>
+  <string name="currently_disabled" formatted="false">Aktuálně zakázáno</string>
+  <string name="help_cat_version" formatted="false">Verze</string>
+  <string name="help_cat_changelog" formatted="false">Changelog</string>
+  <string name="help_changelog" formatted="false">Více zde<a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">historie verzí je dostupná na FAQ projektu</a>.</string>
+  <string name="help_cat_introduction" formatted="false">Úvod</string>
+  <string name="help_introduction" formatted="false">Toto je<i>Battery Indicator Pro</i>, \"Pro\" verze populární bezplatné aplikace<i>Battery Indicator</i>. a je dostupná zakoupením z Android Marketu, nicméně toto je open source projekt a můžete si zdroje aplikace bezplatně stáhnout ze stránek projektu na <a href="http://code.google.com/p/battery-indicator/"/>.</string>
+  <string name="help_introduction_free" formatted="false">Toto je<i>Battery Indicator</i>, bezplatná verze aplikace<i>Battery Indicator</i>a je dostupná bezplatně stažením z Android Marketu, toto je open source projekt a můžete si zdroje aplikace bezplatně stáhnout ze stránek projektu na <a href="http://code.google.com/p/battery-indicator/"/>.\n\nPlease consider donating by upgrading to the <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Version</a>.</string>
+  <string name="help_cat_summary" formatted="false">Shrnutí</string>
+  <string name="help_summary" formatted="false"><i>Battery Indicator Pro</i> je nenáročná aplikace indikace stavu baterie pro Android™ mobile operační systém. Hlavní funkcionalitou je \"živá\" ikona baterie ve stavovém řádku zobrazující údaj zbývající energie baterie v procentech.\n\nTato Pro verze nabízí větší funkcionalitu než Free verze, jako jsou širší možnosti nastavení. Vedle toho také barevné ikony červená, oranžová a zelená. Klíčové možnosti verze 3.0 Pro:\n\n• Plně konfigurovatelné nastavení zbývajícího času nabití/vybití.\n• Záznamy stavu baterie.\n• Témata pro hlavní okno(včetně plné velikosti okna s velkým snadno čitelným textem).\n• Manuálně nastavitelný zámek obrazovky s možností automatického odemčení/zamčení při připojení/odpojení nabíječky.\n• Mnoho dalších užitečných věcí, které záhy objevíte...</string>
+  <string name="help_summary_free" formatted="false"><i>Battery Indicator</i>je nenáročná aplikace indikace stavu baterie pro Android™ mobile operační systém. Hlavní funkcionalitou je \"živá\" ikona baterie ve stavovém řádku zobrazující údaj zbývající energie baterie v procentech.\n\nTato Pro verze nabízí větší funkcionalitu než Free verze, jako jsou širší možnosti nastavení. Vedle toho také barevné ikony červená, oranžová a zelená. Klíčové možnosti verze 3.0 Pro:\n\n• Plně konfigurovatelné nastavení zbývajícího času nabití/vybití.\n• Záznamy stavu baterie.\n• Témata pro hlavní okno(včetně plné velikosti okna s velkým snadno čitelným textem).\n• Manuálně nastavitelný zámek obrazovky s možností automatického odemčení/zamčení při připojení/odpojení nabíječky.\n• Mnoho dalších užitečných věcí, které záhy objevíte...</string>
+  <string name="help_cat_limitations" formatted="false">Omezení</string>
+  <string name="help_limitations" formatted="false">(<i>Tato jsou mimo mou kontrolu.</i>)\n\n• Aplikace může zobrazovat pouze informace které jí telefon poskytne. Většina telefonů poskytuje report každé 1%, nicméně některé telefony (většinou Motorola Droid) reportují pouze co 10%.\n• Neexistuje možnost odstranit původní ukazatel stavu baterie z lišty.\n• Ikona upozornění ve stavové liště a zpráva kterou vidíte v okně upozornění jsou provázány - nemůžete mít jednu bez druhé.\n• Battery Indicator není možno instalovat na SD Kartu. Pro více informací navštivte stránky projektu.<a href="http://code.google.com/p/battery-indicator/wiki/FAQ">Často kladené otázky a odpovědi</a>k projektu.</string>
+  <string name="help_cat_features" formatted="false">Vlastnosti</string>
+  <string name="help_cat_no_warranty" formatted="false">Bez záruky</string>
+  <string name="help_no_warranty" formatted="false">Tento software je distribuován v dobré víře v jeho užitečnost, nicméně BEZ JAKÉKOLIV ZÁRUKY\n\nUčinil jsem vše pro zajištění bezproblémové funkčnosti, nejsem ovšem zodpovědný za jakékoliv škody nebo nepohodlí způsobené případnou chybou v tomto software.</string>
+  <string name="help_cat_acknowledgments" formatted="false">Poděkování</string>
+  <string name="help_cat_translations" formatted="false">Překlady</string>
+  <string name="help_subcat_translators" formatted="false">Překladatelé</string>
+  <string name="help_cat_contact" formatted="false">Kontakt</string>
+  <string name="pref_hint" formatted="false">Tip: Stiskněte MENU pro nápovědu.</string>
+  <string name="settings_overview" formatted="false">Přehled</string>
+  <string name="settings_overview_help" formatted="false">Nastavení jsou rozdělena do tří oddělených stránek, tak jak je popsáno níže. Každá stránka má svou vlastní nápovědu popisující dostupná nastavení. Jednoduše stikněte MENU pro popis jednotlivých nastavení dostupných na stránce nastavení.</string>
+  <string name="color_settings" formatted="false">Barvy a témata</string>
+  <string name="color_settings_summary" formatted="false">Barvy ikon a témata oken</string>
+  <string name="color_settings_help" formatted="false">Můžete změnit témata pro zobrazení hlavního okna a nastavit barvy pro ikonu při změně stavu.</string>
+  <string name="time_settings" formatted="false">Nastavení časů</string>
+  <string name="time_settings_summary" formatted="false">Nastavení časů pro odhady a průměrování</string>
+  <string name="time_settings_help" formatted="false">Zde můžete ovládat kdy se oznámení přepne z přesného zobrazení času kdy se změnil stav telefonu (připojen / nepřipojen) na průměrný stav kolik času (hodin) uběhlo od změny stavu.\n\nMůžete také ovládat který odhad chcete zobrazit pro zbývající čas při nabíjení přes USB nebo nabíječku a občasném/běžném/častém/nepřetržitém použití a upravit principy odhadů.</string>
+  <string name="alarm_settings_subtitle" formatted="false">Nastavení upozornění</string>
+  <string name="alarm_settings" formatted="false">Upozornění</string>
+  <string name="alarm_settings_summary" formatted="false">Ovládání oznámení pro nízký stav nebo plně nabitou baterii.</string>
+  <string name="alarm_settings_help" formatted="false">Můžete nastavit upozornění aplikace Battery Indicator jakmile stav baterie dosáhne určité hodnoty(např., Baterie je plně nabitá, Stav baterie klesl 20% atd.).</string>
+  <string name="other_settings" formatted="false">Ostatní nastavení</string>
+  <string name="other_settings_help" formatted="false">Všechna ostatní nastavení jsou na této stránce. Zahrnují například záznamy, zámek obrazovky, měrné jednotky, automatické spuštění atd.</string>
+  <string name="pref_cat_more_settings_in_pro" formatted="false">Více nastavení pouze ve verzi Pro</string>
+  <string name="pref_please_upgrade" formatted="false">Pro verze obsahuje mnohem více nastavení a funkcí, včetně zelené, oranžové a červené ikony stavu, témata pro okno, záznamy stavu baterie, nastavení zámku obrazovky, odhady časů zbývající energie atd.</string>
+  <string name="add_alarm" formatted="false">Přidat upozornění</string>
+  <string name="pref_cat_themes" formatted="false">Témata</string>
+  <string name="pref_main_window_theme" formatted="false">Téma hlavního okna</string>
+  <string name="pref_cat_logging" formatted="false">Záznamy</string>
+  <string name="pref_enable_logging" formatted="false">Povolit záznamy</string>
+  <string name="pref_enable_logging_summary" formatted="false">Záznamy změnu stavu baterie ?</string>
+  <string name="pref_log_everything" formatted="false">Záznamy všech aktivit</string>
+  <string name="pref_log_everything_summary" formatted="false">Zaznamenávat také změny stavu při nabíjení ?</string>
+  <string name="pref_max_log_age" formatted="false">Maximální stáří záznamů</string>
+  <string name="pref_max_log_age_summary" formatted="false">Vymazat záznamy starší než:</string>
+  <string name="pref_max_log_age_help" formatted="false">Pokud jsou záznamy povoleny, pak všechny starší budou vždy vymazány.</string>
+  <string name="pref_cat_keyguard" formatted="false">Zámek obrazovky / Ochrana klávesnice</string>
+  <string name="pref_cat_keyguard_help" formatted="false">Android dovoluje aplikaci zakázat a obnovit zámek obrazovky. Kromě této jednoduché funkcionality není možno nastavit nic víc. Nemůžete nastavit například která klávesa bude bude zámek ovládat.</string>
+  <string name="pref_confirm_manual_disable" formatted="false">Potvrdit ruční vypnutí</string>
+  <string name="pref_confirm_manual_disable_summary" formatted="false">Vyžádat potvrzení pro ruční vypnutí zámku obrazovky ?</string>
+  <string name="pref_confirm_manual_disable_help" formatted="false">Pokud je tato volba vybrána, bude vždy při pokusu o ruční vypnutí zámku obrazovky zobrazen potvrzovací dialog. Toto je primárně určeno pro nové uživatele, abychom předešli nechtěnému zakázání zámku obrazovky. Pokud víte co děláte, pak tuto volbu vypněte.</string>
+  <string name="pref_finish_after_toggle_lock" formatted="false">Ukončit po přepnutí</string>
+  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Ukončit hlavní okno okamžitě po zakázání/obnovení ?</string>
+  <string name="pref_auto_disable" formatted="false">Automaticky zakázat zámek obrazovky</string>
+  <string name="pref_auto_disable_summary" formatted="false">Zakázat zámek obrazovky v průběhu nabíjení ?</string>
+  <string name="pref_disallow_disable_lock_screen" formatted="false">Nepovolit ruční vypnutí</string>
+  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Nepovolit použití tlačítka pro ruční vypnutí zámku obrazovky ?</string>
+  <string name="pref_cat_battery_use" formatted="false">Využití baterie</string>
+  <string name="pref_finish_after_battery_use" formatted="false">Ukončit po spuštění</string>
+  <string name="pref_finish_after_battery_use_summary" formatted="false">Ukončit hlavní okno ihned jakmile je zobrazeno Využití baterie.</string>
+  <string name="pref_cat_temperature_unit" formatted="false">Měrná jednotka teploty</string>
+  <string name="pref_convert_to_fahrenheit" formatted="false">Změnit na Fahrenheity</string>
+  <string name="pref_cat_autostart" formatted="false">Automatické spuštění</string>
+  <string name="pref_autostart_at_boot" formatted="false">Automatické spuštění při startu telefonu</string>
+  <string name="pref_autostart_at_boot_summary" formatted="false">Spustit Battery Indicator jakmile je zařízení spuštěno:</string>
+  <string name="pref_cat_charge_as_text" formatted="false">Textové zobrazení úrovně nabití</string>
+  <string name="pref_charge_as_text" formatted="false">Textové zobrazení úrovně nabití</string>
+  <string name="pref_charge_as_text_summary" formatted="false">Zobrazit úroveň nabití jako text vedle ikony ?</string>
+  <string name="pref_cat_status_duration" formatted="false">Stav trvání</string>
+  <string name="pref_status_dur_est" formatted="false">Kdy odhadovat</string>
+  <string name="pref_status_dur_est_summary" formatted="false">Začít odhadovat hodiny jakmile se stav změní:</string>
+  <string name="pref_cat_time_remaining_estimates" formatted="false">Odhad zbývajícího času</string>
+  <string name="pref_show_charge_time" formatted="false">Zobrazit čas plného nabití</string>
+  <string name="pref_show_charge_time_summary" formatted="false">Zobrazit čas zbývající do plného nabití ?</string>
+  <string name="pref_usb_charge_time" formatted="false">Nabíjení přes USB</string>
+  <string name="pref_usb_charge_time_summary" formatted="false">Čas který je zapotřebí k nabítí z 0% do 100% při nabíjení přes USB:</string>
+  <string name="pref_ac_charge_time" formatted="false">Nabíjení přes nabíječku</string>
+  <string name="pref_ac_charge_time_summary" formatted="false">Čas který je zapotřebí k nabití z 0% do 100% při nabíjení přes nabíječku:</string>
+  <string name="pref_show_light_usage" formatted="false">Zobrazit občasné používání</string>
+  <string name="pref_show_light_usage_summary" formatted="false">Zobrazit zbývající čas při občasném používání ?</string>
+  <string name="pref_light_usage_time" formatted="false">Občasné používání</string>
+  <string name="pref_light_usage_time_summary" formatted="false">Čas do vybití ze 100% na 0% v hodinách při občasném používání:</string>
+  <string name="pref_show_normal_usage" formatted="false">Zobrazit běžné používání</string>
+  <string name="pref_show_normal_usage_summary" formatted="false">Zobrazit zbývající čas při běžném používání ?</string>
+  <string name="pref_normal_usage_time" formatted="false">Běžné používání</string>
+  <string name="pref_normal_usage_time_summary" formatted="false">Čas do vybití ze 100% na 0% v hodinách při běžném používání:</string>
+  <string name="pref_show_heavy_usage" formatted="false">Zobrazit časté používání</string>
+  <string name="pref_show_heavy_usage_summary" formatted="false">Zobrazit zbývající čas při častém používání ?</string>
+  <string name="pref_heavy_usage_time" formatted="false">Časté používání</string>
+  <string name="pref_heavy_usage_time_summary" formatted="false">Čas do vybití ze 100% na 0% v hodinách při častém používání:</string>
+  <string name="pref_show_constant_usage" formatted="false">Zobrazit nepřetržité používání</string>
+  <string name="pref_show_constant_usage_summary" formatted="false">Zobrazit zbývající čas při nepřetržitém používání ?</string>
+  <string name="pref_constant_usage_time" formatted="false">Nepřetržité používání</string>
+  <string name="pref_constant_usage_time_summary" formatted="false">Čas do vybití ze 100% na 0% v hodinách při nepřetržitém používání:</string>
+  <string name="pref_cat_color" formatted="false">Barva Ikony</string>
+  <string name="pref_color_preview" formatted="false">Náhled barev</string>
+  <string name="pref_red" formatted="false">Použít červenou ikonu</string>
+  <string name="pref_red_summary" formatted="false">Použít červenou ikonu jakmile je stav nabití nízký ?</string>
+  <string name="pref_red_thresh" formatted="false">Práh pro červenou ikonu</string>
+  <string name="pref_red_thresh_summary" formatted="false">Použít červenou ikonu jakmile je nabití níže než:</string>
+  <string name="pref_red_thresh_summary10" formatted="false">Použít červenou ikonu jakmile je nabití níže než:</string>
+  <string name="pref_amber" formatted="false">Použít oranžovou ikonu</string>
+  <string name="pref_amber_summary" formatted="false">Použít oranžovou ikonu když je stav nabití střední ?</string>
+  <string name="pref_amber_thresh" formatted="false">Práh pro oranžovou ikonu</string>
+  <string name="pref_amber_thresh_summary" formatted="false">Použít oranžovou ikonu jakmile je nabití níže než:</string>
+  <string name="pref_amber_thresh_summary10" formatted="false">Použít oraznžovou ikonu jakmile je nabití níže než:</string>
+  <string name="pref_green" formatted="false">Použít zelenou ikonu</string>
+  <string name="pref_green_summary" formatted="false">Použít zelenou ikonu když je stav nabití vysoký ?</string>
+  <string name="pref_green_thresh" formatted="false">Práh pro zelenou ikonu</string>
+  <string name="pref_green_thresh_summary" formatted="false">Použít zelenou ikonu jakmile je nabití vyšší než:</string>
+  <string name="pref_cat_device_specific" formatted="false">Nastavení specifických přístrojů</string>
+  <string name="alarms_overview" formatted="false">Přehled upozornění</string>
+  <string name="pref_alarm_enabled" formatted="false">Povolit upozorňování</string>
+  <string name="pref_alarm_enabled_help" formatted="false">Pokud potřebujete dočasně zakázat upozorňování. Stávající upozornění nebudou smazána ani upravena. Dojde pouze k vypnutí funkce upozorňování.</string>
+  <string name="pref_cat_alarm_conditions" formatted="false">Podmínky pro upozornění</string>
+  <string name="pref_cat_alarm_conditions_help" formatted="false">Zde můžeze měnit nastavení podmínek pro spuštění upozornění.</string>
+  <string name="pref_alarm_type" formatted="false">Druh upozornění</string>
+  <string name="pref_alarm_type_summary" formatted="false">Spustit upozornění jakmile baterie:</string>
+  <string name="pref_alarm_type_help" formatted="false">Můžete nastavit pět různých typů upozornění.\n\n\"Jakmile je plně nabito\" upozornění se spustí jakmile se stav baterie změní z\"Nabíjí se\" na \"Plně nabito\". Pozor u spousty zařízení toto nemá stejný význam jako když baterie ukazuje stav nabití 100%.\n\nUpozorňování vzathující se k úrovni nabití nebo teplotě vyžaduje nastavení prahu, který upozornění spustí.\n\n\"Špatný stav baterie\" upozornění se spustí jakmile se stav baterie změní na cokoliv jiného než \"Neznámo\" nebo \"Stav dobrý\", tak jak je oznámováno systémem Android</string>
+  <string name="pref_alarm_threshold" formatted="false">Práh</string>
+  <string name="alarm_pref_not_used" formatted="false">Není použito pro tento druh upozornění.</string>
+  <string name="pref_alarm_threshold_summary" formatted="false">Práh pro upozornění:</string>
+  <string name="pref_alarm_threshold_help" formatted="false">Pro upozorňování vzathující se k úrovni nabití nebo teplotě musíte nastavit práh, který spustí upozornění.</string>
+  <string name="pref_cat_notification_settings" formatted="false">Nastavení upozorňování</string>
+  <string name="pref_cat_notification_settings_help" formatted="false">Zde můžete nastavit různé aspekty chování při upozornění, které jste si předem nastavili.</string>
+  <string name="pref_alarm_ringtone" formatted="false">Vyzvánění</string>
+  <string name="pref_alarm_ringtone_help" formatted="false">Zde můžete nastavit jaký zvuk bude přehrán při alarmu. Zvolte Ticho pokud si nepřejete žádný zvuk.</string>
+  <string name="silent" formatted="false">Ticho</string>
+  <string name="pref_alarm_vibrate" formatted="false">Vibrace</string>
+  <string name="pref_alarm_vibrate_help" formatted="false">Pokud vše poběží tak jak má, pak toto nastavení zapne vibrace při spuštění alarmu, pokud ovšem není aktuálně nastaven Silent Mode, pokud tedy nemáte ovšem povoleny vibrace v Silent Modu. Jinými slovy, mělo by to dělat co od této funkce očekávate. Pokud ne, pak mi napište email.</string>
+  <string name="pref_alarm_lights" formatted="false">Blikání osvětlení</string>
+  <string name="pref_alarm_lights_help" formatted="false">Nastavte jestliže chcete použít upozornění pomocí osvětlení. Standardně bliká LED dioda nebo trackball. Mé zkušenosti ovšem ukazují, že skoro každé zařízení mělo problémy s tímto nastavením. Pokud tedy zaškrtnete používání této funkce, pak systém upozornění bude žádat Váš Android o blikání osvětlení, ale je bez záruky, že to bude fungovat...</string>
   <string-array name="statuses">
     <item>Nepřipojeno</item>
     <item>Neznámý</item>

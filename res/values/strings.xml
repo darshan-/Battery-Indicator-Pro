@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_full_name">Battery Indicator Pro</string>
-  <string name="app_launcher_name">Battery Indicator</string>
-  <string name="settings_activity_name">Battery Indicator Pro - Settings</string>
-  <string name="help_activity_name">Battery Indicator Pro - Help</string>
-  <string name="log_view_activity_name">Battery Indicator Pro - Logs</string>
+  <string formatted="false" name="app_full_name">Battery Indicator Pro</string>
+  <string formatted="false" name="app_launcher_name">Battery Indicator</string>
+  <string formatted="false" name="settings_activity_name">Battery Indicator Pro - Settings</string>
+  <string formatted="false" name="help_activity_name">Battery Indicator Pro - Help</string>
+  <string formatted="false" name="log_view_activity_name">Battery Indicator Pro - Logs</string>
 
-  <string name="app_full_name_free">Battery Indicator</string>
-  <string name="settings_activity_name_free">Battery Indicator - Settings</string>
-  <string name="help_activity_name_free">Battery Indicator - Help</string>
+  <string formatted="false" name="app_full_name_free">Battery Indicator</string>
+  <string formatted="false" name="settings_activity_name_free">Battery Indicator - Settings</string>
+  <string formatted="false" name="help_activity_name_free">Battery Indicator - Help</string>
 
-  <string name="battery_use_b">View Battery Use</string>
-  <string name="upgrade_donate_b">Upgrade/Donate...</string>
-  <string name="reenable_lock_screen">Reenable Lock Screen</string>
-  <string name="disable_lock_screen">Disable Lock Screen</string>
+  <string formatted="false" name="battery_use_b">View Battery Use</string>
+  <string formatted="false" name="upgrade_donate_b">Upgrade/Donate...</string>
+  <string formatted="false" name="reenable_lock_screen">Reenable Lock Screen</string>
+  <string formatted="false" name="disable_lock_screen">Disable Lock Screen</string>
 
-  <string name="confirm_disable">Really disable lock screen?</string>
-  <string name="confirm_disable_hint">
+  <string formatted="false" name="confirm_disable">Really disable lock screen?</string>
+  <string formatted="false" name="confirm_disable_hint">
     Hint: Disable this confirmation dialog in the settings...
   </string>
-  <string name="yes">Yes</string>
-  <string name="cancel">Cancel</string>
+  <string formatted="false" name="yes">Yes</string>
+  <string formatted="false" name="cancel">Cancel</string>
 
-  <string name="confirm_close">Really Close?</string>
-  <string name="confirm_close_hint">
+  <string formatted="false" name="confirm_close">Really Close?</string>
+  <string formatted="false" name="confirm_close_hint">
     Battery Indicator will be completely closed, and you won\'t see it
     in your status bar any more.\n
 
@@ -32,11 +32,11 @@
     button to leave the main window.
   </string>
 
-  <string name="confirm_clear_logs">Really clear all logs?</string>
+  <string formatted="false" name="confirm_clear_logs">Really clear all logs?</string>
 
-  <string name="confirm_ten_percent_enable">Really enable 10% Mode?</string>
-  <string name="confirm_ten_percent_disable">Really disable 10% Mode?</string>
-  <string name="confirm_ten_percent_hint">
+  <string formatted="false" name="confirm_ten_percent_enable">Really enable 10% Mode?</string>
+  <string formatted="false" name="confirm_ten_percent_disable">Really disable 10% Mode?</string>
+  <string formatted="false" name="confirm_ten_percent_hint">
     Warning: Changing this setting (both enabling and disabling it)
     will reset your color settings.\n
 
@@ -46,8 +46,8 @@
     other phones, as far as I know, should always leave this off.
   </string>
 
-  <string name="first_run_title">Thank you!</string>
-  <string name="first_run_message">Thanks
+  <string formatted="false" name="first_run_title">Thank you!</string>
+  <string formatted="false" name="first_run_message">Thanks
     for your donation/purchase!  <b><i>These two points are very important</i> :</b>\n
 
     \n• If you have a \"<b>task killer</b>\" / process manager of some kind, you should either
@@ -59,52 +59,52 @@
       <b>Motorola Droid 2</b>, or <b>Samsung Moment</b>, you should turn on
       \"10% Mode\" in the \"Other Settings\".
   </string>
-  <string name="first_run_message_free">Thanks
+  <string formatted="false" name="first_run_message_free">Thanks
     for downloading Battery Indicator!  <b><i>This is important</i> :</b>\n
 
     \nIf you have a \"<b>task killer</b>\" / process manager of some kind, you should either
       uninstall it or try to get it to ignore Battery Indicator.
   </string>
-  <string name="okay">Okay</string>
+  <string formatted="false" name="okay">Okay</string>
 
-  <string name="menu_logs">Logs</string>
-  <string name="menu_settings">Settings</string>
-  <string name="menu_close">Close</string>
-  <string name="menu_help">Help</string>
-  <string name="menu_clear">Clear</string>
-  <string name="menu_reverse">Reverse Order</string>
-  <string name="menu_export">Export CSV</string>
-  <string name="menu_delete_alarm">Delete Alarm</string>
+  <string formatted="false" name="menu_logs">Logs</string>
+  <string formatted="false" name="menu_settings">Settings</string>
+  <string formatted="false" name="menu_close">Close</string>
+  <string formatted="false" name="menu_help">Help</string>
+  <string formatted="false" name="menu_clear">Clear</string>
+  <string formatted="false" name="menu_reverse">Reverse Order</string>
+  <string formatted="false" name="menu_export">Export CSV</string>
+  <string formatted="false" name="menu_delete_alarm">Delete Alarm</string>
 
-  <string name="percent_symbol">%</string>
-  <string name="degree_symbol">°</string>
-  <string name="fahrenheit">Fahrenheit</string>
-  <string name="fahrenheit_symbol">F</string>
-  <string name="celsius">Celsius</string>
-  <string name="celsius_symbol">C</string>
-  <string name="volt_symbol">V</string>
+  <string formatted="false" name="percent_symbol">%</string>
+  <string formatted="false" name="degree_symbol">°</string>
+  <string formatted="false" name="fahrenheit">Fahrenheit</string>
+  <string formatted="false" name="fahrenheit_symbol">F</string>
+  <string formatted="false" name="celsius">Celsius</string>
+  <string formatted="false" name="celsius_symbol">C</string>
+  <string formatted="false" name="volt_symbol">V</string>
 
-  <string name="fully_charged_in">Fully Charged in:</string>
-  <string name="light_usage">Light Usage Left:</string>
-  <string name="normal_usage">Normal Usage Left:</string>
-  <string name="heavy_usage">Heavy Usage Left:</string>
-  <string name="constant_usage">Constant Usage Left:</string>
+  <string formatted="false" name="fully_charged_in">Fully Charged in:</string>
+  <string formatted="false" name="light_usage">Light Usage Left:</string>
+  <string formatted="false" name="normal_usage">Normal Usage Left:</string>
+  <string formatted="false" name="heavy_usage">Heavy Usage Left:</string>
+  <string formatted="false" name="constant_usage">Constant Usage Left:</string>
 
-  <string name="press_back_to_leave">Press BACK to leave.</string>
-  <string name="press_menu_for_more">Press MENU for more items.</string>
+  <string formatted="false" name="press_back_to_leave">Press BACK to leave.</string>
+  <string formatted="false" name="press_menu_for_more">Press MENU for more items.</string>
 
-  <string name="inaccessible_storage">SD Card is inaccessible.</string>
-  <string name="inaccessible_w_reason">SD Card inaccessible: </string>
-  <string name="read_only_storage">SD Card is read only.</string>
-  <string name="file_written">File successfully written to root of SD card.</string>
+  <string formatted="false" name="inaccessible_storage">SD Card is inaccessible.</string>
+  <string formatted="false" name="inaccessible_w_reason">SD Card inaccessible: </string>
+  <string formatted="false" name="read_only_storage">SD Card is read only.</string>
+  <string formatted="false" name="file_written">File successfully written to root of SD card.</string>
 
   <!-- These are used for the CSV export. -->
-  <string name="date">date</string>
-  <string name="time">time</string>
-  <string name="status">status</string>
-  <string name="charge">charge_percentage</string>
-  <string name="temperature">degrees_celsius</string>
-  <string name="voltage">volts</string>
+  <string formatted="false" name="date">date</string>
+  <string formatted="false" name="time">time</string>
+  <string formatted="false" name="status">status</string>
+  <string formatted="false" name="charge">charge_percentage</string>
+  <string formatted="false" name="temperature">degrees_celsius</string>
+  <string formatted="false" name="voltage">volts</string>
 
   <string-array name="statuses">
     <item>Unplugged</item>
@@ -160,45 +160,45 @@
     <item>Health fails</item>
   </string-array>
 
-  <string name="alarm_fully_charged">Battery is now fully charged</string>
-  <string name="alarm_charge_drops">"Battery charge is below "</string>
-  <string name="alarm_charge_rises">"Battery charge is above "</string>
-  <string name="alarm_temp_rises">"Battery temp. is above "</string>
-  <string name="alarm_health_failure">"Battery health is: "</string>
-  <string name="alarm_text">Select to edit alarms.</string>
+  <string formatted="false" name="alarm_fully_charged">Battery is now fully charged</string>
+  <string formatted="false" name="alarm_charge_drops">"Battery charge is below "</string>
+  <string formatted="false" name="alarm_charge_rises">"Battery charge is above "</string>
+  <string formatted="false" name="alarm_temp_rises">"Battery temp. is above "</string>
+  <string formatted="false" name="alarm_health_failure">"Battery health is: "</string>
+  <string formatted="false" name="alarm_text">Select to edit alarms.</string>
 
-  <string name="logs_empty">Logs Are Empty</string>
+  <string formatted="false" name="logs_empty">Logs Are Empty</string>
   <plurals name="n_log_items">
     <item quantity="one">%d Log Item</item>
     <item quantity="other">%d Log Items</item>
   </plurals>
 
-  <string name="discharging_from">Discharging from</string>
-  <string name="charging_from">Charging from</string>
-  <string name="fully_charged">Fully Charged</string>
+  <string formatted="false" name="discharging_from">Discharging from</string>
+  <string formatted="false" name="charging_from">Charging from</string>
+  <string formatted="false" name="fully_charged">Fully Charged</string>
 
-  <string name="since">Since</string>
+  <string formatted="false" name="since">Since</string>
   <plurals name="for_n_hours">
     <item quantity="one">For %d Hour</item>
     <item quantity="other">For %d Hours</item>
   </plurals>
 
-  <string name="one_six_needed">Sorry, Android 1.6+ needed!</string>
+  <string formatted="false" name="one_six_needed">Sorry, Android 1.6+ needed!</string>
 
-  <string name="currently_using">Currently using</string>
-  <string name="currently_set_to">"Currently set to: "</string>
-  <string name="currently_disabled">Currently Disabled</string>
+  <string formatted="false" name="currently_using">Currently using</string>
+  <string formatted="false" name="currently_set_to">"Currently set to: "</string>
+  <string formatted="false" name="currently_disabled">Currently Disabled</string>
 
-  <string name="help_cat_version">Version</string>
+  <string formatted="false" name="help_cat_version">Version</string>
 
-  <string name="help_cat_changelog">Changelog</string>
-  <string name="help_changelog">
+  <string formatted="false" name="help_cat_changelog">Changelog</string>
+  <string formatted="false" name="help_changelog">
     See the <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">version
       history on the project FAQ</a>.
   </string>
 
-  <string name="help_cat_introduction">Introduction</string>
-  <string name="help_introduction">This
+  <string formatted="false" name="help_cat_introduction">Introduction</string>
+  <string formatted="false" name="help_introduction">This
     is <i>Battery Indicator Pro</i>, the \"Pro\" version of the
     popular free app, <i>Battery Indicator</i>.  It\'s available for
     purchase from the Android Market, but it\'s an open source
@@ -206,7 +206,7 @@
     from <a href="http://code.google.com/p/battery-indicator/">the
     project website</a>.
   </string>
-  <string name="help_introduction_free">This
+  <string formatted="false" name="help_introduction_free">This
     is <i>Battery Indicator</i>, the free version of the
     <i>Battery Indicator</i> family of apps.  It\'s available from
     the Android Market, and it\'s an open source project,
@@ -219,8 +219,8 @@
       Version</a>.
   </string>
 
-  <string name="help_cat_summary">Summary</string>
-  <string name="help_summary"><i>Battery
+  <string formatted="false" name="help_cat_summary">Summary</string>
+  <string formatted="false" name="help_summary"><i>Battery
     Indicator Pro</i> is a lightweight battery indicator for the
     Android™ mobile operating system.  Its core feature is that it
     provides an icon that lives in the status bar and shows you the
@@ -238,7 +238,7 @@
     to automatically disable it when plugged in and reenable it when unplugged.
     \n• Many more useful things that you\'ll discover throughout.
   </string>
-  <string name="help_summary_free"><i>Battery
+  <string formatted="false" name="help_summary_free"><i>Battery
     Indicator</i> is a lightweight battery indicator for the
     Android™ mobile operating system.  Its core feature is that it
     provides an icon that lives in the status bar and shows you the
@@ -257,8 +257,8 @@
     \n• Many more useful things that you\'ll discover throughout.
   </string>
 
-  <string name="help_cat_limitations">Limitations</string>
-  <string name="help_limitations">(<i>These
+  <string formatted="false" name="help_cat_limitations">Limitations</string>
+  <string formatted="false" name="help_limitations">(<i>These
     are out of my control.</i>)\n
 
     \n• The app can only display what the phone tells it. Most phones report
@@ -273,8 +273,8 @@
       FAQ</a> if you\'d like further explanation.
   </string>
 
-  <string name="help_cat_features">Features</string>
-  <string name="help_features">
+  <string formatted="false" name="help_cat_features">Features</string>
+  <string formatted="false" name="help_features">
     • Small, simple, and easy to read.
     \n• It doesn\'t do any polling. It receives a broadcast message from the OS
     when the battery status changes, then it simply updates the icon and
@@ -293,8 +293,8 @@
     \n• The satisfaction of supporting the developer. (I really appreciate it!)
   </string>
 
-  <string name="help_cat_no_warranty">No Warranty</string>
-  <string name="help_no_warranty">
+  <string formatted="false" name="help_cat_no_warranty">No Warranty</string>
+  <string formatted="false" name="help_no_warranty">
     This software is distributed in the hope that it will be useful, but
     WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n
@@ -304,8 +304,8 @@
     it may cause under any circumstance.
   </string>
 
-  <string name="help_cat_acknowledgments">Acknowledgments</string>
-  <string name="help_acknowledgments">This
+  <string formatted="false" name="help_cat_acknowledgments">Acknowledgments</string>
+  <string formatted="false" name="help_acknowledgments">This
     app would only be available in English without the generous
     assistance of the volunteer translators.  Thanks!\n
 
@@ -319,8 +319,8 @@
       Attribution-ShareAlike 3.0 License</a>.
   </string>
 
-  <string name="help_cat_translations">Translations</string>
-  <string name="help_translations">I
+  <string formatted="false" name="help_cat_translations">Translations</string>
+  <string formatted="false" name="help_translations">I
     need help translating this app to other languages.  If you would
     like to help, please send me
     an <a href="mailto:android@darshancomputing.com">email</a>.
@@ -328,10 +328,10 @@
     in acknowledgment of your assistance.
   </string>
 
-  <string name="help_subcat_translators">Translators</string>
+  <string formatted="false" name="help_subcat_translators">Translators</string>
 
-  <string name="help_cat_contact">Contact</string>
-  <string name="help_contact">If
+  <string formatted="false" name="help_cat_contact">Contact</string>
+  <string formatted="false" name="help_contact">If
     you have questions or problems, please
     check <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">the
       project FAQ</a> first.\n
@@ -341,25 +341,25 @@
     at <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>.
   </string>
 
-  <string name="pref_hint">Hint: Press MENU for help.</string>
+  <string formatted="false" name="pref_hint">Hint: Press MENU for help.</string>
 
-  <string name="settings_overview">Overview</string>
-  <string name="settings_overview_help">
+  <string formatted="false" name="settings_overview">Overview</string>
+  <string formatted="false" name="settings_overview_help">
     The settings are organized into three separate pages, as described
     below.  Each page has its own help page describing the settings on
     that page.  Simply press MENU->Help to get help from whatever
     settings page you are on.
   </string>
 
-  <string name="color_settings">Colors and Themes</string>
-  <string name="color_settings_summary">Control icon colors and window themes</string>
-  <string name="color_settings_help">
+  <string formatted="false" name="color_settings">Colors and Themes</string>
+  <string formatted="false" name="color_settings_summary">Control icon colors and window themes</string>
+  <string formatted="false" name="color_settings_help">
     You can change the theme for the main window and control if and
     when the notification icon changes color.
   </string>
-  <string name="time_settings">Time Settings</string>
-  <string name="time_settings_summary">Control time estimates and approximations</string>
-  <string name="time_settings_help">
+  <string formatted="false" name="time_settings">Time Settings</string>
+  <string formatted="false" name="time_settings_summary">Control time estimates and approximations</string>
+  <string formatted="false" name="time_settings_help">
     Here you can control when the notification switches from saying
     exactly when the phone\'s status changed (unplugged, for example)
     to stating approximately how many hours ago the change happened.\n
@@ -368,52 +368,52 @@
     time remaining for USB/AC charging and light/normal/heavy/constant
     usage, and adjust the basis for these estimates.
   </string>
-  <string name="alarm_settings_subtitle">Alarm Settings</string>
-  <string name="alarm_settings">Alarms</string>
-  <string name="alarm_settings_summary">Control notifications for low/full battery</string>
-  <string name="alarm_settings_help">
+  <string formatted="false" name="alarm_settings_subtitle">Alarm Settings</string>
+  <string formatted="false" name="alarm_settings">Alarms</string>
+  <string formatted="false" name="alarm_settings_summary">Control notifications for low/full battery</string>
+  <string formatted="false" name="alarm_settings_help">
     You can have Battery Indicator notify you when your battery level
     reaches a certain point (e.g., the battery becomes fully charged,
     the battery level drops below 20%).
   </string>
-  <string name="other_settings">Other Settings</string>
+  <string formatted="false" name="other_settings">Other Settings</string>
   <!--string name="other_settings_summary"></string-->
-  <string name="other_settings_help">
+  <string formatted="false" name="other_settings_help">
     All other settings are on this page, including logging, lock
     screen, temperature unit, autostart, and more.
   </string>
 
-  <string name="pref_cat_more_settings_in_pro">More Settings in Pro</string>
-  <string name="pref_please_upgrade">
+  <string formatted="false" name="pref_cat_more_settings_in_pro">More Settings in Pro</string>
+  <string formatted="false" name="pref_please_upgrade">
     The Pro version has many more settings and features, including
     green, amber, and red icons, alarms, window themes, battery state
     logging, auto/manual lock screen disable, charge/discharge remaining
     estimates, and more.
   </string>
 
-  <string name="add_alarm">Add alarm</string>
+  <string formatted="false" name="add_alarm">Add alarm</string>
 
-  <string name="pref_cat_themes">Themes</string>
-  <string name="pref_main_window_theme">Main Window Theme</string>
-  <string name="pref_main_window_theme_help">
+  <string formatted="false" name="pref_cat_themes">Themes</string>
+  <string formatted="false" name="pref_main_window_theme">Main Window Theme</string>
+  <string formatted="false" name="pref_main_window_theme_help">
     Sets the theme for the main window.  By default, the theme will
     roughly match a standard Android dialog, like Battery Indicator
     always has.  The Full Window theme is useful if you like things
     big and easy to read.  Other themes are just for fun.
   </string>
 
-  <string name="pref_cat_logging">Logging</string>
-  <string name="pref_enable_logging">Enable Logging</string>
-  <string name="pref_enable_logging_summary">Log battery state changes?</string>
-  <string name="pref_enable_logging_help">
+  <string formatted="false" name="pref_cat_logging">Logging</string>
+  <string formatted="false" name="pref_enable_logging">Enable Logging</string>
+  <string formatted="false" name="pref_enable_logging_summary">Log battery state changes?</string>
+  <string formatted="false" name="pref_enable_logging_help">
     If enabled, Battery Indicator will log battery state changes
     (e.g., the phone is unplugged or becomes fully charged). You can
     view the logs from the main window (press MENU and then select
     Logs).
   </string>
-  <string name="pref_log_everything">Log Everything</string>
-  <string name="pref_log_everything_summary">Log charge changes, too?</string>
-  <string name="pref_log_everything_help">
+  <string formatted="false" name="pref_log_everything">Log Everything</string>
+  <string formatted="false" name="pref_log_everything_summary">Log charge changes, too?</string>
+  <string formatted="false" name="pref_log_everything_help">
     If enabled, Battery Indicator will also log every change in the
     charge level, as well (e.g., going from 57% to 56% or vice versa).
     Most users probably have no need for this, but you can turn it on
@@ -426,33 +426,33 @@
     shouldn\'t take more than about 1 minute off of a full battery
     charge as a worst case.
   </string>
-  <string name="pref_max_log_age">Maximum Log Age</string>
-  <string name="pref_max_log_age_summary">Delete logs older than:</string>
-  <string name="pref_max_log_age_help">
+  <string formatted="false" name="pref_max_log_age">Maximum Log Age</string>
+  <string formatted="false" name="pref_max_log_age_summary">Delete logs older than:</string>
+  <string formatted="false" name="pref_max_log_age_help">
     If logging is enabled, then whenever you plug in your phone, logs
     older than this will be deleted.
   </string>
 
-  <string name="pref_cat_keyguard">Lock Screen / Keyguard</string>
-  <string name="pref_cat_keyguard_help">
+  <string formatted="false" name="pref_cat_keyguard">Lock Screen / Keyguard</string>
+  <string formatted="false" name="pref_cat_keyguard_help">
     Android allows apps to disable and reenable what it calls the
     \"keyguard\", which you probably think of as the lock screen.
     Beyond simply disabling and reenabling it, however, there is no
     more control — I can\'t control which keys turn the screen on, for
     example.
   </string>
-  <string name="pref_confirm_manual_disable">Confirm Manual Disable</string>
-  <string name="pref_confirm_manual_disable_summary">Confirm when manually disabling lock screen?</string>
-  <string name="pref_confirm_manual_disable_help">
+  <string formatted="false" name="pref_confirm_manual_disable">Confirm Manual Disable</string>
+  <string formatted="false" name="pref_confirm_manual_disable_summary">Confirm when manually disabling lock screen?</string>
+  <string formatted="false" name="pref_confirm_manual_disable_help">
     If checked, a confirmation dialog will pop up when you try to
     manually disable the lock screen.  This is primarily intended to
     prevent new users from accidentally disabling their lock screen
     without knowing it.  If you disable the lock screen with any
     regularity, you\'ll probably want to turn this off.
   </string>
-  <string name="pref_finish_after_toggle_lock">Exit After Toggling</string>
-  <string name="pref_finish_after_toggle_lock_summary">Exit main window immediately after dis/reenabling?</string>
-  <string name="pref_finish_after_toggle_lock_help">
+  <string formatted="false" name="pref_finish_after_toggle_lock">Exit After Toggling</string>
+  <string formatted="false" name="pref_finish_after_toggle_lock_summary">Exit main window immediately after dis/reenabling?</string>
+  <string formatted="false" name="pref_finish_after_toggle_lock_help">
     If you\'re someone for whom every keystroke (or touchscreen press)
     matters, you\'ll probably want to enable this.  If your goal is to
     simply disable or reenable the lock screen and then get back to
@@ -464,9 +464,9 @@
     \nFor obvious reasons, you can only enable this if the previous
     setting is disabled, and vice versa.
   </string>
-  <string name="pref_auto_disable">Auto-disable Lock Screen</string>
-  <string name="pref_auto_disable_summary">Disable the lock screen when charging?</string>
-  <string name="pref_auto_disable_help">
+  <string formatted="false" name="pref_auto_disable">Auto-disable Lock Screen</string>
+  <string formatted="false" name="pref_auto_disable_summary">Disable the lock screen when charging?</string>
+  <string formatted="false" name="pref_auto_disable_help">
     If checked, then whenever the device is plugged in, Battery
     Indicator with disable the lock screen, and whenever the device is
     unplugged, it will enable it again.\n
@@ -475,36 +475,36 @@
     manually pass through the lock screen once before it will be
     auto-disabled.
   </string>
-  <string name="pref_disallow_disable_lock_screen">Disallow Manual Disable</string>
-  <string name="pref_disallow_disable_lock_screen_summary">Disallow use of the disable lock screen button?</string>
-  <string name="pref_disallow_disable_lock_screen_help">
+  <string formatted="false" name="pref_disallow_disable_lock_screen">Disallow Manual Disable</string>
+  <string formatted="false" name="pref_disallow_disable_lock_screen_summary">Disallow use of the disable lock screen button?</string>
+  <string formatted="false" name="pref_disallow_disable_lock_screen_help">
     If you have an alternative lock screen that allows access to the
     notification tray when the screen is locked, you might want to
     enabled this option for security reasons.
   </string>
 
-  <string name="pref_cat_battery_use">Battery Use</string>
-  <string name="pref_finish_after_battery_use">Exit After Launching</string>
-  <string name="pref_finish_after_battery_use_summary">Exit main window immediately after launching Battery Use?</string>
-  <string name="pref_finish_after_battery_use_help">
+  <string formatted="false" name="pref_cat_battery_use">Battery Use</string>
+  <string formatted="false" name="pref_finish_after_battery_use">Exit After Launching</string>
+  <string formatted="false" name="pref_finish_after_battery_use_summary">Exit main window immediately after launching Battery Use?</string>
+  <string formatted="false" name="pref_finish_after_battery_use_help">
     If you\'re someone for whom every keystroke (or touchscreen press)
     matters, you might want to enable this.  Enabling this preserves
     the old behavior of closing Battery Indicator\'s main window
     immediately after launching the Battery Use screen.
   </string>
 
-  <string name="pref_cat_temperature_unit">Temperature Unit</string>
-  <string name="pref_convert_to_fahrenheit">Convert to Fahrenheit</string>
-  <string name="pref_convert_to_fahrenheit_help">
+  <string formatted="false" name="pref_cat_temperature_unit">Temperature Unit</string>
+  <string formatted="false" name="pref_convert_to_fahrenheit">Convert to Fahrenheit</string>
+  <string formatted="false" name="pref_convert_to_fahrenheit_help">
     Android reports the battery temperature in degrees Celsius.  If
     you prefer to see the battery temperature in degrees Fahrenheit,
     check this option, and the app will convert for you.
   </string>
 
-  <string name="pref_cat_autostart">Autostart</string>
-  <string name="pref_autostart_at_boot">Autostart at Boot</string>
-  <string name="pref_autostart_at_boot_summary">Start Battery Indicator when device boots:</string>
-  <string name="pref_autostart_at_boot_help">
+  <string formatted="false" name="pref_cat_autostart">Autostart</string>
+  <string formatted="false" name="pref_autostart_at_boot">Autostart at Boot</string>
+  <string formatted="false" name="pref_autostart_at_boot_summary">Start Battery Indicator when device boots:</string>
+  <string formatted="false" name="pref_autostart_at_boot_help">
     Controls whether Battery Indicator should start itself
     automatically when the device boots up.\n
 
@@ -516,10 +516,10 @@
     set to this.
   </string>
 
-  <string name="pref_cat_charge_as_text">Textual Charge Level</string>
-  <string name="pref_charge_as_text">Textual Charge Level</string>
-  <string name="pref_charge_as_text_summary">Show the charge level as larger text next to icon?</string>
-  <string name="pref_charge_as_text_help">
+  <string formatted="false" name="pref_cat_charge_as_text">Textual Charge Level</string>
+  <string formatted="false" name="pref_charge_as_text">Textual Charge Level</string>
+  <string formatted="false" name="pref_charge_as_text_summary">Show the charge level as larger text next to icon?</string>
+  <string formatted="false" name="pref_charge_as_text_help">
     I\'ve had a few users with poorer eyesight ask me to add this
     option, whereby the charge level is displayed as text (which is a
     bit larger and easier to read) right next to the icon when you
@@ -536,10 +536,10 @@
     make the AM/PM at the far right not quite fit.
   </string>
 
-  <string name="pref_cat_status_duration">Status Duration (For/Since...)</string>
-  <string name="pref_status_dur_est">When to Approximate</string>
-  <string name="pref_status_dur_est_summary">Start approximating hours since status change:</string>
-  <string name="pref_status_dur_est_help">
+  <string formatted="false" name="pref_cat_status_duration">Status Duration (For/Since...)</string>
+  <string formatted="false" name="pref_status_dur_est">When to Approximate</string>
+  <string formatted="false" name="pref_status_dur_est_summary">Start approximating hours since status change:</string>
+  <string formatted="false" name="pref_status_dur_est_help">
     Determines when the notification switches from saying, e.g.,
     \"Unplugged Since 1:10 PM\" to saying something like \"Unplugged
     for 1 Hour\".  The first way is more accurate, because it tells
@@ -549,8 +549,8 @@
     default of 12 hours.
   </string>
 
-  <string name="pref_cat_time_remaining_estimates">Time Remaining Estimates</string>
-  <string name="pref_cat_time_remaining_estimates_help">
+  <string formatted="false" name="pref_cat_time_remaining_estimates">Time Remaining Estimates</string>
+  <string formatted="false" name="pref_cat_time_remaining_estimates_help">
     I\'ve done these time remaining estimates a bit differently than
     you might be used to, but I think for the better.  You control
     what the app uses as a basis to estimate battery life, so if you
@@ -562,80 +562,80 @@
     put in times that work for you, rather than being annoyed if the
     estimates are wrong.
   </string>
-  <string name="pref_show_charge_time">Show Charge Time</string>
-  <string name="pref_show_charge_time_summary">Show charge time remaining while charging?</string>
-  <string name="pref_show_charge_time_help">
+  <string formatted="false" name="pref_show_charge_time">Show Charge Time</string>
+  <string formatted="false" name="pref_show_charge_time_summary">Show charge time remaining while charging?</string>
+  <string formatted="false" name="pref_show_charge_time_help">
     If enabled, then while the phone is charging, the main window will
     show an estimate (based on your settings below) as to how long it will be
     until the phone is fully charged.
   </string>
-  <string name="pref_usb_charge_time">USB Charge</string>
-  <string name="pref_usb_charge_time_summary">USB charge time from 0% to 100% in hours:</string>
-  <string name="pref_usb_charge_time_help">
+  <string formatted="false" name="pref_usb_charge_time">USB Charge</string>
+  <string formatted="false" name="pref_usb_charge_time_summary">USB charge time from 0% to 100% in hours:</string>
+  <string formatted="false" name="pref_usb_charge_time_help">
     Enter how long you think your battery would take to completely
     charge from 0% to 100% on USB power.
   </string>
-  <string name="pref_ac_charge_time">AC Charge</string>
-  <string name="pref_ac_charge_time_summary">AC charge time from 0% to 100% in hours:</string>
-  <string name="pref_ac_charge_time_help">
+  <string formatted="false" name="pref_ac_charge_time">AC Charge</string>
+  <string formatted="false" name="pref_ac_charge_time_summary">AC charge time from 0% to 100% in hours:</string>
+  <string formatted="false" name="pref_ac_charge_time_help">
     Enter how long you think your battery would take to completely
     charge from 0% to 100% on AC power.
   </string>
-  <string name="pref_show_light_usage">Show Light Usage</string>
-  <string name="pref_show_light_usage_summary">Show light usage time remaining?</string>
-  <string name="pref_show_light_usage_help">
+  <string formatted="false" name="pref_show_light_usage">Show Light Usage</string>
+  <string formatted="false" name="pref_show_light_usage_summary">Show light usage time remaining?</string>
+  <string formatted="false" name="pref_show_light_usage_help">
     Whether or not to show an estimate (in the main window) as to how
     long it will take to drain your battery at whatever you consider
     \"Light Usage\".
   </string>
-  <string name="pref_light_usage_time">Light Usage</string>
-  <string name="pref_light_usage_time_summary">Light usage time from 100% to 0% in hours:</string>
-  <string name="pref_light_usage_time_help">
+  <string formatted="false" name="pref_light_usage_time">Light Usage</string>
+  <string formatted="false" name="pref_light_usage_time_summary">Light usage time from 100% to 0% in hours:</string>
+  <string formatted="false" name="pref_light_usage_time_help">
     Enter how long you think your battery would take to completely
     discharge from 100% to 0% at whatever you consider \"Light Usage\".
   </string>
-  <string name="pref_show_normal_usage">Show Normal Usage</string>
-  <string name="pref_show_normal_usage_summary">Show normal usage time remaining?</string>
-  <string name="pref_show_normal_usage_help">
+  <string formatted="false" name="pref_show_normal_usage">Show Normal Usage</string>
+  <string formatted="false" name="pref_show_normal_usage_summary">Show normal usage time remaining?</string>
+  <string formatted="false" name="pref_show_normal_usage_help">
     Whether or not to show an estimate (in the main window) as to how
     long it will take to drain your battery at whatever you consider
     \"Normal Usage\".
   </string>
-  <string name="pref_normal_usage_time">Normal Usage</string>
-  <string name="pref_normal_usage_time_summary">Normal usage time from 100% to 0% in hours:</string>
-  <string name="pref_normal_usage_time_help">
+  <string formatted="false" name="pref_normal_usage_time">Normal Usage</string>
+  <string formatted="false" name="pref_normal_usage_time_summary">Normal usage time from 100% to 0% in hours:</string>
+  <string formatted="false" name="pref_normal_usage_time_help">
     Enter how long you think your battery would take to completely
     discharge from 100% to 0% at whatever you consider \"Normal Usage\".
   </string>
-  <string name="pref_show_heavy_usage">Show Heavy Usage</string>
-  <string name="pref_show_heavy_usage_summary">Show heavy usage time remaining?</string>
-  <string name="pref_show_heavy_usage_help">
+  <string formatted="false" name="pref_show_heavy_usage">Show Heavy Usage</string>
+  <string formatted="false" name="pref_show_heavy_usage_summary">Show heavy usage time remaining?</string>
+  <string formatted="false" name="pref_show_heavy_usage_help">
     Whether or not to show an estimate (in the main window) as to how
     long it will take to drain your battery at whatever you consider
     \"Heavy Usage\".
   </string>
-  <string name="pref_heavy_usage_time">Heavy Usage</string>
-  <string name="pref_heavy_usage_time_summary">Heavy usage time from 100% to 0% in hours:</string>
-  <string name="pref_heavy_usage_time_help">
+  <string formatted="false" name="pref_heavy_usage_time">Heavy Usage</string>
+  <string formatted="false" name="pref_heavy_usage_time_summary">Heavy usage time from 100% to 0% in hours:</string>
+  <string formatted="false" name="pref_heavy_usage_time_help">
     Enter how long you think your battery would take to completely
     discharge from 100% to 0% at whatever you consider \"Heavy Usage\".
   </string>
-  <string name="pref_show_constant_usage">Show Constant Usage</string>
-  <string name="pref_show_constant_usage_summary">Show constant usage time remaining?</string>
-  <string name="pref_show_constant_usage_help">
+  <string formatted="false" name="pref_show_constant_usage">Show Constant Usage</string>
+  <string formatted="false" name="pref_show_constant_usage_summary">Show constant usage time remaining?</string>
+  <string formatted="false" name="pref_show_constant_usage_help">
     Whether or not to show an estimate (in the main window) as to how
     long it will take to drain your battery at whatever you consider
     \"Constant Usage\".
   </string>
-  <string name="pref_constant_usage_time">Constant Usage</string>
-  <string name="pref_constant_usage_time_summary">Constant usage time from 100% to 0% in hours:</string>
-  <string name="pref_constant_usage_time_help">
+  <string formatted="false" name="pref_constant_usage_time">Constant Usage</string>
+  <string formatted="false" name="pref_constant_usage_time_summary">Constant usage time from 100% to 0% in hours:</string>
+  <string formatted="false" name="pref_constant_usage_time_help">
     Enter how long you think your battery would take to completely
     discharge from 100% to 0% at whatever you consider \"Constant Usage\".
   </string>
 
-  <string name="pref_cat_color">Icon Color</string>
-  <string name="pref_cat_color_help">
+  <string formatted="false" name="pref_cat_color">Icon Color</string>
+  <string formatted="false" name="pref_cat_color_help">
     In order to keep the binary package for Battery Indicator
     reasonably small, there are some limitations for the colors.  At
     the time of writing, you can have a red icon as high as 30%, an
@@ -650,23 +650,23 @@
     people probably have the amber and green thresholds set to the
     same value, so that the icon is never grayscale.
   </string>
-  <string name="pref_color_preview">Color Preview</string>
-  <string name="pref_color_preview_help">
+  <string formatted="false" name="pref_color_preview">Color Preview</string>
+  <string formatted="false" name="pref_color_preview_help">
     The color preview will hopefully make it really easy to visualize
     what effect your color settings will have.\n
 
     \nThis doesn\'t exist in 10% mode, because it just wouldn\'t make
     sense.
   </string>
-  <string name="pref_red">Use Red Icon</string>
-  <string name="pref_red_summary">Use red icon when charge is low?</string>
-  <string name="pref_red_help">
+  <string formatted="false" name="pref_red">Use Red Icon</string>
+  <string formatted="false" name="pref_red_summary">Use red icon when charge is low?</string>
+  <string formatted="false" name="pref_red_help">
     Whether or not to use a red icon below the specified threshold.
   </string>
-  <string name="pref_red_thresh">Red Threshold</string>
-  <string name="pref_red_thresh_summary">Red icon below what charge percentage:</string>
-  <string name="pref_red_thresh_summary10">Red icon at or below what charge percentage:</string>
-  <string name="pref_red_thresh_help">Specifies the charge level which
+  <string formatted="false" name="pref_red_thresh">Red Threshold</string>
+  <string formatted="false" name="pref_red_thresh_summary">Red icon below what charge percentage:</string>
+  <string formatted="false" name="pref_red_thresh_summary10">Red icon at or below what charge percentage:</string>
+  <string formatted="false" name="pref_red_thresh_help">Specifies the charge level which
     the icon should turn red below (or <i>at</i>, in 10% Mode).\n
 
     \nThe options for the red threshold include all the values (in
@@ -675,15 +675,15 @@
     \nIn 10% Mode, things work slightly differently but should be
     self-explanatory.
   </string>
-  <string name="pref_amber">Use Amber Icon</string>
-  <string name="pref_amber_summary">Use amber icon when charge is medium?</string>
-  <string name="pref_amber_help">
+  <string formatted="false" name="pref_amber">Use Amber Icon</string>
+  <string formatted="false" name="pref_amber_summary">Use amber icon when charge is medium?</string>
+  <string formatted="false" name="pref_amber_help">
     Whether or not to use an amber icon below the specified threshold.
   </string>
-  <string name="pref_amber_thresh">Amber Threshold</string>
-  <string name="pref_amber_thresh_summary">Amber icon below what charge percentage:</string>
-  <string name="pref_amber_thresh_summary10">Amber icon at or below what charge percentage:</string>
-  <string name="pref_amber_thresh_help">Specifies the charge level
+  <string formatted="false" name="pref_amber_thresh">Amber Threshold</string>
+  <string formatted="false" name="pref_amber_thresh_summary">Amber icon below what charge percentage:</string>
+  <string formatted="false" name="pref_amber_thresh_summary10">Amber icon at or below what charge percentage:</string>
+  <string formatted="false" name="pref_amber_thresh_help">Specifies the charge level
     which the icon should turn amber below (or <i>at</i>, in 10%
     Mode).\n
 
@@ -696,14 +696,14 @@
     \nIn 10% Mode, things work slightly differently but should be
     self-explanatory.
   </string>
-  <string name="pref_green">Use Green Icon</string>
-  <string name="pref_green_summary">Use green icon when charge is high?</string>
-  <string name="pref_green_help">
+  <string formatted="false" name="pref_green">Use Green Icon</string>
+  <string formatted="false" name="pref_green_summary">Use green icon when charge is high?</string>
+  <string formatted="false" name="pref_green_help">
     Whether or not to use a green icon at or above the specified threshold.
   </string>
-  <string name="pref_green_thresh">Green Threshold</string>
-  <string name="pref_green_thresh_summary">Green icon at or above what charge percentage:</string>
-  <string name="pref_green_thresh_help">Specifies the charge level
+  <string formatted="false" name="pref_green_thresh">Green Threshold</string>
+  <string formatted="false" name="pref_green_thresh_summary">Green icon at or above what charge percentage:</string>
+  <string formatted="false" name="pref_green_thresh_help">Specifies the charge level
     which the icon should be green at or above.\n
 
     \nThe options for the green threshold include all the values (in
@@ -716,11 +716,11 @@
     self-explanatory.
   </string>
 
-  <string name="pref_cat_device_specific">Device Specific Settings</string>
+  <string formatted="false" name="pref_cat_device_specific">Device Specific Settings</string>
   <!--string name="pref_cat_device_specific_help"></string-->
-  <string name="pref_ten_percent_mode">10% Mode</string>
-  <string name="pref_ten_percent_mode_summary">Read the help first!</string>
-  <string name="pref_ten_percent_mode_help"><b>Note:</b>
+  <string formatted="false" name="pref_ten_percent_mode">10% Mode</string>
+  <string formatted="false" name="pref_ten_percent_mode_summary">Read the help first!</string>
+  <string formatted="false" name="pref_ten_percent_mode_help"><b>Note:</b>
     Checking or unchecking this will reset your icon color settings!\n
 
     \nThis setting cleans up the Icon Color settings to make more sense
@@ -735,9 +735,9 @@
     \nAs far as I\'m aware, all other devices report every 1%, and so
     should <i>not</i> turn this on.
   </string>
-  <string name="pref_summaries_use_formatter">Summaries Use Formatter</string>
-  <string name="pref_summaries_use_formatter_summary">A workaround for a FC on CyanogenMod</string>
-  <string name="pref_summaries_use_formatter_help">Due to a bug in
+  <string formatted="false" name="pref_summaries_use_formatter">Summaries Use Formatter</string>
+  <string formatted="false" name="pref_summaries_use_formatter_summary">A workaround for a FC on CyanogenMod</string>
+  <string formatted="false" name="pref_summaries_use_formatter_help">Due to a bug in
     CyanogenMod (CM), if you use CM, you will probably need to check
     this to avoid the Force Close that happens when editing certain
     settings in this app.  Since this bug is probably present in only
@@ -748,8 +748,8 @@
     get a Force Close when editing certain Battery Indicator settings.
   </string>
 
-  <string name="alarms_overview">Alarms Overview</string>
-  <string name="alarms_overview_help">
+  <string formatted="false" name="alarms_overview">Alarms Overview</string>
+  <string formatted="false" name="alarms_overview_help">
     This page allows you to add new alarms, quickly enable or disable
     existing alarms, or delete alarms.\n
 
@@ -770,21 +770,21 @@
     disable an alarm from the individual alarm settings page.)
   </string>
 
-  <string name="pref_alarm_enabled">Enable Alarm</string>
+  <string formatted="false" name="pref_alarm_enabled">Enable Alarm</string>
   <!--string name="pref_alarm_enabled_summary"></string-->
-  <string name="pref_alarm_enabled_help">If you want to temporarily
+  <string formatted="false" name="pref_alarm_enabled_help">If you want to temporarily
   disable an alarm without having to recreate it when you want it
   again, you can turn it off and on either here or on the main alarms
   page.
   </string>
 
-  <string name="pref_cat_alarm_conditions">Alarm Conditions</string>
-  <string name="pref_cat_alarm_conditions_help">This is where you can
+  <string formatted="false" name="pref_cat_alarm_conditions">Alarm Conditions</string>
+  <string formatted="false" name="pref_cat_alarm_conditions_help">This is where you can
   control what conditions trigger the alarm.
   </string>
-  <string name="pref_alarm_type">Alarm Type</string>
-  <string name="pref_alarm_type_summary">Trigger alarm when battery:</string>
-  <string name="pref_alarm_type_help">There are currently five types
+  <string formatted="false" name="pref_alarm_type">Alarm Type</string>
+  <string formatted="false" name="pref_alarm_type_summary">Trigger alarm when battery:</string>
+  <string formatted="false" name="pref_alarm_type_help">There are currently five types
     of alarm that you can choose from.\n
 
     \nThe \"Becomes fully charged\" alarm will notify you when the
@@ -799,39 +799,39 @@
     becomes something other than \"Unknown\" or \"Good Health\", as
     reported by Android.
   </string>
-  <string name="pref_alarm_threshold">Threshold</string>
-  <string name="alarm_pref_not_used">Not used for this alarm type</string>
-  <string name="pref_alarm_threshold_summary">Alarm threshold:</string>
-  <string name="pref_alarm_threshold_help">
+  <string formatted="false" name="pref_alarm_threshold">Threshold</string>
+  <string formatted="false" name="alarm_pref_not_used">Not used for this alarm type</string>
+  <string formatted="false" name="pref_alarm_threshold_summary">Alarm threshold:</string>
+  <string formatted="false" name="pref_alarm_threshold_help">
     For charge and temperature alarms, you need to set the temperature
     or charge level that will trigger the alarm.
   </string>
 
-  <string name="pref_cat_notification_settings">Notification Settings</string>
-  <string name="pref_cat_notification_settings_help">This is where you
+  <string formatted="false" name="pref_cat_notification_settings">Notification Settings</string>
+  <string formatted="false" name="pref_cat_notification_settings_help">This is where you
   can control various aspects of the alarm notification that is
   created to notify you when an alarm has been triggered.
   </string>
-  <string name="pref_alarm_ringtone">Ringtone</string>
+  <string formatted="false" name="pref_alarm_ringtone">Ringtone</string>
   <!--string name="pref_alarm_ringtone_summary"></string-->
-  <string name="pref_alarm_ringtone_help">
+  <string formatted="false" name="pref_alarm_ringtone_help">
     Here you can control which sound to play when the alarm is
     triggered.  Select \'Silent\' if you don\'t want a sound to be
     played.
   </string>
-  <string name="silent">Silent</string>
-  <string name="pref_alarm_vibrate">Vibrate</string>
+  <string formatted="false" name="silent">Silent</string>
+  <string formatted="false" name="pref_alarm_vibrate">Vibrate</string>
   <!--string name="pref_alarm_vibrate_summary"></string-->
-  <string name="pref_alarm_vibrate_help">
+  <string formatted="false" name="pref_alarm_vibrate_help">
     If all goes well, setting this option will make the device vibrate
     when the alarm is triggered, unless the device is in Silent Mode,
     unless you have the device set up to vibrate even in Silent Mode.
     In other words, it should do what you expect.  Please email me if
     something goes astray.
   </string>
-  <string name="pref_alarm_lights">Flash Lights</string>
+  <string formatted="false" name="pref_alarm_lights">Flash Lights</string>
   <!--string name="pref_alarm_lights_summary"></string-->
-  <string name="pref_alarm_lights_help">
+  <string formatted="false" name="pref_alarm_lights_help">
     Sets whether the notification should enable the device\'s default
     lights.  This generally flashes an LED or trackball.  Note that
     every Android device I\'ve used has been slightly buggy in this

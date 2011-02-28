@@ -4,4 +4,4 @@
 
 # API level 5 required for android:required attribute of uses-feature element;
 #  that's not available any more, so using 7
-android update project --path . --target "android-7"
+android update project --path . --target "android-11"
