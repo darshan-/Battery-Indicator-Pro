@@ -20,7 +20,7 @@
   <string name="confirm_close_hint" formatted="false">電量指示器將完全退出，狀態列電量指示圖標將不再顯示。\n\n如果您想讓本程序背景運行，可以單擊手機「返回」鍵關閉主視窗。</string>
   <string name="confirm_clear_logs" formatted="false">確認清理所有日誌？</string>
   <string name="first_run_title" formatted="false">非常感謝！</string>
-  <string name="first_run_message" formatted="false">非常感謝您的購買或捐助！<b> <i>您的支持對我們來說非常重要！</i> </b>\n\n‧ 如果您安裝了「<b>任務殺手</b>」之類的程序管理工具，請卸載或將「電量指示器專業版」加入到自動關閉排除列表中。如果您曾使用過免費版的該軟體，<i>您仍然需要將此專業版加入到排除列表</i> ！\n\n‧ 如果您使用的是<b>Motorola Droid</b>、<b>Motorola Droid X</b>、 <b>Motorola Droid 2</b>或<b>Samsung Moment</b>機型，請在「其他設定」中勾選「10%步進模式」。</string>
+  <string name="first_run_message" formatted="false">非常感謝您的購買或捐助！<b> <i>您的支持對我們來說非常重要！</i> </b>\n\n‧ 如果您安裝了「<b>任務殺手</b>」之類的程序管理工具，請卸載或將「電量指示器專業版」加入到自動關閉排除列表中。如果您曾使用過免費版的該軟體，<i>您仍然需要將此專業版加入到排除列表</i> ！\n\n‧ 如果您使用的是<b>Motorola Droid</b>、<b>Droid X</b>、 <b>Droid 2</b>、 <b>Defy</b>或<b>Samsung Moment</b>機型，請在「其他設定」中勾選「10%步進模式」。</string>
   <string name="first_run_message_free" formatted="false">感謝下載試用「電量指示器」! <b> <i>重要提示：</i> </b>\n\n如果您安裝了「<b>任務殺手</b>」之類的程序管理工具，請將其卸載或將「電量指示器專業版」加入到自動關閉排除列表中。</string>
   <string name="okay" formatted="false">完成</string>
   <string name="menu_logs" formatted="false">日誌</string>
@@ -200,7 +200,7 @@
   <string name="pref_cat_device_specific" formatted="false">特殊設備設定</string>
   <string name="pref_ten_percent_mode" formatted="false">10%步進模式</string>
   <string name="pref_ten_percent_mode_summary" formatted="false">請先閱讀說明信息！</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b>注意：</b> 改動該選項設定狀態將重置圖標顏色設定內容！\n\n該選項將清除圖標色彩設定內容以保證10%步進類型設備顯示正常。根據用戶反饋，該類設備包括以下型號：\n\n‧ Motorola Droid （最初版本）\n‧ Motorola Droid X\n‧ Motorola Droid 2\n‧ Samsung Moment\n\n除以上型號之外，其餘設備均為1%步進報告類型，因此均<i>不用</i>開啟此項功能。</string>
+  <string name="pref_ten_percent_mode_help" formatted="false"><b>注意：</b> 改動該選項設定狀態將重置圖標顏色設定內容！\n\n該選項將清除圖標色彩設定內容以保證10%步進類型設備顯示正常。根據用戶反饋，該類設備包括以下型號：\n\n‧ Motorola Droid （最初版本）\n‧ Motorola Droid X\n‧ Motorola Droid 2\n• Motorola Defy\n‧ Samsung Moment\n\n除以上型號之外，其餘設備均為1%步進報告類型，因此均<i>不用</i>開啟此項功能。</string>
   <string-array name="statuses">
     <item>拔下電源</item>
     <item>未知</item>
