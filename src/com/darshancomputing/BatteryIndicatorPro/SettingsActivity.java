@@ -222,6 +222,20 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 iRedThresh--;
                 iAmberThresh--;
             }
+
+            /* Only show themes that have been updated for v11 */
+            if (android.os.Build.VERSION.SDK_INT >= 11) {
+                CharSequence[] entries = new CharSequence[1];
+                CharSequence[] values  = new CharSequence[1];
+
+                ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_MW_THEME);
+
+                entries[0] = lp.getEntries()[0];
+                values[0] = lp.getEntryValues()[0];
+
+                lp.setEntries(entries);
+                lp.setEntryValues(values);
+            }
         } else if (pref_screen.equals(KEY_TIME_SETTINGS)) {
             setPrefScreen(R.xml.time_pref_screen);
             setWindowSubtitle(res.getString(R.string.time_settings));
