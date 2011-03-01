@@ -9,17 +9,17 @@
                     android:orientation="vertical"
                     android:layout_width="@dimen/main_frame_width"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="2dp"
-                    android:paddingRight="5dp"
-                    android:paddingBottom="2dp"
+                    android:paddingLeft="7dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="3dp"
       >
         <TextView android:id="@+id/title_t"
 	          android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:gravity="center_horizontal"
                   android:textColor="#fff"
-                  android:textSize="16sp"
+                  android:textSize="24sp"
                   android:text="@string/main_window_title"
         />
 
@@ -27,9 +27,9 @@
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:gravity="center_horizontal"
-                  android:paddingBottom="2dp"
+                  android:paddingBottom="3dp"
                   android:textColor="#A4C639"
-                  android:textSize="12sp"
+                  android:textSize="16sp"
         />
 
         <include layout="@layout/time_remaining_estimate_small"
@@ -37,18 +37,18 @@
         />
 
         <View android:layout_width="fill_parent"
-              android:layout_height="2dp"
+              android:layout_height="3dp"
         />
 
         <Button android:id="@+id/battery_use_b"
-                android:layout_height="43dp"
+                android:layout_height="54dp"
 	        android:layout_width="fill_parent"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/battery_use_b"
         />
 
         <View android:layout_width="fill_parent"
-              android:layout_height="3dp"
+              android:layout_height="4dp"
         />
 
         <Button android:id="@+id/toggle_lock_screen_b"
@@ -75,14 +75,14 @@
 
         <TextView android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
-                  android:paddingLeft="4dp"
+                  android:paddingLeft="5dp"
                   android:textColor="#FFF"
-                  android:textSize="12sp"
+                  android:textSize="16sp"
                   android:text="@string/press_back_to_leave"
         />
 
         <View android:layout_width="fill_parent"
-              android:layout_height="2dp"
+              android:layout_height="4dp"
         />
       </LinearLayout>
 </LinearLayout>

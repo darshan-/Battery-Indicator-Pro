@@ -16,7 +16,9 @@
   <style name="bi_help_theme" parent="@android:style/Theme.Holo.Light">
   </style>
 
-  <dimen name="main_frame_width">240dp</dimen>
+  <dimen name="main_frame_width">270dp</dimen>
+  <dimen name="time_remaining_label_width">171dp</dimen>
+  <dimen name="tls_button_height">54dp</dimen>
 
   <!-- Left, Top, Right, Bottom, just like setPadding() -->
   <array name="theme_default_main_layout_padding">
