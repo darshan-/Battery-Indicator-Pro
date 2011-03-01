@@ -85,6 +85,10 @@
 
   <dimen name="main_frame_width">180dp</dimen>
   <dimen name="time_remaining_label_width">114dp</dimen>
+  <dimen name="time_remaining_estimate_width">44dp</dimen>
+  <dimen name="time_remaining_padding_bottom">2dp</dimen>
+  <dimen name="time_remaining_text_size">12dp</dimen>
+  
   <dimen name="tls_button_height">43dp</dimen>
   <dimen name="tls_button_height_fs">55dp</dimen>
 </resources>

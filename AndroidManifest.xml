@@ -2,8 +2,8 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.darshancomputing.BatteryIndicatorPro"
-    android:versionCode="47"
-    android:versionName="3.2.0-dev"
+    android:versionCode="49"
+    android:versionName="4.0.0-dev"
 >
   <application
       android:label="@string/app_full_name"

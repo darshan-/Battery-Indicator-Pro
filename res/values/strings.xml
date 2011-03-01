@@ -40,8 +40,8 @@
     Warning: Changing this setting (both enabling and disabling it)
     will reset your color settings.\n
 
-    \nIf you have a Motorola Droid, Motorola Droid X,
-    Motorola Droid 2, or Samsung Moment, you should turn
+    \nIf you have a Motorola Droid, Droid X, Droid 2, Defy,
+    or Samsung Moment, you should turn
     this on when you first get the app, and then leave it alone.  All
     other phones, as far as I know, should always leave this off.
   </string>
@@ -55,8 +55,8 @@
       have it set to ignore the free version, <i>you still need to tell it to
       ignore this Pro version</i> !\n
 
-    \n• If you have a <b>Motorola Droid</b>, <b>Motorola Droid X</b>,
-      <b>Motorola Droid 2</b>, or <b>Samsung Moment</b>, you should turn on
+    \n• If you have a <b>Motorola Droid</b>, <b>Droid X</b>,
+      <b>Droid 2</b>, <b>Defy</b>, or <b>Samsung Moment</b>, you should turn on
       \"10% Mode\" in the \"Other Settings\".
   </string>
   <string formatted="false" name="first_run_message_free">Thanks
@@ -730,6 +730,7 @@
     \n• Motorola Droid (original)
     \n• Motorola Droid X
     \n• Motorola Droid 2
+    \n• Motorola Defy
     \n• Samsung Moment\n
 
     \nAs far as I\'m aware, all other devices report every 1%, and so
