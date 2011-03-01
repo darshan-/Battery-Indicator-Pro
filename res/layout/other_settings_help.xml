@@ -61,7 +61,5 @@
     <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_ten_percent_mode" />
     <TextView style="@style/help_text" android:text="@string/pref_ten_percent_mode_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_summaries_use_formatter" />
-    <TextView style="@style/help_text" android:text="@string/pref_summaries_use_formatter_help" />
 </LinearLayout>
 </ScrollView>

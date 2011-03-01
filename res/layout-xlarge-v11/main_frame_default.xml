@@ -76,18 +76,9 @@
         <TextView android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:paddingLeft="4dp"
-                  android:paddingBottom="3dp"
                   android:textColor="#FFF"
                   android:textSize="12sp"
                   android:text="@string/press_back_to_leave"
-        />
-
-        <TextView android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:paddingLeft="4dp"
-                  android:textColor="#FFF"
-                  android:textSize="12sp"
-                  android:text="@string/press_menu_for_more"
         />
 
         <View android:layout_width="fill_parent"

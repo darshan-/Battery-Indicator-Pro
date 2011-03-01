@@ -156,8 +156,6 @@
   <string name="pref_ten_percent_mode" formatted="false">10%-os mód</string>
   <string name="pref_ten_percent_mode_summary" formatted="false">Olvassa el a súgót!</string>
   <string name="pref_ten_percent_mode_help" formatted="false"><b>Megjegyzés:</b> Ennek a ki-/bekapcsolása visszaállítja az ikonszínek beállításait.\n\nEz a beállítás átállítja az ikonszínek beállításait, hogy jobban megfeleljen azoknak a készülékeknek, amelyek csak 10%-os lépésekben jelentik az akkutöltés megváltozását. A felhasználók visszajelzései alapján ezek az alábbiak:\n\n• Motorola Droid (eredeti)\n• Motorola Droid X\n• Motorola Droid 2\n• Samsung Moment\n\nAmennyire tudom, minden más készülék 1%-os lépésekben jelenti a töltési szintet, ilyenkor ezt <i>nem kell</i> bekapcsolni.</string>
-  <string name="pref_summaries_use_formatter" formatted="false">Az összefoglalók formázása</string>
-  <string name="pref_summaries_use_formatter_summary" formatted="false">Javított működés FC és CyanogenMod számára</string>
   <string name="pref_alarm_enabled" formatted="false">Riasztás enegedélyezése</string>
   <string name="pref_alarm_enabled_help" formatted="false">Ha egy riasztást átmenetileg le kíván tiltani, anélkül, hogy azt később újra létre kellene hoznia, ki- és bekapcsolhatja itt, vagy a riasztások főlapján is.</string>
   <string name="pref_cat_alarm_conditions" formatted="false">Riasztási feltételek</string>

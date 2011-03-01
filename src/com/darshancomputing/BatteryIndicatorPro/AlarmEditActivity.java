@@ -209,9 +209,17 @@ public class AlarmEditActivity extends PreferenceActivity {
     }
 
     private void updateSummary(ListPreference lp) {
+        Boolean formatterUsed;
+
+        lp.setSummary("%%");
+        if (lp.getSummary().length() == 2)
+            formatterUsed = false;
+        else
+            formatterUsed = true;
+
         String entry = (String) lp.getEntry();
         if (entry == null) entry = "";
-        if (settings.getBoolean(SettingsActivity.KEY_SUMMARIES_USE_FORMATTER, false))
+        if (formatterUsed)
             entry = entry.replace("%", "%%");
 
         if (lp.isEnabled())
