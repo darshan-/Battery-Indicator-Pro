@@ -269,4 +269,12 @@
     <item>4 días</item>
     <item>1 semana</item>
   </string-array>
+  <plurals name="n_log_items">
+    <item quantity="one">%d entrada en el registro</item>
+    <item quantity="other">%d entradas en el registro</item>
+  </plurals>
+  <plurals name="for_n_hours">
+    <item quantity="one">hace %d hora</item>
+    <item quantity="other">hace %d horas</item>
+  </plurals>
 </resources>

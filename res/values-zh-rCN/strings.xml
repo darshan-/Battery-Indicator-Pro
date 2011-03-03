@@ -263,4 +263,12 @@
     <item>四天</item>
     <item>一周</item>
   </string-array>
+  <plurals name="n_log_items">
+    <item quantity="one">%d项日志记录</item>
+    <item quantity="other">%d项日志记录</item>
+  </plurals>
+  <plurals name="for_n_hours">
+    <item quantity="one">已%d小时</item>
+    <item quantity="other">已%d小时</item>
+  </plurals>
 </resources>

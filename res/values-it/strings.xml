@@ -54,6 +54,8 @@
   <string name="charge" formatted="false">percentuale_carica</string>
   <string name="temperature" formatted="false">gradi_celsius</string>
   <string name="voltage" formatted="false">volts</string>
+  <string name="alarm_fully_charged" formatted="false">La batteria è ora completamente carica</string>
+  <string name="alarm_text" formatted="false">Seleziona per modificare gli allarmi.</string>
   <string name="logs_empty" formatted="false">Registro vuoto</string>
   <string name="discharging_from" formatted="false">In Scarica dalle</string>
   <string name="charging_from" formatted="false">In Carica dalle</string>
@@ -86,7 +88,7 @@
   <string name="help_cat_contact" formatted="false">Contatti</string>
   <string name="help_contact" formatted="false">Se hai domande o probemi, si prega di leggere <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">le FAQ del progetto</a> come prima cosa.\n\nSe hai commenti o suggerimenti, o altre domande o problemi che non sono stati risolti nelle FAQ, si prega di contattarci a <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>.</string>
   <string name="pref_hint" formatted="false">Premi MENU per aiuto.</string>
-  <string name="settings_overview" formatted="false">Osservazioni</string>
+  <string name="settings_overview" formatted="false">Panoramica</string>
   <string name="settings_overview_help" formatted="false">Le impostazioni sono organizzate in tre pagine separate, descritte qui sotto. Ogni pagina ha una sua pagina di aiuto che descrive le impostazioni. Basta premere MENU->Aiuto per ottenere aiuto su qualunque impostazione presente nella pagina.</string>
   <string name="color_settings" formatted="false">Colori e Temi</string>
   <string name="color_settings_summary" formatted="false">Controlla colori icone e temi finestra</string>
@@ -94,10 +96,15 @@
   <string name="time_settings" formatted="false">Impostazioni Tempo</string>
   <string name="time_settings_summary" formatted="false">Controlla stime e approssimazioni tempo</string>
   <string name="time_settings_help" formatted="false">Qui è possibile controllare quando le notifiche passano dal dire esattamente quando lo stato del telefono è cambiato (scollegato, per esempio) ad affermare approssimativamente quante ore fa il cambiamento è avvenuto.\n\nE\' inoltre possibile contrallare le stime che si desidera vedere per il tempo rimanente con la ricarica USB/AC e un uso leggero/normale/pesante/costante , e regolarle in base a queste stime.</string>
+  <string name="alarm_settings_subtitle" formatted="false">Impostazioni Allarme</string>
+  <string name="alarm_settings" formatted="false">Allarmi</string>
+  <string name="alarm_settings_summary" formatted="false">Notifiche di controllo per batteria scarica/carica</string>
+  <string name="alarm_settings_help" formatted="false">Puoi ottenere una notifica da Battery Indicator quando il livello della batteria raggiunge un certo punto (es., la batteria diventa completamente carica, la batteria scende sotto il 20%).</string>
   <string name="other_settings" formatted="false">Altre Impostazioni</string>
   <string name="other_settings_help" formatted="false">Tutte le altre impostazioni sono su questa pagina, compresi il logging, blocco schermo, unità temperatura, autostart, e altro.</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">Altre Impostazioni nella Pro</string>
   <string name="pref_please_upgrade" formatted="false">La versione Pro ha molte impostazioni e caratteristiche, tra cui icone verdi, ambra, e rosse, temi finestre, log stato batteria, disabilitazione automatica/manuale blocco schermo, stime tempo rimanente di carica/scarica, e altro.</string>
+  <string name="add_alarm" formatted="false">Aggiungi allarme</string>
   <string name="pref_cat_themes" formatted="false">Temi</string>
   <string name="pref_main_window_theme" formatted="false">Tema Principale Finestra</string>
   <string name="pref_main_window_theme_help" formatted="false">Imposta il tema per la finestra princiale. Di default, il tema sarà simile a quello standard di Android, che Battery Indicator ha già. Il tema Finestra Intera è utile se vi piacciono le cose grandi e di facile lettura. Gli altri temi sono per divertirsi.</string>
@@ -207,6 +214,22 @@
   <string name="pref_ten_percent_mode" formatted="false">Modalità 10%</string>
   <string name="pref_ten_percent_mode_summary" formatted="false">Leggi prima l\' help!</string>
   <string name="pref_ten_percent_mode_help" formatted="false"><b>Nota:</b> Selezionalo o deselezionalo, in questo modo verranno ripristinate le impostazioni del colore icona!\n\nQuesta impostazione elimina le impostazioni del Colore Icona che hanno senso su quei dispositivi che mostrano solo il livello di carica con incremento del 10%. Secondo i commenti degli utenti, questi dispositivi sono:\n\n• Motorola Droid (original)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nPer quanto si sappia, tutti gli altri dispositivi segnalano ogni 1%, quindi <i>non</i> deve essere attivata.</string>
+  <string name="alarms_overview" formatted="false">Panoramica Allarmi</string>
+  <string name="pref_alarm_enabled" formatted="false">Abilita Allarme</string>
+  <string name="pref_cat_alarm_conditions" formatted="false">Condizioni Allarme</string>
+  <string name="pref_cat_alarm_conditions_help" formatted="false">Qui è possibile controllare in quali condizioni innescare l\' allarme.</string>
+  <string name="pref_alarm_type" formatted="false">Tipo Allarme</string>
+  <string name="pref_alarm_type_summary" formatted="false">Innesca allarme quando la batteria:</string>
+  <string name="pref_alarm_threshold" formatted="false">Soglia</string>
+  <string name="alarm_pref_not_used" formatted="false">Non utilizzato per questo tipo di allarme</string>
+  <string name="pref_alarm_threshold_summary" formatted="false">Soglia allarme:</string>
+  <string name="pref_alarm_threshold_help" formatted="false">Per gli allarmi di carica e temperatura, è necessario impostare la temperatura o il livello di carica per innescare l\' allarme.</string>
+  <string name="pref_cat_notification_settings" formatted="false">Impostazioni Notifica</string>
+  <string name="pref_cat_notification_settings_help" formatted="false">Qui è possibile controllare vari aspetti della notifica di allarme che hai creato per avvertirti quando un allarme viene innescato.</string>
+  <string name="pref_alarm_ringtone" formatted="false">Suoneria</string>
+  <string name="silent" formatted="false">Silenzioso</string>
+  <string name="pref_alarm_vibrate" formatted="false">Vibrazione</string>
+  <string name="pref_alarm_lights" formatted="false">Torcie</string>
   <string-array name="statuses">
     <item>Scollegato</item>
     <item>Sconosciuto</item>
@@ -248,7 +271,7 @@
   <string-array name="mw_theme_pref_entries">
     <item>Piccola Di Default</item>
     <item>Piccola Colorata</item>
-    <item>Finestra Piena</item>
+    <item>Finestra Intera</item>
   </string-array>
   <string-array name="boot_pref_entries">
     <item>Sempre</item>
@@ -269,4 +292,12 @@
     <item>4 Giorni</item>
     <item>1 Settimana</item>
   </string-array>
+  <plurals name="n_log_items">
+    <item quantity="one">%d Elemento Log</item>
+    <item quantity="other">%d Elementi Log</item>
+  </plurals>
+  <plurals name="for_n_hours">
+    <item quantity="one">Per %d Ora</item>
+    <item quantity="other">Per %d Ore</item>
+  </plurals>
 </resources>

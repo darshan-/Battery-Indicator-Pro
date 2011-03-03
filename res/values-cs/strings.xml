@@ -281,4 +281,12 @@
     <item>4 dny</item>
     <item>1 týden</item>
   </string-array>
+  <plurals name="n_log_items">
+    <item quantity="one">%d položka záznamů</item>
+    <item quantity="other">%d položek záznamů</item>
+  </plurals>
+  <plurals name="for_n_hours">
+    <item quantity="one">Pro %d hodin</item>
+    <item quantity="other">Pro %d hodiny</item>
+  </plurals>
 </resources>

@@ -225,25 +225,25 @@
   <string name="alarms_overview" formatted="false">Aperçu des alarmes</string>
   <string name="alarms_overview_help" formatted="false">This page allows you to add new alarms, quickly enable or disable existing alarms, or delete alarms.\n\nTo add a new alarm, press \"Add alarm\" — this will create a new alarm and take you to the alarm settings page, where you can control the settings for the new alarm. See the help on that page for more details.\n\nBelow the \"Add alarm\" button is a list of any alarms you have created.\n\n• To edit an existing alarm, just press it.\n• To delete an alarm, long-press it, then select \"Delete Alarm\". (You can also delete an alarm from the individual alarm settings page by pressing MENU then \"Delete Alarm\".)\n• To quickly toggle whether an alarm is enabled, press the alarm clock icon to the left of the alarm text. (You can also enable or disable an alarm from the individual alarm settings page.)</string>
   <string name="pref_alarm_enabled" formatted="false">Activer l\'alarme</string>
-  <string name="pref_alarm_enabled_help" formatted="false">If you want to temporarily disable an alarm without having to recreate it when you want it again, you can turn it off and on either here or on the main alarms page.</string>
+  <string name="pref_alarm_enabled_help" formatted="false">Si vous voulez temporairement désactiver une alarme sans avoir à la recréer, vous pouvez la désactiver et la réactiver sur la page des alarmes.</string>
   <string name="pref_cat_alarm_conditions" formatted="false">Conditions de l\'alarme</string>
-  <string name="pref_cat_alarm_conditions_help" formatted="false">This is where you can control what conditions trigger the alarm.</string>
+  <string name="pref_cat_alarm_conditions_help" formatted="false">C\'est ici que vous pouvez contrôler les conditions de déclenchement de l\'alarme.</string>
   <string name="pref_alarm_type" formatted="false">Type de l\'alarme</string>
-  <string name="pref_alarm_type_summary" formatted="false">Trigger alarm when battery:</string>
+  <string name="pref_alarm_type_summary" formatted="false">Déclencher l\'alarme lorsque la batterie atteint :</string>
   <string name="pref_alarm_type_help" formatted="false">There are currently five types of alarm that you can choose from.\n\nThe \"Becomes fully charged\" alarm will notify you when the status of your battery changes from \"Charging\" to \"Fully Charged\". Note that on many devices, this isn\'t necessarily the same thing as being at 100% charge.\n\nThe charge and temperature alarms require you to set a threshold below, after choosing that alarm type.\n\nThe \"Health Fails\" alarm will notify you if your battery health becomes something other than \"Unknown\" or \"Good Health\", as reported by Android.</string>
   <string name="pref_alarm_threshold" formatted="false">Seuil</string>
   <string name="alarm_pref_not_used" formatted="false">Non utilisé par ce type d\'alarme</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Seuil de l\'alarme :</string>
-  <string name="pref_alarm_threshold_help" formatted="false">For charge and temperature alarms, you need to set the temperature or charge level that will trigger the alarm.</string>
+  <string name="pref_alarm_threshold_help" formatted="false">Pour les alarmes de charge et de températures vous devez définir la température ou le niveau de charge qui déclenchera l\'alarme.</string>
   <string name="pref_cat_notification_settings" formatted="false">Paramètres de notification</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">This is where you can control various aspects of the alarm notification that is created to notify you when an alarm has been triggered.</string>
+  <string name="pref_cat_notification_settings_help" formatted="false">C\'est ici que vous pourrez régler tous les paramètres de notifications qui vous permettent de savoir qu\'une alarme a été déclenchée.</string>
   <string name="pref_alarm_ringtone" formatted="false">Sonnerie</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Here you can control which sound to play when the alarm is triggered. Select \'Silent\' if you don\'t want a sound to be played.</string>
+  <string name="pref_alarm_ringtone_help" formatted="false">Ici vous pouvez définir quelle sonnerie sera jouée lorsque l\'alarme sera déclenchée. Sélectionnez \"Silence\" si vous souhaitez qu\'aucun son ne soit joué.</string>
   <string name="silent" formatted="false">Silence</string>
-  <string name="pref_alarm_vibrate" formatted="false">Vibrer</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">If all goes well, setting this option will make the device vibrate when the alarm is triggered, unless the device is in Silent Mode, unless you have the device set up to vibrate even in Silent Mode. In other words, it should do what you expect. Please email me if something goes astray.</string>
-  <string name="pref_alarm_lights" formatted="false">Flash lumineux</string>
-  <string name="pref_alarm_lights_help" formatted="false">Sets whether the notification should enable the device\'s default lights. This generally flashes an LED or trackball. Note that every Android device I\'ve used has been slightly buggy in this department. If you have this checked, then the notification will request Android to flash lights, but it might not always actually happen.</string>
+  <string name="pref_alarm_vibrate" formatted="false">Vibreur</string>
+  <string name="pref_alarm_vibrate_help" formatted="false">Si tout va bien, activer cette option fera vibrer votre appareil quand l\'alarme est déclenchée, sauf si l\'appareil est en silencieux, sauf si vous avez activé les vibrations en silencieux. En d\'autres mots, ça devrait se comporter correctement en fonction de la configuration de votre appareil. Si tout ne se passe pas bien veuillez me contacter par email.</string>
+  <string name="pref_alarm_lights" formatted="false">Éclairage de la DEL</string>
+  <string name="pref_alarm_lights_help" formatted="false">Défini si la notification doit activer la diode principale de votre appareil. Il s\'agit généralement d\'éclairer la DEL ou le trackball. Notez que cette option n\'a pas toujours fonctionné sur les appareils Android que j\'ai utilisé. Si l\'option est active, l\'application demande à Android d\'allumer la diode mais ça n\'est pas toujours effectif.</string>
   <string-array name="statuses">
     <item>Débranché</item>
     <item>Inconnu</item>
@@ -320,4 +320,14 @@
     <item>4 Jours</item>
     <item>1 Semaine</item>
   </string-array>
+  <plurals name="n_log_items">
+    <item quantity="zero">%d journal</item>
+    <item quantity="one">%d journal</item>
+    <item quantity="other">%d journaux</item>
+  </plurals>
+  <plurals name="for_n_hours">
+    <item quantity="zero">depuis %d heure</item>
+    <item quantity="one">depuis %d heure</item>
+    <item quantity="other">depuis %d heures</item>
+  </plurals>
 </resources>

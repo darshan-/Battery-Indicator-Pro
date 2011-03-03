@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
+  <string name="app_launcher_name" formatted="false">Battery Indicator</string>
+  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Ustawienia</string>
+  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Pomoc</string>
+  <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Logi</string>
+  <string name="app_full_name_free" formatted="false">Battery Indicator</string>
+  <string name="settings_activity_name_free" formatted="false">Battery Indicator - Ustawienia</string>
+  <string name="help_activity_name_free" formatted="false">Battery Indicator - Pomoc</string>
+  <string name="battery_use_b" formatted="false">Sprawdź zużycie baterii</string>
+</resources>
