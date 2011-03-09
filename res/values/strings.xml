@@ -28,7 +28,7 @@
     in your status bar any more.\n
 
     \nIf you just want to leave the main window and keep the indicator
-    running, press Cancel and then just press your phone\'s BACK
+    running, press Cancel and then just press your device\'s BACK
     button to leave the main window.
   </string>
 
@@ -43,7 +43,7 @@
     \nIf you have a Motorola Droid, Droid X, Droid 2, Defy,
     or Samsung Moment, you should turn
     this on when you first get the app, and then leave it alone.  All
-    other phones, as far as I know, should always leave this off.
+    other devices, as far as I know, should always leave this off.
   </string>
 
   <string formatted="false" name="first_run_title">Thank you!</string>
@@ -261,7 +261,7 @@
   <string formatted="false" name="help_limitations">(<i>These
     are out of my control.</i>)\n
 
-    \n• The app can only display what the phone tells it. Most phones report
+    \n• The app can only display what the device tells it. Most devices report
     every 1%, but a few (notably the Motorola Droid models) only report every
     10%.
     \n• There\'s no way to remove the built-in battery icon.
@@ -361,7 +361,7 @@
   <string formatted="false" name="time_settings_summary">Control time estimates and approximations</string>
   <string formatted="false" name="time_settings_help">
     Here you can control when the notification switches from saying
-    exactly when the phone\'s status changed (unplugged, for example)
+    exactly when the device\'s status changed (unplugged, for example)
     to stating approximately how many hours ago the change happened.\n
 
     \nYou can also control which estimates you want to see for the
@@ -407,7 +407,7 @@
   <string formatted="false" name="pref_enable_logging_summary">Log battery state changes?</string>
   <string formatted="false" name="pref_enable_logging_help">
     If enabled, Battery Indicator will log battery state changes
-    (e.g., the phone is unplugged or becomes fully charged). You can
+    (e.g., the device is unplugged or becomes fully charged). You can
     view the logs from the main window (press MENU and then select
     Logs).
   </string>
@@ -429,7 +429,7 @@
   <string formatted="false" name="pref_max_log_age">Maximum Log Age</string>
   <string formatted="false" name="pref_max_log_age_summary">Delete logs older than:</string>
   <string formatted="false" name="pref_max_log_age_help">
-    If logging is enabled, then whenever you plug in your phone, logs
+    If logging is enabled, then whenever you plug in your device, logs
     older than this will be deleted.
   </string>
 
@@ -555,8 +555,8 @@
     you might be used to, but I think for the better.  You control
     what the app uses as a basis to estimate battery life, so if you
     think it\'s wrong, you can fix it.  I\'ve used what I think are
-    reasonable defaults, but phones vary quite a bit, and how we use
-    our phones varies even more, so you\'re going to have to tweak
+    reasonable defaults, but devices vary quite a bit, and how we use
+    our devices varies even more, so you\'re going to have to tweak
     these settings.  But that\'s a good thing, because only you know
     what \"Normal Usage\" (et al) means to you, and you can actually
     put in times that work for you, rather than being annoyed if the
@@ -565,9 +565,9 @@
   <string formatted="false" name="pref_show_charge_time">Show Charge Time</string>
   <string formatted="false" name="pref_show_charge_time_summary">Show charge time remaining while charging?</string>
   <string formatted="false" name="pref_show_charge_time_help">
-    If enabled, then while the phone is charging, the main window will
+    If enabled, then while the device is charging, the main window will
     show an estimate (based on your settings below) as to how long it will be
-    until the phone is fully charged.
+    until the device is fully charged.
   </string>
   <string formatted="false" name="pref_usb_charge_time">USB Charge</string>
   <string formatted="false" name="pref_usb_charge_time_summary">USB charge time from 0% to 100% in hours:</string>
