@@ -103,6 +103,27 @@
     <item>94:00</item>
     <item>96:00</item>
     <item>98:00</item>
+    <item>100:00</item>
+    <item>110:00</item>
+    <item>120:00</item>
+    <item>130:00</item>
+    <item>140:00</item>
+    <item>150:00</item>
+    <item>160:00</item>
+    <item>170:00</item>
+    <item>180:00</item>
+    <item>190:00</item>
+    <item>200:00</item>
+    <item>210:00</item>
+    <item>220:00</item>
+    <item>230:00</item>
+    <item>240:00</item>
+    <item>250:00</item>
+    <item>260:00</item>
+    <item>270:00</item>
+    <item>280:00</item>
+    <item>290:00</item>
+    <item>300:00</item>
   </string-array>
 
   <string-array name="time_values">
@@ -207,6 +228,27 @@
     <item>5640</item>
     <item>5760</item>
     <item>5880</item>
+    <item>6000</item>
+    <item>6600</item>
+    <item>7200</item>
+    <item>7800</item>
+    <item>8400</item>
+    <item>9000</item>
+    <item>9600</item>
+    <item>10200</item>
+    <item>10800</item>
+    <item>11400</item>
+    <item>12000</item>
+    <item>12600</item>
+    <item>13200</item>
+    <item>13800</item>
+    <item>14400</item>
+    <item>15000</item>
+    <item>15600</item>
+    <item>16200</item>
+    <item>16800</item>
+    <item>17400</item>
+    <item>18000</item>
   </string-array>
 
   <string-array name="temp_alarm_entries">

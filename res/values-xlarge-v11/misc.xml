@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="mw_theme_pref_values">
+    <item>default</item>
+    <item>DISABLED</item>
+    <item>DISABLED</item>
+  </string-array>
+</resources>

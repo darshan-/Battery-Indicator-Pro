@@ -223,19 +223,32 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 iAmberThresh--;
             }
 
-            /* Only show themes that have been updated for v11 */
-            if (android.os.Build.VERSION.SDK_INT >= 11) {
-                CharSequence[] entries = new CharSequence[1];
-                CharSequence[] values  = new CharSequence[1];
+            /* Hide any themes that might be disabled (e.g. Tablets show different themes) */
+            ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_MW_THEME);
+            CharSequence[] oldEntries = lp.getEntries();
+            CharSequence[] oldValues  = lp.getEntryValues();
+            int nActiveThemes = 0;
 
-                ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_MW_THEME);
-
-                entries[0] = lp.getEntries()[0];
-                values[0] = lp.getEntryValues()[0];
-
-                lp.setEntries(entries);
-                lp.setEntryValues(values);
+            for (int i=0; i < oldEntries.length; i++) {
+                if (! oldValues[i].equals("DISABLED")) nActiveThemes++;
             }
+
+            System.out.println("............................." + nActiveThemes);
+
+            CharSequence[] newEntries = new CharSequence[nActiveThemes];
+            CharSequence[] newValues  = new CharSequence[nActiveThemes];
+
+            for (int i=0,j=0; i < oldEntries.length; i++) {
+                if (oldValues[i].equals("DISABLED")) continue;
+
+                newEntries[j] = oldEntries[i];
+                 newValues[j] =  oldValues[i];
+
+                j++;
+            }
+
+            lp.setEntries(newEntries);
+            lp.setEntryValues(newValues);
         } else if (pref_screen.equals(KEY_TIME_SETTINGS)) {
             setPrefScreen(R.xml.time_pref_screen);
             setWindowSubtitle(res.getString(R.string.time_settings));

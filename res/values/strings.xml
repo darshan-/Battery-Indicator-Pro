@@ -347,8 +347,8 @@
   <string formatted="false" name="settings_overview_help">
     The settings are organized into three separate pages, as described
     below.  Each page has its own help page describing the settings on
-    that page.  Simply press MENU->Help to get help from whatever
-    settings page you are on.
+    that page.  Simply press MENU->Help (on tablets, MENU isn\'t necessary) to get
+    help from whatever settings page you are on.
   </string>
 
   <string formatted="false" name="color_settings">Colors and Themes</string>
@@ -409,22 +409,13 @@
     If enabled, Battery Indicator will log battery state changes
     (e.g., the device is unplugged or becomes fully charged). You can
     view the logs from the main window (press MENU and then select
-    Logs).
+    Logs; on tablets, MENU isn\'t necessary).
   </string>
   <string formatted="false" name="pref_log_everything">Log Everything</string>
   <string formatted="false" name="pref_log_everything_summary">Log charge changes, too?</string>
   <string formatted="false" name="pref_log_everything_help">
     If enabled, Battery Indicator will also log every change in the
     charge level, as well (e.g., going from 57% to 56% or vice versa).
-    Most users probably have no need for this, but you can turn it on
-    if you really want to keep an eye on things.\n
-
-    \nKeep in mind that using this setting will come at a slight
-    performance cost, so while you may want to turn this on for a few
-    hours or days to keep track of things, you\'ll likely want to turn
-    it off when you\'re done.  Even with this on, Battery Indicator
-    shouldn\'t take more than about 1 minute off of a full battery
-    charge as a worst case.
   </string>
   <string formatted="false" name="pref_max_log_age">Maximum Log Age</string>
   <string formatted="false" name="pref_max_log_age_summary">Delete logs older than:</string>
