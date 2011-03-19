@@ -61,6 +61,8 @@ public class BatteryIndicatorService extends Service {
 
     @Override
     public void onCreate() {
+        System.out.println("............................. Started BIService.");
+
         res = getResources();
         str = new Str(res);
         Context context = getApplicationContext();
@@ -98,7 +100,7 @@ public class BatteryIndicatorService extends Service {
     }
 
     public class LocalBinder extends Binder {
-        BatteryIndicatorService getService() {
+        public BatteryIndicatorService getService() {
             return BatteryIndicatorService.this;
         }
     }

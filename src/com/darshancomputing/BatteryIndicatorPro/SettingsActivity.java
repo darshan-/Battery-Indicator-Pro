@@ -233,8 +233,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 if (! oldValues[i].equals("DISABLED")) nActiveThemes++;
             }
 
-            System.out.println("............................." + nActiveThemes);
-
             CharSequence[] newEntries = new CharSequence[nActiveThemes];
             CharSequence[] newValues  = new CharSequence[nActiveThemes];
 

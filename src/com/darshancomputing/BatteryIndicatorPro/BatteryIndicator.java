@@ -49,6 +49,7 @@ public class BatteryIndicator extends Activity {
     private Intent biServiceIntent;
     private SharedPreferences settings;
     private final BIServiceConnection biServiceConnection = new BIServiceConnection();
+    private final PluginServiceConnection pluginServiceConnection = new PluginServiceConnection();
 
     private static final Intent batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY)
         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -118,6 +119,35 @@ public class BatteryIndicator extends Activity {
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         startService(biServiceIntent);
         bindService(biServiceIntent, biServiceConnection, 0);
+
+        //Context pluginContext = null;
+        //ClassLoader pluginClassLoader = null;
+        //Class pluginClass = null;
+        try {
+            System.out.println("............................. Trying to load plugin");
+
+            Context pluginContext = getApplicationContext().createPackageContext("com.darshancomputing.BatteryIndicatorPro.PluginTest",
+                                                                                 Context.CONTEXT_INCLUDE_CODE);
+            System.out.println("............................. got plugin context");
+
+            ClassLoader pluginClassLoader = pluginContext.getClassLoader();
+            System.out.println("............................. got plugin class loader");
+
+            Class pluginClass = pluginClassLoader.loadClass("com.darshancomputing.BatteryIndicatorPro.PluginTest.PluginService");
+            System.out.println("............................. loaded class");
+
+            Intent pluginIntent = new Intent(pluginContext, pluginClass);
+            System.out.println("............................. made plugin intent");
+
+            startService(pluginIntent);
+            System.out.println("............................. started plugin service");
+
+            bindService(pluginIntent, pluginServiceConnection, 0);
+            System.out.println("............................. bound plugin service");
+        } catch (Exception e) {
+            System.out.println("............................. Couldn't load plugin: " + e.getMessage());
+            e.printStackTrace();
+        }
 
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("serviceDesired", true);
