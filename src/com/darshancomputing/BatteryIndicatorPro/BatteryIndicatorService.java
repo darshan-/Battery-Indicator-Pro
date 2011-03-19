@@ -41,6 +41,10 @@ public class BatteryIndicatorService extends Service {
     private Intent mainWindowIntent;
     private Intent alarmsIntent;
 
+    private final PluginServiceConnection pluginServiceConnection = new PluginServiceConnection();
+    private Intent pluginIntent;
+    private Boolean usingPlugin;
+
     private NotificationManager mNotificationManager;
     private SharedPreferences settings;
     private KeyguardLock kl;
@@ -59,9 +63,60 @@ public class BatteryIndicatorService extends Service {
     private static final int NOTIFICATION_ALARM_HEALTH = 3;
     private static final int NOTIFICATION_ALARM_TEMP   = 4;
 
+    /* Global variables for these two Runnables */
+    private Notification mainNotification;
+    private int percent;
+    private String mainNotificationTitle, mainNotificationText;
+    private PendingIntent mainNotificationIntent;
+    private Boolean notified;
+
+    private final Handler mHandler = new Handler();
+    private final Runnable mPluginNotify = new Runnable() {
+        public void run() {
+            if (notified) return;
+            try {
+                mNotificationManager.cancelAll();
+                if (pluginServiceConnection.service == null) return;
+                Class c = pluginServiceConnection.service.getClass();
+                //java.lang.reflect.Method m = c.getMethod("notify", new Class[] {int.class, Notification.class});
+                java.lang.reflect.Method m = c.getMethod("notify", new Class[] {int.class, String.class, String.class, PendingIntent.class});
+
+                //m.invoke(pluginServiceConnection.service, new Object[] {percent, notification});
+                m.invoke(pluginServiceConnection.service, new Object[] {percent, mainNotificationTitle, mainNotificationText, mainNotificationIntent});
+
+                notified = true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+    private final Runnable mNotify = new Runnable() {
+        public void run() {
+            if (notified) return;
+            mNotificationManager.notify(NOTIFICATION_PRIMARY, mainNotification);
+        }
+    };
+
     @Override
     public void onCreate() {
-        System.out.println("............................. Started BIService.");
+        usingPlugin = false;
+        try {
+            Context pluginContext = getApplicationContext().createPackageContext("com.darshancomputing.BatteryIndicatorPro.PluginTest",
+                                                                                 Context.CONTEXT_INCLUDE_CODE);
+            ClassLoader pluginClassLoader = pluginContext.getClassLoader();
+            Class pluginClass = pluginClassLoader.loadClass("com.darshancomputing.BatteryIndicatorPro.PluginTest.PluginService");
+            pluginIntent = new Intent(pluginContext, pluginClass);
+
+            startService(pluginIntent);
+            bindService(pluginIntent, pluginServiceConnection, 0);
+
+            usingPlugin = true;
+        } catch (Exception e) {
+            usingPlugin = false;
+            //System.out.println("............................. Couldn't load plugin:");
+            //e.printStackTrace();
+        }
 
         res = getResources();
         str = new Str(res);
@@ -70,10 +125,10 @@ public class BatteryIndicatorService extends Service {
         alarms = new AlarmDatabase(context);
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
         mVibrator = (android.os.Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         mAudioManager = (android.media.AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
-        registerReceiver(mBatteryInfoReceiver, batteryChanged);
         settings = PreferenceManager.getDefaultSharedPreferences(context);
 
         mainWindowIntent = new Intent(context, BatteryIndicator.class);
@@ -84,11 +139,20 @@ public class BatteryIndicatorService extends Service {
 
         if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
             setEnablednessOfKeyguard(false);
+
+        registerReceiver(mBatteryInfoReceiver, batteryChanged);
     }
 
     @Override
     public void onDestroy() {
         setEnablednessOfKeyguard(true);
+
+        alarms.close();
+
+        if (usingPlugin) {
+            unbindService(pluginServiceConnection);
+            stopService(pluginIntent);
+        }
 
         unregisterReceiver(mBatteryInfoReceiver);
         mNotificationManager.cancelAll();
@@ -111,7 +175,7 @@ public class BatteryIndicatorService extends Service {
         @Override
         public void onReceive(Context context, Intent intent) {
             SharedPreferences.Editor editor = settings.edit();
-            Notification notification;
+            //Notification notification;
             String action = intent.getAction();
             if (! Intent.ACTION_BATTERY_CHANGED.equals(action)) return;
 
@@ -124,7 +188,7 @@ public class BatteryIndicatorService extends Service {
             int voltage = intent.getIntExtra("voltage", 0);
             //String technology = intent.getStringExtra("technology");
 
-            int percent = level * 100 / scale;
+            /*int*/ percent = level * 100 / scale;
 
             if (status  > 5){ status  = 1; /* Unknown */ }
             if (health  > 6){ health  = 1; /* Unknown */ }
@@ -236,35 +300,45 @@ public class BatteryIndicatorService extends Service {
             /* Add half an hour, then divide.  Should end up rounding to the closest hour. */
             int statusDurationHours = (int)((statusDuration + (1000 * 60 * 30)) / (1000 * 60 * 60));
 
-            String contentTitle = "";
+            /*String*/ mainNotificationTitle = "";
 
             if (settings.getBoolean(SettingsActivity.KEY_CHARGE_AS_TEXT, false))
-                contentTitle += percent + " ";
+                mainNotificationTitle += percent + " ";
 
             int status_dur_est = Integer.valueOf(settings.getString(SettingsActivity.KEY_STATUS_DUR_EST,
                                         str.default_status_dur_est));
             if (statusDurationHours < status_dur_est) {
-                contentTitle += statusStr + " " + str.since + " " + last_status_since;
+                mainNotificationTitle += statusStr + " " + str.since + " " + last_status_since;
             } else {
-                contentTitle += statusStr + " " + str.for_n_hours(statusDurationHours);
+                mainNotificationTitle += statusStr + " " + str.for_n_hours(statusDurationHours);
             }
 
             Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
-            CharSequence contentText = str.healths[health] + " / " +
+            /*CharSequence*/ mainNotificationText = str.healths[health] + " / " +
                                        str.formatTemp(temperature, convertF) + " / " +
                                        str.formatVoltage(voltage);
 
-            notification = new Notification(icon, null, System.currentTimeMillis());
+            mainNotification = new Notification(icon, null, System.currentTimeMillis());
 
-            notification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
-            PendingIntent contentIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
+            mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
+            /*PendingIntent*/ mainNotificationIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
 
-            notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
-            mNotificationManager.notify(NOTIFICATION_PRIMARY, notification);
+            mainNotification.setLatestEventInfo(context, mainNotificationTitle, mainNotificationText, mainNotificationIntent);
+
+            notified = false;
+            if (usingPlugin) {
+                mHandler.postDelayed(mPluginNotify,  100);
+                mHandler.postDelayed(mPluginNotify,  400);
+                mHandler.postDelayed(mPluginNotify, 2000);
+                mHandler.postDelayed(mNotify,       2500);
+            } else {
+                mHandler.post(mNotify);
+            }
 
             if (alarms.anyActiveAlarms()) {
                 Cursor c;
-                contentIntent = PendingIntent.getActivity(context, 0, alarmsIntent, 0);
+                Notification notification;
+                PendingIntent contentIntent = PendingIntent.getActivity(context, 0, alarmsIntent, 0);
 
                 if (status == 5 && last_status == 2) {
                     c = alarms.activeAlarmFull();

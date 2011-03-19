@@ -20,27 +20,17 @@ import android.os.IBinder;
 import android.app.Service;
 
 public class PluginServiceConnection implements ServiceConnection {
-    public Service service;
+    public Object service;
 
     public void onServiceConnected(ComponentName name, IBinder iBinder) {
-        Class c = iBinder.getClass();
-        System.out.println("............................. iBinder is a: " + c);
-        //java.lang.reflect.Method[] methods = c.getMethods();
-        //for (int i=0; i<methods.length; i++) {
-        //    System.out.println("............................. iBinder has: " + methods[i].getName());
-        //}
-        
         try {
+            Class c = iBinder.getClass();
             java.lang.reflect.Method m = c.getMethod("getService", (Class[]) null);
-            System.out.println("............................. Found method: " + m.getName());
-            service = (Service) m.invoke(iBinder, (Object[]) null);
+            service = m.invoke(iBinder, (Object[]) null);
         } catch (Exception e) {
-            System.out.println("............................. Couldn't find getService()");
-            service = null;
             e.printStackTrace();
+            service = null;
         }
-            
-        //service = ((ServiceBinder) iBinder).getService();
     }
 
     public void onServiceDisconnected(ComponentName name) {
