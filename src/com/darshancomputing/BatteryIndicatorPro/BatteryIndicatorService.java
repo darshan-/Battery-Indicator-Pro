@@ -44,7 +44,6 @@ public class BatteryIndicatorService extends Service {
     private final PluginServiceConnection pluginServiceConnection = new PluginServiceConnection();
     private Intent pluginIntent;
     private String pluginPackage;
-    //private Boolean usingPlugin;
 
     private NotificationManager mNotificationManager;
     private SharedPreferences settings;
@@ -69,23 +68,20 @@ public class BatteryIndicatorService extends Service {
     private int percent;
     private String mainNotificationTitle, mainNotificationText;
     private PendingIntent mainNotificationIntent;
-    private Boolean notified;
 
     private final Handler mHandler = new Handler();
     private final Runnable mPluginNotify = new Runnable() {
         public void run() {
-            if (notified) return;
             try {
                 mNotificationManager.cancelAll();
                 if (pluginServiceConnection.service == null) return;
                 Class c = pluginServiceConnection.service.getClass();
-                //java.lang.reflect.Method m = c.getMethod("notify", new Class[] {int.class, Notification.class});
                 java.lang.reflect.Method m = c.getMethod("notify", new Class[] {int.class, String.class, String.class, PendingIntent.class});
 
-                //m.invoke(pluginServiceConnection.service, new Object[] {percent, notification});
                 m.invoke(pluginServiceConnection.service, new Object[] {percent, mainNotificationTitle, mainNotificationText, mainNotificationIntent});
 
-                notified = true;
+                mHandler.removeCallbacks(mPluginNotify);
+                mHandler.removeCallbacks(mNotify);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -94,8 +90,6 @@ public class BatteryIndicatorService extends Service {
 
     private final Runnable mNotify = new Runnable() {
         public void run() {
-            if (notified) return;
-
             if (! pluginPackage.equals("none")) {
                 unbindService(pluginServiceConnection);
                 stopService(pluginIntent);
@@ -103,6 +97,8 @@ public class BatteryIndicatorService extends Service {
             }
 
             mNotificationManager.notify(NOTIFICATION_PRIMARY, mainNotification);
+            mHandler.removeCallbacks(mPluginNotify);
+            mHandler.removeCallbacks(mNotify);
         }
     };
 
@@ -166,6 +162,10 @@ public class BatteryIndicatorService extends Service {
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            mHandler.removeCallbacks(mPluginNotify);
+            mHandler.removeCallbacks(mNotify);
+            System.out.println("..................... PID of BIService: " + android.os.Process.myPid());
+
             String desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_PLUGIN, "none");
 
             if (! pluginPackage.equals(desiredPluginPackage) && ! pluginPackage.equals("none")) {
@@ -182,16 +182,17 @@ public class BatteryIndicatorService extends Service {
                     pluginIntent = new Intent(pluginContext, pluginClass);
 
                     startService(pluginIntent);
-                    bindService(pluginIntent, pluginServiceConnection, 0);
+                    if (! bindService(pluginIntent, pluginServiceConnection, 0)) throw new Exception();
 
                     pluginPackage = desiredPluginPackage;
                 } catch (Exception e) {
+                    System.out.println("....................... Couldn't start and bind to the plugin's service");
+                    e.printStackTrace();
                     pluginPackage = "none";
                 }
             }
 
             SharedPreferences.Editor editor = settings.edit();
-            //Notification notification;
             String action = intent.getAction();
             if (! Intent.ACTION_BATTERY_CHANGED.equals(action)) return;
 
@@ -204,7 +205,7 @@ public class BatteryIndicatorService extends Service {
             int voltage = intent.getIntExtra("voltage", 0);
             //String technology = intent.getStringExtra("technology");
 
-            /*int*/ percent = level * 100 / scale;
+            percent = level * 100 / scale;
 
             if (status  > 5){ status  = 1; /* Unknown */ }
             if (health  > 6){ health  = 1; /* Unknown */ }
@@ -316,7 +317,7 @@ public class BatteryIndicatorService extends Service {
             /* Add half an hour, then divide.  Should end up rounding to the closest hour. */
             int statusDurationHours = (int)((statusDuration + (1000 * 60 * 30)) / (1000 * 60 * 60));
 
-            /*String*/ mainNotificationTitle = "";
+            mainNotificationTitle = "";
 
             if (settings.getBoolean(SettingsActivity.KEY_CHARGE_AS_TEXT, false))
                 mainNotificationTitle += percent + " ";
@@ -330,18 +331,17 @@ public class BatteryIndicatorService extends Service {
             }
 
             Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
-            /*CharSequence*/ mainNotificationText = str.healths[health] + " / " +
+            mainNotificationText = str.healths[health] + " / " +
                                        str.formatTemp(temperature, convertF) + " / " +
                                        str.formatVoltage(voltage);
 
             mainNotification = new Notification(icon, null, System.currentTimeMillis());
 
             mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
-            /*PendingIntent*/ mainNotificationIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
+            mainNotificationIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
 
             mainNotification.setLatestEventInfo(context, mainNotificationTitle, mainNotificationText, mainNotificationIntent);
 
-            notified = false;
             if (! pluginPackage.equals("none")) {
                 mHandler.postDelayed(mPluginNotify,  100);
                 mHandler.postDelayed(mPluginNotify,  300);
