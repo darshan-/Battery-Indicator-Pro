@@ -63,7 +63,7 @@ public class BatteryIndicatorService extends Service {
     private static final int NOTIFICATION_ALARM_HEALTH = 3;
     private static final int NOTIFICATION_ALARM_TEMP   = 4;
 
-    /* Global variables for these two Runnables */
+    /* Global variables for these Notification Runnables */
     private Notification mainNotification;
     private int percent;
     private String mainNotificationTitle, mainNotificationText;
@@ -76,6 +76,7 @@ public class BatteryIndicatorService extends Service {
                 mNotificationManager.cancelAll();
                 if (pluginServiceConnection.service == null) return;
                 Class c = pluginServiceConnection.service.getClass();
+                //if (! pluginPackage.equals(c.getPackage().getName())) return; /* */
                 java.lang.reflect.Method m = c.getMethod("notify", new Class[] {int.class, String.class, String.class, PendingIntent.class});
 
                 m.invoke(pluginServiceConnection.service, new Object[] {percent, mainNotificationTitle, mainNotificationText, mainNotificationIntent});
@@ -90,11 +91,7 @@ public class BatteryIndicatorService extends Service {
 
     private final Runnable mNotify = new Runnable() {
         public void run() {
-            if (! pluginPackage.equals("none")) {
-                unbindService(pluginServiceConnection);
-                stopService(pluginIntent);
-                pluginPackage = "none";
-            }
+            if (! pluginPackage.equals("none")) disconnectPlugin();
 
             mNotificationManager.notify(NOTIFICATION_PRIMARY, mainNotification);
             mHandler.removeCallbacks(mPluginNotify);
@@ -134,14 +131,8 @@ public class BatteryIndicatorService extends Service {
     @Override
     public void onDestroy() {
         setEnablednessOfKeyguard(true);
-
         alarms.close();
-
-        if (! pluginPackage.equals("none")) {
-            unbindService(pluginServiceConnection);
-            stopService(pluginIntent);
-        }
-
+        if (! pluginPackage.equals("none")) disconnectPlugin();
         unregisterReceiver(mBatteryInfoReceiver);
         mNotificationManager.cancelAll();
     }
@@ -164,15 +155,10 @@ public class BatteryIndicatorService extends Service {
         public void onReceive(Context context, Intent intent) {
             mHandler.removeCallbacks(mPluginNotify);
             mHandler.removeCallbacks(mNotify);
-            System.out.println("..................... PID of BIService: " + android.os.Process.myPid());
 
             String desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_PLUGIN, "none");
 
-            if (! pluginPackage.equals(desiredPluginPackage) && ! pluginPackage.equals("none")) {
-                unbindService(pluginServiceConnection);
-                stopService(pluginIntent);
-                pluginPackage = "none";
-            }
+            if (! pluginPackage.equals(desiredPluginPackage) && ! pluginPackage.equals("none")) disconnectPlugin();
 
             if (! pluginPackage.equals(desiredPluginPackage) && ! desiredPluginPackage.equals("none")) {
                 try {
@@ -182,11 +168,13 @@ public class BatteryIndicatorService extends Service {
                     pluginIntent = new Intent(pluginContext, pluginClass);
 
                     startService(pluginIntent);
-                    if (! bindService(pluginIntent, pluginServiceConnection, 0)) throw new Exception();
+                    if (! bindService(pluginIntent, pluginServiceConnection, 0)) {
+                        stopService(pluginIntent);
+                        throw new Exception();
+                    }
 
                     pluginPackage = desiredPluginPackage;
                 } catch (Exception e) {
-                    System.out.println("....................... Couldn't start and bind to the plugin's service");
                     e.printStackTrace();
                     pluginPackage = "none";
                 }
@@ -476,6 +464,13 @@ public class BatteryIndicatorService extends Service {
             }
         }
     };
+
+    private void disconnectPlugin() {
+        unbindService(pluginServiceConnection);
+        stopService(pluginIntent);
+        pluginServiceConnection.service = null;
+        pluginPackage = "none";
+    }
 
     public void reloadSettings() {
         if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
