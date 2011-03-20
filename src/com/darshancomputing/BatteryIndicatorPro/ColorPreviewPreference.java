@@ -51,6 +51,7 @@ public class ColorPreviewPreference extends Preference {
         super.onBindView(view);
 
         ImageView iv = (ImageView) view.findViewById(R.id.color_preview_bar_v);
+        if (iv == null) return;
         LayerDrawable ld = (LayerDrawable) iv.getDrawable();
 
         for (int i = 0; i < 20; i++) {

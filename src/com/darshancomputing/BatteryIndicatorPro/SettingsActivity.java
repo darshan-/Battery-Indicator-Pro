@@ -19,6 +19,8 @@ import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -51,6 +53,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_LOG_EVERYTHING = "log_everything";
     public static final String KEY_MAX_LOG_AGE = "max_log_age";
     public static final String KEY_MW_THEME = "main_window_theme";
+    public static final String KEY_ICON_PLUGIN = "icon_plugin";
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_CHARGE_AS_TEXT = "charge_as_text";
@@ -91,7 +94,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
                                                 KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
                                                 KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME,
-                                                KEY_MAX_LOG_AGE};
+                                                KEY_MAX_LOG_AGE, KEY_ICON_PLUGIN};
 
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_CHARGE_AS_TEXT, KEY_STATUS_DUR_EST,
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
@@ -194,14 +197,15 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (pref_screen == null) {
             setPrefScreen(R.xml.main_pref_screen);
         } else if (pref_screen.equals(KEY_COLOR_SETTINGS)) {
-            if (mSharedPreferences.getBoolean(KEY_TEN_PERCENT_MODE, false))
-                setPrefScreen(R.xml.color_pref_screen_10);
-            else
-                setPrefScreen(R.xml.color_pref_screen);
-
+            setPrefScreen(R.xml.color_pref_screen);
             setWindowSubtitle(res.getString(R.string.color_settings));
 
+            ten_percent_mode = mSharedPreferences.getBoolean(KEY_TEN_PERCENT_MODE, false);
+
             cpbPref     = (ColorPreviewPreference) mPreferenceScreen.findPreference(KEY_COLOR_PREVIEW);
+            if (ten_percent_mode) cpbPref.setLayoutResource(R.layout.hidden);
+
+            setPluginPrefEntriesAndValues((ListPreference) mPreferenceScreen.findPreference(KEY_ICON_PLUGIN));
 
             redThresh   = (ListPreference) mPreferenceScreen.findPreference(KEY_RED_THRESH);
             amberThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_AMBER_THRESH);
@@ -215,7 +219,14 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             iAmberThresh = Integer.valueOf(amberThresh.getValue());
             iGreenThresh = Integer.valueOf(greenThresh.getValue());
 
-            ten_percent_mode = mSharedPreferences.getBoolean(KEY_TEN_PERCENT_MODE, false);
+            mPreferenceScreen.findPreference(KEY_TEN_PERCENT_MODE)
+                .setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
+            {
+                public boolean onPreferenceChange(final Preference preference, final Object newValue) {
+                    showDialog((Boolean) newValue ? DIALOG_CONFIRM_TEN_PERCENT_ENABLE : DIALOG_CONFIRM_TEN_PERCENT_DISABLE);
+                    return false;
+                }
+            });
 
             if (ten_percent_mode) {
                 /* These should always correspond to the logical (entry) value, not the actual stored value. */
@@ -253,17 +264,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
             setPrefScreen(R.xml.other_pref_screen);
             setWindowSubtitle(res.getString(R.string.other_settings));
-
-            ten_percent_mode = mSharedPreferences.getBoolean(KEY_TEN_PERCENT_MODE, false);
-
-            mPreferenceScreen.findPreference(KEY_TEN_PERCENT_MODE)
-                .setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
-            {
-                public boolean onPreferenceChange(final Preference preference, final Object newValue) {
-                    showDialog((Boolean) newValue ? DIALOG_CONFIRM_TEN_PERCENT_ENABLE : DIALOG_CONFIRM_TEN_PERCENT_DISABLE);
-                    return false;
-                }
-            });
         } else {
             setPrefScreen(R.xml.main_pref_screen);
         }
@@ -360,6 +360,13 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                         ten_percent_mode = ! ten_percent_mode;
                         ((CheckBoxPreference) mPreferenceScreen.findPreference(KEY_TEN_PERCENT_MODE)).setChecked(ten_percent_mode);
                         di.cancel();
+
+                        /* Restart this pref_screen */
+                        ComponentName comp = new ComponentName(getPackageName(), SettingsActivity.class.getName());
+                        Intent intent = new Intent().setComponent(comp);
+                        intent.putExtra(EXTRA_SCREEN, pref_screen);
+                        startActivity(intent);
+                        finish();
                     }
                 })
                 .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
@@ -514,7 +521,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         String lowest;
 
         if (changedKey == null) {
-            setEntriesAndValues(redThresh, RED_SETTING_MIN, RED_SETTING_MAX);
+            setColorPrefEntriesAndValues(redThresh, RED_SETTING_MIN, RED_SETTING_MAX);
 
             /* Older version had a higher max; user's setting could be too high. */
             if (iRedThresh > RED_SETTING_MAX) {
@@ -527,7 +534,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (changedKey == null || changedKey.equals(KEY_RED) || changedKey.equals(KEY_RED_THRESH) ||
             changedKey.equals(KEY_AMBER)) {
             if (amberEnabled) {
-                lowest = setEntriesAndValues(amberThresh, determineMin(AMBER), AMBER_SETTING_MAX);
+                lowest = setColorPrefEntriesAndValues(amberThresh, determineMin(AMBER), AMBER_SETTING_MAX);
 
                 if (iAmberThresh < Integer.valueOf(lowest)) {
                     amberThresh.setValue(lowest);
@@ -540,7 +547,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         if (changedKey == null || !changedKey.equals(KEY_GREEN_THRESH)) {
             if (greenEnabled) {
-                lowest = setEntriesAndValues(greenThresh, determineMin(GREEN), 100);
+                lowest = setColorPrefEntriesAndValues(greenThresh, determineMin(GREEN), 100);
 
                 if (iGreenThresh < Integer.valueOf(lowest)) {
                     greenThresh.setValue(lowest);
@@ -554,7 +561,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     /* Does the obvious and returns the lowest value. */
-    private String setEntriesAndValues(ListPreference lpref, int min, int max) {
+    private String setColorPrefEntriesAndValues(ListPreference lpref, int min, int max) {
         String[] entries, values;
         int i, j;
         int[] a;
@@ -578,6 +585,38 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         lpref.setEntryValues(values);
 
         return values[0];
+    }
+
+    private void setPluginPrefEntriesAndValues(ListPreference lpref) {
+        String prefix = "BI Plugin - ";
+
+        PackageManager pm = getPackageManager();
+        java.util.List<PackageInfo> packages = pm.getInstalledPackages(0);
+
+        java.util.List<String> entriesList = new java.util.ArrayList();
+        java.util.List<String>  valuesList = new java.util.ArrayList();
+
+        entriesList.add(res.getString(R.string.none));
+         valuesList.add("none");
+
+        for (int i=0; i < packages.size(); i++) {
+            PackageInfo pi = packages.get(i);
+            if (pi.packageName.matches("com\\.darshancomputing\\.BatteryIndicatorPro\\.IconPlugin\\..+")){
+                String entry = (String) pm.getApplicationLabel(pi.applicationInfo);
+                if (entry.startsWith(prefix))
+                    entry = entry.substring(prefix.length());
+
+                entriesList.add(entry);
+                 valuesList.add(pi.packageName);
+            }
+        }
+
+        lpref.setEntries    ((String[]) entriesList.toArray(new String[entriesList.size()]));
+        lpref.setEntryValues((String[])  valuesList.toArray(new String[entriesList.size()]));
+
+        // If the previously selected plugin was uninstalled, revert to "None"
+        //if (! valuesList.contains(lpref.getValue())) lpref.setValueIndex(0);
+        if (lpref.getEntry() == null) lpref.setValueIndex(0);
     }
 
     private void resetColorsToDefaults() {

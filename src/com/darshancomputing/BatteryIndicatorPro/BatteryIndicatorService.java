@@ -102,10 +102,10 @@ public class BatteryIndicatorService extends Service {
     public void onCreate() {
         usingPlugin = false;
         try {
-            Context pluginContext = getApplicationContext().createPackageContext("com.darshancomputing.BatteryIndicatorPro.PluginTest",
-                                                                                 Context.CONTEXT_INCLUDE_CODE);
+            String packageName = "com.darshancomputing.BatteryIndicatorPro.IconPlugin.AllGreen";
+            Context pluginContext = getApplicationContext().createPackageContext(packageName, Context.CONTEXT_INCLUDE_CODE);
             ClassLoader pluginClassLoader = pluginContext.getClassLoader();
-            Class pluginClass = pluginClassLoader.loadClass("com.darshancomputing.BatteryIndicatorPro.PluginTest.PluginService");
+            Class pluginClass = pluginClassLoader.loadClass(packageName + ".PluginService");
             pluginIntent = new Intent(pluginContext, pluginClass);
 
             startService(pluginIntent);

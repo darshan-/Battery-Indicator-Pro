@@ -14,6 +14,11 @@
        android:entryValues="@array/mw_theme_pref_values"
        android:defaultValue="default"
     />
+    <ListPreference
+       android:key="icon_plugin"
+       android:title="@string/pref_icon_plugin"
+       android:defaultValue="none"
+    />
   </PreferenceCategory>
 
   <PreferenceCategory android:title="@string/pref_cat_color">
@@ -59,6 +64,12 @@
        android:title="@string/pref_green_thresh"
        android:dialogTitle="@string/pref_green_thresh_summary"
        android:defaultValue="@string/default_green_thresh"
+    />
+    <CheckBoxPreference
+       android:key="ten_percent_mode"
+       android:title="@string/pref_ten_percent_mode"
+       android:summary="@string/pref_ten_percent_mode_summary"
+       android:defaultValue="false"
     />
   </PreferenceCategory>
 </PreferenceScreen>

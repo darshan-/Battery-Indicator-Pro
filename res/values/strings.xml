@@ -67,6 +67,8 @@
   </string>
   <string formatted="false" name="okay">Okay</string>
 
+  <string formatted="false" name="none">None</string>
+
   <string formatted="false" name="menu_logs">Logs</string>
   <string formatted="false" name="menu_settings">Settings</string>
   <string formatted="false" name="menu_close">Close</string>
@@ -400,6 +402,16 @@
     roughly match a standard Android dialog, like Battery Indicator
     always has.  The Full Window theme is useful if you like things
     big and easy to read.  Other themes are just for fun.
+  </string>
+  <string formatted="false" name="pref_icon_plugin">Icon Plugin</string>
+  <string formatted="false" name="pref_icon_plugin_help">
+    If you have any Battery Indicator icon plugins installed (they\'re
+    available from the website), you can choose among them here.  At
+    this time, the plugins don\'t offer any options, so the icon color
+    settings below will disappear if you choose anything other than
+    \"None\".  The trade-off of course, is that there will hopefully
+    be many plugins available so you should be able to find one that
+    does exactly what you want.
   </string>
 
   <string formatted="false" name="pref_cat_logging">Logging</string>
