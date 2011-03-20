@@ -43,7 +43,8 @@ public class BatteryIndicatorService extends Service {
 
     private final PluginServiceConnection pluginServiceConnection = new PluginServiceConnection();
     private Intent pluginIntent;
-    private Boolean usingPlugin;
+    private String pluginPackage;
+    //private Boolean usingPlugin;
 
     private NotificationManager mNotificationManager;
     private SharedPreferences settings;
@@ -94,30 +95,19 @@ public class BatteryIndicatorService extends Service {
     private final Runnable mNotify = new Runnable() {
         public void run() {
             if (notified) return;
+
+            if (! pluginPackage.equals("none")) {
+                unbindService(pluginServiceConnection);
+                stopService(pluginIntent);
+                pluginPackage = "none";
+            }
+
             mNotificationManager.notify(NOTIFICATION_PRIMARY, mainNotification);
         }
     };
 
     @Override
     public void onCreate() {
-        usingPlugin = false;
-        try {
-            String packageName = "com.darshancomputing.BatteryIndicatorPro.IconPlugin.AllGreen";
-            Context pluginContext = getApplicationContext().createPackageContext(packageName, Context.CONTEXT_INCLUDE_CODE);
-            ClassLoader pluginClassLoader = pluginContext.getClassLoader();
-            Class pluginClass = pluginClassLoader.loadClass(packageName + ".PluginService");
-            pluginIntent = new Intent(pluginContext, pluginClass);
-
-            startService(pluginIntent);
-            bindService(pluginIntent, pluginServiceConnection, 0);
-
-            usingPlugin = true;
-        } catch (Exception e) {
-            usingPlugin = false;
-            //System.out.println("............................. Couldn't load plugin:");
-            //e.printStackTrace();
-        }
-
         res = getResources();
         str = new Str(res);
         Context context = getApplicationContext();
@@ -140,6 +130,8 @@ public class BatteryIndicatorService extends Service {
         if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
             setEnablednessOfKeyguard(false);
 
+        pluginPackage = "none";
+
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
     }
 
@@ -149,7 +141,7 @@ public class BatteryIndicatorService extends Service {
 
         alarms.close();
 
-        if (usingPlugin) {
+        if (! pluginPackage.equals("none")) {
             unbindService(pluginServiceConnection);
             stopService(pluginIntent);
         }
@@ -174,6 +166,30 @@ public class BatteryIndicatorService extends Service {
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            String desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_PLUGIN, "none");
+
+            if (! pluginPackage.equals(desiredPluginPackage) && ! pluginPackage.equals("none")) {
+                unbindService(pluginServiceConnection);
+                stopService(pluginIntent);
+                pluginPackage = "none";
+            }
+
+            if (! pluginPackage.equals(desiredPluginPackage) && ! desiredPluginPackage.equals("none")) {
+                try {
+                    Context pluginContext = getApplicationContext().createPackageContext(desiredPluginPackage, Context.CONTEXT_INCLUDE_CODE);
+                    ClassLoader pluginClassLoader = pluginContext.getClassLoader();
+                    Class pluginClass = pluginClassLoader.loadClass(desiredPluginPackage + ".PluginService");
+                    pluginIntent = new Intent(pluginContext, pluginClass);
+
+                    startService(pluginIntent);
+                    bindService(pluginIntent, pluginServiceConnection, 0);
+
+                    pluginPackage = desiredPluginPackage;
+                } catch (Exception e) {
+                    pluginPackage = "none";
+                }
+            }
+
             SharedPreferences.Editor editor = settings.edit();
             //Notification notification;
             String action = intent.getAction();
@@ -326,11 +342,11 @@ public class BatteryIndicatorService extends Service {
             mainNotification.setLatestEventInfo(context, mainNotificationTitle, mainNotificationText, mainNotificationIntent);
 
             notified = false;
-            if (usingPlugin) {
+            if (! pluginPackage.equals("none")) {
                 mHandler.postDelayed(mPluginNotify,  100);
-                mHandler.postDelayed(mPluginNotify,  400);
-                mHandler.postDelayed(mPluginNotify, 2000);
-                mHandler.postDelayed(mNotify,       2500);
+                mHandler.postDelayed(mPluginNotify,  300);
+                mHandler.postDelayed(mPluginNotify,  900);
+                mHandler.postDelayed(mNotify,       1000);
             } else {
                 mHandler.post(mNotify);
             }
