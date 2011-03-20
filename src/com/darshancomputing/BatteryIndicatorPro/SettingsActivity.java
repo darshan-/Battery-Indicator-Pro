@@ -59,6 +59,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_CHARGE_AS_TEXT = "charge_as_text";
     public static final String KEY_TEN_PERCENT_MODE = "ten_percent_mode";
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
+    public static final String KEY_CAT_COLOR = "category_color";
     public static final String KEY_RED = "use_red";
     public static final String KEY_RED_THRESH = "red_threshold";
     public static final String KEY_AMBER = "use_amber";
@@ -150,6 +151,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     private Boolean ten_percent_mode;
 
+    private ListPreference pluginPref;
+    private String currentPlugin;
+
     private static final String[] fivePercents = {
         "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
         "55", "60", "65", "70", "75", "80", "85", "90", "95", "100"};
@@ -206,33 +210,43 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             cpbPref     = (ColorPreviewPreference) mPreferenceScreen.findPreference(KEY_COLOR_PREVIEW);
             if (ten_percent_mode) cpbPref.setLayoutResource(R.layout.hidden);
 
-            setPluginPrefEntriesAndValues((ListPreference) mPreferenceScreen.findPreference(KEY_ICON_PLUGIN));
+            pluginPref = (ListPreference) mPreferenceScreen.findPreference(KEY_ICON_PLUGIN);
+            setPluginPrefEntriesAndValues(pluginPref);
+            currentPlugin = pluginPref.getValue();
 
             redThresh   = (ListPreference) mPreferenceScreen.findPreference(KEY_RED_THRESH);
             amberThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_AMBER_THRESH);
             greenThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_GREEN_THRESH);
 
-            redEnabled   = mSharedPreferences.getBoolean(  KEY_RED, false);
-            amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
-            greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
+            if (currentPlugin.equals("none")) {
+                redEnabled   = mSharedPreferences.getBoolean(  KEY_RED, false);
+                amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
+                greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
 
-            iRedThresh   = Integer.valueOf(  redThresh.getValue()); /* Entries don't exist yet */
-            iAmberThresh = Integer.valueOf(amberThresh.getValue());
-            iGreenThresh = Integer.valueOf(greenThresh.getValue());
+                iRedThresh   = Integer.valueOf(  redThresh.getValue()); /* Entries don't exist yet */
+                iAmberThresh = Integer.valueOf(amberThresh.getValue());
+                iGreenThresh = Integer.valueOf(greenThresh.getValue());
 
-            mPreferenceScreen.findPreference(KEY_TEN_PERCENT_MODE)
-                .setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
-            {
-                public boolean onPreferenceChange(final Preference preference, final Object newValue) {
-                    showDialog((Boolean) newValue ? DIALOG_CONFIRM_TEN_PERCENT_ENABLE : DIALOG_CONFIRM_TEN_PERCENT_DISABLE);
-                    return false;
+                mPreferenceScreen.findPreference(KEY_TEN_PERCENT_MODE)
+                    .setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
+                    {
+                        public boolean onPreferenceChange(final Preference preference, final Object newValue) {
+                            showDialog((Boolean) newValue ? DIALOG_CONFIRM_TEN_PERCENT_ENABLE : DIALOG_CONFIRM_TEN_PERCENT_DISABLE);
+                            return false;
+                        }
+                    });
+
+                if (ten_percent_mode) {
+                    /* These should always correspond to the logical (entry) value, not the actual stored value. */
+                    iRedThresh--;
+                    iAmberThresh--;
                 }
-            });
 
-            if (ten_percent_mode) {
-                /* These should always correspond to the logical (entry) value, not the actual stored value. */
-                iRedThresh--;
-                iAmberThresh--;
+                validateColorPrefs(null);
+            } else {
+                PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.divider_horizontal_dark);
             }
 
             /* Hide any themes that might be disabled (e.g. Tablets show different themes) */
@@ -272,8 +286,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         for (int i=0; i < PARENTS.length; i++)
             setEnablednessOfDeps(i);
 
-        validateColorPrefs(null);
-
         for (int i=0; i < LIST_PREFS.length; i++)
             updateListPrefSummary(LIST_PREFS[i]);
 
@@ -293,6 +305,14 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         addPreferencesFromResource(resource);
 
         mPreferenceScreen  = getPreferenceScreen();
+    }
+
+    private void restartThisScreen() {
+        ComponentName comp = new ComponentName(getPackageName(), SettingsActivity.class.getName());
+        Intent intent = new Intent().setComponent(comp);
+        intent.putExtra(EXTRA_SCREEN, pref_screen);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -362,12 +382,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                         ((CheckBoxPreference) mPreferenceScreen.findPreference(KEY_TEN_PERCENT_MODE)).setChecked(ten_percent_mode);
                         di.cancel();
 
-                        /* Restart this pref_screen */
-                        ComponentName comp = new ComponentName(getPackageName(), SettingsActivity.class.getName());
-                        Intent intent = new Intent().setComponent(comp);
-                        intent.putExtra(EXTRA_SCREEN, pref_screen);
-                        startActivity(intent);
-                        finish();
+                        restartThisScreen();
                     }
                 })
                 .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
@@ -429,6 +444,15 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         if (key.equals(KEY_TEN_PERCENT_MODE))
             resetColorsToDefaults();
+
+        if (key.equals(KEY_ICON_PLUGIN)) {
+            String newPlugin = pluginPref.getValue();
+
+            if (currentPlugin.equals("none") || newPlugin.equals("none"))
+                restartThisScreen();
+            else
+                currentPlugin = newPlugin;
+        }
 
         for (int i=0; i < PARENTS.length; i++) {
             if (key.equals(PARENTS[i])) {

@@ -21,7 +21,10 @@
     />
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="@string/pref_cat_color">
+  <PreferenceCategory
+      android:key="category_color"
+      android:title="@string/pref_cat_color"
+  >
     <com.darshancomputing.BatteryIndicatorPro.ColorPreviewPreference
        android:key="color_preview"
        android:title="@string/pref_color_preview"
