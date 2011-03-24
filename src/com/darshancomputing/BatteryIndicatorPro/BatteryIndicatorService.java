@@ -66,6 +66,7 @@ public class BatteryIndicatorService extends Service {
     /* Global variables for these Notification Runnables */
     private Notification mainNotification;
     private int percent;
+    private boolean charging;
     private String mainNotificationTitle, mainNotificationText;
     private PendingIntent mainNotificationIntent;
 
@@ -77,9 +78,12 @@ public class BatteryIndicatorService extends Service {
                 if (pluginServiceConnection.service == null) return;
                 Class c = pluginServiceConnection.service.getClass();
                 //if (! pluginPackage.equals(c.getPackage().getName())) return; /* */
-                java.lang.reflect.Method m = c.getMethod("notify", new Class[] {int.class, String.class, String.class, PendingIntent.class});
-
-                m.invoke(pluginServiceConnection.service, new Object[] {percent, mainNotificationTitle, mainNotificationText, mainNotificationIntent});
+                java.lang.reflect.Method m = c.getMethod("notify", new Class[] {int.class, boolean.class,
+                                                                                String.class, String.class,
+                                                                                PendingIntent.class});
+                m.invoke(pluginServiceConnection.service, new Object[] {percent, charging,
+                                                                        mainNotificationTitle, mainNotificationText,
+                                                                        mainNotificationIntent});
 
                 mHandler.removeCallbacks(mPluginNotify);
                 mHandler.removeCallbacks(mNotify);
@@ -224,7 +228,12 @@ public class BatteryIndicatorService extends Service {
             if (plugged == 0) status = 0; /* TODO: use static class CONSTANTS instead of numbers */
 
             String statusStr = str.statuses[status];
-            if (status == 2) statusStr += " " + str.pluggeds[plugged]; /* Add '(AC)' or '(USB)' if charging */
+            if (status == 2) { /* Charging */
+                statusStr += " " + str.pluggeds[plugged]; /* Add '(AC)' or '(USB)' */
+                charging = true;
+            } else {
+                charging = false;
+            }
 
             int last_status = settings.getInt("last_status", -1);
             /* There's a bug, at least on 1.5, or maybe depending on the hardware (I've noticed it on the MyTouch with 1.5)

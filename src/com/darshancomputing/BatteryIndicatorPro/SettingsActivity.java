@@ -626,7 +626,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         for (int i=0; i < packages.size(); i++) {
             PackageInfo pi = packages.get(i);
-            if (pi.packageName.matches("com\\.darshancomputing\\.BatteryIndicatorPro\\.IconPlugin\\..+")){
+            if (pi.packageName.matches("com\\.darshancomputing\\.BatteryIndicatorPro\\.IconPluginV1\\..+")){
                 String entry = (String) pm.getApplicationLabel(pi.applicationInfo);
                 if (entry.startsWith(prefix))
                     entry = entry.substring(prefix.length());
