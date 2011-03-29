@@ -412,7 +412,7 @@ public class BatteryIndicatorService extends Service {
                     c.close();
                 }                
 
-                if (health > HEALTH_GOOD_HEALTH && health != settings.getInt("previous_health", HEALTH_GOOD_HEALTH)) {
+                if (health > HEALTH_GOOD && health != settings.getInt("previous_health", HEALTH_GOOD)) {
                     c = alarms.activeAlarmFailure();
                     if (c != null) {
                         editor.putInt("previous_health", health);
