@@ -241,9 +241,10 @@
     <item>Fallo</item>
   </string-array>
   <string-array name="pluggeds">
-    <item>Desconocido</item>
+    <item>Unplugged</item>
     <item>(Red)</item>
     <item>(USB)</item>
+    <item>(?)</item>
   </string-array>
   <string-array name="mw_theme_pref_entries">
     <item>Por defecto (Pequeña)</item>

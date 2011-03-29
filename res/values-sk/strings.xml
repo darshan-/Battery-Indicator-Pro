@@ -160,14 +160,32 @@
   <string name="pref_color_preview" formatted="false">Ukážka farby</string>
   <string name="pref_red" formatted="false">Používať červenú ikonu</string>
   <string name="pref_red_summary" formatted="false">Používať červenú ikonu keď je vybitá batéria?</string>
-  <string name="pref_red_help" formatted="false">Či použiť alebo nie červenú ikonu pod určenou hranicou</string>
+  <string name="pref_red_help" formatted="false">Použiť alebo nepoužiť červenú ikonu pod určenou hranicou.</string>
   <string name="pref_red_thresh" formatted="false">Červená hranica</string>
   <string name="pref_red_thresh_summary" formatted="false">Červená ikona pod koľkými %:</string>
   <string name="pref_red_thresh_summary10" formatted="false">Červená ikona na alebo pod koľkými %:</string>
-  <string name="pref_amber" formatted="false">Použiť Jantárovú ikonu</string>
+  <string name="pref_amber" formatted="false">Používať Jantárovú ikonu</string>
   <string name="pref_amber_summary" formatted="false">Používať jantárovú ikonu, keď je batéria v strede?</string>
+  <string name="pref_amber_help" formatted="false">Použiť alebo nepoužiť jantárovú ikonu pod určenou hranicou.</string>
+  <string name="pref_amber_thresh" formatted="false">Jantárová hranica</string>
+  <string name="pref_amber_thresh_summary" formatted="false">Jantárová pod koľkými %:</string>
+  <string name="pref_amber_thresh_summary10" formatted="false">Jantárová ikona na alebo pod koľkými %:</string>
+  <string name="pref_green" formatted="false">Používať zelenú ikonu</string>
+  <string name="pref_green_summary" formatted="false">Používať zelenú ikonu, keď je batéria plná?</string>
+  <string name="pref_green_help" formatted="false">Použiť alebo nepoužiť zelenú ikonu pod určenou hranicou.</string>
+  <string name="pref_green_thresh" formatted="false">Zelená hranica</string>
+  <string name="pref_green_thresh_summary" formatted="false">Zelená, pod koľkými %:</string>
+  <string name="pref_cat_device_specific" formatted="false">Nastavenia špecifické pre konkrétne zariadenia</string>
+  <string name="pref_ten_percent_mode" formatted="false">10% mód</string>
+  <string name="pref_ten_percent_mode_summary" formatted="false">Čítaj najprv pomocníka!</string>
+  <string name="pref_alarm_enabled" formatted="false">Zapnúť alarm</string>
+  <string name="pref_cat_alarm_conditions" formatted="false">Podmienky alarmu</string>
+  <string name="pref_cat_alarm_conditions_help" formatted="false">Tu môžete kontrolovať ktoré podmienky spustia alarm.</string>
   <string name="pref_alarm_type" formatted="false">Typ alarmu</string>
   <string name="pref_alarm_type_summary" formatted="false">Spustiť alarm keď batéria:</string>
+  <string name="pref_alarm_threshold" formatted="false">Hranica</string>
+  <string name="alarm_pref_not_used" formatted="false">Nepoužité pre tento typ alarmu</string>
+  <string name="pref_alarm_threshold_summary" formatted="false">Hranica alarmu:</string>
   <string name="pref_cat_notification_settings" formatted="false">Nastavenia oznámení</string>
   <string name="pref_alarm_ringtone" formatted="false">Zvonenie</string>
   <string name="silent" formatted="false">Tichý</string>
@@ -207,9 +225,10 @@
     <item>Zlyhanie</item>
   </string-array>
   <string-array name="pluggeds">
-    <item>Neznámy</item>
+    <item>Unplugged</item>
     <item>(Sieť)</item>
     <item>(USB)</item>
+    <item>(?)</item>
   </string-array>
   <string-array name="alarm_types_display">
     <item>Plne nabitá</item>

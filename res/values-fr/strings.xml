@@ -278,9 +278,10 @@
     <item>Défaut</item>
   </string-array>
   <string-array name="pluggeds">
-    <item>Inconnu</item>
+    <item>Unplugged</item>
     <item>(AC)</item>
     <item>(USB)</item>
+    <item>(?)</item>
   </string-array>
   <string-array name="alarm_types_display">
     <item>Complètement chargé</item>

@@ -264,9 +264,10 @@
     <item>Fallito</item>
   </string-array>
   <string-array name="pluggeds">
-    <item>Sconosciuto</item>
+    <item>Unplugged</item>
     <item>(AC)</item>
     <item>(USB)</item>
+    <item>(?)</item>
   </string-array>
   <string-array name="mw_theme_pref_entries">
     <item>Piccola Di Default</item>

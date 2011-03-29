@@ -210,9 +210,10 @@
     <item>Hiba</item>
   </string-array>
   <string-array name="pluggeds">
-    <item>Ismeretlen</item>
+    <item>Unplugged</item>
     <item>(hálózati feszültség)</item>
     <item>(USB kapu)</item>
+    <item>(?)</item>
   </string-array>
   <string-array name="alarm_types_display">
     <item>Teljesen feltöltve</item>
