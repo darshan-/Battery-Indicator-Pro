@@ -63,10 +63,32 @@ public class BatteryIndicatorService extends Service {
     private static final int NOTIFICATION_ALARM_HEALTH = 3;
     private static final int NOTIFICATION_ALARM_TEMP   = 4;
 
+    private static final int STATUS_UNPLUGGED     = 0;
+    private static final int STATUS_UNKNOWN       = 1;
+    private static final int STATUS_CHARGING      = 2;
+    private static final int STATUS_DISCHARGING   = 3;
+    private static final int STATUS_NOT_CHARGING  = 4;
+    private static final int STATUS_FULLY_CHARGED = 5;
+    private static final int STATUS_MAX = STATUS_FULLY_CHARGED;
+
+    private static final int PLUGGED_UNPLUGGED = 0;
+    private static final int PLUGGED_AC        = 1;
+    private static final int PLUGGED_USB       = 2;
+    private static final int PLUGGED_UNKNOWN   = 3;
+    private static final int PLUGGED_MAX = PLUGGED_UNKNOWN;
+
+    private static final int HEALTH_UNKNOWN     = 1;
+    private static final int HEALTH_GOOD        = 2;
+    private static final int HEALTH_OVERHEAT    = 3;
+    private static final int HEALTH_DEAD        = 4;
+    private static final int HEALTH_OVERVOLTAGE = 5;
+    private static final int HEALTH_FAILURE     = 6;
+    private static final int HEALTH_MAX = HEALTH_FAILURE;
+
     /* Global variables for these Notification Runnables */
     private Notification mainNotification;
     private int percent;
-    private boolean charging;
+    private int status;
     private String mainNotificationTitle, mainNotificationText;
     private PendingIntent mainNotificationIntent;
 
@@ -78,10 +100,10 @@ public class BatteryIndicatorService extends Service {
                 if (pluginServiceConnection.service == null) return;
                 Class c = pluginServiceConnection.service.getClass();
                 //if (! pluginPackage.equals(c.getPackage().getName())) return; /* */
-                java.lang.reflect.Method m = c.getMethod("notify", new Class[] {int.class, boolean.class,
+                java.lang.reflect.Method m = c.getMethod("notify", new Class[] {int.class, int.class,
                                                                                 String.class, String.class,
                                                                                 PendingIntent.class});
-                m.invoke(pluginServiceConnection.service, new Object[] {percent, charging,
+                m.invoke(pluginServiceConnection.service, new Object[] {percent, status,
                                                                         mainNotificationTitle, mainNotificationText,
                                                                         mainNotificationIntent});
 
@@ -188,20 +210,24 @@ public class BatteryIndicatorService extends Service {
             String action = intent.getAction();
             if (! Intent.ACTION_BATTERY_CHANGED.equals(action)) return;
 
-            int level = intent.getIntExtra("level", 0);
+            int level = intent.getIntExtra("level", 50);
             int scale = intent.getIntExtra("scale", 100);
-            int status = intent.getIntExtra("status", 0);
-            int health = intent.getIntExtra("health", 0);
-            int plugged = intent.getIntExtra("plugged", 0);
+                status = intent.getIntExtra("status", STATUS_UNKNOWN);
+            int health = intent.getIntExtra("health", HEALTH_UNKNOWN);
+            int plugged = intent.getIntExtra("plugged", PLUGGED_UNKNOWN);
             int temperature = intent.getIntExtra("temperature", 0);
             int voltage = intent.getIntExtra("voltage", 0);
             //String technology = intent.getStringExtra("technology");
 
             percent = level * 100 / scale;
 
-            if (status  > 5){ status  = 1; /* Unknown */ }
-            if (health  > 6){ health  = 1; /* Unknown */ }
-            if (plugged > 2){ plugged = 0; /* Unknown */ }
+            /* Just treating any unplugged status as simply "Unplugged" now.
+               Note that the main activity now assumes that the status is always 0, 2, or 5 TODO */
+            if (plugged == PLUGGED_UNPLUGGED) status = STATUS_UNPLUGGED;
+
+            if (status  > STATUS_MAX) { status  = STATUS_UNKNOWN; }
+            if (health  > HEALTH_MAX) { health  = HEALTH_UNKNOWN; }
+            if (plugged > PLUGGED_MAX){ plugged = PLUGGED_UNKNOWN; }
 
             /* I take advantage of (count on) R.java having resources alphabetical and incrementing by one */
 
@@ -223,17 +249,9 @@ public class BatteryIndicatorService extends Service {
                 icon = R.drawable.b000 + percent;
             }
 
-            /* Just treating any unplugged status as simply "Unplugged" now.
-               Note that the main activity now assumes that the status is always 0, 2, or 5 */
-            if (plugged == 0) status = 0; /* TODO: use static class CONSTANTS instead of numbers */
-
             String statusStr = str.statuses[status];
-            if (status == 2) { /* Charging */
+            if (status == STATUS_CHARGING)
                 statusStr += " " + str.pluggeds[plugged]; /* Add '(AC)' or '(USB)' */
-                charging = true;
-            } else {
-                charging = false;
-            }
 
             int last_status = settings.getInt("last_status", -1);
             /* There's a bug, at least on 1.5, or maybe depending on the hardware (I've noticed it on the MyTouch with 1.5)
@@ -249,14 +267,14 @@ public class BatteryIndicatorService extends Service {
 
             if (last_status != status || last_status_cTM == -1 || last_percent == -1 ||
                 last_status_cTM > currentTM || last_status_since == null || last_plugged != plugged ||
-                (plugged == 0 && percent > previous_charge + 20))
+                (plugged == PLUGGED_UNPLUGGED && percent > previous_charge + 20))
             {
                 last_status_since = formatTime(new Date());
                 statusDuration = 0;
 
                 if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, false)) {
                     logs.logStatus(status, plugged, percent, temperature, voltage, currentTM, LogDatabase.STATUS_NEW);
-                    if (status != last_status && last_status == 0)
+                    if (status != last_status && last_status == STATUS_UNPLUGGED)
                         logs.prune(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAX_LOG_AGE, str.default_max_log_age)));
                 }
 
@@ -275,10 +293,10 @@ public class BatteryIndicatorService extends Service {
                 mNotificationManager.cancel(NOTIFICATION_ALARM_CHARGE);
 
                 if (last_status != status && settings.getBoolean(SettingsActivity.KEY_AUTO_DISABLE_LOCKING, false)) {
-                    if (last_status == 0) {
+                    if (last_status == STATUS_UNPLUGGED) {
                         editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, true);
                         setEnablednessOfKeyguard(false);
-                    } else if (status == 0) {
+                    } else if (status == STATUS_UNPLUGGED) {
                         editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false);
                         setEnablednessOfKeyguard(true);
 
@@ -353,7 +371,7 @@ public class BatteryIndicatorService extends Service {
                 Notification notification;
                 PendingIntent contentIntent = PendingIntent.getActivity(context, 0, alarmsIntent, 0);
 
-                if (status == 5 && last_status == 2) {
+                if (status == STATUS_FULLY_CHARGED && last_status == STATUS_CHARGING) {
                     c = alarms.activeAlarmFull();
                     if (c != null) {
                         notification = parseAlarmCursor(c);
@@ -394,7 +412,7 @@ public class BatteryIndicatorService extends Service {
                     c.close();
                 }                
 
-                if (health > 2 && health != settings.getInt("previous_health", 2)) {
+                if (health > HEALTH_GOOD_HEALTH && health != settings.getInt("previous_health", HEALTH_GOOD_HEALTH)) {
                     c = alarms.activeAlarmFailure();
                     if (c != null) {
                         editor.putInt("previous_health", health);
