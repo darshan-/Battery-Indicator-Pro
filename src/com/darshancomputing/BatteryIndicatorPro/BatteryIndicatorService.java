@@ -98,8 +98,8 @@ public class BatteryIndicatorService extends Service {
             try {
                 mNotificationManager.cancelAll();
                 if (pluginServiceConnection.service == null) return;
+
                 Class c = pluginServiceConnection.service.getClass();
-                //if (! pluginPackage.equals(c.getPackage().getName())) return; /* */
                 java.lang.reflect.Method m = c.getMethod("notify", new Class[] {int.class, int.class,
                                                                                 String.class, String.class,
                                                                                 PendingIntent.class});

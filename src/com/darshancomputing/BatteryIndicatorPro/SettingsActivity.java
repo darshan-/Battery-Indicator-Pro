@@ -479,7 +479,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         for (int i=0; i < RESET_SERVICE.length; i++) {
             if (key.equals(RESET_SERVICE[i])) {
-                biServiceConnection.biService.reloadSettings();
+                try {
+                    biServiceConnection.biService.reloadSettings();
+                } catch (Exception e) {
+                    startService(new Intent(this, BatteryIndicatorService.class))
+                }
                 break;
             }
         }
