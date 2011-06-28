@@ -154,6 +154,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private ListPreference pluginPref;
     private String currentPlugin;
 
+    private int menu_res = R.menu.settings;
+
     private static final String[] fivePercents = {
         "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
         "55", "60", "65", "70", "75", "80", "85", "90", "95", "100"};
@@ -204,6 +206,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else if (pref_screen.equals(KEY_COLOR_SETTINGS)) {
             setPrefScreen(R.xml.color_pref_screen);
             setWindowSubtitle(res.getString(R.string.color_settings));
+
+            menu_res = R.menu.color_settings;
 
             ten_percent_mode = mSharedPreferences.getBoolean(KEY_TEN_PERCENT_MODE, false);
 
@@ -339,7 +343,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.settings, menu);
+        inflater.inflate(menu_res, menu);
         return true;
     }
 
@@ -482,7 +486,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 try {
                     biServiceConnection.biService.reloadSettings();
                 } catch (Exception e) {
-                    startService(new Intent(this, BatteryIndicatorService.class))
+                    startService(new Intent(this, BatteryIndicatorService.class));
                 }
                 break;
             }

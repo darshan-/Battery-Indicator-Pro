@@ -77,6 +77,7 @@
   <string formatted="false" name="menu_reverse">Reverse Order</string>
   <string formatted="false" name="menu_export">Export CSV</string>
   <string formatted="false" name="menu_delete_alarm">Delete Alarm</string>
+  <string formatted="false" name="menu_get_plugins">Get Plugins</string>
 
   <string formatted="false" name="percent_symbol">%</string>
   <string formatted="false" name="degree_symbol">°</string>
