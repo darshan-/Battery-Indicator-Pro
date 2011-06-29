@@ -153,6 +153,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     private ListPreference pluginPref;
     private String currentPlugin;
+    private String iconPluginSummaryOverride;
 
     private int menu_res = R.menu.settings;
 
@@ -547,6 +548,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else {
             pref.setSummary(res.getString(R.string.currently_disabled));
         }
+
+        if (key.equals(KEY_ICON_PLUGIN) && iconPluginSummaryOverride != null)
+            pref.setSummary(iconPluginSummaryOverride);
     }
 
     private void validateColorPrefs(String changedKey) {
@@ -632,7 +636,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         entriesList.add(res.getString(R.string.none));
          valuesList.add("none");
 
-        for (int i=0; i < packages.size(); i++) {
+        int nPackages = packages.size();
+        for (int i=0; i < nPackages; i++) {
             PackageInfo pi = packages.get(i);
             if (pi.packageName.matches("com\\.darshancomputing\\.BatteryIndicatorPro\\.IconPluginV1\\..+")){
                 String entry = (String) pm.getApplicationLabel(pi.applicationInfo);
@@ -643,6 +648,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                  valuesList.add(pi.packageName);
             }
         }
+
+        if (entriesList.size() > 1)
+            iconPluginSummaryOverride = null;
+        else
+            iconPluginSummaryOverride = res.getString(R.string.no_plugins_installed_summary);
 
         lpref.setEntries    ((String[]) entriesList.toArray(new String[entriesList.size()]));
         lpref.setEntryValues((String[])  valuesList.toArray(new String[entriesList.size()]));
