@@ -263,6 +263,9 @@
     <item>两天</item>
     <item>四天</item>
     <item>一周</item>
+    <item>二周</item>
+    <item>三周</item>
+    <item>四周</item>
   </string-array>
   <plurals name="n_log_items">
     <item quantity="one">%d项日志记录</item>

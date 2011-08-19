@@ -281,6 +281,9 @@
     <item>2 dny</item>
     <item>4 dny</item>
     <item>1 týden</item>
+    <item>2 týdny</item>
+    <item>3 týdny</item>
+    <item>4 týdny</item>
   </string-array>
   <plurals name="n_log_items">
     <item quantity="one">%d položka záznamů</item>

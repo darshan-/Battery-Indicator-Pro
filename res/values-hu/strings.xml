@@ -252,5 +252,8 @@
     <item>2 nap</item>
     <item>4 nap</item>
     <item>1 hét</item>
+    <item>2 hét</item>
+    <item>3 hét</item>
+    <item>4 hét</item>
   </string-array>
 </resources>

@@ -288,10 +288,13 @@
     <item>Dopo 12 Ore</item>
   </string-array>
   <string-array name="max_log_age_entries">
-    <item>1 Giorno</item>
-    <item>2 Giorni</item>
-    <item>4 Giorni</item>
-    <item>1 Settimana</item>
+    <item>1 giorno</item>
+    <item>2 giorni</item>
+    <item>4 giorni</item>
+    <item>1 settimana</item>
+    <item>2 settimane</item>
+    <item>3 settimane</item>
+    <item>4 settimane</item>
   </string-array>
   <plurals name="n_log_items">
     <item quantity="one">%d Elemento Log</item>

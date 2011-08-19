@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_full_name" formatted="false">Pil Göstergesi Pro</string>
+  <string name="app_launcher_name" formatted="false">Pil Göstergesi</string>
+  <string name="settings_activity_name" formatted="false">Pil Göstergesi Pro - Ayarlar</string>
+  <string name="help_activity_name" formatted="false">Pil Göstergesi Pro - Yardım</string>
+  <string name="log_view_activity_name" formatted="false">Pil Göstergesi Pro - Kayıtlar</string>
+  <string name="app_full_name_free" formatted="false">Pil Göstergesi</string>
+  <string name="settings_activity_name_free" formatted="false">Pil Göstergesi Pro - Ayarlar</string>
+  <string name="help_activity_name_free" formatted="false">Pil Göstergesi Pro - Yardım</string>
+  <string name="battery_use_b" formatted="false">Pil Kullanımı</string>
+  <string name="upgrade_donate_b" formatted="false">Güncelle/Bağış...</string>
+  <string name="reenable_lock_screen" formatted="false">Ekran Kilidini Etkinleşdir</string>
+  <string name="disable_lock_screen" formatted="false">Ekran Kilidini Kaldır</string>
+  <string name="confirm_disable" formatted="false">Ekran Kilidini Kaldırmakda Eminmisin?</string>
+  <string name="confirm_disable_hint" formatted="false">Ipucu: Bu uyarlama hatırlatmasını ayarlar\'dan kaldıra bilirsin...</string>
+  <string name="yes" formatted="false">Evet</string>
+  <string name="cancel" formatted="false">Iptal</string>
+  <string name="confirm_close" formatted="false">Gerçekten Kapat?</string>
+</resources>

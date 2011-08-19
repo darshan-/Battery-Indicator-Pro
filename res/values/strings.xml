@@ -861,5 +861,8 @@
     <item>2 days</item>
     <item>4 days</item>
     <item>1 week</item>
+    <item>2 weeks</item>
+    <item>3 weeks</item>
+    <item>4 weeks</item>
   </string-array>
 </resources>

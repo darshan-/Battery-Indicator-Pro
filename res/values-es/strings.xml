@@ -269,6 +269,9 @@
     <item>2 días</item>
     <item>4 días</item>
     <item>1 semana</item>
+    <item>2 semanas</item>
+    <item>3 semanas</item>
+    <item>4 semanas</item>
   </string-array>
   <plurals name="n_log_items">
     <item quantity="one">%d entrada en el registro</item>

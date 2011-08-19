@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
+  <string name="app_launcher_name" formatted="false">Battery Indicator</string>
+  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Einstellungen</string>
+  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Hilfe</string>
+  <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Protokoll</string>
+  <string name="app_full_name_free" formatted="false">Battery Indicator</string>
+  <string name="settings_activity_name_free" formatted="false">Battery Indicator - Einstellungen</string>
+  <string name="help_activity_name_free" formatted="false">Battery Indicator - Hilfe</string>
+  <string name="battery_use_b" formatted="false">Akkuverbrauch anzeigen</string>
+  <string name="upgrade_donate_b" formatted="false">Erweitern/Spenden...</string>
+  <string name="reenable_lock_screen" formatted="false">Bildschirmsperre einschalten</string>
+  <string name="disable_lock_screen" formatted="false">Bildschirmsperre ausschalten</string>
+  <string name="confirm_disable" formatted="false">Wirklich Bildschirmsperre ausschalten?</string>
+  <string name="confirm_disable_hint" formatted="false">Tip: Die Bestätigungsabfrage in den Einstellungen ausschalten...</string>
+  <string name="yes" formatted="false">Ja</string>
+  <string name="cancel" formatted="false">Abbrechen</string>
+  <string name="confirm_close" formatted="false">Wirklich schließen?</string>
+  <string name="confirm_close_hint" formatted="false">Battery Indicator wird komplett beendet, damit wird auch die Anzeige im Statusbalken verschwinden.\n\nWenn sie nur das Fenster schließen wollen und die Anzeige im Statusbalken behalten, dann drücken Sie Abbrechen und benutzen sie die ZURÜCK-Schaltfläche ihres Gerätes.</string>
+  <string name="confirm_clear_logs" formatted="false">Wirklich alle Protokolle löschen?</string>
+  <string name="confirm_ten_percent_enable" formatted="false">Wirklich 10% Modus einschalten?</string>
+  <string name="confirm_ten_percent_disable" formatted="false">Wirklich 10% Modus ausschalten?</string>
+  <string name="confirm_ten_percent_hint" formatted="false">Warnung: Ändern dieser Einstellnung (ein- und ausschalten) führt dazu, dass die Farbeinstellungen zurückgesetzt werden.\n\nBei einem Motorola Droid, Droid X, Droid 2, Defy, or Samsung Moment, sollten Sie diese Einstellung einschalten. Bei allen anderen Geräten kann es, meines Wissens nach, immer ausgeschaltet bleiben.</string>
+  <string name="first_run_title" formatted="false">Danke!</string>
+  <string name="first_run_message" formatted="false">Vielen Dank für Ihre Spende / Kauf! <b><i>Diese beiden Punkte sind sehr wichtig</i> :</b>\n\n• Wenn Sie einen \"<b> Task Killer </b>b>\" / Prozess-Manager in irgendeiner Art haben, sollten Sie ihn entweder deinstallieren oder versuchen \'Battery Indicator Pro\' zu ignorieren. Auch wenn die kostenlose Version ignoriert wurde, <i> Sie müssen die Pro-Version erneut ignorieren </i>i>!\n\n• Wenn sie eins folgender Geräte haben: <b>Motorola Milestone</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, oder <b>Samsung Moment</b>, sollten sie den \"10% Modus\" in Punkt \"Andere Einstellungen\" setzen.</string>
+  <string name="first_run_message_free" formatted="false">Vielen Dank für das von Battery Indicator! <b> <i> Dies ist wichtig, </i>i>: </b>b> \ n\ nWenn Sie einen \"<b> Task Killer </b>b>\" / Prozess-Manager in irgendeiner Art haben, sollten Sie ihn entweder deinstallieren oder versuchen das er \'Battery Indicator\' ignoriert.</string>
+  <string name="okay" formatted="false">OK</string>
+  <string name="none" formatted="false">Keine(n)</string>
+  <string name="menu_logs" formatted="false">Protokoll</string>
+  <string name="menu_settings" formatted="false">Einstellungen</string>
+  <string name="menu_close" formatted="false">Schließen</string>
+  <string name="menu_help" formatted="false">Hilfe</string>
+  <string name="menu_clear" formatted="false">Löschen</string>
+  <string name="menu_reverse" formatted="false">Umgedrehte Anordnung</string>
+  <string name="menu_export" formatted="false">CSV exportieren</string>
+  <string name="menu_delete_alarm" formatted="false">Alarm löschen</string>
+  <string name="percent_symbol" formatted="false">%</string>
+  <string name="degree_symbol" formatted="false">°</string>
+  <string name="fahrenheit" formatted="false">Fahrenheit</string>
+  <string name="fahrenheit_symbol" formatted="false">F</string>
+  <string name="celsius" formatted="false">Celsius</string>
+  <string name="celsius_symbol" formatted="false">C</string>
+  <string name="volt_symbol" formatted="false">V</string>
+  <string name="fully_charged_in" formatted="false">Voll geladen in:</string>
+  <string name="light_usage" formatted="false">Übrig bei geringer Benutzung:</string>
+  <string name="normal_usage" formatted="false">Übrig bei normaler Benutzung:</string>
+  <string name="heavy_usage" formatted="false">Übrig bei starker Benutzung:</string>
+  <string name="constant_usage" formatted="false">Übrig bei dauernder Benutzung:</string>
+  <string name="press_back_to_leave" formatted="false">ZURÜCK drücken zum beenden.</string>
+  <string name="press_menu_for_more" formatted="false">MENÜ drücken für mehr Möglichkeiten.</string>
+  <string name="inaccessible_storage" formatted="false">SD-Karte ist nicht verfügbar.</string>
+  <string name="inaccessible_w_reason" formatted="false">SD-Karte nicht verfügbar:</string>
+  <string name="read_only_storage" formatted="false">SD-Karte ist schreibgeschützt.</string>
+  <string name="file_written" formatted="false">Datei wurde erfolgreich in das Wurzelverzeichnis ihrer SD-Karte geschrieben.</string>
+  <string name="date" formatted="false">Datum</string>
+  <string name="time" formatted="false">Zeit</string>
+  <string name="status" formatted="false">Status</string>
+  <string name="charge" formatted="false">Ladung in Prozent</string>
+  <string name="temperature" formatted="false">Grad Celsius</string>
+  <string name="voltage" formatted="false">Volt</string>
+  <string name="alarm_fully_charged" formatted="false">Batterie ist nun voll geladen</string>
+  <string name="alarm_charge_drops" formatted="false">"Batterieladung ist unter "</string>
+  <string name="alarm_charge_rises" formatted="false">"Batterieladung ist über "</string>
+  <string name="alarm_temp_rises" formatted="false">"Batterietemperatur ist über "</string>
+  <string name="alarm_health_failure" formatted="false">"Batteriezustand ist: "</string>
+  <string name="alarm_text" formatted="false">Auswählen um Alarme zu bearbeiten.</string>
+  <string name="logs_empty" formatted="false">Protokoll ist leer</string>
+  <string name="discharging_from" formatted="false">Entlädt von</string>
+  <string name="charging_from" formatted="false">Lädt von</string>
+  <string name="fully_charged" formatted="false">Voll geladen</string>
+  <string name="since" formatted="false">Seit</string>
+  <string name="one_six_needed" formatted="false">Entschuldigung, Android 1.6+ wird benötigt!</string>
+  <string name="currently_using" formatted="false">Im Moment</string>
+  <string name="currently_set_to" formatted="false">"Im Moment gesetzt auf: "</string>
+  <string name="currently_disabled" formatted="false">Im Moment ausgeschalten</string>
+  <string name="help_cat_version" formatted="false">Version</string>
+  <string name="help_cat_changelog" formatted="false">Änderungsprotokoll</string>
+  <string name="help_changelog" formatted="false">Besuchen Sie die <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">Versionshistorie, auf der Projekt-FAQ seite (engl.)</a>.</string>
+  <string name="help_cat_introduction" formatted="false">Einführung</string>
+  <string name="help_introduction" formatted="false">Dies ist <i>Battery Indicator Pro</i>, die \"Pro\"-Version des beliebten App, <i> Battery Indicator</i>. Es ist erhältlich im Android Market, aber es ist ein Open Source Projekt, d.h. Sie können die Quellen frei erhalten auf <a href="http://code.google.com/p/battery-indicator/">der Projekt-Website</a>.</string>
+  <string name="help_introduction_free" formatted="false">Dies ist <i>Battery Indicator</i>, die freier Version der <i>Battery Indicator</i> Produktfamilie. Es ist erhältlich im Android Market, aber es ist ein Open Source Projekt, d.h. Sie können die Quellen frei erhalten auf <a href="http://code.google.com/p/battery-indicator/">der Projekt-Website</a>.\n\nBitte denken Sie über eine Spende nach, in dem sie auf die <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Version</a> aktualisieren.</string>
+  <string name="help_cat_summary" formatted="false">Zusammenfassung</string>
+  <string name="help_summary" formatted="false"><i>Battery Indicator Pro</i> ist eine leichtgewichtige Batterieanzeige für das Android ™ Betriebssystem für Mobilgeräte. Die Kernfunktion ist das Icon in der Statusleiste, die den verbleibenden Prozentsatz der Batterieladung anzeigt.\n\nDiese Pro-Version bietet noch viel mehr Nutzen als das. Neben der Anzeige des Icons in rot, gelb und grün, hat es auch die folgenden Hauptfunktionen ab Version 3.0:\n\ n• Vollständig konfigurierbare geschätzt Lade / Entlade-Zeit.\n• Protokollierung des Ladezustands des Akkus.\n• Themes für das Hauptfenster (einschließlich eines Vollbildschirm-Fensters mit großem und leicht zu lesendem Text).\n• Manuelles deaktivieren / reaktivieren der Bildschirmsperre mit der Option sie automatisch zu deaktivieren, wenn eingesteckt und wieder zu aktivieren, wenn ausgesteckt.\n• Viele weitere nützliche Dinge, die Sie beim benutzen entdecken werden.</string>
+  <string name="help_summary_free" formatted="false"><i>Battery Indicator Pro</i> ist eine leichtgewichtige Batterieanzeige für das Android™ Betriebssystem für Mobilgeräte. Die Kernfunktion ist das Icon in der Statusleiste, die den verbleibenden Prozentsatz der Batterieladung anzeigt.\n\nDie Pro-Version bietet noch viel mehr Nutzen. Neben der Anzeige des Icons in rot, gelb und grün, hat es auch die folgenden Hauptfunktionen ab Version 3.0:\n\n• Vollständig konfigurierbare geschätzte Lade-/Entladezeit.\n• Protokollierung des Ladezustands des Akkus.\n• Themes für das Hauptfenster (einschließlich eines Vollbildschirm-Fensters mit großem und leicht zu lesendem Text).\n• Manuelles deaktivieren / reaktivieren der Bildschirmsperre mit der Option sie automatisch zu deaktivieren, wenn eingesteckt und wieder zu aktivieren, wenn ausgesteckt.\n• Viele weitere nützliche Dinge, die Sie beim benutzen entdecken werden.</string>
+  <string name="help_cat_limitations" formatted="false">Einschränkungen</string>
+  <string name="help_limitations" formatted="false">(<i> Diese sind außerhalb meiner Kontrolle. </i>)\n\n• Die Anwendung kann nur die von Gerät gelieferten Werte anzeigen. Die meisten Geräte melden jedes 1%, aber ein paar (vor allem die Motorola Droid Modelle) nur alle 10%.\n• Es gibt keine Möglichkeit, das systemeigene Batterie-Symbol zu entfernen.\n• Das Symbol im Infobereich in der Statusleiste und die Nachricht, die Sie in den Benachrichtigungen sehen sind miteinander verbunden - man kann das eine nicht ohne das andere haben.\n• Viele Anwendungen sollten die Installation auf SD-Karte erlauben, einige nicht. Battery Indicator gehört zu den Letzteren. Für weitere Erklärungen siehe <a href="http://code.google.com/p/battery-indicator/wiki/FAQ"> das Projekt FAQ (engl.)</a>a>.</string>
+  <string name="help_cat_features" formatted="false">Funktionen</string>
+  <string name="help_features" formatted="false">• Klein, einfach und leicht zu lesen.\n• Keinen Polling. Android schickt eine Broadcast-Nachricht, wenn sich der Batterie-Status ändert, dann wird das Icon aktualisiert und die Anwendung geht wieder in den Schlafmodus. Das bedeutet es wird etwas Arbeitsspeicher verwendet aber praktisch kaum Rechenleistung des Prozessors, so wird die Batterie nicht entleert. Ich schätze, es kostet Sie im schlimmsten Fall etwa 1 Minute Betriebszeit bei einer vollständigen Entladung. Falls Sie etwas mehr verbrauch feststellen, haben Sie wahrscheinlich eine andere App (wie eine \"Task-Killer\"-Anwendung), die den normalen Betrieb von Battery Indicator stört.\n• Einfacher Zugriff auf den Akkuverbrauch (erfordert Android 1.6 +).\n• Konfigurieren Sie immer beim Booten starten, nie beim Booten, oder beim Booten starten, wenn die App beim Herunterfahren ausgeführt wurde.\n• Noch viel mehr, dass ich entweder vergessen habe oder zu unwichtig erscheint, um es zu erwähnen, aber im Ganzen wird daraus eine tolle App.\n• Das gute Gewissen den Entwickler zu unterstützen. (Ich weiß es schätzen!)</string>
+  <string name="help_cat_no_warranty" formatted="false">Keine Garantie</string>
+  <string name="help_no_warranty" formatted="false">Diese Software ist in der Hoffnung erstellt, dass sie nützlich sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite Garantie der MARKTGÄNGIGKEIT oder EIGNUNG FÜR EINEN BESTIMMTEN ZWECK.\n\nWährend ich mein Bestes gebe, um sicherzustellen, dass sie gut funktioniert und sie keine Probleme erzeugt, bin ich keinen Umständen verantwortlich für jegliche Schäden oder Unannehmlichkeiten.</string>
+  <string name="help_cat_acknowledgments" formatted="false">Danksagungen</string>
+  <string name="help_acknowledgments" formatted="false">Diese App wäre nur in englischer Sprache zur Verfügung, ohne die großzügige Unterstützung durch die ehrenamtlichen Übersetzer. Vielen Dank!\n\nGroßer Dank gebührt Google und allen Open-Source-Programmierern, die die Android-Plattform und diese App möglich machen.\n\nDas Starter-Symbol (die aufrechte Batterie, die Sie im Android-Market sehen) ist auf ein Symbol von <a href="http://www.oxygen-icons.org">auf Basis des Oxygen Icon-Themes</a> und unter der verwendet <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-Share Alike 3.0 License</a>.</string>
+  <string name="help_cat_translations" formatted="false">Übersetzungen</string>
+  <string name="help_translations" formatted="false">Ich brauche Hilfe bei der Übersetzung dieses App in andere Sprachen. Wenn Sie helfen möchten, bitte senden Sie mir eine E-Mail <a href="mailto:android@darshancomputing.com"> </a>. Es seid denn Sie wollen es nicht, werde ich Ihren Namen diesem Abschnitt hinzufügen als Anerkennung Ihrer Unterstützung.</string>
+  <string name="help_subcat_translators" formatted="false">Übersetzer</string>
+  <string name="help_cat_contact" formatted="false">Kontakt</string>
+  <string name="pref_hint" formatted="false">Tip: MENÜ drücken für Hilfe.</string>
+  <string name="settings_overview" formatted="false">Übersicht</string>
+  <string name="color_settings" formatted="false">Farben und Themes</string>
+  <string name="color_settings_summary" formatted="false">Einstellen der Icon-Farben und Fenster-Themes</string>
+  <string name="time_settings" formatted="false">Zeit Einstellungen</string>
+  <string name="time_settings_summary" formatted="false">Einstellung für Zeitschätzung und -vohersage</string>
+  <string name="alarm_settings_subtitle" formatted="false">Alarm Einstellungen</string>
+  <string name="alarm_settings" formatted="false">Alarme</string>
+  <string name="alarm_settings_summary" formatted="false">Einstellung für Benachrichtigungen bei niedriger/voller Batterie.</string>
+  <string name="other_settings" formatted="false">Andere Einstellungen</string>
+  <string name="pref_cat_more_settings_in_pro" formatted="false">Mehr Einstellungen in der Pro-Version</string>
+  <string name="pref_please_upgrade" formatted="false">Die Pro-Version hat mehr Einstellungen und Funktionen, wie grüne, gelbe und rote Icons, Alarme, Window-Themes, Batteriestatus-Protokollierung, automatische/manuelle Bildschirmsperre Abschaltung, Lade-/Entladezeit-Schätzung und mehr.</string>
+  <string name="add_alarm" formatted="false">Alarm hinzufügen</string>
+  <string name="pref_cat_themes" formatted="false">Themes</string>
+  <string name="pref_main_window_theme" formatted="false">Haupt Window-Theme</string>
+  <string name="pref_icon_plugin" formatted="false">Icon Erweiterung</string>
+  <string name="pref_cat_logging" formatted="false">Protokollierung</string>
+  <string name="pref_enable_logging" formatted="false">Protokollierung einschalten</string>
+  <string name="pref_enable_logging_summary" formatted="false">Batteriestatusänderungen protokollieren?</string>
+  <string name="pref_log_everything" formatted="false">Alles protokollieren</string>
+  <string name="pref_log_everything_summary" formatted="false">Ladungsänderungen auch protokollieren?</string>
+  <string name="pref_max_log_age" formatted="false">Maximales Protokollalter</string>
+  <string name="pref_max_log_age_summary" formatted="false">Löschen von Protokollen älter als:</string>
+  <string name="pref_cat_keyguard" formatted="false">Bildschirm- und Tastatursperre</string>
+  <string name="pref_confirm_manual_disable" formatted="false">Manuelles Ausschalten bestätigen</string>
+  <string name="pref_confirm_manual_disable_summary" formatted="false">Bestätigung beim manuellen Ausschalten der Bildschirmsperre?</string>
+  <string name="pref_finish_after_toggle_lock" formatted="false">Nach Umschalten verlassen</string>
+  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Hauptfenster unmittelbar nach dem Ein-/Ausschalten verlassen?</string>
+  <string name="pref_auto_disable" formatted="false">Bildschirmsperre automatisch aufheben</string>
+  <string name="pref_auto_disable_summary" formatted="false">Bildschirmsperre aufheben, wenn Gerät geladen wird?</string>
+  <string name="pref_disallow_disable_lock_screen" formatted="false">Manuelles Aufheben verbieten</string>
+  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Funktion der Bildschirmsperre-Aufheben-Schaltfläche unterdrücken?</string>
+  <string name="pref_cat_battery_use" formatted="false">Akkuverbrauch</string>
+  <string name="pref_finish_after_battery_use" formatted="false">Schließen nach dem Aufrufen</string>
+  <string name="pref_finish_after_battery_use_summary" formatted="false">Hauptfenster schließen, wenn Akkuverbrauch aufgerufen wird?</string>
+  <string name="pref_cat_temperature_unit" formatted="false">Temperatureinheit</string>
+  <string name="pref_convert_to_fahrenheit" formatted="false">Umrechnen in Fahrenheit</string>
+  <string name="pref_cat_autostart" formatted="false">Autostart</string>
+  <string name="pref_autostart_at_boot" formatted="false">Autostart beim Gerätestart</string>
+  <string name="pref_autostart_at_boot_summary" formatted="false">Battery Indicator starten wenn Gerät startet:</string>
+  <string name="pref_cat_charge_as_text" formatted="false">Ladezustand als Text</string>
+  <string name="pref_charge_as_text" formatted="false">Ladezustand als Text</string>
+  <string name="pref_charge_as_text_summary" formatted="false">Den Ladezustand als größeren Text neben dem Icon anzeigen?</string>
+  <string name="pref_cat_status_duration" formatted="false">Statusdauer (Zeit/Stunden)</string>
+  <string name="pref_status_dur_est" formatted="false">Ab wann Näherung</string>
+  <string name="pref_status_dur_est_summary" formatted="false">Näherung in Stunden seit Statusänderung:</string>
+  <string name="pref_cat_time_remaining_estimates" formatted="false">Restzeit Schätzung</string>
+  <string name="pref_show_charge_time" formatted="false">Ladezeit anzeigen</string>
+  <string name="pref_show_charge_time_summary" formatted="false">Während des Ladens, das vorrausichtliche Ende anzeigen?</string>
+  <string name="pref_usb_charge_time" formatted="false">Laden über USB</string>
+  <string name="pref_usb_charge_time_summary" formatted="false">USB Ladezeit von 0% to 100% in Stunden:</string>
+  <string name="pref_ac_charge_time" formatted="false">Laden über Netzkabel</string>
+  <string name="pref_ac_charge_time_summary" formatted="false">Netzkabel Ladezeit von 0% to 100% in Stunden:</string>
+  <string name="pref_show_light_usage" formatted="false">Geringe Benutzung anzeigen</string>
+  <string name="pref_show_light_usage_summary" formatted="false">Restzeit bei geringer Benutzung anzeigen?</string>
+  <string name="pref_light_usage_time" formatted="false">Geringe Benutzung</string>
+  <string name="pref_light_usage_time_summary" formatted="false">Laufzeit bei geringer Benutzung von 0% to 100% in Stunden:</string>
+  <string name="pref_show_normal_usage" formatted="false">Normale Benutzung anzeigen</string>
+  <string name="pref_show_normal_usage_summary" formatted="false">Restzeit bei normaler Benutzung anzeigen?</string>
+  <string name="pref_normal_usage_time" formatted="false">Normale Benutzung</string>
+  <string name="pref_normal_usage_time_summary" formatted="false">Laufzeit bei normaler Benutzung von 0% to 100% in Stunden:</string>
+  <string name="pref_show_heavy_usage" formatted="false">Starke Benutzung anzeigen</string>
+  <string name="pref_show_heavy_usage_summary" formatted="false">Restzeit bei starker Benutzung anzeigen?</string>
+  <string name="pref_heavy_usage_time" formatted="false">Starke Benutzung</string>
+  <string name="pref_heavy_usage_time_summary" formatted="false">Laufzeit bei starker Benutzung von 0% to 100% in Stunden:</string>
+  <string name="pref_show_constant_usage" formatted="false">Dauernder Benutzung anzeigen</string>
+  <string name="pref_show_constant_usage_summary" formatted="false">Restzeit bei dauernder Benutzung anzeigen?</string>
+  <string name="pref_constant_usage_time" formatted="false">Dauernde Benutzung</string>
+  <string name="pref_constant_usage_time_summary" formatted="false">Laufzeit bei dauernder Benutzung von 0% to 100% in Stunden:</string>
+  <string name="pref_cat_color" formatted="false">Icon Farbe</string>
+  <string name="pref_color_preview" formatted="false">Farbvorschau</string>
+  <string name="pref_red" formatted="false">Rotes Icon anzeigen</string>
+  <string name="pref_red_summary" formatted="false">Rotes Icon anzeigen, bei geringer Ladung?</string>
+  <string name="pref_red_thresh" formatted="false">Grenzwert für rot</string>
+  <string name="pref_red_thresh_summary" formatted="false">Rotes Icon bei Ladung unter (Prozent):</string>
+  <string name="pref_amber" formatted="false">Gelbes Icon anzeigen</string>
+  <string name="pref_amber_summary" formatted="false">Gelbes Icon anzeigen, bei mittlerer Ladung?</string>
+  <string name="pref_amber_thresh" formatted="false">Grenzwert für gelb</string>
+  <string name="pref_amber_thresh_summary" formatted="false">Gelbes Icon bei Ladung unter (Prozent):</string>
+  <string name="pref_amber_thresh_summary10" formatted="false">Gelbes Icon bei Ladung unter oder gleich (Prozent):</string>
+  <string name="pref_green" formatted="false">Grünes Icon anzeigen</string>
+  <string name="pref_green_summary" formatted="false">Grünes Icon anzeigen, bei hoher Ladung?</string>
+  <string name="pref_green_thresh" formatted="false">Grenzwert für grün</string>
+  <string name="pref_green_thresh_summary" formatted="false">Grünes Icon bei Ladung unter oder gleich (Prozent):</string>
+  <string name="pref_cat_device_specific" formatted="false">Geräte abhängige Einstellungen</string>
+  <string name="pref_ten_percent_mode" formatted="false">10% Modus</string>
+  <string name="pref_ten_percent_mode_summary" formatted="false">Zuerst die Hilfe lesen!</string>
+  <string name="alarms_overview" formatted="false">Übersicht Alarme</string>
+  <string name="pref_alarm_enabled" formatted="false">Alarm einschalten</string>
+  <string name="pref_cat_alarm_conditions" formatted="false">Alarm-Bedingungen</string>
+  <string name="pref_alarm_type" formatted="false">Alarmtyp</string>
+  <string name="pref_alarm_type_summary" formatted="false">Alarm auslösen wenn Batterie:</string>
+  <string name="pref_alarm_threshold" formatted="false">Grenzwert</string>
+  <string name="alarm_pref_not_used" formatted="false">Nicht benutzt für diesen Alarmtyp</string>
+  <string name="pref_alarm_threshold_summary" formatted="false">Alarm-Grenzwert:</string>
+  <string name="pref_cat_notification_settings" formatted="false">Benachrichtigungs Einstellungen</string>
+  <string name="pref_alarm_ringtone" formatted="false">Klingelton</string>
+  <string name="silent" formatted="false">Still</string>
+  <string name="pref_alarm_vibrate" formatted="false">Vibration</string>
+  <string name="pref_alarm_lights" formatted="false">Lampe</string>
+  <string-array name="statuses">
+    <item>Ausgesteckt</item>
+    <item>Unbekannt</item>
+    <item>Landend</item>
+    <item>Entladend</item>
+    <item>Nicht ladend</item>
+    <item>Voll geladen</item>
+  </string-array>
+  <string-array name="log_statuses">
+    <item>Ausgesteckt</item>
+    <item>Unbekannt</item>
+    <item>Angesteckt</item>
+    <item>Unbekannt</item>
+    <item>Unbekannt</item>
+    <item>Voll geladen</item>
+  </string-array>
+  <string-array name="log_statuses_old">
+    <item>Entladend</item>
+    <item>Unbekannt</item>
+    <item>Ladend</item>
+    <item>Unbekannt</item>
+    <item>Unbekannt</item>
+    <item>Voll geladen</item>
+  </string-array>
+  <string-array name="healths">
+    <item>Unbekannt</item>
+    <item>Unbekannt</item>
+    <item>Guter Zustand</item>
+    <item>Überhitzung</item>
+    <item>Tot</item>
+    <item>Überladung</item>
+    <item>Fehler</item>
+  </string-array>
+  <string-array name="pluggeds">
+    <item>Nicht angeschlossen</item>
+    <item>(Netz)</item>
+    <item>(USB)</item>
+    <item>(?)</item>
+  </string-array>
+  <string-array name="alarm_types_display">
+    <item>Voll geladen</item>
+    <item>Ladung unterschreite</item>
+    <item>Ladung überschreitet...</item>
+    <item>Temperatur überschreitet</item>
+    <item>Zustand Störung</item>
+  </string-array>
+  <string-array name="alarm_type_entries">
+    <item>Wird voll geladen</item>
+    <item>Ladung unterschreitet...</item>
+    <item>Ladung überschreitet...</item>
+    <item>Temperatur überschreitet...</item>
+    <item>Status gestört</item>
+  </string-array>
+  <string-array name="mw_theme_pref_entries">
+    <item>Standard klein</item>
+    <item>Bunt klein</item>
+    <item>Ganzes Bildschirm</item>
+  </string-array>
+  <string-array name="boot_pref_entries">
+    <item>Immer</item>
+    <item>Nie</item>
+    <item>Wenn es beim Herunterfahren läuft</item>
+  </string-array>
+  <string-array name="status_dur_est_entries">
+    <item>Immer</item>
+    <item>Nach 1 Stunde</item>
+    <item>Nach 2 Stunden</item>
+    <item>Nach 3 Stunden</item>
+    <item>Nach 6 Stunden</item>
+    <item>Nach 12 Stunden</item>
+  </string-array>
+  <string-array name="max_log_age_entries">
+    <item>1 Tag</item>
+    <item>2 Tage</item>
+    <item>4 Tage</item>
+    <item>1 Woche</item>
+    <item>2 Wochen</item>
+    <item>3 Wochen</item>
+    <item>4 Wochen</item>
+  </string-array>
+  <plurals name="n_log_items">
+    <item quantity="one">%d Protokoll Eintrag</item>
+    <item quantity="other">%d Protokoll Einträge</item>
+  </plurals>
+  <plurals name="for_n_hours">
+    <item quantity="one">Seit %d Stunde</item>
+    <item quantity="other">Seit %d Stunden</item>
+  </plurals>
+</resources>

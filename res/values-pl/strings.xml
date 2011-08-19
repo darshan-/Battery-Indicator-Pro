@@ -9,4 +9,275 @@
   <string name="settings_activity_name_free" formatted="false">Battery Indicator - Ustawienia</string>
   <string name="help_activity_name_free" formatted="false">Battery Indicator - Pomoc</string>
   <string name="battery_use_b" formatted="false">Sprawdź zużycie baterii</string>
+  <string name="upgrade_donate_b" formatted="false">Upgrade/Wspomóż...</string>
+  <string name="reenable_lock_screen" formatted="false">Ponownie włącz blok. ekranu</string>
+  <string name="disable_lock_screen" formatted="false">Wyłącz blok. ekranu</string>
+  <string name="confirm_disable" formatted="false">Czy wyłączyć blok. ekranu?</string>
+  <string name="confirm_disable_hint" formatted="false">Hint: To potwierdzenie możesz wyłączyć w ustawieniach.</string>
+  <string name="yes" formatted="false">Tak</string>
+  <string name="cancel" formatted="false">Anuluj</string>
+  <string name="confirm_close" formatted="false">Zamknąć?</string>
+  <string name="confirm_close_hint" formatted="false">Battery Indicator zostanie zamknięty i nie będziesz widział statusu w powiadomieniach.\n\nJeżeli chcesz widzieć status, zostaw program uruchomiony naciskając Anuluj i następnie przycisk Wstecz.</string>
+  <string name="confirm_clear_logs" formatted="false">Usunąć wszystkie logi?</string>
+  <string name="confirm_ten_percent_enable" formatted="false">Włączyć tryb 10%?</string>
+  <string name="confirm_ten_percent_disable" formatted="false">Wyłączyć tryb 10%</string>
+  <string name="first_run_title" formatted="false">Dziękuje!</string>
+  <string name="okay" formatted="false">OK</string>
+  <string name="none" formatted="false">Żaden</string>
+  <string name="menu_logs" formatted="false">Logi</string>
+  <string name="menu_settings" formatted="false">Ustawienia</string>
+  <string name="menu_close" formatted="false">Zamknij</string>
+  <string name="menu_help" formatted="false">Pomoc</string>
+  <string name="menu_clear" formatted="false">Wyczyść</string>
+  <string name="menu_reverse" formatted="false">Odwróć kolejność</string>
+  <string name="menu_export" formatted="false">Eksport do CVS</string>
+  <string name="menu_delete_alarm" formatted="false">Usuń alarm</string>
+  <string name="percent_symbol" formatted="false">%</string>
+  <string name="degree_symbol" formatted="false">°</string>
+  <string name="fahrenheit" formatted="false">Fahrenheit</string>
+  <string name="fahrenheit_symbol" formatted="false">F</string>
+  <string name="celsius" formatted="false">Celsius</string>
+  <string name="celsius_symbol" formatted="false">C</string>
+  <string name="volt_symbol" formatted="false">V</string>
+  <string name="fully_charged_in" formatted="false">W pełni naładowana w:</string>
+  <string name="light_usage" formatted="false">Lekkie użytk., pozostało:</string>
+  <string name="normal_usage" formatted="false">Normalne użytk., pozostało:</string>
+  <string name="heavy_usage" formatted="false">Mocne użytk., pozostało:</string>
+  <string name="constant_usage" formatted="false">Ciągłe użytk., pozostało:</string>
+  <string name="press_back_to_leave" formatted="false">Naciśnij Wstecz aby wyjść.</string>
+  <string name="press_menu_for_more" formatted="false">Naciśnij Menu dla więcej opcji.</string>
+  <string name="inaccessible_storage" formatted="false">Karta SD jest niedostępna.</string>
+  <string name="inaccessible_w_reason" formatted="false">Karta SD jest niedostępna:</string>
+  <string name="read_only_storage" formatted="false">Karta SD jest w trybie tylko do odczytu.</string>
+  <string name="file_written" formatted="false">Plik został zapisany na Kartę SD.</string>
+  <string name="date" formatted="false">data</string>
+  <string name="time" formatted="false">czas</string>
+  <string name="status" formatted="false">status</string>
+  <string name="voltage" formatted="false">volty</string>
+  <string name="alarm_fully_charged" formatted="false">Bateria jest w pełni naładowana.</string>
+  <string name="alarm_charge_drops" formatted="false">"Stan baterii jest poniżej "</string>
+  <string name="alarm_charge_rises" formatted="false">"Stan baterii jest powyżej "</string>
+  <string name="alarm_temp_rises" formatted="false">"Temp. baterii jest powyżej "</string>
+  <string name="alarm_health_failure" formatted="false">"Stan zdrowia baterii: "</string>
+  <string name="alarm_text" formatted="false">Edytuj alarmy.</string>
+  <string name="logs_empty" formatted="false">Brak logów</string>
+  <string name="discharging_from" formatted="false">Rozładowywanie od</string>
+  <string name="charging_from" formatted="false">Ładowanie od</string>
+  <string name="fully_charged" formatted="false">W pełni naładowana</string>
+  <string name="since" formatted="false">Od</string>
+  <string name="one_six_needed" formatted="false">Tylko dla Android 1.6+!</string>
+  <string name="currently_using" formatted="false">W użyciu</string>
+  <string name="currently_set_to" formatted="false">"Ustawione na: "</string>
+  <string name="currently_disabled" formatted="false">Wyłączone</string>
+  <string name="help_cat_version" formatted="false">Wersja</string>
+  <string name="help_cat_changelog" formatted="false">Lista zmian</string>
+  <string name="help_cat_introduction" formatted="false">Wstęp</string>
+  <string name="help_cat_summary" formatted="false">Podsumowanie</string>
+  <string name="help_cat_limitations" formatted="false">Ograniczenia</string>
+  <string name="help_cat_features" formatted="false">Cechy</string>
+  <string name="help_cat_no_warranty" formatted="false">Brak gwarancji</string>
+  <string name="help_cat_acknowledgments" formatted="false">Uznania</string>
+  <string name="help_cat_translations" formatted="false">Tłumaczenia</string>
+  <string name="help_subcat_translators" formatted="false">Tłumacze</string>
+  <string name="help_cat_contact" formatted="false">Kontakt</string>
+  <string name="pref_hint" formatted="false">Hint: Naciśnij Menu po pomoc.</string>
+  <string name="settings_overview" formatted="false">Przegląd</string>
+  <string name="color_settings" formatted="false">Kolory i Tematy</string>
+  <string name="color_settings_summary" formatted="false">Ustaw kolory ikon i okien</string>
+  <string name="color_settings_help" formatted="false">Możesz zmienić temat kolorystyczny i kontrolować kolory ikon statusu.</string>
+  <string name="time_settings" formatted="false">Ustawienia czasów</string>
+  <string name="time_settings_summary" formatted="false">Ustaw estymowane czasy użycia baterii</string>
+  <string name="alarm_settings_subtitle" formatted="false">Ustawienia alarmów</string>
+  <string name="alarm_settings" formatted="false">Alarmy</string>
+  <string name="alarm_settings_summary" formatted="false">Ustaw powiadomienia o niskim/pełnym poziomie baterii</string>
+  <string name="alarm_settings_help" formatted="false">Możesz ustawić powiadomienia kiedy poziom baterii osiągnie określony punkt (np. gdy bateria będzie w pełni naładowana, poziom baterii spadnie poniżej 20%, itp).</string>
+  <string name="other_settings" formatted="false">Inne ustawienia</string>
+  <string name="other_settings_help" formatted="false">Wszystkie inne ustawienia, jak logowanie, blok. ekranu czy autostart aplikacji.</string>
+  <string name="pref_cat_more_settings_in_pro" formatted="false">Więcej ustawień w wersji Pro</string>
+  <string name="add_alarm" formatted="false">Dodaj alarm</string>
+  <string name="pref_cat_themes" formatted="false">Tematy</string>
+  <string name="pref_main_window_theme" formatted="false">Temat głównego okna</string>
+  <string name="pref_icon_plugin" formatted="false">Plugin ikony</string>
+  <string name="pref_cat_logging" formatted="false">Logowanie</string>
+  <string name="pref_enable_logging" formatted="false">Włącz logowanie</string>
+  <string name="pref_enable_logging_summary" formatted="false">Czy logować zmiany stanu baterii?</string>
+  <string name="pref_log_everything" formatted="false">Loguj wszystko</string>
+  <string name="pref_log_everything_summary" formatted="false">Czy logować także fakt ładowania?</string>
+  <string name="pref_max_log_age" formatted="false">Maksymalny czas logu</string>
+  <string name="pref_max_log_age_summary" formatted="false">Usuń logi starsze niż:</string>
+  <string name="pref_cat_keyguard" formatted="false">Blokada ekranu</string>
+  <string name="pref_confirm_manual_disable" formatted="false">Potwierdź manualne wyłączenie</string>
+  <string name="pref_confirm_manual_disable_summary" formatted="false">Potwierdzać kiedy blok. ekranu wyłączana ręcznie?</string>
+  <string name="pref_finish_after_toggle_lock" formatted="false">Zakończ po zmianie blokady</string>
+  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Zakończ zaraz po zablok. ekranu?</string>
+  <string name="pref_auto_disable" formatted="false">Automatycznie wyłącz blok. ekranu</string>
+  <string name="pref_auto_disable_summary" formatted="false">Czy wyłączyć blok. ekranu podczas ładowania?</string>
+  <string name="pref_disallow_disable_lock_screen" formatted="false">Nie pozwól na ręczne wyłączenie</string>
+  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Nie pozwalaj na użycie przycisku ręcznego wyłączenie blokady ekranu?</string>
+  <string name="pref_cat_battery_use" formatted="false">Użycie baterii</string>
+  <string name="pref_finish_after_battery_use" formatted="false">Zakończ po uruchomieniu</string>
+  <string name="pref_finish_after_battery_use_summary" formatted="false">Zakończ zaraz po uruchomieniu ekranu zużycia baterii?</string>
+  <string name="pref_cat_temperature_unit" formatted="false">Jednostka temperatury</string>
+  <string name="pref_convert_to_fahrenheit" formatted="false">Konwertuj na Fahrenheita</string>
+  <string name="pref_convert_to_fahrenheit_help" formatted="false">Android raportuje temperaturę baterii w stopniach Celcjusza. Jeżeli wolisz stopnie Fahrenheita, to zaznacz tą opcję i aplikacja wykona konwersję.</string>
+  <string name="pref_cat_autostart" formatted="false">Autostart</string>
+  <string name="pref_autostart_at_boot" formatted="false">Startuj razem z telefonem</string>
+  <string name="pref_autostart_at_boot_summary" formatted="false">Startuj aplikację gdy telefon zostanie uruchomiony:</string>
+  <string name="pref_cat_charge_as_text" formatted="false">Poziom naładowania tekstowo</string>
+  <string name="pref_charge_as_text" formatted="false">Poziom naładowania tekstowo</string>
+  <string name="pref_charge_as_text_summary" formatted="false">Pokazywać poziom naładowania jako tekst przy ikonie?</string>
+  <string name="pref_cat_status_duration" formatted="false">Powiadomienia o stanie</string>
+  <string name="pref_status_dur_est" formatted="false">Kiedy zmienić</string>
+  <string name="pref_status_dur_est_summary" formatted="false">Zacznij pokazywać godziny po czasie:</string>
+  <string name="pref_status_dur_est_help" formatted="false">Określa, kiedy powiadomienie zmienia się z postaci \"Odłączony od 13:10\" na postać \"Odłączony od 3 godzin\".</string>
+  <string name="pref_cat_time_remaining_estimates" formatted="false">Pozostały czas użycia</string>
+  <string name="pref_show_charge_time" formatted="false">Pokazuj czas do naładowania</string>
+  <string name="pref_show_charge_time_summary" formatted="false">Czy pokazywać czas pozostały do naładowania?</string>
+  <string name="pref_usb_charge_time" formatted="false">Ładowanie przez USB</string>
+  <string name="pref_usb_charge_time_summary" formatted="false">Czas ładowanie przez USB od 0% do 100%, w godzinach:</string>
+  <string name="pref_usb_charge_time_help" formatted="false">Wpisz jak długo twoja bateria naładuje się od 0% do 100% przy ładowaniu przez USB.</string>
+  <string name="pref_ac_charge_time" formatted="false">Ładowanie z sieci</string>
+  <string name="pref_ac_charge_time_summary" formatted="false">Czas ładowania z sieci od 0% do 100%, w godzinach:</string>
+  <string name="pref_ac_charge_time_help" formatted="false">Wpisz jak długo twoja bateria naładuje się od 0% do 100% przy ładowaniu z sieci.</string>
+  <string name="pref_show_light_usage" formatted="false">Pokaż dla lekkiego użytkowania</string>
+  <string name="pref_show_light_usage_summary" formatted="false">Czy pokazywać pozostały czas baterii dla lekkiego użytkowania?</string>
+  <string name="pref_show_light_usage_help" formatted="false">Określa czy pokazywać pozostały czas baterii przy lekkim użytkowaniu telefonu.</string>
+  <string name="pref_light_usage_time" formatted="false">Lekkie użytkownie</string>
+  <string name="pref_light_usage_time_summary" formatted="false">Czas lekkiego użytkowania od 100% do 0%, w godzinach:</string>
+  <string name="pref_show_normal_usage" formatted="false">Pokaż dla normalnego użytkownia</string>
+  <string name="pref_show_normal_usage_summary" formatted="false">Czy pokazywać pozostały czas baterii dla normalnego użytkowania?</string>
+  <string name="pref_normal_usage_time" formatted="false">Normalne użytkownie</string>
+  <string name="pref_normal_usage_time_summary" formatted="false">Czas normalnego użytkowania od 100% do 0%, w godzinach:</string>
+  <string name="pref_show_heavy_usage" formatted="false">Pokaż dla mocnego użytkowania</string>
+  <string name="pref_show_heavy_usage_summary" formatted="false">Czy pokazywać pozostały czas baterii dla mocnego użytkowania?</string>
+  <string name="pref_heavy_usage_time" formatted="false">Mocne użytkowanie</string>
+  <string name="pref_heavy_usage_time_summary" formatted="false">Czas mocnego użytkowania od 100% do 0%, w godzinach:</string>
+  <string name="pref_show_constant_usage" formatted="false">Pokaż dla ciągłego użytkowania</string>
+  <string name="pref_show_constant_usage_summary" formatted="false">Czy pokazywać pozostały czas baterii dla ciągłego użytkowania?</string>
+  <string name="pref_constant_usage_time" formatted="false">Ciągłe użytkowanie</string>
+  <string name="pref_constant_usage_time_summary" formatted="false">Czas ciągłego użytkowania od 100% do 0%, w godzinach:</string>
+  <string name="pref_cat_color" formatted="false">Kolor ikony</string>
+  <string name="pref_color_preview" formatted="false">Podgląd koloru</string>
+  <string name="pref_red" formatted="false">Użyj czerwonej ikony</string>
+  <string name="pref_red_summary" formatted="false">Użyj czerwonej ikony gdy poziom baterii jest niski?</string>
+  <string name="pref_red_help" formatted="false">Określa, czy użyć czerwonej ikony, gdy poziom baterii spadnie poniżej określonej wartości.</string>
+  <string name="pref_red_thresh" formatted="false">Poziom czerwonej ikony</string>
+  <string name="pref_red_thresh_summary" formatted="false">Czerwona ikona gdy poziom poniżej:</string>
+  <string name="pref_red_thresh_summary10" formatted="false">Czerwona ikona gdy poziom poniżej:</string>
+  <string name="pref_amber" formatted="false">Użyj pomarańczowej ikony</string>
+  <string name="pref_amber_summary" formatted="false">Czy użyć pomarańczowej ikony, gdy poziom baterii jest średni?</string>
+  <string name="pref_amber_help" formatted="false">Określa, czy użyć pomarańczowej ikony, gdy poziom baterii spadnie poniżej określonej wartości.</string>
+  <string name="pref_amber_thresh" formatted="false">Poziom pomarańczowej ikony</string>
+  <string name="pref_amber_thresh_summary" formatted="false">Czerwona ikona gdy poziom poniżej:</string>
+  <string name="pref_amber_thresh_summary10" formatted="false">Czerwona ikona gdy poziom poniżej:</string>
+  <string name="pref_green" formatted="false">Użyj zielonej ikony</string>
+  <string name="pref_green_summary" formatted="false">Czy użyć zielonej ikony, gdy poziom baterii jest wysoki?</string>
+  <string name="pref_green_help" formatted="false">Określa, czy użyć zielonej ikony, gdy poziom baterii jest powyżej określonej wartości.</string>
+  <string name="pref_green_thresh" formatted="false">Poziom zielonej ikony</string>
+  <string name="pref_green_thresh_summary" formatted="false">Czerwona ikona gdy poziom powyżej:</string>
+  <string name="pref_cat_device_specific" formatted="false">Ustawienia specyficzne dla urządzenia</string>
+  <string name="pref_ten_percent_mode" formatted="false">Tryb 10%</string>
+  <string name="pref_ten_percent_mode_summary" formatted="false">Przeczytaj najpierw pomoc!</string>
+  <string name="alarms_overview" formatted="false">Alarmy</string>
+  <string name="pref_alarm_enabled" formatted="false">Włącz alarm</string>
+  <string name="pref_cat_alarm_conditions" formatted="false">Warunki alarmu</string>
+  <string name="pref_cat_alarm_conditions_help" formatted="false">Tutaj możesz ustawić warunki uruchomienia alarmu.</string>
+  <string name="pref_alarm_type" formatted="false">Typ alarmu</string>
+  <string name="pref_alarm_type_summary" formatted="false">Włącz alarm, gdy bateria:</string>
+  <string name="pref_alarm_threshold" formatted="false">Poziom</string>
+  <string name="alarm_pref_not_used" formatted="false">Nie używane przez ten typ alarmu</string>
+  <string name="pref_alarm_threshold_summary" formatted="false">Poziom alarmu:</string>
+  <string name="pref_cat_notification_settings" formatted="false">Ustawienia powiadomień</string>
+  <string name="pref_alarm_ringtone" formatted="false">Dzwonek</string>
+  <string name="silent" formatted="false">Wuciszony</string>
+  <string name="pref_alarm_vibrate" formatted="false">Wibracja</string>
+  <string name="pref_alarm_lights" formatted="false">Flash</string>
+  <string-array name="statuses">
+    <item>Odłączony</item>
+    <item>Nieznany</item>
+    <item>Ładowanie</item>
+    <item>Rozładowanie</item>
+    <item>Nie ładuje</item>
+    <item>W pełni naładowany</item>
+  </string-array>
+  <string-array name="log_statuses">
+    <item>Odłączony</item>
+    <item>Nieznany</item>
+    <item>Podłączony</item>
+    <item>Nieznany</item>
+    <item>Nieznany</item>
+    <item>W pełni naładowany</item>
+  </string-array>
+  <string-array name="log_statuses_old">
+    <item>Rozładowanie</item>
+    <item>Nieznany</item>
+    <item>Ładowanie</item>
+    <item>Nieznany</item>
+    <item>Nieznany</item>
+    <item>W pełni naładowany</item>
+  </string-array>
+  <string-array name="healths">
+    <item>Nieznany</item>
+    <item>Nieznany</item>
+    <item>Zdrowa</item>
+    <item>Przegrzana</item>
+    <item>Martwa</item>
+    <item>Przeładowana</item>
+    <item>Defekt</item>
+  </string-array>
+  <string-array name="pluggeds">
+    <item>Odłączony</item>
+    <item>(AC)</item>
+    <item>(USB)</item>
+    <item>(?)</item>
+  </string-array>
+  <string-array name="alarm_types_display">
+    <item>W pełni naładowana</item>
+    <item>Poziom spadł poniżej</item>
+    <item>Poziom wzrósł powyżej</item>
+    <item>Temperatura wzrosła powyżej</item>
+    <item>Defekt zdrowia</item>
+  </string-array>
+  <string-array name="alarm_type_entries">
+    <item>W pełni naładowana</item>
+    <item>Poziom spadł poniżej...</item>
+    <item>Poziom wzrósł powyżej</item>
+    <item>Temperatura wzrosła powyżej...</item>
+    <item>Defekt zdrowia</item>
+  </string-array>
+  <string-array name="mw_theme_pref_entries">
+    <item>Domyślnie mały</item>
+    <item>Kolorowy mały</item>
+    <item>Pełne okno</item>
+  </string-array>
+  <string-array name="boot_pref_entries">
+    <item>Zawsze</item>
+    <item>Nigdy</item>
+    <item>Jeżeli uruchomiona przy wyłączaniu</item>
+  </string-array>
+  <string-array name="status_dur_est_entries">
+    <item>Zawsze</item>
+    <item>Po 1 godzinie</item>
+    <item>Po 2 godzinach</item>
+    <item>Po 3 godzinach</item>
+    <item>Po 6 godzinach</item>
+    <item>Po 12 godzinach</item>
+  </string-array>
+  <string-array name="max_log_age_entries">
+    <item>1 dzień</item>
+    <item>2 dni</item>
+    <item>4 dni</item>
+    <item>1 tydzień</item>
+    <item>2 tygodnie</item>
+    <item>3 tygodnie</item>
+    <item>4 tygodnie</item>
+  </string-array>
+  <plurals name="n_log_items">
+    <item quantity="one">%d Log</item>
+    <item quantity="other">%d Logów</item>
+  </plurals>
+  <plurals name="for_n_hours">
+    <item quantity="one">Przez %d godzinę</item>
+    <item quantity="other">Przez %d godzin</item>
+  </plurals>
 </resources>

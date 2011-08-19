@@ -320,6 +320,9 @@
     <item>2 Jours</item>
     <item>4 Jours</item>
     <item>1 Semaine</item>
+    <item>2 semaines</item>
+    <item>3 semaines</item>
+    <item>4 semaines</item>
   </string-array>
   <plurals name="n_log_items">
     <item quantity="zero">%d journal</item>
