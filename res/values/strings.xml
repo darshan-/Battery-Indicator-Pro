@@ -32,6 +32,16 @@
     button to leave the main window.
   </string>
 
+  <string formatted="false" name="need_uninstall">Uninstall Needed</string>
+  <string formatted="false" name="need_uninstall_hint">
+    Battery Indicator Pro needs to be uninstalled (and then
+    reinstalled) in order to complete this major upgrade. I\'m very
+    sorry for the inconvenience. This is required due to a technical
+    limitation of Android. It will not be required again for any
+    future upgrades. Be sure to go through the settings after
+    reinstalling and set them according to your preferences.
+  </string>
+
   <string formatted="false" name="confirm_clear_logs">Really clear all logs?</string>
 
   <string formatted="false" name="confirm_ten_percent_enable">Really enable 10% Mode?</string>

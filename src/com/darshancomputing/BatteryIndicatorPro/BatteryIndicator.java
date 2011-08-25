@@ -63,10 +63,12 @@ public class BatteryIndicator extends Activity {
     private DisplayMetrics metrics;
     private Button battery_use_b;
     private Button toggle_lock_screen_b;
+    private boolean early_exit = false;
 
     private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
     private static final int DIALOG_CONFIRM_CLOSE = 1;
     private static final int DIALOG_FIRST_RUN = 2;
+    private static final int DIALOG_NEED_UNINSTALL = 3;
 
     private final Handler mHandler = new Handler();
     private final Runnable mUpdateStatus = new Runnable() {
@@ -107,41 +109,50 @@ public class BatteryIndicator extends Activity {
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        settings = PreferenceManager.getDefaultSharedPreferences(context);
+        try {
+            new AlarmDatabase(context);
+        } catch (Exception e) {
+            early_exit = true;
+            showDialog(DIALOG_NEED_UNINSTALL);
+        }
 
-        disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
-        themeName = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
-        setTheme();
+        if (!early_exit) {
+            settings = PreferenceManager.getDefaultSharedPreferences(context);
 
-        if (settings.getInt("last_percent", -1) == -1) showDialog(DIALOG_FIRST_RUN);
+            disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
+            themeName = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
+            setTheme();
 
-        biServiceIntent = new Intent(this, BatteryIndicatorService.class);
-        startService(biServiceIntent);
-        bindService(biServiceIntent, biServiceConnection, 0);
+            if (settings.getInt("last_percent", -1) == -1) showDialog(DIALOG_FIRST_RUN);
 
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putBoolean("serviceDesired", true);
-        editor.commit();
+            biServiceIntent = new Intent(this, BatteryIndicatorService.class);
+            startService(biServiceIntent);
+            bindService(biServiceIntent, biServiceConnection, 0);
 
-        setTitle(res.getString(R.string.app_full_name));
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("serviceDesired", true);
+            editor.commit();
+
+            setTitle(res.getString(R.string.app_full_name));
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbindService(biServiceConnection);
+        if (!early_exit) unbindService(biServiceConnection);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
+        if (!early_exit) registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(mBatteryInfoReceiver);
+        if (!early_exit) unregisterReceiver(mBatteryInfoReceiver);
     }
 
     @Override
@@ -239,6 +250,21 @@ public class BatteryIndicator extends Activity {
                 .setView(layout)
                 .setPositiveButton(str.okay, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface di, int id) {
+                        di.cancel();
+                    }
+                });
+
+            dialog = builder.create();
+            break;
+        case DIALOG_NEED_UNINSTALL:
+            builder.setTitle(str.need_uninstall)
+                .setMessage(str.need_uninstall_hint)
+                .setPositiveButton(str.okay, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface di, int id) {
+                        //finishActivity(1);
+                        //stopService(biServiceIntent);
+                        finish();
+
                         di.cancel();
                     }
                 });
@@ -387,6 +413,8 @@ public class BatteryIndicator extends Activity {
         public String confirm_disable_hint;
         public String confirm_close;
         public String confirm_close_hint;
+        public String need_uninstall;
+        public String need_uninstall_hint;
         public String yes;
         public String cancel;
         public String battery_use_b;
@@ -406,6 +434,8 @@ public class BatteryIndicator extends Activity {
             confirm_disable_hint = res.getString(R.string.confirm_disable_hint);
             confirm_close        = res.getString(R.string.confirm_close);
             confirm_close_hint   = res.getString(R.string.confirm_close_hint);
+            need_uninstall       = res.getString(R.string.need_uninstall);
+            need_uninstall_hint  = res.getString(R.string.need_uninstall_hint);
             yes                  = res.getString(R.string.yes);
             cancel               = res.getString(R.string.cancel);
             battery_use_b        = res.getString(R.string.battery_use_b);
