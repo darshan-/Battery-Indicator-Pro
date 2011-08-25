@@ -83,7 +83,7 @@ public class LogDatabase {
 
     public void prune(int max_hours) {
         long currentTM = System.currentTimeMillis();
-        long oldest_log = currentTM - (max_hours * 60 * 60 * 1000);
+        long oldest_log = currentTM - ((long) max_hours * 60 * 60 * 1000);
 
         wdb.execSQL("DELETE FROM " + LOG_TABLE_NAME + " WHERE " + KEY_TIME + " < " + oldest_log);
     }
