@@ -24,7 +24,7 @@ public class PluginServiceConnection implements ServiceConnection {
 
     public void onServiceConnected(ComponentName name, IBinder iBinder) {
         try {
-            Class c = iBinder.getClass();
+            Class<?> c = iBinder.getClass();
             java.lang.reflect.Method m = c.getMethod("getService", (Class[]) null);
             service = m.invoke(iBinder, (Object[]) null);
         } catch (Exception e) {

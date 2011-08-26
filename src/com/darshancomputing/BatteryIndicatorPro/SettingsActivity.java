@@ -634,8 +634,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         PackageManager pm = getPackageManager();
         java.util.List<PackageInfo> packages = pm.getInstalledPackages(0);
 
-        java.util.List<String> entriesList = new java.util.ArrayList();
-        java.util.List<String>  valuesList = new java.util.ArrayList();
+        java.util.List<String> entriesList = new java.util.ArrayList<String>();
+        java.util.List<String>  valuesList = new java.util.ArrayList<String>();
 
         entriesList.add(res.getString(R.string.none));
          valuesList.add("none");
