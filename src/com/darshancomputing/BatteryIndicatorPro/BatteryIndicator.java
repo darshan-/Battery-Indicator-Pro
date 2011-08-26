@@ -27,6 +27,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -261,10 +262,17 @@ public class BatteryIndicator extends Activity {
                 .setMessage(str.need_uninstall_hint)
                 .setPositiveButton(str.okay, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface di, int id) {
-                        //finishActivity(1);
-                        //stopService(biServiceIntent);
-                        finish();
+                        try {
+                            startActivity(new Intent(Intent.ACTION_VIEW,
+                                                     Uri.parse("market://details?id=com.darshancomputing.BatteryIndicatorPro")));
+                        } catch (Exception e) {
+                            Toast.makeText(getApplicationContext(), "Sorry, can't launch Market!", Toast.LENGTH_SHORT).show();
+                        }
 
+                        startActivity(new Intent(Intent.ACTION_DELETE,
+                                                 Uri.parse("package:com.darshancomputing.BatteryIndicatorPro")));
+
+                        finish();
                         di.cancel();
                     }
                 });
