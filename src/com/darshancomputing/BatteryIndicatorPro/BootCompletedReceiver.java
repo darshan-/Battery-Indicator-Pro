@@ -25,11 +25,12 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences sp_store = context.getSharedPreferences("sp_store", 0);
 
         String startPref = settings.getString(SettingsActivity.KEY_AUTOSTART, "auto");
 
         if (startPref.equals("always") ||
-            (startPref.equals("auto") && settings.getBoolean("serviceDesired", false))){
+            (startPref.equals("auto") && sp_store.getBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, false))){
             ComponentName comp = new ComponentName(context.getPackageName(),
                                                    BatteryIndicatorService.class.getName());
             context.startService(new Intent().setComponent(comp));

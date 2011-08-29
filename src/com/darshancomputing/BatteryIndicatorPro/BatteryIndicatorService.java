@@ -47,6 +47,8 @@ public class BatteryIndicatorService extends Service {
 
     private NotificationManager mNotificationManager;
     private SharedPreferences settings;
+    private SharedPreferences sp_store;
+
     private KeyguardLock kl;
     private KeyguardManager km;
     private android.os.Vibrator mVibrator;
@@ -84,6 +86,19 @@ public class BatteryIndicatorService extends Service {
     private static final int HEALTH_OVERVOLTAGE = 5;
     private static final int HEALTH_FAILURE     = 6;
     private static final int HEALTH_MAX = HEALTH_FAILURE;
+
+
+    public static final String KEY_LAST_STATUS_SINCE = "last_status_since";
+    public static final String KEY_LAST_STATUS_CTM = "last_status_cTM";
+    public static final String KEY_LAST_STATUS = "last_status";
+    public static final String KEY_LAST_PERCENT = "last_percent";
+    public static final String KEY_LAST_PLUGGED = "last_plugged";
+    public static final String KEY_PREVIOUS_CHARGE = "previous_charge";
+    public static final String KEY_PREVIOUS_TEMP = "previous_temp";
+    public static final String KEY_PREVIOUS_HEALTH = "previous_health";
+    public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
+    public static final String KEY_SERVICE_DESIRED = "serviceDesired";
+
 
     /* Global variables for these Notification Runnables */
     private Notification mainNotification;
@@ -139,6 +154,7 @@ public class BatteryIndicatorService extends Service {
         mAudioManager = (android.media.AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         settings = PreferenceManager.getDefaultSharedPreferences(context);
+        sp_store = context.getSharedPreferences("sp_store", 0);
 
         mainWindowIntent = new Intent(context, BatteryIndicator.class);
         alarmsIntent = new Intent(context, AlarmsActivity.class);
@@ -146,7 +162,7 @@ public class BatteryIndicatorService extends Service {
         km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         kl = km.newKeyguardLock(getPackageName());
 
-        if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
+        if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
             setEnablednessOfKeyguard(false);
 
         pluginPackage = "none";
@@ -206,7 +222,7 @@ public class BatteryIndicatorService extends Service {
                 }
             }
 
-            SharedPreferences.Editor editor = settings.edit();
+            SharedPreferences.Editor editor = sp_store.edit();
             String action = intent.getAction();
             if (! Intent.ACTION_BATTERY_CHANGED.equals(action)) return;
 
@@ -253,16 +269,16 @@ public class BatteryIndicatorService extends Service {
             if (status == STATUS_CHARGING)
                 statusStr += " " + str.pluggeds[plugged]; /* Add '(AC)' or '(USB)' */
 
-            int last_status = settings.getInt("last_status", -1);
+            int last_status = sp_store.getInt(KEY_LAST_STATUS, -1);
             /* There's a bug, at least on 1.5, or maybe depending on the hardware (I've noticed it on the MyTouch with 1.5)
                where USB is recognized as AC at first, then quickly changed to USB.  So we need to test if plugged changed. */
-            int last_plugged = settings.getInt("last_plugged", -1);
-            long last_status_cTM = settings.getLong("last_status_cTM", -1);
-            int last_percent = settings.getInt("last_percent", -1);
-            int previous_charge = settings.getInt("previous_charge", 100);
+            int last_plugged = sp_store.getInt(KEY_LAST_PLUGGED, -1);
+            long last_status_cTM = sp_store.getLong(KEY_LAST_STATUS_CTM, -1);
+            int last_percent = sp_store.getInt(KEY_LAST_PERCENT, -1);
+            int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
             long currentTM = System.currentTimeMillis();
             long statusDuration;
-            String last_status_since = settings.getString("last_status_since", null);
+            String last_status_since = sp_store.getString(KEY_LAST_STATUS_SINCE, null);
             LogDatabase logs = new LogDatabase(context);
 
             if (last_status != status || last_status_cTM == -1 || last_percent == -1 ||
@@ -278,14 +294,14 @@ public class BatteryIndicatorService extends Service {
                         logs.prune(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAX_LOG_AGE, str.default_max_log_age)));
                 }
 
-                editor.putString("last_status_since", last_status_since);
-                editor.putLong("last_status_cTM", currentTM);
-                editor.putInt("last_status", status);
-                editor.putInt("last_percent", percent);
-                editor.putInt("last_plugged", plugged);
-                editor.putInt("previous_charge", percent);
-                editor.putInt("previous_temp", temperature);
-                editor.putInt("previous_health", health);
+                editor.putString(KEY_LAST_STATUS_SINCE, last_status_since);
+                editor.putLong(KEY_LAST_STATUS_CTM, currentTM);
+                editor.putInt(KEY_LAST_STATUS, status);
+                editor.putInt(KEY_LAST_PERCENT, percent);
+                editor.putInt(KEY_LAST_PLUGGED, plugged);
+                editor.putInt(KEY_PREVIOUS_CHARGE, percent);
+                editor.putInt(KEY_PREVIOUS_TEMP, temperature);
+                editor.putInt(KEY_PREVIOUS_HEALTH, health);
 
                 last_status_cTM = currentTM;
 
@@ -294,10 +310,10 @@ public class BatteryIndicatorService extends Service {
 
                 if (last_status != status && settings.getBoolean(SettingsActivity.KEY_AUTO_DISABLE_LOCKING, false)) {
                     if (last_status == STATUS_UNPLUGGED) {
-                        editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, true);
+                        editor.putBoolean(KEY_DISABLE_LOCKING, true);
                         setEnablednessOfKeyguard(false);
                     } else if (status == STATUS_UNPLUGGED) {
-                        editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false);
+                        editor.putBoolean(KEY_DISABLE_LOCKING, false);
                         setEnablednessOfKeyguard(true);
 
                         /* If the screen was on, "inside" the keyguard, when the keyguard was disabled, then we're
@@ -322,9 +338,9 @@ public class BatteryIndicatorService extends Service {
                     logs.logStatus(status, plugged, percent, temperature, voltage, currentTM, LogDatabase.STATUS_OLD);
 
                 if (percent % 10 == 0) {
-                    editor.putInt("previous_charge", percent);
-                    editor.putInt("previous_temp", temperature);
-                    editor.putInt("previous_health", health);
+                    editor.putInt(KEY_PREVIOUS_CHARGE, percent);
+                    editor.putInt(KEY_PREVIOUS_TEMP, temperature);
+                    editor.putInt(KEY_PREVIOUS_HEALTH, health);
                 }
             }
             logs.close();
@@ -383,7 +399,7 @@ public class BatteryIndicatorService extends Service {
 
                 c = alarms.activeAlarmChargeDrops(percent, previous_charge);
                 if (c != null) {
-                    editor.putInt("previous_charge", percent);
+                    editor.putInt(KEY_PREVIOUS_CHARGE, percent);
                     notification = parseAlarmCursor(c);
                     notification.setLatestEventInfo(context, str.alarm_charge_drops + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
                                                     str.alarm_text, contentIntent);
@@ -393,7 +409,7 @@ public class BatteryIndicatorService extends Service {
 
                 c = alarms.activeAlarmChargeRises(percent, previous_charge);
                 if (c != null) {
-                    editor.putInt("previous_charge", percent);
+                    editor.putInt(KEY_PREVIOUS_CHARGE, percent);
                     notification = parseAlarmCursor(c);
                     notification.setLatestEventInfo(context, str.alarm_charge_rises + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
                                                     str.alarm_text, contentIntent);
@@ -401,9 +417,9 @@ public class BatteryIndicatorService extends Service {
                     c.close();
                 }                
 
-                c = alarms.activeAlarmTempRises(temperature, settings.getInt("previous_temp", 1));
+                c = alarms.activeAlarmTempRises(temperature, sp_store.getInt(KEY_PREVIOUS_TEMP, 1));
                 if (c != null) {
-                    editor.putInt("previous_temp", temperature);
+                    editor.putInt(KEY_PREVIOUS_TEMP, temperature);
                     notification = parseAlarmCursor(c);
                     notification.setLatestEventInfo(context, str.alarm_temp_rises +
                                                     str.formatTemp(c.getInt(alarms.INDEX_THRESHOLD), convertF, false),
@@ -412,10 +428,10 @@ public class BatteryIndicatorService extends Service {
                     c.close();
                 }                
 
-                if (health > HEALTH_GOOD && health != settings.getInt("previous_health", HEALTH_GOOD)) {
+                if (health > HEALTH_GOOD && health != sp_store.getInt(KEY_PREVIOUS_HEALTH, HEALTH_GOOD)) {
                     c = alarms.activeAlarmFailure();
                     if (c != null) {
-                        editor.putInt("previous_health", health);
+                        editor.putInt(KEY_PREVIOUS_HEALTH, health);
                         notification = parseAlarmCursor(c);
                         notification.setLatestEventInfo(context, str.alarm_health_failure + str.healths[health],
                                                         str.alarm_text, contentIntent);
@@ -500,7 +516,7 @@ public class BatteryIndicatorService extends Service {
     }
 
     public void reloadSettings() {
-        if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
+        if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
             setEnablednessOfKeyguard(false);
         else
             setEnablednessOfKeyguard(true);

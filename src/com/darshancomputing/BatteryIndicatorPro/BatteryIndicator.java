@@ -31,7 +31,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -49,6 +48,7 @@ import android.widget.Toast;
 public class BatteryIndicator extends Activity {
     private Intent biServiceIntent;
     private SharedPreferences settings;
+    private SharedPreferences sp_store;
     private final BIServiceConnection biServiceConnection = new BIServiceConnection();
 
     private static final Intent batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY)
@@ -61,7 +61,6 @@ public class BatteryIndicator extends Activity {
     private Boolean disallowLockButton;
     MainWindowTheme.Theme theme;
     private int percent = -1;
-    private DisplayMetrics metrics;
     private Button battery_use_b;
     private Button toggle_lock_screen_b;
     private boolean early_exit = false;
@@ -107,8 +106,6 @@ public class BatteryIndicator extends Activity {
         res = getResources();
         str = new Str();
         context = getApplicationContext();
-        metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
         try {
             new AlarmDatabase(context);
@@ -119,19 +116,32 @@ public class BatteryIndicator extends Activity {
 
         if (!early_exit) {
             settings = PreferenceManager.getDefaultSharedPreferences(context);
+            sp_store = context.getSharedPreferences("sp_store", 0);
+
+            if (settings.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1) != -1) {
+                switch_to_sp_store();
+            }
 
             disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
             themeName = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
             setTheme();
 
-            if (settings.getInt("last_percent", -1) == -1) showDialog(DIALOG_FIRST_RUN);
+            if (settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean(SettingsActivity.KEY_FIRST_RUN, false);
+                editor.commit();
+
+                /* May have upgraded from older version before key_first_run; only show if it really is first run */
+                if (sp_store.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1) == -1)
+                    showDialog(DIALOG_FIRST_RUN);
+            }
 
             biServiceIntent = new Intent(this, BatteryIndicatorService.class);
             startService(biServiceIntent);
             bindService(biServiceIntent, biServiceConnection, 0);
 
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putBoolean("serviceDesired", true);
+            SharedPreferences.Editor editor = sp_store.edit();
+            editor.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, true);
             editor.commit();
 
             setTitle(res.getString(R.string.app_full_name));
@@ -224,8 +234,8 @@ public class BatteryIndicator extends Activity {
                 .setMessage(str.confirm_close_hint)
                 .setPositiveButton(str.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface di, int id) {
-                        SharedPreferences.Editor editor = settings.edit();
-                        editor.putBoolean("serviceDesired", false);
+                        SharedPreferences.Editor editor = sp_store.edit();
+                        editor.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, false);
                         editor.commit();
 
                         finishActivity(1);
@@ -287,8 +297,8 @@ public class BatteryIndicator extends Activity {
     }
 
     private void updateStatus() {
-        int last_percent = settings.getInt("last_percent", -1);
-        int last_status = settings.getInt("last_status", 0);
+        int last_percent = sp_store.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1);
+        int last_status = sp_store.getInt(BatteryIndicatorService.KEY_LAST_STATUS, 0);
 
         TextView status_since = (TextView) findViewById(R.id.status_since_t);
 
@@ -304,15 +314,15 @@ public class BatteryIndicator extends Activity {
     }
 
     private void updateLockscreenButton() {
-        if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false))
+        if (sp_store.getBoolean(BatteryIndicatorService.KEY_DISABLE_LOCKING, false))
             toggle_lock_screen_b.setText(str.reenable_lock_screen);
         else
             toggle_lock_screen_b.setText(str.disable_lock_screen);
     }
 
     private void setDisableLocking(boolean b) {
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putBoolean(SettingsActivity.KEY_DISABLE_LOCKING, b);
+        SharedPreferences.Editor editor = sp_store.edit();
+        editor.putBoolean(BatteryIndicatorService.KEY_DISABLE_LOCKING, b);
         editor.commit();
 
         biServiceConnection.biService.reloadSettings();
@@ -338,7 +348,7 @@ public class BatteryIndicator extends Activity {
     /* Toggle Lock Screen */
     private final OnClickListener tlsButtonListener = new OnClickListener() {
         public void onClick(View v) {
-            if (settings.getBoolean(SettingsActivity.KEY_DISABLE_LOCKING, false)) {
+            if (sp_store.getBoolean(BatteryIndicatorService.KEY_DISABLE_LOCKING, false)) {
                 setDisableLocking(false);
             } else {
                 if (settings.getBoolean(SettingsActivity.KEY_CONFIRM_DISABLE_LOCKING, true)) {
@@ -367,8 +377,52 @@ public class BatteryIndicator extends Activity {
         toggle_lock_screen_b.setOnClickListener(tlsButtonListener);
     }
 
+    private void switch_to_sp_store() {
+        SharedPreferences.Editor settings_ed = settings.edit();
+        SharedPreferences.Editor sp_store_ed = settings.edit();
+
+        sp_store_ed.putString(BatteryIndicatorService.KEY_LAST_STATUS_SINCE,
+                              settings.getString(BatteryIndicatorService.KEY_LAST_STATUS_SINCE, ""));
+        settings_ed.remove(BatteryIndicatorService.KEY_LAST_STATUS_SINCE);
+
+        sp_store_ed.putLong(BatteryIndicatorService.KEY_LAST_STATUS_CTM,
+                            settings.getLong(BatteryIndicatorService.KEY_LAST_STATUS_CTM, -1));
+        settings_ed.remove(BatteryIndicatorService.KEY_LAST_STATUS_CTM);
+
+        sp_store_ed.putInt(BatteryIndicatorService.KEY_LAST_STATUS,
+                           settings.getInt(BatteryIndicatorService.KEY_LAST_STATUS, -1));
+        settings_ed.remove(BatteryIndicatorService.KEY_LAST_STATUS);
+
+        sp_store_ed.putInt(BatteryIndicatorService.KEY_LAST_PERCENT,
+                           settings.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1));
+        settings_ed.remove(BatteryIndicatorService.KEY_LAST_PERCENT);
+
+        sp_store_ed.putInt(BatteryIndicatorService.KEY_LAST_PLUGGED,
+                           settings.getInt(BatteryIndicatorService.KEY_LAST_PLUGGED, -1));
+        settings_ed.remove(BatteryIndicatorService.KEY_LAST_PLUGGED);
+
+        sp_store_ed.putInt(BatteryIndicatorService.KEY_PREVIOUS_CHARGE,
+                           settings.getInt(BatteryIndicatorService.KEY_PREVIOUS_CHARGE, -1));
+        settings_ed.remove(BatteryIndicatorService.KEY_PREVIOUS_CHARGE);
+
+        sp_store_ed.putInt(BatteryIndicatorService.KEY_PREVIOUS_TEMP,
+                           settings.getInt(BatteryIndicatorService.KEY_PREVIOUS_TEMP, -1));
+        settings_ed.remove(BatteryIndicatorService.KEY_PREVIOUS_TEMP);
+
+        sp_store_ed.putInt(BatteryIndicatorService.KEY_PREVIOUS_HEALTH,
+                           settings.getInt(BatteryIndicatorService.KEY_PREVIOUS_HEALTH, -1));
+        settings_ed.remove(BatteryIndicatorService.KEY_PREVIOUS_HEALTH);
+
+        sp_store_ed.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED,
+                               settings.getBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, false));
+        settings_ed.remove(BatteryIndicatorService.KEY_SERVICE_DESIRED);
+
+        settings_ed.commit();
+        sp_store_ed.commit();
+    }
+
     private void setTheme() {
-        theme = (new MainWindowTheme(themeName, metrics, res)).theme;
+        theme = (new MainWindowTheme(themeName, context)).theme;
 
         LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
         main_layout.removeAllViews();
@@ -394,10 +448,10 @@ public class BatteryIndicator extends Activity {
                 TextView label = (TextView) ll.findViewById(R.id.label);
                 TextView time = (TextView) ll.findViewById(R.id.time);
 
-                if (theme.timeRemainingVisible(i, settings)) {
+                if (theme.timeRemainingVisible(i)) {
                     label.setText(res.getString(theme.timeRemainingStrings[i]));
                     label.setTextColor(res.getColor(theme.timeRemainingColors[i]));
-                    time.setText(theme.timeRemaining(i, settings, percent));
+                    time.setText(theme.timeRemaining(i, percent));
                     time.setTextColor(res.getColor(theme.timeRemainingColors[i]));
                     label.setVisibility(View.VISIBLE);
                     time.setVisibility(View.VISIBLE);

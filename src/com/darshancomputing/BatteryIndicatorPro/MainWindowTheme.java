@@ -14,8 +14,10 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup.LayoutParams;
 
@@ -25,9 +27,15 @@ public class MainWindowTheme {
 
     public Theme theme;
 
-    public MainWindowTheme(String themeName, DisplayMetrics metrics, Resources r) {
+    private SharedPreferences settings;
+    private SharedPreferences sp_store;
+
+    public MainWindowTheme(String themeName, Context context) {
+        res = context.getResources();
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        ((android.view.WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
         density = metrics.density;
-        res = r;
 
         if (themeName.equals("colorful")) {
             theme = new ColorfulTheme();
@@ -36,6 +44,9 @@ public class MainWindowTheme {
         } else {
             theme = new DefaultTheme();
         }
+
+        settings = PreferenceManager.getDefaultSharedPreferences(context);
+        sp_store = context.getSharedPreferences("sp_store", 0);
     }
 
     public abstract class Theme {
@@ -57,14 +68,14 @@ public class MainWindowTheme {
         public int[] timeRemainingDefaults = {0, R.string.default_light_usage_time, R.string.default_normal_usage_time,
                                               R.string.default_heavy_usage_time, R.string.default_constant_usage_time};
 
-        public String timeRemaining(int index, SharedPreferences settings, int percent) {
+        public String timeRemaining(int index, int percent) {
             String s;
             int t;
 
             if (percent == -1) return "...";
 
             if (index == 0) {
-                int last_plugged = settings.getInt("last_plugged", 2);
+                int last_plugged = sp_store.getInt("last_plugged", 2);
                 if (last_plugged == 1) {
                     s = settings.getString(SettingsActivity.KEY_AC_CHARGE_TIME,
                                            res.getString(R.string.default_ac_charge_time));
@@ -88,8 +99,8 @@ public class MainWindowTheme {
             return  "" + (t / 60) + ":" + String.format("%02d", t % 60) + "h"; /* TODO: Make the h optional? translatable! */
         }
 
-        public boolean timeRemainingVisible(int index, SharedPreferences settings) {
-            int last_status = settings.getInt("last_status", 0); /* TODO this should be a contant in Service */
+        public boolean timeRemainingVisible(int index) {
+            int last_status = sp_store.getInt("last_status", 0); /* TODO this should be a constant in Service */
 
             switch (index) {
             case 0:

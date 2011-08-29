@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.darshancomputing.BatteryIndicatorPro"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
-    android:versionCode="55"
+    android:versionCode="59"
     android:versionName="5.0.0-dev"
 >
   <application
@@ -11,6 +11,7 @@
       android:icon="@drawable/battery"
       android:hardwareAccelerated="true"
       android:process="com.darshancomputing.BatteryIndicatorPro"
+      android:backupAgent="SharedPrefsBackupAgent"
   >
     <activity
         android:name=".BatteryIndicator"

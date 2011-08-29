@@ -43,7 +43,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_ALARM_SETTINGS = "alarm_settings";
     public static final String KEY_ALARM_EDIT_SETTINGS = "alarm_edit_settings";
     public static final String KEY_OTHER_SETTINGS = "other_settings";
-    public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_CONFIRM_DISABLE_LOCKING = "confirm_disable_lock_screen";
     public static final String KEY_FINISH_AFTER_TOGGLE_LOCK = "finish_after_toggle_lock";
     public static final String KEY_FINISH_AFTER_BATTERY_USE = "finish_after_battery_use";
@@ -78,6 +77,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_SHOW_NORMAL_USAGE = "show_normal_usage";
     public static final String KEY_SHOW_HEAVY_USAGE = "show_heavy_usage";
     public static final String KEY_SHOW_CONSTANT_USAGE = "show_constant_usage";
+    public static final String KEY_FIRST_RUN = "first_run";
 
     private static final String[] PARENTS = {KEY_SHOW_CHARGE_TIME, KEY_SHOW_CHARGE_TIME, /* Keep these doubled */
                                              KEY_ENABLE_LOGGING, KEY_ENABLE_LOGGING,     /*  keys first!       */
@@ -88,7 +88,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_LOG_EVERYTHING, KEY_MAX_LOG_AGE,
                                                 KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
                                                 KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
-                                                KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME,};
+                                                KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME};
 
     private static final String[] LIST_PREFS = {KEY_AUTOSTART, KEY_MW_THEME, KEY_STATUS_DUR_EST,
                                                 KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
