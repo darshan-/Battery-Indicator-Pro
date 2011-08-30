@@ -82,6 +82,11 @@
         <action android:name="android.intent.action.BOOT_COMPLETED" />
       </intent-filter>
     </receiver>
+
+    <meta-data
+        android:name="com.google.android.backup.api_key"
+        android:value="AEdPqrEAAAAI1TP6LoD-hbZvgwhkJwVc2xQf9dq2GxSVpt3CJQ"
+    />
   </application>
 
   <uses-sdk
@@ -102,10 +107,5 @@
       android:normalScreens="true"
       android:largeScreens="true"
       android:anyDensity="true"
-  />
-
-  <meta-data
-      android:name="com.google.android.backup.api_key"
-      android:value="AEdPqrEAAAAI1TP6LoD-hbZvgwhkJwVc2xQf9dq2GxSVpt3CJQ"
   />
 </manifest>

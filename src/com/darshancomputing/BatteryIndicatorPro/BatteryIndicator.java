@@ -118,7 +118,7 @@ public class BatteryIndicator extends Activity {
             settings = PreferenceManager.getDefaultSharedPreferences(context);
             sp_store = context.getSharedPreferences("sp_store", 0);
 
-            if (settings.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1) != -1) {
+            if (settings.contains(BatteryIndicatorService.KEY_LAST_PERCENT) {
                 switch_to_sp_store();
             }
 
@@ -379,7 +379,7 @@ public class BatteryIndicator extends Activity {
 
     private void switch_to_sp_store() {
         SharedPreferences.Editor settings_ed = settings.edit();
-        SharedPreferences.Editor sp_store_ed = settings.edit();
+        SharedPreferences.Editor sp_store_ed = sp_store.edit();
 
         sp_store_ed.putString(BatteryIndicatorService.KEY_LAST_STATUS_SINCE,
                               settings.getString(BatteryIndicatorService.KEY_LAST_STATUS_SINCE, ""));
@@ -419,6 +419,10 @@ public class BatteryIndicator extends Activity {
 
         settings_ed.commit();
         sp_store_ed.commit();
+
+        try {
+            (new android.app.backup.BackupManager(context)).dataChanged();
+        } catch (Exception e) {}
     }
 
     private void setTheme() {
