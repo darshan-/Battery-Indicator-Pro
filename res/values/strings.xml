@@ -42,8 +42,12 @@
     \nAfter clicking \'Okay\' to dismiss this message, you simply need
     to click \'Okay\' again when Android asks for your permission to
     uninstall. You will then be taken to the Market page where you can
-    reinstall. Most users will have their preferences restored, but
-    this can\'t be guaranteed, so be sure to check.\n
+    reinstall.\n
+
+    \nMost users will have their preferences restored with the
+    exception of their alarms, which will need to be recreated. This
+    can\'t be guaranteed, however so be sure to go through the
+    settings after reinstalling.\n
 
     \nThanks, and I hope you like all the new features!
   </string>

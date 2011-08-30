@@ -431,6 +431,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
 
+        try {
+            (new android.app.backup.BackupManager(this)).dataChanged();
+        } catch (Exception e) {}
+
         if (key.equals(KEY_RED)) {
             redEnabled = mSharedPreferences.getBoolean(KEY_RED, false);
         } else if (key.equals(KEY_AMBER)) {
