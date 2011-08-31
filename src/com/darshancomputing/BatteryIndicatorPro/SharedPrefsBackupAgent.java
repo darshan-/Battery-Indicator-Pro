@@ -16,7 +16,6 @@ package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.backup.BackupAgentHelper;
 import android.app.backup.SharedPreferencesBackupHelper;
-import android.preference.PreferenceManager;
 
 public class SharedPrefsBackupAgent extends BackupAgentHelper {
     @Override

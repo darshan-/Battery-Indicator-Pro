@@ -118,7 +118,7 @@ public class BatteryIndicator extends Activity {
             settings = PreferenceManager.getDefaultSharedPreferences(context);
             sp_store = context.getSharedPreferences("sp_store", 0);
 
-            if (settings.contains(BatteryIndicatorService.KEY_LAST_PERCENT) {
+            if (settings.contains(BatteryIndicatorService.KEY_LAST_PERCENT)) {
                 switch_to_sp_store();
             }
 
