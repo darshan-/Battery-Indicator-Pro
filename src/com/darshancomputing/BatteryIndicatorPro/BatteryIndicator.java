@@ -421,7 +421,10 @@ public class BatteryIndicator extends Activity {
         sp_store_ed.commit();
 
         try {
-            (new android.app.backup.BackupManager(context)).dataChanged();
+            Class<?> c = Class.forName("android.app.backup.BackupManager");
+            java.lang.reflect.Method m = c.getMethod("dataChanged", new Class[] {});
+            java.lang.reflect.Constructor<?> init = c.getConstructor(android.content.Context.class);
+            m.invoke(init.newInstance(this), new Object[] {});
         } catch (Exception e) {}
     }
 
