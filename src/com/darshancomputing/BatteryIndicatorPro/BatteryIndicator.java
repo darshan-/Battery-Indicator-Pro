@@ -108,7 +108,7 @@ public class BatteryIndicator extends Activity {
         context = getApplicationContext();
 
         try {
-            new AlarmDatabase(context);
+            (new AlarmDatabase(context)).close();
         } catch (Exception e) {
             early_exit = true;
             showDialog(DIALOG_NEED_UNINSTALL);

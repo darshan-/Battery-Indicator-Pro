@@ -217,8 +217,7 @@
 
   <string formatted="false" name="help_cat_changelog">Changelog</string>
   <string formatted="false" name="help_changelog">
-    See the <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">version
-      history on the project FAQ</a>.
+    See the <a href="http://code.google.com/p/battery-indicator/wiki/Changelog?tm=6">online Changelog</a>.
   </string>
 
   <string formatted="false" name="help_cat_introduction">Introduction</string>
@@ -293,7 +292,7 @@
     notification tray are tied together — you can\'t have one without the other.
     \n• Many apps should allow installation to removable storage (SD card); some
     should not.  Battery Indicator is of the latter group.  See
-    <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">the project
+    <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">the project
       FAQ</a> if you\'d like further explanation.
   </string>
 
@@ -347,22 +346,19 @@
   <string formatted="false" name="help_translations">I
     need help translating this app to other languages.  If you would
     like to help, please send me
-    an <a href="mailto:android@darshancomputing.com">email</a>.
-    Unless you prefer me not to, I will add your name to this section
-    in acknowledgment of your assistance.
+    an <a href="mailto:android%2Btranslations@darshancomputing.com">email</a>.
+    (This address is only for translation; see Contact section below
+    for all other inquiries.)  Unless you prefer me not to, I will add
+    your name to this section in acknowledgment of your assistance.
   </string>
 
   <string formatted="false" name="help_subcat_translators">Translators</string>
 
   <string formatted="false" name="help_cat_contact">Contact</string>
   <string formatted="false" name="help_contact">If
-    you have questions or problems, please
-    check <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">the
-      project FAQ</a> first.\n
-
-    \nIf you have comments or feedback, or if you have questions or
-    problems that weren\'t resolved by the FAQ, please email me
-    at <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>.
+    you have a question or a problem, please
+    see <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">the
+      project FAQ</a> for how to contact me.\n
   </string>
 
   <string formatted="false" name="pref_hint">Hint: Press MENU for help.</string>
