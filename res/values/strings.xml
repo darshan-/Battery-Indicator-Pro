@@ -367,7 +367,7 @@
   <string formatted="false" name="settings_overview_help">
     The settings are organized into three separate pages, as described
     below.  Each page has its own help page describing the settings on
-    that page.  Simply press MENU->Help (on tablets, MENU isn\'t necessary) to get
+    that page.  Simply press MENU then Help (on tablets, MENU isn\'t necessary) to get
     help from whatever settings page you are on.
   </string>
 
@@ -425,7 +425,7 @@
   <string formatted="false" name="no_plugins_installed_summary">Press MENU to get plugins</string>
   <string formatted="false" name="pref_icon_plugin_help">
     If you have any Battery Indicator Pro icon plugins installed (press
-    MENU->Get Plugins to get free plugins), you can choose among them here.
+    MENU then Get Plugins to get free plugins), you can choose among them here.
     At this time, the plugins don\'t offer any options, so the icon color
     settings below will disappear if you choose anything other than
     \"None\".  The trade-off, of course, is that there will hopefully
