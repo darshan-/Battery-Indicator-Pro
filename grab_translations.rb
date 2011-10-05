@@ -1,15 +1,13 @@
 #!/usr/bin/env ruby
 
-# Just requiring the file with its relative path didn't work, because then its requires
-#  using relative paths failed.  Not sure if there's a cleaner way to do this...
-wd = Dir.getwd
-Dir.chdir('../translationhelper')
-require './s3storage.rb'
-Dir.chdir(wd)
+require 'net/http'
+require 'uri'
 
-storage = S3Storage.new
+LANGS_URI = 'http://linode/ath/bi/langs/'
 
-storage.get_langs.each do |lang|
+langs = Net::HTTP.get(URI.parse(LANGS_URI))
+
+langs.split.each do |lang|
   if lang.length == 2
     dir = 'res/values-' << lang
   else
@@ -20,7 +18,13 @@ storage.get_langs.each do |lang|
     Dir.mkdir(dir)
   end
 
-  File.open(dir << '/strings.xml', 'w') do |file|
-    file.write(storage.get_strings(lang))
+  fpath = dir + '/strings.xml'
+
+  File.open(fpath, 'w') do |file|
+    strings = Net::HTTP.get(URI.parse(LANGS_URI + lang))
+    file.write(strings)
+    file.sync # Want to be sure `file' command below sees new contents
   end
+
+  puts `file #{fpath}`
 end
