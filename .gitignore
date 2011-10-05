@@ -7,3 +7,5 @@ gen
 libs
 TODO
 my-release-key.keystore
+
+!build.properties
