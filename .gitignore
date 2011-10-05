@@ -1,0 +1,7 @@
+*.properties
+build.xml
+bin
+gen
+libs
+TODO
+my-release-key.keystore
