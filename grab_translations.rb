@@ -3,7 +3,7 @@
 require 'net/http'
 require 'uri'
 
-LANGS_URI = 'http://linode/ath/bi/langs/'
+LANGS_URI = 'http://ath.darshancomputing.com/bi/langs/'
 
 langs = Net::HTTP.get(URI.parse(LANGS_URI))
 
