@@ -79,40 +79,27 @@
   <string name="help_changelog" formatted="false">Смотрите в <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">истории изменений программы</a>.</string>
   <string name="help_cat_introduction" formatted="false">Введение</string>
   <string name="help_introduction" formatted="false"><i>Battery Indicator Pro</i>, \"Pro\" версия популярного бесплатного приложения, <i>Battery Indicator</i>. \"Pro\" версия доступна для покупки в Android Market, но не забывайте что данное приложение является оупенсоурсным проектом, что означает то что вы можете помочь в разработке и скачать исходники <a href="http://code.google.com/p/battery-indicator/">сайт проекта</a>.</string>
-  <string name="help_introduction_free" formatted="false">Данная версия <i>Battery Indicator</i> является бесплатной. версия доступна для покупки в Android Market, но не забывайте что данное приложение является оупенсоурсным проектом, что означает то что вы можете помочь в разработке и скачать исходники <a href="http://code.google.com/p/battery-indicator/">сайт проекта</a>.\n\nВы можете поддержать проект, перейдя на \"PRO\" версию программы <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Battery Indicator Pro</a>.</string>
+  <string name="help_introduction_free" formatted="false">Данная версия <i>Battery Indicator</i> является бесплатной. Версия доступна для покупки в Android Market, но не забывайте, что данное приложение является открытым проектом, что означает то, что вы можете помочь в разработке и скачать исходники <a href="http://code.google.com/p/battery-indicator/">сайт проекта</a>.\n\nВы можете поддержать проект, перейдя на \"PRO\" версию программы <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Battery Indicator Pro</a>.</string>
   <string name="help_cat_summary" formatted="false">О программе</string>
   <string name="help_cat_no_warranty" formatted="false">Отказ от гарантий</string>
   <string name="help_subcat_translators" formatted="false">Переводчики</string>
   <string name="help_cat_contact" formatted="false">Контакты</string>
   <string name="settings_overview" formatted="false">Обзор</string>
   <string-array name="log_statuses">
-    <item></item>
-    <item>Неизвестно</item>
-    <item></item>
     <item>Неизвестно</item>
     <item>Неизвестно</item>
-    <item></item>
+    <item>Неизвестно</item>
   </string-array>
   <string-array name="log_statuses_old">
-    <item></item>
-    <item>Неизвестно</item>
-    <item></item>
     <item>Неизвестно</item>
     <item>Неизвестно</item>
-    <item></item>
+    <item>Неизвестно</item>
   </string-array>
   <string-array name="healths">
     <item>Неизвестно</item>
     <item>Неизвестно</item>
-    <item></item>
-    <item></item>
-    <item></item>
-    <item></item>
-    <item></item>
   </string-array>
   <string-array name="pluggeds">
-    <item></item>
-    <item></item>
     <item>(USB)</item>
     <item>(?)</item>
   </string-array>
@@ -132,13 +119,11 @@
   </string-array>
   <string-array name="mw_theme_pref_entries">
     <item>По умолчанию - маленькая</item>
-    <item></item>
     <item>На полный экран</item>
   </string-array>
   <string-array name="boot_pref_entries">
     <item>Всегда</item>
     <item>Никогда</item>
-    <item></item>
   </string-array>
   <string-array name="status_dur_est_entries">
     <item>Всегда</item>

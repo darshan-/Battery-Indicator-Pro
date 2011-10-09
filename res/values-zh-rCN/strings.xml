@@ -54,10 +54,10 @@
   <string name="fully_charged" formatted="false">完全充满</string>
   <string name="since" formatted="false">开始于</string>
   <string name="one_six_needed" formatted="false">对不起，此功能仅支持Android 1.6+版本系统！</string>
+  <string name="help_cat_version" formatted="false">版本</string>
   <string name="currently_using" formatted="false">当前使用</string>
   <string name="currently_set_to" formatted="false">"当前设置为"</string>
   <string name="currently_disabled" formatted="false">当前不可用</string>
-  <string name="help_cat_version" formatted="false">版本</string>
   <string name="help_cat_changelog" formatted="false">更新日志</string>
   <string name="help_changelog" formatted="false">请访问<a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">项目FAQ</a>以获取版本历史。</string>
   <string name="help_cat_introduction" formatted="false">软件介绍</string>
@@ -81,7 +81,7 @@
   <string name="help_contact" formatted="false">如果您在使用中遇到任何疑问，请先参阅<a href="http://code.google.com/p/battery-indicator/wiki/FAQ">软件FAQ</a>。\n\n如果您有任何反馈信息，或FAQ中无法解答的任何疑问，请联系开发者的电子邮件<a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>。</string>
   <string name="pref_hint" formatted="false"><b>提示：</b>单击“菜单”获取帮助。</string>
   <string name="settings_overview" formatted="false">预览</string>
-  <string name="settings_overview_help" formatted="false">设置项包括如下所述的三个独立页面。各页面的帮助信息独立显示，在“菜单”->“帮助”内容中可获取当前页面的帮助信息。</string>
+  <string name="settings_overview_help" formatted="false">设置项包括如下所述的三个独立页面。各页面的帮助信息独立显示，在“菜单”-“帮助”内容中可获取当前页面的帮助信息。</string>
   <string name="color_settings" formatted="false">色彩主题</string>
   <string name="color_settings_summary" formatted="false">设置图标色彩及窗口主题</string>
   <string name="color_settings_help" formatted="false">您可以选择主窗口显示主题及设置图标变化色彩。</string>

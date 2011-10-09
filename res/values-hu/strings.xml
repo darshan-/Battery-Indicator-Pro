@@ -97,7 +97,7 @@
   <string name="help_contact" formatted="false">Ha kérdése vagy problémája van, elsőként kérem nézze meg <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">a projekt GYIK-et</a>!\n\nHa észrevétele van, vagy olyan kérdésel, problémával szembesül, amelyre nem kap választ a GYIK-ben, küldjön e-mail a <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a> címre!</string>
   <string name="pref_hint" formatted="false">TIPP: Segítséghez nyomja meg a MENÜ gombot!</string>
   <string name="settings_overview" formatted="false">Áttekintés</string>
-  <string name="settings_overview_help" formatted="false">A beállításokat három oldalra öszegyűtve találja az alábbiak szerint. Minden oldal saját súgóval rendelkezik az ott található beállítások leírásával. Ezeket a MENÜ gomb -> Súgó opcióval érheti el..</string>
+  <string name="settings_overview_help" formatted="false">A beállításokat három oldalra öszegyűtve találja az alábbiak szerint. Minden oldal saját súgóval rendelkezik az ott található beállítások leírásával. Ezeket a MENÜ gomb - Súgó opcióval érheti el..</string>
   <string name="color_settings" formatted="false">Színek és témák</string>
   <string name="color_settings_summary" formatted="false">Megjelenítési beállítások és ikon színek</string>
   <string name="color_settings_help" formatted="false">Megváltoztathatók a főablak megjelenítési jellemzői és hogy az állapotsoron mikor jelenjenek meg színes ikonok.</string>
