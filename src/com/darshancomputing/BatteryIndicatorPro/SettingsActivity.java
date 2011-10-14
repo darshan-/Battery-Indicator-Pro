@@ -27,6 +27,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -59,6 +60,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_TEN_PERCENT_MODE = "ten_percent_mode";
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
     public static final String KEY_CAT_COLOR = "category_color";
+    public static final String KEY_CAT_PLUGIN_SETTINGS = "category_plugin_settings";
     public static final String KEY_RED = "use_red";
     public static final String KEY_RED_THRESH = "red_threshold";
     public static final String KEY_AMBER = "use_amber";
@@ -193,9 +195,34 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private static final Object[] EMPTY_OBJECT_ARRAY = {};
+    private static final  Class[]  EMPTY_CLASS_ARRAY = {};
     private java.lang.reflect.Method backupMethod;
     private Object backupManager;
     private Boolean backupAvailable;
+
+    private final Handler mHandler = new Handler();
+    Runnable rShowPluginSettings = new Runnable() {
+        public void run() {
+            if (biServiceConnection.biService == null) {
+                return;
+            }
+
+            Boolean hasSettings = false;
+            try {
+                hasSettings = biServiceConnection.biService.pluginHasSettings();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            if (! hasSettings) {
+                PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_PLUGIN_SETTINGS);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.hidden);
+            }
+
+            mHandler.removeCallbacks(rShowPluginSettings);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -239,6 +266,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             greenThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_GREEN_THRESH);
 
             if (currentPlugin.equals("none")) {
+                PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_PLUGIN_SETTINGS);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.divider_horizontal_dark);
+
                 redEnabled   = mSharedPreferences.getBoolean(  KEY_RED, false);
                 amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
                 greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
@@ -267,6 +298,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
                 cat.removeAll();
                 cat.setLayoutResource(R.layout.divider_horizontal_dark);
+
+                mHandler.postDelayed(rShowPluginSettings,  100);
+                mHandler.postDelayed(rShowPluginSettings,  300);
+                mHandler.postDelayed(rShowPluginSettings,  600);
+                mHandler.postDelayed(rShowPluginSettings, 1000);
             }
 
             /* Hide any themes that might be disabled (e.g. Tablets show different themes) */
@@ -333,6 +369,14 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         intent.putExtra(EXTRA_SCREEN, pref_screen);
         startActivity(intent);
         finish();
+    }
+
+    private void resetService() {
+        try {
+            biServiceConnection.biService.reloadSettings();
+        } catch (Exception e) {
+            startService(new Intent(this, BatteryIndicatorService.class));
+        }
     }
 
     @Override
@@ -477,12 +521,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             resetColorsToDefaults();
 
         if (key.equals(KEY_ICON_PLUGIN)) {
-            String newPlugin = pluginPref.getValue();
-
-            if (currentPlugin.equals("none") || newPlugin.equals("none"))
-                restartThisScreen();
-            else
-                currentPlugin = newPlugin;
+            resetService(); // TODO: This didn't used to be here, and things seemed to work fine, but it seems like it should be needed...
+            restartThisScreen();
         }
 
         for (int i=0; i < PARENTS.length; i++) {
@@ -510,11 +550,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         for (int i=0; i < RESET_SERVICE.length; i++) {
             if (key.equals(RESET_SERVICE[i])) {
-                try {
-                    biServiceConnection.biService.reloadSettings();
-                } catch (Exception e) {
-                    startService(new Intent(this, BatteryIndicatorService.class));
-                }
+                resetService();
                 break;
             }
         }

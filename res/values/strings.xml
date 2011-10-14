@@ -656,6 +656,10 @@
     discharge from 100% to 0% at whatever you consider \"Constant Usage\".
   </string>
 
+  <string formatted="false" name="pref_cat_plugin_settings">Plugin Settings</string>
+  <string formatted="false" name="pref_plugin_settings">Plugin Settings</string>
+  <string formatted="false" name="pref_plugin_settings_summary">Edit settings for this plugin</string>
+
   <string formatted="false" name="pref_cat_color">Icon Color</string>
   <string formatted="false" name="pref_cat_color_help">
     In order to keep the binary package for Battery Indicator

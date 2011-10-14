@@ -22,6 +22,17 @@
   </PreferenceCategory>
 
   <PreferenceCategory
+      android:key="category_plugin_settings"
+      android:title="@string/pref_cat_plugin_settings"
+  >
+    <Preference
+        android:key="plugin_settings"
+        android:title="@string/pref_plugin_settings"
+        android:summary="@string/pref_plugin_settings_summary"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory
       android:key="category_color"
       android:title="@string/pref_cat_color"
   >

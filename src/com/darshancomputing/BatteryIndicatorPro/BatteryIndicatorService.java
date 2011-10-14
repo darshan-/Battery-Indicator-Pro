@@ -100,6 +100,9 @@ public class BatteryIndicatorService extends Service {
     public static final String KEY_SERVICE_DESIRED = "serviceDesired";
 
 
+    private static final Object[] EMPTY_OBJECT_ARRAY = {};
+    private static final  Class[]  EMPTY_CLASS_ARRAY = {};
+
     /* Global variables for these Notification Runnables */
     private Notification mainNotification;
     private int percent;
@@ -523,5 +526,18 @@ public class BatteryIndicatorService extends Service {
 
         //unregisterReceiver(mBatteryInfoReceiver); /* It appears that there's no need to unregister first */
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
+    }
+
+    public Boolean pluginHasSettings() {
+        if (pluginServiceConnection.service == null) return false;
+
+        try {
+            Class<?> c = pluginServiceConnection.service.getClass();
+            java.lang.reflect.Method m = c.getMethod("hasSettings", EMPTY_CLASS_ARRAY);
+            return (Boolean) m.invoke(pluginServiceConnection.service, EMPTY_OBJECT_ARRAY);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
