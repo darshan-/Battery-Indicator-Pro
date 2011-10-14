@@ -540,4 +540,16 @@ public class BatteryIndicatorService extends Service {
             return false;
         }
     }
+
+    public void configurePlugin() {
+        if (pluginServiceConnection.service == null) return;
+
+        try {
+            Class<?> c = pluginServiceConnection.service.getClass();
+            java.lang.reflect.Method m = c.getMethod("configure", EMPTY_CLASS_ARRAY);
+            m.invoke(pluginServiceConnection.service, EMPTY_OBJECT_ARRAY);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

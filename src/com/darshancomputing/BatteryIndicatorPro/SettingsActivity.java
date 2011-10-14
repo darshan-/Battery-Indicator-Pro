@@ -61,6 +61,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
     public static final String KEY_CAT_COLOR = "category_color";
     public static final String KEY_CAT_PLUGIN_SETTINGS = "category_plugin_settings";
+    public static final String KEY_PLUGIN_SETTINGS = "plugin_settings";
     public static final String KEY_RED = "use_red";
     public static final String KEY_RED_THRESH = "red_threshold";
     public static final String KEY_AMBER = "use_amber";
@@ -480,6 +481,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else if (key.equals(KEY_ALARM_SETTINGS)) {
             ComponentName comp = new ComponentName(getPackageName(), AlarmsActivity.class.getName());
             startActivity(new Intent().setComponent(comp));
+
+            return true;
+        } else if (key.equals(KEY_PLUGIN_SETTINGS)) {
+            biServiceConnection.biService.configurePlugin();
 
             return true;
         } else {
