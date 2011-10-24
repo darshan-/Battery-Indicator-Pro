@@ -422,7 +422,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             return true;
         case R.id.menu_get_plugins:
             startActivity(new Intent(Intent.ACTION_VIEW, android.net.Uri.parse
-                                     ("http://www.darshancomputing.com/android/battery-indicator/icon-plugins/")));
+                                     ("http://bi-icon-plugins.darshancomputing.com/")));
             return true;
         case android.R.id.home:
             startActivity(new Intent(this, BatteryIndicator.class));
