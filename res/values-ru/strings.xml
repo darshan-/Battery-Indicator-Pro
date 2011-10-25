@@ -85,20 +85,6 @@
   <string name="help_subcat_translators" formatted="false">Переводчики</string>
   <string name="help_cat_contact" formatted="false">Контакты</string>
   <string name="settings_overview" formatted="false">Обзор</string>
-  <string-array name="log_statuses">
-    <item>Неизвестно</item>
-    <item>Неизвестно</item>
-    <item>Неизвестно</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Неизвестно</item>
-    <item>Неизвестно</item>
-    <item>Неизвестно</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>(USB)</item>
-    <item>(?)</item>
-  </string-array>
   <string-array name="alarm_types_display">
     <item>Полностью заряжено</item>
     <item>Заряд падает ниже</item>
@@ -116,10 +102,12 @@
   <string-array name="mw_theme_pref_entries">
     <item>По умолчанию - маленькая</item>
     <item>На полный экран</item>
+    <item>Colorful Small</item>
   </string-array>
   <string-array name="boot_pref_entries">
     <item>Всегда</item>
     <item>Никогда</item>
+    <item>If running on shutdown</item>
   </string-array>
   <string-array name="status_dur_est_entries">
     <item>Всегда</item>
