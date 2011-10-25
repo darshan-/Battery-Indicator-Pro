@@ -95,10 +95,6 @@
     <item>Неизвестно</item>
     <item>Неизвестно</item>
   </string-array>
-  <string-array name="healths">
-    <item>Неизвестно</item>
-    <item>Неизвестно</item>
-  </string-array>
   <string-array name="pluggeds">
     <item>(USB)</item>
     <item>(?)</item>
