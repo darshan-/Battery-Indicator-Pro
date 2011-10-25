@@ -28,6 +28,7 @@
     <Preference
         android:key="plugin_settings"
         android:title="@string/pref_plugin_settings"
+        android:enabled="false"
         android:summary="@string/pref_plugin_settings_summary"
     />
   </PreferenceCategory>

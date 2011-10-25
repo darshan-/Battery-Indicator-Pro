@@ -205,6 +205,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     Runnable rShowPluginSettings = new Runnable() {
         public void run() {
             if (biServiceConnection.biService == null) {
+                bindService(biServiceIntent, biServiceConnection, 0);
                 return;
             }
 
@@ -219,6 +220,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_PLUGIN_SETTINGS);
                 cat.removeAll();
                 cat.setLayoutResource(R.layout.hidden);
+            } else {
+                Preference p = (Preference) mPreferenceScreen.findPreference(KEY_PLUGIN_SETTINGS);
+                p.setEnabled(true);
             }
 
             mHandler.removeCallbacks(rShowPluginSettings);
