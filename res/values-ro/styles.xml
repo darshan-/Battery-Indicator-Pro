@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="bu_button_height">53dp</dimen>
+  <dimen name="bu_button_height_fs">65dp</dimen>
+  <dimen name="tls_button_height">53dp</dimen>
+  <dimen name="tls_button_height_fs">65dp</dimen>
+</resources>

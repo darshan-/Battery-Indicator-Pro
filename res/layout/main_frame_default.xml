@@ -41,7 +41,7 @@
         />
 
         <Button android:id="@+id/battery_use_b"
-                android:layout_height="43dp"
+                android:layout_height="@dimen/bu_button_height"
 	        android:layout_width="fill_parent"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/battery_use_b"

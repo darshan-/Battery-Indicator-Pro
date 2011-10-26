@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="main_frame_width">220dp</dimen>
+  <dimen name="time_remaining_label_width">155dp</dimen>
+  <dimen name="bu_button_height">53dp</dimen>
+  <dimen name="bu_button_height_fs">65dp</dimen>
+  <dimen name="tls_button_height">53dp</dimen>
+  <dimen name="tls_button_height_fs">65dp</dimen>
+</resources>
