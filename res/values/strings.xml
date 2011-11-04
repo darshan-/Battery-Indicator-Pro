@@ -254,6 +254,7 @@
     has the following key features as of version 3.0:\n
 
     \n• Fully configurable estimated charge/discharge time left.
+    \n• Downloadable icon plugins.
     \n• Logging of battery state.
     \n• Themes for the main window (including a full-size window with
     large, easy-to-read text).
@@ -272,6 +273,7 @@
     has the following key features as of version 3.0:\n
 
     \n• Fully configurable estimated charge/discharge time left.
+    \n• Downloadable icon plugins.
     \n• Logging of battery state.
     \n• Themes for the main window (including a full-size window with
     large, easy-to-read text).
@@ -406,9 +408,9 @@
   <string formatted="false" name="pref_cat_more_settings_in_pro">More Settings in Pro</string>
   <string formatted="false" name="pref_please_upgrade">
     The Pro version has many more settings and features, including
-    green, amber, and red icons, alarms, window themes, battery state
-    logging, auto/manual lock screen disable, charge/discharge remaining
-    estimates, and more.
+    colorful icons, downloadable icon plugins, alarms, window themes,
+    battery state logging, auto/manual lock screen disable,
+    charge/discharge remaining estimates, and more.
   </string>
 
   <string formatted="false" name="add_alarm">Add alarm</string>
