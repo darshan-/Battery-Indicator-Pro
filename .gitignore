@@ -1,6 +1,7 @@
 *~
 *#*
 *.properties
+.emacs.desktop*
 build.xml
 bin
 gen
