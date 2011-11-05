@@ -17,24 +17,24 @@
   <string name="yes" formatted="false">Sim</string>
   <string name="cancel" formatted="false">Cancelar</string>
   <string name="confirm_close" formatted="false">Deseja realmente fechar?</string>
-  <string name="confirm_close_hint" formatted="false">O Estado da Bateria vai ser fechado completamente, e não o vais ver na tua barra de estado.\n\nSe apenas queres sair da janela principal e manter o indicador, toca em Cancel e depois carrega na tecla Back do teu aparelho.</string>
+  <string name="confirm_close_hint" formatted="false">O Estado da Bateria será fechado completamente, e não será mais exibido na barra de estado.\n\nSe quiser sair da janela principal e manter o indicador rodando, aperte Cancelar e depois a tecla BACK do seu aparelho.</string>
   <string name="confirm_clear_logs" formatted="false">Limpar todos os logs?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Ativar mesmo o modo 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Desativar mesmo o modo 10%?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Aviso: Mudar esta definição (tanto desactivar como activar) vai repor as tuas definições de cor.\n\nSe tens um Motorola Droid, Droid X, Droid 2, Defy, ou um Samsung Moment, deves activar isto quando instalares a aplicação, e depois não lhe mexer mais. Nos outros telemóveis, pelo que sei, deves deixar isto sempre desactivado.</string>
+  <string name="confirm_ten_percent_hint" formatted="false">Aviso: Mudar esta definição (tanto ativando como desativando) vai resetar as configurações de cor.\n\nSe você possui um Motorola Droid, Droid X, Droid 2, Defy, ou um Samsung Moment, você deve ativar essa opção quando instalar o aplicativo, e depois não mexer mais. Em outros aparelhos, até onde sei, essa opção deve estar sempre desativada.</string>
   <string name="first_run_title" formatted="false">Obrigado!</string>
-  <string name="first_run_message" formatted="false">Obrigado pela tua doação/compra! <b> <i>Estes dois pontos são muito importantes</i> </b>\n• Se tiveres um \"<b>task killer</b>\" ou um manager de processos de qualquer tipo, deves desinstalá-lo ou deves fazer com que ele ignore o Estado da Bateria Pro. Mesmo que o tenhas configurado para ignorar a versão gratuita, <i>ainda tens que o fazer ignorar esta versão Pro</i>!\n\n• Se tens um <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, ou um <b>Samsung Moment</b>, deves activar o \"Modo 10%\" nas \"Outras Definições\".</string>
-  <string name="first_run_message_free" formatted="false">Obrigado por instalares o Estado da Bateria! <b><i>Isto é importante</i> :</b>\n\n• Se tiveres um \"<b>task killer</b>\" ou um manager de processos de qualquer tipo, deves desinstalá-lo ou deves fazer com que ele ignore o Estado da Bateria.</string>
+  <string name="first_run_message" formatted="false">Obrigado por sua doação/compra! <b> <i>Estes dois pontos são muito importantes</i> </b>\n• Se você usa um \"<b>task killer</b>\" ou um gerenciador de processos, você deve desinstalá-los ou fazer com que eles ignorem o Battery Indicator Pro. Mesmo que eles estejam configurados para ignorar a versão gratuita, <i>será necessário fazê-los ignorar esta versão Pro</i>!\n\n• Se você possui um <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, ou um <b>Samsung Moment</b>, você deve ativar o \"Modo 10%\" nas \"Outras Definições\".</string>
+  <string name="first_run_message_free" formatted="false">Obrigado por instalar o Battery Indicator! <b><i>Isto é importante</i> :</b>\n\n• Se você usa um \"<b>task killer</b>\" ou um gerenciador de processos, você deve desinstalá-los ou fazer com que eles ignorem o Battery Indicator Pro.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Nenhum</string>
   <string name="menu_logs" formatted="false">Relatórios</string>
-  <string name="menu_settings" formatted="false">Definições</string>
+  <string name="menu_settings" formatted="false">Configurações</string>
   <string name="menu_close" formatted="false">Fechar</string>
   <string name="menu_help" formatted="false">Ajuda</string>
   <string name="menu_clear" formatted="false">Limpar</string>
   <string name="menu_reverse" formatted="false">Ordem contrária</string>
   <string name="menu_export" formatted="false">Exportar CSV</string>
-  <string name="menu_delete_alarm" formatted="false">Apagar alarme</string>
+  <string name="menu_delete_alarm" formatted="false">Apagar Alarme</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">º</string>
   <string name="fahrenheit" formatted="false">Fahrenheit</string>
@@ -42,56 +42,82 @@
   <string name="celsius" formatted="false">Celsius</string>
   <string name="celsius_symbol" formatted="false">C</string>
   <string name="volt_symbol" formatted="false">V</string>
-  <string name="fully_charged_in" formatted="false">Carregado completamente em:</string>
+  <string name="fully_charged_in" formatted="false">Carregado em:</string>
   <string name="light_usage" formatted="false">Uso leve restante:</string>
   <string name="normal_usage" formatted="false">Uso normal restante:</string>
   <string name="heavy_usage" formatted="false">Uso intenso restante:</string>
   <string name="constant_usage" formatted="false">Uso constante restante:</string>
-  <string name="press_back_to_leave" formatted="false">Pressiona Back para sair</string>
-  <string name="press_menu_for_more" formatted="false">Pressiona Menu para mais opções.</string>
+  <string name="press_back_to_leave" formatted="false">Pressiona BACK para sair.</string>
+  <string name="press_menu_for_more" formatted="false">Pressiona MENU para mais opções.</string>
   <string name="inaccessible_storage" formatted="false">Cartão SD inacessível</string>
   <string name="inaccessible_w_reason" formatted="false">Cartão SD inacessível:</string>
-  <string name="read_only_storage" formatted="false">Cartão SD é apenas de leitura</string>
-  <string name="file_written" formatted="false">Ficheiro escrito com sucesso.</string>
-  <string name="date" formatted="false">Data</string>
-  <string name="time" formatted="false">Hora</string>
-  <string name="status" formatted="false">Estado</string>
-  <string name="charge" formatted="false">Percentagem de Carga</string>
+  <string name="read_only_storage" formatted="false">Cartão SD é apenas de leitura.</string>
+  <string name="file_written" formatted="false">Arquivo salvo com sucesso na raíz do Cartão SD.</string>
+  <string name="date" formatted="false">data</string>
+  <string name="time" formatted="false">hora</string>
+  <string name="status" formatted="false">estado</string>
+  <string name="charge" formatted="false">Porcentagem de Carga</string>
   <string name="temperature" formatted="false">Graus Celsius</string>
-  <string name="voltage" formatted="false">Volts</string>
+  <string name="voltage" formatted="false">volts</string>
   <string name="alarm_fully_charged" formatted="false">Bateria está completamente carregada</string>
   <string name="alarm_charge_drops" formatted="false">"Carga da bateria abaixo de "</string>
   <string name="alarm_charge_rises" formatted="false">"Carga da bateria acima de "</string>
   <string name="alarm_temp_rises" formatted="false">"Temperatura da bateria está acima de "</string>
   <string name="alarm_health_failure" formatted="false">"Saúde da bateria é: "</string>
-  <string name="alarm_text" formatted="false">Selecciona para editar alarmes.</string>
-  <string name="logs_empty" formatted="false">Relatórios vazios</string>
-  <string name="discharging_from" formatted="false">A descarregar de</string>
-  <string name="charging_from" formatted="false">A carregar de</string>
+  <string name="alarm_text" formatted="false">Selecione para editar alarmes.</string>
+  <string name="logs_empty" formatted="false">Não existem relatórios</string>
+  <string name="discharging_from" formatted="false">Descarregando de</string>
+  <string name="charging_from" formatted="false">Carregando de</string>
   <string name="fully_charged" formatted="false">Completamente Carregado</string>
   <string name="since" formatted="false">Desde</string>
-  <string name="one_six_needed" formatted="false">Lamento, precisas de Android 1.6 ou superior!</string>
-  <string name="currently_using" formatted="false">A usar</string>
+  <string name="one_six_needed" formatted="false">Desculpe, Android 1.6 ou superior é necessário!</string>
+  <string name="currently_using" formatted="false">Usando</string>
   <string name="currently_set_to" formatted="false">"Definido para: "</string>
-  <string name="currently_disabled" formatted="false">Desactivado</string>
+  <string name="currently_disabled" formatted="false">Desativado</string>
   <string name="help_cat_version" formatted="false">Versão</string>
   <string name="help_cat_changelog" formatted="false">Relatório das mudanças</string>
-  <string name="help_changelog" formatted="false">Vê a <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">história das versões na página do projecto</a>.</string>
+  <string name="help_changelog" formatted="false">Veja o <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">histórico de mudanças na página do projeto</a>.</string>
   <string name="help_cat_introduction" formatted="false">Introdução</string>
-  <string name="help_cat_summary" formatted="false">Sumário</string>
+  <string name="help_cat_summary" formatted="false">Resumo</string>
   <string name="help_cat_limitations" formatted="false">Limitações</string>
   <string name="help_cat_features" formatted="false">Funções</string>
   <string name="help_cat_no_warranty" formatted="false">Sem Garantia</string>
   <string name="help_cat_acknowledgments" formatted="false">Agradecimentos</string>
   <string name="help_cat_translations" formatted="false">Traduções</string>
   <string name="help_subcat_translators" formatted="false">Tradutores</string>
-  <string name="help_cat_contact" formatted="false">Contacto</string>
-  <string name="pref_hint" formatted="false">Sugestão: Pressiona a tecla Menu para ajuda.</string>
+  <string name="help_cat_contact" formatted="false">Contato</string>
+  <string name="pref_hint" formatted="false">Sugestão: Pressiona a tecla MENU para ajuda.</string>
   <string name="settings_overview" formatted="false">Visão Geral</string>
   <string name="color_settings" formatted="false">Cores e Temas</string>
-  <string name="color_settings_summary" formatted="false">Controlar cores dos ícones e temas das janelas</string>
-  <string name="time_settings" formatted="false">Definições da hora</string>
+  <string name="color_settings_summary" formatted="false">Configurar as cores dos ícones e temas das janelas</string>
+  <string name="time_settings" formatted="false">Configurações de Hora</string>
   <string name="alarm_settings_subtitle" formatted="false">Definições dos alarmes</string>
   <string name="alarm_settings" formatted="false">Alarmes</string>
   <string name="alarm_settings_summary" formatted="false">Controlar notificações para a bateria baixa/cheia</string>
+  <string name="need_uninstall" formatted="false">Desinstalação Necessária</string>
+  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro precisa ser desinstalado e reinstalado para completar esse upgrade. Sinto muito pelo inconveniente. Isso é necessário devido a uma limitação técnica do Android. Isso não será mais necessário para upgrades futuros.\n\nApós clicar OK para dispensar essa mensagem, você apenas terá que clicar e OK novamente quando o Android te pedir permissão para desinstalar. Após isso, você será levado à tela do Market onde poderá reinstalar o aplicativo.\n\nA maior parte dos usuários terão suas preferências restauradas, com exceção dos alarmes que terão de ser recriados. Isso não é garantido, portanto revise suas configurações após reinstalar.\n\nObrigado, e espero que você goste de todas as novas features!</string>
+  <string name="menu_get_plugins" formatted="false">Pegar Plugins</string>
+  <string name="help_introduction" formatted="false">Esse é o <i>Battery Indicator Pro</i>, a versão \"Pro\" do popular aplicativo gratuito, <i>Battery Indicator</i>. Ele está disponível para compra a partir do Android Market, mas é um projeto de código livre, o que significa que você pode fazer o download do código fonte na <a href="http://code.google.com/p/battery-indicator/">página do projeto</a>.</string>
+  <string name="help_introduction_free" formatted="false">Esse é o <i>Battery Indicator</i>, a versão gratuita da família de aplicativos <i>Battery Indicator</i>. Ele está disponível no Android Market e é um projeto de código livre, o que significa que você pode fazer o download do código fonte na <a href="http://code.google.com/p/battery-indicator/">página do projeto</a>.\n\nPor favor, ajude o projeto, através de doações e comprando a <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">versão Pro</a>.</string>
+  <string name="time_settings_summary" formatted="false">Controlar estimativas e aproximações de tempo</string>
+  <string name="other_settings" formatted="false">Outras Configurações</string>
+  <string name="pref_cat_more_settings_in_pro" formatted="false">Mais Configurações na versão Pro</string>
+  <string name="add_alarm" formatted="false">Adicionar alarme</string>
+  <string name="pref_cat_themes" formatted="false">Temas</string>
+  <string name="pref_main_window_theme" formatted="false">Tema da Janela Principal</string>
+  <string name="pref_icon_plugin" formatted="false">Plugins para Ícones</string>
+  <string name="no_plugins_installed_summary" formatted="false">Aperte MENU para pegar plugins</string>
+  <string name="pref_cat_logging" formatted="false">Relatórios</string>
+  <string name="pref_enable_logging" formatted="false">Ativar Relatórios</string>
+  <string name="pref_enable_logging_summary" formatted="false">Registrar mudanças no estado da bateria?</string>
+  <string name="pref_log_everything" formatted="false">Registrar tudo</string>
+  <string name="pref_log_everything_summary" formatted="false">Registrar diferenças de carga também?</string>
+  <string name="pref_max_log_age" formatted="false">Idade Máxima dos Relatórios</string>
+  <string name="pref_max_log_age_summary" formatted="false">Apagar relatórios mais velhos que:</string>
+  <string-array name="max_log_age_entries">
+    <item>1 semana</item>
+    <item>2 semanas</item>
+    <item>3 semanas</item>
+    <item>4 semanas</item>
+  </string-array>
 </resources>
