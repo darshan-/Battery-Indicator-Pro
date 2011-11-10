@@ -21,9 +21,9 @@
   <string name="confirm_clear_logs" formatted="false">Действительно удалить весь журнал работы?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Действительно включить режим 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Действительно выключить режим 10%?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">ВНИМАНИЕ: Изменение этих настроек (включение и выключение) сбросит Ваши цветовые настройки программы.\n\nЕсли Вы являетесь владельцем Motorola Droid, Droid X, Droid 2, Defy или Samsung Moment, Вы обязательно должны включить данную функцию сразу как только вы установите это приложение. Для остальных устройств данная функция должна быть выключена.</string>
+  <string name="confirm_ten_percent_hint" formatted="false">ВНИМАНИЕ: Изменение этой настройки (её включение и выключение) сбросит Ваши цветовые настройки программы.\n\nЕсли Вы являетесь владельцем Motorola Droid, Droid X, Droid 2, Defy или Samsung Moment, Вы обязательно должны включить данную настройку сразу же после установки этого приложения. Для остальных устройств данную настройку следует отключить.</string>
   <string name="first_run_title" formatted="false">Спасибо!</string>
-  <string name="first_run_message" formatted="false">Спасибо за покупку программы! <b> <i>Важные моменты: </i> </b>\n\n• Если у Вас установлена программа отслеживающая запущенные процессы <b>Task killer</b> или подобная, убедитесь в том что в данной программе можно внести в исключения Battery Indicator Pro. Если Вы внесли в исключения бесплатную версию Battery Indicator, после установки Battery Indicator Pro <i>Вам понадобится внести её тоже в исключения.</i>!\n• Если Вы являетесь владельцем <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, или <b>Samsung Moment</b> Вы должны включить режим 10% в расширенных настройках.</string>
+  <string name="first_run_message" formatted="false">Спасибо за покупку программы! <b> <i>Важные моменты: </i> </b>\n\n• Если у Вас установлена программа отслеживающая запущенные процессы <b>Task killer</b> или подобная, убедитесь в том что в данной программе можно внести в исключения Battery Indicator Pro. Если Вы внесли в исключения бесплатную версию Battery Indicator, после установки Battery Indicator Pro <i>Вам понадобится внести её исключения тоже.</i>!\n• Если Вы являетесь владельцем <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, или <b>Samsung Moment</b> Вы должны включить \"режим 10%\" в расширенных настройках.</string>
   <string name="first_run_message_free" formatted="false">Спасибо за установку Battery Indicator! <b> <i>Обратите внимание на следующие два пункта: </i> </b>\n\n• Если у Вас установлена программа отслеживающая запущенные процессы <b>Task killer</b> или подобная, убедитесь в том что в данной программе можно внести в исключения Battery Indicator.</string>
   <string name="okay" formatted="false">Да</string>
   <string name="none" formatted="false">Нет</string>
@@ -34,7 +34,7 @@
   <string name="menu_clear" formatted="false">Очистить</string>
   <string name="menu_reverse" formatted="false">Обратный порядок</string>
   <string name="menu_export" formatted="false">Экспортировать в CSV</string>
-  <string name="menu_delete_alarm" formatted="false">Удалить сигнал</string>
+  <string name="menu_delete_alarm" formatted="false">Удалить оповещение</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Фаренгейт</string>
@@ -51,8 +51,8 @@
   <string name="press_menu_for_more" formatted="false">Нажмите MENU для настройки.</string>
   <string name="inaccessible_storage" formatted="false">SD Card недоступна.</string>
   <string name="inaccessible_w_reason" formatted="false">SD Card недоступна:</string>
-  <string name="read_only_storage" formatted="false">SD Card только чтение.</string>
-  <string name="file_written" formatted="false">Файл успешно записан в корень SD карты.</string>
+  <string name="read_only_storage" formatted="false">SD Card доступна только для чтения.</string>
+  <string name="file_written" formatted="false">Файл успешно сохранен в корень SD карты.</string>
   <string name="date" formatted="false">дата</string>
   <string name="time" formatted="false">время</string>
   <string name="status" formatted="false">состояние</string>
@@ -64,27 +64,49 @@
   <string name="alarm_charge_rises" formatted="false">"Уровень заряда аккумулятора выше "</string>
   <string name="alarm_temp_rises" formatted="false">"Температура батареи выше "</string>
   <string name="alarm_health_failure" formatted="false">"Состояние батареи: "</string>
-  <string name="alarm_text" formatted="false">Выберите для редактирования сигналов.</string>
+  <string name="alarm_text" formatted="false">Выберите для редактирования оповещений.</string>
   <string name="logs_empty" formatted="false">Файл журнала работы пуст</string>
   <string name="discharging_from" formatted="false">Разряжается с</string>
   <string name="charging_from" formatted="false">Заряжается с</string>
   <string name="fully_charged" formatted="false">Полностью заряжено</string>
   <string name="since" formatted="false">С</string>
-  <string name="one_six_needed" formatted="false">Ой, для работы необходим Android 1.6+</string>
+  <string name="one_six_needed" formatted="false">Извините, для работы необходим Android 1.6 и старше!</string>
   <string name="currently_using" formatted="false">Текущее использование</string>
-  <string name="currently_set_to" formatted="false">"Установить сейчас: "</string>
+  <string name="currently_set_to" formatted="false">"Текущая настройка: "</string>
   <string name="currently_disabled" formatted="false">Сейчас отключено</string>
   <string name="help_cat_version" formatted="false">Версия</string>
   <string name="help_cat_changelog" formatted="false">Журнал изменений</string>
   <string name="help_changelog" formatted="false">Смотрите в <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">истории изменений программы</a>.</string>
   <string name="help_cat_introduction" formatted="false">Введение</string>
-  <string name="help_introduction" formatted="false"><i>Battery Indicator Pro</i>, \"Pro\" версия популярного бесплатного приложения, <i>Battery Indicator</i>. \"Pro\" версия доступна для покупки в Android Market, но не забывайте что данное приложение является оупенсоурсным проектом, что означает то что вы можете помочь в разработке и скачать исходники <a href="http://code.google.com/p/battery-indicator/">сайт проекта</a>.</string>
+  <string name="help_introduction" formatted="false"><i>Battery Indicator Pro</i>, \"Pro\" версия популярного бесплатного приложения, <i>Battery Indicator</i>. \"Pro\" версия доступна для покупки в Android Market, но не забывайте что данное приложение является проектом с открытым кодом, что означает то что вы можете помочь в разработке и скачать исходники <a href="http://code.google.com/p/battery-indicator/">сайт проекта</a>.</string>
   <string name="help_introduction_free" formatted="false">Данная версия <i>Battery Indicator</i> является бесплатной. Версия доступна для покупки в Android Market, но не забывайте, что данное приложение является открытым проектом, что означает то, что вы можете помочь в разработке и скачать исходники <a href="http://code.google.com/p/battery-indicator/">сайт проекта</a>.\n\nВы можете поддержать проект, перейдя на \"PRO\" версию программы <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Battery Indicator Pro</a>.</string>
   <string name="help_cat_summary" formatted="false">О программе</string>
   <string name="help_cat_no_warranty" formatted="false">Отказ от гарантий</string>
   <string name="help_subcat_translators" formatted="false">Переводчики</string>
   <string name="help_cat_contact" formatted="false">Контакты</string>
   <string name="settings_overview" formatted="false">Обзор</string>
+  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro необходимо удалить и установить заново для завершения крупного обновления. Прошу прощения за неудобства! Это необходимо сделать ввиду технических ограничений операционной системы Android. Этого больше не потребуется делать при последующих обновлениях.\n\nПосле того, как Вы нажмете \'Okay\' для закрытия этого сообщения, Вам будет нужно просто еще раз нажать \'Okay\', когда Android попросит разрешения удалить программу. Затем Вы перейдете на страницу Android Market, где сможете переустановить приложение.\n\nУ большинства пользователей настройки приложения сохраняться, за исключением настроек оповещений, которые необходимо будет настроить заново. И всё же, я не могу гарантировать, что настройки сохранятся, поэтому проверьте их после переустановки.\n\nСпасибо, я надеюсь, Вам понравятся новые функции!</string>
+  <string name="help_summary" formatted="false"><i>Battery Indicator Pro</i> это компактный индикатор заряда батареи для мобильной операционной системы Android™. Её основная функция - отображать уровень заряда батареи на индикаторе расположенном на верхней панели.\n\nВерсия Pro This Pro version offers a great deal more utility than that, however. Besides offering red, amber, and green icons, it also has the following key features as of version 3.0:\n\n• Fully configurable estimated charge/discharge time left.\n• Logging of battery state.\n• Themes for the main window (including a full-size window with large, easy-to-read text).\n• Manually disable/reenable the device lock screen, with the option to automatically disable it when plugged in and reenable it when unplugged.\n• Many more useful things that you\'ll discover throughout.</string>
+  <string name="help_contact" formatted="false">Если у Вас возникнут вопросы или проблемы, пожалуйста перейдите по ссылке<a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">FAQ проекта</a>, чтобы узнать как можно связаться со мной.\n</string>
+  <string name="pref_hint" formatted="false">Подсказка: Нажмите MENU для вызова помощи.</string>
+  <string name="color_settings" formatted="false">Цвета и Темы</string>
+  <string name="color_settings_summary" formatted="false">Цвета индикатора и темы окна</string>
+  <string name="time_settings" formatted="false">Настройки времени</string>
+  <string name="alarm_settings_subtitle" formatted="false">Настройки оповещений</string>
+  <string name="alarm_settings" formatted="false">Оповещения</string>
+  <string name="alarm_settings_summary" formatted="false">Настройка оповещений для низкого/полного заряда батареи</string>
+  <string name="alarm_settings_help" formatted="false">Вы можете настроить оповещение, когда заряд батареи достигает определенного уровня (например, батарея полностью заряжается, уровень заряда опускается ниже 20%).</string>
+  <string name="other_settings" formatted="false">Другие настройки</string>
+  <string name="other_settings_help" formatted="false">Все остальные настройки, включая настройки журнала работы, блокировки экрана, единицы измерения, автозагрузка и другие Вы можете найти на этой странице.</string>
+  <string name="pref_cat_more_settings_in_pro" formatted="false">Больше настроек в версии Pro</string>
+  <string name="pref_alarm_threshold" formatted="false">Предел</string>
+  <string name="alarm_pref_not_used" formatted="false">Не используется для этого типа оповещения</string>
+  <string name="pref_alarm_threshold_summary" formatted="false">Предел срабатывания:</string>
+  <string name="pref_cat_notification_settings" formatted="false">Настройки оповещений</string>
+  <string name="silent" formatted="false">Беззвучно</string>
+  <string name="pref_alarm_vibrate" formatted="false">Вибратор</string>
+  <string name="pref_alarm_ringtone" formatted="false">Мелодия</string>
+  <string name="pref_cat_color" formatted="false">Цвет индикатора</string>
   <string-array name="alarm_types_display">
     <item>Полностью заряжено</item>
     <item>Заряд падает ниже</item>
@@ -107,7 +129,7 @@
   <string-array name="boot_pref_entries">
     <item>Всегда</item>
     <item>Никогда</item>
-    <item>If running on shutdown</item>
+    <item>Если было запущено при выключении</item>
   </string-array>
   <string-array name="status_dur_est_entries">
     <item>Всегда</item>
@@ -125,5 +147,41 @@
     <item>2-х недель</item>
     <item>3 недели</item>
     <item>4 недель</item>
+  </string-array>
+  <string-array name="healths">
+    <item>Сбой</item>
+    <item>Превышено напряжение</item>
+    <item>Неизвестно</item>
+    <item>Неизвестно</item>
+    <item>Хорошее состояние</item>
+    <item>Перегрев</item>
+    <item>Смерть</item>
+  </string-array>
+  <string-array name="pluggeds">
+    <item>Отключено</item>
+  </string-array>
+  <string-array name="log_statuses_old">
+    <item>Полностью заряжен</item>
+    <item>Неизвестно</item>
+    <item>Разряжается</item>
+    <item>Неизвестно</item>
+    <item>Заряжается</item>
+    <item>Неизвестно</item>
+  </string-array>
+  <string-array name="statuses">
+    <item>Не заряжается</item>
+    <item>Полностью заряжен</item>
+    <item>Заряжается</item>
+    <item>Разряжается</item>
+    <item>Отключен</item>
+    <item>Неизвестно</item>
+  </string-array>
+  <string-array name="log_statuses">
+    <item>Отключен</item>
+    <item>Неизвестно</item>
+    <item>Подключен</item>
+    <item>Неизвестно</item>
+    <item>Неизвестно</item>
+    <item>Полностью заряжен</item>
   </string-array>
 </resources>
