@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<level-list xmlns:android="http://schemas.android.com/apk/res/android">
-  <item android:maxLevel="0" android:drawable="@drawable/b_color_preview_bar" />
-  <item android:maxLevel="2" android:drawable="@drawable/a_color_preview_bar" />
-  <item android:maxLevel="3" android:drawable="@drawable/g_color_preview_bar" />
-</level-list>

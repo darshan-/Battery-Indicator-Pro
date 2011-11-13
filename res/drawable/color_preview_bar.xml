@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-  <item android:left="0dp" android:right="14dp" android:drawable="@drawable/bra_color_preview_bar_l" />
-  <item android:left="14dp" android:right="14dp" android:drawable="@drawable/bra_color_preview_bar" />
-  <item android:left="28dp" android:right="14dp" android:drawable="@drawable/bra_color_preview_bar" />
-  <item android:left="42dp" android:right="14dp" android:drawable="@drawable/bra_color_preview_bar" />
-  <item android:left="56dp" android:right="14dp" android:drawable="@drawable/brag_color_preview_bar" />
-  <item android:left="70dp" android:right="14dp" android:drawable="@drawable/brag_color_preview_bar" />
-  <item android:left="84dp" android:right="14dp" android:drawable="@drawable/bag_color_preview_bar" />
-  <item android:left="98dp" android:right="14dp" android:drawable="@drawable/bag_color_preview_bar" />
-  <item android:left="112dp" android:right="14dp" android:drawable="@drawable/bag_color_preview_bar" />
-  <item android:left="126dp" android:right="14dp" android:drawable="@drawable/bag_color_preview_bar" />
-  <item android:left="140dp" android:right="14dp" android:drawable="@drawable/bg_color_preview_bar" />
-  <item android:left="154dp" android:right="14dp" android:drawable="@drawable/bg_color_preview_bar" />
-  <item android:left="168dp" android:right="14dp" android:drawable="@drawable/bg_color_preview_bar" />
-  <item android:left="182dp" android:right="14dp" android:drawable="@drawable/bg_color_preview_bar" />
-  <item android:left="196dp" android:right="14dp" android:drawable="@drawable/bg_color_preview_bar" />
-  <item android:left="210dp" android:right="14dp" android:drawable="@drawable/bg_color_preview_bar" />
-  <item android:left="224dp" android:right="14dp" android:drawable="@drawable/bg_color_preview_bar" />
-  <item android:left="238dp" android:right="14dp" android:drawable="@drawable/bg_color_preview_bar" />
-  <item android:left="252dp" android:right="14dp" android:drawable="@drawable/bg_color_preview_bar" />
-  <item android:left="266dp" android:drawable="@drawable/bg_color_preview_bar_r" />
+  <item android:left="0dp" android:right="14dp" android:drawable="@drawable/color_preview_segment_l" />
+  <item android:left="14dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="28dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="42dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="56dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="70dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="84dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="98dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="112dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="126dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="140dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="154dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="168dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="182dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="196dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="210dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="224dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="238dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="252dp" android:right="14dp" android:drawable="@drawable/color_preview_segment" />
+  <item android:left="266dp" android:drawable="@drawable/color_preview_segment_r" />
 </layer-list>
