@@ -159,6 +159,9 @@
   </string-array>
   <string-array name="pluggeds">
     <item>Отключено</item>
+    <item>(AC)</item>
+    <item>(USB)</item>
+    <item>(?)</item>
   </string-array>
   <string-array name="log_statuses_old">
     <item>Полностью заряжен</item>
