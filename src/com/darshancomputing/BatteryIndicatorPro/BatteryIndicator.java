@@ -24,6 +24,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -100,12 +101,19 @@ public class BatteryIndicator extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        res = getResources();
+        context = getApplicationContext();
+
+        Configuration conf = res.getConfiguration();
+        conf.locale = new java.util.Locale("en");
+        android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        res.updateConfiguration(conf, metrics);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
-        res = getResources();
         str = new Str();
-        context = getApplicationContext();
+
 
         try {
             (new AlarmDatabase(context)).close();
