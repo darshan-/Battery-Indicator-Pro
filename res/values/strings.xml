@@ -560,6 +560,16 @@
     make the AM/PM at the far right not quite fit.
   </string>
 
+  <string formatted="false" name="lang_system_selected">System-selected</string>
+  <string formatted="false" name="pref_cat_language">Language</string>
+  <string formatted="false" name="pref_language_override">Language Override</string>
+  <string formatted="false" name="pref_language_override_summary">Select language:</string>
+  <string formatted="false" name="pref_language_override_help">
+    If the translation to your language is incomplete or inaccurate
+    and you would prefer another, possibly better translation, you may
+    choose to do so here.
+  </string>
+
   <string formatted="false" name="pref_cat_status_duration">Status Duration (For/Since...)</string>
   <string formatted="false" name="pref_status_dur_est">When to Approximate</string>
   <string formatted="false" name="pref_status_dur_est_summary">Start approximating hours since status change:</string>

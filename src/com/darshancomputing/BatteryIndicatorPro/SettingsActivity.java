@@ -37,6 +37,7 @@ import android.preference.PreferenceScreen;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import java.util.Locale;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
     public static final String KEY_COLOR_SETTINGS = "color_settings";
@@ -81,6 +82,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_SHOW_HEAVY_USAGE = "show_heavy_usage";
     public static final String KEY_SHOW_CONSTANT_USAGE = "show_constant_usage";
     public static final String KEY_FIRST_RUN = "first_run";
+    public static final String KEY_LANGUAGE_OVERRIDE = "language_override";
 
     private static final String[] PARENTS = {KEY_SHOW_CHARGE_TIME, KEY_SHOW_CHARGE_TIME, /* Keep these doubled */
                                              KEY_ENABLE_LOGGING, KEY_ENABLE_LOGGING,     /*  keys first!       */
@@ -98,7 +100,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
                                                 KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
                                                 KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME,
-                                                KEY_MAX_LOG_AGE, KEY_ICON_PLUGIN};
+                                                KEY_MAX_LOG_AGE, KEY_ICON_PLUGIN, KEY_LANGUAGE_OVERRIDE};
 
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_CHARGE_AS_TEXT, KEY_STATUS_DUR_EST,
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
@@ -340,6 +342,21 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
             setPrefScreen(R.xml.other_pref_screen);
             setWindowSubtitle(res.getString(R.string.other_settings));
+
+            ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_LANGUAGE_OVERRIDE);
+            CharSequence[] values  = lp.getEntryValues();
+            CharSequence[] entries = new CharSequence[values.length];
+
+            for (int i=0; i < values.length; ++i) {
+                if (values[i].toString().equals("default"))
+                    entries[i] = res.getString(R.string.lang_system_selected);
+                else {
+                    Locale locale = codeToLocale(values[i].toString());
+                    entries[i] = locale.getDisplayName(locale);
+                }
+            }
+
+            lp.setEntries(entries);
         } else {
             setPrefScreen(R.xml.main_pref_screen);
         }
@@ -356,6 +373,15 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         biServiceIntent = new Intent(this, BatteryIndicatorService.class);
         biServiceConnection = new BIServiceConnection();
         bindService(biServiceIntent, biServiceConnection, 0);
+    }
+
+    private Locale codeToLocale (String code) {
+        String[] parts = code.split("_");
+
+        if (parts.length > 1)
+            return new Locale(parts[0], parts[1]);
+        else
+            return new Locale(parts[0]);
     }
 
     private void setWindowSubtitle(String subtitle) {
