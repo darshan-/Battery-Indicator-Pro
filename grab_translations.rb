@@ -3,8 +3,6 @@
 require 'net/http'
 require 'uri'
 
-require '~/src/ath/const.rb'
-
 LANGS_URI = 'http://ath.darshancomputing.com/bi/langs/'
 
 langs = Net::HTTP.get(URI.parse(LANGS_URI)).split()
@@ -33,11 +31,8 @@ end
 
 lang_values  = ["default", "en"]
 
-Const::Languages.each do |name, code|
-  next if !langs.include?(code)
-
+langs.each do |code|
   code = code[0,2] << '_' << code[2,2] if code.length > 2
-
   lang_values  << code
 end
 
