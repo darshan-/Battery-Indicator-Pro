@@ -37,6 +37,7 @@ import android.preference.PreferenceScreen;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import java.util.Locale;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
@@ -105,7 +106,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_CHARGE_AS_TEXT, KEY_STATUS_DUR_EST,
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
-                                                   KEY_ICON_PLUGIN,
+                                                   KEY_ICON_PLUGIN, KEY_LANGUAGE_OVERRIDE,
                                                    KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
 
     public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
@@ -384,6 +385,18 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             return new Locale(parts[0]);
     }
 
+    public static void overrideLanguage(Resources res, WindowManager wm, String lang_override) {
+        android.content.res.Configuration conf = res.getConfiguration();
+        if (! lang_override.equals("default")) {
+            conf.locale = SettingsActivity.codeToLocale(lang_override);
+            android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
+            wm.getDefaultDisplay().getMetrics(metrics);
+            res.updateConfiguration(conf, metrics);
+        } else {
+            /* TODO: Somehow set to system default */
+        }
+    }
+
     private void setWindowSubtitle(String subtitle) {
         setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
     }
@@ -581,6 +594,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         if (key.equals(KEY_CONVERT_F)) {
             updateConvertFSummary();
+        }
+
+        if (key.equals(KEY_LANGUAGE_OVERRIDE)) {
+            overrideLanguage(res, getWindowManager(), mSharedPreferences.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default"));
+            restartThisScreen();
         }
 
         for (int i=0; i < RESET_SERVICE.length; i++) {

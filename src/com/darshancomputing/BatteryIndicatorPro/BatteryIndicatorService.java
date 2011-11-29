@@ -519,6 +519,8 @@ public class BatteryIndicatorService extends Service {
     }
 
     public void reloadSettings() {
+        str = new Str(res); /* Language override may have changed */
+
         if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
             setEnablednessOfKeyguard(false);
         else

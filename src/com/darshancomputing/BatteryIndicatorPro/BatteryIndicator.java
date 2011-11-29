@@ -40,6 +40,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -105,14 +106,7 @@ public class BatteryIndicator extends Activity {
         context = getApplicationContext();
         settings = PreferenceManager.getDefaultSharedPreferences(context);
 
-        Configuration conf = res.getConfiguration();
-        String lang_override = settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default");
-        if (! lang_override.equals("default")) {
-            conf.locale = SettingsActivity.codeToLocale(lang_override);
-            android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            res.updateConfiguration(conf, metrics);
-        }
+        SettingsActivity.overrideLanguage(res, getWindowManager(), settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default"));
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -159,6 +153,17 @@ public class BatteryIndicator extends Activity {
         }
     }
 
+    /*private void doLangOverride() {
+        Configuration conf = res.getConfiguration();
+        String lang_override = settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default");
+        if (! lang_override.equals("default")) {
+            conf.locale = SettingsActivity.codeToLocale(lang_override);
+            android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            res.updateConfiguration(conf, metrics);
+        }
+    }*/
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -168,7 +173,10 @@ public class BatteryIndicator extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (!early_exit) registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
+        if (!early_exit) {
+            str = new Str();
+            registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
+        }
     }
 
     @Override
