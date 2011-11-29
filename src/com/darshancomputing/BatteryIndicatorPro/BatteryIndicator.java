@@ -103,12 +103,16 @@ public class BatteryIndicator extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         res = getResources();
         context = getApplicationContext();
+        settings = PreferenceManager.getDefaultSharedPreferences(context);
 
         Configuration conf = res.getConfiguration();
-        conf.locale = new java.util.Locale("en");
-        android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        res.updateConfiguration(conf, metrics);
+        String lang_override = settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default");
+        if (! lang_override.equals("default")) {
+            conf.locale = SettingsActivity.codeToLocale(lang_override);
+            android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            res.updateConfiguration(conf, metrics);
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -123,7 +127,6 @@ public class BatteryIndicator extends Activity {
         }
 
         if (!early_exit) {
-            settings = PreferenceManager.getDefaultSharedPreferences(context);
             sp_store = context.getSharedPreferences("sp_store", 0);
 
             if (settings.contains(BatteryIndicatorService.KEY_LAST_PERCENT)) {

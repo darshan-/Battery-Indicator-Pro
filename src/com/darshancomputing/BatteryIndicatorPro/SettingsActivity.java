@@ -375,7 +375,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         bindService(biServiceIntent, biServiceConnection, 0);
     }
 
-    private Locale codeToLocale (String code) {
+    public static Locale codeToLocale (String code) {
         String[] parts = code.split("_");
 
         if (parts.length > 1)
