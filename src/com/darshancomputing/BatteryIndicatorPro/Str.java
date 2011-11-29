@@ -15,6 +15,7 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.res.Resources;
+import android.view.WindowManager;
 
 /* TODO?: have a public instance in the service and grab the server's instance from all other classes? */
 public class Str {
@@ -174,5 +175,17 @@ public class Str {
             if (key.equals(a[i])) return i;
 
         return -1;
+    }
+
+    public static void overrideLanguage(Resources res, WindowManager wm, String lang_override) {
+        android.content.res.Configuration conf = res.getConfiguration();
+        if (! lang_override.equals("default")) {
+            conf.locale = SettingsActivity.codeToLocale(lang_override);
+            android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
+            wm.getDefaultDisplay().getMetrics(metrics);
+            res.updateConfiguration(conf, metrics);
+        } else {
+            /* TODO: Somehow set to system default */
+        }
     }
 }

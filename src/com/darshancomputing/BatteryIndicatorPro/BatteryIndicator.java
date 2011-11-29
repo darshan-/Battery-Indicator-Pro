@@ -40,7 +40,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -66,6 +65,8 @@ public class BatteryIndicator extends Activity {
     private Button battery_use_b;
     private Button toggle_lock_screen_b;
     private boolean early_exit = false;
+
+    private String oldLanguage = null;
 
     private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
     private static final int DIALOG_CONFIRM_CLOSE = 1;
@@ -106,7 +107,7 @@ public class BatteryIndicator extends Activity {
         context = getApplicationContext();
         settings = PreferenceManager.getDefaultSharedPreferences(context);
 
-        SettingsActivity.overrideLanguage(res, getWindowManager(), settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default"));
+        //Str.overrideLanguage(res, getWindowManager(), settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default"));
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -153,28 +154,26 @@ public class BatteryIndicator extends Activity {
         }
     }
 
-    /*private void doLangOverride() {
-        Configuration conf = res.getConfiguration();
-        String lang_override = settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default");
-        if (! lang_override.equals("default")) {
-            conf.locale = SettingsActivity.codeToLocale(lang_override);
-            android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            res.updateConfiguration(conf, metrics);
-        }
-    }*/
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (!early_exit) unbindService(biServiceConnection);
     }
 
+    private void restartIfLanguageChanged() {
+        String curLanguage = settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default");
+        if (curLanguage.equals(oldLanguage))
+            return;
+
+        com.darshancomputing.BatteryIndicatorPro.Str.overrideLanguage(res, getWindowManager(), curLanguage);
+        mStartActivity(BatteryIndicator.class);
+        finish();
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         if (!early_exit) {
-            str = new Str();
             registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
         }
     }

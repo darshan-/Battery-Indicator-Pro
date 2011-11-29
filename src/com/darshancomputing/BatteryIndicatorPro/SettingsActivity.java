@@ -204,6 +204,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private Object backupManager;
     private Boolean backupAvailable;
 
+    private String oldLanguage = null;
+
     private final Handler mHandler = new Handler();
     Runnable rShowPluginSettings = new Runnable() {
         public void run() {
@@ -251,6 +253,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         res = getResources();
 
         mSharedPreferences = getPreferenceManager().getSharedPreferences();
+
+        oldLanguage = mSharedPreferences.getString(KEY_LANGUAGE_OVERRIDE, "default");
 
         if (pref_screen == null) {
             setPrefScreen(R.xml.main_pref_screen);
@@ -385,18 +389,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             return new Locale(parts[0]);
     }
 
-    public static void overrideLanguage(Resources res, WindowManager wm, String lang_override) {
-        android.content.res.Configuration conf = res.getConfiguration();
-        if (! lang_override.equals("default")) {
-            conf.locale = SettingsActivity.codeToLocale(lang_override);
-            android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
-            wm.getDefaultDisplay().getMetrics(metrics);
-            res.updateConfiguration(conf, metrics);
-        } else {
-            /* TODO: Somehow set to system default */
-        }
-    }
-
     private void setWindowSubtitle(String subtitle) {
         setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
     }
@@ -413,6 +405,15 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         intent.putExtra(EXTRA_SCREEN, pref_screen);
         startActivity(intent);
         finish();
+    }
+
+    private void restartIfLanguageChanged() {
+        String curLanguage = mSharedPreferences.getString(KEY_LANGUAGE_OVERRIDE, "default");
+        if (curLanguage.equals(oldLanguage))
+            return;
+
+        Str.overrideLanguage(res, getWindowManager(), curLanguage);
+        restartThisScreen();
     }
 
     private void resetService() {
@@ -434,6 +435,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     protected void onResume() {
         super.onResume();
 
+        restartIfLanguageChanged();
         mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
@@ -597,7 +599,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         }
 
         if (key.equals(KEY_LANGUAGE_OVERRIDE)) {
-            overrideLanguage(res, getWindowManager(), mSharedPreferences.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default"));
+            Str.overrideLanguage(res, getWindowManager(), mSharedPreferences.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default"));
             restartThisScreen();
         }
 
