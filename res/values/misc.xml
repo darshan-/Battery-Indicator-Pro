@@ -349,6 +349,8 @@
     <item>672</item>
   </string-array>
 
+  <bool name="long_activity_names">true</bool>
+
   <string name="help_translators_list">
     Matthew McBaul(包明)
     \nGonzalo Rodríguez Píriz

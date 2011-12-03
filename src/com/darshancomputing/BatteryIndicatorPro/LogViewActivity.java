@@ -88,6 +88,9 @@ public class LogViewActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
         res = getResources();
+
+        getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
+
         settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
         str = new Str(res);

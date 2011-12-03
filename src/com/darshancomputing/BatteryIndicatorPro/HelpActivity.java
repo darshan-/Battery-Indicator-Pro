@@ -32,6 +32,9 @@ public class HelpActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
+
         setContentView(R.layout.help);
 
         TextView tv;

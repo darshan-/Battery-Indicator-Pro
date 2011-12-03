@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="bi_theme" parent="@android:style/Theme.Holo">
+    <item name="android:windowBackground">@color/semi_transparent</item>
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="android:actionBarStyle">@style/action_bar_theme</item>
+    <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+  </style>
+
+  <color name="semi_transparent">#a000</color>
+
+  <style name="action_bar_theme" parent="@android:style/Widget.Holo.ActionBar">
+    <item name="android:background">@android:color/black</item>
+  </style>
+
+  <style name="bi_help_theme" parent="@android:style/Theme.Holo.Light">
+  </style>
+
+  <dimen name="main_frame_width">220dp</dimen>
+  <dimen name="time_remaining_label_width">136dp</dimen>
+  <dimen name="time_remaining_estimate_width">51dp</dimen>
+  <dimen name="time_remaining_padding_bottom">3dp</dimen>
+  <dimen name="time_remaining_text_size">14dp</dimen>
+  <dimen name="tls_button_height">54dp</dimen>
+
+  <!-- Left, Top, Right, Bottom, just like setPadding() -->
+  <array name="theme_default_main_layout_padding">
+    <item>0</item>
+    <item>0</item>
+    <item>0</item>
+    <item>50</item>
+  </array>
+</resources>

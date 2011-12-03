@@ -29,6 +29,8 @@ public class SettingsHelpActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
+
         Intent intent = getIntent();
         String pref_screen = intent.getStringExtra(SettingsActivity.EXTRA_SCREEN);
         res = getResources();
