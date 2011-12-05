@@ -5,7 +5,7 @@
       android:icon="@+android:drawable/ic_menu_recent_history"
       android:title="@string/menu_logs"
       android:enabled="true"
-      android:showAsAction="ifRoom|withText"
+      android:showAsAction="always|withText"
   />
 
   <item

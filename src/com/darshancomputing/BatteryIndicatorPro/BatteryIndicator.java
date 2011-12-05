@@ -109,6 +109,9 @@ public class BatteryIndicator extends Activity {
 
         //Str.overrideLanguage(res, getWindowManager(), settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default"));
 
+        // TODO: This will crash on pre-3.0 devices.
+        getActionBar().setDisplayShowTitleEnabled(false);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         str = new Str();
