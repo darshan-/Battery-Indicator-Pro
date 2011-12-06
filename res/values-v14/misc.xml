@@ -6,5 +6,5 @@
     <item>full-dark</item>
   </string-array>
 
-  <bool name="long_activity_names">false</bool>
+  <bool name="api_level_14_plus">true</bool>
 </resources>

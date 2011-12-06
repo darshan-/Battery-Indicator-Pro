@@ -70,6 +70,9 @@ public class AlarmEditActivity extends PreferenceActivity {
         alarms = new AlarmDatabase(context);
         settings = PreferenceManager.getDefaultSharedPreferences(context);
 
+        if (res.getBoolean(R.bool.api_level_14_plus))
+            getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
+
         mCursor = alarms.getAlarm(getIntent().getIntExtra(EXTRA_ALARM_ID, -1));
         mAdapter = new AlarmAdapter();
 
@@ -79,6 +82,13 @@ public class AlarmEditActivity extends PreferenceActivity {
         mPreferenceScreen = getPreferenceScreen();
 
         syncValuesAndSetListeners();
+    }
+
+    private void setWindowSubtitle(String subtitle) {
+        if (res.getBoolean(R.bool.long_activity_names))
+            setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
+        else
+            setTitle(subtitle);
     }
 
     @Override
@@ -125,10 +135,6 @@ public class AlarmEditActivity extends PreferenceActivity {
         default:
             return super.onOptionsItemSelected(item);
         }
-    }
-
-    private void setWindowSubtitle(String subtitle) {
-        setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
     }
 
     private void syncValuesAndSetListeners() {

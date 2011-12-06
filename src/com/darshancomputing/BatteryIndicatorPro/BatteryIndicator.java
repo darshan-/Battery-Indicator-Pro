@@ -109,9 +109,6 @@ public class BatteryIndicator extends Activity {
 
         //Str.overrideLanguage(res, getWindowManager(), settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default"));
 
-        // TODO: This will crash on pre-3.0 devices.
-        getActionBar().setDisplayShowTitleEnabled(false);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         str = new Str();
@@ -153,7 +150,8 @@ public class BatteryIndicator extends Activity {
             editor.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, true);
             editor.commit();
 
-            setTitle(res.getString(R.string.app_full_name));
+            if (! res.getBoolean(R.bool.show_main_title))
+                setTitle("");
         }
     }
 

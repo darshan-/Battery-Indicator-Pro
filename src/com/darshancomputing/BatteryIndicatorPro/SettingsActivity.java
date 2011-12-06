@@ -238,9 +238,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // TODO: This will crash on pre-3.0 devices.  Fix it here and in the other activities you added it to. (LogView, Help, SettingsHelp)
-        getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
-
         try {
             Class<?> c = Class.forName("android.app.backup.BackupManager");
             backupMethod = c.getMethod("dataChanged", new Class[] {});
@@ -255,12 +252,16 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         pref_screen = intent.getStringExtra(EXTRA_SCREEN);
         res = getResources();
 
+        if (res.getBoolean(R.bool.api_level_14_plus))
+            getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
+
         mSharedPreferences = getPreferenceManager().getSharedPreferences();
 
         oldLanguage = mSharedPreferences.getString(KEY_LANGUAGE_OVERRIDE, "default");
 
         if (pref_screen == null) {
             setPrefScreen(R.xml.main_pref_screen);
+            setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
         } else if (pref_screen.equals(KEY_COLOR_SETTINGS)) {
             setPrefScreen(R.xml.color_pref_screen);
             setWindowSubtitle(res.getString(R.string.color_settings));

@@ -29,14 +29,16 @@ public class SettingsHelpActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
-
         Intent intent = getIntent();
         String pref_screen = intent.getStringExtra(SettingsActivity.EXTRA_SCREEN);
         res = getResources();
 
+        if (res.getBoolean(R.bool.api_level_14_plus))
+            getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
+
         if (pref_screen == null) {
             setContentView(R.layout.main_settings_help);
+            setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
         } else if (pref_screen.equals(SettingsActivity.KEY_COLOR_SETTINGS)) {
             setContentView(R.layout.color_settings_help);
             setWindowSubtitle(res.getString(R.string.color_settings));
@@ -59,7 +61,10 @@ public class SettingsHelpActivity extends Activity {
     }
 
     private void setWindowSubtitle(String subtitle) {
-        setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
+        if (res.getBoolean(R.bool.long_activity_names))
+            setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
+        else
+            setTitle(subtitle);
     }
 
     @Override

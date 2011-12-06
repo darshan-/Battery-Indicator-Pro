@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string formatted="false" name="app_full_name">Battery Indicator Pro</string>
-  <string formatted="false" name="app_launcher_name">Battery Indicator</string>
-  <string formatted="false" name="settings_activity_name">Battery Indicator Pro - Settings</string>
-  <string formatted="false" name="help_activity_name">Battery Indicator Pro - Help</string>
-  <string formatted="false" name="log_view_activity_name">Battery Indicator Pro - Logs</string>
+  <string formatted="false" name="app_launcher_name">@string/app_full_name</string>
+  <string formatted="false" name="settings_activity_name">Battery Indicator Pro - Settings</string><!-- depricated -->
+  <string formatted="false" name="settings_activity_subtitle">Settings</string>
+  <string formatted="false" name="help_activity_name">Battery Indicator Pro - Help</string><!-- depricated -->
+  <string formatted="false" name="help_activity_subtitle">Help</string>
+  <string formatted="false" name="log_view_activity_name">Battery Indicator Pro - Logs</string><!-- depricated -->
+  <string formatted="false" name="log_view_activity_subtitle">Logs</string>
 
   <string formatted="false" name="app_full_name_free">Battery Indicator</string>
-  <string formatted="false" name="settings_activity_name_free">Battery Indicator - Settings</string>
-  <string formatted="false" name="help_activity_name_free">Battery Indicator - Help</string>
+  <string formatted="false" name="settings_activity_name_free">Battery Indicator - Settings</string><!-- depricated -->
+  <string formatted="false" name="help_activity_name_free">Battery Indicator - Help</string><!-- depricated -->
 
   <string formatted="false" name="battery_use_b">View Battery Use</string>
   <string formatted="false" name="upgrade_donate_b">Upgrade/Donate...</string>

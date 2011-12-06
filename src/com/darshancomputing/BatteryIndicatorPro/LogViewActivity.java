@@ -89,7 +89,10 @@ public class LogViewActivity extends ListActivity {
         context = getApplicationContext();
         res = getResources();
 
-        getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
+        if (res.getBoolean(R.bool.api_level_14_plus))
+            getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
+
+        setWindowSubtitle(res.getString(R.string.log_view_activity_subtitle));
 
         settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
@@ -110,6 +113,13 @@ public class LogViewActivity extends ListActivity {
         setListAdapter(mAdapter);
 
         setHeaderText();
+    }
+
+    private void setWindowSubtitle(String subtitle) {
+        if (res.getBoolean(R.bool.long_activity_names))
+            setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
+        else
+            setTitle(subtitle);
     }
 
     @Override

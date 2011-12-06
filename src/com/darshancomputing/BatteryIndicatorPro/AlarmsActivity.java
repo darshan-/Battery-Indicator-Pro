@@ -62,6 +62,9 @@ public class AlarmsActivity extends Activity {
         res = getResources();
         str = new Str(res);
 
+        if (res.getBoolean(R.bool.api_level_14_plus))
+            getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
+
         setContentView(R.layout.alarms);
         setWindowSubtitle(res.getString(R.string.alarm_settings));
 
@@ -83,6 +86,13 @@ public class AlarmsActivity extends Activity {
                 startActivity(new Intent().setComponent(comp).putExtra(AlarmEditActivity.EXTRA_ALARM_ID, id));
             }
         });
+    }
+
+    private void setWindowSubtitle(String subtitle) {
+        if (res.getBoolean(R.bool.long_activity_names))
+            setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
+        else
+            setTitle(subtitle);
     }
 
     private void populateList() {
@@ -160,10 +170,6 @@ public class AlarmsActivity extends Activity {
         }
 
         return super.onContextItemSelected(item);
-    }
-
-    private void setWindowSubtitle(String subtitle) {
-        setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
     }
 
     private class AlarmsObserver extends DataSetObserver {
