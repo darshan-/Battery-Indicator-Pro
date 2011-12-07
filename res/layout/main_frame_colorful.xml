@@ -5,6 +5,10 @@
               android:layout_height="wrap_content"
               android:background="@drawable/colorful_theme_bg"
 >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+>
       <LinearLayout android:id="@+id/main_content"
                     android:orientation="vertical"
                     android:layout_width="@dimen/main_frame_width"
@@ -41,7 +45,7 @@
         />
 
         <Button android:id="@+id/battery_use_b"
-                android:layout_height="@dimen/bu_button_height"
+                android:layout_height="43dp"
 	        android:layout_width="fill_parent"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/battery_use_b"
@@ -94,4 +98,5 @@
               android:layout_height="2dp"
         />
       </LinearLayout>
+</ScrollView>
 </LinearLayout>

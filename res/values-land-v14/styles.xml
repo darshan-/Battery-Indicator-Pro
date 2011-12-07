@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="bu_button_height">44dp</dimen>
+  <dimen name="tls_button_height">44dp</dimen>
+  <dimen name="pre_buttons_padding">1dp</dimen>
+  <dimen name="between_buttons_padding">1dp</dimen>
+  <dimen name="post_buttons_padding">1dp</dimen>
+
+  <dimen name="time_remaining_padding_bottom">2dp</dimen>
+
+  <dimen name="time_remaining_text_size">13dp</dimen>
+  <dimen name="status_since_padding_bottom">1dp</dimen>
+  <dimen name="status_since_text_size">13dp</dimen>
+  <dimen name="main_window_hint_text_size">13sp</dimen>
+</resources>

@@ -58,6 +58,17 @@
     <item name="android:layout_height">68dp</item>
   </style>
 
+  <style name="main_ll">
+    <item name="android:gravity">center_horizontal|bottom</item>
+  </style>
+
+  <style name="main_content">
+    <item name="android:paddingLeft">5dp</item>
+    <item name="android:paddingTop">2dp</item>
+    <item name="android:paddingRight">5dp</item>
+    <item name="android:paddingBottom">2dp</item>
+  </style>
+
   <color name="android_green">#A4C639</color>
   <color name="my_yellow">#E8D018</color>
   <color name="my_darker_yellow">#D0BF27</color>
@@ -88,6 +99,17 @@
   <dimen name="time_remaining_estimate_width">44dp</dimen>
   <dimen name="time_remaining_padding_bottom">2dp</dimen>
   <dimen name="time_remaining_text_size">12dp</dimen>
+  <dimen name="status_since_padding_bottom">2dp</dimen>
+  <dimen name="status_since_text_size">12dp</dimen>
+  <dimen name="pre_buttons_padding">2dp</dimen>
+  <dimen name="between_buttons_padding">3dp</dimen>
+  <dimen name="post_buttons_padding">0dp</dimen>
+  <dimen name="main_window_hint_height">14sp</dimen><!-- Hack! wrap_content not allowed here, but view needs to be hidden in v11+, so height can't be hardwired as wrap_content in layout. -->
+  <dimen name="main_window_hint_padding_left">4dp</dimen>
+  <dimen name="main_window_hint_padding_bottom">3dp</dimen>
+  <dimen name="main_window_hint_text_size">12sp</dimen>
+  <dimen name="main_window_final_padding">2dp</dimen>
+  <dimen name="main_title">16dp</dimen>
   
   <dimen name="bu_button_height">43dp</dimen>
   <dimen name="bu_button_height_fs">55dp</dimen>
