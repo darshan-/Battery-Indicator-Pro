@@ -57,7 +57,6 @@ public class BatteryIndicator extends Activity {
     private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private Resources res;
     private Context context;
-    private Str str;
     private String themeName;
     private Boolean disallowLockButton;
     MainWindowTheme.Theme theme;
@@ -107,12 +106,8 @@ public class BatteryIndicator extends Activity {
         context = getApplicationContext();
         settings = PreferenceManager.getDefaultSharedPreferences(context);
 
-        //Str.overrideLanguage(res, getWindowManager(), settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default"));
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        str = new Str();
-
 
         try {
             (new AlarmDatabase(context)).close();
@@ -231,16 +226,16 @@ public class BatteryIndicator extends Activity {
 
         switch (id) {
         case DIALOG_CONFIRM_DISABLE_KEYGUARD:
-            builder.setTitle(str.confirm_disable)
-                .setMessage(str.confirm_disable_hint)
+            builder.setTitle(res.getString(R.string.confirm_disable))
+                .setMessage(res.getString(R.string.confirm_disable_hint))
                 .setCancelable(false)
-                .setPositiveButton(str.yes, new DialogInterface.OnClickListener() {
+                .setPositiveButton(res.getString(R.string.yes), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface di, int id) {
                         setDisableLocking(true);
                         di.cancel();
                     }
                 })
-                .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(res.getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface di, int id) {
                         di.cancel();
                     }
@@ -249,9 +244,9 @@ public class BatteryIndicator extends Activity {
             dialog = builder.create();
             break;
         case DIALOG_CONFIRM_CLOSE:
-            builder.setTitle(str.confirm_close)
-                .setMessage(str.confirm_close_hint)
-                .setPositiveButton(str.yes, new DialogInterface.OnClickListener() {
+            builder.setTitle(res.getString(R.string.confirm_close))
+                .setMessage(res.getString(R.string.confirm_close_hint))
+                .setPositiveButton(res.getString(R.string.yes), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface di, int id) {
                         SharedPreferences.Editor editor = sp_store.edit();
                         editor.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, false);
@@ -264,7 +259,7 @@ public class BatteryIndicator extends Activity {
                         di.cancel();
                     }
                 })
-                .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(res.getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface di, int id) {
                         di.cancel();
                     }
@@ -276,9 +271,9 @@ public class BatteryIndicator extends Activity {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.first_run_message, (LinearLayout) findViewById(R.id.layout_root));
 
-            builder.setTitle(str.first_run_title)
+            builder.setTitle(res.getString(R.string.first_run_title))
                 .setView(layout)
-                .setPositiveButton(str.okay, new DialogInterface.OnClickListener() {
+                .setPositiveButton(res.getString(R.string.okay), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface di, int id) {
                         di.cancel();
                     }
@@ -287,9 +282,9 @@ public class BatteryIndicator extends Activity {
             dialog = builder.create();
             break;
         case DIALOG_NEED_UNINSTALL:
-            builder.setTitle(str.need_uninstall)
-                .setMessage(str.need_uninstall_hint)
-                .setPositiveButton(str.okay, new DialogInterface.OnClickListener() {
+            builder.setTitle(res.getString(R.string.need_uninstall))
+                .setMessage(res.getString(R.string.need_uninstall_hint))
+                .setPositiveButton(res.getString(R.string.okay), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface di, int id) {
                         try {
                             startActivity(new Intent(Intent.ACTION_VIEW,
@@ -323,20 +318,20 @@ public class BatteryIndicator extends Activity {
 
         String s;
         if (last_status == 0)
-            s = str.discharging_from + " " + last_percent + str.percent_symbol;
+            s = res.getString(R.string.discharging_from) + " " + last_percent + res.getString(R.string.percent_symbol);
         else if (last_status == 2)
-            s = str.charging_from + " " + last_percent + str.percent_symbol;
+            s = res.getString(R.string.charging_from) + " " + last_percent + res.getString(R.string.percent_symbol);
         else
-            s = str.fully_charged;
+            s = res.getString(R.string.fully_charged);
 
         status_since.setText(s);
     }
 
     private void updateLockscreenButton() {
         if (sp_store.getBoolean(BatteryIndicatorService.KEY_DISABLE_LOCKING, false))
-            toggle_lock_screen_b.setText(str.reenable_lock_screen);
+            toggle_lock_screen_b.setText(res.getString(R.string.reenable_lock_screen));
         else
-            toggle_lock_screen_b.setText(str.disable_lock_screen);
+            toggle_lock_screen_b.setText(res.getString(R.string.disable_lock_screen));
     }
 
     private void setDisableLocking(boolean b) {
@@ -358,7 +353,7 @@ public class BatteryIndicator extends Activity {
                 startActivity(batteryUseIntent);
                 if (settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_BATTERY_USE, false)) finish();
             } catch (Exception e) {
-                Toast.makeText(context, str.one_six_needed, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, res.getString(R.string.one_six_needed), Toast.LENGTH_SHORT).show();
                 battery_use_b.setEnabled(false);
             }
         }
@@ -486,50 +481,6 @@ public class BatteryIndicator extends Activity {
                     time.setVisibility(View.GONE);
                 }
             }
-        }
-    }
-
-    private class Str {
-        public String discharging_from;
-        public String charging_from;
-        public String fully_charged;
-        public String percent_symbol;
-        public String reenable_lock_screen;
-        public String disable_lock_screen;
-        public String one_six_needed;
-        public String confirm_disable;
-        public String confirm_disable_hint;
-        public String confirm_close;
-        public String confirm_close_hint;
-        public String need_uninstall;
-        public String need_uninstall_hint;
-        public String yes;
-        public String cancel;
-        public String battery_use_b;
-        public String first_run_title;
-        public String first_run_message;
-        public String okay;
-
-        public Str() {
-            discharging_from     = res.getString(R.string.discharging_from);
-            charging_from        = res.getString(R.string.charging_from);
-            fully_charged        = res.getString(R.string.fully_charged);
-            percent_symbol       = res.getString(R.string.percent_symbol);
-            reenable_lock_screen = res.getString(R.string.reenable_lock_screen);
-            disable_lock_screen  = res.getString(R.string.disable_lock_screen);
-            one_six_needed       = res.getString(R.string.one_six_needed);
-            confirm_disable      = res.getString(R.string.confirm_disable);
-            confirm_disable_hint = res.getString(R.string.confirm_disable_hint);
-            confirm_close        = res.getString(R.string.confirm_close);
-            confirm_close_hint   = res.getString(R.string.confirm_close_hint);
-            need_uninstall       = res.getString(R.string.need_uninstall);
-            need_uninstall_hint  = res.getString(R.string.need_uninstall_hint);
-            yes                  = res.getString(R.string.yes);
-            cancel               = res.getString(R.string.cancel);
-            battery_use_b        = res.getString(R.string.battery_use_b);
-            first_run_title      = res.getString(R.string.first_run_title);
-            first_run_message    = res.getString(R.string.first_run_message);
-            okay                 = res.getString(R.string.okay);
         }
     }
 }

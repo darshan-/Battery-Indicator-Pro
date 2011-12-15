@@ -186,6 +186,8 @@ public class Str {
             res.updateConfiguration(conf, metrics);
         } else {
             /* TODO: Somehow set to system default */
+            /* Perhaps showing a confirmation dialog, saying the app needs to close in order for change to take effect.
+               You'd actually do that from SettingsActivity, so execution would never actually get here. */
         }
     }
 }
