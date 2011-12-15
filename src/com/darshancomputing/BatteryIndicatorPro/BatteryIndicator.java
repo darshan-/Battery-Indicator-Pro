@@ -156,15 +156,15 @@ public class BatteryIndicator extends Activity {
         if (!early_exit) unbindService(biServiceConnection);
     }
 
-    private void restartIfLanguageChanged() {
+    /*private void restartIfLanguageChanged() {
         String curLanguage = settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default");
         if (curLanguage.equals(oldLanguage))
             return;
 
-        com.darshancomputing.BatteryIndicatorPro.Str.overrideLanguage(res, getWindowManager(), curLanguage);
+        Str.overrideLanguage(res, getWindowManager(), curLanguage);
         mStartActivity(BatteryIndicator.class);
         finish();
-    }
+    }*/
 
     @Override
     protected void onResume() {

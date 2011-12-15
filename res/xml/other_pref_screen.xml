@@ -99,7 +99,7 @@
     />
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="@string/pref_cat_language">
+  <!--PreferenceCategory android:title="@string/pref_cat_language">
     <ListPreference
        android:key="language_override"
        android:title="@string/pref_language_override"
@@ -107,5 +107,5 @@
        android:dialogTitle="@string/pref_language_override_summary"
        android:defaultValue="default"
     />
-  </PreferenceCategory>
+  </PreferenceCategory-->
 </PreferenceScreen>

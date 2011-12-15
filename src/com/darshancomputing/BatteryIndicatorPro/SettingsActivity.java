@@ -83,7 +83,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_SHOW_HEAVY_USAGE = "show_heavy_usage";
     public static final String KEY_SHOW_CONSTANT_USAGE = "show_constant_usage";
     public static final String KEY_FIRST_RUN = "first_run";
-    public static final String KEY_LANGUAGE_OVERRIDE = "language_override";
+    //public static final String KEY_LANGUAGE_OVERRIDE = "language_override";
 
     private static final String[] PARENTS = {KEY_SHOW_CHARGE_TIME, KEY_SHOW_CHARGE_TIME, /* Keep these doubled */
                                              KEY_ENABLE_LOGGING, KEY_ENABLE_LOGGING,     /*  keys first!       */
@@ -101,12 +101,12 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
                                                 KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
                                                 KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME,
-                                                KEY_MAX_LOG_AGE, KEY_ICON_PLUGIN, KEY_LANGUAGE_OVERRIDE};
+                                                KEY_MAX_LOG_AGE, KEY_ICON_PLUGIN/*, KEY_LANGUAGE_OVERRIDE*/};
 
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_CHARGE_AS_TEXT, KEY_STATUS_DUR_EST,
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
-                                                   KEY_ICON_PLUGIN, KEY_LANGUAGE_OVERRIDE,
+                                                   KEY_ICON_PLUGIN, /*KEY_LANGUAGE_OVERRIDE,*/
                                                    KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
 
     public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
@@ -204,7 +204,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private Object backupManager;
     private Boolean backupAvailable;
 
-    private String oldLanguage = null;
+    //private String oldLanguage = null;
 
     private final Handler mHandler = new Handler();
     Runnable rShowPluginSettings = new Runnable() {
@@ -257,7 +257,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         mSharedPreferences = getPreferenceManager().getSharedPreferences();
 
-        oldLanguage = mSharedPreferences.getString(KEY_LANGUAGE_OVERRIDE, "default");
+        //oldLanguage = mSharedPreferences.getString(KEY_LANGUAGE_OVERRIDE, "default");
 
         if (pref_screen == null) {
             setPrefScreen(R.xml.main_pref_screen);
@@ -352,7 +352,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             setPrefScreen(R.xml.other_pref_screen);
             setWindowSubtitle(res.getString(R.string.other_settings));
 
-            ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_LANGUAGE_OVERRIDE);
+            /*ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_LANGUAGE_OVERRIDE);
             CharSequence[] values  = lp.getEntryValues();
             CharSequence[] entries = new CharSequence[values.length];
 
@@ -365,7 +365,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 }
             }
 
-            lp.setEntries(entries);
+            lp.setEntries(entries);*/
         } else {
             setPrefScreen(R.xml.main_pref_screen);
         }
@@ -414,14 +414,14 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         finish();
     }
 
-    private void restartIfLanguageChanged() {
+    /*private void restartIfLanguageChanged() {
         String curLanguage = mSharedPreferences.getString(KEY_LANGUAGE_OVERRIDE, "default");
         if (curLanguage.equals(oldLanguage))
             return;
 
         Str.overrideLanguage(res, getWindowManager(), curLanguage);
         restartThisScreen();
-    }
+    }*/
 
     private void resetService() {
         try {
@@ -442,7 +442,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     protected void onResume() {
         super.onResume();
 
-        restartIfLanguageChanged();
+        //restartIfLanguageChanged();
         mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
@@ -605,10 +605,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             updateConvertFSummary();
         }
 
-        if (key.equals(KEY_LANGUAGE_OVERRIDE)) {
+        /*if (key.equals(KEY_LANGUAGE_OVERRIDE)) {
             Str.overrideLanguage(res, getWindowManager(), mSharedPreferences.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default"));
             restartThisScreen();
-        }
+        }*/
 
         for (int i=0; i < RESET_SERVICE.length; i++) {
             if (key.equals(RESET_SERVICE[i])) {
