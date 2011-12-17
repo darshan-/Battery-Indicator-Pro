@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <dimen name="main_frame_width">209dp</dimen>
-  <dimen name="time_remaining_label_width">143dp</dimen>
-  <dimen name="tls_button_height">43dp</dimen>
-  <dimen name="tls_button_height_fs">55dp</dimen>
+  <dimen name="main_frame_width">250dp</dimen>
+  <dimen name="time_remaining_label_width">166dp</dimen>
 </resources>

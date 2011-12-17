@@ -45,6 +45,7 @@
                 android:layout_height="@dimen/bu_button_height"
 	        android:layout_width="fill_parent"
                 android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/bu_button_fs"
                 android:text="@string/battery_use_b"
         />
 
@@ -56,6 +57,7 @@
                 android:layout_height="@dimen/tls_button_height"
 	        android:layout_width="fill_parent"
                 android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/tls_button_fs"
         />
 
         <View android:layout_width="fill_parent"

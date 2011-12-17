@@ -7,8 +7,6 @@
     <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
   </style>
 
-  <color name="semi_transparent">#a000</color>
-
   <style name="action_bar_theme" parent="@android:style/Widget.Holo.ActionBar">
     <item name="android:background">#111</item>
     <item name="android:backgroundSplit">@android:color/black</item>
@@ -17,20 +15,7 @@
   <style name="bi_help_theme" parent="@android:style/Theme.Holo.Light">
   </style>
 
-  <style name="main_content_style">
-    <item name="android:paddingLeft">7dp</item>
-    <item name="android:paddingTop">3dp</item>
-    <item name="android:paddingRight">7dp</item>
-    <item name="android:paddingBottom">3dp</item>
-  </style>
-
-  <dimen name="bu_button_height">54dp</dimen>
-  <dimen name="tls_button_height">54dp</dimen>
-  <dimen name="pre_buttons_padding">3dp</dimen>
-  <dimen name="between_buttons_padding">4dp</dimen>
-  <dimen name="post_buttons_padding">2dp</dimen>
   <dimen name="main_window_hint_height">0dp</dimen>
-  <dimen name="main_window_hint_padding_left">5dp</dimen>
   <dimen name="main_window_hint_padding_bottom">0dp</dimen>
   <dimen name="main_window_final_padding">4dp</dimen>
 
