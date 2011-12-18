@@ -99,8 +99,8 @@
   </array>
 
   <dimen name="main_frame_width">220dp</dimen>
-  <dimen name="time_remaining_label_width">136dp</dimen>
-  <dimen name="time_remaining_estimate_width">51dp</dimen>
+  <dimen name="time_remaining_label_width">135dp</dimen>
+  <dimen name="time_remaining_estimate_width">53dp</dimen>
   <dimen name="time_remaining_padding_bottom">3dp</dimen>
   <dimen name="time_remaining_text_size">14dp</dimen>
   <dimen name="status_since_padding_bottom">3dp</dimen>
