@@ -320,7 +320,7 @@
 
   <string-array name="mw_theme_pref_values">
     <item>default</item>
-    <item>colorful</item>
+    <item>DISABLED</item>
     <item>full-dark</item>
   </string-array>
 

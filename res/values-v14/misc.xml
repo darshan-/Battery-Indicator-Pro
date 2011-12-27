@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string-array name="mw_theme_pref_values">
-    <item>default</item>
-    <item>DISABLED</item>
-    <item>full-dark</item>
-  </string-array>
-
   <bool name="api_level_14_plus">true</bool>
 </resources>
