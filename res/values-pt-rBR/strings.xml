@@ -47,8 +47,8 @@
   <string name="normal_usage" formatted="false">Uso normal restante:</string>
   <string name="heavy_usage" formatted="false">Uso intenso restante:</string>
   <string name="constant_usage" formatted="false">Uso constante restante:</string>
-  <string name="press_back_to_leave" formatted="false">Pressiona BACK para sair.</string>
-  <string name="press_menu_for_more" formatted="false">Pressiona MENU para mais opções.</string>
+  <string name="press_back_to_leave" formatted="false">Pressione BACK para sair.</string>
+  <string name="press_menu_for_more" formatted="false">Pressione MENU para mais opções.</string>
   <string name="inaccessible_storage" formatted="false">Cartão SD inacessível</string>
   <string name="inaccessible_w_reason" formatted="false">Cartão SD inacessível:</string>
   <string name="read_only_storage" formatted="false">Cartão SD é apenas de leitura.</string>
@@ -56,13 +56,13 @@
   <string name="date" formatted="false">data</string>
   <string name="time" formatted="false">hora</string>
   <string name="status" formatted="false">estado</string>
-  <string name="charge" formatted="false">Porcentagem de Carga</string>
-  <string name="temperature" formatted="false">Graus Celsius</string>
+  <string name="charge" formatted="false">charge_percentage</string>
+  <string name="temperature" formatted="false">degrees_celsius</string>
   <string name="voltage" formatted="false">volts</string>
   <string name="alarm_fully_charged" formatted="false">Bateria está completamente carregada</string>
   <string name="alarm_charge_drops" formatted="false">"Carga da bateria abaixo de "</string>
   <string name="alarm_charge_rises" formatted="false">"Carga da bateria acima de "</string>
-  <string name="alarm_temp_rises" formatted="false">"Temperatura da bateria está acima de "</string>
+  <string name="alarm_temp_rises" formatted="false">"Temp. bateria acima de "</string>
   <string name="alarm_health_failure" formatted="false">"Saúde da bateria é: "</string>
   <string name="alarm_text" formatted="false">Selecione para editar alarmes.</string>
   <string name="logs_empty" formatted="false">Não existem relatórios</string>

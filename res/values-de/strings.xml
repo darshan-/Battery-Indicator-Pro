@@ -198,7 +198,7 @@
   <string-array name="statuses">
     <item>Ausgesteckt</item>
     <item>Unbekannt</item>
-    <item>Landend</item>
+    <item>Ladend</item>
     <item>Entladend</item>
     <item>Nicht ladend</item>
     <item>Voll geladen</item>
