@@ -114,7 +114,7 @@
   <dimen name="main_window_hint_text_size">14sp</dimen>
   <dimen name="main_window_final_padding">2dp</dimen>
   <dimen name="main_title">20dp</dimen>
-  
+
   <dimen name="bu_button_fs">16sp</dimen>
   <dimen name="bu_button_height">56dp</dimen>
   <dimen name="bu_button_height_fs">66dp</dimen>
