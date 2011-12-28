@@ -7,9 +7,4 @@
     <item>0</item>
     <item>0</item>
   </array>
-
-  <style name="main_ll">
-    <item name="android:gravity">center_horizontal|center_vertical</item>
-    <item name="android:background">@android:color/transparent</item>
-  </style>
 </resources>
