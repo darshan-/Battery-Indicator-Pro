@@ -59,6 +59,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_CHARGE_AS_TEXT = "charge_as_text";
+    public static final String KEY_ONE_PERCENT_HACK = "one_percent_hack";
     public static final String KEY_TEN_PERCENT_MODE = "ten_percent_mode";
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
     public static final String KEY_CAT_COLOR = "category_color";
@@ -106,7 +107,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_CHARGE_AS_TEXT, KEY_STATUS_DUR_EST,
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
-                                                   KEY_ICON_PLUGIN, /*KEY_LANGUAGE_OVERRIDE,*/
+                                                   KEY_ICON_PLUGIN, KEY_ONE_PERCENT_HACK, /*KEY_LANGUAGE_OVERRIDE,*/
                                                    KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
 
     public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";

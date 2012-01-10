@@ -563,6 +563,12 @@
     make the AM/PM at the far right not quite fit.
   </string>
 
+  <string formatted="false" name="pref_cat_one_percent_hack">One-percent hack</string>
+  <string formatted="false" name="pref_one_percent_hack">One-percent hack</string>
+  <string formatted="false" name="pref_one_percent_hack_summary">Attempt one-percent hack? Try this if your device only shows every 10%.</string>
+  <string formatted="false" name="pref_one_percent_hack_help">
+  </string>
+
   <string formatted="false" name="lang_system_selected">System-selected</string>
   <string formatted="false" name="pref_cat_language">Language</string>
   <string formatted="false" name="pref_language_override">Language Override</string>

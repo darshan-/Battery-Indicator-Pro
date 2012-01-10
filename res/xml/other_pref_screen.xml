@@ -19,7 +19,7 @@
        android:title="@string/pref_log_everything"
        android:summary="@string/pref_log_everything_summary"
        android:defaultValue="false"
-       android:enabled="false"
+       android:enabled="true"
     />
 
     <ListPreference
@@ -95,6 +95,15 @@
        android:key="charge_as_text"
        android:title="@string/pref_charge_as_text"
        android:summary="@string/pref_charge_as_text_summary"
+       android:defaultValue="false"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/pref_cat_one_percent_hack">
+    <CheckBoxPreference
+       android:key="one_percent_hack"
+       android:title="@string/pref_one_percent_hack"
+       android:summary="@string/pref_one_percent_hack_summary"
        android:defaultValue="false"
     />
   </PreferenceCategory>
