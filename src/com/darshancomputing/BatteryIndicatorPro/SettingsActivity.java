@@ -254,6 +254,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         res = getResources();
 
         setContentView(R.layout.list_activity);
+        getListView().setDivider(res.getDrawable(R.drawable.my_divider));
 
         if (res.getBoolean(R.bool.api_level_14_plus))
             getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
@@ -287,7 +288,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             if (currentPlugin.equals("none")) {
                 PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_PLUGIN_SETTINGS);
                 cat.removeAll();
-                cat.setLayoutResource(R.layout.divider_horizontal_dark);
+                cat.setLayoutResource(R.layout.none);
 
                 redEnabled   = mSharedPreferences.getBoolean(  KEY_RED, false);
                 amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
@@ -316,7 +317,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             } else {
                 PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
                 cat.removeAll();
-                cat.setLayoutResource(R.layout.divider_horizontal_dark);
+                cat.setLayoutResource(R.layout.none);
 
                 mHandler.postDelayed(rShowPluginSettings,  100);
                 mHandler.postDelayed(rShowPluginSettings,  300);

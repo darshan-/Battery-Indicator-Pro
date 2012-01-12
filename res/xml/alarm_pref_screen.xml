@@ -7,7 +7,7 @@
   />
 
   <Preference
-     android:layout="@layout/divider_horizontal_dark"
+     android:layout="@layout/my_divider"
      android:enabled="false"
      android:selectable="false"
   />

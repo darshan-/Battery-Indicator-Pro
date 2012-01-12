@@ -100,6 +100,7 @@ public class LogViewActivity extends ListActivity {
         col = new Col();
 
         setContentView(R.layout.list_activity);
+        getListView().setDivider(res.getDrawable(R.drawable.my_divider));
 
         View logs_header = View.inflate(context, R.layout.logs_header, null);
         getListView().addHeaderView(logs_header, null, false);

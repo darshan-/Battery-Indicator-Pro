@@ -70,6 +70,9 @@ public class AlarmEditActivity extends PreferenceActivity {
         alarms = new AlarmDatabase(context);
         settings = PreferenceManager.getDefaultSharedPreferences(context);
 
+        setContentView(R.layout.list_activity);
+        getListView().setDivider(res.getDrawable(R.drawable.my_divider));
+
         if (res.getBoolean(R.bool.api_level_14_plus))
             getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
 
