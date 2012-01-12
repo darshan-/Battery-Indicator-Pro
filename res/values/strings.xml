@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string formatted="false" name="app_full_name">Battery Indicator Pro</string>
-  <string formatted="false" name="app_launcher_name">@string/app_full_name</string>
+  <string formatted="false" name="app_launcher_name">Battery Indicator Pro</string>
   <string formatted="false" name="settings_activity_name">Battery Indicator Pro - Settings</string><!-- depricated -->
   <string formatted="false" name="settings_activity_subtitle">Settings</string>
   <string formatted="false" name="help_activity_name">Battery Indicator Pro - Help</string><!-- depricated -->
