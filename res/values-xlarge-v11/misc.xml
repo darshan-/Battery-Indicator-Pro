@@ -7,4 +7,5 @@
   </string-array>
 
   <bool name="show_main_title">true</bool>
+  <bool name="override_list_activity_layout">false</bool>
 </resources>

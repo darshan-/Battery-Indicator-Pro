@@ -253,8 +253,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         pref_screen = intent.getStringExtra(EXTRA_SCREEN);
         res = getResources();
 
-        setContentView(R.layout.list_activity);
-        getListView().setDivider(res.getDrawable(R.drawable.my_divider));
+        if (res.getBoolean(R.bool.override_list_activity_layout)) {
+            setContentView(R.layout.list_activity);
+            getListView().setDivider(res.getDrawable(R.drawable.my_divider));
+        }
 
         if (res.getBoolean(R.bool.api_level_14_plus))
             getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+

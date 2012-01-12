@@ -99,8 +99,10 @@ public class LogViewActivity extends ListActivity {
         str = new Str(res);
         col = new Col();
 
-        setContentView(R.layout.list_activity);
-        getListView().setDivider(res.getDrawable(R.drawable.my_divider));
+        if (res.getBoolean(R.bool.override_list_activity_layout)) {
+            setContentView(R.layout.list_activity);
+            getListView().setDivider(res.getDrawable(R.drawable.my_divider));
+        }
 
         View logs_header = View.inflate(context, R.layout.logs_header, null);
         getListView().addHeaderView(logs_header, null, false);
