@@ -240,6 +240,32 @@ public class BatteryIndicatorService extends Service {
 
             percent = level * 100 / scale;
 
+            if (settings.getBoolean(SettingsActivity.KEY_ONE_PERCENT_HACK, false)) {
+                try {
+                    java.io.FileReader fReader = new java.io.FileReader("/sys/class/power_supply/battery/charge_counter");
+                    java.io.BufferedReader bReader = new java.io.BufferedReader(fReader);
+                    int charge_counter = Integer.valueOf(bReader.readLine());
+
+                    System.out.println("............................. charge_counter contents: " + charge_counter);
+
+                    if (charge_counter > 120) {
+                        System.out.println("............................. charge_counter is too big to be actual charge; turning off one_percent hack.");
+                        // Turn off one_percent_hack
+                    } else {
+                        if (charge_counter > 100)
+                            charge_counter = 100;
+
+                        percent = charge_counter;
+                    }
+                } catch (java.io.FileNotFoundException e) {
+                    System.out.println("............................. charge_counter file doesn't exist");
+                    // Turn off one_percent_hack
+                } catch (java.io.IOException e) {
+                    System.out.println("............................. Error reading charge_counter file");
+                    // Turn off one_percent_hack
+                }
+            }
+
             /* Just treating any unplugged status as simply "Unplugged" now.
                Note that the main activity now assumes that the status is always 0, 2, or 5 TODO */
             if (plugged == PLUGGED_UNPLUGGED) status = STATUS_UNPLUGGED;
