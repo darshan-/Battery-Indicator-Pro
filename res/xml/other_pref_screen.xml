@@ -105,6 +105,7 @@
        android:title="@string/pref_one_percent_hack"
        android:summary="@string/pref_one_percent_hack_summary"
        android:defaultValue="false"
+       android:enabled="false"
     />
   </PreferenceCategory>
 

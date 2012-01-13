@@ -130,6 +130,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final int GREEN_SETTING_MIN = 20;
     /* public static final int GREEN_SETTING_MAX = 100; /* TODO: use this, and possibly set it to 95. */
 
+    public static final int CHARGE_COUNTER_LEGIT_MAX = 115; /* From what I understand, charge_counter can go somewhat over 100; I'm guessing at 115 being an appropriate cutoff point. */
+
     private static final int DIALOG_CONFIRM_TEN_PERCENT_ENABLE  = 0;
     private static final int DIALOG_CONFIRM_TEN_PERCENT_DISABLE = 1;
 
@@ -357,6 +359,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
             setPrefScreen(R.xml.other_pref_screen);
             setWindowSubtitle(res.getString(R.string.other_settings));
+
+            enableOnePercentIfAppropriate();
 
             /*ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_LANGUAGE_OVERRIDE);
             CharSequence[] values  = lp.getEntryValues();
@@ -660,6 +664,19 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         else {
             pref1.setEnabled(true);
             pref2.setEnabled(true);
+        }
+    }
+
+    private void enableOnePercentIfAppropriate() {
+        Preference pref = mPreferenceScreen.findPreference(KEY_ONE_PERCENT_HACK);
+
+        try {
+            java.io.FileReader fReader = new java.io.FileReader("/sys/class/power_supply/battery/charge_counter");
+            java.io.BufferedReader bReader = new java.io.BufferedReader(fReader);
+            if (Integer.valueOf(bReader.readLine()) <= CHARGE_COUNTER_LEGIT_MAX)
+                pref.setEnabled(true);
+        } catch (java.io.FileNotFoundException e) {
+        } catch (java.io.IOException e) {
         }
     }
 

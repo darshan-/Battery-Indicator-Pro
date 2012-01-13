@@ -246,11 +246,8 @@ public class BatteryIndicatorService extends Service {
                     java.io.BufferedReader bReader = new java.io.BufferedReader(fReader);
                     int charge_counter = Integer.valueOf(bReader.readLine());
 
-                    System.out.println("............................. charge_counter contents: " + charge_counter);
-
-                    if (charge_counter > 120) {
-                        System.out.println("............................. charge_counter is too big to be actual charge; turning off one_percent hack.");
-                        // Turn off one_percent_hack
+                    if (charge_counter > SettingsActivity.CHARGE_COUNTER_LEGIT_MAX) {
+                        disableOnePercentHack("charge_counter is too big to be actual charge");
                     } else {
                         if (charge_counter > 100)
                             charge_counter = 100;
@@ -258,11 +255,9 @@ public class BatteryIndicatorService extends Service {
                         percent = charge_counter;
                     }
                 } catch (java.io.FileNotFoundException e) {
-                    System.out.println("............................. charge_counter file doesn't exist");
-                    // Turn off one_percent_hack
+                    disableOnePercentHack("charge_counter file doesn't exist");
                 } catch (java.io.IOException e) {
-                    System.out.println("............................. Error reading charge_counter file");
-                    // Turn off one_percent_hack
+                    disableOnePercentHack("Error reading charge_counter file");
                 }
             }
 
@@ -473,6 +468,9 @@ public class BatteryIndicatorService extends Service {
             editor.commit();
         }
     };
+
+    private void disableOnePercentHack(String reason) {
+    }
 
     private Notification parseAlarmCursor(Cursor c) {
         Notification notification = new Notification(R.drawable.stat_notify_alarm, null, System.currentTimeMillis());
