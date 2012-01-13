@@ -39,7 +39,7 @@ public class HelpActivity extends Activity {
         setContentView(R.layout.help);
 
         TextView tv;
-        MovementMethod linkMovement = LinkMovementMethod.getInstance(); 
+        MovementMethod linkMovement = LinkMovementMethod.getInstance();
 
         for (int i=0; i < HAS_LINKS.length; i++) {
             tv = (TextView) findViewById(HAS_LINKS[i]);

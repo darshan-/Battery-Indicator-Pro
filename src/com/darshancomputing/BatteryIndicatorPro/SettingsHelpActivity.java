@@ -19,11 +19,14 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 public class SettingsHelpActivity extends Activity {
     private Resources res;
+    private int[] has_links = {};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,8 @@ public class SettingsHelpActivity extends Activity {
         } else if (pref_screen.equals(SettingsActivity.KEY_OTHER_SETTINGS)) {
             setContentView(R.layout.other_settings_help);
             setWindowSubtitle(res.getString(R.string.other_settings));
+
+            has_links = new int[] {R.id.one_percent_hack};
         } else if (pref_screen.equals(SettingsActivity.KEY_ALARM_SETTINGS)) {
             setContentView(R.layout.alarm_settings_help);
             setWindowSubtitle(res.getString(R.string.alarm_settings));
@@ -58,6 +63,14 @@ public class SettingsHelpActivity extends Activity {
             setContentView(R.layout.main_settings_help);
         }
 
+        TextView tv;
+        MovementMethod linkMovement = LinkMovementMethod.getInstance();
+
+        for (int i=0; i < has_links.length; i++) {
+            tv = (TextView) findViewById(has_links[i]);
+            tv.setMovementMethod(linkMovement);
+            tv.setAutoLinkMask(Linkify.WEB_URLS | Linkify.EMAIL_ADDRESSES);
+        }
     }
 
     private void setWindowSubtitle(String subtitle) {

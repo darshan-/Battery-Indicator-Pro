@@ -370,7 +370,7 @@
 
   <string formatted="false" name="settings_overview">Overview</string>
   <string formatted="false" name="settings_overview_help">
-    The settings are organized into three separate pages, as described
+    The settings are organized into four separate pages, as described
     below.  Each page has its own help page describing the settings on
     that page.  Simply press MENU then Help (on tablets, MENU isn\'t necessary) to get
     help from whatever settings page you are on.
@@ -565,8 +565,14 @@
 
   <string formatted="false" name="pref_cat_one_percent_hack">One-percent hack</string>
   <string formatted="false" name="pref_one_percent_hack">One-percent hack</string>
-  <string formatted="false" name="pref_one_percent_hack_summary">Attempt one-percent hack? Try this if your device only shows every 10%.</string>
-  <string formatted="false" name="pref_one_percent_hack_help">
+  <string formatted="false" name="pref_one_percent_hack_summary">Attempt one-percent hack? Try this (only) if your device shows only multiples of 10%.</string>
+  <string formatted="false" name="pref_one_percent_hack_help">If
+    your device only shows multiples of 10%, please try this hack and report back via
+    <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">the wiki page about this hack</a>.\n
+
+    \nMost devices do not need this.  If your device already shows one-percent increments, do not enable this hack.\n
+
+    \nIf the option is grayed-out and not able to be turned on, then your device is not capable of using this hack.
   </string>
 
   <string formatted="false" name="lang_system_selected">System-selected</string>
