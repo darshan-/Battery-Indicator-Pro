@@ -33,6 +33,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import java.util.Date;
 
 public class BatteryIndicatorService extends Service {
@@ -59,6 +60,8 @@ public class BatteryIndicatorService extends Service {
     private Resources res;
     private Str str;
     private AlarmDatabase alarms;
+
+    private static final String LOG_TAG = "BatteryIndicatorService";
 
     private static final int NOTIFICATION_PRIMARY      = 1;
     private static final int NOTIFICATION_ALARM_CHARGE = 2;
@@ -255,6 +258,7 @@ public class BatteryIndicatorService extends Service {
                         percent = charge_counter;
                     }
                 } catch (java.io.FileNotFoundException e) {
+                    /* These error messages are only really useful to me and might as well be left hardwired here in English. */
                     disableOnePercentHack("charge_counter file doesn't exist");
                 } catch (java.io.IOException e) {
                     disableOnePercentHack("Error reading charge_counter file");
@@ -470,6 +474,11 @@ public class BatteryIndicatorService extends Service {
     };
 
     private void disableOnePercentHack(String reason) {
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(SettingsActivity.KEY_ONE_PERCENT_HACK, false);
+        editor.commit();
+
+        Log.e(LOG_TAG, "Disabled one percent hack due to: " + reason);
     }
 
     private Notification parseAlarmCursor(Cursor c) {

@@ -675,9 +675,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             java.io.BufferedReader bReader = new java.io.BufferedReader(fReader);
             if (Integer.valueOf(bReader.readLine()) <= CHARGE_COUNTER_LEGIT_MAX)
                 pref.setEnabled(true);
-        } catch (java.io.FileNotFoundException e) {
-        } catch (java.io.IOException e) {
-        }
+        } catch (Exception e) {}
     }
 
     private void updateListPrefSummary(String key) {
