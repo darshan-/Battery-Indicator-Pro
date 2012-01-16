@@ -78,15 +78,19 @@
       have it set to ignore the free version, <i>you still need to tell it to
       ignore this Pro version</i> !\n
 
-    \n• If you have a <b>Motorola Droid</b>, <b>Droid X</b>,
-      <b>Droid 2</b>, <b>Defy</b>, or <b>Samsung Moment</b>, you should turn on
-      \"10% Mode\" in the \"Other Settings\".
+    \n• If your device only shows the battery level in 10% increments by default (<b>most
+      Motorola phones work this way</b>), then you should turn on the \"One-percent Hack\" in
+      \"Other Settings\" to enable one-percent increments.
   </string>
   <string formatted="false" name="first_run_message_free">Thanks
-    for downloading Battery Indicator!  <b><i>This is important</i> :</b>\n
+    for downloading Battery Indicator!  <b><i>These two points are very important</i> :</b>\n
 
-    \nIf you have a \"<b>task killer</b>\" / process manager of some kind, you should either
+    \n• If you have a \"<b>task killer</b>\" / process manager of some kind, you should either
       uninstall it or try to get it to ignore Battery Indicator.
+
+    \n• If your device only shows the battery level in 10% increments by default (<b>most
+      Motorola phones work this way</b>), then you should turn on the \"One-percent Hack\" in
+      the settings to enable one-percent increments.
   </string>
   <string formatted="false" name="okay">Okay</string>
 
@@ -289,9 +293,6 @@
   <string formatted="false" name="help_limitations">(<i>These
     are out of my control.</i>)\n
 
-    \n• The app can only display what the device tells it. Most devices report
-    every 1%, but a few (notably the Motorola Droid models) only report every
-    10%.
     \n• There\'s no way to remove the built-in battery icon.
     \n• The notification icon in the status bar and the message you see in the
     notification tray are tied together — you can\'t have one without the other.
