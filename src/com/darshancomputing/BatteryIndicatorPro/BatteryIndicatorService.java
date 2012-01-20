@@ -117,7 +117,7 @@ public class BatteryIndicatorService extends Service {
     private final Runnable mPluginNotify = new Runnable() {
         public void run() {
             try {
-                mNotificationManager.cancelAll();
+                mNotificationManager.cancel(NOTIFICATION_PRIMARY);
                 if (pluginServiceConnection.service == null) return;
 
                 Class<?> c = pluginServiceConnection.service.getClass();
