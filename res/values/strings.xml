@@ -567,13 +567,14 @@
   <string formatted="false" name="pref_cat_one_percent_hack">One-percent hack</string>
   <string formatted="false" name="pref_one_percent_hack">One-percent hack</string>
   <string formatted="false" name="pref_one_percent_hack_summary">Attempt one-percent hack? Try this (only) if your device shows only multiples of 10%.</string>
-  <string formatted="false" name="pref_one_percent_hack_help">If
-    your device only shows multiples of 10%, please try this hack and report back via
-    <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">the wiki page about this hack</a>.\n
+  <string formatted="false" name="pref_one_percent_hack_help">This
+    hack appears to work for almost all Motorola devices that default to 10% increments.\n
 
     \nMost devices do not need this.  If your device already shows one-percent increments, do not enable this hack.\n
 
-    \nIf the option is grayed-out and not able to be turned on, then your device is not capable of using this hack.
+    \nIf the option is grayed-out and not able to be turned on, then your device is not capable of using this hack.\n
+
+    \nSee the <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">OnePercentHack</a> wiki page for more info.
   </string>
 
   <string formatted="false" name="lang_system_selected">System-selected</string>
