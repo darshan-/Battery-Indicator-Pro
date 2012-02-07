@@ -49,10 +49,10 @@
   <string name="constant_usage" formatted="false">Bij constant gebruik:</string>
   <string name="press_back_to_leave" formatted="false">Druk op TERUG om te sluiten</string>
   <string name="press_menu_for_more" formatted="false">Druk op MENU voor meer opties</string>
-  <string name="inaccessible_storage" formatted="false">SD kaart is niet toegankelijk.</string>
+  <string name="inaccessible_storage" formatted="false">SD kaart is niet toegankelijk</string>
   <string name="inaccessible_w_reason" formatted="false">SD kaart niet toegankelijk:</string>
-  <string name="read_only_storage" formatted="false">SD kaart ingesteld op alleen lezen.</string>
-  <string name="file_written" formatted="false">Bestand is opgeslagen in de hoofdmap van de SD kaart.</string>
+  <string name="read_only_storage" formatted="false">SD kaart ingesteld op alleen lezen</string>
+  <string name="file_written" formatted="false">Bestand is opgeslagen in de hoofdmap van de SD kaart</string>
   <string name="date" formatted="false">datum</string>
   <string name="time" formatted="false">tijd</string>
   <string name="status" formatted="false">status</string>
@@ -116,8 +116,8 @@
   <string name="pref_convert_to_fahrenheit" formatted="false">Gebruik Fahrenheit</string>
   <string name="pref_convert_to_fahrenheit_help" formatted="false">Android geeft de batterijtemperatuur in graden Celsius. Selecteer deze optie om Fahrenheit te gebruiken.</string>
   <string name="pref_cat_autostart" formatted="false">Automatisch starten</string>
-  <string name="pref_autostart_at_boot" formatted="false">Automatisch starten bij opstarten</string>
-  <string name="pref_autostart_at_boot_summary" formatted="false">Start Battery Indicator als apparaat opstart:</string>
+  <string name="pref_autostart_at_boot" formatted="false">Automatisch starten bij inschakelen</string>
+  <string name="pref_autostart_at_boot_summary" formatted="false">Start Battery Indicator als apparaat wordt ingeschakeld:</string>
   <string name="pref_cat_charge_as_text" formatted="false">Batterijpercentage als text</string>
   <string name="pref_charge_as_text" formatted="false">Batterijpercentage als text</string>
   <string name="pref_charge_as_text_summary" formatted="false">Laat het batterijpercentage zien als text</string>
@@ -139,7 +139,7 @@
   <string name="pref_max_log_age_summary" formatted="false">Verwijder logboeken ouder dan:</string>
   <string name="pref_finish_after_battery_use" formatted="false">Sluiten na starten</string>
   <string name="pref_cat_time_remaining_estimates" formatted="false">Tijd resterend</string>
-  <string name="pref_ac_charge_time" formatted="false">Lichtnet opladen</string>
+  <string name="pref_ac_charge_time" formatted="false">AC opladen</string>
   <string name="pref_show_light_usage" formatted="false">Laat licht gebruik zien</string>
   <string name="pref_show_heavy_usage" formatted="false">Laat intensief gebruik zien</string>
   <string name="pref_show_constant_usage" formatted="false">Laat constant gebruik zien</string>
@@ -156,7 +156,7 @@
   <string name="settings_overview_help" formatted="false">De instellingen zijn verdeeld over drie verschillende pagina\'s, zoals onder beschreven. Elke pagina heeft zijn eigen helppagina over de instellingen op die pagina. Druk op MENU en dan Help voor help.</string>
   <string name="color_settings_help" formatted="false">Je kunt het thema voor het hoofdvenster wijzigen en kiezen of het icoon van kleur moet veranderen.</string>
   <string name="time_settings_summary" formatted="false">Wijzig tijdbenaderingen</string>
-  <string name="alarm_settings_summary" formatted="false">Wijzig notificaties voor lege/volle batterij</string>
+  <string name="alarm_settings_summary" formatted="false">Wijzig notificaties voor lege of volle batterij</string>
   <string name="pref_cat_logging" formatted="false">Logboek</string>
   <string name="pref_enable_logging" formatted="false">Logboek inschakelen</string>
   <string name="pref_max_log_age" formatted="false">Maximale logboek leeftijd</string>
@@ -164,7 +164,7 @@
   <string name="pref_status_dur_est" formatted="false">Laat de tijd sinds laatste wijziging zien</string>
   <string name="pref_status_dur_est_summary" formatted="false">Laat de tijd sinds laatste wijziging zien:</string>
   <string name="pref_show_charge_time_summary" formatted="false">Laat resterende oplaadtijd zien tijdens het opladen</string>
-  <string name="pref_ac_charge_time_summary" formatted="false">Lichtnet oplaadtijd van 0% naar 100% in uren:</string>
+  <string name="pref_ac_charge_time_summary" formatted="false">AC oplaadtijd van 0% naar 100% in uren:</string>
   <string name="pref_show_light_usage_summary" formatted="false">Laat resterende tijd bij licht gebruik zien</string>
   <string name="pref_show_normal_usage_summary" formatted="false">Laat resterende tijd bij normaal gebruik zien</string>
   <string name="pref_show_heavy_usage_summary" formatted="false">Laat resterende tijd bij intensief gebruik zien</string>
@@ -214,7 +214,7 @@
   <string name="pref_alarm_enabled_help" formatted="false">Als je tijdelijk een alarm wilt uitschakelen zonder het daarna weer te moeten instellen, kun je hem hier of op de alarmen pagina uitschakelen.</string>
   <string name="pref_cat_notification_settings_help" formatted="false">Hier kun je verschillende aspecten van de alarm notificaties instellen.</string>
   <string name="pref_usb_charge_time_help" formatted="false">Vul in hoe lang je denkt dat het duurt om de batterij op te laden van 0% tot 100% via USB.</string>
-  <string name="pref_ac_charge_time_help" formatted="false">Vul in hoe lang je denkt dat het duurt om de batterij op te laden van 0% tot 100% via het lichtnet.</string>
+  <string name="pref_ac_charge_time_help" formatted="false">Vul in hoe lang je denkt dat het duurt om de batterij op te laden van 0% tot 100% via AC (lichtnet).</string>
   <string name="pref_main_window_theme_help" formatted="false">Kies het thema voor het hoofdvenster.</string>
   <string name="pref_red_help" formatted="false">Kies of je een rood icoon wilt laten zien onder een bepaald niveau.</string>
   <string name="pref_amber_help" formatted="false">Kies of je een oranje icoon wilt laten zien onder een bepaald niveau.</string>
@@ -234,6 +234,9 @@
   <string name="pref_show_normal_usage_help" formatted="false">Kies of je in het hoofdvenster een benadering wilt laten zien van de tijd dat het duurt voordat de batterij leeg is bij normaal gebruik.</string>
   <string name="pref_show_heavy_usage_help" formatted="false">Kies of je in het hoofdvenster een benadering wilt laten zien van de tijd dat het duurt voordat de batterij leeg is bij intensief gebruik.</string>
   <string name="pref_show_constant_usage_help" formatted="false">Kies of je in het hoofdvenster een benadering wilt laten zien van de tijd dat het duurt voordat de batterij leeg is bij constant gebruik.</string>
+  <string name="pref_alarm_lights_help" formatted="false">Stelt in of de notificatie het lampje op je apparaat moet laten knipperen. (Niet alle apparaten hebben zo\'n lampje.)</string>
+  <string name="pref_status_dur_est_help" formatted="false">Stelt in wanneer de notificatie wijzigt van de tijd van de laatste wijziging naar de tijd sinds de laatste wijziging.</string>
+  <string name="pref_finish_after_battery_use_help" formatted="false">Als je dit aanzet sluit het hoofdvenster meteen na het openen van het batterijgebruik scherm.</string>
   <string-array name="statuses">
     <item>Losgekoppeld</item>
     <item>Onbekend</item>
@@ -269,7 +272,7 @@
   </string-array>
   <string-array name="pluggeds">
     <item>Losgekoppeld</item>
-    <item>(Lichtnet)</item>
+    <item>(AC)</item>
     <item>(USB)</item>
     <item>(?)</item>
   </string-array>
@@ -283,9 +286,9 @@
   <string-array name="alarm_type_entries">
     <item>Gezondheid faalt</item>
     <item>Is klaar met opladen</item>
-    <item>Lading komt onder:</item>
-    <item>Lading komt boven:</item>
-    <item>Temperatuur komt boven:</item>
+    <item>Lading komt onder...</item>
+    <item>Lading komt boven...</item>
+    <item>Temperatuur komt boven...</item>
   </string-array>
   <string-array name="mw_theme_pref_entries">
     <item>Volledig scherm</item>
@@ -319,6 +322,6 @@
     <item quantity="other">%d logboekitems</item>
   </plurals>
   <plurals name="for_n_hours">
-    <item quantity="other">(%d uur geleden)</item>
+    <item quantity="other">(%d uur)</item>
   </plurals>
 </resources>
