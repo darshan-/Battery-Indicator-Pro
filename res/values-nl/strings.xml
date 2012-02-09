@@ -237,6 +237,8 @@
   <string name="pref_alarm_lights_help" formatted="false">Stelt in of de notificatie het lampje op je apparaat moet laten knipperen. (Niet alle apparaten hebben zo\'n lampje.)</string>
   <string name="pref_status_dur_est_help" formatted="false">Stelt in wanneer de notificatie wijzigt van de tijd van de laatste wijziging naar de tijd sinds de laatste wijziging.</string>
   <string name="pref_finish_after_battery_use_help" formatted="false">Als je dit aanzet sluit het hoofdvenster meteen na het openen van het batterijgebruik scherm.</string>
+  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Als je een alternatieve schermvergendeling gebruikt waarbij je toegang hebt tot de notificaties kun je dit beter aanzetten voor de veiligheid.</string>
+  <string name="pref_confirm_manual_disable_help" formatted="false">Wanneer dit is ingeschakeld wordt er om een bevestiging gevraagd als je de schermvergrendeling tijdelijk wilt uitschakelen.</string>
   <string-array name="statuses">
     <item>Losgekoppeld</item>
     <item>Onbekend</item>
