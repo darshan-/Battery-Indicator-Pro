@@ -71,7 +71,7 @@
 
   <string formatted="false" name="first_run_title">Thank you!</string>
   <string formatted="false" name="first_run_message">Thanks
-    for your donation/purchase!  <b><i>These two points are very important</i> :</b>\n
+    for your donation/purchase!  <b><i>These three points are very important</i> :</b>\n
 
     \n• If you have a \"<b>task killer</b>\" / process manager of some kind, you should either
       uninstall it or try to get it to ignore Battery Indicator Pro.  Even if you
@@ -80,7 +80,10 @@
 
     \n• If your device only shows the battery level in 10% increments by default (<b>most
       Motorola phones work this way</b>), then you should turn on the \"One-percent Hack\" in
-      \"Other Settings\" to enable one-percent increments.
+      \"Other Settings\" to enable one-percent increments.\n
+
+    \n• If your status bar is black, and especially if you are running Android 3 or greater,
+      you should download and use the plugin called \"Black Square\".
   </string>
   <string formatted="false" name="first_run_message_free">Thanks
     for downloading Battery Indicator!  <b><i>These two points are very important</i> :</b>\n
@@ -566,9 +569,9 @@
 
   <string formatted="false" name="pref_cat_one_percent_hack">One-percent hack</string>
   <string formatted="false" name="pref_one_percent_hack">One-percent hack</string>
-  <string formatted="false" name="pref_one_percent_hack_summary">Attempt one-percent hack? Try this (only) if your device shows only multiples of 10%.</string>
+  <string formatted="false" name="pref_one_percent_hack_summary">Use workaround for devices that show only multiples of 10%?</string>
   <string formatted="false" name="pref_one_percent_hack_help">This
-    hack appears to work for almost all Motorola devices that default to 10% increments.\n
+    hack appears to work for all Motorola devices that default to 10% increments, other than the original Droid.\n
 
     \nMost devices do not need this.  If your device already shows one-percent increments, do not enable this hack.\n
 
