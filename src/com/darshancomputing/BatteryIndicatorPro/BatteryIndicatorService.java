@@ -379,7 +379,7 @@ public class BatteryIndicatorService extends Service {
             mainNotificationTitle = "";
 
             if (settings.getBoolean(SettingsActivity.KEY_CHARGE_AS_TEXT, false))
-                mainNotificationTitle += percent + " ";
+                mainNotificationTitle += percent + str.percent_symbol + " ";
 
             int status_dur_est = Integer.valueOf(settings.getString(SettingsActivity.KEY_STATUS_DUR_EST,
                                         str.default_status_dur_est));
