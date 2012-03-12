@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
-  <string name="app_launcher_name" formatted="false">Battery Indicator</string>
+  <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
   <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Réglages</string>
   <string name="help_activity_name" formatted="false">Battery Indicator Pro - Aide</string>
   <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Journaux</string>
@@ -244,6 +244,8 @@
   <string name="pref_alarm_vibrate_help" formatted="false">Si tout va bien, activer cette option fera vibrer votre appareil quand l\'alarme est déclenchée, sauf si l\'appareil est en silencieux, sauf si vous avez activé les vibrations en silencieux. En d\'autres mots, ça devrait se comporter correctement en fonction de la configuration de votre appareil. Si tout ne se passe pas bien veuillez me contacter par email.</string>
   <string name="pref_alarm_lights" formatted="false">Éclairage de la DEL</string>
   <string name="pref_alarm_lights_help" formatted="false">Défini si la notification doit activer la diode principale de votre appareil. Il s\'agit généralement d\'éclairer la DEL ou le trackball. Notez que cette option n\'a pas toujours fonctionné sur les appareils Android que j\'ai utilisé. Si l\'option est active, l\'application demande à Android d\'allumer la diode mais ça n\'est pas toujours effectif.</string>
+  <string name="help_activity_subtitle" formatted="false">Aide</string>
+  <string name="log_view_activity_subtitle" formatted="false">Journaux</string>
   <string-array name="statuses">
     <item>Débranché</item>
     <item>Inconnu</item>

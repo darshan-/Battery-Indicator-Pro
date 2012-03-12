@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
-  <string name="app_launcher_name" formatted="false">Battery Indicator</string>
+  <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
   <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Beállítások</string>
   <string name="help_activity_name" formatted="false">Battery Indicator Pro - Súgó</string>
   <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Napló</string>

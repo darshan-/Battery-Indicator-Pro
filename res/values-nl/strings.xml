@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
-  <string name="app_launcher_name" formatted="false">Battery Indicator</string>
+  <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
   <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Instellingen</string>
   <string name="help_activity_name" formatted="false">Battery Indicator Pro - Help</string>
   <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Logboeken</string>
@@ -66,24 +66,24 @@
   <string name="alarm_health_failure" formatted="false">"Batterijconditie is: "</string>
   <string name="alarm_text" formatted="false">Selecteer om alarmen aan te passen</string>
   <string name="logs_empty" formatted="false">Logboeken zijn leeg</string>
-  <string name="discharging_from" formatted="false">Ontladen vanaf</string>
-  <string name="charging_from" formatted="false">Opladen vanaf</string>
+  <string name="discharging_from" formatted="false">Aan het ontladen vanaf</string>
+  <string name="charging_from" formatted="false">Aan het opladen vanaf</string>
   <string name="fully_charged" formatted="false">Volledig opgeladen</string>
   <string name="since" formatted="false">sinds</string>
   <string name="one_six_needed" formatted="false">Sorry, dit werkt alleen met Android 1.6+!</string>
-  <string name="currently_using" formatted="false">Je gebruikt nu:</string>
+  <string name="currently_using" formatted="false">Je gebruikt nu</string>
   <string name="currently_set_to" formatted="false">"Ingesteld op: "</string>
   <string name="currently_disabled" formatted="false">Momenteel uitgeschakeld</string>
   <string name="help_cat_version" formatted="false">Versie</string>
   <string name="help_cat_changelog" formatted="false">Lijst van wijzigingen</string>
   <string name="help_cat_introduction" formatted="false">Introductie</string>
-  <string name="help_introduction" formatted="false">Dit is <i>Battery Indicator Pro</i>, de \"Pro\" versie van de populaire gratis applicatie <i>Battery Indicator</i>. Je kunt deze applicatie aanschaffen via Android Market, maar het is een open-source project. Dit betekent dat je de sourse code gratis kunt downloaden via <a href="http://code.google.com/p/battery-indicator/">de project website</a>.</string>
-  <string name="help_introduction_free" formatted="false">Dit is <i>Battery Indicator</i>, de gratis applicatie van de <i>Battery Indicator</i> familie. Je kunt deze applicatie gratie downloaden via Android Market, maar het is een open-source project. Dit betekent dat je de sourse code gratis kunt downloaden via <a href="http://code.google.com/p/battery-indicator/">de project website</a>.\n\nOverweeg de aanschaf van <i>Batterij Indicator Pro</i> via Android Market <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Version</a>.</string>
+  <string name="help_introduction" formatted="false">Dit is <i>Battery Indicator Pro</i>, de \"Pro\" versie van de populaire gratis applicatie <i>Battery Indicator</i>. Je kunt deze applicatie aanschaffen via Android Market, maar het is een open-source project. Dit betekent dat je de broncode gratis kunt downloaden via <a href="http://code.google.com/p/battery-indicator/">de project website</a>.</string>
+  <string name="help_introduction_free" formatted="false">Dit is <i>Battery Indicator</i>, de gratis applicatie van de <i>Battery Indicator</i> familie. Je kunt deze applicatie gratie downloaden via Android Market, maar het is een open-source project. Dit betekent dat je de broncode gratis kunt downloaden via <a href="http://code.google.com/p/battery-indicator/">de project website</a>.\n\nOverweeg de aanschaf van <i>Battery Indicator Pro</i> via de Android Market <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Versie</a>.</string>
   <string name="help_cat_summary" formatted="false">Samenvatting</string>
-  <string name="help_summary" formatted="false"><i>Battery Indicator Pro</i> Is een lichtgewicht batterij indicator voor Android ™. Zijn belangrijkste functie is dat hij de statusbalk voorziet van een icoon waaraan je kan zien hoeveel procent batterij je nog hebt.\n\nDeze Pro versie biedt echter voor meer nut dan dat. Naast het bieden van rood, oranje en groene pictogrammen, heeft het ook de volgende belangrijke kenmerken vanaf versie 3.0:\n\n• Volledig configureerbaar geschatte laad/ontlaad tijd over.\n• Opslaan van de batterij status in een logboek.\n• Thema\'s voor het hoofdvenster (inclusief een full-size venster met grote, makkelijk te lezen tekst).\n• handmatig uitschakelen / opnieuw inschakelen van het vergrendelingsscherm, met de optie om automatisch uit te schakelen wanneer aangesloten en opnieuw inschakelen wanneer losgekoppeld.\n• Veel meer nuttige dingen die je zult ontdekken tijdens het gebruiken van deze app</string>
-  <string name="help_summary_free" formatted="false"><i>Battery Indicator Pro</i> Is een lichtgewicht batterij indicator voor Android ™. Zijn belangrijkste functie is dat hij de statusbalk voorziet van een icoon waaraan je kan zien hoeveel procent batterij je nog hebt.\n\nDeze Pro versie biedt echter voor meer nut dan dat. Naast het bieden van rood, oranje en groene pictogrammen, heeft het ook de volgende belangrijke kenmerken vanaf versie 3.0:\n\n• Volledig configureerbaar geschatte laad/ontlaad tijd over.\n• Opslaan van de batterij status in een logboek.\n• Thema\'s voor het hoofdvenster (inclusief een full-size venster met grote, makkelijk te lezen tekst).\n• handmatig uitschakelen / opnieuw inschakelen van het vergrendelingsscherm, met de optie om automatisch uit te schakelen wanneer aangesloten en opnieuw inschakelen wanneer losgekoppeld.\n• Veel meer nuttige dingen die je zult ontdekken tijdens het gebruiken van deze app</string>
+  <string name="help_summary" formatted="false"><i>Battery Indicator Pro</i> Is een lichtgewicht batterij indicator voor Android. Zijn belangrijkste functie is dat hij de statusbalk voorziet van een icoon waaraan je kan zien hoeveel procent batterij je nog hebt.\n\nDeze Pro versie biedt echter voor meer nut dan dat. Naast het bieden van rood, oranje en groene pictogrammen, heeft het ook de volgende belangrijke kenmerken vanaf versie 3.0:\n\n• Volledig configureerbaar geschatte laad/ontlaad tijd over.\n• Opslaan van de batterij status in een logboek.\n• Thema\'s voor het hoofdvenster (inclusief een full-size venster met grote, makkelijk te lezen tekst).\n• Handmatig uitschakelen / opnieuw inschakelen van het vergrendelingsscherm, met de optie om automatisch uit te schakelen wanneer aangesloten en opnieuw inschakelen wanneer losgekoppeld.\n• Veel meer nuttige dingen die je zult ontdekken tijdens het gebruiken van deze app.</string>
+  <string name="help_summary_free" formatted="false"><i>Battery Indicator</i> Is een lichtgewicht batterij indicator voor Android. Zijn belangrijkste functie is dat hij de statusbalk voorziet van een icoon waaraan je kan zien hoeveel procent batterij je nog hebt.\n\nDeze Pro versie biedt echter voor meer nut dan dat. Naast het bieden van rood, oranje en groene pictogrammen, heeft het ook de volgende belangrijke kenmerken vanaf versie 3.0:\n\n• Volledig configureerbaar geschatte laad/ontlaad tijd over.\n• Opslaan van de batterij status in een logboek.\n• Thema\'s voor het hoofdvenster (inclusief een full-size venster met grote, makkelijk te lezen tekst).\n• Handmatig uitschakelen / opnieuw inschakelen van het vergrendelingsscherm, met de optie om automatisch uit te schakelen wanneer aangesloten en opnieuw inschakelen wanneer losgekoppeld.\n• Veel meer nuttige dingen die je zult ontdekken tijdens het gebruiken van deze app.</string>
   <string name="help_cat_limitations" formatted="false">Beperkingen</string>
-  <string name="help_limitations" formatted="false">(<i> Dit ligt buiten mijn macht. </i>)\n\n• De app kan alleen wat het apparaat hem vertelt. De meeste apparaten rapporteren elke 1%, maar een paar (met name de Motorola Droid modellen) rapporteren slechts elke 10%.\n• Er is geen manier om het ingebouwde batterij-icoontje.\nte verwijderen• De mededeling pictogram in de statusbalk en de boodschap die u ziet in de melding lade zijn met elkaar verbonden - je kunt niet een van beide hebben.\n•Bij veel apps moet het mogelijk zijn de installatie op een verwijderbaar opslagmedium (SD-kaart)uit te voeren, bij sommigen niet. Batterij indicator is van de laatste groep. Zie <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">het project FAQ</a>.</string>
+  <string name="help_limitations" formatted="false">(<i>Dit ligt buiten mijn macht.</i>)\n\n• De app kan alleen wat het apparaat hem vertelt. De meeste apparaten rapporteren elke 1%, maar een paar (met name de Motorola Droid modellen) rapporteren slechts elke 10%.\n• Er is geen manier om het ingebouwde batterij-icoontje te verwijderen.\n• De mededeling pictogram in de statusbalk en de boodschap die u ziet in de melding lade zijn met elkaar verbonden, je kunt niet een van beide hebben.\n• Bij veel apps moet het mogelijk zijn de installatie op een verwijderbaar opslagmedium (SD-kaart)uit te voeren, bij sommigen niet. Batterij indicator is van de laatste groep. Zie <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">het project FAQ</a>.</string>
   <string name="help_no_warranty" formatted="false">Deze software wordt uitgegeven in de hoop dat het nuttig zal zijn, maar ZONDER ENIGE GARANTIE; zonder zelfs de impliciete garantie van VERKOOPBAARHEID of GESCHIKTHEID VOOR EEN BEPAALD DOEL.\n\nTerwijl ik mijn best doe om ervoor te zorgen dat het goed werkt en geen problemen veroorzaken, ben ik niet verantwoordelijk voor eventuele schade of overlast dat wordt veroorzaakt onder alle omstandigheden.</string>
   <string name="help_cat_acknowledgments" formatted="false">Erkenningen</string>
   <string name="help_acknowledgments" formatted="false">Deze app zou alleen beschikbaar zijn in het Engels ware het niet voor de hulp van de vrijwillige vertalers. Bedankt!\n\nVeel dank gaat uit naar Google en alle andere open-source programmeurs die het Android-platform en deze app mogelijk te maken.\n\nHet opstartpictogram (de rechtopstaande batterij die u ziet in de markt) is gebaseerd op een icoon uit <a href="http://www.oxygen-icons.org">het Oxygen icoon thema</a> en gebruikt onder de <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-ShareAlike 3.0 Licentie</a>.</string>
@@ -102,7 +102,7 @@
   <string name="alarm_settings_subtitle" formatted="false">Alarminstellingen</string>
   <string name="alarm_settings" formatted="false">Alarmen</string>
   <string name="other_settings" formatted="false">Overige instellingen</string>
-  <string name="pref_cat_more_settings_in_pro" formatted="false">Meer instellingen in Battery Indicator Pro</string>
+  <string name="pref_cat_more_settings_in_pro" formatted="false">Meer instellingen in Battery Indicator Pro!</string>
   <string name="add_alarm" formatted="false">Alarm toevoegen</string>
   <string name="pref_cat_themes" formatted="false">Thema\'s</string>
   <string name="pref_main_window_theme" formatted="false">Vensterthema</string>
@@ -113,14 +113,14 @@
   <string name="no_plugins_installed_summary" formatted="false">Druk op MENU om meer plugins te krijgen</string>
   <string name="pref_cat_battery_use" formatted="false">Batterijgebruik</string>
   <string name="pref_cat_temperature_unit" formatted="false">Temperatuureenheid</string>
-  <string name="pref_convert_to_fahrenheit" formatted="false">Gebruik Fahrenheit</string>
+  <string name="pref_convert_to_fahrenheit" formatted="false">Gebruik Fahrenheit in plaats van Celsius</string>
   <string name="pref_convert_to_fahrenheit_help" formatted="false">Android geeft de batterijtemperatuur in graden Celsius. Selecteer deze optie om Fahrenheit te gebruiken.</string>
   <string name="pref_cat_autostart" formatted="false">Automatisch starten</string>
   <string name="pref_autostart_at_boot" formatted="false">Automatisch starten bij inschakelen</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">Start Battery Indicator als apparaat wordt ingeschakeld:</string>
-  <string name="pref_cat_charge_as_text" formatted="false">Batterijpercentage als text</string>
-  <string name="pref_charge_as_text" formatted="false">Batterijpercentage als text</string>
-  <string name="pref_charge_as_text_summary" formatted="false">Laat het batterijpercentage zien als text</string>
+  <string name="pref_cat_charge_as_text" formatted="false">Percentage als tekst</string>
+  <string name="pref_charge_as_text" formatted="false">Percentage als tekst</string>
+  <string name="pref_charge_as_text_summary" formatted="false">Laat het batterijpercentage zien in de meldingstekst</string>
   <string name="pref_show_charge_time" formatted="false">Laat oplaadtijd zien</string>
   <string name="pref_usb_charge_time" formatted="false">USB opladen</string>
   <string name="pref_light_usage_time" formatted="false">Licht gebruik</string>
@@ -193,7 +193,7 @@
   <string name="pref_alarm_threshold_help" formatted="false">Voor lading en temperatuuralarmen moet je de lading of temperatuur instellen waarop het alarm afgaat.</string>
   <string name="pref_alarm_ringtone_help" formatted="false">Kies welk geluid moet worden gebruikt voor het alarm. Kies \'Stil\' voor geen geluid.</string>
   <string name="alarm_settings_help" formatted="false">Je kunt een notificatie ontvangen als je batterijniveau onder een bepaald punt komt.</string>
-  <string name="pref_please_upgrade" formatted="false">De Pro versie heeft veel meer instellingen en mogelijkheden, waaronder gekleurde icoontjes, alarmen, thema\'s, logboeken, schermvergrendeling voorkomen, geschatte tijd resterend en meer.</string>
+  <string name="pref_please_upgrade" formatted="false">De Pro versie heeft veel meer instellingen en mogelijkheden, waaronder gekleurde icoontjes, alarmen, thema\'s, logboeken, schermvergrendeling voorkomen, geschatte tijd resterend en meer!</string>
   <string name="pref_confirm_manual_disable" formatted="false">Confirmatie bij handmatig vergrendeling voorkomen</string>
   <string name="pref_confirm_manual_disable_summary" formatted="false">Vraag om confirmatie bij handmatig vergrendeling voorkomen</string>
   <string name="pref_auto_disable" formatted="false">Automatisch vergrendeling voorkomen</string>
@@ -239,6 +239,30 @@
   <string name="pref_finish_after_battery_use_help" formatted="false">Als je dit aanzet sluit het hoofdvenster meteen na het openen van het batterijgebruik scherm.</string>
   <string name="pref_disallow_disable_lock_screen_help" formatted="false">Als je een alternatieve schermvergendeling gebruikt waarbij je toegang hebt tot de notificaties kun je dit beter aanzetten voor de veiligheid.</string>
   <string name="pref_confirm_manual_disable_help" formatted="false">Wanneer dit is ingeschakeld wordt er om een bevestiging gevraagd als je de schermvergrendeling tijdelijk wilt uitschakelen.</string>
+  <string name="pref_charge_as_text_help" formatted="false">Deze optie is voor mensen met slechter zicht.</string>
+  <string name="pref_red_thresh_help" formatted="false">Hier kun je instellen wanneer het icoon rood moet worden.</string>
+  <string name="pref_amber_thresh_help" formatted="false">Hier kun je instellen wanneer het icoon geel moet worden.</string>
+  <string name="pref_green_thresh_help" formatted="false">Hier kun je instellen wanneer het icoon groen moet worden.</string>
+  <string name="pref_ten_percent_mode_help" formatted="false">Pas op: Als je dit verandert worden je kleurinstellingen verwijderd! Deze instelling past de andere instellingen aan voor apparaten die alleen veranderen in 10% weergeven.</string>
+  <string name="settings_activity_subtitle" formatted="false">Instellingen</string>
+  <string name="help_activity_subtitle" formatted="false">Help</string>
+  <string name="log_view_activity_subtitle" formatted="false">Logboeken</string>
+  <string name="pref_cat_one_percent_hack" formatted="false">Percentagehack</string>
+  <string name="pref_one_percent_hack" formatted="false">Percentagehack</string>
+  <string name="lang_system_selected" formatted="false">Geselecteerd door systeem</string>
+  <string name="pref_cat_language" formatted="false">Taal</string>
+  <string name="pref_language_override" formatted="false">Gebruik andere taal</string>
+  <string name="pref_language_override_summary" formatted="false">Selecteer taal:</string>
+  <string name="pref_language_override_help" formatted="false">Hier kun je een andere taal kiezen.</string>
+  <string name="pref_one_percent_hack_summary" formatted="false">Gebruik een hack voor apparaten waarvan het percentage alleen per 10% verandert</string>
+  <string name="pref_cat_plugin_settings" formatted="false">Plugin instellingen</string>
+  <string name="pref_plugin_settings" formatted="false">Plugin instellingen</string>
+  <string name="pref_plugin_settings_summary" formatted="false">Verander instellingen voor deze plugin</string>
+  <string name="pref_cat_color_help" formatted="false">Om Battery Indicator klein te houden zijn er niet veel kleuren beschikbaar. Voor de maximale controle kunnen alle kleuren onafhankelijk van elkaar worden ingesteld.</string>
+  <string name="pref_finish_after_toggle_lock_help" formatted="false">Als je minder wilt klikken kun je deze optie aanzetten.</string>
+  <string name="pref_auto_disable_help" formatted="false">Als je dit aanzet zal de schermvergrendeling automatisch uitschakelen tijdens het opladen.</string>
+  <string name="pref_autostart_at_boot_help" formatted="false">Deze optie verandert of Battery Indicator automatisch opstart wanneer het systeem opstart.</string>
+  <string name="alarms_overview_help" formatted="false">Op deze pagina kun je alarmen toevoegen, in of uitschakelen en verwijderen.</string>
   <string-array name="statuses">
     <item>Losgekoppeld</item>
     <item>Onbekend</item>
@@ -324,6 +348,6 @@
     <item quantity="other">%d logboekitems</item>
   </plurals>
   <plurals name="for_n_hours">
-    <item quantity="other">(%d uur)</item>
+    <item quantity="other">(%d Uur)</item>
   </plurals>
 </resources>

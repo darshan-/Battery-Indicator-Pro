@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_full_name" formatted="false">Pil Göstergesi Pro</string>
-  <string name="app_launcher_name" formatted="false">Pil Göstergesi</string>
+  <string name="app_launcher_name" formatted="false">Pil Göstergesi Pro</string>
   <string name="settings_activity_name" formatted="false">Pil Göstergesi Pro - Ayarlar</string>
   <string name="help_activity_name" formatted="false">Pil Göstergesi Pro - Yardım</string>
   <string name="log_view_activity_name" formatted="false">Pil Göstergesi Pro - Kayıtlar</string>
@@ -151,4 +151,5 @@
   <string name="pref_cat_themes" formatted="false">Temalar</string>
   <string name="pref_main_window_theme" formatted="false">Ana Pencere Teması</string>
   <string name="alarm_pref_not_used" formatted="false">Bu alarm türü için kullanılmıyor</string>
+  <string name="settings_activity_subtitle" formatted="false">Ayarlar</string>
 </resources>

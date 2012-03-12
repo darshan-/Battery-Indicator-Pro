@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
+  <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
+  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Ρυθμίσεις</string>
+  <string name="settings_activity_subtitle" formatted="false">Ρυθμίσεις</string>
+  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Βοήθεια</string>
+  <string name="help_activity_subtitle" formatted="false">Βοήθεια</string>
+  <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Λίστες Καταγραφής Δεδομένων</string>
+  <string name="log_view_activity_subtitle" formatted="false">Λίστες Καταγραφής Δεδομένων</string>
+  <string name="app_full_name_free" formatted="false">Battery Indicator</string>
+  <string name="settings_activity_name_free" formatted="false">Battery Indicator - Ρυθμίσεις</string>
+  <string name="help_activity_name_free" formatted="false">Battery Indicator - Βοήθεια</string>
+  <string name="battery_use_b" formatted="false">Χρήση Μπαταρίας</string>
+  <string name="upgrade_donate_b" formatted="false">Αναβάθμιση/Δωρεά</string>
+  <string name="reenable_lock_screen" formatted="false">Ενεργοποίηση Κλειδώματος Οθόνης</string>
+  <string name="disable_lock_screen" formatted="false">Απενεργοποίηση Κλειδώματος Οθόνης</string>
+  <string name="confirm_disable" formatted="false">Πραγματικά θέλετε να απενεργοποιήσετε το κλείδωμα της Οθόνης;</string>
+  <string name="confirm_disable_hint" formatted="false">Συμβουλή: Απενεργοποιήστε αυτό το μήνυμα στις ρυθμίσεις...</string>
+  <string name="yes" formatted="false">Ναι</string>
+  <string name="cancel" formatted="false">Ακύρωση</string>
+  <string name="confirm_close" formatted="false">Θέλετε να Κλείσετε την εφαρμογή;</string>
+  <string name="need_uninstall" formatted="false">Απαιτείται Απεγκατάσταση</string>
+  <string name="confirm_clear_logs" formatted="false">Θέλετε να διαγράψετε όλες τις καταγραφές δεδομένων;</string>
+  <string name="confirm_ten_percent_enable" formatted="false">Θέλετε να ενεργοποιήσετε τη λειτουργία 10%;</string>
+  <string name="confirm_ten_percent_disable" formatted="false">Θέλετε να απενεργοποιήσετε τη λειτουργία 10%;</string>
+  <string name="first_run_title" formatted="false">Ευχαριστώ!</string>
+  <string name="okay" formatted="false">Εντάξει</string>
+  <string name="none" formatted="false">Κανένα</string>
+  <string name="menu_logs" formatted="false">Λίστες καταγραφής δεδομένωνω</string>
+  <string name="menu_settings" formatted="false">Ρυθμίσεις</string>
+  <string name="menu_help" formatted="false">Βοήθεια</string>
+  <string name="menu_clear" formatted="false">Καθαρισμός</string>
+  <string name="menu_reverse" formatted="false">Αντίστροφη Σειρά</string>
+  <string name="menu_export" formatted="false">Εξαγωγή CSV</string>
+  <string name="menu_delete_alarm" formatted="false">Διαγραφή Ειδοποίησης</string>
+  <string name="menu_get_plugins" formatted="false">Λήψη Plugins</string>
+  <string name="percent_symbol" formatted="false">%</string>
+  <string name="degree_symbol" formatted="false">°</string>
+  <string name="fahrenheit" formatted="false">Φάρεναϊτ</string>
+  <string name="fahrenheit_symbol" formatted="false">F</string>
+  <string name="celsius" formatted="false">Κελσίου</string>
+  <string name="celsius_symbol" formatted="false">C</string>
+  <string name="volt_symbol" formatted="false">V</string>
+  <string name="fully_charged_in" formatted="false">Θα φορτιστεί πλήρως σε:</string>
+  <string name="light_usage" formatted="false">Χρόνος με Ελαφριά Χρήση:</string>
+  <string name="normal_usage" formatted="false">Χρόνος με Κανονική Χρήση:</string>
+  <string name="heavy_usage" formatted="false">Χρόνος με Βαριά Χρήση:</string>
+  <string name="constant_usage" formatted="false">Χρόνος με Σταθερή Χρήση:</string>
+  <string name="press_back_to_leave" formatted="false">Πατήστε BACK για να φύγετε.</string>
+  <string name="press_menu_for_more" formatted="false">Πατήστε MENU για περισσότερες επιλογές.</string>
+  <string name="inaccessible_storage" formatted="false">Η Κάρτα SD είναι απροσπέλαστη.</string>
+  <string name="menu_close" formatted="false">Κλείσιμο</string>
+  <string name="inaccessible_w_reason" formatted="false">Κάρτα SD απροσπέλαστη:</string>
+  <string name="read_only_storage" formatted="false">Η Κάρτα SD είναι αναγνώσιμη μόνο.</string>
+  <string name="file_written" formatted="false">Το έγγραφο αποθηκεύτηκε επιτυχώς στην κάρτα SD.</string>
+  <string name="date" formatted="false">ημερομηνία</string>
+  <string name="time" formatted="false">ώρα</string>
+  <string name="status" formatted="false">κατάσταση</string>
+  <string name="temperature" formatted="false">βαθμοί_κελσίου</string>
+  <string name="voltage" formatted="false">βόλτς</string>
+  <string name="alarm_fully_charged" formatted="false">Η μπαταρία είναι φορτισμένη πλήρως</string>
+  <string name="alarm_charge_drops" formatted="false">"Το φορτίο της μπαταρίας είναι πιο κάτω "</string>
+  <string name="alarm_charge_rises" formatted="false">Το φορτίο της μπαταρίας είναι πάνω \"</string>
+  <string name="alarm_temp_rises" formatted="false">"Η θερμοκρασία της μπαταρίας είναι πάνω "</string>
+  <string name="alarm_health_failure" formatted="false">"Η υγεία της μπαταρίας είναι: "</string>
+  <string name="alarm_text" formatted="false">Επιλέξτε για επεξεργασία ειδοποιήσεων.</string>
+  <string name="logs_empty" formatted="false">Λίστες Καταγραφής Άδειες</string>
+  <string name="discharging_from" formatted="false">Αποφόρτιση από</string>
+  <string name="charging_from" formatted="false">Φόρτιση από</string>
+  <string name="fully_charged" formatted="false">Πλήρως Φορτισμένη</string>
+  <string name="since" formatted="false">Από</string>
+  <string name="one_six_needed" formatted="false">Λυπύμαστε, Απαιτείται Android 1.6+ !</string>
+  <string name="currently_using" formatted="false">Τώρα χρησιμοποιείται</string>
+  <string name="currently_set_to" formatted="false">"Τώρα έχει ρυθμιστεί σε: "</string>
+  <string name="currently_disabled" formatted="false">Απενεργοποιημένο Τώρα</string>
+  <string name="help_cat_version" formatted="false">Έκδοση</string>
+  <string name="help_cat_introduction" formatted="false">Εισαγωγή</string>
+  <string name="help_cat_summary" formatted="false">Επισύναψη</string>
+  <string name="help_cat_limitations" formatted="false">Περιορισμοί</string>
+  <string name="help_cat_features" formatted="false">Δυνατότητες</string>
+  <string name="help_cat_no_warranty" formatted="false">Καμιά Εγγύηση</string>
+  <string name="help_cat_acknowledgments" formatted="false">Ευχαριστίες</string>
+  <string name="help_cat_translations" formatted="false">Μεταφράσεις</string>
+  <string name="help_subcat_translators" formatted="false">Μεταφραστές</string>
+  <string name="help_cat_contact" formatted="false">Επικοινωνία</string>
+  <string name="pref_hint" formatted="false">Συμβουλή: Πατήστε MENU για βοήθεια</string>
+  <string name="settings_overview" formatted="false">Επισκόπηση</string>
+  <string name="color_settings" formatted="false">Χρώματα και Θέματα</string>
+  <string name="color_settings_summary" formatted="false">Έλεγχος χρωμάτων εικόνων και θέματα παραθύρων</string>
+  <string name="time_settings" formatted="false">Ρυθμίσεις Χρόνου</string>
+  <string name="time_settings_summary" formatted="false">Έλεγχος υπολογισμού και προσέγγισης χρόνου</string>
+  <string name="alarm_settings_subtitle" formatted="false">Ρυθμίσεις Ειδοποιήσεων</string>
+  <string name="alarm_settings" formatted="false">Ειδοποιήσεις</string>
+  <string name="alarm_settings_summary" formatted="false">Έλεγχος ειδοποιήσεων για χαμηλή/πλήρη μπαταρία</string>
+  <string name="other_settings" formatted="false">Άλλες Ρυθμίσεις</string>
+  <string name="pref_cat_more_settings_in_pro" formatted="false">Επιπλέον Ρυθμίσεις στο Pro</string>
+  <string name="add_alarm" formatted="false">Προσθήκη ειδοποίησης</string>
+  <string name="pref_cat_themes" formatted="false">Θέματα</string>
+  <string name="pref_main_window_theme" formatted="false">Θέμα Κυρίως Παραθύρου</string>
+  <string name="pref_icon_plugin" formatted="false">Εικόνα για Plugin</string>
+  <string name="no_plugins_installed_summary" formatted="false">Πατήστε MENU για λήψη plugins</string>
+  <string name="pref_cat_logging" formatted="false">Καταγραφή</string>
+  <string name="pref_enable_logging" formatted="false">Ενεργοποίηση Καταγραφής</string>
+  <string name="pref_enable_logging_summary" formatted="false">Καταγραφή αλλαγής κατάστασης μπαταρίας;</string>
+  <string name="pref_log_everything" formatted="false">Καταγραφή Όλων</string>
+  <string name="pref_log_everything_summary" formatted="false">Καταγραφή μεταβολής φόρτισης, επίσης;</string>
+  <string name="pref_max_log_age" formatted="false">Μέγιστη Περίοδος Καταγραφής</string>
+  <string name="pref_max_log_age_summary" formatted="false">Διαγραφή λίστας δεδομένων παλαιότερης από:</string>
+  <string name="pref_cat_keyguard" formatted="false">Κλείδωμα Οθόνης / Φύλαξη Οθόνης</string>
+  <string name="pref_confirm_manual_disable" formatted="false">Επιβεβαίωση Χειροκίνητης Απενεργοποίησης</string>
+  <string name="pref_confirm_manual_disable_summary" formatted="false">Επιβεβαίωση χειροκίνητης απενεργοποίησης κλειδώματος οθόνης;</string>
+  <string name="pref_finish_after_toggle_lock" formatted="false">Έξοδος Μετά από Εναλλαγή</string>
+  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Έξοδος από κυρίως παράθυρο μετά από απ/ενεργοποίηση;</string>
+  <string name="pref_auto_disable" formatted="false">Αυτόματη απενεργοποίηση Κλειδώματος Οθόνης</string>
+  <string name="pref_auto_disable_summary" formatted="false">Απενεργοποίηση Κλειδώματος Οθόνης κατά τη φόρτιση;</string>
+  <string name="pref_disallow_disable_lock_screen" formatted="false">Αποτροπή Χειροκίνητης Απενεργοποίησης</string>
+  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Αποτροπή χρήσης πλήκτρου κλειδώματος οθόνης;</string>
+  <string name="pref_cat_battery_use" formatted="false">Χρήση Μπαταρίας</string>
+  <string name="pref_finish_after_battery_use" formatted="false">Έξοδος μετά την Προβολή</string>
+  <string name="pref_finish_after_battery_use_summary" formatted="false">Έξοδος από το κυρίως παράθυρο αμέσως μετά την προβολή Χρήσης Μπαταρίας;</string>
+  <string name="pref_cat_temperature_unit" formatted="false">Μονάδες Θερμοκρασίας</string>
+  <string name="pref_convert_to_fahrenheit" formatted="false">Μετατροπή σε Φάρεναϊτ</string>
+  <string name="pref_cat_autostart" formatted="false">Αυτόματη Ενεργοποίηση</string>
+  <string name="pref_autostart_at_boot" formatted="false">Αυτόματη Ενεργοποίηση μετά από Επανεκκίνηση</string>
+  <string name="pref_autostart_at_boot_summary" formatted="false">Εκκίνηση Battery Indicator όταν η συσκευή επανεκκινά:</string>
+  <string name="pref_cat_charge_as_text" formatted="false">Κειμενικό Επίπεδο Φόρτισης</string>
+  <string name="pref_charge_as_text" formatted="false">Κειμενικό Επίπεδο Φόρτισης</string>
+  <string name="pref_charge_as_text_summary" formatted="false">Προβολή ως κείμενο δίπλα από την εικόνα;</string>
+  <string name="pref_cat_one_percent_hack" formatted="false">Διαβαθμίσεις 1%</string>
+  <string name="pref_one_percent_hack" formatted="false">Διαβαθμίσεις 1%</string>
+  <string name="pref_one_percent_hack_summary" formatted="false">Χρήση στρογγυλοποίησης για συσκευές που δείχνουν μόνο πολλαπλάσια του 10%;</string>
+  <string name="lang_system_selected" formatted="false">Επιλογή Συστήματος</string>
+  <string name="pref_cat_language" formatted="false">Γλώσσα</string>
+  <string name="pref_language_override" formatted="false">Υπέρβαση Γλώσσας</string>
+  <string name="pref_language_override_summary" formatted="false">Επιλογή Γλώσσας:</string>
+  <string name="pref_cat_status_duration" formatted="false">Διάρκεια Κατάστασης (Για/Από...)</string>
+  <string name="pref_status_dur_est" formatted="false">Όταν γίνεται Προσέγγιση</string>
+  <string name="pref_status_dur_est_summary" formatted="false">Έναρξη προσεγγιστικού χρόνου από αλλαγή κατάστασης:</string>
+  <string name="pref_cat_time_remaining_estimates" formatted="false">Εκτίμηση Εναπομείναντος Χρόνου</string>
+  <string name="pref_show_charge_time" formatted="false">Προβολή Χρόνου Φόρτισης</string>
+  <string name="pref_show_charge_time_summary" formatted="false">Προβολή χρόνου που απομένει για πλήρη φόρτιση κατά τη φόρτιση;</string>
+  <string name="pref_usb_charge_time" formatted="false">Φόρτιση με USB</string>
+  <string name="pref_usb_charge_time_summary" formatted="false">Χρόνος για φόρτιση με USB από 0% μέχρι 100% σε ώρες:</string>
+  <string name="pref_ac_charge_time" formatted="false">Φόρτιση με AC</string>
+  <string name="pref_ac_charge_time_summary" formatted="false">Χρόνος για φόρτιση AC από 0% μέχρι 100% σε ώρες:</string>
+  <string name="pref_show_light_usage" formatted="false">Προβολή Ελαφριάς Χρήσης</string>
+  <string name="pref_show_light_usage_summary" formatted="false">Προβολή χρόνου που απομένει με ελαφριά χρήση;</string>
+  <string name="pref_light_usage_time" formatted="false">Ελαφριά Χρήση</string>
+  <string name="pref_light_usage_time_summary" formatted="false">Χρόνος ελαφριάς χρήσης από 100% μέχρι 0% σε ώρες:</string>
+  <string name="pref_show_normal_usage" formatted="false">Προβολή Κανονικής Χρήσης</string>
+  <string name="pref_show_normal_usage_summary" formatted="false">Προβολή χρόνου που απομένει με κανονική χρήση;</string>
+  <string name="pref_normal_usage_time" formatted="false">Κανονική Χρήση</string>
+  <string name="pref_normal_usage_time_summary" formatted="false">Χρόνος κανονικής χρήσης από 100% μέχρι 0% σε ώρες:</string>
+  <string name="pref_show_heavy_usage" formatted="false">Προβολή Βαριάς Χρήσης</string>
+  <string name="pref_show_heavy_usage_summary" formatted="false">Προβολή χρόνου που απομένει με βαριά χρήση;</string>
+  <string name="pref_heavy_usage_time" formatted="false">Βαριά Χρήση</string>
+  <string name="pref_heavy_usage_time_summary" formatted="false">Χρόνος βαριάς χρήσης από 100% μέχρι 0% σε ώρες:</string>
+  <string name="pref_show_constant_usage" formatted="false">Προβολή Σταθερής Χρήσης</string>
+  <string name="pref_show_constant_usage_summary" formatted="false">Προβολή χρόνου που απομένει με σταθερή χρήση;</string>
+  <string name="pref_constant_usage_time" formatted="false">Σταθερή Χρήση</string>
+  <string name="pref_constant_usage_time_summary" formatted="false">Χρόνος σταθερής χρήσης από 100% μέχρι 0% σε ώρες:</string>
+  <string name="pref_cat_plugin_settings" formatted="false">Ρυθμίσεις Plugin</string>
+  <string name="pref_plugin_settings" formatted="false">Ρυθμίσεις Plugin</string>
+  <string name="pref_plugin_settings_summary" formatted="false">Επεξεργασία ρυθμίσεων για αυτό το plugin</string>
+  <string name="pref_cat_color" formatted="false">Χρώμα Εικόνας</string>
+  <string name="pref_color_preview" formatted="false">Προεπισκόπηση Χρώματος</string>
+  <string name="pref_red" formatted="false">Χρήση Κόκκινης Εικόνας</string>
+  <string name="pref_red_summary" formatted="false">Χρήση κόκκινης εικόνας όταν η φόρτιση είναι χαμηλή;</string>
+  <string name="pref_red_help" formatted="false">Αν θα χρησιμοποιείται η κόκκινη εικόνα όταν η φόρτιση είναι χαμηλή.</string>
+  <string name="pref_red_thresh" formatted="false">Όριο Κόκκινου</string>
+  <string name="pref_red_thresh_summary" formatted="false">Κόκκινη εικόνα όταν φόρτιση χαμηλότερη από ποσοστό:</string>
+  <string name="pref_red_thresh_summary10" formatted="false">Κόκκινη εικόνα όταν φόρτιση ίση ή χαμηλότερη από ποσοστό:</string>
+  <string name="pref_amber" formatted="false">Χρήση Κίτρινης Εικόνας</string>
+  <string name="pref_amber_summary" formatted="false">Χρήση κίτρινης εικόνας όταν η φόρτιση μετρια;</string>
+  <string name="pref_amber_help" formatted="false">Αν θα χρησιμοποιείται η κίτρινη εικόνα όταν η φόρτιση είναι κάτω από ένα ποσοστό.</string>
+  <string name="pref_amber_thresh" formatted="false">Όριο Κίτρινου</string>
+  <string name="pref_amber_thresh_summary" formatted="false">Κίτρινη εικόνα όταν φόρτιση χαμηλότερη από:</string>
+  <string name="pref_amber_thresh_summary10" formatted="false">Κίτρινη εικόνα όταν φόρτιση ίση ή χαμηλότερη από:</string>
+  <string name="pref_green" formatted="false">Χρήση Πράσινης Εικόνας</string>
+  <string name="pref_green_summary" formatted="false">Χρήση πράσινης εικόνας όταν η φόρτιση είναι ψηλή;</string>
+  <string name="pref_green_help" formatted="false">Αν θα χρησιμοποιείται η πράσινη εικόνα όταν η φόρτιση είναι ίση ή πάνω από ένα όριο:</string>
+  <string name="pref_green_thresh" formatted="false">Όριο Πράσινου</string>
+  <string name="pref_green_thresh_summary" formatted="false">Πράσινη εικόνα όταν φόρτιση ίση ή ψηλότερη από:</string>
+  <string name="pref_cat_device_specific" formatted="false">Ειδικές Ρυθμίσεις Συσκευής</string>
+  <string name="pref_ten_percent_mode" formatted="false">Λειτουργία 10%</string>
+  <string name="pref_ten_percent_mode_summary" formatted="false">Διαβάστε τη βοήθεια πρώτα!</string>
+  <string name="alarms_overview" formatted="false">Επισκόπηση Ειδιποιήσεων</string>
+  <string name="pref_alarm_enabled" formatted="false">Ενεργοποίηση Ειδοποίησης</string>
+  <string name="pref_cat_alarm_conditions" formatted="false">Συνθήκες Ειδοποίησης</string>
+  <string name="pref_cat_alarm_conditions_help" formatted="false">Εδώ ελέγχετε τις συνθήκες που ενεργοποιούν μια ειδοποίηση.</string>
+  <string name="pref_alarm_type" formatted="false">Τύπος Ειδοποίησης</string>
+  <string name="pref_alarm_type_summary" formatted="false">Ενεργοποίηση Ειδοποίησης όταν η μπαταρία:</string>
+  <string name="pref_alarm_threshold" formatted="false">Όριο</string>
+  <string name="alarm_pref_not_used" formatted="false">Δε χρησιμοποιείται για αυτόν τον τύπο ειδοποίησης</string>
+  <string name="pref_alarm_threshold_summary" formatted="false">Όριο Ειδιποίησης:</string>
+  <string name="pref_cat_notification_settings" formatted="false">Ρυθμίσεις Ειδοποίησης</string>
+  <string name="pref_alarm_ringtone" formatted="false">Ήχος Κλήσης</string>
+  <string name="silent" formatted="false">Σιωπηλό</string>
+  <string name="pref_alarm_vibrate" formatted="false">Δόνηση</string>
+  <string name="pref_alarm_lights" formatted="false">Άναμμα Φώτων</string>
+  <string name="confirm_close_hint" formatted="false">Ο Battery Indicator θα κλείσει εντελώς, και δε θα υπάρχει στην μπάρα κατάστασης πλέον.\n\nΑν επιυθμείτε να φύγετε από το κυρίως παράθυρο και να αφήσετε το πρόγραμμα να τρέχει, πατήστε Ακύρωση και μετά πατήστε το κουμπί BACK της συσκευής σας για να φύγετε από το κυρίως παράθυρο.</string>
+  <string name="need_uninstall_hint" formatted="false">O Battery Indicator Pro θα πρέπει να απεγκατασταθεί και μετά να επανεγκατασταθεί για να ολοκληρώσει αυτή τη σημαντική αναβάθμιση. Λυπούμαστε για την αναστάτωση. Αυτό απαιτείται λόγω κάποιου τεχνικού περιορισμού του Android. Δε θα απαιτηθεί ξανά για μελλοντικές αναβαθμίσεις.\n\nΜετά που θα πατήσετε \"Εντάξει\" για να περάσετε αυτό το μήνυμα, απλά πρέπει να πατήσετε το \"Εντάξει\" ξανά όταν το Android ζητήσει την άδειά σας για απεγκατάσταση. Θα μεταφερθείτε μετά στην ιστοσελίδα Market για επανεγκατάσταση.\n\nΣτις περισσότερες περιπτώσεις οι προτιμήσεις των χρηστών επαναφέρονται με πιθανή εξαίρεση τις ειδοποιήσεις, οι οποίες θα πρέπει να ξαναδημιουργηθούν. Επειδή όμως αυτό δεν είναι απόλυτα σίγουρο κάντε επανέλεγχο των ρυθμίσεων μετά την επανεγκατάσταση.\n\nΕυχαριστώ, απολαύστε όλες τις νέες δυνατότητες!</string>
+  <string name="confirm_ten_percent_hint" formatted="false">Προειδοποίηση: Αν αλλάξετε αυτή τη ρύθμιση (ενεργοποιώντας και απενεργοποιώντας την) θα επαναφέρετε στην αρχή τις ρυθμίσεις χρώματος.\n\nΑν έχετε ένα Motorola Droid, Droid X, Droid 2, Defy, ή Samsung Moment, θα πρέπει να ενεργοποιήσετε αυτή τη ρύθμιση όταν τρέξετε για πρώτη φορά την εφαρμογή και μετά να το αφήσετε έτσι. Όλες οι άλλες συσκευές, από όσο ξέρω, θα πρέπει να απενεργοποιήσουν τη ρύθμιση αυτή.</string>
+  <string name="first_run_message" formatted="false">Ευχαριστούμε για τη δωρεά/αγορά! <b><i>Τα τρία αυτά σημεία είναι πολύ σημαντικά</i> :</b>\n\n• Αν έχετε ένα \"<b>task killer</b>\" / process manager ή παρόμοιο πρόγραμμα θα πρέπει είτε να το απεγκαταστήσετε ή να το ρυθμίσετε ώστε να \"αγνοεί\" το Battery Indicator Pro. Ακόμα κι αν το έχετε ρυθμίσει να \"αγνοεί\" τη Free έκδοση, <i>θα πρέπει να το ρυθμίσετε να \"αγνοεί\" και αυτήν την Pro έκδοση.</i> !\n\n• Αν η συσκευή σας δείχνει το επίπεδο της μπαταρίας μόνο σε αυξήσεις 10% (<b>τα περισσότερα τηλέφωνα Motorola είναι έτσι</b>), τότε θα πρέπει να ενεργοποιήσετε το \"One-percent Hack\" στις \"Άλλες Ρυθμίσεις\" για να έχετε αυξήσεις του 1%.\n\n• Αν η μπάρα κατάστασης της συσκευής σας είναι μαύρη, και ειδικά αν έχετε Android 3 ή νεότερο, θα πρέπει να κατεβάσετε και να χρησιμοποιήσετε το plugin \"Black Square\".</string>
+  <string name="first_run_message_free" formatted="false">Ευχαριστύμε που χρησιμοποιείτε το Battery Indicator! <b><i>Αυτά τα δύο σημεία είναι πολύ σημαντικά</i> :</b>\n\n•Αν έχετε ένα \"<b>task killer</b>\" / process manager ή παρόμοιο πρόγραμμα θα πρέπει είτε να το απεγκαταστήσετε ή να το ρυθμίσετε ώστε να \"αγνοεί\" το Battery Indicator Pro.\n\n• Αν η συσκευή σας δείχνει το επίπεδο της μπαταρίας μόνο σε αυξήσεις 10% (<b>τα περισσότερα τηλέφωνα Motorola είναι έτσι</b>), τότε θα πρέπει να ενεργοποιήσετε το \"One-percent Hack\" στις ρυθμίσεις για να έχετε αυξήσεις του 1%.</string>
+  <string name="help_introduction" formatted="false">Αυτό είναι το <i>Battery Indicator Pro</i>, η έκδοση \"Pro\" της δημοφιλούς δωρεάν έκδοσης του <i>Battery Indicator</i>. Είναι διαθέσιμο για αγορά από το Android Market, αλλά είναι ένα πρόγραμμα ανοιχτού κώδικα, το οποίο σημαίνει ότι μπορείτε να κατεβάσετε τον κώδικα ελέυθερα από τη <a href="http://code.google.com/p/battery-indicator/">τη σχετική ιστοσελίδα</a>.</string>
+  <string name="help_introduction_free" formatted="false">Αυτό είναι το <i>Battery Indicator</i>, η δωρεάν έκδοση της οικογένειας εφαρμογών<i>Battery Indicator</i>.Είναι διαθέσιμο από το Android Market, και είναι ένα πρόγραμμα ανοιχτού κώδικα, το οποίο σημαίνει ότι μπορείτε να κατεβάσετε τον κώδικα ελέυθερα από τη <a href="http://code.google.com/p/battery-indicator/">τη σχετική ιστοσελίδα</a>.\n\nΠαρακαλούμε να σκεφτείτε να κάνετε δωρεά με το να αναβαθμίσετε στη <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Έκδοση Pro</a>.</string>
+  <string name="help_summary" formatted="false"><i>Battery Indicator Pro</i> είναι μια εφαρμογή απεικόνισης της κατάστασης της μπαταρίας πολύ λίγο απαιτητική σε μνήμη για το Android. Η βασική της δυνατότητα είναι ότι εμφανίζει μια είκόνα στη μπάρα ειδοποιήσεων της συσκευής σας η οποία δείχνει το ποσοστό της μπαταρίας που απομένει.\n\nΑυτή η Pro έκδοση όμως προσφέρει πολύ περισσότερα από αυτά. Εκτός του ότι προσφέρει κόκκινη, κίτρινη και πράσινη εικόνα, έχει και τα ακόλουθα χαρακτηριστικά (έκδση 3.0):\n\n•Πλήρως ρυθμιζόμενο υπολογισμό του χρόνου που απομένει για φόρτιση/αποφόρτιση.\n•Εικόνες plugins που μπορείτε να κατεβάσετε.\n•Καταγραφή της κατάστασης της μπαταρίας.\n•Θέματα για το κυρίως παράθυρο (συμπεριλαμβανομένου παραθύρου πλήρους οθόνης, με εύκολο να διαβαστεί κείμενο).\n•Χειρικήνητη ενεργοποίηση/απενεργοποίηση του κλειδώματος οθόνης της συσκευής, με την επιλογή της αυτόματης απενεργοποίησης όταν φορτίζει και επαενεργοποίησης όταν αποσυνδέεται.\n•Ακόμα περισσότερες δυνατότητες που θα ανκαλύψετε με τη χρήση της εφαρμογής.\n</string>
+  <string name="help_summary_free" formatted="false"><i>Battery Indicator</i> είναι μια εφαρμογή απεικόνισης της κατάστασης της μπαταρίας πολύ λίγο απαιτητική σε μνήμη για το Android. Η βασική της δυνατότητα είναι ότι εμφανίζει μια είκόνα στην μπάρα ειδοποιήσεων της συσκευής σας η οποία δείχνει το ποσοστό της μπαταρίας που απομένει.\n\nΗ Pro έκδοση όμως προσφέρει πολύ περισσότερα από αυτά. Εκτός του ότι προσφέρει κόκκινη, κίτρινη και πράσινη εικόνα, έχει και τα ακόλουθα χαρακτηριστικά (έκδση 3.0):\n\n•Πλήρως ρυθμιζόμενο υπολογισμό του χρόνου που απομένει για φόρτιση/αποφόρτιση.\n•Εικόνες plugins που μπορείτε να κατεβάσετε.\n•Καταγραφή της κατάστασης της μπαταρίας.\n•Θέματα για το κυρίως παράθυρο (συμπεριλαμβανομένου παραθύρου πλήρους οθόνης, με εύκολο να διαβαστεί κείμενο).\n•Χειρικήνητη ενεργοποίηση/απενεργοποίηση του κλειδώματος οθόνης της συσκευής, με την επιλογή της αυτόματης απενεργοποίησης όταν φορτίζει και επαενεργοποίησης όταν αποσυνδεέται.\n•Ακόμα περισσότερες δυνατότητες που θα ανκαλύψετε με τη χρήση της εφαρμογής.\n</string>
+  <string name="help_limitations" formatted="false">(<i>Αυτά είναι έξω από τον έλεγχο μου.</i>)\n\n• Δεν υπάρχει τρόπος να μην εμφανίζεται η ενσωματωμένη εικόνα της μπαταρίας.\n• Η εικόνα ειδοποίησης στη μπάρα ειδοποιήσεων της συσκευής σας και το μήνυμα που βλέπετε στη γραμμή ειδοποίησης είναι συνδεδεμένα - δεν μορείτε να έχετε το ένα χωρίς το άλλο.\n• Πολλές εφαρμογές μπορούν να εγκατασταθούν στη κάρτα SD, κάποιες όχι. Ο Battery Indicator ανήκει στη δεύτερη κατηγορία. Δέστε τη σελίδα <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">the project FAQ</a> για περισσότερες πληροφορίες.</string>
+  <string name="help_features" formatted="false">• Μικρό, απλό, και εύκολο να διαβαστεί.\n• Δεν κάνει οποιοδήποτε υποκλοπή. Απλά λαμβάνει μήνυμα από το Λειτουργικό Πρόγραμμα (OS) όταν η κατάσταη της μπαταρίας αλλάζει και τότε ανατροφοδοτεί την εικόνα και αδρανοποιείται πάλι. Αυτό σημαίνει ότι χρησιμοποιεί ελάχιστη μνήμη RAM, και βασικά μηδέν κύκλους CPU και άρα δεν καταναλώνει σχεδόν καθόλου μπαταρία. Υπολογίζω ότι θα καταναλώσει στη χειρότερη περίπτωση 1 λεπτό χρόνου μπαταρίας σε ένα κύκλο πλήρης φόρτισης. Αν διαπιστώνετε κάτι διαφορετικό τότε πιθανόν να έχετε κάποια άλλη εφαρμογή (όπως ένα \"task killer\" ή κάτι παρόμοιο) το οποίο παρεμποδίζει την ομαλή λειτουργία του Battery Indicator.\n• Εύκολη πρόσβαση στην Οθόνη Χρήσης Μπαταρίας (απαιτείται Android 1.6+).\n• Μπορεί να ρυθμιστεί να ξεκινά κατά την εκκίνηση της συσκευής σας, να μην ξεκινά κατά την εκκίνηση ή να ξεκινά αν έτρεχε κατά την απενεργοποίηση της συσκευής.\n• Πολύ περισσότερα από αυτά τα οποία είτε ξεχνώ ή μου φαίνονται όχι και τόσο σημαντικά για να αναφέρω, αλλά όλα μαζί κάνουν μια εξαιρετική εφαρμογή.\n• Την ικανοποίηση της υποστήριξης του προγραμματιστη. (Πραγματικά το εκτιμώ πολύ!)</string>
+  <string name="help_no_warranty" formatted="false">Το πρόγραμμα αυτό διατίθεται με την ελπίδα ότι θα είναι χρήσιμο, αλλά ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ, χωρίς ακόμα την εννούμενη εγγύηση της ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή της ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΟ ΣΚΟΠΟ.\n\nΠαρόλο όμως που θα κάνω ό,τι καλύτερο μπορώ για να εξασφαλίσω ότι η εφαρμογή δουλεύει με τον καλύτερο τρόπο και δε δημιουργεί προβλήματα, δεν είμαι υπεύθυνος για οποιαδήποτε ζημιά ή αναστάτωση που μπορεί να δημιουργήσει κάτω από οποιεσδήποτε συνθήκες.</string>
+  <string name="charge" formatted="false">ποσοστό_φόρτισης</string>
+  <string name="help_cat_changelog" formatted="false">Αλλαγή λίστας καταγραφής</string>
+  <string name="help_changelog" formatted="false">Δέστε την <a href="http://code.google.com/p/battery-indicator/wiki/Changelog?tm=6">online Changelog</a>.</string>
+  <string name="help_acknowledgments" formatted="false">Αυτή η εφαρμογή θα ήταν διαθέσιμη μόνο στα Αγγλικά χωρίς τη γενναιόδωρη βοήθεια από εθελοντές μεταφραστές. Ευχαριστώ!\n\nΠολλές ευχαριστίες οφείλονται στην Google και σε όλους προγραμματιστές ανοικτού κώδικα που έκαναν την πλατφόρμα Android καθώς και αυτή την εφαρμογή υλοποιήσιμη.\n\nΗ εικόνα της εφαρμογής (η μπαταρία που βλέπετε στο Market) είναι βασισμένη σε μια εικόνα από την <a href="http://www.oxygen-icons.org">the Oxygen icon theme</a> και χρησιμοποιείται κάτω από την <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-ShareAlike 3.0 License</a>.</string>
+  <string name="help_contact" formatted="false">Αν έχετε κάποια ερώτηση ή πρόβλημα, παρακαλώ δείτε <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">the project FAQ</a> πώς να επικοινωνήσετε μαζί μου.\n</string>
+  <string name="settings_overview_help" formatted="false">Οι ρυθμίσεις είναι οργανωμένες σε τέσσερις ξεχωριστές σελίδες, όπως περιγράφεται πιο κάτω. Κάθε σελίδα έχει τη δική της σελίδα βοήθειας που περιγράφει τις ρυθμίσεις της σελίδας αυτής. Απλά πατήστε MENU και μετά Βοήθεια (στα tablets, το MENU δεν είναι αναγκαίο) για να πάρετε βοήθεια σε όποια σελίδα ρυθμίσεων βρίσκεστε.</string>
+  <string name="color_settings_help" formatted="false">Μπορείτε να αλλάξετε το θέμα για το κυρίως παράθυρο και να ελέγξετε αν και πότε η εικόνα ειδοποίησης (μπαταρίας) θα αλλάζει χρώμα.</string>
+  <string name="time_settings_help" formatted="false">Εδώ μπορείτε να ελέγξετε πότε η ειδοποίηση θα αλλάζει από το να λέει πότε ακριβώς η κατάσταση της συσκευής άλλαξε(αποσυνδεδεμένη, για παράδειγμα) στο να εμφανίζει προσεγγιστικά πριν από πόσες ώρες συνάβηκε η αλλαγή αυτή.\n\nΜορείτε επίσης να ελέγξετε ποιο υπολογισμό θέλετε να βλέπετε για το χρόνο που απομένει για πλήρη φόρτιση με USB/AC και για ελαφριά/κανονική/βαριά/σταθερή χρήση, και να ρυθμίσετε τη βάση για αυτούς τους υπολογισμούς.</string>
+  <string name="alarm_settings_help" formatted="false">Μπορείτε να ρυθμίσετε τον Battery Indicator να σας ενημερώνει όταν το επίπεδο της μπαταρίας φτάνει σε ένα συγκεκριμένο επίπεδο (π.χ, όταν η μπαταρία φορτίζεται πλήρως ή όταν το επίπεδο της μπαταρίας πέφτει κάτω από 20%)</string>
+  <string name="other_settings_help" formatted="false">Όλες οι άλλες ρυθμίσεις βρίσκονται σε αυτή τη σελίδα, συμπεριλαμβανομένων της καταγραφής δεδομένων, του κλειδώματος της οθόνης, των μονάδων θερμοκρασίας, της αυτόματης έναρξης, και άλλα ακόμη.</string>
+  <string name="pref_please_upgrade" formatted="false">Η έκδοση Pro έχει πολύ περισσότερες ρυθμίσεις και δυνατότητες, συμπεριλαμβανομένων έγχρωμων εικόνων, λαμβανόμενα plugins, ειδοποιήσεις, θέματα παραθύρων, καταγραφή κατάστασης μπαταρίας, αυτόματη/χειροκίνητη απενεργοποίηση κλειδώματος οθόνης, υπολογισμό χρόνου για φόρτιση/αποφόρτιση, και άλλα ακόμη.</string>
+  <string name="pref_main_window_theme_help" formatted="false">Καθορίζει το θέμα του κυρίως παραθύρου. Από προεπιλογή, το θέμα καθορίζεται βασικά από τις προδιαγραφές διαλόγων του Android, όπως αυτό που έχει ο Battery Indicator. Το θέμα παραθύρου Πλήρους Οθόνης είναι χρήσιμο αν σας αρέσει να έχετε μεγάλη οθόνη για να είναι εύκολο να τη διαβάσετε. Τα άλλα θέματα είναι απλά για διασκέδαση.</string>
+  <string name="pref_icon_plugin_help" formatted="false">Αν έχετε εγκατεστημένα plugins εικόνων του Battery Indicator Pro (πατήστε MENU και μετά Λήψη Plugins για να λάβετε δωρεάν plugins), μπορείτε να επιλέξετε μεταξύ αυτών εδώ. Σε αυτό το ση,είο τα plugins δεν προσφέρουν οποιεσδήποτε επιλογές, έτσι οι ρυθμίσεις του χρώματος εικόνας θα εξαφανιστούν αν επιλέξετε οτιδήποτε άλλο εκτός από το \"Κανένα\". Η ιδέα είναι, φυσικά, ότι θα υπάρχουν πολλά plugins διαθέσιμα έτσι ώστε να μπορείτε να βρείτε ένα που να σας ταιριάζει.</string>
+  <string name="pref_enable_logging_help" formatted="false">Αν ενεργοποιηθεί, ο Battery Indicator, θα καταγράφει τις μεταβολές κατάστασης της μπαταρίας (π.χ αν η συσκευή αποσυνδεθεί από το ρεύμα ή έχει φορτιστεί πλήρως). Μπορείτε να δείτε τα κατεγραμμένα δεδομένα από το κυρίως παράθυρο (πατήστε MENU και μετά επιλέξτε Λίστα Καταγραφής, στα tablets, το MENU δε είναι απαραίτητο.)</string>
+  <string name="pref_log_everything_help" formatted="false">Αν ενεργοποιηθεί, ο Battery Indicator, θα καταγράφει κάθε μεταβολή στο επίπεδο φόρτισης επίσης (π.χ φόρτιση από 57% σε 56% και αντίστροφα).</string>
+  <string name="pref_max_log_age_help" formatted="false">Αν η καταγραφή είναι ενεργοποιημένη, τότε όποτε συνδέετε τη συσκευή στην πρίζα, όλες οι παλαιότερες καταγραφές θα διαγραφούν.</string>
+  <string name="pref_cat_keyguard_help" formatted="false">Το Android επιτρέπει σε εφαρομογές να ενεργοποιούν και να απενεργοποιούν αυτό που λέμε \"keyguard\", το οποίο πιθανόν να έχετε στο μυαλό σας ως κλείδωμα οθόνης. Πέρα όμως από την ενεργοποίηση και την απενεργοποίηση δεν υπάρχει άλλος έλεγχος - δεν μπορούμε να ελέξουμε ποια πλήκτρα ενεργοποιούν την οθόνη, για παράδειγμα.</string>
+  <string name="pref_confirm_manual_disable_help" formatted="false">Αν επιλεγεί, μια ερώτηση επιβεβαίωσης θα αναδυθεί όταν προσπαθείτε να απενεργοποιήσετε χειροκίνητα το κλείδωμα της οθόνης. Αυτό γίνεται κυρίως για να παρεμποδίσει τους νέους χρήστες από το να απενεργοποιήσουν το κλείδωμα της οθόνης της συσκευής τους κατά λάθος χωρίς να το γνωρίζουν. Αν απενεργοποιείτε το κλείδωμα της οθόνης σας περιοδικά, ίσως να θέλετε να ακυρώσετε την επιβεβαίωση αυτή.</string>
+  <string name="pref_finish_after_toggle_lock_help" formatted="false">Αν είστε κάποιος για τον οποίο κάθε πάτημα κουμπιού (ή της οθόνης) μετρά, θα θέλατε να το ενεργοποιήσετε αυτό. Αν ο στόχος σας είναι απλά να απενεργοποιήσετε ή να ενεργοποιήσετε το κλείδωμα οθόνης και μετά να επιστρέψετε σε αυτό που κάνατε, αυτό θα σας απαλλάξει από το να πατάτε το πλήκτρο BACK. Απλά κατεβάστε τη μπάρα ειδοποιήσεων, και πατήστε το κουμπί για εναλλαγή στο κλείδωμα οθόνης: τρία πατήματα στην οθόνη και είστε πίσω σε αυτό που κάνατε.\n\nΓια ξεκάθαρους λόγους, μπορείτε να το ενεργοποιήσετε αν ήταν απενεργοποιημένο και αντίστροφα.</string>
+  <string name="pref_auto_disable_help" formatted="false">Αν είναι επιλεγμένο, τότε όποτε συνδέεται η συσκευή με το ρεύμα, ο Battery indicator θα απενεργοποιεί το κλείδωμα της οθόνης και όποτε αποσυνδέεται η συσκευή, θα ξαναενεργοποιεί το κλείδωμα της οθόνης.\n\nΣημειώστε ότι με αυτή την επιλογή ενεργοποιημένη, θα πρέπει να ενεργοποιήσετε χειροκίνητα το κλείδωμα της οθόνης μια φορά πριν να γίνεται αυτόματα η εναλλαγή.</string>
+  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Αν έχετε ένα εναλλακτικό πρόγραμμα κλειδώματος οθόνης το οποίο σας δίνει πρόσβαση στη γραμμή ειδοποιήσεων όταν η οθόνη είναι κλειδωμένη, θα πρέπει να ενεργοποιήσετε αυτή την επιλογή για λόγους ασφαλείας.</string>
+  <string name="pref_finish_after_battery_use_help" formatted="false">Αν είστε κάποιος για τον οποίο κάθε πάτημα πλήκτρου (ή οθόνης) μετρά, θα θέλατε να το ενεργοπιήσετε αυτό. Ενεργοποιώντας το διατηρεί την παλαιότερη συμπεριφορά του να κλείνει το κυρίως παράθυρο του Battery Indicator αμέσως μετά που θα προβληθεί η Οθόνη Χρήσης μπαταρίας.</string>
+  <string name="pref_convert_to_fahrenheit_help" formatted="false">Το Android αναφέρει τη θερμοκρασία της μπαταρίας σε βαθμούς Κελσίου. Αν προτιμάτε να τη βλέπετε σε Φάρεναϊτ, επιλέξετε αυτήν την επιλογή και η εφαρμογή θα σας τη μετατρέπει.</string>
+  <string name="pref_autostart_at_boot_help" formatted="false">Ελέγχει κατά πόσο ο Battery Indicator θα ξεκινά από μόνος του αυτόματα όποτε η συσκευή εκκινά.\n\nΗ \"Αν Τρέχει κατά το Σβήσιμο\" επιλογή εργάζεται σε σχέση με το κατά πόσο έχετε πρόσφατα εκκινήσει ή κλείσει το Battery Indicator. Άρα αν έχετε κλείσει αναγκαστικά το Battery Indicator , όπως με ένα Task Killer, το πρόγραμμα δε θα γνωρίζει ότι το σταματήσατε και έτσι θα εκκινήσει αυτόματα αν το έχετε ρυθμίσει έτσι.</string>
+  <string name="pref_charge_as_text_help" formatted="false">Υπάρχουν μερικοί χρήστες με φτωχότερη όραση που μου ζητούν να προσθέσω αυτήν την επιλογή, δηλαδή το επίπεδο μπαταρίας να φαίνεται και ως κείμενο (το οποίο είναι μεγαλύτερο και ευκολότερο στο διάβασμα) ακριβώς δίπλα από την εικόνα στην περιοχή ειδοποιήσεων. Η εικόνα δε θα διαφέρει καθόλου, έτσι θα βοηθά καθώς θα ανοίγετε τη γραμμή ειδοποίησης, αλλά είναι καλύτερο από καθόλου και βολεύει αυτούς που το επιθυμούν. Είναι ιδιαίτερα χρήσιμο για αυτούς που χρησιμοποιούν αναγνώστη οθόνης.\n\nΣε μερικές συσκευές, η ενεργοποίηση της επιλογής αυτής μπορεί να αποκόψει τη δεξιά πλευρά του κειμένου της γραμμής ειδοποιήσεων.</string>
+  <string name="pref_one_percent_hack_help" formatted="false">Αυτός ο τρόπος διαβάθμισης φαίνεται να δουλεύει για όλες τις συσκευές Motorola οι οποίες δείχνουν αυξήσεις πολλαπλασίων του 10%, εκτός από τη σειρά Droid.\n\nΟι πλείστες συσκευές δεν το χρειάζονται αυτή τη επιλογή. Αν η συσκευή σας δείχνει αυξήσεις της τάξης του 1%, μην ενεργοποιήσετε τη δυνατότητα αυτή.\n\nΑν η επιλογή είναι μη διαθέσιμη και δεν είναι δυνατόν να την ενεργοποιήσετε, τότε η συσκευή σας δεν μπορεί να χρησιμοποιήσει τη δυνατότητα αυτή.\n\nΔέστε τη <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">OnePercentHack</a> σελίδα wiki για περισσότερες πληροφορίες.</string>
+  <string name="pref_language_override_help" formatted="false">Αν η μετάφραση στη γλώσσα σας είναι ελλειπής ή ανακριβής και προτιμάτε να επιλέξετε μια άλλη, πιθανώς καλύτερη μετάφραση, μπορείτε να το κάνετε εδώ.</string>
+  <string name="pref_status_dur_est_help" formatted="false">Καθορίζει πότε η ενημέρωση αλλάζει από το να λέει, π.χ., \"Αποσυνδεδεμένη Από τις 1:10 PM\" στο να λέει κάτι σαν \"Αποσυνδεδεμένη για 1 ώρα\". Ο πρώτος τρόπος είναι πιο ακριβής, διότι σας ενημερώνει ακριβώς (με ακρίβεια λεπτού) όταν η κατάσταση της μπαταρίας αλλάζει, αλλά πολλοί άνθρωποι προτιμούν το απλούστερο να γνωρίζουν προσεγγιστικά τον χρόνο της μπαταρίας που είναι αποσυνδεδεμένη, έτσι το κάνουν να συμβαίνει πιο σύντομα από την προεπιλογή των 12 ωρών.</string>
+  <string name="pref_cat_time_remaining_estimates_help" formatted="false">Έχω κάνει τους υπολογισμούς του ενεπομείναντος χρόνου λίγο διαφορετικούς από ό, τι έχετε συνηθίσει μέχρι τώρα, αλλά νομίζω προς το καλύτερο. Εσείς καθορίζετε τι θα χρησιμοποιεί η εφραμογή ως βάση για υπολογισμό του χρόνου μπαταρίας και έτσι αν νομίζετε ότι είναι λάθος μπορείτε να το διορθώσετε. Έχω χρησιμοποιήσει τι νόμιζα εγώ ότι πρέπει να είναι προεπιλογή, αλλά επειδή οι συσκευές διαφέρουν και ακόμα περισσότερο ο τρόπος που τις χρησιμοποιούμε διαφέρει, έτσι θα ήταν καλό να προσαρμόσετε αυτές τις ρυθμίσεις. Αυτό θα ήταν καλό διότι μόνο εσείς ξέρετε τι σημαίνει \"Κανονική Χρήση\" και έτσι να το προσαρμόσετε ώστε να δουλεύει καλύτερα για σας, παρά να σας προκαλεί εκνευρισμό αν οι υπολογισμοί του χρόνου της μπαταρίας είναι λανθασμένοι.</string>
+  <string name="pref_show_charge_time_help" formatted="false">Αν ενεργοποιηθεί, τότε ενώ η συσκευή φορτίζει, το κυρίως παράθυρο θα δείχνει μια εκτίμηση (βασισμένη στις ρυθμίσεις πιο κάτω) για το πόσο χρόνο χρειάζεται η μπαταρία για να φορτιστεί πλήρως.</string>
+  <string name="pref_usb_charge_time_help" formatted="false">Εισάγετε το χρόνο που νομίζετε ότι χρειάζεται η μπαταρία σας για να φορτιστεί πλήρως από το 0% στο 100%.</string>
+  <string name="pref_ac_charge_time_help" formatted="false">Εισάγετε το χρόνο που νομίζετε ότι χρειάζεται η μπαταρία σας για να φορτιστεί πλήρως από το 0% στο 100% με πηγή ρεύματος AC.</string>
+  <string name="pref_show_light_usage_help" formatted="false">Κατά πόσο θα δείχνει ή όχι μια εκτίμηση (στο κυρίως παράθυρο) σχετικά με το πόσος χρόνος απομένει για να εξαντληθεί η μπαταρία χρησιμοποιώντας τη συσκευή με αυτό που λέμε \"Ελαφριά Χρήση\".</string>
+  <string name="pref_light_usage_time_help" formatted="false">Εισάγετε το χρόνο που νομίζετε ότι θα πάρει στη μπαταρία σας για να αποφορτιστεί πλήρως από 100% στο 0% χρησιμοποιώντας τη συσκευή με αυτό που λέμε \"Ελαφριά Χρήση\".</string>
+  <string name="pref_show_normal_usage_help" formatted="false">Κατά πόσο θα δείχνει ή όχι μια εκτίμηση (στο κυρίως παράθυρο) σχετικά με το πόσος χρόνος απομένει για να εξαντληθεί η μπαταρία χρησιμοποιώντας τη συσκευή με αυτό που λέμε \"Κανονική Χρήση\".</string>
+  <string name="pref_normal_usage_time_help" formatted="false">Εισάγετε το χρόνο που νομίζετε ότι θα πάρει στη μπαταρία σας για να αποφορτιστεί πλήρως από 100% στο 0% χρησιμοποιώντας τη συσκευή με αυτό που λέμε \"Κανονική Χρήση\".</string>
+  <string name="pref_show_heavy_usage_help" formatted="false">Κατά πόσο θα δείχνει ή όχι μια εκτίμηση (στο κυρίως παράθυρο) σχετικά με το πόσος χρόνος απομένει για να εξαντληθεί η μπαταρία χρησιμοποιώντας τη συσκευή με αυτό που λέμε \"Βαριά Χρήση\".</string>
+  <string name="pref_heavy_usage_time_help" formatted="false">Εισάγετε το χρόνο που νομίζετε ότι θα πάρει στη μπαταρία σας για να αποφορτιστεί πλήρως από 100% στο 0% χρησιμοποιώντας τη συσκευή με αυτό που λέμε \"Βαριά Χρήση\".</string>
+  <string name="pref_show_constant_usage_help" formatted="false">Κατά πόσο θα δείχνει ή όχι μια εκτίμηση (στο κυρίως παράθυρο) σχετικά με το πόσος χρόνος απομένει για να εξαντληθεί η μπαταρία χρησιμοποιώντας τη συσκευή με αυτό που λέμε \"Σταθερή Χρήση\".</string>
+  <string name="pref_constant_usage_time_help" formatted="false">Εισάγετε το χρόνο που νομίζετε ότι θα πάρει στη μπαταρία σας για να αποφορτιστεί πλήρως από 100% στο 0% χρησιμοποιώντας τη συσκευή με αυτό που λέμε \"Σταθερή Χρήση\".</string>
+  <string name="pref_cat_color_help" formatted="false">Για να κρατήσω το ψηφιακό πακέτο του Battery Indicator λογικά μικρό, έχω βάλει κάποιους περιορισμούς για τα χρώματα. Μέχρι σε αυτή τη στιγμή μπορείτε να έχετε μια κόκκινη εικόνα από το 30% και κάτω, μια κίτρινη εικόνα από 50% και κάτω και μια πράσινη εικόνα από 20% και πάνω. Πιστεύω ότι είναι λογική η διευθέτηση αυτή και ότι ανταποκρίνεται στις ανάγκες των περισσότερων χρηστών.\n\nΓια να σας δώσω όμως μέγιστο έλεγχο, τα χρώματα μπορείτε να τα ενεργοποιήσετε και να τα απενεργοποιήσετε ανεξάρτητα. Αυτό σημαίνει ότι μπορείτε να έχετε ένα τετράχρωμο σχήμα, όπου η εικόνα είναι πράσινη όταν η μπαταρία είναι πλήρως φορτισμένη, μετά γκρίζα, μετά κίτρινη και τέλος κόκκινη. Φυσικά, πολλοί χρήστες πιθανόν να έχουν ρυθμίσει τα όρια του κίτρινου και του πράσινου στην ίδια τιμή, έτσι το γκρίζο δε θα εμφανίζεται.</string>
+  <string name="pref_color_preview_help" formatted="false">Η προεπισκόπηση του χρώματος κάνει πιο εύκολη την οπτικοποίηση για το αποτέλεσμα των ρυθμίσεων χρώματος που έχετε κάνει.\n\nΑυτό δεν υπάρχει στη λειτουργία 10%, επειδή δεν έχει νόημα σε αυτή την περίπτωση.</string>
+  <string name="pref_red_thresh_help" formatted="false">Καθορίζει το επίπεδο φόρτισης κάτω από το οποίο η εικόνα θα γίνει κόκκινη (ή <i>στο</i>, στη Λειτουργία 10%).\n\nΟι επιλογές για το όριο της κόκκινης εικόνας περιλαμβάνουν όλες τις τιμές (σε πολλαπλάσια του 5) για τις οποίες η κόκκινη εικόνα είναι διαθέσιμη.\n\nΣτη λειτουργία 10%, τα πράγματα λειτουργούν λίγο διφορετικά, αλλά θα πρέπει να τα ανακαλύψετε μόνοι σας.</string>
+  <string name="pref_amber_thresh_help" formatted="false">Καθορίζει το επίπεδο φόρτισης κάτω από το οποίο η εικόνα θα γίνει κίτρινη (ή <i>στο</i>, στη Λειτουργία 10%).\n\nΟι επιλογές για το όριο της κίτρινης εικόνας περιλαμβάνουν όλες τις τιμές (σε πολλαπλάσια του 5) για τις οποίες η κίτρινη εικόνα είναι διαθέσιμη, ξεκινώντας 5 εκατοστιαίες μονάδες πάνω από το όριο του κόκκινου (αν υπάρχει). Για παράδειγμα, αν έχετε ρυθμίσει το όριο του κόκκινου στο 15, τότε η χαμηλότερη ρύθμιση για το κίτρινο είναι το 20.\n\nΣτη λειτουργία 10%, τα πράγματα λειτουργούν λίγο διφορετικά, αλλά θα πρέπει να τα ανακαλύψετε μόνοι σας.</string>
+  <string name="pref_green_thresh_help" formatted="false">Καθορίζει το επίπεδο φόρτισης κατά ή πάνω από το οποίο η εικόνα θα γίνει πράσινη.\n\nΟι επιλογές για το όριο της πράσινης εικόνας περιλαμβάνουν όλες τις τιμές (σε πολλαπλάσια του 5) για τις οποίες η πράσινη εικόνα είναι διαθέσιμη, ξεκινώντας από το ψηλότερο ενεργό όριο που έχετε καθορίσει για το κόκκινο ή το κίτρινο. Για παράδειγμα, αν έχετε καθορίσει το όριο του κίτρινου στο 40, τότε η χαμηλότερη ρύθμιση που μπορείτε να έχετε για το πράσινο είναι το 40.\n\nΣτη λειτουργία 10%, τα πράγματα λειτουργούν λίγο διφορετικά, αλλά θα πρέπει να τα ανακαλύψετε μόνοι σας.</string>
+  <string name="pref_ten_percent_mode_help" formatted="false"><b>Σημείωση:</b> Επιλέγοντας ή ακυρώνοντας την επιλογή αυτή θα επαναφέρει τις ρυθμίσεις χρώματος στην προεπιλογή!\n\nΑυτή η ρύθμιση ακυρώνει τις ρυθμίσεις Χρώματος Εικόνας για να κάνει περισσότερη αίσθηση σε συσκευές που δείχνουν το επίπεδο μπαταρίας μόνο σε πολλαπλάσια του 10%. Σύμφωνα με αναφορές χρηστών, τέτοιες συσκευές είναι:\n\n• Motorola Droid (original)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nΑπ\' όσο γνωρίζω όλες οι άλλες συσκευές αναφέρουν το επίπεδο μπαταρίας σε αυξομειώσεις του 1%, και άρα θα πρέπει <i>όχι</i> να το ενεργοποιήσετε.</string>
+  <string name="alarms_overview_help" formatted="false">Αυτή η σελίδα σας επιτρέπει να προσθέσετε νέες ειδοποιήσεις, να επεξεργάστείτε ή να διαγράψετε ειδοποιήσεις που έχετε θέσει.\n\nΓια να προσθέσετε μια νέα ειδιποίηση πατήστε \"Προσθήκη ειδοποίησης\" - αυτό θα δημιουργήσει μια νέα ειδιποίηση και θα μεταφερθείτε στη σελίδα ρυθμίσεων ειδοποίησης, όπου μπορείτε να καθορίσετε τις ρυθμίσεις για τη νέα ειδοποίηση. Δέστε τη βοήθεια στη σελίδα αυτή για περισσότερες πληροφορίες.\n\nΚάτω από το πλήκτρο \"Προσθήκη Ειδοποίησης\" υπάρχει η λίστα με όλες τις ειδοποιήσεις που έχετε καθορίσει.\n\n• Για να επεξεργαστείτε μια ειδοποίηση, απλά πατήστε πάνω της.\n• Για να διαγράψετε μια ειδοποίηση, πατήστε παρατεταμένα πάνω της, μετά επιλέξτε \"Διαγραφή Ειδιποίησης\". (Μπορείτε επίσης να διαγράψετε μια ειδοποίηση από τη σελίδα ρυθμίσεων ειδοποίησης πατώντας το MENU και μετά \"Διαγραφή Ειδιποίησης\").\n• Για γρήγορη εναλλαγή μεταξύ ενεργοποίησης και απενεργοποίησης μιας ειδοποίησης, πατήστε την εικόνα ρολογιού ειδοποίησης στα αριστερά του κειμένου ειδοποίησης. (Μπορείτε να ενεργοποιήσετε ή να απενεργοποιήσετε μια ειδοποίηση από τη σελίδα ρυθμίσεων ειδοποίησης)</string>
+  <string name="pref_alarm_enabled_help" formatted="false">Αν θέλετε να απενεργοποιήσετε προσωρινά μια ειδοποίηση χωρίς να χρειάζεται να τη ξαναδημιουργήσετε όταν τη χρειάζεστε ξανά, μπορείτε να την απενεργοποιήσετε είτε από εδώ είτε από τη κυρίως σελίδα των ειδοποιήσεων.</string>
+  <string name="pref_alarm_type_help" formatted="false">Υπάρχουν μέχρι τώρα πέντε τύποι ειδοποιήσεων από τις οποίες μπορείτε να διαλέξετε.\n\nΗ \"Πλήρως Φορτισμένη\" ειδοποίηση θα σας ενημερώνει όταν η κατάσταση της μπαταρίας αλλάζει από το \"Φορτίζει\" στο \"Πλήρως Φορτισμένη\". Σημειώστε ότι σε πολλές συσκευές, αυτό δε σημαίνει αναγκαστικά το ίδιο πράγμα με το 100% φορτισμένη.\n\nΓια τις ειδοποιήσεις φόρτισης και θερμοκρασίας χρειάζεται να θέσετε ένα κάτω όριο, μετά που θα επιλέξετε τον τύπο αυτό της ειδοποίησης.\n\nΗ ειδοποίηση \"Όχι καλή υγεία μπαταρίας\" θα σας προειδοποιήσει αν η υγεία της μπαταρίας σας μετατραπεί σε κάτι διαφορετικό από το \"Άγνωστο\" ή \"Καλή Υγεία\", όπως αναφέρεται από το Abdroid.</string>
+  <string name="pref_alarm_threshold_help" formatted="false">Για τις ειδοποιήσεις φόρτισης και θερμοκρασίας, πρέπει να καθορίσετε το όριο φόρτισης ή θερμοκρασίας το οποίο θα ενεργοποιεί την ειδοποίηση.</string>
+  <string name="pref_cat_notification_settings_help" formatted="false">Εδώ μπορείτε να ελέγχετε διάφορα θέματα που αφορούν την ειδοποίηση που δημιουργείται για να σας ενημερώσει πότε ειδοποίηση ενεργοποιήθηκε.</string>
+  <string name="pref_alarm_ringtone_help" formatted="false">Εδώ ελέγχετε τον ήχο που ακούγεται όταν ενεργοποιείται μια ειδοποίηση. Επιλέξτε \"Σιωπηλό\" αν δε θέλετε να ακούγεται ήχος κατά την ενεργοποίηση μιας ειδοποίησης.</string>
+  <string name="pref_alarm_vibrate_help" formatted="false">Αν όλα πάνε καλά, ρυθμίζοντας αυτήν την επιλογή η συσκευή θα δονείται όταν η ειδοποίηση ενεργοποιείται, εκτός και αν η συσκευή βρίσκεται σε Αθόρυβη Λειτουργία, πλην όμως αν έχετε ρυθμίσει τη συσκευή να δονείται κατά την Αθόρυβη Λειτουργία. Με άλλα λόγια, θα κάνει ό,τι περιμένετε να κάνει. Παρακαλώ στείλτε μου email αν κάτι πάει στραβά.</string>
+  <string name="pref_alarm_lights_help" formatted="false">Καθορίζει κατά πόσο η ειδοποίηση θα ενεργοποιεί το προεπιλεγμένο φως ειδοποίησης του τηλεφώνου σας. Αυτό γενικά ανάβει κάποιο LED ή κάποιο πλήκτρο πλοήγησης. Σημειώστε ότι κάθε συσκευή Android που δοκίμασα συμπεριφερόταν και διαφορετικά και ίσως με μερικά προβλήματα σε αυτό το θέμα. Αν έχετε ενεργοποιημένη την επιλογή αυτή, τότε η ειδοποίηση θα ζητήσει απο το Android να ανάψει το φως εδοποίησης της συσκευής, αλλά αυτό μπορεί και να μη συμβεί στην πραγματικότητα.</string>
+  <string-array name="statuses">
+    <item>Αποσυνδεδεμένο</item>
+    <item>Άγνωστο</item>
+    <item>Φόρτιση</item>
+    <item>Αποφόρτιση</item>
+    <item>Δε Φορτίζει</item>
+    <item>Πλήρως Φορτισμένη</item>
+  </string-array>
+  <string-array name="log_statuses">
+    <item>Αποσυνδεδεμένο</item>
+    <item>Άγνωστο</item>
+    <item>Συνδεδεμένο</item>
+    <item>Άγνωστο</item>
+    <item>Άγνωστο</item>
+    <item>Πλήρως Φορτισμένη</item>
+  </string-array>
+  <string-array name="log_statuses_old">
+    <item>Αποφόρτιση</item>
+    <item>Άγνωστο</item>
+    <item>Φόρτιση</item>
+    <item>Άγνωστο</item>
+    <item>Άγνωστο</item>
+    <item>Πλήρως Φορτισμένη</item>
+  </string-array>
+  <string-array name="healths">
+    <item>Άγνωστο</item>
+    <item>Άγνωστο</item>
+    <item>Καλή Υγεία</item>
+    <item>Υπερθέρμανση</item>
+    <item>Νεκρή</item>
+    <item>Υπέρβαση Βολτάζ</item>
+    <item>Αποτυχία</item>
+  </string-array>
+  <string-array name="pluggeds">
+    <item>Αποσυνδεδεμένο</item>
+    <item>(AC)</item>
+    <item>(;)</item>
+    <item>(USB)</item>
+  </string-array>
+  <string-array name="alarm_types_display">
+    <item>Πλήρως Φορτισμένη</item>
+    <item>Το επίπεδο φόρτισης πέφτει κάτω από</item>
+    <item>Το επίπεδο φόρτισης ανεβαίνει πάνω από</item>
+    <item>Η θερμοκρασία ανεβαίνει πάνω από</item>
+    <item>Καλή υγεία απέτυχε</item>
+  </string-array>
+  <string-array name="alarm_type_entries">
+    <item>Καθίσταται πλήρως φορτισμένη</item>
+    <item>Το επίπεδο φόρτισης πέφτει κάτω από...</item>
+    <item>Το επίπεδο φόρτισης ανεβαίνει πάνω από...</item>
+    <item>Η θερμοκρασία ανεβαίνει πάνω από...</item>
+    <item>Καλή υγεία αποτυγχάνει</item>
+  </string-array>
+  <string-array name="mw_theme_pref_entries">
+    <item>Προεπιλεγμένο Μικρό</item>
+    <item>Έγχρωμο Μικρό</item>
+    <item>Παράθυρο Ολόκληρης Οθόνης</item>
+  </string-array>
+  <string-array name="boot_pref_entries">
+    <item>Πάντα</item>
+    <item>Ποτέ</item>
+    <item>Αν ήταν ενεργό στην απενεργοποίηση</item>
+  </string-array>
+  <string-array name="status_dur_est_entries">
+    <item>Πάντα</item>
+    <item>Μετά από 1 ώρα</item>
+    <item>Μετά από 2 ώρες</item>
+    <item>Μετά από 3 ώρες</item>
+    <item>Μετά από 6 ώρες</item>
+    <item>Μετά από 12 ώρες</item>
+  </string-array>
+  <string-array name="max_log_age_entries">
+    <item>1 μέρα</item>
+    <item>2 μέρες</item>
+    <item>4 μέρες</item>
+    <item>1 εβδομάδα</item>
+    <item>2 εβδομάδες</item>
+    <item>3 εβδομάδες</item>
+    <item>4 εβδομάδες</item>
+  </string-array>
+  <plurals name="n_log_items">
+    <item quantity="one">%d Καταγραφή αντικειμένου στη Λίστα</item>
+    <item quantity="other">%d Καταγραφή αντικειμένων στη Λίστα</item>
+  </plurals>
+  <plurals name="for_n_hours">
+    <item quantity="one">Για %d Ώρα</item>
+    <item quantity="other">Για %d Ώρες</item>
+  </plurals>
+</resources>

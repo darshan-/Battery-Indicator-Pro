@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_full_name" formatted="false">Estado da Bateria Pro</string>
-  <string name="app_launcher_name" formatted="false">Estado da Bateria</string>
+  <string name="app_launcher_name" formatted="false">Estado da Bateria Pro</string>
   <string name="settings_activity_name" formatted="false">Estado da Bateria Pro - Definições</string>
   <string name="help_activity_name" formatted="false">Estado da Bateria Pro - Ajuda</string>
   <string name="log_view_activity_name" formatted="false">Estado da Bateria - Relatórios</string>
@@ -94,4 +94,5 @@
   <string name="alarm_settings_subtitle" formatted="false">Definições dos alarmes</string>
   <string name="alarm_settings" formatted="false">Alarmes</string>
   <string name="alarm_settings_summary" formatted="false">Controlar notificações para a bateria baixa/cheia</string>
+  <string name="help_activity_subtitle" formatted="false">Ajuda</string>
 </resources>
