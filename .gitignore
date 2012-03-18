@@ -10,3 +10,4 @@ TODO
 my-release-key.keystore
 
 !build.properties
+!ant.properties
