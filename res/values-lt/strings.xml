@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_full_name" formatted="false">Baterijos Indikatorius Pro</string>
+  <string name="app_launcher_name" formatted="false">Baterijos Indikatorius Pro</string>
+  <string name="settings_activity_name" formatted="false">Baterijos Indikatorius Pro - Nustatymai</string>
+  <string name="settings_activity_subtitle" formatted="false">Nustatymai</string>
+  <string name="help_activity_name" formatted="false">Baterijos Indikatorius Pro - Pagalba</string>
+  <string name="help_activity_subtitle" formatted="false">Pagalba</string>
+  <string name="log_view_activity_name" formatted="false">Baterijos Indikatorius Pro - Įrašai</string>
+  <string name="log_view_activity_subtitle" formatted="false">Įrašai</string>
+  <string name="app_full_name_free" formatted="false">Baterijos Indikatorius</string>
+  <string name="settings_activity_name_free" formatted="false">Baterijos Indikatorius - Nustatymai</string>
+  <string name="help_activity_name_free" formatted="false">Baterijos Indikatorius - Pagalba</string>
+  <string name="battery_use_b" formatted="false">Baterijos naudojimas</string>
+  <string name="upgrade_donate_b" formatted="false">Patobulinti/Paremti...</string>
+  <string name="reenable_lock_screen" formatted="false">Įjungti Ekrano Užraktą</string>
+  <string name="disable_lock_screen" formatted="false">Išjungti Ekrano Užraktą</string>
+  <string name="confirm_disable" formatted="false">Ar tikrai norite išjungti?</string>
+  <string name="confirm_disable_hint" formatted="false">Patarimas: Išjunkite ši patvirtinimą nustatymuose...</string>
+  <string name="yes" formatted="false">Taip</string>
+  <string name="cancel" formatted="false">Nutraukti</string>
+  <string name="confirm_close" formatted="false">Tikrai Uždaryti?</string>
+  <string name="confirm_close_hint" formatted="false">Baterijos Indikatorius bus visiškai uždarytas ir Jūs jo nebematysite savo būsenos juostoje.\n\nJei jus tiesiog norite palikti pagrindinį langą ir leisti indikatoriui toliau veikti, paspauskite Nutraukti ir tada paspauskite Grįžti mygtuką, ant savo telefono.</string>
+  <string name="need_uninstall" formatted="false">Būtinas Ištrinimas</string>
+  <string name="need_uninstall_hint" formatted="false">Baterijos Indikatorius Pro reikalauja ištrynimo ir perrašymo, kad būtų galima užbaigti šį atnaujinimą. Aš labai apgailestauju dėl šio nepatogumo. Tačiau tai būtina dėl Android techninių apribojimų. Ateityje to daugiau daryti nereikės.\n\nPo to kai paspausite \"Gerai\", kad išjungtumėte šį pranešimą, paprasčiausiai vėl paspauskite \"Gerai\", kai Android paprašys Jūsų leidimo ištrynimui. Po viso šito, Jūs būsite perkeltas į Android Market programos perrašymui.</string>
+  <string name="confirm_clear_logs" formatted="false">Ar tikrai ištrinti visus įrašus?</string>
+  <string name="confirm_ten_percent_enable" formatted="false">Ar tikrai įjungti 10% Režimą?</string>
+  <string name="confirm_ten_percent_disable" formatted="false">Ar tikrai išjungti 10% Režimą?</string>
+  <string name="confirm_ten_percent_hint" formatted="false">Įspėjimas: Keičiant šį nustatymą (jį įjungiant ir išjungiant), anuliuosis spalvų pasirinkimai.\n\nJei Jūs turite: Motorola Droid, Droid X, Droid 2, Defy, ar Samsung Moment prietaisą, Jums reikėtų tai įjungti ir palikti. Visų kitų prietaisų turėtojai, galite palikti išjungtą.</string>
+  <string name="first_run_title" formatted="false">Ačiū!</string>
+  <string name="okay" formatted="false">Gerai</string>
+  <string name="none" formatted="false">Nė Vienas</string>
+  <string name="menu_logs" formatted="false">Įrašai</string>
+  <string name="menu_settings" formatted="false">Nustatymai</string>
+  <string name="menu_close" formatted="false">Uždaryti</string>
+  <string name="menu_help" formatted="false">Pagalba</string>
+  <string name="menu_clear" formatted="false">Ištrinti</string>
+  <string name="menu_reverse" formatted="false">Atvirkštinė Tvarka</string>
+  <string name="menu_export" formatted="false">Eksportuoti CSV</string>
+  <string name="menu_delete_alarm" formatted="false">Ištrinti Aliarmą</string>
+  <string name="menu_get_plugins" formatted="false">Gauti Papildinių</string>
+  <string name="percent_symbol" formatted="false">%</string>
+  <string name="degree_symbol" formatted="false">°</string>
+  <string name="fahrenheit" formatted="false">Farengeitas</string>
+  <string name="fahrenheit_symbol" formatted="false">F</string>
+  <string name="celsius" formatted="false">Celsijus</string>
+  <string name="celsius_symbol" formatted="false">C</string>
+  <string name="volt_symbol" formatted="false">V</string>
+  <string name="fully_charged_in" formatted="false">Bus įkrauta po:</string>
+  <string name="light_usage" formatted="false">Mažai Naudojant Liko:</string>
+  <string name="normal_usage" formatted="false">Normaliai Naudojant Liko:</string>
+  <string name="heavy_usage" formatted="false">Daug Naudojant Liko:</string>
+  <string name="constant_usage" formatted="false">Nepertraukiamai Naudojant Liko:</string>
+  <string name="press_back_to_leave" formatted="false">Spauskite Grįžti, kad išeitumėte</string>
+  <string name="press_menu_for_more" formatted="false">Spauskite MENU daugiau pasirinkimų</string>
+  <string name="date" formatted="false">Data</string>
+  <string name="inaccessible_storage" formatted="false">SD kortelė nepasiekiama.</string>
+  <string name="inaccessible_w_reason" formatted="false">SD kortelė nepasiekiama:</string>
+  <string name="read_only_storage" formatted="false">SD kortele yra \"read-only\"</string>
+  <string name="file_written" formatted="false">Failą sėkmingai įrašytas į SD kortelę.</string>
+  <string name="time" formatted="false">Laikas</string>
+  <string name="status" formatted="false">Būsena</string>
+  <string name="charge" formatted="false">įkrovimo_lygis</string>
+  <string name="temperature" formatted="false">laispnai_celsijaus</string>
+  <string name="voltage" formatted="false">voltai</string>
+  <string name="alarm_fully_charged" formatted="false">Baterija pilnai įkrauta</string>
+  <string name="alarm_charge_drops" formatted="false">"Baterijos lygis yra žemiau "</string>
+  <string name="alarm_charge_rises" formatted="false">"Baterijos lygis yra aukščiau "</string>
+  <string name="alarm_temp_rises" formatted="false">"Baterijos temp. yra aukščiau "</string>
+  <string name="alarm_health_failure" formatted="false">"Baterijos būklė yra: "</string>
+  <string name="alarm_text" formatted="false">Koreguoti aliarmus.</string>
+  <string name="logs_empty" formatted="false">Įrašai tušti</string>
+  <string name="discharging_from" formatted="false">Įkraunama nuo</string>
+  <string name="charging_from" formatted="false">Iškraunama nuo</string>
+  <string name="fully_charged" formatted="false">Pilnai įkrauta</string>
+  <string name="since" formatted="false">Nuo</string>
+  <string name="one_six_needed" formatted="false">Apgailestaujame, reikalinga Android 1.6+ versija</string>
+  <string name="currently_using" formatted="false">Dabar naudojama</string>
+  <string name="currently_set_to" formatted="false">"Dabar nustatyta: "</string>
+  <string name="currently_disabled" formatted="false">Dabar išjungta</string>
+  <string name="help_cat_version" formatted="false">Versija</string>
+  <string name="help_cat_changelog" formatted="false">Pakeitimų sąrašas</string>
+  <string name="help_changelog" formatted="false">Paskaitykite <a href="http://code.google.com/p/battery-indicator/wiki/Changelog?tm=6">pakeitimų sąrašą</a>.</string>
+  <string name="help_cat_introduction" formatted="false">Įvadas</string>
+  <string name="help_cat_summary" formatted="false">Suvestinė</string>
+  <string name="help_cat_limitations" formatted="false">Apribojimai</string>
+  <string name="help_cat_no_warranty" formatted="false">Nėra garantijų</string>
+  <string name="help_cat_acknowledgments" formatted="false">Padėka</string>
+  <string name="help_cat_translations" formatted="false">Vertimai</string>
+  <string name="help_subcat_translators" formatted="false">Vertėjai</string>
+  <string name="help_cat_contact" formatted="false">Kontaktai</string>
+  <string name="pref_hint" formatted="false">Patarimas: Spauskite MENU pagalbai.</string>
+  <string name="settings_overview" formatted="false">Apžvalga</string>
+  <string name="color_settings" formatted="false">Spalvos ir Temos</string>
+  <string name="color_settings_summary" formatted="false">Valdyti ikonos spalvas ir lango temas</string>
+  <string name="time_settings" formatted="false">Laiko nustatymai</string>
+  <string name="time_settings_summary" formatted="false">Valdyti laiko įvertinimus ir derinimus</string>
+  <string name="alarm_settings_subtitle" formatted="false">Aliarmo Nustatymai</string>
+  <string name="alarm_settings" formatted="false">Aliarmai</string>
+  <string name="alarm_settings_summary" formatted="false">Valdyti tuščios/pilnos baterijos pranešimus</string>
+  <string name="other_settings" formatted="false">Kiti nustatymai</string>
+  <string name="pref_cat_more_settings_in_pro" formatted="false">Daugiau nustatytmų Pro versijoje</string>
+  <string name="add_alarm" formatted="false">Pridėti aliarmą</string>
+  <string name="pref_cat_themes" formatted="false">Temos</string>
+  <string name="pref_main_window_theme" formatted="false">Pagrindinio Lango Tema</string>
+  <string name="pref_icon_plugin" formatted="false">Ikonos Papildinys</string>
+  <string name="no_plugins_installed_summary" formatted="false">Spauskite MENU gauti papildinių</string>
+  <string name="pref_cat_logging" formatted="false">Įrašų sudarymas</string>
+  <string name="pref_enable_logging" formatted="false">Įjungti įrašų sudarymą</string>
+  <string name="pref_enable_logging_summary" formatted="false">Įrašinėti baterijos būsenos pakitimus?</string>
+  <string name="pref_log_everything" formatted="false">Įrašinėti Viską</string>
+  <string name="pref_log_everything_summary" formatted="false">Baterijos įkrovimo pakitimus taip pat?</string>
+  <string name="pref_max_log_age" formatted="false">Ilgiausias įrašo gyvavimas</string>
+  <string name="pref_max_log_age_summary" formatted="false">Ištrinti senesnius įrašus nei:</string>
+  <string name="pref_cat_keyguard" formatted="false">Ekrano / Klaviatūros Užraktas</string>
+  <string name="pref_confirm_manual_disable" formatted="false">Patvirtinti Rankinį Išjungimą</string>
+  <string name="pref_confirm_manual_disable_summary" formatted="false">Patvirtinti kai rankinių būdu išjungimas ekrano užraktas?</string>
+  <string name="pref_finish_after_toggle_lock" formatted="false">Išeiti po perjungimo</string>
+  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Išjungti pagrindinį langą po įjungimo/išjungimo?</string>
+  <string name="pref_auto_disable" formatted="false">Ekrano Užrakto Auto-išjugimas</string>
+  <string name="pref_auto_disable_summary" formatted="false">Išjungti ekrano užraktą kai įkraunama?</string>
+  <string name="pref_disallow_disable_lock_screen" formatted="false">Neleisti Rankinio Išjungimo</string>
+  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Neleisti naudoti ekrano užrakto išjungimo mygtuko?</string>
+  <string name="pref_cat_battery_use" formatted="false">Baterijos Naudojimas</string>
+  <string name="pref_finish_after_battery_use" formatted="false">Išeiti kai paleidžiama</string>
+  <string name="pref_finish_after_battery_use_summary" formatted="false">Išeiti iš pagrindinio lango po Baterijos Naudojimo paleidimo?</string>
+  <string name="pref_cat_temperature_unit" formatted="false">Temperatūros</string>
+  <string name="pref_convert_to_fahrenheit" formatted="false">Pakeisti į Farengeitą</string>
+  <string name="pref_cat_autostart" formatted="false">Auto-Paleidimas</string>
+  <string name="pref_autostart_at_boot" formatted="false">Auto-Paleidimas įjungus telefoną</string>
+  <string name="pref_autostart_at_boot_summary" formatted="false">Paleisti Programą kai prietaisas įjungia:</string>
+  <string name="pref_cat_charge_as_text" formatted="false">Tekstinis Įkrovimo Lygis</string>
+  <string name="pref_charge_as_text" formatted="false">Tekstinis Įkrovimo Lygis</string>
+  <string name="pref_charge_as_text_summary" formatted="false">Rodyti kaip tekstą prie ikonos?</string>
+  <string name="pref_cat_one_percent_hack" formatted="false">Vieno procento nulaužimas</string>
+  <string name="pref_one_percent_hack" formatted="false">Vieno procento nulaužimas</string>
+  <string name="pref_one_percent_hack_summary" formatted="false">Naudoti šį nulaužimą prietaisams rodantiems kas 10%?</string>
+  <string name="lang_system_selected" formatted="false">Parinktas sistemos</string>
+  <string name="pref_cat_language" formatted="false">Kalba</string>
+  <string name="pref_language_override" formatted="false">Kalbos Nepaisymas</string>
+  <string name="pref_language_override_summary" formatted="false">Pasirinkti kalbą:</string>
+  <string name="pref_cat_status_duration" formatted="false">Statuso trukmė (Kam/Nuo kada...)</string>
+  <string name="pref_status_dur_est" formatted="false">Kada apvalinti</string>
+  <string name="pref_status_dur_est_summary" formatted="false">Apvalinti valandas kai pasikeičia statusas:</string>
+  <string name="pref_cat_time_remaining_estimates" formatted="false">Likusio Laiko Prognozės</string>
+  <string name="pref_show_charge_time" formatted="false">Rodyti Įkrovimo Laiką</string>
+  <string name="pref_show_charge_time_summary" formatted="false">Rodyti likusį įkrovimo laiką?</string>
+  <string name="pref_usb_charge_time" formatted="false">USB Įkrovimas</string>
+  <string name="pref_usb_charge_time_summary" formatted="false">USB įkrovimo laikas nuo 0% iki 100% valandomis:</string>
+  <string name="pref_usb_charge_time_help" formatted="false">Įveskite, kiek laiko, Jūsų manymu, baterija įsikraus nuo 0% iki 100% naudojant USB įkrovimą.</string>
+  <string name="pref_ac_charge_time" formatted="false">AC Įkrovimas</string>
+  <string name="pref_ac_charge_time_summary" formatted="false">AC įkrovimo laikas nuo 0% iki 100% valandomis:</string>
+  <string name="pref_ac_charge_time_help" formatted="false">Įveskite, kiek laiko, Jūsų manymu, baterija įsikraus nuo 0% iki 100% naudojant kintamos srovės (AC) įkrovimą.</string>
+  <string name="pref_show_light_usage" formatted="false">Rodyti Mažą Naudojimą</string>
+  <string name="pref_show_light_usage_summary" formatted="false">Rodyti kiek laiko liko mažai naudojant?</string>
+  <string name="pref_light_usage_time" formatted="false">Mažas naudojimas</string>
+  <string name="pref_light_usage_time_summary" formatted="false">Mažo naudojimo laikas nuo 100% iki 0% valandomis:</string>
+  <string name="pref_light_usage_time_help" formatted="false">Įveskite, per kiek laiko, Jūsų manymu, baterija visiškai išsikraus, mažai naudojant telefoną.</string>
+  <string name="pref_show_light_usage_help" formatted="false">Rodyti kiek liko laiko (pagrindiniame lange), kol visiškai išsikraus baterija, mažai naudojant telefoną.</string>
+  <string name="pref_show_normal_usage" formatted="false">Rodyti Vidutinį Naudojimą</string>
+  <string name="pref_show_normal_usage_summary" formatted="false">Rodyti kiek laiko liko vidutiniškai naudojant?</string>
+  <string name="pref_show_normal_usage_help" formatted="false">Rodyti kiek liko laiko (pagrindiniame lange), kol visiškai išsikraus baterija, vidutiniškai naudojant telefoną.</string>
+  <string name="pref_normal_usage_time" formatted="false">Vidutinis Naudojimas</string>
+  <string name="pref_normal_usage_time_summary" formatted="false">Vidutinio naudojimo laikas nuo 100% iki 0% valandomis:</string>
+  <string name="pref_normal_usage_time_help" formatted="false">Įveskite, per kiek laiko, Jūsų manymu, baterija visiškai išsikraus, vidutiniškai naudojant telefoną.</string>
+  <string name="pref_show_heavy_usage" formatted="false">Rodyti Didelį Naudojimą</string>
+  <string name="pref_show_heavy_usage_summary" formatted="false">Rodyti kiek laiko liko daug naudojant?</string>
+  <string name="pref_show_heavy_usage_help" formatted="false">Rodyti kiek liko laiko (pagrindiniame lange), kol visiškai išsikraus baterija, daug naudojant telefoną.</string>
+  <string name="pref_heavy_usage_time" formatted="false">Didelis Naudojimas</string>
+  <string name="pref_heavy_usage_time_summary" formatted="false">Didelio naudojimo laikas nuo 100% iki 0% valandomis:</string>
+  <string name="pref_heavy_usage_time_help" formatted="false">Įveskite, per kiek laiko, Jūsų manymu, baterija visiškai išsikraus, daug naudojant telefoną.</string>
+  <string name="pref_show_constant_usage" formatted="false">Rodyti Nepertraukiamą Naudojimą</string>
+  <string name="pref_show_constant_usage_summary" formatted="false">Rodyti kiek laiko liko naudojant nepertraukiamai?</string>
+  <string name="pref_show_constant_usage_help" formatted="false">Rodyti kiek liko laiko (pagrindiniame lange), kol visiškai išsikraus baterija, nepertraukiamai naudojant telefoną.</string>
+  <string name="pref_constant_usage_time" formatted="false">Nepertraukiamas Naudojimas</string>
+  <string name="pref_constant_usage_time_summary" formatted="false">Nepertraukiamo naudojimo laikas nuo 100% iki 0% valandomis:</string>
+  <string name="pref_constant_usage_time_help" formatted="false">Įveskite, per kiek laiko, Jūsų manymu, baterija visiškai išsikraus, nepertraukiamai naudojant telefoną.</string>
+  <string name="pref_cat_plugin_settings" formatted="false">Papildinių Nustatymai</string>
+  <string name="pref_plugin_settings" formatted="false">Papildinio Nustatymai</string>
+  <string name="pref_plugin_settings_summary" formatted="false">Koreguoti nustatymus šiam papildiniui.</string>
+  <string name="pref_cat_color" formatted="false">Ikonų Spalvos</string>
+  <string name="pref_color_preview" formatted="false">Spalvų Peržiūra</string>
+  <string name="pref_red" formatted="false">Naudoti Raudoną Ikoną</string>
+  <string name="pref_red_summary" formatted="false">Naudoti raudoną ikoną kai mažas baterijos lygis?</string>
+  <string name="pref_red_help" formatted="false">Naudoti ar ne raudoną ikoną, kai įkrovimas žemiau lygio.</string>
+  <string name="pref_red_thresh" formatted="false">Raudona Riba</string>
+  <string name="pref_red_thresh_summary" formatted="false">Raudona ikona, kai įkrovimas žemiau:</string>
+  <string name="pref_red_thresh_summary10" formatted="false">Raudona ikona ties ar žemiau ribos:</string>
+  <string name="pref_amber" formatted="false">Naudoti Geltoną Ikoną</string>
+  <string name="pref_amber_summary" formatted="false">Naudoti geltoną ikoną, kai vidutinis baterijos lygis?</string>
+  <string name="pref_amber_help" formatted="false">Naudoti ar ne geltoną ikoną, kai įkrovimas žemiau lygio.</string>
+  <string name="pref_amber_thresh" formatted="false">Geltona Riba</string>
+  <string name="pref_amber_thresh_summary" formatted="false">Geltona ikona, kai įkrovimas žemiau:</string>
+  <string name="pref_amber_thresh_summary10" formatted="false">Geltona ikona ties ar žemiau ribos:</string>
+  <string name="pref_green" formatted="false">Naudoti Žalią Ikoną</string>
+  <string name="pref_green_summary" formatted="false">Naudoti žalią ikoną, kai aukštas baterijos lygis?</string>
+  <string name="pref_green_help" formatted="false">Naudoti ar ne žalią ikoną, kai įkrovimas žemiau lygio.</string>
+  <string name="pref_green_thresh" formatted="false">Žalia Riba</string>
+  <string name="pref_green_thresh_summary" formatted="false">Žalia ikona, kai įkrovimo lygis ties ar aukščiau:</string>
+  <string name="pref_cat_device_specific" formatted="false">Specifiniai Prietaiso Nustatymai</string>
+  <string name="pref_ten_percent_mode" formatted="false">10% Režimas</string>
+  <string name="pref_ten_percent_mode_summary" formatted="false">Pirmiausiai perskaitykite pagalbą!</string>
+  <string name="alarms_overview" formatted="false">Aliarmų Peržiūra</string>
+  <string name="pref_alarm_enabled" formatted="false">Įjungti Aliarmą</string>
+  <string name="pref_cat_alarm_conditions" formatted="false">Aliarmo Sąlygos</string>
+  <string name="pref_cat_alarm_conditions_help" formatted="false">Čia galite valdyti tai, kas iškviečia aliarmą.</string>
+  <string name="pref_alarm_type" formatted="false">Aliarmo Tipas</string>
+  <string name="pref_alarm_type_summary" formatted="false">Iškviesti aliarmą kai baterija:</string>
+  <string name="pref_alarm_threshold" formatted="false">Riba</string>
+  <string name="alarm_pref_not_used" formatted="false">Nenaudojama šiam aliarmo tipui</string>
+  <string name="pref_alarm_threshold_summary" formatted="false">Aliarmo riba:</string>
+  <string name="pref_alarm_threshold_help" formatted="false">Įkrovimo ir temperatūros aliarmams Jūs turite nustatyti temperatūros arba įkrovimo lygį, kuris iškvies aliarmą.</string>
+  <string name="pref_cat_notification_settings" formatted="false">Perspėjimų Nustatymai</string>
+  <string name="pref_cat_notification_settings_help" formatted="false">Čia galite valdyti įvairius aspektus, kurie parodys perspėjimą, kai bus iškviestas aliarmas.</string>
+  <string name="pref_alarm_ringtone" formatted="false">Skambutis</string>
+  <string name="pref_alarm_ringtone_help" formatted="false">Čia galite nustatyti koks skambutis bus grojamas, kai iškviečiamas aliarmas. Pasirinkite \"Tyla\" jei nenorite, kad būtų grojamas skambutis.</string>
+  <string name="silent" formatted="false">Tyla</string>
+  <string name="pref_alarm_vibrate" formatted="false">Vibruoti</string>
+  <string name="pref_alarm_lights" formatted="false">Mirksinčios Lemputės</string>
+  <string name="first_run_message" formatted="false">Ačiū už Jūsų paramą/pirkimą! <b><i>Šie trys punktai yra labai svarbūs</i> :</b>\n\n• Jei Jūs turite \"<b>task killer</b>\" / kitokį procesų tvarkytoją, Jūms reikėtu jį ištrinti arba padaryti taip, kad būtų ignoruojamas Baterijos Indikatorius Pro. Net jei Jūs nustatėte nemokamos versijos ignoravimą, <i>vistiek turite ignoruoti ir Pro versiją</i> !\n\n• Jei Jūsų prietaisas baterijos lygį rodo tik kas 10% (<b>dauguma Motorola telefonų dirba taip</b>), tai turėtumėte įjungti \"Vieno procento nulaužimą\", nustatymuose, kad būtų rodoma kas vieną procentą.\n\n• Jei Jūsų būsenos juosta yra juoda ir jei Jūs naudojate Android 3 ar naujesnę versiją, turėtumėte atsisiųsti arba naudoti papildinį \"Black Square\".</string>
+  <string name="first_run_message_free" formatted="false">Ačiū, kad atsisiuntėte Baterijos Indikatorių! <b><i>Šie du punktai yra labai svarbūs</i> :</b>\n\n• Jei Jūs turite \"<b>task killer</b>\" / kitokį procesų tvarkytoją, Jūms reikėtu jį ištrinti arba padaryti taip, kad būtų ignoruojamas Baterijos Indikatorius.\n\n• Jei Jūsų prietaisas baterijos lygį rodo tik kas 10% (<b>dauguma Motorola telefonų dirba taip</b>), tai turėtumėte įjungti \"Vieno procento nulaužimą\", nustatymuose, kad būtų rodoma kas vieną procentą.\n</string>
+  <string name="help_introduction" formatted="false">Čia yra <i>Baterijos Indikatorius Pro</i>, \"Profesionali\" populiarios nemokamos programos versija. Ją galima nusipirkti \"Android Market\", tačiau ji yra atviro kodo, kas reiškia, jog Jūs kodą galite atsisiųsti nemokamai iš <a href="http://code.google.com/p/battery-indicator/">projekto tinklapio</a>.</string>
+  <string name="help_introduction_free" formatted="false">Čia yra <i>Baterijos Indikatorius</i>, nemokama programos versija. Ji prieinama \"Android Market\", ir yra atviro kodo, kas reiškia, jog Jūs jos kodą galite atsisiųsti nemokamai iš <a href="http://code.google.com/p/battery-indicator/">projekto tinklapio</a>.\n\nPrašau apsvarstyti apie paramą, nusiperkant <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro versiją</a>.</string>
+  <string name="help_summary" formatted="false"><i>Baterijos Indikatorius Pro</i> yra mažai užimanti baterijos indikavimo programa Android™ operacinei sistemai. Pagrindinė ypatybė - būsenos juostoje esanti ikona, rodanti baterijos įkrovimo lygį procentais.\n\nŠi Pro versija Jums siūlo daugiau praktiškų funkcijų, nei tik ši. Prie raudonos, geltonos ir žalios ikonų, taip pat yra keletas 3.0 versijos ypatybių:\n\n• Pilnai konfiguruojamas likęs įkrovimo/iškrovimo laikas.\n• Parsisiunčiami ikonų papildiniai.\n• Baterijos būsenos įrašai.\n• Pagrindinio lango temos (įskaitant viso lango dydis, su dideliu, lengvai skaitomu tekstu).\n• Rankiniu būdu išjungti/įjungti prietaiso ekrano užraktą, su galimybe automatiškai išjungti, kai prietaisas prijungiamas ir įjungti - kai atjungiamas.\n• Ir daug daugiau visko.</string>
+  <string name="help_summary_free" formatted="false"><i>Baterijos Indikatorius </i> yra mažai užimanti baterijos indikavimo programa Android™ operacinei sistemai. Pagrindinė ypatybė - būsenos juostoje esanti ikona, rodanti baterijos įkrovimo lygį procentais.\n\nPro versija Jums siūlo daugiau praktiškų funkcijų, nei tik ši. Prie raudonos, geltonos ir žalios ikonų, taip pat yra keletas 3.0 versijos ypatybių:\n\n• Pilnai konfiguruojamas likęs įkrovimo/iškrovimo laikas.\n• Parsisiunčiami ikonų papildiniai.\n• Baterijos būsenos įrašai.\n• Pagrindinio lango temos (įskaitant viso lango dydis, su dideliu, lengvai skaitomu tekstu).\n• Rankiniu būdu išjungti/įjungti prietaiso ekrano užraktą, su galimybe automatiškai išjungti, kai prietaisas prijungiamas ir įjungti - kai atjungiamas.\n• Ir daug daugiau visko.</string>
+  <string name="help_limitations" formatted="false">(<i>Tai, kas nėra mano galioje.</i>)\n\n• Nėra būdo panaikinti numatytąją prietaiso baterijos ikoną.\n• Perspėjimo ikona būsenos juostoje ir pranešimas matomas, kai ja iškleidžiat yra susieti - negalima įjungti tik vieno iš jų.\n• Daugelis programų leidžia būti įrašomos į išorinę atmintį (SD kortelę); kai kurios ne. Baterijos Indikatorius yra pastarojoje grupėje. Perskaitykite <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">projekto DUK</a> jei norite platesnio paaiškinimo.</string>
+  <string name="help_cat_features" formatted="false">Ypatybės</string>
+  <string name="help_features" formatted="false">• Maža, paprasta ir lengvai įskaitoma.\n• Ji nerenka jokių duomenų. Tiesiog gaunamas pranešimas iš OS, kai baterijos statusas pasikeičia, tada programa paprasčiausiai atnaujina ikoną ir toliau užmiega. Tai reiškia, kad naudojama mažai RAM atminties ir 0 CPU ciklų, todėl ji negali eikvoti Jūsų baterijos. Aš paskaičiavau, kad ji reikalauja apie 1 minutės naudojimo laiko iš pilnai pakrautos baterijos, pačių blogiausiu atveju. Jei yra blogiau, nei tai, Jūs tikriausiai turite kitą programą (pvz.: \"task killer\" ar pan.) kuri trukdo normaliam Baterijos Indikatoriaus darbui.\n• Lengvas \"Baterijos Naudojimo\" lango įjungimas (reikalauja Android 1.6+).\n• Nustatykite, kad programa, kai prietaisas paleidžiamas įsijungtu, niekada neįsijungtu ar įsijungtu tik tada, jei prieš išjungimą programa veikė, • Visko yra daug daugiau, tačiau aš arba užmiršau paminėti, arba tai tiesiog per mažas privalumas, tačiau visą tai daro šia programą nuostabia.\n• Pasitenkinimas, kad parėmėte kūrėją. (Aš tikrai vertinu tai!)</string>
+  <string name="help_no_warranty" formatted="false">Ši programa yra sukurta su viltimi, kad ji bus naudinga, bet be JOKIŲ GARANTIJŲ; net be numanomos garantijos PARDAVIMUI ar TINKAMUMUI TAM TIKRAM TIKSLUI.\n\nKol aš stengiuosi, kad būtų kuo geriau, veiktu kuo geriau ir nesudarytu jokių problemų, aš neatsakingas už jokią žalą ar nepatogumus, kuriuos sukels bet kokios aplinkybės.</string>
+  <string name="help_acknowledgments" formatted="false">Be dosnios savanorių vertėjų pagalbos, ši programa būtų buvusi prieinama tik anglų kalba. Ačiū!\n\nDidelė padėka Google ir visiems atviro kodo programuotojams, kurie sukūrė Android platformą ir suteikė galimybę atsirasti šiai programai.\n\nPaleidimo ikona (viršuj, dešinėj esanti baterija, matoma \"Market\'e\") yra sukurta pagal <a href="http://www.oxygen-icons.org">\"Oxygen\" ikoną</a> ir yra naudojama pagal <a href="http://creativecommons.org/licenses/by-sa/3.0/">\"Creative Common Attribution-ShareAlike 3.0\" licenciją</a>.</string>
+  <string name="help_contact" formatted="false">Jei turite klausimą ar problemą, aplankykite <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">projekto DUK</a>, kad sužinotumėte kaip susisiekti su manimi.\n</string>
+  <string name="settings_overview_help" formatted="false">Nustatymai yra sugrupuoti į keturis atskirus puslapius, aprašytus žemiau. Kiekvienas puslapis turi savo pagalbos puslapį, kuriame aprašyti galimi nustatymai ir jų reikšmės. Paprasčiausiai spauskite MENU mygtuką, tada \"Pagalba\" (planšetiniuose kompiuteriuose, MENU nėra būtinas), kad gautumėte informaciją apie kiekvieną puslapyje esantį nustatymą.</string>
+  <string name="color_settings_help" formatted="false">Galite pakeisti pagrindinio lango temą ir valdyti, kada perspėjimai pakeičia ikonos spalvą.</string>
+  <string name="time_settings_help" formatted="false">Čia galite valdyti, perspėjimus kai pasikeičia prietaiso statusas (pvz.: atjungtas) ir kada tas įvyko.\n\nTaip pat, Jūs galite valdyti kuriuos būsenos įvertinimus Jūs norite matyti, kai prietaisas įkraunamas per USB/AC, naudojant mažai/vidutiniškai/daug/nepertraukiamai ir nustatyti šiems laikams pagrindus.</string>
+  <string name="alarm_settings_help" formatted="false">Jūs galite nusistatyti Baterijos Indikatoriaus perspėjimą, kai baterijos lygis pasiekia tam tikrą tašką (pvz.: baterija pilnai įkraunama, baterijos lygtis nukrenta žemiau 20% ir pan.).</string>
+  <string name="other_settings_help" formatted="false">Visi kiti nustatymai yra šiame puslapyje: įrašų sudarymas, ekrano užraktas, temperatūros vienetas, auto-paleidimas ir kitą.</string>
+  <string name="pref_please_upgrade" formatted="false">Pro versija turi daug daugiau nustatymų ir funkcijų: spalvotos ikonos, atsisiunčiami ikonų papildiniai, aliarmai, lango temos, baterijos statuso įrašų sudarymas, auto/rankinis ekrano užrakto išjungimas, įkrovimo/iškrovimo likęs laikas ir daugiau.</string>
+  <string name="pref_main_window_theme_help" formatted="false">Nustato pagrindinio lango temą. Numatytoji tema, panaši į Android naudojamą standartą. Viso ekrano temą galima naudoti, jei mėgstate didelius ir lengvai perskaitomus užrašus. Kitos temos yra tik dėl pramogos.</string>
+  <string-array name="statuses">
+    <item>Atjungta</item>
+    <item>Nežinoma</item>
+    <item>Įkraunama</item>
+    <item>Iškraunama</item>
+    <item>Ne kraunama</item>
+    <item>Pilnai įkrauta</item>
+  </string-array>
+  <string-array name="log_statuses">
+    <item>Atjungta</item>
+    <item>Nežinoma</item>
+    <item>Prijungta</item>
+    <item>Nežinoma</item>
+    <item>Nežinoma</item>
+    <item>Pilnai Įkrauta</item>
+  </string-array>
+  <string-array name="log_statuses_old">
+    <item>Iškraunama</item>
+    <item>Nežinoma</item>
+    <item>Įkraunama</item>
+    <item>Nežinoma</item>
+    <item>Nežinoma</item>
+    <item>Pilnai Įkraunama</item>
+  </string-array>
+  <string-array name="healths">
+    <item>Nežinoma</item>
+    <item>Nežinoma</item>
+    <item>Gera Būklė</item>
+    <item>Perkaitimas</item>
+    <item>Mirusi</item>
+    <item>Per didelė įtampa</item>
+    <item>Klaida</item>
+  </string-array>
+  <string-array name="pluggeds">
+    <item>Atjungta</item>
+    <item>(AC)</item>
+    <item>(USB)</item>
+    <item>(?)</item>
+  </string-array>
+  <string-array name="alarm_types_display">
+    <item>Pilnai įkrauta</item>
+    <item>Įkrovimas žemiau</item>
+    <item>Įkrovimas aukščiau</item>
+    <item>Temperatūra aukščiau</item>
+    <item>Būklės klaida</item>
+  </string-array>
+  <string-array name="alarm_type_entries">
+    <item>Visiškai įkrauta</item>
+    <item>Įkrovimas žemiau...</item>
+    <item>Įkrovimas aukščiau...</item>
+    <item>Temperatūra aukščiau...</item>
+    <item>Būklės klaida</item>
+  </string-array>
+  <string-array name="mw_theme_pref_entries">
+    <item>Numatytasis Mažas</item>
+    <item>Spalvotas Mažas</item>
+    <item>Pilnas Langas</item>
+  </string-array>
+  <string-array name="boot_pref_entries">
+    <item>Visada</item>
+    <item>Niekada</item>
+    <item>Jei veikia išjungiant</item>
+  </string-array>
+  <string-array name="status_dur_est_entries">
+    <item>Visada</item>
+    <item>Po valandos</item>
+    <item>Po 2-jų valandų</item>
+    <item>Po 3-jų valandų</item>
+    <item>Po 6-jų valandų</item>
+    <item>Po 12-os valandų</item>
+  </string-array>
+  <string-array name="max_log_age_entries">
+    <item>1 diena</item>
+    <item>2 dienos</item>
+    <item>4 dienos</item>
+    <item>1 savaitė</item>
+    <item>2 savaitės</item>
+    <item>3 savaitės</item>
+    <item>4 savaitės</item>
+  </string-array>
+  <plurals name="n_log_items">
+    <item quantity="one">%d Įrašo Punktas</item>
+    <item quantity="few">%d Įrašo Punktai</item>
+    <item quantity="many">%d Įrašo Punktų</item>
+    <item quantity="other">%d Įrašo Punktai</item>
+  </plurals>
+  <plurals name="for_n_hours">
+    <item quantity="one">%d Valandai</item>
+    <item quantity="few">%d Valandom</item>
+    <item quantity="many">%d Valandoms</item>
+    <item quantity="other">%d Valandoms</item>
+  </plurals>
+</resources>
