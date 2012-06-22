@@ -169,9 +169,7 @@ if [ $req_dir = $current ]
 then
     echo "Already set to $current"
     exit
-fi
-
-if [ $req_dir = 'none' ]
+elif [ $req_dir = 'none' ]
 then
     rm_cur_files
 
@@ -188,6 +186,11 @@ else
     else
         rm_cur_files
         swap_current
+
+        if [ $req_dir = 'swap' ]
+        then
+            req_dir=$current
+        fi
     fi
 
     # Copy files
