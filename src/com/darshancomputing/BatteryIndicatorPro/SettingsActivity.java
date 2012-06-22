@@ -260,8 +260,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             getListView().setDivider(res.getDrawable(R.drawable.my_divider));
         }
 
-        if (res.getBoolean(R.bool.api_level_14_plus))
-            getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
+        // Stranglely disabled by default for API level 14+
+        ///*v11*/ if (res.getBoolean(R.bool.api_level_14_plus))
+        ///*v11*/     getActionBar().setHomeButtonEnabled(true);
 
         mSharedPreferences = getPreferenceManager().getSharedPreferences();
 

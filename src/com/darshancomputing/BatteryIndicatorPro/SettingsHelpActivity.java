@@ -36,8 +36,9 @@ public class SettingsHelpActivity extends Activity {
         String pref_screen = intent.getStringExtra(SettingsActivity.EXTRA_SCREEN);
         res = getResources();
 
-        if (res.getBoolean(R.bool.api_level_14_plus))
-            getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
+        // Stranglely disabled by default for API level 14+
+        ///*v11*/ if (res.getBoolean(R.bool.api_level_14_plus))
+        ///*v11*/     getActionBar().setHomeButtonEnabled(true);
 
         if (pref_screen == null) {
             setContentView(R.layout.main_settings_help);

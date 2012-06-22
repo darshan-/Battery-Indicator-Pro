@@ -75,8 +75,9 @@ public class AlarmEditActivity extends PreferenceActivity {
             getListView().setDivider(res.getDrawable(R.drawable.my_divider));
         }
 
-        if (res.getBoolean(R.bool.api_level_14_plus))
-            getActionBar().setHomeButtonEnabled(true); // Stranglely disabled by default for API level 14+
+        // Stranglely disabled by default for API level 14+
+        ///*v11*/ if (res.getBoolean(R.bool.api_level_14_plus))
+        ///*v11*/     getActionBar().setHomeButtonEnabled(true);
 
         mCursor = alarms.getAlarm(getIntent().getIntExtra(EXTRA_ALARM_ID, -1));
         mAdapter = new AlarmAdapter();
