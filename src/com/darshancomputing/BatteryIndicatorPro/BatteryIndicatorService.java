@@ -106,6 +106,9 @@ public class BatteryIndicatorService extends Service {
     private static final Object[] EMPTY_OBJECT_ARRAY = {};
     private static final  Class[]  EMPTY_CLASS_ARRAY = {};
 
+    private static final int defaultIcon0 = R.drawable.b000;
+    private int chargingIcon0;
+
     /* Global variables for these Notification Runnables */
     private Notification mainNotification;
     private int percent;
@@ -153,6 +156,13 @@ public class BatteryIndicatorService extends Service {
         Context context = getApplicationContext();
 
         alarms = new AlarmDatabase(context);
+
+        try {
+            java.lang.reflect.Field f = R.drawable.class.getField("charging000");
+            chargingIcon0 = f.getInt(R.drawable.class);
+        } catch (Exception e) {
+            chargingIcon0 = defaultIcon0;
+        }
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -276,6 +286,8 @@ public class BatteryIndicatorService extends Service {
             /* I take advantage of (count on) R.java having resources alphabetical and incrementing by one */
 
             int icon;
+
+            ///*v11*//* // Hackish, ugly way to hide this in v11 version; Musn't use multi-line comments within this section
             if (settings.getBoolean(SettingsActivity.KEY_RED, res.getBoolean(R.bool.default_use_red)) &&
                 percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, str.default_red_thresh)) &&
                 percent <= SettingsActivity.RED_ICON_MAX) {
@@ -292,6 +304,9 @@ public class BatteryIndicatorService extends Service {
             } else {
                 icon = R.drawable.b000 + percent;
             }
+            ///*v11*/ // End v11 hidden section
+
+            ///*v11*/ icon = ((status == STATUS_CHARGING) ? chargingIcon0 : defaultIcon0) + percent;
 
             String statusStr = str.statuses[status];
             if (status == STATUS_CHARGING)
