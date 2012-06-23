@@ -78,6 +78,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_NORMAL_USAGE_TIME = "normal_usage_time";
     public static final String KEY_HEAVY_USAGE_TIME = "heavy_usage_time";
     public static final String KEY_CONSTANT_USAGE_TIME = "constant_usage_time";
+    public static final String KEY_SHOW_NOTIFICATION_TIME = "show_notification_time";
     public static final String KEY_SHOW_CHARGE_TIME = "show_charge_time";
     public static final String KEY_SHOW_LIGHT_USAGE = "show_light_usage";
     public static final String KEY_SHOW_NORMAL_USAGE = "show_normal_usage";
@@ -108,7 +109,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
                                                    KEY_ICON_PLUGIN, KEY_ONE_PERCENT_HACK, /*KEY_LANGUAGE_OVERRIDE,*/
-                                                   KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
+                                                   KEY_SHOW_NOTIFICATION_TIME, KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
 
     public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
 

@@ -17,6 +17,15 @@
     />
   </PreferenceCategory>
 
+  <PreferenceCategory android:title="@string/pref_cat_notification_time">
+    <CheckBoxPreference
+       android:key="show_notification_time"
+       android:title="@string/pref_show_notification_time"
+       android:summary="@string/pref_show_notification_time_summary"
+       android:defaultValue="@bool/default_show_notification_time"
+    />
+  </PreferenceCategory>
+
   <PreferenceCategory android:title="@string/pref_cat_time_remaining_estimates">
     <CheckBoxPreference
        android:key="show_charge_time"

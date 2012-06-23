@@ -393,7 +393,9 @@
     exactly when the device\'s status changed (unplugged, for example)
     to stating approximately how many hours ago the change happened.\n
 
-    \nYou can also control which estimates you want to see for the
+    \nYou also can set whether or not to show the timestamp in the notification.\n
+
+    \nLast, you can control which estimates you want to see for the
     time remaining for USB/AC charging and light/normal/heavy/constant
     usage, and adjust the basis for these estimates.
   </string>
@@ -598,6 +600,20 @@
     people prefer the simpler to comprehend approximation of the
     number of elapsed hours, so they make that happen sooner than the
     default of 12 hours.
+  </string>
+
+  <string formatted="false" name="pref_cat_notification_time">Notification Time</string>
+  <string formatted="false" name="pref_show_notification_time">Show Notification Time</string>
+  <string formatted="false" name="pref_show_notification_time_summary">Show the time at which the notification was triggered?</string>
+  <string formatted="false" name="pref_show_notification_time_help">By
+    default, Android shows a timestamp indicating exactly when a notification was created.
+    This takes up space that can make it hard for the rest of the notification to fit on some devices.
+    It can be distracting, as it is usually not of any interest to most users.
+    The important time is when the status actually changed, and I show that anyway.
+    So by default, this is now disabled, but power users may wish to reenable it here.\n
+
+    \n<b>Note:</b> This is off by default, and turning it on works instantaneously.
+    However, turning it back off may require restarting the app after un-checking the box.
   </string>
 
   <string formatted="false" name="pref_cat_time_remaining_estimates">Time Remaining Estimates</string>

@@ -409,7 +409,12 @@ public class BatteryIndicatorService extends Service {
                                        str.formatTemp(temperature, convertF) + " / " +
                                        str.formatVoltage(voltage);
 
-            mainNotification = new Notification(icon, null, System.currentTimeMillis());
+            long when = 0;
+
+            if (settings.getBoolean(SettingsActivity.KEY_SHOW_NOTIFICATION_TIME, false))
+                when = System.currentTimeMillis();
+
+            mainNotification = new Notification(icon, null, when);
 
             mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
             mainNotificationIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
