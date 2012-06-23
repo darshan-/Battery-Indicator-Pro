@@ -291,9 +291,17 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             greenThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_GREEN_THRESH);
 
             if (currentPlugin.equals("none")) {
-                PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_PLUGIN_SETTINGS);
+                PreferenceCategory cat;
+
+                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_PLUGIN_SETTINGS);
                 cat.removeAll();
                 cat.setLayoutResource(R.layout.none);
+
+                ///*v11*/ cat.setLayoutResource(R.layout.hidden);
+                ///*v11*/ cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
+                ///*v11*/ cat.removeAll();
+                ///*v11*/ cat.setLayoutResource(R.layout.none);
+                ///*v11*/ if (true) return;
 
                 redEnabled   = mSharedPreferences.getBoolean(  KEY_RED, false);
                 amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
@@ -446,7 +454,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     protected void onDestroy() {
         super.onDestroy();
 
-        unbindService(biServiceConnection);
+        if (biServiceConnection != null) unbindService(biServiceConnection);
     }
 
     @Override
