@@ -559,7 +559,9 @@ public class BatteryIndicatorService extends Service {
         public void onReceive(Context context, Intent intent) {
             if (Intent.ACTION_USER_PRESENT.equals(intent.getAction())){
                 unregisterReceiver(mUserPresentReceiver);
-                setEnablednessOfKeyguard(false);
+
+                if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
+                    setEnablednessOfKeyguard(false);
             }
         }
     };
