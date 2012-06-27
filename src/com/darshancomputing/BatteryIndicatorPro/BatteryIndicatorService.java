@@ -181,14 +181,16 @@ public class BatteryIndicatorService extends Service {
         kgUnlockedNotification = new Notification(R.drawable.kg_unlocked, null, 0);
         kgUnlockedNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
 
-        kgUnlockedNotification.setLatestEventInfo(context, "Keyguard Unlocked",
-                                                  "Press to re-enable.", mainWindowPendingIntent);
+        kgUnlockedNotification.setLatestEventInfo(context, "Lock Screen Disabled",
+                                                  "Press to re-enable", mainWindowPendingIntent);
 
         km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         kl = km.newKeyguardLock(getPackageName());
 
-        if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
+        if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false)) {
+            System.out.println("......... sp_store says we should be disabled; calling setEnablednessOfKeyguard(false)");
             setEnablednessOfKeyguard(false);
+        }
 
         pluginPackage = "none";
 
@@ -197,6 +199,7 @@ public class BatteryIndicatorService extends Service {
 
     @Override
     public void onDestroy() {
+        System.out.println("......... onDestroy() calling setEnablednessOfKeyguard(true)");
         setEnablednessOfKeyguard(true);
         alarms.close();
         if (! pluginPackage.equals("none")) disconnectPlugin();
@@ -360,11 +363,28 @@ public class BatteryIndicatorService extends Service {
                 /* TODO: Af first glance, I think I want to do this, but think about it a bit and decide for sure... */
                 mNotificationManager.cancel(NOTIFICATION_ALARM_CHARGE);
 
+                if (last_status != status) {
+                    System.out.println("..........................................................");
+                    if (status == STATUS_UNPLUGGED)
+                        System.out.println("......... status IS now:         STATUS_UNPLUGGED");
+                    else
+                        System.out.println("......... status is now NOT:     STATUS_UNPLUGGED");
+
+                    System.out.println("......... keyguardDisabled = " + keyguardDisabled);
+                    System.out.println("........ (sp_store.getBoolean(KEY_DISABLE_LOCKING, false)) = " +
+                                       (sp_store.getBoolean(KEY_DISABLE_LOCKING, false)));
+
+                    System.out.println("..........................................................");
+                }
+
                 if (last_status != status && settings.getBoolean(SettingsActivity.KEY_AUTO_DISABLE_LOCKING, false)) {
+                    System.out.println("......... status has changed and auto_disable is on");
                     if (last_status == STATUS_UNPLUGGED) {
+                        System.out.println("......... just became NOT unplugged; calling setEnablednessOfKeyguard(false)");
                         editor.putBoolean(KEY_DISABLE_LOCKING, true);
                         setEnablednessOfKeyguard(false);
                     } else if (status == STATUS_UNPLUGGED) {
+                        System.out.println("......... just became unplugged; calling setEnablednessOfKeyguard(true)");
                         editor.putBoolean(KEY_DISABLE_LOCKING, false);
                         setEnablednessOfKeyguard(true);
 
@@ -381,7 +401,24 @@ public class BatteryIndicatorService extends Service {
                         wl.acquire();
                         wl.release();
                     }
+                } else {
+                    System.out.println("......... auto_disable must be off");
                 }
+
+                if (last_status != status) {
+                    System.out.println("..........................................................");
+                    if (status == STATUS_UNPLUGGED)
+                        System.out.println("......... status IS now:         STATUS_UNPLUGGED");
+                    else
+                        System.out.println("......... status is now NOT:     STATUS_UNPLUGGED");
+
+                    System.out.println("......... keyguardDisabled = " + keyguardDisabled);
+                    System.out.println("........ (sp_store.getBoolean(KEY_DISABLE_LOCKING, false)) = " +
+                                       (sp_store.getBoolean(KEY_DISABLE_LOCKING, false)));
+
+                    System.out.println("..........................................................");
+                }
+
             } else {
                 statusDuration = currentTM - last_status_cTM;
 
@@ -545,21 +582,34 @@ public class BatteryIndicatorService extends Service {
          the emulator, really don't want you to call reenableKeyguard() if you haven't first disabled it.
          So to stay compatible with older devices, let's add an extra setting and add this function. */
     private void setEnablednessOfKeyguard(boolean enabled) {
+        System.out.println("......... setEnablednessOfKeyguard(" + enabled + ")");
+
         if (enabled) {
+            System.out.println("......... asking to ensure enabled");
+
             if (keyguardDisabled) {
+                System.out.println("......... re-enabling");
                 mNotificationManager.cancel(NOTIFICATION_KG_UNLOCKED);
                 kl.reenableKeyguard();
                 keyguardDisabled = false;
+            } else {
+                System.out.println("......... already enabled");
             }
         } else {
+            System.out.println("......... asking to ensure disabled");
             if (! keyguardDisabled) {
+                System.out.println("......... about to disable");
                 if (km.inKeyguardRestrictedInputMode()) {
+                    System.out.println("......... restricted input mode; registering receiver...");
                     registerReceiver(mUserPresentReceiver, userPresent);
                 } else {
+                    System.out.println("......... disabling");
                     mNotificationManager.notify(NOTIFICATION_KG_UNLOCKED, kgUnlockedNotification);
                     kl.disableKeyguard();
                     keyguardDisabled = true;
                 }
+            } else {
+                System.out.println("......... already disabled");
             }
         }
     }
@@ -568,8 +618,14 @@ public class BatteryIndicatorService extends Service {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (Intent.ACTION_USER_PRESENT.equals(intent.getAction())){
+                System.out.println("......... Received user-present broadcast");
                 unregisterReceiver(mUserPresentReceiver);
-                setEnablednessOfKeyguard(false);
+                if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false)) {
+                    System.out.println("......... calling setEnablednessOfKeyguard(false)");
+                    setEnablednessOfKeyguard(false);
+                } else {
+                    System.out.println("......... no longer want to disable; NOT calling setEnablednessOfKeyguard(false)");
+                }
             }
         }
     };
