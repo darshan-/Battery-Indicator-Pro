@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
-  <string name="app_launcher_name" formatted="false">Battery Indicator</string>
+  <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
   <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Ustawienia</string>
   <string name="help_activity_name" formatted="false">Battery Indicator Pro - Pomoc</string>
   <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Logi</string>
@@ -9,15 +9,15 @@
   <string name="settings_activity_name_free" formatted="false">Battery Indicator - Ustawienia</string>
   <string name="help_activity_name_free" formatted="false">Battery Indicator - Pomoc</string>
   <string name="battery_use_b" formatted="false">Sprawdź zużycie baterii</string>
-  <string name="upgrade_donate_b" formatted="false">Upgrade/Wspomóż...</string>
+  <string name="upgrade_donate_b" formatted="false">Ulepsz/Wspomóż...</string>
   <string name="reenable_lock_screen" formatted="false">Ponownie włącz blok. ekranu</string>
   <string name="disable_lock_screen" formatted="false">Wyłącz blok. ekranu</string>
   <string name="confirm_disable" formatted="false">Czy wyłączyć blok. ekranu?</string>
-  <string name="confirm_disable_hint" formatted="false">Hint: To potwierdzenie możesz wyłączyć w ustawieniach.</string>
+  <string name="confirm_disable_hint" formatted="false">Podpowiedź: To potwierdzenie możesz wyłączyć w ustawieniach.</string>
   <string name="yes" formatted="false">Tak</string>
   <string name="cancel" formatted="false">Anuluj</string>
   <string name="confirm_close" formatted="false">Zamknąć?</string>
-  <string name="confirm_close_hint" formatted="false">Battery Indicator zostanie zamknięty i nie będziesz widział statusu w powiadomieniach.\n\nJeżeli chcesz widzieć status, zostaw program uruchomiony naciskając Anuluj i następnie przycisk Wstecz.</string>
+  <string name="confirm_close_hint" formatted="false">Battery Indicator zostanie zamknięty i nie będziesz widział statusu w powiadomieniach.\n\nJeżeli chcesz widzieć status, zostaw program uruchomiony naciskając Anuluj a następnie przycisk Wstecz.</string>
   <string name="confirm_clear_logs" formatted="false">Usunąć wszystkie logi?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Włączyć tryb 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Wyłączyć tryb 10%</string>
@@ -30,13 +30,13 @@
   <string name="menu_help" formatted="false">Pomoc</string>
   <string name="menu_clear" formatted="false">Wyczyść</string>
   <string name="menu_reverse" formatted="false">Odwróć kolejność</string>
-  <string name="menu_export" formatted="false">Eksport do CVS</string>
+  <string name="menu_export" formatted="false">Eksport do CSV</string>
   <string name="menu_delete_alarm" formatted="false">Usuń alarm</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Fahrenheit</string>
   <string name="fahrenheit_symbol" formatted="false">F</string>
-  <string name="celsius" formatted="false">Celsius</string>
+  <string name="celsius" formatted="false">Celcjusz</string>
   <string name="celsius_symbol" formatted="false">C</string>
   <string name="volt_symbol" formatted="false">V</string>
   <string name="fully_charged_in" formatted="false">W pełni naładowana w:</string>
@@ -53,7 +53,7 @@
   <string name="date" formatted="false">data</string>
   <string name="time" formatted="false">czas</string>
   <string name="status" formatted="false">status</string>
-  <string name="voltage" formatted="false">volty</string>
+  <string name="voltage" formatted="false">woltów</string>
   <string name="alarm_fully_charged" formatted="false">Bateria jest w pełni naładowana.</string>
   <string name="alarm_charge_drops" formatted="false">"Stan baterii jest poniżej "</string>
   <string name="alarm_charge_rises" formatted="false">"Stan baterii jest powyżej "</string>
@@ -80,13 +80,13 @@
   <string name="help_cat_translations" formatted="false">Tłumaczenia</string>
   <string name="help_subcat_translators" formatted="false">Tłumacze</string>
   <string name="help_cat_contact" formatted="false">Kontakt</string>
-  <string name="pref_hint" formatted="false">Hint: Naciśnij Menu po pomoc.</string>
+  <string name="pref_hint" formatted="false">Podpowiedź: Naciśnij Menu po pomoc.</string>
   <string name="settings_overview" formatted="false">Przegląd</string>
   <string name="color_settings" formatted="false">Kolory i Tematy</string>
   <string name="color_settings_summary" formatted="false">Ustaw kolory ikon i okien</string>
   <string name="color_settings_help" formatted="false">Możesz zmienić temat kolorystyczny i kontrolować kolory ikon statusu.</string>
   <string name="time_settings" formatted="false">Ustawienia czasów</string>
-  <string name="time_settings_summary" formatted="false">Ustaw estymowane czasy użycia baterii</string>
+  <string name="time_settings_summary" formatted="false">Ustaw przewidywane czasy użycia baterii</string>
   <string name="alarm_settings_subtitle" formatted="false">Ustawienia alarmów</string>
   <string name="alarm_settings" formatted="false">Alarmy</string>
   <string name="alarm_settings_summary" formatted="false">Ustaw powiadomienia o niskim/pełnym poziomie baterii</string>
@@ -97,7 +97,7 @@
   <string name="add_alarm" formatted="false">Dodaj alarm</string>
   <string name="pref_cat_themes" formatted="false">Tematy</string>
   <string name="pref_main_window_theme" formatted="false">Temat głównego okna</string>
-  <string name="pref_icon_plugin" formatted="false">Plugin ikony</string>
+  <string name="pref_icon_plugin" formatted="false">Dodatki ikon</string>
   <string name="pref_cat_logging" formatted="false">Logowanie</string>
   <string name="pref_enable_logging" formatted="false">Włącz logowanie</string>
   <string name="pref_enable_logging_summary" formatted="false">Czy logować zmiany stanu baterii?</string>
@@ -119,7 +119,7 @@
   <string name="pref_finish_after_battery_use_summary" formatted="false">Zakończ zaraz po uruchomieniu ekranu zużycia baterii?</string>
   <string name="pref_cat_temperature_unit" formatted="false">Jednostka temperatury</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Konwertuj na Fahrenheita</string>
-  <string name="pref_convert_to_fahrenheit_help" formatted="false">Android raportuje temperaturę baterii w stopniach Celcjusza. Jeżeli wolisz stopnie Fahrenheita, to zaznacz tą opcję i aplikacja wykona konwersję.</string>
+  <string name="pref_convert_to_fahrenheit_help" formatted="false">Android raportuje temperaturę baterii w stopniach Celcjusza. Jeżeli wolisz stopnie Fahrenheita, to zaznacz tą opcję a aplikacja wykona konwersję.</string>
   <string name="pref_cat_autostart" formatted="false">Autostart</string>
   <string name="pref_autostart_at_boot" formatted="false">Startuj razem z telefonem</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">Startuj aplikację gdy telefon zostanie uruchomiony:</string>
@@ -192,6 +192,75 @@
   <string name="silent" formatted="false">Wuciszony</string>
   <string name="pref_alarm_vibrate" formatted="false">Wibracja</string>
   <string name="pref_alarm_lights" formatted="false">Flash</string>
+  <string name="settings_activity_subtitle" formatted="false">Ustawienia</string>
+  <string name="help_activity_subtitle" formatted="false">Pomoc</string>
+  <string name="log_view_activity_subtitle" formatted="false">Logi</string>
+  <string name="need_uninstall" formatted="false">Potrzeba odinstalowania</string>
+  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro musi zostać odinstalowany a następnie zainstalowany ponownie by dokończyć ulepszanie. Przepraszam za uniedogododnienia. Jest to wymagane z przyczyn technicznych systemu. Nie będzie to wymagane przy kolejnych poprawkach.\n\nPo zamknięciu tej wiadomości przyciskiem \'Okay\' naciśnij go ponownie by odinstalować program. Następnie zostaniesz przeniesiony na stronę marketu, gdzie możesz zainstalować program ponownie. /n /n Ustawienia większości użytkowników są przywracane za wyjątkiem alarmów, które muszą zostać utworzone ponownie. Jednakże upewnij się, że wszystkie ustawienia są poprawne udając się do ustawień.\n\nDziękuję i mam nadzieję, że wszystkie nowe opcje spodobają Ci się.</string>
+  <string name="confirm_ten_percent_hint" formatted="false">Uwaga: Zmiana tego ustawienia (zarówno włączenie jak i wyłączenie) zresetuje ustawienia koloru.\n\nJeżeli posiadasz Motorolę Droid, Droid X, Droid 2, Defy, lub Samsunga Moment, przy pierwszym uruchomieniu aplikacji powinieneś włączyć i zostawić tę opcję. Użytkownicy pozostałych urządzeń powinni zostawić opcję wyłączoną.</string>
+  <string name="menu_get_plugins" formatted="false">Ściągnij dodatki</string>
+  <string name="no_plugins_installed_summary" formatted="false">Wciśnij klawisz MENU by ściągnąć dodatki</string>
+  <string name="pref_one_percent_hack_summary" formatted="false">Użyć dla urządzeń, które pokazują poziom co 10%</string>
+  <string name="lang_system_selected" formatted="false">Wybrane systemowo</string>
+  <string name="pref_cat_language" formatted="false">Język</string>
+  <string name="pref_language_override" formatted="false">Wymuś język</string>
+  <string name="pref_language_override_summary" formatted="false">Wybierz język</string>
+  <string name="pref_light_usage_time_help" formatted="false">Wpisz po jakim czasie bateria zostanie rozładowania od 100% do 0% przy \'Lekkim użyciu\'</string>
+  <string name="pref_normal_usage_time_help" formatted="false">Wpisz po jakim czasie bateria zostanie rozładowana od 100% do 0% przy \'Normalnym użyciu\'</string>
+  <string name="pref_heavy_usage_time_help" formatted="false">Wpisz po jakim czasie bateria zostanie rozładowana od 100% do 0% przy \'Mocnym użyciu\'</string>
+  <string name="pref_constant_usage_time_help" formatted="false">Wpisz po jakim czasie bateria zostanie rozładowana od 100% do 0% przy \'Ciągłym użyciu\'</string>
+  <string name="pref_cat_plugin_settings" formatted="false">Ustawienia dodatków</string>
+  <string name="pref_plugin_settings" formatted="false">Ustawienia dodatków</string>
+  <string name="pref_plugin_settings_summary" formatted="false">Zmień ustawienia dla tego dodatku</string>
+  <string name="first_run_message" formatted="false">Dziękuję za dotację/zakup! <b><i>Te trzy punkty są bardzo ważne</i> :</b>\n\n• Jeżeli posiadasz \"<b>task killer</b>\" / menedżer procesów lub coś podobnego, powinieneś odinstalować lub zaznaczyć \'ignoruj Battery Indicator Pro\' . Nawet jeśli zaznaczyłeś ignorowanie darmowej wersji, <i>w dalszym ciągu musisz zaznaczyć ignorowanie tej płatnej wersji</i> !\n\n• Jeżli twoje urządzenie pokazuje poziom baterii tylko co 10% (<b>większość Motorolli</b>), powinieneś włączyć \"One-percent Hack\" w \"Inne ustawienia\"\n\n• Jeżeli twój pasek powiadomień jest czarny i używasz Androida 3 lub wyżej, powinieneś ściągnąć i użyć dodatku \"Black Square\".</string>
+  <string name="first_run_message_free" formatted="false">Dziękuję za ściągnięcie Battery Indicator! <b><i>Te dwa punkty są bardzo ważne</i> :</b>\n\n• Jeżeli używasz \"<b>task killer</b>\" / menedżera procesów lub czegoś podobnego, powinieneś odinstalować lub ignorować Battery Indicator.\n• Jeżeli twoje urządzenie wyświetla poziom baterii co 10% (<b>większość Motorolli</b>), powinieneś włączyć \"One- percent Hack\" w ustawieniach.</string>
+  <string name="charge" formatted="false">poziom_naładowania</string>
+  <string name="temperature" formatted="false">stopni_celcjusza</string>
+  <string name="help_changelog" formatted="false">Zobacz <a href="http://code.google.com/p/battery-indicator/wiki/Changelog? tm=6">listę zmian online</a></string>
+  <string name="help_introduction" formatted="false">To jest <i>Battery Indicator Pro</i>, płatna wersja darmowego programu, <i>Battery Indicator</i>. który jest dostępny w Android Market lecz jest to projekt open source, co oznacza, że możesz ściągnąć źródło ze <a href="http://code.google.com/p/battery-indicator/">strony projektu</a>.</string>
+  <string name="help_introduction_free" formatted="false">To jest <i>Battery Indicator</i>, darmowa wersja <i>Battery Indicator</i>. Aplikacja jest dostępna na Android Market i jest projektem open source, co oznacza, że możesz ściągnąć źródło aplikacji ze <a href="http:// code.google.com/p/battery-indicator/">strony projektu</a>.\n\nProszę złożyć dotację poprzez ulepszenie do <a href="market://details? id=com.darshancomputing.BatteryIndicatorPro">wersji Pro</a>.</string>
+  <string name="help_summary" formatted="false"><i>Battery Indicator Pro</i> jest miernikiem poziomu baterii dla systemu Android™. Jego głównym zadaniem jest wyświetlanie procentów naładowania na pasku powiadomień.\n\nPomiędzy oferowaniem czerwonych, bursztynowych i zielonych ikon, ma także kluczowe funkcje od wersji 3.0:\n\n• W pełni konfigurowane czasy ładowania i rozładowania.\n• Wiele ikon do ściągnięcia.\n• Zapisywanie poziomu baterii w logach.\n• Tematy dla okna głównego.\n• Ręczne włączenie/wyłącznie ekranu blokowania urządzenia z opcją automatycznego włączenia gdy podłączony i wyłączenia gdy niepodłączony.\n• I wiele innych funkcji, które odkryjesz z czasem.</string>
+  <string name="help_summary_free" formatted="false"><i>Battery Indicator</i> jest miernikiem poziomu baterii dla systemu Android™. Jego głównym zadaniem jest wyświetlanie procentów naładowania na pasku powiadomień.\n\nPomiędzy oferowaniem czerwonych, bursztynowych i zielonych ikon, ma także kluczowe funkcje od wersji 3.0:\n\n• W pełni konfigurowane czasy ładowania i rozładowania.\n• Wiele ikon do ściągnięcia.\n• Zapisywanie poziomu baterii w logach.\n• Tematy dla okna głównego.\n• Ręczne włączenie/wyłącznie ekranu blokowania urządzenia z opcją automatycznego włączenia gdy podłączony i wyłączenia gdy niepodłączony.\n• I wiele innych funkcji, które odkryjesz z czasem.</string>
+  <string name="help_limitations" formatted="false">(<i>Te rzeczy są poza moją kontrolą.</i>)\n\n• Nie ma sposobu na usunięcie systemowej ikony baterii.\n• Ikona i wiadomość na pasku powiadomień są połączone i nie da się mieć ich osobno.\n• Większość rzeczy powinna instalować się na zewnętrznej pamięci (karta SD), niektóre nie. Battery Indicator jest częścią większej grupy programów. Zobacz <a href="http:// code.google.com/p/battery-indicator/wiki/FAQ?tm=6">FAQ projektu</a> jeżeli potrzebujesz dalszych wyjaśnień.</string>
+  <string name="help_features" formatted="false">• Mały, prosty i łatwy w odczytaniu.\n• Nie powoduje błędów. Po prostu odczytuje stan baterii z systemu, po czym uaktualnia ikonę i przechodzi w stan uśpienia. To oznacza, że zajmuje mało pamięci RAM, ale 0 CPU, więc nie może rozładować baterii. Obliczyłem, że w najgorszym przypadku kosztuje Cię to 1 min. użytkowania. Jeżeli doświadczasz czegoś gorszego niż to, prawdopodobnie masz inną aplikację (jak \"menedżer procesów\" itp.) która ingeruje w normalne użytkowanie.\n• Łatwy dostęp do wskaźnika (wymaga Androida 1.6+)\n• Konfigurowane tryby uruchomienia - włączanie z urządzeniem, wyłączone przy starcie urządzenia lub włączenie, gdy program był włączony przed wyłączeniem.\n• Większość innych rzeczy, o których zapomniałem lub były zbyt błahe, ale są dodane do świetnej aplikacji.\n• Satysfakcja ze wspierania twórcy.</string>
+  <string name="help_no_warranty" formatted="false">Ten program jest wydany z nadzieją, że będzie użyteczny, ale BEZ ŻADNEJ GWARANCJI.\n\nZ czasem gdy robię co mogę by aplikacja działała i nie powodowała żadnych problemów, nie jestem odpowiedzialny za jakiekolwiek zniszczenia urządzenia spowodowane niewłaściwym użytkowaniem aplikacji.</string>
+  <string name="help_acknowledgments" formatted="false">Aplikacja byłaby dostępna tylko po angielsku gdyby nie wsparcie tłumaczy wolontariuszy. Dzięki!\n\nWielkie dzięki dla Google i innych programistów open-source którzy stworzyli Androida, i bez których ta aplikacja by nie zaistniała.\n\nIkona launchera (prawa górna, którą widzisz w Markecie) jest na bazie ikony z <a href="http://www.oxygen-icons.org">tematu Oxygen icons</a> i użyta na licencji <a href="http://creativecommons.org/licenses/by- sa/3.0/">Creative Common Attribution-ShareAlike 3.0</a>.</string>
+  <string name="help_translations" formatted="false">Potrzebuje pomocy z przetłumaczeniem tej apki na inne języki. Jeżeli chciałbyś pomóc, wyslij<a href="mailto:android %2Btranslations@darshancomputing.com">email</a>. (Ten adres jest tylko do korespondencji nt. tłumaczenia; zobacz sekcję Kontakt poniżej dla dalszych informacji) Dopóki nie powiadomisz mnie o tym, umieszczę Twoje imię w sekcji Uznania.</string>
+  <string name="help_contact" formatted="false">Jeżeli masz pytanie lub problem, zobacz <a href="http://code.google.com/ p/battery-indicator/wiki/FAQ?tm=6">FAQ projektu</a> i sposób kontaktu że mną.</string>
+  <string name="settings_overview_help" formatted="false">Ustawienia są posegregowane na 4 osobne strony. Każda strona ma własną pomoc, która opisuje ustawienia na niej. Po prostu naciśnij MENU a następnie Pomoc (na tabletach MENU nie jest wymagane) aby ją uzyskać.</string>
+  <string name="time_settings_help" formatted="false">Tutaj możesz kontrolować kiedy powiadomienie zmienia godzinę zmiany statusu (np. godzinę odłączenia) na czas przez jaki jest aktywny.\n\nMożesz również kontrolować jakie przewidywanie chcesz zobaczyć do ładowania USB/AC i lekkiego/normalnego/ciężkiego/ciągłego użycia, i zmienić bazy dla nich.</string>
+  <string name="pref_please_upgrade" formatted="false">Wersja Pro ma wiele innych ustawień, włączając w to kolorowe ikony, wtyczki z ikonami, alarmy, tematy, zapisywanie stanu baterii w logach, auto/ ręczne wyłączenie blokady ekranu, przybliżone czasy ładowania/rozładowania i wiele więcej.</string>
+  <string name="pref_main_window_theme_help" formatted="false">Ustawia temat dla głównego okna. Tematy dla całego okna są użyteczne tylko jeśli lubisz rzeczy duże i łatwe do odczytania. Inne tematy są po prostu dla zabawy.</string>
+  <string name="pref_icon_plugin_help" formatted="false">Jeżeli masz zainstalowane jakiekolwiek dodatki ikon do Battery Indicator Pro (wciśnij MENU, potem Sciagnij dodatki by ściągnąć darmowe dodatki), możesz wybierać pomiędzy nimi tutaj. Narazie wtyczki nie oferują żadnych opcji więc przycisk zmiany kolorów zniknie jeżeli wybierzesz cokolwiek innego niż \"Żaden\".</string>
+  <string name="pref_enable_logging_help" formatted="false">Jeżeli aktywny, Battery Indicator będzie zapisywał zmiany statusu baterii (np. jeżeli urządzenie zostało w pełni naładowane). Możesz obejrzeć ligi z głównego okna (wciśnij MENU i wybierz Logi; na tabletach, MENU nie jest wymagane).</string>
+  <string name="pref_log_everything_help" formatted="false">Jeżeli aktywne, Battery Indicator będzie zapisywał każda zmianę poziomu naladowania, (np. z 57% na 56% i odwrotnie).</string>
+  <string name="pref_max_log_age_help" formatted="false">Jeżeli zapisywanie logów jest aktywne, za każdym razem gdy podpinasz urządzenie, logi starsze od tego będą usuwane.</string>
+  <string name="pref_cat_keyguard_help" formatted="false">Android pozwala aplikacjom na wyłączenie i włączenie. co nazywamy \"keyguard\", lub po prostu blokadą ekranu. Pomiędzy włączeniem i wyłączeniem nie ma kontroli — nie wiem, którym klawiszem włączyć ekran.</string>
+  <string name="pref_confirm_manual_disable_help" formatted="false">Jeżeli zaznaczone, okienko z potwierdzeniem wyświetla się przy manualnym wyłączeniu blokady. Jest to na wypadek gdy nowi użytkownicy przypadkowo zablokują urządzenie bez ich wiedzy. Jeżeli wyłączysz blokadę bez potrzeby, prawdopodobnie będziesz chciał włączyć ją ponownie.</string>
+  <string name="pref_finish_after_toggle_lock_help" formatted="false">Jeżeli twoim celem jest wyłączenie/włączenie ekranu blokowania i powrót do tego, co robileś wcześniej ta opcja powstrzymuje od wciśnięcia klawisza WSTECZ. Po prostu rozwiń pasek powiadomień, wciśnij na Battery Indicator i wciśnij przycisk by zmienić blokadę ekranu: trzy przyciśnięcia ekranu i wracasz do tego co robileś wcześniej.\n\nZ przyczyn oczywistych, ta opcja może być włączona jeśli wcześniejsza jest wyłączona i odwrotnie.</string>
+  <string name="pref_auto_disable_help" formatted="false">Jeżeli zaznaczone i urządzenie jest podłączone, blokada zostanie wyłączona. Jeżeli odłączone - blokada zostanie włączona.\n\nPamiętaj, musisz raz ręcznie odblokować urządzenie, by ta opcja działała.</string>
+  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Jeżeli masz alternatywą blokadę, która umożliwia dostęp do paska powiadomień, powinieneś włączyć tę opcję dla bezpieczeństwa.</string>
+  <string name="pref_finish_after_battery_use_help" formatted="false">Jeżeli każde naciśnięcie ekranu ma dla ciebie znaczenie powinieneś włączyć tę opcję. Zabezpieczenia to przed natychmiastowym zamknięciem głównego okna Battery Indicatora przy uruchomieniu Użycia baterii</string>
+  <string name="pref_autostart_at_boot_help" formatted="false">Kontroluje, kiedy Battery Indicator startuje automatycznie przy uruchomieniu urządzenia.\n\nOpcja \"Przed wyłączeniem\" działa jeżeli ostatnio włączałeś/wyłączałeś ręcznie Battery Indicator. Więc jeżeli wyłączyłeś Battery Indicator przez np. menedżer procesów, Battery Indicator nie wie czy zatrzymałeś go i czy nadal ma startować przy uruchomieniu urządzenia.</string>
+  <string name="pref_charge_as_text_help" formatted="false">Miałem kilku użytkowników ze słabym wzrokiem, którzy prosili mnie abym dodał tę opcję. Poziom naładowania jest pokazywany tekstowo zaraz obok ikonyl. Aktualnie ikona nie zmieni się, więc jest to pomocne tylko przy rozwinięciu paska powiadomień. Ale lepsze to niż nic i wystarczająco proste dla tych, którzy to chcieli. Częściowo przydatne dla tych, którzy używają czytnika ekranowego.\n\nNa niektórych urządzeniach ucina prawą stronę powiadomienia.</string>
+  <string name="pref_cat_one_percent_hack" formatted="false">Hack dla 1%</string>
+  <string name="pref_one_percent_hack" formatted="false">Hack dla 1%</string>
+  <string name="pref_one_percent_hack_help" formatted="false">Ten hack działa dla wszystkich modeli Motoroli, które pokazują poziom tylko co 10%.\n\nWiększość urządzeń nie potrzebuje tego. Jeżeli twoje urządzenie pokazuje już poziom co 1% nie włączaj tego hacka.\n\nJeżeli opcja jest szara i nie da się jej włączyć, oznacza to, że twoje urządzenie nie jest kompatybilne z tym hackiem.\n\nZobacz <a href="http://code.google.com/p/battery-indicator/wiki/ OnePercentHack?tm=6">OnePercentHack</a> po więcej informacji.</string>
+  <string name="pref_language_override_help" formatted="false">Jeżeli tłumaczenie w twoim języku jest nieskończone lub niedokładne i chciałbyś zmienić na prawdopodobnie lepsze, możesz to zrobić tutaj.</string>
+  <string name="pref_show_charge_time_help" formatted="false">Jeżeli włączone, a urządzenie jest podłączone, główne okno pokazuje czas do naładowania.</string>
+  <string name="pref_show_normal_usage_help" formatted="false">Ustaw, czy pokazywać, czy nie, przewidywania (w głównym oknie)kiedy bateria rozładuje się przy \"Normalnym użyciu\".</string>
+  <string name="pref_show_heavy_usage_help" formatted="false">Ustaw, czy pokazywać, czy nie, przewidywania (w głównym oknie)kiedy bateria rozładuje się przy \"Mocnym użyciu\".</string>
+  <string name="pref_show_constant_usage_help" formatted="false">Ustaw, czy pokazywać, czy nie, przewidywania (w głównym oknie)kiedy bateria rozładuje się przy \"Ciągłym użyciu\".</string>
+  <string name="pref_cat_color_help" formatted="false">Aby zmniejszyć miejsce jakie zajmuje program, ustawiłem limit kolorów. W chwili pisania czerwony kolor oznacza 30%, bursztynowy 50% a zielony 20%. Myślę, że jest to racjonalne ustawienie i powinno działać dla 99% użytkowników.\n\nAby dać maksimum kontroli, kolory mogą być zmieniane niezależnie.</string>
+  <string name="pref_color_preview_help" formatted="false">Podgląd koloru pomaga określić, czy wybrany kolor pasuje.\n\nNie istnieje to w trybie 10% gdyż byłoby to bez sensu.</string>
+  <string name="pref_red_thresh_help" formatted="false">Określa przy jakim poziomie kolor zmienia się na czerwony(albo <i>na</i>, w trybie 10%).\n\nW trybie 10% rzeczy działają trochę inaczej, ale to samo się wyjaśnia.</string>
+  <string name="pref_amber_thresh_help" formatted="false">Określa przy jakim poziomie kolor zmienia się na bursztynowy (albo <i>na</i>, w trybie 10%).\n\nW trybie 10% rzeczy działają trochę inaczej, ale to samo się wyjaśnia.</string>
+  <string name="pref_green_thresh_help" formatted="false">Określa przy jakim poziomie kolor zmienia się na zielony (albo <i>na</i>, w trybie 10%).\n\nW trybie 10% rzeczy działają trochę inaczej, ale to samo się wyjaśnia.</string>
+  <string name="pref_ten_percent_mode_help" formatted="false"><b>Pamiętaj:</b> Zaznaczenie lub nie skasuje ustawienia kolorów!\n\nTa opcja czyści ustawienia kolorów ikony dla urządzeń wskazujących poziom ci 10% (by miało to sens). W nawiązaniu do wpisów użytkowników urządzeń:\n\n• Motorola Droid (original)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nJak wiadomo inne urządzenia pokazujące poziom co 1% <i>nie powinni</i> tego włączać.</string>
+  <string name="pref_cat_time_remaining_estimates_help" formatted="false">Czasy przewidywane zrobiłem trochę inaczej niż myślisz, ale myślę, że to lepiej. To ty kontrolujesz, co aplikacja bierze za bazę przy obliczaniu czasu, więc jeśli myślisz, że coś jest nie tak, możesz to naprawić.</string>
+  <string name="alarms_overview_help" formatted="false">Tutaj możesz dodawać nowe alarmy, szybko włączać lub wyłączać już istniejące albo je usuwać.\n\nAby dodać alarm wciśnij \"Dodaj alarm\" — to utworzy nowy alarm i zabierze do ustawień, gdzie możesz kontrolować ustawienia dla nowego alarmu. Zobacz pomoc dla tej strony po więcej szczegółow.\n\nPoniżej przycisku \"Dodaj alarm\" jest lista wszystkich alarmów, które już stworzyłeś.\n\n• Aby edytować istniejący alarm, kliknij na niego.\n• Aby usunąć alarm, naciśnij i przytrzymaj go, a następnie wybierz \"Usuń alarm\".\n• Aby włączyć/wyłączyć alarm, naciśnij ikonę budzika po lewej obok tekstu alarmu.</string>
+  <string name="pref_alarm_enabled_help" formatted="false">Jeżeli chcesz wyłączyć alarm tymczasowo, bez tworzenia go ponownie od nowa, możesz to zrobić tutaj lub na głównej stronie z alarmami.</string>
+  <string name="pref_alarm_type_help" formatted="false">W tej chwili możesz wybierać pomiędzy pięcioma różnymi typami alarmów.\n\nAlarm w \"Pełni naładowany\" powiadomi Cię kiedy stan baterii zmieni się z \"Ładowania\" na \"W pełni naładowany\".\n\nPrzed ustaleniem alarmu poziomu naładowania i temperatury należy ustawić przedział w jakim ten alarm obowiązuje.\n\nAlarm \"Spadek zdrowia\" powiadomi Cię, jeżeli system zmieni stan baterii z \"Nieznany\" lub \"Zdrowy\" na coś innego.</string>
   <string-array name="statuses">
     <item>Odłączony</item>
     <item>Nieznany</item>
