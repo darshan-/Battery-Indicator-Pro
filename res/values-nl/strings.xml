@@ -263,6 +263,9 @@
   <string name="pref_auto_disable_help" formatted="false">Als je dit aanzet zal de schermvergrendeling automatisch uitschakelen tijdens het opladen.</string>
   <string name="pref_autostart_at_boot_help" formatted="false">Deze optie verandert of Battery Indicator automatisch opstart wanneer het systeem opstart.</string>
   <string name="alarms_overview_help" formatted="false">Op deze pagina kun je alarmen toevoegen, in of uitschakelen en verwijderen.</string>
+  <string name="pref_one_percent_hack_help" formatted="false">Deze hack werkt op alle Motorola apparaten die het percentage per 10% weergeven, behalve de originele Motorola Droid.\n\nDe meeste apparaten hebben deze optie niet nodig.\n\nAls de optie grijs is en je kunt hem niet aanzetten, dan ondersteunt jouw apparaat deze optie niet.\n\nZie de <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">OnePercentHack</a> wiki pagina voor meer informatie.</string>
+  <string name="pref_cat_time_remaining_estimates_help" formatted="false">Je kunt zelf kiezen wat je denk dat klopt voor jouw apparaat.</string>
+  <string name="pref_alarm_type_help" formatted="false">Er zijn 5 typen alarm om uit te kiezen.\n\n</string>
   <string-array name="statuses">
     <item>Losgekoppeld</item>
     <item>Onbekend</item>
@@ -310,11 +313,11 @@
     <item>Gezondheidsfalen</item>
   </string-array>
   <string-array name="alarm_type_entries">
-    <item>Gezondheid faalt</item>
     <item>Is klaar met opladen</item>
     <item>Lading komt onder...</item>
     <item>Lading komt boven...</item>
     <item>Temperatuur komt boven...</item>
+    <item>Gezondheid faalt</item>
   </string-array>
   <string-array name="mw_theme_pref_entries">
     <item>Volledig scherm</item>
