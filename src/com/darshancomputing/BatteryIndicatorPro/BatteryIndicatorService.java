@@ -405,9 +405,10 @@ public class BatteryIndicatorService extends Service {
             }
 
             Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
-            mainNotificationText = str.healths[health] + " / " +
-                                       str.formatTemp(temperature, convertF) + " / " +
-                                       str.formatVoltage(voltage);
+            mainNotificationText = str.healths[health] + " / " + str.formatTemp(temperature, convertF);
+
+            if (voltage > 500)
+                mainNotificationText += " / " + str.formatVoltage(voltage);
 
             long when = 0;
 
