@@ -181,8 +181,8 @@ public class BatteryIndicatorService extends Service {
         kgUnlockedNotification = new Notification(R.drawable.kg_unlocked, null, 0);
         kgUnlockedNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
 
-        kgUnlockedNotification.setLatestEventInfo(context, "Keyguard Unlocked",
-                                                  "Press to re-enable.", mainWindowPendingIntent);
+        kgUnlockedNotification.setLatestEventInfo(context, "Lock Screen Disabled",
+                                                  "Press to re-enable", mainWindowPendingIntent);
 
         km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         kl = km.newKeyguardLock(getPackageName());
@@ -569,7 +569,9 @@ public class BatteryIndicatorService extends Service {
         public void onReceive(Context context, Intent intent) {
             if (Intent.ACTION_USER_PRESENT.equals(intent.getAction())){
                 unregisterReceiver(mUserPresentReceiver);
-                setEnablednessOfKeyguard(false);
+
+                if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
+                    setEnablednessOfKeyguard(false);
             }
         }
     };
