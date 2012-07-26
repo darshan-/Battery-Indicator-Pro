@@ -49,6 +49,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_CONFIRM_DISABLE_LOCKING = "confirm_disable_lock_screen";
     public static final String KEY_FINISH_AFTER_TOGGLE_LOCK = "finish_after_toggle_lock";
     public static final String KEY_FINISH_AFTER_BATTERY_USE = "finish_after_battery_use";
+    public static final String KEY_NOTIFY_WHEN_KG_DISABLED = "notify_when_kg_disabled";
     public static final String KEY_AUTO_DISABLE_LOCKING = "auto_disable_lock_screen";
     public static final String KEY_DISALLOW_DISABLE_LOCK_SCREEN = "disallow_disable_lock_screen";
     public static final String KEY_ENABLE_LOGGING = "enable_logging";
@@ -108,6 +109,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_CHARGE_AS_TEXT, KEY_STATUS_DUR_EST,
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
+                                                   KEY_NOTIFY_WHEN_KG_DISABLED,
                                                    KEY_ICON_PLUGIN, KEY_ONE_PERCENT_HACK, /*KEY_LANGUAGE_OVERRIDE,*/
                                                    KEY_SHOW_NOTIFICATION_TIME, KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
 

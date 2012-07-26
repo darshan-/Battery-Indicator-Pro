@@ -548,7 +548,6 @@ public class BatteryIndicatorService extends Service {
     private void setEnablednessOfKeyguard(boolean enabled) {
         if (enabled) {
             if (keyguardDisabled) {
-                mNotificationManager.cancel(NOTIFICATION_KG_UNLOCKED);
                 kl.reenableKeyguard();
                 keyguardDisabled = false;
             }
@@ -557,12 +556,16 @@ public class BatteryIndicatorService extends Service {
                 if (km.inKeyguardRestrictedInputMode()) {
                     registerReceiver(mUserPresentReceiver, userPresent);
                 } else {
-                    mNotificationManager.notify(NOTIFICATION_KG_UNLOCKED, kgUnlockedNotification);
                     kl.disableKeyguard();
                     keyguardDisabled = true;
                 }
             }
         }
+
+        if (keyguardDisabled && settings.getBoolean(SettingsActivity.KEY_NOTIFY_WHEN_KG_DISABLED, true))
+            mNotificationManager.notify(NOTIFICATION_KG_UNLOCKED, kgUnlockedNotification);
+        else
+            mNotificationManager.cancel(NOTIFICATION_KG_UNLOCKED);
     }
 
     private final BroadcastReceiver mUserPresentReceiver = new BroadcastReceiver() {

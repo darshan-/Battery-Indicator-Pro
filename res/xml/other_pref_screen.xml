@@ -34,6 +34,13 @@
 
   <PreferenceCategory android:title="@string/pref_cat_keyguard">
     <CheckBoxPreference
+       android:key="notify_when_kg_disabled"
+       android:title="@string/pref_notify_when_kg_disabled"
+       android:summary="@string/pref_notify_when_kg_disabled_summary"
+       android:defaultValue="true"
+    />
+
+    <CheckBoxPreference
        android:key="confirm_disable_lock_screen"
        android:title="@string/pref_confirm_manual_disable"
        android:summary="@string/pref_confirm_manual_disable_summary"
