@@ -417,6 +417,10 @@ public class BatteryIndicatorService extends Service {
 
             mainNotification = new Notification(icon, null, when);
 
+            ///*v11*/ if (android.os.Build.VERSION.SDK_INT >= 16) {
+                ///*v11*/     //mainNotification.priority = -2;
+            ///*v11*/ }
+
             mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
             mainNotificationIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
 
