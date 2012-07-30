@@ -516,6 +516,31 @@
     enabled this option for security reasons.
   </string>
 
+  <string formatted="false" name="pref_cat_notification_priority">Notification Priority</string>
+  <string formatted="false" name="pref_cat_notification_priority_help">
+    On Jelly Bean and up (Android 4.1 and over), notifications can have a priority set.
+    The effect(s) of changing the priority are not guaranteed, but in general:\n
+
+    \n• Setting it to \"Minimum\" should in most cases remove status bar icon but
+    still show the notification in the pull-down notification tray.\n
+
+    \n• Setting it to \"Low\" should allow other notifications, such as new email, to appear
+    above the Battery Indicator notification. This is nice in cases like email where the
+    notification is expandable (expandable notifications are automatically expanded when
+    they are the top notification).\n
+
+    \nPriorities \"Default\" and above seem to usually leave Battery Indicator as the top
+    notification, but I imagine there are edge cases where the higher priorities make a difference.\n
+
+    \nAgain, the exact behavior may vary between devices and is not guaranteed.
+  </string>
+  <string formatted="false" name="pref_main_notification_priority">Main Notification Priority</string>
+  <string formatted="false" name="pref_main_notification_priority_summary">@string/pref_main_notification_priority</string>
+  <string formatted="false" name="pref_main_notification_priority_help">
+    Set the priority of the main notification.  Alarms, plugins, and any other notifications are not
+    affected by this setting, but they may in the future have configurable priority.
+  </string>
+
   <string formatted="false" name="pref_cat_battery_use">Battery Use</string>
   <string formatted="false" name="pref_finish_after_battery_use">Exit After Launching</string>
   <string formatted="false" name="pref_finish_after_battery_use_summary">Exit main window immediately after launching Battery Use?</string>
@@ -929,5 +954,13 @@
     <item>2 weeks</item>
     <item>3 weeks</item>
     <item>4 weeks</item>
+  </string-array>
+
+  <string-array name="notification_priority_entries">
+    <item>Maximum</item>
+    <item>High</item>
+    <item>Default</item>
+    <item>Low</item>
+    <item>Minimum</item>
   </string-array>
 </resources>

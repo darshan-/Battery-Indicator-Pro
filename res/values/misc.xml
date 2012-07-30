@@ -306,6 +306,15 @@
 
   <string name="default_max_log_age">672</string>
 
+  <string-array name="notification_priority_values">
+    <item>2</item>
+    <item>1</item>
+    <item>0</item>
+    <item>-1</item>
+    <item>-2</item>
+  </string-array>
+
+  <string name ="default_main_notification_priority">0</string>
 
   <string name="settings_help_activity_name">@string/settings_activity_name</string>
   <string name="settings_help_activity_name_free">@string/settings_activity_name_free</string>

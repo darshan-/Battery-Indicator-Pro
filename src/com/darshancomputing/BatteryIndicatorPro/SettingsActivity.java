@@ -51,6 +51,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_FINISH_AFTER_BATTERY_USE = "finish_after_battery_use";
     public static final String KEY_AUTO_DISABLE_LOCKING = "auto_disable_lock_screen";
     public static final String KEY_DISALLOW_DISABLE_LOCK_SCREEN = "disallow_disable_lock_screen";
+    public static final String KEY_MAIN_NOTIFICATION_PRIORITY = "main_notification_priority";
     public static final String KEY_ENABLE_LOGGING = "enable_logging";
     public static final String KEY_LOG_EVERYTHING = "log_everything";
     public static final String KEY_MAX_LOG_AGE = "max_log_age";
@@ -103,6 +104,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
                                                 KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
                                                 KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME,
+                                                KEY_MAIN_NOTIFICATION_PRIORITY,
                                                 KEY_MAX_LOG_AGE, KEY_ICON_PLUGIN/*, KEY_LANGUAGE_OVERRIDE*/};
 
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_CHARGE_AS_TEXT, KEY_STATUS_DUR_EST,
@@ -110,6 +112,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
                                                    KEY_ICON_PLUGIN, KEY_ONE_PERCENT_HACK, /*KEY_LANGUAGE_OVERRIDE,*/
                                                    KEY_SHOW_NOTIFICATION_TIME, KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
+
+    private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_MAIN_NOTIFICATION_PRIORITY};
 
     public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
 
@@ -450,8 +454,12 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }*/
 
     private void resetService() {
+        resetService(false);
+    }
+
+    private void resetService(boolean cancelFirst) {
         try {
-            biServiceConnection.biService.reloadSettings();
+            biServiceConnection.biService.reloadSettings(cancelFirst);
         } catch (Exception e) {
             startService(new Intent(this, BatteryIndicatorService.class));
         }
@@ -639,6 +647,13 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         for (int i=0; i < RESET_SERVICE.length; i++) {
             if (key.equals(RESET_SERVICE[i])) {
                 resetService();
+                break;
+            }
+        }
+
+        for (int i=0; i < RESET_SERVICE_WITH_CANCEL_NOTIFICATION.length; i++) {
+            if (key.equals(RESET_SERVICE_WITH_CANCEL_NOTIFICATION[i])) {
+                resetService(true);
                 break;
             }
         }

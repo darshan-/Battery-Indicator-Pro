@@ -418,7 +418,7 @@ public class BatteryIndicatorService extends Service {
             mainNotification = new Notification(icon, null, when);
 
             ///*v11*/ if (android.os.Build.VERSION.SDK_INT >= 16) {
-                ///*v11*/     //mainNotification.priority = -2;
+                ///*v11*/     mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY, str.default_main_notification_priority));
             ///*v11*/ }
 
             mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
@@ -579,7 +579,13 @@ public class BatteryIndicatorService extends Service {
     }
 
     public void reloadSettings() {
+        reloadSettings(false);
+    }
+
+    public void reloadSettings(boolean cancelFirst) {
         str = new Str(res); /* Language override may have changed */
+
+        if (cancelFirst) mNotificationManager.cancel(NOTIFICATION_PRIMARY);
 
         if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
             setEnablednessOfKeyguard(false);
