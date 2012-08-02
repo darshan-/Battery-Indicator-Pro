@@ -8,8 +8,7 @@
   </style>
 
   <style name="action_bar_theme" parent="@android:style/Widget.Holo.ActionBar">
-    <item name="android:background">#111</item>
-    <item name="android:backgroundSplit">@android:color/black</item>
+    <item name="android:background">#3c3c3c</item>
   </style>
 
   <style name="bi_help_theme" parent="@android:style/Theme.Holo.Light">
