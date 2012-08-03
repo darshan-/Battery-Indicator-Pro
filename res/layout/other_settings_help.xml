@@ -23,6 +23,8 @@
     <View style="@style/help_cat_pre_margin" />
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_keyguard" />
     <TextView style="@style/help_text" android:text="@string/pref_cat_keyguard_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_notify_when_kg_disabled" />
+    <TextView style="@style/help_text" android:text="@string/pref_notify_when_kg_disabled_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_confirm_manual_disable" />
     <TextView style="@style/help_text" android:text="@string/pref_confirm_manual_disable_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_finish_after_toggle_lock" />

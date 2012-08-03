@@ -474,6 +474,12 @@
     more control — I can\'t control which keys turn the screen on, for
     example.
   </string>
+  <string formatted="false" name="pref_notify_when_kg_disabled">Notify When Disabled</string>
+  <string formatted="false" name="pref_notify_when_kg_disabled_summary">Indicate when lock screen is disabled? </string>
+  <string formatted="false" name="pref_notify_when_kg_disabled_help">
+    If checked, a separate notification will be shown indicating when
+    the app is disabling the lock screen.
+  </string>
   <string formatted="false" name="pref_confirm_manual_disable">Confirm Manual Disable</string>
   <string formatted="false" name="pref_confirm_manual_disable_summary">Confirm when manually disabling lock screen?</string>
   <string formatted="false" name="pref_confirm_manual_disable_help">

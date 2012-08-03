@@ -39,7 +39,7 @@ import java.util.Date;
 public class BatteryIndicatorService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private final IntentFilter userPresent    = new IntentFilter(Intent.ACTION_USER_PRESENT);
-    private Intent mainWindowIntent;
+    private PendingIntent mainWindowPendingIntent;
     private Intent alarmsIntent;
 
     private final PluginServiceConnection pluginServiceConnection = new PluginServiceConnection();
@@ -56,6 +56,7 @@ public class BatteryIndicatorService extends Service {
     private android.media.AudioManager mAudioManager;
 
     private Boolean keyguardDisabled = false;
+    private Notification kgUnlockedNotification;
 
     private Resources res;
     private Str str;
@@ -64,9 +65,10 @@ public class BatteryIndicatorService extends Service {
     private static final String LOG_TAG = "BatteryIndicatorService";
 
     private static final int NOTIFICATION_PRIMARY      = 1;
-    private static final int NOTIFICATION_ALARM_CHARGE = 2;
-    private static final int NOTIFICATION_ALARM_HEALTH = 3;
-    private static final int NOTIFICATION_ALARM_TEMP   = 4;
+    private static final int NOTIFICATION_KG_UNLOCKED  = 2;
+    private static final int NOTIFICATION_ALARM_CHARGE = 3;
+    private static final int NOTIFICATION_ALARM_HEALTH = 4;
+    private static final int NOTIFICATION_ALARM_TEMP   = 5;
 
     private static final int STATUS_UNPLUGGED     = 0;
     private static final int STATUS_UNKNOWN       = 1;
@@ -114,7 +116,6 @@ public class BatteryIndicatorService extends Service {
     private int percent;
     private int status;
     private String mainNotificationTitle, mainNotificationText;
-    private PendingIntent mainNotificationIntent;
 
     private final Handler mHandler = new Handler();
     private final Runnable mPluginNotify = new Runnable() {
@@ -129,7 +130,7 @@ public class BatteryIndicatorService extends Service {
                                                                                 PendingIntent.class});
                 m.invoke(pluginServiceConnection.service, new Object[] {percent, status,
                                                                         mainNotificationTitle, mainNotificationText,
-                                                                        mainNotificationIntent});
+                                                                        mainWindowPendingIntent});
 
                 mHandler.removeCallbacks(mPluginNotify);
                 mHandler.removeCallbacks(mNotify);
@@ -172,8 +173,16 @@ public class BatteryIndicatorService extends Service {
         settings = PreferenceManager.getDefaultSharedPreferences(context);
         sp_store = context.getSharedPreferences("sp_store", 0);
 
-        mainWindowIntent = new Intent(context, BatteryIndicator.class);
+        Intent mainWindowIntent = new Intent(context, BatteryIndicator.class);
+        mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
+
         alarmsIntent = new Intent(context, AlarmsActivity.class);
+
+        kgUnlockedNotification = new Notification(R.drawable.kg_unlocked, null, 0);
+        kgUnlockedNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
+
+        kgUnlockedNotification.setLatestEventInfo(context, "Lock Screen Disabled",
+                                                  "Press to re-enable", mainWindowPendingIntent);
 
         km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         kl = km.newKeyguardLock(getPackageName());
@@ -418,9 +427,8 @@ public class BatteryIndicatorService extends Service {
             mainNotification = new Notification(icon, null, when);
 
             mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
-            mainNotificationIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
 
-            mainNotification.setLatestEventInfo(context, mainNotificationTitle, mainNotificationText, mainNotificationIntent);
+            mainNotification.setLatestEventInfo(context, mainNotificationTitle, mainNotificationText, mainWindowPendingIntent);
 
             if (! pluginPackage.equals("none")) {
                 mHandler.postDelayed(mPluginNotify,  100);
@@ -553,6 +561,11 @@ public class BatteryIndicatorService extends Service {
                 }
             }
         }
+
+        if (keyguardDisabled && settings.getBoolean(SettingsActivity.KEY_NOTIFY_WHEN_KG_DISABLED, true))
+            mNotificationManager.notify(NOTIFICATION_KG_UNLOCKED, kgUnlockedNotification);
+        else
+            mNotificationManager.cancel(NOTIFICATION_KG_UNLOCKED);
     }
 
     private final BroadcastReceiver mUserPresentReceiver = new BroadcastReceiver() {
