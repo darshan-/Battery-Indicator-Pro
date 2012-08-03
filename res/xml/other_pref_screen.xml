@@ -69,6 +69,17 @@
     />
   </PreferenceCategory>
 
+  <PreferenceCategory android:title="@string/pref_cat_notification_priority">
+    <ListPreference
+       android:key="main_notification_priority"
+       android:title="@string/pref_main_notification_priority"
+       android:entries="@array/notification_priority_entries" 
+       android:entryValues="@array/notification_priority_values"
+       android:dialogTitle="@string/pref_main_notification_priority_summary"
+       android:defaultValue="@string/default_main_notification_priority"
+    />
+  </PreferenceCategory>
+
   <PreferenceCategory android:title="@string/pref_cat_battery_use">
     <CheckBoxPreference
        android:key="finish_after_battery_use"

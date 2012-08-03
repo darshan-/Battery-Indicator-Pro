@@ -32,6 +32,7 @@ public class Str {
     public String default_amber_thresh;
     public String default_green_thresh;
     public String default_max_log_age;
+    public String default_main_notification_priority;
 
     public String logs_empty;
     public String confirm_clear_logs;
@@ -90,6 +91,7 @@ public class Str {
         default_amber_thresh   = res.getString(R.string.default_amber_thresh);
         default_green_thresh   = res.getString(R.string.default_green_thresh);
         default_max_log_age    = res.getString(R.string.default_max_log_age);
+        default_main_notification_priority = res.getString(R.string.default_main_notification_priority);
 
         logs_empty         = res.getString(R.string.logs_empty);
         confirm_clear_logs = res.getString(R.string.confirm_clear_logs);
