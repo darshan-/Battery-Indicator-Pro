@@ -71,7 +71,7 @@
 
   <string formatted="false" name="first_run_title">Thank you!</string>
   <string formatted="false" name="first_run_message">Thanks
-    for your donation/purchase!  <b><i>These three points are very important</i> :</b>\n
+    for your donation/purchase!  <b><i>These two points are very important</i> :</b>\n
 
     \n• If you have a \"<b>task killer</b>\" / process manager of some kind, you should either
       uninstall it or try to get it to ignore Battery Indicator Pro.  Even if you
@@ -80,10 +80,7 @@
 
     \n• If your device only shows the battery level in 10% increments by default (<b>most
       Motorola phones work this way</b>), then you should turn on the \"One-percent Hack\" in
-      \"Other Settings\" to enable one-percent increments.\n
-
-    \n• If your status bar is black, and especially if you are running Android 3 or greater,
-      you should download and use the plugin called \"Black Square\".
+      \"Other Settings\" to enable one-percent increments.
   </string>
   <string formatted="false" name="first_run_message_free">Thanks
     for downloading Battery Indicator!  <b><i>These two points are very important</i> :</b>\n
