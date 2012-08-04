@@ -77,6 +77,7 @@
        android:entryValues="@array/notification_priority_values"
        android:dialogTitle="@string/pref_main_notification_priority_summary"
        android:defaultValue="@string/default_main_notification_priority"
+       android:enabled="@bool/api_level_16_plus"
     />
   </PreferenceCategory>
 

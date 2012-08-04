@@ -527,7 +527,7 @@
     On Jelly Bean and up (Android 4.1 and over), notifications can have a priority set.
     The effect(s) of changing the priority are not guaranteed, but in general:\n
 
-    \n• Setting it to \"Minimum\" should in most cases remove status bar icon but
+    \n• Setting it to \"Minimum\" should in most cases remove the status bar icon but
     still show the notification in the pull-down notification tray.\n
 
     \n• Setting it to \"Low\" should allow other notifications, such as new email, to appear
