@@ -165,25 +165,28 @@ public class AlarmDatabase {
         return addAlarm(true, "fully_charged", "", android.provider.Settings.System.DEFAULT_NOTIFICATION_URI.toString(), false, true);
     }
 
-    public void setEnabled(int id, Boolean enabled) {
-        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_ENABLED + "=" +
-                    (enabled ? 1 : 0) + " WHERE " + KEY_ID + "=" + id);
+    public int setEnabled(int id, Boolean enabled) {
+        ContentValues cv = new ContentValues();
+        cv.put(KEY_ENABLED, enabled ? 1 : 0);
+        return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
     }
 
-    public void setVibrate(int id, Boolean vibrate) {
-        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_VIBRATE + "=" +
-                    (vibrate ? 1 : 0) + " WHERE " + KEY_ID + "=" + id);
+    public int setVibrate(int id, Boolean vibrate) {
+        ContentValues cv = new ContentValues();
+        cv.put(KEY_VIBRATE, vibrate ? 1 : 0);
+        return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
     }
 
-    public void setLights(int id, Boolean lights) {
-        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_LIGHTS + "=" +
-                    (lights ? 1 : 0) + " WHERE " + KEY_ID + "=" + id);
+    public int setLights(int id, Boolean lights) {
+        ContentValues cv = new ContentValues();
+        cv.put(KEY_LIGHTS, lights ? 1 : 0);
+        return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
     }
 
     public Boolean toggleEnabled(int id) {
-        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE " + KEY_ID + "=" + id, null);
+        Cursor c = rdb.query(ALARM_TABLE_NAME, new String[] {KEY_ENABLED}, KEY_ID + "=" + id, null, null, null, null, null);
         c.moveToFirst();
-        Boolean newEnabled = !(c.getInt(INDEX_ENABLED) == 1);
+        Boolean newEnabled = !(c.getInt(0) == 1);
         c.close();
 
         setEnabled(id, newEnabled);
@@ -191,23 +194,26 @@ public class AlarmDatabase {
         return newEnabled;
     }
 
-    public void setType(int id, String type) {
-        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_TYPE + "='" +
-                    type + "' WHERE " + KEY_ID + "=" + id);
+    public int setType(int id, String type) {
+        ContentValues cv = new ContentValues();
+        cv.put(KEY_TYPE, type);
+        return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
     }
 
-    public void setThreshold(int id, String threshold) {
-        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_THRESHOLD + "='" +
-                    threshold + "' WHERE " + KEY_ID + "=" + id);
+    public int setThreshold(int id, String threshold) {
+        ContentValues cv = new ContentValues();
+        cv.put(KEY_THRESHOLD, threshold);
+        return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
     }
 
-    public void setRingtone(int id, String ringtone) {
-        wdb.execSQL("UPDATE " + ALARM_TABLE_NAME + " SET " + KEY_RINGTONE + "='" +
-                    ringtone + "' WHERE " + KEY_ID + "=" + id);
+    public int setRingtone(int id, String ringtone) {
+        ContentValues cv = new ContentValues();
+        cv.put(KEY_RINGTONE, ringtone);
+        return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
     }
 
     public void deleteAlarm(int id) {
-        wdb.execSQL("DELETE FROM " + ALARM_TABLE_NAME + " WHERE _id = " + id);
+        wdb.delete(ALARM_TABLE_NAME, KEY_ID + "=" + id, null);
     }
 
     public void deleteAllAlarms() {
