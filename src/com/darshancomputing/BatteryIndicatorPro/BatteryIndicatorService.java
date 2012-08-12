@@ -427,7 +427,8 @@ public class BatteryIndicatorService extends Service {
             if (status == STATUS_UNPLUGGED) {
                 int seconds_left = predictor.secondsUntilDrained();
                 double hours_left = seconds_left / (60.0 * 60.0);
-                mainNotificationText += " / " + hours_left + "h";
+                String s = String.format("%.1f", hours_left);
+                mainNotificationText += " / " + s + "h";
             }
 
             long when = 0;

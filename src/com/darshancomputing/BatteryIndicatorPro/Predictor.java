@@ -49,7 +49,7 @@ public class Predictor {
     }
 
     public void update(int level, int status) {
-        if (last_ms == 0 || last_status == STATUS_FULLY_CHARGED) {
+        if (last_ms == 0 || status == STATUS_FULLY_CHARGED || status != last_status) {
             setLasts(level, status);
             return;
         }
