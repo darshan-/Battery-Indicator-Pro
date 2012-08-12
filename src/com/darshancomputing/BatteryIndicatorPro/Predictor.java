@@ -21,30 +21,97 @@ public class Predictor {
     private static final double WEIGHT_OLD_AVERAGE = 0.999;
     private static final double WEIGHT_NEW_DATA =  1 - WEIGHT_OLD_AVERAGE;
     private static final double WEIGHT_AVERAGE = 0.5;
-    private static final double WEIGHT_RECENTS = 1 - WEIGHT_AVERAGE;
-    private static final int RECENTS_SIZE = 10;
+    private static final double WEIGHT_RECENT = 1 - WEIGHT_AVERAGE;
+    private static final int RECENT_SIZE = 10;
 
-    private double average;
-    private LinkedList recent;
+    private static final int STATUS_UNPLUGGED     = 0;
+  //private static final int STATUS_UNKNOWN       = 1;
+    private static final int STATUS_CHARGING      = 2;
+  //private static final int STATUS_DISCHARGING   = 3;
+  //private static final int STATUS_NOT_CHARGING  = 4;
+    private static final int STATUS_FULLY_CHARGED = 5;
+
+    private double ave_discharge;
+    private double ave_recharge;
+    private LinkedList<Double> recent;
+
+    private long last_ms;
+    private int  last_level;
+    private int  last_status;
 
     public Predictor() {
-        average = DEFAULT_DURATION;
-        recent = new LikedList();
+        ave_discharge = DEFAULT_DURATION;
+        recent = new LinkedList<Double>();
 
-        for (int i = 0; i < RECENTS_SIZE; i++) {
-            list.add(average);
+        for (int i = 0; i < RECENT_SIZE; i++) {
+            recent.add(ave_discharge);
         }
     }
 
     public void update(int level, int status) {
+        if (last_ms == 0 || last_status == STATUS_FULLY_CHARGED) {
+            setLasts(level, status);
+            return;
+        }
+
+        if (status == STATUS_UNPLUGGED) {
+            int level_diff = last_level - level;
+            double ms_diff = (double) (last_ms - System.currentTimeMillis());
+
+            for (int i = 0; i < level_diff; i++) {
+                recent.removeFirst();
+                recent.addLast(ms_diff);
+                ave_discharge = ave_discharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
+            }
+        }
+
+        if (status == STATUS_CHARGING) {
+            double level_diff = (double) (level - last_level);
+            long ms_diff = last_ms - System.currentTimeMillis();
+
+            for (int i = 0; i < level_diff; i++) {
+                ave_discharge = ave_recharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
+            }
+        }
+
+        setLasts(level, status);
     }
 
     public int secondsUntilDrained() {
-        return 60 * 60 * 24;
+        if (last_status != STATUS_UNPLUGGED) {
+            return -1;
+        }
+
+        double ms_remaining = (recentAverage() * WEIGHT_RECENT + ave_discharge * WEIGHT_AVERAGE) * last_level;
+        return (int) (ms_remaining / 1000);
     }
 
     public int secondsUntilCharged() {
+        if (last_status == STATUS_FULLY_CHARGED) {
+            return 0;
+        }
+
+        if (last_status != STATUS_CHARGING) {
+            return -1;
+        }
+
         return 60 * 60 * 4;
+    }
+
+    private void setLasts(int level, int status) {
+        last_level = level;
+        last_status = status;
+        last_ms = System.currentTimeMillis();
+    }
+
+    private double recentAverage() {
+        double sum = 0;
+
+        for (int i = 0; i < recent.size(); i++) {
+            sum += recent.get(i);
+        }
+
+        return sum / recent.size();
     }
 }
 

@@ -117,6 +117,8 @@ public class BatteryIndicatorService extends Service {
     private int status;
     private String mainNotificationTitle, mainNotificationText;
 
+    private Predictor predictor;
+
     private final Handler mHandler = new Handler();
     private final Runnable mPluginNotify = new Runnable() {
         public void run() {
@@ -154,6 +156,7 @@ public class BatteryIndicatorService extends Service {
     public void onCreate() {
         res = getResources();
         str = new Str(res);
+        predictor = new Predictor();
         Context context = getApplicationContext();
 
         alarms = new AlarmDatabase(context);
@@ -292,6 +295,8 @@ public class BatteryIndicatorService extends Service {
             if (health  > HEALTH_MAX) { health  = HEALTH_UNKNOWN; }
             if (plugged > PLUGGED_MAX){ plugged = PLUGGED_UNKNOWN; }
 
+            predictor.update(level, status);
+
             /* I take advantage of (count on) R.java having resources alphabetical and incrementing by one */
 
             int icon;
@@ -418,6 +423,12 @@ public class BatteryIndicatorService extends Service {
 
             if (voltage > 500)
                 mainNotificationText += " / " + str.formatVoltage(voltage);
+
+            if (status == STATUS_UNPLUGGED) {
+                int seconds_left = predictor.secondsUntilDrained();
+                double hours_left = seconds_left / (60.0 * 60.0);
+                mainNotificationText += " / " + hours_left + "h";
+            }
 
             long when = 0;
 
