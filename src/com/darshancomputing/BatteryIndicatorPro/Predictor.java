@@ -72,7 +72,10 @@ public class Predictor {
             ms_diff /= level_diff;
 
             for (int i = 0; i < level_diff; i++) {
-                ave_discharge = ave_recharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
+                recent.removeFirst();
+                recent.addLast(ave_discharge);
+
+                ave_recharge = ave_recharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
             }
         }
 
