@@ -27,19 +27,19 @@ public class Predictor {
     private static final int MAX_RECENT_REPLACED = 3;
 
     private static final int STATUS_UNPLUGGED     = 0;
-  //private static final int STATUS_UNKNOWN       = 1;
     private static final int STATUS_CHARGING      = 2;
-  //private static final int STATUS_DISCHARGING   = 3;
-  //private static final int STATUS_NOT_CHARGING  = 4;
     private static final int STATUS_FULLY_CHARGED = 5;
+
+    private static final int PLUGGED_USB = 2;
 
     private double ave_discharge;
     private double ave_recharge;
     private LinkedList<Double> recent;
 
     private long last_ms;
-    private int  last_level;
-    private int  last_status;
+    private int last_level;
+    private int last_status;
+    private int last_plugged;
 
     public Predictor() {
         ave_discharge = DEFAULT_DISCHARGE;
@@ -51,9 +51,9 @@ public class Predictor {
         }
     }
 
-    public void update(int level, int status) {
+    public void update(int level, int status, int plugged) {
         if (last_ms == 0 || status == STATUS_FULLY_CHARGED || status != last_status) {
-            setLasts(level, status);
+            setLasts(level, status, plugged);
             return;
         }
 
@@ -79,6 +79,8 @@ public class Predictor {
             double ms_diff = (double) (System.currentTimeMillis() - last_ms);
             ms_diff /= level_diff;
 
+            if (last_plugged == PLUGGED_USB) ms_diff /= 2;
+
             for (int i = 0; i < level_diff; i++) {
                 recent.removeFirst();
                 recent.addLast(ave_discharge);
@@ -87,7 +89,7 @@ public class Predictor {
             }
         }
 
-        setLasts(level, status);
+        setLasts(level, status, plugged);
     }
 
     public int secondsUntilDrained() {
@@ -108,12 +110,15 @@ public class Predictor {
             return -1;
         }
 
-        return (int) ((100 - last_level) * ave_recharge / 1000);
+        double ms_remaining = (100 - last_level) * ave_recharge / 1000;
+        if (last_plugged == PLUGGED_USB) ms_remaining *= 2;
+        return (int) ms_remaining;
     }
 
-    private void setLasts(int level, int status) {
+    private void setLasts(int level, int status, int plugged) {
         last_level = level;
         last_status = status;
+        last_plugged = plugged;
         last_ms = System.currentTimeMillis();
     }
 

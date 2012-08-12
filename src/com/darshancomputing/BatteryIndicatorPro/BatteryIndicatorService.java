@@ -295,7 +295,7 @@ public class BatteryIndicatorService extends Service {
             if (health  > HEALTH_MAX) { health  = HEALTH_UNKNOWN; }
             if (plugged > PLUGGED_MAX){ plugged = PLUGGED_UNKNOWN; }
 
-            predictor.update(level, status);
+            predictor.update(level, status, plugged);
 
             /* I take advantage of (count on) R.java having resources alphabetical and incrementing by one */
 
