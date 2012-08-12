@@ -429,7 +429,13 @@ public class BatteryIndicatorService extends Service {
                 double hours_left = seconds_left / (60.0 * 60.0);
                 String s = String.format("%.1f", hours_left);
                 mainNotificationText += " / " + s + "h";
+            } else if (status == STATUS_CHARGING) {
+                int seconds_left = predictor.secondsUntilCharged();
+                double hours_left = seconds_left / (60.0 * 60.0);
+                String s = String.format("%.1f", hours_left);
+                mainNotificationText += " / " + s + "h";
             }
+
 
             long when = 0;
 

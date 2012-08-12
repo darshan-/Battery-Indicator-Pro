@@ -17,7 +17,8 @@ package com.darshancomputing.BatteryIndicatorPro;
 import java.util.LinkedList;
 
 public class Predictor {
-    private static final int DEFAULT_DURATION = 700 * 1000;
+    private static final int DEFAULT_DISCHARGE = 700 * 1000;
+    private static final int DEFAULT_RECHARGE = 108 * 1000;
     private static final double WEIGHT_OLD_AVERAGE = 0.999;
     private static final double WEIGHT_NEW_DATA =  1 - WEIGHT_OLD_AVERAGE;
     private static final double WEIGHT_AVERAGE = 0.5;
@@ -41,7 +42,8 @@ public class Predictor {
     private int  last_status;
 
     public Predictor() {
-        ave_discharge = DEFAULT_DURATION;
+        ave_discharge = DEFAULT_DISCHARGE;
+        ave_recharge = DEFAULT_RECHARGE;
         recent = new LinkedList<Double>();
 
         for (int i = 0; i < RECENT_SIZE; i++) {
@@ -106,7 +108,7 @@ public class Predictor {
             return -1;
         }
 
-        return 60 * 60 * 4;
+        return (int) ((100 - last_level) * ave_recharge / 1000);
     }
 
     private void setLasts(int level, int status) {
