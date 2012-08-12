@@ -23,6 +23,7 @@ public class Predictor {
     private static final double WEIGHT_AVERAGE = 0.5;
     private static final double WEIGHT_RECENT = 1 - WEIGHT_AVERAGE;
     private static final int RECENT_SIZE = 10;
+    private static final int MAX_RECENT_REPLACED = 3;
 
     private static final int STATUS_UNPLUGGED     = 0;
   //private static final int STATUS_UNKNOWN       = 1;
@@ -60,8 +61,13 @@ public class Predictor {
             ms_diff /= level_diff;
 
             for (int i = 0; i < level_diff; i++) {
-                recent.removeFirst();
-                recent.addLast(ms_diff);
+                double sum = 0;
+                int n_replaced = 0;
+                do {
+                    sum += recent.removeFirst();
+                    recent.addLast(ms_diff);
+                } while (ms_diff > sum + recent.peekFirst() && n_replaced <= MAX_RECENT_REPLACED);
+
                 ave_discharge = ave_discharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
             }
         }
