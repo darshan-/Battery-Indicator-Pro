@@ -17,7 +17,7 @@ package com.darshancomputing.BatteryIndicatorPro;
 import java.util.LinkedList;
 
 public class Predictor {
-    private static final int DEFAULT_DURATION = 900 * 1000;
+    private static final int DEFAULT_DURATION = 700 * 1000;
     private static final double WEIGHT_OLD_AVERAGE = 0.999;
     private static final double WEIGHT_NEW_DATA =  1 - WEIGHT_OLD_AVERAGE;
     private static final double WEIGHT_AVERAGE = 0.5;
@@ -56,7 +56,8 @@ public class Predictor {
 
         if (status == STATUS_UNPLUGGED) {
             int level_diff = last_level - level;
-            double ms_diff = (double) (last_ms - System.currentTimeMillis());
+            double ms_diff = (double) (System.currentTimeMillis() - last_ms);
+            ms_diff /= level_diff;
 
             for (int i = 0; i < level_diff; i++) {
                 recent.removeFirst();
@@ -67,7 +68,8 @@ public class Predictor {
 
         if (status == STATUS_CHARGING) {
             double level_diff = (double) (level - last_level);
-            long ms_diff = last_ms - System.currentTimeMillis();
+            double ms_diff = (double) (System.currentTimeMillis() - last_ms);
+            ms_diff /= level_diff;
 
             for (int i = 0; i < level_diff; i++) {
                 ave_discharge = ave_recharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
@@ -114,22 +116,3 @@ public class Predictor {
         return sum / recent.size();
     }
 }
-
-/*
-...9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9
-4,4,4,4,4,4,4,4,3,3
-
-Charge 1%:
-...9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4
-4,4,4,4,4,4,4,3,3,9
-
-Charge 2%:
-...9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,4
-4,4,4,4,4,4,3,3,9,9
-
-Then unplugged and discharge 1%:
-...9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,4
-4,4,4,4,4,4,3,3,9,9
-
-
-*/
