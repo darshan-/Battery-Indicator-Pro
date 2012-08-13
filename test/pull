@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cp ../src/com/darshancomputing/BatteryIndicatorPro/Predictor.java .
+
+patch -p0 Predictor.java <diff.patch

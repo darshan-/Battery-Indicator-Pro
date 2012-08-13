@@ -1,0 +1,3 @@
+#!/bin/bash
+
+diff -Naur ../src/com/darshancomputing/BatteryIndicatorPro/Predictor.java Predictor.java >diff.patch
