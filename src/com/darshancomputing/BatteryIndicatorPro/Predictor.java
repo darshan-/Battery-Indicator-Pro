@@ -19,9 +19,9 @@ import java.util.LinkedList;
 public class Predictor {
     private static final int DEFAULT_DISCHARGE = 700 * 1000;
     private static final int DEFAULT_RECHARGE = 108 * 1000;
-    private static final double WEIGHT_OLD_AVERAGE = 0.999;
+    private static final double WEIGHT_OLD_AVERAGE = 0.998;
     private static final double WEIGHT_NEW_DATA =  1 - WEIGHT_OLD_AVERAGE;
-    private static final double WEIGHT_AVERAGE = 0.5;
+    private static final double WEIGHT_AVERAGE = 0.6;
     private static final double WEIGHT_RECENT = 1 - WEIGHT_AVERAGE;
     private static final int RECENT_SIZE = 10;
     private static final int MAX_RECENT_REPLACED = 3;
@@ -68,6 +68,7 @@ public class Predictor {
                 do {
                     sum += recent.removeFirst();
                     recent.addLast(ms_diff);
+                    n_replaced += 1;
                 } while (ms_diff > sum + recent.peekFirst() && n_replaced <= MAX_RECENT_REPLACED);
 
                 ave_discharge = ave_discharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
