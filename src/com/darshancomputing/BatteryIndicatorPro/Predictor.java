@@ -14,6 +14,8 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.content.SharedPreferences;
+
 import java.util.LinkedList;
 
 public class Predictor {
@@ -36,14 +38,25 @@ public class Predictor {
     private double ave_recharge;
     private LinkedList<Double> recent;
 
+    private static final int KEY_AVE_DISCHARGE = 0;
+    private static final int KEY_AVE_RECHARGE  = 1;
+
     private long last_ms;
     private int last_level;
     private int last_status;
     private int last_plugged;
 
+    private SharedPreferences sp_store;
+    private SharedPreferences.Editor editor;
+
     public Predictor() {
-        ave_discharge = DEFAULT_DISCHARGE;
-        ave_recharge = DEFAULT_RECHARGE;
+        sp_store = context.getSharedPreferences("sp_store", 0);
+        editor = sp_store.edit();
+
+        ave_discharge = sp_store.getDouble(KEY_AVE_DISCHARGE, DEFAULT_DISCHARGE);
+        ave_recharge  = sp_store.getDouble(KEY_AVE_RECHARGE,  DEFAULT_RECHARGE);
+        //ave_discharge = DEFAULT_DISCHARGE;
+        //ave_recharge = DEFAULT_RECHARGE;
         recent = new LinkedList<Double>();
 
         for (int i = 0; i < RECENT_SIZE; i++) {
@@ -72,6 +85,7 @@ public class Predictor {
                 } while (ms_diff > sum + recent.peekFirst() && n_replaced <= MAX_RECENT_REPLACED);
 
                 ave_discharge = ave_discharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
+                editor.putDouble(KEY_AVE_DISCHARGE, ave_discharge);
             }
         }
 
@@ -87,9 +101,11 @@ public class Predictor {
                 recent.addLast(ave_discharge);
 
                 ave_recharge = ave_recharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
+                editor.putDouble(KEY_AVE_RECHARGE, ave_recharge);
             }
         }
 
+        editor.commit();
         setLasts(level, status, plugged);
     }
 
