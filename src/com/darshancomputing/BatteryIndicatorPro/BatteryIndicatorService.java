@@ -156,8 +156,8 @@ public class BatteryIndicatorService extends Service {
     public void onCreate() {
         res = getResources();
         str = new Str(res);
-        predictor = new Predictor();
         Context context = getApplicationContext();
+        predictor = new Predictor(context);
 
         alarms = new AlarmDatabase(context);
 

@@ -1,6 +1,6 @@
---- ../src/com/darshancomputing/BatteryIndicatorPro/Predictor.java	2012-08-13 18:54:17.258075878 -0700
-+++ Predictor.java	2012-08-13 18:47:30.722072512 -0700
-@@ -1,21 +1,3 @@
+--- ../src/com/darshancomputing/BatteryIndicatorPro/Predictor.java	2012-08-14 14:47:45.114075967 -0700
++++ Predictor.java	2012-08-14 00:54:07.826071290 -0700
+@@ -1,22 +1,3 @@
 -/*
 -    Copyright (c) 2012 Josiah Barber (aka Darshan)
 -
@@ -17,17 +17,18 @@
 -
 -package com.darshancomputing.BatteryIndicatorPro;
 -
+-import android.content.Context;
 -import android.content.SharedPreferences;
 -
  import java.util.LinkedList;
  
  public class Predictor {
-@@ -38,25 +20,24 @@
+@@ -39,26 +20,24 @@
      private double ave_recharge;
      private LinkedList<Double> recent;
  
--    private static final int KEY_AVE_DISCHARGE = 0;
--    private static final int KEY_AVE_RECHARGE  = 1;
+-    private static final String KEY_AVE_DISCHARGE = "key_ave_discharge";
+-    private static final String KEY_AVE_RECHARGE  = "key_ave_recharge";
 -
      private long last_ms;
      private int last_level;
@@ -38,9 +39,15 @@
 -    private SharedPreferences.Editor editor;
 +    private long extra_ms;
  
--    public Predictor() {
--        sp_store = context.getSharedPreferences("sp_store", 0);
+-    public Predictor(Context context) {
+-        sp_store = context.getSharedPreferences("predictor_sp_store", 0);
 -        editor = sp_store.edit();
+-
+-        ave_discharge = sp_store.getFloat(KEY_AVE_DISCHARGE, DEFAULT_DISCHARGE);
+-        ave_recharge  = sp_store.getFloat(KEY_AVE_RECHARGE,  DEFAULT_RECHARGE);
+-        System.out.println("..................... Starting with: ave_d: " + ave_discharge + " ave_r: " + ave_recharge);
+-        //ave_discharge = DEFAULT_DISCHARGE;
+-        //ave_recharge = DEFAULT_RECHARGE;
 +    public void passTime(long ms) {
 +        extra_ms += ms;
 +    }
@@ -48,22 +55,18 @@
 +    private long now() {
 +        return System.currentTimeMillis() + extra_ms;
 +    }
- 
--        ave_discharge = sp_store.getDouble(KEY_AVE_DISCHARGE, DEFAULT_DISCHARGE);
--        ave_recharge  = sp_store.getDouble(KEY_AVE_RECHARGE,  DEFAULT_RECHARGE);
--        //ave_discharge = DEFAULT_DISCHARGE;
--        //ave_recharge = DEFAULT_RECHARGE;
++
 +    public Predictor() {
 +        ave_discharge = DEFAULT_DISCHARGE;
 +        ave_recharge = DEFAULT_RECHARGE;
          recent = new LinkedList<Double>();
  
          for (int i = 0; i < RECENT_SIZE; i++) {
-@@ -66,15 +47,18 @@
+@@ -68,15 +47,18 @@
  
      public void update(int level, int status, int plugged) {
          if (last_ms == 0 || status == STATUS_FULLY_CHARGED || status != last_status) {
-+            //System.out.println("!! Early return.");
++            System.out.println("!! Early return.");
              setLasts(level, status, plugged);
              return;
          }
@@ -79,11 +82,11 @@
              for (int i = 0; i < level_diff; i++) {
                  double sum = 0;
                  int n_replaced = 0;
-@@ -85,13 +69,12 @@
+@@ -87,13 +69,12 @@
                  } while (ms_diff > sum + recent.peekFirst() && n_replaced <= MAX_RECENT_REPLACED);
  
                  ave_discharge = ave_discharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
--                editor.putDouble(KEY_AVE_DISCHARGE, ave_discharge);
+-                editor.putFloat(KEY_AVE_DISCHARGE, (float) ave_discharge);
              }
          }
  
@@ -94,21 +97,21 @@
              ms_diff /= level_diff;
  
              if (last_plugged == PLUGGED_USB) ms_diff /= 2;
-@@ -101,11 +84,11 @@
+@@ -103,11 +84,11 @@
                  recent.addLast(ave_discharge);
  
                  ave_recharge = ave_recharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
--                editor.putDouble(KEY_AVE_RECHARGE, ave_recharge);
+-                editor.putFloat(KEY_AVE_RECHARGE, (float) ave_recharge);
              }
          }
  
 -        editor.commit();
-+        //System.out.println("~~ave_discharge = " + ave_discharge + "; ave_recharge = " + ave_recharge);
-+        //System.out.println("~~" + recent);
++        System.out.println("~~ave_discharge = " + ave_discharge + "; ave_recharge = " + ave_recharge);
++        System.out.println("~~" + recent);
          setLasts(level, status, plugged);
      }
  
-@@ -114,6 +97,8 @@
+@@ -116,6 +97,8 @@
              return -1;
          }
  
@@ -117,7 +120,7 @@
          double ms_remaining = (recentAverage() * WEIGHT_RECENT + ave_discharge * WEIGHT_AVERAGE) * last_level;
          return (int) (ms_remaining / 1000);
      }
-@@ -136,7 +121,7 @@
+@@ -138,7 +121,7 @@
          last_level = level;
          last_status = status;
          last_plugged = plugged;
