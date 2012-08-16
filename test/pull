@@ -2,4 +2,4 @@
 
 cp ../src/com/darshancomputing/BatteryIndicatorPro/Predictor.java .
 
-patch -p0 Predictor.java <diff.patch
+patch -p0 -F3 Predictor.java <diff.patch

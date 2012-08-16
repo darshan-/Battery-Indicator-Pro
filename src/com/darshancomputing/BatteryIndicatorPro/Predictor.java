@@ -20,7 +20,7 @@ import android.content.SharedPreferences;
 import java.util.LinkedList;
 
 public class Predictor {
-    private static final int DEFAULT_DISCHARGE = 700 * 1000;
+    private static final int DEFAULT_DISCHARGE = 864 * 1000;
     private static final int DEFAULT_RECHARGE = 108 * 1000;
     private static final double WEIGHT_OLD_AVERAGE = 0.998;
     private static final double WEIGHT_NEW_DATA =  1 - WEIGHT_OLD_AVERAGE;
@@ -46,6 +46,7 @@ public class Predictor {
     private int last_level;
     private int last_status;
     private int last_plugged;
+    private boolean full_data_point;
 
     private SharedPreferences sp_store;
     private SharedPreferences.Editor editor;
@@ -57,8 +58,6 @@ public class Predictor {
         ave_discharge = sp_store.getFloat(KEY_AVE_DISCHARGE, DEFAULT_DISCHARGE);
         ave_recharge  = sp_store.getFloat(KEY_AVE_RECHARGE,  DEFAULT_RECHARGE);
         System.out.println("..................... Starting with: ave_d: " + ave_discharge + " ave_r: " + ave_recharge);
-        //ave_discharge = DEFAULT_DISCHARGE;
-        //ave_recharge = DEFAULT_RECHARGE;
         recent = new LinkedList<Double>();
 
         for (int i = 0; i < RECENT_SIZE; i++) {
@@ -69,6 +68,7 @@ public class Predictor {
     public void update(int level, int status, int plugged) {
         if (last_ms == 0 || status == STATUS_FULLY_CHARGED || status != last_status) {
             setLasts(level, status, plugged);
+            full_data_point = false;
             return;
         }
 
@@ -76,6 +76,12 @@ public class Predictor {
             int level_diff = last_level - level;
             double ms_diff = (double) (System.currentTimeMillis() - last_ms);
             ms_diff /= level_diff;
+
+            if (!full_data_point && ms_diff < ave_discharge) {
+                full_data_point = true;
+                setLasts(level, status, plugged);
+                return;
+            }
 
             for (int i = 0; i < level_diff; i++) {
                 double sum = 0;
@@ -98,6 +104,12 @@ public class Predictor {
 
             if (last_plugged == PLUGGED_USB) ms_diff /= 2;
 
+            if (!full_data_point && ms_diff < ave_recharge) {
+                full_data_point = true;
+                setLasts(level, status, plugged);
+                return;
+            }
+
             for (int i = 0; i < level_diff; i++) {
                 recent.removeFirst();
                 recent.addLast(ave_discharge);
@@ -108,6 +120,7 @@ public class Predictor {
         }
 
         editor.commit();
+        full_data_point = true;
         setLasts(level, status, plugged);
     }
 
