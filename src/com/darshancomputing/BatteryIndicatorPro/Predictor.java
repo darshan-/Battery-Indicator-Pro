@@ -50,37 +50,35 @@ public class Predictor {
 
     private SharedPreferences sp_store;
     private SharedPreferences.Editor editor;
-    private java.io.FileWriter fout;
+    private Logger logger;
 
     public Predictor(Context context) {
-        try {
         sp_store = context.getSharedPreferences("predictor_sp_store", 0);
         editor = sp_store.edit();
 
-        java.io.File f = new java.io.File(android.os.Environment.getExternalStorageDirectory(), "BIPredictor.txt");
-        f.createNewFile();
-        fout = new java.io.FileWriter(f, true);
+        logger = new Logger(context, "Predictor");
 
         ave_discharge = sp_store.getFloat(KEY_AVE_DISCHARGE, DEFAULT_DISCHARGE);
         ave_recharge  = sp_store.getFloat(KEY_AVE_RECHARGE,  DEFAULT_RECHARGE);
-        fout.write("\n..................... Starting with: ave_d: " + ave_discharge + " ave_r: " + ave_recharge);
+        logger.log("Starting with: ave_d: " + ave_discharge + " ave_r: " + ave_recharge);
         recent = new LinkedList<Double>();
 
         for (int i = 0; i < RECENT_SIZE; i++) {
             recent.add(ave_discharge);
         }
-        fout.flush();
-        } catch (Exception e) {e.printStackTrace();}
     }
 
     public void update(int level, int status, int plugged) {
-        try {
-        fout.write("\n......... DCBIP: level = " + level);
+        logger.log("level = " + level);
+        if (level == last_level && status == last_status) {
+            logger.log("No change; returning immediately");
+            return;
+        }
         if (last_ms == 0 || status == STATUS_FULLY_CHARGED || status != last_status) {
-            fout.write("\n......... DCBIP: Initial update or fully charged");
+            logger.log("Initial update or fully charged: ");
+            logger.log("last_ms = " + last_ms + ", status = " + status + ", last_status = " + last_status);
             setLasts(level, status, plugged);
             full_data_point = false;
-            fout.flush();
             return;
         }
 
@@ -90,10 +88,9 @@ public class Predictor {
             ms_diff /= level_diff;
 
             if (!full_data_point && ms_diff < ave_discharge) {
-                fout.write("\n......... DCBIP: Incomplete data point");
+                logger.log("Incomplete data point");
                 full_data_point = true;
                 setLasts(level, status, plugged);
-                fout.flush();
                 return;
             }
 
@@ -109,8 +106,8 @@ public class Predictor {
                 ave_discharge = ave_discharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
                 editor.putFloat(KEY_AVE_DISCHARGE, (float) ave_discharge);
 
-                fout.write("\n......... DCBIP: ave_discharge = " + ave_discharge);
-                fout.write("\n......... DCBIP: recent = " + recent);
+                logger.log("ave_discharge = " + ave_discharge);
+                logger.log("recent = " + recent);
             }
         }
 
@@ -124,7 +121,6 @@ public class Predictor {
             if (!full_data_point && ms_diff < ave_recharge) {
                 full_data_point = true;
                 setLasts(level, status, plugged);
-                fout.flush();
                 return;
             }
 
@@ -140,8 +136,6 @@ public class Predictor {
         editor.commit();
         full_data_point = true;
         setLasts(level, status, plugged);
-        fout.flush();
-        } catch (Exception e) {e.printStackTrace();}
     }
 
     public int secondsUntilDrained() {

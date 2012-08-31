@@ -61,6 +61,7 @@ public class BatteryIndicatorService extends Service {
     private Resources res;
     private Str str;
     private AlarmDatabase alarms;
+    private Logger logger;
 
     private static final String LOG_TAG = "BatteryIndicatorService";
 
@@ -157,6 +158,8 @@ public class BatteryIndicatorService extends Service {
         res = getResources();
         str = new Str(res);
         Context context = getApplicationContext();
+        logger = new Logger(context, "Service");
+        logger.log("onCreate()");
         predictor = new Predictor(context);
 
         alarms = new AlarmDatabase(context);
@@ -200,6 +203,7 @@ public class BatteryIndicatorService extends Service {
 
     @Override
     public void onDestroy() {
+        logger.log("onDestroy()");
         setEnablednessOfKeyguard(true);
         alarms.close();
         if (! pluginPackage.equals("none")) disconnectPlugin();
@@ -223,6 +227,7 @@ public class BatteryIndicatorService extends Service {
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            logger.log("onReceive()");
             mHandler.removeCallbacks(mPluginNotify);
             mHandler.removeCallbacks(mNotify);
 
