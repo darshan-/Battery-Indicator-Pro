@@ -44,6 +44,7 @@
         android:name=".AlarmEditActivity"
         android:label="@string/settings_activity_name"
         android:excludeFromRecents="true"
+        android:hardwareAccelerated="false"
     />
 
     <activity
