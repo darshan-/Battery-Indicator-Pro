@@ -17,15 +17,15 @@
   <string name="yes" formatted="false">Igen</string>
   <string name="cancel" formatted="false">Mégsem</string>
   <string name="confirm_close" formatted="false">Biztosan bezárja?</string>
-  <string name="confirm_close_hint" formatted="false">A Battery Indicator most teljesen bezáródik, és az állapotsorban sem lesz látható.\n\nHa tovább kívánja futtatni a Battery Indicatort, és csak a főablakot szeretné elhagyni, válassz a \"Mégsem\"-et majd használja a Vissza gombot!</string>
+  <string name="confirm_close_hint" formatted="false">A Battery Indicator most teljesen bezárul, és az állapotsorban sem lesz látható.\n\nHa tovább kívánja futtatni a Battery Indicatort, és csak a főablakot szeretné elhagyni, válassz a \"Mégsem\"-et majd használja a Vissza gombot!</string>
   <string name="confirm_clear_logs" formatted="false">Biztosan töröl minden naplót?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Biztosan engedélyezi a 10% módot?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Biztosan letiltja a 10% módot?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">FIGYELEM: Ennek a beállításnak a megváltoztatás (engedélyezése vagy tiltása egyaránt) a színbeállítások visszaállítását eredményezi!\n\nMotorola Droid, Droid X, Droid 2, Defy, illetve Samsung Moment készüléken az alkalmazás első használatakor célszerű ezt bekapcsolni, és így tartani. A legtöbb telefonon azonban kikapcsolva kell hagyni ezt a funkciót.</string>
+  <string name="confirm_ten_percent_hint" formatted="false">FIGYELEM: Ennek a beállításnak a megváltoztatása (engedélyezése vagy tiltása egyaránt) a színbeállítások visszaállítását eredményezi!\n\nMotorola Droid, Droid X, Droid 2, Defy, illetve Samsung Moment készüléken az alkalmazás első használatakor célszerű ezt bekapcsolni, és így tartani. A legtöbb telefonon azonban kikapcsolva kell hagyni ezt a funkciót.</string>
   <string name="first_run_title" formatted="false">Köszönöm!</string>
   <string name="first_run_message" formatted="false">Köszönjük az adományt illetve vásárlást! <b><i>Az alábbi két pont nagyon fontos</i> :</b>\n\n• Mindenféle \"<b>task killer</b>\" illetve egyéb folyamatokat felügyelő alkalmazást el kell távolítani, vagy úgy kell beállítani, hogy engedélyezze a Battery Indicator Pro zavartalan futását. Ha már beállította ezt az ingyenes verzióra, most <i>meg kell ismételnie a Pro változatra is</i>!\n\n• <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, illetve <b>Samsung Moment</b> készüléken be kell kapcsolni a \"10%-os módot\" az \"Egyéb beállítások\" alatt.</string>
-  <string name="first_run_message_free" formatted="false">Köszönjük, hogy letöltötte a Battery Indicatort! <b><i>Fontos figyelmeztetés</i> :</b>\n\n• Mindenféle \"<b>task killer</b>\" illetve egyéb folyamatokat felügyelő alkalmazást el kell távolítani, vagy úgy kell beállítani, hogy engedélyezze a Battery Indicator zavartalan futását.</string>
-  <string name="okay" formatted="false">Oké</string>
+  <string name="first_run_message_free" formatted="false">Köszönjük, hogy letöltötte a Battery Indicatort! <b><i>Fontos figyelmeztetés</i> :</b>\n\n• Mindenféle \"<b>task killer</b>\" illetve egyéb folyamatokat felügyelő alkalmazást el kell távolítani, vagy úgy kell beállítani, hogy engedélyezze a Battery Indicator zavartalan futását.\n• <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, illetve <b>Samsung Moment</b> készüléken be kell kapcsolni a \"10%-os módot\" az \"Egyéb beállítások\" alatt.</string>
+  <string name="okay" formatted="false">Rendben</string>
   <string name="menu_logs" formatted="false">Naplók</string>
   <string name="menu_settings" formatted="false">Beállítások</string>
   <string name="menu_close" formatted="false">Bezárás</string>
@@ -41,12 +41,12 @@
   <string name="celsius" formatted="false">Celsius</string>
   <string name="celsius_symbol" formatted="false">C</string>
   <string name="volt_symbol" formatted="false">V</string>
-  <string name="fully_charged_in" formatted="false">Teljesen feltöltve:</string>
+  <string name="fully_charged_in" formatted="false">Teljes feltöltésig:</string>
   <string name="light_usage" formatted="false">Könnyű használat még:</string>
   <string name="normal_usage" formatted="false">Normál használat még:</string>
-  <string name="heavy_usage" formatted="false">Erős használat még:</string>
+  <string name="heavy_usage" formatted="false">Gyakori használat még:</string>
   <string name="constant_usage" formatted="false">Állandó használat még:</string>
-  <string name="press_back_to_leave" formatted="false">Kivépés: VISSZA gomb.</string>
+  <string name="press_back_to_leave" formatted="false">Kilépés: VISSZA gomb.</string>
   <string name="press_menu_for_more" formatted="false">További opciók: MENÜ gomb.</string>
   <string name="inaccessible_storage" formatted="false">Az SD kártya nem elérhető.</string>
   <string name="inaccessible_w_reason" formatted="false">Elérhetetlen SD kártya:</string>
@@ -58,15 +58,15 @@
   <string name="charge" formatted="false">charge_percentage</string>
   <string name="temperature" formatted="false">degrees_celsius</string>
   <string name="voltage" formatted="false">volt</string>
-  <string name="alarm_fully_charged" formatted="false">Az akku nincs teljesen feltöltve</string>
+  <string name="alarm_fully_charged" formatted="false">Az akku teljesen feltöltve</string>
   <string name="alarm_charge_drops" formatted="false">"Akku töltése legfeljebb "</string>
   <string name="alarm_charge_rises" formatted="false">"Akku töltése legalább "</string>
   <string name="alarm_temp_rises" formatted="false">"Akku hőfoka legalább "</string>
   <string name="alarm_health_failure" formatted="false">"Akku állapota: "</string>
   <string name="alarm_text" formatted="false">Riasztások módosítása.</string>
   <string name="logs_empty" formatted="false">A naplók üresek.</string>
-  <string name="discharging_from" formatted="false">Kisütés innen</string>
-  <string name="charging_from" formatted="false">Töltés innen</string>
+  <string name="discharging_from" formatted="false">Merítés innen:</string>
+  <string name="charging_from" formatted="false">Töltés innen:</string>
   <string name="fully_charged" formatted="false">Teljesen feltöltve</string>
   <string name="since" formatted="false">óta</string>
   <string name="one_six_needed" formatted="false">Elnézést, legalább Android 1.6 szükséges!</string>
@@ -77,13 +77,13 @@
   <string name="help_cat_changelog" formatted="false">Változások</string>
   <string name="help_changelog" formatted="false">Tekintse meg a <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">verzió történetet a projekt GYIK-jében!</a>.</string>
   <string name="help_cat_introduction" formatted="false">Bemutatás</string>
-  <string name="help_introduction" formatted="false">A <i>Battery Indicator Pro</i>, a népszerű és ingyenes <i>Battery Indicator</i> teljes változata. Beszerezhető az Android Marketen, de mivel nyílt kódú projekt, a forrása a <a href="http://code.google.com/p/battery-indicator/">projekt honlapjáról</a> ingyen letölthető.</string>
+  <string name="help_introduction" formatted="false">Ez a <i>Battery Indicator Pro</i>, a népszerű és ingyenes <i>Battery Indicator</i> teljes változata. Beszerezhető az Android Marketen, de mivel nyílt projekt, a <a href="http://code.google.com/p/battery-indicator/">projekt honlapjáról</a> ingyen letölthető.</string>
   <string name="help_introduction_free" formatted="false">A <i>Battery Indicator</i> a termékcsalád ingyenes verziója. Beszerezhető az Android Marketen, és mivel nyílt kódú projekt, a forrása a <a href="http://code.google.com/p/battery-indicator/">projekt honlapjáról</a> ingyen letölthető.\n\nKérjük támogassa a projektet <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro verzió</a> beszerzésével!</string>
   <string name="help_cat_summary" formatted="false">Összefoglaló</string>
-  <string name="help_summary" formatted="false">A <i>Battery Indicator Pro</i> egy könnyed akku felügyelő eszköz az Android™ mobil operációs rendszerhez. Fő feladata, hogy az állapotsoron megjeleníti az akku töltöttségi állapotát jelző ikont.\n\nA Pro verzió azonban számos hasznos funkciót tartalmaz még. A piros, sárga és zöld ikonok mellett a 3.0 verzió az alábbiakat nyújtja:\n\n• Szabadon beállítható a töltés/lemerítésre vonatkozó becslés.\n• Az akku állapotának naplózása.\n• A főablakhoz tartozó témák. (pl. egy teljesméretű ablak, nagy betűméretű, jól olvasható szövegekkel.).\n• A képernyőzár tiltása és engedélyezése azzal az opcióval, hogy a töltő csatlakoztatásakor automatikusan letiltja azt, majd a töltés megszűnésekor újra engedélyezi.\n• Számos további felfedezésre váró hasznos funkció.</string>
-  <string name="help_summary_free" formatted="false">A <i>Battery Indicator</i> egy könnyed akku felügyelő eszköz az Android™ mobil operációs rendszerhez. Fő feladata, hogy az állapotsoron megjeleníti az akku töltöttségi állapotát jelző ikont.\n\nA Pro verzió azonban számos hasznos funkciót tartalmaz még. A piros, sárga és zöld ikonok mellett a 3.0 verzió az alábbiakat nyújtja:\n\n• Szabadon beállítható a töltés/lemerítésre vonatkozó becslés.\n• Az akku állapotának naplózása.\n• A főablakhoz tartozó témák. (pl. egy teljesméretű ablak, nagy betűméretű, jól olvasható szövegekkel.).\n• A képernyőzár tiltása és engedélyezése azzal az opcióval, hogy a töltő csatlakoztatásakor automatikusan letiltja azt, majd a töltés megszűnésekor újra engedélyezi.\n• Számos további felfedezésre váró hasznos funkció.</string>
+  <string name="help_summary" formatted="false">A <i>Battery Indicator Pro</i> egy egyszerű akku felügyelő eszköz az Android™ mobil operációs rendszerhez. Fő feladata, hogy az állapotsoron megjelenítse az akku töltöttségi állapotát jelző ikont.\n\nA Pro verzió azonban számos hasznos funkciót tartalmaz még. A vörös, sárga és zöld ikonok mellett a 3.0 verziótól az alábbiakat nyújtja:\n\n• Szabadon beállítható a töltés/lemerítésre vonatkozó becslés.\n• Az akku állapotának naplózása.\n• A főablakhoz tartozó témák. (pl. egy teljes méretű ablak, nagy betűméretű, jól olvasható szövegekkel.).\n• A képernyőzár tiltása és engedélyezése azzal az opcióval, hogy a töltő csatlakoztatásakor automatikusan letiltja azt, majd a töltés megszűnésekor újra engedélyezi.\n• Számos további felfedezésre váró hasznos funkció.</string>
+  <string name="help_summary_free" formatted="false">A <i>Battery Indicator</i> egy egyszerű akku felügyelő eszköz az Android™ mobil operációs rendszerhez. Fő feladata, hogy az állapotsoron megjeleníti az akku töltöttségi állapotát jelző ikont.\n\nA Pro verzió azonban számos hasznos funkciót tartalmaz még. A vörös, sárga és zöld ikonok mellett a 3.0 verzió az alábbiakat nyújtja:\n\n• Szabadon beállítható a töltés/lemerítésre vonatkozó becslés.\n• Az akku állapotának naplózása.\n• A főablakhoz tartozó témák. (pl. egy teljes méretű ablak, nagy betűméretű, jól olvasható szövegekkel.).\n• A képernyőzár tiltása és engedélyezése azzal az opcióval, hogy a töltő csatlakoztatásakor automatikusan letiltja azt, majd a töltés megszűnésekor újra engedélyezi.\n• Számos további felfedezésre váró hasznos funkció.</string>
   <string name="help_cat_limitations" formatted="false">Korlátok</string>
-  <string name="help_limitations" formatted="false">(<i>Ezekre sajnos nincs hatásom.</i>)\n\n• A program csak azt tudja megjeleníteni, amit a telefon jelent számára. Legtöbb készülék 1%-os pontossággal jelzi az akku állapotát, de néhány (pl. a Motorola Droid modellek) csak 10%-os pontosságot tudnak.\n• Nincs mód a beépített akku ikon elrejtésére.\n• Az ikon az állapotsorban és a szöveg az értesítési területen szorosan összetartozik. Nem lehet az egyik a másik nélkül.\n• Bizonyos alkamazások telepíthetők cserélhető adathozdozóra (SD kártyára), mások nem. A Battery Indicator az utóbbi csoportba tartozik. További magyarázatot találhat a <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">projekt GYIK-jében</a></string>
+  <string name="help_limitations" formatted="false">(<i>Ezekre sajnos nincs hatásom.</i>)\n\n• Nincs mód a beépített akku ikon elrejtésére.\n• A program csak azt tudja megjeleníteni, amit a telefon jelent számára. A legtöbb készülék 1%-os pontossággal jelzi az akku állapotát, de néhány (pl. a Motorola Droid modellek) csak 10%-os pontosságot tudnak.\n• Az ikon az állapotsorban és a szöveg az értesítési területen szorosan összetartozik. Nem lehet az egyik a másik nélkül.\n• Bizonyos alkamazások telepíthetők cserélhető adathozdozóra (SD kártyára), mások nem. A Battery Indicator az utóbbi csoportba tartozik. További magyarázatot találhat a <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">projekt GYIK-jében</a></string>
   <string name="help_cat_features" formatted="false">Jellemzők</string>
   <string name="help_features" formatted="false">• Kicsi, egyszerű, könnyen olvasható.\n• Nem végez folyamatos lekérdezést. Az Android akku állapotra vonatkozó broadcast üzeneteit dolgozza fel, frissíti az ikont, majd visszakapcsol alvás módba. Ez azt jelenti, hogy csak kevés memóriát foglal, és lényegében semmivel nem terheli a CPU-t, végeredményben nem meríti az akkut. Pesszimista becslés szerint hozzávetőleg 1 perc használati idő csökkenést eredményezhet minden teljes feltöltési ciklusban. Ha bármi olyat tapasztal, ami ennél rosszabb, akkor minden bizonnyal egy másik alkalmazás (pl. \"task killer\") gyakorol hatást a Battery Indicaror normál működésére\n• Könnyen elérhető az akku használat képernyő (legalább Android 1.6 szükséges).\n• Beállítható, hogy bekapcsoláskor automatikusan induljon el, ne induljon el, vagy csak akkor induljon el, ha kikapcsoláskor futott a program.\n• Sok más, amiről vagy megfeledkeztem, vagy nem annyira jelentős, hogy önmagában említsem, de emeli az alkalmazás értékét.\n• A megelégedés, amit a fejlesztő támogatása okoz. (Amit nagyon köszönök!)</string>
   <string name="help_cat_no_warranty" formatted="false">Nincs Garancia</string>
@@ -97,45 +97,45 @@
   <string name="help_contact" formatted="false">Ha kérdése vagy problémája van, elsőként kérem nézze meg <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">a projekt GYIK-et</a>!\n\nHa észrevétele van, vagy olyan kérdésel, problémával szembesül, amelyre nem kap választ a GYIK-ben, küldjön e-mail a <a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a> címre!</string>
   <string name="pref_hint" formatted="false">TIPP: Segítséghez nyomja meg a MENÜ gombot!</string>
   <string name="settings_overview" formatted="false">Áttekintés</string>
-  <string name="settings_overview_help" formatted="false">A beállításokat három oldalra öszegyűtve találja az alábbiak szerint. Minden oldal saját súgóval rendelkezik az ott található beállítások leírásával. Ezeket a MENÜ gomb - Súgó opcióval érheti el..</string>
+  <string name="settings_overview_help" formatted="false">A beállításokat három oldalra összegyűtve találja az alábbiak szerint. Minden oldal saját súgóval rendelkezik az ott található beállítások leírásával. Ezeket a MENÜ gomb - Súgó opcióval érheti el..</string>
   <string name="color_settings" formatted="false">Színek és témák</string>
   <string name="color_settings_summary" formatted="false">Megjelenítési beállítások és ikon színek</string>
   <string name="color_settings_help" formatted="false">Megváltoztathatók a főablak megjelenítési jellemzői és hogy az állapotsoron mikor jelenjenek meg színes ikonok.</string>
   <string name="time_settings" formatted="false">Idő beállítások</string>
-  <string name="time_settings_summary" formatted="false">Az időbecslések és közelítések beállításai</string>
-  <string name="time_settings_help" formatted="false">Itt beállíthatja, hogy a készülék állapotának megváltozása után (pl. töltő lekapcsolása) mennyi ideig mutassa az esemény valós időpontját, majd ezután az eltelt időt jeleníti meg.\n\nAzt is kiválaszthatja, hogy melyik becsléseket kívánja látni az alábbiak közül: teljes töltésig hátralévő idő USB/Hálózati töltés esetén, a lemerülésig hátralévő idő könnyű/normál/erős/állandó használat mellett.</string>
+  <string name="time_settings_summary" formatted="false">Az időbecslések és kerekítések beállításai</string>
+  <string name="time_settings_help" formatted="false">Itt beállíthatja, hogy a készülék állapotának megváltozása (pl. töltő leválasztása) után mennyi ideig mutassa az esemény valós időpontját, majd ezután az eltelt időt jeleníti meg.\n\nAzt is kiválaszthatja, hogy melyik becsléseket kívánja látni az alábbiak közül: teljes töltésig hátralévő idő USB/Hálózati töltés esetén, a lemerülésig hátralévő idő könnyű/normál/gyakori/állandó használat mellett.</string>
   <string name="alarm_settings_subtitle" formatted="false">Riasztás beállítások</string>
   <string name="alarm_settings_summary" formatted="false">Az akku alacsony vagy teljes töltésére vonatkozó értesítések</string>
   <string name="alarm_settings_help" formatted="false">Beállíthatja, hogy a Battery Indicator értesítse, amikor az akku töltése elér egy bizonyos szintet (pl. ha teljesen feltöltődik, vagy mondjuk 20% alá csökken.)</string>
   <string name="other_settings" formatted="false">Egyéb beállítások</string>
   <string name="other_settings_help" formatted="false">Miden további beállítás ezen az oldalon található: naplózás, képernyőzár, hőmérséklet mértékegysége, automatikus indulás, stb.</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">További beállítások a Pro verzióban</string>
-  <string name="pref_please_upgrade" formatted="false">A Pro verzió számos további beállítással és képességgel rendelkezik. Pl. zöld, sárga és piros ikon, riasztások, ablak témák, akku állapot naplózása, képernyőzár kézi és automatikus tiltása, becslés a hátralévő töltési vagy használati időre, stb.</string>
+  <string name="pref_please_upgrade" formatted="false">A Pro verzió számos további beállítással és képességgel rendelkezik. Pl. zöld, sárga és vörös ikon, riasztások, ablak témák, akku állapot naplózása, képernyőzár kézi és automatikus tiltása, becslés a hátralévő töltési vagy használati időre, stb.</string>
   <string name="add_alarm" formatted="false">Riasztás hozzáadása</string>
   <string name="pref_cat_themes" formatted="false">Témák</string>
   <string name="pref_main_window_theme" formatted="false">A főablak témája</string>
-  <string name="pref_main_window_theme_help" formatted="false">Beállítja a főablak küllemét. Alapesetben a főablak kb. úgy néz ki, mint egy Android dialógus. A teljes méret akkor jön jól, ha nagy és jól olvasható tartalmat szeretne. A többi meg csak szórakozás.</string>
+  <string name="pref_main_window_theme_help" formatted="false">Beállítja a főablak kinézetét.. Alapesetben a főablak kb. úgy néz ki, mint egy Android dialógus. A teljes méret akkor jön jól, ha nagy és jól olvasható tartalmat szeretne. A többi csak szórakozás.</string>
   <string name="pref_cat_logging" formatted="false">Naplózás</string>
   <string name="pref_enable_logging_summary" formatted="false">Naplózza az akku állapotának változásait?</string>
   <string name="pref_enable_logging_help" formatted="false">Ha engedélyezi, a Battery Indicator naplózza az akku állapotának változásait. (pl.ha a telefont lekapcsolták a töltőről vagy az akku teljesen feltöltődött). A napló elérhető a főablakból a MENÜ gomb használatával.</string>
   <string name="pref_log_everything" formatted="false">Mindent naplóz</string>
   <string name="pref_log_everything_summary" formatted="false">Az akku szintjének változását is naplózza?</string>
-  <string name="pref_log_everything_help" formatted="false">Ha engedélyezi, a Battery Indicator naplózza a töltöttségi szint minden egyes változását is (pl. amikor az 57%-ról 56%-ra csökken). Erre általában nincs szükség, de bekapcsolhatja, ha szemmel szeretné tartani az akku használatát.\n\nVegye figyelembe, hogy ez a beállítás némi teljesítmény csökkenéssel járhat. Tehát ha be is kapcsolja néhány órára vagy napra, hogy kövesse az eseményeket, később ez kikapcsolható. De még bekapcsolt állapotban sem okoz 1 percnél több használati idő veszteséget egy teljes feltöltési csiklus alatt.</string>
+  <string name="pref_log_everything_help" formatted="false">Ha engedélyezi, a Battery Indicator naplózza a töltöttségi szint minden egyes változását is (pl. amikor az 57%-ról 56%-ra csökken). Erre általában nincs szükség, de bekapcsolhatja, ha szemmel szeretné tartani az akku használatát.\n\nVegye figyelembe, hogy ez a beállítás némi teljesítmény csökkenéssel járhat. Tehát ha be is kapcsolja néhány órára vagy napra, hogy kövesse az eseményeket, később ez kikapcsolható. De még bekapcsolt állapotban sem okoz 1 percnél több használati idő veszteséget egy teljes feltöltési ciklus alatt.</string>
   <string name="pref_max_log_age" formatted="false">Napló időszaka</string>
   <string name="pref_max_log_age_summary" formatted="false">Törölje az ennél régebbi bejegyzéseket:</string>
   <string name="pref_max_log_age_help" formatted="false">Ha a naplózás engedélyezett, minden esetben, amikor tölteni kezdi a készüléket, az ennél régebbi bejegyzések törlődnek.</string>
   <string name="pref_cat_keyguard" formatted="false">Képernyő-/billentyűzár</string>
-  <string name="pref_cat_keyguard_help" formatted="false">Az Android megengedi, hogy az alkalmazások letiltsék és újra engedélyezzék a képernyőzárat. Ezen túlmenően azonban semmilyen hatása nincsen. — Pl. nem lehet megadni, hogy melyik billentyűvel záródjon le vagy oldódjon fel.</string>
+  <string name="pref_cat_keyguard_help" formatted="false">Az Android megengedi, hogy az alkalmazások letiltsák és újra engedélyezzék a képernyőzárat. Ezen túlmenően azonban semmilyen hatása nincsen. — Pl. nem lehet megadni, hogy melyik billentyűvel záródjon le vagy oldódjon fel.</string>
   <string name="pref_confirm_manual_disable" formatted="false">Kézi tiltás megerősítése</string>
   <string name="pref_confirm_manual_disable_summary" formatted="false">Kérjen megerősítést, ha kézzel tiltja a képernyőzárat?</string>
-  <string name="pref_confirm_manual_disable_help" formatted="false">Ha bejelöli, egy megerősítő kérdés jelenik meg, amikor kézileg kezdeményezi a kpéernyőzár tiltását. Ennek célja, hogy megelőzze a képernyőzár nem szándékos, véletlenszerű letiltását. Ha rendszeresen le szoktat tiltani a képernyőzárat, ezt várhatóan kikapcsolja majd.</string>
+  <string name="pref_confirm_manual_disable_help" formatted="false">Ha bejelöli, egy megerősítő kérdés jelenik meg, amikor kézileg kezdeményezi a képernyőzár tiltását. Ennek célja, hogy megelőzze a képernyőzár nem szándékos, véletlenszerű letiltását. Ha rendszeresen le szoktat tiltani a képernyőzárat, ezt várhatóan kikapcsolja majd.</string>
   <string name="pref_finish_after_toggle_lock" formatted="false">Kilépés a váltás után</string>
   <string name="pref_finish_after_toggle_lock_summary" formatted="false">Tiltás/engedélyezés után egyből bezárja a főablakot?</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">Ha Önnek minden billentyű leütés (vagy képernyő érintés) számít, ezt minden bizonnyal engedélyezi majd. Ha egyszerűen csak le akarja tiltani a képernyőzárat, majd folytatni amit csinált, ez megkíméli attól, hogy a VISSZA gombbal kelljen bajlódnia. Csak húzza le az értesítési területet, érintse meg a Battery Indicator ikonját, majd a váltó gombot! Három érintés, és ott folytatja, ahol abbahagyta.\n\nNyilván csak akkor engedélyezheti ezt, ha az előző opció tiltva van, illetve megfordítva.</string>
+  <string name="pref_finish_after_toggle_lock_help" formatted="false">Ez a funkció azok számára készült, akiknek minden billentyű leütés (vagy képernyő érintés) számít. Ha egyszerűen csak le akarja tiltani a képernyőzárat, majd folytatni amit csinált, ez megkíméli attól, hogy a VISSZA gombbal kelljen bajlódnia. Csak húzza le az értesítési területet, érintse meg a Battery Indicator ikonját, majd a váltó gombot! Három érintés, és ott folytatja, ahol abbahagyta.\n\nNyilván csak akkor engedélyezheti ezt, ha az előző opció tiltva van, illetve megfordítva.</string>
   <string name="pref_auto_disable" formatted="false">Képernyőzár automatikus tiltása</string>
   <string name="pref_auto_disable_summary" formatted="false">Letiltja a képernyőzárat töltés közben?</string>
   <string name="pref_charge_as_text" formatted="false">Töltésszint szöveges jelzése</string>
-  <string name="pref_charge_as_text_summary" formatted="false">Megjelenítse az akku töltöttségét szövegesen is az ikon mellett?</string>
+  <string name="pref_charge_as_text_summary" formatted="false">Megjelenjen az akku töltöttsége szövegesen is az ikon mellett?</string>
   <string name="pref_cat_status_duration" formatted="false">Eltelt idő kijelzése</string>
   <string name="pref_status_dur_est" formatted="false">Kerekített időtartam</string>
   <string name="pref_status_dur_est_summary" formatted="false">Állapot váltás után ennyivel kezd kerekített időtartamokat alkalmazni</string>
@@ -145,17 +145,17 @@
   <string name="pref_ac_charge_time" formatted="false">Hálózati töltés</string>
   <string name="pref_show_light_usage" formatted="false">Könnyű használat mutatása</string>
   <string name="pref_show_normal_usage" formatted="false">Normál használat mutatása</string>
-  <string name="pref_show_heavy_usage" formatted="false">Erős használat mutatása</string>
+  <string name="pref_show_heavy_usage" formatted="false">Gyakori használat mutatása</string>
   <string name="pref_show_constant_usage" formatted="false">Állandó használat mutatása</string>
-  <string name="pref_red" formatted="false">Piros ikon használata</string>
+  <string name="pref_red" formatted="false">Vörös ikon használata</string>
   <string name="pref_amber" formatted="false">Sárga ikon használata</string>
   <string name="pref_green" formatted="false">Zöld ikon használata</string>
-  <string name="pref_green_summary" formatted="false">Zöld legyen az ikon, amikor a töltési szint magas?</string>
-  <string name="pref_green_thresh" formatted="false">Zöld küszöbszint</string>
+  <string name="pref_green_summary" formatted="false">Zöld legyen az ikon, amikor a töltöttség magas?</string>
+  <string name="pref_green_thresh" formatted="false">Zöld szín határa</string>
   <string name="pref_cat_device_specific" formatted="false">Eszközre jellemző beállítások</string>
   <string name="pref_ten_percent_mode" formatted="false">10%-os mód</string>
   <string name="pref_ten_percent_mode_summary" formatted="false">Olvassa el a súgót!</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b>Megjegyzés:</b> Ennek a ki-/bekapcsolása visszaállítja az ikonszínek beállításait.\n\nEz a beállítás átállítja az ikonszínek beállításait, hogy jobban megfeleljen azoknak a készülékeknek, amelyek csak 10%-os lépésekben jelentik az akkutöltés megváltozását. A felhasználók visszajelzései alapján ezek az alábbiak:\n\n• Motorola Droid (eredeti)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nAmennyire tudom, minden más készülék 1%-os lépésekben jelenti a töltési szintet, ilyenkor ezt <i>nem kell</i> bekapcsolni.</string>
+  <string name="pref_ten_percent_mode_help" formatted="false"><b>Megjegyzés:</b> Ennek a ki-/bekapcsolása visszaállítja az ikonszínek beállításait.\n\nEz a beállítás átállítja az ikonszínek beállításait, hogy jobban megfeleljen azoknak a készülékeknek, amelyek csak 10%-os lépésekben jelentik az akkutöltés megváltozását. A felhasználók visszajelzései alapján ezek az alábbiak:\n\n• Motorola Droid (eredeti)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n• Samsung Galaxy S WiFi\n\nAmennyire tudom, minden más készülék 1%-os lépésekben jelenti a töltési szintet, ilyenkor ezt <i>nem kell</i> bekapcsolni.</string>
   <string name="pref_alarm_enabled" formatted="false">Riasztás enegedélyezése</string>
   <string name="pref_alarm_enabled_help" formatted="false">Ha egy riasztást átmenetileg le kíván tiltani, anélkül, hogy azt később újra létre kellene hoznia, ki- és bekapcsolhatja itt, vagy a riasztások főlapján is.</string>
   <string name="pref_cat_alarm_conditions" formatted="false">Riasztási feltételek</string>
@@ -176,6 +176,83 @@
   <string name="pref_alarm_vibrate_help" formatted="false">Ha minden jól megy, akkor a készülék rezeg riasztáskor, kivéve, ha néma módban van, és a a rezgések tiltottak néma módban. Más szóval az csinálja, amit elvár. Kérem értesítsen, ha valami balul sül el!</string>
   <string name="pref_alarm_lights" formatted="false">Fényjelzés</string>
   <string name="pref_alarm_lights_help" formatted="false">Beállítja, hogy az értesítés használja-e a készülék alapértelmezett fényét. Ez általában a LED vagy a trackball villogását eredményezi.Minden Androidos eszköz, amit használtam ebben a tekintetben kissé hibás volt. Ha ezt bejelölöd, az értesítés arra utasítja az Androidot, hogy villogtassa a fényt, de egyes esetekben mégsem következik be.</string>
+  <string name="pref_red_summary" formatted="false">Vörös legyen az ikon, amikor a töltöttség alacsony?</string>
+  <string name="pref_red_thresh" formatted="false">Vörös küszöbszint</string>
+  <string name="pref_red_thresh_summary" formatted="false">Vörös ikon ennyi %-os töltöttség alatt:</string>
+  <string name="pref_amber_summary" formatted="false">Sárga legyen az ikon, amikor a töltöttség közepes?</string>
+  <string name="pref_color_preview" formatted="false">Szín előnézet</string>
+  <string name="alarm_settings" formatted="false">Riasztások</string>
+  <string name="no_plugins_installed_summary" formatted="false">Nyomja meg a MENÜ gombot bővítmények letöltéséhez</string>
+  <string name="menu_get_plugins" formatted="false">Bővítmények hozzáadása</string>
+  <string name="pref_icon_plugin_help" formatted="false">Ha bármilyen Battery Indicator Pro bővítmény telepítve van (nyomja meg a MENÜ-t, majd a Bővítmények hozzáadása-t ingyenes bővítményekhez), itt választhat közülük. A letöltött bővítmények nem támogatnak semmilyen beállítást, ezért az ikon színbeállításai elvesznek, ha nem a \"None\"-t választja. A cél az, hogy minél több bővítmény elérhető legyen, reméljük meg fogja találni azt, amit szeretne.</string>
+  <string name="pref_enable_logging" formatted="false">Naplózás engedélyezése</string>
+  <string name="pref_cat_temperature_unit" formatted="false">Hőmérséklet mértékegysége</string>
+  <string name="pref_convert_to_fahrenheit" formatted="false">Fahrenheit használata</string>
+  <string name="pref_convert_to_fahrenheit_help" formatted="false">Az Android Celsius°-ban közli a hőmérsékletet. Ha jobban szeretné az akkumlátor hőmérsékletét Fahrenheit-ben látni, kapcsolja be ezt az opciót, és az alkalmásás konvértálni fogja önnek.</string>
+  <string name="pref_cat_charge_as_text" formatted="false">Töltésszint szöveges jelzése</string>
+  <string name="pref_charge_as_text_help" formatted="false">Több rossz látású felhasználó is kérte, hogy legyen olyan lehetőség, ahol a töltés szintje megjelenik szövegesen (nagyobb és olvashatóbb formában) is az ikon mellett az értesítési felület lehúzásakor. A tényleges ikon nem változik, tehát ez csak akkor segít, ha lehúzza az értesítési felületet, de ez is jobb mint a semmi, és könnyen elérhető azoknak, akiknek erre van szükségük. Ez különösen azoknak hasznos, akik képernyő felolvasót használnak.</string>
+  <string name="pref_cat_one_percent_hack" formatted="false">Egy százalékos kijelzés</string>
+  <string name="pref_one_percent_hack" formatted="false">Egy százalékos kijelzés</string>
+  <string name="pref_one_percent_hack_summary" formatted="false">Megoldás alkalmazása azokon az eszközökön, amelyek 10%-os pontosságot mutatnak</string>
+  <string name="pref_one_percent_hack_help" formatted="false">Ez a megoldás a Motorola eszközökön ajánlott, amik csak 10%-os pontosságot mutatnak.\n\nA legtöbb eszköznek nincs erre szüksége. Ha az ön eszköze jelenleg is százalékos pontosságú értékeket mutat, nincs szükség erre az opcióra.\n\nHa ez az opció szürke, és nem tudja bekapcsolni, akkor az ön eszköze nem képes használni ezt a lehetőséget.\n\nTovábbi információkért tekintse meg a <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">OnePercentHack</a>(angol nyelvű) wiki oldalt.</string>
+  <string name="pref_cat_time_remaining_estimates" formatted="false">Hátralevő idő becslések</string>
+  <string name="pref_show_charge_time_help" formatted="false">Ha be van kapcsolva, amikor az eszköz töltődik, a főablak írni fog egy becslést (az ön beállításaitól függően), hogy mennyi idő alatt fog az eszköze teljesen feltöltődni.</string>
+  <string name="pref_usb_charge_time_summary" formatted="false">USB-s töltési idő (0%-tól 100%-ig) órákban megadva:</string>
+  <string name="pref_usb_charge_time_help" formatted="false">Írja be, ön szerint mennyi időbe telik, amíg az akkumlátor teljesen feltöltődik 0%-ról 100%-ra USB-n keresztül.</string>
+  <string name="pref_ac_charge_time_summary" formatted="false">Hálózati töltési idő (0%-tól 100%-ig) órákban megadva:</string>
+  <string name="pref_ac_charge_time_help" formatted="false">Írja be, ön szerint mennyi időbe telik, amíg az akkumlátor teljesen feltöltődik 0%-ról 100%-ra hálózati feszültségen (hálózati töltőn).</string>
+  <string name="pref_show_light_usage_summary" formatted="false">Könnyű használattal hátralevő idő mutatása</string>
+  <string name="pref_show_light_usage_help" formatted="false">Lehetőség van (a főablakban) egy becslés kijelzésére, ami megmondja, mennyi idő alatt merül le az akkumlátor, ha alig/csak egy kicsit használja.</string>
+  <string name="pref_light_usage_time" formatted="false">Könnyű használat</string>
+  <string name="pref_light_usage_time_summary" formatted="false">Könnyű használattal lemerítési idő (100%-ról 0%-ig) órákban megadva:</string>
+  <string name="pref_light_usage_time_help" formatted="false">Adja meg, mennyi idő alatt for lemerülni az akkumlátora, ha alig/csak egy kicsit használja.</string>
+  <string name="pref_show_normal_usage_summary" formatted="false">Normál használattal hátralevő idő mutatása</string>
+  <string name="pref_show_heavy_usage_summary" formatted="false">Gyakori használattal hátralevő idő mutatása</string>
+  <string name="pref_show_normal_usage_help" formatted="false">Lehetőség van (a főablakban) egy becslés kijelzésére, ami megmondja, mennyi idő alatt merül le az akkumlátor, ha közepesen használja.</string>
+  <string name="pref_show_heavy_usage_help" formatted="false">Lehetőség van (a főablakban) egy becslés kijelzésére, ami megmondja, mennyi idő alatt merül le az akkumlátor, ha gyakran használja.</string>
+  <string name="pref_show_constant_usage_help" formatted="false">Lehetőség van (a főablakban) egy becslés kijelzésére, ami megmondja, mennyi idő alatt merül le az akkumlátor, ha folyamatosan használja.</string>
+  <string name="pref_normal_usage_time" formatted="false">Normál használat</string>
+  <string name="pref_normal_usage_time_summary" formatted="false">Normál használattal lemerítési idő (100%-ról 0%-ig) órákban megadva:</string>
+  <string name="pref_heavy_usage_time_summary" formatted="false">Gyakori használattal lemerítési idő (100%-ról 0%-ig) órákban megadva:</string>
+  <string name="pref_heavy_usage_time" formatted="false">Gyakori használat</string>
+  <string name="pref_normal_usage_time_help" formatted="false">Adja meg, mennyi idő alatt for lemerülni az akkumlátora, ha közepesen használja.</string>
+  <string name="pref_heavy_usage_time_help" formatted="false">Adja meg, mennyi idő alatt for lemerülni az akkumlátora, ha gyakran használja.</string>
+  <string name="pref_constant_usage_time_help" formatted="false">Adja meg, mennyi idő alatt fog lemerülni az akkumlátor, ha folyamatosan használja.</string>
+  <string name="pref_show_constant_usage_summary" formatted="false">Állandó használattal hátralevő idő mutatása</string>
+  <string name="pref_constant_usage_time" formatted="false">Állandó használat</string>
+  <string name="pref_constant_usage_time_summary" formatted="false">Állandó használattal lemerítési idő (100%-ról 0%-ig) órákban megadva:</string>
+  <string name="pref_cat_plugin_settings" formatted="false">Bővítmény beállítások</string>
+  <string name="pref_plugin_settings" formatted="false">Bővítmény beállítások</string>
+  <string name="pref_plugin_settings_summary" formatted="false">Bővítmény beállításainak szerkesztése</string>
+  <string name="pref_cat_color" formatted="false">Ikon színe</string>
+  <string name="pref_color_preview_help" formatted="false">A szín előnézet remélhetőleg könnyebbé teszi a beállítások áttekintését\n\nEz nem létezik 10%-os módban, mert egyszerűen nem lenne értelme.</string>
+  <string name="pref_red_help" formatted="false">Használhat egy vörös ikont, ha a töltöttségi szint a megadott küszöbérték alá megy.</string>
+  <string name="pref_red_thresh_summary10" formatted="false">Vörös ikon ennél vagy ennél alacsonyabb töltöttségnél:</string>
+  <string name="pref_red_thresh_help" formatted="false">Megadhatja az értéket, ami alatt (10%-os módban már ennél) az ikon pirosra váltson.\n\nA küszöbérték alatt minden érték pirosan fog megjelenni.\n\nA 10%-os módban a dolgok némileg másképp működnek, de maguktól értetődők.</string>
+  <string name="pref_amber_help" formatted="false">Használhat egy sárga ikont, ha a töltöttségi szint a megadott küszöbérték alá megy.</string>
+  <string name="pref_amber_thresh" formatted="false">Sárga küszöbszint</string>
+  <string name="pref_amber_thresh_summary" formatted="false">Sárga ikon ennyi %-os töltöttség alatt:</string>
+  <string name="pref_amber_thresh_summary10" formatted="false">Sárga ikon ennél vagy ennél alacsonyabb töltöttségnél:</string>
+  <string name="pref_amber_thresh_help" formatted="false">Megadhatja az értéket, ami alatt (10%-os módban már ennél) az ikon sárgára váltson.\n\nAz ikon 5%-kal magasabb szinttől lehet sárga, amit a vörös felső határának beállított. Például ha az ikon 15%-ig vörös, akkor a legkisebb megadható érték 20% lesz.\n\nA 10%-os módban a dolgok némileg másképp működnek, de maguktól értetődők.</string>
+  <string name="pref_green_help" formatted="false">Használhat egy zöld ikont, ha a töltöttségi szint a megadott küszöbérték alá megy.</string>
+  <string name="pref_green_thresh_summary" formatted="false">Zöld ikon ennyi %-os töltöttség felett:</string>
+  <string name="pref_green_thresh_help" formatted="false">Megadja a töltöttségi szintet, ami fölött az ikon zöld legyen.\n\nAz ikon attól a szinttől lehet zöld, amit a sárga felső határának beállított. Például ha az ikon 40%-tól sárga, akkor a legkisebb megadható érték 40% lesz.\n\nA 10%-os módban a dolgok némileg másképp működnek, de maguktól értetődők.</string>
+  <string name="alarms_overview" formatted="false">Riasztások áttekintése</string>
+  <string name="need_uninstall" formatted="false">Eltávolítás szükséges</string>
+  <string name="need_uninstall_hint" formatted="false">Sajnos a Battery Indicator Pro-t le kell törölni, majd újratelepíteni ehhez a fontos frissítéshez. Elnézést kérek a kellemetlenségért. Ez az Android egy technikai korlátozása miatt szükséges. A jövőben egyik frissítéshez sem kell ezt megtennie.\n\nMiután a \'Rendben\'-re kattint, újra az \'OK\'-ra kell kattintania, amikor az Android engedélyt kér az eltávolításhoz. Ezután a Market oldalra lesz irányítva, ahol újra telepítheti a programot.\n\nA legtöbb felhasználónak visszaállnak a régi adatai, a riasztásokat kivéve, amiket újra meg kell adni. Ezt nem tudjuk garantálni, ezért érdemes végignézni a beállításokat telepítés után.\n\nKöszönöm, és remélem, tetszenek majd az új szolgáltatások.</string>
+  <string name="pref_icon_plugin" formatted="false">Ikon bővítmény</string>
+  <string name="pref_cat_battery_use" formatted="false">Akku használat</string>
+  <string name="pref_finish_after_battery_use_help" formatted="false">Ez a funkció azok számára készült, akiknek minden billentyű leütés (vagy képernyő érintés) számít. Ennek bekapcsolása visszaállítja a régi viselkedést, kilép a Battery Indicator fő ablakából az Akku használat képernyő megnyitásakor.</string>
+  <string name="pref_finish_after_battery_use" formatted="false">Kilépés az akku használat megnyitásakor</string>
+  <string name="pref_finish_after_battery_use_summary" formatted="false">Kilépjen a fő ablakból amikor megnyitja az Akku használatot?</string>
+  <string name="pref_auto_disable_help" formatted="false">Ha bejelöli, a Battery Indicator letiltja a képernyőzárat töltéskor, és amikor a készülék nem töltődik, újra bekapcsolja.\n\nNote that with this option enabled, you will still have to manually pass through the lock screen once before it will be auto-disabled.</string>
+  <string name="pref_disallow_disable_lock_screen" formatted="false">Kézi tiltás letiltása</string>
+  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Letiltja a Képernyőzár tiltása gombot?</string>
+  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Ha olyan képernyőzárat használ, amely elérhatőve teszi az értesítési felületet lezárt képernyőnél, akkor érdemes ezt az opciót használni a készülék biztonsága érdekében.</string>
+  <string name="pref_cat_autostart" formatted="false">Automatikus indítás</string>
+  <string name="pref_autostart_at_boot" formatted="false">Automatikus indítás bekapcsoláskor</string>
+  <string name="pref_autostart_at_boot_summary" formatted="false">A Battery Indicator elindítása a készülék bekapcsolásakor:</string>
+  <string name="pref_autostart_at_boot_help" formatted="false">Beállíthatja, hogy a Battery Indicator milyen esetekben induljon el a készülék bekapcsolásakor.\n\nA \"Ha kikapcsoláskor aktív\" opcióval az alkalmazás automatikusan elindul, ha kikapcsoláskor aktív volt. Tehát ha leállítja egy task killer-rel, akkor a Battery Indicator nem fogja tudni, hogy leállította, és a készülék indításakor bekapcsol.</string>
   <string-array name="statuses">
     <item>Szétkapcsolva</item>
     <item>Ismeretlen</item>
@@ -210,20 +287,20 @@
     <item>Hiba</item>
   </string-array>
   <string-array name="pluggeds">
-    <item>Unplugged</item>
+    <item>Szétkapcsolva</item>
     <item>(hálózati feszültség)</item>
-    <item>(USB kapu)</item>
+    <item>(USB-n keresztül)</item>
     <item>(?)</item>
   </string-array>
   <string-array name="alarm_types_display">
     <item>Teljesen feltöltve</item>
     <item>Töltöttség ez alá csökken</item>
     <item>Töltöttség meghaladja</item>
-    <item>Mőmérséklet meghaladja</item>
+    <item>Hőmérséklet meghaladja</item>
     <item>Állapot probléma</item>
   </string-array>
   <string-array name="alarm_type_entries">
-    <item>Eléri a teljes töltést</item>
+    <item>Teljesen feltöltődik</item>
     <item>Töltöttség ez alá csökken...</item>
     <item>Töltöttség meghaladja...</item>
     <item>Hőmérséklet meghaladja...</item>
@@ -256,4 +333,8 @@
     <item>3 hét</item>
     <item>4 hét</item>
   </string-array>
+  <plurals name="for_n_hours">
+    <item quantity="one">%d órája</item>
+    <item quantity="other">%d órája</item>
+  </plurals>
 </resources>
