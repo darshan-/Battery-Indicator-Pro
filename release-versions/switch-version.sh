@@ -46,38 +46,6 @@ function set_cur_to_req {
     popd >/dev/null
 }
 
-function rm_cur_files {
-    pushd $wd/current >/dev/null
-
-    for f in */*
-    do
-        rm ../../res/$f
-    done
-
-    for d in *
-    do
-        rmdir --ignore-fail-on-non-empty $d
-    done
-
-    popd >/dev/null
-}
-
-function cp_cur {
-    pushd $wd/current >/dev/null
-
-    for d in *
-    do
-        mkdir $d 2> /dev/null
-    done
-
-    for f in */*
-    do
-        cp $f ../../res/$f
-    done
-
-    popd >/dev/null
-}
-
 function update_manifest {
     pushd $wd/.. >/dev/null
 
@@ -184,7 +152,6 @@ else
     then
         set_cur_to_req
     else
-        rm_cur_files
         swap_current
 
         if [ $req_dir = 'swap' ]
@@ -192,10 +159,6 @@ else
             req_dir=$current
         fi
     fi
-
-    # Copy files
-
-    cp_cur
 fi
 
 # Set vars
