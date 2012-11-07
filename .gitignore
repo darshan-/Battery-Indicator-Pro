@@ -13,15 +13,15 @@ my-release-key.keystore
 !ant.properties
 
 
-res/drawable*/b???.*
-res/drawable*/r???.*
-res/drawable*/a???.*
-res/drawable*/g???.*
-res/drawable*/n???.*
-res/drawable*/charging???.*
-res/drawable*/b_outline.png
-res/drawable*/r_outline.png
-res/drawable*/a_outline.png
-res/drawable*/g_outline.png
+# res/drawable*/b???.*
+# res/drawable*/r???.*
+# res/drawable*/a???.*
+# res/drawable*/g???.*
+# res/drawable*/n???.*
+# res/drawable*/charging???.*
+# res/drawable*/b_outline.png
+# res/drawable*/r_outline.png
+# res/drawable*/a_outline.png
+# res/drawable*/g_outline.png
 
 release-versions/current
