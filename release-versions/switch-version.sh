@@ -4,8 +4,8 @@
 # Constants
 #
 
-NORMAL_DIR='normal-icons-pre-v11'
-V11_DIR='black-square-icons-v11'
+NORMAL_DIR='pre-v11'
+V11_DIR='v11-plus'
 
 NORMAL_ARG='normal'
 V11_ARG='v11'
