@@ -108,7 +108,7 @@ public class BatteryIndicatorService extends Service {
     private static final Object[] EMPTY_OBJECT_ARRAY = {};
     private static final  Class[]  EMPTY_CLASS_ARRAY = {};
 
-    private static final int defaultIcon0 = R.drawable.b000;
+    private int defaultIcon0;
     private int chargingIcon0;
 
     /* Global variables for these Notification Runnables */
@@ -157,6 +157,12 @@ public class BatteryIndicatorService extends Service {
         Context context = getApplicationContext();
 
         alarms = new AlarmDatabase(context);
+
+        ///*v11*//* // Hackish, ugly way to hide this in v11 version; Musn't use multi-line comments within this section
+        defaultIcon0 = R.drawable.b000;
+        ///*v11*/ // End v11 hidden section
+
+        ///*v11*/ defaultIcon0 = R.drawable.default000;
 
         try {
             java.lang.reflect.Field f = R.drawable.class.getField("charging000");
