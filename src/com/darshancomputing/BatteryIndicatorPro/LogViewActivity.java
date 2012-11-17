@@ -90,8 +90,8 @@ public class LogViewActivity extends ListActivity {
         res = getResources();
 
         // Stranglely disabled by default for API level 14+
-        ///*v11*/ if (res.getBoolean(R.bool.api_level_14_plus))
-        ///*v11*/     getActionBar().setHomeButtonEnabled(true);
+        if (res.getBoolean(R.bool.api_level_14_plus))
+            getActionBar().setHomeButtonEnabled(true);
 
         setWindowSubtitle(res.getString(R.string.log_view_activity_subtitle));
 

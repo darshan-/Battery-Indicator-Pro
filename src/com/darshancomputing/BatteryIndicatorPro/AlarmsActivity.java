@@ -63,8 +63,8 @@ public class AlarmsActivity extends Activity {
         str = new Str(res);
 
         // Stranglely disabled by default for API level 14+
-        ///*v11*/ if (res.getBoolean(R.bool.api_level_14_plus))
-        ///*v11*/     getActionBar().setHomeButtonEnabled(true);
+        if (res.getBoolean(R.bool.api_level_14_plus))
+            getActionBar().setHomeButtonEnabled(true);
 
         setContentView(R.layout.alarms);
         setWindowSubtitle(res.getString(R.string.alarm_settings));

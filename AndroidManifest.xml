@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.darshancomputing.BatteryIndicatorPro"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
-    android:versionCode="003096"
+    android:versionCode="011096"
     android:versionName="7.0.0-dev-mbis"
 >
   <application
@@ -89,8 +89,9 @@
     />
   </application>
 
+  <!-- Seems to work on API level 8, but haven't tested on 4 or 7; might need to raise min to 7 or 8 after testing. -->
   <uses-sdk
-      android:minSdkVersion="3"
+      android:minSdkVersion="4"
       android:targetSdkVersion="14"
   />
 

@@ -268,8 +268,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         }
 
         // Stranglely disabled by default for API level 14+
-        ///*v11*/ if (res.getBoolean(R.bool.api_level_14_plus))
-        ///*v11*/     getActionBar().setHomeButtonEnabled(true);
+        if (res.getBoolean(R.bool.api_level_14_plus))
+            getActionBar().setHomeButtonEnabled(true);
 
         mSharedPreferences = getPreferenceManager().getSharedPreferences();
 
@@ -303,10 +303,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_PLUGIN_SETTINGS);
                 cat.removeAll();
 
-                boolean v11 = false;
-                ///*v11*/ v11 = true;
-
-                if (v11) {
+                if (android.os.Build.VERSION.SDK_INT >= 11) {
                     cat.setLayoutResource(R.layout.hidden);
 
                     cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);

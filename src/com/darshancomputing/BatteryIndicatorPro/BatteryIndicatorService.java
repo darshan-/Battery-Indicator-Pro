@@ -158,18 +158,12 @@ public class BatteryIndicatorService extends Service {
 
         alarms = new AlarmDatabase(context);
 
-        ///*v11*//* // Hackish, ugly way to hide this in v11 version; Musn't use multi-line comments within this section
-        defaultIcon0 = R.drawable.b000;
-        ///*v11*/ // End v11 hidden section
+        if (android.os.Build.VERSION.SDK_INT >= 11)
+            defaultIcon0 = R.drawable.default000;
+        else
+            defaultIcon0 = R.drawable.b000;
 
-        ///*v11*/ defaultIcon0 = R.drawable.default000;
-
-        try {
-            java.lang.reflect.Field f = R.drawable.class.getField("charging000");
-            chargingIcon0 = f.getInt(R.drawable.class);
-        } catch (Exception e) {
-            chargingIcon0 = defaultIcon0;
-        }
+        chargingIcon0 = R.drawable.charging000;
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -302,26 +296,26 @@ public class BatteryIndicatorService extends Service {
 
             int icon;
 
-            ///*v11*//* // Hackish, ugly way to hide this in v11 version; Musn't use multi-line comments within this section
-            if (settings.getBoolean(SettingsActivity.KEY_RED, res.getBoolean(R.bool.default_use_red)) &&
-                percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, str.default_red_thresh)) &&
-                percent <= SettingsActivity.RED_ICON_MAX) {
-                icon = R.drawable.r000 + percent - 0;
-            } else if (settings.getBoolean(SettingsActivity.KEY_AMBER, res.getBoolean(R.bool.default_use_amber)) &&
-                       percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_AMBER_THRESH, str.default_amber_thresh)) &&
-                       percent <= SettingsActivity.AMBER_ICON_MAX &&
-                       percent >= SettingsActivity.AMBER_ICON_MIN){
-                icon = R.drawable.a000 + percent - 0;
-            } else if (settings.getBoolean(SettingsActivity.KEY_GREEN, res.getBoolean(R.bool.default_use_green)) &&
-                       percent >= Integer.valueOf(settings.getString(SettingsActivity.KEY_GREEN_THRESH, str.default_green_thresh)) &&
-                       percent >= SettingsActivity.GREEN_ICON_MIN) {
-                icon = R.drawable.g020 + percent - 20;
+            if (android.os.Build.VERSION.SDK_INT >= 11) {
+                icon = ((status == STATUS_CHARGING) ? chargingIcon0 : defaultIcon0) + percent;
             } else {
-                icon = R.drawable.b000 + percent;
+                if (settings.getBoolean(SettingsActivity.KEY_RED, res.getBoolean(R.bool.default_use_red)) &&
+                    percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, str.default_red_thresh)) &&
+                    percent <= SettingsActivity.RED_ICON_MAX) {
+                    icon = R.drawable.r000 + percent - 0;
+                } else if (settings.getBoolean(SettingsActivity.KEY_AMBER, res.getBoolean(R.bool.default_use_amber)) &&
+                           percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_AMBER_THRESH, str.default_amber_thresh)) &&
+                           percent <= SettingsActivity.AMBER_ICON_MAX &&
+                           percent >= SettingsActivity.AMBER_ICON_MIN){
+                    icon = R.drawable.a000 + percent - 0;
+                } else if (settings.getBoolean(SettingsActivity.KEY_GREEN, res.getBoolean(R.bool.default_use_green)) &&
+                           percent >= Integer.valueOf(settings.getString(SettingsActivity.KEY_GREEN_THRESH, str.default_green_thresh)) &&
+                           percent >= SettingsActivity.GREEN_ICON_MIN) {
+                    icon = R.drawable.g020 + percent - 20;
+                } else {
+                    icon = R.drawable.b000 + percent;
+                }
             }
-            ///*v11*/ // End v11 hidden section
-
-            ///*v11*/ icon = ((status == STATUS_CHARGING) ? chargingIcon0 : defaultIcon0) + percent;
 
             String statusStr = str.statuses[status];
             if (status == STATUS_CHARGING)
@@ -432,9 +426,9 @@ public class BatteryIndicatorService extends Service {
 
             mainNotification = new Notification(icon, null, when);
 
-            ///*v11*/ if (android.os.Build.VERSION.SDK_INT >= 16) {
-                ///*v11*/     mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY, str.default_main_notification_priority));
-            ///*v11*/ }
+            if (android.os.Build.VERSION.SDK_INT >= 16) {
+                mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY, str.default_main_notification_priority));
+            }
 
             mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
 
