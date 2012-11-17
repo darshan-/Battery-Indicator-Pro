@@ -89,9 +89,8 @@
     />
   </application>
 
-  <!-- Seems to work on API level 8, but haven't tested on 4 or 7; might need to raise min to 7 or 8 after testing. -->
   <uses-sdk
-      android:minSdkVersion="4"
+      android:minSdkVersion="7"
       android:targetSdkVersion="14"
   />
 
