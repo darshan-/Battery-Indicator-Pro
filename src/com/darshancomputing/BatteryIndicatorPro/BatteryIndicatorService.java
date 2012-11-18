@@ -108,8 +108,10 @@ public class BatteryIndicatorService extends Service {
     private static final Object[] EMPTY_OBJECT_ARRAY = {};
     private static final  Class[]  EMPTY_CLASS_ARRAY = {};
 
-    private int defaultIcon0;
-    private int chargingIcon0;
+    private static final int plainIcon0 = R.drawable.plain000;
+    private static final int small_plainIcon0 = R.drawable.small_plain000;
+    private static final int chargingIcon0 = R.drawable.charging000;
+    private static final int small_chargingIcon0 = R.drawable.small_charging000;
 
     /* Global variables for these Notification Runnables */
     private Notification mainNotification;
@@ -157,13 +159,6 @@ public class BatteryIndicatorService extends Service {
         Context context = getApplicationContext();
 
         alarms = new AlarmDatabase(context);
-
-        if (android.os.Build.VERSION.SDK_INT >= 11)
-            defaultIcon0 = R.drawable.default000;
-        else
-            defaultIcon0 = R.drawable.b000;
-
-        chargingIcon0 = R.drawable.charging000;
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -297,7 +292,7 @@ public class BatteryIndicatorService extends Service {
             int icon;
 
             if (android.os.Build.VERSION.SDK_INT >= 11) {
-                icon = ((status == STATUS_CHARGING) ? chargingIcon0 : defaultIcon0) + percent;
+                icon = ((status == STATUS_CHARGING) ? chargingIcon0 : plainIcon0) + percent;
             } else {
                 if (settings.getBoolean(SettingsActivity.KEY_RED, res.getBoolean(R.bool.default_use_red)) &&
                     percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, str.default_red_thresh)) &&
