@@ -447,9 +447,10 @@
     being shrunk and dimmed.  It shows a lightning bolt under the
     number during charging.\n
 
-    \n\"Smaller number\" is like \"plain number\" but smaller, because
+    \n\"Smaller number\" is like \"Plain number\" but smaller, because
     some newer devices do not actually shrink the icon like stock
-    Android does.
+    Android does, and the very large number in \"Plain Number\" can
+    appear comically large on these devices.
   </string>
   <string formatted="false" name="pref_icon_plugin">Icon Plugin</string>
   <string formatted="false" name="no_plugins_installed_summary">Press MENU to get plugins</string>
