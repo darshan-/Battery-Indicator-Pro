@@ -15,6 +15,8 @@
     <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_main_window_theme" />
     <TextView style="@style/help_text" android:text="@string/pref_main_window_theme_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_icon_set" />
+    <TextView style="@style/help_text" android:text="@string/pref_icon_set_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_icon_plugin" />
     <TextView style="@style/help_text" android:text="@string/pref_icon_plugin_help" />
 

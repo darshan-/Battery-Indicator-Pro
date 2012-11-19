@@ -16,6 +16,13 @@
     />
 
     <ListPreference
+       android:key="icon_set"
+       android:title="@string/pref_icon_set"
+       android:entries="@array/icon_set_entries"
+       android:entryValues="@array/icon_set_values"
+    />
+
+    <ListPreference
        android:key="icon_plugin"
        android:title="@string/pref_icon_plugin"
        android:defaultValue="none"

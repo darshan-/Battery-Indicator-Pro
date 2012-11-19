@@ -57,6 +57,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_LOG_EVERYTHING = "log_everything";
     public static final String KEY_MAX_LOG_AGE = "max_log_age";
     public static final String KEY_MW_THEME = "main_window_theme";
+    public static final String KEY_ICON_SET = "icon_set";
     public static final String KEY_ICON_PLUGIN = "icon_plugin";
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
     public static final String KEY_AUTOSTART = "autostart";
@@ -105,13 +106,13 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
                                                 KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
                                                 KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME,
-                                                KEY_MAIN_NOTIFICATION_PRIORITY,
+                                                KEY_MAIN_NOTIFICATION_PRIORITY, KEY_ICON_SET,
                                                 KEY_MAX_LOG_AGE, KEY_ICON_PLUGIN/*, KEY_LANGUAGE_OVERRIDE*/};
 
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_CHARGE_AS_TEXT, KEY_STATUS_DUR_EST,
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
-                                                   KEY_NOTIFY_WHEN_KG_DISABLED,
+                                                   KEY_NOTIFY_WHEN_KG_DISABLED, KEY_ICON_SET,
                                                    KEY_ICON_PLUGIN, KEY_ONE_PERCENT_HACK, /*KEY_LANGUAGE_OVERRIDE,*/
                                                    KEY_SHOW_NOTIFICATION_TIME, KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
 

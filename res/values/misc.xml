@@ -360,6 +360,12 @@
     <item>672</item>
   </string-array>
 
+  <string-array name="icon_set_values">
+    <item>classic</item>
+    <item>plain_number</item>
+    <item>smaller_number</item>
+  </string-array>
+
   <bool name="long_activity_names">true</bool>
   <bool name="show_main_title">false</bool>
   <bool name="api_level_14_plus">false</bool>
