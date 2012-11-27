@@ -292,11 +292,17 @@ public class BatteryIndicatorService extends Service {
             int icon;
 
             String default_set = "classic";
-
             if (android.os.Build.VERSION.SDK_INT >= 11)
                 default_set = "plain_number";
 
-            String icon_set = settings.getString(SettingsActivity.KEY_ICON_SET, default_set);
+            String icon_set = settings.getString(SettingsActivity.KEY_ICON_SET, "null");
+            if (icon_set.equals("null")) {
+                icon_set = default_set;
+
+                SharedPreferences.Editor settings_editor = settings.edit();
+                settings_editor.putString(SettingsActivity.KEY_ICON_SET, default_set);
+                settings_editor.commit();
+            }
 
             if (icon_set.equals("plain_number")) {
                 icon = ((status == STATUS_CHARGING) ? chargingIcon0 : plainIcon0) + percent;
