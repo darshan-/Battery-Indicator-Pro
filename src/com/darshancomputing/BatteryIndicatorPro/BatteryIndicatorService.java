@@ -218,7 +218,8 @@ public class BatteryIndicatorService extends Service {
             mHandler.removeCallbacks(mPluginNotify);
             mHandler.removeCallbacks(mNotify);
 
-            String desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_PLUGIN, "none");
+            String desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_SET, "none");
+            if (desiredPluginPackage.startsWith("builtin.")) desiredPluginPackage = "none";
 
             if (! pluginPackage.equals(desiredPluginPackage) && ! pluginPackage.equals("none")) disconnectPlugin();
 
@@ -291,9 +292,9 @@ public class BatteryIndicatorService extends Service {
 
             int icon;
 
-            String default_set = "classic";
+            String default_set = "builtin.classic";
             if (android.os.Build.VERSION.SDK_INT >= 11)
-                default_set = "plain_number";
+                default_set = "builtin.plain_number";
 
             String icon_set = settings.getString(SettingsActivity.KEY_ICON_SET, "null");
             if (icon_set.equals("null")) {
@@ -304,9 +305,9 @@ public class BatteryIndicatorService extends Service {
                 settings_editor.commit();
             }
 
-            if (icon_set.equals("plain_number")) {
+            if (icon_set.equals("builtin.plain_number")) {
                 icon = ((status == STATUS_CHARGING) ? chargingIcon0 : plainIcon0) + percent;
-            } else if (icon_set.equals("smaller_number")) {
+            } else if (icon_set.equals("builtin.smaller_number")) {
                 icon = ((status == STATUS_CHARGING) ? small_chargingIcon0 : small_plainIcon0) + percent;
             } else {
                 if (settings.getBoolean(SettingsActivity.KEY_RED, res.getBoolean(R.bool.default_use_red)) &&

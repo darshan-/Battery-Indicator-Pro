@@ -58,7 +58,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_MAX_LOG_AGE = "max_log_age";
     public static final String KEY_MW_THEME = "main_window_theme";
     public static final String KEY_ICON_SET = "icon_set";
-    public static final String KEY_ICON_PLUGIN = "icon_plugin";
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_CHARGE_AS_TEXT = "charge_as_text";
@@ -107,13 +106,13 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
                                                 KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME,
                                                 KEY_MAIN_NOTIFICATION_PRIORITY, KEY_ICON_SET,
-                                                KEY_MAX_LOG_AGE, KEY_ICON_PLUGIN/*, KEY_LANGUAGE_OVERRIDE*/};
+                                                KEY_MAX_LOG_AGE/*, KEY_LANGUAGE_OVERRIDE*/};
 
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_CHARGE_AS_TEXT, KEY_STATUS_DUR_EST,
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
                                                    KEY_NOTIFY_WHEN_KG_DISABLED, KEY_ICON_SET,
-                                                   KEY_ICON_PLUGIN, KEY_ONE_PERCENT_HACK, /*KEY_LANGUAGE_OVERRIDE,*/
+                                                   KEY_ONE_PERCENT_HACK, /*KEY_LANGUAGE_OVERRIDE,*/
                                                    KEY_SHOW_NOTIFICATION_TIME, KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
 
     private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_MAIN_NOTIFICATION_PRIORITY};
@@ -168,9 +167,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     private Boolean ten_percent_mode;
 
-    private ListPreference pluginPref;
     private String currentPlugin;
-    private String iconPluginSummaryOverride;
 
     private int menu_res = R.menu.settings;
 
@@ -290,27 +287,21 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             cpbPref     = (ColorPreviewPreference) mPreferenceScreen.findPreference(KEY_COLOR_PREVIEW);
             if (ten_percent_mode) cpbPref.setLayoutResource(R.layout.hidden);
 
-            pluginPref = (ListPreference) mPreferenceScreen.findPreference(KEY_ICON_PLUGIN);
-            setPluginPrefEntriesAndValues(pluginPref);
-            currentPlugin = pluginPref.getValue();
+            ListPreference iconSetPref = (ListPreference) mPreferenceScreen.findPreference(KEY_ICON_SET);
+            setPluginPrefEntriesAndValues(iconSetPref);
+            currentPlugin = iconSetPref.getValue();
 
             redThresh   = (ListPreference) mPreferenceScreen.findPreference(KEY_RED_THRESH);
             amberThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_AMBER_THRESH);
             greenThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_GREEN_THRESH);
 
-            if (currentPlugin.equals("none")) {
+            if (currentPlugin.startsWith("builtin.")) {
                 PreferenceCategory cat;
 
                 cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_PLUGIN_SETTINGS);
                 cat.removeAll();
 
-                if (android.os.Build.VERSION.SDK_INT >= 11) {
-                    cat.setLayoutResource(R.layout.hidden);
-
-                    cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
-                    cat.removeAll();
-                    cat.setLayoutResource(R.layout.none);
-                } else {
+                if (currentPlugin.equals("builtin.classic")) {
                     cat.setLayoutResource(R.layout.none);
 
                     redEnabled   = mSharedPreferences.getBoolean(  KEY_RED, false);
@@ -337,6 +328,13 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                     }
 
                     validateColorPrefs(null);
+                } else {
+                    // TODO: Make bolt optional
+                    cat.setLayoutResource(R.layout.hidden);
+
+                    cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
+                    cat.removeAll();
+                    cat.setLayoutResource(R.layout.none);
                 }
             } else {
                 PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
@@ -611,9 +609,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (key.equals(KEY_TEN_PERCENT_MODE))
             resetColorsToDefaults();
 
-        if (key.equals(KEY_ICON_PLUGIN)) {
-            resetService(); // TODO: This didn't used to be here, and things seemed to work fine, but it seems like it should be needed...
-            restartThisScreen();
+        if (key.equals(KEY_ICON_SET)) {
+            resetService();
+            restartThisScreen(); // To show/hide icon-set/plugin settings
         }
 
         for (int i=0; i < PARENTS.length; i++) {
@@ -724,9 +722,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else {
             pref.setSummary(res.getString(R.string.currently_disabled));
         }
-
-        if (key.equals(KEY_ICON_PLUGIN) && iconPluginSummaryOverride != null)
-            pref.setSummary(iconPluginSummaryOverride);
     }
 
     private void validateColorPrefs(String changedKey) {
@@ -809,8 +804,13 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         java.util.List<String> entriesList = new java.util.ArrayList<String>();
         java.util.List<String>  valuesList = new java.util.ArrayList<String>();
 
-        entriesList.add(res.getString(R.string.none));
-         valuesList.add("none");
+        String[] icon_set_entries = res.getStringArray(R.array.icon_set_entries);
+        String[] icon_set_values  = res.getStringArray(R.array.icon_set_values);
+
+        for (int i = 0; i < icon_set_entries.length; i++) {
+            entriesList.add(icon_set_entries[i]);
+             valuesList.add(icon_set_values[i]);
+        }
 
         int nPackages = packages.size();
         for (int i=0; i < nPackages; i++) {
@@ -818,24 +818,23 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             if (pi.packageName.matches("com\\.darshancomputing\\.BatteryIndicatorPro\\.IconPluginV1\\..+")){
                 String entry = (String) pm.getApplicationLabel(pi.applicationInfo);
                 if (entry.startsWith(prefix))
-                    entry = entry.substring(prefix.length());
+                    //entry = entry.substring(prefix.length());
+                    entry = entry.substring(3); // Strip "BI "
 
                 entriesList.add(entry);
                  valuesList.add(pi.packageName);
             }
         }
 
-        if (entriesList.size() > 1)
-            iconPluginSummaryOverride = null;
-        else
-            iconPluginSummaryOverride = res.getString(R.string.no_plugins_installed_summary);
-
         lpref.setEntries    ((String[]) entriesList.toArray(new String[entriesList.size()]));
         lpref.setEntryValues((String[])  valuesList.toArray(new String[entriesList.size()]));
 
+        /* TODO: I think it's safe to skip this: if the previously selected plugin is uninstalled, null
+           should be picked up by the Service and converted to proper default, I think/hope.
         // If the previously selected plugin was uninstalled, revert to "None"
         //if (! valuesList.contains(lpref.getValue())) lpref.setValueIndex(0);
         if (lpref.getEntry() == null) lpref.setValueIndex(0);
+        */
     }
 
     private void resetColorsToDefaults() {

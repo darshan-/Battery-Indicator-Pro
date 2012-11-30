@@ -452,7 +452,7 @@
     Android does, and the very large number in \"Plain Number\" can
     appear comically large on these devices.
   </string>
-  <string formatted="false" name="pref_icon_plugin">Icon Plugin</string>
+  <string formatted="false" name="pref_icon_plugin">Icon Plugin</string> <!-- TODO: Merge with icon set help -->
   <string formatted="false" name="no_plugins_installed_summary">Press MENU to get plugins</string>
   <string formatted="false" name="pref_icon_plugin_help">
     If you have any Battery Indicator Pro icon plugins installed (press

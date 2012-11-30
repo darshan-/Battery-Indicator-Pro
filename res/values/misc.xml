@@ -361,9 +361,9 @@
   </string-array>
 
   <string-array name="icon_set_values">
-    <item>classic</item>
-    <item>plain_number</item>
-    <item>smaller_number</item>
+    <item>builtin.classic</item>
+    <item>builtin.plain_number</item>
+    <item>builtin.smaller_number</item>
   </string-array>
 
   <bool name="long_activity_names">true</bool>

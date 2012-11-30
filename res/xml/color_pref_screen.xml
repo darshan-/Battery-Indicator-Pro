@@ -21,12 +21,6 @@
        android:entries="@array/icon_set_entries"
        android:entryValues="@array/icon_set_values"
     />
-
-    <ListPreference
-       android:key="icon_plugin"
-       android:title="@string/pref_icon_plugin"
-       android:defaultValue="none"
-    />
   </PreferenceCategory>
 
   <PreferenceCategory
