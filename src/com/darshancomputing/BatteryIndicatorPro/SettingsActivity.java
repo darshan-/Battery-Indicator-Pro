@@ -211,9 +211,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     private static final Object[] EMPTY_OBJECT_ARRAY = {};
     private static final  Class[]  EMPTY_CLASS_ARRAY = {};
-    private java.lang.reflect.Method backupMethod;
-    private Object backupManager;
-    private Boolean backupAvailable;
 
     //private String oldLanguage = null;
 
@@ -248,16 +245,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        try {
-            Class<?> c = Class.forName("android.app.backup.BackupManager");
-            backupMethod = c.getMethod("dataChanged", new Class[] {});
-            java.lang.reflect.Constructor<?> init = c.getConstructor(android.content.Context.class);
-            backupManager = init.newInstance(this);
-            backupAvailable = true;
-        } catch (Exception e) {
-            backupAvailable = false;
-        }
 
         Intent intent = getIntent();
         pref_screen = intent.getStringExtra(EXTRA_SCREEN);
@@ -587,13 +574,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
-
-        if (backupAvailable) {
-            try{
-                backupMethod.invoke(backupManager, EMPTY_OBJECT_ARRAY);
-            } catch (Exception e) {
-            }
-        }
 
         if (key.equals(KEY_RED)) {
             redEnabled = mSharedPreferences.getBoolean(KEY_RED, false);
