@@ -96,8 +96,8 @@
   <string name="settings_overview" formatted="false">Overzicht</string>
   <string name="help_changelog" formatted="false">Bekijk de <a href="http://code.google.com/p/battery-indicator/wiki/Changelog?tm=6">lijst van wijzigingen</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">Geen garantie</string>
-  <string name="color_settings" formatted="false">Kleuren en thema\'s</string>
-  <string name="color_settings_summary" formatted="false">Wijzig icoonkleuren en vensterthema\'s</string>
+  <string name="theme_settings" formatted="false">Kleuren en thema\'s</string>
+  <string name="theme_settings_summary" formatted="false">Wijzig icoonkleuren en vensterthema\'s</string>
   <string name="time_settings" formatted="false">Tijdinstellingen</string>
   <string name="alarm_settings_subtitle" formatted="false">Alarminstellingen</string>
   <string name="alarm_settings" formatted="false">Alarmen</string>
@@ -109,8 +109,6 @@
   <string name="need_uninstall" formatted="false">Herinstallatie nodig</string>
   <string name="menu_get_plugins" formatted="false">Plugins ophalen</string>
   <string name="help_cat_features" formatted="false">Mogelijkheden</string>
-  <string name="pref_icon_plugin" formatted="false">Icoonplugin</string>
-  <string name="no_plugins_installed_summary" formatted="false">Druk op MENU om meer plugins te krijgen</string>
   <string name="pref_cat_battery_use" formatted="false">Batterijgebruik</string>
   <string name="pref_cat_temperature_unit" formatted="false">Temperatuureenheid</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Gebruik Fahrenheit in plaats van Celsius</string>
@@ -154,7 +152,7 @@
   <string name="pref_cat_notification_settings" formatted="false">Notificatieinstellingen</string>
   <string name="pref_alarm_lights" formatted="false">Laat LED branden</string>
   <string name="settings_overview_help" formatted="false">De instellingen zijn verdeeld over drie verschillende pagina\'s, zoals onder beschreven. Elke pagina heeft zijn eigen helppagina over de instellingen op die pagina. Druk op MENU en dan Help voor help.</string>
-  <string name="color_settings_help" formatted="false">Je kunt het thema voor het hoofdvenster wijzigen en kiezen of het icoon van kleur moet veranderen.</string>
+  <string name="theme_settings_help" formatted="false">Je kunt het thema voor het hoofdvenster wijzigen en kiezen of het icoon van kleur moet veranderen.</string>
   <string name="time_settings_summary" formatted="false">Wijzig tijdbenaderingen</string>
   <string name="alarm_settings_summary" formatted="false">Wijzig notificaties voor lege of volle batterij</string>
   <string name="pref_cat_logging" formatted="false">Logboek</string>
@@ -226,7 +224,6 @@
   <string name="pref_disallow_disable_lock_screen" formatted="false">Schakel handmatig uitschakelen uit</string>
   <string name="pref_show_charge_time_help" formatted="false">Wanneer je dit inschakelt zal er in het hoofdvenster een geschatte tijd zichtbaar zijn die zegt hoe lang het nog duurt voordat de batterij volledig opgeladen is.</string>
   <string name="help_features" formatted="false">• Klein, simpel en makkelijk te lezen.\n• Het vraagt geen statistieken aan het systeem. Het ontvangt een melding van het systeem als de batterijstatus verandert, update dan het icoon en gaat weer slapen. Wat dit betekent is dat het een klein beetje RAM gebruik en bijna geen CPU, dus het kost geen batterijduur.\n• Makkelijk toegang tot batterijgebruik scherm (Android 1.6+).\n• Optie om automatisch te starten bij opstarten.\n• Veel meer dat ik vergeten ben of dat te klein is om te noemen.\n• De bevrediging van het steunen van de ontwikkelaar. (Ik waardeer het zeer!)</string>
-  <string name="pref_icon_plugin_help" formatted="false">Als je een Battery Indicator Pro plugin hebt geinstalleerd kun je er hier tussen kiezen. De plugins hebben op dit moment geen opties, dus de kleurinstellingen hieronder werken dan niet meer.</string>
   <string name="pref_cat_keyguard_help" formatted="false">Android geeft apps toestemming om de schermvergrendeling aan en uit te schakelen.</string>
   <string name="pref_finish_after_toggle_lock_summary" formatted="false">Sluit hoofdvenster meteen na wijzigen van schermvergrendeling</string>
   <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Schakel de voorkom schermvergrendeling knop uit</string>

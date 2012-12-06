@@ -89,8 +89,8 @@
   <string name="help_summary" formatted="false"><i>Battery Indicator Pro</i> это компактный индикатор заряда батареи для мобильной операционной системы Android™. Её основная функция - отображать уровень заряда батареи на индикаторе расположенном на верхней панели.\n\nВерсия Pro This Pro version offers a great deal more utility than that, however. Besides offering red, amber, and green icons, it also has the following key features as of version 3.0:\n\n• Fully configurable estimated charge/discharge time left.\n• Logging of battery state.\n• Themes for the main window (including a full-size window with large, easy-to-read text).\n• Manually disable/reenable the device lock screen, with the option to automatically disable it when plugged in and reenable it when unplugged.\n• Many more useful things that you\'ll discover throughout.</string>
   <string name="help_contact" formatted="false">Если у Вас возникнут вопросы или проблемы, пожалуйста перейдите по ссылке<a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">FAQ проекта</a>, чтобы узнать как можно связаться со мной.\n</string>
   <string name="pref_hint" formatted="false">Подсказка: Нажмите MENU для вызова помощи.</string>
-  <string name="color_settings" formatted="false">Цвета и Темы</string>
-  <string name="color_settings_summary" formatted="false">Цвета индикатора и темы окна</string>
+  <string name="theme_settings" formatted="false">Цвета и Темы</string>
+  <string name="theme_settings_summary" formatted="false">Цвета индикатора и темы окна</string>
   <string name="time_settings" formatted="false">Настройки времени</string>
   <string name="alarm_settings_subtitle" formatted="false">Настройки оповещений</string>
   <string name="alarm_settings" formatted="false">Оповещения</string>

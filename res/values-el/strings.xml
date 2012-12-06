@@ -86,8 +86,8 @@
   <string name="help_cat_contact" formatted="false">Επικοινωνία</string>
   <string name="pref_hint" formatted="false">Συμβουλή: Πατήστε MENU για βοήθεια</string>
   <string name="settings_overview" formatted="false">Επισκόπηση</string>
-  <string name="color_settings" formatted="false">Χρώματα και Θέματα</string>
-  <string name="color_settings_summary" formatted="false">Έλεγχος χρωμάτων εικόνων και θέματα παραθύρων</string>
+  <string name="theme_settings" formatted="false">Χρώματα και Θέματα</string>
+  <string name="theme_settings_summary" formatted="false">Έλεγχος χρωμάτων εικόνων και θέματα παραθύρων</string>
   <string name="time_settings" formatted="false">Ρυθμίσεις Χρόνου</string>
   <string name="time_settings_summary" formatted="false">Έλεγχος υπολογισμού και προσέγγισης χρόνου</string>
   <string name="alarm_settings_subtitle" formatted="false">Ρυθμίσεις Ειδοποιήσεων</string>
@@ -98,8 +98,6 @@
   <string name="add_alarm" formatted="false">Προσθήκη ειδοποίησης</string>
   <string name="pref_cat_themes" formatted="false">Θέματα</string>
   <string name="pref_main_window_theme" formatted="false">Θέμα Κυρίως Παραθύρου</string>
-  <string name="pref_icon_plugin" formatted="false">Εικόνα για Plugin</string>
-  <string name="no_plugins_installed_summary" formatted="false">Πατήστε MENU για λήψη plugins</string>
   <string name="pref_cat_logging" formatted="false">Καταγραφή</string>
   <string name="pref_enable_logging" formatted="false">Ενεργοποίηση Καταγραφής</string>
   <string name="pref_enable_logging_summary" formatted="false">Καταγραφή αλλαγής κατάστασης μπαταρίας;</string>
@@ -217,13 +215,12 @@
   <string name="help_acknowledgments" formatted="false">Αυτή η εφαρμογή θα ήταν διαθέσιμη μόνο στα Αγγλικά χωρίς τη γενναιόδωρη βοήθεια από εθελοντές μεταφραστές. Ευχαριστώ!\n\nΠολλές ευχαριστίες οφείλονται στην Google και σε όλους προγραμματιστές ανοικτού κώδικα που έκαναν την πλατφόρμα Android καθώς και αυτή την εφαρμογή υλοποιήσιμη.\n\nΗ εικόνα της εφαρμογής (η μπαταρία που βλέπετε στο Market) είναι βασισμένη σε μια εικόνα από την <a href="http://www.oxygen-icons.org">the Oxygen icon theme</a> και χρησιμοποιείται κάτω από την <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-ShareAlike 3.0 License</a>.</string>
   <string name="help_contact" formatted="false">Αν έχετε κάποια ερώτηση ή πρόβλημα, παρακαλώ δείτε <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">the project FAQ</a> πώς να επικοινωνήσετε μαζί μου.\n</string>
   <string name="settings_overview_help" formatted="false">Οι ρυθμίσεις είναι οργανωμένες σε τέσσερις ξεχωριστές σελίδες, όπως περιγράφεται πιο κάτω. Κάθε σελίδα έχει τη δική της σελίδα βοήθειας που περιγράφει τις ρυθμίσεις της σελίδας αυτής. Απλά πατήστε MENU και μετά Βοήθεια (στα tablets, το MENU δεν είναι αναγκαίο) για να πάρετε βοήθεια σε όποια σελίδα ρυθμίσεων βρίσκεστε.</string>
-  <string name="color_settings_help" formatted="false">Μπορείτε να αλλάξετε το θέμα για το κυρίως παράθυρο και να ελέγξετε αν και πότε η εικόνα ειδοποίησης (μπαταρίας) θα αλλάζει χρώμα.</string>
+  <string name="theme_settings_help" formatted="false">Μπορείτε να αλλάξετε το θέμα για το κυρίως παράθυρο και να ελέγξετε αν και πότε η εικόνα ειδοποίησης (μπαταρίας) θα αλλάζει χρώμα.</string>
   <string name="time_settings_help" formatted="false">Εδώ μπορείτε να ελέγξετε πότε η ειδοποίηση θα αλλάζει από το να λέει πότε ακριβώς η κατάσταση της συσκευής άλλαξε(αποσυνδεδεμένη, για παράδειγμα) στο να εμφανίζει προσεγγιστικά πριν από πόσες ώρες συνάβηκε η αλλαγή αυτή.\n\nΜορείτε επίσης να ελέγξετε ποιο υπολογισμό θέλετε να βλέπετε για το χρόνο που απομένει για πλήρη φόρτιση με USB/AC και για ελαφριά/κανονική/βαριά/σταθερή χρήση, και να ρυθμίσετε τη βάση για αυτούς τους υπολογισμούς.</string>
   <string name="alarm_settings_help" formatted="false">Μπορείτε να ρυθμίσετε τον Battery Indicator να σας ενημερώνει όταν το επίπεδο της μπαταρίας φτάνει σε ένα συγκεκριμένο επίπεδο (π.χ, όταν η μπαταρία φορτίζεται πλήρως ή όταν το επίπεδο της μπαταρίας πέφτει κάτω από 20%)</string>
   <string name="other_settings_help" formatted="false">Όλες οι άλλες ρυθμίσεις βρίσκονται σε αυτή τη σελίδα, συμπεριλαμβανομένων της καταγραφής δεδομένων, του κλειδώματος της οθόνης, των μονάδων θερμοκρασίας, της αυτόματης έναρξης, και άλλα ακόμη.</string>
   <string name="pref_please_upgrade" formatted="false">Η έκδοση Pro έχει πολύ περισσότερες ρυθμίσεις και δυνατότητες, συμπεριλαμβανομένων έγχρωμων εικόνων, λαμβανόμενα plugins, ειδοποιήσεις, θέματα παραθύρων, καταγραφή κατάστασης μπαταρίας, αυτόματη/χειροκίνητη απενεργοποίηση κλειδώματος οθόνης, υπολογισμό χρόνου για φόρτιση/αποφόρτιση, και άλλα ακόμη.</string>
   <string name="pref_main_window_theme_help" formatted="false">Καθορίζει το θέμα του κυρίως παραθύρου. Από προεπιλογή, το θέμα καθορίζεται βασικά από τις προδιαγραφές διαλόγων του Android, όπως αυτό που έχει ο Battery Indicator. Το θέμα παραθύρου Πλήρους Οθόνης είναι χρήσιμο αν σας αρέσει να έχετε μεγάλη οθόνη για να είναι εύκολο να τη διαβάσετε. Τα άλλα θέματα είναι απλά για διασκέδαση.</string>
-  <string name="pref_icon_plugin_help" formatted="false">Αν έχετε εγκατεστημένα plugins εικόνων του Battery Indicator Pro (πατήστε MENU και μετά Λήψη Plugins για να λάβετε δωρεάν plugins), μπορείτε να επιλέξετε μεταξύ αυτών εδώ. Σε αυτό το ση,είο τα plugins δεν προσφέρουν οποιεσδήποτε επιλογές, έτσι οι ρυθμίσεις του χρώματος εικόνας θα εξαφανιστούν αν επιλέξετε οτιδήποτε άλλο εκτός από το \"Κανένα\". Η ιδέα είναι, φυσικά, ότι θα υπάρχουν πολλά plugins διαθέσιμα έτσι ώστε να μπορείτε να βρείτε ένα που να σας ταιριάζει.</string>
   <string name="pref_enable_logging_help" formatted="false">Αν ενεργοποιηθεί, ο Battery Indicator, θα καταγράφει τις μεταβολές κατάστασης της μπαταρίας (π.χ αν η συσκευή αποσυνδεθεί από το ρεύμα ή έχει φορτιστεί πλήρως). Μπορείτε να δείτε τα κατεγραμμένα δεδομένα από το κυρίως παράθυρο (πατήστε MENU και μετά επιλέξτε Λίστα Καταγραφής, στα tablets, το MENU δε είναι απαραίτητο.)</string>
   <string name="pref_log_everything_help" formatted="false">Αν ενεργοποιηθεί, ο Battery Indicator, θα καταγράφει κάθε μεταβολή στο επίπεδο φόρτισης επίσης (π.χ φόρτιση από 57% σε 56% και αντίστροφα).</string>
   <string name="pref_max_log_age_help" formatted="false">Αν η καταγραφή είναι ενεργοποιημένη, τότε όποτε συνδέετε τη συσκευή στην πρίζα, όλες οι παλαιότερες καταγραφές θα διαγραφούν.</string>

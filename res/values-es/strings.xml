@@ -88,9 +88,9 @@
   <string name="pref_hint" formatted="false">Pulse MENU para ver la ayuda.</string>
   <string name="settings_overview" formatted="false">Visión general</string>
   <string name="settings_overview_help" formatted="false">Los ajustes están divididos en tres páginas, y cada una de ellas tiene su propia página de ayuda describiendo los ajustes que se pueden realizar en ella. Pulse MENU-Ayuda para obtener ayuda de la página concreta en la que esté.</string>
-  <string name="color_settings" formatted="false">Colores y temas</string>
-  <string name="color_settings_summary" formatted="false">Controla los colores del icono y los temas para la ventana</string>
-  <string name="color_settings_help" formatted="false">Puede cambiar el tema para la ventana principal y controlar si el icono de la barra de estado cambia de color, y cuándo debe hacerlo.</string>
+  <string name="theme_settings" formatted="false">Colores y temas</string>
+  <string name="theme_settings_summary" formatted="false">Controla los colores del icono y los temas para la ventana</string>
+  <string name="theme_settings_help" formatted="false">Puede cambiar el tema para la ventana principal y controlar si el icono de la barra de estado cambia de color, y cuándo debe hacerlo.</string>
   <string name="time_settings" formatted="false">Ajustes de tiempo</string>
   <string name="time_settings_summary" formatted="false">Controla las estimaciones de tiempo y las aproximaciones</string>
   <string name="time_settings_help" formatted="false">Desde aquí puede controlar cuando la notificación pasa de decir exactamente cuándo ha cambiado el estado del teléfono (de \"Enchufado\" a \"Desenchufado\", por ejemplo) a decir aproximadamente cuántas horas han pasado desde el cambio.\n\nTambién puede controlar las estimaciones que desee ver, tanto para el tiempo de carga restante (ya sea con conexión a la red o por USB) como para el tiempo restante de uso ligero/normal/intensivo/constante, y ajustar los parámetros para estas estimaciones.</string>

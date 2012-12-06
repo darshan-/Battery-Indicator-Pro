@@ -13,9 +13,9 @@
   />
 
   <Preference
-     android:key="color_settings"
-     android:title="@string/color_settings"
-     android:summary="@string/color_settings_summary"
+     android:key="theme_settings"
+     android:title="@string/theme_settings"
+     android:summary="@string/theme_settings_summary"
   />
 
   <Preference

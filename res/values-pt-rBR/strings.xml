@@ -88,8 +88,8 @@
   <string name="help_cat_contact" formatted="false">Contato</string>
   <string name="pref_hint" formatted="false">Sugestão: Pressiona a tecla MENU para ajuda.</string>
   <string name="settings_overview" formatted="false">Visão Geral</string>
-  <string name="color_settings" formatted="false">Cores e Temas</string>
-  <string name="color_settings_summary" formatted="false">Configurar as cores dos ícones e temas das janelas</string>
+  <string name="theme_settings" formatted="false">Cores e Temas</string>
+  <string name="theme_settings_summary" formatted="false">Configurar as cores dos ícones e temas das janelas</string>
   <string name="time_settings" formatted="false">Configurações de Hora</string>
   <string name="alarm_settings_subtitle" formatted="false">Definições dos alarmes</string>
   <string name="alarm_settings" formatted="false">Alarmes</string>
@@ -105,8 +105,6 @@
   <string name="add_alarm" formatted="false">Adicionar alarme</string>
   <string name="pref_cat_themes" formatted="false">Temas</string>
   <string name="pref_main_window_theme" formatted="false">Tema da Janela Principal</string>
-  <string name="pref_icon_plugin" formatted="false">Plugins para Ícones</string>
-  <string name="no_plugins_installed_summary" formatted="false">Aperte MENU para pegar plugins</string>
   <string name="pref_cat_logging" formatted="false">Relatórios</string>
   <string name="pref_enable_logging" formatted="false">Ativar Relatórios</string>
   <string name="pref_enable_logging_summary" formatted="false">Registrar mudanças no estado da bateria?</string>

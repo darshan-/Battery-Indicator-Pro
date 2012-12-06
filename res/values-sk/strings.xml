@@ -93,8 +93,8 @@
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="pref_hint" formatted="false">Nápoveda: pre pomoc stlačte MENU.</string>
   <string name="settings_overview" formatted="false">Prehľad</string>
-  <string name="color_settings" formatted="false">Farby a Témy</string>
-  <string name="color_settings_summary" formatted="false">Ovládajte farbu ikonky a tému okna</string>
+  <string name="theme_settings" formatted="false">Farby a Témy</string>
+  <string name="theme_settings_summary" formatted="false">Ovládajte farbu ikonky a tému okna</string>
   <string name="time_settings" formatted="false">Nastavenia času</string>
   <string name="time_settings_summary" formatted="false">Nastavte odhady času a nahraďte odhady</string>
   <string name="alarm_settings_subtitle" formatted="false">Nastavenie upozornení</string>
@@ -106,7 +106,6 @@
   <string name="add_alarm" formatted="false">Pridať upozornenie</string>
   <string name="pref_cat_themes" formatted="false">Témy</string>
   <string name="pref_main_window_theme" formatted="false">Téma hlavného okna</string>
-  <string name="pref_icon_plugin" formatted="false">Ikona rozšírenia</string>
   <string name="pref_cat_logging" formatted="false">Zaznamenávanie</string>
   <string name="pref_enable_logging" formatted="false">Zapnúť zaznamenávanie</string>
   <string name="pref_enable_logging_summary" formatted="false">Zaznamenávať zmeny stavu batérie?</string>
@@ -214,14 +213,13 @@
   <string name="pref_alarm_lights" formatted="false">Blikať svetlom</string>
   <string name="need_uninstall" formatted="false">Je potrebné odinštalovanie</string>
   <string name="menu_get_plugins" formatted="false">Pridať rozšírenia</string>
-  <string name="no_plugins_installed_summary" formatted="false">Stlačte MENU pre pridanie rozšírení</string>
   <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro je potrebné odinštalovať a následne znovu nainštalovať aby mohol byť dokončený upgrade na novú verziu. Ospravedlňujeme sa za komplikácie. Je to nutné z dôvodu technických limitov Androidu. Pri ďaľších upgradoch to nebude potrebné.\n\nPo kliknutí na \'OK\' pre opustenie tejto správy, kliknite na \'OK\' znova keď bude od Vás Android požadovať povolenie na odinštalovanie. Následne budete presmerovaní na stránku Marketu, kde budete môcť aplikáciu znovu nainštalovať.\n\nVäčšine používateľov sa nastavenia obnovia s výnimkou upozornení, ktoré musia byť znovu vytvorené. Nemôžeme Vám to garantovať, avšak uistite sa o tom v nastaveniach aplikácie po inštalácii.\n\nĎakujeme a dúfame, že sa Vám budú nové funkcie páčiť!</string>
   <string name="help_features" formatted="false">• Malá, jednoduchá a ľahko čitateľná aplikácia.\n• Nezbiera údaje. Prijíma správy z OS keď sa zmení stav batérie, potom jednoducho aktualizuje ikonu a ide do režimu sleep. Znamená to, že používa malé množstvo RAM a takmer nevyužíva procesor, takže nemôže vybíjať Vašu batériu. Odhadujem, že spotreba je maximálne 1 minúta z celkovej výdrže plne nabitej batérie. Ak sa stretávate s vačším poklesom kapacity, pravdepodobne máte nainštalovanú inú aplikáciu (ako \"task killer\" správcu procesov nejakého druhu) ovplvňujúcu normálne správanie sa Battery Indicator.\n• Jednoduchý prístup k používaniu batérie (vyžaduje Android 1.6+).\n• Je možné nastaviť spustenie pri štarte, žiadne spustenie alebo spustenie ak aplikácia bežala pri vypnutí zariadenia.\n• A oveľa viac ako som tu spomenul, čo robí z tejto aplikácie jednu z najlepších.\n• Spokojnosť z podpory pre vývojárov. (Naozaj si to vážim!)</string>
   <string name="help_no_warranty" formatted="false">Tento softvér je ponúkaný v dúfaní, že bude užitočný ale BEZ AKEJKOĽVEK ZÁRUKY; neposkytujú sa ani odvodené záruky PREDAJNOSTI alebo VHODNOSTI PRE URČITÝ ÚČEL.\n\nAj keď som urobil všetko preto, aby som sa ubezpečil, že to funguje dobre a nespôsobuje problémy, nie som zodpovedný za prípadné škody alebo ťažkosti, ktoré to môže spôsobiť za žiadnych okolností.</string>
   <string name="help_acknowledgments" formatted="false">Táto aplikácia by bola dostupná iba v angličtine nebyť štedrej podpory zo strany dobrovoľných prekladateľov. Ďakujem!\n\nVeľká vďaka patrí aj Google a všetkým open-source programátorom platformy Android, ktorý toto umožnili.\n\nIkona v launcheri (zvislá batéria čo vidíte v Markete) je navrhnutá podľa ikony z <a href="http://www.oxygen-icons.org">Oxygen icon theme</a> a je použitá pod <a href="http://creativecommons.org/licenses/by-sa/3.0/">licenciou Creative Common Attribution-ShareAlike 3.0 </a>.</string>
   <string name="help_contact" formatted="false">Ak máte otázky alebo problém, pozrite si <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">najčastejšie kládené otázky</a> kde nájdete ako ma môžete kontaktovať.\n</string>
   <string name="settings_overview_help" formatted="false">Nastavenia sú zoradené do troch samostaných stránok ako je popísané nižšie. Každá stránka má vlastnú stránku pomoci popisujúcu nastavenia na konkrétnej stránke. Jednoducho stlačte MENU a potom Pomocník (na tabletoch MENU nie je požadované) aby ste našli pomoc na ktorejkoľvek stránke.</string>
-  <string name="color_settings_help" formatted="false">Môžete zmeniť tému pre hlavné okno a nastaviť kedy sa zmení farba ikony v notifikačnej lište.</string>
+  <string name="theme_settings_help" formatted="false">Môžete zmeniť tému pre hlavné okno a nastaviť kedy sa zmení farba ikony v notifikačnej lište.</string>
   <string-array name="statuses">
     <item>Odpojený</item>
     <item>Neznámy</item>

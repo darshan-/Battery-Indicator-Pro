@@ -43,9 +43,9 @@ public class SettingsHelpActivity extends Activity {
         if (pref_screen == null) {
             setContentView(R.layout.main_settings_help);
             setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
-        } else if (pref_screen.equals(SettingsActivity.KEY_COLOR_SETTINGS)) {
-            setContentView(R.layout.color_settings_help);
-            setWindowSubtitle(res.getString(R.string.color_settings));
+        } else if (pref_screen.equals(SettingsActivity.KEY_THEME_SETTINGS)) {
+            setContentView(R.layout.theme_settings_help);
+            setWindowSubtitle(res.getString(R.string.theme_settings));
         } else if (pref_screen.equals(SettingsActivity.KEY_TIME_SETTINGS)) {
             setContentView(R.layout.time_settings_help);
             setWindowSubtitle(res.getString(R.string.time_settings));

@@ -82,9 +82,9 @@
   <string name="pref_hint" formatted="false"><b>提示：</b>單擊「選單」獲取說明。</string>
   <string name="settings_overview" formatted="false">預覽</string>
   <string name="settings_overview_help" formatted="false">設定包括如下所述的三個獨立頁面。各頁面的說明信息獨立顯示，在「選單」-「說明」內容中可獲取當前頁面的說明信息。</string>
-  <string name="color_settings" formatted="false">色彩主題</string>
-  <string name="color_settings_summary" formatted="false">設定圖標色彩及視窗主題</string>
-  <string name="color_settings_help" formatted="false">您可以選擇主視窗顯示主題及設定圖標變化色彩。</string>
+  <string name="theme_settings" formatted="false">色彩主題</string>
+  <string name="theme_settings_summary" formatted="false">設定圖標色彩及視窗主題</string>
+  <string name="theme_settings_help" formatted="false">您可以選擇主視窗顯示主題及設定圖標變化色彩。</string>
   <string name="time_settings" formatted="false">時間設定</string>
   <string name="time_settings_summary" formatted="false">定制時間預估方式</string>
   <string name="time_settings_help" formatted="false">您可在此界面可設定電池狀態變化後（例如：拔下電源）所經歷時間估計方式。\n\n您也可以設定預估USB/AC方式充電、省電/正常/頻繁/持續使用手機剩餘時間的基準值。</string>

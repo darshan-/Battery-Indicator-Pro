@@ -41,7 +41,7 @@ import android.view.WindowManager;
 import java.util.Locale;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
-    public static final String KEY_COLOR_SETTINGS = "color_settings";
+    public static final String KEY_THEME_SETTINGS = "theme_settings";
     public static final String KEY_TIME_SETTINGS = "time_settings";
     public static final String KEY_ALARM_SETTINGS = "alarm_settings";
     public static final String KEY_ALARM_EDIT_SETTINGS = "alarm_edit_settings";
@@ -65,8 +65,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_TEN_PERCENT_MODE = "ten_percent_mode";
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
     public static final String KEY_CAT_COLOR = "category_color";
+    public static final String KEY_CAT_CHARGING_INDICATOR = "category_charging_indicator";
     public static final String KEY_CAT_PLUGIN_SETTINGS = "category_plugin_settings";
     public static final String KEY_PLUGIN_SETTINGS = "plugin_settings";
+    public static final String KEY_INDICATE_CHARGING = "indicate_charging";
     public static final String KEY_RED = "use_red";
     public static final String KEY_RED_THRESH = "red_threshold";
     public static final String KEY_AMBER = "use_amber";
@@ -112,6 +114,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
                                                    KEY_NOTIFY_WHEN_KG_DISABLED, KEY_ICON_SET,
+                                                   KEY_INDICATE_CHARGING,
                                                    KEY_ONE_PERCENT_HACK, /*KEY_LANGUAGE_OVERRIDE,*/
                                                    KEY_SHOW_NOTIFICATION_TIME, KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
 
@@ -276,11 +279,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (pref_screen == null) {
             setPrefScreen(R.xml.main_pref_screen);
             setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
-        } else if (pref_screen.equals(KEY_COLOR_SETTINGS)) {
-            setPrefScreen(R.xml.color_pref_screen);
-            setWindowSubtitle(res.getString(R.string.color_settings));
+        } else if (pref_screen.equals(KEY_THEME_SETTINGS)) {
+            setPrefScreen(R.xml.theme_pref_screen);
+            setWindowSubtitle(res.getString(R.string.theme_settings));
 
-            menu_res = R.menu.color_settings;
+            menu_res = R.menu.theme_settings;
 
             ten_percent_mode = mSharedPreferences.getBoolean(KEY_TEN_PERCENT_MODE, false);
 
@@ -328,8 +331,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                     }
 
                     validateColorPrefs(null);
+
+                    cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CHARGING_INDICATOR);
+                    cat.removeAll();
+                    cat.setLayoutResource(R.layout.none);
                 } else {
-                    // TODO: Make bolt optional
                     cat.setLayoutResource(R.layout.hidden);
 
                     cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
@@ -338,6 +344,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 }
             } else {
                 PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
+                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CHARGING_INDICATOR);
                 cat.removeAll();
                 cat.setLayoutResource(R.layout.none);
 
@@ -557,7 +566,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         String key = preference.getKey();
         if (key == null) {
             return false;
-        } else if (key.equals(KEY_COLOR_SETTINGS) || key.equals(KEY_TIME_SETTINGS) || key.equals(KEY_OTHER_SETTINGS)) {
+        } else if (key.equals(KEY_THEME_SETTINGS) || key.equals(KEY_TIME_SETTINGS) || key.equals(KEY_OTHER_SETTINGS)) {
             ComponentName comp = new ComponentName(getPackageName(), SettingsActivity.class.getName());
             startActivity(new Intent().setComponent(comp).putExtra(EXTRA_SCREEN, key));
 

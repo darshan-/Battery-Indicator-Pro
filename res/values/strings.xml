@@ -377,11 +377,11 @@
     help from whatever settings page you are on.
   </string>
 
-  <string formatted="false" name="color_settings">Colors and Themes</string>
-  <string formatted="false" name="color_settings_summary">Control icon colors and window themes</string>
-  <string formatted="false" name="color_settings_help">
-    You can change the theme for the main window and control if and
-    when the notification icon changes color.
+  <string formatted="false" name="theme_settings">Icons and Themes</string>
+  <string formatted="false" name="theme_settings_summary">Control icon sets and window themes</string>
+  <string formatted="false" name="theme_settings_help">
+    You can change the theme for the main window, select which icon
+    set to use, and change the settings for the icon set (e.g., colors).
   </string>
   <string formatted="false" name="time_settings">Time Settings</string>
   <string formatted="false" name="time_settings_summary">Control time estimates and approximations</string>
@@ -439,7 +439,7 @@
 
     \n\"Classic\" is the original icon set from 2009.  It is still the
     best on older devices, but newer versions of Android (starting
-    with Android 3.0, Honeycomb) shink and dim the notification icons,
+    with Android 3.0, Honeycomb) shrink and dim the notification icons,
     making this set very difficult to read.\n
 
     \n\"Plain number\" is the default for all newer Android devices.
@@ -450,18 +450,21 @@
     \n\"Smaller number\" is like \"Plain number\" but smaller, because
     some newer devices do not actually shrink the icon like stock
     Android does, and the very large number in \"Plain Number\" can
-    appear comically large on these devices.
+    appear comically large on these devices.\n
+    
+    \nIf you have any Battery Indicator Pro icon plugins installed
+    (press MENU, then Get Plugins to get free plugins, or just press
+    the Get Plugins button on the Action Bar on newer devices), you
+    can choose among them here.
   </string>
-  <string formatted="false" name="pref_icon_plugin">Icon Plugin</string> <!-- TODO: Merge with icon set help -->
-  <string formatted="false" name="no_plugins_installed_summary">Press MENU to get plugins</string>
-  <string formatted="false" name="pref_icon_plugin_help">
-    If you have any Battery Indicator Pro icon plugins installed (press
-    MENU then Get Plugins to get free plugins), you can choose among them here.
-    At this time, the plugins don\'t offer any options, so the icon color
-    settings below will disappear if you choose anything other than
-    \"None\".  The trade-off, of course, is that there will hopefully
-    be many plugins available so you should be able to find one that
-    does exactly what you want.
+
+  <string formatted="false" name="pref_cat_charging_indicator">Charging Indicator</string>
+  <string formatted="false" name="pref_indicate_charging">Indicate Charging</string>
+  <string formatted="false" name="pref_indicate_charging_summary">Alter icon to indicate when charging?</string>
+  <string formatted="false" name="pref_indicate_charging_help">
+    Some icon sets indicate when the battery is being charged, for
+    example by showing a lightning bolt below the number.  Disable
+    this setting if you would prefer it not to do that.
   </string>
 
   <string formatted="false" name="pref_cat_logging">Logging</string>

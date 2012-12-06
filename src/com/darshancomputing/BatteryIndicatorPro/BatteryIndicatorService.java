@@ -305,10 +305,12 @@ public class BatteryIndicatorService extends Service {
                 settings_editor.commit();
             }
 
+            Boolean indicate_charging = settings.getBoolean(SettingsActivity.KEY_INDICATE_CHARGING, true);
+
             if (icon_set.equals("builtin.plain_number")) {
-                icon = ((status == STATUS_CHARGING) ? chargingIcon0 : plainIcon0) + percent;
+                icon = ((status == STATUS_CHARGING && indicate_charging) ? chargingIcon0 : plainIcon0) + percent;
             } else if (icon_set.equals("builtin.smaller_number")) {
-                icon = ((status == STATUS_CHARGING) ? small_chargingIcon0 : small_plainIcon0) + percent;
+                icon = ((status == STATUS_CHARGING && indicate_charging) ? small_chargingIcon0 : small_plainIcon0) + percent;
             } else {
                 if (settings.getBoolean(SettingsActivity.KEY_RED, res.getBoolean(R.bool.default_use_red)) &&
                     percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, str.default_red_thresh)) &&

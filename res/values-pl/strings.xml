@@ -82,9 +82,9 @@
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="pref_hint" formatted="false">Podpowiedź: Naciśnij Menu po pomoc.</string>
   <string name="settings_overview" formatted="false">Przegląd</string>
-  <string name="color_settings" formatted="false">Kolory i Tematy</string>
-  <string name="color_settings_summary" formatted="false">Ustaw kolory ikon i okien</string>
-  <string name="color_settings_help" formatted="false">Możesz zmienić temat kolorystyczny i kontrolować kolory ikon statusu.</string>
+  <string name="theme_settings" formatted="false">Kolory i Tematy</string>
+  <string name="theme_settings_summary" formatted="false">Ustaw kolory ikon i okien</string>
+  <string name="theme_settings_help" formatted="false">Możesz zmienić temat kolorystyczny i kontrolować kolory ikon statusu.</string>
   <string name="time_settings" formatted="false">Ustawienia czasów</string>
   <string name="time_settings_summary" formatted="false">Ustaw przewidywane czasy użycia baterii</string>
   <string name="alarm_settings_subtitle" formatted="false">Ustawienia alarmów</string>
@@ -97,7 +97,6 @@
   <string name="add_alarm" formatted="false">Dodaj alarm</string>
   <string name="pref_cat_themes" formatted="false">Tematy</string>
   <string name="pref_main_window_theme" formatted="false">Temat głównego okna</string>
-  <string name="pref_icon_plugin" formatted="false">Dodatki ikon</string>
   <string name="pref_cat_logging" formatted="false">Logowanie</string>
   <string name="pref_enable_logging" formatted="false">Włącz logowanie</string>
   <string name="pref_enable_logging_summary" formatted="false">Czy logować zmiany stanu baterii?</string>
@@ -199,7 +198,6 @@
   <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro musi zostać odinstalowany a następnie zainstalowany ponownie by dokończyć ulepszanie. Przepraszam za uniedogododnienia. Jest to wymagane z przyczyn technicznych systemu. Nie będzie to wymagane przy kolejnych poprawkach.\n\nPo zamknięciu tej wiadomości przyciskiem \'Okay\' naciśnij go ponownie by odinstalować program. Następnie zostaniesz przeniesiony na stronę marketu, gdzie możesz zainstalować program ponownie. /n /n Ustawienia większości użytkowników są przywracane za wyjątkiem alarmów, które muszą zostać utworzone ponownie. Jednakże upewnij się, że wszystkie ustawienia są poprawne udając się do ustawień.\n\nDziękuję i mam nadzieję, że wszystkie nowe opcje spodobają Ci się.</string>
   <string name="confirm_ten_percent_hint" formatted="false">Uwaga: Zmiana tego ustawienia (zarówno włączenie jak i wyłączenie) zresetuje ustawienia koloru.\n\nJeżeli posiadasz Motorolę Droid, Droid X, Droid 2, Defy, lub Samsunga Moment, przy pierwszym uruchomieniu aplikacji powinieneś włączyć i zostawić tę opcję. Użytkownicy pozostałych urządzeń powinni zostawić opcję wyłączoną.</string>
   <string name="menu_get_plugins" formatted="false">Ściągnij dodatki</string>
-  <string name="no_plugins_installed_summary" formatted="false">Wciśnij klawisz MENU by ściągnąć dodatki</string>
   <string name="pref_one_percent_hack_summary" formatted="false">Użyć dla urządzeń, które pokazują poziom co 10%</string>
   <string name="lang_system_selected" formatted="false">Wybrane systemowo</string>
   <string name="pref_cat_language" formatted="false">Język</string>
@@ -231,7 +229,6 @@
   <string name="time_settings_help" formatted="false">Tutaj możesz kontrolować kiedy powiadomienie zmienia godzinę zmiany statusu (np. godzinę odłączenia) na czas przez jaki jest aktywny.\n\nMożesz również kontrolować jakie przewidywanie chcesz zobaczyć do ładowania USB/AC i lekkiego/normalnego/ciężkiego/ciągłego użycia, i zmienić bazy dla nich.</string>
   <string name="pref_please_upgrade" formatted="false">Wersja Pro ma wiele innych ustawień, włączając w to kolorowe ikony, wtyczki z ikonami, alarmy, tematy, zapisywanie stanu baterii w logach, auto/ ręczne wyłączenie blokady ekranu, przybliżone czasy ładowania/rozładowania i wiele więcej.</string>
   <string name="pref_main_window_theme_help" formatted="false">Ustawia temat dla głównego okna. Tematy dla całego okna są użyteczne tylko jeśli lubisz rzeczy duże i łatwe do odczytania. Inne tematy są po prostu dla zabawy.</string>
-  <string name="pref_icon_plugin_help" formatted="false">Jeżeli masz zainstalowane jakiekolwiek dodatki ikon do Battery Indicator Pro (wciśnij MENU, potem Sciagnij dodatki by ściągnąć darmowe dodatki), możesz wybierać pomiędzy nimi tutaj. Narazie wtyczki nie oferują żadnych opcji więc przycisk zmiany kolorów zniknie jeżeli wybierzesz cokolwiek innego niż \"Żaden\".</string>
   <string name="pref_enable_logging_help" formatted="false">Jeżeli aktywny, Battery Indicator będzie zapisywał zmiany statusu baterii (np. jeżeli urządzenie zostało w pełni naładowane). Możesz obejrzeć ligi z głównego okna (wciśnij MENU i wybierz Logi; na tabletach, MENU nie jest wymagane).</string>
   <string name="pref_log_everything_help" formatted="false">Jeżeli aktywne, Battery Indicator będzie zapisywał każda zmianę poziomu naladowania, (np. z 57% na 56% i odwrotnie).</string>
   <string name="pref_max_log_age_help" formatted="false">Jeżeli zapisywanie logów jest aktywne, za każdym razem gdy podpinasz urządzenie, logi starsze od tego będą usuwane.</string>

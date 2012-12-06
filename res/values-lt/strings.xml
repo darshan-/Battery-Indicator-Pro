@@ -91,8 +91,8 @@
   <string name="help_cat_contact" formatted="false">Kontaktai</string>
   <string name="pref_hint" formatted="false">Patarimas: Spauskite MENU pagalbai.</string>
   <string name="settings_overview" formatted="false">Apžvalga</string>
-  <string name="color_settings" formatted="false">Spalvos ir Temos</string>
-  <string name="color_settings_summary" formatted="false">Valdyti ikonos spalvas ir lango temas</string>
+  <string name="theme_settings" formatted="false">Spalvos ir Temos</string>
+  <string name="theme_settings_summary" formatted="false">Valdyti ikonos spalvas ir lango temas</string>
   <string name="time_settings" formatted="false">Laiko nustatymai</string>
   <string name="time_settings_summary" formatted="false">Valdyti laiko įvertinimus ir derinimus</string>
   <string name="alarm_settings_subtitle" formatted="false">Aliarmo Nustatymai</string>
@@ -103,8 +103,6 @@
   <string name="add_alarm" formatted="false">Pridėti aliarmą</string>
   <string name="pref_cat_themes" formatted="false">Temos</string>
   <string name="pref_main_window_theme" formatted="false">Pagrindinio Lango Tema</string>
-  <string name="pref_icon_plugin" formatted="false">Ikonos Papildinys</string>
-  <string name="no_plugins_installed_summary" formatted="false">Spauskite MENU gauti papildinių</string>
   <string name="pref_cat_logging" formatted="false">Įrašų sudarymas</string>
   <string name="pref_enable_logging" formatted="false">Įjungti įrašų sudarymą</string>
   <string name="pref_enable_logging_summary" formatted="false">Įrašinėti baterijos būsenos pakitimus?</string>
@@ -230,7 +228,7 @@
   <string name="help_acknowledgments" formatted="false">Be dosnios savanorių vertėjų pagalbos, ši programa būtų buvusi prieinama tik anglų kalba. Ačiū!\n\nDidelė padėka Google ir visiems atviro kodo programuotojams, kurie sukūrė Android platformą ir suteikė galimybę atsirasti šiai programai.\n\nPaleidimo ikona (viršuj, dešinėj esanti baterija, matoma \"Market\'e\") yra sukurta pagal <a href="http://www.oxygen-icons.org">\"Oxygen\" ikoną</a> ir yra naudojama pagal <a href="http://creativecommons.org/licenses/by-sa/3.0/">\"Creative Common Attribution-ShareAlike 3.0\" licenciją</a>.</string>
   <string name="help_contact" formatted="false">Jei turite klausimą ar problemą, aplankykite <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">projekto DUK</a>, kad sužinotumėte kaip susisiekti su manimi.\n</string>
   <string name="settings_overview_help" formatted="false">Nustatymai yra sugrupuoti į keturis atskirus puslapius, aprašytus žemiau. Kiekvienas puslapis turi savo pagalbos puslapį, kuriame aprašyti galimi nustatymai ir jų reikšmės. Paprasčiausiai spauskite MENU mygtuką, tada \"Pagalba\" (planšetiniuose kompiuteriuose, MENU nėra būtinas), kad gautumėte informaciją apie kiekvieną puslapyje esantį nustatymą.</string>
-  <string name="color_settings_help" formatted="false">Galite pakeisti pagrindinio lango temą ir valdyti, kada perspėjimai pakeičia ikonos spalvą.</string>
+  <string name="theme_settings_help" formatted="false">Galite pakeisti pagrindinio lango temą ir valdyti, kada perspėjimai pakeičia ikonos spalvą.</string>
   <string name="time_settings_help" formatted="false">Čia galite valdyti, perspėjimus kai pasikeičia prietaiso statusas (pvz.: atjungtas) ir kada tas įvyko.\n\nTaip pat, Jūs galite valdyti kuriuos būsenos įvertinimus Jūs norite matyti, kai prietaisas įkraunamas per USB/AC, naudojant mažai/vidutiniškai/daug/nepertraukiamai ir nustatyti šiems laikams pagrindus.</string>
   <string name="alarm_settings_help" formatted="false">Jūs galite nusistatyti Baterijos Indikatoriaus perspėjimą, kai baterijos lygis pasiekia tam tikrą tašką (pvz.: baterija pilnai įkraunama, baterijos lygtis nukrenta žemiau 20% ir pan.).</string>
   <string name="other_settings_help" formatted="false">Visi kiti nustatymai yra šiame puslapyje: įrašų sudarymas, ekrano užraktas, temperatūros vienetas, auto-paleidimas ir kitą.</string>

@@ -83,9 +83,9 @@
   <string name="help_contact" formatted="false">Če imate vprašanje ali problem, prosim poglejte <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">the project FAQ</a> za koncakt.\n</string>
   <string name="pref_hint" formatted="false">Namig: Pritisnite MENU za pomoč.</string>
   <string name="settings_overview" formatted="false">Povzetek</string>
-  <string name="color_settings" formatted="false">Barve in preobleke</string>
-  <string name="color_settings_summary" formatted="false">Nadzoruj barvo ikon in preoblek</string>
-  <string name="color_settings_help" formatted="false">Spremenite lahko preobleko za glavno okno in nadzor če in kdaj ikona za obveščanje spremeni barvo.</string>
+  <string name="theme_settings" formatted="false">Barve in preobleke</string>
+  <string name="theme_settings_summary" formatted="false">Nadzoruj barvo ikon in preoblek</string>
+  <string name="theme_settings_help" formatted="false">Spremenite lahko preobleko za glavno okno in nadzor če in kdaj ikona za obveščanje spremeni barvo.</string>
   <string name="time_settings" formatted="false">Nastavitve časa</string>
   <string name="time_settings_summary" formatted="false">Nadzoruj časovne napovedi in približke</string>
   <string name="alarm_settings_subtitle" formatted="false">Nastavitve alarma</string>
@@ -97,8 +97,6 @@
   <string name="add_alarm" formatted="false">Dodaj alarm</string>
   <string name="pref_cat_themes" formatted="false">Preobleke</string>
   <string name="pref_main_window_theme" formatted="false">Preobleka glavnega okna</string>
-  <string name="pref_icon_plugin" formatted="false">Vtičnik ikon</string>
-  <string name="no_plugins_installed_summary" formatted="false">Pritisnite MENU za vtičnike</string>
   <string name="pref_cat_logging" formatted="false">Beleženje</string>
   <string name="pref_enable_logging" formatted="false">Omogoči beleženje</string>
   <string name="pref_enable_logging_summary" formatted="false">Beležim spremembo stanj baterije?</string>

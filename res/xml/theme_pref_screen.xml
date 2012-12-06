@@ -36,6 +36,18 @@
   </PreferenceCategory>
 
   <PreferenceCategory
+      android:key="category_charging_indicator"
+      android:title="@string/pref_cat_charging_indicator"
+  >
+    <CheckBoxPreference
+        android:key="indicate_charging"
+        android:title="@string/pref_indicate_charging"
+        android:summary="@string/pref_indicate_charging_summary"
+        android:defaultValue="true"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory
       android:key="category_color"
       android:title="@string/pref_cat_color"
   >

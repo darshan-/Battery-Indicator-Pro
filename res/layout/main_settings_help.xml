@@ -14,8 +14,8 @@
     <TextView style="@style/help_cat"  android:text="@string/settings_overview" />
     <TextView style="@style/help_text" android:text="@string/settings_overview_help" />
 
-    <TextView style="@style/help_pref" android:text="@string/color_settings" />
-    <TextView style="@style/help_text" android:text="@string/color_settings_help" />
+    <TextView style="@style/help_pref" android:text="@string/theme_settings" />
+    <TextView style="@style/help_text" android:text="@string/theme_settings_help" />
 
     <TextView style="@style/help_pref" android:text="@string/time_settings" />
     <TextView style="@style/help_text" android:text="@string/time_settings_help" />

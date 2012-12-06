@@ -97,8 +97,8 @@
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="pref_hint" formatted="false">Tip: MENÜ drücken für Hilfe.</string>
   <string name="settings_overview" formatted="false">Übersicht</string>
-  <string name="color_settings" formatted="false">Farben und Themes</string>
-  <string name="color_settings_summary" formatted="false">Einstellen der Icon-Farben und Fenster-Themes</string>
+  <string name="theme_settings" formatted="false">Farben und Themes</string>
+  <string name="theme_settings_summary" formatted="false">Einstellen der Icon-Farben und Fenster-Themes</string>
   <string name="time_settings" formatted="false">Zeit Einstellungen</string>
   <string name="time_settings_summary" formatted="false">Einstellung für Zeitschätzung und -vohersage</string>
   <string name="alarm_settings_subtitle" formatted="false">Alarm Einstellungen</string>
@@ -110,7 +110,6 @@
   <string name="add_alarm" formatted="false">Alarm hinzufügen</string>
   <string name="pref_cat_themes" formatted="false">Themes</string>
   <string name="pref_main_window_theme" formatted="false">Haupt Window-Theme</string>
-  <string name="pref_icon_plugin" formatted="false">Icon Erweiterung</string>
   <string name="pref_cat_logging" formatted="false">Protokollierung</string>
   <string name="pref_enable_logging" formatted="false">Protokollierung einschalten</string>
   <string name="pref_enable_logging_summary" formatted="false">Batteriestatusänderungen protokollieren?</string>

@@ -82,9 +82,9 @@
   <string name="pref_hint" formatted="false"><b>提示：</b>单击“菜单”获取帮助。</string>
   <string name="settings_overview" formatted="false">预览</string>
   <string name="settings_overview_help" formatted="false">设置项包括如下所述的三个独立页面。各页面的帮助信息独立显示，在“菜单”-“帮助”内容中可获取当前页面的帮助信息。</string>
-  <string name="color_settings" formatted="false">色彩主题</string>
-  <string name="color_settings_summary" formatted="false">设置图标色彩及窗口主题</string>
-  <string name="color_settings_help" formatted="false">您可以选择主窗口显示主题及设置图标变化色彩。</string>
+  <string name="theme_settings" formatted="false">色彩主题</string>
+  <string name="theme_settings_summary" formatted="false">设置图标色彩及窗口主题</string>
+  <string name="theme_settings_help" formatted="false">您可以选择主窗口显示主题及设置图标变化色彩。</string>
   <string name="time_settings" formatted="false">时间设置</string>
   <string name="time_settings_summary" formatted="false">定制时间预估方式</string>
   <string name="time_settings_help" formatted="false">您可在此界面可设置电池状态变化后（例如：拔下电源）所经历时间估计方式。 您也可以设置预估USB/AC方式充电、省电/正常/频繁/持续使用手机剩余时间的基准值。</string>
@@ -219,8 +219,6 @@
   <string name="alarm_settings_summary" formatted="false">控制电池信息通知</string>
   <string name="alarm_settings_help" formatted="false">您可以让电量指示器在电池达到某个状态时通知您(例如:电池充满，或者电量低于20%)</string>
   <string name="add_alarm" formatted="false">添加警报器</string>
-  <string name="pref_icon_plugin" formatted="false">图标插件</string>
-  <string name="no_plugins_installed_summary" formatted="false">单击菜单键获取插件</string>
   <string name="lang_system_selected" formatted="false">系统选择</string>
   <string name="pref_cat_language" formatted="false">语言</string>
   <string name="pref_language_override_summary" formatted="false">选择语言:</string>

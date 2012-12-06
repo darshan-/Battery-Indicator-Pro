@@ -98,9 +98,9 @@
   <string name="pref_hint" formatted="false">TIPP: Segítséghez nyomja meg a MENÜ gombot!</string>
   <string name="settings_overview" formatted="false">Áttekintés</string>
   <string name="settings_overview_help" formatted="false">A beállításokat három oldalra összegyűtve találja az alábbiak szerint. Minden oldal saját súgóval rendelkezik az ott található beállítások leírásával. Ezeket a MENÜ gomb - Súgó opcióval érheti el..</string>
-  <string name="color_settings" formatted="false">Színek és témák</string>
-  <string name="color_settings_summary" formatted="false">Megjelenítési beállítások és ikon színek</string>
-  <string name="color_settings_help" formatted="false">Megváltoztathatók a főablak megjelenítési jellemzői és hogy az állapotsoron mikor jelenjenek meg színes ikonok.</string>
+  <string name="theme_settings" formatted="false">Színek és témák</string>
+  <string name="theme_settings_summary" formatted="false">Megjelenítési beállítások és ikon színek</string>
+  <string name="theme_settings_help" formatted="false">Megváltoztathatók a főablak megjelenítési jellemzői és hogy az állapotsoron mikor jelenjenek meg színes ikonok.</string>
   <string name="time_settings" formatted="false">Idő beállítások</string>
   <string name="time_settings_summary" formatted="false">Az időbecslések és kerekítések beállításai</string>
   <string name="time_settings_help" formatted="false">Itt beállíthatja, hogy a készülék állapotának megváltozása (pl. töltő leválasztása) után mennyi ideig mutassa az esemény valós időpontját, majd ezután az eltelt időt jeleníti meg.\n\nAzt is kiválaszthatja, hogy melyik becsléseket kívánja látni az alábbiak közül: teljes töltésig hátralévő idő USB/Hálózati töltés esetén, a lemerülésig hátralévő idő könnyű/normál/gyakori/állandó használat mellett.</string>
@@ -182,9 +182,7 @@
   <string name="pref_amber_summary" formatted="false">Sárga legyen az ikon, amikor a töltöttség közepes?</string>
   <string name="pref_color_preview" formatted="false">Szín előnézet</string>
   <string name="alarm_settings" formatted="false">Riasztások</string>
-  <string name="no_plugins_installed_summary" formatted="false">Nyomja meg a MENÜ gombot bővítmények letöltéséhez</string>
   <string name="menu_get_plugins" formatted="false">Bővítmények hozzáadása</string>
-  <string name="pref_icon_plugin_help" formatted="false">Ha bármilyen Battery Indicator Pro bővítmény telepítve van (nyomja meg a MENÜ-t, majd a Bővítmények hozzáadása-t ingyenes bővítményekhez), itt választhat közülük. A letöltött bővítmények nem támogatnak semmilyen beállítást, ezért az ikon színbeállításai elvesznek, ha nem a \"None\"-t választja. A cél az, hogy minél több bővítmény elérhető legyen, reméljük meg fogja találni azt, amit szeretne.</string>
   <string name="pref_enable_logging" formatted="false">Naplózás engedélyezése</string>
   <string name="pref_cat_temperature_unit" formatted="false">Hőmérséklet mértékegysége</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Fahrenheit használata</string>
@@ -240,7 +238,6 @@
   <string name="alarms_overview" formatted="false">Riasztások áttekintése</string>
   <string name="need_uninstall" formatted="false">Eltávolítás szükséges</string>
   <string name="need_uninstall_hint" formatted="false">Sajnos a Battery Indicator Pro-t le kell törölni, majd újratelepíteni ehhez a fontos frissítéshez. Elnézést kérek a kellemetlenségért. Ez az Android egy technikai korlátozása miatt szükséges. A jövőben egyik frissítéshez sem kell ezt megtennie.\n\nMiután a \'Rendben\'-re kattint, újra az \'OK\'-ra kell kattintania, amikor az Android engedélyt kér az eltávolításhoz. Ezután a Market oldalra lesz irányítva, ahol újra telepítheti a programot.\n\nA legtöbb felhasználónak visszaállnak a régi adatai, a riasztásokat kivéve, amiket újra meg kell adni. Ezt nem tudjuk garantálni, ezért érdemes végignézni a beállításokat telepítés után.\n\nKöszönöm, és remélem, tetszenek majd az új szolgáltatások.</string>
-  <string name="pref_icon_plugin" formatted="false">Ikon bővítmény</string>
   <string name="pref_cat_battery_use" formatted="false">Akku használat</string>
   <string name="pref_finish_after_battery_use_help" formatted="false">Ez a funkció azok számára készült, akiknek minden billentyű leütés (vagy képernyő érintés) számít. Ennek bekapcsolása visszaállítja a régi viselkedést, kilép a Battery Indicator fő ablakából az Akku használat képernyő megnyitásakor.</string>
   <string name="pref_finish_after_battery_use" formatted="false">Kilépés az akku használat megnyitásakor</string>
