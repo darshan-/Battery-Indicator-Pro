@@ -96,8 +96,6 @@
   <string name="settings_overview" formatted="false">Overzicht</string>
   <string name="help_changelog" formatted="false">Bekijk de <a href="http://code.google.com/p/battery-indicator/wiki/Changelog?tm=6">lijst van wijzigingen</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">Geen garantie</string>
-  <string name="theme_settings" formatted="false">Kleuren en thema\'s</string>
-  <string name="theme_settings_summary" formatted="false">Wijzig icoonkleuren en vensterthema\'s</string>
   <string name="time_settings" formatted="false">Tijdinstellingen</string>
   <string name="alarm_settings_subtitle" formatted="false">Alarminstellingen</string>
   <string name="alarm_settings" formatted="false">Alarmen</string>
@@ -152,7 +150,6 @@
   <string name="pref_cat_notification_settings" formatted="false">Notificatieinstellingen</string>
   <string name="pref_alarm_lights" formatted="false">Laat LED branden</string>
   <string name="settings_overview_help" formatted="false">De instellingen zijn verdeeld over drie verschillende pagina\'s, zoals onder beschreven. Elke pagina heeft zijn eigen helppagina over de instellingen op die pagina. Druk op MENU en dan Help voor help.</string>
-  <string name="theme_settings_help" formatted="false">Je kunt het thema voor het hoofdvenster wijzigen en kiezen of het icoon van kleur moet veranderen.</string>
   <string name="time_settings_summary" formatted="false">Wijzig tijdbenaderingen</string>
   <string name="alarm_settings_summary" formatted="false">Wijzig notificaties voor lege of volle batterij</string>
   <string name="pref_cat_logging" formatted="false">Logboek</string>
@@ -263,6 +260,9 @@
   <string name="pref_one_percent_hack_help" formatted="false">Deze hack werkt op alle Motorola apparaten die het percentage per 10% weergeven, behalve de originele Motorola Droid.\n\nDe meeste apparaten hebben deze optie niet nodig.\n\nAls de optie grijs is en je kunt hem niet aanzetten, dan ondersteunt jouw apparaat deze optie niet.\n\nZie de <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">OnePercentHack</a> wiki pagina voor meer informatie.</string>
   <string name="pref_cat_time_remaining_estimates_help" formatted="false">Je kunt zelf kiezen wat je denk dat klopt voor jouw apparaat.</string>
   <string name="pref_alarm_type_help" formatted="false">Er zijn 5 typen alarm om uit te kiezen.\n\n</string>
+  <string name="theme_settings" formatted="false">Kleuren en thema\'s</string>
+  <string name="theme_settings_help" formatted="false">Je kunt het thema voor het hoofdvenster wijzigen en kiezen of het icoon van kleur moet veranderen.</string>
+  <string name="theme_settings_summary" formatted="false">Wijzig icoonkleuren en vensterthema\'s</string>
   <string-array name="statuses">
     <item>Losgekoppeld</item>
     <item>Onbekend</item>

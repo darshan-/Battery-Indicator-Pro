@@ -82,9 +82,6 @@
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="pref_hint" formatted="false">Podpowiedź: Naciśnij Menu po pomoc.</string>
   <string name="settings_overview" formatted="false">Przegląd</string>
-  <string name="theme_settings" formatted="false">Kolory i Tematy</string>
-  <string name="theme_settings_summary" formatted="false">Ustaw kolory ikon i okien</string>
-  <string name="theme_settings_help" formatted="false">Możesz zmienić temat kolorystyczny i kontrolować kolory ikon statusu.</string>
   <string name="time_settings" formatted="false">Ustawienia czasów</string>
   <string name="time_settings_summary" formatted="false">Ustaw przewidywane czasy użycia baterii</string>
   <string name="alarm_settings_subtitle" formatted="false">Ustawienia alarmów</string>
@@ -258,6 +255,9 @@
   <string name="alarms_overview_help" formatted="false">Tutaj możesz dodawać nowe alarmy, szybko włączać lub wyłączać już istniejące albo je usuwać.\n\nAby dodać alarm wciśnij \"Dodaj alarm\" — to utworzy nowy alarm i zabierze do ustawień, gdzie możesz kontrolować ustawienia dla nowego alarmu. Zobacz pomoc dla tej strony po więcej szczegółow.\n\nPoniżej przycisku \"Dodaj alarm\" jest lista wszystkich alarmów, które już stworzyłeś.\n\n• Aby edytować istniejący alarm, kliknij na niego.\n• Aby usunąć alarm, naciśnij i przytrzymaj go, a następnie wybierz \"Usuń alarm\".\n• Aby włączyć/wyłączyć alarm, naciśnij ikonę budzika po lewej obok tekstu alarmu.</string>
   <string name="pref_alarm_enabled_help" formatted="false">Jeżeli chcesz wyłączyć alarm tymczasowo, bez tworzenia go ponownie od nowa, możesz to zrobić tutaj lub na głównej stronie z alarmami.</string>
   <string name="pref_alarm_type_help" formatted="false">W tej chwili możesz wybierać pomiędzy pięcioma różnymi typami alarmów.\n\nAlarm w \"Pełni naładowany\" powiadomi Cię kiedy stan baterii zmieni się z \"Ładowania\" na \"W pełni naładowany\".\n\nPrzed ustaleniem alarmu poziomu naładowania i temperatury należy ustawić przedział w jakim ten alarm obowiązuje.\n\nAlarm \"Spadek zdrowia\" powiadomi Cię, jeżeli system zmieni stan baterii z \"Nieznany\" lub \"Zdrowy\" na coś innego.</string>
+  <string name="theme_settings" formatted="false">Kolory i Tematy</string>
+  <string name="theme_settings_help" formatted="false">Możesz zmienić temat kolorystyczny i kontrolować kolory ikon statusu.</string>
+  <string name="theme_settings_summary" formatted="false">Ustaw kolory ikon i okien</string>
   <string-array name="statuses">
     <item>Odłączony</item>
     <item>Nieznany</item>

@@ -88,8 +88,6 @@
   <string name="help_cat_contact" formatted="false">Contato</string>
   <string name="pref_hint" formatted="false">Sugestão: Pressiona a tecla MENU para ajuda.</string>
   <string name="settings_overview" formatted="false">Visão Geral</string>
-  <string name="theme_settings" formatted="false">Cores e Temas</string>
-  <string name="theme_settings_summary" formatted="false">Configurar as cores dos ícones e temas das janelas</string>
   <string name="time_settings" formatted="false">Configurações de Hora</string>
   <string name="alarm_settings_subtitle" formatted="false">Definições dos alarmes</string>
   <string name="alarm_settings" formatted="false">Alarmes</string>
@@ -114,6 +112,8 @@
   <string name="pref_max_log_age_summary" formatted="false">Apagar relatórios mais velhos que:</string>
   <string name="help_activity_subtitle" formatted="false">Ajuda</string>
   <string name="log_view_activity_subtitle" formatted="false">Logs</string>
+  <string name="theme_settings" formatted="false">Cores e Temas</string>
+  <string name="theme_settings_summary" formatted="false">Configurar as cores dos ícones e temas das janelas</string>
   <string-array name="max_log_age_entries">
     <item>1 dia</item>
     <item>2 dias</item>

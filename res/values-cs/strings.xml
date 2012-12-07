@@ -94,9 +94,6 @@
   <string name="pref_hint" formatted="false">Tip: Stiskněte MENU pro nápovědu.</string>
   <string name="settings_overview" formatted="false">Přehled</string>
   <string name="settings_overview_help" formatted="false">Nastavení jsou rozdělena do tří oddělených stránek, tak jak je popsáno níže. Každá stránka má svou vlastní nápovědu popisující dostupná nastavení. Jednoduše stikněte MENU pro popis jednotlivých nastavení dostupných na stránce nastavení.</string>
-  <string name="theme_settings" formatted="false">Barvy a témata</string>
-  <string name="theme_settings_summary" formatted="false">Barvy ikon a témata oken</string>
-  <string name="theme_settings_help" formatted="false">Můžete změnit témata pro zobrazení hlavního okna a nastavit barvy pro ikonu při změně stavu.</string>
   <string name="time_settings" formatted="false">Nastavení časů</string>
   <string name="time_settings_summary" formatted="false">Nastavení časů pro odhady a průměrování</string>
   <string name="time_settings_help" formatted="false">Zde můžete ovládat kdy se oznámení přepne z přesného zobrazení času kdy se změnil stav telefonu (připojen / nepřipojen) na průměrný stav kolik času (hodin) uběhlo od změny stavu.\n\nMůžete také ovládat který odhad chcete zobrazit pro zbývající čas při nabíjení přes USB nebo nabíječku a občasném/běžném/častém/nepřetržitém použití a upravit principy odhadů.</string>
@@ -205,6 +202,9 @@
   <string name="pref_alarm_vibrate_help" formatted="false">Pokud vše poběží tak jak má, pak toto nastavení zapne vibrace při spuštění alarmu, pokud ovšem není aktuálně nastaven Silent Mode, pokud tedy nemáte ovšem povoleny vibrace v Silent Modu. Jinými slovy, mělo by to dělat co od této funkce očekávate. Pokud ne, pak mi napište email.</string>
   <string name="pref_alarm_lights" formatted="false">Blikání osvětlení</string>
   <string name="pref_alarm_lights_help" formatted="false">Nastavte jestliže chcete použít upozornění pomocí osvětlení. Standardně bliká LED dioda nebo trackball. Mé zkušenosti ovšem ukazují, že skoro každé zařízení mělo problémy s tímto nastavením. Pokud tedy zaškrtnete používání této funkce, pak systém upozornění bude žádat Váš Android o blikání osvětlení, ale je bez záruky, že to bude fungovat...</string>
+  <string name="theme_settings" formatted="false">Barvy a témata</string>
+  <string name="theme_settings_help" formatted="false">Můžete změnit témata pro zobrazení hlavního okna a nastavit barvy pro ikonu při změně stavu.</string>
+  <string name="theme_settings_summary" formatted="false">Barvy ikon a témata oken</string>
   <string-array name="statuses">
     <item>Nepřipojeno</item>
     <item>Neznámý</item>

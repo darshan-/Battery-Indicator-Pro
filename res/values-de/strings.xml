@@ -97,8 +97,6 @@
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="pref_hint" formatted="false">Tip: MENÜ drücken für Hilfe.</string>
   <string name="settings_overview" formatted="false">Übersicht</string>
-  <string name="theme_settings" formatted="false">Farben und Themes</string>
-  <string name="theme_settings_summary" formatted="false">Einstellen der Icon-Farben und Fenster-Themes</string>
   <string name="time_settings" formatted="false">Zeit Einstellungen</string>
   <string name="time_settings_summary" formatted="false">Einstellung für Zeitschätzung und -vohersage</string>
   <string name="alarm_settings_subtitle" formatted="false">Alarm Einstellungen</string>
@@ -197,6 +195,8 @@
   <string name="settings_activity_subtitle" formatted="false">Einstellungen</string>
   <string name="help_activity_subtitle" formatted="false">Hilfe</string>
   <string name="log_view_activity_subtitle" formatted="false">Protokoll</string>
+  <string name="theme_settings" formatted="false">Farben und Themes</string>
+  <string name="theme_settings_summary" formatted="false">Einstellen der Icon-Farben und Fenster-Themes</string>
   <string-array name="statuses">
     <item>Ausgesteckt</item>
     <item>Unbekannt</item>

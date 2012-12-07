@@ -95,9 +95,6 @@
   <string name="pref_hint" formatted="false">Suggerimento: Premi MENU\' per aiuto.</string>
   <string name="settings_overview" formatted="false">Panoramica</string>
   <string name="settings_overview_help" formatted="false">Le impostazioni sono organizzate in tre pagine separate, descritte qui di seguito. Ogni pagina ha una sua pagina di aiuto che descrive le impostazioni. Basta premere MENU\' - Aiuto per ottenere aiuto su qualunque impostazione presente nella pagina.</string>
-  <string name="theme_settings" formatted="false">Colori e Temi</string>
-  <string name="theme_settings_summary" formatted="false">Controlla i colori delle icone e i temi delle schermate</string>
-  <string name="theme_settings_help" formatted="false">E\' possibile modificare il tema per la schermata principale e controllare se e quando l\'icona di notifica cambierà colore.</string>
   <string name="time_settings" formatted="false">Impostazioni tempi</string>
   <string name="time_settings_summary" formatted="false">Controlla stime e approssimazioni tempo</string>
   <string name="time_settings_help" formatted="false">Qui è possibile controllare quando le notifiche passano dal dire esattamente quando lo stato del telefono è cambiato (scollegato, per esempio) ad affermare approssimativamente quante ore fa il cambiamento è avvenuto.\n\nE\' inoltre possibile contrallare le stime che si desidera vedere per il tempo rimanente con la ricarica USB/AC e un uso leggero/normale/pesante/costante , e regolarle in base a queste stime.</string>
@@ -263,6 +260,9 @@
   <string name="pref_alarm_type_help" formatted="false">Attualmente ci sono 5 tipi di allarme che potete scegliere.\n\nL\'allarme \"Diventa completamente carico\" vi informerà quando lo stato della vostra batteria cambia da \"In carica\" a \"Pieno carico\". Nota che su molti dispositivi, questo non è necessariamente la stessa cosa di essere carico al 100%\n\nGli allarmi di carica e temperatura richiedono di impostare una soglia al di sotto, dopo la scelta del tipo di allarme.\n\nL\'allarme \"Non in salute\" vi informerà se lo stato della batteria riportato da Android diventa qualcosa di diverso da \"Sconosciuto\" o \"Buona salute\".</string>
   <string name="pref_alarm_ringtone_help" formatted="false">Qui è possibile controllare quale suono da riprodurre quando l\'allarme è attivato. Selezionare \"Silenzioso\" se non si vuole nessun suono.</string>
   <string name="pref_language_override" formatted="false">Sovrascrittura lingua</string>
+  <string name="theme_settings" formatted="false">Colori e Temi</string>
+  <string name="theme_settings_help" formatted="false">E\' possibile modificare il tema per la schermata principale e controllare se e quando l\'icona di notifica cambierà colore.</string>
+  <string name="theme_settings_summary" formatted="false">Controlla i colori delle icone e i temi delle schermate</string>
   <string-array name="pluggeds">
     <item>(?)</item>
     <item>Scollegato</item>

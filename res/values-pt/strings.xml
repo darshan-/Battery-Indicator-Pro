@@ -88,11 +88,11 @@
   <string name="help_cat_contact" formatted="false">Contacto</string>
   <string name="pref_hint" formatted="false">Sugestão: Pressiona a tecla Menu para ajuda.</string>
   <string name="settings_overview" formatted="false">Visão Geral</string>
-  <string name="theme_settings" formatted="false">Cores e Temas</string>
-  <string name="theme_settings_summary" formatted="false">Controlar cores dos ícones e temas das janelas</string>
   <string name="time_settings" formatted="false">Definições da hora</string>
   <string name="alarm_settings_subtitle" formatted="false">Definições dos alarmes</string>
   <string name="alarm_settings" formatted="false">Alarmes</string>
   <string name="alarm_settings_summary" formatted="false">Controlar notificações para a bateria baixa/cheia</string>
   <string name="help_activity_subtitle" formatted="false">Ajuda</string>
+  <string name="theme_settings" formatted="false">Cores e Temas</string>
+  <string name="theme_settings_summary" formatted="false">Controlar cores dos ícones e temas das janelas</string>
 </resources>

@@ -93,8 +93,6 @@
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="pref_hint" formatted="false">Nápoveda: pre pomoc stlačte MENU.</string>
   <string name="settings_overview" formatted="false">Prehľad</string>
-  <string name="theme_settings" formatted="false">Farby a Témy</string>
-  <string name="theme_settings_summary" formatted="false">Ovládajte farbu ikonky a tému okna</string>
   <string name="time_settings" formatted="false">Nastavenia času</string>
   <string name="time_settings_summary" formatted="false">Nastavte odhady času a nahraďte odhady</string>
   <string name="alarm_settings_subtitle" formatted="false">Nastavenie upozornení</string>
@@ -219,7 +217,9 @@
   <string name="help_acknowledgments" formatted="false">Táto aplikácia by bola dostupná iba v angličtine nebyť štedrej podpory zo strany dobrovoľných prekladateľov. Ďakujem!\n\nVeľká vďaka patrí aj Google a všetkým open-source programátorom platformy Android, ktorý toto umožnili.\n\nIkona v launcheri (zvislá batéria čo vidíte v Markete) je navrhnutá podľa ikony z <a href="http://www.oxygen-icons.org">Oxygen icon theme</a> a je použitá pod <a href="http://creativecommons.org/licenses/by-sa/3.0/">licenciou Creative Common Attribution-ShareAlike 3.0 </a>.</string>
   <string name="help_contact" formatted="false">Ak máte otázky alebo problém, pozrite si <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">najčastejšie kládené otázky</a> kde nájdete ako ma môžete kontaktovať.\n</string>
   <string name="settings_overview_help" formatted="false">Nastavenia sú zoradené do troch samostaných stránok ako je popísané nižšie. Každá stránka má vlastnú stránku pomoci popisujúcu nastavenia na konkrétnej stránke. Jednoducho stlačte MENU a potom Pomocník (na tabletoch MENU nie je požadované) aby ste našli pomoc na ktorejkoľvek stránke.</string>
+  <string name="theme_settings" formatted="false">Farby a Témy</string>
   <string name="theme_settings_help" formatted="false">Môžete zmeniť tému pre hlavné okno a nastaviť kedy sa zmení farba ikony v notifikačnej lište.</string>
+  <string name="theme_settings_summary" formatted="false">Ovládajte farbu ikonky a tému okna</string>
   <string-array name="statuses">
     <item>Odpojený</item>
     <item>Neznámy</item>

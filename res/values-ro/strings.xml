@@ -88,8 +88,8 @@
   <string name="help_subcat_translators" formatted="false">Traducatori</string>
   <string name="help_cat_contact" formatted="false">Contact</string>
   <string name="settings_overview" formatted="false">Prezentare</string>
-  <string name="theme_settings" formatted="false">Culori si Teme</string>
   <string name="settings_activity_subtitle" formatted="false">Setari</string>
   <string name="help_activity_subtitle" formatted="false">Ajutor</string>
   <string name="log_view_activity_subtitle" formatted="false">Loguri</string>
+  <string name="theme_settings" formatted="false">Culori si Teme</string>
 </resources>

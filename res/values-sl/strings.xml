@@ -83,9 +83,6 @@
   <string name="help_contact" formatted="false">Če imate vprašanje ali problem, prosim poglejte <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">the project FAQ</a> za koncakt.\n</string>
   <string name="pref_hint" formatted="false">Namig: Pritisnite MENU za pomoč.</string>
   <string name="settings_overview" formatted="false">Povzetek</string>
-  <string name="theme_settings" formatted="false">Barve in preobleke</string>
-  <string name="theme_settings_summary" formatted="false">Nadzoruj barvo ikon in preoblek</string>
-  <string name="theme_settings_help" formatted="false">Spremenite lahko preobleko za glavno okno in nadzor če in kdaj ikona za obveščanje spremeni barvo.</string>
   <string name="time_settings" formatted="false">Nastavitve časa</string>
   <string name="time_settings_summary" formatted="false">Nadzoruj časovne napovedi in približke</string>
   <string name="alarm_settings_subtitle" formatted="false">Nastavitve alarma</string>
@@ -186,6 +183,9 @@
   <string name="pref_alarm_ringtone" formatted="false">Melodija</string>
   <string name="silent" formatted="false">Tiho</string>
   <string name="pref_alarm_vibrate" formatted="false">Vibriranje</string>
+  <string name="theme_settings" formatted="false">Barve in preobleke</string>
+  <string name="theme_settings_help" formatted="false">Spremenite lahko preobleko za glavno okno in nadzor če in kdaj ikona za obveščanje spremeni barvo.</string>
+  <string name="theme_settings_summary" formatted="false">Nadzoruj barvo ikon in preoblek</string>
   <string-array name="statuses">
     <item>Odklopljeno</item>
     <item>Neznano</item>
