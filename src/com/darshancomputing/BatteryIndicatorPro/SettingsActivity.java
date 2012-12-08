@@ -57,6 +57,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_LOG_EVERYTHING = "log_everything";
     public static final String KEY_MAX_LOG_AGE = "max_log_age";
     public static final String KEY_MW_THEME = "main_window_theme";
+    public static final String KEY_ICON_PLUGIN = "icon_plugin";
     public static final String KEY_ICON_SET = "icon_set";
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
     public static final String KEY_AUTOSTART = "autostart";

@@ -218,7 +218,15 @@ public class BatteryIndicatorService extends Service {
             mHandler.removeCallbacks(mPluginNotify);
             mHandler.removeCallbacks(mNotify);
 
-            String desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_SET, "none");
+            String desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_PLUGIN, "none");
+            if (! desiredPluginPackage.equals("none")) {
+                SharedPreferences.Editor settings_editor = settings.edit();
+                settings_editor.putString(SettingsActivity.KEY_ICON_SET, desiredPluginPackage);
+                settings_editor.putString(SettingsActivity.KEY_ICON_PLUGIN, "none");
+                settings_editor.commit();
+            }
+
+            desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_SET, "none");
             if (desiredPluginPackage.startsWith("builtin.")) desiredPluginPackage = "none";
 
             if (! pluginPackage.equals(desiredPluginPackage) && ! pluginPackage.equals("none")) disconnectPlugin();
