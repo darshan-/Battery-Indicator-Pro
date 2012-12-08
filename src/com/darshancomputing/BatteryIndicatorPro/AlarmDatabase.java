@@ -14,6 +14,7 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -149,26 +150,19 @@ public class AlarmDatabase {
         return c;
     }
 
-    public void addAlarm(Boolean enabled, String type, String threshold, String ringtone, Boolean vibrate, Boolean lights) {
-        wdb.execSQL("INSERT INTO " + ALARM_TABLE_NAME + " VALUES (NULL, " +
-                    (enabled ? 1 : 0) + " ," +
-                    "'" + type      + "'" + " ," +
-                    "'" + threshold + "'" + " ," +
-                    "'" + ringtone  + "'" + " ," +
-                    (vibrate ? 1 : 0) + " ," +
-                    (lights  ? 1 : 0) +
-                    ")");
+    public int addAlarm(Boolean enabled, String type, String threshold, String ringtone, Boolean vibrate, Boolean lights) {
+        ContentValues cv = new ContentValues();
+        cv.put(KEY_ENABLED, enabled ? 1 : 0);
+        cv.put(KEY_TYPE, type);
+        cv.put(KEY_THRESHOLD, threshold);
+        cv.put(KEY_RINGTONE, ringtone);
+        cv.put(KEY_VIBRATE, vibrate ? 1 : 0);
+        cv.put(KEY_LIGHTS, lights ? 1 : 0);
+        return (int) wdb.insert(ALARM_TABLE_NAME, null, cv);
     }
 
     public int addAlarm() {
-        addAlarm(true, "fully_charged", "", android.provider.Settings.System.DEFAULT_NOTIFICATION_URI.toString(), false, true);
-
-        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE " + KEY_ID + "= last_insert_rowid()", null);
-        c.moveToFirst();
-        int i = c.getInt(INDEX_ID);
-        c.close();
-
-        return i;
+        return addAlarm(true, "fully_charged", "", android.provider.Settings.System.DEFAULT_NOTIFICATION_URI.toString(), false, true);
     }
 
     public void setEnabled(int id, Boolean enabled) {
