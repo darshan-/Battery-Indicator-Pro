@@ -49,7 +49,7 @@
 
     <ImageView android:src="@drawable/divider_vertical_dark"
                android:background="?android:attr/windowBackground"
-               android:layout_width="wrap_content"
+               android:layout_width="1px"
                android:layout_height="fill_parent"
                android:paddingTop="4dp"
                android:paddingBottom="4dp"
