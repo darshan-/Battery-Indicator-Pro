@@ -233,12 +233,14 @@
     <item>損壞</item>
     <item>超壓</item>
     <item>錯誤</item>
+    <item>Cold</item>
   </string-array>
   <string-array name="pluggeds">
     <item>Unplugged</item>
     <item>(AC)</item>
     <item>(USB)</item>
     <item>(?)</item>
+    <item>(WL)</item>
   </string-array>
   <string-array name="mw_theme_pref_entries">
     <item>預設小視窗</item>

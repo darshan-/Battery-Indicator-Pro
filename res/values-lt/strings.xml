@@ -266,12 +266,14 @@
     <item>Mirusi</item>
     <item>Per didelė įtampa</item>
     <item>Klaida</item>
+    <item>Cold</item>
   </string-array>
   <string-array name="pluggeds">
     <item>Atjungta</item>
     <item>(AC)</item>
     <item>(USB)</item>
     <item>(?)</item>
+    <item>(WL)</item>
   </string-array>
   <string-array name="alarm_types_display">
     <item>Pilnai įkrauta</item>

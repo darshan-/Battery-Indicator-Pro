@@ -292,12 +292,14 @@
     <item>Morte</item>
     <item>Surtension</item>
     <item>Défaut</item>
+    <item>Cold</item>
   </string-array>
   <string-array name="pluggeds">
     <item>Débranché</item>
     <item>(CA)</item>
     <item>(USB)</item>
     <item>(?)</item>
+    <item>(WL)</item>
   </string-array>
   <string-array name="alarm_types_display">
     <item>Complètement chargée</item>

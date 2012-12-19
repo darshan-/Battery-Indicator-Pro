@@ -156,12 +156,14 @@
     <item>Хорошее состояние</item>
     <item>Перегрев</item>
     <item>Смерть</item>
+    <item>Cold</item>
   </string-array>
   <string-array name="pluggeds">
     <item>Отключено</item>
     <item>(AC)</item>
     <item>(USB)</item>
     <item>(?)</item>
+    <item>(WL)</item>
   </string-array>
   <string-array name="log_statuses_old">
     <item>Полностью заряжен</item>

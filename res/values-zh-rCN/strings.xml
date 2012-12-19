@@ -268,12 +268,14 @@
     <item>损坏</item>
     <item>超压</item>
     <item>错误</item>
+    <item>Cold</item>
   </string-array>
   <string-array name="pluggeds">
     <item>Unplugged</item>
     <item>(AC)</item>
     <item>(USB)</item>
     <item>(?)</item>
+    <item>(WL)</item>
   </string-array>
   <string-array name="mw_theme_pref_entries">
     <item>默认小窗口</item>

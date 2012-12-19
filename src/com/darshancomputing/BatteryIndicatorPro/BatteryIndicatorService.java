@@ -82,7 +82,8 @@ public class BatteryIndicatorService extends Service {
     private static final int PLUGGED_AC        = 1;
     private static final int PLUGGED_USB       = 2;
     private static final int PLUGGED_UNKNOWN   = 3;
-    private static final int PLUGGED_MAX = PLUGGED_UNKNOWN;
+    private static final int PLUGGED_WIRELESS  = 4;
+    private static final int PLUGGED_MAX       = PLUGGED_WIRELESS;
 
     private static final int HEALTH_UNKNOWN     = 1;
     private static final int HEALTH_GOOD        = 2;
@@ -90,7 +91,8 @@ public class BatteryIndicatorService extends Service {
     private static final int HEALTH_DEAD        = 4;
     private static final int HEALTH_OVERVOLTAGE = 5;
     private static final int HEALTH_FAILURE     = 6;
-    private static final int HEALTH_MAX = HEALTH_FAILURE;
+    private static final int HEALTH_COLD        = 7;
+    private static final int HEALTH_MAX         = HEALTH_COLD;
 
 
     public static final String KEY_LAST_STATUS_SINCE = "last_status_since";

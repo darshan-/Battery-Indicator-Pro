@@ -237,12 +237,14 @@
     <item>Nepoužitelný</item>
     <item>Přepětí</item>
     <item>Vadný</item>
+    <item>Cold</item>
   </string-array>
   <string-array name="pluggeds">
     <item>Unplugged</item>
     <item>(Napáječ)</item>
     <item>(USB)</item>
     <item>(?)</item>
+    <item>(WL)</item>
   </string-array>
   <string-array name="alarm_types_display">
     <item>Plně nabito</item>

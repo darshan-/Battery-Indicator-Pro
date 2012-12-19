@@ -295,12 +295,14 @@
     <item>Dood</item>
     <item>Voltage te hoog</item>
     <item>Gefaald</item>
+    <item>Cold</item>
   </string-array>
   <string-array name="pluggeds">
     <item>Losgekoppeld</item>
     <item>(AC)</item>
     <item>(USB)</item>
     <item>(?)</item>
+    <item>(WL)</item>
   </string-array>
   <string-array name="alarm_types_display">
     <item>Volledig opgeladen</item>

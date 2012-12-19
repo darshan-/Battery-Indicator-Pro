@@ -218,12 +218,14 @@
     <item>Mrtvo</item>
     <item>Prevelika voltaža</item>
     <item>Napaka</item>
+    <item>Cold</item>
   </string-array>
   <string-array name="pluggeds">
     <item>Odklopljeno</item>
     <item>(AC)</item>
     <item>(USB)</item>
     <item>(?)</item>
+    <item>(WL)</item>
   </string-array>
   <string-array name="alarm_types_display">
     <item>Napolnjeno</item>

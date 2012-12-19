@@ -168,12 +168,14 @@
     <item>Dead</item>
     <item>Overvoltage</item>
     <item>Failure</item>
+    <item>Cold</item>
   </string-array>
   <string-array name="pluggeds">
     <item>Unplugged</item>
     <item>(AC)</item>
     <item>(USB)</item>
     <item>(?)</item>
+    <item>(WL)</item>
   </string-array>
 
   <string-array name="alarm_types_display">

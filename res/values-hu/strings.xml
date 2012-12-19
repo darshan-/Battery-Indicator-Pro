@@ -286,12 +286,14 @@
     <item>Halott</item>
     <item>Túlfeszültség</item>
     <item>Hiba</item>
+    <item>Cold</item>
   </string-array>
   <string-array name="pluggeds">
     <item>Szétkapcsolva</item>
     <item>(hálózati feszültség)</item>
     <item>(USB-n keresztül)</item>
     <item>(?)</item>
+    <item>(WL)</item>
   </string-array>
   <string-array name="alarm_types_display">
     <item>Teljesen feltöltve</item>

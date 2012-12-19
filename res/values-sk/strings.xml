@@ -252,12 +252,14 @@
     <item>Mŕtva</item>
     <item>Prepätie</item>
     <item>Zlyhanie</item>
+    <item>Cold</item>
   </string-array>
   <string-array name="pluggeds">
     <item>Unplugged</item>
     <item>(Sieť)</item>
     <item>(USB)</item>
     <item>(?)</item>
+    <item>(WL)</item>
   </string-array>
   <string-array name="alarm_types_display">
     <item>Plne nabitá</item>

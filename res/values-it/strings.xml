@@ -268,6 +268,7 @@
     <item>Scollegato</item>
     <item>(CA)</item>
     <item>(USB)</item>
+    <item>(WL)</item>
   </string-array>
   <string-array name="statuses">
     <item>Scollegato</item>
@@ -301,6 +302,7 @@
     <item>Defunta</item>
     <item>Sovratensione</item>
     <item>Non riuscito</item>
+    <item>Cold</item>
   </string-array>
   <string-array name="alarm_types_display">
     <item>Completamente carico</item>

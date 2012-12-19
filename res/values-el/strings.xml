@@ -294,12 +294,14 @@
     <item>Νεκρή</item>
     <item>Υπέρβαση Βολτάζ</item>
     <item>Αποτυχία</item>
+    <item>Cold</item>
   </string-array>
   <string-array name="pluggeds">
     <item>Αποσυνδεδεμένο</item>
     <item>(AC)</item>
     <item>(;)</item>
     <item>(USB)</item>
+    <item>(WL)</item>
   </string-array>
   <string-array name="alarm_types_display">
     <item>Πλήρως Φορτισμένη</item>

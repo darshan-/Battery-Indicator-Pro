@@ -242,12 +242,14 @@
     <item>Batería muerta</item>
     <item>Sobretensión</item>
     <item>Fallo</item>
+    <item>Cold</item>
   </string-array>
   <string-array name="pluggeds">
     <item>Unplugged</item>
     <item>(Red)</item>
     <item>(USB)</item>
     <item>(?)</item>
+    <item>(WL)</item>
   </string-array>
   <string-array name="mw_theme_pref_entries">
     <item>Por defecto (Pequeña)</item>
