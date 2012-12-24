@@ -3,8 +3,11 @@
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
   <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
   <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Paramètres</string>
+  <string name="settings_activity_subtitle" formatted="false">Paramètres</string>
   <string name="help_activity_name" formatted="false">Battery Indicator Pro - Aide</string>
+  <string name="help_activity_subtitle" formatted="false">Aide</string>
   <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Journaux</string>
+  <string name="log_view_activity_subtitle" formatted="false">Journaux</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
   <string name="settings_activity_name_free" formatted="false">Battery Indicator - Paramètres</string>
   <string name="help_activity_name_free" formatted="false">Battery Indicator - Aide</string>
@@ -18,6 +21,8 @@
   <string name="cancel" formatted="false">Annuler</string>
   <string name="confirm_close" formatted="false">Fermer l\'application ?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator va être complètement fermé et l\'indicateur de batterie va être retiré de la barre d\'état.\n\nSi vous souhaitez juste fermer la fenêtre principale et garder l\'indicateur de batterie affiché, appuyez sur Annuler et pressez simplement le bouton retour de votre téléphone.</string>
+  <string name="need_uninstall" formatted="false">Désinstallation requise</string>
+  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro a besoin d\'être désinstallé puis réinstallé pour pouvoir bénéficier de cette mise à jour majeure. Je suis désolé pour ce désagrément. Ceci est requis en raison d\'une limitation technique d\'Android. Cela ne sera plus le cas pour les mises à jour ultérieures.\n\nAprès avoir cliqué sur \'Ok\' pour faire disparaître ce message, il vous suffit de cliquer sur \'Ok\' à nouveau lorsque Android demande votre autorisation pour désinstaller. Vous serez alors redirigé vers la page du Market où vous pouvez réinstaller.\n\nLa plupart des utilisateurs verront leurs préférences restaurées à l\'exception de leurs alarmes, qui devront être recréées. Cela ne peut être garanti, veuillez donc le vérifier dans les paramètres après la réinstallation.\n\nMerci, et j\'espère que vous apprécierez les nouvelles fonctionnalités!</string>
   <string name="confirm_clear_logs" formatted="false">Voulez-vous vraiment vider les journaux ?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Activer le \"Mode 10%\" ?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Désactiver le \"Mode 10%\" ?</string>
@@ -26,6 +31,7 @@
   <string name="first_run_message" formatted="false">Merci pour votre don/achat ! <b><i>Les trois points suivants sont très importants</i> :</b>\n\n• Si vous avez un \"<b>task killer</b>\" / gestionnaire de processus de quelque sorte, vous devriez le désinstaller ou lui indiquer d\'ignorer Battery Indicator Pro. Si vous l\'aviez déjà fait pour la version gratuite, <i>vous devez lui indiquer d\'ignorer également la version Pro</i> !\n\n• Si votre appareil affiche par défaut le niveau de batterie uniquement par incréments de 10% (<b>la plupart des téléphones Motorola fonctionnent comme ceci</b>), alors vous devriez activer le \"Mode 10%\" dans \"Autres paramètres\" pour activer les incréments par pourcent.\n\n• Si votre barre d\'état est noire, notamment si vous exécutez Android 3 ou supérieur, vous devriez télécharger et utiliser le plugin nommé \"Black Square\".</string>
   <string name="first_run_message_free" formatted="false">Merci d\'avoir téléchargé Battery Indicator ! <b><i>Les deux points suivants sont très importants</i> :</b>\n\n• Si vous avez un \"<b>task killer</b>\" / gestionnaire de processus de quelque sorte, vous devriez le désinstaller ou lui indiquer d\'ignorer Battery Indicator.\n\n• Si votre appareil affiche par défaut le niveau de batterie uniquement par incréments de 10% (<b>la plupart des téléphones Motorola fonctionnent comme ceci</b>), alors vous devriez activer le \"Mode 10%\" dans \"Autres paramètres\" pour activer les incréments par pourcent.</string>
   <string name="okay" formatted="false">Ok</string>
+  <string name="none" formatted="false">Aucun</string>
   <string name="menu_logs" formatted="false">Journaux</string>
   <string name="menu_settings" formatted="false">Paramètres</string>
   <string name="menu_close" formatted="false">Fermer</string>
@@ -34,6 +40,7 @@
   <string name="menu_reverse" formatted="false">Inverser l\'ordre</string>
   <string name="menu_export" formatted="false">Exporter en CSV</string>
   <string name="menu_delete_alarm" formatted="false">Supprimer l\'alarme</string>
+  <string name="menu_get_plugins" formatted="false">Obtenir des plugins</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Fahrenheit</string>
@@ -98,6 +105,9 @@
   <string name="pref_hint" formatted="false">Appuyez sur MENU pour afficher l\'aide.</string>
   <string name="settings_overview" formatted="false">Aperçu</string>
   <string name="settings_overview_help" formatted="false">Les paramètres sont organisés en quatre parties (décrites ci-dessous). Chaque partie possède sa propre page d\'aide la décrivant. Appuyez simplement sur MENU (sur les tablettes, MENU n\'est pas nécessaire) puis Aide pour obtenir de l\'aide concernant la page sur laquelle vous êtes.</string>
+  <string name="theme_settings" formatted="false">Couleurs et Thèmes</string>
+  <string name="theme_settings_summary" formatted="false">Changez la couleur de l\'icône et le thème de la fenêtre</string>
+  <string name="theme_settings_help" formatted="false">Vous pouvez changer le thème de la fenêtre principale et choisir si et quand la couleur de l\'icône doit changer.</string>
   <string name="time_settings" formatted="false">Paramètres de temps</string>
   <string name="time_settings_summary" formatted="false">Réglez les estimations de temps et les approximations</string>
   <string name="time_settings_help" formatted="false">Dans cette partie vous pouvez contrôler quand notifier un changement de statut du téléphone (débranché, par exemple) afin d\'estimer approximativement depuis combien de temps le changement a eu lieu.\n\nVous pouvez aussi contrôler les estimations que vous souhaitez voir pour le temps de charge restant ainsi que la base des estimations de décharge en utilisation légère/normale/intensive ou constante.</string>
@@ -152,6 +162,15 @@
   <string name="pref_charge_as_text" formatted="false">Niveau de charge textuel</string>
   <string name="pref_charge_as_text_summary" formatted="false">Voir le niveau de charge sous forme d\'un texte près de l\'icône ?</string>
   <string name="pref_charge_as_text_help" formatted="false">Quelques utilisateurs malvoyants m\'ont demandé d\'ajouter cette option, qui affiche le niveau de charge sous forme de texte (ce qui est plus facile à lire) à droite de l\'icône située dans la zone de notification. L\'icône actuelle n\'est pas différente, l\'option n\'affecte que celle de la zone de notification, mais c\'est mieux que rien, et assez facile à ajouter pour ceux qui le souhaitent.\n\nAfin de gagner une précieuse place, j\'ai réalisé celà de manière peu esthétique en mettant juste le nombre à droite. Ceci est plus lisible que si j\'avais ajouté le symbole pourcent et permet à tout le texte d\'être affiché à l\'écran. Cependant il est possible que sur les appreils particulièrement petits, qu\'activer cette option éloigne trop les symboles AM/PM et les fasse sortir du bord de l\'écran.</string>
+  <string name="pref_cat_one_percent_hack" formatted="false">Hack \"Un pourcent\"</string>
+  <string name="pref_one_percent_hack" formatted="false">Hack \"Un pourcent\"</string>
+  <string name="pref_one_percent_hack_summary" formatted="false">Utiliser la solution de contournement pour les appareils qui affichent uniquement des multiples de 10%?</string>
+  <string name="pref_one_percent_hack_help" formatted="false">Cela fonctionne apparemment sur tous les appareils Motorola qui affichent par défaut des multiples de 10%, à l\'exception du Droid original.\n\nLa plupart des appareils n\'ont pas besoin de cela. Si votre appareil affiche déjà des incréments d\'un pourcent, n\'activez pas ce hack.\n\nSi l\'option est grisée et ne peut pas être activée, alors, votre appareil n\'est pas capable d\'utiliser ce hack.\n\nVoir la page wiki du <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">Hack \"Un pourcent\"</a> pour plus d\'information.</string>
+  <string name="lang_system_selected" formatted="false">Déterminée par le système</string>
+  <string name="pref_cat_language" formatted="false">Langue</string>
+  <string name="pref_language_override" formatted="false">Outrepasser la langue</string>
+  <string name="pref_language_override_summary" formatted="false">Sélectionnez une langue :</string>
+  <string name="pref_language_override_help" formatted="false">Si la traduction dans votre langue est incomplète ou inexacte et que vous préférez en utiliser une autre, potentiellement meilleure, vous pouvez le faire ici.</string>
   <string name="pref_cat_status_duration" formatted="false">Gestion de la durée</string>
   <string name="pref_status_dur_est" formatted="false">Quand utiliser l\'approximation</string>
   <string name="pref_status_dur_est_summary" formatted="false">Utilisation de l\'approximation de l\'heure de changement de statut</string>
@@ -179,7 +198,6 @@
   <string name="pref_normal_usage_time" formatted="false">Utilisation normale</string>
   <string name="pref_normal_usage_time_summary" formatted="false">Autonomie en utilisation normale</string>
   <string name="pref_normal_usage_time_help" formatted="false">Saisissez l\'autonomie de votre batterie lorsque le téléphone est sollicité normalement.</string>
-  <string name="pref_cat_color" formatted="false">Couleur de l\'icône</string>
   <string name="pref_show_heavy_usage" formatted="false">Afficher \"l\'usage intensif\"</string>
   <string name="pref_show_heavy_usage_summary" formatted="false">Afficher le temps restant en utilisation intensive ?</string>
   <string name="pref_show_heavy_usage_help" formatted="false">Affiche ou non sur la fenêtre principale une estimation du temps d\'utilisation restant lorsque le téléphone est sollicité fréquemment.</string>
@@ -192,6 +210,7 @@
   <string name="pref_constant_usage_time" formatted="false">Utilisation constante</string>
   <string name="pref_constant_usage_time_summary" formatted="false">Autonomie en utilisation constante</string>
   <string name="pref_constant_usage_time_help" formatted="false">Saisissez l\'autonomie de votre batterie lorsque le téléphone est toujours actif.</string>
+  <string name="pref_cat_color" formatted="false">Couleur de l\'icône</string>
   <string name="pref_cat_color_help" formatted="false">Afin de garder le fichier de l\'application le plus petit possible, j\'ai posé quelques limitations pour les couleurs. À l\'heure où j\'écris, vous pouvez assigner l\'icône rouge jusqu\'à un maximum de 30%, l\'icône orange jusqu\'à un maximum de 50% et l\'icone verte entre 20% et 100%. Je pense que ces limitations sont raisonables et qu\'elles conviendront à 99% des utilisateurs.\n\nAfin de vous laisser un maximum de contrôle, les couleurs peuvent être activées/désactivées indépendamment. Ce qui veux dire que vous pouvez avoir jusqu\'à 4 niveaux de couleurs, partant du vert quand la batterie est complètement chargée, puis grise, puis orange et enfin rouge. Biensûr la plupart des utilisateurs auront fixé la limite inférieure du vert et supérieure de l\'orange à la même valeur ce qui fait que l\'icône ne sera jamais grise.</string>
   <string name="pref_color_preview" formatted="false">Aperçu des couleurs</string>
   <string name="pref_color_preview_help" formatted="false">L\'aperçu des couleurs est prévu pour visualiser facilement vos paramètres afin de déterminer s\'ils vous conviennent.\n\nL\'aperçu n\'existe pas avec le mode 10% car le résultat n\'aurait pas de sens.</string>
@@ -241,25 +260,6 @@
   <string name="pref_alarm_vibrate_help" formatted="false">Si tout va bien, activer cette option fera vibrer votre appareil quand l\'alarme est déclenchée, sauf si l\'appareil est en silencieux, sauf si vous avez activé les vibrations en silencieux. En d\'autres mots, ça devrait se comporter correctement en fonction de la configuration de votre appareil. Si cela ne fonctionne pas correctement, veuillez me contacter par email.</string>
   <string name="pref_alarm_lights" formatted="false">Éclairage de la DEL</string>
   <string name="pref_alarm_lights_help" formatted="false">Défini si la notification doit activer la diode principale de votre appareil. Il s\'agit généralement d\'éclairer la DEL ou le trackball. Notez que cette option n\'a pas toujours fonctionné sur les appareils Android que j\'ai utilisé. Si l\'option est active, l\'application demande à Android d\'allumer la diode mais cela n\'est pas toujours effectif.</string>
-  <string name="help_activity_subtitle" formatted="false">Aide</string>
-  <string name="log_view_activity_subtitle" formatted="false">Journaux</string>
-  <string name="settings_activity_subtitle" formatted="false">Paramètres</string>
-  <string name="need_uninstall" formatted="false">Désinstallation requise</string>
-  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro a besoin d\'être désinstallé puis réinstallé pour pouvoir bénéficier de cette mise à jour majeure. Je suis désolé pour ce désagrément. Ceci est requis en raison d\'une limitation technique d\'Android. Cela ne sera plus le cas pour les mises à jour ultérieures.\n\nAprès avoir cliqué sur \'Ok\' pour faire disparaître ce message, il vous suffit de cliquer sur \'Ok\' à nouveau lorsque Android demande votre autorisation pour désinstaller. Vous serez alors redirigé vers la page du Market où vous pouvez réinstaller.\n\nLa plupart des utilisateurs verront leurs préférences restaurées à l\'exception de leurs alarmes, qui devront être recréées. Cela ne peut être garanti, veuillez donc le vérifier dans les paramètres après la réinstallation.\n\nMerci, et j\'espère que vous apprécierez les nouvelles fonctionnalités!</string>
-  <string name="none" formatted="false">Aucun</string>
-  <string name="menu_get_plugins" formatted="false">Obtenir des plugins</string>
-  <string name="pref_cat_one_percent_hack" formatted="false">Hack \"Un pourcent\"</string>
-  <string name="pref_one_percent_hack" formatted="false">Hack \"Un pourcent\"</string>
-  <string name="pref_one_percent_hack_summary" formatted="false">Utiliser la solution de contournement pour les appareils qui affichent uniquement des multiples de 10%?</string>
-  <string name="pref_one_percent_hack_help" formatted="false">Cela fonctionne apparemment sur tous les appareils Motorola qui affichent par défaut des multiples de 10%, à l\'exception du Droid original.\n\nLa plupart des appareils n\'ont pas besoin de cela. Si votre appareil affiche déjà des incréments d\'un pourcent, n\'activez pas ce hack.\n\nSi l\'option est grisée et ne peut pas être activée, alors, votre appareil n\'est pas capable d\'utiliser ce hack.\n\nVoir la page wiki du <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">Hack \"Un pourcent\"</a> pour plus d\'information.</string>
-  <string name="lang_system_selected" formatted="false">Déterminée par le système</string>
-  <string name="pref_cat_language" formatted="false">Langue</string>
-  <string name="pref_language_override" formatted="false">Outrepasser la langue</string>
-  <string name="pref_language_override_summary" formatted="false">Sélectionnez une langue :</string>
-  <string name="pref_language_override_help" formatted="false">Si la traduction dans votre langue est incomplète ou inexacte et que vous préférez en utiliser une autre, potentiellement meilleure, vous pouvez le faire ici.</string>
-  <string name="theme_settings" formatted="false">Couleurs et Thèmes</string>
-  <string name="theme_settings_help" formatted="false">Vous pouvez changer le thème de la fenêtre principale et choisir si et quand la couleur de l\'icône doit changer.</string>
-  <string name="theme_settings_summary" formatted="false">Changez la couleur de l\'icône et le thème de la fenêtre</string>
   <string-array name="statuses">
     <item>Débranché</item>
     <item>Inconnu</item>

@@ -4,7 +4,9 @@
   <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
   <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Configurações</string>
   <string name="help_activity_name" formatted="false">Battery Indicator Pro - Ajuda</string>
+  <string name="help_activity_subtitle" formatted="false">Ajuda</string>
   <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Logs</string>
+  <string name="log_view_activity_subtitle" formatted="false">Logs</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
   <string name="settings_activity_name_free" formatted="false">Battery Indicator - Configurações</string>
   <string name="help_activity_name_free" formatted="false">Battery Indicator - Ajuda</string>
@@ -18,6 +20,8 @@
   <string name="cancel" formatted="false">Cancelar</string>
   <string name="confirm_close" formatted="false">Deseja realmente fechar?</string>
   <string name="confirm_close_hint" formatted="false">O Estado da Bateria será fechado completamente, e não será mais exibido na barra de estado.\n\nSe quiser sair da janela principal e manter o indicador rodando, aperte Cancelar e depois a tecla BACK do seu aparelho.</string>
+  <string name="need_uninstall" formatted="false">Desinstalação Necessária</string>
+  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro precisa ser desinstalado e reinstalado para completar esse upgrade. Sinto muito pelo inconveniente. Isso é necessário devido a uma limitação técnica do Android. Isso não será mais necessário para upgrades futuros.\n\nApós clicar OK para dispensar essa mensagem, você apenas terá que clicar e OK novamente quando o Android te pedir permissão para desinstalar. Após isso, você será levado à tela do Market onde poderá reinstalar o aplicativo.\n\nA maior parte dos usuários terão suas preferências restauradas, com exceção dos alarmes que terão de ser recriados. Isso não é garantido, portanto revise suas configurações após reinstalar.\n\nObrigado, e espero que você goste de todas as novas features!</string>
   <string name="confirm_clear_logs" formatted="false">Limpar todos os logs?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Ativar mesmo o modo 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Desativar mesmo o modo 10%?</string>
@@ -35,6 +39,7 @@
   <string name="menu_reverse" formatted="false">Ordem contrária</string>
   <string name="menu_export" formatted="false">Exportar CSV</string>
   <string name="menu_delete_alarm" formatted="false">Apagar Alarme</string>
+  <string name="menu_get_plugins" formatted="false">Pegar Plugins</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">º</string>
   <string name="fahrenheit" formatted="false">Fahrenheit</string>
@@ -78,6 +83,8 @@
   <string name="help_cat_changelog" formatted="false">Relatório das mudanças</string>
   <string name="help_changelog" formatted="false">Veja o <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">histórico de mudanças na página do projeto</a>.</string>
   <string name="help_cat_introduction" formatted="false">Introdução</string>
+  <string name="help_introduction" formatted="false">Esse é o <i>Battery Indicator Pro</i>, a versão \"Pro\" do popular aplicativo gratuito, <i>Battery Indicator</i>. Ele está disponível para compra a partir do Android Market, mas é um projeto de código livre, o que significa que você pode fazer o download do código fonte na <a href="http://code.google.com/p/battery-indicator/">página do projeto</a>.</string>
+  <string name="help_introduction_free" formatted="false">Esse é o <i>Battery Indicator</i>, a versão gratuita da família de aplicativos <i>Battery Indicator</i>. Ele está disponível no Android Market e é um projeto de código livre, o que significa que você pode fazer o download do código fonte na <a href="http://code.google.com/p/battery-indicator/">página do projeto</a>.\n\nPor favor, ajude o projeto, através de doações e comprando a <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">versão Pro</a>.</string>
   <string name="help_cat_summary" formatted="false">Resumo</string>
   <string name="help_cat_limitations" formatted="false">Limitações</string>
   <string name="help_cat_features" formatted="false">Funções</string>
@@ -88,16 +95,13 @@
   <string name="help_cat_contact" formatted="false">Contato</string>
   <string name="pref_hint" formatted="false">Sugestão: Pressiona a tecla MENU para ajuda.</string>
   <string name="settings_overview" formatted="false">Visão Geral</string>
+  <string name="theme_settings" formatted="false">Cores e Temas</string>
+  <string name="theme_settings_summary" formatted="false">Configurar as cores dos ícones e temas das janelas</string>
   <string name="time_settings" formatted="false">Configurações de Hora</string>
+  <string name="time_settings_summary" formatted="false">Controlar estimativas e aproximações de tempo</string>
   <string name="alarm_settings_subtitle" formatted="false">Definições dos alarmes</string>
   <string name="alarm_settings" formatted="false">Alarmes</string>
   <string name="alarm_settings_summary" formatted="false">Controlar notificações para a bateria baixa/cheia</string>
-  <string name="need_uninstall" formatted="false">Desinstalação Necessária</string>
-  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro precisa ser desinstalado e reinstalado para completar esse upgrade. Sinto muito pelo inconveniente. Isso é necessário devido a uma limitação técnica do Android. Isso não será mais necessário para upgrades futuros.\n\nApós clicar OK para dispensar essa mensagem, você apenas terá que clicar e OK novamente quando o Android te pedir permissão para desinstalar. Após isso, você será levado à tela do Market onde poderá reinstalar o aplicativo.\n\nA maior parte dos usuários terão suas preferências restauradas, com exceção dos alarmes que terão de ser recriados. Isso não é garantido, portanto revise suas configurações após reinstalar.\n\nObrigado, e espero que você goste de todas as novas features!</string>
-  <string name="menu_get_plugins" formatted="false">Pegar Plugins</string>
-  <string name="help_introduction" formatted="false">Esse é o <i>Battery Indicator Pro</i>, a versão \"Pro\" do popular aplicativo gratuito, <i>Battery Indicator</i>. Ele está disponível para compra a partir do Android Market, mas é um projeto de código livre, o que significa que você pode fazer o download do código fonte na <a href="http://code.google.com/p/battery-indicator/">página do projeto</a>.</string>
-  <string name="help_introduction_free" formatted="false">Esse é o <i>Battery Indicator</i>, a versão gratuita da família de aplicativos <i>Battery Indicator</i>. Ele está disponível no Android Market e é um projeto de código livre, o que significa que você pode fazer o download do código fonte na <a href="http://code.google.com/p/battery-indicator/">página do projeto</a>.\n\nPor favor, ajude o projeto, através de doações e comprando a <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">versão Pro</a>.</string>
-  <string name="time_settings_summary" formatted="false">Controlar estimativas e aproximações de tempo</string>
   <string name="other_settings" formatted="false">Outras Configurações</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">Mais Configurações na versão Pro</string>
   <string name="add_alarm" formatted="false">Adicionar alarme</string>
@@ -110,10 +114,6 @@
   <string name="pref_log_everything_summary" formatted="false">Registrar diferenças de carga também?</string>
   <string name="pref_max_log_age" formatted="false">Idade Máxima dos Relatórios</string>
   <string name="pref_max_log_age_summary" formatted="false">Apagar relatórios mais velhos que:</string>
-  <string name="help_activity_subtitle" formatted="false">Ajuda</string>
-  <string name="log_view_activity_subtitle" formatted="false">Logs</string>
-  <string name="theme_settings" formatted="false">Cores e Temas</string>
-  <string name="theme_settings_summary" formatted="false">Configurar as cores dos ícones e temas das janelas</string>
   <string-array name="max_log_age_entries">
     <item>1 dia</item>
     <item>2 dias</item>

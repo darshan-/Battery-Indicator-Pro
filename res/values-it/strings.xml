@@ -3,8 +3,11 @@
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
   <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
   <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Impostazioni</string>
+  <string name="settings_activity_subtitle" formatted="false">Impostazioni</string>
   <string name="help_activity_name" formatted="false">Battery Indicator Pro - Aiuto</string>
+  <string name="help_activity_subtitle" formatted="false">Aiuto</string>
   <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Registro</string>
+  <string name="log_view_activity_subtitle" formatted="false">Registro</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
   <string name="settings_activity_name_free" formatted="false">Battery Indicator - Impostazioni</string>
   <string name="help_activity_name_free" formatted="false">Battery Indicator - Aiuto</string>
@@ -18,9 +21,12 @@
   <string name="cancel" formatted="false">Annulla</string>
   <string name="confirm_close" formatted="false">Vuoi davvero uscire?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator sarà completamente chiuso, e non sarà più visualizzato nella barra di stato.\n\nSe si desidera solo abbandonare la finestra principale e mantenere l\'indicatore in esecuzione, premere Annulla e quindi premere il pulsante INDIETRO del tuo cellulare per uscire dalla finestra principale.</string>
+  <string name="need_uninstall" formatted="false">E\' necessario disinstallare</string>
+  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro ha bisogno di essere disinstallato e poi reinstallato per completare questo importante aggiornamento. Mi dispiace molto per il disagio. Questo è necessario a causa di una limitazione tecnica di Android. Non sarà necessario ripetere l\'operazione per gli aggiornamenti futuri.\n\nDopo aver fatto clic su \"ok\" per chiudere questo messaggio, devi semplicemente rifare clic su \"ok\" quando Android chiede il permesso di disinstallare. Sarai quindi reindirizzato alla pagina di Google Play dove potrai reinstallarlo.\n\nLa maggior parte degli utenti avranno le preferenze ripristinate con l\'eccezione degli allarmi, che dovranno essere ricreati. Questo non è comunque garantito, per essere sicuri verificare le impostazioni dopo la reinstallazione.\n\nGrazie, spero vi piacciano le nuove caratteristiche.</string>
   <string name="confirm_clear_logs" formatted="false">Vuoi davvero cancellare tutto il registro?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Vuoi davvero attivare la modalità 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Vuoi davvero disattivare la modalità 10%?</string>
+  <string name="confirm_ten_percent_hint" formatted="false">Attenzione: La modifica di questa impostazione (attivazione e disattivazione) resetterà le tue impostazioni di colore.\n\nSe hai un Motorola Droid, Droid X, Droid 2, Defy, o un Samsung Moment, devi impostarlo ON appena ottenuta l\'app, e lasciarlo così. Tutti gli altri dispositivi, per quanto ne so, dovrebbero sempre lasciare questo su OFF.</string>
   <string name="first_run_title" formatted="false">Grazie!</string>
   <string name="first_run_message" formatted="false">Grazie per la tua donazione/acquisto! <b><i>Questi tre punti sono molto importanti</i> :</b>\n\n• Se hai un \"<b>task killer</b>\" / gestore processi o qualcosa di simile, sarebbe opportuno disinstallarlo o provare a ignorare Battery Indicator Pro. Anche se lo si è impostato per ignorare la versione gratuita, <i>è necessario ripetere l\'operazione anche per la versione Pro</i> !\n\n• Se hai un <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, o <b>Samsung Moment</b>, è necessario attivare la \"Modalità 10%\" in \"Altre Impostazioni\".\n\n• Se la barra di stato è nera, specialmente se stai usando Android 3o superiore, devi scaricare ed installare il plugin \"Black Square\".</string>
   <string name="first_run_message_free" formatted="false">Grazie per aver scaricato Battery Indicator! <b><i>Impostante</i> :</b>\n\nSe hai un \"<b>task killer</b>\" / gestore processi o qualcosa di simile, sarebbe opportuno disinstallarlo o provar a ignorare Battery Indicator.</string>
@@ -60,6 +66,10 @@
   <string name="temperature" formatted="false">gradi_celsius</string>
   <string name="voltage" formatted="false">volts</string>
   <string name="alarm_fully_charged" formatted="false">La batteria è ora completamente carica</string>
+  <string name="alarm_charge_drops" formatted="false">"La carica della batteria è inferiore a "</string>
+  <string name="alarm_charge_rises" formatted="false">"La carica della batteria è superiore a "</string>
+  <string name="alarm_temp_rises" formatted="false">"La temp. della batteria è superiore a "</string>
+  <string name="alarm_health_failure" formatted="false">"La salute della batteria è: "</string>
   <string name="alarm_text" formatted="false">Seleziona per modificare gli allarmi.</string>
   <string name="logs_empty" formatted="false">Registro vuoto</string>
   <string name="discharging_from" formatted="false">In scarica dalle</string>
@@ -95,6 +105,9 @@
   <string name="pref_hint" formatted="false">Suggerimento: Premi MENU\' per aiuto.</string>
   <string name="settings_overview" formatted="false">Panoramica</string>
   <string name="settings_overview_help" formatted="false">Le impostazioni sono organizzate in tre pagine separate, descritte qui di seguito. Ogni pagina ha una sua pagina di aiuto che descrive le impostazioni. Basta premere MENU\' - Aiuto per ottenere aiuto su qualunque impostazione presente nella pagina.</string>
+  <string name="theme_settings" formatted="false">Colori e Temi</string>
+  <string name="theme_settings_summary" formatted="false">Controlla i colori delle icone e i temi delle schermate</string>
+  <string name="theme_settings_help" formatted="false">E\' possibile modificare il tema per la schermata principale e controllare se e quando l\'icona di notifica cambierà colore.</string>
   <string name="time_settings" formatted="false">Impostazioni tempi</string>
   <string name="time_settings_summary" formatted="false">Controlla stime e approssimazioni tempo</string>
   <string name="time_settings_help" formatted="false">Qui è possibile controllare quando le notifiche passano dal dire esattamente quando lo stato del telefono è cambiato (scollegato, per esempio) ad affermare approssimativamente quante ore fa il cambiamento è avvenuto.\n\nE\' inoltre possibile contrallare le stime che si desidera vedere per il tempo rimanente con la ricarica USB/AC e un uso leggero/normale/pesante/costante , e regolarle in base a queste stime.</string>
@@ -149,6 +162,15 @@
   <string name="pref_charge_as_text" formatted="false">Livello carica testuale</string>
   <string name="pref_charge_as_text_summary" formatted="false">Mostrare il livello di carica come testo in grande a fianco dell\' icona?</string>
   <string name="pref_charge_as_text_help" formatted="false">Ho avuto alcuni utenti con problemi di vista che mi hanno chiesto di aggiungere questa opzione, per cui il livello di carica viene mostrato come testo (che è più grande e facile da leggere) proprio accanto all\' icona quando si trascina verso il basso l\' area notifiche. L\'icona attuale non sarà diversa, quindi questo aiuterà solo quando si trascinerà verso il basso la barra delle notifiche, ma è meglio di niente, ed è abbastanza facile da aggiungere per chi la vuole.\n\nIn alcuni dispositivi, abilitando questa opzione è possibile che venga troncata la porzione più a destra dell\'area notifiche.</string>
+  <string name="pref_cat_one_percent_hack" formatted="false">Trucco 1%</string>
+  <string name="pref_one_percent_hack" formatted="false">Trucco 1%</string>
+  <string name="pref_one_percent_hack_summary" formatted="false">Utilizzare una soluzione per dispositivi che mostrano solo multipli di 10%?</string>
+  <string name="pref_one_percent_hack_help" formatted="false">Questo trucco sembra funzionare per tutti i dispositivi Motorola con incrementi di default al 10%, diverse da quella originale Droid\n\nMolti dispositivi non necessitano di questo trucco. Se il tuo dispositivo segna già incrementi da 1%, non abilitare questo trucco.\n\nSe l\'opzione è in grigio e non riuscito ad abilitarla, alloro il dispositivo non è compatibile con questo trucco.\n\nVedi <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">OnePercentHack</a> per maggiori info.</string>
+  <string name="lang_system_selected" formatted="false">Sistema selezionato</string>
+  <string name="pref_cat_language" formatted="false">Lingua</string>
+  <string name="pref_language_override" formatted="false">Sovrascrittura lingua</string>
+  <string name="pref_language_override_summary" formatted="false">Seleziona lingua:</string>
+  <string name="pref_language_override_help" formatted="false">Se la traduzione è incompleta o inesatta e preferite un\'altra, forse migliore traduzione, si può scegliere di farlo qui.</string>
   <string name="pref_cat_status_duration" formatted="false">Durata stato (Per/Dal...)</string>
   <string name="pref_status_dur_est" formatted="false">Approssimazione tempo</string>
   <string name="pref_status_dur_est_summary" formatted="false">Inizio approssimazione tempo dallo stato di carica</string>
@@ -188,6 +210,9 @@
   <string name="pref_constant_usage_time" formatted="false">Uso costante</string>
   <string name="pref_constant_usage_time_summary" formatted="false">Tempo uso costante da 100% a 0% in ore:</string>
   <string name="pref_constant_usage_time_help" formatted="false">Inserisci quanto pensi che la batteria impiegherà per scaricarsi completamente da 100% a 0% considerando un \"Uso costante\".</string>
+  <string name="pref_cat_plugin_settings" formatted="false">Impostazioni plugin</string>
+  <string name="pref_plugin_settings" formatted="false">Impostazioni plugin</string>
+  <string name="pref_plugin_settings_summary" formatted="false">Modifica le impostazioni per questo plugin</string>
   <string name="pref_cat_color" formatted="false">Colore icona</string>
   <string name="pref_cat_color_help" formatted="false">Al fine di mantenere il pacchetto dei binari di Battery Indicator ragionevolemente piccolo, ci sono alcune limitazioni per i colori. Al momento in cui scriviamo, è possibile avere un\' icona rossa fino al 30%, una ambra fino 50%, e una verde se è minore di un 20% rispetto al 100%. Penso che questi siano compromessi ragionevoli che dovrebbero funzionare per il 99% degli utenti.\n\nPer darvi il massimo controllo, i colori possono essere attivati o disattivati in modo independente. Questo significa che si può avere una combinazione di colori a quattro livelli, dove l\' icona verde significa batteria completamente carica , poi in scala di grigi, poi ambra, poi rossa. Naturalmente, la maggior parte delle persone probabilemte hanno impostato le soglie ambra e verde allo stesso valoree, in modo da non avere mai l\' icona in scala di grigi.</string>
   <string name="pref_color_preview" formatted="false">Anteprima colori</string>
@@ -217,11 +242,14 @@
   <string name="pref_ten_percent_mode_summary" formatted="false">Leggi prima l\'help!</string>
   <string name="pref_ten_percent_mode_help" formatted="false"><b>Nota:</b> Selezionalo o deselezionalo, in questo modo verranno ripristinate le impostazioni del colore icona!\n\nQuesta impostazione elimina le impostazioni del Colore Icona che hanno senso su quei dispositivi che mostrano solo il livello di carica con incremento del 10%. Secondo i commenti degli utenti, questi dispositivi sono:\n\n• Motorola Droid (original)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nPer quanto si sappia, tutti gli altri dispositivi segnalano ogni 1%, quindi <i>non</i> deve essere attivata.</string>
   <string name="alarms_overview" formatted="false">Panoramica allarmi</string>
+  <string name="alarms_overview_help" formatted="false">Questa pagina ti permette di aggiungere nuovi allarmi, abilitare o disabilitare rapidamente gli allarmi esistenti, o cancellare gli allarmi.\n\nPer aggiungere un nuovo allarme, premere \"Aggiungi allarme\" — questo creerà un nuovo allarme e ti porterà alla pagina impostazioni dell\'allarme, dove si possono controllare le impostazioni per il nuovo allarme. Vedere l\'aiuto in tale pagina per maggiori dettagli.\n\nSotto il pulsante \"Aggiungi allarme\" c\'è un elenco di tutti gli allarmi che hai creato.\n\n• Per modificare un allarme esistente, basta selezionarlo.\n• Per cancellare un allarme, tenere premuto a lungo, poi selezionare \"Cancella allarme\". (Potete anche cancellare un allarme della pagina impostazioni individuali sveglia premendo MENU e poi \"Cancella allarmi\"). • Per alternare rapidamente se un allarme viene attivato, premere l\'icona sveglia a sinistra del testo la sveglia. (È anche possibile attivare o disattivare un allarme da parte delle singole impostazioni della sveglia pagina).</string>
   <string name="pref_alarm_enabled" formatted="false">Attiva allarme</string>
+  <string name="pref_alarm_enabled_help" formatted="false">Se si desidera disabilitare temporaneamente un allarme senza doverlo ricreare quando lo si desidera, è possibile dis/attivarlo qui o sulla pagina principale allarmi.</string>
   <string name="pref_cat_alarm_conditions" formatted="false">Condizioni Allarme</string>
   <string name="pref_cat_alarm_conditions_help" formatted="false">E\' possibile controllare in quali condizioni innescare l\' allarme.</string>
   <string name="pref_alarm_type" formatted="false">Tipo allarme</string>
   <string name="pref_alarm_type_summary" formatted="false">Innesca allarme quando la batteria:</string>
+  <string name="pref_alarm_type_help" formatted="false">Attualmente ci sono 5 tipi di allarme che potete scegliere.\n\nL\'allarme \"Diventa completamente carico\" vi informerà quando lo stato della vostra batteria cambia da \"In carica\" a \"Pieno carico\". Nota che su molti dispositivi, questo non è necessariamente la stessa cosa di essere carico al 100%\n\nGli allarmi di carica e temperatura richiedono di impostare una soglia al di sotto, dopo la scelta del tipo di allarme.\n\nL\'allarme \"Non in salute\" vi informerà se lo stato della batteria riportato da Android diventa qualcosa di diverso da \"Sconosciuto\" o \"Buona salute\".</string>
   <string name="pref_alarm_threshold" formatted="false">Soglia</string>
   <string name="alarm_pref_not_used" formatted="false">Non utilizzato per questo tipo di allarme</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Soglia allarme:</string>
@@ -229,47 +257,12 @@
   <string name="pref_cat_notification_settings" formatted="false">Impostazioni notifica</string>
   <string name="pref_cat_notification_settings_help" formatted="false">Qui è possibile controllare vari aspetti della notifica di allarme che hai creato per avvertirti quando un allarme viene innescato.</string>
   <string name="pref_alarm_ringtone" formatted="false">Suoneria</string>
+  <string name="pref_alarm_ringtone_help" formatted="false">Qui è possibile controllare quale suono da riprodurre quando l\'allarme è attivato. Selezionare \"Silenzioso\" se non si vuole nessun suono.</string>
   <string name="silent" formatted="false">Silenzioso</string>
   <string name="pref_alarm_vibrate" formatted="false">Vibrazione</string>
-  <string name="pref_alarm_lights" formatted="false">Torcie</string>
-  <string name="settings_activity_subtitle" formatted="false">Impostazioni</string>
-  <string name="help_activity_subtitle" formatted="false">Aiuto</string>
-  <string name="log_view_activity_subtitle" formatted="false">Registro</string>
-  <string name="need_uninstall" formatted="false">E\' necessario disinstallare</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Attenzione: La modifica di questa impostazione (attivazione e disattivazione) resetterà le tue impostazioni di colore.\n\nSe hai un Motorola Droid, Droid X, Droid 2, Defy, o un Samsung Moment, devi impostarlo ON appena ottenuta l\'app, e lasciarlo così. Tutti gli altri dispositivi, per quanto ne so, dovrebbero sempre lasciare questo su OFF.</string>
-  <string name="alarm_charge_drops" formatted="false">"La carica della batteria è inferiore a "</string>
-  <string name="alarm_charge_rises" formatted="false">"La carica della batteria è superiore a "</string>
-  <string name="alarm_temp_rises" formatted="false">"La temp. della batteria è superiore a "</string>
-  <string name="alarm_health_failure" formatted="false">"La salute della batteria è: "</string>
-  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro ha bisogno di essere disinstallato e poi reinstallato per completare questo importante aggiornamento. Mi dispiace molto per il disagio. Questo è necessario a causa di una limitazione tecnica di Android. Non sarà necessario ripetere l\'operazione per gli aggiornamenti futuri.\n\nDopo aver fatto clic su \"ok\" per chiudere questo messaggio, devi semplicemente rifare clic su \"ok\" quando Android chiede il permesso di disinstallare. Sarai quindi reindirizzato alla pagina di Google Play dove potrai reinstallarlo.\n\nLa maggior parte degli utenti avranno le preferenze ripristinate con l\'eccezione degli allarmi, che dovranno essere ricreati. Questo non è comunque garantito, per essere sicuri verificare le impostazioni dopo la reinstallazione.\n\nGrazie, spero vi piacciano le nuove caratteristiche.</string>
-  <string name="pref_cat_one_percent_hack" formatted="false">Trucco 1%</string>
-  <string name="pref_one_percent_hack" formatted="false">Trucco 1%</string>
-  <string name="pref_one_percent_hack_summary" formatted="false">Utilizzare una soluzione per dispositivi che mostrano solo multipli di 10%?</string>
-  <string name="pref_one_percent_hack_help" formatted="false">Questo trucco sembra funzionare per tutti i dispositivi Motorola con incrementi di default al 10%, diverse da quella originale Droid\n\nMolti dispositivi non necessitano di questo trucco. Se il tuo dispositivo segna già incrementi da 1%, non abilitare questo trucco.\n\nSe l\'opzione è in grigio e non riuscito ad abilitarla, alloro il dispositivo non è compatibile con questo trucco.\n\nVedi <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">OnePercentHack</a> per maggiori info.</string>
-  <string name="lang_system_selected" formatted="false">Sistema selezionato</string>
-  <string name="pref_cat_language" formatted="false">Lingua</string>
-  <string name="pref_language_override_summary" formatted="false">Seleziona lingua:</string>
-  <string name="pref_language_override_help" formatted="false">Se la traduzione è incompleta o inesatta e preferite un\'altra, forse migliore traduzione, si può scegliere di farlo qui.</string>
-  <string name="pref_cat_plugin_settings" formatted="false">Impostazioni plugin</string>
-  <string name="pref_plugin_settings" formatted="false">Impostazioni plugin</string>
-  <string name="pref_plugin_settings_summary" formatted="false">Modifica le impostazioni per questo plugin</string>
-  <string name="alarms_overview_help" formatted="false">Questa pagina ti permette di aggiungere nuovi allarmi, abilitare o disabilitare rapidamente gli allarmi esistenti, o cancellare gli allarmi.\n\nPer aggiungere un nuovo allarme, premere \"Aggiungi allarme\" — questo creerà un nuovo allarme e ti porterà alla pagina impostazioni dell\'allarme, dove si possono controllare le impostazioni per il nuovo allarme. Vedere l\'aiuto in tale pagina per maggiori dettagli.\n\nSotto il pulsante \"Aggiungi allarme\" c\'è un elenco di tutti gli allarmi che hai creato.\n\n• Per modificare un allarme esistente, basta selezionarlo.\n• Per cancellare un allarme, tenere premuto a lungo, poi selezionare \"Cancella allarme\". (Potete anche cancellare un allarme della pagina impostazioni individuali sveglia premendo MENU e poi \"Cancella allarmi\"). • Per alternare rapidamente se un allarme viene attivato, premere l\'icona sveglia a sinistra del testo la sveglia. (È anche possibile attivare o disattivare un allarme da parte delle singole impostazioni della sveglia pagina).</string>
-  <string name="pref_alarm_enabled_help" formatted="false">Se si desidera disabilitare temporaneamente un allarme senza doverlo ricreare quando lo si desidera, è possibile dis/attivarlo qui o sulla pagina principale allarmi.</string>
-  <string name="pref_alarm_lights_help" formatted="false">Stabilisce se la notifica debba accendere la luce del dispositivo. In genere questo fa lampeggiare un LED o la trackball. Nota che ogni dispositivo Android che ho usato si è comportato in modo anomalo in questo ambito. Se avete selezionato l\'opzione, la notifica chiederà ad Android di far lampeggiare la luce, ma non è detto che ciò accada.</string>
   <string name="pref_alarm_vibrate_help" formatted="false">Se tutto va bene, questa opzione farà vibrare il dispositivo quando l\'allarme è attivato, a meno che il dispositivo è in modalità silenziosa, a meno che non abbiate impostato il dispositivo a vibrare anche in modalità silenziosa. In altre parole, essa dovrebbe fare ciò che ci si aspetta. Se qualcosa non va vi invito a segnalarmelo.</string>
-  <string name="pref_alarm_type_help" formatted="false">Attualmente ci sono 5 tipi di allarme che potete scegliere.\n\nL\'allarme \"Diventa completamente carico\" vi informerà quando lo stato della vostra batteria cambia da \"In carica\" a \"Pieno carico\". Nota che su molti dispositivi, questo non è necessariamente la stessa cosa di essere carico al 100%\n\nGli allarmi di carica e temperatura richiedono di impostare una soglia al di sotto, dopo la scelta del tipo di allarme.\n\nL\'allarme \"Non in salute\" vi informerà se lo stato della batteria riportato da Android diventa qualcosa di diverso da \"Sconosciuto\" o \"Buona salute\".</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Qui è possibile controllare quale suono da riprodurre quando l\'allarme è attivato. Selezionare \"Silenzioso\" se non si vuole nessun suono.</string>
-  <string name="pref_language_override" formatted="false">Sovrascrittura lingua</string>
-  <string name="theme_settings" formatted="false">Colori e Temi</string>
-  <string name="theme_settings_help" formatted="false">E\' possibile modificare il tema per la schermata principale e controllare se e quando l\'icona di notifica cambierà colore.</string>
-  <string name="theme_settings_summary" formatted="false">Controlla i colori delle icone e i temi delle schermate</string>
-  <string-array name="pluggeds">
-    <item>(?)</item>
-    <item>Scollegato</item>
-    <item>(CA)</item>
-    <item>(USB)</item>
-    <item>(WL)</item>
-  </string-array>
+  <string name="pref_alarm_lights" formatted="false">Torcie</string>
+  <string name="pref_alarm_lights_help" formatted="false">Stabilisce se la notifica debba accendere la luce del dispositivo. In genere questo fa lampeggiare un LED o la trackball. Nota che ogni dispositivo Android che ho usato si è comportato in modo anomalo in questo ambito. Se avete selezionato l\'opzione, la notifica chiederà ad Android di far lampeggiare la luce, ma non è detto che ciò accada.</string>
   <string-array name="statuses">
     <item>Scollegato</item>
     <item>Sconosciuto</item>
@@ -303,6 +296,13 @@
     <item>Sovratensione</item>
     <item>Non riuscito</item>
     <item>Cold</item>
+  </string-array>
+  <string-array name="pluggeds">
+    <item>Scollegato</item>
+    <item>(CA)</item>
+    <item>(USB)</item>
+    <item>(?)</item>
+    <item>(WL)</item>
   </string-array>
   <string-array name="alarm_types_display">
     <item>Completamente carico</item>

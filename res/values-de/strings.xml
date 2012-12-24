@@ -3,8 +3,11 @@
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
   <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
   <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Einstellungen</string>
+  <string name="settings_activity_subtitle" formatted="false">Einstellungen</string>
   <string name="help_activity_name" formatted="false">Battery Indicator Pro - Hilfe</string>
+  <string name="help_activity_subtitle" formatted="false">Hilfe</string>
   <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Protokoll</string>
+  <string name="log_view_activity_subtitle" formatted="false">Protokoll</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
   <string name="settings_activity_name_free" formatted="false">Battery Indicator - Einstellungen</string>
   <string name="help_activity_name_free" formatted="false">Battery Indicator - Hilfe</string>
@@ -50,10 +53,10 @@
   <string name="press_back_to_leave" formatted="false">ZURÜCK drücken zum beenden.</string>
   <string name="press_menu_for_more" formatted="false">MENÜ drücken für mehr Möglichkeiten.</string>
   <string name="inaccessible_storage" formatted="false">SD-Karte ist nicht verfügbar.</string>
-  <string name="date" formatted="false">Datum</string>
   <string name="inaccessible_w_reason" formatted="false">SD-Karte nicht verfügbar:</string>
   <string name="read_only_storage" formatted="false">SD-Karte ist schreibgeschützt.</string>
   <string name="file_written" formatted="false">Datei wurde erfolgreich in das Wurzelverzeichnis ihrer SD-Karte geschrieben.</string>
+  <string name="date" formatted="false">Datum</string>
   <string name="time" formatted="false">Zeit</string>
   <string name="status" formatted="false">Status</string>
   <string name="charge" formatted="false">Ladung in Prozent</string>
@@ -97,6 +100,8 @@
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="pref_hint" formatted="false">Tip: MENÜ drücken für Hilfe.</string>
   <string name="settings_overview" formatted="false">Übersicht</string>
+  <string name="theme_settings" formatted="false">Farben und Themes</string>
+  <string name="theme_settings_summary" formatted="false">Einstellen der Icon-Farben und Fenster-Themes</string>
   <string name="time_settings" formatted="false">Zeit Einstellungen</string>
   <string name="time_settings_summary" formatted="false">Einstellung für Zeitschätzung und -vohersage</string>
   <string name="alarm_settings_subtitle" formatted="false">Alarm Einstellungen</string>
@@ -192,11 +197,6 @@
   <string name="silent" formatted="false">Still</string>
   <string name="pref_alarm_vibrate" formatted="false">Vibration</string>
   <string name="pref_alarm_lights" formatted="false">Lampe</string>
-  <string name="settings_activity_subtitle" formatted="false">Einstellungen</string>
-  <string name="help_activity_subtitle" formatted="false">Hilfe</string>
-  <string name="log_view_activity_subtitle" formatted="false">Protokoll</string>
-  <string name="theme_settings" formatted="false">Farben und Themes</string>
-  <string name="theme_settings_summary" formatted="false">Einstellen der Icon-Farben und Fenster-Themes</string>
   <string-array name="statuses">
     <item>Ausgesteckt</item>
     <item>Unbekannt</item>

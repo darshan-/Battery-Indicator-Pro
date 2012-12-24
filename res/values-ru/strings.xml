@@ -18,6 +18,7 @@
   <string name="cancel" formatted="false">Отмена</string>
   <string name="confirm_close" formatted="false">Действительно закрыть?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator будет полностью закрыт и Вы не увидите индикатор в строке состояния.\n\nЕсли Вы хотите выйти из главного меню и оставить индикатор активным, нажмите \"Отмена\" и после этого просто нажмите кнопку \"BACK\" для выхода из главного меню.</string>
+  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro необходимо удалить и установить заново для завершения крупного обновления. Прошу прощения за неудобства! Это необходимо сделать ввиду технических ограничений операционной системы Android. Этого больше не потребуется делать при последующих обновлениях.\n\nПосле того, как Вы нажмете \'Okay\' для закрытия этого сообщения, Вам будет нужно просто еще раз нажать \'Okay\', когда Android попросит разрешения удалить программу. Затем Вы перейдете на страницу Android Market, где сможете переустановить приложение.\n\nУ большинства пользователей настройки приложения сохраняться, за исключением настроек оповещений, которые необходимо будет настроить заново. И всё же, я не могу гарантировать, что настройки сохранятся, поэтому проверьте их после переустановки.\n\nСпасибо, я надеюсь, Вам понравятся новые функции!</string>
   <string name="confirm_clear_logs" formatted="false">Действительно удалить весь журнал работы?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Действительно включить режим 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Действительно выключить режим 10%?</string>
@@ -81,14 +82,15 @@
   <string name="help_introduction" formatted="false"><i>Battery Indicator Pro</i>, \"Pro\" версия популярного бесплатного приложения, <i>Battery Indicator</i>. \"Pro\" версия доступна для покупки в Android Market, но не забывайте что данное приложение является проектом с открытым кодом, что означает то что вы можете помочь в разработке и скачать исходники <a href="http://code.google.com/p/battery-indicator/">сайт проекта</a>.</string>
   <string name="help_introduction_free" formatted="false">Данная версия <i>Battery Indicator</i> является бесплатной. Версия доступна для покупки в Android Market, но не забывайте, что данное приложение является открытым проектом, что означает то, что вы можете помочь в разработке и скачать исходники <a href="http://code.google.com/p/battery-indicator/">сайт проекта</a>.\n\nВы можете поддержать проект, перейдя на \"PRO\" версию программы <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Battery Indicator Pro</a>.</string>
   <string name="help_cat_summary" formatted="false">О программе</string>
+  <string name="help_summary" formatted="false"><i>Battery Indicator Pro</i> это компактный индикатор заряда батареи для мобильной операционной системы Android™. Её основная функция - отображать уровень заряда батареи на индикаторе расположенном на верхней панели.\n\nВерсия Pro This Pro version offers a great deal more utility than that, however. Besides offering red, amber, and green icons, it also has the following key features as of version 3.0:\n\n• Fully configurable estimated charge/discharge time left.\n• Logging of battery state.\n• Themes for the main window (including a full-size window with large, easy-to-read text).\n• Manually disable/reenable the device lock screen, with the option to automatically disable it when plugged in and reenable it when unplugged.\n• Many more useful things that you\'ll discover throughout.</string>
   <string name="help_cat_no_warranty" formatted="false">Отказ от гарантий</string>
   <string name="help_subcat_translators" formatted="false">Переводчики</string>
   <string name="help_cat_contact" formatted="false">Контакты</string>
-  <string name="settings_overview" formatted="false">Обзор</string>
-  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro необходимо удалить и установить заново для завершения крупного обновления. Прошу прощения за неудобства! Это необходимо сделать ввиду технических ограничений операционной системы Android. Этого больше не потребуется делать при последующих обновлениях.\n\nПосле того, как Вы нажмете \'Okay\' для закрытия этого сообщения, Вам будет нужно просто еще раз нажать \'Okay\', когда Android попросит разрешения удалить программу. Затем Вы перейдете на страницу Android Market, где сможете переустановить приложение.\n\nУ большинства пользователей настройки приложения сохраняться, за исключением настроек оповещений, которые необходимо будет настроить заново. И всё же, я не могу гарантировать, что настройки сохранятся, поэтому проверьте их после переустановки.\n\nСпасибо, я надеюсь, Вам понравятся новые функции!</string>
-  <string name="help_summary" formatted="false"><i>Battery Indicator Pro</i> это компактный индикатор заряда батареи для мобильной операционной системы Android™. Её основная функция - отображать уровень заряда батареи на индикаторе расположенном на верхней панели.\n\nВерсия Pro This Pro version offers a great deal more utility than that, however. Besides offering red, amber, and green icons, it also has the following key features as of version 3.0:\n\n• Fully configurable estimated charge/discharge time left.\n• Logging of battery state.\n• Themes for the main window (including a full-size window with large, easy-to-read text).\n• Manually disable/reenable the device lock screen, with the option to automatically disable it when plugged in and reenable it when unplugged.\n• Many more useful things that you\'ll discover throughout.</string>
   <string name="help_contact" formatted="false">Если у Вас возникнут вопросы или проблемы, пожалуйста перейдите по ссылке<a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">FAQ проекта</a>, чтобы узнать как можно связаться со мной.\n</string>
   <string name="pref_hint" formatted="false">Подсказка: Нажмите MENU для вызова помощи.</string>
+  <string name="settings_overview" formatted="false">Обзор</string>
+  <string name="theme_settings" formatted="false">Цвета и Темы</string>
+  <string name="theme_settings_summary" formatted="false">Цвета индикатора и темы окна</string>
   <string name="time_settings" formatted="false">Настройки времени</string>
   <string name="alarm_settings_subtitle" formatted="false">Настройки оповещений</string>
   <string name="alarm_settings" formatted="false">Оповещения</string>
@@ -97,16 +99,55 @@
   <string name="other_settings" formatted="false">Другие настройки</string>
   <string name="other_settings_help" formatted="false">Все остальные настройки, включая настройки журнала работы, блокировки экрана, единицы измерения, автозагрузка и другие Вы можете найти на этой странице.</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">Больше настроек в версии Pro</string>
+  <string name="pref_cat_color" formatted="false">Цвет индикатора</string>
   <string name="pref_alarm_threshold" formatted="false">Предел</string>
   <string name="alarm_pref_not_used" formatted="false">Не используется для этого типа оповещения</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Предел срабатывания:</string>
   <string name="pref_cat_notification_settings" formatted="false">Настройки оповещений</string>
+  <string name="pref_alarm_ringtone" formatted="false">Мелодия</string>
   <string name="silent" formatted="false">Беззвучно</string>
   <string name="pref_alarm_vibrate" formatted="false">Вибратор</string>
-  <string name="pref_alarm_ringtone" formatted="false">Мелодия</string>
-  <string name="pref_cat_color" formatted="false">Цвет индикатора</string>
-  <string name="theme_settings" formatted="false">Цвета и Темы</string>
-  <string name="theme_settings_summary" formatted="false">Цвета индикатора и темы окна</string>
+  <string-array name="statuses">
+    <item>Отключен</item>
+    <item>Неизвестно</item>
+    <item>Заряжается</item>
+    <item>Разряжается</item>
+    <item>Не заряжается</item>
+    <item>Полностью заряжен</item>
+  </string-array>
+  <string-array name="log_statuses">
+    <item>Отключен</item>
+    <item>Неизвестно</item>
+    <item>Подключен</item>
+    <item>Неизвестно</item>
+    <item>Неизвестно</item>
+    <item>Полностью заряжен</item>
+  </string-array>
+  <string-array name="log_statuses_old">
+    <item>Разряжается</item>
+    <item>Неизвестно</item>
+    <item>Заряжается</item>
+    <item>Неизвестно</item>
+    <item>Неизвестно</item>
+    <item>Полностью заряжен</item>
+  </string-array>
+  <string-array name="healths">
+    <item>Неизвестно</item>
+    <item>Неизвестно</item>
+    <item>Хорошее состояние</item>
+    <item>Перегрев</item>
+    <item>Смерть</item>
+    <item>Превышено напряжение</item>
+    <item>Сбой</item>
+    <item>Cold</item>
+  </string-array>
+  <string-array name="pluggeds">
+    <item>Отключено</item>
+    <item>(AC)</item>
+    <item>(USB)</item>
+    <item>(?)</item>
+    <item>(WL)</item>
+  </string-array>
   <string-array name="alarm_types_display">
     <item>Полностью заряжено</item>
     <item>Заряд падает ниже</item>
@@ -123,8 +164,8 @@
   </string-array>
   <string-array name="mw_theme_pref_entries">
     <item>По умолчанию - маленькая</item>
-    <item>На полный экран</item>
     <item>Colorful Small</item>
+    <item>На полный экран</item>
   </string-array>
   <string-array name="boot_pref_entries">
     <item>Всегда</item>
@@ -147,46 +188,5 @@
     <item>2-х недель</item>
     <item>3 недели</item>
     <item>4 недель</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Сбой</item>
-    <item>Превышено напряжение</item>
-    <item>Неизвестно</item>
-    <item>Неизвестно</item>
-    <item>Хорошее состояние</item>
-    <item>Перегрев</item>
-    <item>Смерть</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Отключено</item>
-    <item>(AC)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Полностью заряжен</item>
-    <item>Неизвестно</item>
-    <item>Разряжается</item>
-    <item>Неизвестно</item>
-    <item>Заряжается</item>
-    <item>Неизвестно</item>
-  </string-array>
-  <string-array name="statuses">
-    <item>Не заряжается</item>
-    <item>Полностью заряжен</item>
-    <item>Заряжается</item>
-    <item>Разряжается</item>
-    <item>Отключен</item>
-    <item>Неизвестно</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>Отключен</item>
-    <item>Неизвестно</item>
-    <item>Подключен</item>
-    <item>Неизвестно</item>
-    <item>Неизвестно</item>
-    <item>Полностью заряжен</item>
   </string-array>
 </resources>
