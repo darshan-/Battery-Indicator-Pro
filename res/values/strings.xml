@@ -102,6 +102,7 @@
   <string formatted="false" name="menu_help">Help</string>
   <string formatted="false" name="menu_clear">Clear</string>
   <string formatted="false" name="menu_reverse">Reverse Order</string>
+  <string formatted="false" name="menu_log_filter">Filter</string>
   <string formatted="false" name="menu_export">Export CSV</string>
   <string formatted="false" name="menu_delete_alarm">Delete Alarm</string>
   <string formatted="false" name="menu_get_plugins">Get Plugins</string>

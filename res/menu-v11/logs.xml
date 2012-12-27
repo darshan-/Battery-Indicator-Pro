@@ -15,6 +15,13 @@
   />
 
   <item
+      android:id="@+id/menu_log_filter"
+      android:icon="@+android:drawable/ic_menu_sort_by_size"
+      android:title="@string/menu_log_filter"
+      android:showAsAction="ifRoom|withText"
+  />
+
+  <item
       android:id="@+id/menu_reverse"
       android:icon="@+android:drawable/ic_menu_revert"
       android:title="@string/menu_reverse"

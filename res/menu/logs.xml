@@ -7,6 +7,12 @@
   />
 
   <item
+      android:id="@+id/menu_log_filter"
+      android:icon="@+android:drawable/ic_menu_sort_by_size"
+      android:title="@string/menu_log_filter"
+  />
+
+  <item
       android:id="@+id/menu_export"
       android:icon="@+android:drawable/ic_menu_save"
       android:title="@string/menu_export"
