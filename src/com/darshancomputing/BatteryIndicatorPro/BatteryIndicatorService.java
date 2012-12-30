@@ -492,7 +492,7 @@ public class BatteryIndicatorService extends Service {
                 }                
 
                 c = alarms.activeAlarmChargeRises(percent, previous_charge);
-                if (c != null) {
+                if (c != null && status != STATUS_UNPLUGGED) {
                     editor.putInt(KEY_PREVIOUS_CHARGE, percent);
                     notification = parseAlarmCursor(c);
                     notification.setLatestEventInfo(context, str.alarm_charge_rises + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
