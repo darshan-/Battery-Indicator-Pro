@@ -57,6 +57,8 @@
 
   <string formatted="false" name="confirm_clear_logs">Really clear all logs?</string>
 
+  <string formatted="false" name="configure_log_filter">Show which log items?</string>
+
   <string formatted="false" name="confirm_ten_percent_enable">Really enable 10% Mode?</string>
   <string formatted="false" name="confirm_ten_percent_disable">Really disable 10% Mode?</string>
   <string formatted="false" name="confirm_ten_percent_hint">
@@ -161,6 +163,15 @@
     <item>Unknown</item>
     <item>Fully Charged</item>
   </string-array>
+  <string-array name="log_filters">
+    <item>Plugged In</item>
+    <item>Unplugged</item>
+    <item>Charging</item>
+    <item>Discharging</item>
+    <item>Fully Charged</item>
+    <item>Unknown</item>
+  </string-array>
+
   <string-array name="healths">
     <item>Unknown</item>
     <item>Unknown</item>

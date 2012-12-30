@@ -360,6 +360,15 @@
     <item>672</item>
   </string-array>
 
+  <string-array name="log_filter_pref_keys">
+    <item>plugged_in</item>
+    <item>unplugged</item>
+    <item>charging</item>
+    <item>discharging</item>
+    <item>fully_charged</item>
+    <item>unknown</item>
+  </string-array>
+
   <string-array name="icon_set_values">
     <item>builtin.classic</item>
     <item>builtin.plain_number</item>

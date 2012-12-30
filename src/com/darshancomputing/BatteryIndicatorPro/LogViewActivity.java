@@ -24,6 +24,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Environment;
@@ -59,7 +60,8 @@ public class LogViewActivity extends ListActivity {
     private Boolean reversed = false;
     private Boolean convertF;
 
-    private static final int DIALOG_CONFIRM_CLEAR_LOGS = 0;
+    private static final int DIALOG_CONFIRM_CLEAR_LOGS   = 0;
+    private static final int DIALOG_CONFIGURE_LOG_FILTER = 1;
 
     private static final String[] CSV_ORDER = {LogDatabase.KEY_TIME, LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, 
                                                LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE};
@@ -171,6 +173,41 @@ public class LogViewActivity extends ListActivity {
 
             dialog = builder.create();
             break;
+        case DIALOG_CONFIGURE_LOG_FILTER:
+            String[] log_filter_pref_keys = res.getStringArray(R.array.log_filter_pref_keys);
+
+            builder.setTitle(str.configure_log_filter)
+                .setMultiChoiceItems(R.array.log_filters, null,
+                                     new DialogInterface.OnMultiChoiceClickListener() {
+                                         @Override
+                                         public void onClick(DialogInterface di, int id, boolean isChecked) {
+                                             SharedPreferences.Editor editor = settings.edit();
+
+                                             if (isChecked) {
+                                                 editor.putBoolean(log_filter_pref_keys[id], true);
+                                             } else {
+                                                 editor.putBoolean(log_filter_pref_keys[id], false);
+                                             }
+
+                                             editor.commit();
+                                         }
+                                     })
+                .setPositiveButton(str.okay, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            logs.clearAllLogs();
+                            reloadList(false);
+
+                            di.cancel();
+                        }
+                    })
+                .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            di.cancel();
+                        }
+                    });
+
+            dialog = builder.create();
+            break;
         default:
             dialog = null;
         }
@@ -215,6 +252,10 @@ public class LogViewActivity extends ListActivity {
         switch (item.getItemId()) {
         case R.id.menu_clear:
             showDialog(DIALOG_CONFIRM_CLEAR_LOGS);
+
+            return true;
+        case R.id.menu_log_filter:
+            showDialog(DIALOG_CONFIGURE_LOG_FILTER);
 
             return true;
         case R.id.menu_export:
