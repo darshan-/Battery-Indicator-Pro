@@ -70,29 +70,29 @@ public class BatteryIndicatorService extends Service {
     private static final int NOTIFICATION_ALARM_HEALTH = 4;
     private static final int NOTIFICATION_ALARM_TEMP   = 5;
 
-    private static final int STATUS_UNPLUGGED     = 0;
-    private static final int STATUS_UNKNOWN       = 1;
-    private static final int STATUS_CHARGING      = 2;
-    private static final int STATUS_DISCHARGING   = 3;
-    private static final int STATUS_NOT_CHARGING  = 4;
-    private static final int STATUS_FULLY_CHARGED = 5;
-    private static final int STATUS_MAX = STATUS_FULLY_CHARGED;
+    public static final int STATUS_UNPLUGGED     = 0;
+    public static final int STATUS_UNKNOWN       = 1;
+    public static final int STATUS_CHARGING      = 2;
+    public static final int STATUS_DISCHARGING   = 3;
+    public static final int STATUS_NOT_CHARGING  = 4;
+    public static final int STATUS_FULLY_CHARGED = 5;
+    public static final int STATUS_MAX = STATUS_FULLY_CHARGED;
 
-    private static final int PLUGGED_UNPLUGGED = 0;
-    private static final int PLUGGED_AC        = 1;
-    private static final int PLUGGED_USB       = 2;
-    private static final int PLUGGED_UNKNOWN   = 3;
-    private static final int PLUGGED_WIRELESS  = 4;
-    private static final int PLUGGED_MAX       = PLUGGED_WIRELESS;
+    public static final int PLUGGED_UNPLUGGED = 0;
+    public static final int PLUGGED_AC        = 1;
+    public static final int PLUGGED_USB       = 2;
+    public static final int PLUGGED_UNKNOWN   = 3;
+    public static final int PLUGGED_WIRELESS  = 4;
+    public static final int PLUGGED_MAX       = PLUGGED_WIRELESS;
 
-    private static final int HEALTH_UNKNOWN     = 1;
-    private static final int HEALTH_GOOD        = 2;
-    private static final int HEALTH_OVERHEAT    = 3;
-    private static final int HEALTH_DEAD        = 4;
-    private static final int HEALTH_OVERVOLTAGE = 5;
-    private static final int HEALTH_FAILURE     = 6;
-    private static final int HEALTH_COLD        = 7;
-    private static final int HEALTH_MAX         = HEALTH_COLD;
+    public static final int HEALTH_UNKNOWN     = 1;
+    public static final int HEALTH_GOOD        = 2;
+    public static final int HEALTH_OVERHEAT    = 3;
+    public static final int HEALTH_DEAD        = 4;
+    public static final int HEALTH_OVERVOLTAGE = 5;
+    public static final int HEALTH_FAILURE     = 6;
+    public static final int HEALTH_COLD        = 7;
+    public static final int HEALTH_MAX         = HEALTH_COLD;
 
 
     public static final String KEY_LAST_STATUS_SINCE = "last_status_since";
