@@ -321,6 +321,9 @@
   <string name="main_window_title">@string/app_full_name</string>
   <string name="main_window_title_free">@string/app_full_name_free</string>
 
+  <string formatted="false" name="pref_main_notification_priority_summary">@string/pref_main_notification_priority</string>
+
+
   <string-array name="alarm_type_values">
     <item>fully_charged</item>
     <item>charge_drops</item>

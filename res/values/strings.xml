@@ -578,7 +578,6 @@
     \nAgain, the exact behavior may vary between devices and is not guaranteed.
   </string>
   <string formatted="false" name="pref_main_notification_priority">Main Notification Priority</string>
-  <string formatted="false" name="pref_main_notification_priority_summary">@string/pref_main_notification_priority</string>
   <string formatted="false" name="pref_main_notification_priority_help">
     Set the priority of the main notification.  Alarms, plugins, and any other notifications are not
     affected by this setting, but they may in the future have configurable priority.
