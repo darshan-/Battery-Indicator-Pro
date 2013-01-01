@@ -179,9 +179,14 @@ public class LogViewActivity extends ListActivity {
             break;
         case DIALOG_CONFIGURE_LOG_FILTER:
             final String[] log_filter_pref_keys = res.getStringArray(R.array.log_filter_pref_keys);
+            final boolean[] checked_items = new boolean[log_filter_pref_keys.length];
+
+            for (int i = 0; i < checked_items.length; i++) {
+                checked_items[i] = settings.getBoolean(log_filter_pref_keys[i], true);
+            }
 
             builder.setTitle(str.configure_log_filter)
-                .setMultiChoiceItems(R.array.log_filters, null,
+                .setMultiChoiceItems(R.array.log_filters, checked_items,
                                      new DialogInterface.OnMultiChoiceClickListener() {
                                          @Override
                                          public void onClick(DialogInterface di, int id, boolean isChecked) {
@@ -198,7 +203,6 @@ public class LogViewActivity extends ListActivity {
                                      })
                 .setPositiveButton(str.okay, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
-                            logs.clearAllLogs();
                             reloadList(false);
 
                             di.cancel();
@@ -393,12 +397,20 @@ public class LogViewActivity extends ListActivity {
 
         public FilteredCursor(Cursor cursor) {
             super(cursor);
+
+            shownIDs = new ArrayList<Integer>();
             wrappedCursor = cursor;
+
             refilter();
         }
 
         public void refilter() {
+            if (wrappedCursor.isClosed()) return;
+
+            shownIDs.clear();
+
             int wrappedCursorPos = wrappedCursor.getPosition();
+            int statusCodeIndex = wrappedCursor.getColumnIndexOrThrow(LogDatabase.KEY_STATUS_CODE);
 
             boolean show_plugged_in    = settings.getBoolean("plugged_in",    true);
             boolean show_unplugged     = settings.getBoolean("unplugged",     true);
@@ -408,7 +420,7 @@ public class LogViewActivity extends ListActivity {
             boolean show_unknown       = settings.getBoolean("unknown",       true);
 
             for (wrappedCursor.moveToFirst(); !wrappedCursor.isAfterLast(); wrappedCursor.moveToNext()) {
-                int statusCode    = wrappedCursor.getInt(mAdapter.statusCodeIndex);
+                int statusCode    = wrappedCursor.getInt(statusCodeIndex);
                 int[] statusCodes = LogDatabase.decodeStatus(statusCode);
                 int status        = statusCodes[0];
                 int plugged       = statusCodes[1];
@@ -427,8 +439,8 @@ public class LogViewActivity extends ListActivity {
                         (status == BatteryIndicatorService.STATUS_CHARGING  && show_charging))
                         shownIDs.add(wrappedCursor.getPosition());
                 } else if (status_age == LogDatabase.STATUS_NEW) {
-                    if ((status == BatteryIndicatorService.STATUS_UNPLUGGED && show_plugged_in) ||
-                        (status == BatteryIndicatorService.STATUS_CHARGING  && show_unplugged))
+                    if ((status == BatteryIndicatorService.STATUS_UNPLUGGED && show_unplugged) ||
+                        (status == BatteryIndicatorService.STATUS_CHARGING  && show_plugged_in))
                         shownIDs.add(wrappedCursor.getPosition());
                 }
             }
