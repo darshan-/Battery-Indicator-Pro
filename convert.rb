@@ -62,23 +62,11 @@ conv_doc.xpath('//string-array').each do |sa_el|
   conversions[sa_el.attr('name')] = a
 end
 
-conversions.each do |a_name, a|
-  puts "#{a_name}:"
-  a.each_with_index do |name, i|
-    puts " #{i}: #{name}"
-  end
-  puts
-end
-
 str_xml_files = `echo -n res/values/strings.xml res/values-??/strings.xml res/values-??-*/strings.xml`.split
 
 str_xml_files.each do |str_xml_file|
-  puts "FILE #{str_xml_file}:"
-
   old_content = IO.read(str_xml_file)
   new_content = ""
-
-  puts "  #{old_content.length} chars long"
 
   in_array = false
   i = -1
@@ -87,37 +75,35 @@ str_xml_files.each do |str_xml_file|
     if in_array
       if i >= conversions[in_array].length
         in_array = false
-        puts
         next
       end
 
-      puts line
+      value = line.split("<item>")[1].split("</item>")[0]
+      new_content << %Q{  <string formatted="false" name="#{conversions[in_array][i]}">#{value}</string>\n}
       i += 1
       next
     end
 
     if not line.start_with?("  <string-array ")
-      old_content << line
+      new_content << line
       next
     end
 
     if line.count('"') != 2
-      old_context << line
+      new_content << line
       next
     end
 
     a_name = line.split('"')[1]
 
     if not conversions.has_key?(a_name)
-      old_context << line
+      new_content << line
       next
     end
 
     in_array = a_name
     i = 0
-
-    puts "  #{a_name}:"
   end
 
-  puts
+  IO.write(str_xml_file, new_content)
 end
