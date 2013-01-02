@@ -398,4 +398,115 @@
     \nMiltos (Κύπρος)
     \nDenis Bence
   </string>
+
+  <string-array name="statuses">
+    <item>@string/status_unplugged</item>
+    <item>@string/status_unknown</item>
+    <item>@string/status_charging</item>
+    <item>@string/status_discharging</item>
+    <item>@string/status_not_charging</item>
+    <item>@string/status_fully_charged</item>
+  </string-array>
+  <string-array name="log_statuses"><!-- The same as above, worded for the Log screen -->
+    <item>@string/status_unplugged</item>
+    <item>@string/status_unknown</item>
+    <item>@string/status_plugged_in</item>
+    <item>@string/status_unknown</item>
+    <item>@string/status_unknown</item>
+    <item>@string/status_fully_charged</item>
+  </string-array>
+  <string-array name="log_statuses_old"><!-- The same as above, worded for old Log screen statuses -->
+    <item>@string/status_discharging</item><!-- E.g., Unplugged is called Discharging after the first time it is logged -->
+    <item>@string/status_unknown</item>
+    <item>@string/status_charging</item>
+    <item>@string/status_unknown</item>
+    <item>@string/status_unknown</item>
+    <item>@string/status_fully_charged</item>
+  </string-array>
+  <string-array name="log_filters">
+    <item>@string/status_plugged_in</item>
+    <item>@string/status_unplugged</item>
+    <item>@string/status_charging</item>
+    <item>@string/status_discharging</item>
+    <item>@string/status_fully_charged</item>
+    <item>@string/status_unknown</item>
+  </string-array>
+
+  <string-array name="healths">
+    <item>@string/health_unknown</item>
+    <item>@string/health_unknown</item>
+    <item>@string/health_good</item>
+    <item>@string/health_overheat</item>
+    <item>@string/health_dead</item>
+    <item>@string/health_overvoltage</item>
+    <item>@string/health_failure</item>
+    <item>@string/health_cold</item>
+  </string-array>
+  <string-array name="pluggeds">
+    <item>@string/plugged_unplugged</item>
+    <item>@string/plugged_ac</item>
+    <item>@string/plugged_usb</item>
+    <item>@string/plugged_unknown</item>
+    <item>@string/plugged_wireless</item>
+  </string-array>
+
+  <string-array name="alarm_types_display">
+    <item>@string/alarm_type_fully_charged</item>
+    <item>@string/alarm_type_charge_drops</item>
+    <item>@string/alarm_type_charge_rises</item>
+    <item>@string/alarm_type_temperature_rises</item>
+    <item>@string/alarm_type_health_failure</item>
+  </string-array>
+  <string-array name="alarm_type_entries">
+    <item>@string/alarm_type_entry_fully_charged</item>
+    <item>@string/alarm_type_entry_charge_drops</item>
+    <item>@string/alarm_type_entry_charge_rises</item>
+    <item>@string/alarm_type_entry_temperature_rises</item>
+    <item>@string/alarm_type_entry_health_failure</item>
+  </string-array>
+
+  <string-array name="mw_theme_pref_entries">
+    <item>@string/mw_theme_default_small</item>
+    <item>@string/mw_theme_colorful_small</item>
+    <item>@string/mw_theme_full_window</item>
+  </string-array>
+
+  <string-array name="boot_pref_entries">
+    <item>@string/boot_pref_always</item>
+    <item>@string/boot_pref_never</item>
+    <item>@string/boot_pref_if_running</item>
+  </string-array>
+
+  <string-array name="status_dur_est_entries">
+    <item>@string/status_dur_always</item>
+    <item>@string/status_dur_after_1h</item>
+    <item>@string/status_dur_after_2h</item>
+    <item>@string/status_dur_after_3h</item>
+    <item>@string/status_dur_after_6h</item>
+    <item>@string/status_dur_after_12h</item>
+  </string-array>
+
+  <string-array name="max_log_age_entries">
+    <item>@string/age_1_day</item>
+    <item>@string/age_2_days</item>
+    <item>@string/age_4_days</item>
+    <item>@string/age_1_week</item>
+    <item>@string/age_2_weeks</item>
+    <item>@string/age_3_weeks</item>
+    <item>@string/age_4_weeks</item>
+  </string-array>
+
+  <string-array name="notification_priority_entries">
+    <item>@string/notification_priority_max</item>
+    <item>@string/notification_priority_high</item>
+    <item>@string/notification_priority_default</item>
+    <item>@string/notification_priority_low</item>
+    <item>@string/notification_priority_min</item>
+  </string-array>
+
+  <string-array name="icon_set_entries">
+    <item>@string/icon_set_classic</item>
+    <item>@string/icon_set_plain</item>
+    <item>@string/icon_set_smaller</item>
+  </string-array>
 </resources>

@@ -147,7 +147,7 @@
     <item>Not Charging</item>
     <item>Fully Charged</item>
   </string-array>
-  <string-array name="log_statuses"><!-- The same as above, worded for the Log screen -->
+  <string-array name="log_statuses">
     <item>Unplugged</item>
     <item>Unknown</item>
     <item>Plugged In</item>
@@ -155,8 +155,8 @@
     <item>Unknown</item>
     <item>Fully Charged</item>
   </string-array>
-  <string-array name="log_statuses_old"><!-- The same as above, worded for old Log screen statuses -->
-    <item>Discharging</item>            <!-- E.g., Unplugged is called Discharging after the first time it is logged -->
+  <string-array name="log_statuses_old">
+    <item>Discharging</item>
     <item>Unknown</item>
     <item>Charging</item>
     <item>Unknown</item>
