@@ -75,13 +75,48 @@ str_xml_files = `echo -n res/values/strings.xml res/values-??/strings.xml res/va
 str_xml_files.each do |str_xml_file|
   puts "FILE #{str_xml_file}:"
 
-  content = IO.read(str_xml_file)
-  puts "  #{content.length} chars long"
+  old_content = IO.read(str_xml_file)
+  new_content = ""
 
-  content.each_line do |line|
-    next if not line.start_with?("  <string-array ")
+  puts "  #{old_content.length} chars long"
 
-    puts line
+  in_array = false
+  i = -1
+
+  old_content.each_line do |line|
+    if in_array
+      if i >= conversions[in_array].length
+        in_array = false
+        puts
+        next
+      end
+
+      puts line
+      i += 1
+      next
+    end
+
+    if not line.start_with?("  <string-array ")
+      old_content << line
+      next
+    end
+
+    if line.count('"') != 2
+      old_context << line
+      next
+    end
+
+    a_name = line.split('"')[1]
+
+    if not conversions.has_key?(a_name)
+      old_context << line
+      next
+    end
+
+    in_array = a_name
+    i = 0
+
+    puts "  #{a_name}:"
   end
 
   puts
