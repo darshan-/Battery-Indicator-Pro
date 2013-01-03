@@ -65,6 +65,35 @@
   <string name="charge" formatted="false">pourcentage_de_charge</string>
   <string name="temperature" formatted="false">degres_celsius</string>
   <string name="voltage" formatted="false">volts</string>
+  <string name="status_unplugged" formatted="false">Débranché</string>
+  <string name="status_unknown" formatted="false">Inconnu</string>
+  <string name="status_charging" formatted="false">En charge</string>
+  <string name="status_discharging" formatted="false">Se décharge</string>
+  <string name="status_not_charging" formatted="false">Pas de charge</string>
+  <string name="status_fully_charged" formatted="false">Complètement chargée</string>
+  <string name="status_plugged_in" formatted="false">Branché</string>
+  <string name="health_unknown" formatted="false">Inconnu</string>
+  <string name="health_good" formatted="false">Bon état</string>
+  <string name="health_overheat" formatted="false">Surchauffe</string>
+  <string name="health_dead" formatted="false">Morte</string>
+  <string name="health_overvoltage" formatted="false">Surtension</string>
+  <string name="health_failure" formatted="false">Défaut</string>
+  <string name="health_cold" formatted="false">Cold</string>
+  <string name="plugged_unplugged" formatted="false">Débranché</string>
+  <string name="plugged_ac" formatted="false">(CA)</string>
+  <string name="plugged_usb" formatted="false">(USB)</string>
+  <string name="plugged_unknown" formatted="false">(?)</string>
+  <string name="plugged_wireless" formatted="false">(WL)</string>
+  <string name="alarm_type_fully_charged" formatted="false">Complètement chargée</string>
+  <string name="alarm_type_charge_drops" formatted="false">Charge inférieure à</string>
+  <string name="alarm_type_charge_rises" formatted="false">Charge supérieure à</string>
+  <string name="alarm_type_temperature_rises" formatted="false">Température supérieure à</string>
+  <string name="alarm_type_health_failure" formatted="false">Santé critique</string>
+  <string name="alarm_type_entry_fully_charged" formatted="false">Charge terminée</string>
+  <string name="alarm_type_entry_charge_drops" formatted="false">Charge inférieure à...</string>
+  <string name="alarm_type_entry_charge_rises" formatted="false">Charge supérieure à...</string>
+  <string name="alarm_type_entry_temperature_rises" formatted="false">Température supérieure à...</string>
+  <string name="alarm_type_entry_health_failure" formatted="false">Santé critique</string>
   <string name="alarm_fully_charged" formatted="false">La batterie est complètement chargée</string>
   <string name="alarm_charge_drops" formatted="false">"Charge de la batterie inférieure à "</string>
   <string name="alarm_charge_rises" formatted="false">"Charge de la batterie supérieure à "</string>
@@ -260,54 +289,25 @@
   <string name="pref_alarm_vibrate_help" formatted="false">Si tout va bien, activer cette option fera vibrer votre appareil quand l\'alarme est déclenchée, sauf si l\'appareil est en silencieux, sauf si vous avez activé les vibrations en silencieux. En d\'autres mots, ça devrait se comporter correctement en fonction de la configuration de votre appareil. Si cela ne fonctionne pas correctement, veuillez me contacter par email.</string>
   <string name="pref_alarm_lights" formatted="false">Éclairage de la DEL</string>
   <string name="pref_alarm_lights_help" formatted="false">Défini si la notification doit activer la diode principale de votre appareil. Il s\'agit généralement d\'éclairer la DEL ou le trackball. Notez que cette option n\'a pas toujours fonctionné sur les appareils Android que j\'ai utilisé. Si l\'option est active, l\'application demande à Android d\'allumer la diode mais cela n\'est pas toujours effectif.</string>
-  <string formatted="false" name="status_unplugged">Débranché</string>
-  <string formatted="false" name="status_unknown">Inconnu</string>
-  <string formatted="false" name="status_charging">En charge</string>
-  <string formatted="false" name="status_discharging">Se décharge</string>
-  <string formatted="false" name="status_not_charging">Pas de charge</string>
-  <string formatted="false" name="status_fully_charged">Complètement chargée</string>
-  <string formatted="false" name="status_plugged_in">Branché</string>
-  <string formatted="false" name="health_unknown">Inconnu</string>
-  <string formatted="false" name="health_good">Bon état</string>
-  <string formatted="false" name="health_overheat">Surchauffe</string>
-  <string formatted="false" name="health_dead">Morte</string>
-  <string formatted="false" name="health_overvoltage">Surtension</string>
-  <string formatted="false" name="health_failure">Défaut</string>
-  <string formatted="false" name="health_cold">Cold</string>
-  <string formatted="false" name="plugged_unplugged">Débranché</string>
-  <string formatted="false" name="plugged_ac">(CA)</string>
-  <string formatted="false" name="plugged_usb">(USB)</string>
-  <string formatted="false" name="plugged_unknown">(?)</string>
-  <string formatted="false" name="plugged_wireless">(WL)</string>
-  <string formatted="false" name="alarm_type_fully_charged">Complètement chargée</string>
-  <string formatted="false" name="alarm_type_charge_drops">Charge inférieure à</string>
-  <string formatted="false" name="alarm_type_charge_rises">Charge supérieure à</string>
-  <string formatted="false" name="alarm_type_temperature_rises">Température supérieure à</string>
-  <string formatted="false" name="alarm_type_health_failure">Santé critique</string>
-  <string formatted="false" name="alarm_type_entry_fully_charged">Charge terminée</string>
-  <string formatted="false" name="alarm_type_entry_charge_drops">Charge inférieure à...</string>
-  <string formatted="false" name="alarm_type_entry_charge_rises">Charge supérieure à...</string>
-  <string formatted="false" name="alarm_type_entry_temperature_rises">Température supérieure à...</string>
-  <string formatted="false" name="alarm_type_entry_health_failure">Santé critique</string>
-  <string formatted="false" name="mw_theme_default_small">Par défaut (petit)</string>
-  <string formatted="false" name="mw_theme_colorful_small">Coloré (petit)</string>
-  <string formatted="false" name="mw_theme_full_window">Plein écran</string>
-  <string formatted="false" name="boot_pref_always">Toujours</string>
-  <string formatted="false" name="boot_pref_never">Jamais</string>
-  <string formatted="false" name="boot_pref_if_running">Si fonctionne lors de l\'arrêt</string>
-  <string formatted="false" name="status_dur_always">Toujours</string>
-  <string formatted="false" name="status_dur_after_1h">Après 1 heure</string>
-  <string formatted="false" name="status_dur_after_2h">Après 2 heures</string>
-  <string formatted="false" name="status_dur_after_3h">Après 3 heures</string>
-  <string formatted="false" name="status_dur_after_6h">Après 6 heures</string>
-  <string formatted="false" name="status_dur_after_12h">Après 12 heures</string>
-  <string formatted="false" name="age_1_day">1 jour</string>
-  <string formatted="false" name="age_2_days">2 jours</string>
-  <string formatted="false" name="age_4_days">4 jours</string>
-  <string formatted="false" name="age_1_week">1 semaine</string>
-  <string formatted="false" name="age_2_weeks">2 semaines</string>
-  <string formatted="false" name="age_3_weeks">3 semaines</string>
-  <string formatted="false" name="age_4_weeks">4 semaines</string>
+  <string name="mw_theme_default_small" formatted="false">Par défaut (petit)</string>
+  <string name="mw_theme_colorful_small" formatted="false">Coloré (petit)</string>
+  <string name="mw_theme_full_window" formatted="false">Plein écran</string>
+  <string name="boot_pref_always" formatted="false">Toujours</string>
+  <string name="boot_pref_never" formatted="false">Jamais</string>
+  <string name="boot_pref_if_running" formatted="false">Si fonctionne lors de l\'arrêt</string>
+  <string name="status_dur_always" formatted="false">Toujours</string>
+  <string name="status_dur_after_1h" formatted="false">Après 1 heure</string>
+  <string name="status_dur_after_2h" formatted="false">Après 2 heures</string>
+  <string name="status_dur_after_3h" formatted="false">Après 3 heures</string>
+  <string name="status_dur_after_6h" formatted="false">Après 6 heures</string>
+  <string name="status_dur_after_12h" formatted="false">Après 12 heures</string>
+  <string name="age_1_day" formatted="false">1 jour</string>
+  <string name="age_2_days" formatted="false">2 jours</string>
+  <string name="age_4_days" formatted="false">4 jours</string>
+  <string name="age_1_week" formatted="false">1 semaine</string>
+  <string name="age_2_weeks" formatted="false">2 semaines</string>
+  <string name="age_3_weeks" formatted="false">3 semaines</string>
+  <string name="age_4_weeks" formatted="false">4 semaines</string>
   <plurals name="n_log_items">
     <item quantity="one">%d élément de journal</item>
     <item quantity="other">%d éléments de journal</item>

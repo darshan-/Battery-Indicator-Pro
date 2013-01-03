@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
-  <string name="app_launcher_name" formatted="false">Battery Indicator</string>
+  <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
   <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Nastavenia</string>
+  <string name="settings_activity_subtitle" formatted="false">Nastavenia</string>
   <string name="help_activity_name" formatted="false">Battery Indicator Pro - Pomocník</string>
+  <string name="help_activity_subtitle" formatted="false">Pomocník</string>
   <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Záznamy</string>
+  <string name="log_view_activity_subtitle" formatted="false">Záznamy</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
   <string name="settings_activity_name_free" formatted="false">Battery Indicator - Nastavenia</string>
   <string name="help_activity_name_free" formatted="false">Battery Indicator - Pomocník</string>
@@ -62,6 +65,35 @@
   <string name="charge" formatted="false">percento nabitia</string>
   <string name="temperature" formatted="false">stupňov celzia</string>
   <string name="voltage" formatted="false">voltov</string>
+  <string name="status_unplugged" formatted="false">Odpojený</string>
+  <string name="status_unknown" formatted="false">Neznámy</string>
+  <string name="status_charging" formatted="false">Nabíjanie</string>
+  <string name="status_discharging" formatted="false">Vybíjanie</string>
+  <string name="status_not_charging" formatted="false">Nenabíja</string>
+  <string name="status_fully_charged" formatted="false">Plne nabitá</string>
+  <string name="status_plugged_in" formatted="false">Pripojený</string>
+  <string name="health_unknown" formatted="false">Neznámy</string>
+  <string name="health_good" formatted="false">Dobré zdravie</string>
+  <string name="health_overheat" formatted="false">Prehriata</string>
+  <string name="health_dead" formatted="false">Mŕtva</string>
+  <string name="health_overvoltage" formatted="false">Prepätie</string>
+  <string name="health_failure" formatted="false">Zlyhanie</string>
+  <string name="health_cold" formatted="false">Cold</string>
+  <string name="plugged_unplugged" formatted="false">Unplugged</string>
+  <string name="plugged_ac" formatted="false">(Sieť)</string>
+  <string name="plugged_usb" formatted="false">(USB)</string>
+  <string name="plugged_unknown" formatted="false">(?)</string>
+  <string name="plugged_wireless" formatted="false">(WL)</string>
+  <string name="alarm_type_fully_charged" formatted="false">Plne nabitá</string>
+  <string name="alarm_type_charge_drops" formatted="false">Nabitie klesne pod</string>
+  <string name="alarm_type_charge_rises" formatted="false">Nabitie stúpne nad</string>
+  <string name="alarm_type_temperature_rises" formatted="false">Teplota stúpne nad</string>
+  <string name="alarm_type_health_failure" formatted="false">Porucha zdravia</string>
+  <string name="alarm_type_entry_fully_charged" formatted="false">Bude plne nabitá</string>
+  <string name="alarm_type_entry_charge_drops" formatted="false">Nabitie klesne pod...</string>
+  <string name="alarm_type_entry_charge_rises" formatted="false">Nabitie stúpne nad...</string>
+  <string name="alarm_type_entry_temperature_rises" formatted="false">Teplota stúpne nad...</string>
+  <string name="alarm_type_entry_health_failure" formatted="false">Porucha zdravia</string>
   <string name="alarm_fully_charged" formatted="false">Batéria je teraz úplne nabitá</string>
   <string name="alarm_charge_drops" formatted="false">"Nabitie batérie je pod "</string>
   <string name="alarm_charge_rises" formatted="false">"Nabitie batérie je nad "</string>
@@ -220,54 +252,25 @@
   <string name="silent" formatted="false">Tichý</string>
   <string name="pref_alarm_vibrate" formatted="false">Vibrovať</string>
   <string name="pref_alarm_lights" formatted="false">Blikať svetlom</string>
-  <string formatted="false" name="status_unplugged">Odpojený</string>
-  <string formatted="false" name="status_unknown">Neznámy</string>
-  <string formatted="false" name="status_charging">Nabíjanie</string>
-  <string formatted="false" name="status_discharging">Vybíjanie</string>
-  <string formatted="false" name="status_not_charging">Nenabíja</string>
-  <string formatted="false" name="status_fully_charged">Plne nabitá</string>
-  <string formatted="false" name="status_plugged_in">Pripojený</string>
-  <string formatted="false" name="health_unknown">Neznámy</string>
-  <string formatted="false" name="health_good">Dobré zdravie</string>
-  <string formatted="false" name="health_overheat">Prehriata</string>
-  <string formatted="false" name="health_dead">Mŕtva</string>
-  <string formatted="false" name="health_overvoltage">Prepätie</string>
-  <string formatted="false" name="health_failure">Zlyhanie</string>
-  <string formatted="false" name="health_cold">Cold</string>
-  <string formatted="false" name="plugged_unplugged">Unplugged</string>
-  <string formatted="false" name="plugged_ac">(Sieť)</string>
-  <string formatted="false" name="plugged_usb">(USB)</string>
-  <string formatted="false" name="plugged_unknown">(?)</string>
-  <string formatted="false" name="plugged_wireless">(WL)</string>
-  <string formatted="false" name="alarm_type_fully_charged">Plne nabitá</string>
-  <string formatted="false" name="alarm_type_charge_drops">Nabitie klesne pod</string>
-  <string formatted="false" name="alarm_type_charge_rises">Nabitie stúpne nad</string>
-  <string formatted="false" name="alarm_type_temperature_rises">Teplota stúpne nad</string>
-  <string formatted="false" name="alarm_type_health_failure">Porucha zdravia</string>
-  <string formatted="false" name="alarm_type_entry_fully_charged">Bude plne nabitá</string>
-  <string formatted="false" name="alarm_type_entry_charge_drops">Nabitie klesne pod...</string>
-  <string formatted="false" name="alarm_type_entry_charge_rises">Nabitie stúpne nad...</string>
-  <string formatted="false" name="alarm_type_entry_temperature_rises">Teplota stúpne nad...</string>
-  <string formatted="false" name="alarm_type_entry_health_failure">Porucha zdravia</string>
-  <string formatted="false" name="mw_theme_default_small">Predvolené malé</string>
-  <string formatted="false" name="mw_theme_colorful_small">Farebné malé</string>
-  <string formatted="false" name="mw_theme_full_window">Plné okno</string>
-  <string formatted="false" name="boot_pref_always">Vždy</string>
-  <string formatted="false" name="boot_pref_never">Nikdy</string>
-  <string formatted="false" name="boot_pref_if_running">Ak je spustený pri vypínaní</string>
-  <string formatted="false" name="status_dur_always">Vždy</string>
-  <string formatted="false" name="status_dur_after_1h">Po 1 hodine</string>
-  <string formatted="false" name="status_dur_after_2h">Po 2 hodinách</string>
-  <string formatted="false" name="status_dur_after_3h">Po 3 hodinách</string>
-  <string formatted="false" name="status_dur_after_6h">Po 6 hodinách</string>
-  <string formatted="false" name="status_dur_after_12h">Po 12 hodinách</string>
-  <string formatted="false" name="age_1_day">1 deň</string>
-  <string formatted="false" name="age_2_days">2 dni</string>
-  <string formatted="false" name="age_4_days">4 dni</string>
-  <string formatted="false" name="age_1_week">1 týždeň</string>
-  <string formatted="false" name="age_2_weeks">2 týždne</string>
-  <string formatted="false" name="age_3_weeks">3 týždne</string>
-  <string formatted="false" name="age_4_weeks">4 týždne</string>
+  <string name="mw_theme_default_small" formatted="false">Predvolené malé</string>
+  <string name="mw_theme_colorful_small" formatted="false">Farebné malé</string>
+  <string name="mw_theme_full_window" formatted="false">Plné okno</string>
+  <string name="boot_pref_always" formatted="false">Vždy</string>
+  <string name="boot_pref_never" formatted="false">Nikdy</string>
+  <string name="boot_pref_if_running" formatted="false">Ak je spustený pri vypínaní</string>
+  <string name="status_dur_always" formatted="false">Vždy</string>
+  <string name="status_dur_after_1h" formatted="false">Po 1 hodine</string>
+  <string name="status_dur_after_2h" formatted="false">Po 2 hodinách</string>
+  <string name="status_dur_after_3h" formatted="false">Po 3 hodinách</string>
+  <string name="status_dur_after_6h" formatted="false">Po 6 hodinách</string>
+  <string name="status_dur_after_12h" formatted="false">Po 12 hodinách</string>
+  <string name="age_1_day" formatted="false">1 deň</string>
+  <string name="age_2_days" formatted="false">2 dni</string>
+  <string name="age_4_days" formatted="false">4 dni</string>
+  <string name="age_1_week" formatted="false">1 týždeň</string>
+  <string name="age_2_weeks" formatted="false">2 týždne</string>
+  <string name="age_3_weeks" formatted="false">3 týždne</string>
+  <string name="age_4_weeks" formatted="false">4 týždne</string>
   <plurals name="n_log_items">
     <item quantity="zero">%d záznamov</item>
     <item quantity="one">%d záznam</item>

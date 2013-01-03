@@ -114,11 +114,11 @@
   <string name="pref_log_everything_summary" formatted="false">Registrar diferenças de carga também?</string>
   <string name="pref_max_log_age" formatted="false">Idade Máxima dos Relatórios</string>
   <string name="pref_max_log_age_summary" formatted="false">Apagar relatórios mais velhos que:</string>
-  <string formatted="false" name="age_1_day">1 dia</string>
-  <string formatted="false" name="age_2_days">2 dias</string>
-  <string formatted="false" name="age_4_days">4 dias</string>
-  <string formatted="false" name="age_1_week">1 semana</string>
-  <string formatted="false" name="age_2_weeks">2 semanas</string>
-  <string formatted="false" name="age_3_weeks">3 semanas</string>
-  <string formatted="false" name="age_4_weeks">4 semanas</string>
+  <string name="age_1_day" formatted="false">1 dia</string>
+  <string name="age_2_days" formatted="false">2 dias</string>
+  <string name="age_4_days" formatted="false">4 dias</string>
+  <string name="age_1_week" formatted="false">1 semana</string>
+  <string name="age_2_weeks" formatted="false">2 semanas</string>
+  <string name="age_3_weeks" formatted="false">3 semanas</string>
+  <string name="age_4_weeks" formatted="false">4 semanas</string>
 </resources>

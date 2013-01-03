@@ -56,6 +56,25 @@
   <string name="inaccessible_w_reason" formatted="false">SD卡无法访问：</string>
   <string name="read_only_storage" formatted="false">SD卡已设置为“只读”模式。</string>
   <string name="file_written" formatted="false">文件已在SD卡根目录成功创建。</string>
+  <string name="status_unplugged" formatted="false">拔下电源</string>
+  <string name="status_unknown" formatted="false">未知</string>
+  <string name="status_charging" formatted="false">充电中</string>
+  <string name="status_discharging" formatted="false">放电中</string>
+  <string name="status_not_charging" formatted="false">未充电</string>
+  <string name="status_fully_charged" formatted="false">电池充满</string>
+  <string name="status_plugged_in" formatted="false">插入电源</string>
+  <string name="health_unknown" formatted="false">未知</string>
+  <string name="health_good" formatted="false">正常</string>
+  <string name="health_overheat" formatted="false">过热</string>
+  <string name="health_dead" formatted="false">损坏</string>
+  <string name="health_overvoltage" formatted="false">超压</string>
+  <string name="health_failure" formatted="false">错误</string>
+  <string name="health_cold" formatted="false">Cold</string>
+  <string name="plugged_unplugged" formatted="false">Unplugged</string>
+  <string name="plugged_ac" formatted="false">(AC)</string>
+  <string name="plugged_usb" formatted="false">(USB)</string>
+  <string name="plugged_unknown" formatted="false">(?)</string>
+  <string name="plugged_wireless" formatted="false">(WL)</string>
   <string name="alarm_fully_charged" formatted="false">电池已充满！</string>
   <string name="alarm_charge_drops" formatted="false">电池电量低于</string>
   <string name="alarm_charge_rises" formatted="false">电池电量高于</string>
@@ -236,44 +255,25 @@
   <string name="silent" formatted="false">静音</string>
   <string name="pref_alarm_vibrate" formatted="false">震动</string>
   <string name="pref_alarm_lights" formatted="false">闪光</string>
-  <string formatted="false" name="status_unplugged">拔下电源</string>
-  <string formatted="false" name="status_unknown">未知</string>
-  <string formatted="false" name="status_charging">充电中</string>
-  <string formatted="false" name="status_discharging">放电中</string>
-  <string formatted="false" name="status_not_charging">未充电</string>
-  <string formatted="false" name="status_fully_charged">电池充满</string>
-  <string formatted="false" name="status_plugged_in">插入电源</string>
-  <string formatted="false" name="health_unknown">未知</string>
-  <string formatted="false" name="health_good">正常</string>
-  <string formatted="false" name="health_overheat">过热</string>
-  <string formatted="false" name="health_dead">损坏</string>
-  <string formatted="false" name="health_overvoltage">超压</string>
-  <string formatted="false" name="health_failure">错误</string>
-  <string formatted="false" name="health_cold">Cold</string>
-  <string formatted="false" name="plugged_unplugged">Unplugged</string>
-  <string formatted="false" name="plugged_ac">(AC)</string>
-  <string formatted="false" name="plugged_usb">(USB)</string>
-  <string formatted="false" name="plugged_unknown">(?)</string>
-  <string formatted="false" name="plugged_wireless">(WL)</string>
-  <string formatted="false" name="mw_theme_default_small">默认小窗口</string>
-  <string formatted="false" name="mw_theme_colorful_small">彩色小窗口</string>
-  <string formatted="false" name="mw_theme_full_window">全屏窗口</string>
-  <string formatted="false" name="boot_pref_always">始终</string>
-  <string formatted="false" name="boot_pref_never">从不</string>
-  <string formatted="false" name="boot_pref_if_running">关机时运行</string>
-  <string formatted="false" name="status_dur_always">始终</string>
-  <string formatted="false" name="status_dur_after_1h">一小时后</string>
-  <string formatted="false" name="status_dur_after_2h">两小时后</string>
-  <string formatted="false" name="status_dur_after_3h">三小时后</string>
-  <string formatted="false" name="status_dur_after_6h">六小时后</string>
-  <string formatted="false" name="status_dur_after_12h">十二小时后</string>
-  <string formatted="false" name="age_1_day">一天</string>
-  <string formatted="false" name="age_2_days">两天</string>
-  <string formatted="false" name="age_4_days">四天</string>
-  <string formatted="false" name="age_1_week">一周</string>
-  <string formatted="false" name="age_2_weeks">二周</string>
-  <string formatted="false" name="age_3_weeks">三周</string>
-  <string formatted="false" name="age_4_weeks">四周</string>
+  <string name="mw_theme_default_small" formatted="false">默认小窗口</string>
+  <string name="mw_theme_colorful_small" formatted="false">彩色小窗口</string>
+  <string name="mw_theme_full_window" formatted="false">全屏窗口</string>
+  <string name="boot_pref_always" formatted="false">始终</string>
+  <string name="boot_pref_never" formatted="false">从不</string>
+  <string name="boot_pref_if_running" formatted="false">关机时运行</string>
+  <string name="status_dur_always" formatted="false">始终</string>
+  <string name="status_dur_after_1h" formatted="false">一小时后</string>
+  <string name="status_dur_after_2h" formatted="false">两小时后</string>
+  <string name="status_dur_after_3h" formatted="false">三小时后</string>
+  <string name="status_dur_after_6h" formatted="false">六小时后</string>
+  <string name="status_dur_after_12h" formatted="false">十二小时后</string>
+  <string name="age_1_day" formatted="false">一天</string>
+  <string name="age_2_days" formatted="false">两天</string>
+  <string name="age_4_days" formatted="false">四天</string>
+  <string name="age_1_week" formatted="false">一周</string>
+  <string name="age_2_weeks" formatted="false">二周</string>
+  <string name="age_3_weeks" formatted="false">三周</string>
+  <string name="age_4_weeks" formatted="false">四周</string>
   <plurals name="n_log_items">
     <item quantity="one">%d项日志记录</item>
     <item quantity="other">%d项日志记录</item>

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_full_name" formatted="false">Pil Göstergesi Pro</string>
-  <string name="app_launcher_name" formatted="false">Pil Göstergesi Pro</string>
-  <string name="settings_activity_name" formatted="false">Pil Göstergesi Pro - Ayarlar</string>
+  <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
+  <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
+  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Ayarlar</string>
   <string name="settings_activity_subtitle" formatted="false">Ayarlar</string>
-  <string name="help_activity_name" formatted="false">Pil Göstergesi Pro - Yardım</string>
+  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Yardım</string>
+  <string name="help_activity_subtitle" formatted="false">Yardim</string>
   <string name="log_view_activity_name" formatted="false">Pil Göstergesi Pro - Kayıtlar</string>
-  <string name="app_full_name_free" formatted="false">Pil Göstergesi</string>
-  <string name="settings_activity_name_free" formatted="false">Pil Göstergesi - Ayarlar</string>
-  <string name="help_activity_name_free" formatted="false">Pil Göstergesi - Yardım</string>
+  <string name="log_view_activity_subtitle" formatted="false">Kayitlar</string>
+  <string name="app_full_name_free" formatted="false">Battery Indicator</string>
+  <string name="settings_activity_name_free" formatted="false">Battery Indicator - Ayarlar</string>
+  <string name="help_activity_name_free" formatted="false">Battery Indicator - Yardım</string>
   <string name="battery_use_b" formatted="false">Pil Kullanımını Görüntüle</string>
   <string name="upgrade_donate_b" formatted="false">Yükselt/Bağış Yap...</string>
   <string name="reenable_lock_screen" formatted="false">Ekran Kilidini Tekrar Etkinleştir</string>

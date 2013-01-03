@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
-  <string name="app_launcher_name" formatted="false">Battery Indicator</string>
+  <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
   <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Настройки</string>
   <string name="help_activity_name" formatted="false">Battery Indicator Pro - Помощь</string>
   <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Журнал работы</string>
@@ -60,6 +60,35 @@
   <string name="charge" formatted="false">процент_заряда</string>
   <string name="temperature" formatted="false">градусы_цельсия</string>
   <string name="voltage" formatted="false">Напряжение</string>
+  <string name="status_unplugged" formatted="false">Отключен</string>
+  <string name="status_unknown" formatted="false">Неизвестно</string>
+  <string name="status_charging" formatted="false">Заряжается</string>
+  <string name="status_discharging" formatted="false">Разряжается</string>
+  <string name="status_not_charging" formatted="false">Не заряжается</string>
+  <string name="status_fully_charged" formatted="false">Полностью заряжен</string>
+  <string name="status_plugged_in" formatted="false">Подключен</string>
+  <string name="health_unknown" formatted="false">Неизвестно</string>
+  <string name="health_good" formatted="false">Хорошее состояние</string>
+  <string name="health_overheat" formatted="false">Перегрев</string>
+  <string name="health_dead" formatted="false">Смерть</string>
+  <string name="health_overvoltage" formatted="false">Превышено напряжение</string>
+  <string name="health_failure" formatted="false">Сбой</string>
+  <string name="health_cold" formatted="false">Cold</string>
+  <string name="plugged_unplugged" formatted="false">Отключено</string>
+  <string name="plugged_ac" formatted="false">(AC)</string>
+  <string name="plugged_usb" formatted="false">(USB)</string>
+  <string name="plugged_unknown" formatted="false">(?)</string>
+  <string name="plugged_wireless" formatted="false">(WL)</string>
+  <string name="alarm_type_fully_charged" formatted="false">Полностью заряжено</string>
+  <string name="alarm_type_charge_drops" formatted="false">Заряд падает ниже</string>
+  <string name="alarm_type_charge_rises" formatted="false">Заряд поднимается выше</string>
+  <string name="alarm_type_temperature_rises" formatted="false">Температура поднимается выше</string>
+  <string name="alarm_type_health_failure" formatted="false">Неисправность</string>
+  <string name="alarm_type_entry_fully_charged" formatted="false">Становится полностью заряжен</string>
+  <string name="alarm_type_entry_charge_drops" formatted="false">Заряд падает ниже...</string>
+  <string name="alarm_type_entry_charge_rises" formatted="false">Заряд поднимается выше...</string>
+  <string name="alarm_type_entry_temperature_rises" formatted="false">Температура поднимается выше...</string>
+  <string name="alarm_type_entry_health_failure" formatted="false">Неисправность</string>
   <string name="alarm_fully_charged" formatted="false">Батарея полностью заряжена</string>
   <string name="alarm_charge_drops" formatted="false">"Уровень заряда аккумулятора ниже "</string>
   <string name="alarm_charge_rises" formatted="false">"Уровень заряда аккумулятора выше "</string>
@@ -107,52 +136,23 @@
   <string name="pref_alarm_ringtone" formatted="false">Мелодия</string>
   <string name="silent" formatted="false">Беззвучно</string>
   <string name="pref_alarm_vibrate" formatted="false">Вибратор</string>
-  <string formatted="false" name="status_unplugged">Отключен</string>
-  <string formatted="false" name="status_unknown">Неизвестно</string>
-  <string formatted="false" name="status_charging">Заряжается</string>
-  <string formatted="false" name="status_discharging">Разряжается</string>
-  <string formatted="false" name="status_not_charging">Не заряжается</string>
-  <string formatted="false" name="status_fully_charged">Полностью заряжен</string>
-  <string formatted="false" name="status_plugged_in">Подключен</string>
-  <string formatted="false" name="health_unknown">Неизвестно</string>
-  <string formatted="false" name="health_good">Хорошее состояние</string>
-  <string formatted="false" name="health_overheat">Перегрев</string>
-  <string formatted="false" name="health_dead">Смерть</string>
-  <string formatted="false" name="health_overvoltage">Превышено напряжение</string>
-  <string formatted="false" name="health_failure">Сбой</string>
-  <string formatted="false" name="health_cold">Cold</string>
-  <string formatted="false" name="plugged_unplugged">Отключено</string>
-  <string formatted="false" name="plugged_ac">(AC)</string>
-  <string formatted="false" name="plugged_usb">(USB)</string>
-  <string formatted="false" name="plugged_unknown">(?)</string>
-  <string formatted="false" name="plugged_wireless">(WL)</string>
-  <string formatted="false" name="alarm_type_fully_charged">Полностью заряжено</string>
-  <string formatted="false" name="alarm_type_charge_drops">Заряд падает ниже</string>
-  <string formatted="false" name="alarm_type_charge_rises">Заряд поднимается выше</string>
-  <string formatted="false" name="alarm_type_temperature_rises">Температура поднимается выше</string>
-  <string formatted="false" name="alarm_type_health_failure">Неисправность</string>
-  <string formatted="false" name="alarm_type_entry_fully_charged">Становится полностью заряжен</string>
-  <string formatted="false" name="alarm_type_entry_charge_drops">Заряд падает ниже...</string>
-  <string formatted="false" name="alarm_type_entry_charge_rises">Заряд поднимается выше...</string>
-  <string formatted="false" name="alarm_type_entry_temperature_rises">Температура поднимается выше...</string>
-  <string formatted="false" name="alarm_type_entry_health_failure">Неисправность</string>
-  <string formatted="false" name="mw_theme_default_small">По умолчанию - маленькая</string>
-  <string formatted="false" name="mw_theme_colorful_small">Colorful Small</string>
-  <string formatted="false" name="mw_theme_full_window">На полный экран</string>
-  <string formatted="false" name="boot_pref_always">Всегда</string>
-  <string formatted="false" name="boot_pref_never">Никогда</string>
-  <string formatted="false" name="boot_pref_if_running">Если было запущено при выключении</string>
-  <string formatted="false" name="status_dur_always">Всегда</string>
-  <string formatted="false" name="status_dur_after_1h">Через 1 час</string>
-  <string formatted="false" name="status_dur_after_2h">Через 2 часа</string>
-  <string formatted="false" name="status_dur_after_3h">Через 3 часа</string>
-  <string formatted="false" name="status_dur_after_6h">Через 6 часов</string>
-  <string formatted="false" name="status_dur_after_12h">Через 12 часов</string>
-  <string formatted="false" name="age_1_day">1 день</string>
-  <string formatted="false" name="age_2_days">2 дня</string>
-  <string formatted="false" name="age_4_days">4 дня</string>
-  <string formatted="false" name="age_1_week">1 неделю</string>
-  <string formatted="false" name="age_2_weeks">2-х недель</string>
-  <string formatted="false" name="age_3_weeks">3 недели</string>
-  <string formatted="false" name="age_4_weeks">4 недель</string>
+  <string name="mw_theme_default_small" formatted="false">По умолчанию - маленькая</string>
+  <string name="mw_theme_colorful_small" formatted="false">Colorful Small</string>
+  <string name="mw_theme_full_window" formatted="false">На полный экран</string>
+  <string name="boot_pref_always" formatted="false">Всегда</string>
+  <string name="boot_pref_never" formatted="false">Никогда</string>
+  <string name="boot_pref_if_running" formatted="false">Если было запущено при выключении</string>
+  <string name="status_dur_always" formatted="false">Всегда</string>
+  <string name="status_dur_after_1h" formatted="false">Через 1 час</string>
+  <string name="status_dur_after_2h" formatted="false">Через 2 часа</string>
+  <string name="status_dur_after_3h" formatted="false">Через 3 часа</string>
+  <string name="status_dur_after_6h" formatted="false">Через 6 часов</string>
+  <string name="status_dur_after_12h" formatted="false">Через 12 часов</string>
+  <string name="age_1_day" formatted="false">1 день</string>
+  <string name="age_2_days" formatted="false">2 дня</string>
+  <string name="age_4_days" formatted="false">4 дня</string>
+  <string name="age_1_week" formatted="false">1 неделю</string>
+  <string name="age_2_weeks" formatted="false">2-х недель</string>
+  <string name="age_3_weeks" formatted="false">3 недели</string>
+  <string name="age_4_weeks" formatted="false">4 недель</string>
 </resources>

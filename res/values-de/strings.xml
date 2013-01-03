@@ -62,6 +62,35 @@
   <string name="charge" formatted="false">Ladung in Prozent</string>
   <string name="temperature" formatted="false">Grad Celsius</string>
   <string name="voltage" formatted="false">Volt</string>
+  <string name="status_unplugged" formatted="false">Ausgesteckt</string>
+  <string name="status_unknown" formatted="false">Unbekannt</string>
+  <string name="status_charging" formatted="false">Ladend</string>
+  <string name="status_discharging" formatted="false">Entladend</string>
+  <string name="status_not_charging" formatted="false">Nicht ladend</string>
+  <string name="status_fully_charged" formatted="false">Voll geladen</string>
+  <string name="status_plugged_in" formatted="false">Angesteckt</string>
+  <string name="health_unknown" formatted="false">Unbekannt</string>
+  <string name="health_good" formatted="false">Guter Zustand</string>
+  <string name="health_overheat" formatted="false">Überhitzung</string>
+  <string name="health_dead" formatted="false">Tot</string>
+  <string name="health_overvoltage" formatted="false">Überladung</string>
+  <string name="health_failure" formatted="false">Fehler</string>
+  <string name="health_cold" formatted="false">Cold</string>
+  <string name="plugged_unplugged" formatted="false">Nicht angeschlossen</string>
+  <string name="plugged_ac" formatted="false">(Netz)</string>
+  <string name="plugged_usb" formatted="false">(USB)</string>
+  <string name="plugged_unknown" formatted="false">(?)</string>
+  <string name="plugged_wireless" formatted="false">(WL)</string>
+  <string name="alarm_type_fully_charged" formatted="false">Voll geladen</string>
+  <string name="alarm_type_charge_drops" formatted="false">Ladung unterschreite</string>
+  <string name="alarm_type_charge_rises" formatted="false">Ladung überschreitet...</string>
+  <string name="alarm_type_temperature_rises" formatted="false">Temperatur überschreitet</string>
+  <string name="alarm_type_health_failure" formatted="false">Zustand Störung</string>
+  <string name="alarm_type_entry_fully_charged" formatted="false">Wird voll geladen</string>
+  <string name="alarm_type_entry_charge_drops" formatted="false">Ladung unterschreitet...</string>
+  <string name="alarm_type_entry_charge_rises" formatted="false">Ladung überschreitet...</string>
+  <string name="alarm_type_entry_temperature_rises" formatted="false">Temperatur überschreitet...</string>
+  <string name="alarm_type_entry_health_failure" formatted="false">Status gestört</string>
   <string name="alarm_fully_charged" formatted="false">Batterie ist nun voll geladen</string>
   <string name="alarm_charge_drops" formatted="false">"Batterieladung ist unter "</string>
   <string name="alarm_charge_rises" formatted="false">"Batterieladung ist über "</string>
@@ -197,54 +226,25 @@
   <string name="silent" formatted="false">Still</string>
   <string name="pref_alarm_vibrate" formatted="false">Vibration</string>
   <string name="pref_alarm_lights" formatted="false">Lampe</string>
-  <string formatted="false" name="status_unplugged">Ausgesteckt</string>
-  <string formatted="false" name="status_unknown">Unbekannt</string>
-  <string formatted="false" name="status_charging">Ladend</string>
-  <string formatted="false" name="status_discharging">Entladend</string>
-  <string formatted="false" name="status_not_charging">Nicht ladend</string>
-  <string formatted="false" name="status_fully_charged">Voll geladen</string>
-  <string formatted="false" name="status_plugged_in">Angesteckt</string>
-  <string formatted="false" name="health_unknown">Unbekannt</string>
-  <string formatted="false" name="health_good">Guter Zustand</string>
-  <string formatted="false" name="health_overheat">Überhitzung</string>
-  <string formatted="false" name="health_dead">Tot</string>
-  <string formatted="false" name="health_overvoltage">Überladung</string>
-  <string formatted="false" name="health_failure">Fehler</string>
-  <string formatted="false" name="health_cold">Cold</string>
-  <string formatted="false" name="plugged_unplugged">Nicht angeschlossen</string>
-  <string formatted="false" name="plugged_ac">(Netz)</string>
-  <string formatted="false" name="plugged_usb">(USB)</string>
-  <string formatted="false" name="plugged_unknown">(?)</string>
-  <string formatted="false" name="plugged_wireless">(WL)</string>
-  <string formatted="false" name="alarm_type_fully_charged">Voll geladen</string>
-  <string formatted="false" name="alarm_type_charge_drops">Ladung unterschreite</string>
-  <string formatted="false" name="alarm_type_charge_rises">Ladung überschreitet...</string>
-  <string formatted="false" name="alarm_type_temperature_rises">Temperatur überschreitet</string>
-  <string formatted="false" name="alarm_type_health_failure">Zustand Störung</string>
-  <string formatted="false" name="alarm_type_entry_fully_charged">Wird voll geladen</string>
-  <string formatted="false" name="alarm_type_entry_charge_drops">Ladung unterschreitet...</string>
-  <string formatted="false" name="alarm_type_entry_charge_rises">Ladung überschreitet...</string>
-  <string formatted="false" name="alarm_type_entry_temperature_rises">Temperatur überschreitet...</string>
-  <string formatted="false" name="alarm_type_entry_health_failure">Status gestört</string>
-  <string formatted="false" name="mw_theme_default_small">Standard klein</string>
-  <string formatted="false" name="mw_theme_colorful_small">Bunt klein</string>
-  <string formatted="false" name="mw_theme_full_window">Ganzes Bildschirm</string>
-  <string formatted="false" name="boot_pref_always">Immer</string>
-  <string formatted="false" name="boot_pref_never">Nie</string>
-  <string formatted="false" name="boot_pref_if_running">Wenn es beim Herunterfahren läuft</string>
-  <string formatted="false" name="status_dur_always">Immer</string>
-  <string formatted="false" name="status_dur_after_1h">Nach 1 Stunde</string>
-  <string formatted="false" name="status_dur_after_2h">Nach 2 Stunden</string>
-  <string formatted="false" name="status_dur_after_3h">Nach 3 Stunden</string>
-  <string formatted="false" name="status_dur_after_6h">Nach 6 Stunden</string>
-  <string formatted="false" name="status_dur_after_12h">Nach 12 Stunden</string>
-  <string formatted="false" name="age_1_day">1 Tag</string>
-  <string formatted="false" name="age_2_days">2 Tage</string>
-  <string formatted="false" name="age_4_days">4 Tage</string>
-  <string formatted="false" name="age_1_week">1 Woche</string>
-  <string formatted="false" name="age_2_weeks">2 Wochen</string>
-  <string formatted="false" name="age_3_weeks">3 Wochen</string>
-  <string formatted="false" name="age_4_weeks">4 Wochen</string>
+  <string name="mw_theme_default_small" formatted="false">Standard klein</string>
+  <string name="mw_theme_colorful_small" formatted="false">Bunt klein</string>
+  <string name="mw_theme_full_window" formatted="false">Ganzes Bildschirm</string>
+  <string name="boot_pref_always" formatted="false">Immer</string>
+  <string name="boot_pref_never" formatted="false">Nie</string>
+  <string name="boot_pref_if_running" formatted="false">Wenn es beim Herunterfahren läuft</string>
+  <string name="status_dur_always" formatted="false">Immer</string>
+  <string name="status_dur_after_1h" formatted="false">Nach 1 Stunde</string>
+  <string name="status_dur_after_2h" formatted="false">Nach 2 Stunden</string>
+  <string name="status_dur_after_3h" formatted="false">Nach 3 Stunden</string>
+  <string name="status_dur_after_6h" formatted="false">Nach 6 Stunden</string>
+  <string name="status_dur_after_12h" formatted="false">Nach 12 Stunden</string>
+  <string name="age_1_day" formatted="false">1 Tag</string>
+  <string name="age_2_days" formatted="false">2 Tage</string>
+  <string name="age_4_days" formatted="false">4 Tage</string>
+  <string name="age_1_week" formatted="false">1 Woche</string>
+  <string name="age_2_weeks" formatted="false">2 Wochen</string>
+  <string name="age_3_weeks" formatted="false">3 Wochen</string>
+  <string name="age_4_weeks" formatted="false">4 Wochen</string>
   <plurals name="n_log_items">
     <item quantity="one">%d Protokoll Eintrag</item>
     <item quantity="other">%d Protokoll Einträge</item>
