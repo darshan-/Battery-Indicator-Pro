@@ -186,81 +186,49 @@
   <string name="pref_alarm_ringtone" formatted="false">Melodija</string>
   <string name="silent" formatted="false">Tiho</string>
   <string name="pref_alarm_vibrate" formatted="false">Vibriranje</string>
-  <string-array name="statuses">
-    <item>Odklopljeno</item>
-    <item>Neznano</item>
-    <item>Polnjenje</item>
-    <item>Praznenje</item>
-    <item>Se ne polni</item>
-    <item>Napolnjeno</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>Odklopljeno</item>
-    <item>Neznano</item>
-    <item>Priklopljeno</item>
-    <item>Neznano</item>
-    <item>Neznano</item>
-    <item>Napolnjeno</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Praznenje</item>
-    <item>Neznano</item>
-    <item>Polnjenje</item>
-    <item>Neznano</item>
-    <item>Neznano</item>
-    <item>Napolnjeno</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Neznano</item>
-    <item>Neznano</item>
-    <item>Dobro zdravje</item>
-    <item>Pregreto</item>
-    <item>Mrtvo</item>
-    <item>Prevelika voltaža</item>
-    <item>Napaka</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Odklopljeno</item>
-    <item>(AC)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="alarm_types_display">
-    <item>Napolnjeno</item>
-    <item>Baterija pade pod</item>
-    <item>Baterija pride nad</item>
-    <item>Temperatura pride nad</item>
-    <item>Health failure</item>
-  </string-array>
-  <string-array name="alarm_type_entries">
-    <item>Se napolni</item>
-    <item>Baterije pade pod...</item>
-    <item>Baterija pride nad...</item>
-    <item>Temperatura pride nad...</item>
-    <item>Health fails</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>Vedno</item>
-    <item>Nikoli</item>
-    <item>Če je zagnano ob izklopu</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>Vedno</item>
-    <item>Po 1 uri</item>
-    <item>Po 2 urah</item>
-    <item>Po 3 urah</item>
-    <item>Po 6 urah</item>
-    <item>Po 12 urah</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>1 dan</item>
-    <item>2 dnei</item>
-    <item>4 dni</item>
-    <item>1 teden</item>
-    <item>2 tedna</item>
-    <item>3 tedne</item>
-    <item>4 tedne</item>
-  </string-array>
+  <string formatted="false" name="status_unplugged">Odklopljeno</string>
+  <string formatted="false" name="status_unknown">Neznano</string>
+  <string formatted="false" name="status_charging">Polnjenje</string>
+  <string formatted="false" name="status_discharging">Praznenje</string>
+  <string formatted="false" name="status_not_charging">Se ne polni</string>
+  <string formatted="false" name="status_fully_charged">Napolnjeno</string>
+  <string formatted="false" name="status_plugged_in">Priklopljeno</string>
+  <string formatted="false" name="health_unknown">Neznano</string>
+  <string formatted="false" name="health_good">Dobro zdravje</string>
+  <string formatted="false" name="health_overheat">Pregreto</string>
+  <string formatted="false" name="health_dead">Mrtvo</string>
+  <string formatted="false" name="health_overvoltage">Prevelika voltaža</string>
+  <string formatted="false" name="health_failure">Napaka</string>
+  <string formatted="false" name="health_cold">Cold</string>
+  <string formatted="false" name="plugged_unplugged">Odklopljeno</string>
+  <string formatted="false" name="plugged_ac">(AC)</string>
+  <string formatted="false" name="plugged_usb">(USB)</string>
+  <string formatted="false" name="plugged_unknown">(?)</string>
+  <string formatted="false" name="plugged_wireless">(WL)</string>
+  <string formatted="false" name="alarm_type_fully_charged">Napolnjeno</string>
+  <string formatted="false" name="alarm_type_charge_drops">Baterija pade pod</string>
+  <string formatted="false" name="alarm_type_charge_rises">Baterija pride nad</string>
+  <string formatted="false" name="alarm_type_temperature_rises">Temperatura pride nad</string>
+  <string formatted="false" name="alarm_type_health_failure">Health failure</string>
+  <string formatted="false" name="alarm_type_entry_fully_charged">Se napolni</string>
+  <string formatted="false" name="alarm_type_entry_charge_drops">Baterije pade pod...</string>
+  <string formatted="false" name="alarm_type_entry_charge_rises">Baterija pride nad...</string>
+  <string formatted="false" name="alarm_type_entry_temperature_rises">Temperatura pride nad...</string>
+  <string formatted="false" name="alarm_type_entry_health_failure">Health fails</string>
+  <string formatted="false" name="boot_pref_always">Vedno</string>
+  <string formatted="false" name="boot_pref_never">Nikoli</string>
+  <string formatted="false" name="boot_pref_if_running">Če je zagnano ob izklopu</string>
+  <string formatted="false" name="status_dur_always">Vedno</string>
+  <string formatted="false" name="status_dur_after_1h">Po 1 uri</string>
+  <string formatted="false" name="status_dur_after_2h">Po 2 urah</string>
+  <string formatted="false" name="status_dur_after_3h">Po 3 urah</string>
+  <string formatted="false" name="status_dur_after_6h">Po 6 urah</string>
+  <string formatted="false" name="status_dur_after_12h">Po 12 urah</string>
+  <string formatted="false" name="age_1_day">1 dan</string>
+  <string formatted="false" name="age_2_days">2 dnei</string>
+  <string formatted="false" name="age_4_days">4 dni</string>
+  <string formatted="false" name="age_1_week">1 teden</string>
+  <string formatted="false" name="age_2_weeks">2 tedna</string>
+  <string formatted="false" name="age_3_weeks">3 tedne</string>
+  <string formatted="false" name="age_4_weeks">4 tedne</string>
 </resources>

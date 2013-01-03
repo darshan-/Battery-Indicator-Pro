@@ -263,88 +263,54 @@
   <string name="pref_alarm_vibrate_help" formatted="false">Se tutto va bene, questa opzione farà vibrare il dispositivo quando l\'allarme è attivato, a meno che il dispositivo è in modalità silenziosa, a meno che non abbiate impostato il dispositivo a vibrare anche in modalità silenziosa. In altre parole, essa dovrebbe fare ciò che ci si aspetta. Se qualcosa non va vi invito a segnalarmelo.</string>
   <string name="pref_alarm_lights" formatted="false">Torcie</string>
   <string name="pref_alarm_lights_help" formatted="false">Stabilisce se la notifica debba accendere la luce del dispositivo. In genere questo fa lampeggiare un LED o la trackball. Nota che ogni dispositivo Android che ho usato si è comportato in modo anomalo in questo ambito. Se avete selezionato l\'opzione, la notifica chiederà ad Android di far lampeggiare la luce, ma non è detto che ciò accada.</string>
-  <string-array name="statuses">
-    <item>Scollegato</item>
-    <item>Sconosciuto</item>
-    <item>In carica</item>
-    <item>Scarico</item>
-    <item>Non in carica</item>
-    <item>Completamente carico</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>Scollegato</item>
-    <item>Sconosciuto</item>
-    <item>Collegato</item>
-    <item>Sconosciuto</item>
-    <item>Sconosciuto</item>
-    <item>Completamente carico</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Scarico</item>
-    <item>Sconosciuto</item>
-    <item>In carica</item>
-    <item>Sconosciuto</item>
-    <item>Sconosciuto</item>
-    <item>Completamente carico</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Sconosciuto</item>
-    <item>Sconosciuto</item>
-    <item>Buono stato</item>
-    <item>Surriscaldamento</item>
-    <item>Defunta</item>
-    <item>Sovratensione</item>
-    <item>Non riuscito</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Scollegato</item>
-    <item>(CA)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="alarm_types_display">
-    <item>Completamente carico</item>
-    <item>La carica è scesa al di sotto</item>
-    <item>La carica è salita al di sopra</item>
-    <item>Temperatura salita al di sopra</item>
-    <item>Recupero stato non riuscito</item>
-  </string-array>
-  <string-array name="alarm_type_entries">
-    <item>Diventa completamente carico</item>
-    <item>La carica scende al di sotto...</item>
-    <item>La carica sale al di sopra...</item>
-    <item>La temperatura sale al di sopra...</item>
-    <item>Recupero stato non riuscito</item>
-  </string-array>
-  <string-array name="mw_theme_pref_entries">
-    <item>Piccolo predefinito</item>
-    <item>Piccolo colorato</item>
-    <item>Finestra intera</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>Sempre</item>
-    <item>Mai</item>
-    <item>Se è in esecuzione allo spegnimento</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>Sempre</item>
-    <item>Dopo 1 ora</item>
-    <item>Dopo 2 ore</item>
-    <item>Dopo 3 ore</item>
-    <item>Dopo 6 ore</item>
-    <item>Dopo 12 ore</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>1 giorno</item>
-    <item>2 giorni</item>
-    <item>4 giorni</item>
-    <item>1 settimana</item>
-    <item>2 settimane</item>
-    <item>3 settimane</item>
-    <item>4 settimane</item>
-  </string-array>
+  <string formatted="false" name="status_unplugged">Scollegato</string>
+  <string formatted="false" name="status_unknown">Sconosciuto</string>
+  <string formatted="false" name="status_charging">In carica</string>
+  <string formatted="false" name="status_discharging">Scarico</string>
+  <string formatted="false" name="status_not_charging">Non in carica</string>
+  <string formatted="false" name="status_fully_charged">Completamente carico</string>
+  <string formatted="false" name="status_plugged_in">Collegato</string>
+  <string formatted="false" name="health_unknown">Sconosciuto</string>
+  <string formatted="false" name="health_good">Buono stato</string>
+  <string formatted="false" name="health_overheat">Surriscaldamento</string>
+  <string formatted="false" name="health_dead">Defunta</string>
+  <string formatted="false" name="health_overvoltage">Sovratensione</string>
+  <string formatted="false" name="health_failure">Non riuscito</string>
+  <string formatted="false" name="health_cold">Cold</string>
+  <string formatted="false" name="plugged_unplugged">Scollegato</string>
+  <string formatted="false" name="plugged_ac">(CA)</string>
+  <string formatted="false" name="plugged_usb">(USB)</string>
+  <string formatted="false" name="plugged_unknown">(?)</string>
+  <string formatted="false" name="plugged_wireless">(WL)</string>
+  <string formatted="false" name="alarm_type_fully_charged">Completamente carico</string>
+  <string formatted="false" name="alarm_type_charge_drops">La carica è scesa al di sotto</string>
+  <string formatted="false" name="alarm_type_charge_rises">La carica è salita al di sopra</string>
+  <string formatted="false" name="alarm_type_temperature_rises">Temperatura salita al di sopra</string>
+  <string formatted="false" name="alarm_type_health_failure">Recupero stato non riuscito</string>
+  <string formatted="false" name="alarm_type_entry_fully_charged">Diventa completamente carico</string>
+  <string formatted="false" name="alarm_type_entry_charge_drops">La carica scende al di sotto...</string>
+  <string formatted="false" name="alarm_type_entry_charge_rises">La carica sale al di sopra...</string>
+  <string formatted="false" name="alarm_type_entry_temperature_rises">La temperatura sale al di sopra...</string>
+  <string formatted="false" name="alarm_type_entry_health_failure">Recupero stato non riuscito</string>
+  <string formatted="false" name="mw_theme_default_small">Piccolo predefinito</string>
+  <string formatted="false" name="mw_theme_colorful_small">Piccolo colorato</string>
+  <string formatted="false" name="mw_theme_full_window">Finestra intera</string>
+  <string formatted="false" name="boot_pref_always">Sempre</string>
+  <string formatted="false" name="boot_pref_never">Mai</string>
+  <string formatted="false" name="boot_pref_if_running">Se è in esecuzione allo spegnimento</string>
+  <string formatted="false" name="status_dur_always">Sempre</string>
+  <string formatted="false" name="status_dur_after_1h">Dopo 1 ora</string>
+  <string formatted="false" name="status_dur_after_2h">Dopo 2 ore</string>
+  <string formatted="false" name="status_dur_after_3h">Dopo 3 ore</string>
+  <string formatted="false" name="status_dur_after_6h">Dopo 6 ore</string>
+  <string formatted="false" name="status_dur_after_12h">Dopo 12 ore</string>
+  <string formatted="false" name="age_1_day">1 giorno</string>
+  <string formatted="false" name="age_2_days">2 giorni</string>
+  <string formatted="false" name="age_4_days">4 giorni</string>
+  <string formatted="false" name="age_1_week">1 settimana</string>
+  <string formatted="false" name="age_2_weeks">2 settimane</string>
+  <string formatted="false" name="age_3_weeks">3 settimane</string>
+  <string formatted="false" name="age_4_weeks">4 settimane</string>
   <plurals name="n_log_items">
     <item quantity="one">%d elemento log</item>
     <item quantity="other">%d elementi log</item>

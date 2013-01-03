@@ -201,74 +201,44 @@
   <string name="pref_ten_percent_mode" formatted="false">10%步進模式</string>
   <string name="pref_ten_percent_mode_summary" formatted="false">請先閱讀說明信息！</string>
   <string name="pref_ten_percent_mode_help" formatted="false"><b>注意：</b> 改動該選項設定狀態將重置圖標顏色設定內容！\n\n該選項將清除圖標色彩設定內容以保證10%步進類型設備顯示正常。根據用戶反饋，該類設備包括以下型號：\n\n‧ Motorola Droid （最初版本）\n‧ Motorola Droid X\n‧ Motorola Droid 2\n• Motorola Defy\n‧ Samsung Moment\n\n除以上型號之外，其餘設備均為1%步進報告類型，因此均<i>不用</i>開啟此項功能。</string>
-  <string-array name="statuses">
-    <item>拔下電源</item>
-    <item>未知</item>
-    <item>充電中</item>
-    <item>放電中</item>
-    <item>未充電</item>
-    <item>電池充滿</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>拔下電源</item>
-    <item>未知</item>
-    <item>插入電源</item>
-    <item>未知</item>
-    <item>未知</item>
-    <item>已充滿</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>充電中</item>
-    <item>未知</item>
-    <item>放電中</item>
-    <item>未知</item>
-    <item>未知</item>
-    <item>已充滿</item>
-  </string-array>
-  <string-array name="healths">
-    <item>未知</item>
-    <item>未知</item>
-    <item>正常</item>
-    <item>過熱</item>
-    <item>損壞</item>
-    <item>超壓</item>
-    <item>錯誤</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Unplugged</item>
-    <item>(AC)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="mw_theme_pref_entries">
-    <item>預設小視窗</item>
-    <item>彩色小視窗</item>
-    <item>全屏視窗</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>始終</item>
-    <item>從不</item>
-    <item>關機時運行</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>始終</item>
-    <item>一小時後</item>
-    <item>兩小時後</item>
-    <item>三小時後</item>
-    <item>六小時後</item>
-    <item>十二小時後</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>一天</item>
-    <item>兩天</item>
-    <item>四天</item>
-    <item>一周</item>
-    <item>二周</item>
-    <item>三周</item>
-    <item>四周</item>
-  </string-array>
+  <string formatted="false" name="status_unplugged">拔下電源</string>
+  <string formatted="false" name="status_unknown">未知</string>
+  <string formatted="false" name="status_charging">充電中</string>
+  <string formatted="false" name="status_discharging">放電中</string>
+  <string formatted="false" name="status_not_charging">未充電</string>
+  <string formatted="false" name="status_fully_charged">電池充滿</string>
+  <string formatted="false" name="status_plugged_in">插入電源</string>
+  <string formatted="false" name="health_unknown">未知</string>
+  <string formatted="false" name="health_good">正常</string>
+  <string formatted="false" name="health_overheat">過熱</string>
+  <string formatted="false" name="health_dead">損壞</string>
+  <string formatted="false" name="health_overvoltage">超壓</string>
+  <string formatted="false" name="health_failure">錯誤</string>
+  <string formatted="false" name="health_cold">Cold</string>
+  <string formatted="false" name="plugged_unplugged">Unplugged</string>
+  <string formatted="false" name="plugged_ac">(AC)</string>
+  <string formatted="false" name="plugged_usb">(USB)</string>
+  <string formatted="false" name="plugged_unknown">(?)</string>
+  <string formatted="false" name="plugged_wireless">(WL)</string>
+  <string formatted="false" name="mw_theme_default_small">預設小視窗</string>
+  <string formatted="false" name="mw_theme_colorful_small">彩色小視窗</string>
+  <string formatted="false" name="mw_theme_full_window">全屏視窗</string>
+  <string formatted="false" name="boot_pref_always">始終</string>
+  <string formatted="false" name="boot_pref_never">從不</string>
+  <string formatted="false" name="boot_pref_if_running">關機時運行</string>
+  <string formatted="false" name="status_dur_always">始終</string>
+  <string formatted="false" name="status_dur_after_1h">一小時後</string>
+  <string formatted="false" name="status_dur_after_2h">兩小時後</string>
+  <string formatted="false" name="status_dur_after_3h">三小時後</string>
+  <string formatted="false" name="status_dur_after_6h">六小時後</string>
+  <string formatted="false" name="status_dur_after_12h">十二小時後</string>
+  <string formatted="false" name="age_1_day">一天</string>
+  <string formatted="false" name="age_2_days">兩天</string>
+  <string formatted="false" name="age_4_days">四天</string>
+  <string formatted="false" name="age_1_week">一周</string>
+  <string formatted="false" name="age_2_weeks">二周</string>
+  <string formatted="false" name="age_3_weeks">三周</string>
+  <string formatted="false" name="age_4_weeks">四周</string>
   <plurals name="n_log_items">
     <item quantity="one">%d項日誌記錄</item>
     <item quantity="other">%d項日誌記錄</item>

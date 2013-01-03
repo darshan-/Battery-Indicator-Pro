@@ -67,6 +67,7 @@ str_xml_files = `echo -n res/values/strings.xml res/values-??/strings.xml res/va
 str_xml_files.each do |str_xml_file|
   old_content = IO.read(str_xml_file)
   new_content = ""
+  existing = {}
 
   in_array = false
   i = -1
@@ -78,8 +79,21 @@ str_xml_files.each do |str_xml_file|
         next
       end
 
+      name = conversions[in_array][i]
       value = line.split("<item>")[1].split("</item>")[0]
-      new_content << %Q{  <string formatted="false" name="#{conversions[in_array][i]}">#{value}</string>\n}
+
+      if existing.has_key?(name)
+        puts "Name #{name} already exists with content: #{existing[name]}"
+        if existing[name] == value
+          puts "  (Skipped) new content is the same: #{value}"
+        else
+          puts "  (Skipped) new content is different: #{value}"
+        end
+      else
+        existing[name] = value
+        new_content << %Q{  <string formatted="false" name="#{name}">#{value}</string>\n}
+      end
+
       i += 1
       next
     end

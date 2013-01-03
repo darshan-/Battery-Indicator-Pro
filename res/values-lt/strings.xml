@@ -234,88 +234,54 @@
   <string name="silent" formatted="false">Tyla</string>
   <string name="pref_alarm_vibrate" formatted="false">Vibruoti</string>
   <string name="pref_alarm_lights" formatted="false">Mirksinčios Lemputės</string>
-  <string-array name="statuses">
-    <item>Atjungta</item>
-    <item>Nežinoma</item>
-    <item>Įkraunama</item>
-    <item>Iškraunama</item>
-    <item>Ne kraunama</item>
-    <item>Pilnai įkrauta</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>Atjungta</item>
-    <item>Nežinoma</item>
-    <item>Prijungta</item>
-    <item>Nežinoma</item>
-    <item>Nežinoma</item>
-    <item>Pilnai Įkrauta</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Iškraunama</item>
-    <item>Nežinoma</item>
-    <item>Įkraunama</item>
-    <item>Nežinoma</item>
-    <item>Nežinoma</item>
-    <item>Pilnai Įkraunama</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Nežinoma</item>
-    <item>Nežinoma</item>
-    <item>Gera Būklė</item>
-    <item>Perkaitimas</item>
-    <item>Mirusi</item>
-    <item>Per didelė įtampa</item>
-    <item>Klaida</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Atjungta</item>
-    <item>(AC)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="alarm_types_display">
-    <item>Pilnai įkrauta</item>
-    <item>Įkrovimas žemiau</item>
-    <item>Įkrovimas aukščiau</item>
-    <item>Temperatūra aukščiau</item>
-    <item>Būklės klaida</item>
-  </string-array>
-  <string-array name="alarm_type_entries">
-    <item>Visiškai įkrauta</item>
-    <item>Įkrovimas žemiau...</item>
-    <item>Įkrovimas aukščiau...</item>
-    <item>Temperatūra aukščiau...</item>
-    <item>Būklės klaida</item>
-  </string-array>
-  <string-array name="mw_theme_pref_entries">
-    <item>Numatytasis Mažas</item>
-    <item>Spalvotas Mažas</item>
-    <item>Pilnas Langas</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>Visada</item>
-    <item>Niekada</item>
-    <item>Jei veikia išjungiant</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>Visada</item>
-    <item>Po valandos</item>
-    <item>Po 2-jų valandų</item>
-    <item>Po 3-jų valandų</item>
-    <item>Po 6-jų valandų</item>
-    <item>Po 12-os valandų</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>1 diena</item>
-    <item>2 dienos</item>
-    <item>4 dienos</item>
-    <item>1 savaitė</item>
-    <item>2 savaitės</item>
-    <item>3 savaitės</item>
-    <item>4 savaitės</item>
-  </string-array>
+  <string formatted="false" name="status_unplugged">Atjungta</string>
+  <string formatted="false" name="status_unknown">Nežinoma</string>
+  <string formatted="false" name="status_charging">Įkraunama</string>
+  <string formatted="false" name="status_discharging">Iškraunama</string>
+  <string formatted="false" name="status_not_charging">Ne kraunama</string>
+  <string formatted="false" name="status_fully_charged">Pilnai įkrauta</string>
+  <string formatted="false" name="status_plugged_in">Prijungta</string>
+  <string formatted="false" name="health_unknown">Nežinoma</string>
+  <string formatted="false" name="health_good">Gera Būklė</string>
+  <string formatted="false" name="health_overheat">Perkaitimas</string>
+  <string formatted="false" name="health_dead">Mirusi</string>
+  <string formatted="false" name="health_overvoltage">Per didelė įtampa</string>
+  <string formatted="false" name="health_failure">Klaida</string>
+  <string formatted="false" name="health_cold">Cold</string>
+  <string formatted="false" name="plugged_unplugged">Atjungta</string>
+  <string formatted="false" name="plugged_ac">(AC)</string>
+  <string formatted="false" name="plugged_usb">(USB)</string>
+  <string formatted="false" name="plugged_unknown">(?)</string>
+  <string formatted="false" name="plugged_wireless">(WL)</string>
+  <string formatted="false" name="alarm_type_fully_charged">Pilnai įkrauta</string>
+  <string formatted="false" name="alarm_type_charge_drops">Įkrovimas žemiau</string>
+  <string formatted="false" name="alarm_type_charge_rises">Įkrovimas aukščiau</string>
+  <string formatted="false" name="alarm_type_temperature_rises">Temperatūra aukščiau</string>
+  <string formatted="false" name="alarm_type_health_failure">Būklės klaida</string>
+  <string formatted="false" name="alarm_type_entry_fully_charged">Visiškai įkrauta</string>
+  <string formatted="false" name="alarm_type_entry_charge_drops">Įkrovimas žemiau...</string>
+  <string formatted="false" name="alarm_type_entry_charge_rises">Įkrovimas aukščiau...</string>
+  <string formatted="false" name="alarm_type_entry_temperature_rises">Temperatūra aukščiau...</string>
+  <string formatted="false" name="alarm_type_entry_health_failure">Būklės klaida</string>
+  <string formatted="false" name="mw_theme_default_small">Numatytasis Mažas</string>
+  <string formatted="false" name="mw_theme_colorful_small">Spalvotas Mažas</string>
+  <string formatted="false" name="mw_theme_full_window">Pilnas Langas</string>
+  <string formatted="false" name="boot_pref_always">Visada</string>
+  <string formatted="false" name="boot_pref_never">Niekada</string>
+  <string formatted="false" name="boot_pref_if_running">Jei veikia išjungiant</string>
+  <string formatted="false" name="status_dur_always">Visada</string>
+  <string formatted="false" name="status_dur_after_1h">Po valandos</string>
+  <string formatted="false" name="status_dur_after_2h">Po 2-jų valandų</string>
+  <string formatted="false" name="status_dur_after_3h">Po 3-jų valandų</string>
+  <string formatted="false" name="status_dur_after_6h">Po 6-jų valandų</string>
+  <string formatted="false" name="status_dur_after_12h">Po 12-os valandų</string>
+  <string formatted="false" name="age_1_day">1 diena</string>
+  <string formatted="false" name="age_2_days">2 dienos</string>
+  <string formatted="false" name="age_4_days">4 dienos</string>
+  <string formatted="false" name="age_1_week">1 savaitė</string>
+  <string formatted="false" name="age_2_weeks">2 savaitės</string>
+  <string formatted="false" name="age_3_weeks">3 savaitės</string>
+  <string formatted="false" name="age_4_weeks">4 savaitės</string>
   <plurals name="n_log_items">
     <item quantity="one">%d Įrašo Punktas</item>
     <item quantity="few">%d Įrašo Punktai</item>

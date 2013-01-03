@@ -263,88 +263,54 @@
   <string name="pref_alarm_vibrate_help" formatted="false">Als het goed is laat deze optie het apparaat trillen als het alarm afgaat.</string>
   <string name="pref_alarm_lights" formatted="false">Laat LED branden</string>
   <string name="pref_alarm_lights_help" formatted="false">Stelt in of de notificatie het lampje op je apparaat moet laten knipperen. (Niet alle apparaten hebben zo\'n lampje.)</string>
-  <string-array name="statuses">
-    <item>Losgekoppeld</item>
-    <item>Onbekend</item>
-    <item>Opladen</item>
-    <item>Ontladen</item>
-    <item>Niet opladen</item>
-    <item>Volledig opgeladen</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>Losgekoppeld</item>
-    <item>Onbekend</item>
-    <item>Aangesloten</item>
-    <item>Onbekend</item>
-    <item>Onbekend</item>
-    <item>Volledig opgeladen</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Ontladen</item>
-    <item>Onbekend</item>
-    <item>Opladen</item>
-    <item>Onbekend</item>
-    <item>Onbekend</item>
-    <item>Volledig opgeladen</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Onbekend</item>
-    <item>Onbekend</item>
-    <item>Gezond</item>
-    <item>Oververhit</item>
-    <item>Dood</item>
-    <item>Voltage te hoog</item>
-    <item>Gefaald</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Losgekoppeld</item>
-    <item>(AC)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="alarm_types_display">
-    <item>Volledig opgeladen</item>
-    <item>Lading komt onder</item>
-    <item>Lading komt boven</item>
-    <item>Temperatuur komt boven</item>
-    <item>Gezondheidsfalen</item>
-  </string-array>
-  <string-array name="alarm_type_entries">
-    <item>Lading komt onder...</item>
-    <item>Lading komt boven...</item>
-    <item>Temperatuur komt boven...</item>
-    <item>Gezondheid faalt</item>
-    <item>Is klaar met opladen</item>
-  </string-array>
-  <string-array name="mw_theme_pref_entries">
-    <item>Standaard klein</item>
-    <item>Kleurrijk klein</item>
-    <item>Volledig scherm</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>Altijd</item>
-    <item>Nooit</item>
-    <item>Wanneer ingeschakeld bij afsluiten</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>Altijd</item>
-    <item>Na 1 uur</item>
-    <item>Na 2 uur</item>
-    <item>Na 3 uur</item>
-    <item>Na 6 uur</item>
-    <item>Na 12 uur</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>1 dag</item>
-    <item>2 dagen</item>
-    <item>4 dagen</item>
-    <item>1 week</item>
-    <item>2 weken</item>
-    <item>3 weken</item>
-    <item>4 weken</item>
-  </string-array>
+  <string formatted="false" name="status_unplugged">Losgekoppeld</string>
+  <string formatted="false" name="status_unknown">Onbekend</string>
+  <string formatted="false" name="status_charging">Opladen</string>
+  <string formatted="false" name="status_discharging">Ontladen</string>
+  <string formatted="false" name="status_not_charging">Niet opladen</string>
+  <string formatted="false" name="status_fully_charged">Volledig opgeladen</string>
+  <string formatted="false" name="status_plugged_in">Aangesloten</string>
+  <string formatted="false" name="health_unknown">Onbekend</string>
+  <string formatted="false" name="health_good">Gezond</string>
+  <string formatted="false" name="health_overheat">Oververhit</string>
+  <string formatted="false" name="health_dead">Dood</string>
+  <string formatted="false" name="health_overvoltage">Voltage te hoog</string>
+  <string formatted="false" name="health_failure">Gefaald</string>
+  <string formatted="false" name="health_cold">Cold</string>
+  <string formatted="false" name="plugged_unplugged">Losgekoppeld</string>
+  <string formatted="false" name="plugged_ac">(AC)</string>
+  <string formatted="false" name="plugged_usb">(USB)</string>
+  <string formatted="false" name="plugged_unknown">(?)</string>
+  <string formatted="false" name="plugged_wireless">(WL)</string>
+  <string formatted="false" name="alarm_type_fully_charged">Volledig opgeladen</string>
+  <string formatted="false" name="alarm_type_charge_drops">Lading komt onder</string>
+  <string formatted="false" name="alarm_type_charge_rises">Lading komt boven</string>
+  <string formatted="false" name="alarm_type_temperature_rises">Temperatuur komt boven</string>
+  <string formatted="false" name="alarm_type_health_failure">Gezondheidsfalen</string>
+  <string formatted="false" name="alarm_type_entry_fully_charged">Lading komt onder...</string>
+  <string formatted="false" name="alarm_type_entry_charge_drops">Lading komt boven...</string>
+  <string formatted="false" name="alarm_type_entry_charge_rises">Temperatuur komt boven...</string>
+  <string formatted="false" name="alarm_type_entry_temperature_rises">Gezondheid faalt</string>
+  <string formatted="false" name="alarm_type_entry_health_failure">Is klaar met opladen</string>
+  <string formatted="false" name="mw_theme_default_small">Standaard klein</string>
+  <string formatted="false" name="mw_theme_colorful_small">Kleurrijk klein</string>
+  <string formatted="false" name="mw_theme_full_window">Volledig scherm</string>
+  <string formatted="false" name="boot_pref_always">Altijd</string>
+  <string formatted="false" name="boot_pref_never">Nooit</string>
+  <string formatted="false" name="boot_pref_if_running">Wanneer ingeschakeld bij afsluiten</string>
+  <string formatted="false" name="status_dur_always">Altijd</string>
+  <string formatted="false" name="status_dur_after_1h">Na 1 uur</string>
+  <string formatted="false" name="status_dur_after_2h">Na 2 uur</string>
+  <string formatted="false" name="status_dur_after_3h">Na 3 uur</string>
+  <string formatted="false" name="status_dur_after_6h">Na 6 uur</string>
+  <string formatted="false" name="status_dur_after_12h">Na 12 uur</string>
+  <string formatted="false" name="age_1_day">1 dag</string>
+  <string formatted="false" name="age_2_days">2 dagen</string>
+  <string formatted="false" name="age_4_days">4 dagen</string>
+  <string formatted="false" name="age_1_week">1 week</string>
+  <string formatted="false" name="age_2_weeks">2 weken</string>
+  <string formatted="false" name="age_3_weeks">3 weken</string>
+  <string formatted="false" name="age_4_weeks">4 weken</string>
   <plurals name="n_log_items">
     <item quantity="one">%d logboekitem</item>
     <item quantity="other">%d logboekitems</item>

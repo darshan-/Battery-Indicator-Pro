@@ -205,88 +205,54 @@
   <string name="pref_alarm_vibrate_help" formatted="false">Pokud vše poběží tak jak má, pak toto nastavení zapne vibrace při spuštění alarmu, pokud ovšem není aktuálně nastaven Silent Mode, pokud tedy nemáte ovšem povoleny vibrace v Silent Modu. Jinými slovy, mělo by to dělat co od této funkce očekávate. Pokud ne, pak mi napište email.</string>
   <string name="pref_alarm_lights" formatted="false">Blikání osvětlení</string>
   <string name="pref_alarm_lights_help" formatted="false">Nastavte jestliže chcete použít upozornění pomocí osvětlení. Standardně bliká LED dioda nebo trackball. Mé zkušenosti ovšem ukazují, že skoro každé zařízení mělo problémy s tímto nastavením. Pokud tedy zaškrtnete používání této funkce, pak systém upozornění bude žádat Váš Android o blikání osvětlení, ale je bez záruky, že to bude fungovat...</string>
-  <string-array name="statuses">
-    <item>Nepřipojeno</item>
-    <item>Neznámý</item>
-    <item>Nabíjení</item>
-    <item>Vybíjení</item>
-    <item>Nenabíjí</item>
-    <item>Plně nabito</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>Nepřipojeno</item>
-    <item>Neznámý</item>
-    <item>Připojeno</item>
-    <item>Neznámý</item>
-    <item>Neznámý</item>
-    <item>Plně nabito</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Vybíjení</item>
-    <item>Neznámý</item>
-    <item>Nabíjení</item>
-    <item>Neznámý</item>
-    <item>Neznámý</item>
-    <item>Plně nabito</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Neznámý</item>
-    <item>Neznámý</item>
-    <item>Dobrá kondice</item>
-    <item>Přehřátý</item>
-    <item>Nepoužitelný</item>
-    <item>Přepětí</item>
-    <item>Vadný</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Unplugged</item>
-    <item>(Napáječ)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="alarm_types_display">
-    <item>Plně nabito</item>
-    <item>Stav klesne pod</item>
-    <item>Stav překročí hranici</item>
-    <item>Teplota překročí hranici</item>
-    <item>Selhání</item>
-  </string-array>
-  <string-array name="alarm_type_entries">
-    <item>Jakmile je plně nabito...</item>
-    <item>Stav klesne pod...</item>
-    <item>Stav překročí hranici...</item>
-    <item>Teplota překročí hranici...</item>
-    <item>Selhání</item>
-  </string-array>
-  <string-array name="mw_theme_pref_entries">
-    <item>Standardní malé</item>
-    <item>Barevné malé</item>
-    <item>Plné okno</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>Vždy</item>
-    <item>Nikdy</item>
-    <item>Ručně</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>Vždy</item>
-    <item>Po 1 hodině</item>
-    <item>Po 2 hodinách</item>
-    <item>Po 3 hodinách</item>
-    <item>Po 6 hodinách</item>
-    <item>Po 12 hodinách</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>1 den</item>
-    <item>2 dny</item>
-    <item>4 dny</item>
-    <item>1 týden</item>
-    <item>2 týdny</item>
-    <item>3 týdny</item>
-    <item>4 týdny</item>
-  </string-array>
+  <string formatted="false" name="status_unplugged">Nepřipojeno</string>
+  <string formatted="false" name="status_unknown">Neznámý</string>
+  <string formatted="false" name="status_charging">Nabíjení</string>
+  <string formatted="false" name="status_discharging">Vybíjení</string>
+  <string formatted="false" name="status_not_charging">Nenabíjí</string>
+  <string formatted="false" name="status_fully_charged">Plně nabito</string>
+  <string formatted="false" name="status_plugged_in">Připojeno</string>
+  <string formatted="false" name="health_unknown">Neznámý</string>
+  <string formatted="false" name="health_good">Dobrá kondice</string>
+  <string formatted="false" name="health_overheat">Přehřátý</string>
+  <string formatted="false" name="health_dead">Nepoužitelný</string>
+  <string formatted="false" name="health_overvoltage">Přepětí</string>
+  <string formatted="false" name="health_failure">Vadný</string>
+  <string formatted="false" name="health_cold">Cold</string>
+  <string formatted="false" name="plugged_unplugged">Unplugged</string>
+  <string formatted="false" name="plugged_ac">(Napáječ)</string>
+  <string formatted="false" name="plugged_usb">(USB)</string>
+  <string formatted="false" name="plugged_unknown">(?)</string>
+  <string formatted="false" name="plugged_wireless">(WL)</string>
+  <string formatted="false" name="alarm_type_fully_charged">Plně nabito</string>
+  <string formatted="false" name="alarm_type_charge_drops">Stav klesne pod</string>
+  <string formatted="false" name="alarm_type_charge_rises">Stav překročí hranici</string>
+  <string formatted="false" name="alarm_type_temperature_rises">Teplota překročí hranici</string>
+  <string formatted="false" name="alarm_type_health_failure">Selhání</string>
+  <string formatted="false" name="alarm_type_entry_fully_charged">Jakmile je plně nabito...</string>
+  <string formatted="false" name="alarm_type_entry_charge_drops">Stav klesne pod...</string>
+  <string formatted="false" name="alarm_type_entry_charge_rises">Stav překročí hranici...</string>
+  <string formatted="false" name="alarm_type_entry_temperature_rises">Teplota překročí hranici...</string>
+  <string formatted="false" name="alarm_type_entry_health_failure">Selhání</string>
+  <string formatted="false" name="mw_theme_default_small">Standardní malé</string>
+  <string formatted="false" name="mw_theme_colorful_small">Barevné malé</string>
+  <string formatted="false" name="mw_theme_full_window">Plné okno</string>
+  <string formatted="false" name="boot_pref_always">Vždy</string>
+  <string formatted="false" name="boot_pref_never">Nikdy</string>
+  <string formatted="false" name="boot_pref_if_running">Ručně</string>
+  <string formatted="false" name="status_dur_always">Vždy</string>
+  <string formatted="false" name="status_dur_after_1h">Po 1 hodině</string>
+  <string formatted="false" name="status_dur_after_2h">Po 2 hodinách</string>
+  <string formatted="false" name="status_dur_after_3h">Po 3 hodinách</string>
+  <string formatted="false" name="status_dur_after_6h">Po 6 hodinách</string>
+  <string formatted="false" name="status_dur_after_12h">Po 12 hodinách</string>
+  <string formatted="false" name="age_1_day">1 den</string>
+  <string formatted="false" name="age_2_days">2 dny</string>
+  <string formatted="false" name="age_4_days">4 dny</string>
+  <string formatted="false" name="age_1_week">1 týden</string>
+  <string formatted="false" name="age_2_weeks">2 týdny</string>
+  <string formatted="false" name="age_3_weeks">3 týdny</string>
+  <string formatted="false" name="age_4_weeks">4 týdny</string>
   <plurals name="n_log_items">
     <item quantity="one">%d položka záznamů</item>
     <item quantity="other">%d položek záznamů</item>

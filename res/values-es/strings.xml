@@ -210,79 +210,47 @@
   <string name="pref_ten_percent_mode" formatted="false">Modo 10%</string>
   <string name="pref_ten_percent_mode_summary" formatted="false">¡Lea la ayuda primero!</string>
   <string name="pref_ten_percent_mode_help" formatted="false"><b>Nota:</b> ¡Marcar o desmarcar esto reiniciará sus ajustes de color de iconos!\n\nEsta opción limpia los ajustes de color de iconos para que tengan más sentido en dispositivos que sólo muestran el nivel de carga en incrementos del 10%. Según los datos proporcionados por los usuarios, esto incluye los siguientes dispositivos:\n\n• Motorola Droid (original)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nHasta donde yo sé, todos los demás dispositivos informan cada 1%, y <i>no</i> debería activar esta opción si tiene uno de ellos.</string>
-  <string-array name="statuses">
-    <item>Desenchufado</item>
-    <item>Desconocido</item>
-    <item>Cargando</item>
-    <item>Descargando</item>
-    <item>No está cargando</item>
-    <item>Cargado</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>Desenchufado</item>
-    <item>Desconocido</item>
-    <item>Enchufado</item>
-    <item>Desconocido</item>
-    <item>Desconocido</item>
-    <item>Cargado</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Descargando</item>
-    <item>Desconocido</item>
-    <item>Cargando</item>
-    <item>Desconocido</item>
-    <item>Desconocido</item>
-    <item>Cargado</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Desconocido</item>
-    <item>Desconocido</item>
-    <item>Buen estado</item>
-    <item>Sobrecalentamiento</item>
-    <item>Batería muerta</item>
-    <item>Sobretensión</item>
-    <item>Fallo</item>
-    <item>Frío</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Unplugged</item>
-    <item>(Red)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="mw_theme_pref_entries">
-    <item>Por defecto (Pequeña)</item>
-    <item>Colorida (Pequeña)</item>
-    <item>Pantalla completa</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>Siempre</item>
-    <item>Nunca</item>
-    <item>Si estaba ejecutándose al apagar</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>Siempre</item>
-    <item>Tras 1 hora</item>
-    <item>Tras 2 horas</item>
-    <item>Tras 3 horas</item>
-    <item>Tras 6 horas</item>
-    <item>Tras 12 horas</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>1 día</item>
-    <item>2 días</item>
-    <item>4 días</item>
-    <item>1 semana</item>
-    <item>2 semanas</item>
-    <item>3 semanas</item>
-    <item>4 semanas</item>
-  </string-array>
-  <string-array name="icon_set_entries">
-    <item>Clásico</item>
-    <item>Número Sencillo</item>
-    <item>Número más Pequeño</item>
-  </string-array>
+  <string formatted="false" name="status_unplugged">Desenchufado</string>
+  <string formatted="false" name="status_unknown">Desconocido</string>
+  <string formatted="false" name="status_charging">Cargando</string>
+  <string formatted="false" name="status_discharging">Descargando</string>
+  <string formatted="false" name="status_not_charging">No está cargando</string>
+  <string formatted="false" name="status_fully_charged">Cargado</string>
+  <string formatted="false" name="status_plugged_in">Enchufado</string>
+  <string formatted="false" name="health_unknown">Desconocido</string>
+  <string formatted="false" name="health_good">Buen estado</string>
+  <string formatted="false" name="health_overheat">Sobrecalentamiento</string>
+  <string formatted="false" name="health_dead">Batería muerta</string>
+  <string formatted="false" name="health_overvoltage">Sobretensión</string>
+  <string formatted="false" name="health_failure">Fallo</string>
+  <string formatted="false" name="health_cold">Frío</string>
+  <string formatted="false" name="plugged_unplugged">Unplugged</string>
+  <string formatted="false" name="plugged_ac">(Red)</string>
+  <string formatted="false" name="plugged_usb">(USB)</string>
+  <string formatted="false" name="plugged_unknown">(?)</string>
+  <string formatted="false" name="plugged_wireless">(WL)</string>
+  <string formatted="false" name="mw_theme_default_small">Por defecto (Pequeña)</string>
+  <string formatted="false" name="mw_theme_colorful_small">Colorida (Pequeña)</string>
+  <string formatted="false" name="mw_theme_full_window">Pantalla completa</string>
+  <string formatted="false" name="boot_pref_always">Siempre</string>
+  <string formatted="false" name="boot_pref_never">Nunca</string>
+  <string formatted="false" name="boot_pref_if_running">Si estaba ejecutándose al apagar</string>
+  <string formatted="false" name="status_dur_always">Siempre</string>
+  <string formatted="false" name="status_dur_after_1h">Tras 1 hora</string>
+  <string formatted="false" name="status_dur_after_2h">Tras 2 horas</string>
+  <string formatted="false" name="status_dur_after_3h">Tras 3 horas</string>
+  <string formatted="false" name="status_dur_after_6h">Tras 6 horas</string>
+  <string formatted="false" name="status_dur_after_12h">Tras 12 horas</string>
+  <string formatted="false" name="age_1_day">1 día</string>
+  <string formatted="false" name="age_2_days">2 días</string>
+  <string formatted="false" name="age_4_days">4 días</string>
+  <string formatted="false" name="age_1_week">1 semana</string>
+  <string formatted="false" name="age_2_weeks">2 semanas</string>
+  <string formatted="false" name="age_3_weeks">3 semanas</string>
+  <string formatted="false" name="age_4_weeks">4 semanas</string>
+  <string formatted="false" name="icon_set_classic">Clásico</string>
+  <string formatted="false" name="icon_set_plain">Número Sencillo</string>
+  <string formatted="false" name="icon_set_smaller">Número más Pequeño</string>
   <plurals name="n_log_items">
     <item quantity="one">%d entrada en el registro</item>
     <item quantity="other">%d entradas en el registro</item>

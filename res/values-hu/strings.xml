@@ -254,88 +254,54 @@
   <string name="pref_alarm_vibrate_help" formatted="false">Ha minden jól megy, akkor a készülék rezeg riasztáskor, kivéve, ha néma módban van, és a a rezgések tiltottak néma módban. Más szóval az csinálja, amit elvár. Kérem értesítsen, ha valami balul sül el!</string>
   <string name="pref_alarm_lights" formatted="false">Fényjelzés</string>
   <string name="pref_alarm_lights_help" formatted="false">Beállítja, hogy az értesítés használja-e a készülék alapértelmezett fényét. Ez általában a LED vagy a trackball villogását eredményezi.Minden Androidos eszköz, amit használtam ebben a tekintetben kissé hibás volt. Ha ezt bejelölöd, az értesítés arra utasítja az Androidot, hogy villogtassa a fényt, de egyes esetekben mégsem következik be.</string>
-  <string-array name="statuses">
-    <item>Szétkapcsolva</item>
-    <item>Ismeretlen</item>
-    <item>Töltés</item>
-    <item>Lemerítés</item>
-    <item>Nincs töltés</item>
-    <item>Teljesen feltöltve</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>Szétkapcsolva</item>
-    <item>Ismeretlen</item>
-    <item>Csatlakoztatva</item>
-    <item>Ismeretlen</item>
-    <item>Ismeretlen</item>
-    <item>Teljesen feltöltve</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Lemerítés</item>
-    <item>Ismeretlen</item>
-    <item>Töltés</item>
-    <item>Ismeretlen</item>
-    <item>Ismeretlen</item>
-    <item>Teljesen feltöltve</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Ismeretlen</item>
-    <item>Ismeretlen</item>
-    <item>Jó állapot</item>
-    <item>Túlmelegedés</item>
-    <item>Halott</item>
-    <item>Túlfeszültség</item>
-    <item>Hiba</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Szétkapcsolva</item>
-    <item>(hálózati feszültség)</item>
-    <item>(USB-n keresztül)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="alarm_types_display">
-    <item>Teljesen feltöltve</item>
-    <item>Töltöttség ez alá csökken</item>
-    <item>Töltöttség meghaladja</item>
-    <item>Hőmérséklet meghaladja</item>
-    <item>Állapot probléma</item>
-  </string-array>
-  <string-array name="alarm_type_entries">
-    <item>Teljesen feltöltődik</item>
-    <item>Töltöttség ez alá csökken...</item>
-    <item>Töltöttség meghaladja...</item>
-    <item>Hőmérséklet meghaladja...</item>
-    <item>Állapot probléma</item>
-  </string-array>
-  <string-array name="mw_theme_pref_entries">
-    <item>Alap, kisméretű</item>
-    <item>Színes, kisméretű</item>
-    <item>Teljes ablak</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>Mindig</item>
-    <item>Soha</item>
-    <item>Ha kikapcsoláskor aktív</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>Mindig</item>
-    <item>1 óra után</item>
-    <item>2 óra után</item>
-    <item>3 óra után</item>
-    <item>6 óra után</item>
-    <item>12 óra után</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>1 nap</item>
-    <item>2 nap</item>
-    <item>4 nap</item>
-    <item>1 hét</item>
-    <item>2 hét</item>
-    <item>3 hét</item>
-    <item>4 hét</item>
-  </string-array>
+  <string formatted="false" name="status_unplugged">Szétkapcsolva</string>
+  <string formatted="false" name="status_unknown">Ismeretlen</string>
+  <string formatted="false" name="status_charging">Töltés</string>
+  <string formatted="false" name="status_discharging">Lemerítés</string>
+  <string formatted="false" name="status_not_charging">Nincs töltés</string>
+  <string formatted="false" name="status_fully_charged">Teljesen feltöltve</string>
+  <string formatted="false" name="status_plugged_in">Csatlakoztatva</string>
+  <string formatted="false" name="health_unknown">Ismeretlen</string>
+  <string formatted="false" name="health_good">Jó állapot</string>
+  <string formatted="false" name="health_overheat">Túlmelegedés</string>
+  <string formatted="false" name="health_dead">Halott</string>
+  <string formatted="false" name="health_overvoltage">Túlfeszültség</string>
+  <string formatted="false" name="health_failure">Hiba</string>
+  <string formatted="false" name="health_cold">Cold</string>
+  <string formatted="false" name="plugged_unplugged">Szétkapcsolva</string>
+  <string formatted="false" name="plugged_ac">(hálózati feszültség)</string>
+  <string formatted="false" name="plugged_usb">(USB-n keresztül)</string>
+  <string formatted="false" name="plugged_unknown">(?)</string>
+  <string formatted="false" name="plugged_wireless">(WL)</string>
+  <string formatted="false" name="alarm_type_fully_charged">Teljesen feltöltve</string>
+  <string formatted="false" name="alarm_type_charge_drops">Töltöttség ez alá csökken</string>
+  <string formatted="false" name="alarm_type_charge_rises">Töltöttség meghaladja</string>
+  <string formatted="false" name="alarm_type_temperature_rises">Hőmérséklet meghaladja</string>
+  <string formatted="false" name="alarm_type_health_failure">Állapot probléma</string>
+  <string formatted="false" name="alarm_type_entry_fully_charged">Teljesen feltöltődik</string>
+  <string formatted="false" name="alarm_type_entry_charge_drops">Töltöttség ez alá csökken...</string>
+  <string formatted="false" name="alarm_type_entry_charge_rises">Töltöttség meghaladja...</string>
+  <string formatted="false" name="alarm_type_entry_temperature_rises">Hőmérséklet meghaladja...</string>
+  <string formatted="false" name="alarm_type_entry_health_failure">Állapot probléma</string>
+  <string formatted="false" name="mw_theme_default_small">Alap, kisméretű</string>
+  <string formatted="false" name="mw_theme_colorful_small">Színes, kisméretű</string>
+  <string formatted="false" name="mw_theme_full_window">Teljes ablak</string>
+  <string formatted="false" name="boot_pref_always">Mindig</string>
+  <string formatted="false" name="boot_pref_never">Soha</string>
+  <string formatted="false" name="boot_pref_if_running">Ha kikapcsoláskor aktív</string>
+  <string formatted="false" name="status_dur_always">Mindig</string>
+  <string formatted="false" name="status_dur_after_1h">1 óra után</string>
+  <string formatted="false" name="status_dur_after_2h">2 óra után</string>
+  <string formatted="false" name="status_dur_after_3h">3 óra után</string>
+  <string formatted="false" name="status_dur_after_6h">6 óra után</string>
+  <string formatted="false" name="status_dur_after_12h">12 óra után</string>
+  <string formatted="false" name="age_1_day">1 nap</string>
+  <string formatted="false" name="age_2_days">2 nap</string>
+  <string formatted="false" name="age_4_days">4 nap</string>
+  <string formatted="false" name="age_1_week">1 hét</string>
+  <string formatted="false" name="age_2_weeks">2 hét</string>
+  <string formatted="false" name="age_3_weeks">3 hét</string>
+  <string formatted="false" name="age_4_weeks">4 hét</string>
   <plurals name="n_log_items">
     <item quantity="zero">%d naplóelem</item>
     <item quantity="one">%d naplóelem</item>
