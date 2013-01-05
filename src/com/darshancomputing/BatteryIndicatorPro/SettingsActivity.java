@@ -92,7 +92,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     //public static final String KEY_LANGUAGE_OVERRIDE = "language_override";
 
     private static final String[] PARENTS = {KEY_SHOW_CHARGE_TIME, KEY_SHOW_CHARGE_TIME, /* Keep these doubled */
-                                             KEY_ENABLE_LOGGING, KEY_ENABLE_LOGGING,     /*  keys first!       */
+                                             KEY_ENABLE_LOGGING,                         /*  keys first!       */
                                              KEY_RED, KEY_AMBER, KEY_GREEN,
                                              KEY_SHOW_LIGHT_USAGE, KEY_SHOW_NORMAL_USAGE,
                                              KEY_SHOW_HEAVY_USAGE, KEY_SHOW_CONSTANT_USAGE};
