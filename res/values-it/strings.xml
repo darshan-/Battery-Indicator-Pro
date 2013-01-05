@@ -156,9 +156,6 @@
   <string name="pref_enable_logging" formatted="false">Abilita registro</string>
   <string name="pref_enable_logging_summary" formatted="false">Registrare i cambiamenti di stato della batteria?</string>
   <string name="pref_enable_logging_help" formatted="false">Se abilitato, Battery Indicator registrerà i cambiamenti dello stato della batteria (es. il telefono è scollegato o è completamente carico). Puoi vedere il registro dalla finestra principale (premi MENU\' e poi seleziona Logs; nei tablet MENU\' non è necessario).</string>
-  <string name="pref_log_everything" formatted="false">Registra sempre</string>
-  <string name="pref_log_everything_summary" formatted="false">Registra anche cambiamenti di carica?</string>
-  <string name="pref_log_everything_help" formatted="false">Se attivato, Battery Indicator manterrà un registro a ogni variazione del livello di carica (esempio, passando da 57% a 56% o viceversa). La maggior parte degli utenti probabilemente non ha bisogno di questo, ma puoi abilitarlo se vuoi tener sotto controllo tutte le cose.\n\nRicordati che l\' utilizzo di questa impostazione avrà un lieve costo sulle prestazioni, quindi si consiglia di attivarla per poche ore o giorni per tenere traccia di alcune cose, e disattivarla quando si ha finito. Anche se abilitato, Battery Indicator non dovrebbe richiedere un consumo pari a circa 1 minuto di carica della batteria nel caso peggiore.</string>
   <string name="pref_max_log_age" formatted="false">Periodo massimo registro</string>
   <string name="pref_max_log_age_summary" formatted="false">Cancella registri più vecchi di:</string>
   <string name="pref_max_log_age_help" formatted="false">Se il logging è abilitato, ogni volta che colleghi il telefono, i registri più vecchi saranno cancellati.</string>

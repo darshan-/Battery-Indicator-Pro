@@ -128,8 +128,6 @@
   <string name="pref_cat_logging" formatted="false">Beleženje</string>
   <string name="pref_enable_logging" formatted="false">Omogoči beleženje</string>
   <string name="pref_enable_logging_summary" formatted="false">Beležim spremembo stanj baterije?</string>
-  <string name="pref_log_everything" formatted="false">Beleži vse</string>
-  <string name="pref_log_everything_summary" formatted="false">Beležim tudi spremembe polnjenja?</string>
   <string name="pref_max_log_age" formatted="false">Največja starost poročila</string>
   <string name="pref_max_log_age_summary" formatted="false">Izbriši poročila starejša od:</string>
   <string name="pref_confirm_manual_disable" formatted="false">Potrditev ročnega onemogočenja</string>

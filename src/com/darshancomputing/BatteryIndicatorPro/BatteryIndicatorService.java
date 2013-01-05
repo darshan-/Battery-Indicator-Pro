@@ -408,8 +408,7 @@ public class BatteryIndicatorService extends Service {
             } else {
                 statusDuration = currentTM - last_status_cTM;
 
-                if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, false) &&
-                    settings.getBoolean(SettingsActivity.KEY_LOG_EVERYTHING, false))
+                if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, false))
                     logs.logStatus(status, plugged, percent, temperature, voltage, currentTM, LogDatabase.STATUS_OLD);
 
                 if (percent % 10 == 0) {

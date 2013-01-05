@@ -160,9 +160,6 @@
   <string name="pref_enable_logging" formatted="false">Logboek inschakelen</string>
   <string name="pref_enable_logging_summary" formatted="false">Veranderingen in batterijstatus opnemen in logboek</string>
   <string name="pref_enable_logging_help" formatted="false">Wanneer je dit inschakelt zullen veranderingen in de batterijstatus worden opgenomen in het logboek.</string>
-  <string name="pref_log_everything" formatted="false">Alles opnemen in logboek</string>
-  <string name="pref_log_everything_summary" formatted="false">Veranderingen in lading ook in logboek opnemen</string>
-  <string name="pref_log_everything_help" formatted="false">Wanneer je dit inschakelt zullen alle veranderingen in batterijniveau ook worden opgenomen in het logboek.</string>
   <string name="pref_max_log_age" formatted="false">Maximale logboek leeftijd</string>
   <string name="pref_max_log_age_summary" formatted="false">Verwijder logboeken ouder dan:</string>
   <string name="pref_max_log_age_help" formatted="false">Wanneer het logboek is ingeschakeld zullen alle logs ouder dan dit worden verwijderd wanneer je je apparaat aansluit.</string>

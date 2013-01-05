@@ -106,7 +106,6 @@
   <string name="pref_main_window_theme" formatted="false">Ana Pencere Teması</string>
   <string name="pref_cat_logging" formatted="false">Kayıt Tutma</string>
   <string name="pref_enable_logging" formatted="false">Kayıt Tutmayı Etkinleştir</string>
-  <string name="pref_log_everything" formatted="false">Her Şeyi Kaydet</string>
   <string name="pref_max_log_age" formatted="false">Maksimum Kayıt Yaşı</string>
   <string name="pref_max_log_age_summary" formatted="false">Şundan eski kayıtları sil:</string>
   <string name="pref_disallow_disable_lock_screen" formatted="false">Elle etkinleştirme kaldırmayı engelle</string>

@@ -145,8 +145,6 @@
   <string name="pref_cat_logging" formatted="false">Protokollierung</string>
   <string name="pref_enable_logging" formatted="false">Protokollierung einschalten</string>
   <string name="pref_enable_logging_summary" formatted="false">Batteriestatusänderungen protokollieren?</string>
-  <string name="pref_log_everything" formatted="false">Alles protokollieren</string>
-  <string name="pref_log_everything_summary" formatted="false">Ladungsänderungen auch protokollieren?</string>
   <string name="pref_max_log_age" formatted="false">Maximales Protokollalter</string>
   <string name="pref_max_log_age_summary" formatted="false">Löschen von Protokollen älter als:</string>
   <string name="pref_cat_keyguard" formatted="false">Bildschirm- und Tastatursperre</string>

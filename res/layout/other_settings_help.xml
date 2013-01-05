@@ -15,8 +15,6 @@
     <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_enable_logging" />
     <TextView style="@style/help_text" android:text="@string/pref_enable_logging_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_log_everything" />
-    <TextView style="@style/help_text" android:text="@string/pref_log_everything_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_max_log_age" />
     <TextView style="@style/help_text" android:text="@string/pref_max_log_age_help" />
 

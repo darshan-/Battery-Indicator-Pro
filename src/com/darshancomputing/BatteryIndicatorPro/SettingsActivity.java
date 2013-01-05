@@ -54,7 +54,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_DISALLOW_DISABLE_LOCK_SCREEN = "disallow_disable_lock_screen";
     public static final String KEY_MAIN_NOTIFICATION_PRIORITY = "main_notification_priority";
     public static final String KEY_ENABLE_LOGGING = "enable_logging";
-    public static final String KEY_LOG_EVERYTHING = "log_everything";
     public static final String KEY_MAX_LOG_AGE = "max_log_age";
     public static final String KEY_MW_THEME = "main_window_theme";
     public static final String KEY_ICON_PLUGIN = "icon_plugin";
@@ -98,7 +97,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                              KEY_SHOW_LIGHT_USAGE, KEY_SHOW_NORMAL_USAGE,
                                              KEY_SHOW_HEAVY_USAGE, KEY_SHOW_CONSTANT_USAGE};
     private static final String[] DEPENDENTS = {KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
-                                                KEY_LOG_EVERYTHING, KEY_MAX_LOG_AGE,
+                                                KEY_MAX_LOG_AGE,
                                                 KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
                                                 KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
                                                 KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME};

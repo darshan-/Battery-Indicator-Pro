@@ -152,9 +152,6 @@
   <string name="pref_enable_logging" formatted="false">Naplózás engedélyezése</string>
   <string name="pref_enable_logging_summary" formatted="false">Naplózza az akku állapotának változásait?</string>
   <string name="pref_enable_logging_help" formatted="false">Ha engedélyezi, a Battery Indicator naplózza az akku állapotának változásait. (pl.ha a telefont lekapcsolták a töltőről vagy az akku teljesen feltöltődött). A napló elérhető a főablakból a MENÜ gomb használatával.</string>
-  <string name="pref_log_everything" formatted="false">Mindent naplóz</string>
-  <string name="pref_log_everything_summary" formatted="false">Az akku szintjének változását is naplózza?</string>
-  <string name="pref_log_everything_help" formatted="false">Ha engedélyezi, a Battery Indicator naplózza a töltöttségi szint minden egyes változását is (pl. amikor az 57%-ról 56%-ra csökken). Erre általában nincs szükség, de bekapcsolhatja, ha szemmel szeretné tartani az akku használatát.\n\nVegye figyelembe, hogy ez a beállítás némi teljesítmény csökkenéssel járhat. Tehát ha be is kapcsolja néhány órára vagy napra, hogy kövesse az eseményeket, később ez kikapcsolható. De még bekapcsolt állapotban sem okoz 1 percnél több használati idő veszteséget egy teljes feltöltési ciklus alatt.</string>
   <string name="pref_max_log_age" formatted="false">Napló időszaka</string>
   <string name="pref_max_log_age_summary" formatted="false">Törölje az ennél régebbi bejegyzéseket:</string>
   <string name="pref_max_log_age_help" formatted="false">Ha a naplózás engedélyezett, minden esetben, amikor tölteni kezdi a készüléket, az ennél régebbi bejegyzések törlődnek.</string>

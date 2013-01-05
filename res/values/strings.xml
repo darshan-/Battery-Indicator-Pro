@@ -456,12 +456,6 @@
     view the logs from the main window (press MENU and then select
     Logs; on tablets, MENU isn\'t necessary).
   </string>
-  <string formatted="false" name="pref_log_everything">Log Everything</string>
-  <string formatted="false" name="pref_log_everything_summary">Log charge changes, too?</string>
-  <string formatted="false" name="pref_log_everything_help">
-    If enabled, Battery Indicator will also log every change in the
-    charge level, as well (e.g., going from 57% to 56% or vice versa).
-  </string>
   <string formatted="false" name="pref_max_log_age">Maximum Log Age</string>
   <string formatted="false" name="pref_max_log_age_summary">Delete logs older than:</string>
   <string formatted="false" name="pref_max_log_age_help">

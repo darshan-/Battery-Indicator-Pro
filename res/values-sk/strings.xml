@@ -150,9 +150,6 @@
   <string name="pref_cat_logging" formatted="false">Zaznamenávanie</string>
   <string name="pref_enable_logging" formatted="false">Zapnúť zaznamenávanie</string>
   <string name="pref_enable_logging_summary" formatted="false">Zaznamenávať zmeny stavu batérie?</string>
-  <string name="pref_log_everything" formatted="false">Zaznamenávať všetko</string>
-  <string name="pref_log_everything_summary" formatted="false">Zaznamenávať aj zmeny napätia?</string>
-  <string name="pref_log_everything_help" formatted="false">Ak je zapnuté, Battery Indicator bude takisto zaznamenávať každú zmenu nabitia. (napr. vybíjanie z 57% na 56% a naopak).</string>
   <string name="pref_max_log_age" formatted="false">Maximálny vek záznamu</string>
   <string name="pref_max_log_age_summary" formatted="false">Zmazať záznamy staršie ako:</string>
   <string name="pref_max_log_age_help" formatted="false">Ak je zapnuté zaznamenávanie, potom kedykoľvek zapojíte telefón do nabíjačky, záznamy staršie ako tento, budú odstránené.</string>

@@ -145,8 +145,6 @@
   <string name="pref_cat_logging" formatted="false">Záznamy</string>
   <string name="pref_enable_logging" formatted="false">Povolit záznamy</string>
   <string name="pref_enable_logging_summary" formatted="false">Záznamy změnu stavu baterie ?</string>
-  <string name="pref_log_everything" formatted="false">Záznamy všech aktivit</string>
-  <string name="pref_log_everything_summary" formatted="false">Zaznamenávat také změny stavu při nabíjení ?</string>
   <string name="pref_max_log_age" formatted="false">Maximální stáří záznamů</string>
   <string name="pref_max_log_age_summary" formatted="false">Vymazat záznamy starší než:</string>
   <string name="pref_max_log_age_help" formatted="false">Pokud jsou záznamy povoleny, pak všechny starší budou vždy vymazány.</string>

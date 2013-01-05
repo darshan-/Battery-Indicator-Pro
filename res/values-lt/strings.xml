@@ -154,8 +154,6 @@
   <string name="pref_cat_logging" formatted="false">Įrašų sudarymas</string>
   <string name="pref_enable_logging" formatted="false">Įjungti įrašų sudarymą</string>
   <string name="pref_enable_logging_summary" formatted="false">Įrašinėti baterijos būsenos pakitimus?</string>
-  <string name="pref_log_everything" formatted="false">Įrašinėti Viską</string>
-  <string name="pref_log_everything_summary" formatted="false">Baterijos įkrovimo pakitimus taip pat?</string>
   <string name="pref_max_log_age" formatted="false">Ilgiausias įrašo gyvavimas</string>
   <string name="pref_max_log_age_summary" formatted="false">Ištrinti senesnius įrašus nei:</string>
   <string name="pref_cat_keyguard" formatted="false">Ekrano / Klaviatūros Užraktas</string>

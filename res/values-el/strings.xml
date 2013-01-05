@@ -155,9 +155,6 @@
   <string name="pref_enable_logging" formatted="false">Ενεργοποίηση Καταγραφής</string>
   <string name="pref_enable_logging_summary" formatted="false">Καταγραφή αλλαγής κατάστασης μπαταρίας;</string>
   <string name="pref_enable_logging_help" formatted="false">Αν ενεργοποιηθεί, ο Battery Indicator, θα καταγράφει τις μεταβολές κατάστασης της μπαταρίας (π.χ αν η συσκευή αποσυνδεθεί από το ρεύμα ή έχει φορτιστεί πλήρως). Μπορείτε να δείτε τα κατεγραμμένα δεδομένα από το κυρίως παράθυρο (πατήστε MENU και μετά επιλέξτε Λίστα Καταγραφής, στα tablets, το MENU δε είναι απαραίτητο.)</string>
-  <string name="pref_log_everything" formatted="false">Καταγραφή Όλων</string>
-  <string name="pref_log_everything_summary" formatted="false">Καταγραφή μεταβολής φόρτισης, επίσης;</string>
-  <string name="pref_log_everything_help" formatted="false">Αν ενεργοποιηθεί, ο Battery Indicator, θα καταγράφει κάθε μεταβολή στο επίπεδο φόρτισης επίσης (π.χ φόρτιση από 57% σε 56% και αντίστροφα).</string>
   <string name="pref_max_log_age" formatted="false">Μέγιστη Περίοδος Καταγραφής</string>
   <string name="pref_max_log_age_summary" formatted="false">Διαγραφή λίστας δεδομένων παλαιότερης από:</string>
   <string name="pref_max_log_age_help" formatted="false">Αν η καταγραφή είναι ενεργοποιημένη, τότε όποτε συνδέετε τη συσκευή στην πρίζα, όλες οι παλαιότερες καταγραφές θα διαγραφούν.</string>

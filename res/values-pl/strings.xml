@@ -156,9 +156,6 @@
   <string name="pref_enable_logging" formatted="false">Włącz logowanie</string>
   <string name="pref_enable_logging_summary" formatted="false">Czy logować zmiany stanu baterii?</string>
   <string name="pref_enable_logging_help" formatted="false">Jeżeli aktywny, Battery Indicator będzie zapisywał zmiany statusu baterii (np. jeżeli urządzenie zostało w pełni naładowane). Możesz obejrzeć ligi z głównego okna (wciśnij MENU i wybierz Logi; na tabletach, MENU nie jest wymagane).</string>
-  <string name="pref_log_everything" formatted="false">Loguj wszystko</string>
-  <string name="pref_log_everything_summary" formatted="false">Czy logować także fakt ładowania?</string>
-  <string name="pref_log_everything_help" formatted="false">Jeżeli aktywne, Battery Indicator będzie zapisywał każda zmianę poziomu naladowania, (np. z 57% na 56% i odwrotnie).</string>
   <string name="pref_max_log_age" formatted="false">Maksymalny czas logu</string>
   <string name="pref_max_log_age_summary" formatted="false">Usuń logi starsze niż:</string>
   <string name="pref_max_log_age_help" formatted="false">Jeżeli zapisywanie logów jest aktywne, za każdym razem gdy podpinasz urządzenie, logi starsze od tego będą usuwane.</string>

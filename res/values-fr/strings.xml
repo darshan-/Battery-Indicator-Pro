@@ -156,9 +156,6 @@
   <string name="pref_enable_logging" formatted="false">Activer la journalisation</string>
   <string name="pref_enable_logging_summary" formatted="false">Enregistrer les états de la batterie ?</string>
   <string name="pref_enable_logging_help" formatted="false">Si l\'option est active, Battery Indicator enregistre tous les changements d\'état de la batterie (comme quand le téléphone est débranché ou a fini sa charge). Vous pouvez consulter les journaux depuis la fenêtre principale (en appuyant sur MENU et en sélectionnant Journaux).</string>
-  <string name="pref_log_everything" formatted="false">Tout enregistrer</string>
-  <string name="pref_log_everything_summary" formatted="false">Enregistrer les changements de charge également ?</string>
-  <string name="pref_log_everything_help" formatted="false">Si l\'option est active, Battery Indicator enregistre également tous les changements sur le niveau de charge (comme le passage de 57% à 56% et vice versa).</string>
   <string name="pref_max_log_age" formatted="false">Âge maximal du journal</string>
   <string name="pref_max_log_age_summary" formatted="false">Supprimer les journaux plus ancients que :</string>
   <string name="pref_max_log_age_help" formatted="false">Lorsque la journalisation est activée que vous branchez votre téléphone les journaux les plus vieux sont supprimés.</string>

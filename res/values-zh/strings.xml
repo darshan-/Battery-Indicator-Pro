@@ -118,9 +118,6 @@
   <string name="pref_enable_logging" formatted="false">啟用日誌記錄功能</string>
   <string name="pref_enable_logging_summary" formatted="false">確認記錄電池狀態信息？</string>
   <string name="pref_enable_logging_help" formatted="false">若啟用本功能，電量指示器將以日誌方式記錄電池狀態信息（例如拔下電源或電池充滿）。您可通過單擊「選單」鍵和「日誌」按鈕查看日誌記錄。</string>
-  <string name="pref_log_everything" formatted="false">記錄所有信息</string>
-  <string name="pref_log_everything_summary" formatted="false">確認記錄電量變化信息？</string>
-  <string name="pref_log_everything_help" formatted="false">若啟用本功能，電量指示器將記錄電池電量的所有變化信息比如（剩餘電量從57%變為56%，反之亦然）。多數用戶並不需要此功能，但如果您喜歡更細節的信息，請開啟此項。\n\n啟用本功能將增加少許功耗。但即使啟用本功能，電量指示器在電池完全放電時間內所消耗的電量仍僅有約一分鐘。</string>
   <string name="pref_max_log_age" formatted="false">日誌記錄有效期</string>
   <string name="pref_max_log_age_summary" formatted="false">日誌記錄有效期限：</string>
   <string name="pref_max_log_age_help" formatted="false">若啟用本功能，過期日誌將在手機充電時被清除。</string>
