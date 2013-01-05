@@ -178,11 +178,10 @@ public class LogViewActivity extends ListActivity {
             dialog = builder.create();
             break;
         case DIALOG_CONFIGURE_LOG_FILTER:
-            final String[] log_filter_pref_keys = res.getStringArray(R.array.log_filter_pref_keys);
-            final boolean[] checked_items = new boolean[log_filter_pref_keys.length];
+            final boolean[] checked_items = new boolean[str.log_filter_pref_keys.length];
 
             for (int i = 0; i < checked_items.length; i++) {
-                checked_items[i] = settings.getBoolean(log_filter_pref_keys[i], true);
+                checked_items[i] = settings.getBoolean(str.log_filter_pref_keys[i], true);
             }
 
             builder.setTitle(str.configure_log_filter)
@@ -190,30 +189,21 @@ public class LogViewActivity extends ListActivity {
                                      new DialogInterface.OnMultiChoiceClickListener() {
                                          @Override
                                          public void onClick(DialogInterface di, int id, boolean isChecked) {
-                                             SharedPreferences.Editor editor = settings.edit();
-
-                                             if (isChecked) {
-                                                 editor.putBoolean(log_filter_pref_keys[id], true);
-                                             } else {
-                                                 editor.putBoolean(log_filter_pref_keys[id], false);
-                                             }
-
-                                             editor.commit();
+                                             checked_items[id] = isChecked;
                                          }
                                      })
                 .setPositiveButton(str.okay, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
-                            reloadList(false);
-
+                            setFilters(checked_items);
                             di.cancel();
                         }
                     })
-                .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface di, int id) {
+                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        public void onCancel(DialogInterface di) {
+                            setFilters(checked_items);
                             di.cancel();
                         }
                     });
-
             dialog = builder.create();
             break;
         default:
@@ -221,6 +211,18 @@ public class LogViewActivity extends ListActivity {
         }
 
         return dialog;
+    }
+
+    private void setFilters(boolean[] checked_items) {
+        SharedPreferences.Editor editor = settings.edit();
+
+        for (int i = 0; i < checked_items.length; i++) {
+            editor.putBoolean(str.log_filter_pref_keys[i], checked_items[i]);
+        }
+
+        editor.commit();
+
+        reloadList(false);
     }
 
     @Override

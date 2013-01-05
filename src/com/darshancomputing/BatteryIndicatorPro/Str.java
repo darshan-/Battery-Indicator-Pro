@@ -78,6 +78,7 @@ public class Str {
     public String[] alarm_type_values;
     public String[] temp_alarm_entries;
     public String[] temp_alarm_values;
+    public String[] log_filter_pref_keys;
 
     public Str(Resources r) {
         res = r;
@@ -141,6 +142,8 @@ public class Str {
         alarm_type_values   = res.getStringArray(R.array.alarm_type_values);
         temp_alarm_entries  = res.getStringArray(R.array.temp_alarm_entries);
         temp_alarm_values   = res.getStringArray(R.array.temp_alarm_values);
+
+        log_filter_pref_keys = res.getStringArray(R.array.log_filter_pref_keys);
     }
 
     public String for_n_hours(int n) {
