@@ -11,8 +11,8 @@
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
   <string name="settings_activity_name_free" formatted="false">Battery Indicator - Instellingen</string>
   <string name="help_activity_name_free" formatted="false">Battery Indicator - Help</string>
-  <string name="battery_use_b" formatted="false">Bekijk batterijgebruik</string>
-  <string name="upgrade_donate_b" formatted="false">Upgrade / Doneer</string>
+  <string name="battery_use_b" formatted="false">Batterijgebruik bekijken</string>
+  <string name="upgrade_donate_b" formatted="false">Upgraden of doneren</string>
   <string name="reenable_lock_screen" formatted="false">Schermvergrendeling weer toestaan</string>
   <string name="disable_lock_screen" formatted="false">Schermvergrendeling voorkomen</string>
   <string name="confirm_disable" formatted="false">Schermvergrendeling voorkomen?</string>
@@ -22,8 +22,9 @@
   <string name="confirm_close" formatted="false">Sluiten?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator zal volledig worden afgesloten, en het statusbalkicoon zal ook weggaan.\n\nWil je alleen dit venster sluiten en de indicator actief houden, druk dan op Annulerem en druk op de TERUG knop om het venster te sluiten.</string>
   <string name="need_uninstall" formatted="false">Herinstallatie nodig</string>
-  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro moeten worden gedeinstalleerd en dan opnieuw worden geinstalleerd om deze update te voltooien. Sorry voor het ongemak. Dit is noodzakelijk door technische limitaties van Android. Het zal na deze update niet meer noodzakelijk zijn.\n\nNadat je op \'Oké\' hebt gedrukt, hoef je alleen nog een keer op \'Oké\' te drukken als wordt gevraagd of je wilt deinstalleren. Hierna zul je naar de Android Market worden gebracht waar je het weer kunt installeren.\n\nDe meeste gebruikers zullen hun instellingen behouden, met uitzondering van alarmen. Bekijk voor de zekerheid je instellingen na de installatie.\n\nBedankt, en ik hoop dat de nieuwe mogelijkheden je zullen bevallen!</string>
+  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro moeten worden gedeinstalleerd en dan opnieuw worden geinstalleerd om deze update te voltooien. Sorry voor het ongemak. Dit is noodzakelijk door technische limitaties van Android. Het zal na deze update niet meer noodzakelijk zijn.\n\nNadat je op \'OK\' hebt gedrukt, hoef je alleen nog een keer op \'OK\' te drukken als wordt gevraagd of je wilt deinstalleren. Hierna zul je naar de Android Market worden gebracht waar je het weer kunt installeren.\n\nDe meeste gebruikers zullen hun instellingen behouden, met uitzondering van alarmen. Bekijk voor de zekerheid je instellingen na de installatie.\n\nBedankt, en ik hoop dat de nieuwe mogelijkheden je zullen bevallen!</string>
   <string name="confirm_clear_logs" formatted="false">Alle logboeken verwijderen?</string>
+  <string name="configure_log_filter" formatted="false">Welke logitems laten zien?</string>
   <string name="confirm_ten_percent_enable" formatted="false">10% Modus activeren?</string>
   <string name="confirm_ten_percent_disable" formatted="false">10% Modus deactiveren?</string>
   <string name="confirm_ten_percent_hint" formatted="false">Waarschuwing: Met het wijzigen van deze instelling (activeren en deactiveren) zullen de kleurinstellingen gereset worden.\n\nAls je een Motorola Droid, Droid X, Droid 2, Defy of Samsung Moment hebt: deze functie na installatie van de applicatie aanzetten. Alle andere telefoons: deze functie uit laten staan.</string>
@@ -38,6 +39,7 @@
   <string name="menu_help" formatted="false">Help</string>
   <string name="menu_clear" formatted="false">Wissen</string>
   <string name="menu_reverse" formatted="false">Volgorde omkeren</string>
+  <string name="menu_log_filter" formatted="false">Filter</string>
   <string name="menu_export" formatted="false">Exporteren als CSV</string>
   <string name="menu_delete_alarm" formatted="false">Alarm verwijderen</string>
   <string name="menu_get_plugins" formatted="false">Plugins ophalen</string>
@@ -57,14 +59,41 @@
   <string name="press_menu_for_more" formatted="false">Druk op MENU voor meer opties</string>
   <string name="inaccessible_storage" formatted="false">SD kaart is niet toegankelijk</string>
   <string name="inaccessible_w_reason" formatted="false">SD kaart niet toegankelijk:</string>
-  <string name="read_only_storage" formatted="false">SD kaart ingesteld op alleen lezen</string>
+  <string name="read_only_storage" formatted="false">SD kaart is ingesteld op alleen lezen</string>
   <string name="file_written" formatted="false">Bestand is opgeslagen in de hoofdmap van de SD kaart</string>
   <string name="date" formatted="false">datum</string>
   <string name="time" formatted="false">tijd</string>
   <string name="status" formatted="false">status</string>
-  <string name="charge" formatted="false">laad_percentage</string>
-  <string name="temperature" formatted="false">graden_celsius</string>
   <string name="voltage" formatted="false">volt</string>
+  <string name="status_unplugged" formatted="false">Losgekoppeld</string>
+  <string name="status_unknown" formatted="false">Onbekend</string>
+  <string name="status_charging" formatted="false">Opladen</string>
+  <string name="status_discharging" formatted="false">Ontladen</string>
+  <string name="status_not_charging" formatted="false">Niet opladen</string>
+  <string name="status_fully_charged" formatted="false">Volledig opgeladen</string>
+  <string name="status_plugged_in" formatted="false">Aangesloten</string>
+  <string name="health_unknown" formatted="false">Onbekend</string>
+  <string name="health_good" formatted="false">Gezond :)</string>
+  <string name="health_overheat" formatted="false">Oververhit</string>
+  <string name="health_dead" formatted="false">Dood :(</string>
+  <string name="health_overvoltage" formatted="false">Voltage te hoog</string>
+  <string name="health_failure" formatted="false">Falen</string>
+  <string name="health_cold" formatted="false">Koud</string>
+  <string name="plugged_unplugged" formatted="false">Losgekoppeld</string>
+  <string name="plugged_ac" formatted="false">(AC)</string>
+  <string name="plugged_usb" formatted="false">(USB)</string>
+  <string name="plugged_unknown" formatted="false">(?)</string>
+  <string name="plugged_wireless" formatted="false">(WL)</string>
+  <string name="alarm_type_fully_charged" formatted="false">Volledig opgeladen</string>
+  <string name="alarm_type_charge_drops" formatted="false">Lading komt onder</string>
+  <string name="alarm_type_charge_rises" formatted="false">Lading komt boven</string>
+  <string name="alarm_type_temperature_rises" formatted="false">Temperatuur komt boven</string>
+  <string name="alarm_type_health_failure" formatted="false">Gezondheidsfalen</string>
+  <string name="alarm_type_entry_fully_charged" formatted="false">Is volledig opgeladen</string>
+  <string name="alarm_type_entry_charge_drops" formatted="false">Lading komt onder...</string>
+  <string name="alarm_type_entry_charge_rises" formatted="false">Lading komt boven...</string>
+  <string name="alarm_type_entry_temperature_rises" formatted="false">Temperatuur komt boven...</string>
+  <string name="alarm_type_entry_health_failure" formatted="false">Gezondheid faalt</string>
   <string name="alarm_fully_charged" formatted="false">Batterij is nu volledig opgeladen</string>
   <string name="alarm_charge_drops" formatted="false">"Batterijniveau is onder "</string>
   <string name="alarm_charge_rises" formatted="false">"Batterijniveau is boven "</string>
@@ -83,7 +112,7 @@
   <string name="help_cat_version" formatted="false">Versie</string>
   <string name="help_cat_changelog" formatted="false">Lijst van wijzigingen</string>
   <string name="help_changelog" formatted="false">Bekijk de <a href="http://code.google.com/p/battery-indicator/wiki/Changelog?tm=6">lijst van wijzigingen</a>.</string>
-  <string name="help_cat_introduction" formatted="false">Introductie</string>
+  <string name="help_cat_introduction" formatted="false">Inleiding</string>
   <string name="help_introduction" formatted="false">Dit is <i>Battery Indicator Pro</i>, de \"Pro\" versie van de populaire gratis applicatie <i>Battery Indicator</i>. Je kunt deze applicatie aanschaffen via Android Market, maar het is een open-source project. Dit betekent dat je de broncode gratis kunt downloaden via <a href="http://code.google.com/p/battery-indicator/">de project website</a>.</string>
   <string name="help_introduction_free" formatted="false">Dit is <i>Battery Indicator</i>, de gratis applicatie van de <i>Battery Indicator</i> familie. Je kunt deze applicatie gratie downloaden via Android Market, maar het is een open-source project. Dit betekent dat je de broncode gratis kunt downloaden via <a href="http://code.google.com/p/battery-indicator/">de project website</a>.\n\nOverweeg de aanschaf van <i>Battery Indicator Pro</i> via de Android Market <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Versie</a>.</string>
   <string name="help_cat_summary" formatted="false">Samenvatting</string>
@@ -97,23 +126,23 @@
   <string name="help_no_warranty" formatted="false">Deze software wordt uitgegeven in de hoop dat het nuttig zal zijn, maar ZONDER ENIGE GARANTIE; zonder zelfs de impliciete garantie van VERKOOPBAARHEID of GESCHIKTHEID VOOR EEN BEPAALD DOEL.\n\nTerwijl ik mijn best doe om ervoor te zorgen dat het goed werkt en geen problemen veroorzaken, ben ik niet verantwoordelijk voor eventuele schade of overlast dat wordt veroorzaakt onder alle omstandigheden.</string>
   <string name="help_cat_acknowledgments" formatted="false">Erkenningen</string>
   <string name="help_acknowledgments" formatted="false">Deze app zou alleen beschikbaar zijn in het Engels ware het niet voor de hulp van de vrijwillige vertalers. Bedankt!\n\nVeel dank gaat uit naar Google en alle andere open-source programmeurs die het Android-platform en deze app mogelijk te maken.\n\nHet opstartpictogram (de rechtopstaande batterij die u ziet in de markt) is gebaseerd op een icoon uit <a href="http://www.oxygen-icons.org">het Oxygen icoon thema</a> en gebruikt onder de <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-ShareAlike 3.0 Licentie</a>.</string>
-  <string name="help_cat_translations" formatted="false">Vertalingen</string>
+  <string name="help_cat_translations" formatted="false">Vertaling</string>
   <string name="help_translations" formatted="false">Ik heb hulp nodig het vertalen van deze app naar andere talen. Als u wilt helpen, stuur me een <a href="mailto:android@darshancomputing.com">e-mail</a>. Tenzij u het liever niet wilt, zal ik uw naam toevoegen aan deze sectie ter bevestiging van uw hulp.</string>
   <string name="help_subcat_translators" formatted="false">Vertalers</string>
   <string name="help_cat_contact" formatted="false">Contact</string>
-  <string name="help_contact" formatted="false">Als u vragen of problemen hebt, kijk dan op <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">het FAQ</a> voor contactinformatie.\n</string>
-  <string name="pref_hint" formatted="false">Druk op MENU voor help</string>
+  <string name="help_contact" formatted="false">Als u vragen of problemen heeft, kijk dan op <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">het FAQ</a> voor contactinformatie.\n</string>
+  <string name="pref_hint" formatted="false">(Druk op MENU voor help)</string>
   <string name="settings_overview" formatted="false">Overzicht</string>
   <string name="settings_overview_help" formatted="false">De instellingen zijn verdeeld over drie verschillende pagina\'s, zoals onder beschreven. Elke pagina heeft zijn eigen helppagina over de instellingen op die pagina. Druk op MENU en dan Help voor help.</string>
-  <string name="theme_settings" formatted="false">Kleuren en thema\'s</string>
-  <string name="theme_settings_summary" formatted="false">Wijzig icoonkleuren en vensterthema\'s</string>
+  <string name="theme_settings" formatted="false">Iconen en thema\'s</string>
+  <string name="theme_settings_summary" formatted="false">Iconen en vensterthema\'s wijzigen</string>
   <string name="theme_settings_help" formatted="false">Je kunt het thema voor het hoofdvenster wijzigen en kiezen of het icoon van kleur moet veranderen.</string>
   <string name="time_settings" formatted="false">Tijdinstellingen</string>
-  <string name="time_settings_summary" formatted="false">Wijzig tijdbenaderingen</string>
+  <string name="time_settings_summary" formatted="false">Tijdbenaderingen wijzigen</string>
   <string name="time_settings_help" formatted="false">Hier kun je instellen wanneer de notificatie veranderd van de exacte tijd weergeven wanneer de status is veranderd, en hoe lang geleden dat was.</string>
   <string name="alarm_settings_subtitle" formatted="false">Alarminstellingen</string>
   <string name="alarm_settings" formatted="false">Alarmen</string>
-  <string name="alarm_settings_summary" formatted="false">Wijzig notificaties voor lege of volle batterij</string>
+  <string name="alarm_settings_summary" formatted="false">Meldingen voor lege of volle batterij instellen</string>
   <string name="alarm_settings_help" formatted="false">Je kunt een notificatie ontvangen als je batterijniveau onder een bepaald punt komt.</string>
   <string name="other_settings" formatted="false">Overige instellingen</string>
   <string name="other_settings_help" formatted="false">Alle andere instellingen zijn te vinden op deze pagina, waaronder logboeken, vergrendeling, temperatuureenheid, automatisch starten en meer.</string>
@@ -123,61 +152,75 @@
   <string name="pref_cat_themes" formatted="false">Thema\'s</string>
   <string name="pref_main_window_theme" formatted="false">Vensterthema</string>
   <string name="pref_main_window_theme_help" formatted="false">Kies het thema voor het hoofdvenster.</string>
+  <string name="pref_icon_set" formatted="false">Iconen</string>
+  <string name="pref_icon_set_help" formatted="false">Er zijn verschillende soorten Android, dus er is niet een perfecte set iconen die overal goed werken. Je kunt plugins gebruiken voor meer iconen, maar er zijn nu 3 standaard opties./n /n</string>
+  <string name="pref_cat_charging_indicator" formatted="false">Indicatie tijdens opladen</string>
+  <string name="pref_indicate_charging" formatted="false">Indicatie geven tijdens opladen</string>
+  <string name="pref_indicate_charging_summary" formatted="false">Icoon veranderen tijdens opladen</string>
+  <string name="pref_indicate_charging_help" formatted="false">Sommige icoonsets geven aan wanneer de batterij wordt opgeladen. Dit kun je hier aan of uitzetten.</string>
   <string name="pref_cat_logging" formatted="false">Logboek</string>
   <string name="pref_enable_logging" formatted="false">Logboek inschakelen</string>
   <string name="pref_enable_logging_summary" formatted="false">Veranderingen in batterijstatus opnemen in logboek</string>
   <string name="pref_enable_logging_help" formatted="false">Wanneer je dit inschakelt zullen veranderingen in de batterijstatus worden opgenomen in het logboek.</string>
-  <string name="pref_log_everything" formatted="false">Alles opnemen in logboek</string>
-  <string name="pref_log_everything_summary" formatted="false">Veranderingen in lading ook in logboek opnemen</string>
-  <string name="pref_log_everything_help" formatted="false">Wanneer je dit inschakelt zullen alle veranderingen in batterijniveau ook worden opgenomen in het logboek.</string>
   <string name="pref_max_log_age" formatted="false">Maximale logboek leeftijd</string>
   <string name="pref_max_log_age_summary" formatted="false">Verwijder logboeken ouder dan:</string>
   <string name="pref_max_log_age_help" formatted="false">Wanneer het logboek is ingeschakeld zullen alle logs ouder dan dit worden verwijderd wanneer je je apparaat aansluit.</string>
   <string name="pref_cat_keyguard" formatted="false">Schermvergendeling</string>
   <string name="pref_cat_keyguard_help" formatted="false">Android geeft apps toestemming om de schermvergrendeling aan en uit te schakelen.</string>
+  <string name="pref_notify_when_kg_disabled" formatted="false">Melding geven wanneer uitgeschakeld</string>
+  <string name="pref_notify_when_kg_disabled_summary" formatted="false">Geef melding wanneer schermvergrendeling is uitgeschakeld</string>
+  <string name="pref_notify_when_kg_disabled_help" formatted="false">Geeft wanneer ingeschakeld een aparte melding wanneer de schermvergrendeling is uitgeschakeld.</string>
   <string name="pref_confirm_manual_disable" formatted="false">Confirmatie bij handmatig vergrendeling voorkomen</string>
   <string name="pref_confirm_manual_disable_summary" formatted="false">Vraag om confirmatie bij handmatig vergrendeling voorkomen</string>
   <string name="pref_confirm_manual_disable_help" formatted="false">Wanneer dit is ingeschakeld wordt er om een bevestiging gevraagd als je de schermvergrendeling tijdelijk wilt uitschakelen.</string>
   <string name="pref_finish_after_toggle_lock" formatted="false">Sluiten na schakelen</string>
   <string name="pref_finish_after_toggle_lock_summary" formatted="false">Sluit hoofdvenster meteen na wijzigen van schermvergrendeling</string>
   <string name="pref_finish_after_toggle_lock_help" formatted="false">Als je minder wilt klikken kun je deze optie aanzetten.</string>
-  <string name="pref_auto_disable" formatted="false">Automatisch vergrendeling voorkomen</string>
-  <string name="pref_auto_disable_summary" formatted="false">Voorkom vergrendeling tijdens opladen</string>
+  <string name="pref_auto_disable" formatted="false">Schermvergrendeling automatisch uitschakelen</string>
+  <string name="pref_auto_disable_summary" formatted="false">Voorkom schermvergrendeling tijdens opladen</string>
   <string name="pref_auto_disable_help" formatted="false">Als je dit aanzet zal de schermvergrendeling automatisch uitschakelen tijdens het opladen.</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">Schakel handmatig uitschakelen uit</string>
+  <string name="pref_disallow_disable_lock_screen" formatted="false">Handmatig uitschakelen niet toestaan</string>
   <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Schakel de voorkom schermvergrendeling knop uit</string>
   <string name="pref_disallow_disable_lock_screen_help" formatted="false">Als je een alternatieve schermvergendeling gebruikt waarbij je toegang hebt tot de notificaties kun je dit beter aanzetten voor de veiligheid.</string>
+  <string name="pref_cat_notification_priority" formatted="false">Prioriteit van melding</string>
+  <string name="pref_cat_notification_priority_help" formatted="false">Bij Android 4.1 en hoger hebben meldingen een prioriteit. Deze kun je hier aanpassen.\n\n- Minimaal verwijderd het statusicoon maar laat de melding nog wel zien in de meldingslijst.\n- Laag laat andere meldingen zoals email zien voor de Battery Indicator melding. - Standaard is standaard.\n- Hoog laat Battery Indicator als eerste zien.</string>
+  <string name="pref_main_notification_priority" formatted="false">Prioriteit van melding</string>
+  <string name="pref_main_notification_priority_help" formatted="false">Stel de prioriteit van de melding in. Deze instelling heeft geen effect op alarmen, plugins en andere meldingen.</string>
   <string name="pref_cat_battery_use" formatted="false">Batterijgebruik</string>
   <string name="pref_finish_after_battery_use" formatted="false">Sluiten na starten</string>
   <string name="pref_finish_after_battery_use_summary" formatted="false">Hoofdvenster sluiten na bekijken van batterijgebruik</string>
   <string name="pref_finish_after_battery_use_help" formatted="false">Als je dit aanzet sluit het hoofdvenster meteen na het openen van het batterijgebruik scherm.</string>
-  <string name="pref_cat_temperature_unit" formatted="false">Temperatuureenheid</string>
-  <string name="pref_convert_to_fahrenheit" formatted="false">Gebruik Fahrenheit in plaats van Celsius</string>
+  <string name="pref_cat_temperature_unit" formatted="false">Temperatuur</string>
+  <string name="pref_convert_to_fahrenheit" formatted="false">Converteren naar Fahrenheit</string>
   <string name="pref_convert_to_fahrenheit_help" formatted="false">Android geeft de batterijtemperatuur in graden Celsius. Selecteer deze optie om Fahrenheit te gebruiken.</string>
   <string name="pref_cat_autostart" formatted="false">Automatisch starten</string>
   <string name="pref_autostart_at_boot" formatted="false">Automatisch starten bij inschakelen</string>
-  <string name="pref_autostart_at_boot_summary" formatted="false">Start Battery Indicator als apparaat wordt ingeschakeld:</string>
+  <string name="pref_autostart_at_boot_summary" formatted="false">Battery Indicator starten als het apparaat wordt ingeschakeld:</string>
   <string name="pref_autostart_at_boot_help" formatted="false">Deze optie verandert of Battery Indicator automatisch opstart wanneer het systeem opstart.</string>
-  <string name="pref_cat_charge_as_text" formatted="false">Percentage als tekst</string>
-  <string name="pref_charge_as_text" formatted="false">Percentage als tekst</string>
+  <string name="pref_cat_charge_as_text" formatted="false">Batterijpercentage in tekst</string>
+  <string name="pref_charge_as_text" formatted="false">Batterijpercentage in tekst</string>
   <string name="pref_charge_as_text_summary" formatted="false">Laat het batterijpercentage zien in de meldingstekst</string>
-  <string name="pref_charge_as_text_help" formatted="false">Deze optie is voor mensen met slechter zicht.</string>
+  <string name="pref_charge_as_text_help" formatted="false">Deze optie is voor mensen met slechter zicht. Vooral wanneer je een schermlezer gebruikt.</string>
   <string name="pref_cat_one_percent_hack" formatted="false">Percentagehack</string>
   <string name="pref_one_percent_hack" formatted="false">Percentagehack</string>
-  <string name="pref_one_percent_hack_summary" formatted="false">Gebruik een hack voor apparaten waarvan het percentage alleen per 10% verandert</string>
+  <string name="pref_one_percent_hack_summary" formatted="false">Gebruik een hack voor apparaten waarvan het percentage alleen per 10% verandert.</string>
   <string name="pref_one_percent_hack_help" formatted="false">Deze hack werkt op alle Motorola apparaten die het percentage per 10% weergeven, behalve de originele Motorola Droid.\n\nDe meeste apparaten hebben deze optie niet nodig.\n\nAls de optie grijs is en je kunt hem niet aanzetten, dan ondersteunt jouw apparaat deze optie niet.\n\nZie de <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">OnePercentHack</a> wiki pagina voor meer informatie.</string>
   <string name="lang_system_selected" formatted="false">Geselecteerd door systeem</string>
   <string name="pref_cat_language" formatted="false">Taal</string>
-  <string name="pref_language_override" formatted="false">Gebruik andere taal</string>
+  <string name="pref_language_override" formatted="false">Andere taal gebruiken</string>
   <string name="pref_language_override_summary" formatted="false">Selecteer taal:</string>
   <string name="pref_language_override_help" formatted="false">Hier kun je een andere taal kiezen.</string>
   <string name="pref_cat_status_duration" formatted="false">Wijziging in batterijstatus</string>
-  <string name="pref_status_dur_est" formatted="false">Laat de tijd sinds laatste wijziging zien</string>
+  <string name="pref_status_dur_est" formatted="false">Wanneer af te ronden</string>
   <string name="pref_status_dur_est_summary" formatted="false">Laat de tijd sinds laatste wijziging zien:</string>
   <string name="pref_status_dur_est_help" formatted="false">Stelt in wanneer de notificatie wijzigt van de tijd van de laatste wijziging naar de tijd sinds de laatste wijziging.</string>
-  <string name="pref_cat_time_remaining_estimates" formatted="false">Tijd resterend</string>
+  <string name="pref_cat_notification_time" formatted="false">Tijd van melding</string>
+  <string name="pref_show_notification_time" formatted="false">Tijd van melding laten zien</string>
+  <string name="pref_show_notification_time_summary" formatted="false">Laat de tijd zien wanneer de melding werd gedaan?</string>
+  <string name="pref_show_notification_time_help" formatted="false">Standaard laat Android de tijd zien wanneer de melding ontstond. Dit neemt ruimte in beslag en is meestal niet relevant. Dit is standaard uitgeschakeld, maar je kunt het hier weer inschakelen als je wilt.</string>
+  <string name="pref_cat_time_remaining_estimates" formatted="false">Geschatte resterende tijd</string>
   <string name="pref_cat_time_remaining_estimates_help" formatted="false">Je kunt zelf kiezen wat je denk dat klopt voor jouw apparaat.</string>
-  <string name="pref_show_charge_time" formatted="false">Laat oplaadtijd zien</string>
+  <string name="pref_show_charge_time" formatted="false">Oplaadtijd laten zien</string>
   <string name="pref_show_charge_time_summary" formatted="false">Laat resterende oplaadtijd zien tijdens het opladen</string>
   <string name="pref_show_charge_time_help" formatted="false">Wanneer je dit inschakelt zal er in het hoofdvenster een geschatte tijd zichtbaar zijn die zegt hoe lang het nog duurt voordat de batterij volledig opgeladen is.</string>
   <string name="pref_usb_charge_time" formatted="false">USB opladen</string>
@@ -186,52 +229,52 @@
   <string name="pref_ac_charge_time" formatted="false">AC opladen</string>
   <string name="pref_ac_charge_time_summary" formatted="false">AC oplaadtijd van 0% naar 100% in uren:</string>
   <string name="pref_ac_charge_time_help" formatted="false">Vul in hoe lang je denkt dat het duurt om de batterij op te laden van 0% tot 100% via AC (lichtnet).</string>
-  <string name="pref_show_light_usage" formatted="false">Laat licht gebruik zien</string>
+  <string name="pref_show_light_usage" formatted="false">Licht gebruik laten zien</string>
   <string name="pref_show_light_usage_summary" formatted="false">Laat resterende tijd bij licht gebruik zien</string>
   <string name="pref_show_light_usage_help" formatted="false">Kies of je in het hoofdvenster een benadering wilt laten zien van de tijd dat het duurt voordat de batterij leeg is bij licht gebruik.</string>
   <string name="pref_light_usage_time" formatted="false">Licht gebruik</string>
   <string name="pref_light_usage_time_summary" formatted="false">Licht gebruik tijd van 100% naar 0% in uren:</string>
   <string name="pref_light_usage_time_help" formatted="false">Vul in hoe lang je denkt dat het duurt om je batterij van 100% naar 0% te onladen, wanneer je hem weinig gebruikt.</string>
-  <string name="pref_show_normal_usage" formatted="false">Laat normaal gebruik zien</string>
+  <string name="pref_show_normal_usage" formatted="false">Normaal gebruik laten zien</string>
   <string name="pref_show_normal_usage_summary" formatted="false">Laat resterende tijd bij normaal gebruik zien</string>
   <string name="pref_show_normal_usage_help" formatted="false">Kies of je in het hoofdvenster een benadering wilt laten zien van de tijd dat het duurt voordat de batterij leeg is bij normaal gebruik.</string>
   <string name="pref_normal_usage_time" formatted="false">Normaal gebruik</string>
   <string name="pref_normal_usage_time_summary" formatted="false">Normaal gebruik tijd van 100% naar 0% in uren:</string>
   <string name="pref_normal_usage_time_help" formatted="false">Vul in hoe lang je denkt dat het duurt om je batterij van 100% naar 0% te ontladen, wanneer je hem normaal gebruikt.</string>
-  <string name="pref_show_heavy_usage" formatted="false">Laat intensief gebruik zien</string>
+  <string name="pref_show_heavy_usage" formatted="false">Intensief gebruik laten zien</string>
   <string name="pref_show_heavy_usage_summary" formatted="false">Laat resterende tijd bij intensief gebruik zien</string>
   <string name="pref_show_heavy_usage_help" formatted="false">Kies of je in het hoofdvenster een benadering wilt laten zien van de tijd dat het duurt voordat de batterij leeg is bij intensief gebruik.</string>
   <string name="pref_heavy_usage_time" formatted="false">Intensief gebruik</string>
   <string name="pref_heavy_usage_time_summary" formatted="false">Intensief gebruik van 100% naar 0% in uren:</string>
   <string name="pref_heavy_usage_time_help" formatted="false">Vul in hoe lang je denkt dat het duurt om je batterij van 100% tot 0% te ontladen, wanneer je hem intensief gebruikt.</string>
-  <string name="pref_show_constant_usage" formatted="false">Laat constant gebruik zien</string>
+  <string name="pref_show_constant_usage" formatted="false">Constant gebruik laten zien</string>
   <string name="pref_show_constant_usage_summary" formatted="false">Laat resterende tijd bij constant gebruik zien</string>
   <string name="pref_show_constant_usage_help" formatted="false">Kies of je in het hoofdvenster een benadering wilt laten zien van de tijd dat het duurt voordat de batterij leeg is bij constant gebruik.</string>
   <string name="pref_constant_usage_time" formatted="false">Constant gebruik</string>
   <string name="pref_constant_usage_time_summary" formatted="false">Constant gebruik tijd van 100% naar 0% in uren:</string>
   <string name="pref_constant_usage_time_help" formatted="false">Vul in hoe lang je denkt dat het duurt om je batterij van 100% naar 0% te ontladen, wanneer je hem constant gebruikt.</string>
-  <string name="pref_cat_plugin_settings" formatted="false">Plugin instellingen</string>
-  <string name="pref_plugin_settings" formatted="false">Plugin instellingen</string>
-  <string name="pref_plugin_settings_summary" formatted="false">Verander instellingen voor deze plugin</string>
-  <string name="pref_cat_color" formatted="false">Icoonkleur</string>
+  <string name="pref_cat_plugin_settings" formatted="false">Instellingen voor plugins</string>
+  <string name="pref_plugin_settings" formatted="false">Instellingen voor plugins</string>
+  <string name="pref_plugin_settings_summary" formatted="false">Instellingen voor deze plugin veranderen</string>
+  <string name="pref_cat_color" formatted="false">Kleur van icoon</string>
   <string name="pref_cat_color_help" formatted="false">Om Battery Indicator klein te houden zijn er niet veel kleuren beschikbaar. Voor de maximale controle kunnen alle kleuren onafhankelijk van elkaar worden ingesteld.</string>
-  <string name="pref_color_preview" formatted="false">Kleurvoorbeeld</string>
+  <string name="pref_color_preview" formatted="false">Voorbeeld van kleuren</string>
   <string name="pref_color_preview_help" formatted="false">Het kleurvoorbeeld is ervoor bedoeld om zichtbaar te maken wat voor effect de kleurinstellingen zulllen hebben.</string>
-  <string name="pref_red" formatted="false">Gebruik rode icoon</string>
+  <string name="pref_red" formatted="false">Rode icoon gebruiken</string>
   <string name="pref_red_summary" formatted="false">Gebruik rode icoon als batterij bijna leeg is</string>
   <string name="pref_red_help" formatted="false">Kies of je een rood icoon wilt laten zien onder een bepaald niveau.</string>
   <string name="pref_red_thresh" formatted="false">Voorwaarde voor rode icoon</string>
   <string name="pref_red_thresh_summary" formatted="false">Laat rode icoon zien onder dit ladingsniveau:</string>
   <string name="pref_red_thresh_summary10" formatted="false">Laat rode icoon zien bij of onder dit ladingsniveau:</string>
   <string name="pref_red_thresh_help" formatted="false">Hier kun je instellen wanneer het icoon rood moet worden.</string>
-  <string name="pref_amber" formatted="false">Gebruik oranje icoon</string>
+  <string name="pref_amber" formatted="false">Oranje icoon gebruiken</string>
   <string name="pref_amber_summary" formatted="false">Gebruik oranje icoon als lading gemiddeld is</string>
   <string name="pref_amber_help" formatted="false">Kies of je een oranje icoon wilt laten zien onder een bepaald niveau.</string>
   <string name="pref_amber_thresh" formatted="false">Voorwaarde voor oranje icoon</string>
   <string name="pref_amber_thresh_summary" formatted="false">Laat oranje icoon zien onder dit ladingsniveau:</string>
   <string name="pref_amber_thresh_summary10" formatted="false">Laat oranje icoon zien bij of onder dit ladingsniveau:</string>
   <string name="pref_amber_thresh_help" formatted="false">Hier kun je instellen wanneer het icoon geel moet worden.</string>
-  <string name="pref_green" formatted="false">Gebruik groene icoon</string>
+  <string name="pref_green" formatted="false">Groene icoon gebruiken</string>
   <string name="pref_green_summary" formatted="false">Gebruik groene icoon als lading hoog is</string>
   <string name="pref_green_help" formatted="false">Kies of je een groen icoon wilt laten zien op of boven een bepaald niveau.</string>
   <string name="pref_green_thresh" formatted="false">Voorwaarde voor groene icoon</string>
@@ -241,18 +284,18 @@
   <string name="pref_ten_percent_mode" formatted="false">10% modus</string>
   <string name="pref_ten_percent_mode_summary" formatted="false">Lees eerst de help!</string>
   <string name="pref_ten_percent_mode_help" formatted="false">Pas op: Als je dit verandert worden je kleurinstellingen verwijderd! Deze instelling past de andere instellingen aan voor apparaten die alleen veranderen in 10% weergeven.</string>
-  <string name="alarms_overview" formatted="false">Alarmoverzicht</string>
+  <string name="alarms_overview" formatted="false">Overzicht van alarmen</string>
   <string name="alarms_overview_help" formatted="false">Op deze pagina kun je alarmen toevoegen, in of uitschakelen en verwijderen.</string>
   <string name="pref_alarm_enabled" formatted="false">Alarm inschakelen</string>
   <string name="pref_alarm_enabled_help" formatted="false">Als je tijdelijk een alarm wilt uitschakelen zonder het daarna weer te moeten instellen, kun je hem hier of op de alarmen pagina uitschakelen.</string>
-  <string name="pref_cat_alarm_conditions" formatted="false">Alarmvoorwaarden</string>
+  <string name="pref_cat_alarm_conditions" formatted="false">Voorwaarden voor alarm</string>
   <string name="pref_cat_alarm_conditions_help" formatted="false">Hier kun je de voorwaarden instellen voor het alarm</string>
-  <string name="pref_alarm_type" formatted="false">Alarmtype</string>
+  <string name="pref_alarm_type" formatted="false">Type alarm</string>
   <string name="pref_alarm_type_summary" formatted="false">Geef alarm wanneer batterij:</string>
   <string name="pref_alarm_type_help" formatted="false">Er zijn 5 typen alarm om uit te kiezen.\n\n</string>
   <string name="pref_alarm_threshold" formatted="false">Voorwaarde</string>
   <string name="alarm_pref_not_used" formatted="false">Niet gebruikt voor dit alarmtype</string>
-  <string name="pref_alarm_threshold_summary" formatted="false">Alarmvoorwaarde:</string>
+  <string name="pref_alarm_threshold_summary" formatted="false">Voorwaarde voor alarm:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Voor lading en temperatuuralarmen moet je de lading of temperatuur instellen waarop het alarm afgaat.</string>
   <string name="pref_cat_notification_settings" formatted="false">Notificatieinstellingen</string>
   <string name="pref_cat_notification_settings_help" formatted="false">Hier kun je verschillende aspecten van de alarm notificaties instellen.</string>
@@ -261,95 +304,40 @@
   <string name="silent" formatted="false">Stil</string>
   <string name="pref_alarm_vibrate" formatted="false">Trillen</string>
   <string name="pref_alarm_vibrate_help" formatted="false">Als het goed is laat deze optie het apparaat trillen als het alarm afgaat.</string>
-  <string name="pref_alarm_lights" formatted="false">Laat LED branden</string>
+  <string name="pref_alarm_lights" formatted="false">Activeer LED</string>
   <string name="pref_alarm_lights_help" formatted="false">Stelt in of de notificatie het lampje op je apparaat moet laten knipperen. (Niet alle apparaten hebben zo\'n lampje.)</string>
-  <string-array name="statuses">
-    <item>Losgekoppeld</item>
-    <item>Onbekend</item>
-    <item>Opladen</item>
-    <item>Ontladen</item>
-    <item>Niet opladen</item>
-    <item>Volledig opgeladen</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>Losgekoppeld</item>
-    <item>Onbekend</item>
-    <item>Aangesloten</item>
-    <item>Onbekend</item>
-    <item>Onbekend</item>
-    <item>Volledig opgeladen</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Ontladen</item>
-    <item>Onbekend</item>
-    <item>Opladen</item>
-    <item>Onbekend</item>
-    <item>Onbekend</item>
-    <item>Volledig opgeladen</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Onbekend</item>
-    <item>Onbekend</item>
-    <item>Gezond</item>
-    <item>Oververhit</item>
-    <item>Dood</item>
-    <item>Voltage te hoog</item>
-    <item>Gefaald</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Losgekoppeld</item>
-    <item>(AC)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="alarm_types_display">
-    <item>Volledig opgeladen</item>
-    <item>Lading komt onder</item>
-    <item>Lading komt boven</item>
-    <item>Temperatuur komt boven</item>
-    <item>Gezondheidsfalen</item>
-  </string-array>
-  <string-array name="alarm_type_entries">
-    <item>Lading komt onder...</item>
-    <item>Lading komt boven...</item>
-    <item>Temperatuur komt boven...</item>
-    <item>Gezondheid faalt</item>
-    <item>Is klaar met opladen</item>
-  </string-array>
-  <string-array name="mw_theme_pref_entries">
-    <item>Standaard klein</item>
-    <item>Kleurrijk klein</item>
-    <item>Volledig scherm</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>Altijd</item>
-    <item>Nooit</item>
-    <item>Wanneer ingeschakeld bij afsluiten</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>Altijd</item>
-    <item>Na 1 uur</item>
-    <item>Na 2 uur</item>
-    <item>Na 3 uur</item>
-    <item>Na 6 uur</item>
-    <item>Na 12 uur</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>1 dag</item>
-    <item>2 dagen</item>
-    <item>4 dagen</item>
-    <item>1 week</item>
-    <item>2 weken</item>
-    <item>3 weken</item>
-    <item>4 weken</item>
-  </string-array>
+  <string name="mw_theme_default_small" formatted="false">Standaard</string>
+  <string name="mw_theme_colorful_small" formatted="false">Kleurrijk</string>
+  <string name="mw_theme_full_window" formatted="false">Volledig scherm</string>
+  <string name="boot_pref_always" formatted="false">Altijd</string>
+  <string name="boot_pref_never" formatted="false">Nooit</string>
+  <string name="boot_pref_if_running" formatted="false">Wanneer ingeschakeld bij afsluiten</string>
+  <string name="status_dur_always" formatted="false">Altijd</string>
+  <string name="status_dur_after_1h" formatted="false">Na 1 uur</string>
+  <string name="status_dur_after_2h" formatted="false">Na 2 uur</string>
+  <string name="status_dur_after_3h" formatted="false">Na 3 uur</string>
+  <string name="status_dur_after_6h" formatted="false">Na 6 uur</string>
+  <string name="status_dur_after_12h" formatted="false">Na 12 uur</string>
+  <string name="age_1_day" formatted="false">1 dag</string>
+  <string name="age_2_days" formatted="false">2 dagen</string>
+  <string name="age_4_days" formatted="false">4 dagen</string>
+  <string name="age_1_week" formatted="false">1 week</string>
+  <string name="age_2_weeks" formatted="false">2 weken</string>
+  <string name="age_3_weeks" formatted="false">3 weken</string>
+  <string name="age_4_weeks" formatted="false">4 weken</string>
+  <string name="notification_priority_max" formatted="false">Maximaal</string>
+  <string name="notification_priority_high" formatted="false">Hoog</string>
+  <string name="notification_priority_default" formatted="false">Standaard</string>
+  <string name="notification_priority_low" formatted="false">Laag</string>
+  <string name="notification_priority_min" formatted="false">Minimaal</string>
+  <string name="icon_set_classic" formatted="false">Klassiek</string>
+  <string name="icon_set_plain" formatted="false">Cijfer</string>
+  <string name="icon_set_smaller" formatted="false">Kleiner cijfer</string>
   <plurals name="n_log_items">
     <item quantity="one">%d logboekitem</item>
     <item quantity="other">%d logboekitems</item>
   </plurals>
   <plurals name="for_n_hours">
-    <item quantity="other">(%d Uur)</item>
+    <item quantity="other">(%d uur)</item>
   </plurals>
 </resources>

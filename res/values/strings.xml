@@ -57,6 +57,8 @@
 
   <string formatted="false" name="confirm_clear_logs">Really clear all logs?</string>
 
+  <string formatted="false" name="configure_log_filter">Show which log items?</string>
+
   <string formatted="false" name="confirm_ten_percent_enable">Really enable 10% Mode?</string>
   <string formatted="false" name="confirm_ten_percent_disable">Really disable 10% Mode?</string>
   <string formatted="false" name="confirm_ten_percent_hint">
@@ -102,6 +104,7 @@
   <string formatted="false" name="menu_help">Help</string>
   <string formatted="false" name="menu_clear">Clear</string>
   <string formatted="false" name="menu_reverse">Reverse Order</string>
+  <string formatted="false" name="menu_log_filter">Filter</string>
   <string formatted="false" name="menu_export">Export CSV</string>
   <string formatted="false" name="menu_delete_alarm">Delete Alarm</string>
   <string formatted="false" name="menu_get_plugins">Get Plugins</string>
@@ -136,62 +139,37 @@
   <string formatted="false" name="temperature">degrees_celsius</string>
   <string formatted="false" name="voltage">volts</string>
 
-  <string-array name="statuses">
-    <item>Unplugged</item>
-    <item>Unknown</item>
-    <item>Charging</item>
-    <item>Discharging</item>
-    <item>Not Charging</item>
-    <item>Fully Charged</item>
-  </string-array>
-  <string-array name="log_statuses"><!-- The same as above, worded for the Log screen -->
-    <item>Unplugged</item>
-    <item>Unknown</item>
-    <item>Plugged In</item>
-    <item>Unknown</item>
-    <item>Unknown</item>
-    <item>Fully Charged</item>
-  </string-array>
-  <string-array name="log_statuses_old"><!-- The same as above, worded for old Log screen statuses -->
-    <item>Discharging</item>
-    <item>Unknown</item>
-    <item>Charging</item>
-    <item>Unknown</item>
-    <item>Unknown</item>
-    <item>Fully Charged</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Unknown</item>
-    <item>Unknown</item>
-    <item>Good Health</item>
-    <item>Overheat</item>
-    <item>Dead</item>
-    <item>Overvoltage</item>
-    <item>Failure</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Unplugged</item>
-    <item>(AC)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
+  <string formatted="false" name="status_unplugged">Unplugged</string>
+  <string formatted="false" name="status_unknown">Unknown</string>
+  <string formatted="false" name="status_charging">Charging</string>
+  <string formatted="false" name="status_discharging">Discharging</string>
+  <string formatted="false" name="status_not_charging">Not Charging</string>
+  <string formatted="false" name="status_fully_charged">Fully Charged</string>
+  <string formatted="false" name="status_plugged_in">Plugged In</string>
 
-  <string-array name="alarm_types_display">
-    <item>Fully charged</item>
-    <item>Charge drops below</item>
-    <item>Charge rises above</item>
-    <item>Temperature rises above</item>
-    <item>Health failure</item>
-  </string-array>
-  <string-array name="alarm_type_entries">
-    <item>Becomes fully charged</item>
-    <item>Charge drops below...</item>
-    <item>Charge rises above...</item>
-    <item>Temperature rises above...</item>
-    <item>Health fails</item>
-  </string-array>
+  <string formatted="false" name="health_unknown">Unknown</string>
+  <string formatted="false" name="health_good">Good Health</string>
+  <string formatted="false" name="health_overheat">Overheat</string>
+  <string formatted="false" name="health_dead">Dead</string>
+  <string formatted="false" name="health_overvoltage">Overvoltage</string>
+  <string formatted="false" name="health_failure">Failure</string>
+  <string formatted="false" name="health_cold">Cold</string>
+  <string formatted="false" name="plugged_unplugged">Unplugged</string>
+  <string formatted="false" name="plugged_ac">(AC)</string>
+  <string formatted="false" name="plugged_usb">(USB)</string>
+  <string formatted="false" name="plugged_unknown">(?)</string>
+  <string formatted="false" name="plugged_wireless">(WL)</string>
+
+  <string formatted="false" name="alarm_type_fully_charged">Fully charged</string>
+  <string formatted="false" name="alarm_type_charge_drops">Charge drops below</string>
+  <string formatted="false" name="alarm_type_charge_rises">Charge rises above</string>
+  <string formatted="false" name="alarm_type_temperature_rises">Temperature rises above</string>
+  <string formatted="false" name="alarm_type_health_failure">Health failure</string>
+  <string formatted="false" name="alarm_type_entry_fully_charged">Becomes fully charged</string>
+  <string formatted="false" name="alarm_type_entry_charge_drops">Charge drops below...</string>
+  <string formatted="false" name="alarm_type_entry_charge_rises">Charge rises above...</string>
+  <string formatted="false" name="alarm_type_entry_temperature_rises">Temperature rises above...</string>
+  <string formatted="false" name="alarm_type_entry_health_failure">Health fails</string>
 
   <string formatted="false" name="alarm_fully_charged">Battery is now fully charged</string>
   <string formatted="false" name="alarm_charge_drops">"Battery charge is below "</string>
@@ -478,12 +456,6 @@
     view the logs from the main window (press MENU and then select
     Logs; on tablets, MENU isn\'t necessary).
   </string>
-  <string formatted="false" name="pref_log_everything">Log Everything</string>
-  <string formatted="false" name="pref_log_everything_summary">Log charge changes, too?</string>
-  <string formatted="false" name="pref_log_everything_help">
-    If enabled, Battery Indicator will also log every change in the
-    charge level, as well (e.g., going from 57% to 56% or vice versa).
-  </string>
   <string formatted="false" name="pref_max_log_age">Maximum Log Age</string>
   <string formatted="false" name="pref_max_log_age_summary">Delete logs older than:</string>
   <string formatted="false" name="pref_max_log_age_help">
@@ -566,7 +538,6 @@
     \nAgain, the exact behavior may vary between devices and is not guaranteed.
   </string>
   <string formatted="false" name="pref_main_notification_priority">Main Notification Priority</string>
-  <string formatted="false" name="pref_main_notification_priority_summary">@string/pref_main_notification_priority</string>
   <string formatted="false" name="pref_main_notification_priority_help">
     Set the priority of the main notification.  Alarms, plugins, and any other notifications are not
     affected by this setting, but they may in the future have configurable priority.
@@ -956,48 +927,36 @@
     happen.
   </string>
 
-  <string-array name="mw_theme_pref_entries">
-    <item>Default Small</item>
-    <item>Colorful Small</item>
-    <item>Full Window</item>
-  </string-array>
+  <string formatted="false" name="mw_theme_default_small">Default Small</string>
+  <string formatted="false" name="mw_theme_colorful_small">Colorful Small</string>
+  <string formatted="false" name="mw_theme_full_window">Full Window</string>
 
-  <string-array name="boot_pref_entries">
-    <item>Always</item>
-    <item>Never</item>
-    <item>If running on shutdown</item>
-  </string-array>
+  <string formatted="false" name="boot_pref_always">Always</string>
+  <string formatted="false" name="boot_pref_never">Never</string>
+  <string formatted="false" name="boot_pref_if_running">If running on shutdown</string>
 
-  <string-array name="status_dur_est_entries">
-    <item>Always</item>
-    <item>After 1 hour</item>
-    <item>After 2 hours</item>
-    <item>After 3 hours</item>
-    <item>After 6 hours</item>
-    <item>After 12 hours</item>
-  </string-array>
+  <string formatted="false" name="status_dur_always">Always</string>
+  <string formatted="false" name="status_dur_after_1h">After 1 hour</string>
+  <string formatted="false" name="status_dur_after_2h">After 2 hours</string>
+  <string formatted="false" name="status_dur_after_3h">After 3 hours</string>
+  <string formatted="false" name="status_dur_after_6h">After 6 hours</string>
+  <string formatted="false" name="status_dur_after_12h">After 12 hours</string>
 
-  <string-array name="max_log_age_entries">
-    <item>1 day</item>
-    <item>2 days</item>
-    <item>4 days</item>
-    <item>1 week</item>
-    <item>2 weeks</item>
-    <item>3 weeks</item>
-    <item>4 weeks</item>
-  </string-array>
+  <string formatted="false" name="age_1_day">1 day</string>
+  <string formatted="false" name="age_2_days">2 days</string>
+  <string formatted="false" name="age_4_days">4 days</string>
+  <string formatted="false" name="age_1_week">1 week</string>
+  <string formatted="false" name="age_2_weeks">2 weeks</string>
+  <string formatted="false" name="age_3_weeks">3 weeks</string>
+  <string formatted="false" name="age_4_weeks">4 weeks</string>
 
-  <string-array name="notification_priority_entries">
-    <item>Maximum</item>
-    <item>High</item>
-    <item>Default</item>
-    <item>Low</item>
-    <item>Minimum</item>
-  </string-array>
+  <string formatted="false" name="notification_priority_max">Maximum</string>
+  <string formatted="false" name="notification_priority_high">High</string>
+  <string formatted="false" name="notification_priority_default">Default</string>
+  <string formatted="false" name="notification_priority_low">Low</string>
+  <string formatted="false" name="notification_priority_min">Minimum</string>
 
-  <string-array name="icon_set_entries">
-    <item>Classic</item>
-    <item>Plain Number</item>
-    <item>Smaller Number</item>
-  </string-array>
+  <string formatted="false" name="icon_set_classic">Classic</string>
+  <string formatted="false" name="icon_set_plain">Plain Number</string>
+  <string formatted="false" name="icon_set_smaller">Smaller Number</string>
 </resources>

@@ -65,6 +65,35 @@
   <string name="charge" formatted="false">pourcentage_de_charge</string>
   <string name="temperature" formatted="false">degres_celsius</string>
   <string name="voltage" formatted="false">volts</string>
+  <string name="status_unplugged" formatted="false">Débranché</string>
+  <string name="status_unknown" formatted="false">Inconnu</string>
+  <string name="status_charging" formatted="false">En charge</string>
+  <string name="status_discharging" formatted="false">Se décharge</string>
+  <string name="status_not_charging" formatted="false">Pas de charge</string>
+  <string name="status_fully_charged" formatted="false">Complètement chargée</string>
+  <string name="status_plugged_in" formatted="false">Branché</string>
+  <string name="health_unknown" formatted="false">Inconnu</string>
+  <string name="health_good" formatted="false">Bon état</string>
+  <string name="health_overheat" formatted="false">Surchauffe</string>
+  <string name="health_dead" formatted="false">Morte</string>
+  <string name="health_overvoltage" formatted="false">Surtension</string>
+  <string name="health_failure" formatted="false">Défaut</string>
+  <string name="health_cold" formatted="false">Cold</string>
+  <string name="plugged_unplugged" formatted="false">Débranché</string>
+  <string name="plugged_ac" formatted="false">(CA)</string>
+  <string name="plugged_usb" formatted="false">(USB)</string>
+  <string name="plugged_unknown" formatted="false">(?)</string>
+  <string name="plugged_wireless" formatted="false">(WL)</string>
+  <string name="alarm_type_fully_charged" formatted="false">Complètement chargée</string>
+  <string name="alarm_type_charge_drops" formatted="false">Charge inférieure à</string>
+  <string name="alarm_type_charge_rises" formatted="false">Charge supérieure à</string>
+  <string name="alarm_type_temperature_rises" formatted="false">Température supérieure à</string>
+  <string name="alarm_type_health_failure" formatted="false">Santé critique</string>
+  <string name="alarm_type_entry_fully_charged" formatted="false">Charge terminée</string>
+  <string name="alarm_type_entry_charge_drops" formatted="false">Charge inférieure à...</string>
+  <string name="alarm_type_entry_charge_rises" formatted="false">Charge supérieure à...</string>
+  <string name="alarm_type_entry_temperature_rises" formatted="false">Température supérieure à...</string>
+  <string name="alarm_type_entry_health_failure" formatted="false">Santé critique</string>
   <string name="alarm_fully_charged" formatted="false">La batterie est complètement chargée</string>
   <string name="alarm_charge_drops" formatted="false">"Charge de la batterie inférieure à "</string>
   <string name="alarm_charge_rises" formatted="false">"Charge de la batterie supérieure à "</string>
@@ -127,9 +156,6 @@
   <string name="pref_enable_logging" formatted="false">Activer la journalisation</string>
   <string name="pref_enable_logging_summary" formatted="false">Enregistrer les états de la batterie ?</string>
   <string name="pref_enable_logging_help" formatted="false">Si l\'option est active, Battery Indicator enregistre tous les changements d\'état de la batterie (comme quand le téléphone est débranché ou a fini sa charge). Vous pouvez consulter les journaux depuis la fenêtre principale (en appuyant sur MENU et en sélectionnant Journaux).</string>
-  <string name="pref_log_everything" formatted="false">Tout enregistrer</string>
-  <string name="pref_log_everything_summary" formatted="false">Enregistrer les changements de charge également ?</string>
-  <string name="pref_log_everything_help" formatted="false">Si l\'option est active, Battery Indicator enregistre également tous les changements sur le niveau de charge (comme le passage de 57% à 56% et vice versa).</string>
   <string name="pref_max_log_age" formatted="false">Âge maximal du journal</string>
   <string name="pref_max_log_age_summary" formatted="false">Supprimer les journaux plus ancients que :</string>
   <string name="pref_max_log_age_help" formatted="false">Lorsque la journalisation est activée que vous branchez votre téléphone les journaux les plus vieux sont supprimés.</string>
@@ -260,88 +286,25 @@
   <string name="pref_alarm_vibrate_help" formatted="false">Si tout va bien, activer cette option fera vibrer votre appareil quand l\'alarme est déclenchée, sauf si l\'appareil est en silencieux, sauf si vous avez activé les vibrations en silencieux. En d\'autres mots, ça devrait se comporter correctement en fonction de la configuration de votre appareil. Si cela ne fonctionne pas correctement, veuillez me contacter par email.</string>
   <string name="pref_alarm_lights" formatted="false">Éclairage de la DEL</string>
   <string name="pref_alarm_lights_help" formatted="false">Défini si la notification doit activer la diode principale de votre appareil. Il s\'agit généralement d\'éclairer la DEL ou le trackball. Notez que cette option n\'a pas toujours fonctionné sur les appareils Android que j\'ai utilisé. Si l\'option est active, l\'application demande à Android d\'allumer la diode mais cela n\'est pas toujours effectif.</string>
-  <string-array name="statuses">
-    <item>Débranché</item>
-    <item>Inconnu</item>
-    <item>En charge</item>
-    <item>Se décharge</item>
-    <item>Pas de charge</item>
-    <item>Complètement chargée</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>Débranché</item>
-    <item>Inconnu</item>
-    <item>Branché</item>
-    <item>Inconnu</item>
-    <item>Inconnu</item>
-    <item>Complètement chargée</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Se décharge</item>
-    <item>Inconnu</item>
-    <item>En charge</item>
-    <item>Inconnu</item>
-    <item>Inconnu</item>
-    <item>Complètement chargée</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Inconnu</item>
-    <item>Inconnu</item>
-    <item>Bon état</item>
-    <item>Surchauffe</item>
-    <item>Morte</item>
-    <item>Surtension</item>
-    <item>Défaut</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Débranché</item>
-    <item>(CA)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="alarm_types_display">
-    <item>Complètement chargée</item>
-    <item>Charge inférieure à</item>
-    <item>Charge supérieure à</item>
-    <item>Température supérieure à</item>
-    <item>Santé critique</item>
-  </string-array>
-  <string-array name="alarm_type_entries">
-    <item>Charge terminée</item>
-    <item>Charge inférieure à...</item>
-    <item>Charge supérieure à...</item>
-    <item>Température supérieure à...</item>
-    <item>Santé critique</item>
-  </string-array>
-  <string-array name="mw_theme_pref_entries">
-    <item>Par défaut (petit)</item>
-    <item>Coloré (petit)</item>
-    <item>Plein écran</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>Toujours</item>
-    <item>Jamais</item>
-    <item>Si fonctionne lors de l\'arrêt</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>Toujours</item>
-    <item>Après 1 heure</item>
-    <item>Après 2 heures</item>
-    <item>Après 3 heures</item>
-    <item>Après 6 heures</item>
-    <item>Après 12 heures</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>1 jour</item>
-    <item>2 jours</item>
-    <item>4 jours</item>
-    <item>1 semaine</item>
-    <item>2 semaines</item>
-    <item>3 semaines</item>
-    <item>4 semaines</item>
-  </string-array>
+  <string name="mw_theme_default_small" formatted="false">Par défaut (petit)</string>
+  <string name="mw_theme_colorful_small" formatted="false">Coloré (petit)</string>
+  <string name="mw_theme_full_window" formatted="false">Plein écran</string>
+  <string name="boot_pref_always" formatted="false">Toujours</string>
+  <string name="boot_pref_never" formatted="false">Jamais</string>
+  <string name="boot_pref_if_running" formatted="false">Si fonctionne lors de l\'arrêt</string>
+  <string name="status_dur_always" formatted="false">Toujours</string>
+  <string name="status_dur_after_1h" formatted="false">Après 1 heure</string>
+  <string name="status_dur_after_2h" formatted="false">Après 2 heures</string>
+  <string name="status_dur_after_3h" formatted="false">Après 3 heures</string>
+  <string name="status_dur_after_6h" formatted="false">Après 6 heures</string>
+  <string name="status_dur_after_12h" formatted="false">Après 12 heures</string>
+  <string name="age_1_day" formatted="false">1 jour</string>
+  <string name="age_2_days" formatted="false">2 jours</string>
+  <string name="age_4_days" formatted="false">4 jours</string>
+  <string name="age_1_week" formatted="false">1 semaine</string>
+  <string name="age_2_weeks" formatted="false">2 semaines</string>
+  <string name="age_3_weeks" formatted="false">3 semaines</string>
+  <string name="age_4_weeks" formatted="false">4 semaines</string>
   <plurals name="n_log_items">
     <item quantity="one">%d élément de journal</item>
     <item quantity="other">%d éléments de journal</item>

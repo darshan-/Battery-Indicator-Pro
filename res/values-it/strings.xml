@@ -65,6 +65,35 @@
   <string name="charge" formatted="false">percentuale_carica</string>
   <string name="temperature" formatted="false">gradi_celsius</string>
   <string name="voltage" formatted="false">volts</string>
+  <string name="status_unplugged" formatted="false">Scollegato</string>
+  <string name="status_unknown" formatted="false">Sconosciuto</string>
+  <string name="status_charging" formatted="false">In carica</string>
+  <string name="status_discharging" formatted="false">Scarico</string>
+  <string name="status_not_charging" formatted="false">Non in carica</string>
+  <string name="status_fully_charged" formatted="false">Completamente carico</string>
+  <string name="status_plugged_in" formatted="false">Collegato</string>
+  <string name="health_unknown" formatted="false">Sconosciuto</string>
+  <string name="health_good" formatted="false">Buono stato</string>
+  <string name="health_overheat" formatted="false">Surriscaldamento</string>
+  <string name="health_dead" formatted="false">Defunta</string>
+  <string name="health_overvoltage" formatted="false">Sovratensione</string>
+  <string name="health_failure" formatted="false">Non riuscito</string>
+  <string name="health_cold" formatted="false">Cold</string>
+  <string name="plugged_unplugged" formatted="false">Scollegato</string>
+  <string name="plugged_ac" formatted="false">(CA)</string>
+  <string name="plugged_usb" formatted="false">(USB)</string>
+  <string name="plugged_unknown" formatted="false">(?)</string>
+  <string name="plugged_wireless" formatted="false">(WL)</string>
+  <string name="alarm_type_fully_charged" formatted="false">Completamente carico</string>
+  <string name="alarm_type_charge_drops" formatted="false">La carica è scesa al di sotto</string>
+  <string name="alarm_type_charge_rises" formatted="false">La carica è salita al di sopra</string>
+  <string name="alarm_type_temperature_rises" formatted="false">Temperatura salita al di sopra</string>
+  <string name="alarm_type_health_failure" formatted="false">Recupero stato non riuscito</string>
+  <string name="alarm_type_entry_fully_charged" formatted="false">Diventa completamente carico</string>
+  <string name="alarm_type_entry_charge_drops" formatted="false">La carica scende al di sotto...</string>
+  <string name="alarm_type_entry_charge_rises" formatted="false">La carica sale al di sopra...</string>
+  <string name="alarm_type_entry_temperature_rises" formatted="false">La temperatura sale al di sopra...</string>
+  <string name="alarm_type_entry_health_failure" formatted="false">Recupero stato non riuscito</string>
   <string name="alarm_fully_charged" formatted="false">La batteria è ora completamente carica</string>
   <string name="alarm_charge_drops" formatted="false">"La carica della batteria è inferiore a "</string>
   <string name="alarm_charge_rises" formatted="false">"La carica della batteria è superiore a "</string>
@@ -127,9 +156,6 @@
   <string name="pref_enable_logging" formatted="false">Abilita registro</string>
   <string name="pref_enable_logging_summary" formatted="false">Registrare i cambiamenti di stato della batteria?</string>
   <string name="pref_enable_logging_help" formatted="false">Se abilitato, Battery Indicator registrerà i cambiamenti dello stato della batteria (es. il telefono è scollegato o è completamente carico). Puoi vedere il registro dalla finestra principale (premi MENU\' e poi seleziona Logs; nei tablet MENU\' non è necessario).</string>
-  <string name="pref_log_everything" formatted="false">Registra sempre</string>
-  <string name="pref_log_everything_summary" formatted="false">Registra anche cambiamenti di carica?</string>
-  <string name="pref_log_everything_help" formatted="false">Se attivato, Battery Indicator manterrà un registro a ogni variazione del livello di carica (esempio, passando da 57% a 56% o viceversa). La maggior parte degli utenti probabilemente non ha bisogno di questo, ma puoi abilitarlo se vuoi tener sotto controllo tutte le cose.\n\nRicordati che l\' utilizzo di questa impostazione avrà un lieve costo sulle prestazioni, quindi si consiglia di attivarla per poche ore o giorni per tenere traccia di alcune cose, e disattivarla quando si ha finito. Anche se abilitato, Battery Indicator non dovrebbe richiedere un consumo pari a circa 1 minuto di carica della batteria nel caso peggiore.</string>
   <string name="pref_max_log_age" formatted="false">Periodo massimo registro</string>
   <string name="pref_max_log_age_summary" formatted="false">Cancella registri più vecchi di:</string>
   <string name="pref_max_log_age_help" formatted="false">Se il logging è abilitato, ogni volta che colleghi il telefono, i registri più vecchi saranno cancellati.</string>
@@ -263,88 +289,25 @@
   <string name="pref_alarm_vibrate_help" formatted="false">Se tutto va bene, questa opzione farà vibrare il dispositivo quando l\'allarme è attivato, a meno che il dispositivo è in modalità silenziosa, a meno che non abbiate impostato il dispositivo a vibrare anche in modalità silenziosa. In altre parole, essa dovrebbe fare ciò che ci si aspetta. Se qualcosa non va vi invito a segnalarmelo.</string>
   <string name="pref_alarm_lights" formatted="false">Torcie</string>
   <string name="pref_alarm_lights_help" formatted="false">Stabilisce se la notifica debba accendere la luce del dispositivo. In genere questo fa lampeggiare un LED o la trackball. Nota che ogni dispositivo Android che ho usato si è comportato in modo anomalo in questo ambito. Se avete selezionato l\'opzione, la notifica chiederà ad Android di far lampeggiare la luce, ma non è detto che ciò accada.</string>
-  <string-array name="statuses">
-    <item>Scollegato</item>
-    <item>Sconosciuto</item>
-    <item>In carica</item>
-    <item>Scarico</item>
-    <item>Non in carica</item>
-    <item>Completamente carico</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>Scollegato</item>
-    <item>Sconosciuto</item>
-    <item>Collegato</item>
-    <item>Sconosciuto</item>
-    <item>Sconosciuto</item>
-    <item>Completamente carico</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Scarico</item>
-    <item>Sconosciuto</item>
-    <item>In carica</item>
-    <item>Sconosciuto</item>
-    <item>Sconosciuto</item>
-    <item>Completamente carico</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Sconosciuto</item>
-    <item>Sconosciuto</item>
-    <item>Buono stato</item>
-    <item>Surriscaldamento</item>
-    <item>Defunta</item>
-    <item>Sovratensione</item>
-    <item>Non riuscito</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Scollegato</item>
-    <item>(CA)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="alarm_types_display">
-    <item>Completamente carico</item>
-    <item>La carica è scesa al di sotto</item>
-    <item>La carica è salita al di sopra</item>
-    <item>Temperatura salita al di sopra</item>
-    <item>Recupero stato non riuscito</item>
-  </string-array>
-  <string-array name="alarm_type_entries">
-    <item>Diventa completamente carico</item>
-    <item>La carica scende al di sotto...</item>
-    <item>La carica sale al di sopra...</item>
-    <item>La temperatura sale al di sopra...</item>
-    <item>Recupero stato non riuscito</item>
-  </string-array>
-  <string-array name="mw_theme_pref_entries">
-    <item>Piccolo predefinito</item>
-    <item>Piccolo colorato</item>
-    <item>Finestra intera</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>Sempre</item>
-    <item>Mai</item>
-    <item>Se è in esecuzione allo spegnimento</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>Sempre</item>
-    <item>Dopo 1 ora</item>
-    <item>Dopo 2 ore</item>
-    <item>Dopo 3 ore</item>
-    <item>Dopo 6 ore</item>
-    <item>Dopo 12 ore</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>1 giorno</item>
-    <item>2 giorni</item>
-    <item>4 giorni</item>
-    <item>1 settimana</item>
-    <item>2 settimane</item>
-    <item>3 settimane</item>
-    <item>4 settimane</item>
-  </string-array>
+  <string name="mw_theme_default_small" formatted="false">Piccolo predefinito</string>
+  <string name="mw_theme_colorful_small" formatted="false">Piccolo colorato</string>
+  <string name="mw_theme_full_window" formatted="false">Finestra intera</string>
+  <string name="boot_pref_always" formatted="false">Sempre</string>
+  <string name="boot_pref_never" formatted="false">Mai</string>
+  <string name="boot_pref_if_running" formatted="false">Se è in esecuzione allo spegnimento</string>
+  <string name="status_dur_always" formatted="false">Sempre</string>
+  <string name="status_dur_after_1h" formatted="false">Dopo 1 ora</string>
+  <string name="status_dur_after_2h" formatted="false">Dopo 2 ore</string>
+  <string name="status_dur_after_3h" formatted="false">Dopo 3 ore</string>
+  <string name="status_dur_after_6h" formatted="false">Dopo 6 ore</string>
+  <string name="status_dur_after_12h" formatted="false">Dopo 12 ore</string>
+  <string name="age_1_day" formatted="false">1 giorno</string>
+  <string name="age_2_days" formatted="false">2 giorni</string>
+  <string name="age_4_days" formatted="false">4 giorni</string>
+  <string name="age_1_week" formatted="false">1 settimana</string>
+  <string name="age_2_weeks" formatted="false">2 settimane</string>
+  <string name="age_3_weeks" formatted="false">3 settimane</string>
+  <string name="age_4_weeks" formatted="false">4 settimane</string>
   <plurals name="n_log_items">
     <item quantity="one">%d elemento log</item>
     <item quantity="other">%d elementi log</item>

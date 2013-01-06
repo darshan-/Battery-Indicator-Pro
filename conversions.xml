@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<conversions>
+  <string-array name="statuses">
+    <item>status_unplugged</item>
+    <item>status_unknown</item>
+    <item>status_charging</item>
+    <item>status_discharging</item>
+    <item>status_not_charging</item>
+    <item>status_fully_charged</item>
+  </string-array>
+  <string-array name="log_statuses">
+    <item>status_unplugged</item>
+    <item>status_unknown</item>
+    <item>status_plugged_in</item>
+    <item>status_unknown</item>
+    <item>status_unknown</item>
+    <item>status_fully_charged</item>
+  </string-array>
+  <string-array name="log_statuses_old">
+    <item>status_discharging</item>
+    <item>status_unknown</item>
+    <item>status_charging</item>
+    <item>status_unknown</item>
+    <item>status_unknown</item>
+    <item>status_fully_charged</item>
+  </string-array>
+  <string-array name="log_filters">
+    <item>status_plugged_in</item>
+    <item>status_unplugged</item>
+    <item>status_charging</item>
+    <item>status_discharging</item>
+    <item>status_fully_charged</item>
+    <item>status_unknown</item>
+  </string-array>
+
+  <string-array name="healths">
+    <item>health_unknown</item>
+    <item>health_unknown</item>
+    <item>health_good</item>
+    <item>health_overheat</item>
+    <item>health_dead</item>
+    <item>health_overvoltage</item>
+    <item>health_failure</item>
+    <item>health_cold</item>
+  </string-array>
+  <string-array name="pluggeds">
+    <item>plugged_unplugged</item>
+    <item>plugged_ac</item>
+    <item>plugged_usb</item>
+    <item>plugged_unknown</item>
+    <item>plugged_wireless</item>
+  </string-array>
+
+  <string-array name="alarm_types_display">
+    <item>alarm_type_fully_charged</item>
+    <item>alarm_type_charge_drops</item>
+    <item>alarm_type_charge_rises</item>
+    <item>alarm_type_temperature_rises</item>
+    <item>alarm_type_health_failure</item>
+  </string-array>
+  <string-array name="alarm_type_entries">
+    <item>alarm_type_entry_fully_charged</item>
+    <item>alarm_type_entry_charge_drops</item>
+    <item>alarm_type_entry_charge_rises</item>
+    <item>alarm_type_entry_temperature_rises</item>
+    <item>alarm_type_entry_health_failure</item>
+  </string-array>
+
+  <string-array name="mw_theme_pref_entries">
+    <item>mw_theme_default_small</item>
+    <item>mw_theme_colorful_small</item>
+    <item>mw_theme_full_window</item>
+  </string-array>
+
+  <string-array name="boot_pref_entries">
+    <item>boot_pref_always</item>
+    <item>boot_pref_never</item>
+    <item>boot_pref_if_running</item>
+  </string-array>
+
+  <string-array name="status_dur_est_entries">
+    <item>status_dur_always</item>
+    <item>status_dur_after_1h</item>
+    <item>status_dur_after_2h</item>
+    <item>status_dur_after_3h</item>
+    <item>status_dur_after_6h</item>
+    <item>status_dur_after_12h</item>
+  </string-array>
+
+  <string-array name="max_log_age_entries">
+    <item>age_1_day</item>
+    <item>age_2_days</item>
+    <item>age_4_days</item>
+    <item>age_1_week</item>
+    <item>age_2_weeks</item>
+    <item>age_3_weeks</item>
+    <item>age_4_weeks</item>
+  </string-array>
+
+  <string-array name="notification_priority_entries">
+    <item>notification_priority_max</item>
+    <item>notification_priority_high</item>
+    <item>notification_priority_default</item>
+    <item>notification_priority_low</item>
+    <item>notification_priority_min</item>
+  </string-array>
+
+  <string-array name="icon_set_entries">
+    <item>icon_set_classic</item>
+    <item>icon_set_plain</item>
+    <item>icon_set_smaller</item>
+  </string-array>
+</conversions>

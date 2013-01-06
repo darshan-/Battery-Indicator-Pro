@@ -39,8 +39,10 @@ public class Str {
     public String confirm_ten_percent_enable;
     public String confirm_ten_percent_disable;
     public String confirm_ten_percent_hint;
+    public String configure_log_filter;
     public String yes;
     public String cancel;
+    public String okay;
 
     public String currently_set_to;
     public String alarm_pref_not_used;
@@ -76,6 +78,7 @@ public class Str {
     public String[] alarm_type_values;
     public String[] temp_alarm_entries;
     public String[] temp_alarm_values;
+    public String[] log_filter_pref_keys;
 
     public Str(Resources r) {
         res = r;
@@ -97,10 +100,13 @@ public class Str {
         confirm_clear_logs = res.getString(R.string.confirm_clear_logs);
         yes                = res.getString(R.string.yes);
         cancel             = res.getString(R.string.cancel);
+        okay               = res.getString(R.string.okay);
 
         confirm_ten_percent_enable  = res.getString(R.string.confirm_ten_percent_enable);
         confirm_ten_percent_disable = res.getString(R.string.confirm_ten_percent_disable);
         confirm_ten_percent_hint    = res.getString(R.string.confirm_ten_percent_hint);
+
+        configure_log_filter = res.getString(R.string.configure_log_filter);
 
         currently_set_to    = res.getString(R.string.currently_set_to);
         alarm_pref_not_used = res.getString(R.string.alarm_pref_not_used);
@@ -136,6 +142,8 @@ public class Str {
         alarm_type_values   = res.getStringArray(R.array.alarm_type_values);
         temp_alarm_entries  = res.getStringArray(R.array.temp_alarm_entries);
         temp_alarm_values   = res.getStringArray(R.array.temp_alarm_values);
+
+        log_filter_pref_keys = res.getStringArray(R.array.log_filter_pref_keys);
     }
 
     public String for_n_hours(int n) {

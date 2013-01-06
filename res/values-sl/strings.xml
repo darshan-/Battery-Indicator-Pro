@@ -8,6 +8,7 @@
   <string name="help_activity_subtitle" formatted="false">Pomoč</string>
   <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Poročila</string>
   <string name="log_view_activity_subtitle" formatted="false">Poročila</string>
+  <string name="app_full_name_free" formatted="false">Battery Indicator</string>
   <string name="battery_use_b" formatted="false">Poglej porabo baterije</string>
   <string name="upgrade_donate_b" formatted="false">Nadgradi/doniraj...</string>
   <string name="reenable_lock_screen" formatted="false">Ponovno omogoči zaklepanje zaslona</string>
@@ -60,6 +61,33 @@
   <string name="charge" formatted="false">napolnjen_procent</string>
   <string name="temperature" formatted="false">stopinj_celzija</string>
   <string name="voltage" formatted="false">voltov</string>
+  <string name="status_unplugged" formatted="false">Odklopljeno</string>
+  <string name="status_unknown" formatted="false">Neznano</string>
+  <string name="status_charging" formatted="false">Polnjenje</string>
+  <string name="status_discharging" formatted="false">Praznenje</string>
+  <string name="status_not_charging" formatted="false">Se ne polni</string>
+  <string name="status_fully_charged" formatted="false">Napolnjeno</string>
+  <string name="status_plugged_in" formatted="false">Priklopljeno</string>
+  <string name="health_unknown" formatted="false">Neznano</string>
+  <string name="health_good" formatted="false">Dobro zdravje</string>
+  <string name="health_overheat" formatted="false">Pregreto</string>
+  <string name="health_dead" formatted="false">Mrtvo</string>
+  <string name="health_overvoltage" formatted="false">Prevelika voltaža</string>
+  <string name="health_failure" formatted="false">Napaka</string>
+  <string name="health_cold" formatted="false">Cold</string>
+  <string name="plugged_unplugged" formatted="false">Odklopljeno</string>
+  <string name="plugged_ac" formatted="false">(AC)</string>
+  <string name="plugged_usb" formatted="false">(USB)</string>
+  <string name="plugged_unknown" formatted="false">(?)</string>
+  <string name="plugged_wireless" formatted="false">(WL)</string>
+  <string name="alarm_type_fully_charged" formatted="false">Napolnjeno</string>
+  <string name="alarm_type_charge_drops" formatted="false">Baterija pade pod</string>
+  <string name="alarm_type_charge_rises" formatted="false">Baterija pride nad</string>
+  <string name="alarm_type_temperature_rises" formatted="false">Temperatura pride nad</string>
+  <string name="alarm_type_entry_fully_charged" formatted="false">Se napolni</string>
+  <string name="alarm_type_entry_charge_drops" formatted="false">Baterije pade pod...</string>
+  <string name="alarm_type_entry_charge_rises" formatted="false">Baterija pride nad...</string>
+  <string name="alarm_type_entry_temperature_rises" formatted="false">Temperatura pride nad...</string>
   <string name="alarm_fully_charged" formatted="false">Baterija je popolnoma napolnjena</string>
   <string name="alarm_charge_drops" formatted="false">"Stanje baterije pod "</string>
   <string name="alarm_charge_rises" formatted="false">"Stanje baterije nad "</string>
@@ -100,8 +128,6 @@
   <string name="pref_cat_logging" formatted="false">Beleženje</string>
   <string name="pref_enable_logging" formatted="false">Omogoči beleženje</string>
   <string name="pref_enable_logging_summary" formatted="false">Beležim spremembo stanj baterije?</string>
-  <string name="pref_log_everything" formatted="false">Beleži vse</string>
-  <string name="pref_log_everything_summary" formatted="false">Beležim tudi spremembe polnjenja?</string>
   <string name="pref_max_log_age" formatted="false">Največja starost poročila</string>
   <string name="pref_max_log_age_summary" formatted="false">Izbriši poročila starejša od:</string>
   <string name="pref_confirm_manual_disable" formatted="false">Potrditev ročnega onemogočenja</string>
@@ -186,81 +212,20 @@
   <string name="pref_alarm_ringtone" formatted="false">Melodija</string>
   <string name="silent" formatted="false">Tiho</string>
   <string name="pref_alarm_vibrate" formatted="false">Vibriranje</string>
-  <string-array name="statuses">
-    <item>Odklopljeno</item>
-    <item>Neznano</item>
-    <item>Polnjenje</item>
-    <item>Praznenje</item>
-    <item>Se ne polni</item>
-    <item>Napolnjeno</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>Odklopljeno</item>
-    <item>Neznano</item>
-    <item>Priklopljeno</item>
-    <item>Neznano</item>
-    <item>Neznano</item>
-    <item>Napolnjeno</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Praznenje</item>
-    <item>Neznano</item>
-    <item>Polnjenje</item>
-    <item>Neznano</item>
-    <item>Neznano</item>
-    <item>Napolnjeno</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Neznano</item>
-    <item>Neznano</item>
-    <item>Dobro zdravje</item>
-    <item>Pregreto</item>
-    <item>Mrtvo</item>
-    <item>Prevelika voltaža</item>
-    <item>Napaka</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Odklopljeno</item>
-    <item>(AC)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="alarm_types_display">
-    <item>Napolnjeno</item>
-    <item>Baterija pade pod</item>
-    <item>Baterija pride nad</item>
-    <item>Temperatura pride nad</item>
-    <item>Health failure</item>
-  </string-array>
-  <string-array name="alarm_type_entries">
-    <item>Se napolni</item>
-    <item>Baterije pade pod...</item>
-    <item>Baterija pride nad...</item>
-    <item>Temperatura pride nad...</item>
-    <item>Health fails</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>Vedno</item>
-    <item>Nikoli</item>
-    <item>Če je zagnano ob izklopu</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>Vedno</item>
-    <item>Po 1 uri</item>
-    <item>Po 2 urah</item>
-    <item>Po 3 urah</item>
-    <item>Po 6 urah</item>
-    <item>Po 12 urah</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>1 dan</item>
-    <item>2 dnei</item>
-    <item>4 dni</item>
-    <item>1 teden</item>
-    <item>2 tedna</item>
-    <item>3 tedne</item>
-    <item>4 tedne</item>
-  </string-array>
+  <string name="boot_pref_always" formatted="false">Vedno</string>
+  <string name="boot_pref_never" formatted="false">Nikoli</string>
+  <string name="boot_pref_if_running" formatted="false">Če je zagnano ob izklopu</string>
+  <string name="status_dur_always" formatted="false">Vedno</string>
+  <string name="status_dur_after_1h" formatted="false">Po 1 uri</string>
+  <string name="status_dur_after_2h" formatted="false">Po 2 urah</string>
+  <string name="status_dur_after_3h" formatted="false">Po 3 urah</string>
+  <string name="status_dur_after_6h" formatted="false">Po 6 urah</string>
+  <string name="status_dur_after_12h" formatted="false">Po 12 urah</string>
+  <string name="age_1_day" formatted="false">1 dan</string>
+  <string name="age_2_days" formatted="false">2 dnei</string>
+  <string name="age_4_days" formatted="false">4 dni</string>
+  <string name="age_1_week" formatted="false">1 teden</string>
+  <string name="age_2_weeks" formatted="false">2 tedna</string>
+  <string name="age_3_weeks" formatted="false">3 tedne</string>
+  <string name="age_4_weeks" formatted="false">4 tedne</string>
 </resources>

@@ -14,14 +14,6 @@
        android:defaultValue="false"
     />
 
-    <CheckBoxPreference
-       android:key="log_everything"
-       android:title="@string/pref_log_everything"
-       android:summary="@string/pref_log_everything_summary"
-       android:defaultValue="false"
-       android:enabled="true"
-    />
-
     <ListPreference
        android:key="max_log_age"
        android:title="@string/pref_max_log_age"

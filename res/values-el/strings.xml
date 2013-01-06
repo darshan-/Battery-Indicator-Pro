@@ -65,6 +65,35 @@
   <string name="charge" formatted="false">ποσοστό_φόρτισης</string>
   <string name="temperature" formatted="false">βαθμοί_κελσίου</string>
   <string name="voltage" formatted="false">βόλτς</string>
+  <string name="status_unplugged" formatted="false">Αποσυνδεδεμένο</string>
+  <string name="status_unknown" formatted="false">Άγνωστο</string>
+  <string name="status_charging" formatted="false">Φόρτιση</string>
+  <string name="status_discharging" formatted="false">Αποφόρτιση</string>
+  <string name="status_not_charging" formatted="false">Δε Φορτίζει</string>
+  <string name="status_fully_charged" formatted="false">Πλήρως Φορτισμένη</string>
+  <string name="status_plugged_in" formatted="false">Συνδεδεμένο</string>
+  <string name="health_unknown" formatted="false">Άγνωστο</string>
+  <string name="health_good" formatted="false">Καλή Υγεία</string>
+  <string name="health_overheat" formatted="false">Υπερθέρμανση</string>
+  <string name="health_dead" formatted="false">Νεκρή</string>
+  <string name="health_overvoltage" formatted="false">Υπέρβαση Βολτάζ</string>
+  <string name="health_failure" formatted="false">Αποτυχία</string>
+  <string name="health_cold" formatted="false">Cold</string>
+  <string name="plugged_unplugged" formatted="false">Αποσυνδεδεμένο</string>
+  <string name="plugged_ac" formatted="false">(AC)</string>
+  <string name="plugged_usb" formatted="false">(USB)</string>
+  <string name="plugged_unknown" formatted="false">(;)</string>
+  <string name="plugged_wireless" formatted="false">(WL)</string>
+  <string name="alarm_type_fully_charged" formatted="false">Πλήρως Φορτισμένη</string>
+  <string name="alarm_type_charge_drops" formatted="false">Το επίπεδο φόρτισης πέφτει κάτω από</string>
+  <string name="alarm_type_charge_rises" formatted="false">Το επίπεδο φόρτισης ανεβαίνει πάνω από</string>
+  <string name="alarm_type_temperature_rises" formatted="false">Η θερμοκρασία ανεβαίνει πάνω από</string>
+  <string name="alarm_type_health_failure" formatted="false">Καλή υγεία απέτυχε</string>
+  <string name="alarm_type_entry_fully_charged" formatted="false">Καθίσταται πλήρως φορτισμένη</string>
+  <string name="alarm_type_entry_charge_drops" formatted="false">Το επίπεδο φόρτισης πέφτει κάτω από...</string>
+  <string name="alarm_type_entry_charge_rises" formatted="false">Το επίπεδο φόρτισης ανεβαίνει πάνω από...</string>
+  <string name="alarm_type_entry_temperature_rises" formatted="false">Η θερμοκρασία ανεβαίνει πάνω από...</string>
+  <string name="alarm_type_entry_health_failure" formatted="false">Καλή υγεία αποτυγχάνει</string>
   <string name="alarm_fully_charged" formatted="false">Η μπαταρία είναι φορτισμένη πλήρως</string>
   <string name="alarm_charge_drops" formatted="false">"Το φορτίο της μπαταρίας είναι πιο κάτω "</string>
   <string name="alarm_charge_rises" formatted="false">Το φορτίο της μπαταρίας είναι πάνω \"</string>
@@ -126,9 +155,6 @@
   <string name="pref_enable_logging" formatted="false">Ενεργοποίηση Καταγραφής</string>
   <string name="pref_enable_logging_summary" formatted="false">Καταγραφή αλλαγής κατάστασης μπαταρίας;</string>
   <string name="pref_enable_logging_help" formatted="false">Αν ενεργοποιηθεί, ο Battery Indicator, θα καταγράφει τις μεταβολές κατάστασης της μπαταρίας (π.χ αν η συσκευή αποσυνδεθεί από το ρεύμα ή έχει φορτιστεί πλήρως). Μπορείτε να δείτε τα κατεγραμμένα δεδομένα από το κυρίως παράθυρο (πατήστε MENU και μετά επιλέξτε Λίστα Καταγραφής, στα tablets, το MENU δε είναι απαραίτητο.)</string>
-  <string name="pref_log_everything" formatted="false">Καταγραφή Όλων</string>
-  <string name="pref_log_everything_summary" formatted="false">Καταγραφή μεταβολής φόρτισης, επίσης;</string>
-  <string name="pref_log_everything_help" formatted="false">Αν ενεργοποιηθεί, ο Battery Indicator, θα καταγράφει κάθε μεταβολή στο επίπεδο φόρτισης επίσης (π.χ φόρτιση από 57% σε 56% και αντίστροφα).</string>
   <string name="pref_max_log_age" formatted="false">Μέγιστη Περίοδος Καταγραφής</string>
   <string name="pref_max_log_age_summary" formatted="false">Διαγραφή λίστας δεδομένων παλαιότερης από:</string>
   <string name="pref_max_log_age_help" formatted="false">Αν η καταγραφή είναι ενεργοποιημένη, τότε όποτε συνδέετε τη συσκευή στην πρίζα, όλες οι παλαιότερες καταγραφές θα διαγραφούν.</string>
@@ -262,88 +288,25 @@
   <string name="pref_alarm_vibrate_help" formatted="false">Αν όλα πάνε καλά, ρυθμίζοντας αυτήν την επιλογή η συσκευή θα δονείται όταν η ειδοποίηση ενεργοποιείται, εκτός και αν η συσκευή βρίσκεται σε Αθόρυβη Λειτουργία, πλην όμως αν έχετε ρυθμίσει τη συσκευή να δονείται κατά την Αθόρυβη Λειτουργία. Με άλλα λόγια, θα κάνει ό,τι περιμένετε να κάνει. Παρακαλώ στείλτε μου email αν κάτι πάει στραβά.</string>
   <string name="pref_alarm_lights" formatted="false">Άναμμα Φώτων</string>
   <string name="pref_alarm_lights_help" formatted="false">Καθορίζει κατά πόσο η ειδοποίηση θα ενεργοποιεί το προεπιλεγμένο φως ειδοποίησης του τηλεφώνου σας. Αυτό γενικά ανάβει κάποιο LED ή κάποιο πλήκτρο πλοήγησης. Σημειώστε ότι κάθε συσκευή Android που δοκίμασα συμπεριφερόταν και διαφορετικά και ίσως με μερικά προβλήματα σε αυτό το θέμα. Αν έχετε ενεργοποιημένη την επιλογή αυτή, τότε η ειδοποίηση θα ζητήσει απο το Android να ανάψει το φως εδοποίησης της συσκευής, αλλά αυτό μπορεί και να μη συμβεί στην πραγματικότητα.</string>
-  <string-array name="statuses">
-    <item>Αποσυνδεδεμένο</item>
-    <item>Άγνωστο</item>
-    <item>Φόρτιση</item>
-    <item>Αποφόρτιση</item>
-    <item>Δε Φορτίζει</item>
-    <item>Πλήρως Φορτισμένη</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>Αποσυνδεδεμένο</item>
-    <item>Άγνωστο</item>
-    <item>Συνδεδεμένο</item>
-    <item>Άγνωστο</item>
-    <item>Άγνωστο</item>
-    <item>Πλήρως Φορτισμένη</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Αποφόρτιση</item>
-    <item>Άγνωστο</item>
-    <item>Φόρτιση</item>
-    <item>Άγνωστο</item>
-    <item>Άγνωστο</item>
-    <item>Πλήρως Φορτισμένη</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Άγνωστο</item>
-    <item>Άγνωστο</item>
-    <item>Καλή Υγεία</item>
-    <item>Υπερθέρμανση</item>
-    <item>Νεκρή</item>
-    <item>Υπέρβαση Βολτάζ</item>
-    <item>Αποτυχία</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Αποσυνδεδεμένο</item>
-    <item>(AC)</item>
-    <item>(USB)</item>
-    <item>(;)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="alarm_types_display">
-    <item>Πλήρως Φορτισμένη</item>
-    <item>Το επίπεδο φόρτισης πέφτει κάτω από</item>
-    <item>Το επίπεδο φόρτισης ανεβαίνει πάνω από</item>
-    <item>Η θερμοκρασία ανεβαίνει πάνω από</item>
-    <item>Καλή υγεία απέτυχε</item>
-  </string-array>
-  <string-array name="alarm_type_entries">
-    <item>Καθίσταται πλήρως φορτισμένη</item>
-    <item>Το επίπεδο φόρτισης πέφτει κάτω από...</item>
-    <item>Το επίπεδο φόρτισης ανεβαίνει πάνω από...</item>
-    <item>Η θερμοκρασία ανεβαίνει πάνω από...</item>
-    <item>Καλή υγεία αποτυγχάνει</item>
-  </string-array>
-  <string-array name="mw_theme_pref_entries">
-    <item>Προεπιλεγμένο Μικρό</item>
-    <item>Έγχρωμο Μικρό</item>
-    <item>Παράθυρο Ολόκληρης Οθόνης</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>Πάντα</item>
-    <item>Ποτέ</item>
-    <item>Αν ήταν ενεργό στην απενεργοποίηση</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>Πάντα</item>
-    <item>Μετά από 1 ώρα</item>
-    <item>Μετά από 2 ώρες</item>
-    <item>Μετά από 3 ώρες</item>
-    <item>Μετά από 6 ώρες</item>
-    <item>Μετά από 12 ώρες</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>1 μέρα</item>
-    <item>2 μέρες</item>
-    <item>4 μέρες</item>
-    <item>1 εβδομάδα</item>
-    <item>2 εβδομάδες</item>
-    <item>3 εβδομάδες</item>
-    <item>4 εβδομάδες</item>
-  </string-array>
+  <string name="mw_theme_default_small" formatted="false">Προεπιλεγμένο Μικρό</string>
+  <string name="mw_theme_colorful_small" formatted="false">Έγχρωμο Μικρό</string>
+  <string name="mw_theme_full_window" formatted="false">Παράθυρο Ολόκληρης Οθόνης</string>
+  <string name="boot_pref_always" formatted="false">Πάντα</string>
+  <string name="boot_pref_never" formatted="false">Ποτέ</string>
+  <string name="boot_pref_if_running" formatted="false">Αν ήταν ενεργό στην απενεργοποίηση</string>
+  <string name="status_dur_always" formatted="false">Πάντα</string>
+  <string name="status_dur_after_1h" formatted="false">Μετά από 1 ώρα</string>
+  <string name="status_dur_after_2h" formatted="false">Μετά από 2 ώρες</string>
+  <string name="status_dur_after_3h" formatted="false">Μετά από 3 ώρες</string>
+  <string name="status_dur_after_6h" formatted="false">Μετά από 6 ώρες</string>
+  <string name="status_dur_after_12h" formatted="false">Μετά από 12 ώρες</string>
+  <string name="age_1_day" formatted="false">1 μέρα</string>
+  <string name="age_2_days" formatted="false">2 μέρες</string>
+  <string name="age_4_days" formatted="false">4 μέρες</string>
+  <string name="age_1_week" formatted="false">1 εβδομάδα</string>
+  <string name="age_2_weeks" formatted="false">2 εβδομάδες</string>
+  <string name="age_3_weeks" formatted="false">3 εβδομάδες</string>
+  <string name="age_4_weeks" formatted="false">4 εβδομάδες</string>
   <plurals name="n_log_items">
     <item quantity="one">%d Καταγραφή αντικειμένου στη Λίστα</item>
     <item quantity="other">%d Καταγραφή αντικειμένων στη Λίστα</item>

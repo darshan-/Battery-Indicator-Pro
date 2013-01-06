@@ -24,7 +24,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
+import android.database.CursorWrapper;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -43,6 +45,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class LogViewActivity extends ListActivity {
@@ -52,14 +55,16 @@ public class LogViewActivity extends ListActivity {
     private SharedPreferences settings;
     private Str str;
     private Col col;
-    private Cursor mCursor;
+    private Cursor completeCursor;
+    private Cursor filteredCursor;
     private LayoutInflater mInflater;
     private LogAdapter mAdapter;
     private TextView header_text;
     private Boolean reversed = false;
     private Boolean convertF;
 
-    private static final int DIALOG_CONFIRM_CLEAR_LOGS = 0;
+    private static final int DIALOG_CONFIRM_CLEAR_LOGS   = 0;
+    private static final int DIALOG_CONFIGURE_LOG_FILTER = 1;
 
     private static final String[] CSV_ORDER = {LogDatabase.KEY_TIME, LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, 
                                                LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE};
@@ -110,12 +115,13 @@ public class LogViewActivity extends ListActivity {
         header_text = (TextView) logs_header.findViewById(R.id.header_text);
 
         logs = new LogDatabase(context);
-        mCursor = logs.getAllLogs(false);
-        startManagingCursor(mCursor);
+        completeCursor = logs.getAllLogs(false);
+        startManagingCursor(completeCursor);
+        filteredCursor = new FilteredCursor(completeCursor);
 
         mInflater = LayoutInflater.from(this);
 
-        mAdapter = new LogAdapter(context, mCursor);
+        mAdapter = new LogAdapter(context, filteredCursor);
         setListAdapter(mAdapter);
 
         setHeaderText();
@@ -131,7 +137,7 @@ public class LogViewActivity extends ListActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mCursor.close();
+        completeCursor.close();
         logs.close();
     }
 
@@ -171,11 +177,50 @@ public class LogViewActivity extends ListActivity {
 
             dialog = builder.create();
             break;
+        case DIALOG_CONFIGURE_LOG_FILTER:
+            final boolean[] checked_items = new boolean[str.log_filter_pref_keys.length];
+
+            for (int i = 0; i < checked_items.length; i++) {
+                checked_items[i] = settings.getBoolean(str.log_filter_pref_keys[i], true);
+            }
+
+            builder.setTitle(str.configure_log_filter)
+                .setMultiChoiceItems(R.array.log_filters, checked_items,
+                                     new DialogInterface.OnMultiChoiceClickListener() {
+                                         @Override
+                                         public void onClick(DialogInterface di, int id, boolean isChecked) {
+                                             checked_items[id] = isChecked;
+                                         }
+                                     })
+                .setPositiveButton(str.okay, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            di.cancel(); // setFilters() is called in onCancel()
+                        }
+                    })
+                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        public void onCancel(DialogInterface di) {
+                            setFilters(checked_items);
+                        }
+                    });
+            dialog = builder.create();
+            break;
         default:
             dialog = null;
         }
 
         return dialog;
+    }
+
+    private void setFilters(boolean[] checked_items) {
+        SharedPreferences.Editor editor = settings.edit();
+
+        for (int i = 0; i < checked_items.length; i++) {
+            editor.putBoolean(str.log_filter_pref_keys[i], checked_items[i]);
+        }
+
+        editor.commit();
+
+        reloadList(false);
     }
 
     @Override
@@ -191,7 +236,7 @@ public class LogViewActivity extends ListActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
 
-        switch (mCursor.getCount()) {
+        switch (filteredCursor.getCount()) {
         case 0:
             menu.findItem(R.id.menu_clear).setEnabled(false);
             menu.findItem(R.id.menu_export).setEnabled(false);
@@ -217,6 +262,10 @@ public class LogViewActivity extends ListActivity {
             showDialog(DIALOG_CONFIRM_CLEAR_LOGS);
 
             return true;
+        case R.id.menu_log_filter:
+            showDialog(DIALOG_CONFIGURE_LOG_FILTER);
+
+            return true;
         case R.id.menu_export:
             exportCSV();
 
@@ -236,20 +285,21 @@ public class LogViewActivity extends ListActivity {
 
     private void reloadList(Boolean newQuery){
         if (newQuery) {
-            stopManagingCursor(mCursor);
-            mCursor = logs.getAllLogs(reversed);
-            startManagingCursor(mCursor);
+            stopManagingCursor(completeCursor);
+            completeCursor = logs.getAllLogs(reversed);
+            startManagingCursor(completeCursor);
+            filteredCursor = new FilteredCursor(completeCursor);
 
-            mAdapter.changeCursor(mCursor);
+            mAdapter.changeCursor(filteredCursor);
         } else {
-            mCursor.requery();
+            filteredCursor.requery();
         }
 
         setHeaderText();
     }
 
     private void setHeaderText() {
-        int count = mCursor.getCount();
+        int count = filteredCursor.getCount();
 
         if (count == 0)
             header_text.setText(str.logs_empty);
@@ -297,14 +347,14 @@ public class LogViewActivity extends ListActivity {
             int status, plugged, status_age;
             String s;
 
-            for (mCursor.moveToFirst(); !mCursor.isAfterLast(); mCursor.moveToNext()) {
+            for (completeCursor.moveToFirst(); !completeCursor.isAfterLast(); completeCursor.moveToNext()) {
                 cols = CSV_ORDER.length;
                 for (i = 0; i < cols; i++) {
                     if (CSV_ORDER[i].equals(LogDatabase.KEY_TIME)) {
-                        d.setTime(mCursor.getLong(mAdapter.timeIndex));
+                        d.setTime(completeCursor.getLong(mAdapter.timeIndex));
                         buf.write(mAdapter.dateFormat.format(d) + "," + mAdapter.timeFormat.format(d) + ",");
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_STATUS_CODE)) {
-                        statusCode  = mCursor.getInt(mAdapter.statusCodeIndex);
+                        statusCode  = completeCursor.getInt(mAdapter.statusCodeIndex);
                         statusCodes = LogDatabase.decodeStatus(statusCode);
                         status      = statusCodes[0];
                         plugged     = statusCodes[1];
@@ -319,11 +369,11 @@ public class LogViewActivity extends ListActivity {
 
                         buf.write(s + ",");
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_CHARGE)) {
-                        buf.write(String.valueOf(mCursor.getInt(mAdapter.chargeIndex)) + ",");
+                        buf.write(String.valueOf(completeCursor.getInt(mAdapter.chargeIndex)) + ",");
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_TEMPERATURE)) {
-                        buf.write(String.valueOf(mCursor.getInt(mAdapter.temperatureIndex) / 10.0) + ",");
+                        buf.write(String.valueOf(completeCursor.getInt(mAdapter.temperatureIndex) / 10.0) + ",");
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_VOLTAGE)) {
-                        buf.write(String.valueOf(mCursor.getInt(mAdapter.voltageIndex) / 1000.0));
+                        buf.write(String.valueOf(completeCursor.getInt(mAdapter.voltageIndex) / 1000.0));
                     }
                 }
                 buf.write("\r\n");
@@ -335,6 +385,142 @@ public class LogViewActivity extends ListActivity {
         }
 
         Toast.makeText(context, str.file_written, Toast.LENGTH_SHORT).show();
+    }
+
+    // Based on http://stackoverflow.com/a/7343721/1427098
+    private class FilteredCursor extends CursorWrapper {
+        private Cursor wrappedCursor;
+
+        private ArrayList<Integer> shownIDs;
+        private int len;
+        private int pos;
+
+        public FilteredCursor(Cursor cursor) {
+            super(cursor);
+
+            shownIDs = new ArrayList<Integer>();
+            wrappedCursor = cursor;
+
+            refilter();
+        }
+
+        public void refilter() {
+            if (wrappedCursor.isClosed()) return;
+
+            shownIDs.clear();
+
+            int wrappedCursorPos = wrappedCursor.getPosition();
+            int statusCodeIndex = wrappedCursor.getColumnIndexOrThrow(LogDatabase.KEY_STATUS_CODE);
+
+            boolean show_plugged_in    = settings.getBoolean("plugged_in",    true);
+            boolean show_unplugged     = settings.getBoolean("unplugged",     true);
+            boolean show_charging      = settings.getBoolean("charging",      true);
+            boolean show_discharging   = settings.getBoolean("discharging",   true);
+            boolean show_fully_charged = settings.getBoolean("fully_charged", true);
+            boolean show_unknown       = settings.getBoolean("unknown",       true);
+
+            for (wrappedCursor.moveToFirst(); !wrappedCursor.isAfterLast(); wrappedCursor.moveToNext()) {
+                int statusCode    = wrappedCursor.getInt(statusCodeIndex);
+                int[] statusCodes = LogDatabase.decodeStatus(statusCode);
+                int status        = statusCodes[0];
+                int plugged       = statusCodes[1];
+                int status_age    = statusCodes[2];
+
+                if (status == BatteryIndicatorService.STATUS_FULLY_CHARGED && show_fully_charged) {
+                    shownIDs.add(wrappedCursor.getPosition());
+                } else if ((status == BatteryIndicatorService.STATUS_UNKNOWN ||
+                            status == BatteryIndicatorService.STATUS_DISCHARGING ||
+                            status == BatteryIndicatorService.STATUS_NOT_CHARGING ||
+                            status > BatteryIndicatorService.STATUS_MAX) &&
+                           show_unknown) {
+                    shownIDs.add(wrappedCursor.getPosition());
+                } else if (status_age == LogDatabase.STATUS_OLD) {
+                    if ((status == BatteryIndicatorService.STATUS_UNPLUGGED && show_discharging) ||
+                        (status == BatteryIndicatorService.STATUS_CHARGING  && show_charging))
+                        shownIDs.add(wrappedCursor.getPosition());
+                } else if (status_age == LogDatabase.STATUS_NEW) {
+                    if ((status == BatteryIndicatorService.STATUS_UNPLUGGED && show_unplugged) ||
+                        (status == BatteryIndicatorService.STATUS_CHARGING  && show_plugged_in))
+                        shownIDs.add(wrappedCursor.getPosition());
+                }
+            }
+
+            wrappedCursor.moveToPosition(wrappedCursorPos);
+
+            len = shownIDs.size();
+            pos = -1;
+        }
+
+        @Override
+        public boolean requery() {
+            boolean ret = super.requery();
+            refilter();
+            return ret;
+        }
+
+        @Override
+        public int getCount() {
+            return len;
+        }
+
+        @Override
+        public boolean moveToPosition(int newPos) {
+            boolean moved = super.moveToPosition(shownIDs.get(newPos));
+
+            if (moved) pos = newPos;
+
+            return moved;
+        }
+
+        @Override
+        public final boolean move(int offset) {
+            return moveToPosition(pos + offset);
+        }
+
+        @Override
+        public final boolean moveToFirst() {
+            return moveToPosition(0);
+        }
+
+        @Override
+        public final boolean moveToLast() {
+            return moveToPosition(len - 1);
+        }
+
+        @Override
+        public final boolean moveToNext() {
+            return moveToPosition(pos + 1);
+        }
+
+        @Override
+        public final boolean moveToPrevious() {
+            return moveToPosition(pos - 1);
+        }
+
+        @Override
+        public final boolean isFirst() {
+            return len != 0 && pos == 0;
+        }
+
+        @Override
+        public final boolean isLast() {
+            return len != 0 && pos == len - 1;
+        }
+
+        @Override
+        public final boolean isBeforeFirst() {
+            return len == 0 || pos == -1;
+        }
+
+        @Override
+        public final boolean isAfterLast() {
+            return len == 0 || pos == len;
+        }
+
+        @Override
+        public int getPosition() {
+            return pos;
+        }
     }
 
     private class LogAdapter extends CursorAdapter {

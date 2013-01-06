@@ -48,6 +48,25 @@
   <string name="inaccessible_w_reason" formatted="false">SD卡無法存取：</string>
   <string name="read_only_storage" formatted="false">SD卡已設定為「唯讀」模式。</string>
   <string name="file_written" formatted="false">文件已在SD卡根目錄成功創建。</string>
+  <string name="status_unplugged" formatted="false">拔下電源</string>
+  <string name="status_unknown" formatted="false">未知</string>
+  <string name="status_charging" formatted="false">充電中</string>
+  <string name="status_discharging" formatted="false">放電中</string>
+  <string name="status_not_charging" formatted="false">未充電</string>
+  <string name="status_fully_charged" formatted="false">電池充滿</string>
+  <string name="status_plugged_in" formatted="false">插入電源</string>
+  <string name="health_unknown" formatted="false">未知</string>
+  <string name="health_good" formatted="false">正常</string>
+  <string name="health_overheat" formatted="false">過熱</string>
+  <string name="health_dead" formatted="false">損壞</string>
+  <string name="health_overvoltage" formatted="false">超壓</string>
+  <string name="health_failure" formatted="false">錯誤</string>
+  <string name="health_cold" formatted="false">Cold</string>
+  <string name="plugged_unplugged" formatted="false">Unplugged</string>
+  <string name="plugged_ac" formatted="false">(AC)</string>
+  <string name="plugged_usb" formatted="false">(USB)</string>
+  <string name="plugged_unknown" formatted="false">(?)</string>
+  <string name="plugged_wireless" formatted="false">(WL)</string>
   <string name="logs_empty" formatted="false">日誌記錄為空</string>
   <string name="discharging_from" formatted="false">放電起始電量</string>
   <string name="charging_from" formatted="false">充電起始電量</string>
@@ -99,9 +118,6 @@
   <string name="pref_enable_logging" formatted="false">啟用日誌記錄功能</string>
   <string name="pref_enable_logging_summary" formatted="false">確認記錄電池狀態信息？</string>
   <string name="pref_enable_logging_help" formatted="false">若啟用本功能，電量指示器將以日誌方式記錄電池狀態信息（例如拔下電源或電池充滿）。您可通過單擊「選單」鍵和「日誌」按鈕查看日誌記錄。</string>
-  <string name="pref_log_everything" formatted="false">記錄所有信息</string>
-  <string name="pref_log_everything_summary" formatted="false">確認記錄電量變化信息？</string>
-  <string name="pref_log_everything_help" formatted="false">若啟用本功能，電量指示器將記錄電池電量的所有變化信息比如（剩餘電量從57%變為56%，反之亦然）。多數用戶並不需要此功能，但如果您喜歡更細節的信息，請開啟此項。\n\n啟用本功能將增加少許功耗。但即使啟用本功能，電量指示器在電池完全放電時間內所消耗的電量仍僅有約一分鐘。</string>
   <string name="pref_max_log_age" formatted="false">日誌記錄有效期</string>
   <string name="pref_max_log_age_summary" formatted="false">日誌記錄有效期限：</string>
   <string name="pref_max_log_age_help" formatted="false">若啟用本功能，過期日誌將在手機充電時被清除。</string>
@@ -201,74 +217,25 @@
   <string name="pref_ten_percent_mode" formatted="false">10%步進模式</string>
   <string name="pref_ten_percent_mode_summary" formatted="false">請先閱讀說明信息！</string>
   <string name="pref_ten_percent_mode_help" formatted="false"><b>注意：</b> 改動該選項設定狀態將重置圖標顏色設定內容！\n\n該選項將清除圖標色彩設定內容以保證10%步進類型設備顯示正常。根據用戶反饋，該類設備包括以下型號：\n\n‧ Motorola Droid （最初版本）\n‧ Motorola Droid X\n‧ Motorola Droid 2\n• Motorola Defy\n‧ Samsung Moment\n\n除以上型號之外，其餘設備均為1%步進報告類型，因此均<i>不用</i>開啟此項功能。</string>
-  <string-array name="statuses">
-    <item>拔下電源</item>
-    <item>未知</item>
-    <item>充電中</item>
-    <item>放電中</item>
-    <item>未充電</item>
-    <item>電池充滿</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>拔下電源</item>
-    <item>未知</item>
-    <item>插入電源</item>
-    <item>未知</item>
-    <item>未知</item>
-    <item>已充滿</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>充電中</item>
-    <item>未知</item>
-    <item>放電中</item>
-    <item>未知</item>
-    <item>未知</item>
-    <item>已充滿</item>
-  </string-array>
-  <string-array name="healths">
-    <item>未知</item>
-    <item>未知</item>
-    <item>正常</item>
-    <item>過熱</item>
-    <item>損壞</item>
-    <item>超壓</item>
-    <item>錯誤</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Unplugged</item>
-    <item>(AC)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="mw_theme_pref_entries">
-    <item>預設小視窗</item>
-    <item>彩色小視窗</item>
-    <item>全屏視窗</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>始終</item>
-    <item>從不</item>
-    <item>關機時運行</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>始終</item>
-    <item>一小時後</item>
-    <item>兩小時後</item>
-    <item>三小時後</item>
-    <item>六小時後</item>
-    <item>十二小時後</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>一天</item>
-    <item>兩天</item>
-    <item>四天</item>
-    <item>一周</item>
-    <item>二周</item>
-    <item>三周</item>
-    <item>四周</item>
-  </string-array>
+  <string name="mw_theme_default_small" formatted="false">預設小視窗</string>
+  <string name="mw_theme_colorful_small" formatted="false">彩色小視窗</string>
+  <string name="mw_theme_full_window" formatted="false">全屏視窗</string>
+  <string name="boot_pref_always" formatted="false">始終</string>
+  <string name="boot_pref_never" formatted="false">從不</string>
+  <string name="boot_pref_if_running" formatted="false">關機時運行</string>
+  <string name="status_dur_always" formatted="false">始終</string>
+  <string name="status_dur_after_1h" formatted="false">一小時後</string>
+  <string name="status_dur_after_2h" formatted="false">兩小時後</string>
+  <string name="status_dur_after_3h" formatted="false">三小時後</string>
+  <string name="status_dur_after_6h" formatted="false">六小時後</string>
+  <string name="status_dur_after_12h" formatted="false">十二小時後</string>
+  <string name="age_1_day" formatted="false">一天</string>
+  <string name="age_2_days" formatted="false">兩天</string>
+  <string name="age_4_days" formatted="false">四天</string>
+  <string name="age_1_week" formatted="false">一周</string>
+  <string name="age_2_weeks" formatted="false">二周</string>
+  <string name="age_3_weeks" formatted="false">三周</string>
+  <string name="age_4_weeks" formatted="false">四周</string>
   <plurals name="n_log_items">
     <item quantity="one">%d項日誌記錄</item>
     <item quantity="other">%d項日誌記錄</item>

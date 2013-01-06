@@ -56,6 +56,25 @@
   <string name="inaccessible_w_reason" formatted="false">SD卡无法访问：</string>
   <string name="read_only_storage" formatted="false">SD卡已设置为“只读”模式。</string>
   <string name="file_written" formatted="false">文件已在SD卡根目录成功创建。</string>
+  <string name="status_unplugged" formatted="false">拔下电源</string>
+  <string name="status_unknown" formatted="false">未知</string>
+  <string name="status_charging" formatted="false">充电中</string>
+  <string name="status_discharging" formatted="false">放电中</string>
+  <string name="status_not_charging" formatted="false">未充电</string>
+  <string name="status_fully_charged" formatted="false">电池充满</string>
+  <string name="status_plugged_in" formatted="false">插入电源</string>
+  <string name="health_unknown" formatted="false">未知</string>
+  <string name="health_good" formatted="false">正常</string>
+  <string name="health_overheat" formatted="false">过热</string>
+  <string name="health_dead" formatted="false">损坏</string>
+  <string name="health_overvoltage" formatted="false">超压</string>
+  <string name="health_failure" formatted="false">错误</string>
+  <string name="health_cold" formatted="false">Cold</string>
+  <string name="plugged_unplugged" formatted="false">Unplugged</string>
+  <string name="plugged_ac" formatted="false">(AC)</string>
+  <string name="plugged_usb" formatted="false">(USB)</string>
+  <string name="plugged_unknown" formatted="false">(?)</string>
+  <string name="plugged_wireless" formatted="false">(WL)</string>
   <string name="alarm_fully_charged" formatted="false">电池已充满！</string>
   <string name="alarm_charge_drops" formatted="false">电池电量低于</string>
   <string name="alarm_charge_rises" formatted="false">电池电量高于</string>
@@ -117,9 +136,6 @@
   <string name="pref_enable_logging" formatted="false">启用日志记录功能</string>
   <string name="pref_enable_logging_summary" formatted="false">确认记录电池状态信息？</string>
   <string name="pref_enable_logging_help" formatted="false">若启用本功能，电量指示器将以日志方式记录电池状态信息（例如拔下电源或电池充满）。您可通过单击“菜单”键和“日志”按钮查看日志记录。</string>
-  <string name="pref_log_everything" formatted="false">记录所有信息</string>
-  <string name="pref_log_everything_summary" formatted="false">确认记录电量变化信息？</string>
-  <string name="pref_log_everything_help" formatted="false">若启用本功能，电量指示器将记录电池电量的所有变化信息比如（剩余电量从57%变为56%，反之亦然）。多数用户并不需要次功能，但如果您喜欢更细节的信息，请开启此项。 启用本功能将增加少许功耗。但即使启用本功能，电量指示器在电池完全放电时间内所消耗的电量仍仅有约一分钟。</string>
   <string name="pref_max_log_age" formatted="false">日志记录有效期</string>
   <string name="pref_max_log_age_summary" formatted="false">日志记录有效期限：</string>
   <string name="pref_max_log_age_help" formatted="false">若启用本功能，过期日志将在手机充电时被清除。</string>
@@ -236,74 +252,25 @@
   <string name="silent" formatted="false">静音</string>
   <string name="pref_alarm_vibrate" formatted="false">震动</string>
   <string name="pref_alarm_lights" formatted="false">闪光</string>
-  <string-array name="statuses">
-    <item>拔下电源</item>
-    <item>未知</item>
-    <item>充电中</item>
-    <item>放电中</item>
-    <item>未充电</item>
-    <item>电池充满</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>拔下电源</item>
-    <item>未知</item>
-    <item>插入电源</item>
-    <item>未知</item>
-    <item>未知</item>
-    <item>已充满</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>放电中</item>
-    <item>未知</item>
-    <item>充电中</item>
-    <item>未知</item>
-    <item>未知</item>
-    <item>已充满</item>
-  </string-array>
-  <string-array name="healths">
-    <item>未知</item>
-    <item>未知</item>
-    <item>正常</item>
-    <item>过热</item>
-    <item>损坏</item>
-    <item>超压</item>
-    <item>错误</item>
-    <item>Cold</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Unplugged</item>
-    <item>(AC)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="mw_theme_pref_entries">
-    <item>默认小窗口</item>
-    <item>彩色小窗口</item>
-    <item>全屏窗口</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>始终</item>
-    <item>从不</item>
-    <item>关机时运行</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>始终</item>
-    <item>一小时后</item>
-    <item>两小时后</item>
-    <item>三小时后</item>
-    <item>六小时后</item>
-    <item>十二小时后</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>一天</item>
-    <item>两天</item>
-    <item>四天</item>
-    <item>一周</item>
-    <item>二周</item>
-    <item>三周</item>
-    <item>四周</item>
-  </string-array>
+  <string name="mw_theme_default_small" formatted="false">默认小窗口</string>
+  <string name="mw_theme_colorful_small" formatted="false">彩色小窗口</string>
+  <string name="mw_theme_full_window" formatted="false">全屏窗口</string>
+  <string name="boot_pref_always" formatted="false">始终</string>
+  <string name="boot_pref_never" formatted="false">从不</string>
+  <string name="boot_pref_if_running" formatted="false">关机时运行</string>
+  <string name="status_dur_always" formatted="false">始终</string>
+  <string name="status_dur_after_1h" formatted="false">一小时后</string>
+  <string name="status_dur_after_2h" formatted="false">两小时后</string>
+  <string name="status_dur_after_3h" formatted="false">三小时后</string>
+  <string name="status_dur_after_6h" formatted="false">六小时后</string>
+  <string name="status_dur_after_12h" formatted="false">十二小时后</string>
+  <string name="age_1_day" formatted="false">一天</string>
+  <string name="age_2_days" formatted="false">两天</string>
+  <string name="age_4_days" formatted="false">四天</string>
+  <string name="age_1_week" formatted="false">一周</string>
+  <string name="age_2_weeks" formatted="false">二周</string>
+  <string name="age_3_weeks" formatted="false">三周</string>
+  <string name="age_4_weeks" formatted="false">四周</string>
   <plurals name="n_log_items">
     <item quantity="one">%d项日志记录</item>
     <item quantity="other">%d项日志记录</item>

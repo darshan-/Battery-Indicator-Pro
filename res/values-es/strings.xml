@@ -57,6 +57,25 @@
   <string name="charge" formatted="false">porcentaje_carga</string>
   <string name="temperature" formatted="false">grados_celsius</string>
   <string name="voltage" formatted="false">voltios</string>
+  <string name="status_unplugged" formatted="false">Desenchufado</string>
+  <string name="status_unknown" formatted="false">Desconocido</string>
+  <string name="status_charging" formatted="false">Cargando</string>
+  <string name="status_discharging" formatted="false">Descargando</string>
+  <string name="status_not_charging" formatted="false">No está cargando</string>
+  <string name="status_fully_charged" formatted="false">Cargado</string>
+  <string name="status_plugged_in" formatted="false">Enchufado</string>
+  <string name="health_unknown" formatted="false">Desconocido</string>
+  <string name="health_good" formatted="false">Buen estado</string>
+  <string name="health_overheat" formatted="false">Sobrecalentamiento</string>
+  <string name="health_dead" formatted="false">Batería muerta</string>
+  <string name="health_overvoltage" formatted="false">Sobretensión</string>
+  <string name="health_failure" formatted="false">Fallo</string>
+  <string name="health_cold" formatted="false">Frío</string>
+  <string name="plugged_unplugged" formatted="false">Unplugged</string>
+  <string name="plugged_ac" formatted="false">(Red)</string>
+  <string name="plugged_usb" formatted="false">(USB)</string>
+  <string name="plugged_unknown" formatted="false">(?)</string>
+  <string name="plugged_wireless" formatted="false">(WL)</string>
   <string name="logs_empty" formatted="false">El registro está vacío</string>
   <string name="discharging_from" formatted="false">Descargando desde</string>
   <string name="charging_from" formatted="false">Cargando desde</string>
@@ -108,9 +127,6 @@
   <string name="pref_enable_logging" formatted="false">Activar registro</string>
   <string name="pref_enable_logging_summary" formatted="false">¿Registrar cambios de estado de la batería?</string>
   <string name="pref_enable_logging_help" formatted="false">Si está activado, Battery Indicator registrará los cambios de estado de la batería (por ejemplo, al desenchufar el teléfono o cuando se cargue completamente). Puede ver los logs desde la ventana principal, pulsando MENU y seleccionando Registro.</string>
-  <string name="pref_log_everything" formatted="false">Registrar todo</string>
-  <string name="pref_log_everything_summary" formatted="false">¿Registrar también los cambios en el porcentaje de carga?</string>
-  <string name="pref_log_everything_help" formatted="false">Si está activado, Battery Indicator registrará también cada cambio en el nivel de carga de la batería (por ejemplo, cuando pase de 57% a 56% o viceversa). La mayoría de los usuarios realmente no necesitarán esta opción, pero puede activarla si realmente quiere estar al tanto de todo.\n\nRecuerde que activar esta opción conlleva un pequeño gasto de batería, por lo que aunque quiera tenerla activada durante un tiempo para controlar detalladamente su batería, lo más probable es que quiera desactivarla cuando haya terminado. En cualquier caso, aun con la opción activada, Battery Indicador no debería consumir más de un minuto de una batería completamente cargada en el caso peor.</string>
   <string name="pref_max_log_age" formatted="false">Antigüedad máxima</string>
   <string name="pref_max_log_age_summary" formatted="false">Borrar logs anteriores a:</string>
   <string name="pref_max_log_age_help" formatted="false">Si el registro está activado, cada vez que enchufe el teléfono se borrarán los logs anteriores al tiempo seleccionado.</string>
@@ -210,79 +226,28 @@
   <string name="pref_ten_percent_mode" formatted="false">Modo 10%</string>
   <string name="pref_ten_percent_mode_summary" formatted="false">¡Lea la ayuda primero!</string>
   <string name="pref_ten_percent_mode_help" formatted="false"><b>Nota:</b> ¡Marcar o desmarcar esto reiniciará sus ajustes de color de iconos!\n\nEsta opción limpia los ajustes de color de iconos para que tengan más sentido en dispositivos que sólo muestran el nivel de carga en incrementos del 10%. Según los datos proporcionados por los usuarios, esto incluye los siguientes dispositivos:\n\n• Motorola Droid (original)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nHasta donde yo sé, todos los demás dispositivos informan cada 1%, y <i>no</i> debería activar esta opción si tiene uno de ellos.</string>
-  <string-array name="statuses">
-    <item>Desenchufado</item>
-    <item>Desconocido</item>
-    <item>Cargando</item>
-    <item>Descargando</item>
-    <item>No está cargando</item>
-    <item>Cargado</item>
-  </string-array>
-  <string-array name="log_statuses">
-    <item>Desenchufado</item>
-    <item>Desconocido</item>
-    <item>Enchufado</item>
-    <item>Desconocido</item>
-    <item>Desconocido</item>
-    <item>Cargado</item>
-  </string-array>
-  <string-array name="log_statuses_old">
-    <item>Descargando</item>
-    <item>Desconocido</item>
-    <item>Cargando</item>
-    <item>Desconocido</item>
-    <item>Desconocido</item>
-    <item>Cargado</item>
-  </string-array>
-  <string-array name="healths">
-    <item>Desconocido</item>
-    <item>Desconocido</item>
-    <item>Buen estado</item>
-    <item>Sobrecalentamiento</item>
-    <item>Batería muerta</item>
-    <item>Sobretensión</item>
-    <item>Fallo</item>
-    <item>Frío</item>
-  </string-array>
-  <string-array name="pluggeds">
-    <item>Unplugged</item>
-    <item>(Red)</item>
-    <item>(USB)</item>
-    <item>(?)</item>
-    <item>(WL)</item>
-  </string-array>
-  <string-array name="mw_theme_pref_entries">
-    <item>Por defecto (Pequeña)</item>
-    <item>Colorida (Pequeña)</item>
-    <item>Pantalla completa</item>
-  </string-array>
-  <string-array name="boot_pref_entries">
-    <item>Siempre</item>
-    <item>Nunca</item>
-    <item>Si estaba ejecutándose al apagar</item>
-  </string-array>
-  <string-array name="status_dur_est_entries">
-    <item>Siempre</item>
-    <item>Tras 1 hora</item>
-    <item>Tras 2 horas</item>
-    <item>Tras 3 horas</item>
-    <item>Tras 6 horas</item>
-    <item>Tras 12 horas</item>
-  </string-array>
-  <string-array name="max_log_age_entries">
-    <item>1 día</item>
-    <item>2 días</item>
-    <item>4 días</item>
-    <item>1 semana</item>
-    <item>2 semanas</item>
-    <item>3 semanas</item>
-    <item>4 semanas</item>
-  </string-array>
-  <string-array name="icon_set_entries">
-    <item>Clásico</item>
-    <item>Número Sencillo</item>
-    <item>Número más Pequeño</item>
-  </string-array>
+  <string name="mw_theme_default_small" formatted="false">Por defecto (Pequeña)</string>
+  <string name="mw_theme_colorful_small" formatted="false">Colorida (Pequeña)</string>
+  <string name="mw_theme_full_window" formatted="false">Pantalla completa</string>
+  <string name="boot_pref_always" formatted="false">Siempre</string>
+  <string name="boot_pref_never" formatted="false">Nunca</string>
+  <string name="boot_pref_if_running" formatted="false">Si estaba ejecutándose al apagar</string>
+  <string name="status_dur_always" formatted="false">Siempre</string>
+  <string name="status_dur_after_1h" formatted="false">Tras 1 hora</string>
+  <string name="status_dur_after_2h" formatted="false">Tras 2 horas</string>
+  <string name="status_dur_after_3h" formatted="false">Tras 3 horas</string>
+  <string name="status_dur_after_6h" formatted="false">Tras 6 horas</string>
+  <string name="status_dur_after_12h" formatted="false">Tras 12 horas</string>
+  <string name="age_1_day" formatted="false">1 día</string>
+  <string name="age_2_days" formatted="false">2 días</string>
+  <string name="age_4_days" formatted="false">4 días</string>
+  <string name="age_1_week" formatted="false">1 semana</string>
+  <string name="age_2_weeks" formatted="false">2 semanas</string>
+  <string name="age_3_weeks" formatted="false">3 semanas</string>
+  <string name="age_4_weeks" formatted="false">4 semanas</string>
+  <string name="icon_set_classic" formatted="false">Clásico</string>
+  <string name="icon_set_plain" formatted="false">Número Sencillo</string>
+  <string name="icon_set_smaller" formatted="false">Número más Pequeño</string>
   <plurals name="n_log_items">
     <item quantity="one">%d entrada en el registro</item>
     <item quantity="other">%d entradas en el registro</item>
