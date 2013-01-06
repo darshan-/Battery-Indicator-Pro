@@ -194,14 +194,12 @@ public class LogViewActivity extends ListActivity {
                                      })
                 .setPositiveButton(str.okay, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
-                            setFilters(checked_items);
-                            di.cancel();
+                            di.cancel(); // setFilters() is called in onCancel()
                         }
                     })
                 .setOnCancelListener(new DialogInterface.OnCancelListener() {
                         public void onCancel(DialogInterface di) {
                             setFilters(checked_items);
-                            di.cancel();
                         }
                     });
             dialog = builder.create();
