@@ -8,7 +8,6 @@
   <RelativeLayout android:layout_width="fill_parent" 
                   android:layout_height="fill_parent"
                   android:padding="5dp"
-                  android:paddingBottom="0dp"
   >
     <TextView android:id="@+id/status"
               android:textSize="18dp"
@@ -26,11 +25,19 @@
     />
   </RelativeLayout>
 
+  <TextView android:id="@+id/time_diff"
+            android:textSize="14dp"
+            android:textColor="#fff"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:paddingLeft="25dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+  />
+
   <RelativeLayout android:layout_width="fill_parent" 
                   android:layout_height="fill_parent"
                   android:padding="5dp"
-                  android:paddingTop="0dp"
-                  android:paddingBottom="0dp"
   >
     <TextView android:id="@+id/time"
               android:textSize="16dp"

@@ -551,6 +551,7 @@ public class LogViewActivity extends ListActivity {
             TextView   percent_tv = (TextView) view.findViewById(R.id.percent);
             TextView      time_tv = (TextView) view.findViewById(R.id.time);
             TextView temp_volt_tv = (TextView) view.findViewById(R.id.temp_volt);
+            TextView time_diff_tv = (TextView) view.findViewById(R.id.time_diff);
 
             int statusCode = cursor.getInt(statusCodeIndex);
             int[] statusCodes = LogDatabase.decodeStatus(statusCode);
@@ -564,23 +565,42 @@ public class LogViewActivity extends ListActivity {
                  status_tv.setTextColor(col.old_status);
                 percent_tv.setTextColor(col.old_status);
                 s = str.log_statuses_old[status];
+
+                time_diff_tv.setVisibility(View.GONE);
             } else {
                 switch (status) {
-                case 5:
-                     status_tv.setTextColor(col.charged);
-                    percent_tv.setTextColor(col.charged);
-                    break;
                 case 0:
                      status_tv.setTextColor(col.unplugged);
                     percent_tv.setTextColor(col.unplugged);
                     break;
                 case 2:
-                default:
                      status_tv.setTextColor(col.plugged);
                     percent_tv.setTextColor(col.plugged);
+                    break;
+                case 5:
+                     status_tv.setTextColor(col.charged);
+                    percent_tv.setTextColor(col.charged);
+                    break;
+                default:
+                     status_tv.setTextColor(col.unknown);
+                    percent_tv.setTextColor(col.unknown);
                 }
 
                 s = str.log_statuses[status];
+
+                switch (status) {
+                case 0:
+                case 5:
+                    time_diff_tv.setText("After 4.7 hours plugged in");
+                    time_diff_tv.setVisibility(View.VISIBLE);
+                    break;
+                case 2:
+                    time_diff_tv.setText("After 15.2 hours unplugged");
+                    time_diff_tv.setVisibility(View.VISIBLE);
+                    break;
+                default:
+                    time_diff_tv.setVisibility(View.GONE);
+                }
             }
 
             if (plugged > 0)
@@ -607,12 +627,14 @@ public class LogViewActivity extends ListActivity {
         public int charged;
         public int plugged;
         public int unplugged;
+        public int unknown;
 
         public Col() {
-            old_status = res.getColor(R.color.old_status);
-            charged    = res.getColor(R.color.charged);
-            plugged    = res.getColor(R.color.plugged);
-            unplugged  = res.getColor(R.color.unplugged);
+            old_status = res.getColor(R.color.log_old_status);
+            charged    = res.getColor(R.color.log_charged);
+            plugged    = res.getColor(R.color.log_plugged);
+            unplugged  = res.getColor(R.color.log_unplugged);
+            unknown    = res.getColor(R.color.log_unknown);
         }
     }
 }

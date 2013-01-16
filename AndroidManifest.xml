@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.darshancomputing.BatteryIndicatorPro"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
-    android:versionCode="011102"
-    android:versionName="7.0.3"
+    android:versionCode="011103"
+    android:versionName="7.0.4-dev"
 >
   <application
       android:label="@string/app_full_name"
