@@ -57,6 +57,7 @@ public class LogViewActivity extends ListActivity {
     private Col col;
     private Cursor completeCursor;
     private Cursor filteredCursor;
+    private Cursor timeDeltaCursor;
     private LayoutInflater mInflater;
     private LogAdapter mAdapter;
     private TextView header_text;
@@ -117,7 +118,8 @@ public class LogViewActivity extends ListActivity {
         logs = new LogDatabase(context);
         completeCursor = logs.getAllLogs(false);
         startManagingCursor(completeCursor);
-        filteredCursor = new FilteredCursor(completeCursor);
+        timeDeltaCursor = new TimeDeltaCursor(completeCursor);
+        filteredCursor = new FilteredCursor(timeDeltaCursor);
 
         mInflater = LayoutInflater.from(this);
 
@@ -288,7 +290,8 @@ public class LogViewActivity extends ListActivity {
             stopManagingCursor(completeCursor);
             completeCursor = logs.getAllLogs(reversed);
             startManagingCursor(completeCursor);
-            filteredCursor = new FilteredCursor(completeCursor);
+            timeDeltaCursor = new TimeDeltaCursor(completeCursor);
+            filteredCursor = new FilteredCursor(timeDeltaCursor);
 
             mAdapter.changeCursor(filteredCursor);
         } else {
@@ -523,8 +526,185 @@ public class LogViewActivity extends ListActivity {
         }
     }
 
+    private class TimeDeltaCursor extends CursorWrapper {
+        public static final String KEY_TIME_DELTA = "time_delta";
+
+        private Cursor wrappedCursor;
+
+        private int deltaColumnIndex;
+        private String deltaColumnName = KEY_TIME_DELTA;
+
+        private int statusCodeIndex, timeIndex;
+
+        private long last_plugged, last_unplugged;
+
+        private ArrayList<Long> deltas;
+
+        public TimeDeltaCursor(Cursor cursor) {
+            super(cursor);
+
+            deltas = new ArrayList<Long>();
+            wrappedCursor = cursor;
+
+            deltaColumnIndex = super.getColumnCount();
+
+            gen_deltas();
+        }
+
+        private void gen_delta() {
+            long time         = wrappedCursor.getLong(timeIndex);
+            int statusCode    = wrappedCursor.getInt(statusCodeIndex);
+            int[] statusCodes = LogDatabase.decodeStatus(statusCode);
+            int status        = statusCodes[0];
+            int plugged       = statusCodes[1];
+            int status_age    = statusCodes[2];
+
+            if (status == BatteryIndicatorService.STATUS_FULLY_CHARGED) {
+                if (last_plugged > 0)
+                   deltas.add(time - last_plugged);
+                else
+                   deltas.add(-1l);
+            } else if (status_age == LogDatabase.STATUS_NEW && status == BatteryIndicatorService.STATUS_UNPLUGGED) {
+                if (last_plugged > 0)
+                   deltas.add(time - last_plugged);
+                else
+                   deltas.add(-1l);
+
+                last_unplugged = time;
+            } else if (status_age == LogDatabase.STATUS_NEW && status == BatteryIndicatorService.STATUS_CHARGING) {
+                if (last_unplugged > 0)
+                    deltas.add(time - last_unplugged);
+                else
+                    deltas.add(-1l);
+
+                last_plugged = time;
+            } else {
+                deltas.add(-1l);
+            }
+        }
+
+        private boolean wrappedIsChronological() {
+            boolean chrono = true;
+
+            int pos = wrappedCursor.getPosition();
+
+            wrappedCursor.moveToFirst();
+            long time1 = wrappedCursor.getLong(timeIndex);
+            wrappedCursor.moveToNext();
+            long time2 = wrappedCursor.getLong(timeIndex);
+
+            while (time2 == time1 && !wrappedCursor.isAfterLast()) {
+                wrappedCursor.moveToNext();
+                time2 = wrappedCursor.getLong(timeIndex);
+            }
+
+            if (time2 < time1)
+                chrono = false;
+
+            wrappedCursor.moveToPosition(pos);
+
+            return chrono;
+        }
+
+        public void gen_deltas() {
+            if (wrappedCursor.isClosed()) return;
+
+            deltas.clear();
+
+            last_plugged = -1;
+            last_unplugged = -1;
+
+            int wrappedCursorPos = wrappedCursor.getPosition();
+            statusCodeIndex = wrappedCursor.getColumnIndexOrThrow(LogDatabase.KEY_STATUS_CODE);
+                  timeIndex = wrappedCursor.getColumnIndexOrThrow(LogDatabase.KEY_TIME);
+
+            if (wrappedIsChronological())
+                for (wrappedCursor.moveToFirst(); !wrappedCursor.isAfterLast(); wrappedCursor.moveToNext())
+                    gen_delta();
+            else
+                for (wrappedCursor.moveToLast(); !wrappedCursor.isBeforeFirst(); wrappedCursor.moveToPrevious())
+                    gen_delta();
+
+            wrappedCursor.moveToPosition(wrappedCursorPos);
+        }
+
+        @Override
+        public boolean requery() {
+            boolean ret = super.requery();
+            gen_deltas();
+            return ret;
+        }
+
+        @Override
+        public int getColumnCount() {
+            return deltaColumnIndex + 1;
+        }
+
+        @Override
+        public int getColumnIndex(String columnName) {
+            if (deltaColumnName.equals(columnName))
+                return deltaColumnIndex;
+            else
+                return super.getColumnIndex(columnName);
+        }
+
+        @Override
+        public int getColumnIndexOrThrow(String columnName) throws java.lang.IllegalArgumentException {
+            if (deltaColumnName.equals(columnName))
+                return deltaColumnIndex;
+            else
+                return super.getColumnIndexOrThrow(columnName);
+        }
+
+        @Override
+        public String getColumnName(int columnIndex) {
+            if (columnIndex == deltaColumnIndex)
+                return deltaColumnName;
+            else
+                return super.getColumnName(columnIndex);
+        }
+
+        @Override
+        public String[] getColumnNames() {
+            String[] a = super.getColumnNames();
+            String[] b = java.util.Arrays.copyOf(a, a.length + 1);
+            b[a.length] = deltaColumnName;
+
+            return b;
+        }
+
+        @Override
+        public long getLong(int columnIndex) {
+            if (columnIndex == deltaColumnIndex){
+                int pos = getPosition();
+
+                if (! wrappedIsChronological())
+                    pos = getCount() - 1 - pos;
+
+                return deltas.get(pos);
+            } else
+                return super.getLong(columnIndex);
+        }
+
+        @Override
+        public int getType(int columnIndex) {
+            if (columnIndex == deltaColumnIndex)
+                return Cursor.FIELD_TYPE_INTEGER;
+            else
+                return super.getType(columnIndex);
+        }
+
+        @Override
+        public boolean isNull(int columnIndex) {
+            if (columnIndex == deltaColumnIndex)
+                return false;
+            else
+                return super.isNull(columnIndex);
+        }
+    }
+
     private class LogAdapter extends CursorAdapter {
-        public int statusCodeIndex, chargeIndex, timeIndex, temperatureIndex, voltageIndex;
+        public int statusCodeIndex, chargeIndex, timeIndex, temperatureIndex, voltageIndex, timeDeltaIndex;
         public DateFormat dateFormat, timeFormat;
 
         private Date d = new Date();
@@ -540,6 +720,7 @@ public class LogViewActivity extends ListActivity {
                    timeIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_TIME);
             temperatureIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_TEMPERATURE);
                 voltageIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_VOLTAGE);
+              timeDeltaIndex = cursor.getColumnIndexOrThrow(TimeDeltaCursor.KEY_TIME_DELTA);
         }
 
         public View newView(Context context, Cursor cursor, ViewGroup parent) {
@@ -587,15 +768,37 @@ public class LogViewActivity extends ListActivity {
                 }
 
                 s = str.log_statuses[status];
+                long delta;
 
                 switch (status) {
                 case 0:
                 case 5:
-                    time_diff_tv.setText("After 4.7 hours plugged in");
+                    // TODO: Do this properly with translatable string-plurals
+                    delta = cursor.getLong(timeDeltaIndex);
+
+                    if (delta < 0) {
+                        time_diff_tv.setVisibility(View.GONE);
+                        break;
+                    }
+
+                    time_diff_tv.setText("After " +
+                                         String.format("%.1f", (delta / 1000.0 / 60.0 / 60.0)) +
+                                         //String.format("%.1f", (cursor.getLong(timeDeltaIndex) / 1000.0 / 60.0 / 60.0)) +
+                                         " hours plugged in");
                     time_diff_tv.setVisibility(View.VISIBLE);
                     break;
                 case 2:
-                    time_diff_tv.setText("After 15.2 hours unplugged");
+                    delta = cursor.getLong(timeDeltaIndex);
+
+                    if (delta < 0) {
+                        time_diff_tv.setVisibility(View.GONE);
+                        break;
+                    }
+
+                    time_diff_tv.setText("After " +
+                                         //String.format("%.1f", (cursor.getLong(timeDeltaIndex) / 1000.0 / 60.0 / 60.0)) +
+                                         String.format("%.1f", (delta / 1000.0 / 60.0 / 60.0)) +
+                                         " hours unplugged");
                     time_diff_tv.setVisibility(View.VISIBLE);
                     break;
                 default:
