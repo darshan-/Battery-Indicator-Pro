@@ -117,7 +117,6 @@ public class LogViewActivity extends ListActivity {
 
         logs = new LogDatabase(context);
         completeCursor = logs.getAllLogs(false);
-        startManagingCursor(completeCursor);
         timeDeltaCursor = new TimeDeltaCursor(completeCursor);
         filteredCursor = new FilteredCursor(timeDeltaCursor);
 
@@ -287,9 +286,8 @@ public class LogViewActivity extends ListActivity {
 
     private void reloadList(Boolean newQuery){
         if (newQuery) {
-            stopManagingCursor(completeCursor);
+            completeCursor.close();
             completeCursor = logs.getAllLogs(reversed);
-            startManagingCursor(completeCursor);
             timeDeltaCursor = new TimeDeltaCursor(completeCursor);
             filteredCursor = new FilteredCursor(timeDeltaCursor);
 
@@ -773,7 +771,6 @@ public class LogViewActivity extends ListActivity {
                 switch (status) {
                 case 0:
                 case 5:
-                    // TODO: Do this properly with translatable string-plurals
                     delta = cursor.getLong(timeDeltaIndex);
 
                     if (delta < 0) {
@@ -781,10 +778,9 @@ public class LogViewActivity extends ListActivity {
                         break;
                     }
 
-                    time_diff_tv.setText("After " +
-                                         String.format("%.1f", (delta / 1000.0 / 60.0 / 60.0)) +
-                                         //String.format("%.1f", (cursor.getLong(timeDeltaIndex) / 1000.0 / 60.0 / 60.0)) +
-                                         " hours plugged in");
+                    time_diff_tv.setText(String.format(res.getString(R.string.after_n_hours_plugged_in),
+                                                       delta / 1000.0 / 60.0 / 60.0));
+
                     time_diff_tv.setVisibility(View.VISIBLE);
                     break;
                 case 2:
@@ -795,10 +791,9 @@ public class LogViewActivity extends ListActivity {
                         break;
                     }
 
-                    time_diff_tv.setText("After " +
-                                         //String.format("%.1f", (cursor.getLong(timeDeltaIndex) / 1000.0 / 60.0 / 60.0)) +
-                                         String.format("%.1f", (delta / 1000.0 / 60.0 / 60.0)) +
-                                         " hours unplugged");
+                    time_diff_tv.setText(String.format(res.getString(R.string.after_n_hours_unplugged),
+                                                       delta / 1000.0 / 60.0 / 60.0));
+
                     time_diff_tv.setVisibility(View.VISIBLE);
                     break;
                 default:

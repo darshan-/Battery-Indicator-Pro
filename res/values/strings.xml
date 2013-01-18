@@ -184,6 +184,9 @@
     <item quantity="other">%d Log Items</item>
   </plurals>
 
+  <string formatted="true" name="after_n_hours_unplugged">After %1.1f hours unplugged</string>
+  <string formatted="true" name="after_n_hours_plugged_in">After %1.1f hours plugged in</string>
+
   <string formatted="false" name="discharging_from">Discharging from</string>
   <string formatted="false" name="charging_from">Charging from</string>
   <string formatted="false" name="fully_charged">Fully Charged</string>

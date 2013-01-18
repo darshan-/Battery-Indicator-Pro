@@ -77,6 +77,8 @@
   <string name="plugged_unknown" formatted="false">(?)</string>
   <string name="plugged_wireless" formatted="false">(WL)</string>
   <string name="logs_empty" formatted="false">El registro está vacío</string>
+  <string name="after_n_hours_unplugged" formatted="false">Después de %1.1f horas desenchufado</string>
+  <string name="after_n_hours_plugged_in" formatted="false">Después de %1.1f horas enchufado</string>
   <string name="discharging_from" formatted="false">Descargando desde</string>
   <string name="charging_from" formatted="false">Cargando desde</string>
   <string name="fully_charged" formatted="false">Cargado</string>
