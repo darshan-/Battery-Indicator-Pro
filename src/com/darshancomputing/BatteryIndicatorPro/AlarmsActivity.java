@@ -70,9 +70,7 @@ public class AlarmsActivity extends Activity {
         setWindowSubtitle(res.getString(R.string.alarm_settings));
 
         alarms = new AlarmDatabase(context);
-        //alarms.deleteAllAlarms();
         mCursor = alarms.getAllAlarms(true);
-        startManagingCursor(mCursor);
 
         mInflater = LayoutInflater.from(context);
         mAlarmsList = (LinearLayout) findViewById(R.id.alarms_list);
