@@ -582,6 +582,7 @@ public class LogViewActivity extends ListActivity {
         }
 
         private boolean wrappedIsChronological() {
+            if (wrappedCursor.getCount() < 2) return true;
             boolean chrono = true;
 
             int pos = wrappedCursor.getPosition();
