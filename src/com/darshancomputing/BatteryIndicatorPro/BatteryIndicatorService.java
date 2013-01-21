@@ -61,6 +61,7 @@ public class BatteryIndicatorService extends Service {
     private Resources res;
     private Str str;
     private AlarmDatabase alarms;
+    private Logger logger;
 
     private static final String LOG_TAG = "BatteryIndicatorService";
 
@@ -121,6 +122,8 @@ public class BatteryIndicatorService extends Service {
     private int status;
     private String mainNotificationTitle, mainNotificationText;
 
+    private Predictor predictor;
+
     private final Handler mHandler = new Handler();
     private final Runnable mPluginNotify = new Runnable() {
         public void run() {
@@ -159,6 +162,9 @@ public class BatteryIndicatorService extends Service {
         res = getResources();
         str = new Str(res);
         Context context = getApplicationContext();
+        logger = new Logger(context, "Service");
+        logger.log("onCreate()");
+        predictor = new Predictor(context);
 
         alarms = new AlarmDatabase(context);
 
@@ -194,6 +200,7 @@ public class BatteryIndicatorService extends Service {
 
     @Override
     public void onDestroy() {
+        logger.log("onDestroy()");
         setEnablednessOfKeyguard(true);
         alarms.close();
         if (! pluginPackage.equals("none")) disconnectPlugin();
@@ -217,6 +224,7 @@ public class BatteryIndicatorService extends Service {
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            logger.log("onReceive()");
             mHandler.removeCallbacks(mPluginNotify);
             mHandler.removeCallbacks(mNotify);
 
@@ -297,6 +305,8 @@ public class BatteryIndicatorService extends Service {
             if (status  > STATUS_MAX) { status  = STATUS_UNKNOWN; }
             if (health  > HEALTH_MAX) { health  = HEALTH_UNKNOWN; }
             if (plugged > PLUGGED_MAX){ plugged = PLUGGED_UNKNOWN; }
+
+            predictor.update(level, status, plugged);
 
             /* I take advantage of (count on) R.java having resources alphabetical and incrementing by one */
 
@@ -440,6 +450,19 @@ public class BatteryIndicatorService extends Service {
 
             if (voltage > 500)
                 mainNotificationText += " / " + str.formatVoltage(voltage);
+
+            if (status == STATUS_UNPLUGGED) {
+                int seconds_left = predictor.secondsUntilDrained();
+                double hours_left = seconds_left / (60.0 * 60.0);
+                String s = String.format("%.1f", hours_left);
+                mainNotificationText += " / " + s + "h";
+            } else if (status == STATUS_CHARGING) {
+                int seconds_left = predictor.secondsUntilCharged();
+                double hours_left = seconds_left / (60.0 * 60.0);
+                String s = String.format("%.1f", hours_left);
+                mainNotificationText += " / " + s + "h";
+            }
+
 
             long when = 0;
 
