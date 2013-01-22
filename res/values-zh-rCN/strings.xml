@@ -85,7 +85,6 @@
   <string name="charging_from" formatted="false">充电起始电量</string>
   <string name="fully_charged" formatted="false">完全充满</string>
   <string name="since" formatted="false">开始于</string>
-  <string name="one_six_needed" formatted="false">对不起，此功能仅支持Android 1.6+版本系统！</string>
   <string name="currently_using" formatted="false">当前使用</string>
   <string name="currently_set_to" formatted="false">"当前设置为"</string>
   <string name="currently_disabled" formatted="false">当前不可用</string>

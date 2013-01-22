@@ -18,8 +18,6 @@
   <string name="cancel" formatted="false">Mégsem</string>
   <string name="confirm_close" formatted="false">Biztosan bezárja?</string>
   <string name="confirm_close_hint" formatted="false">A Battery Indicator most teljesen bezárul, és az állapotsorban sem lesz látható.\n\nHa tovább kívánja futtatni a Battery Indicatort, és csak a főablakot szeretné elhagyni, válassz a \"Mégsem\"-et majd használja a Vissza gombot!</string>
-  <string name="need_uninstall" formatted="false">Eltávolítás szükséges</string>
-  <string name="need_uninstall_hint" formatted="false">Sajnos a Battery Indicator Pro-t le kell törölni, majd újratelepíteni ehhez a fontos frissítéshez. Elnézést kérünk a kellemetlenségért. Ez az Android egy technikai korlátozása miatt szükséges. A jövőben egyik frissítéshez sem kell ezt megtennie.\n\nMiután a \'Rendben\'-re kattint, újra az \'OK\'-ra kell kattintania, amikor az Android engedélyt kér az eltávolításhoz. Ezután a Market oldalra lesz irányítva, ahol újra telepítheti a programot.\n\nA legtöbb felhasználónak visszaállnak a régi adatai, a riasztásokat kivéve, amiket újra meg kell adni. Ezt nem tudjuk garantálni, ezért érdemes végignézni a beállításokat telepítés után.\n\nKöszönöm, és remélem, tetszenek majd az új szolgáltatások.</string>
   <string name="confirm_clear_logs" formatted="false">Biztosan töröl minden naplót?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Biztosan engedélyezi a 10% módot?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Biztosan letiltja a 10% módot?</string>
@@ -101,7 +99,6 @@
   <string name="charging_from" formatted="false">Töltés innen:</string>
   <string name="fully_charged" formatted="false">Teljesen feltöltve</string>
   <string name="since" formatted="false">óta</string>
-  <string name="one_six_needed" formatted="false">Elnézést, legalább Android 1.6 szükséges!</string>
   <string name="currently_using" formatted="false">Jelenleg használatban</string>
   <string name="currently_set_to" formatted="false">"Jelenlegi beállítás:"</string>
   <string name="currently_disabled" formatted="false">Jelenleg Letiltva</string>

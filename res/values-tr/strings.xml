@@ -21,8 +21,6 @@
   <string name="cancel" formatted="false">İptal</string>
   <string name="confirm_close" formatted="false">Kapatmak İstediğine Emin Misin?</string>
   <string name="confirm_close_hint" formatted="false">Pil Göstergesi tamamen kapatıldı, ve artık durum çubuğunda görmeyeceksin.\n\nEğer sadece ana pencereden çıkmayı ama göstergenin çalışmaya devam etmesini istiyorsan, İPTAL tuşuna bas ve daha sonra cihazın BACK tuşuna basarak ana pencereden çık.</string>
-  <string name="need_uninstall" formatted="false">Programı Kaldırman Gerekiyor</string>
-  <string name="need_uninstall_hint" formatted="false">Bu önemli güncellemeyi tamamlamak için Pil Göstergesi Pro uygulaması kaldırılıp yeniden kurulmalıdır. Bu rahatsızlık için üzgünüm. Bu Android\'deki teknik bir sınırlama nedeniyle gereklidir. Gelecek güncellemelerde bu işleme gerek olmayacak.\n\nBu mesajı kaldırmak için \'Tamam\'\'ı tıkladıktan sonra, Android uygulamayı kaldırmak için izin istediğinde tekrar \'Tamam\'\'e tıklaman gerekecek. Bunun ardından uygulamayı yeniden yüklemek için Market sayfasına yönlendirileceksin.\n\nÇoğu kullanıcı alarmlar haricindeki tercih ayarlarını geri yüklenmiş olarak bulacak, alarmların ise yeniden yaratılması gerekecek. Ancak bu durumun tam garantisi olmadığından, uygulamayı yeniden yükledikten sonra ayarları tekrar kontrol etmeyi unutma.\n\nTeşekkürler, ve umarım tüm yeni özellikleri seversiniz!</string>
   <string name="confirm_clear_logs" formatted="false">Tüm kayıtları silmek istediğine emin misin?</string>
   <string name="confirm_ten_percent_enable" formatted="false">%10 modunu etkinleştirmek istediğine emin misin?</string>
   <string name="confirm_ten_percent_disable" formatted="false">%10 modununun etkinliğini kaldırmak istediğine emin misin?</string>
@@ -76,7 +74,6 @@
   <string name="charging_from" formatted="false">Şu zamandan beri şarj ediliyor</string>
   <string name="fully_charged" formatted="false">Şarj Tam Dolu</string>
   <string name="since" formatted="false">Şu zamandan beri</string>
-  <string name="one_six_needed" formatted="false">Üzgünüm, Android 1.6+ gerekiyor!</string>
   <string name="currently_using" formatted="false">Şu an kullanılıyor</string>
   <string name="currently_set_to" formatted="false">"Şu an buna ayarlı: "</string>
   <string name="currently_disabled" formatted="false">Şu An Etkin Değil</string>

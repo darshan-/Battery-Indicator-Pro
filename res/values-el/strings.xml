@@ -21,8 +21,6 @@
   <string name="cancel" formatted="false">Ακύρωση</string>
   <string name="confirm_close" formatted="false">Θέλετε να Κλείσετε την εφαρμογή;</string>
   <string name="confirm_close_hint" formatted="false">Ο Battery Indicator θα κλείσει εντελώς, και δε θα υπάρχει στην μπάρα κατάστασης πλέον.\n\nΑν επιθυμείτε να φύγετε από το κυρίως παράθυρο και να αφήσετε το πρόγραμμα να τρέχει, πατήστε Ακύρωση και μετά πατήστε το κουμπί BACK της συσκευής σας για να φύγετε από το κυρίως παράθυρο.</string>
-  <string name="need_uninstall" formatted="false">Απαιτείται Απεγκατάσταση</string>
-  <string name="need_uninstall_hint" formatted="false">O Battery Indicator Pro θα πρέπει να απεγκατασταθεί και μετά να επανεγκατασταθεί για να ολοκληρώσει αυτή τη σημαντική αναβάθμιση. Λυπούμαστε για την αναστάτωση. Αυτό απαιτείται λόγω κάποιου τεχνικού περιορισμού του Android. Δε θα απαιτηθεί ξανά για μελλοντικές αναβαθμίσεις.\n\nΜετά που θα πατήσετε \"Εντάξει\" για να περάσετε αυτό το μήνυμα, απλά πρέπει να πατήσετε το \"Εντάξει\" ξανά όταν το Android ζητήσει την άδειά σας για απεγκατάσταση. Θα μεταφερθείτε μετά στην ιστοσελίδα Market για επανεγκατάσταση.\n\nΣτις περισσότερες περιπτώσεις οι προτιμήσεις των χρηστών επαναφέρονται με πιθανή εξαίρεση τις ειδοποιήσεις, οι οποίες θα πρέπει να ξαναδημιουργηθούν. Επειδή όμως αυτό δεν είναι απόλυτα σίγουρο κάντε επανέλεγχο των ρυθμίσεων μετά την επανεγκατάσταση.\n\nΕυχαριστώ, απολαύστε όλες τις νέες δυνατότητες!</string>
   <string name="confirm_clear_logs" formatted="false">Θέλετε να διαγράψετε όλες τις καταγραφές δεδομένων;</string>
   <string name="confirm_ten_percent_enable" formatted="false">Θέλετε να ενεργοποιήσετε τη λειτουργία 10%;</string>
   <string name="confirm_ten_percent_disable" formatted="false">Θέλετε να απενεργοποιήσετε τη λειτουργία 10%;</string>
@@ -105,7 +103,6 @@
   <string name="charging_from" formatted="false">Φόρτιση από</string>
   <string name="fully_charged" formatted="false">Πλήρως Φορτισμένη</string>
   <string name="since" formatted="false">Από</string>
-  <string name="one_six_needed" formatted="false">Λυπύμαστε, Απαιτείται Android 1.6+ !</string>
   <string name="currently_using" formatted="false">Τώρα χρησιμοποιείται</string>
   <string name="currently_set_to" formatted="false">"Τώρα έχει ρυθμιστεί σε: "</string>
   <string name="currently_disabled" formatted="false">Απενεργοποιημένο Τώρα</string>

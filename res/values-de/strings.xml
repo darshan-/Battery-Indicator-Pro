@@ -102,7 +102,6 @@
   <string name="charging_from" formatted="false">Lädt von</string>
   <string name="fully_charged" formatted="false">Voll geladen</string>
   <string name="since" formatted="false">Seit</string>
-  <string name="one_six_needed" formatted="false">Entschuldigung, Android 1.6+ wird benötigt!</string>
   <string name="currently_using" formatted="false">Im Moment</string>
   <string name="currently_set_to" formatted="false">"Im Moment gesetzt auf: "</string>
   <string name="currently_disabled" formatted="false">Im Moment ausgeschalten</string>

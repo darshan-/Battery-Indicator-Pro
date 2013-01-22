@@ -21,8 +21,6 @@
   <string name="cancel" formatted="false">Zrušiť</string>
   <string name="confirm_close" formatted="false">Naozaj zavrieť?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator bude úplne zatvorený a nebudete ho viac vidieť ani v notifikačnej lište.\n\nAk len chcete odísť z hlavného okna a nechať indikátor spustený, stlačte Zrušiť a potom stlačte na vašom telefóne tlačidlo späť pre odídenie z hlavného okna.</string>
-  <string name="need_uninstall" formatted="false">Je potrebné odinštalovanie</string>
-  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro je potrebné odinštalovať a následne znovu nainštalovať aby mohol byť dokončený upgrade na novú verziu. Ospravedlňujeme sa za komplikácie. Je to nutné z dôvodu technických limitov Androidu. Pri ďaľších upgradoch to nebude potrebné.\n\nPo kliknutí na \'OK\' pre opustenie tejto správy, kliknite na \'OK\' znova keď bude od Vás Android požadovať povolenie na odinštalovanie. Následne budete presmerovaní na stránku Marketu, kde budete môcť aplikáciu znovu nainštalovať.\n\nVäčšine používateľov sa nastavenia obnovia s výnimkou upozornení, ktoré musia byť znovu vytvorené. Nemôžeme Vám to garantovať, avšak uistite sa o tom v nastaveniach aplikácie po inštalácii.\n\nĎakujeme a dúfame, že sa Vám budú nové funkcie páčiť!</string>
   <string name="confirm_clear_logs" formatted="false">Naozaj odstrániť všetky záznamy?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Naozaj zapnúť 10% mód?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Naozaj vypnúť 10% mód?</string>
@@ -105,7 +103,6 @@
   <string name="charging_from" formatted="false">Nabíjanie od</string>
   <string name="fully_charged" formatted="false">Plne nabitá</string>
   <string name="since" formatted="false">Od</string>
-  <string name="one_six_needed" formatted="false">Prepáčte, je požadovaný Android 1.6+!</string>
   <string name="currently_using" formatted="false">Práve používate</string>
   <string name="currently_set_to" formatted="false">"V súčasnosti nastavený na: "</string>
   <string name="currently_disabled" formatted="false">Aktuálne vypnutý</string>

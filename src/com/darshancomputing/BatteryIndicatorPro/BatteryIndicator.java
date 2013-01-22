@@ -281,28 +281,28 @@ public class BatteryIndicator extends Activity {
 
             dialog = builder.create();
             break;
-        case DIALOG_NEED_UNINSTALL:
-            builder.setTitle(res.getString(R.string.need_uninstall))
-                .setMessage(res.getString(R.string.need_uninstall_hint))
-                .setPositiveButton(res.getString(R.string.okay), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface di, int id) {
-                        try {
-                            startActivity(new Intent(Intent.ACTION_VIEW,
-                                                     Uri.parse("market://details?id=com.darshancomputing.BatteryIndicatorPro")));
-                        } catch (Exception e) {
-                            Toast.makeText(getApplicationContext(), "Sorry, can't launch Market!", Toast.LENGTH_SHORT).show();
-                        }
+        // case DIALOG_NEED_UNINSTALL:
+        //     builder.setTitle(res.getString(R.string.need_uninstall))
+        //         .setMessage(res.getString(R.string.need_uninstall_hint))
+        //         .setPositiveButton(res.getString(R.string.okay), new DialogInterface.OnClickListener() {
+        //             public void onClick(DialogInterface di, int id) {
+        //                 try {
+        //                     startActivity(new Intent(Intent.ACTION_VIEW,
+        //                                              Uri.parse("market://details?id=com.darshancomputing.BatteryIndicatorPro")));
+        //                 } catch (Exception e) {
+        //                     Toast.makeText(getApplicationContext(), "Sorry, can't launch Market!", Toast.LENGTH_SHORT).show();
+        //                 }
 
-                        startActivity(new Intent(Intent.ACTION_DELETE,
-                                                 Uri.parse("package:com.darshancomputing.BatteryIndicatorPro")));
+        //                 startActivity(new Intent(Intent.ACTION_DELETE,
+        //                                          Uri.parse("package:com.darshancomputing.BatteryIndicatorPro")));
 
-                        finish();
-                        di.cancel();
-                    }
-                });
+        //                 finish();
+        //                 di.cancel();
+        //             }
+        //         });
 
-            dialog = builder.create();
-            break;
+        //     dialog = builder.create();
+        //     break;
         default:
             dialog = null;
         }
@@ -353,7 +353,7 @@ public class BatteryIndicator extends Activity {
                 startActivity(batteryUseIntent);
                 if (settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_BATTERY_USE, false)) finish();
             } catch (Exception e) {
-                Toast.makeText(context, res.getString(R.string.one_six_needed), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, res.getString(R.string.one_six_needed), Toast.LENGTH_SHORT).show();
                 battery_use_b.setEnabled(false);
             }
         }

@@ -19,7 +19,6 @@
   <string name="cancel" formatted="false">Prekliči</string>
   <string name="confirm_close" formatted="false">Ste prepričani da želite zapreti?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator bo popolnoma zaprt in ga ne boste več videli v statusni vrstici.\n\nČe bi radi zaprli le glavno okno in pustili indikator zagnan, pritisnite Prekliči in nato samo pritisnite tipko NAZAJ na napravi da zapustite glavno okno.</string>
-  <string name="need_uninstall" formatted="false">Potrebno je odstranjevanje</string>
   <string name="confirm_clear_logs" formatted="false">Ste prepričani da želite izbrisati vsa poročila?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Ste prepričani da želite omogočiti 10% način?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Ste prepričani da želite onemogočiti 10% način?</string>
@@ -99,7 +98,6 @@
   <string name="charging_from" formatted="false">Polnjenje od</string>
   <string name="fully_charged" formatted="false">Napolnjeno</string>
   <string name="since" formatted="false">od</string>
-  <string name="one_six_needed" formatted="false">Oprostite, potreben je Android 1.6+!</string>
   <string name="currently_using" formatted="false">Trenutno uporabljeno</string>
   <string name="currently_set_to" formatted="false">"Trenutno nastavljeno na: "</string>
   <string name="currently_disabled" formatted="false">Trenutno onemogočeno</string>

@@ -100,7 +100,6 @@
   <string name="charging_from" formatted="false">Nabíjení od</string>
   <string name="fully_charged" formatted="false">Plně nabito</string>
   <string name="since" formatted="false">od</string>
-  <string name="one_six_needed" formatted="false">Sorry, potřebuješ Android 1.6 a vyšší !</string>
   <string name="currently_using" formatted="false">Aktuální používání</string>
   <string name="currently_set_to" formatted="false">"Aktuálně nastaveno: "</string>
   <string name="currently_disabled" formatted="false">Aktuálně zakázáno</string>

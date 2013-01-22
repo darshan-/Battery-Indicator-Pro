@@ -18,7 +18,6 @@
   <string name="cancel" formatted="false">Отмена</string>
   <string name="confirm_close" formatted="false">Действительно закрыть?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator будет полностью закрыт и Вы не увидите индикатор в строке состояния.\n\nЕсли Вы хотите выйти из главного меню и оставить индикатор активным, нажмите \"Отмена\" и после этого просто нажмите кнопку \"BACK\" для выхода из главного меню.</string>
-  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro необходимо удалить и установить заново для завершения крупного обновления. Прошу прощения за неудобства! Это необходимо сделать ввиду технических ограничений операционной системы Android. Этого больше не потребуется делать при последующих обновлениях.\n\nПосле того, как Вы нажмете \'Okay\' для закрытия этого сообщения, Вам будет нужно просто еще раз нажать \'Okay\', когда Android попросит разрешения удалить программу. Затем Вы перейдете на страницу Android Market, где сможете переустановить приложение.\n\nУ большинства пользователей настройки приложения сохраняться, за исключением настроек оповещений, которые необходимо будет настроить заново. И всё же, я не могу гарантировать, что настройки сохранятся, поэтому проверьте их после переустановки.\n\nСпасибо, я надеюсь, Вам понравятся новые функции!</string>
   <string name="confirm_clear_logs" formatted="false">Действительно удалить весь журнал работы?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Действительно включить режим 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Действительно выключить режим 10%?</string>
@@ -100,7 +99,6 @@
   <string name="charging_from" formatted="false">Заряжается с</string>
   <string name="fully_charged" formatted="false">Полностью заряжено</string>
   <string name="since" formatted="false">С</string>
-  <string name="one_six_needed" formatted="false">Извините, для работы необходим Android 1.6 и старше!</string>
   <string name="currently_using" formatted="false">Текущее использование</string>
   <string name="currently_set_to" formatted="false">"Текущая настройка: "</string>
   <string name="currently_disabled" formatted="false">Сейчас отключено</string>

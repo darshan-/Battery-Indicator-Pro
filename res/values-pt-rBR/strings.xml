@@ -20,8 +20,6 @@
   <string name="cancel" formatted="false">Cancelar</string>
   <string name="confirm_close" formatted="false">Deseja realmente fechar?</string>
   <string name="confirm_close_hint" formatted="false">O Estado da Bateria será fechado completamente, e não será mais exibido na barra de estado.\n\nSe quiser sair da janela principal e manter o indicador rodando, aperte Cancelar e depois a tecla BACK do seu aparelho.</string>
-  <string name="need_uninstall" formatted="false">Desinstalação Necessária</string>
-  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro precisa ser desinstalado e reinstalado para completar esse upgrade. Sinto muito pelo inconveniente. Isso é necessário devido a uma limitação técnica do Android. Isso não será mais necessário para upgrades futuros.\n\nApós clicar OK para dispensar essa mensagem, você apenas terá que clicar e OK novamente quando o Android te pedir permissão para desinstalar. Após isso, você será levado à tela do Market onde poderá reinstalar o aplicativo.\n\nA maior parte dos usuários terão suas preferências restauradas, com exceção dos alarmes que terão de ser recriados. Isso não é garantido, portanto revise suas configurações após reinstalar.\n\nObrigado, e espero que você goste de todas as novas features!</string>
   <string name="confirm_clear_logs" formatted="false">Limpar todos os logs?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Ativar mesmo o modo 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Desativar mesmo o modo 10%?</string>
@@ -75,7 +73,6 @@
   <string name="charging_from" formatted="false">Carregando de</string>
   <string name="fully_charged" formatted="false">Completamente Carregado</string>
   <string name="since" formatted="false">Desde</string>
-  <string name="one_six_needed" formatted="false">Desculpe, Android 1.6 ou superior é necessário!</string>
   <string name="currently_using" formatted="false">Usando</string>
   <string name="currently_set_to" formatted="false">"Definido para: "</string>
   <string name="currently_disabled" formatted="false">Desativado</string>

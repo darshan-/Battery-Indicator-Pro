@@ -21,8 +21,6 @@
   <string name="cancel" formatted="false">Annuleren</string>
   <string name="confirm_close" formatted="false">Sluiten?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator zal volledig worden afgesloten, en het statusbalkicoon zal ook weggaan.\n\nWil je alleen dit venster sluiten en de indicator actief houden, druk dan op Annulerem en druk op de TERUG knop om het venster te sluiten.</string>
-  <string name="need_uninstall" formatted="false">Herinstallatie nodig</string>
-  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro moeten worden gedeinstalleerd en dan opnieuw worden geinstalleerd om deze update te voltooien. Sorry voor het ongemak. Dit is noodzakelijk door technische limitaties van Android. Het zal na deze update niet meer noodzakelijk zijn.\n\nNadat je op \'OK\' hebt gedrukt, hoef je alleen nog een keer op \'OK\' te drukken als wordt gevraagd of je wilt deinstalleren. Hierna zul je naar de Android Market worden gebracht waar je het weer kunt installeren.\n\nDe meeste gebruikers zullen hun instellingen behouden, met uitzondering van alarmen. Bekijk voor de zekerheid je instellingen na de installatie.\n\nBedankt, en ik hoop dat de nieuwe mogelijkheden je zullen bevallen!</string>
   <string name="confirm_clear_logs" formatted="false">Alle logboeken verwijderen?</string>
   <string name="configure_log_filter" formatted="false">Welke logitems laten zien?</string>
   <string name="confirm_ten_percent_enable" formatted="false">10% Modus activeren?</string>
@@ -105,7 +103,6 @@
   <string name="charging_from" formatted="false">Aan het opladen vanaf</string>
   <string name="fully_charged" formatted="false">Volledig opgeladen</string>
   <string name="since" formatted="false">sinds</string>
-  <string name="one_six_needed" formatted="false">Sorry, dit werkt alleen met Android 1.6+!</string>
   <string name="currently_using" formatted="false">Je gebruikt nu</string>
   <string name="currently_set_to" formatted="false">"Ingesteld op: "</string>
   <string name="currently_disabled" formatted="false">Momenteel uitgeschakeld</string>

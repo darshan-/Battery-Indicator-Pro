@@ -21,8 +21,6 @@
   <string name="cancel" formatted="false">Anuluj</string>
   <string name="confirm_close" formatted="false">Zamknąć?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator zostanie zamknięty i nie będziesz widział statusu w powiadomieniach.\n\nJeżeli chcesz widzieć status, zostaw program uruchomiony naciskając Anuluj a następnie przycisk Wstecz.</string>
-  <string name="need_uninstall" formatted="false">Potrzeba odinstalowania</string>
-  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro musi zostać odinstalowany a następnie zainstalowany ponownie by dokończyć ulepszanie. Przepraszam za uniedogododnienia. Jest to wymagane z przyczyn technicznych systemu. Nie będzie to wymagane przy kolejnych poprawkach.\n\nPo zamknięciu tej wiadomości przyciskiem \'Okay\' naciśnij go ponownie by odinstalować program. Następnie zostaniesz przeniesiony na stronę marketu, gdzie możesz zainstalować program ponownie. /n /n Ustawienia większości użytkowników są przywracane za wyjątkiem alarmów, które muszą zostać utworzone ponownie. Jednakże upewnij się, że wszystkie ustawienia są poprawne udając się do ustawień.\n\nDziękuję i mam nadzieję, że wszystkie nowe opcje spodobają Ci się.</string>
   <string name="confirm_clear_logs" formatted="false">Usunąć wszystkie logi?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Włączyć tryb 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Wyłączyć tryb 10%</string>
@@ -105,7 +103,6 @@
   <string name="charging_from" formatted="false">Ładowanie od</string>
   <string name="fully_charged" formatted="false">W pełni naładowana</string>
   <string name="since" formatted="false">Od</string>
-  <string name="one_six_needed" formatted="false">Tylko dla Android 1.6+!</string>
   <string name="currently_using" formatted="false">W użyciu</string>
   <string name="currently_set_to" formatted="false">"Ustawione na: "</string>
   <string name="currently_disabled" formatted="false">Wyłączone</string>

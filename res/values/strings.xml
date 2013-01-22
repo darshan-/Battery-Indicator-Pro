@@ -35,26 +35,6 @@
     button to leave the main window.
   </string>
 
-  <string formatted="false" name="need_uninstall">Uninstall Needed</string>
-  <string formatted="false" name="need_uninstall_hint">
-    Battery Indicator Pro needs to be uninstalled and then reinstalled
-    in order to complete this major upgrade. I\'m very sorry for the
-    inconvenience. This is required due to a technical limitation of
-    Android. It will not be required again for any future upgrades.\n
-
-    \nAfter clicking \'Okay\' to dismiss this message, you simply need
-    to click \'Okay\' again when Android asks for your permission to
-    uninstall. You will then be taken to the Market page where you can
-    reinstall.\n
-
-    \nMost users will have their preferences restored with the
-    exception of their alarms, which will need to be recreated. This
-    can\'t be guaranteed, however so be sure to go through the
-    settings after reinstalling.\n
-
-    \nThanks, and I hope you like all the new features!
-  </string>
-
   <string formatted="false" name="confirm_clear_logs">Really clear all logs?</string>
 
   <string formatted="false" name="configure_log_filter">Show which log items?</string>
@@ -196,8 +176,6 @@
     <item quantity="one">For %d Hour</item>
     <item quantity="other">For %d Hours</item>
   </plurals>
-
-  <string formatted="false" name="one_six_needed">Sorry, Android 1.6+ needed!</string>
 
   <string formatted="false" name="currently_using">Currently using</string>
   <string formatted="false" name="currently_set_to">"Currently set to: "</string>

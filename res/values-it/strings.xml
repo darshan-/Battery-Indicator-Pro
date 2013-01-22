@@ -21,8 +21,6 @@
   <string name="cancel" formatted="false">Annulla</string>
   <string name="confirm_close" formatted="false">Vuoi davvero uscire?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator sarà completamente chiuso, e non sarà più visualizzato nella barra di stato.\n\nSe si desidera solo abbandonare la finestra principale e mantenere l\'indicatore in esecuzione, premere Annulla e quindi premere il pulsante INDIETRO del tuo cellulare per uscire dalla finestra principale.</string>
-  <string name="need_uninstall" formatted="false">E\' necessario disinstallare</string>
-  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro ha bisogno di essere disinstallato e poi reinstallato per completare questo importante aggiornamento. Mi dispiace molto per il disagio. Questo è necessario a causa di una limitazione tecnica di Android. Non sarà necessario ripetere l\'operazione per gli aggiornamenti futuri.\n\nDopo aver fatto clic su \"ok\" per chiudere questo messaggio, devi semplicemente rifare clic su \"ok\" quando Android chiede il permesso di disinstallare. Sarai quindi reindirizzato alla pagina di Google Play dove potrai reinstallarlo.\n\nLa maggior parte degli utenti avranno le preferenze ripristinate con l\'eccezione degli allarmi, che dovranno essere ricreati. Questo non è comunque garantito, per essere sicuri verificare le impostazioni dopo la reinstallazione.\n\nGrazie, spero vi piacciano le nuove caratteristiche.</string>
   <string name="confirm_clear_logs" formatted="false">Vuoi davvero cancellare tutto il registro?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Vuoi davvero attivare la modalità 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Vuoi davvero disattivare la modalità 10%?</string>
@@ -105,7 +103,6 @@
   <string name="charging_from" formatted="false">In carica dalle</string>
   <string name="fully_charged" formatted="false">Completamente carico</string>
   <string name="since" formatted="false">Dalle</string>
-  <string name="one_six_needed" formatted="false">Ci spiace, è necessario Android 1.6 o superiore!</string>
   <string name="currently_using" formatted="false">Attualmente in uso</string>
   <string name="currently_set_to" formatted="false">"Attualmente impostato su: "</string>
   <string name="currently_disabled" formatted="false">Attualmente disattivato</string>

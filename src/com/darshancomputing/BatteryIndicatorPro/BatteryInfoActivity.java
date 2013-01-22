@@ -46,6 +46,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.larvalabs.svgandroid.SVG;
+import com.larvalabs.svgandroid.SVGParser;
+
+
 public class BatteryInfoActivity extends Activity {
     private Intent biServiceIntent;
     private SharedPreferences settings;
@@ -63,14 +67,12 @@ public class BatteryInfoActivity extends Activity {
     private int percent = -1;
     private Button battery_use_b;
     private Button toggle_lock_screen_b;
-    private boolean early_exit = false;
 
     private String oldLanguage = null;
 
     private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
     private static final int DIALOG_CONFIRM_CLOSE = 1;
     private static final int DIALOG_FIRST_RUN = 2;
-    private static final int DIALOG_NEED_UNINSTALL = 3;
 
     private final Handler mHandler = new Handler();
     private final Runnable mUpdateStatus = new Runnable() {
@@ -110,41 +112,37 @@ public class BatteryInfoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.battery_info);
 
-        try {
-            (new AlarmDatabase(context)).close();
-        } catch (Exception e) {
-            early_exit = true;
-            showDialog(DIALOG_NEED_UNINSTALL);
-        }
+        sp_store = context.getSharedPreferences("sp_store", 0);
 
-        if (!early_exit) {
-            sp_store = context.getSharedPreferences("sp_store", 0);
+        disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
 
-            disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
-
-            if (settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putBoolean(SettingsActivity.KEY_FIRST_RUN, false);
-                editor.commit();
-            }
-
-            biServiceIntent = new Intent(this, BatteryIndicatorService.class);
-            startService(biServiceIntent);
-            bindService(biServiceIntent, biServiceConnection, 0);
-
-            SharedPreferences.Editor editor = sp_store.edit();
-            editor.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, true);
+        if (settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean(SettingsActivity.KEY_FIRST_RUN, false);
             editor.commit();
-
-            if (! res.getBoolean(R.bool.show_main_title))
-                setTitle("");
         }
+
+        biServiceIntent = new Intent(this, BatteryIndicatorService.class);
+        startService(biServiceIntent);
+        bindService(biServiceIntent, biServiceConnection, 0);
+
+        SharedPreferences.Editor editor = sp_store.edit();
+        editor.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, true);
+        editor.commit();
+
+        long startTM = System.currentTimeMillis();
+        SVG svg = SVGParser.getSVGFromResource(res, R.raw.empty_battery);
+        System.out.println(".................. Parsing SVG took " +
+                           (System.currentTimeMillis() - startTM) + "ms");
+
+        //if (! res.getBoolean(R.bool.show_main_title))
+        //    setTitle("");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (!early_exit) unbindService(biServiceConnection);
+        unbindService(biServiceConnection);
     }
 
     /*private void restartIfLanguageChanged() {
@@ -160,15 +158,13 @@ public class BatteryInfoActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (!early_exit) {
-            registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
-        }
+        registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (!early_exit) unregisterReceiver(mBatteryInfoReceiver);
+        unregisterReceiver(mBatteryInfoReceiver);
     }
 
     @Override
@@ -266,28 +262,6 @@ public class BatteryInfoActivity extends Activity {
 
             dialog = builder.create();
             break;
-        case DIALOG_NEED_UNINSTALL:
-            builder.setTitle(res.getString(R.string.need_uninstall))
-                .setMessage(res.getString(R.string.need_uninstall_hint))
-                .setPositiveButton(res.getString(R.string.okay), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface di, int id) {
-                        try {
-                            startActivity(new Intent(Intent.ACTION_VIEW,
-                                                     Uri.parse("market://details?id=com.darshancomputing.BatteryIndicatorPro")));
-                        } catch (Exception e) {
-                            Toast.makeText(getApplicationContext(), "Sorry, can't launch Market!", Toast.LENGTH_SHORT).show();
-                        }
-
-                        startActivity(new Intent(Intent.ACTION_DELETE,
-                                                 Uri.parse("package:com.darshancomputing.BatteryIndicatorPro")));
-
-                        finish();
-                        di.cancel();
-                    }
-                });
-
-            dialog = builder.create();
-            break;
         default:
             dialog = null;
         }
@@ -338,7 +312,6 @@ public class BatteryInfoActivity extends Activity {
                 startActivity(batteryUseIntent);
                 if (settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_BATTERY_USE, false)) finish();
             } catch (Exception e) {
-                Toast.makeText(context, res.getString(R.string.one_six_needed), Toast.LENGTH_SHORT).show();
                 battery_use_b.setEnabled(false);
             }
         }

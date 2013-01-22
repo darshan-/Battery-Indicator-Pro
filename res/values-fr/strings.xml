@@ -21,8 +21,6 @@
   <string name="cancel" formatted="false">Annuler</string>
   <string name="confirm_close" formatted="false">Fermer l\'application ?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator va être complètement fermé et l\'indicateur de batterie va être retiré de la barre d\'état.\n\nSi vous souhaitez juste fermer la fenêtre principale et garder l\'indicateur de batterie affiché, appuyez sur Annuler et pressez simplement le bouton retour de votre téléphone.</string>
-  <string name="need_uninstall" formatted="false">Désinstallation requise</string>
-  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro a besoin d\'être désinstallé puis réinstallé pour pouvoir bénéficier de cette mise à jour majeure. Je suis désolé pour ce désagrément. Ceci est requis en raison d\'une limitation technique d\'Android. Cela ne sera plus le cas pour les mises à jour ultérieures.\n\nAprès avoir cliqué sur \'Ok\' pour faire disparaître ce message, il vous suffit de cliquer sur \'Ok\' à nouveau lorsque Android demande votre autorisation pour désinstaller. Vous serez alors redirigé vers la page du Market où vous pouvez réinstaller.\n\nLa plupart des utilisateurs verront leurs préférences restaurées à l\'exception de leurs alarmes, qui devront être recréées. Cela ne peut être garanti, veuillez donc le vérifier dans les paramètres après la réinstallation.\n\nMerci, et j\'espère que vous apprécierez les nouvelles fonctionnalités!</string>
   <string name="confirm_clear_logs" formatted="false">Voulez-vous vraiment vider les journaux ?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Activer le \"Mode 10%\" ?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Désactiver le \"Mode 10%\" ?</string>
@@ -105,7 +103,6 @@
   <string name="charging_from" formatted="false">En charge depuis</string>
   <string name="fully_charged" formatted="false">Complètement chargée</string>
   <string name="since" formatted="false">depuis</string>
-  <string name="one_six_needed" formatted="false">Désolé, Android 1.6+ est requis !</string>
   <string name="currently_using" formatted="false">Valeur actuelle :</string>
   <string name="currently_set_to" formatted="false">"Valeur actuelle :"</string>
   <string name="currently_disabled" formatted="false">Actuellement désactivé</string>

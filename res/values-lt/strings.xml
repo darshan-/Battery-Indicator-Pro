@@ -21,8 +21,6 @@
   <string name="cancel" formatted="false">Nutraukti</string>
   <string name="confirm_close" formatted="false">Tikrai Uždaryti?</string>
   <string name="confirm_close_hint" formatted="false">Baterijos Indikatorius bus visiškai uždarytas ir Jūs jo nebematysite savo būsenos juostoje.\n\nJei jus tiesiog norite palikti pagrindinį langą ir leisti indikatoriui toliau veikti, paspauskite Nutraukti ir tada paspauskite Grįžti mygtuką, ant savo telefono.</string>
-  <string name="need_uninstall" formatted="false">Būtinas Ištrinimas</string>
-  <string name="need_uninstall_hint" formatted="false">Baterijos Indikatorius Pro reikalauja ištrynimo ir perrašymo, kad būtų galima užbaigti šį atnaujinimą. Aš labai apgailestauju dėl šio nepatogumo. Tačiau tai būtina dėl Android techninių apribojimų. Ateityje to daugiau daryti nereikės.\n\nPo to kai paspausite \"Gerai\", kad išjungtumėte šį pranešimą, paprasčiausiai vėl paspauskite \"Gerai\", kai Android paprašys Jūsų leidimo ištrynimui. Po viso šito, Jūs būsite perkeltas į Android Market programos perrašymui.</string>
   <string name="confirm_clear_logs" formatted="false">Ar tikrai ištrinti visus įrašus?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Ar tikrai įjungti 10% Režimą?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Ar tikrai išjungti 10% Režimą?</string>
@@ -105,7 +103,6 @@
   <string name="charging_from" formatted="false">Iškraunama nuo</string>
   <string name="fully_charged" formatted="false">Pilnai įkrauta</string>
   <string name="since" formatted="false">Nuo</string>
-  <string name="one_six_needed" formatted="false">Apgailestaujame, reikalinga Android 1.6+ versija</string>
   <string name="currently_using" formatted="false">Dabar naudojama</string>
   <string name="currently_set_to" formatted="false">"Dabar nustatyta: "</string>
   <string name="currently_disabled" formatted="false">Dabar išjungta</string>

@@ -71,7 +71,6 @@
   <string name="charging_from" formatted="false">A carregar de</string>
   <string name="fully_charged" formatted="false">Completamente Carregado</string>
   <string name="since" formatted="false">Desde</string>
-  <string name="one_six_needed" formatted="false">Lamento, precisas de Android 1.6 ou superior!</string>
   <string name="currently_using" formatted="false">A usar</string>
   <string name="currently_set_to" formatted="false">"Definido para: "</string>
   <string name="currently_disabled" formatted="false">Desactivado</string>
