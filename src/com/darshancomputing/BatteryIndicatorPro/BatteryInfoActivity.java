@@ -46,10 +46,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.larvalabs.svgandroid.SVG;
-import com.larvalabs.svgandroid.SVGParser;
-
-
 public class BatteryInfoActivity extends Activity {
     private Intent biServiceIntent;
     private SharedPreferences settings;
@@ -130,10 +126,10 @@ public class BatteryInfoActivity extends Activity {
         editor.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, true);
         editor.commit();
 
-        long startTM = System.currentTimeMillis();
+        /*long startTM = System.currentTimeMillis();
         SVG svg = SVGParser.getSVGFromResource(res, R.raw.empty_battery);
         System.out.println(".................. Parsing SVG took " +
-                           (System.currentTimeMillis() - startTM) + "ms");
+        (System.currentTimeMillis() - startTM) + "ms");*/
 
         //if (! res.getBoolean(R.bool.show_main_title))
         //    setTitle("");
