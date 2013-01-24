@@ -24,25 +24,38 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.view.View;
+import android.widget.ImageView;
 
-class BatteryLevelView extends View {
-    private static final int    WIDTH = 222;
-    private static final int    TOP_H = 59;
-    private static final int   BODY_H = 418;
-    private static final int BOTTOM_H = 35;
-
+class BatteryLevelView extends ImageView {
     private int level = 100;
     private Bitmap battery;
     private Paint bitmap_paint;
+
+    private int width, top_h, body_h, bottom_h;
+    private Bitmap battery_top, battery_body, battery_bottom;
 
     public BatteryLevelView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         Resources res = context.getResources();
 
+        BitmapFactory bf = new BitmapFactory();
+        BitmapFactory.Options bfo = new BitmapFactory.Options();
+        bfo.inDensity = DisplayMetrics.DENSITY_DEFAULT;
+        bfo.inScaled = false;
+        bfo.inTargetDensity = DisplayMetrics.DENSITY_DEFAULT;
+
+        battery_top    = bf.decodeResource(res, R.drawable.empty_battery_top   , bfo);
+        battery_body   = bf.decodeResource(res, R.drawable.empty_battery_body  , bfo);
+        battery_bottom = bf.decodeResource(res, R.drawable.empty_battery_bottom, bfo);
+
+           width = battery_top.getWidth();
+           top_h = battery_top.getHeight();
+          body_h = battery_body.getHeight();
+        bottom_h = battery_bottom.getHeight();
+
         Canvas canvas = new Canvas();
-        battery = Bitmap.createBitmap(WIDTH, TOP_H + BODY_H + BOTTOM_H, Bitmap.Config.ARGB_8888);
+        battery = Bitmap.createBitmap(width, top_h + body_h + bottom_h, Bitmap.Config.ARGB_8888);
         battery.setDensity(DisplayMetrics.DENSITY_DEFAULT);
         canvas.setBitmap(battery);
 
@@ -57,23 +70,13 @@ class BatteryLevelView extends View {
         fill_paint.setStyle(Paint.Style.FILL);
         fill_paint.setDither(true);
 
-        RectF body_rect = new RectF(0, TOP_H*3, WIDTH, TOP_H + BODY_H);
+        RectF body_rect = new RectF(0, top_h*3, width, top_h + body_h);
 
         canvas.drawRoundRect(body_rect, 7.5f, 7.5f, fill_paint);
 
         bitmap_paint = new Paint();
         bitmap_paint.setAntiAlias(true);
         bitmap_paint.setDither(true);
-
-        BitmapFactory bf = new BitmapFactory();
-        BitmapFactory.Options bfo = new BitmapFactory.Options();
-        bfo.inDensity = DisplayMetrics.DENSITY_DEFAULT;
-        bfo.inScaled = false;
-        bfo.inTargetDensity = DisplayMetrics.DENSITY_DEFAULT;
-
-        Bitmap battery_top    = bf.decodeResource(res, R.drawable.empty_battery_top   , bfo);
-        Bitmap battery_body   = bf.decodeResource(res, R.drawable.empty_battery_body  , bfo);
-        Bitmap battery_bottom = bf.decodeResource(res, R.drawable.empty_battery_bottom, bfo);
 
         System.out.println("..........battery_top: " + battery_top.getWidth() + "x" + battery_top.getHeight());
         System.out.println("..........battery_body: " + battery_body.getWidth() + "x" + battery_body.getHeight());
@@ -83,15 +86,17 @@ class BatteryLevelView extends View {
         System.out.println("..........battery.getDensity(): " + battery.getDensity());
 
         canvas.drawBitmap(battery_top   , 0, 0             , bitmap_paint);
-        canvas.drawBitmap(battery_body  , 0, TOP_H         , bitmap_paint);
-        canvas.drawBitmap(battery_bottom, 0, TOP_H + BODY_H, bitmap_paint);
+        canvas.drawBitmap(battery_body  , 0, top_h         , bitmap_paint);
+        canvas.drawBitmap(battery_bottom, 0, top_h + body_h, bitmap_paint);
+
+        setImageBitmap(battery);
     }
 
     public void setLevel(int l) {
         level = l;
     }
 
-    @Override
+    /*@Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
@@ -100,7 +105,7 @@ class BatteryLevelView extends View {
         // Draw rounded rect for fullness of battery (solid, height and color determined by charge level)
         //canvas.drawRect(...);
         canvas.drawBitmap(battery, 0, 0, bitmap_paint);
-    }
+    }*/
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
