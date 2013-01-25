@@ -91,7 +91,7 @@ public class BatteryInfoActivity extends Activity {
 
             percent = level * 100 / scale;
 
-            updateBatteryLevelView(percent);
+            updateBatteryLevelView();
 
             mHandler.post(mUpdateStatus);
             /* Give the service a second to process the update */
@@ -267,9 +267,9 @@ public class BatteryInfoActivity extends Activity {
         return dialog;
     }
 
-    private void updateBatteryLevelView(int level) {
+    private void updateBatteryLevelView() {
         BatteryLevelView blv = (BatteryLevelView) findViewById(R.id.battery_level_view);
-        blv.setLevel(level);
+        blv.setLevel(percent);
     }
 
     private void updateStatus() {

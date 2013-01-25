@@ -76,6 +76,8 @@ class BatteryLevelView extends ImageView {
     }
 
     public void setLevel(int level) {
+        if (level < 0) level = 0; // I suspect we might get called with -1 in certain circumstances
+
         int rect_top = top_h + (body_h * (100 - level) / 100);
         int rect_bottom = top_h + body_h;
 
@@ -88,6 +90,8 @@ class BatteryLevelView extends ImageView {
         canvas.drawBitmap(battery_top   , 0, 0             , bitmap_paint);
         canvas.drawBitmap(battery_body  , 0, top_h         , bitmap_paint);
         canvas.drawBitmap(battery_bottom, 0, top_h + body_h, bitmap_paint);
+
+        invalidate();
     }
 
     /*@Override
