@@ -55,7 +55,6 @@ public class BatteryIndicatorService extends Service {
     private android.os.Vibrator mVibrator;
     private android.media.AudioManager mAudioManager;
 
-    private Boolean keyguardDisabled = false;
     private Notification kgUnlockedNotification;
 
     private Resources res;
@@ -157,6 +156,15 @@ public class BatteryIndicatorService extends Service {
         }
     };
 
+    private final Runnable runDisableKeyguard = new Runnable() {
+        public void run() {
+            kl = km.newKeyguardLock(getPackageName());
+            kl.disableKeyguard();
+            updateKeyguardNotification();
+        }
+    };
+
+
     @Override
     public void onCreate() {
         res = getResources();
@@ -188,7 +196,6 @@ public class BatteryIndicatorService extends Service {
                                                   "Press to re-enable", mainWindowPendingIntent);
 
         km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
-        kl = km.newKeyguardLock(getPackageName());
 
         if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
             setEnablednessOfKeyguard(false);
@@ -591,27 +598,32 @@ public class BatteryIndicatorService extends Service {
         }
     }
 
-    /* Old versions of Android (haven't experimented to determine exactly which are included), at least on
-         the emulator, really don't want you to call reenableKeyguard() if you haven't first disabled it.
-         So to stay compatible with older devices, let's add an extra setting and add this function. */
     private void setEnablednessOfKeyguard(boolean enabled) {
         if (enabled) {
-            if (keyguardDisabled) {
+            if (kl != null) {
+                unregisterReceiver(mUserPresentReceiver);
+                mHandler.removeCallbacks(runDisableKeyguard);
                 kl.reenableKeyguard();
-                keyguardDisabled = false;
+                kl = null;
             }
         } else {
-            if (! keyguardDisabled) {
-                if (km.inKeyguardRestrictedInputMode()) {
+            if (km.inKeyguardRestrictedInputMode()) {
+                registerReceiver(mUserPresentReceiver, userPresent);
+            } else {
+                if (kl != null)
+                    kl.reenableKeyguard();
+                else
                     registerReceiver(mUserPresentReceiver, userPresent);
-                } else {
-                    kl.disableKeyguard();
-                    keyguardDisabled = true;
-                }
+
+                mHandler.postDelayed(runDisableKeyguard,  300);
             }
         }
 
-        if (keyguardDisabled && settings.getBoolean(SettingsActivity.KEY_NOTIFY_WHEN_KG_DISABLED, true))
+        updateKeyguardNotification();
+    }
+
+    private void updateKeyguardNotification() {
+        if (kl != null && settings.getBoolean(SettingsActivity.KEY_NOTIFY_WHEN_KG_DISABLED, true))
             mNotificationManager.notify(NOTIFICATION_KG_UNLOCKED, kgUnlockedNotification);
         else
             mNotificationManager.cancel(NOTIFICATION_KG_UNLOCKED);
@@ -621,8 +633,6 @@ public class BatteryIndicatorService extends Service {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (Intent.ACTION_USER_PRESENT.equals(intent.getAction())){
-                unregisterReceiver(mUserPresentReceiver);
-
                 if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
                     setEnablednessOfKeyguard(false);
             }
