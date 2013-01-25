@@ -5,7 +5,7 @@
 build.xml
 bin
 gen
-libs
+#libs
 TODO
 my-release-key.keystore
 
