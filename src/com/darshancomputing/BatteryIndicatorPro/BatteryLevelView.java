@@ -27,12 +27,10 @@ import android.util.DisplayMetrics;
 import android.widget.ImageView;
 
 class BatteryLevelView extends ImageView {
-    private int level = 100;
-    private Bitmap battery;
-    private Paint bitmap_paint;
-
     private int width, top_h, body_h, bottom_h;
-    private Bitmap battery_top, battery_body, battery_bottom;
+    private Canvas canvas;
+    private Paint fill_paint, bitmap_paint;
+    private Bitmap battery_top, battery_body, battery_bottom, battery;
 
     public BatteryLevelView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -54,15 +52,13 @@ class BatteryLevelView extends ImageView {
           body_h = battery_body.getHeight();
         bottom_h = battery_bottom.getHeight();
 
-        Canvas canvas = new Canvas();
+        canvas = new Canvas();
+
         battery = Bitmap.createBitmap(width, top_h + body_h + bottom_h, Bitmap.Config.ARGB_8888);
         battery.setDensity(DisplayMetrics.DENSITY_DEFAULT);
         canvas.setBitmap(battery);
 
-        System.out.println("..........create... canvas: " + canvas.getWidth() + "x" + canvas.getHeight());
-        System.out.println("..........create... battery: " + battery.getWidth() + "x" + battery.getHeight());
-
-        Paint fill_paint = new Paint();
+        fill_paint = new Paint();
         fill_paint.setColor(0xaa33b5e5);
         fill_paint.setAntiAlias(true);
         fill_paint.setStrokeCap(Paint.Cap.ROUND);
@@ -70,30 +66,28 @@ class BatteryLevelView extends ImageView {
         fill_paint.setStyle(Paint.Style.FILL);
         fill_paint.setDither(true);
 
-        RectF body_rect = new RectF(0, top_h*3, width, top_h + body_h);
-
-        canvas.drawRoundRect(body_rect, 7.5f, 7.5f, fill_paint);
-
         bitmap_paint = new Paint();
         bitmap_paint.setAntiAlias(true);
         bitmap_paint.setDither(true);
 
-        System.out.println("..........battery_top: " + battery_top.getWidth() + "x" + battery_top.getHeight());
-        System.out.println("..........battery_body: " + battery_body.getWidth() + "x" + battery_body.getHeight());
-        System.out.println("..........battery_bottom: " + battery_bottom.getWidth() + "x" + battery_bottom.getHeight());
+        setImageBitmap(battery);
 
-        System.out.println("..........battery_top.getDensity(): " + battery_top.getDensity());
-        System.out.println("..........battery.getDensity(): " + battery.getDensity());
+        setLevel(0); // TODO: Does it make sense to show an empty battery at first, in case it take a moment to get level?
+    }
+
+    public void setLevel(int level) {
+        int rect_top = top_h + (body_h * (100 - level) / 100);
+        int rect_bottom = top_h + body_h;
+
+        RectF body_rect = new RectF(0, rect_top, width, rect_bottom);
+
+        canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR);
+
+        canvas.drawRoundRect(body_rect, 7.5f, 7.5f, fill_paint);
 
         canvas.drawBitmap(battery_top   , 0, 0             , bitmap_paint);
         canvas.drawBitmap(battery_body  , 0, top_h         , bitmap_paint);
         canvas.drawBitmap(battery_bottom, 0, top_h + body_h, bitmap_paint);
-
-        setImageBitmap(battery);
-    }
-
-    public void setLevel(int l) {
-        level = l;
     }
 
     /*@Override

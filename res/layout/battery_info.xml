@@ -5,7 +5,8 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
 >
-  <com.darshancomputing.BatteryIndicatorPro.BatteryLevelView android:layout_width="141dp"
+  <com.darshancomputing.BatteryIndicatorPro.BatteryLevelView android:id="@+id/battery_level_view"
+                                                             android:layout_width="141dp"
                                                              android:layout_height="266dp"
                                                              android:scaleType="fitXY"
                                                              android:paddingTop="10dp"
