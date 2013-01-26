@@ -73,10 +73,10 @@ public class BatteryInfoActivity extends Activity {
     private final Handler mHandler = new Handler();
     private final Runnable mUpdateStatus = new Runnable() {
         public void run() {
+            updateCurrentInfo();
             if (true) return;
             updateStatus();
             updateLockscreenButton();
-            //updateTimes();
         }
     };
 
@@ -90,8 +90,6 @@ public class BatteryInfoActivity extends Activity {
             int scale = intent.getIntExtra("scale", 100);
 
             percent = level * 100 / scale;
-
-            updateBatteryLevelView();
 
             mHandler.post(mUpdateStatus);
             /* Give the service a second to process the update */
@@ -267,9 +265,15 @@ public class BatteryInfoActivity extends Activity {
         return dialog;
     }
 
-    private void updateBatteryLevelView() {
+    private void updateCurrentInfo() {
         BatteryLevelView blv = (BatteryLevelView) findViewById(R.id.battery_level_view);
         blv.setLevel(percent);
+
+        TextView tv = (TextView) findViewById(R.id.level);
+        tv.setText("" + percent + res.getString(R.string.percent_symbol));
+
+        tv = (TextView) findViewById(R.id.time_remaining);
+        tv.setText(biServiceConnection.biService.getPrediction());
     }
 
     private void updateStatus() {

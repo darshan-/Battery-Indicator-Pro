@@ -470,7 +470,6 @@ public class BatteryIndicatorService extends Service {
                 mainNotificationText += " / " + s + "h";
             }
 
-
             long when = 0;
 
             if (settings.getBoolean(SettingsActivity.KEY_SHOW_NOTIFICATION_TIME, false))
@@ -687,5 +686,23 @@ public class BatteryIndicatorService extends Service {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public String getPrediction() {
+        int secs_left;
+        String s;
+
+        if (status == STATUS_CHARGING) {
+            secs_left = predictor.secondsUntilCharged();
+            s = " until charged";
+        } else {
+            secs_left = predictor.secondsUntilDrained();
+            s = " until drained";
+        }
+
+        int hours_left = secs_left / (60 * 60);
+        int  mins_left = (secs_left / 60) % 60;
+
+        return "" + hours_left + "h " + mins_left + "m " + s; // TODO: Translatable strings
     }
 }

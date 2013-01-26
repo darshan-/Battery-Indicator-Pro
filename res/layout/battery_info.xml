@@ -5,13 +5,49 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
 >
-  <com.darshancomputing.BatteryIndicatorPro.BatteryLevelView android:id="@+id/battery_level_view"
-                                                             android:layout_width="141dp"
-                                                             android:layout_height="266dp"
-                                                             android:scaleType="fitXY"
-                                                             android:paddingTop="10dp"
-                                                             android:paddingLeft="20dp"
-                                                             android:paddingRight="5dp"
-                                                             android:paddingBottom="5dp"
-  />
+  <LinearLayout android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+  >
+    <com.darshancomputing.BatteryIndicatorPro.BatteryLevelView android:id="@+id/battery_level_view"
+                                                               android:layout_width="0px"
+                                                               android:layout_weight="0.5"
+                                                               android:layout_height="fill_parent"
+                                                               android:scaleType="centerInside"
+                                                               android:padding="10dp"
+    />
+
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="0px"
+                  android:layout_weight="0.5"
+                  android:layout_height="fill_parent"
+    >
+      <TextView android:id="@+id/level"
+	        android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="30sp"
+                android:text="101%"
+      />
+
+      <TextView android:id="@+id/time_remaining"
+	        android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:text="20h 37m remaining"
+      />
+    </LinearLayout>
+  </LinearLayout>
+  <LinearLayout android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+  >
+  </LinearLayout>
 </LinearLayout>
