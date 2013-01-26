@@ -33,25 +33,25 @@
                 android:layout_weight="0.6"
                 android:gravity="center_horizontal|bottom"
                 android:textColor="#fff"
-                android:textSize="36sp"
+                android:textSize="@dimen/bia_level"
       />
 
-      <TextView android:id="@+id/time_remaining_time"
+      <TextView android:id="@+id/time_remaining"
 	        android:layout_width="fill_parent"
                 android:layout_height="0px"
                 android:layout_weight="0.4"
                 android:gravity="center_horizontal|bottom"
                 android:textColor="#fff"
-                android:textSize="24sp"
+                android:textSize="@dimen/bia_time_remaining"
       />
 
-      <TextView android:id="@+id/time_remaining_text"
+      <TextView android:id="@+id/until_what"
 	        android:layout_width="fill_parent"
                 android:layout_height="0px"
                 android:layout_weight="0.5"
                 android:gravity="center_horizontal|top"
                 android:textColor="#33B5E5"
-                android:textSize="16sp"
+                android:textSize="@dimen/bia_until_what"
       />
     </LinearLayout>
     <View android:layout_width="0px"

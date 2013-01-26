@@ -122,4 +122,8 @@
   <dimen name="tls_button_fs">16sp</dimen>
   <dimen name="tls_button_height">56dp</dimen>
   <dimen name="tls_button_height_fs">66dp</dimen>
+
+  <dimen name="bia_level">36sp</dimen>
+  <dimen name="bia_time_remaining">24sp</dimen>
+  <dimen name="bia_until_what">16sp</dimen>
 </resources>

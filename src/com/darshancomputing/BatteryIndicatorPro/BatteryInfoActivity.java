@@ -278,12 +278,12 @@ public class BatteryInfoActivity extends Activity {
         else
             until_text = "until drained"; // TODO: translatable
 
-        tv = (TextView) findViewById(R.id.time_remaining_time);
+        tv = (TextView) findViewById(R.id.time_remaining);
         // TODO: Translatable ("h" and "m")
-        tv.setText(android.text.Html.fromHtml("<font color=\"#88ffaa\">" + hours_left + "h</font> " +
-                                              "<font color=\"#88aaff\"><small>" +  mins_left + "m</small></font>"));
+        tv.setText(android.text.Html.fromHtml("<font color=\"#44ff88\">" + hours_left + "h</font> " +
+                                              "<font color=\"#ffffff\"><small>" +  mins_left + "m</small></font>"));
 
-        tv = (TextView) findViewById(R.id.time_remaining_text);
+        tv = (TextView) findViewById(R.id.until_what);
         tv.setText(until_text);
     }
 
