@@ -688,7 +688,7 @@ public class BatteryIndicatorService extends Service {
         }
     }
 
-    public String getPredictionTime() {
+    public int[] getPrediction() {
         int secs_left;
 
         if (status == STATUS_CHARGING) {
@@ -700,15 +700,6 @@ public class BatteryIndicatorService extends Service {
         int hours_left = secs_left / (60 * 60);
         int  mins_left = (secs_left / 60) % 60;
 
-        return "" + hours_left + "h " + mins_left + "m"; // TODO: Translatable strings ("h" and "m")
-    }
-
-    public String getPredictionText() {
-        // TODO: Translatable strings
-        if (status == STATUS_CHARGING) {
-            return "until charged";
-        } else {
-            return "until drained";
-        }
+        return new int[] {hours_left, mins_left, status};
     }
 }

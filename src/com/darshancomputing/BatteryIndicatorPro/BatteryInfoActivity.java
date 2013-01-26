@@ -264,11 +264,27 @@ public class BatteryInfoActivity extends Activity {
         TextView tv = (TextView) findViewById(R.id.level);
         tv.setText("" + percent + res.getString(R.string.percent_symbol));
 
+        int[] prediction = biServiceConnection.biService.getPrediction();
+
+        int hours_left = prediction[0];
+        int  mins_left = prediction[1];
+        int     status = prediction[2];
+
+        String until_text;
+
+        // TODO: If fully charged, still plugged in, this needs to be different
+        if (status == BatteryIndicatorService.STATUS_CHARGING)
+            until_text = "until charged"; // TODO: translatable
+        else
+            until_text = "until drained"; // TODO: translatable
+
         tv = (TextView) findViewById(R.id.time_remaining_time);
-        tv.setText(biServiceConnection.biService.getPredictionTime());
+        // TODO: Translatable ("h" and "m")
+        tv.setText(android.text.Html.fromHtml("<font color=\"#88ffaa\">" + hours_left + "h</font> " +
+                                              "<font color=\"#88aaff\"><small>" +  mins_left + "m</small></font>"));
 
         tv = (TextView) findViewById(R.id.time_remaining_text);
-        tv.setText(biServiceConnection.biService.getPredictionText());
+        tv.setText(until_text);
     }
 
     private void updateStatus() {
