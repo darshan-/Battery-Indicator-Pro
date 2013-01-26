@@ -64,7 +64,7 @@ public class BatteryInfoActivity extends Activity {
     private Button battery_use_b;
     private Button toggle_lock_screen_b;
 
-    private String oldLanguage = null;
+    //private String oldLanguage = null;
 
     private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
     private static final int DIALOG_CONFIRM_CLOSE = 1;
@@ -125,14 +125,6 @@ public class BatteryInfoActivity extends Activity {
         SharedPreferences.Editor editor = sp_store.edit();
         editor.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, true);
         editor.commit();
-
-        /*long startTM = System.currentTimeMillis();
-        SVG svg = SVGParser.getSVGFromResource(res, R.raw.empty_battery);
-        System.out.println(".................. Parsing SVG took " +
-        (System.currentTimeMillis() - startTM) + "ms");*/
-
-        //if (! res.getBoolean(R.bool.show_main_title))
-        //    setTitle("");
     }
 
     @Override
@@ -272,8 +264,11 @@ public class BatteryInfoActivity extends Activity {
         TextView tv = (TextView) findViewById(R.id.level);
         tv.setText("" + percent + res.getString(R.string.percent_symbol));
 
-        tv = (TextView) findViewById(R.id.time_remaining);
-        tv.setText(biServiceConnection.biService.getPrediction());
+        tv = (TextView) findViewById(R.id.time_remaining_time);
+        tv.setText(biServiceConnection.biService.getPredictionTime());
+
+        tv = (TextView) findViewById(R.id.time_remaining_text);
+        tv.setText(biServiceConnection.biService.getPredictionText());
     }
 
     private void updateStatus() {

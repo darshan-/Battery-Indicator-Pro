@@ -26,21 +26,28 @@
       <TextView android:id="@+id/level"
 	        android:layout_width="fill_parent"
                 android:layout_height="0px"
-                android:layout_weight="0.5"
-                android:gravity="center"
+                android:layout_weight="0.6"
+                android:gravity="center_horizontal|bottom"
                 android:textColor="#fff"
-                android:textSize="30sp"
-                android:text="101%"
+                android:textSize="36sp"
       />
 
-      <TextView android:id="@+id/time_remaining"
+      <TextView android:id="@+id/time_remaining_time"
+	        android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="0.4"
+                android:gravity="center_horizontal|bottom"
+                android:textColor="#fff"
+                android:textSize="24sp"
+      />
+
+      <TextView android:id="@+id/time_remaining_text"
 	        android:layout_width="fill_parent"
                 android:layout_height="0px"
                 android:layout_weight="0.5"
-                android:gravity="center"
-                android:textColor="#fff"
-                android:textSize="18sp"
-                android:text="20h 37m remaining"
+                android:gravity="center_horizontal|top"
+                android:textColor="#33B5E5"
+                android:textSize="16sp"
       />
     </LinearLayout>
   </LinearLayout>

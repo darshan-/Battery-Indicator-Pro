@@ -688,21 +688,27 @@ public class BatteryIndicatorService extends Service {
         }
     }
 
-    public String getPrediction() {
+    public String getPredictionTime() {
         int secs_left;
-        String s;
 
         if (status == STATUS_CHARGING) {
             secs_left = predictor.secondsUntilCharged();
-            s = " until charged";
         } else {
             secs_left = predictor.secondsUntilDrained();
-            s = " until drained";
         }
 
         int hours_left = secs_left / (60 * 60);
         int  mins_left = (secs_left / 60) % 60;
 
-        return "" + hours_left + "h " + mins_left + "m " + s; // TODO: Translatable strings
+        return "" + hours_left + "h " + mins_left + "m"; // TODO: Translatable strings ("h" and "m")
+    }
+
+    public String getPredictionText() {
+        // TODO: Translatable strings
+        if (status == STATUS_CHARGING) {
+            return "until charged";
+        } else {
+            return "until drained";
+        }
     }
 }

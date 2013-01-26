@@ -93,20 +93,4 @@ class BatteryLevelView extends ImageView {
 
         invalidate();
     }
-
-    /*@Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-
-        System.out.println("................. canvas: " + canvas.getWidth() + "x" + canvas.getHeight());
-        System.out.println("................. battery: " + battery.getWidth() + "x" + battery.getHeight());
-        // Draw rounded rect for fullness of battery (solid, height and color determined by charge level)
-        //canvas.drawRect(...);
-        canvas.drawBitmap(battery, 0, 0, bitmap_paint);
-    }*/
-
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        System.out.println("................. onSizeChanged(" + w + ", " + h + ")");
-    }
 }
