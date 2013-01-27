@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string formatted="false" name="app_full_name">Battery Indicator Pro</string>
-  <string formatted="false" name="app_launcher_name">Battery Indicator Pro</string>
-  <string formatted="false" name="settings_activity_name">Battery Indicator Pro - Settings</string><!-- depricated -->
+  <string formatted="false" name="app_launcher_name">Battery Info</string>
   <string formatted="false" name="settings_activity_subtitle">Settings</string>
-  <string formatted="false" name="help_activity_name">Battery Indicator Pro - Help</string><!-- depricated -->
   <string formatted="false" name="help_activity_subtitle">Help</string>
-  <string formatted="false" name="log_view_activity_name">Battery Indicator Pro - Logs</string><!-- depricated -->
   <string formatted="false" name="log_view_activity_subtitle">Logs</string>
 
   <string formatted="false" name="app_full_name_free">Battery Indicator</string>
-  <string formatted="false" name="settings_activity_name_free">Battery Indicator - Settings</string><!-- depricated -->
-  <string formatted="false" name="help_activity_name_free">Battery Indicator - Help</string><!-- depricated -->
 
   <string formatted="false" name="battery_use_b">View Battery Use</string>
   <string formatted="false" name="upgrade_donate_b">Upgrade/Donate...</string>
@@ -224,8 +219,6 @@
     \n• Fully configurable estimated charge/discharge time left.
     \n• Downloadable icon plugins.
     \n• Logging of battery state.
-    \n• Themes for the main window (including a full-size window with
-    large, easy-to-read text).
     \n• Manually disable/reenable the device lock screen, with the option
     to automatically disable it when plugged in and reenable it when unplugged.
     \n• Many more useful things that you\'ll discover throughout.
@@ -243,8 +236,6 @@
     \n• Fully configurable estimated charge/discharge time left.
     \n• Downloadable icon plugins.
     \n• Logging of battery state.
-    \n• Themes for the main window (including a full-size window with
-    large, easy-to-read text).
     \n• Manually disable/reenable the device lock screen, with the option
     to automatically disable it when plugged in and reenable it when unplugged.
     \n• Many more useful things that you\'ll discover throughout.
@@ -339,10 +330,9 @@
   </string>
 
   <string formatted="false" name="theme_settings">Icons and Themes</string>
-  <string formatted="false" name="theme_settings_summary">Control icon sets and window themes</string>
+  <string formatted="false" name="theme_settings_summary">Control icon sets and theming</string>
   <string formatted="false" name="theme_settings_help">
-    You can change the theme for the main window, select which icon
-    set to use, and change the settings for the icon set (e.g., colors).
+    You can select which icon set to use and change the settings for the icon set (e.g., colors).
   </string>
   <string formatted="false" name="time_settings">Time Settings</string>
   <string formatted="false" name="time_settings_summary">Control time estimates and approximations</string>
@@ -375,7 +365,7 @@
   <string formatted="false" name="pref_cat_more_settings_in_pro">More Settings in Pro</string>
   <string formatted="false" name="pref_please_upgrade">
     The Pro version has many more settings and features, including
-    colorful icons, downloadable icon plugins, alarms, window themes,
+    colorful icons, downloadable icon plugins, alarms,
     battery state logging, auto/manual lock screen disable,
     charge/discharge remaining estimates, and more.
   </string>
@@ -383,13 +373,6 @@
   <string formatted="false" name="add_alarm">Add alarm</string>
 
   <string formatted="false" name="pref_cat_themes">Themes</string>
-  <string formatted="false" name="pref_main_window_theme">Main Window Theme</string>
-  <string formatted="false" name="pref_main_window_theme_help">
-    Sets the theme for the main window.  By default, the theme will
-    roughly match a standard Android dialog, like Battery Indicator
-    always has.  The Full Window theme is useful if you like things
-    big and easy to read.  Other themes are just for fun.
-  </string>
   <string formatted="false" name="pref_icon_set">Icon Set</string>
   <string formatted="false" name="pref_icon_set_help">
     Android comes in many flavors, so there is no one perfect icon set
@@ -907,10 +890,6 @@
     request Android to flash lights, but it might not always actually
     happen.
   </string>
-
-  <string formatted="false" name="mw_theme_default_small">Default Small</string>
-  <string formatted="false" name="mw_theme_colorful_small">Colorful Small</string>
-  <string formatted="false" name="mw_theme_full_window">Full Window</string>
 
   <string formatted="false" name="boot_pref_always">Always</string>
   <string formatted="false" name="boot_pref_never">Never</string>

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009, 2010 Josiah Barber (aka Darshan)
+    Copyright (c) 2009 - 2013 Josiah Barber (aka Darshan)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -57,27 +57,25 @@ public class BatteryIndicator extends Activity {
     private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private Resources res;
     private Context context;
-    private String themeName;
+    private Str str;
     private Boolean disallowLockButton;
-    MainWindowTheme.Theme theme;
     private int percent = -1;
     private Button battery_use_b;
     private Button toggle_lock_screen_b;
-    private boolean early_exit = false;
 
-    private String oldLanguage = null;
+    //private String oldLanguage = null;
 
     private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
     private static final int DIALOG_CONFIRM_CLOSE = 1;
     private static final int DIALOG_FIRST_RUN = 2;
-    private static final int DIALOG_NEED_UNINSTALL = 3;
 
     private final Handler mHandler = new Handler();
     private final Runnable mUpdateStatus = new Runnable() {
         public void run() {
-            updateStatus();
+            updateCurrentInfo();
             updateLockscreenButton();
-            updateTimes();
+            if (true) return;
+            updateStatus();
         }
     };
 
@@ -103,57 +101,41 @@ public class BatteryIndicator extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         res = getResources();
+        str = new Str(res);
         context = getApplicationContext();
         settings = PreferenceManager.getDefaultSharedPreferences(context);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.battery_info);
 
-        try {
-            (new AlarmDatabase(context)).close();
-        } catch (Exception e) {
-            early_exit = true;
-            showDialog(DIALOG_NEED_UNINSTALL);
-        }
+        sp_store = context.getSharedPreferences("sp_store", 0);
 
-        if (!early_exit) {
-            sp_store = context.getSharedPreferences("sp_store", 0);
+        disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
 
-            if (settings.contains(BatteryIndicatorService.KEY_LAST_PERCENT)) {
-                switch_to_sp_store();
-            }
+        toggle_lock_screen_b = (Button) findViewById(R.id.toggle_lock_screen_b);
+        battery_use_b = (Button) findViewById(R.id.battery_use_b);
 
-            disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
-            themeName = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
-            setTheme();
-
-            if (settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putBoolean(SettingsActivity.KEY_FIRST_RUN, false);
-                editor.commit();
-
-                /* May have upgraded from older version before key_first_run; only show if it really is first run */
-                if (sp_store.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1) == -1)
-                    showDialog(DIALOG_FIRST_RUN);
-            }
-
-            biServiceIntent = new Intent(this, BatteryIndicatorService.class);
-            startService(biServiceIntent);
-            bindService(biServiceIntent, biServiceConnection, 0);
-
-            SharedPreferences.Editor editor = sp_store.edit();
-            editor.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, true);
+        if (settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean(SettingsActivity.KEY_FIRST_RUN, false);
             editor.commit();
-
-            if (! res.getBoolean(R.bool.show_main_title))
-                setTitle("");
         }
+
+        biServiceIntent = new Intent(this, BatteryIndicatorService.class);
+        startService(biServiceIntent);
+        bindService(biServiceIntent, biServiceConnection, 0);
+
+        SharedPreferences.Editor editor = sp_store.edit();
+        editor.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, true);
+        editor.commit();
+
+        bindButtons();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (!early_exit) unbindService(biServiceConnection);
+        unbindService(biServiceConnection);
     }
 
     /*private void restartIfLanguageChanged() {
@@ -169,15 +151,13 @@ public class BatteryIndicator extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (!early_exit) {
-            registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
-        }
+        registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (!early_exit) unregisterReceiver(mBatteryInfoReceiver);
+        unregisterReceiver(mBatteryInfoReceiver);
     }
 
     @Override
@@ -209,14 +189,8 @@ public class BatteryIndicator extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String oldThemeName = themeName;
         Boolean oldDisallow = disallowLockButton;
-        themeName = settings.getString(SettingsActivity.KEY_MW_THEME, "default");
         disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
-
-        if (! oldThemeName.equals(themeName) || oldDisallow != disallowLockButton) {
-            setTheme();
-        }
     }
 
     @Override
@@ -281,33 +255,66 @@ public class BatteryIndicator extends Activity {
 
             dialog = builder.create();
             break;
-        // case DIALOG_NEED_UNINSTALL:
-        //     builder.setTitle(res.getString(R.string.need_uninstall))
-        //         .setMessage(res.getString(R.string.need_uninstall_hint))
-        //         .setPositiveButton(res.getString(R.string.okay), new DialogInterface.OnClickListener() {
-        //             public void onClick(DialogInterface di, int id) {
-        //                 try {
-        //                     startActivity(new Intent(Intent.ACTION_VIEW,
-        //                                              Uri.parse("market://details?id=com.darshancomputing.BatteryIndicatorPro")));
-        //                 } catch (Exception e) {
-        //                     Toast.makeText(getApplicationContext(), "Sorry, can't launch Market!", Toast.LENGTH_SHORT).show();
-        //                 }
-
-        //                 startActivity(new Intent(Intent.ACTION_DELETE,
-        //                                          Uri.parse("package:com.darshancomputing.BatteryIndicatorPro")));
-
-        //                 finish();
-        //                 di.cancel();
-        //             }
-        //         });
-
-        //     dialog = builder.create();
-        //     break;
         default:
             dialog = null;
         }
 
         return dialog;
+    }
+
+    private void updateCurrentInfo() {
+        BatteryLevelView blv = (BatteryLevelView) findViewById(R.id.battery_level_view);
+        blv.setLevel(percent);
+
+        TextView tv = (TextView) findViewById(R.id.level);
+        tv.setText("" + percent + res.getString(R.string.percent_symbol));
+
+        int[] prediction = biServiceConnection.biService.getPrediction();
+
+        int hours  = prediction[0];
+        int mins   = prediction[1];
+        int status = prediction[2];
+
+        String until_text;
+
+        // TODO: If fully charged, still plugged in, this needs to be different
+        if (status == BatteryIndicatorService.STATUS_CHARGING)
+            until_text = "until charged"; // TODO: Translatable
+        else
+            until_text = "until drained"; // TODO: Translatable
+
+        tv = (TextView) findViewById(R.id.time_remaining);
+        // TODO: Translatable ("h" and "m")
+        tv.setText(android.text.Html.fromHtml("<font color=\"#44ff88\">" + hours + "h</font> " +
+                                              "<font color=\"#ffffff\"><small>" +  mins + "m</small></font>"));
+
+        tv = (TextView) findViewById(R.id.until_what);
+        tv.setText(until_text);
+
+        int last_percent = sp_store.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1);
+        int last_plugged = sp_store.getInt(BatteryIndicatorService.KEY_LAST_PLUGGED, -1);
+
+        long last_status_cTM = sp_store.getLong(BatteryIndicatorService.KEY_LAST_STATUS_CTM, -1);
+        long currentTM = System.currentTimeMillis();
+        int secs = (int) ((currentTM - last_status_cTM) / 1000);
+           hours = secs / (60 * 60);
+            mins = (secs / 60) % 60;
+
+        String s = str.statuses[status];
+
+        if (status == BatteryIndicatorService.STATUS_CHARGING)
+            s += " " + str.pluggeds[last_plugged]; /* Add '(AC)' or '(USB)' */
+
+        s += "\nSince "; // TODO: Translatable
+
+        if (status != BatteryIndicatorService.STATUS_FULLY_CHARGED)
+            s += last_percent + str.percent_symbol + ", ";
+
+        s += hours + "h " + mins + "m ago"; // TODO: Translatable
+
+        // TODO: Don't show 'since 100%' for Fully Charged status
+        tv = (TextView) findViewById(R.id.status_with_duration);
+        tv.setText(s);
     }
 
     private void updateStatus() {
@@ -353,7 +360,6 @@ public class BatteryIndicator extends Activity {
                 startActivity(batteryUseIntent);
                 if (settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_BATTERY_USE, false)) finish();
             } catch (Exception e) {
-                //Toast.makeText(context, res.getString(R.string.one_six_needed), Toast.LENGTH_SHORT).show();
                 battery_use_b.setEnabled(false);
             }
         }
@@ -389,91 +395,5 @@ public class BatteryIndicator extends Activity {
         }
 
         toggle_lock_screen_b.setOnClickListener(tlsButtonListener);
-    }
-
-    private void switch_to_sp_store() {
-        SharedPreferences.Editor settings_ed = settings.edit();
-        SharedPreferences.Editor sp_store_ed = sp_store.edit();
-
-        sp_store_ed.putString(BatteryIndicatorService.KEY_LAST_STATUS_SINCE,
-                              settings.getString(BatteryIndicatorService.KEY_LAST_STATUS_SINCE, ""));
-        settings_ed.remove(BatteryIndicatorService.KEY_LAST_STATUS_SINCE);
-
-        sp_store_ed.putLong(BatteryIndicatorService.KEY_LAST_STATUS_CTM,
-                            settings.getLong(BatteryIndicatorService.KEY_LAST_STATUS_CTM, -1));
-        settings_ed.remove(BatteryIndicatorService.KEY_LAST_STATUS_CTM);
-
-        sp_store_ed.putInt(BatteryIndicatorService.KEY_LAST_STATUS,
-                           settings.getInt(BatteryIndicatorService.KEY_LAST_STATUS, -1));
-        settings_ed.remove(BatteryIndicatorService.KEY_LAST_STATUS);
-
-        sp_store_ed.putInt(BatteryIndicatorService.KEY_LAST_PERCENT,
-                           settings.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1));
-        settings_ed.remove(BatteryIndicatorService.KEY_LAST_PERCENT);
-
-        sp_store_ed.putInt(BatteryIndicatorService.KEY_LAST_PLUGGED,
-                           settings.getInt(BatteryIndicatorService.KEY_LAST_PLUGGED, -1));
-        settings_ed.remove(BatteryIndicatorService.KEY_LAST_PLUGGED);
-
-        sp_store_ed.putInt(BatteryIndicatorService.KEY_PREVIOUS_CHARGE,
-                           settings.getInt(BatteryIndicatorService.KEY_PREVIOUS_CHARGE, -1));
-        settings_ed.remove(BatteryIndicatorService.KEY_PREVIOUS_CHARGE);
-
-        sp_store_ed.putInt(BatteryIndicatorService.KEY_PREVIOUS_TEMP,
-                           settings.getInt(BatteryIndicatorService.KEY_PREVIOUS_TEMP, -1));
-        settings_ed.remove(BatteryIndicatorService.KEY_PREVIOUS_TEMP);
-
-        sp_store_ed.putInt(BatteryIndicatorService.KEY_PREVIOUS_HEALTH,
-                           settings.getInt(BatteryIndicatorService.KEY_PREVIOUS_HEALTH, -1));
-        settings_ed.remove(BatteryIndicatorService.KEY_PREVIOUS_HEALTH);
-
-        sp_store_ed.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED,
-                               settings.getBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, false));
-        settings_ed.remove(BatteryIndicatorService.KEY_SERVICE_DESIRED);
-
-        settings_ed.commit();
-        sp_store_ed.commit();
-    }
-
-    private void setTheme() {
-        theme = (new MainWindowTheme(themeName, context)).theme;
-
-        LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
-        main_layout.removeAllViews();
-        LinearLayout main_frame = (LinearLayout) View.inflate(context, theme.mainFrameLayout, main_layout);
-
-        main_layout.setPadding(theme.mainLayoutPaddingLeft, theme.mainLayoutPaddingTop,
-                               theme.mainLayoutPaddingRight, theme.mainLayoutPaddingBottom);
-
-        updateTimes();
-
-        battery_use_b = (Button) main_frame.findViewById(R.id.battery_use_b);
-        toggle_lock_screen_b = (Button) main_frame.findViewById(R.id.toggle_lock_screen_b);
-        if (disallowLockButton)
-            toggle_lock_screen_b.setEnabled(false);
-
-        bindButtons();
-    }
-
-    private void updateTimes() {
-        for (int i = 0; i < theme.timeRemainingIds.length; i++) {
-            LinearLayout ll = (LinearLayout) findViewById(theme.timeRemainingIds[i]);
-            if (ll != null) {
-                TextView label = (TextView) ll.findViewById(R.id.label);
-                TextView time = (TextView) ll.findViewById(R.id.time);
-
-                if (theme.timeRemainingVisible(i)) {
-                    label.setText(res.getString(theme.timeRemainingStrings[i]));
-                    label.setTextColor(res.getColor(theme.timeRemainingColors[i]));
-                    time.setText(theme.timeRemaining(i, percent));
-                    time.setTextColor(res.getColor(theme.timeRemainingColors[i]));
-                    label.setVisibility(View.VISIBLE);
-                    time.setVisibility(View.VISIBLE);
-                } else {
-                    label.setVisibility(View.GONE);
-                    time.setVisibility(View.GONE);
-                }
-            }
-        }
     }
 }
