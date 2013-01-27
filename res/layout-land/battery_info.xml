@@ -5,15 +5,23 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
 >
+  <View android:layout_height="fill_parent"
+        android:layout_width="10dp"
+  />
+
   <include layout="@layout/battery_info_first"
-           android:layout_width="0px"
-           android:layout_weight="0.4"
            android:layout_height="fill_parent"
+           android:layout_width="0px"
+           android:layout_weight="0.5"
   />
 
   <include layout="@layout/battery_info_second"
+           android:layout_height="fill_parent"
            android:layout_width="0px"
            android:layout_weight="0.5"
-           android:layout_height="fill_parent"
+  />
+
+  <View android:layout_height="fill_parent"
+        android:layout_width="10dp"
   />
 </LinearLayout>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:paddingLeft="15dp"
-              android:paddingRight="15dp"
+              android:paddingLeft="@dimen/bis_side_padding"
+              android:paddingRight="@dimen/bis_side_padding"
 >
   <TextView android:id="@+id/status_with_duration"
             android:layout_width="fill_parent"

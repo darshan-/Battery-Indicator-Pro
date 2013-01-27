@@ -4,11 +4,11 @@
 >
   <View android:layout_width="0px"
         android:layout_height="fill_parent"
-        android:layout_weight="0.1"
+        android:layout_weight="@integer/bif_padding_weight"
   />
   <com.darshancomputing.BatteryIndicatorPro.BatteryLevelView android:id="@+id/battery_level_view"
                                                              android:layout_width="0px"
-                                                             android:layout_weight="0.5"
+                                                             android:layout_weight="5"
                                                              android:layout_height="fill_parent"
                                                              android:scaleType="centerInside"
                                                              android:padding="10dp"
@@ -16,7 +16,7 @@
 
   <LinearLayout android:orientation="vertical"
                 android:layout_width="0px"
-                android:layout_weight="0.5"
+                android:layout_weight="5"
                 android:layout_height="fill_parent"
   >
     <TextView android:id="@+id/level"
@@ -48,6 +48,6 @@
   </LinearLayout>
   <View android:layout_width="0px"
         android:layout_height="fill_parent"
-        android:layout_weight="0.1"
+        android:layout_weight="@integer/bif_padding_weight"
   />
 </LinearLayout>
