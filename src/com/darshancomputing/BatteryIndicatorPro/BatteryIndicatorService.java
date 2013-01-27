@@ -117,8 +117,8 @@ public class BatteryIndicatorService extends Service {
 
     /* Global variables for these Notification Runnables */
     private Notification mainNotification;
-    private int percent;
-    private int status;
+    private int percent, status, plugged;
+    private long status_duration;
     private String mainNotificationTitle, mainNotificationText;
 
     private Predictor predictor;
@@ -276,7 +276,7 @@ public class BatteryIndicatorService extends Service {
             int scale = intent.getIntExtra("scale", 100);
                 status = intent.getIntExtra("status", STATUS_UNKNOWN);
             int health = intent.getIntExtra("health", HEALTH_UNKNOWN);
-            int plugged = intent.getIntExtra("plugged", PLUGGED_UNKNOWN);
+                plugged = intent.getIntExtra("plugged", PLUGGED_UNKNOWN);
             int temperature = intent.getIntExtra("temperature", 0);
             int voltage = intent.getIntExtra("voltage", 0);
             //String technology = intent.getStringExtra("technology");
@@ -369,7 +369,6 @@ public class BatteryIndicatorService extends Service {
             int last_percent = sp_store.getInt(KEY_LAST_PERCENT, -1);
             int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
             long currentTM = System.currentTimeMillis();
-            long statusDuration;
             String last_status_since = sp_store.getString(KEY_LAST_STATUS_SINCE, null);
             LogDatabase logs = new LogDatabase(context);
 
@@ -378,7 +377,7 @@ public class BatteryIndicatorService extends Service {
                 (plugged == PLUGGED_UNPLUGGED && percent > previous_charge + 20))
             {
                 last_status_since = formatTime(new Date());
-                statusDuration = 0;
+                status_duration = 0;
 
                 if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, false)) {
                     logs.logStatus(status, plugged, percent, temperature, voltage, currentTM, LogDatabase.STATUS_NEW);
@@ -423,7 +422,7 @@ public class BatteryIndicatorService extends Service {
                     }
                 }
             } else {
-                statusDuration = currentTM - last_status_cTM;
+                status_duration = currentTM - last_status_cTM;
 
                 if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, false))
                     logs.logStatus(status, plugged, percent, temperature, voltage, currentTM, LogDatabase.STATUS_OLD);
@@ -437,7 +436,7 @@ public class BatteryIndicatorService extends Service {
             logs.close();
 
             /* Add half an hour, then divide.  Should end up rounding to the closest hour. */
-            int statusDurationHours = (int)((statusDuration + (1000 * 60 * 30)) / (1000 * 60 * 60));
+            int statusDurationHours = (int)((status_duration + (1000 * 60 * 30)) / (1000 * 60 * 60));
 
             mainNotificationTitle = "";
 
@@ -701,5 +700,13 @@ public class BatteryIndicatorService extends Service {
         int  mins_left = (secs_left / 60) % 60;
 
         return new int[] {hours_left, mins_left, status};
+    }
+
+    public int[] getStatusDuration() {
+        int secs = (int) (status_duration / 1000);
+        int hours = (int) (secs / (60 * 60));
+        int  mins = (int) ((secs / 60) % 60);
+
+        return new int[] {hours, mins, status};
     }
 }

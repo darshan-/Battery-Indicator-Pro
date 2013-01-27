@@ -64,5 +64,12 @@
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
   >
+    <TextView android:id="@+id/status_with_duration"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:textColor="#ffffff"
+              android:textSize="@dimen/bia_until_what"
+    />
   </LinearLayout>
 </LinearLayout>

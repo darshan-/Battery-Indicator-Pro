@@ -57,6 +57,7 @@ public class BatteryInfoActivity extends Activity {
     private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private Resources res;
     private Context context;
+    private Str str;
     private String themeName;
     private Boolean disallowLockButton;
     MainWindowTheme.Theme theme;
@@ -102,6 +103,7 @@ public class BatteryInfoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         res = getResources();
+        str = new Str(res);
         context = getApplicationContext();
         settings = PreferenceManager.getDefaultSharedPreferences(context);
 
@@ -266,9 +268,9 @@ public class BatteryInfoActivity extends Activity {
 
         int[] prediction = biServiceConnection.biService.getPrediction();
 
-        int hours_left = prediction[0];
-        int  mins_left = prediction[1];
-        int     status = prediction[2];
+        int hours  = prediction[0];
+        int mins   = prediction[1];
+        int status = prediction[2];
 
         String until_text;
 
@@ -280,11 +282,20 @@ public class BatteryInfoActivity extends Activity {
 
         tv = (TextView) findViewById(R.id.time_remaining);
         // TODO: Translatable ("h" and "m")
-        tv.setText(android.text.Html.fromHtml("<font color=\"#44ff88\">" + hours_left + "h</font> " +
-                                              "<font color=\"#ffffff\"><small>" +  mins_left + "m</small></font>"));
+        tv.setText(android.text.Html.fromHtml("<font color=\"#44ff88\">" + hours + "h</font> " +
+                                              "<font color=\"#ffffff\"><small>" +  mins + "m</small></font>"));
 
         tv = (TextView) findViewById(R.id.until_what);
         tv.setText(until_text);
+
+        int[] statusDuration = biServiceConnection.biService.getStatusDuration();
+
+        hours  = statusDuration[0];
+        mins   = statusDuration[1];
+        status = statusDuration[2];
+
+        tv = (TextView) findViewById(R.id.status_with_duration);
+        tv.setText(str.statuses[status] + " since " + hours + "h " + mins + "m ago"); //TODO: Translatable
     }
 
     private void updateStatus() {
