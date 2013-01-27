@@ -280,9 +280,9 @@ public class BatteryInfoActivity extends Activity {
 
         // TODO: If fully charged, still plugged in, this needs to be different
         if (status == BatteryIndicatorService.STATUS_CHARGING)
-            until_text = "until charged"; // TODO: translatable
+            until_text = "until charged"; // TODO: Translatable
         else
-            until_text = "until drained"; // TODO: translatable
+            until_text = "until drained"; // TODO: Translatable
 
         tv = (TextView) findViewById(R.id.time_remaining);
         // TODO: Translatable ("h" and "m")
@@ -292,18 +292,28 @@ public class BatteryInfoActivity extends Activity {
         tv = (TextView) findViewById(R.id.until_what);
         tv.setText(until_text);
 
+        int last_percent = sp_store.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1);
+        int last_plugged = sp_store.getInt(BatteryIndicatorService.KEY_LAST_PLUGGED, -1);
+
         long last_status_cTM = sp_store.getLong(BatteryIndicatorService.KEY_LAST_STATUS_CTM, -1);
         long currentTM = System.currentTimeMillis();
         int secs = (int) ((currentTM - last_status_cTM) / 1000);
            hours = secs / (60 * 60);
             mins = (secs / 60) % 60;
 
-        int last_percent = sp_store.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1);
+        String s = str.statuses[status] + "\nSince "; // TODO: Translatable
+
+        if (status != BatteryIndicatorService.STATUS_FULLY_CHARGED)
+            s += last_percent + str.percent_symbol + ", ";
+
+        if (status == BatteryIndicatorService.STATUS_CHARGING)
+            s += " " + str.pluggeds[plugged]; /* Add '(AC)' or '(USB)' */
+
+        s += hours + "h " + mins + "m ago"; // TODO: Translatable
 
         // TODO: Don't show 'since 100%' for Fully Charged status
         tv = (TextView) findViewById(R.id.status_with_duration);
-        tv.setText(str.statuses[status] + " since " + last_percent + str.percent_symbol + ", " +
-                   hours + "h " + mins + "m ago"); //TODO: Translatable
+        tv.setText(s);
     }
 
     private void updateStatus() {
