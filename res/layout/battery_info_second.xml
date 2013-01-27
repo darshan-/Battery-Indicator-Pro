@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="0dp"
+              android:layout_weight="0.5"
+              android:paddingLeft="20dp"
+              android:paddingRight="20dp"
+>
+  <TextView android:id="@+id/status_with_duration"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/bia_until_what"
+  />
+
+  <View android:layout_width="fill_parent"
+        android:layout_height="15dp"
+  />
+
+  <Button android:id="@+id/battery_use_b"
+          android:layout_height="@dimen/bu_button_height"
+	  android:layout_width="fill_parent"
+          android:layout_gravity="center_horizontal"
+          android:textSize="@dimen/bu_button_fs"
+          android:text="@string/battery_use_b"
+   />
+
+  <View android:layout_width="fill_parent"
+        android:layout_height="@dimen/between_buttons_padding"
+  />
+
+  <Button android:id="@+id/toggle_lock_screen_b"
+          android:layout_height="@dimen/tls_button_height"
+	  android:layout_width="fill_parent"
+          android:layout_gravity="center_horizontal"
+          android:textSize="@dimen/tls_button_fs"
+  />
+</LinearLayout>
