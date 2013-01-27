@@ -58,7 +58,6 @@ public class BatteryInfoActivity extends Activity {
     private Resources res;
     private Context context;
     private Str str;
-    private String themeName;
     private Boolean disallowLockButton;
     MainWindowTheme.Theme theme;
     private int percent = -1;
@@ -75,9 +74,9 @@ public class BatteryInfoActivity extends Activity {
     private final Runnable mUpdateStatus = new Runnable() {
         public void run() {
             updateCurrentInfo();
+            updateLockscreenButton();
             if (true) return;
             updateStatus();
-            updateLockscreenButton();
         }
     };
 
@@ -114,6 +113,9 @@ public class BatteryInfoActivity extends Activity {
 
         disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
 
+        toggle_lock_screen_b = (Button) findViewById(R.id.toggle_lock_screen_b);
+        battery_use_b = (Button) findViewById(R.id.battery_use_b);
+
         if (settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
             SharedPreferences.Editor editor = settings.edit();
             editor.putBoolean(SettingsActivity.KEY_FIRST_RUN, false);
@@ -127,6 +129,8 @@ public class BatteryInfoActivity extends Activity {
         SharedPreferences.Editor editor = sp_store.edit();
         editor.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, true);
         editor.commit();
+
+        bindButtons();
     }
 
     @Override
@@ -296,6 +300,7 @@ public class BatteryInfoActivity extends Activity {
 
         int last_percent = sp_store.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1);
 
+        // TODO: Don't show 'since 100%' for Fully Charged status
         tv = (TextView) findViewById(R.id.status_with_duration);
         tv.setText(str.statuses[status] + " since " + last_percent + str.percent_symbol + ", " +
                    hours + "h " + mins + "m ago"); //TODO: Translatable

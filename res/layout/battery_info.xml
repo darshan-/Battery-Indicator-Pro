@@ -59,7 +59,7 @@
           android:layout_weight="0.1"
     />
   </LinearLayout>
-  <LinearLayout android:orientation="horizontal"
+  <LinearLayout android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
@@ -71,5 +71,33 @@
               android:textColor="#ffffff"
               android:textSize="@dimen/bia_until_what"
     />
+        <View android:layout_width="fill_parent"
+              android:layout_height="@dimen/pre_buttons_padding"
+        />
+
+        <Button android:id="@+id/battery_use_b"
+                android:layout_height="@dimen/bu_button_height"
+	        android:layout_width="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/bu_button_fs"
+                android:text="@string/battery_use_b"
+        />
+
+        <View android:layout_width="fill_parent"
+              android:layout_height="@dimen/between_buttons_padding"
+        />
+
+        <Button android:id="@+id/toggle_lock_screen_b"
+                android:layout_height="@dimen/tls_button_height"
+	        android:layout_width="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/tls_button_fs"
+        />
+
+        <View android:layout_width="fill_parent"
+              android:layout_height="@dimen/post_buttons_padding"
+              android:paddingTop="0dp"
+              android:paddingBottom="0dp"
+        />
   </LinearLayout>
 </LinearLayout>
