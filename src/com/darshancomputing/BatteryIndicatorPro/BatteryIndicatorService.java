@@ -701,12 +701,4 @@ public class BatteryIndicatorService extends Service {
 
         return new int[] {hours_left, mins_left, status};
     }
-
-    public int[] getStatusDuration() {
-        int secs = (int) (status_duration / 1000);
-        int hours = (int) (secs / (60 * 60));
-        int  mins = (int) ((secs / 60) % 60);
-
-        return new int[] {hours, mins, status};
-    }
 }

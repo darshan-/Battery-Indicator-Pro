@@ -288,14 +288,17 @@ public class BatteryInfoActivity extends Activity {
         tv = (TextView) findViewById(R.id.until_what);
         tv.setText(until_text);
 
-        int[] statusDuration = biServiceConnection.biService.getStatusDuration();
+        long last_status_cTM = sp_store.getLong(BatteryIndicatorService.KEY_LAST_STATUS_CTM, -1);
+        long currentTM = System.currentTimeMillis();
+        int secs = (int) ((currentTM - last_status_cTM) / 1000);
+           hours = secs / (60 * 60);
+            mins = (secs / 60) % 60;
 
-        hours  = statusDuration[0];
-        mins   = statusDuration[1];
-        status = statusDuration[2];
+        int last_percent = sp_store.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1);
 
         tv = (TextView) findViewById(R.id.status_with_duration);
-        tv.setText(str.statuses[status] + " since " + hours + "h " + mins + "m ago"); //TODO: Translatable
+        tv.setText(str.statuses[status] + " since " + last_percent + str.percent_symbol + ", " +
+                   hours + "h " + mins + "m ago"); //TODO: Translatable
     }
 
     private void updateStatus() {
