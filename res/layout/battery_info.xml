@@ -63,6 +63,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
   >
     <TextView android:id="@+id/status_with_duration"
               android:layout_width="fill_parent"
@@ -72,7 +74,7 @@
               android:textSize="@dimen/bia_until_what"
     />
         <View android:layout_width="fill_parent"
-              android:layout_height="@dimen/pre_buttons_padding"
+              android:layout_height="15dp"
         />
 
         <Button android:id="@+id/battery_use_b"
@@ -92,12 +94,6 @@
 	        android:layout_width="fill_parent"
                 android:layout_gravity="center_horizontal"
                 android:textSize="@dimen/tls_button_fs"
-        />
-
-        <View android:layout_width="fill_parent"
-              android:layout_height="@dimen/post_buttons_padding"
-              android:paddingTop="0dp"
-              android:paddingBottom="0dp"
         />
   </LinearLayout>
 </LinearLayout>
