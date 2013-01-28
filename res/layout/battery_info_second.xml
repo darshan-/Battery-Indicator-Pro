@@ -4,35 +4,49 @@
               android:paddingLeft="@dimen/bis_side_padding"
               android:paddingRight="@dimen/bis_side_padding"
 >
-  <TextView android:id="@+id/status_with_duration"
+  <TextView android:id="@+id/status"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:layout_height="0px"
+            android:layout_weight="0.2"
+            android:gravity="center_horizontal|bottom"
             android:paddingTop="10dp"
-            android:textColor="#ffffff"
+            android:textColor="#6fc14b"
+            android:textSize="@dimen/bia_status"
+  />
+
+  <TextView android:id="@+id/status_duration"
+            android:layout_width="fill_parent"
+            android:layout_height="0px"
+            android:layout_weight="0.2"
+            android:gravity="center_horizontal|top"
+            android:paddingTop="10dp"
+            android:textColor="#fff"
             android:textSize="@dimen/bia_until_what"
   />
 
-  <View android:layout_width="fill_parent"
-        android:layout_height="15dp"
-  />
+  <LinearLayout android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="0.8"
+                android:gravity="center"
+  >
+    <Button android:id="@+id/battery_use_b"
+            android:layout_height="@dimen/bu_button_height"
+	    android:layout_width="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/bu_button_fs"
+            android:text="@string/battery_use_b"
+     />
 
-  <Button android:id="@+id/battery_use_b"
-          android:layout_height="@dimen/bu_button_height"
-	  android:layout_width="fill_parent"
-          android:layout_gravity="center_horizontal"
-          android:textSize="@dimen/bu_button_fs"
-          android:text="@string/battery_use_b"
-   />
+    <View android:layout_width="fill_parent"
+          android:layout_height="@dimen/between_buttons_padding"
+    />
 
-  <View android:layout_width="fill_parent"
-        android:layout_height="@dimen/between_buttons_padding"
-  />
-
-  <Button android:id="@+id/toggle_lock_screen_b"
-          android:layout_height="@dimen/tls_button_height"
-	  android:layout_width="fill_parent"
-          android:layout_gravity="center_horizontal"
-          android:textSize="@dimen/tls_button_fs"
-  />
+    <Button android:id="@+id/toggle_lock_screen_b"
+            android:layout_height="@dimen/tls_button_height"
+	    android:layout_width="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/tls_button_fs"
+    />
+  </LinearLayout>
 </LinearLayout>

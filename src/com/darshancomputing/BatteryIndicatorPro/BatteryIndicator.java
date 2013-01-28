@@ -69,13 +69,11 @@ public class BatteryIndicator extends Activity {
     private static final int DIALOG_CONFIRM_CLOSE = 1;
     private static final int DIALOG_FIRST_RUN = 2;
 
-    private final Handler mHandler = new Handler();
-    private final Runnable mUpdateStatus = new Runnable() {
+    private final Handler handler = new Handler();
+    private final Runnable runUpdateInfo = new Runnable() {
         public void run() {
             updateCurrentInfo();
             updateLockscreenButton();
-            if (true) return;
-            updateStatus();
         }
     };
 
@@ -90,11 +88,11 @@ public class BatteryIndicator extends Activity {
 
             percent = level * 100 / scale;
 
-            mHandler.post(mUpdateStatus);
+            handler.post(runUpdateInfo);
             /* Give the service a second to process the update */
-            mHandler.postDelayed(mUpdateStatus, 1 * 1000);
+            handler.postDelayed(runUpdateInfo, 1 * 1000);
             /* Just in case 1 second wasn't enough */
-            mHandler.postDelayed(mUpdateStatus, 4 * 1000);
+            handler.postDelayed(runUpdateInfo, 4 * 1000);
         }
     };
 
@@ -285,8 +283,8 @@ public class BatteryIndicator extends Activity {
 
         tv = (TextView) findViewById(R.id.time_remaining);
         // TODO: Translatable ("h" and "m")
-        tv.setText(android.text.Html.fromHtml("<font color=\"#44ff88\">" + hours + "h</font> " +
-                                              "<font color=\"#ffffff\"><small>" +  mins + "m</small></font>"));
+        tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + hours + "h</font> " +
+                                              "<font color=\"#33b5e5\"><small>" +  mins + "m</small></font>"));
 
         tv = (TextView) findViewById(R.id.until_what);
         tv.setText(until_text);
@@ -305,33 +303,19 @@ public class BatteryIndicator extends Activity {
         if (status == BatteryIndicatorService.STATUS_CHARGING)
             s += " " + str.pluggeds[last_plugged]; /* Add '(AC)' or '(USB)' */
 
-        s += "\nSince "; // TODO: Translatable
+        // TODO: Don't show 'since 100%' for Fully Charged status
+        tv = (TextView) findViewById(R.id.status);
+        tv.setText(s);
+
+        s = "Since "; // TODO: Translatable
 
         if (status != BatteryIndicatorService.STATUS_FULLY_CHARGED)
             s += last_percent + str.percent_symbol + ", ";
 
         s += hours + "h " + mins + "m ago"; // TODO: Translatable
 
-        // TODO: Don't show 'since 100%' for Fully Charged status
-        tv = (TextView) findViewById(R.id.status_with_duration);
+        tv = (TextView) findViewById(R.id.status_duration);
         tv.setText(s);
-    }
-
-    private void updateStatus() {
-        int last_percent = sp_store.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1);
-        int last_status = sp_store.getInt(BatteryIndicatorService.KEY_LAST_STATUS, 0);
-
-        TextView status_since = (TextView) findViewById(R.id.status_since_t);
-
-        String s;
-        if (last_status == 0)
-            s = res.getString(R.string.discharging_from) + " " + last_percent + res.getString(R.string.percent_symbol);
-        else if (last_status == 2)
-            s = res.getString(R.string.charging_from) + " " + last_percent + res.getString(R.string.percent_symbol);
-        else
-            s = res.getString(R.string.fully_charged);
-
-        status_since.setText(s);
     }
 
     private void updateLockscreenButton() {

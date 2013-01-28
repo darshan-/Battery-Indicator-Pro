@@ -125,6 +125,7 @@
 
   <dimen name="bia_level">36sp</dimen>
   <dimen name="bia_time_remaining">24sp</dimen>
+  <dimen name="bia_status">20sp</dimen>
   <dimen name="bia_until_what">16sp</dimen>
   <integer name="bif_padding_weight">1</integer>
   <dimen name="bis_side_padding">15dp</dimen>

@@ -42,7 +42,7 @@
               android:layout_height="0px"
               android:layout_weight="0.5"
               android:gravity="center_horizontal|top"
-              android:textColor="#33B5E5"
+              android:textColor="#fff"
               android:textSize="@dimen/bia_until_what"
     />
   </LinearLayout>
