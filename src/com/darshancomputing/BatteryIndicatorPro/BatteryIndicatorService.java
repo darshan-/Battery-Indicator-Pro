@@ -36,6 +36,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import java.util.Date;
 
+import android.support.v4.app.NotificationCompat;
+
 public class BatteryIndicatorService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private final IntentFilter userPresent    = new IntentFilter(Intent.ACTION_USER_PRESENT);
@@ -47,6 +49,7 @@ public class BatteryIndicatorService extends Service {
     private String pluginPackage;
 
     private NotificationManager mNotificationManager;
+    private NotificationCompat.Builder nBuilder;
     private SharedPreferences settings;
     private SharedPreferences sp_store;
 
@@ -61,6 +64,7 @@ public class BatteryIndicatorService extends Service {
     private Str str;
     private AlarmDatabase alarms;
     private Logger logger;
+    private BatteryLevelView blv;
 
     private static final String LOG_TAG = "BatteryIndicatorService";
 
@@ -173,6 +177,7 @@ public class BatteryIndicatorService extends Service {
         logger = new Logger(context, "Service");
         logger.log("onCreate()");
         predictor = new Predictor(context);
+        blv = new BatteryLevelView(context);
 
         alarms = new AlarmDatabase(context);
 
@@ -457,7 +462,7 @@ public class BatteryIndicatorService extends Service {
             if (voltage > 500)
                 mainNotificationText += " / " + str.formatVoltage(voltage);
 
-            if (status == STATUS_UNPLUGGED) {
+            /*if (status == STATUS_UNPLUGGED) {
                 int seconds_left = predictor.secondsUntilDrained();
                 double hours_left = seconds_left / (60.0 * 60.0);
                 String s = String.format("%.1f", hours_left);
@@ -467,22 +472,32 @@ public class BatteryIndicatorService extends Service {
                 double hours_left = seconds_left / (60.0 * 60.0);
                 String s = String.format("%.1f", hours_left);
                 mainNotificationText += " / " + s + "h";
-            }
+            }*/
 
             long when = 0;
 
             if (settings.getBoolean(SettingsActivity.KEY_SHOW_NOTIFICATION_TIME, false))
                 when = System.currentTimeMillis();
 
-            mainNotification = new Notification(icon, null, when);
+            nBuilder = new NotificationCompat.Builder(context);
+            nBuilder.setSmallIcon(icon);
+            nBuilder.setWhen(when);
 
             if (android.os.Build.VERSION.SDK_INT >= 16) {
-                mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY, str.default_main_notification_priority));
+                nBuilder.setPriority(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY, str.default_main_notification_priority)));
             }
 
-            mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
+            blv.setLevel(percent);
+            android.graphics.Bitmap bm = blv.getScaledBitmap(60, 60); // TODO: Why 60?  Is there a right number?  Why isn't it scaled?  Should I just use my own layout?
+            nBuilder.setLargeIcon(bm);
 
-            mainNotification.setLatestEventInfo(context, mainNotificationTitle, mainNotificationText, mainWindowPendingIntent);
+            nBuilder.setOngoing(true);
+
+            nBuilder.setContentTitle(mainNotificationTitle);
+            nBuilder.setContentText(mainNotificationText);
+            nBuilder.setContentIntent(mainWindowPendingIntent);
+
+            mainNotification = nBuilder.build();
 
             if (! pluginPackage.equals("none")) {
                 mHandler.postDelayed(mPluginNotify,  100);

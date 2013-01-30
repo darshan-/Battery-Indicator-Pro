@@ -34,7 +34,15 @@ class BatteryLevelView extends ImageView {
 
     public BatteryLevelView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context);
+    }
 
+    public BatteryLevelView(Context context) {
+        super(context);
+        init(context);
+    }
+
+    private void init(Context context) {
         Resources res = context.getResources();
 
         BitmapFactory bf = new BitmapFactory();
@@ -92,5 +100,21 @@ class BatteryLevelView extends ImageView {
         canvas.drawBitmap(battery_bottom, 0, top_h + body_h, bitmap_paint);
 
         invalidate();
+    }
+
+    public Bitmap getBitmap() {
+        return Bitmap.createBitmap(battery);
+    }
+
+    public Bitmap getScaledBitmap(int w, int h) {
+        float fbw = (float) battery.getWidth();
+        float fbh = (float) battery.getHeight();
+
+        if (w / (float) h < fbw / fbh) // Width is limiting dimension
+            h = (int) (fbh * w / fbw);
+        else
+            w = (int) (fbw * h / fbh);
+
+        return Bitmap.createScaledBitmap(getBitmap(), w, h, true);
     }
 }
