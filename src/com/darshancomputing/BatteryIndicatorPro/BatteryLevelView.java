@@ -102,19 +102,8 @@ class BatteryLevelView extends ImageView {
         invalidate();
     }
 
+    // TODO: Consider returning actual bitmap rather than copy
     public Bitmap getBitmap() {
         return Bitmap.createBitmap(battery);
-    }
-
-    public Bitmap getScaledBitmap(int w, int h) {
-        float fbw = (float) battery.getWidth();
-        float fbh = (float) battery.getHeight();
-
-        if (w / (float) h < fbw / fbh) // Width is limiting dimension
-            h = (int) (fbh * w / fbw);
-        else
-            w = (int) (fbw * h / fbh);
-
-        return Bitmap.createScaledBitmap(getBitmap(), w, h, true);
     }
 }

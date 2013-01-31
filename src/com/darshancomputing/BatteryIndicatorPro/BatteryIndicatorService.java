@@ -34,9 +34,8 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.RemoteViews;
 import java.util.Date;
-
-import android.support.v4.app.NotificationCompat;
 
 public class BatteryIndicatorService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
@@ -49,7 +48,7 @@ public class BatteryIndicatorService extends Service {
     private String pluginPackage;
 
     private NotificationManager mNotificationManager;
-    private NotificationCompat.Builder nBuilder;
+    private RemoteViews notificationRV;
     private SharedPreferences settings;
     private SharedPreferences sp_store;
 
@@ -178,6 +177,7 @@ public class BatteryIndicatorService extends Service {
         logger.log("onCreate()");
         predictor = new Predictor(context);
         blv = new BatteryLevelView(context);
+        notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
 
         alarms = new AlarmDatabase(context);
 
@@ -479,25 +479,19 @@ public class BatteryIndicatorService extends Service {
             if (settings.getBoolean(SettingsActivity.KEY_SHOW_NOTIFICATION_TIME, false))
                 when = System.currentTimeMillis();
 
-            nBuilder = new NotificationCompat.Builder(context);
-            nBuilder.setSmallIcon(icon);
-            nBuilder.setWhen(when);
+            mainNotification = new Notification(icon, null, when);
 
             if (android.os.Build.VERSION.SDK_INT >= 16) {
-                nBuilder.setPriority(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY, str.default_main_notification_priority)));
+                mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY, str.default_main_notification_priority));
             }
 
+            mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
+
             blv.setLevel(percent);
-            android.graphics.Bitmap bm = blv.getScaledBitmap(60, 60); // TODO: Why 60?  Is there a right number?  Why isn't it scaled?  Should I just use my own layout?
-            nBuilder.setLargeIcon(bm);
+            notificationRV.setImageViewBitmap(R.id.battery_level_view, blv.getBitmap());
 
-            nBuilder.setOngoing(true);
-
-            nBuilder.setContentTitle(mainNotificationTitle);
-            nBuilder.setContentText(mainNotificationText);
-            nBuilder.setContentIntent(mainWindowPendingIntent);
-
-            mainNotification = nBuilder.build();
+            mainNotification.contentIntent = mainWindowPendingIntent;
+            mainNotification.contentView = notificationRV;
 
             if (! pluginPackage.equals("none")) {
                 mHandler.postDelayed(mPluginNotify,  100);
