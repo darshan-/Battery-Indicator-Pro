@@ -48,7 +48,6 @@ public class BatteryIndicatorService extends Service {
     private String pluginPackage;
 
     private NotificationManager mNotificationManager;
-    private RemoteViews notificationRV;
     private SharedPreferences settings;
     private SharedPreferences sp_store;
 
@@ -177,7 +176,6 @@ public class BatteryIndicatorService extends Service {
         logger.log("onCreate()");
         predictor = new Predictor(context);
         blv = new BatteryLevelView(context);
-        notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
 
         alarms = new AlarmDatabase(context);
 
@@ -480,6 +478,7 @@ public class BatteryIndicatorService extends Service {
                 when = System.currentTimeMillis();
 
             mainNotification = new Notification(icon, null, when);
+            RemoteViews notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
 
             if (android.os.Build.VERSION.SDK_INT >= 16) {
                 mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY, str.default_main_notification_priority));

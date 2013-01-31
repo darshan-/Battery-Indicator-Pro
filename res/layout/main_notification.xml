@@ -30,6 +30,7 @@
               android:layout_width="fill_parent"
               android:layout_height="0px"
               android:layout_weight="0.5"
+              android:paddingTop="3dp"
               android:gravity="left|top"
               style="@style/NotificationText"
               android:text="Bottom line"
