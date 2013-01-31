@@ -129,4 +129,12 @@
   <dimen name="bia_until_what">16sp</dimen>
   <integer name="bif_padding_weight">1</integer>
   <dimen name="bis_side_padding">15dp</dimen>
+
+  <style name="NotificationText">
+    <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+  </style>
+  <style name="NotificationTitle">
+    <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+    <item name="android:textStyle">bold</item>
+  </style>
 </resources>

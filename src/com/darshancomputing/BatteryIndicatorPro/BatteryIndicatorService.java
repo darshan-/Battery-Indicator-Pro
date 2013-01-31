@@ -489,6 +489,8 @@ public class BatteryIndicatorService extends Service {
 
             blv.setLevel(percent);
             notificationRV.setImageViewBitmap(R.id.battery_level_view, blv.getBitmap());
+            notificationRV.setTextViewText(R.id.top_line, mainNotificationTitle);
+            notificationRV.setTextViewText(R.id.bottom_line, mainNotificationText);
 
             mainNotification.contentIntent = mainWindowPendingIntent;
             mainNotification.contentView = notificationRV;

@@ -11,9 +11,28 @@
              android:scaleType="centerInside"
              android:padding="2dp"
   />
-  <TextView android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center"
-            android:text="It works!"
-  />
+
+  <LinearLayout android:orientation="vertical"
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+  >
+    <TextView android:id="@+id/top_line"
+              android:layout_width="fill_parent"
+              android:layout_height="0px"
+              android:layout_weight="0.5"
+              android:gravity="left|bottom"
+              style="@style/NotificationTitle"
+              android:text="Top line"
+    />
+
+    <TextView android:id="@+id/bottom_line"
+              android:layout_width="fill_parent"
+              android:layout_height="0px"
+              android:layout_weight="0.5"
+              android:gravity="left|top"
+              style="@style/NotificationText"
+              android:text="Bottom line"
+    />
+  </LinearLayout>
 </LinearLayout>
