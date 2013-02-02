@@ -443,34 +443,26 @@ public class BatteryIndicatorService extends Service {
 
             mainNotificationTitle = "";
 
-            if (settings.getBoolean(SettingsActivity.KEY_CHARGE_AS_TEXT, false))
-                mainNotificationTitle += percent + str.percent_symbol + " ";
+            //if (settings.getBoolean(SettingsActivity.KEY_CHARGE_AS_TEXT, false))
+            //mainNotificationTitle += "<large>" + percent + str.percent_symbol + "</large> ≈ ";
+            //mainNotificationTitle += percent + str.percent_symbol + " — About "; // TODO: Translatable
 
             int status_dur_est = Integer.valueOf(settings.getString(SettingsActivity.KEY_STATUS_DUR_EST,
                                         str.default_status_dur_est));
-            if (statusDurationHours < status_dur_est) {
-                mainNotificationTitle += statusStr + " " + str.since + " " + last_status_since;
-            } else {
-                mainNotificationTitle += statusStr + " " + str.for_n_hours(statusDurationHours);
-            }
+
+            int[] prediction = getPrediction();
+            mainNotificationTitle += prediction[0] + "h " + prediction[1] + "m";
+            // TODO: If fully charged, still plugged in, this needs to be different
+            if (status == STATUS_CHARGING)
+                mainNotificationTitle += " until charged"; // TODO: Translatable
+            else
+                mainNotificationTitle += " until drained"; // TODO: Translatable
 
             Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
             mainNotificationText = str.healths[health] + " / " + str.formatTemp(temperature, convertF);
 
             if (voltage > 500)
                 mainNotificationText += " / " + str.formatVoltage(voltage);
-
-            /*if (status == STATUS_UNPLUGGED) {
-                int seconds_left = predictor.secondsUntilDrained();
-                double hours_left = seconds_left / (60.0 * 60.0);
-                String s = String.format("%.1f", hours_left);
-                mainNotificationText += " / " + s + "h";
-            } else if (status == STATUS_CHARGING) {
-                int seconds_left = predictor.secondsUntilCharged();
-                double hours_left = seconds_left / (60.0 * 60.0);
-                String s = String.format("%.1f", hours_left);
-                mainNotificationText += " / " + s + "h";
-            }*/
 
             long when = 0;
 
@@ -488,7 +480,8 @@ public class BatteryIndicatorService extends Service {
 
             blv.setLevel(percent);
             notificationRV.setImageViewBitmap(R.id.battery_level_view, blv.getBitmap());
-            notificationRV.setTextViewText(R.id.top_line, mainNotificationTitle);
+            notificationRV.setTextViewText(R.id.percent, "" + percent + str.percent_symbol);
+            notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTitle));
             notificationRV.setTextViewText(R.id.bottom_line, mainNotificationText);
 
             mainNotification.contentIntent = mainWindowPendingIntent;

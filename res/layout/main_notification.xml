@@ -6,16 +6,26 @@
               android:layout_height="fill_parent"
 >
   <ImageView android:id="@+id/battery_level_view"
-             android:layout_width="62dp"
+             android:layout_width="45dp"
              android:layout_height="fill_parent"
              android:scaleType="centerInside"
-             android:padding="2dp"
+             android:paddingTop="2dp"
+             android:paddingBottom="2dp"
+  />
+
+  <TextView android:id="@+id/percent"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            style="@style/NotificationTitle"
+            android:textSize="22dp"
   />
 
   <LinearLayout android:orientation="vertical"
                 android:layout_width="0px"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.0"
+                android:paddingLeft="10dp"
   >
     <TextView android:id="@+id/top_line"
               android:layout_width="fill_parent"
