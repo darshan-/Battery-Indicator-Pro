@@ -451,12 +451,16 @@ public class BatteryIndicatorService extends Service {
                                         str.default_status_dur_est));
 
             int[] prediction = getPrediction();
-            mainNotificationTitle += prediction[0] + "h " + prediction[1] + "m";
-            // TODO: If fully charged, still plugged in, this needs to be different
-            if (status == STATUS_CHARGING)
-                mainNotificationTitle += " until charged"; // TODO: Translatable
-            else
-                mainNotificationTitle += " until drained"; // TODO: Translatable
+
+            if (status == STATUS_FULLY_CHARGED) {
+                mainNotificationTitle += str.statuses[status];
+            } else {
+                mainNotificationTitle += prediction[0] + "h " + prediction[1] + "m";
+                if (status == STATUS_CHARGING)
+                    mainNotificationTitle += " until charged"; // TODO: Translatable
+                else
+                    mainNotificationTitle += " until drained"; // TODO: Translatable
+            }
 
             Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
             mainNotificationText = str.healths[health] + " / " + str.formatTemp(temperature, convertF);

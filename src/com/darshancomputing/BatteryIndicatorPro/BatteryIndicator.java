@@ -273,21 +273,25 @@ public class BatteryIndicator extends Activity {
         int mins   = prediction[1];
         int status = prediction[2];
 
-        String until_text;
+        if (status == BatteryIndicatorService.STATUS_FULLY_CHARGED) {
+            tv = (TextView) findViewById(R.id.time_remaining);
+            tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + str.statuses[status] + "</font>")); // TODO: color
+        } else {
+            String until_text;
 
-        // TODO: If fully charged, still plugged in, this needs to be different
-        if (status == BatteryIndicatorService.STATUS_CHARGING)
-            until_text = "until charged"; // TODO: Translatable
-        else
-            until_text = "until drained"; // TODO: Translatable
+            if (status == BatteryIndicatorService.STATUS_CHARGING)
+                until_text = "until charged"; // TODO: Translatable
+            else
+                until_text = "until drained"; // TODO: Translatable
 
-        tv = (TextView) findViewById(R.id.time_remaining);
-        // TODO: Translatable ("h" and "m")
-        tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + hours + "h</font> " +
-                                              "<font color=\"#33b5e5\"><small>" +  mins + "m</small></font>"));
+            tv = (TextView) findViewById(R.id.time_remaining);
+            // TODO: Translatable ("h" and "m"); color
+            tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + hours + "h</font> " +
+                                                  "<font color=\"#33b5e5\"><small>" +  mins + "m</small></font>"));
 
-        tv = (TextView) findViewById(R.id.until_what);
-        tv.setText(until_text);
+            tv = (TextView) findViewById(R.id.until_what);
+            tv.setText(until_text);
+        }
 
         int last_percent = sp_store.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1);
         int last_plugged = sp_store.getInt(BatteryIndicatorService.KEY_LAST_PLUGGED, -1);

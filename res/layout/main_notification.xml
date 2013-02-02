@@ -19,6 +19,8 @@
             android:gravity="center"
             style="@style/NotificationTitle"
             android:textSize="22dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
   />
 
   <LinearLayout android:orientation="vertical"
