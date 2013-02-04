@@ -176,9 +176,6 @@
   <string name="pref_cat_charge_as_text" formatted="false">Tekstinis Įkrovimo Lygis</string>
   <string name="pref_charge_as_text" formatted="false">Tekstinis Įkrovimo Lygis</string>
   <string name="pref_charge_as_text_summary" formatted="false">Rodyti kaip tekstą prie ikonos?</string>
-  <string name="pref_cat_one_percent_hack" formatted="false">Vieno procento nulaužimas</string>
-  <string name="pref_one_percent_hack" formatted="false">Vieno procento nulaužimas</string>
-  <string name="pref_one_percent_hack_summary" formatted="false">Naudoti šį nulaužimą prietaisams rodantiems kas 10%?</string>
   <string name="lang_system_selected" formatted="false">Parinktas sistemos</string>
   <string name="pref_cat_language" formatted="false">Kalba</string>
   <string name="pref_language_override" formatted="false">Kalbos Nepaisymas</string>

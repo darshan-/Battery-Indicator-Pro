@@ -188,10 +188,6 @@
   <string name="pref_charge_as_text" formatted="false">Livello carica testuale</string>
   <string name="pref_charge_as_text_summary" formatted="false">Mostrare il livello di carica come testo in grande a fianco dell\' icona?</string>
   <string name="pref_charge_as_text_help" formatted="false">Ho avuto alcuni utenti con problemi di vista che mi hanno chiesto di aggiungere questa opzione, per cui il livello di carica viene mostrato come testo (che è più grande e facile da leggere) proprio accanto all\' icona quando si trascina verso il basso l\' area notifiche. L\'icona attuale non sarà diversa, quindi questo aiuterà solo quando si trascinerà verso il basso la barra delle notifiche, ma è meglio di niente, ed è abbastanza facile da aggiungere per chi la vuole.\n\nIn alcuni dispositivi, abilitando questa opzione è possibile che venga troncata la porzione più a destra dell\'area notifiche.</string>
-  <string name="pref_cat_one_percent_hack" formatted="false">Trucco 1%</string>
-  <string name="pref_one_percent_hack" formatted="false">Trucco 1%</string>
-  <string name="pref_one_percent_hack_summary" formatted="false">Utilizzare una soluzione per dispositivi che mostrano solo multipli di 10%?</string>
-  <string name="pref_one_percent_hack_help" formatted="false">Questo trucco sembra funzionare per tutti i dispositivi Motorola con incrementi di default al 10%, diverse da quella originale Droid\n\nMolti dispositivi non necessitano di questo trucco. Se il tuo dispositivo segna già incrementi da 1%, non abilitare questo trucco.\n\nSe l\'opzione è in grigio e non riuscito ad abilitarla, alloro il dispositivo non è compatibile con questo trucco.\n\nVedi <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">OnePercentHack</a> per maggiori info.</string>
   <string name="lang_system_selected" formatted="false">Sistema selezionato</string>
   <string name="pref_cat_language" formatted="false">Lingua</string>
   <string name="pref_language_override" formatted="false">Sovrascrittura lingua</string>

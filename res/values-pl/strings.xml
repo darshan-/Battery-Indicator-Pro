@@ -188,10 +188,6 @@
   <string name="pref_charge_as_text" formatted="false">Poziom naładowania tekstowo</string>
   <string name="pref_charge_as_text_summary" formatted="false">Pokazywać poziom naładowania jako tekst przy ikonie?</string>
   <string name="pref_charge_as_text_help" formatted="false">Miałem kilku użytkowników ze słabym wzrokiem, którzy prosili mnie abym dodał tę opcję. Poziom naładowania jest pokazywany tekstowo zaraz obok ikonyl. Aktualnie ikona nie zmieni się, więc jest to pomocne tylko przy rozwinięciu paska powiadomień. Ale lepsze to niż nic i wystarczająco proste dla tych, którzy to chcieli. Częściowo przydatne dla tych, którzy używają czytnika ekranowego.\n\nNa niektórych urządzeniach ucina prawą stronę powiadomienia.</string>
-  <string name="pref_cat_one_percent_hack" formatted="false">Hack dla 1%</string>
-  <string name="pref_one_percent_hack" formatted="false">Hack dla 1%</string>
-  <string name="pref_one_percent_hack_summary" formatted="false">Użyć dla urządzeń, które pokazują poziom co 10%</string>
-  <string name="pref_one_percent_hack_help" formatted="false">Ten hack działa dla wszystkich modeli Motoroli, które pokazują poziom tylko co 10%.\n\nWiększość urządzeń nie potrzebuje tego. Jeżeli twoje urządzenie pokazuje już poziom co 1% nie włączaj tego hacka.\n\nJeżeli opcja jest szara i nie da się jej włączyć, oznacza to, że twoje urządzenie nie jest kompatybilne z tym hackiem.\n\nZobacz <a href="http://code.google.com/p/battery-indicator/wiki/ OnePercentHack?tm=6">OnePercentHack</a> po więcej informacji.</string>
   <string name="lang_system_selected" formatted="false">Wybrane systemowo</string>
   <string name="pref_cat_language" formatted="false">Język</string>
   <string name="pref_language_override" formatted="false">Wymuś język</string>

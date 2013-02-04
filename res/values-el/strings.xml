@@ -187,10 +187,6 @@
   <string name="pref_charge_as_text" formatted="false">Κειμενικό Επίπεδο Φόρτισης</string>
   <string name="pref_charge_as_text_summary" formatted="false">Προβολή ως κείμενο δίπλα από την εικόνα;</string>
   <string name="pref_charge_as_text_help" formatted="false">Υπάρχουν μερικοί χρήστες με φτωχότερη όραση που μου ζητούν να προσθέσω αυτήν την επιλογή, δηλαδή το επίπεδο μπαταρίας να φαίνεται και ως κείμενο (το οποίο είναι μεγαλύτερο και ευκολότερο στο διάβασμα) ακριβώς δίπλα από την εικόνα στην περιοχή ειδοποιήσεων. Η εικόνα δε θα διαφέρει καθόλου, έτσι θα βοηθά καθώς θα ανοίγετε τη γραμμή ειδοποίησης, αλλά είναι καλύτερο από καθόλου και βολεύει αυτούς που το επιθυμούν. Είναι ιδιαίτερα χρήσιμο για αυτούς που χρησιμοποιούν αναγνώστη οθόνης.\n\nΣε μερικές συσκευές, η ενεργοποίηση της επιλογής αυτής μπορεί να αποκόψει τη δεξιά πλευρά του κειμένου της γραμμής ειδοποιήσεων.</string>
-  <string name="pref_cat_one_percent_hack" formatted="false">Διαβαθμίσεις 1%</string>
-  <string name="pref_one_percent_hack" formatted="false">Διαβαθμίσεις 1%</string>
-  <string name="pref_one_percent_hack_summary" formatted="false">Χρήση στρογγυλοποίησης για συσκευές που δείχνουν μόνο πολλαπλάσια του 10%;</string>
-  <string name="pref_one_percent_hack_help" formatted="false">Αυτός ο τρόπος διαβάθμισης φαίνεται να δουλεύει για όλες τις συσκευές Motorola οι οποίες δείχνουν αυξήσεις πολλαπλασίων του 10%, εκτός από τη σειρά Droid.\n\nΟι πλείστες συσκευές δεν το χρειάζονται αυτή τη επιλογή. Αν η συσκευή σας δείχνει αυξήσεις της τάξης του 1%, μην ενεργοποιήσετε τη δυνατότητα αυτή.\n\nΑν η επιλογή είναι μη διαθέσιμη και δεν είναι δυνατόν να την ενεργοποιήσετε, τότε η συσκευή σας δεν μπορεί να χρησιμοποιήσει τη δυνατότητα αυτή.\n\nΔέστε τη <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">OnePercentHack</a> σελίδα wiki για περισσότερες πληροφορίες.</string>
   <string name="lang_system_selected" formatted="false">Επιλογή Συστήματος</string>
   <string name="pref_cat_language" formatted="false">Γλώσσα</string>
   <string name="pref_language_override" formatted="false">Υπέρβαση Γλώσσας</string>

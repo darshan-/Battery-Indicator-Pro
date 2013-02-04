@@ -184,10 +184,6 @@
   <string name="pref_charge_as_text" formatted="false">Töltésszint szöveges jelzése</string>
   <string name="pref_charge_as_text_summary" formatted="false">Megjelenjen az akku töltöttsége szövegesen is az ikon mellett?</string>
   <string name="pref_charge_as_text_help" formatted="false">Több rossz látású felhasználó is kérte, hogy legyen olyan lehetőség, ahol a töltés szintje megjelenik szövegesen (nagyobb és olvashatóbb formában) is az ikon mellett az értesítési felület lehúzásakor. A tényleges ikon nem változik, tehát ez csak akkor segít, ha lehúzza az értesítési felületet, de ez is jobb mint a semmi, és könnyen elérhető azoknak, akiknek erre van szükségük. Ez különösen azoknak hasznos, akik képernyő felolvasót használnak.</string>
-  <string name="pref_cat_one_percent_hack" formatted="false">Egy százalékos kijelzés</string>
-  <string name="pref_one_percent_hack" formatted="false">Egy százalékos kijelzés</string>
-  <string name="pref_one_percent_hack_summary" formatted="false">Megoldás alkalmazása azokon az eszközökön, amelyek 10%-os pontossággal mutatnak</string>
-  <string name="pref_one_percent_hack_help" formatted="false">Ez a megoldás a Motorola eszközökön ajánlott, amik csak 10%-os pontosságot mutatnak.\n\nA legtöbb eszköznek nincs erre szüksége. Ha az ön eszköze jelenleg is százalékos pontosságú értékeket mutat, nincs szükség erre az opcióra.\n\nHa ez az opció szürke, és nem tudja bekapcsolni, akkor az ön eszköze nem képes használni ezt a lehetőséget.\n\nTovábbi információkért tekintse meg a <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">OnePercentHack</a>(angol nyelvű) wiki oldalt.</string>
   <string name="pref_cat_language" formatted="false">Nyelv</string>
   <string name="pref_language_override" formatted="false">Nyelv megváltoztatása</string>
   <string name="pref_language_override_summary" formatted="false">Válasszon nyelvet:</string>
