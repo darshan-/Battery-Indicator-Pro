@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2013 Josiah Barber (aka Darshan)
+    Copyright (c) 2013 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,25 +24,21 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.widget.ImageView;
 
-class BatteryLevelView extends ImageView {
+class BatteryLevel {
     private int width, top_h, body_h, bottom_h;
     private Canvas canvas;
     private Paint fill_paint, bitmap_paint;
     private Bitmap battery_top, battery_body, battery_bottom, battery;
 
-    public BatteryLevelView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context);
+    public static final int SIZE_LARGE = 1;
+    public static final int SIZE_NOTIFICATION = 4;
+
+    public BatteryLevel(Context context) {
+        this(context, SIZE_LARGE);
     }
 
-    public BatteryLevelView(Context context) {
-        super(context);
-        init(context);
-    }
-
-    private void init(Context context) {
+    public BatteryLevel(Context context, int inSampleSize) {
         Resources res = context.getResources();
 
         BitmapFactory bf = new BitmapFactory();
@@ -50,6 +46,7 @@ class BatteryLevelView extends ImageView {
         bfo.inDensity = DisplayMetrics.DENSITY_DEFAULT;
         bfo.inScaled = false;
         bfo.inTargetDensity = DisplayMetrics.DENSITY_DEFAULT;
+        bfo.inSampleSize = inSampleSize;
 
         battery_top    = bf.decodeResource(res, R.drawable.empty_battery_top   , bfo);
         battery_body   = bf.decodeResource(res, R.drawable.empty_battery_body  , bfo);
@@ -78,8 +75,6 @@ class BatteryLevelView extends ImageView {
         bitmap_paint.setAntiAlias(true);
         bitmap_paint.setDither(true);
 
-        setImageBitmap(battery);
-
         setLevel(0); // TODO: Does it make sense to show an empty battery at first, in case it take a moment to get level?
     }
 
@@ -98,12 +93,9 @@ class BatteryLevelView extends ImageView {
         canvas.drawBitmap(battery_top   , 0, 0             , bitmap_paint);
         canvas.drawBitmap(battery_body  , 0, top_h         , bitmap_paint);
         canvas.drawBitmap(battery_bottom, 0, top_h + body_h, bitmap_paint);
-
-        invalidate();
     }
 
-    // TODO: Consider returning actual bitmap rather than copy
     public Bitmap getBitmap() {
-        return Bitmap.createBitmap(battery);
+        return battery;
     }
 }

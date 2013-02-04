@@ -13,7 +13,7 @@
       android:process="com.darshancomputing.BatteryIndicatorPro"
   >
     <activity
-        android:name=".BatteryIndicator"
+        android:name=".BatteryInfoActivity"
         android:label="@string/app_launcher_name"
         android:stateNotNeeded="true"
         android:launchMode="singleTask"

@@ -6,12 +6,13 @@
         android:layout_height="fill_parent"
         android:layout_weight="@integer/bif_padding_weight"
   />
-  <com.darshancomputing.BatteryIndicatorPro.BatteryLevelView android:id="@+id/battery_level_view"
-                                                             android:layout_width="0px"
-                                                             android:layout_weight="5"
-                                                             android:layout_height="fill_parent"
-                                                             android:scaleType="centerInside"
-                                                             android:padding="10dp"
+
+  <ImageView android:id="@+id/battery_level_view"
+             android:layout_width="0px"
+             android:layout_weight="5"
+             android:layout_height="fill_parent"
+             android:scaleType="centerInside"
+             android:padding="10dp"
   />
 
   <LinearLayout android:orientation="vertical"

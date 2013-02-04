@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009 - 2013 Josiah Barber (aka Darshan)
+    Copyright (c) 2009-2013 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -38,15 +38,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class BatteryIndicator extends Activity {
+public class BatteryInfoActivity extends Activity {
     private Intent biServiceIntent;
     private SharedPreferences settings;
     private SharedPreferences sp_store;
@@ -62,6 +60,8 @@ public class BatteryIndicator extends Activity {
     private int percent = -1;
     private Button battery_use_b;
     private Button toggle_lock_screen_b;
+    private BatteryLevel bl;
+    private ImageView blv;
 
     //private String oldLanguage = null;
 
@@ -102,9 +102,12 @@ public class BatteryIndicator extends Activity {
         str = new Str(res);
         context = getApplicationContext();
         settings = PreferenceManager.getDefaultSharedPreferences(context);
+        bl = new BatteryLevel(context);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.battery_info);
+        blv = (ImageView) findViewById(R.id.battery_level_view);
+        blv.setImageBitmap(bl.getBitmap());
 
         sp_store = context.getSharedPreferences("sp_store", 0);
 
@@ -134,6 +137,7 @@ public class BatteryIndicator extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         unbindService(biServiceConnection);
+        bl.getBitmap().recycle();
     }
 
     /*private void restartIfLanguageChanged() {
@@ -142,7 +146,7 @@ public class BatteryIndicator extends Activity {
             return;
 
         Str.overrideLanguage(res, getWindowManager(), curLanguage);
-        mStartActivity(BatteryIndicator.class);
+        mStartActivity(BatteryInfoActivity.class);
         finish();
     }*/
 
@@ -261,8 +265,8 @@ public class BatteryIndicator extends Activity {
     }
 
     private void updateCurrentInfo() {
-        BatteryLevelView blv = (BatteryLevelView) findViewById(R.id.battery_level_view);
-        blv.setLevel(percent);
+        bl.setLevel(percent);
+        blv.invalidate();
 
         TextView tv = (TextView) findViewById(R.id.level);
         tv.setText("" + percent + res.getString(R.string.percent_symbol));

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2013 Josiah Barber (aka Darshan)
+    Copyright (c) 2009-2013 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -62,7 +62,7 @@ public class BatteryIndicatorService extends Service {
     private Str str;
     private AlarmDatabase alarms;
     private Logger logger;
-    private BatteryLevelView blv;
+    private BatteryLevel bl;
 
     private static final String LOG_TAG = "BatteryIndicatorService";
 
@@ -176,8 +176,9 @@ public class BatteryIndicatorService extends Service {
         logger = new Logger(context, "Service");
         logger.log("onCreate()");
         predictor = new Predictor(context);
-        blv = new BatteryLevelView(context);
+        bl = new BatteryLevel(context, BatteryLevel.SIZE_NOTIFICATION);
         notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
+        notificationRV.setImageViewBitmap(R.id.battery_level_view, bl.getBitmap());
 
         alarms = new AlarmDatabase(context);
 
@@ -189,7 +190,7 @@ public class BatteryIndicatorService extends Service {
         settings = PreferenceManager.getDefaultSharedPreferences(context);
         sp_store = context.getSharedPreferences("sp_store", 0);
 
-        Intent mainWindowIntent = new Intent(context, BatteryIndicator.class);
+        Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
         mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
 
         alarmsIntent = new Intent(context, AlarmsActivity.class);
@@ -482,6 +483,7 @@ public class BatteryIndicatorService extends Service {
 
             if (android.os.Build.VERSION.SDK_INT < 11) {
                 notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
+                notificationRV.setImageViewBitmap(R.id.battery_level_view, bl.getBitmap());
             }
 
             if (android.os.Build.VERSION.SDK_INT >= 16) {
@@ -490,8 +492,8 @@ public class BatteryIndicatorService extends Service {
 
             mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
 
-            blv.setLevel(percent);
-            notificationRV.setImageViewBitmap(R.id.battery_level_view, blv.getBitmap());
+            bl.setLevel(percent);
+
             notificationRV.setTextViewText(R.id.percent, "" + percent + str.percent_symbol);
             notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTitle));
             notificationRV.setTextViewText(R.id.bottom_line, mainNotificationText);
