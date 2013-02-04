@@ -162,6 +162,32 @@
   <string formatted="true" name="after_n_hours_unplugged">After %1.1f hours unplugged</string>
   <string formatted="true" name="after_n_hours_plugged_in">After %1.1f hours plugged in</string>
 
+  <plurals name="n_hours_long">
+    <item quantity="one">"%d hour, "</item>
+    <item quantity="other">"%d hours, "</item>
+  </plurals>
+
+  <plurals name="n_minutes_long">
+    <item quantity="one">%d minute</item>
+    <item quantity="other">%d minutes</item>
+  </plurals>
+
+  <plurals name="n_hours_medium">
+    <item quantity="other">"%d hrs, "</item>
+  </plurals>
+
+  <plurals name="n_minutes_medium">
+    <item quantity="other">%d mins.</item>
+  </plurals>
+
+  <plurals name="n_hours_short">
+    <item quantity="other">"%dh "</item>
+  </plurals>
+
+  <plurals name="n_minutes_short">
+    <item quantity="other">%dm</item>
+  </plurals>
+
   <string formatted="false" name="discharging_from">Discharging from</string>
   <string formatted="false" name="charging_from">Charging from</string>
   <string formatted="false" name="fully_charged">Fully Charged</string>

@@ -34,8 +34,9 @@
               android:layout_height="0px"
               android:layout_weight="0.5"
               android:gravity="left|bottom"
+              android:singleLine="true"
+              android:ellipsize="end"
               style="@style/NotificationTitle"
-              android:text="Top line"
     />
 
     <TextView android:id="@+id/bottom_line"
@@ -44,8 +45,9 @@
               android:layout_weight="0.5"
               android:paddingTop="3dp"
               android:gravity="left|top"
+              android:singleLine="true"
+              android:ellipsize="end"
               style="@style/NotificationText"
-              android:text="Bottom line"
     />
   </LinearLayout>
 </LinearLayout>

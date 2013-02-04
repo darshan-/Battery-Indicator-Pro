@@ -438,24 +438,14 @@ public class BatteryIndicatorService extends Service {
             }
             logs.close();
 
-            /* Add half an hour, then divide.  Should end up rounding to the closest hour. */
-            int statusDurationHours = (int)((status_duration + (1000 * 60 * 30)) / (1000 * 60 * 60));
-
-            mainNotificationTitle = "";
-
-            //if (settings.getBoolean(SettingsActivity.KEY_CHARGE_AS_TEXT, false))
-            //mainNotificationTitle += "<large>" + percent + str.percent_symbol + "</large> ≈ ";
-            //mainNotificationTitle += percent + str.percent_symbol + " — About "; // TODO: Translatable
-
-            int status_dur_est = Integer.valueOf(settings.getString(SettingsActivity.KEY_STATUS_DUR_EST,
-                                        str.default_status_dur_est));
-
             int[] prediction = getPrediction();
 
             if (status == STATUS_FULLY_CHARGED) {
-                mainNotificationTitle += str.statuses[status];
+                mainNotificationTitle = str.statuses[status];
             } else {
-                mainNotificationTitle += prediction[0] + "h " + prediction[1] + "m";
+                // TODO: Pro option to choose between long, medium, and short
+                mainNotificationTitle = str.n_hours_m_minutes_short(prediction[0], prediction[1]);
+
                 if (status == STATUS_CHARGING)
                     mainNotificationTitle += " until charged"; // TODO: Translatable
                 else

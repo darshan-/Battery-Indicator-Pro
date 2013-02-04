@@ -509,4 +509,6 @@
     <item>@string/icon_set_plain</item>
     <item>@string/icon_set_smaller</item>
   </string-array>
+
+  <bool name="long_notification_okay">false</bool>
 </resources>

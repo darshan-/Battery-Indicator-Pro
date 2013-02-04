@@ -150,6 +150,21 @@ public class Str {
         return String.format(res.getQuantityString(R.plurals.for_n_hours, n), n);
     }
 
+    public String n_hours_m_minutes_long(int n, int m) {
+        return (String.format(res.getQuantityString(R.plurals.n_hours_long, n), n) +
+                String.format(res.getQuantityString(R.plurals.n_minutes_long, m), m));
+    }
+
+    public String n_hours_m_minutes_medium(int n, int m) {
+        return (String.format(res.getQuantityString(R.plurals.n_hours_medium, n), n) +
+                String.format(res.getQuantityString(R.plurals.n_minutes_medium, m), m));
+    }
+
+    public String n_hours_m_minutes_short(int n, int m) {
+        return (String.format(res.getQuantityString(R.plurals.n_hours_short, n), n) +
+                String.format(res.getQuantityString(R.plurals.n_minutes_short, m), m));
+    }
+
     public String n_log_items(int n) {
         return String.format(res.getQuantityString(R.plurals.n_log_items, n), n);
     }
