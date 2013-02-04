@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010 Josiah Barber (aka Darshan)
+    Copyright (c) 2010-2013 Josiah Barber (aka Darshan)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -53,7 +53,7 @@ public class SettingsHelpActivity extends Activity {
             setContentView(R.layout.other_settings_help);
             setWindowSubtitle(res.getString(R.string.other_settings));
 
-            has_links = new int[] {R.id.one_percent_hack};
+            has_links = new int[] {};
         } else if (pref_screen.equals(SettingsActivity.KEY_ALARM_SETTINGS)) {
             setContentView(R.layout.alarm_settings_help);
             setWindowSubtitle(res.getString(R.string.alarm_settings));

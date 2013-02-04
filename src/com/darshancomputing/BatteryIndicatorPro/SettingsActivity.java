@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009, 2010 Josiah Barber (aka Darshan)
+    Copyright (c) 2009-2013 Josiah Barber (aka Darshan)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -61,7 +61,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_CHARGE_AS_TEXT = "charge_as_text";
-    public static final String KEY_ONE_PERCENT_HACK = "one_percent_hack";
     public static final String KEY_TEN_PERCENT_MODE = "ten_percent_mode";
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
     public static final String KEY_CAT_COLOR = "category_color";
@@ -115,7 +114,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
                                                    KEY_NOTIFY_WHEN_KG_DISABLED, KEY_ICON_SET,
                                                    KEY_INDICATE_CHARGING,
-                                                   KEY_ONE_PERCENT_HACK, /*KEY_LANGUAGE_OVERRIDE,*/
                                                    KEY_SHOW_NOTIFICATION_TIME, KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
 
     private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_MAIN_NOTIFICATION_PRIORITY};
@@ -139,8 +137,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final int AMBER_SETTING_MAX = 50;
     public static final int GREEN_SETTING_MIN = 20;
     /* public static final int GREEN_SETTING_MAX = 100; /* TODO: use this, and possibly set it to 95. */
-
-    public static final int CHARGE_COUNTER_LEGIT_MAX = 115; /* From what I understand, charge_counter can go somewhat over 100; I'm guessing at 115 being an appropriate cutoff point. */
 
     private static final int DIALOG_CONFIRM_TEN_PERCENT_ENABLE  = 0;
     private static final int DIALOG_CONFIRM_TEN_PERCENT_DISABLE = 1;
@@ -373,8 +369,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
             setPrefScreen(R.xml.other_pref_screen);
             setWindowSubtitle(res.getString(R.string.other_settings));
-
-            enableOnePercentIfAppropriate();
 
             /*ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_LANGUAGE_OVERRIDE);
             CharSequence[] values  = lp.getEntryValues();
@@ -683,17 +677,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             pref1.setEnabled(true);
             pref2.setEnabled(true);
         }
-    }
-
-    private void enableOnePercentIfAppropriate() {
-        Preference pref = mPreferenceScreen.findPreference(KEY_ONE_PERCENT_HACK);
-
-        try {
-            java.io.FileReader fReader = new java.io.FileReader("/sys/class/power_supply/battery/charge_counter");
-            java.io.BufferedReader bReader = new java.io.BufferedReader(fReader);
-            if (Integer.valueOf(bReader.readLine()) <= CHARGE_COUNTER_LEGIT_MAX)
-                pref.setEnabled(true);
-        } catch (Exception e) {}
     }
 
     private void updateListPrefSummary(String key) {

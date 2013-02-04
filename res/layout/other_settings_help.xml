@@ -61,11 +61,5 @@
     <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_charge_as_text" />
     <TextView style="@style/help_text" android:text="@string/pref_charge_as_text_help" />
-
-    <View style="@style/help_cat_pre_margin" />
-    <TextView style="@style/help_cat"  android:text="@string/pref_cat_one_percent_hack" />
-    <View style="@style/help_cat_post_margin" />
-    <TextView style="@style/help_pref" android:text="@string/pref_one_percent_hack" />
-    <TextView android:id="@+id/one_percent_hack" style="@style/help_text" android:text="@string/pref_one_percent_hack_help" />
 </LinearLayout>
 </ScrollView>

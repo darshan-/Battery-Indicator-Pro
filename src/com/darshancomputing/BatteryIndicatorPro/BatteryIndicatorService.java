@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009, 2010 Josiah Barber (aka Darshan)
+    Copyright (c) 2009-2013 Josiah Barber (aka Darshan)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -275,25 +275,30 @@ public class BatteryIndicatorService extends Service {
 
             percent = level * 100 / scale;
 
-            if (settings.getBoolean(SettingsActivity.KEY_ONE_PERCENT_HACK, false)) {
+            java.io.File hack_file = new java.io.File("/sys/class/power_supply/battery/charge_counter");
+            if (hack_file.exists()) {
                 try {
-                    java.io.FileReader fReader = new java.io.FileReader("/sys/class/power_supply/battery/charge_counter");
+                    java.io.FileReader fReader = new java.io.FileReader(hack_file);
                     java.io.BufferedReader bReader = new java.io.BufferedReader(fReader);
                     int charge_counter = Integer.valueOf(bReader.readLine());
 
-                    if (charge_counter > SettingsActivity.CHARGE_COUNTER_LEGIT_MAX) {
-                        disableOnePercentHack("charge_counter is too big to be actual charge");
-                    } else {
-                        if (charge_counter > 100)
+                    if (charge_counter < percent + 10 && charge_counter > percent - 10) {
+                        if (charge_counter > 100) // This happens
                             charge_counter = 100;
 
+                        if (charge_counter < 0)   // This could happen?
+                            charge_counter = 0;
+
                         percent = charge_counter;
+                    } else {
+                        Log.e(LOG_TAG, "charge_counter file exists but with value " + charge_counter +
+                              " which is inconsistent with percent: " + percent);
                     }
                 } catch (java.io.FileNotFoundException e) {
                     /* These error messages are only really useful to me and might as well be left hardwired here in English. */
-                    disableOnePercentHack("charge_counter file doesn't exist");
+                    Log.e(LOG_TAG, "charge_counter file doesn't exist");
                 } catch (java.io.IOException e) {
-                    disableOnePercentHack("Error reading charge_counter file");
+                    Log.e(LOG_TAG, "Error reading charge_counter file");
                 }
             }
 
@@ -534,14 +539,6 @@ public class BatteryIndicatorService extends Service {
             editor.commit();
         }
     };
-
-    private void disableOnePercentHack(String reason) {
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putBoolean(SettingsActivity.KEY_ONE_PERCENT_HACK, false);
-        editor.commit();
-
-        Log.e(LOG_TAG, "Disabled one percent hack due to: " + reason);
-    }
 
     private Notification parseAlarmCursor(Cursor c) {
         Notification notification = new Notification(R.drawable.stat_notify_alarm, null, System.currentTimeMillis());

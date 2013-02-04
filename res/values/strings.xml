@@ -79,20 +79,12 @@
       uninstall it or try to get it to ignore Battery Indicator Pro.  Even if you
       have it set to ignore the free version, <i>you still need to tell it to
       ignore this Pro version</i> !\n
-
-    \n• If your device only shows the battery level in 10% increments by default (<b>most
-      Motorola phones work this way</b>), then you should turn on the \"One-percent Hack\" in
-      \"Other Settings\" to enable one-percent increments.
   </string>
   <string formatted="false" name="first_run_message_free">Thanks
     for downloading Battery Indicator!  <b><i>These two points are very important</i> :</b>\n
 
     \n• If you have a \"<b>task killer</b>\" / process manager of some kind, you should either
       uninstall it or try to get it to ignore Battery Indicator.
-
-    \n• If your device only shows the battery level in 10% increments by default (<b>most
-      Motorola phones work this way</b>), then you should turn on the \"One-percent Hack\" in
-      the settings to enable one-percent increments.
   </string>
   <string formatted="false" name="okay">Okay</string>
 
@@ -594,19 +586,6 @@
 
     \nOn some devices, enabling this cuts off the rightmost portion of
     the notification text.
-  </string>
-
-  <string formatted="false" name="pref_cat_one_percent_hack">One-percent hack</string>
-  <string formatted="false" name="pref_one_percent_hack">One-percent hack</string>
-  <string formatted="false" name="pref_one_percent_hack_summary">Use workaround for devices that show only multiples of 10%?</string>
-  <string formatted="false" name="pref_one_percent_hack_help">This
-    hack appears to work for all Motorola devices that default to 10% increments, other than the original Droid.\n
-
-    \nMost devices do not need this.  If your device already shows one-percent increments, do not enable this hack.\n
-
-    \nIf the option is grayed-out and not able to be turned on, then your device is not capable of using this hack.\n
-
-    \nSee the <a href="http://code.google.com/p/battery-indicator/wiki/OnePercentHack?tm=6">OnePercentHack</a> wiki page for more info.
   </string>
 
   <string formatted="false" name="lang_system_selected">System-selected</string>
