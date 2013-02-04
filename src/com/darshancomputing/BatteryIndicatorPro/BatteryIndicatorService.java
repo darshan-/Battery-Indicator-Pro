@@ -464,7 +464,7 @@ public class BatteryIndicatorService extends Service {
                 if (status == STATUS_CHARGING)
                     mainNotificationTitle += " until charged"; // TODO: Translatable
                 else
-                    mainNotificationTitle += " until drained"; // TODO: Translatable
+                    mainNotificationTitle += " left"; // TODO: Translatable
             }
 
             Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);

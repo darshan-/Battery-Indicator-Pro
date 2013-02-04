@@ -186,8 +186,8 @@
   </plurals>
 
   <plurals name="n_hours">
-    <item quantity="one">%d hr</item>
-    <item quantity="other">%d hrs</item>
+    <item quantity="one">%d hour</item>
+    <item quantity="other">%d hours</item>
   </plurals>
 
   <string formatted="false" name="discharging_from">Discharging from</string>
