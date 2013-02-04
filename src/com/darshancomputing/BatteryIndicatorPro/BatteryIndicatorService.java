@@ -218,6 +218,8 @@ public class BatteryIndicatorService extends Service {
         alarms.close();
         if (! pluginPackage.equals("none")) disconnectPlugin();
         unregisterReceiver(mBatteryInfoReceiver);
+        mHandler.removeCallbacks(mPluginNotify);
+        mHandler.removeCallbacks(mNotify);
         mNotificationManager.cancelAll();
     }
 

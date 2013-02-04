@@ -93,6 +93,7 @@ public class BatteryInfoActivity extends Activity {
             handler.postDelayed(runUpdateInfo, 1 * 1000);
             /* Just in case 1 second wasn't enough */
             handler.postDelayed(runUpdateInfo, 4 * 1000);
+            // TODO: Set up callback mechanism rather than using these hackish delays?
         }
     };
 
@@ -159,6 +160,7 @@ public class BatteryInfoActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+        handler.removeCallbacks(runUpdateInfo);
         unregisterReceiver(mBatteryInfoReceiver);
     }
 
