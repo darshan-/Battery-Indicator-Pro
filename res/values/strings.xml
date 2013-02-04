@@ -188,6 +188,16 @@
     <item quantity="other">%dm</item>
   </plurals>
 
+  <plurals name="n_days">
+    <item quantity="one">"%d day, "</item>
+    <item quantity="other">"%d days, "</item>
+  </plurals>
+
+  <plurals name="n_hours">
+    <item quantity="one">%d hr</item>
+    <item quantity="other">%d hrs</item>
+  </plurals>
+
   <string formatted="false" name="discharging_from">Discharging from</string>
   <string formatted="false" name="charging_from">Charging from</string>
   <string formatted="false" name="fully_charged">Fully Charged</string>

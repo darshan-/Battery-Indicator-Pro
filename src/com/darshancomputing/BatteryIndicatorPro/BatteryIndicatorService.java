@@ -122,6 +122,7 @@ public class BatteryIndicatorService extends Service {
     private int percent, status, plugged;
     private long status_duration;
     private String mainNotificationTitle, mainNotificationText;
+    private RemoteViews notificationRV;
 
     private Predictor predictor;
 
@@ -176,6 +177,7 @@ public class BatteryIndicatorService extends Service {
         logger.log("onCreate()");
         predictor = new Predictor(context);
         blv = new BatteryLevelView(context);
+        notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
 
         alarms = new AlarmDatabase(context);
 
@@ -444,7 +446,15 @@ public class BatteryIndicatorService extends Service {
                 mainNotificationTitle = str.statuses[status];
             } else {
                 // TODO: Pro option to choose between long, medium, and short
-                mainNotificationTitle = str.n_hours_m_minutes_short(prediction[0], prediction[1]);
+                if (prediction[0] == 0) {
+                    mainNotificationTitle = str.n_minutes_long(prediction[1]);
+                } else if (prediction[0] < 24) {
+                    mainNotificationTitle = str.n_hours_m_minutes_short(prediction[0], prediction[1]);
+                    //mainNotificationTitle = "" + prediction[0] + ":" + prediction[1] + " hours";
+                } else {
+                    if (prediction[1] >= 30) prediction[0] += 1;
+                    mainNotificationTitle = str.n_days_m_hours(prediction[0] / 24, prediction[0] % 24);
+                }
 
                 if (status == STATUS_CHARGING)
                     mainNotificationTitle += " until charged"; // TODO: Translatable
@@ -464,7 +474,10 @@ public class BatteryIndicatorService extends Service {
                 when = System.currentTimeMillis();
 
             mainNotification = new Notification(icon, null, when);
-            RemoteViews notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
+
+            if (android.os.Build.VERSION.SDK_INT < 11) {
+                notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
+            }
 
             if (android.os.Build.VERSION.SDK_INT >= 16) {
                 mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY, str.default_main_notification_priority));
