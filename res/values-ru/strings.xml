@@ -2,12 +2,7 @@
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
   <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
-  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Настройки</string>
-  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Помощь</string>
-  <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Журнал работы</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
-  <string name="settings_activity_name_free" formatted="false">Battery Indicator - Настройки</string>
-  <string name="help_activity_name_free" formatted="false">Battery Indicator - Помощь</string>
   <string name="battery_use_b" formatted="false">Посмотреть использование батареи</string>
   <string name="upgrade_donate_b" formatted="false">Улучшить/Помочь проекту</string>
   <string name="reenable_lock_screen" formatted="false">Включить блокировку экрана</string>
@@ -118,7 +113,6 @@
   <string name="settings_overview" formatted="false">Обзор</string>
   <string name="theme_settings" formatted="false">Цвета и Темы</string>
   <string name="theme_settings_summary" formatted="false">Цвета индикатора и темы окна</string>
-  <string name="time_settings" formatted="false">Настройки времени</string>
   <string name="alarm_settings_subtitle" formatted="false">Настройки оповещений</string>
   <string name="alarm_settings" formatted="false">Оповещения</string>
   <string name="alarm_settings_summary" formatted="false">Настройка оповещений для низкого/полного заряда батареи</string>
@@ -134,9 +128,6 @@
   <string name="pref_alarm_ringtone" formatted="false">Мелодия</string>
   <string name="silent" formatted="false">Беззвучно</string>
   <string name="pref_alarm_vibrate" formatted="false">Вибратор</string>
-  <string name="mw_theme_default_small" formatted="false">По умолчанию - маленькая</string>
-  <string name="mw_theme_colorful_small" formatted="false">Colorful Small</string>
-  <string name="mw_theme_full_window" formatted="false">На полный экран</string>
   <string name="boot_pref_always" formatted="false">Всегда</string>
   <string name="boot_pref_never" formatted="false">Никогда</string>
   <string name="boot_pref_if_running" formatted="false">Если было запущено при выключении</string>

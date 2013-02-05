@@ -77,6 +77,7 @@ public class BatteryInfoActivity extends Activity {
         }
     };
 
+    // TODO: Use callback and get rid of this receiver
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {

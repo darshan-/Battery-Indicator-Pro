@@ -2,15 +2,10 @@
 <resources>
   <string name="app_full_name" formatted="false">Baterijos Indikatorius Pro</string>
   <string name="app_launcher_name" formatted="false">Baterijos Indikatorius Pro</string>
-  <string name="settings_activity_name" formatted="false">Baterijos Indikatorius Pro - Nustatymai</string>
   <string name="settings_activity_subtitle" formatted="false">Nustatymai</string>
-  <string name="help_activity_name" formatted="false">Baterijos Indikatorius Pro - Pagalba</string>
   <string name="help_activity_subtitle" formatted="false">Pagalba</string>
-  <string name="log_view_activity_name" formatted="false">Baterijos Indikatorius Pro - Įrašai</string>
   <string name="log_view_activity_subtitle" formatted="false">Įrašai</string>
   <string name="app_full_name_free" formatted="false">Baterijos Indikatorius</string>
-  <string name="settings_activity_name_free" formatted="false">Baterijos Indikatorius - Nustatymai</string>
-  <string name="help_activity_name_free" formatted="false">Baterijos Indikatorius - Pagalba</string>
   <string name="battery_use_b" formatted="false">Baterijos naudojimas</string>
   <string name="upgrade_donate_b" formatted="false">Patobulinti/Paremti...</string>
   <string name="reenable_lock_screen" formatted="false">Įjungti Ekrano Užraktą</string>
@@ -133,9 +128,6 @@
   <string name="theme_settings" formatted="false">Spalvos ir Temos</string>
   <string name="theme_settings_summary" formatted="false">Valdyti ikonos spalvas ir lango temas</string>
   <string name="theme_settings_help" formatted="false">Galite pakeisti pagrindinio lango temą ir valdyti, kada perspėjimai pakeičia ikonos spalvą.</string>
-  <string name="time_settings" formatted="false">Laiko nustatymai</string>
-  <string name="time_settings_summary" formatted="false">Valdyti laiko įvertinimus ir derinimus</string>
-  <string name="time_settings_help" formatted="false">Čia galite valdyti, perspėjimus kai pasikeičia prietaiso statusas (pvz.: atjungtas) ir kada tas įvyko.\n\nTaip pat, Jūs galite valdyti kuriuos būsenos įvertinimus Jūs norite matyti, kai prietaisas įkraunamas per USB/AC, naudojant mažai/vidutiniškai/daug/nepertraukiamai ir nustatyti šiems laikams pagrindus.</string>
   <string name="alarm_settings_subtitle" formatted="false">Aliarmo Nustatymai</string>
   <string name="alarm_settings" formatted="false">Aliarmai</string>
   <string name="alarm_settings_summary" formatted="false">Valdyti tuščios/pilnos baterijos pranešimus</string>
@@ -146,8 +138,6 @@
   <string name="pref_please_upgrade" formatted="false">Pro versija turi daug daugiau nustatymų ir funkcijų: spalvotos ikonos, atsisiunčiami ikonų papildiniai, aliarmai, lango temos, baterijos statuso įrašų sudarymas, auto/rankinis ekrano užrakto išjungimas, įkrovimo/iškrovimo likęs laikas ir daugiau.</string>
   <string name="add_alarm" formatted="false">Pridėti aliarmą</string>
   <string name="pref_cat_themes" formatted="false">Temos</string>
-  <string name="pref_main_window_theme" formatted="false">Pagrindinio Lango Tema</string>
-  <string name="pref_main_window_theme_help" formatted="false">Nustato pagrindinio lango temą. Numatytoji tema, panaši į Android naudojamą standartą. Viso ekrano temą galima naudoti, jei mėgstate didelius ir lengvai perskaitomus užrašus. Kitos temos yra tik dėl pramogos.</string>
   <string name="pref_cat_logging" formatted="false">Įrašų sudarymas</string>
   <string name="pref_enable_logging" formatted="false">Įjungti įrašų sudarymą</string>
   <string name="pref_enable_logging_summary" formatted="false">Įrašinėti baterijos būsenos pakitimus?</string>
@@ -170,52 +160,10 @@
   <string name="pref_cat_autostart" formatted="false">Auto-Paleidimas</string>
   <string name="pref_autostart_at_boot" formatted="false">Auto-Paleidimas įjungus telefoną</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">Paleisti Programą kai prietaisas įjungia:</string>
-  <string name="pref_cat_charge_as_text" formatted="false">Tekstinis Įkrovimo Lygis</string>
-  <string name="pref_charge_as_text" formatted="false">Tekstinis Įkrovimo Lygis</string>
-  <string name="pref_charge_as_text_summary" formatted="false">Rodyti kaip tekstą prie ikonos?</string>
-  <string name="pref_cat_one_percent_hack" formatted="false">Vieno procento nulaužimas</string>
-  <string name="pref_one_percent_hack" formatted="false">Vieno procento nulaužimas</string>
-  <string name="pref_one_percent_hack_summary" formatted="false">Naudoti šį nulaužimą prietaisams rodantiems kas 10%?</string>
   <string name="lang_system_selected" formatted="false">Parinktas sistemos</string>
   <string name="pref_cat_language" formatted="false">Kalba</string>
   <string name="pref_language_override" formatted="false">Kalbos Nepaisymas</string>
   <string name="pref_language_override_summary" formatted="false">Pasirinkti kalbą:</string>
-  <string name="pref_cat_status_duration" formatted="false">Statuso trukmė (Kam/Nuo kada...)</string>
-  <string name="pref_status_dur_est" formatted="false">Kada apvalinti</string>
-  <string name="pref_status_dur_est_summary" formatted="false">Apvalinti valandas kai pasikeičia statusas:</string>
-  <string name="pref_cat_time_remaining_estimates" formatted="false">Likusio Laiko Prognozės</string>
-  <string name="pref_show_charge_time" formatted="false">Rodyti Įkrovimo Laiką</string>
-  <string name="pref_show_charge_time_summary" formatted="false">Rodyti likusį įkrovimo laiką?</string>
-  <string name="pref_usb_charge_time" formatted="false">USB Įkrovimas</string>
-  <string name="pref_usb_charge_time_summary" formatted="false">USB įkrovimo laikas nuo 0% iki 100% valandomis:</string>
-  <string name="pref_usb_charge_time_help" formatted="false">Įveskite, kiek laiko, Jūsų manymu, baterija įsikraus nuo 0% iki 100% naudojant USB įkrovimą.</string>
-  <string name="pref_ac_charge_time" formatted="false">AC Įkrovimas</string>
-  <string name="pref_ac_charge_time_summary" formatted="false">AC įkrovimo laikas nuo 0% iki 100% valandomis:</string>
-  <string name="pref_ac_charge_time_help" formatted="false">Įveskite, kiek laiko, Jūsų manymu, baterija įsikraus nuo 0% iki 100% naudojant kintamos srovės (AC) įkrovimą.</string>
-  <string name="pref_show_light_usage" formatted="false">Rodyti Mažą Naudojimą</string>
-  <string name="pref_show_light_usage_summary" formatted="false">Rodyti kiek laiko liko mažai naudojant?</string>
-  <string name="pref_show_light_usage_help" formatted="false">Rodyti kiek liko laiko (pagrindiniame lange), kol visiškai išsikraus baterija, mažai naudojant telefoną.</string>
-  <string name="pref_light_usage_time" formatted="false">Mažas naudojimas</string>
-  <string name="pref_light_usage_time_summary" formatted="false">Mažo naudojimo laikas nuo 100% iki 0% valandomis:</string>
-  <string name="pref_light_usage_time_help" formatted="false">Įveskite, per kiek laiko, Jūsų manymu, baterija visiškai išsikraus, mažai naudojant telefoną.</string>
-  <string name="pref_show_normal_usage" formatted="false">Rodyti Vidutinį Naudojimą</string>
-  <string name="pref_show_normal_usage_summary" formatted="false">Rodyti kiek laiko liko vidutiniškai naudojant?</string>
-  <string name="pref_show_normal_usage_help" formatted="false">Rodyti kiek liko laiko (pagrindiniame lange), kol visiškai išsikraus baterija, vidutiniškai naudojant telefoną.</string>
-  <string name="pref_normal_usage_time" formatted="false">Vidutinis Naudojimas</string>
-  <string name="pref_normal_usage_time_summary" formatted="false">Vidutinio naudojimo laikas nuo 100% iki 0% valandomis:</string>
-  <string name="pref_normal_usage_time_help" formatted="false">Įveskite, per kiek laiko, Jūsų manymu, baterija visiškai išsikraus, vidutiniškai naudojant telefoną.</string>
-  <string name="pref_show_heavy_usage" formatted="false">Rodyti Didelį Naudojimą</string>
-  <string name="pref_show_heavy_usage_summary" formatted="false">Rodyti kiek laiko liko daug naudojant?</string>
-  <string name="pref_show_heavy_usage_help" formatted="false">Rodyti kiek liko laiko (pagrindiniame lange), kol visiškai išsikraus baterija, daug naudojant telefoną.</string>
-  <string name="pref_heavy_usage_time" formatted="false">Didelis Naudojimas</string>
-  <string name="pref_heavy_usage_time_summary" formatted="false">Didelio naudojimo laikas nuo 100% iki 0% valandomis:</string>
-  <string name="pref_heavy_usage_time_help" formatted="false">Įveskite, per kiek laiko, Jūsų manymu, baterija visiškai išsikraus, daug naudojant telefoną.</string>
-  <string name="pref_show_constant_usage" formatted="false">Rodyti Nepertraukiamą Naudojimą</string>
-  <string name="pref_show_constant_usage_summary" formatted="false">Rodyti kiek laiko liko naudojant nepertraukiamai?</string>
-  <string name="pref_show_constant_usage_help" formatted="false">Rodyti kiek liko laiko (pagrindiniame lange), kol visiškai išsikraus baterija, nepertraukiamai naudojant telefoną.</string>
-  <string name="pref_constant_usage_time" formatted="false">Nepertraukiamas Naudojimas</string>
-  <string name="pref_constant_usage_time_summary" formatted="false">Nepertraukiamo naudojimo laikas nuo 100% iki 0% valandomis:</string>
-  <string name="pref_constant_usage_time_help" formatted="false">Įveskite, per kiek laiko, Jūsų manymu, baterija visiškai išsikraus, nepertraukiamai naudojant telefoną.</string>
   <string name="pref_cat_plugin_settings" formatted="false">Papildinių Nustatymai</string>
   <string name="pref_plugin_settings" formatted="false">Papildinio Nustatymai</string>
   <string name="pref_plugin_settings_summary" formatted="false">Koreguoti nustatymus šiam papildiniui.</string>
@@ -258,9 +206,6 @@
   <string name="silent" formatted="false">Tyla</string>
   <string name="pref_alarm_vibrate" formatted="false">Vibruoti</string>
   <string name="pref_alarm_lights" formatted="false">Mirksinčios Lemputės</string>
-  <string name="mw_theme_default_small" formatted="false">Numatytasis Mažas</string>
-  <string name="mw_theme_colorful_small" formatted="false">Spalvotas Mažas</string>
-  <string name="mw_theme_full_window" formatted="false">Pilnas Langas</string>
   <string name="boot_pref_always" formatted="false">Visada</string>
   <string name="boot_pref_never" formatted="false">Niekada</string>
   <string name="boot_pref_if_running" formatted="false">Jei veikia išjungiant</string>

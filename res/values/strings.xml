@@ -48,7 +48,7 @@
 
   <string formatted="false" name="first_run_title">Thank you!</string>
   <string formatted="false" name="first_run_message">Thanks
-    for your donation/purchase!  <b><i>These two points are very important</i> :</b>\n
+    for your donation/purchase!  <b><i>This is very important</i> :</b>\n
 
     \n• If you have a \"<b>task killer</b>\" / process manager of some kind, you should either
       uninstall it or try to get it to ignore Battery Indicator Pro.  Even if you
@@ -56,7 +56,7 @@
       ignore this Pro version</i> !\n
   </string>
   <string formatted="false" name="first_run_message_free">Thanks
-    for downloading Battery Indicator!  <b><i>These two points are very important</i> :</b>\n
+    for downloading Battery Indicator!  <b><i>This is very important</i> :</b>\n
 
     \n• If you have a \"<b>task killer</b>\" / process manager of some kind, you should either
       uninstall it or try to get it to ignore Battery Indicator.
@@ -244,7 +244,7 @@
     however.  Besides offering red, amber, and green icons, it also
     has the following key features as of version 3.0:\n
 
-    \n• Fully configurable estimated charge/discharge time left.
+    \n• Fully automated estimated charge/discharge time left.
     \n• Downloadable icon plugins.
     \n• Logging of battery state.
     \n• Manually disable/reenable the device lock screen, with the option
@@ -261,7 +261,7 @@
     however.  Besides offering red, amber, and green icons, it also
     has the following key features as of version 3.0:\n
 
-    \n• Fully configurable estimated charge/discharge time left.
+    \n• Fully automated estimated charge/discharge time left.
     \n• Downloadable icon plugins.
     \n• Logging of battery state.
     \n• Manually disable/reenable the device lock screen, with the option
@@ -343,15 +343,14 @@
   <string formatted="false" name="help_cat_contact">Contact</string>
   <string formatted="false" name="help_contact">If
     you have a question or a problem, please
-    see <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">the
-      project FAQ</a> for how to contact me.\n
+    <a href="mailto:battery-indicator-support@darshancomputing.com">email me</a>.\n
   </string>
 
   <string formatted="false" name="pref_hint">Hint: Press MENU for help.</string>
 
   <string formatted="false" name="settings_overview">Overview</string>
   <string formatted="false" name="settings_overview_help">
-    The settings are organized into four separate pages, as described
+    The settings are organized into separate pages, as described
     below.  Each page has its own help page describing the settings on
     that page.  Simply press MENU then Help (on tablets, MENU isn\'t necessary) to get
     help from whatever settings page you are on.
@@ -361,19 +360,6 @@
   <string formatted="false" name="theme_settings_summary">Control icon sets and theming</string>
   <string formatted="false" name="theme_settings_help">
     You can select which icon set to use and change the settings for the icon set (e.g., colors).
-  </string>
-  <string formatted="false" name="time_settings">Time Settings</string>
-  <string formatted="false" name="time_settings_summary">Control time estimates and approximations</string>
-  <string formatted="false" name="time_settings_help">
-    Here you can control when the notification switches from saying
-    exactly when the device\'s status changed (unplugged, for example)
-    to stating approximately how many hours ago the change happened.\n
-
-    \nYou also can set whether or not to show the timestamp in the notification.\n
-
-    \nLast, you can control which estimates you want to see for the
-    time remaining for USB/AC charging and light/normal/heavy/constant
-    usage, and adjust the basis for these estimates.
   </string>
   <string formatted="false" name="alarm_settings_subtitle">Alarm Settings</string>
   <string formatted="false" name="alarm_settings">Alarms</string>
@@ -423,7 +409,6 @@
     some newer devices do not actually shrink the icon like stock
     Android does, and the very large number in \"Plain Number\" can
     appear comically large on these devices.\n
-    
     \nIf you have any Battery Indicator Pro icon plugins installed
     (press MENU, then Get Plugins to get free plugins, or just press
     the Get Plugins button on the Action Bar on newer devices), you
@@ -568,23 +553,6 @@
     set to this.
   </string>
 
-  <string formatted="false" name="pref_cat_charge_as_text">Textual Charge Level</string>
-  <string formatted="false" name="pref_charge_as_text">Textual Charge Level</string>
-  <string formatted="false" name="pref_charge_as_text_summary">Show as text next to icon?</string>
-  <string formatted="false" name="pref_charge_as_text_help">
-    I\'ve had a few users with poorer eyesight ask me to add this
-    option, whereby the charge level is displayed as text (which is a
-    bit larger and easier to read) right next to the icon when you
-    pull down the notification area.  The actual icon won\'t be any
-    different, so this will only help when you pull down the
-    notification tray, but it\'s better than nothing, and easy enough
-    to add for those that want it.  It is particularly useful for those
-    using a screen reader.\n
-
-    \nOn some devices, enabling this cuts off the rightmost portion of
-    the notification text.
-  </string>
-
   <string formatted="false" name="lang_system_selected">System-selected</string>
   <string formatted="false" name="pref_cat_language">Language</string>
   <string formatted="false" name="pref_language_override">Language Override</string>
@@ -593,118 +561,6 @@
     If the translation to your language is incomplete or inaccurate
     and you would prefer another, possibly better translation, you may
     choose to do so here.
-  </string>
-
-  <string formatted="false" name="pref_cat_status_duration">Status Duration (For/Since...)</string>
-  <string formatted="false" name="pref_status_dur_est">When to Approximate</string>
-  <string formatted="false" name="pref_status_dur_est_summary">Start approximating hours since status change:</string>
-  <string formatted="false" name="pref_status_dur_est_help">
-    Determines when the notification switches from saying, e.g.,
-    \"Unplugged Since 1:10 PM\" to saying something like \"Unplugged
-    for 1 Hour\".  The first way is more accurate, because it tells
-    you exactly (to the minute) when the status changed, but many
-    people prefer the simpler to comprehend approximation of the
-    number of elapsed hours, so they make that happen sooner than the
-    default of 12 hours.
-  </string>
-
-  <string formatted="false" name="pref_cat_notification_time">Notification Time</string>
-  <string formatted="false" name="pref_show_notification_time">Show Notification Time</string>
-  <string formatted="false" name="pref_show_notification_time_summary">Show the time at which the notification was triggered?</string>
-  <string formatted="false" name="pref_show_notification_time_help">By
-    default, Android shows a timestamp indicating exactly when a notification was created.
-    This takes up space that can make it hard for the rest of the notification to fit on some devices.
-    It can be distracting, as it is usually not of any interest to most users.
-    The important time is when the status actually changed, and I show that anyway.
-    So by default, this is now disabled, but power users may wish to reenable it here.\n
-
-    \n<b>Note:</b> This is off by default, and turning it on works instantaneously.
-    However, turning it back off may require restarting the app after un-checking the box.
-  </string>
-
-  <string formatted="false" name="pref_cat_time_remaining_estimates">Time Remaining Estimates</string>
-  <string formatted="false" name="pref_cat_time_remaining_estimates_help">
-    I\'ve done these time remaining estimates a bit differently than
-    you might be used to, but I think for the better.  You control
-    what the app uses as a basis to estimate battery life, so if you
-    think it\'s wrong, you can fix it.  I\'ve used what I think are
-    reasonable defaults, but devices vary quite a bit, and how we use
-    our devices varies even more, so you\'re going to have to tweak
-    these settings.  But that\'s a good thing, because only you know
-    what \"Normal Usage\" (et al) means to you, and you can actually
-    put in times that work for you, rather than being annoyed if the
-    estimates are wrong.
-  </string>
-  <string formatted="false" name="pref_show_charge_time">Show Charge Time</string>
-  <string formatted="false" name="pref_show_charge_time_summary">Show charge time remaining while charging?</string>
-  <string formatted="false" name="pref_show_charge_time_help">
-    If enabled, then while the device is charging, the main window will
-    show an estimate (based on your settings below) as to how long it will be
-    until the device is fully charged.
-  </string>
-  <string formatted="false" name="pref_usb_charge_time">USB Charge</string>
-  <string formatted="false" name="pref_usb_charge_time_summary">USB charge time from 0% to 100% in hours:</string>
-  <string formatted="false" name="pref_usb_charge_time_help">
-    Enter how long you think your battery would take to completely
-    charge from 0% to 100% on USB power.
-  </string>
-  <string formatted="false" name="pref_ac_charge_time">AC Charge</string>
-  <string formatted="false" name="pref_ac_charge_time_summary">AC charge time from 0% to 100% in hours:</string>
-  <string formatted="false" name="pref_ac_charge_time_help">
-    Enter how long you think your battery would take to completely
-    charge from 0% to 100% on AC power.
-  </string>
-  <string formatted="false" name="pref_show_light_usage">Show Light Usage</string>
-  <string formatted="false" name="pref_show_light_usage_summary">Show light usage time remaining?</string>
-  <string formatted="false" name="pref_show_light_usage_help">
-    Whether or not to show an estimate (in the main window) as to how
-    long it will take to drain your battery at whatever you consider
-    \"Light Usage\".
-  </string>
-  <string formatted="false" name="pref_light_usage_time">Light Usage</string>
-  <string formatted="false" name="pref_light_usage_time_summary">Light usage time from 100% to 0% in hours:</string>
-  <string formatted="false" name="pref_light_usage_time_help">
-    Enter how long you think your battery would take to completely
-    discharge from 100% to 0% at whatever you consider \"Light Usage\".
-  </string>
-  <string formatted="false" name="pref_show_normal_usage">Show Normal Usage</string>
-  <string formatted="false" name="pref_show_normal_usage_summary">Show normal usage time remaining?</string>
-  <string formatted="false" name="pref_show_normal_usage_help">
-    Whether or not to show an estimate (in the main window) as to how
-    long it will take to drain your battery at whatever you consider
-    \"Normal Usage\".
-  </string>
-  <string formatted="false" name="pref_normal_usage_time">Normal Usage</string>
-  <string formatted="false" name="pref_normal_usage_time_summary">Normal usage time from 100% to 0% in hours:</string>
-  <string formatted="false" name="pref_normal_usage_time_help">
-    Enter how long you think your battery would take to completely
-    discharge from 100% to 0% at whatever you consider \"Normal Usage\".
-  </string>
-  <string formatted="false" name="pref_show_heavy_usage">Show Heavy Usage</string>
-  <string formatted="false" name="pref_show_heavy_usage_summary">Show heavy usage time remaining?</string>
-  <string formatted="false" name="pref_show_heavy_usage_help">
-    Whether or not to show an estimate (in the main window) as to how
-    long it will take to drain your battery at whatever you consider
-    \"Heavy Usage\".
-  </string>
-  <string formatted="false" name="pref_heavy_usage_time">Heavy Usage</string>
-  <string formatted="false" name="pref_heavy_usage_time_summary">Heavy usage time from 100% to 0% in hours:</string>
-  <string formatted="false" name="pref_heavy_usage_time_help">
-    Enter how long you think your battery would take to completely
-    discharge from 100% to 0% at whatever you consider \"Heavy Usage\".
-  </string>
-  <string formatted="false" name="pref_show_constant_usage">Show Constant Usage</string>
-  <string formatted="false" name="pref_show_constant_usage_summary">Show constant usage time remaining?</string>
-  <string formatted="false" name="pref_show_constant_usage_help">
-    Whether or not to show an estimate (in the main window) as to how
-    long it will take to drain your battery at whatever you consider
-    \"Constant Usage\".
-  </string>
-  <string formatted="false" name="pref_constant_usage_time">Constant Usage</string>
-  <string formatted="false" name="pref_constant_usage_time_summary">Constant usage time from 100% to 0% in hours:</string>
-  <string formatted="false" name="pref_constant_usage_time_help">
-    Enter how long you think your battery would take to completely
-    discharge from 100% to 0% at whatever you consider \"Constant Usage\".
   </string>
 
   <string formatted="false" name="pref_cat_plugin_settings">Plugin Settings</string>

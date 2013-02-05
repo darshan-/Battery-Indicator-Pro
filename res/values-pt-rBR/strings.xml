@@ -2,14 +2,9 @@
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
   <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
-  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Configurações</string>
-  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Ajuda</string>
   <string name="help_activity_subtitle" formatted="false">Ajuda</string>
-  <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Logs</string>
   <string name="log_view_activity_subtitle" formatted="false">Logs</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
-  <string name="settings_activity_name_free" formatted="false">Battery Indicator - Configurações</string>
-  <string name="help_activity_name_free" formatted="false">Battery Indicator - Ajuda</string>
   <string name="battery_use_b" formatted="false">Exibir Uso da Bateria</string>
   <string name="upgrade_donate_b" formatted="false">Fazer Upgrade/Doar...</string>
   <string name="reenable_lock_screen" formatted="false">Reativar o Bloqueio de Tela</string>
@@ -94,8 +89,6 @@
   <string name="settings_overview" formatted="false">Visão Geral</string>
   <string name="theme_settings" formatted="false">Cores e Temas</string>
   <string name="theme_settings_summary" formatted="false">Configurar as cores dos ícones e temas das janelas</string>
-  <string name="time_settings" formatted="false">Configurações de Hora</string>
-  <string name="time_settings_summary" formatted="false">Controlar estimativas e aproximações de tempo</string>
   <string name="alarm_settings_subtitle" formatted="false">Definições dos alarmes</string>
   <string name="alarm_settings" formatted="false">Alarmes</string>
   <string name="alarm_settings_summary" formatted="false">Controlar notificações para a bateria baixa/cheia</string>
@@ -103,7 +96,6 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Mais Configurações na versão Pro</string>
   <string name="add_alarm" formatted="false">Adicionar alarme</string>
   <string name="pref_cat_themes" formatted="false">Temas</string>
-  <string name="pref_main_window_theme" formatted="false">Tema da Janela Principal</string>
   <string name="pref_cat_logging" formatted="false">Relatórios</string>
   <string name="pref_enable_logging" formatted="false">Ativar Relatórios</string>
   <string name="pref_enable_logging_summary" formatted="false">Registrar mudanças no estado da bateria?</string>

@@ -30,6 +30,7 @@ public class Logger {
     }
 
     Logger(Context context, String log_tag) {
+        if (true) return;
         try {
             tag = log_tag;
             File f = new File(android.os.Environment.getExternalStorageDirectory(), "BI_Logger.txt");
@@ -41,6 +42,7 @@ public class Logger {
     }
 
     public void log(String s) {
+        if (true) return;
         try {
             Date date = new Date();
             fout.write(dateFormat.format(date) + " " + timeFormat.format(date) + ": ");

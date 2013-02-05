@@ -316,11 +316,6 @@
 
   <string name ="default_main_notification_priority">-1</string>
 
-  <string name="settings_help_activity_name">@string/settings_activity_name</string>
-  <string name="settings_help_activity_name_free">@string/settings_activity_name_free</string>
-  <string name="main_window_title">@string/app_full_name</string>
-  <string name="main_window_title_free">@string/app_full_name_free</string>
-
   <string formatted="false" name="pref_main_notification_priority_summary">@string/pref_main_notification_priority</string>
 
 
@@ -330,12 +325,6 @@
     <item>charge_rises</item>
     <item>temp_rises</item>
     <item>health_failure</item>
-  </string-array>
-
-  <string-array name="mw_theme_pref_values">
-    <item>default</item>
-    <item>DISABLED</item>
-    <item>full-dark</item>
   </string-array>
 
   <string-array name="boot_pref_values">
@@ -463,12 +452,6 @@
     <item>@string/alarm_type_entry_charge_rises</item>
     <item>@string/alarm_type_entry_temperature_rises</item>
     <item>@string/alarm_type_entry_health_failure</item>
-  </string-array>
-
-  <string-array name="mw_theme_pref_entries">
-    <item>@string/mw_theme_default_small</item>
-    <item>@string/mw_theme_colorful_small</item>
-    <item>@string/mw_theme_full_window</item>
   </string-array>
 
   <string-array name="boot_pref_entries">

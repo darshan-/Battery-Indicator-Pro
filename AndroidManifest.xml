@@ -27,27 +27,23 @@
 
     <activity
         android:name=".SettingsActivity"
-        android:label="@string/settings_activity_name"
         android:excludeFromRecents="true"
     />
 
     <activity
         android:name=".AlarmsActivity"
-        android:label="@string/settings_activity_name"
         android:excludeFromRecents="true"
         android:hardwareAccelerated="false"
     />
 
     <activity
         android:name=".AlarmEditActivity"
-        android:label="@string/settings_activity_name"
         android:excludeFromRecents="true"
         android:hardwareAccelerated="false"
     />
 
     <activity
         android:name=".SettingsHelpActivity"
-        android:label="@string/settings_help_activity_name"
         android:theme="@style/bi_help_theme"
         android:stateNotNeeded="true"
         android:excludeFromRecents="true"
@@ -55,7 +51,6 @@
 
     <activity
         android:name=".HelpActivity"
-        android:label="@string/help_activity_name"
         android:theme="@style/bi_help_theme"
         android:stateNotNeeded="true"
         android:excludeFromRecents="true"
@@ -63,7 +58,6 @@
 
     <activity
         android:name=".LogViewActivity"
-        android:label="@string/log_view_activity_name"
         android:stateNotNeeded="true"
         android:excludeFromRecents="true"
     />
@@ -74,7 +68,6 @@
         android:name=".BootCompletedReceiver"
         android:enabled="true"
         android:exported="false"
-        android:label="BootCompletedReceiver"
     >
       <intent-filter>
         <action android:name="android.intent.action.BOOT_COMPLETED" />

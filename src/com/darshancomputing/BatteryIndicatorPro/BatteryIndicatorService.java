@@ -236,6 +236,11 @@ public class BatteryIndicatorService extends Service {
 
     private final IBinder mBinder = new LocalBinder();
 
+    // TODO: Set up normal public method in Service to grab data
+    public interface OnBatteryInfoUpdatedListener {
+        public void onBatteryInfoUpdated();
+    }
+
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -477,9 +482,6 @@ public class BatteryIndicatorService extends Service {
                 mainNotificationText += " / " + str.formatVoltage(voltage);
 
             long when = 0;
-
-            if (settings.getBoolean(SettingsActivity.KEY_SHOW_NOTIFICATION_TIME, false))
-                when = System.currentTimeMillis();
 
             mainNotification = new Notification(icon, null, when);
 

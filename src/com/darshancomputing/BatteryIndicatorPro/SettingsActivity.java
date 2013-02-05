@@ -42,7 +42,6 @@ import java.util.Locale;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
     public static final String KEY_THEME_SETTINGS = "theme_settings";
-    public static final String KEY_TIME_SETTINGS = "time_settings";
     public static final String KEY_ALARM_SETTINGS = "alarm_settings";
     public static final String KEY_ALARM_EDIT_SETTINGS = "alarm_edit_settings";
     public static final String KEY_OTHER_SETTINGS = "other_settings";
@@ -55,12 +54,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_MAIN_NOTIFICATION_PRIORITY = "main_notification_priority";
     public static final String KEY_ENABLE_LOGGING = "enable_logging";
     public static final String KEY_MAX_LOG_AGE = "max_log_age";
-    public static final String KEY_MW_THEME = "main_window_theme";
     public static final String KEY_ICON_PLUGIN = "icon_plugin";
     public static final String KEY_ICON_SET = "icon_set";
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
     public static final String KEY_AUTOSTART = "autostart";
-    public static final String KEY_CHARGE_AS_TEXT = "charge_as_text";
     public static final String KEY_TEN_PERCENT_MODE = "ten_percent_mode";
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
     public static final String KEY_CAT_COLOR = "category_color";
@@ -75,46 +72,22 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_GREEN = "use_green";
     public static final String KEY_GREEN_THRESH = "green_threshold";
     public static final String KEY_COLOR_PREVIEW = "color_preview";
-    public static final String KEY_USB_CHARGE_TIME = "usb_charge_time";
-    public static final String KEY_AC_CHARGE_TIME = "ac_charge_time";
-    public static final String KEY_LIGHT_USAGE_TIME = "light_usage_time";
-    public static final String KEY_NORMAL_USAGE_TIME = "normal_usage_time";
-    public static final String KEY_HEAVY_USAGE_TIME = "heavy_usage_time";
-    public static final String KEY_CONSTANT_USAGE_TIME = "constant_usage_time";
-    public static final String KEY_SHOW_NOTIFICATION_TIME = "show_notification_time";
-    public static final String KEY_SHOW_CHARGE_TIME = "show_charge_time";
-    public static final String KEY_SHOW_LIGHT_USAGE = "show_light_usage";
-    public static final String KEY_SHOW_NORMAL_USAGE = "show_normal_usage";
-    public static final String KEY_SHOW_HEAVY_USAGE = "show_heavy_usage";
-    public static final String KEY_SHOW_CONSTANT_USAGE = "show_constant_usage";
     public static final String KEY_FIRST_RUN = "first_run";
     //public static final String KEY_LANGUAGE_OVERRIDE = "language_override";
 
-    private static final String[] PARENTS = {KEY_SHOW_CHARGE_TIME, KEY_SHOW_CHARGE_TIME, /* Keep these doubled */
-                                             KEY_ENABLE_LOGGING,                         /*  keys first!       */
-                                             KEY_RED, KEY_AMBER, KEY_GREEN,
-                                             KEY_SHOW_LIGHT_USAGE, KEY_SHOW_NORMAL_USAGE,
-                                             KEY_SHOW_HEAVY_USAGE, KEY_SHOW_CONSTANT_USAGE};
-    private static final String[] DEPENDENTS = {KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
-                                                KEY_MAX_LOG_AGE,
-                                                KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
-                                                KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
-                                                KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME};
+    private static final String[] PARENTS    = {KEY_ENABLE_LOGGING, KEY_RED,        KEY_AMBER,        KEY_GREEN};
+    private static final String[] DEPENDENTS = {KEY_MAX_LOG_AGE,    KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH};
 
-    private static final String[] LIST_PREFS = {KEY_AUTOSTART, KEY_MW_THEME, KEY_STATUS_DUR_EST,
+    private static final String[] LIST_PREFS = {KEY_AUTOSTART, KEY_STATUS_DUR_EST,
                                                 KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
-                                                KEY_USB_CHARGE_TIME, KEY_AC_CHARGE_TIME,
-                                                KEY_LIGHT_USAGE_TIME, KEY_NORMAL_USAGE_TIME,
-                                                KEY_HEAVY_USAGE_TIME, KEY_CONSTANT_USAGE_TIME,
                                                 KEY_MAIN_NOTIFICATION_PRIORITY, KEY_ICON_SET,
                                                 KEY_MAX_LOG_AGE/*, KEY_LANGUAGE_OVERRIDE*/};
 
-    private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_CHARGE_AS_TEXT, KEY_STATUS_DUR_EST,
+    private static final String[] RESET_SERVICE = {KEY_CONVERT_F,
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
                                                    KEY_NOTIFY_WHEN_KG_DISABLED, KEY_ICON_SET,
-                                                   KEY_INDICATE_CHARGING,
-                                                   KEY_SHOW_NOTIFICATION_TIME, KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
+                                                   KEY_INDICATE_CHARGING, KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
 
     private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_MAIN_NOTIFICATION_PRIORITY};
 
@@ -338,34 +311,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 mHandler.postDelayed(rShowPluginSettings,  600);
                 mHandler.postDelayed(rShowPluginSettings, 1000);
             }
-
-            /* Hide any themes that might be disabled (e.g. Tablets show different themes) */
-            ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_MW_THEME);
-            CharSequence[] oldEntries = lp.getEntries();
-            CharSequence[] oldValues  = lp.getEntryValues();
-            int nActiveThemes = 0;
-
-            for (int i=0; i < oldEntries.length; i++) {
-                if (! oldValues[i].equals("DISABLED")) nActiveThemes++;
-            }
-
-            CharSequence[] newEntries = new CharSequence[nActiveThemes];
-            CharSequence[] newValues  = new CharSequence[nActiveThemes];
-
-            for (int i=0,j=0; i < oldEntries.length; i++) {
-                if (oldValues[i].equals("DISABLED")) continue;
-
-                newEntries[j] = oldEntries[i];
-                 newValues[j] =  oldValues[i];
-
-                j++;
-            }
-
-            lp.setEntries(newEntries);
-            lp.setEntryValues(newValues);
-        } else if (pref_screen.equals(KEY_TIME_SETTINGS)) {
-            setPrefScreen(R.xml.time_pref_screen);
-            setWindowSubtitle(res.getString(R.string.time_settings));
         } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
             setPrefScreen(R.xml.other_pref_screen);
             setWindowSubtitle(res.getString(R.string.other_settings));
@@ -547,7 +492,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         String key = preference.getKey();
         if (key == null) {
             return false;
-        } else if (key.equals(KEY_THEME_SETTINGS) || key.equals(KEY_TIME_SETTINGS) || key.equals(KEY_OTHER_SETTINGS)) {
+        } else if (key.equals(KEY_THEME_SETTINGS) || key.equals(KEY_OTHER_SETTINGS)) {
             ComponentName comp = new ComponentName(getPackageName(), SettingsActivity.class.getName());
             startActivity(new Intent().setComponent(comp).putExtra(EXTRA_SCREEN, key));
 

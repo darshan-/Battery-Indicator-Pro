@@ -2,15 +2,10 @@
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
   <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
-  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Ustawienia</string>
   <string name="settings_activity_subtitle" formatted="false">Ustawienia</string>
-  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Pomoc</string>
   <string name="help_activity_subtitle" formatted="false">Pomoc</string>
-  <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Logi</string>
   <string name="log_view_activity_subtitle" formatted="false">Logi</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
-  <string name="settings_activity_name_free" formatted="false">Battery Indicator - Ustawienia</string>
-  <string name="help_activity_name_free" formatted="false">Battery Indicator - Pomoc</string>
   <string name="battery_use_b" formatted="false">Sprawdź zużycie baterii</string>
   <string name="upgrade_donate_b" formatted="false">Ulepsz/Wspomóż...</string>
   <string name="reenable_lock_screen" formatted="false">Ponownie włącz blok. ekranu</string>
@@ -134,9 +129,6 @@
   <string name="theme_settings" formatted="false">Kolory i Tematy</string>
   <string name="theme_settings_summary" formatted="false">Ustaw kolory ikon i okien</string>
   <string name="theme_settings_help" formatted="false">Możesz zmienić temat kolorystyczny i kontrolować kolory ikon statusu.</string>
-  <string name="time_settings" formatted="false">Ustawienia czasów</string>
-  <string name="time_settings_summary" formatted="false">Ustaw przewidywane czasy użycia baterii</string>
-  <string name="time_settings_help" formatted="false">Tutaj możesz kontrolować kiedy powiadomienie zmienia godzinę zmiany statusu (np. godzinę odłączenia) na czas przez jaki jest aktywny.\n\nMożesz również kontrolować jakie przewidywanie chcesz zobaczyć do ładowania USB/AC i lekkiego/normalnego/ciężkiego/ciągłego użycia, i zmienić bazy dla nich.</string>
   <string name="alarm_settings_subtitle" formatted="false">Ustawienia alarmów</string>
   <string name="alarm_settings" formatted="false">Alarmy</string>
   <string name="alarm_settings_summary" formatted="false">Ustaw powiadomienia o niskim/pełnym poziomie baterii</string>
@@ -147,8 +139,6 @@
   <string name="pref_please_upgrade" formatted="false">Wersja Pro ma wiele innych ustawień, włączając w to kolorowe ikony, wtyczki z ikonami, alarmy, tematy, zapisywanie stanu baterii w logach, auto/ ręczne wyłączenie blokady ekranu, przybliżone czasy ładowania/rozładowania i wiele więcej.</string>
   <string name="add_alarm" formatted="false">Dodaj alarm</string>
   <string name="pref_cat_themes" formatted="false">Tematy</string>
-  <string name="pref_main_window_theme" formatted="false">Temat głównego okna</string>
-  <string name="pref_main_window_theme_help" formatted="false">Ustawia temat dla głównego okna. Tematy dla całego okna są użyteczne tylko jeśli lubisz rzeczy duże i łatwe do odczytania. Inne tematy są po prostu dla zabawy.</string>
   <string name="pref_cat_logging" formatted="false">Logowanie</string>
   <string name="pref_enable_logging" formatted="false">Włącz logowanie</string>
   <string name="pref_enable_logging_summary" formatted="false">Czy logować zmiany stanu baterii?</string>
@@ -181,58 +171,11 @@
   <string name="pref_autostart_at_boot" formatted="false">Startuj razem z telefonem</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">Startuj aplikację gdy telefon zostanie uruchomiony:</string>
   <string name="pref_autostart_at_boot_help" formatted="false">Kontroluje, kiedy Battery Indicator startuje automatycznie przy uruchomieniu urządzenia.\n\nOpcja \"Przed wyłączeniem\" działa jeżeli ostatnio włączałeś/wyłączałeś ręcznie Battery Indicator. Więc jeżeli wyłączyłeś Battery Indicator przez np. menedżer procesów, Battery Indicator nie wie czy zatrzymałeś go i czy nadal ma startować przy uruchomieniu urządzenia.</string>
-  <string name="pref_cat_charge_as_text" formatted="false">Poziom naładowania tekstowo</string>
-  <string name="pref_charge_as_text" formatted="false">Poziom naładowania tekstowo</string>
-  <string name="pref_charge_as_text_summary" formatted="false">Pokazywać poziom naładowania jako tekst przy ikonie?</string>
-  <string name="pref_charge_as_text_help" formatted="false">Miałem kilku użytkowników ze słabym wzrokiem, którzy prosili mnie abym dodał tę opcję. Poziom naładowania jest pokazywany tekstowo zaraz obok ikonyl. Aktualnie ikona nie zmieni się, więc jest to pomocne tylko przy rozwinięciu paska powiadomień. Ale lepsze to niż nic i wystarczająco proste dla tych, którzy to chcieli. Częściowo przydatne dla tych, którzy używają czytnika ekranowego.\n\nNa niektórych urządzeniach ucina prawą stronę powiadomienia.</string>
-  <string name="pref_cat_one_percent_hack" formatted="false">Hack dla 1%</string>
-  <string name="pref_one_percent_hack" formatted="false">Hack dla 1%</string>
-  <string name="pref_one_percent_hack_summary" formatted="false">Użyć dla urządzeń, które pokazują poziom co 10%</string>
-  <string name="pref_one_percent_hack_help" formatted="false">Ten hack działa dla wszystkich modeli Motoroli, które pokazują poziom tylko co 10%.\n\nWiększość urządzeń nie potrzebuje tego. Jeżeli twoje urządzenie pokazuje już poziom co 1% nie włączaj tego hacka.\n\nJeżeli opcja jest szara i nie da się jej włączyć, oznacza to, że twoje urządzenie nie jest kompatybilne z tym hackiem.\n\nZobacz <a href="http://code.google.com/p/battery-indicator/wiki/ OnePercentHack?tm=6">OnePercentHack</a> po więcej informacji.</string>
   <string name="lang_system_selected" formatted="false">Wybrane systemowo</string>
   <string name="pref_cat_language" formatted="false">Język</string>
   <string name="pref_language_override" formatted="false">Wymuś język</string>
   <string name="pref_language_override_summary" formatted="false">Wybierz język</string>
   <string name="pref_language_override_help" formatted="false">Jeżeli tłumaczenie w twoim języku jest nieskończone lub niedokładne i chciałbyś zmienić na prawdopodobnie lepsze, możesz to zrobić tutaj.</string>
-  <string name="pref_cat_status_duration" formatted="false">Powiadomienia o stanie</string>
-  <string name="pref_status_dur_est" formatted="false">Kiedy zmienić</string>
-  <string name="pref_status_dur_est_summary" formatted="false">Zacznij pokazywać godziny po czasie:</string>
-  <string name="pref_status_dur_est_help" formatted="false">Określa, kiedy powiadomienie zmienia się z postaci \"Odłączony od 13:10\" na postać \"Odłączony od 3 godzin\".</string>
-  <string name="pref_cat_time_remaining_estimates" formatted="false">Pozostały czas użycia</string>
-  <string name="pref_cat_time_remaining_estimates_help" formatted="false">Czasy przewidywane zrobiłem trochę inaczej niż myślisz, ale myślę, że to lepiej. To ty kontrolujesz, co aplikacja bierze za bazę przy obliczaniu czasu, więc jeśli myślisz, że coś jest nie tak, możesz to naprawić.</string>
-  <string name="pref_show_charge_time" formatted="false">Pokazuj czas do naładowania</string>
-  <string name="pref_show_charge_time_summary" formatted="false">Czy pokazywać czas pozostały do naładowania?</string>
-  <string name="pref_show_charge_time_help" formatted="false">Jeżeli włączone, a urządzenie jest podłączone, główne okno pokazuje czas do naładowania.</string>
-  <string name="pref_usb_charge_time" formatted="false">Ładowanie przez USB</string>
-  <string name="pref_usb_charge_time_summary" formatted="false">Czas ładowanie przez USB od 0% do 100%, w godzinach:</string>
-  <string name="pref_usb_charge_time_help" formatted="false">Wpisz jak długo twoja bateria naładuje się od 0% do 100% przy ładowaniu przez USB.</string>
-  <string name="pref_ac_charge_time" formatted="false">Ładowanie z sieci</string>
-  <string name="pref_ac_charge_time_summary" formatted="false">Czas ładowania z sieci od 0% do 100%, w godzinach:</string>
-  <string name="pref_ac_charge_time_help" formatted="false">Wpisz jak długo twoja bateria naładuje się od 0% do 100% przy ładowaniu z sieci.</string>
-  <string name="pref_show_light_usage" formatted="false">Pokaż dla lekkiego użytkowania</string>
-  <string name="pref_show_light_usage_summary" formatted="false">Czy pokazywać pozostały czas baterii dla lekkiego użytkowania?</string>
-  <string name="pref_show_light_usage_help" formatted="false">Określa czy pokazywać pozostały czas baterii przy lekkim użytkowaniu telefonu.</string>
-  <string name="pref_light_usage_time" formatted="false">Lekkie użytkownie</string>
-  <string name="pref_light_usage_time_summary" formatted="false">Czas lekkiego użytkowania od 100% do 0%, w godzinach:</string>
-  <string name="pref_light_usage_time_help" formatted="false">Wpisz po jakim czasie bateria zostanie rozładowania od 100% do 0% przy \'Lekkim użyciu\'</string>
-  <string name="pref_show_normal_usage" formatted="false">Pokaż dla normalnego użytkownia</string>
-  <string name="pref_show_normal_usage_summary" formatted="false">Czy pokazywać pozostały czas baterii dla normalnego użytkowania?</string>
-  <string name="pref_show_normal_usage_help" formatted="false">Ustaw, czy pokazywać, czy nie, przewidywania (w głównym oknie)kiedy bateria rozładuje się przy \"Normalnym użyciu\".</string>
-  <string name="pref_normal_usage_time" formatted="false">Normalne użytkownie</string>
-  <string name="pref_normal_usage_time_summary" formatted="false">Czas normalnego użytkowania od 100% do 0%, w godzinach:</string>
-  <string name="pref_normal_usage_time_help" formatted="false">Wpisz po jakim czasie bateria zostanie rozładowana od 100% do 0% przy \'Normalnym użyciu\'</string>
-  <string name="pref_show_heavy_usage" formatted="false">Pokaż dla mocnego użytkowania</string>
-  <string name="pref_show_heavy_usage_summary" formatted="false">Czy pokazywać pozostały czas baterii dla mocnego użytkowania?</string>
-  <string name="pref_show_heavy_usage_help" formatted="false">Ustaw, czy pokazywać, czy nie, przewidywania (w głównym oknie)kiedy bateria rozładuje się przy \"Mocnym użyciu\".</string>
-  <string name="pref_heavy_usage_time" formatted="false">Mocne użytkowanie</string>
-  <string name="pref_heavy_usage_time_summary" formatted="false">Czas mocnego użytkowania od 100% do 0%, w godzinach:</string>
-  <string name="pref_heavy_usage_time_help" formatted="false">Wpisz po jakim czasie bateria zostanie rozładowana od 100% do 0% przy \'Mocnym użyciu\'</string>
-  <string name="pref_show_constant_usage" formatted="false">Pokaż dla ciągłego użytkowania</string>
-  <string name="pref_show_constant_usage_summary" formatted="false">Czy pokazywać pozostały czas baterii dla ciągłego użytkowania?</string>
-  <string name="pref_show_constant_usage_help" formatted="false">Ustaw, czy pokazywać, czy nie, przewidywania (w głównym oknie)kiedy bateria rozładuje się przy \"Ciągłym użyciu\".</string>
-  <string name="pref_constant_usage_time" formatted="false">Ciągłe użytkowanie</string>
-  <string name="pref_constant_usage_time_summary" formatted="false">Czas ciągłego użytkowania od 100% do 0%, w godzinach:</string>
-  <string name="pref_constant_usage_time_help" formatted="false">Wpisz po jakim czasie bateria zostanie rozładowana od 100% do 0% przy \'Ciągłym użyciu\'</string>
   <string name="pref_cat_plugin_settings" formatted="false">Ustawienia dodatków</string>
   <string name="pref_plugin_settings" formatted="false">Ustawienia dodatków</string>
   <string name="pref_plugin_settings_summary" formatted="false">Zmień ustawienia dla tego dodatku</string>
@@ -281,9 +224,6 @@
   <string name="silent" formatted="false">Wuciszony</string>
   <string name="pref_alarm_vibrate" formatted="false">Wibracja</string>
   <string name="pref_alarm_lights" formatted="false">Flash</string>
-  <string name="mw_theme_default_small" formatted="false">Domyślnie mały</string>
-  <string name="mw_theme_colorful_small" formatted="false">Kolorowy mały</string>
-  <string name="mw_theme_full_window" formatted="false">Pełne okno</string>
   <string name="boot_pref_always" formatted="false">Zawsze</string>
   <string name="boot_pref_never" formatted="false">Nigdy</string>
   <string name="boot_pref_if_running" formatted="false">Jeżeli uruchomiona przy wyłączaniu</string>

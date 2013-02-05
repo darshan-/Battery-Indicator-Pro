@@ -2,12 +2,7 @@
 <resources>
   <string name="app_full_name" formatted="false">電量指示器專業版</string>
   <string name="app_launcher_name" formatted="false">電量指示器</string>
-  <string name="settings_activity_name" formatted="false">電量指示器專業版 - 設定</string>
-  <string name="help_activity_name" formatted="false">電量指示器專業版 - 說明</string>
-  <string name="log_view_activity_name" formatted="false">電量指示器專業版 - 日誌</string>
   <string name="app_full_name_free" formatted="false">電量指示器</string>
-  <string name="settings_activity_name_free" formatted="false">電量指示器 - 設定</string>
-  <string name="help_activity_name_free" formatted="false">電量指示器 - 說明</string>
   <string name="battery_use_b" formatted="false">查看電量使用情況</string>
   <string name="upgrade_donate_b" formatted="false">升級/捐助...</string>
   <string name="reenable_lock_screen" formatted="false">恢復自動鎖屏</string>
@@ -103,16 +98,11 @@
   <string name="theme_settings" formatted="false">色彩主題</string>
   <string name="theme_settings_summary" formatted="false">設定圖標色彩及視窗主題</string>
   <string name="theme_settings_help" formatted="false">您可以選擇主視窗顯示主題及設定圖標變化色彩。</string>
-  <string name="time_settings" formatted="false">時間設定</string>
-  <string name="time_settings_summary" formatted="false">定制時間預估方式</string>
-  <string name="time_settings_help" formatted="false">您可在此界面可設定電池狀態變化後（例如：拔下電源）所經歷時間估計方式。\n\n您也可以設定預估USB/AC方式充電、省電/正常/頻繁/持續使用手機剩餘時間的基準值。</string>
   <string name="other_settings" formatted="false">其他設定</string>
   <string name="other_settings_help" formatted="false">此頁面包含其他的設定，包括日誌功能、螢幕鎖功能、溫度單位、自動啟動方式等。</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">專業版的更多設定</string>
   <string name="pref_please_upgrade" formatted="false">專業版包含了以紅色、黃色及綠色圖標提示剩餘電量等級、電池狀態記錄、自動/手動關閉鎖屏、充電/放電剩餘時間預估等多種高級功能。</string>
   <string name="pref_cat_themes" formatted="false">主題</string>
-  <string name="pref_main_window_theme" formatted="false">主視窗顯示主題</string>
-  <string name="pref_main_window_theme_help" formatted="false">設定主視窗顯示主題，預設以傳統Android系統小視窗方式顯示。如果您希望文字信息更便於閱讀，可選擇全屏視窗主題。其他主題僅供娛樂。</string>
   <string name="pref_cat_logging" formatted="false">日誌記錄</string>
   <string name="pref_enable_logging" formatted="false">啟用日誌記錄功能</string>
   <string name="pref_enable_logging_summary" formatted="false">確認記錄電池狀態信息？</string>
@@ -145,49 +135,6 @@
   <string name="pref_autostart_at_boot" formatted="false">開機自動啟動方式</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">確認允許電量指示器開機時自動啟動？</string>
   <string name="pref_autostart_at_boot_help" formatted="false">設定是否允許電量指示器在開機時自動啟動。\n\n」關機前運行中」選項僅在手動關閉電量指示器時有效。若您使用其他方式，如使用任務殺手進行關閉，則本程序無法確認是否由您關閉，選擇該方式後仍會在開機時自動啟動。</string>
-  <string name="pref_cat_charge_as_text" formatted="false">文本顯示電量</string>
-  <string name="pref_charge_as_text" formatted="false">文本顯示電量</string>
-  <string name="pref_charge_as_text_summary" formatted="false">確認以大字體文本在圖標旁顯示剩餘電量？</string>
-  <string name="pref_charge_as_text_help" formatted="false">鑒於部分視力不佳用戶的要求，此功能可在狀態列下拉托盤中電量指示器圖標右側以易閱讀的大字體顯示剩餘電量信息，原電量圖標無任何改變。勾選/取消此項只能在狀態列下拉托盤中看到變化，但此功能有勝於無，且對有需求的用戶而言易於實現。\n\n為節約寶貴的顯示空間，經過多次單調乏味的調試實現此功能，在不使用百分符號的前提下，文本已能完美的顯示並易於閱讀。對於部分非常小型的設備而言，開啟此功能可能導致AM/PM字符偏離原位導致不協調。</string>
-  <string name="pref_cat_status_duration" formatted="false">狀態時長</string>
-  <string name="pref_status_dur_est" formatted="false">估算前持續時間</string>
-  <string name="pref_status_dur_est_summary" formatted="false">開始估算剩餘時間前持續時間</string>
-  <string name="pref_status_dur_est_help" formatted="false">設定通知信息從諸如「拔下電源開始於1:10 PM」到「拔下電源已1小時」的轉換前持續時間。第一種顯示精確到分鐘的狀態變化信息顯示更為準確，但多數用戶喜歡更簡便的方式以估計狀態持續時間，因此更樂於使用比預設12小時計時法更簡便的提示信息。</string>
-  <string name="pref_cat_time_remaining_estimates" formatted="false">剩餘時間預估</string>
-  <string name="pref_cat_time_remaining_estimates_help" formatted="false">該剩餘時間預估功能可能與傳統功能有所不同，但更為優秀，您能根據使用的情況調整電池使用時間基準值並及時修正。預設基準時間為大量統計結果，由於機型種類、使用習慣的不同，您可能需要修正這些基準值。但好處是只有您才知道諸如「正常使用」分類的含義，並使用自定義的基準值，以避免被錯誤的預估值所迷惑。</string>
-  <string name="pref_show_charge_time" formatted="false">顯示充電時間</string>
-  <string name="pref_show_charge_time_summary" formatted="false">確認充電時顯示剩餘時間？</string>
-  <string name="pref_show_charge_time_help" formatted="false">若啟用此功能，則主視窗會在您充電時顯示預估的充滿剩餘時間（基於您在下方的設定值）。</string>
-  <string name="pref_usb_charge_time" formatted="false">USB充電模式</string>
-  <string name="pref_usb_charge_time_summary" formatted="false">從0%到100%電量USB充電所需時間</string>
-  <string name="pref_usb_charge_time_help" formatted="false">輸入您估計的使用USB接口充電時剩餘電量從0%到100%所需時長。</string>
-  <string name="pref_ac_charge_time" formatted="false">AC充電模式</string>
-  <string name="pref_ac_charge_time_summary" formatted="false">從0%到100%電量AC充電所需時間</string>
-  <string name="pref_ac_charge_time_help" formatted="false">輸入您估計的使用AC適配器充電時剩餘電量從0%到100%所需時長。</string>
-  <string name="pref_show_light_usage" formatted="false">顯示省電使用時間</string>
-  <string name="pref_show_light_usage_summary" formatted="false">確認顯示省電使用剩餘時間？</string>
-  <string name="pref_show_light_usage_help" formatted="false">是否在主視窗顯示您所認為的「省電使用」方式剩餘電量持續時間？</string>
-  <string name="pref_light_usage_time" formatted="false">省電使用</string>
-  <string name="pref_light_usage_time_summary" formatted="false">省電使用時電量從100%到0%放電時間</string>
-  <string name="pref_light_usage_time_help" formatted="false">輸入以您所認為的「省電使用」方式將電量從100%消耗至0%所需時間？</string>
-  <string name="pref_show_normal_usage" formatted="false">顯示正常使用時間</string>
-  <string name="pref_show_normal_usage_summary" formatted="false">確認正常使用剩餘時間？</string>
-  <string name="pref_show_normal_usage_help" formatted="false">是否在主視窗顯示您所認為的「正常使用」方式剩餘電量持續時間？</string>
-  <string name="pref_normal_usage_time" formatted="false">正常使用</string>
-  <string name="pref_normal_usage_time_summary" formatted="false">正常使用時電量從100%到0%放電時間</string>
-  <string name="pref_normal_usage_time_help" formatted="false">輸入以您所認為的「正常使用」方式將電量從100%消耗至0%所需時間？</string>
-  <string name="pref_show_heavy_usage" formatted="false">顯示頻繁使用時間</string>
-  <string name="pref_show_heavy_usage_summary" formatted="false">確認頻繁使用剩餘時間？</string>
-  <string name="pref_show_heavy_usage_help" formatted="false">是否在主視窗顯示您所認為的「頻繁使用」方式剩餘電量持續時間？</string>
-  <string name="pref_heavy_usage_time" formatted="false">頻繁使用</string>
-  <string name="pref_heavy_usage_time_summary" formatted="false">頻繁使用時電量從100%到0%放電時間</string>
-  <string name="pref_heavy_usage_time_help" formatted="false">輸入以您所認為的「頻繁使用」方式將電量從100%消耗至0%所需時間？</string>
-  <string name="pref_show_constant_usage" formatted="false">顯示持續使用時間</string>
-  <string name="pref_show_constant_usage_summary" formatted="false">確認持續持續使用剩餘時間？</string>
-  <string name="pref_show_constant_usage_help" formatted="false">是否在主視窗顯示您所認為的「持續使用」方式剩餘電量持續時間？</string>
-  <string name="pref_constant_usage_time" formatted="false">持續使用</string>
-  <string name="pref_constant_usage_time_summary" formatted="false">持續使用時電量從100%到0%放電時間</string>
-  <string name="pref_constant_usage_time_help" formatted="false">輸入以您所認為的「持續使用」方式將電量從100%消耗至0%所需時間？</string>
   <string name="pref_cat_color" formatted="false">圖標顏色</string>
   <string name="pref_cat_color_help" formatted="false">為保證電量指示器的二進制數據包尺寸最小化，對圖標顏色做出如下限制：紅色圖標標示最大值為30%剩餘電量，黃色圖標標示最大值為50%剩餘電量，綠色圖標標示最小值為20%剩餘電量。開發者相信如此的限制能滿足99%的用戶需求。\n\n為保證用戶能夠最大限度的自定義該軟體，各色彩等級可單獨的開啟或關閉。最高可實現四級色彩顯示，綠色圖標表示電量充足，接著以灰色、黃色和紅色顯示剩餘電量等級。大部分用戶會將黃色標示上限及綠色標示下限設定為相同值，這樣將跳過灰色標示。</string>
   <string name="pref_color_preview" formatted="false">色彩預覽</string>
@@ -216,9 +163,6 @@
   <string name="pref_ten_percent_mode" formatted="false">10%步進模式</string>
   <string name="pref_ten_percent_mode_summary" formatted="false">請先閱讀說明信息！</string>
   <string name="pref_ten_percent_mode_help" formatted="false"><b>注意：</b> 改動該選項設定狀態將重置圖標顏色設定內容！\n\n該選項將清除圖標色彩設定內容以保證10%步進類型設備顯示正常。根據用戶反饋，該類設備包括以下型號：\n\n‧ Motorola Droid （最初版本）\n‧ Motorola Droid X\n‧ Motorola Droid 2\n• Motorola Defy\n‧ Samsung Moment\n\n除以上型號之外，其餘設備均為1%步進報告類型，因此均<i>不用</i>開啟此項功能。</string>
-  <string name="mw_theme_default_small" formatted="false">預設小視窗</string>
-  <string name="mw_theme_colorful_small" formatted="false">彩色小視窗</string>
-  <string name="mw_theme_full_window" formatted="false">全屏視窗</string>
   <string name="boot_pref_always" formatted="false">始終</string>
   <string name="boot_pref_never" formatted="false">從不</string>
   <string name="boot_pref_if_running" formatted="false">關機時運行</string>
