@@ -30,7 +30,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -44,11 +44,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class BatteryInfoActivity extends Activity {
+public class BatteryInfoActivity extends Activity implements BatteryIndicatorService.OnBatteryInfoUpdatedListener {
     private Intent biServiceIntent;
     private SharedPreferences settings;
     private SharedPreferences sp_store;
-    private final BIServiceConnection biServiceConnection = new BIServiceConnection();
+    private final CallbackServiceConnection biServiceConnection = new CallbackServiceConnection();
 
     private static final Intent batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY)
         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -57,7 +57,6 @@ public class BatteryInfoActivity extends Activity {
     private Context context;
     private Str str;
     private Boolean disallowLockButton;
-    private int percent = -1;
     private Button battery_use_b;
     private Button toggle_lock_screen_b;
     private BatteryLevel bl;
@@ -69,32 +68,13 @@ public class BatteryInfoActivity extends Activity {
     private static final int DIALOG_CONFIRM_CLOSE = 1;
     private static final int DIALOG_FIRST_RUN = 2;
 
-    private final Handler handler = new Handler();
-    private final Runnable runUpdateInfo = new Runnable() {
-        public void run() {
-            updateCurrentInfo();
-            updateLockscreenButton();
-        }
-    };
-
-    // TODO: Use callback and get rid of this receiver
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (! Intent.ACTION_BATTERY_CHANGED.equals(action)) return;
 
-            int level = intent.getIntExtra("level", -1);
-            int scale = intent.getIntExtra("scale", 100);
-
-            percent = level * 100 / scale;
-
-            handler.post(runUpdateInfo);
-            /* Give the service a second to process the update */
-            handler.postDelayed(runUpdateInfo, 1 * 1000);
-            /* Just in case 1 second wasn't enough */
-            handler.postDelayed(runUpdateInfo, 4 * 1000);
-            // TODO: Set up callback mechanism rather than using these hackish delays?
+            // TODO: Make sure Service is running?  Or else remove this altogether
         }
     };
 
@@ -152,16 +132,29 @@ public class BatteryInfoActivity extends Activity {
         finish();
     }*/
 
+    private class CallbackServiceConnection extends BIServiceConnection {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            super.onServiceConnected(name, service);
+            biService.registerOnBatteryInfoUpdatedListener(BatteryInfoActivity.this);
+        }
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
+
+        if (biServiceConnection.biService != null)
+            biServiceConnection.biService.registerOnBatteryInfoUpdatedListener(this);
+
         registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        handler.removeCallbacks(runUpdateInfo);
+
+        biServiceConnection.biService.unregisterOnBatteryInfoUpdatedListener(this);
         unregisterReceiver(mBatteryInfoReceiver);
     }
 
@@ -267,26 +260,26 @@ public class BatteryInfoActivity extends Activity {
         return dialog;
     }
 
-    private void updateCurrentInfo() {
-        bl.setLevel(percent);
+    public void onBatteryInfoUpdated(BatteryInfo info) {
+        bl.setLevel(info.percent);
         blv.invalidate();
 
         TextView tv = (TextView) findViewById(R.id.level);
-        tv.setText("" + percent + res.getString(R.string.percent_symbol));
+        tv.setText("" + info.percent + res.getString(R.string.percent_symbol));
 
         int[] prediction = biServiceConnection.biService.getPrediction();
 
         int hours  = prediction[0];
         int mins   = prediction[1];
-        int status = prediction[2];
+        //int status = prediction[2];
 
-        if (status == BatteryInfo.STATUS_FULLY_CHARGED) {
+        if (info.status == BatteryInfo.STATUS_FULLY_CHARGED) {
             tv = (TextView) findViewById(R.id.time_remaining);
-            tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + str.statuses[status] + "</font>")); // TODO: color
+            tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + str.statuses[info.status] + "</font>")); // TODO: color
         } else {
             String until_text;
 
-            if (status == BatteryInfo.STATUS_CHARGING)
+            if (info.status == BatteryInfo.STATUS_CHARGING)
                 until_text = "until charged"; // TODO: Translatable
             else
                 until_text = "until drained"; // TODO: Translatable
@@ -300,19 +293,14 @@ public class BatteryInfoActivity extends Activity {
             tv.setText(until_text);
         }
 
-        int last_percent = sp_store.getInt(BatteryIndicatorService.KEY_LAST_PERCENT, -1);
-        int last_plugged = sp_store.getInt(BatteryIndicatorService.KEY_LAST_PLUGGED, -1);
-
-        long last_status_cTM = sp_store.getLong(BatteryIndicatorService.KEY_LAST_STATUS_CTM, -1);
-        long currentTM = System.currentTimeMillis();
-        int secs = (int) ((currentTM - last_status_cTM) / 1000);
+        int secs = (int) ((System.currentTimeMillis() - info.last_status_cTM) / 1000);
            hours = secs / (60 * 60);
             mins = (secs / 60) % 60;
 
-        String s = str.statuses[status];
+        String s = str.statuses[info.status];
 
-        if (status == BatteryInfo.STATUS_CHARGING)
-            s += " " + str.pluggeds[last_plugged]; /* Add '(AC)', '(USB)', '(?)', or '(Wireless)' */
+        if (info.status == BatteryInfo.STATUS_CHARGING)
+            s += " " + str.pluggeds[info.last_plugged]; /* Add '(AC)', '(USB)', '(?)', or '(Wireless)' */
 
         // TODO: Don't show 'since 100%' for Fully Charged status
         tv = (TextView) findViewById(R.id.status);
@@ -320,13 +308,15 @@ public class BatteryInfoActivity extends Activity {
 
         s = "Since "; // TODO: Translatable
 
-        if (status != BatteryInfo.STATUS_FULLY_CHARGED)
-            s += last_percent + str.percent_symbol + ", ";
+        if (info.status != BatteryInfo.STATUS_FULLY_CHARGED)
+            s += info.last_percent + str.percent_symbol + ", ";
 
         s += hours + "h " + mins + "m ago"; // TODO: Translatable
 
         tv = (TextView) findViewById(R.id.status_duration);
         tv.setText(s);
+
+        updateLockscreenButton();
     }
 
     private void updateLockscreenButton() {

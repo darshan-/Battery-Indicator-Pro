@@ -65,6 +65,7 @@ public class BatteryIndicatorService extends Service {
     private LogDatabase log_db;
     private BatteryLevel bl;
     private BatteryInfo info;
+    private java.util.HashSet<OnBatteryInfoUpdatedListener> biuListeners;
 
     private static final String LOG_TAG = "BatteryIndicatorService";
 
@@ -151,6 +152,8 @@ public class BatteryIndicatorService extends Service {
 
         info = new BatteryInfo();
 
+        biuListeners = new java.util.HashSet<OnBatteryInfoUpdatedListener>();
+
         predictor = new Predictor(context);
         bl = new BatteryLevel(context, BatteryLevel.SIZE_NOTIFICATION);
         notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
@@ -212,9 +215,8 @@ public class BatteryIndicatorService extends Service {
 
     private final IBinder mBinder = new LocalBinder();
 
-    // TODO: Set up normal public method in Service to grab data -- or call with data stucture
     public interface OnBatteryInfoUpdatedListener {
-        public void onBatteryInfoUpdated(/* BatteryInfo bi */); // TODO
+        public void onBatteryInfoUpdated(BatteryInfo bi);
     }
 
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
@@ -261,6 +263,9 @@ public class BatteryIndicatorService extends Service {
             updateBatteryInfo(intent);
 
             predictor.update(info.percent, info.status, info.plugged);
+
+            for (OnBatteryInfoUpdatedListener listener : biuListeners)
+                listener.onBatteryInfoUpdated(info);
 
             int icon = iconFor(info.percent);
 
@@ -704,6 +709,15 @@ public class BatteryIndicatorService extends Service {
         }
     }
 
+    public void registerOnBatteryInfoUpdatedListener(OnBatteryInfoUpdatedListener listener) {
+        biuListeners.add(listener);
+        listener.onBatteryInfoUpdated(info);
+    }
+
+    public void unregisterOnBatteryInfoUpdatedListener(OnBatteryInfoUpdatedListener listener) {
+        biuListeners.remove(listener);
+    }
+
     public int[] getPrediction() {
         int secs_left;
 
@@ -716,6 +730,6 @@ public class BatteryIndicatorService extends Service {
         int hours_left = secs_left / (60 * 60);
         int  mins_left = (secs_left / 60) % 60;
 
-        return new int[] {hours_left, mins_left, info.status};
+        return new int[] {hours_left, mins_left};
     }
 }
