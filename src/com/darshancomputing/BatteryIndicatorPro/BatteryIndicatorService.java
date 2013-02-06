@@ -224,41 +224,7 @@ public class BatteryIndicatorService extends Service {
         public void onReceive(Context receiver_context, Intent intent) { // TODO: Should I use receiver_context over context?
             if (! Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) return;
 
-            mHandler.removeCallbacks(mPluginNotify);
-            mHandler.removeCallbacks(mNotify);
-
-            String desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_PLUGIN, "none");
-            if (! desiredPluginPackage.equals("none")) {
-                SharedPreferences.Editor settings_editor = settings.edit();
-                settings_editor.putString(SettingsActivity.KEY_ICON_SET, desiredPluginPackage);
-                settings_editor.putString(SettingsActivity.KEY_ICON_PLUGIN, "none");
-                settings_editor.commit();
-            }
-
-            desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_SET, "none");
-            if (desiredPluginPackage.startsWith("builtin.")) desiredPluginPackage = "none";
-
-            if (! pluginPackage.equals(desiredPluginPackage) && ! pluginPackage.equals("none")) disconnectPlugin();
-
-            if (! pluginPackage.equals(desiredPluginPackage) && ! desiredPluginPackage.equals("none")) {
-                try {
-                    Context pluginContext = getApplicationContext().createPackageContext(desiredPluginPackage, Context.CONTEXT_INCLUDE_CODE);
-                    ClassLoader pluginClassLoader = pluginContext.getClassLoader();
-                    Class pluginClass = pluginClassLoader.loadClass(desiredPluginPackage + ".PluginService");
-                    pluginIntent = new Intent(pluginContext, pluginClass);
-
-                    startService(pluginIntent);
-                    if (! bindService(pluginIntent, pluginServiceConnection, 0)) {
-                        stopService(pluginIntent);
-                        throw new Exception();
-                    }
-
-                    pluginPackage = desiredPluginPackage;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    pluginPackage = "none";
-                }
-            }
+            handlePlugins();
 
             updateBatteryInfo(intent);
 
@@ -267,79 +233,121 @@ public class BatteryIndicatorService extends Service {
             for (OnBatteryInfoUpdatedListener listener : biuListeners)
                 listener.onBatteryInfoUpdated(info);
 
-            int icon = iconFor(info.percent);
-
             if (statusChanged())
                 handleUpdateWithChangedStatus();
             else
                 handleUpdateWithSameStatus();
 
-            int[] prediction = getPrediction();
-
-            if (info.status == BatteryInfo.STATUS_FULLY_CHARGED) {
-                mainNotificationTitle = str.statuses[info.status];
-            } else {
-                // TODO: Pro option to choose between long, medium, and short
-                if (prediction[0] == 0) {
-                    mainNotificationTitle = str.n_minutes_long(prediction[1]);
-                } else if (prediction[0] < 24) {
-                    mainNotificationTitle = str.n_hours_m_minutes_short(prediction[0], prediction[1]);
-                    //mainNotificationTitle = "" + prediction[0] + ":" + prediction[1] + " hours";
-                } else {
-                    if (prediction[1] >= 30) prediction[0] += 1;
-                    mainNotificationTitle = str.n_days_m_hours(prediction[0] / 24, prediction[0] % 24);
-                }
-
-                if (info.status == BatteryInfo.STATUS_CHARGING)
-                    mainNotificationTitle += " until charged"; // TODO: Translatable
-                else
-                    mainNotificationTitle += " left"; // TODO: Translatable
-            }
-
-            Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
-            mainNotificationText = str.healths[info.health] + " / " + str.formatTemp(info.temperature, convertF);
-
-            if (info.voltage > 500)
-                mainNotificationText += " / " + str.formatVoltage(info.voltage);
-
-            long when = 0;
-
-            mainNotification = new Notification(icon, null, when);
-
-            if (android.os.Build.VERSION.SDK_INT < 11) {
-                notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
-                notificationRV.setImageViewBitmap(R.id.battery_level_view, bl.getBitmap());
-            }
-
-            if (android.os.Build.VERSION.SDK_INT >= 16) {
-                mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                                                               str.default_main_notification_priority));
-            }
-
-            mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
-
-            bl.setLevel(info.percent);
-
-            notificationRV.setTextViewText(R.id.percent, "" + info.percent + str.percent_symbol);
-            notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTitle));
-            notificationRV.setTextViewText(R.id.bottom_line, mainNotificationText);
-
-            mainNotification.contentIntent = mainWindowPendingIntent;
-            mainNotification.contentView = notificationRV;
-
-            if (! pluginPackage.equals("none")) {
-                mHandler.postDelayed(mPluginNotify,  100);
-                mHandler.postDelayed(mPluginNotify,  300);
-                mHandler.postDelayed(mPluginNotify,  900);
-                mHandler.postDelayed(mNotify,       1000);
-            } else {
-                mHandler.post(mNotify);
-            }
+            prepareNotification();
+            doNotify();
 
             if (alarms.anyActiveAlarms())
                 handleAlarms();
         }
     };
+
+    private void prepareNotification() {
+        if (info.status == BatteryInfo.STATUS_FULLY_CHARGED) {
+            mainNotificationTitle = str.statuses[info.status];
+        } else {
+            // TODO: Pro option to choose between long, medium, and short
+            int[] prediction = getPrediction();
+
+            if (prediction[0] == 0) {
+                mainNotificationTitle = str.n_minutes_long(prediction[1]);
+            } else if (prediction[0] < 24) {
+                mainNotificationTitle = str.n_hours_m_minutes_short(prediction[0], prediction[1]);
+                //mainNotificationTitle = "" + prediction[0] + ":" + prediction[1] + " hours";
+            } else {
+                if (prediction[1] >= 30) prediction[0] += 1;
+                mainNotificationTitle = str.n_days_m_hours(prediction[0] / 24, prediction[0] % 24);
+            }
+
+            if (info.status == BatteryInfo.STATUS_CHARGING)
+                mainNotificationTitle += " until charged"; // TODO: Translatable
+            else
+                mainNotificationTitle += " left"; // TODO: Translatable
+        }
+
+        Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
+        mainNotificationText = str.healths[info.health] + " / " + str.formatTemp(info.temperature, convertF);
+
+        if (info.voltage > 500)
+            mainNotificationText += " / " + str.formatVoltage(info.voltage);
+
+        mainNotification = new Notification(iconFor(info.percent), null, 0l);
+
+        if (android.os.Build.VERSION.SDK_INT < 11) {
+            notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
+            notificationRV.setImageViewBitmap(R.id.battery_level_view, bl.getBitmap());
+        }
+
+        if (android.os.Build.VERSION.SDK_INT >= 16) {
+            mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
+                                                                           str.default_main_notification_priority));
+        }
+
+        mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
+
+        bl.setLevel(info.percent);
+
+        notificationRV.setTextViewText(R.id.percent, "" + info.percent + str.percent_symbol);
+        notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTitle));
+        notificationRV.setTextViewText(R.id.bottom_line, mainNotificationText);
+
+        mainNotification.contentIntent = mainWindowPendingIntent;
+        mainNotification.contentView = notificationRV;
+    }
+
+    private void doNotify() {
+        if (! pluginPackage.equals("none")) {
+            // TODO: What's with these four delayed posts?  Should I set up a callback mechanism?
+            mHandler.postDelayed(mPluginNotify,  100);
+            mHandler.postDelayed(mPluginNotify,  300);
+            mHandler.postDelayed(mPluginNotify,  900);
+            mHandler.postDelayed(mNotify,       1000);
+        } else {
+            mHandler.post(mNotify);
+        }
+    }
+
+    private void handlePlugins() {
+        mHandler.removeCallbacks(mPluginNotify);
+        mHandler.removeCallbacks(mNotify);
+
+        String desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_PLUGIN, "none");
+        if (! desiredPluginPackage.equals("none")) {
+            SharedPreferences.Editor settings_editor = settings.edit();
+            settings_editor.putString(SettingsActivity.KEY_ICON_SET, desiredPluginPackage);
+            settings_editor.putString(SettingsActivity.KEY_ICON_PLUGIN, "none");
+            settings_editor.commit();
+        }
+
+        desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_SET, "none");
+        if (desiredPluginPackage.startsWith("builtin.")) desiredPluginPackage = "none";
+
+        if (! pluginPackage.equals(desiredPluginPackage) && ! pluginPackage.equals("none")) disconnectPlugin();
+
+        if (! pluginPackage.equals(desiredPluginPackage) && ! desiredPluginPackage.equals("none")) {
+            try {
+                Context pluginContext = getApplicationContext().createPackageContext(desiredPluginPackage, Context.CONTEXT_INCLUDE_CODE);
+                ClassLoader pluginClassLoader = pluginContext.getClassLoader();
+                Class pluginClass = pluginClassLoader.loadClass(desiredPluginPackage + ".PluginService");
+                pluginIntent = new Intent(pluginContext, pluginClass);
+
+                startService(pluginIntent);
+                if (! bindService(pluginIntent, pluginServiceConnection, 0)) {
+                    stopService(pluginIntent);
+                    throw new Exception();
+                }
+
+                pluginPackage = desiredPluginPackage;
+            } catch (Exception e) {
+                e.printStackTrace();
+                pluginPackage = "none";
+            }
+        }
+    }
 
     /* I take advantage of (count on) R.java having resources alphabetical and incrementing by one. */
     private int iconFor(int percent) {
@@ -613,17 +621,6 @@ public class BatteryIndicatorService extends Service {
         }
 
         return notification;
-    }
-
-    private String formatTime(Date d) {
-        String format = android.provider.Settings.System.getString(getContentResolver(),
-                                                                android.provider.Settings.System.TIME_12_24);
-        if (format == null || format.equals("12")) {
-            return java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT,
-                                                        java.util.Locale.getDefault()).format(d);
-        } else {
-            return (new java.text.SimpleDateFormat("HH:mm")).format(d);
-        }
     }
 
     private void setEnablednessOfKeyguard(boolean enabled) {
