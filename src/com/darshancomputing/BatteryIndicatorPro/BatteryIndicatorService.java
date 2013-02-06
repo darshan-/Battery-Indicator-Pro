@@ -58,11 +58,13 @@ public class BatteryIndicatorService extends Service {
 
     private Notification kgUnlockedNotification;
 
+    private Context context;
     private Resources res;
     private Str str;
     private AlarmDatabase alarms;
-    private Logger logger;
+    private LogDatabase log_db;
     private BatteryLevel bl;
+    private BatteryInfo info;
 
     private static final String LOG_TAG = "BatteryIndicatorService";
 
@@ -72,32 +74,6 @@ public class BatteryIndicatorService extends Service {
     private static final int NOTIFICATION_ALARM_HEALTH = 4;
     private static final int NOTIFICATION_ALARM_TEMP   = 5;
 
-    public static final int STATUS_UNPLUGGED     = 0;
-    public static final int STATUS_UNKNOWN       = 1;
-    public static final int STATUS_CHARGING      = 2;
-    public static final int STATUS_DISCHARGING   = 3;
-    public static final int STATUS_NOT_CHARGING  = 4;
-    public static final int STATUS_FULLY_CHARGED = 5;
-    public static final int STATUS_MAX = STATUS_FULLY_CHARGED;
-
-    public static final int PLUGGED_UNPLUGGED = 0;
-    public static final int PLUGGED_AC        = 1;
-    public static final int PLUGGED_USB       = 2;
-    public static final int PLUGGED_UNKNOWN   = 3;
-    public static final int PLUGGED_WIRELESS  = 4;
-    public static final int PLUGGED_MAX       = PLUGGED_WIRELESS;
-
-    public static final int HEALTH_UNKNOWN     = 1;
-    public static final int HEALTH_GOOD        = 2;
-    public static final int HEALTH_OVERHEAT    = 3;
-    public static final int HEALTH_DEAD        = 4;
-    public static final int HEALTH_OVERVOLTAGE = 5;
-    public static final int HEALTH_FAILURE     = 6;
-    public static final int HEALTH_COLD        = 7;
-    public static final int HEALTH_MAX         = HEALTH_COLD;
-
-
-    public static final String KEY_LAST_STATUS_SINCE = "last_status_since";
     public static final String KEY_LAST_STATUS_CTM = "last_status_cTM";
     public static final String KEY_LAST_STATUS = "last_status";
     public static final String KEY_LAST_PERCENT = "last_percent";
@@ -119,8 +95,6 @@ public class BatteryIndicatorService extends Service {
 
     /* Global variables for these Notification Runnables */
     private Notification mainNotification;
-    private int percent, status, plugged;
-    private long status_duration;
     private String mainNotificationTitle, mainNotificationText;
     private RemoteViews notificationRV;
 
@@ -137,7 +111,7 @@ public class BatteryIndicatorService extends Service {
                 java.lang.reflect.Method m = c.getMethod("notify", new Class[] {int.class, int.class,
                                                                                 String.class, String.class,
                                                                                 PendingIntent.class});
-                m.invoke(pluginServiceConnection.service, new Object[] {percent, status,
+                m.invoke(pluginServiceConnection.service, new Object[] {info.percent, info.status,
                                                                         mainNotificationTitle, mainNotificationText,
                                                                         mainWindowPendingIntent});
 
@@ -172,9 +146,11 @@ public class BatteryIndicatorService extends Service {
     public void onCreate() {
         res = getResources();
         str = new Str(res);
-        Context context = getApplicationContext();
-        logger = new Logger(context, "Service");
-        logger.log("onCreate()");
+        context = getApplicationContext();
+        log_db = new LogDatabase(context);
+
+        info = new BatteryInfo();
+
         predictor = new Predictor(context);
         bl = new BatteryLevel(context, BatteryLevel.SIZE_NOTIFICATION);
         notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
@@ -213,7 +189,6 @@ public class BatteryIndicatorService extends Service {
 
     @Override
     public void onDestroy() {
-        logger.log("onDestroy()");
         setEnablednessOfKeyguard(true);
         alarms.close();
         if (! pluginPackage.equals("none")) disconnectPlugin();
@@ -221,6 +196,7 @@ public class BatteryIndicatorService extends Service {
         mHandler.removeCallbacks(mPluginNotify);
         mHandler.removeCallbacks(mNotify);
         mNotificationManager.cancelAll();
+        log_db.close();
     }
 
     @Override
@@ -236,15 +212,16 @@ public class BatteryIndicatorService extends Service {
 
     private final IBinder mBinder = new LocalBinder();
 
-    // TODO: Set up normal public method in Service to grab data
+    // TODO: Set up normal public method in Service to grab data -- or call with data stucture
     public interface OnBatteryInfoUpdatedListener {
-        public void onBatteryInfoUpdated();
+        public void onBatteryInfoUpdated(/* BatteryInfo bi */); // TODO
     }
 
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
-        public void onReceive(Context context, Intent intent) {
-            logger.log("onReceive()");
+        public void onReceive(Context receiver_context, Intent intent) { // TODO: Should I use receiver_context over context?
+            if (! Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) return;
+
             mHandler.removeCallbacks(mPluginNotify);
             mHandler.removeCallbacks(mNotify);
 
@@ -281,182 +258,21 @@ public class BatteryIndicatorService extends Service {
                 }
             }
 
-            SharedPreferences.Editor editor = sp_store.edit();
-            String action = intent.getAction();
-            if (! Intent.ACTION_BATTERY_CHANGED.equals(action)) return;
+            updateBatteryInfo(intent);
 
-            int level = intent.getIntExtra("level", 50);
-            int scale = intent.getIntExtra("scale", 100);
-                status = intent.getIntExtra("status", STATUS_UNKNOWN);
-            int health = intent.getIntExtra("health", HEALTH_UNKNOWN);
-                plugged = intent.getIntExtra("plugged", PLUGGED_UNKNOWN);
-            int temperature = intent.getIntExtra("temperature", 0);
-            int voltage = intent.getIntExtra("voltage", 0);
-            //String technology = intent.getStringExtra("technology");
+            predictor.update(info.percent, info.status, info.plugged);
 
-            percent = level * 100 / scale;
+            int icon = iconFor(info.percent);
 
-            java.io.File hack_file = new java.io.File("/sys/class/power_supply/battery/charge_counter");
-            if (hack_file.exists()) {
-                try {
-                    java.io.FileReader fReader = new java.io.FileReader(hack_file);
-                    java.io.BufferedReader bReader = new java.io.BufferedReader(fReader);
-                    int charge_counter = Integer.valueOf(bReader.readLine());
-
-                    if (charge_counter < percent + 10 && charge_counter > percent - 10) {
-                        if (charge_counter > 100) // This happens
-                            charge_counter = 100;
-
-                        if (charge_counter < 0)   // This could happen?
-                            charge_counter = 0;
-
-                        percent = charge_counter;
-                    } else {
-                        Log.e(LOG_TAG, "charge_counter file exists but with value " + charge_counter +
-                              " which is inconsistent with percent: " + percent);
-                    }
-                } catch (java.io.FileNotFoundException e) {
-                    /* These error messages are only really useful to me and might as well be left hardwired here in English. */
-                    Log.e(LOG_TAG, "charge_counter file doesn't exist");
-                } catch (java.io.IOException e) {
-                    Log.e(LOG_TAG, "Error reading charge_counter file");
-                }
-            }
-
-            /* Just treating any unplugged status as simply "Unplugged" now.
-               Note that the main activity now assumes that the status is always 0, 2, or 5 TODO */
-            if (plugged == PLUGGED_UNPLUGGED) status = STATUS_UNPLUGGED;
-
-            if (status  > STATUS_MAX) { status  = STATUS_UNKNOWN; }
-            if (health  > HEALTH_MAX) { health  = HEALTH_UNKNOWN; }
-            if (plugged > PLUGGED_MAX){ plugged = PLUGGED_UNKNOWN; }
-
-            predictor.update(level, status, plugged);
-
-            /* I take advantage of (count on) R.java having resources alphabetical and incrementing by one */
-
-            int icon;
-
-            String default_set = "builtin.classic";
-            if (android.os.Build.VERSION.SDK_INT >= 11)
-                default_set = "builtin.plain_number";
-
-            String icon_set = settings.getString(SettingsActivity.KEY_ICON_SET, "null");
-            if (icon_set.equals("null")) {
-                icon_set = default_set;
-
-                SharedPreferences.Editor settings_editor = settings.edit();
-                settings_editor.putString(SettingsActivity.KEY_ICON_SET, default_set);
-                settings_editor.commit();
-            }
-
-            Boolean indicate_charging = settings.getBoolean(SettingsActivity.KEY_INDICATE_CHARGING, true);
-
-            if (icon_set.equals("builtin.plain_number")) {
-                icon = ((status == STATUS_CHARGING && indicate_charging) ? chargingIcon0 : plainIcon0) + percent;
-            } else if (icon_set.equals("builtin.smaller_number")) {
-                icon = ((status == STATUS_CHARGING && indicate_charging) ? small_chargingIcon0 : small_plainIcon0) + percent;
-            } else {
-                if (settings.getBoolean(SettingsActivity.KEY_RED, res.getBoolean(R.bool.default_use_red)) &&
-                    percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, str.default_red_thresh)) &&
-                    percent <= SettingsActivity.RED_ICON_MAX) {
-                    icon = R.drawable.r000 + percent - 0;
-                } else if (settings.getBoolean(SettingsActivity.KEY_AMBER, res.getBoolean(R.bool.default_use_amber)) &&
-                           percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_AMBER_THRESH, str.default_amber_thresh)) &&
-                           percent <= SettingsActivity.AMBER_ICON_MAX &&
-                           percent >= SettingsActivity.AMBER_ICON_MIN){
-                    icon = R.drawable.a000 + percent - 0;
-                } else if (settings.getBoolean(SettingsActivity.KEY_GREEN, res.getBoolean(R.bool.default_use_green)) &&
-                           percent >= Integer.valueOf(settings.getString(SettingsActivity.KEY_GREEN_THRESH, str.default_green_thresh)) &&
-                           percent >= SettingsActivity.GREEN_ICON_MIN) {
-                    icon = R.drawable.g020 + percent - 20;
-                } else {
-                    icon = R.drawable.b000 + percent;
-                }
-            }
-
-            String statusStr = str.statuses[status];
-            if (status == STATUS_CHARGING)
-                statusStr += " " + str.pluggeds[plugged]; /* Add '(AC)' or '(USB)' */
-
-            int last_status = sp_store.getInt(KEY_LAST_STATUS, -1);
-            /* There's a bug, at least on 1.5, or maybe depending on the hardware (I've noticed it on the MyTouch with 1.5)
-               where USB is recognized as AC at first, then quickly changed to USB.  So we need to test if plugged changed. */
-            int last_plugged = sp_store.getInt(KEY_LAST_PLUGGED, -1);
-            long last_status_cTM = sp_store.getLong(KEY_LAST_STATUS_CTM, -1);
-            int last_percent = sp_store.getInt(KEY_LAST_PERCENT, -1);
-            int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
-            long currentTM = System.currentTimeMillis();
-            String last_status_since = sp_store.getString(KEY_LAST_STATUS_SINCE, null);
-            LogDatabase logs = new LogDatabase(context);
-
-            if (last_status != status || last_status_cTM == -1 || last_percent == -1 ||
-                last_status_cTM > currentTM || last_status_since == null || last_plugged != plugged ||
-                (plugged == PLUGGED_UNPLUGGED && percent > previous_charge + 20))
-            {
-                last_status_since = formatTime(new Date());
-                status_duration = 0;
-
-                if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, false)) {
-                    logs.logStatus(status, plugged, percent, temperature, voltage, currentTM, LogDatabase.STATUS_NEW);
-                    if (status != last_status && last_status == STATUS_UNPLUGGED)
-                        logs.prune(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAX_LOG_AGE, str.default_max_log_age)));
-                }
-
-                editor.putString(KEY_LAST_STATUS_SINCE, last_status_since);
-                editor.putLong(KEY_LAST_STATUS_CTM, currentTM);
-                editor.putInt(KEY_LAST_STATUS, status);
-                editor.putInt(KEY_LAST_PERCENT, percent);
-                editor.putInt(KEY_LAST_PLUGGED, plugged);
-                editor.putInt(KEY_PREVIOUS_CHARGE, percent);
-                editor.putInt(KEY_PREVIOUS_TEMP, temperature);
-                editor.putInt(KEY_PREVIOUS_HEALTH, health);
-
-                last_status_cTM = currentTM;
-
-                /* TODO: Af first glance, I think I want to do this, but think about it a bit and decide for sure... */
-                mNotificationManager.cancel(NOTIFICATION_ALARM_CHARGE);
-
-                if (last_status != status && settings.getBoolean(SettingsActivity.KEY_AUTO_DISABLE_LOCKING, false)) {
-                    if (last_status == STATUS_UNPLUGGED) {
-                        editor.putBoolean(KEY_DISABLE_LOCKING, true);
-                        setEnablednessOfKeyguard(false);
-                    } else if (status == STATUS_UNPLUGGED) {
-                        editor.putBoolean(KEY_DISABLE_LOCKING, false);
-                        setEnablednessOfKeyguard(true);
-
-                        /* If the screen was on, "inside" the keyguard, when the keyguard was disabled, then we're
-                             still inside it now, even if the screen is off.  So we aquire a wakelock that forces the
-                             screen to turn on, then release it.  If the screen is on now, this has no effect, but
-                             if it's off, then either the user will press the power button or the screen will turn
-                             itself off after the normal timeout.  Either way, when the screen goes off, the keyguard
-                             will now be enabled properly. */
-                        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-                        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK |
-                                                                  PowerManager.ACQUIRE_CAUSES_WAKEUP |
-                                                                  PowerManager.ON_AFTER_RELEASE, getPackageName());
-                        wl.acquire();
-                        wl.release();
-                    }
-                }
-            } else {
-                status_duration = currentTM - last_status_cTM;
-
-                if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, false))
-                    logs.logStatus(status, plugged, percent, temperature, voltage, currentTM, LogDatabase.STATUS_OLD);
-
-                if (percent % 10 == 0) {
-                    editor.putInt(KEY_PREVIOUS_CHARGE, percent);
-                    editor.putInt(KEY_PREVIOUS_TEMP, temperature);
-                    editor.putInt(KEY_PREVIOUS_HEALTH, health);
-                }
-            }
-            logs.close();
+            if (statusChanged())
+                handleUpdateWithChangedStatus();
+            else
+                handleUpdateWithSameStatus();
 
             int[] prediction = getPrediction();
 
-            if (status == STATUS_FULLY_CHARGED) {
-                mainNotificationTitle = str.statuses[status];
+            if (info.status == BatteryInfo.STATUS_FULLY_CHARGED) {
+                mainNotificationTitle = str.statuses[info.status];
             } else {
                 // TODO: Pro option to choose between long, medium, and short
                 if (prediction[0] == 0) {
@@ -469,17 +285,17 @@ public class BatteryIndicatorService extends Service {
                     mainNotificationTitle = str.n_days_m_hours(prediction[0] / 24, prediction[0] % 24);
                 }
 
-                if (status == STATUS_CHARGING)
+                if (info.status == BatteryInfo.STATUS_CHARGING)
                     mainNotificationTitle += " until charged"; // TODO: Translatable
                 else
                     mainNotificationTitle += " left"; // TODO: Translatable
             }
 
             Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
-            mainNotificationText = str.healths[health] + " / " + str.formatTemp(temperature, convertF);
+            mainNotificationText = str.healths[info.health] + " / " + str.formatTemp(info.temperature, convertF);
 
-            if (voltage > 500)
-                mainNotificationText += " / " + str.formatVoltage(voltage);
+            if (info.voltage > 500)
+                mainNotificationText += " / " + str.formatVoltage(info.voltage);
 
             long when = 0;
 
@@ -491,14 +307,15 @@ public class BatteryIndicatorService extends Service {
             }
 
             if (android.os.Build.VERSION.SDK_INT >= 16) {
-                mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY, str.default_main_notification_priority));
+                mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
+                                                                               str.default_main_notification_priority));
             }
 
             mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
 
-            bl.setLevel(percent);
+            bl.setLevel(info.percent);
 
-            notificationRV.setTextViewText(R.id.percent, "" + percent + str.percent_symbol);
+            notificationRV.setTextViewText(R.id.percent, "" + info.percent + str.percent_symbol);
             notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTitle));
             notificationRV.setTextViewText(R.id.bottom_line, mainNotificationText);
 
@@ -514,68 +331,249 @@ public class BatteryIndicatorService extends Service {
                 mHandler.post(mNotify);
             }
 
-            if (alarms.anyActiveAlarms()) {
-                Cursor c;
-                Notification notification;
-                PendingIntent contentIntent = PendingIntent.getActivity(context, 0, alarmsIntent, 0);
-
-                if (status == STATUS_FULLY_CHARGED && last_status == STATUS_CHARGING) {
-                    c = alarms.activeAlarmFull();
-                    if (c != null) {
-                        notification = parseAlarmCursor(c);
-                        notification.setLatestEventInfo(context, str.alarm_fully_charged, str.alarm_text, contentIntent);
-                        mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, notification);
-                        c.close();
-                    }
-                }
-
-                c = alarms.activeAlarmChargeDrops(percent, previous_charge);
-                if (c != null) {
-                    editor.putInt(KEY_PREVIOUS_CHARGE, percent);
-                    notification = parseAlarmCursor(c);
-                    notification.setLatestEventInfo(context, str.alarm_charge_drops + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
-                                                    str.alarm_text, contentIntent);
-                    mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, notification);
-                    c.close();
-                }                
-
-                c = alarms.activeAlarmChargeRises(percent, previous_charge);
-                if (c != null && status != STATUS_UNPLUGGED) {
-                    editor.putInt(KEY_PREVIOUS_CHARGE, percent);
-                    notification = parseAlarmCursor(c);
-                    notification.setLatestEventInfo(context, str.alarm_charge_rises + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
-                                                    str.alarm_text, contentIntent);
-                    mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, notification);
-                    c.close();
-                }                
-
-                c = alarms.activeAlarmTempRises(temperature, sp_store.getInt(KEY_PREVIOUS_TEMP, 1));
-                if (c != null) {
-                    editor.putInt(KEY_PREVIOUS_TEMP, temperature);
-                    notification = parseAlarmCursor(c);
-                    notification.setLatestEventInfo(context, str.alarm_temp_rises +
-                                                    str.formatTemp(c.getInt(alarms.INDEX_THRESHOLD), convertF, false),
-                                                    str.alarm_text, contentIntent);
-                    mNotificationManager.notify(NOTIFICATION_ALARM_TEMP, notification);
-                    c.close();
-                }                
-
-                if (health > HEALTH_GOOD && health != sp_store.getInt(KEY_PREVIOUS_HEALTH, HEALTH_GOOD)) {
-                    c = alarms.activeAlarmFailure();
-                    if (c != null) {
-                        editor.putInt(KEY_PREVIOUS_HEALTH, health);
-                        notification = parseAlarmCursor(c);
-                        notification.setLatestEventInfo(context, str.alarm_health_failure + str.healths[health],
-                                                        str.alarm_text, contentIntent);
-                        mNotificationManager.notify(NOTIFICATION_ALARM_HEALTH, notification);
-                        c.close();
-                    }
-                }
-            }
-
-            editor.commit();
+            if (alarms.anyActiveAlarms())
+                handleAlarms();
         }
     };
+
+    /* I take advantage of (count on) R.java having resources alphabetical and incrementing by one. */
+    private int iconFor(int percent) {
+        String default_set = "builtin.classic";
+        if (android.os.Build.VERSION.SDK_INT >= 11)
+            default_set = "builtin.plain_number";
+
+        String icon_set = settings.getString(SettingsActivity.KEY_ICON_SET, "null");
+        if (icon_set.equals("null")) {
+            icon_set = default_set;
+
+            SharedPreferences.Editor settings_editor = settings.edit();
+            settings_editor.putString(SettingsActivity.KEY_ICON_SET, default_set);
+            settings_editor.commit();
+        }
+
+        Boolean indicate_charging = settings.getBoolean(SettingsActivity.KEY_INDICATE_CHARGING, true);
+
+        if (icon_set.equals("builtin.plain_number")) {
+            return ((info.status == BatteryInfo.STATUS_CHARGING && indicate_charging) ? chargingIcon0 : plainIcon0) + info.percent;
+        } else if (icon_set.equals("builtin.smaller_number")) {
+            return ((info.status == BatteryInfo.STATUS_CHARGING && indicate_charging) ? small_chargingIcon0 : small_plainIcon0) + info.percent;
+        } else {
+            if (settings.getBoolean(SettingsActivity.KEY_RED, res.getBoolean(R.bool.default_use_red)) &&
+                info.percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, str.default_red_thresh)) &&
+                info.percent <= SettingsActivity.RED_ICON_MAX) {
+                return R.drawable.r000 + info.percent - 0;
+            } else if (settings.getBoolean(SettingsActivity.KEY_AMBER, res.getBoolean(R.bool.default_use_amber)) &&
+                       info.percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_AMBER_THRESH, str.default_amber_thresh)) &&
+                       info.percent <= SettingsActivity.AMBER_ICON_MAX &&
+                       info.percent >= SettingsActivity.AMBER_ICON_MIN){
+                return R.drawable.a000 + info.percent - 0;
+            } else if (settings.getBoolean(SettingsActivity.KEY_GREEN, res.getBoolean(R.bool.default_use_green)) &&
+                       info.percent >= Integer.valueOf(settings.getString(SettingsActivity.KEY_GREEN_THRESH, str.default_green_thresh)) &&
+                       info.percent >= SettingsActivity.GREEN_ICON_MIN) {
+                return R.drawable.g020 + info.percent - 20;
+            } else {
+                return R.drawable.b000 + info.percent;
+            }
+        }
+    }
+
+    private void updateBatteryInfo(Intent intent) {
+        int level = intent.getIntExtra("level", 50);
+        int scale = intent.getIntExtra("scale", 100);
+
+        info.status = intent.getIntExtra("status", BatteryInfo.STATUS_UNKNOWN);
+        info.health = intent.getIntExtra("health", BatteryInfo.HEALTH_UNKNOWN);
+        info.plugged = intent.getIntExtra("plugged", BatteryInfo.PLUGGED_UNKNOWN);
+        info.temperature = intent.getIntExtra("temperature", 0);
+        info.voltage = intent.getIntExtra("voltage", 0);
+        //info.technology = intent.getStringExtra("technology");
+
+        info.percent = level * 100 / scale;
+        info.percent = attemptOnePercentHack(info.percent);
+
+        // TODO: Support wireless charging
+        //if (info.plugged == BatteryInfo.PLUGGED_UNPLUGGED) info.status = BatteryInfo.STATUS_UNPLUGGED;
+
+        if (info.status  > BatteryInfo.STATUS_MAX) { info.status  = BatteryInfo.STATUS_UNKNOWN; }
+        if (info.health  > BatteryInfo.HEALTH_MAX) { info.health  = BatteryInfo.HEALTH_UNKNOWN; }
+        if (info.plugged > BatteryInfo.PLUGGED_MAX){ info.plugged = BatteryInfo.PLUGGED_UNKNOWN; }
+
+        info.last_status = sp_store.getInt(KEY_LAST_STATUS, -1);
+        info.last_plugged = sp_store.getInt(KEY_LAST_PLUGGED, -1);
+        info.last_status_cTM = sp_store.getLong(KEY_LAST_STATUS_CTM, -1);
+        info.last_percent = sp_store.getInt(KEY_LAST_PERCENT, -1);
+
+    }
+
+    private boolean statusChanged() {
+        int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
+
+        return (info.last_status != info.status || info.last_status_cTM == -1 || info.last_percent == -1 ||
+                info.last_status_cTM > System.currentTimeMillis() || info.last_plugged != info.plugged ||
+                (info.plugged == BatteryInfo.PLUGGED_UNPLUGGED && info.percent > previous_charge + 20));
+    }
+
+    private void handleUpdateWithChangedStatus() {
+        SharedPreferences.Editor editor = sp_store.edit();
+        long time = System.currentTimeMillis();
+
+        if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, true)) {
+            log_db.logStatus(info, time, LogDatabase.STATUS_NEW);
+
+            if (info.status != info.last_status && info.last_status == BatteryInfo.STATUS_UNPLUGGED)
+                log_db.prune(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAX_LOG_AGE, str.default_max_log_age)));
+        }
+
+        editor.putLong(KEY_LAST_STATUS_CTM, time);
+        editor.putInt(KEY_LAST_STATUS, info.status);
+        editor.putInt(KEY_LAST_PERCENT, info.percent);
+        editor.putInt(KEY_LAST_PLUGGED, info.plugged);
+        editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
+        editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
+        editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
+
+        info.last_status_cTM = time;
+
+        /* TODO: Af first glance, I think I want to do this, but think about it a bit and decide for sure... */
+        mNotificationManager.cancel(NOTIFICATION_ALARM_CHARGE);
+
+        if (info.last_status != info.status && settings.getBoolean(SettingsActivity.KEY_AUTO_DISABLE_LOCKING, false)) {
+            if (info.last_status == BatteryInfo.STATUS_UNPLUGGED) {
+                editor.putBoolean(KEY_DISABLE_LOCKING, true);
+                setEnablednessOfKeyguard(false);
+            } else if (info.status == BatteryInfo.STATUS_UNPLUGGED) {
+                editor.putBoolean(KEY_DISABLE_LOCKING, false);
+                setEnablednessOfKeyguard(true);
+
+                /* If the screen was on, "inside" the keyguard, when the keyguard was disabled, then we're
+                   still inside it now, even if the screen is off.  So we aquire a wakelock that forces the
+                   screen to turn on, then release it.  If the screen is on now, this has no effect, but
+                   if it's off, then either the user will press the power button or the screen will turn
+                   itself off after the normal timeout.  Either way, when the screen goes off, the keyguard
+                   will now be enabled properly. */
+                PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+                PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK |
+                                                          PowerManager.ACQUIRE_CAUSES_WAKEUP |
+                                                          PowerManager.ON_AFTER_RELEASE, getPackageName());
+                wl.acquire();
+                wl.release();
+            }
+        }
+
+        editor.commit();
+    }
+
+    private void handleUpdateWithSameStatus() {
+        SharedPreferences.Editor editor = sp_store.edit();
+        long time = System.currentTimeMillis();
+
+        if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, true))
+            log_db.logStatus(info, time, LogDatabase.STATUS_OLD);
+
+        if (info.percent % 10 == 0) {
+            editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
+            editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
+            editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
+        }
+
+        editor.commit();
+    }
+
+    private void handleAlarms() {
+        Cursor c;
+        Notification notification;
+        PendingIntent contentIntent = PendingIntent.getActivity(context, 0, alarmsIntent, 0);
+        SharedPreferences.Editor editor = sp_store.edit();
+        int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
+
+        if (info.status == BatteryInfo.STATUS_FULLY_CHARGED && info.last_status == BatteryInfo.STATUS_CHARGING) {
+            c = alarms.activeAlarmFull();
+            if (c != null) {
+                notification = parseAlarmCursor(c);
+                notification.setLatestEventInfo(context, str.alarm_fully_charged, str.alarm_text, contentIntent);
+                mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, notification);
+                c.close();
+            }
+        }
+
+        c = alarms.activeAlarmChargeDrops(info.percent, previous_charge);
+        if (c != null) {
+            editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
+            notification = parseAlarmCursor(c);
+            notification.setLatestEventInfo(context, str.alarm_charge_drops + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
+                                            str.alarm_text, contentIntent);
+            mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, notification);
+            c.close();
+        }
+
+        c = alarms.activeAlarmChargeRises(info.percent, previous_charge);
+        if (c != null && info.status != BatteryInfo.STATUS_UNPLUGGED) {
+            editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
+            notification = parseAlarmCursor(c);
+            notification.setLatestEventInfo(context, str.alarm_charge_rises + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
+                                            str.alarm_text, contentIntent);
+            mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, notification);
+            c.close();
+        }
+
+        c = alarms.activeAlarmTempRises(info.temperature, sp_store.getInt(KEY_PREVIOUS_TEMP, 1));
+        if (c != null) {
+            Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
+            editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
+            notification = parseAlarmCursor(c);
+            notification.setLatestEventInfo(context, str.alarm_temp_rises +
+                                            str.formatTemp(c.getInt(alarms.INDEX_THRESHOLD), convertF, false),
+                                            str.alarm_text, contentIntent);
+            mNotificationManager.notify(NOTIFICATION_ALARM_TEMP, notification);
+            c.close();
+        }
+
+        if (info.health > BatteryInfo.HEALTH_GOOD && info.health != sp_store.getInt(KEY_PREVIOUS_HEALTH, BatteryInfo.HEALTH_GOOD)) {
+            c = alarms.activeAlarmFailure();
+            if (c != null) {
+                editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
+                notification = parseAlarmCursor(c);
+                notification.setLatestEventInfo(context, str.alarm_health_failure + str.healths[info.health],
+                                                str.alarm_text, contentIntent);
+                mNotificationManager.notify(NOTIFICATION_ALARM_HEALTH, notification);
+                c.close();
+            }
+        }
+
+        editor.commit();
+    }
+
+    private int attemptOnePercentHack(int percent) {
+        java.io.File hack_file = new java.io.File("/sys/class/power_supply/battery/charge_counter");
+
+        if (hack_file.exists()) {
+            /* The Log messages are only really useful to me and might as well be left hardwired here in English. */
+            try {
+                java.io.FileReader fReader = new java.io.FileReader(hack_file);
+                java.io.BufferedReader bReader = new java.io.BufferedReader(fReader);
+                int charge_counter = Integer.valueOf(bReader.readLine());
+
+                if (charge_counter < percent + 10 && charge_counter > percent - 10) {
+                    if (charge_counter > 100) // This happens
+                        charge_counter = 100;
+
+                    if (charge_counter < 0)   // This could happen?
+                        charge_counter = 0;
+
+                    percent = charge_counter;
+                } else {
+                    Log.e(LOG_TAG, "charge_counter file exists but with value " + charge_counter +
+                          " which is inconsistent with percent: " + percent);
+                }
+            } catch (java.io.FileNotFoundException e) {
+                Log.e(LOG_TAG, "charge_counter file doesn't exist");
+            } catch (java.io.IOException e) {
+                Log.e(LOG_TAG, "Error reading charge_counter file");
+            }
+        }
+
+        return percent;
+    }
 
     private Notification parseAlarmCursor(Cursor c) {
         Notification notification = new Notification(R.drawable.stat_notify_alarm, null, System.currentTimeMillis());
@@ -703,7 +701,7 @@ public class BatteryIndicatorService extends Service {
     public int[] getPrediction() {
         int secs_left;
 
-        if (status == STATUS_CHARGING) {
+        if (info.status == BatteryInfo.STATUS_CHARGING) {
             secs_left = predictor.secondsUntilCharged();
         } else {
             secs_left = predictor.secondsUntilDrained();
@@ -712,6 +710,6 @@ public class BatteryIndicatorService extends Service {
         int hours_left = secs_left / (60 * 60);
         int  mins_left = (secs_left / 60) % 60;
 
-        return new int[] {hours_left, mins_left, status};
+        return new int[] {hours_left, mins_left, info.status};
     }
 }

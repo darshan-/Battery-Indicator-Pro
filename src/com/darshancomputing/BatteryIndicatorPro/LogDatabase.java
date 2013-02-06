@@ -57,8 +57,9 @@ public class LogDatabase {
         return rdb.rawQuery("SELECT * FROM " + LOG_TABLE_NAME + " ORDER BY " + KEY_TIME + " " + order, null);
     }
 
-    public void logStatus(int status, int plugged, int charge, int temp, int voltage, long time, int status_age) {
+    public void logStatus(BatteryInfo info, long time, int status_age) {
         Boolean duplicate = false;
+
         Cursor lastLog = rdb.rawQuery("SELECT * FROM " + LOG_TABLE_NAME
                                      + " ORDER BY " + KEY_TIME + " DESC LIMIT 1", null);
 
@@ -69,14 +70,14 @@ public class LogDatabase {
             int lastStatus  = a[0];
             int lastPlugged = a[1];
 
-            if (charge == lastCharge && status == lastStatus && plugged == lastPlugged)
+            if (info.percent == lastCharge && info.status == lastStatus && info.plugged == lastPlugged)
                 duplicate = true;
         }
 
         if (! duplicate)
             wdb.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (NULL, "
-                       + encodeStatus(status, plugged, status_age) + " ," + charge + " ," + time
-                       + " ," + temp + " ," + voltage + ")");
+                       + encodeStatus(info.status, info.plugged, status_age) + " ," + info.percent + " ," + time
+                       + " ," + info.temperature + " ," + info.voltage + ")");
 
         lastLog.close();
     }

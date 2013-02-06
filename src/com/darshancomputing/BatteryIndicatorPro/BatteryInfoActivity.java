@@ -280,13 +280,13 @@ public class BatteryInfoActivity extends Activity {
         int mins   = prediction[1];
         int status = prediction[2];
 
-        if (status == BatteryIndicatorService.STATUS_FULLY_CHARGED) {
+        if (status == BatteryInfo.STATUS_FULLY_CHARGED) {
             tv = (TextView) findViewById(R.id.time_remaining);
             tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + str.statuses[status] + "</font>")); // TODO: color
         } else {
             String until_text;
 
-            if (status == BatteryIndicatorService.STATUS_CHARGING)
+            if (status == BatteryInfo.STATUS_CHARGING)
                 until_text = "until charged"; // TODO: Translatable
             else
                 until_text = "until drained"; // TODO: Translatable
@@ -311,8 +311,8 @@ public class BatteryInfoActivity extends Activity {
 
         String s = str.statuses[status];
 
-        if (status == BatteryIndicatorService.STATUS_CHARGING)
-            s += " " + str.pluggeds[last_plugged]; /* Add '(AC)' or '(USB)' */
+        if (status == BatteryInfo.STATUS_CHARGING)
+            s += " " + str.pluggeds[last_plugged]; /* Add '(AC)', '(USB)', '(?)', or '(Wireless)' */
 
         // TODO: Don't show 'since 100%' for Fully Charged status
         tv = (TextView) findViewById(R.id.status);
@@ -320,7 +320,7 @@ public class BatteryInfoActivity extends Activity {
 
         s = "Since "; // TODO: Translatable
 
-        if (status != BatteryIndicatorService.STATUS_FULLY_CHARGED)
+        if (status != BatteryInfo.STATUS_FULLY_CHARGED)
             s += last_percent + str.percent_symbol + ", ";
 
         s += hours + "h " + mins + "m ago"; // TODO: Translatable

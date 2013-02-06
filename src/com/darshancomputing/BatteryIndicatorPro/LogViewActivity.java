@@ -427,21 +427,21 @@ public class LogViewActivity extends ListActivity {
                 int plugged       = statusCodes[1];
                 int status_age    = statusCodes[2];
 
-                if (status == BatteryIndicatorService.STATUS_FULLY_CHARGED && show_fully_charged) {
+                if (status == BatteryInfo.STATUS_FULLY_CHARGED && show_fully_charged) {
                     shownIDs.add(wrappedCursor.getPosition());
-                } else if ((status == BatteryIndicatorService.STATUS_UNKNOWN ||
-                            status == BatteryIndicatorService.STATUS_DISCHARGING ||
-                            status == BatteryIndicatorService.STATUS_NOT_CHARGING ||
-                            status > BatteryIndicatorService.STATUS_MAX) &&
+                } else if ((status == BatteryInfo.STATUS_UNKNOWN ||
+                            status == BatteryInfo.STATUS_DISCHARGING ||
+                            status == BatteryInfo.STATUS_NOT_CHARGING ||
+                            status > BatteryInfo.STATUS_MAX) &&
                            show_unknown) {
                     shownIDs.add(wrappedCursor.getPosition());
                 } else if (status_age == LogDatabase.STATUS_OLD) {
-                    if ((status == BatteryIndicatorService.STATUS_UNPLUGGED && show_discharging) ||
-                        (status == BatteryIndicatorService.STATUS_CHARGING  && show_charging))
+                    if ((status == BatteryInfo.STATUS_UNPLUGGED && show_discharging) ||
+                        (status == BatteryInfo.STATUS_CHARGING  && show_charging))
                         shownIDs.add(wrappedCursor.getPosition());
                 } else if (status_age == LogDatabase.STATUS_NEW) {
-                    if ((status == BatteryIndicatorService.STATUS_UNPLUGGED && show_unplugged) ||
-                        (status == BatteryIndicatorService.STATUS_CHARGING  && show_plugged_in))
+                    if ((status == BatteryInfo.STATUS_UNPLUGGED && show_unplugged) ||
+                        (status == BatteryInfo.STATUS_CHARGING  && show_plugged_in))
                         shownIDs.add(wrappedCursor.getPosition());
                 }
             }
@@ -557,19 +557,19 @@ public class LogViewActivity extends ListActivity {
             int plugged       = statusCodes[1];
             int status_age    = statusCodes[2];
 
-            if (status == BatteryIndicatorService.STATUS_FULLY_CHARGED) {
+            if (status == BatteryInfo.STATUS_FULLY_CHARGED) {
                 if (last_plugged > 0)
                    deltas.add(time - last_plugged);
                 else
                    deltas.add(-1l);
-            } else if (status_age == LogDatabase.STATUS_NEW && status == BatteryIndicatorService.STATUS_UNPLUGGED) {
+            } else if (status_age == LogDatabase.STATUS_NEW && status == BatteryInfo.STATUS_UNPLUGGED) {
                 if (last_plugged > 0)
                    deltas.add(time - last_plugged);
                 else
                    deltas.add(-1l);
 
                 last_unplugged = time;
-            } else if (status_age == LogDatabase.STATUS_NEW && status == BatteryIndicatorService.STATUS_CHARGING) {
+            } else if (status_age == LogDatabase.STATUS_NEW && status == BatteryInfo.STATUS_CHARGING) {
                 if (last_unplugged > 0)
                     deltas.add(time - last_unplugged);
                 else

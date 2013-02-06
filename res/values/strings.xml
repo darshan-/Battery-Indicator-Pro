@@ -125,7 +125,7 @@
   <string formatted="false" name="plugged_ac">(AC)</string>
   <string formatted="false" name="plugged_usb">(USB)</string>
   <string formatted="false" name="plugged_unknown">(?)</string>
-  <string formatted="false" name="plugged_wireless">(WL)</string>
+  <string formatted="false" name="plugged_wireless">(Wireless)</string>
 
   <string formatted="false" name="alarm_type_fully_charged">Fully charged</string>
   <string formatted="false" name="alarm_type_charge_drops">Charge drops below</string>
@@ -428,10 +428,7 @@
   <string formatted="false" name="pref_enable_logging">Enable Logging</string>
   <string formatted="false" name="pref_enable_logging_summary">Log battery state changes?</string>
   <string formatted="false" name="pref_enable_logging_help">
-    If enabled, Battery Indicator will log battery state changes
-    (e.g., the device is unplugged or becomes fully charged). You can
-    view the logs from the main window (press MENU and then select
-    Logs; on tablets, MENU isn\'t necessary).
+    If enabled, Battery Indicator will log battery state changes.
   </string>
   <string formatted="false" name="pref_max_log_age">Maximum Log Age</string>
   <string formatted="false" name="pref_max_log_age_summary">Delete logs older than:</string>

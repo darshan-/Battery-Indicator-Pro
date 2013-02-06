@@ -11,7 +11,7 @@
        android:key="enable_logging"
        android:title="@string/pref_enable_logging"
        android:summary="@string/pref_enable_logging_summary"
-       android:defaultValue="false"
+       android:defaultValue="true"
     />
 
     <ListPreference
