@@ -279,8 +279,10 @@ public class BatteryIndicatorService extends Service {
             if (hack_file.exists()) {
                 try {
                     java.io.FileReader fReader = new java.io.FileReader(hack_file);
-                    java.io.BufferedReader bReader = new java.io.BufferedReader(fReader);
-                    int charge_counter = Integer.valueOf(bReader.readLine());
+                    java.io.BufferedReader bReader = new java.io.BufferedReader(fReader, 8);
+                    String line = bReader.readLine();
+                    bReader.close();
+                    int charge_counter = Integer.valueOf(line);
 
                     if (charge_counter < percent + 10 && charge_counter > percent - 10) {
                         if (charge_counter > 100) // This happens
@@ -297,14 +299,25 @@ public class BatteryIndicatorService extends Service {
                 } catch (java.io.FileNotFoundException e) {
                     /* These error messages are only really useful to me and might as well be left hardwired here in English. */
                     Log.e(LOG_TAG, "charge_counter file doesn't exist");
+                    e.printStackTrace();
                 } catch (java.io.IOException e) {
                     Log.e(LOG_TAG, "Error reading charge_counter file");
+                    e.printStackTrace();
+                } catch (NumberFormatException e) {
+                    Log.e(LOG_TAG, "Read charge_counter file but couldn't convert contents to int");
+                    e.printStackTrace();
                 }
             }
 
-            /* Just treating any unplugged status as simply "Unplugged" now.
-               Note that the main activity now assumes that the status is always 0, 2, or 5 TODO */
-            if (plugged == PLUGGED_UNPLUGGED) status = STATUS_UNPLUGGED;
+            // TODO: This block is untested under actual wireless charging
+            // Treat unplugged plugged as unpluggged status, unless charging wirelessly
+            if (plugged == PLUGGED_UNPLUGGED) {
+                if (status == STATUS_CHARGING)
+                    plugged = PLUGGED_WIRELESS; // Some devices say they're unplugged
+                else
+                    status = STATUS_UNPLUGGED;
+            }
+
 
             if (status  > STATUS_MAX) { status  = STATUS_UNKNOWN; }
             if (health  > HEALTH_MAX) { health  = HEALTH_UNKNOWN; }
