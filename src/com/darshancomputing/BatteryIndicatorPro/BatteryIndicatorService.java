@@ -391,8 +391,14 @@ public class BatteryIndicatorService extends Service {
         info.percent = level * 100 / scale;
         info.percent = attemptOnePercentHack(info.percent);
 
-        // TODO: Support wireless charging
-        //if (info.plugged == BatteryInfo.PLUGGED_UNPLUGGED) info.status = BatteryInfo.STATUS_UNPLUGGED;
+        // TODO: This block is untested under actual wireless charging
+        // Treat unplugged plugged as unpluggged status, unless charging wirelessly
+        if (info.plugged == BatteryInfo.PLUGGED_UNPLUGGED) {
+            if (info.status == BatteryInfo.STATUS_CHARGING)
+                info.plugged = BatteryInfo.PLUGGED_WIRELESS; // Some devices say they're unplugged
+            else
+                info.status = BatteryInfo.STATUS_UNPLUGGED;
+        }
 
         if (info.status  > BatteryInfo.STATUS_MAX) { info.status  = BatteryInfo.STATUS_UNKNOWN; }
         if (info.health  > BatteryInfo.HEALTH_MAX) { info.health  = BatteryInfo.HEALTH_UNKNOWN; }
