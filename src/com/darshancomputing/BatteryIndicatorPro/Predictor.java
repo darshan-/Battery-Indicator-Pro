@@ -101,7 +101,7 @@ public class Predictor {
                     sum += recent.removeFirst();
                     recent.addLast(ms_diff);
                     n_replaced += 1;
-                } while (ms_diff > sum + recent.peekFirst() && n_replaced <= MAX_RECENT_REPLACED);
+                } while (ms_diff > sum + recent.peek() && n_replaced <= MAX_RECENT_REPLACED);
 
                 ave_discharge = ave_discharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
                 editor.putFloat(KEY_AVE_DISCHARGE, (float) ave_discharge);
