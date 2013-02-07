@@ -105,7 +105,7 @@ public class BatteryIndicatorService extends Service {
     private final Runnable mPluginNotify = new Runnable() {
         public void run() {
             try {
-                mNotificationManager.cancel(NOTIFICATION_PRIMARY);
+                stopForeground(true);
                 if (pluginServiceConnection.service == null) return;
 
                 Class<?> c = pluginServiceConnection.service.getClass();
@@ -128,7 +128,7 @@ public class BatteryIndicatorService extends Service {
         public void run() {
             if (! pluginPackage.equals("none")) disconnectPlugin();
 
-            mNotificationManager.notify(NOTIFICATION_PRIMARY, mainNotification);
+            startForeground(NOTIFICATION_PRIMARY, mainNotification);
             mHandler.removeCallbacks(mPluginNotify);
             mHandler.removeCallbacks(mNotify);
         }
@@ -678,7 +678,7 @@ public class BatteryIndicatorService extends Service {
     public void reloadSettings(boolean cancelFirst) {
         str = new Str(res); /* Language override may have changed */
 
-        if (cancelFirst) mNotificationManager.cancel(NOTIFICATION_PRIMARY);
+        if (cancelFirst) stopForeground(true);
 
         if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
             setEnablednessOfKeyguard(false);
