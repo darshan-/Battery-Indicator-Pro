@@ -16,6 +16,7 @@ package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -49,6 +50,16 @@ public class BatteryInfoActivity extends FragmentActivity {
             setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
         else
             setTitle(subtitle);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && viewPager.getCurrentItem() > 0) {
+            viewPager.setCurrentItem(0); // TODO: Or to current - 1?
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
     public static class BatteryInfoPagerAdapter extends FragmentPagerAdapter {
