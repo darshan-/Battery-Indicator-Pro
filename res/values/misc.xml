@@ -371,7 +371,6 @@
   <bool name="show_main_title">false</bool>
   <bool name="api_level_14_plus">false</bool>
   <bool name="api_level_16_plus">false</bool>
-  <bool name="override_list_activity_layout">true</bool>
 
   <string name="help_translators_list">
     Matthew McBaul(包明)
