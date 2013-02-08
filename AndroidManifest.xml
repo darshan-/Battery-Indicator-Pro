@@ -14,11 +14,11 @@
   >
     <activity
         android:name=".BatteryInfoActivity"
-        android:label="@string/app_launcher_name"
+        android:label="@string/app_full_name"
         android:stateNotNeeded="true"
         android:launchMode="singleTask"
     >
-      <intent-filter>
+      <intent-filter android:label="@string/app_launcher_name">
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
         <category android:name="android.intent.category.DEFAULT" />

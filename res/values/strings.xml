@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string formatted="false" name="app_full_name">Battery Indicator Pro</string>
-  <string formatted="false" name="app_launcher_name">Battery Info</string>
+  <string formatted="false" name="app_full_name">BatteryBot Pro</string>
+  <string formatted="false" name="app_launcher_name">BatteryBot</string>
   <string formatted="false" name="settings_activity_subtitle">Settings</string>
   <string formatted="false" name="help_activity_subtitle">Help</string>
   <string formatted="false" name="log_view_activity_subtitle">Logs</string>
 
-  <string formatted="false" name="app_full_name_free">Battery Indicator</string>
+  <string formatted="false" name="app_full_name_free">BatteryBot</string>
 
   <string formatted="false" name="battery_use_b">View Battery Use</string>
   <string formatted="false" name="upgrade_donate_b">Upgrade/Donate...</string>
@@ -22,7 +22,7 @@
 
   <string formatted="false" name="confirm_close">Really Close?</string>
   <string formatted="false" name="confirm_close_hint">
-    Battery Indicator will be completely closed, and you won\'t see it
+    BatteryBot will be completely closed, and you won\'t see it
     in your status bar any more.\n
 
     \nIf you just want to leave the main window and keep the indicator
@@ -51,15 +51,15 @@
     for your donation/purchase!  <b><i>This is very important</i> :</b>\n
 
     \n• If you have a \"<b>task killer</b>\" / process manager of some kind, you should either
-      uninstall it or try to get it to ignore Battery Indicator Pro.  Even if you
+      uninstall it or try to get it to ignore BatteryBot Pro.  Even if you
       have it set to ignore the free version, <i>you still need to tell it to
       ignore this Pro version</i> !\n
   </string>
   <string formatted="false" name="first_run_message_free">Thanks
-    for downloading Battery Indicator!  <b><i>This is very important</i> :</b>\n
+    for downloading BatteryBot!  <b><i>This is very important</i> :</b>\n
 
     \n• If you have a \"<b>task killer</b>\" / process manager of some kind, you should either
-      uninstall it or try to get it to ignore Battery Indicator.
+      uninstall it or try to get it to ignore BatteryBot.
   </string>
   <string formatted="false" name="okay">Okay</string>
 
@@ -212,16 +212,16 @@
 
   <string formatted="false" name="help_cat_introduction">Introduction</string>
   <string formatted="false" name="help_introduction">This
-    is <i>Battery Indicator Pro</i>, the \"Pro\" version of the
-    popular free app, <i>Battery Indicator</i>.  It\'s available for
+    is <i>BatteryBot Pro</i>, the \"Pro\" version of the
+    popular free app, <i>BatteryBot</i>.  It\'s available for
     purchase from the Android Market, but it\'s an open source
     project, which means you can download the source for free
     from <a href="http://code.google.com/p/battery-indicator/">the
     project website</a>.
   </string>
   <string formatted="false" name="help_introduction_free">This
-    is <i>Battery Indicator</i>, the free version of the
-    <i>Battery Indicator</i> family of apps.  It\'s available from
+    is <i>BatteryBot</i>, the free version of the
+    <i>BatteryBot</i> family of apps.  It\'s available from
     the Android Market, and it\'s an open source project,
     which means you can download the source for free
     from <a href="http://code.google.com/p/battery-indicator/">the
@@ -233,8 +233,8 @@
   </string>
 
   <string formatted="false" name="help_cat_summary">Summary</string>
-  <string formatted="false" name="help_summary"><i>Battery
-    Indicator Pro</i> is a lightweight battery indicator for the
+  <string formatted="false" name="help_summary"><i>BatteryBot
+    Pro</i> is a lightweight battery indicator for the
     Android™ mobile operating system.  Its core feature is that it
     provides an icon that lives in the status bar and shows you the
     percentage of battery charge left.\n
@@ -250,8 +250,8 @@
     to automatically disable it when plugged in and reenable it when unplugged.
     \n• Many more useful things that you\'ll discover throughout.
   </string>
-  <string formatted="false" name="help_summary_free"><i>Battery
-    Indicator</i> is a lightweight battery indicator for the
+  <string formatted="false" name="help_summary_free"><i>BatteryBot</i>
+    is a lightweight battery indicator for the
     Android™ mobile operating system.  Its core feature is that it
     provides an icon that lives in the status bar and shows you the
     percentage of battery charge left.\n
@@ -276,7 +276,7 @@
     \n• The notification icon in the status bar and the message you see in the
     notification tray are tied together — you can\'t have one without the other.
     \n• Many apps should allow installation to removable storage (SD card); some
-    should not.  Battery Indicator is of the latter group.  See
+    should not.  BatteryBot is of the latter group.  See
     <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">the project
       FAQ</a> if you\'d like further explanation.
   </string>
@@ -291,7 +291,7 @@
     battery.  I estimate that it will cost you about 1 minute of usage time
     off of a full discharge as a worst case scenario.  If you are experiencing
     anything worse than that, you probably have another app (such as a \"task
-    killer\" app of some kind) interfering with Battery Indicator\'s normal
+    killer\" app of some kind) interfering with BatteryBot\'s normal
     operation.
     \n• Easy access to Battery Use screen (requires Android 1.6+).
     \n• Configure to always start on boot, never start on boot, or start on boot
@@ -364,7 +364,7 @@
   <string formatted="false" name="alarm_settings">Alarms</string>
   <string formatted="false" name="alarm_settings_summary">Control notifications for low/full battery</string>
   <string formatted="false" name="alarm_settings_help">
-    You can have Battery Indicator notify you when your battery level
+    You can have BatteryBot notify you when your battery level
     reaches a certain point (e.g., the battery becomes fully charged,
     the battery level drops below 20%).
   </string>
@@ -408,7 +408,7 @@
     some newer devices do not actually shrink the icon like stock
     Android does, and the very large number in \"Plain Number\" can
     appear comically large on these devices.\n
-    \nIf you have any Battery Indicator Pro icon plugins installed
+    \nIf you have any BatteryBot Pro icon plugins installed
     (press MENU, then Get Plugins to get free plugins, or just press
     the Get Plugins button on the Action Bar on newer devices), you
     can choose among them here.
@@ -427,7 +427,7 @@
   <string formatted="false" name="pref_enable_logging">Enable Logging</string>
   <string formatted="false" name="pref_enable_logging_summary">Log battery state changes?</string>
   <string formatted="false" name="pref_enable_logging_help">
-    If enabled, Battery Indicator will log battery state changes.
+    If enabled, BatteryBot will log battery state changes.
   </string>
   <string formatted="false" name="pref_max_log_age">Maximum Log Age</string>
   <string formatted="false" name="pref_max_log_age_summary">Delete logs older than:</string>
@@ -466,8 +466,8 @@
     matters, you\'ll probably want to enable this.  If your goal is to
     simply disable or reenable the lock screen and then get back to
     what you\'re doing, this keeps you from having to press the BACK
-    key.  Just pull down the notification bar, press on Battery
-    Indicator, and press the button to toggle the lock screen: three
+    key.  Just pull down the notification bar, press on BatteryBot,
+    and press the button to toggle the lock screen: three
     screen presses and you\'re back to what you were doing.\n
 
     \nFor obvious reasons, you can only enable this if the previous
@@ -476,8 +476,8 @@
   <string formatted="false" name="pref_auto_disable">Auto-disable Lock Screen</string>
   <string formatted="false" name="pref_auto_disable_summary">Disable the lock screen when charging?</string>
   <string formatted="false" name="pref_auto_disable_help">
-    If checked, then whenever the device is plugged in, Battery
-    Indicator with disable the lock screen, and whenever the device is
+    If checked, then whenever the device is plugged in, BatteryBot
+    with disable the lock screen, and whenever the device is
     unplugged, it will enable it again.\n
 
     \nNote that with this option enabled, you will still have to
@@ -501,11 +501,11 @@
     still show the notification in the pull-down notification tray.\n
 
     \n• Setting it to \"Low\" should allow other notifications, such as new email, to appear
-    above the Battery Indicator notification. This is nice in cases like email where the
+    above the BatteryBot notification. This is nice in cases like email where the
     notification is expandable (expandable notifications are automatically expanded when
     they are the top notification).\n
 
-    \nPriorities \"Default\" and above seem to usually leave Battery Indicator as the top
+    \nPriorities \"Default\" and above seem to usually leave BatteryBot as the top
     notification, but I imagine there are edge cases where the higher priorities make a difference.\n
 
     \nAgain, the exact behavior may vary between devices and is not guaranteed.
@@ -522,7 +522,7 @@
   <string formatted="false" name="pref_finish_after_battery_use_help">
     If you\'re someone for whom every keystroke (or touchscreen press)
     matters, you might want to enable this.  Enabling this preserves
-    the old behavior of closing Battery Indicator\'s main window
+    the old behavior of closing BatteryBot\'s main window
     immediately after launching the Battery Use screen.
   </string>
 
@@ -536,15 +536,15 @@
 
   <string formatted="false" name="pref_cat_autostart">Autostart</string>
   <string formatted="false" name="pref_autostart_at_boot">Autostart at Boot</string>
-  <string formatted="false" name="pref_autostart_at_boot_summary">Start Battery Indicator when device boots:</string>
+  <string formatted="false" name="pref_autostart_at_boot_summary">Start BatteryBot when device boots:</string>
   <string formatted="false" name="pref_autostart_at_boot_help">
-    Controls whether Battery Indicator should start itself
+    Controls whether BatteryBot should start itself
     automatically when the device boots up.\n
 
     \nThe \"If Running on Shutdown\" option works with regard to
-    whether you\'ve most recently manually started or stopped Battery
-    Indicator.  So if you kill Battery Indicator through some other
-    means, like a task killer, then Battery Indicator doesn\'t know
+    whether you\'ve most recently manually started or stopped BatteryBot.
+    So if you kill BatteryBot through some other
+    means, like a task killer, then BatteryBot doesn\'t know
     you stopped it, and it will still start at boot up if you have it
     set to this.
   </string>
@@ -565,7 +565,7 @@
 
   <string formatted="false" name="pref_cat_color">Icon Color</string>
   <string formatted="false" name="pref_cat_color_help">
-    In order to keep the binary package for Battery Indicator
+    In order to keep the binary package for BatteryBot
     reasonably small, there are some limitations for the colors.  At
     the time of writing, you can have a red icon as high as 30%, an
     amber icon as high as 50%, and a green icon as low as 20%.  I
