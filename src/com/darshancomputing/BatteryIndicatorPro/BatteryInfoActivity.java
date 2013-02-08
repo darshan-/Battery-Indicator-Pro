@@ -21,6 +21,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 
 public class BatteryInfoActivity extends FragmentActivity {
@@ -38,6 +39,9 @@ public class BatteryInfoActivity extends FragmentActivity {
         pagerAdapter = new BatteryInfoPagerAdapter(getSupportFragmentManager());
         viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(pagerAdapter);
+
+        PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
+        tabStrip.setTabIndicatorColor(0x33b5e5);
     }
 
     private void setWindowSubtitle(String subtitle) {
@@ -57,10 +61,17 @@ public class BatteryInfoActivity extends FragmentActivity {
             return 2; // TODO
         }
 
+        // TODO: Put Fragment types and page titles in Arrays or Map or something.
         @Override
         public Fragment getItem(int position) {
             if (position == 0) return new CurrentInfoFragment();
             else               return new LogViewFragment();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            if (position == 0) return "Current Info".toUpperCase(); // TODO: Translatable
+            else               return "History".toUpperCase();      // TODO: Translatable
         }
     }
 }
