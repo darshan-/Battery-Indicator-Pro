@@ -4,17 +4,20 @@
       android:id="@+id/menu_settings"
       android:icon="@+android:drawable/ic_menu_preferences"
       android:title="@string/menu_settings"
-  />
-
-  <item
-      android:id="@+id/menu_close"
-      android:icon="@+android:drawable/ic_menu_close_clear_cancel"
-      android:title="@string/menu_close"
+      android:showAsAction="never"
   />
 
   <item
       android:id="@+id/menu_help"
       android:icon="@+android:drawable/ic_menu_help"
       android:title="@string/menu_help"
+      android:showAsAction="never"
+  />
+
+  <item
+      android:id="@+id/menu_close"
+      android:icon="@+android:drawable/ic_menu_close_clear_cancel"
+      android:title="@string/menu_close"
+      android:showAsAction="never"
   />
 </menu>

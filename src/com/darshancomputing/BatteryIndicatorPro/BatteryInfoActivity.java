@@ -35,6 +35,9 @@ public class BatteryInfoActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         res = getResources();
 
+        // TODO: Set in XML to not have title bar, then set it to have title bar here to try to avoid temporary wrong name
+        setTitle(res.getString(R.string.app_full_name));
+
         setContentView(R.layout.battery_info);
 
         pagerAdapter = new BatteryInfoPagerAdapter(getSupportFragmentManager());
@@ -43,13 +46,6 @@ public class BatteryInfoActivity extends FragmentActivity {
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
         tabStrip.setTabIndicatorColor(0x33b5e5);
-    }
-
-    private void setWindowSubtitle(String subtitle) {
-        if (res.getBoolean(R.bool.long_activity_names))
-            setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
-        else
-            setTitle(subtitle);
     }
 
     @Override
