@@ -30,9 +30,9 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         String startPref = settings.getString(SettingsActivity.KEY_AUTOSTART, "auto");
 
         if (startPref.equals("always") ||
-            (startPref.equals("auto") && sp_store.getBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, false))){
+            (startPref.equals("auto") && sp_store.getBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false))){
             ComponentName comp = new ComponentName(context.getPackageName(),
-                                                   BatteryIndicatorService.class.getName());
+                                                   BatteryInfoService.class.getName());
             context.startService(new Intent().setComponent(comp));
         }
     }

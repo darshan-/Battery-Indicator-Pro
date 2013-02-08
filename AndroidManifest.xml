@@ -62,7 +62,7 @@
         android:excludeFromRecents="true"
     />
 
-    <service android:name=".BatteryIndicatorService" />
+    <service android:name=".BatteryInfoService" />
 
     <receiver
         android:name=".BootCompletedReceiver"

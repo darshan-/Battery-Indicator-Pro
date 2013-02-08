@@ -37,7 +37,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 import java.util.Date;
 
-public class BatteryIndicatorService extends Service {
+public class BatteryInfoService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private final IntentFilter userPresent    = new IntentFilter(Intent.ACTION_USER_PRESENT);
     private PendingIntent mainWindowPendingIntent;
@@ -67,7 +67,7 @@ public class BatteryIndicatorService extends Service {
     private BatteryInfo info;
     private java.util.HashSet<OnBatteryInfoUpdatedListener> biuListeners;
 
-    private static final String LOG_TAG = "BatteryIndicatorService";
+    private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfoService";
 
     private static final int NOTIFICATION_PRIMARY      = 1;
     private static final int NOTIFICATION_KG_UNLOCKED  = 2;
@@ -208,8 +208,8 @@ public class BatteryIndicatorService extends Service {
     }
 
     public class LocalBinder extends Binder {
-        public BatteryIndicatorService getService() {
-            return BatteryIndicatorService.this;
+        public BatteryInfoService getService() {
+            return BatteryInfoService.this;
         }
     }
 

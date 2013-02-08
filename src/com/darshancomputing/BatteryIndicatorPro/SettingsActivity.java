@@ -337,7 +337,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         updateConvertFSummary();
         setEnablednessOfMutuallyExclusive(KEY_CONFIRM_DISABLE_LOCKING, KEY_FINISH_AFTER_TOGGLE_LOCK);
 
-        biServiceIntent = new Intent(this, BatteryIndicatorService.class);
+        biServiceIntent = new Intent(this, BatteryInfoService.class);
         biServiceConnection = new BIServiceConnection();
         bindService(biServiceIntent, biServiceConnection, 0);
     }
@@ -389,7 +389,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         try {
             biServiceConnection.biService.reloadSettings(cancelFirst);
         } catch (Exception e) {
-            startService(new Intent(this, BatteryIndicatorService.class));
+            startService(new Intent(this, BatteryInfoService.class));
         }
     }
 

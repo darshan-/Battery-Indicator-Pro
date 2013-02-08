@@ -44,7 +44,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class BatteryInfoActivity extends Activity implements BatteryIndicatorService.OnBatteryInfoUpdatedListener {
+public class BatteryInfoActivity extends Activity implements BatteryInfoService.OnBatteryInfoUpdatedListener {
     private Intent biServiceIntent;
     private SharedPreferences settings;
     private SharedPreferences sp_store;
@@ -104,12 +104,12 @@ public class BatteryInfoActivity extends Activity implements BatteryIndicatorSer
             editor.commit();
         }
 
-        biServiceIntent = new Intent(this, BatteryIndicatorService.class);
+        biServiceIntent = new Intent(this, BatteryInfoService.class);
         startService(biServiceIntent);
         bindService(biServiceIntent, biServiceConnection, 0);
 
         SharedPreferences.Editor editor = sp_store.edit();
-        editor.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, true);
+        editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, true);
         editor.commit();
 
         bindButtons();
@@ -221,7 +221,7 @@ public class BatteryInfoActivity extends Activity implements BatteryIndicatorSer
                 .setPositiveButton(res.getString(R.string.yes), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface di, int id) {
                         SharedPreferences.Editor editor = sp_store.edit();
-                        editor.putBoolean(BatteryIndicatorService.KEY_SERVICE_DESIRED, false);
+                        editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false);
                         editor.commit();
 
                         finishActivity(1);
@@ -320,7 +320,7 @@ public class BatteryInfoActivity extends Activity implements BatteryIndicatorSer
     }
 
     private void updateLockscreenButton() {
-        if (sp_store.getBoolean(BatteryIndicatorService.KEY_DISABLE_LOCKING, false))
+        if (sp_store.getBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, false))
             toggle_lock_screen_b.setText(res.getString(R.string.reenable_lock_screen));
         else
             toggle_lock_screen_b.setText(res.getString(R.string.disable_lock_screen));
@@ -328,7 +328,7 @@ public class BatteryInfoActivity extends Activity implements BatteryIndicatorSer
 
     private void setDisableLocking(boolean b) {
         SharedPreferences.Editor editor = sp_store.edit();
-        editor.putBoolean(BatteryIndicatorService.KEY_DISABLE_LOCKING, b);
+        editor.putBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, b);
         editor.commit();
 
         biServiceConnection.biService.reloadSettings();
@@ -353,7 +353,7 @@ public class BatteryInfoActivity extends Activity implements BatteryIndicatorSer
     /* Toggle Lock Screen */
     private final OnClickListener tlsButtonListener = new OnClickListener() {
         public void onClick(View v) {
-            if (sp_store.getBoolean(BatteryIndicatorService.KEY_DISABLE_LOCKING, false)) {
+            if (sp_store.getBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, false)) {
                 setDisableLocking(false);
             } else {
                 if (settings.getBoolean(SettingsActivity.KEY_CONFIRM_DISABLE_LOCKING, true)) {

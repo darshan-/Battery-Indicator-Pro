@@ -19,10 +19,10 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 
 public class BIServiceConnection implements ServiceConnection {
-    public BatteryIndicatorService biService;
+    public BatteryInfoService biService;
 
     public void onServiceConnected(ComponentName name, IBinder service) {
-        biService = ((BatteryIndicatorService.LocalBinder) service).getService();
+        biService = ((BatteryInfoService.LocalBinder) service).getService();
     }
 
     public void onServiceDisconnected(ComponentName name) {
