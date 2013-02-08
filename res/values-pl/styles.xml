@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <dimen name="main_frame_width">260dp</dimen>
-  <dimen name="time_remaining_label_width">175dp</dimen>
-</resources>

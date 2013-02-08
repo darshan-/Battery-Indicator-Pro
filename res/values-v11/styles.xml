@@ -1,25 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <style name="bi_theme" parent="@android:style/Theme.Holo">
-    <item name="android:windowBackground">@color/semi_transparent</item>
-    <item name="android:windowIsTranslucent">true</item>
-    <item name="android:actionBarStyle">@style/action_bar_theme</item>
-    <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
-  </style>
-
-  <style name="action_bar_theme" parent="@android:style/Widget.Holo.ActionBar">
-    <item name="android:background">#3c3c3c</item>
-  </style>
-
   <style name="bi_help_theme" parent="@android:style/Theme.Holo.Light">
-  </style>
-
-  <dimen name="main_window_hint_height">0dp</dimen>
-  <dimen name="main_window_hint_padding_bottom">0dp</dimen>
-  <dimen name="main_window_final_padding">4dp</dimen>
-
-  <style name="main_ll">
-    <item name="android:gravity">center_horizontal|center_vertical</item>
-    <item name="android:background">@android:color/transparent</item>
   </style>
 </resources>

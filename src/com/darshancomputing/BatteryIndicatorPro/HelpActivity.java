@@ -34,7 +34,7 @@ public class HelpActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         // Stranglely disabled by default for API level 14+
-        if (getResources().getBoolean(R.bool.api_level_14_plus))
+        if (android.os.Build.VERSION.SDK_INT >= 14)
             getActionBar().setHomeButtonEnabled(true);
 
         setContentView(R.layout.help);

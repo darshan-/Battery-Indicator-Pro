@@ -71,7 +71,7 @@ public class AlarmEditActivity extends PreferenceActivity {
         settings = PreferenceManager.getDefaultSharedPreferences(context);
 
         // Stranglely disabled by default for API level 14+
-        if (res.getBoolean(R.bool.api_level_14_plus))
+        if (android.os.Build.VERSION.SDK_INT >= 14)
             getActionBar().setHomeButtonEnabled(true);
 
         mCursor = alarms.getAlarm(getIntent().getIntExtra(EXTRA_ALARM_ID, -1));

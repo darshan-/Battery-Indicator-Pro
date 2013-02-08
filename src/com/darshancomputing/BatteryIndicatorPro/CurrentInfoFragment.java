@@ -167,7 +167,9 @@ public class CurrentInfoFragment extends Fragment implements BatteryInfoService.
     public void onPause() {
         super.onPause();
 
-        biServiceConnection.biService.unregisterOnBatteryInfoUpdatedListener(this);
+        if (biServiceConnection.biService != null)
+            biServiceConnection.biService.unregisterOnBatteryInfoUpdatedListener(this);
+
         getActivity().unregisterReceiver(mBatteryInfoReceiver);
     }
 

@@ -219,8 +219,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         pref_screen = intent.getStringExtra(EXTRA_SCREEN);
         res = getResources();
 
-        // Stranglely disabled by default for API level 14+ // TODO: Get rid of boolean resource and test value
-        if (res.getBoolean(R.bool.api_level_14_plus))
+        // Stranglely disabled by default for API level 14+
+        if (android.os.Build.VERSION.SDK_INT >= 14)
             getActionBar().setHomeButtonEnabled(true);
 
         mSharedPreferences = getPreferenceManager().getSharedPreferences();
