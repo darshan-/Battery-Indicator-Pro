@@ -25,7 +25,6 @@
   <string name="first_run_message_free" formatted="false">Dziękuję za ściągnięcie Battery Indicator! <b><i>Te dwa punkty są bardzo ważne</i> :</b>\n\n• Jeżeli używasz \"<b>task killer</b>\" / menedżera procesów lub czegoś podobnego, powinieneś odinstalować lub ignorować Battery Indicator.\n• Jeżeli twoje urządzenie wyświetla poziom baterii co 10% (<b>większość Motorolli</b>), powinieneś włączyć \"One- percent Hack\" w ustawieniach.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Żaden</string>
-  <string name="menu_logs" formatted="false">Logi</string>
   <string name="menu_settings" formatted="false">Ustawienia</string>
   <string name="menu_close" formatted="false">Zamknij</string>
   <string name="menu_help" formatted="false">Pomoc</string>

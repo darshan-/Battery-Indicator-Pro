@@ -21,7 +21,6 @@
   <string name="first_run_message" formatted="false">¡Gracias por su donación/compra! <b><i>Información de interés</i> :</b>\n\n• Si tiene instalado algún \"<b>gestor de tareas</b>\" debería desinstalarlo o configurarlo para que ignore Battery Indicator Pro. Aunque ya lo tuviera configurado para ignorar Battery Indicator, debe repetir el proceso para Battery Indicator Pro.\n\n• Si su teléfono es un <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, o <b>Samsung Moment</b>, debe activar el \"Modo 10%\" en \"Otros Ajustes\".</string>
   <string name="first_run_message_free" formatted="false">¡Gracias por descargar Battery Indicator! <b><i>Información de interés</i> :</b>\n\nSi tiene instalado algún \"<b>gestor de tareas</b>\" debería desinstalarlo o configurarlo para que ignore Battery Indicator.\n</string>
   <string name="okay" formatted="false">Ok</string>
-  <string name="menu_logs" formatted="false">Registro</string>
   <string name="menu_settings" formatted="false">Ajustes</string>
   <string name="menu_close" formatted="false">Cerrar</string>
   <string name="menu_help" formatted="false">Ayuda</string>

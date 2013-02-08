@@ -25,7 +25,6 @@
   <string name="first_run_message_free" formatted="false">Merci d\'avoir téléchargé Battery Indicator ! <b><i>Les deux points suivants sont très importants</i> :</b>\n\n• Si vous avez un \"<b>task killer</b>\" / gestionnaire de processus de quelque sorte, vous devriez le désinstaller ou lui indiquer d\'ignorer Battery Indicator.\n\n• Si votre appareil affiche par défaut le niveau de batterie uniquement par incréments de 10% (<b>la plupart des téléphones Motorola fonctionnent comme ceci</b>), alors vous devriez activer le \"Mode 10%\" dans \"Autres paramètres\" pour activer les incréments par pourcent.</string>
   <string name="okay" formatted="false">Ok</string>
   <string name="none" formatted="false">Aucun</string>
-  <string name="menu_logs" formatted="false">Journaux</string>
   <string name="menu_settings" formatted="false">Paramètres</string>
   <string name="menu_close" formatted="false">Fermer</string>
   <string name="menu_help" formatted="false">Aide</string>

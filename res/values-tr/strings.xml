@@ -25,7 +25,6 @@
   <string name="first_run_message_free" formatted="false">Pil Göstergesi\'ni indirdiğin için teşekkürler! <b><i>Bu önemli</i> :</b>\n\nEğer bir tür \"<b>task killer</b>\" / uygulamasına sahipsen, o uygulamayı kaldırmalısın ya da onu Pil Göstergesi uygulamasının çalışmasını engellemeyecek şekilde ayarlamalısın.</string>
   <string name="okay" formatted="false">Tamam</string>
   <string name="none" formatted="false">Hiçbiri</string>
-  <string name="menu_logs" formatted="false">Kayıtlar</string>
   <string name="menu_settings" formatted="false">Ayarlar</string>
   <string name="menu_close" formatted="false">Kapat</string>
   <string name="menu_help" formatted="false">Yardım</string>

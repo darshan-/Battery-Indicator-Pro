@@ -25,7 +25,6 @@
   <string name="first_run_message_free" formatted="false">Vielen Dank für das von Battery Indicator! <b><i>Dies ist wichtig,</i>: </b>\n\nWenn Sie einen \"<b>Task Killer</b>\" / Prozess-Manager in irgendeiner Art haben, sollten Sie ihn entweder deinstallieren oder versuchen das er \'Battery Indicator\' ignoriert.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Keine(n)</string>
-  <string name="menu_logs" formatted="false">Protokoll</string>
   <string name="menu_settings" formatted="false">Einstellungen</string>
   <string name="menu_close" formatted="false">Schließen</string>
   <string name="menu_help" formatted="false">Hilfe</string>

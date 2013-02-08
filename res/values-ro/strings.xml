@@ -25,7 +25,6 @@
   <string name="first_run_message_free" formatted="false">Multumim pentru ca ati instalat Battery Indicator! <b><i>Urmatorul punct este important</i></b> • Daca aveti instalat un program \"<b>task killer</b>\"/manager de procese, etc - ar trebui fie sa-l dezinstalati, fie sa-l setati astfel incat sa ignore Battery Indicator.</string>
   <string name="okay" formatted="false">Okay</string>
   <string name="none" formatted="false">Nimic/Gol</string>
-  <string name="menu_logs" formatted="false">Loguri</string>
   <string name="menu_settings" formatted="false">Setari</string>
   <string name="menu_close" formatted="false">Inchide</string>
   <string name="menu_help" formatted="false">Ajutor</string>

@@ -22,7 +22,6 @@
   <string name="first_run_message_free" formatted="false">Спасибо за установку Battery Indicator! <b> <i>Обратите внимание на следующие два пункта: </i> </b>\n\n• Если у Вас установлена программа отслеживающая запущенные процессы <b>Task killer</b> или подобная, убедитесь в том что в данной программе можно внести в исключения Battery Indicator.</string>
   <string name="okay" formatted="false">Да</string>
   <string name="none" formatted="false">Нет</string>
-  <string name="menu_logs" formatted="false">Журнал работы</string>
   <string name="menu_settings" formatted="false">Настройки</string>
   <string name="menu_close" formatted="false">Закрыть</string>
   <string name="menu_help" formatted="false">Помощь</string>

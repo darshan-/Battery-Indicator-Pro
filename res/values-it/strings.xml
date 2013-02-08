@@ -25,7 +25,6 @@
   <string name="first_run_message_free" formatted="false">Grazie per aver scaricato Battery Indicator! <b><i>Impostante</i> :</b>\n\nSe hai un \"<b>task killer</b>\" / gestore processi o qualcosa di simile, sarebbe opportuno disinstallarlo o provar a ignorare Battery Indicator.</string>
   <string name="okay" formatted="false">Ok</string>
   <string name="none" formatted="false">Nessuno</string>
-  <string name="menu_logs" formatted="false">Registro</string>
   <string name="menu_settings" formatted="false">Impostazioni</string>
   <string name="menu_close" formatted="false">Chiudi</string>
   <string name="menu_help" formatted="false">Aiuto</string>

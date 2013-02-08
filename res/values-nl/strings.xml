@@ -26,7 +26,6 @@
   <string name="first_run_message_free" formatted="false">Bedankt voor het downloaden van Battery Indicator! <b><i>Let op het volgende:</i></b>\nBij gebruik van een \"<b>task killer</b>\" of process manager, zet Battery Indicator op de negeer lijst.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Geen</string>
-  <string name="menu_logs" formatted="false">Logboeken</string>
   <string name="menu_settings" formatted="false">Instellingen</string>
   <string name="menu_close" formatted="false">Sluiten</string>
   <string name="menu_help" formatted="false">Help</string>

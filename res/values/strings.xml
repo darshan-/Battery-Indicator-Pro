@@ -65,7 +65,6 @@
 
   <string formatted="false" name="none">None</string>
 
-  <string formatted="false" name="menu_logs">Logs</string>
   <string formatted="false" name="menu_settings">Settings</string>
   <string formatted="false" name="menu_close">Close</string>
   <string formatted="false" name="menu_help">Help</string>

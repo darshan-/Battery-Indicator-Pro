@@ -25,7 +25,6 @@
   <string name="first_run_message_free" formatted="false">Ευχαριστύμε που χρησιμοποιείτε το Battery Indicator! <b><i>Αυτά τα δύο σημεία είναι πολύ σημαντικά</i> :</b>\n\n•Αν έχετε ένα \"<b>task killer</b>\" / process manager ή παρόμοιο πρόγραμμα θα πρέπει είτε να το απεγκαταστήσετε ή να το ρυθμίσετε ώστε να \"αγνοεί\" το Battery Indicator Pro.\n\n• Αν η συσκευή σας δείχνει το επίπεδο της μπαταρίας μόνο σε αυξήσεις 10% (<b>τα περισσότερα τηλέφωνα Motorola είναι έτσι</b>), τότε θα πρέπει να ενεργοποιήσετε το \"One-percent Hack\" στις ρυθμίσεις για να έχετε αυξήσεις του 1%.</string>
   <string name="okay" formatted="false">Εντάξει</string>
   <string name="none" formatted="false">Κανένα</string>
-  <string name="menu_logs" formatted="false">Λίστες καταγραφής δεδομένων</string>
   <string name="menu_settings" formatted="false">Ρυθμίσεις</string>
   <string name="menu_close" formatted="false">Κλείσιμο</string>
   <string name="menu_help" formatted="false">Βοήθεια</string>

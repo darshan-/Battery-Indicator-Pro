@@ -23,7 +23,6 @@
   <string name="first_run_message" formatted="false">Děkuji za podporu nákupem !<b><i>Následující dva body jsou velice důležité</i> :</b>\n\n• Pokud používáte \"<b>task killer</b>\" / nějaký druh process manageru měli by jste jej odinstalovat nebo zkusit nastavit ingnorovat pro Battery Indicator Pro<i>a to i přesto, že jste již nastavili ignorovat pro FREE verzi Battery Indicator.</i> !\n\n• Pokud vlastníte následující přístroje:<b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, nebo <b>Samsung Moment</b>, měli by jste zapnout volbu \"10% Mód\" v oddíle \"Ostatní nastavení\".</string>
   <string name="first_run_message_free" formatted="false">Děkuji za stažení aplikace Battery Indicator! <b><i>Toto je důležitá informace</i> :</b>\n\nPokud používáte \"<b>task killer</b>\" / nějaký druh process manageru měli by jste jej odinstalovat nebo zkusit nastavit ingnorovat pro Battery Indicator.</string>
   <string name="okay" formatted="false">O.K.</string>
-  <string name="menu_logs" formatted="false">Záznamy</string>
   <string name="menu_settings" formatted="false">Nastavení</string>
   <string name="menu_close" formatted="false">Zavřít</string>
   <string name="menu_help" formatted="false">Nápověda</string>

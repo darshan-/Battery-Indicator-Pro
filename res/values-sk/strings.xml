@@ -25,7 +25,6 @@
   <string name="first_run_message_free" formatted="false">Ďakujeme za stiahnutie Battery Indicator! <b><i>Toto je dôležité</i> :</b>\n\nAk máte \"<b>správcu úloh</b>\" / správcu procesov nejakého druhu, mali by ste ho buď odinštalovať alebo skúsiť zaradiť Battery Indicator do zoznamu ignorovaných.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Nič</string>
-  <string name="menu_logs" formatted="false">Záznamy</string>
   <string name="menu_settings" formatted="false">Nastavenia</string>
   <string name="menu_close" formatted="false">Zavrieť</string>
   <string name="menu_help" formatted="false">Pomocník</string>

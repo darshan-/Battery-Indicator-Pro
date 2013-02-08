@@ -24,7 +24,6 @@
   <string name="first_run_message_free" formatted="false">Obrigado por instalar o Battery Indicator! <b><i>Isto é importante</i> :</b>\n\n• Se você usa um \"<b>task killer</b>\" ou um gerenciador de processos, você deve desinstalá-los ou fazer com que eles ignorem o Battery Indicator Pro.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Nenhum</string>
-  <string name="menu_logs" formatted="false">Relatórios</string>
   <string name="menu_settings" formatted="false">Configurações</string>
   <string name="menu_close" formatted="false">Fechar</string>
   <string name="menu_help" formatted="false">Ajuda</string>

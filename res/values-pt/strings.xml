@@ -23,7 +23,6 @@
   <string name="first_run_message_free" formatted="false">Obrigado por instalares o Estado da Bateria! <b><i>Isto é importante</i> :</b>\n\n• Se tiveres um \"<b>task killer</b>\" ou um manager de processos de qualquer tipo, deves desinstalá-lo ou deves fazer com que ele ignore o Estado da Bateria.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Nenhum</string>
-  <string name="menu_logs" formatted="false">Relatórios</string>
   <string name="menu_settings" formatted="false">Definições</string>
   <string name="menu_close" formatted="false">Fechar</string>
   <string name="menu_help" formatted="false">Ajuda</string>

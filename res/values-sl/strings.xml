@@ -24,7 +24,6 @@
   <string name="first_run_message_free" formatted="false">Hvala za namestitev aplikacije Battery Indicator! <b><i>Sledeči dve točki sta zelo pomembni</i> :</b>\n\n• Če uporabljate kakršnokoli \"<b>task killer</b>\" / aplikacijo, jo morate ali odstraniti ali dodati Battery Indicator na seznam izjem.\n• Če vaša naprava privzeto prikazuje stopnjo baterije le v 10% inkrementih (<b>večina Motorola naprav</b>), potem morate vklopiti \"One-percent Hack\" v \"Druge nastavitve\" da omogočite 1% inkremente.</string>
   <string name="okay" formatted="false">Vredu</string>
   <string name="none" formatted="false">Noben</string>
-  <string name="menu_logs" formatted="false">Poročila</string>
   <string name="menu_settings" formatted="false">Nastavitve</string>
   <string name="menu_close" formatted="false">Zapri</string>
   <string name="menu_help" formatted="false">Pomoč</string>

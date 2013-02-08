@@ -21,7 +21,6 @@
   <string name="first_run_message" formatted="false">Köszönjük az adományt illetve vásárlást! <b><i>Az alábbi két pont nagyon fontos</i> :</b>\n\n• Mindenféle \"<b>task killer</b>\" illetve egyéb folyamatokat felügyelő alkalmazást el kell távolítani, vagy úgy kell beállítani, hogy engedélyezze a Battery Indicator Pro zavartalan futását. Ha már beállította ezt az ingyenes verzióra, most <i>meg kell ismételnie a Pro változatra is</i>!\n\n• <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, illetve <b>Samsung Moment</b> készüléken be kell kapcsolni a \"10%-os módot\" az \"Egyéb beállítások\" alatt.</string>
   <string name="first_run_message_free" formatted="false">Köszönjük, hogy letöltötte a Battery Indicatort! <b><i>Fontos figyelmeztetés</i> :</b>\n\n• Mindenféle \"<b>task killer</b>\" illetve egyéb folyamatokat felügyelő alkalmazást el kell távolítani, vagy úgy kell beállítani, hogy engedélyezze a Battery Indicator zavartalan futását.\n• <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, illetve <b>Samsung Moment</b> készüléken be kell kapcsolni a \"10%-os módot\" az \"Egyéb beállítások\" alatt.</string>
   <string name="okay" formatted="false">Rendben</string>
-  <string name="menu_logs" formatted="false">Naplók</string>
   <string name="menu_settings" formatted="false">Beállítások</string>
   <string name="menu_close" formatted="false">Bezárás</string>
   <string name="menu_help" formatted="false">Súgó</string>

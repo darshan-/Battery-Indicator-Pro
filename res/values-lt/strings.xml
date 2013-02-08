@@ -25,7 +25,6 @@
   <string name="first_run_message_free" formatted="false">Ačiū, kad atsisiuntėte Baterijos Indikatorių! <b><i>Šie du punktai yra labai svarbūs</i> :</b>\n\n• Jei Jūs turite \"<b>task killer</b>\" / kitokį procesų tvarkytoją, Jūms reikėtu jį ištrinti arba padaryti taip, kad būtų ignoruojamas Baterijos Indikatorius.\n\n• Jei Jūsų prietaisas baterijos lygį rodo tik kas 10% (<b>dauguma Motorola telefonų dirba taip</b>), tai turėtumėte įjungti \"Vieno procento nulaužimą\", nustatymuose, kad būtų rodoma kas vieną procentą.\n</string>
   <string name="okay" formatted="false">Gerai</string>
   <string name="none" formatted="false">Nė Vienas</string>
-  <string name="menu_logs" formatted="false">Įrašai</string>
   <string name="menu_settings" formatted="false">Nustatymai</string>
   <string name="menu_close" formatted="false">Uždaryti</string>
   <string name="menu_help" formatted="false">Pagalba</string>

@@ -9,13 +9,13 @@
         android:layout_width="10dp"
   />
 
-  <include layout="@layout/battery_info_first"
+  <include layout="@layout/current_info_first"
            android:layout_height="fill_parent"
            android:layout_width="0px"
            android:layout_weight="0.5"
   />
 
-  <include layout="@layout/battery_info_second"
+  <include layout="@layout/current_info_second"
            android:layout_height="fill_parent"
            android:layout_width="0px"
            android:layout_weight="0.5"
