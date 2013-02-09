@@ -40,6 +40,7 @@ class BatteryLevel {
 
     public BatteryLevel(Context context, int inSampleSize) {
         Resources res = context.getResources();
+        //?context = null;
 
         BitmapFactory bf = new BitmapFactory();
         BitmapFactory.Options bfo = new BitmapFactory.Options();
@@ -51,6 +52,7 @@ class BatteryLevel {
         battery_top    = bf.decodeResource(res, R.drawable.empty_battery_top   , bfo);
         battery_body   = bf.decodeResource(res, R.drawable.empty_battery_body  , bfo);
         battery_bottom = bf.decodeResource(res, R.drawable.empty_battery_bottom, bfo);
+        //?res = null;
 
            width = battery_top.getWidth();
            top_h = battery_top.getHeight();
@@ -97,5 +99,12 @@ class BatteryLevel {
 
     public Bitmap getBitmap() {
         return battery;
+    }
+
+    public void recycle() {
+        battery_top.recycle();
+        battery_body.recycle();
+        battery_bottom.recycle();
+        battery.recycle();
     }
 }

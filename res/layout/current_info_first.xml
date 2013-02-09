@@ -11,7 +11,7 @@
              android:layout_width="0px"
              android:layout_weight="5"
              android:layout_height="fill_parent"
-             android:scaleType="centerInside"
+             android:scaleType="fitCenter"
              android:padding="10dp"
   />
 

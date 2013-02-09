@@ -230,13 +230,13 @@ public class BatteryInfoService extends Service {
 
             predictor.update(info.percent, info.status, info.plugged);
 
-            for (OnBatteryInfoUpdatedListener listener : biuListeners)
-                listener.onBatteryInfoUpdated(info);
-
             if (statusChanged())
                 handleUpdateWithChangedStatus();
             else
                 handleUpdateWithSameStatus();
+
+            for (OnBatteryInfoUpdatedListener listener : biuListeners)
+                listener.onBatteryInfoUpdated(info);
 
             prepareNotification();
             doNotify();
@@ -421,7 +421,6 @@ public class BatteryInfoService extends Service {
         info.last_plugged = sp_store.getInt(KEY_LAST_PLUGGED, -1);
         info.last_status_cTM = sp_store.getLong(KEY_LAST_STATUS_CTM, -1);
         info.last_percent = sp_store.getInt(KEY_LAST_PERCENT, -1);
-
     }
 
     private boolean statusChanged() {
@@ -452,6 +451,9 @@ public class BatteryInfoService extends Service {
         editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
 
         info.last_status_cTM = time;
+        info.last_status = info.status; // TODO: It makes sense to set these here, right?
+        info.last_plugged = info.plugged;
+        info.last_percent = info.percent;
 
         /* TODO: Af first glance, I think I want to do this, but think about it a bit and decide for sure... */
         mNotificationManager.cancel(NOTIFICATION_ALARM_CHARGE);

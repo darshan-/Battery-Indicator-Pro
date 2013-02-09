@@ -661,7 +661,11 @@ public class LogViewFragment extends ListFragment {
         @Override
         public String[] getColumnNames() {
             String[] a = super.getColumnNames();
-            String[] b = java.util.Arrays.copyOf(a, a.length + 1);
+            String[] b = new String[a.length + 1];
+
+            for (int i = 0; i < a.length; i++)
+                b[i] = a[i];
+
             b[a.length] = deltaColumnName;
 
             return b;

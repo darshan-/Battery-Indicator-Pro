@@ -103,7 +103,7 @@ public class CurrentInfoFragment extends Fragment implements BatteryInfoService.
         str = new Str(res);
         context = getActivity().getApplicationContext();
         settings = PreferenceManager.getDefaultSharedPreferences(context);
-        bl = new BatteryLevel(context);
+        bl = new BatteryLevel(context, res.getInteger(R.integer.bl_inSampleSize));
 
         super.onCreate(savedInstanceState);
 
@@ -132,7 +132,7 @@ public class CurrentInfoFragment extends Fragment implements BatteryInfoService.
     public void onDestroy() {
         super.onDestroy();
         getActivity().unbindService(biServiceConnection);
-        bl.getBitmap().recycle();
+        bl.recycle();
     }
 
     /*private void restartIfLanguageChanged() {
