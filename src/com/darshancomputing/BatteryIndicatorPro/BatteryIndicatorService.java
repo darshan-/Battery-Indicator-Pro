@@ -206,6 +206,7 @@ public class BatteryIndicatorService extends Service {
         if (! pluginPackage.equals("none")) disconnectPlugin();
         unregisterReceiver(mBatteryInfoReceiver);
         mNotificationManager.cancelAll();
+        stopForeground(true);
     }
 
     @Override
@@ -309,15 +310,8 @@ public class BatteryIndicatorService extends Service {
                 }
             }
 
-            // TODO: This block is untested under actual wireless charging
-            // Treat unplugged plugged as unpluggged status, unless charging wirelessly
-            if (plugged == PLUGGED_UNPLUGGED) {
-                if (status == STATUS_CHARGING)
-                    plugged = PLUGGED_WIRELESS; // Some devices say they're unplugged
-                else
-                    status = STATUS_UNPLUGGED;
-            }
-
+            // Treat unplugged plugged as unpluggged status
+            if (plugged == PLUGGED_UNPLUGGED) status = STATUS_UNPLUGGED;
 
             if (status  > STATUS_MAX) { status  = STATUS_UNKNOWN; }
             if (health  > HEALTH_MAX) { health  = HEALTH_UNKNOWN; }
