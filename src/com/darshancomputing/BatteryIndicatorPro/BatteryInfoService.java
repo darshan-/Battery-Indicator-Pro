@@ -171,7 +171,7 @@ public class BatteryInfoService extends Service {
         mAudioManager = (android.media.AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         settings = PreferenceManager.getDefaultSharedPreferences(context);
-        sp_store = context.getSharedPreferences("sp_store", 0);
+        sp_store = context.getSharedPreferences("sp_store", Context.MODE_MULTI_PROCESS);
 
         Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
         mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
@@ -217,14 +217,24 @@ public class BatteryInfoService extends Service {
         public void handleMessage(Message incoming) {
             switch (incoming.what) {
             case RemoteConnection.SERVICE_REGISTER_CLIENT:
+                System.out.println("................. received SERVICE_REGISTER_CLIENT");
                 clientMessengers.add(incoming.replyTo);
 
                 Message outgoing = Message.obtain();
                 outgoing.what = RemoteConnection.CLIENT_SERVICE_CONNECTED;
+                outgoing.replyTo = messenger; // TODO: read in client
                 try { incoming.replyTo.send(outgoing); } catch (android.os.RemoteException e) {}
                 break;
             case RemoteConnection.SERVICE_UNREGISTER_CLIENT:
+                System.out.println("................. received SERVICE_UNREGISTER_CLIENT");
                 clientMessengers.remove(incoming.replyTo);
+                break;
+            case RemoteConnection.SERVICE_RELOAD_SETTINGS:
+                System.out.println("................. received SERVICE_RELOAD_SETTINGS");
+                reloadSettings(false);
+                break;
+            case RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS:
+                reloadSettings(true);
                 break;
             default:
                 super.handleMessage(incoming);
@@ -236,6 +246,8 @@ public class BatteryInfoService extends Service {
         // Messages clients send to the service
         public static final int SERVICE_REGISTER_CLIENT = 0;
         public static final int SERVICE_UNREGISTER_CLIENT = 1;
+        public static final int SERVICE_RELOAD_SETTINGS = 2;
+        public static final int SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS = 3;
 
         // Messages the service sends to clients
         public static final int CLIENT_BATTERY_INFO_UPDATED = 0;
@@ -249,6 +261,7 @@ public class BatteryInfoService extends Service {
         }
 
         public void onServiceConnected(ComponentName name, IBinder iBinder) {
+            System.out.println("................. service connected");
             serviceMessenger = new Messenger(iBinder);
 
             Message outgoing = Message.obtain();
@@ -262,29 +275,9 @@ public class BatteryInfoService extends Service {
         }
     }
 
-    /*
-    // TODO: Include prediction as info.seconds_left.  Have static methods for doing math on that.
-    public int[] getPrediction() {
-        int secs_left;
-
-        if (info.status == BatteryInfo.STATUS_CHARGING) {
-            secs_left = predictor.secondsUntilCharged();
-        } else {
-            secs_left = predictor.secondsUntilDrained();
-        }
-
-        int hours_left = secs_left / (60 * 60);
-        int  mins_left = (secs_left / 60) % 60;
-
-        return new int[] {hours_left, mins_left};
-    }
-
-    public void reloadSettings() {
-        reloadSettings(false);
-    }
-
-    public void reloadSettings(boolean cancelFirst) {
+    private void reloadSettings(boolean cancelFirst) {
         str = new Str(res); // Language override may have changed
+        sp_store = context.getSharedPreferences("sp_store", Context.MODE_MULTI_PROCESS);
 
         if (cancelFirst) stopForeground(true);
 
@@ -293,10 +286,10 @@ public class BatteryInfoService extends Service {
         else
             setEnablednessOfKeyguard(true);
 
-        //unregisterReceiver(mBatteryInfoReceiver); // It appears that there's no need to unregister first
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
     }
 
+    /*
     public Boolean pluginHasSettings() {
         if (pluginServiceConnection.service == null) return false;
 

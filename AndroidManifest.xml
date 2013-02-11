@@ -65,12 +65,14 @@
     <service
         android:name=".BatteryInfoService"
         android:process="com.darshancomputing.BatteryBotPro.BIS"
+        android:icon="@drawable/battery"
     />
 
     <receiver
         android:name=".BootCompletedReceiver"
         android:enabled="true"
         android:exported="false"
+        android:process="com.darshancomputing.BatteryBotPro.BCR"
     >
       <intent-filter>
         <action android:name="android.intent.action.BOOT_COMPLETED" />

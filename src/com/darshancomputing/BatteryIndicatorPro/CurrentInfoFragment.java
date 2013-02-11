@@ -55,6 +55,7 @@ public class CurrentInfoFragment extends Fragment {
     private SharedPreferences settings;
     private SharedPreferences sp_store;
 
+    private Messenger serviceMessenger;
     private final Messenger messenger = new Messenger(new MessageHandler());
     private final BatteryInfoService.RemoteConnection serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
 
@@ -79,7 +80,20 @@ public class CurrentInfoFragment extends Fragment {
 
     public class MessageHandler extends Handler {
         @Override
-        public void handleMessage(Message m) {
+        public void handleMessage(Message incoming) {
+            switch (incoming.what) {
+            case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
+                System.out.println("................. received CLIENT_SERVICE_CONNECTED");
+                serviceMessenger = incoming.replyTo;
+                // Fall through to update info
+            case BatteryInfoService.RemoteConnection.CLIENT_BATTERY_INFO_UPDATED:
+                System.out.println("................. received CLIENT_INFO_UPDATED");
+                BatteryInfo info = new BatteryInfo(); // TODO: Retreive info from Service
+                handleUpdatedBatteryInfo(info);
+                break;
+            default:
+                super.handleMessage(incoming);
+            }
         }
     }
 
@@ -120,7 +134,7 @@ public class CurrentInfoFragment extends Fragment {
 
         setHasOptionsMenu(true);
 
-        sp_store = context.getSharedPreferences("sp_store", 0);
+        sp_store = context.getSharedPreferences("sp_store", Context.MODE_MULTI_PROCESS);
 
         disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
 
@@ -285,43 +299,45 @@ public class CurrentInfoFragment extends Fragment {
     }
     */
 
-    public void onBatteryInfoUpdated(BatteryInfo info) {
+    private void handleUpdatedBatteryInfo(BatteryInfo info) {
         bl.setLevel(info.percent);
         blv.invalidate();
 
         TextView tv = (TextView) view.findViewById(R.id.level);
         tv.setText("" + info.percent + res.getString(R.string.percent_symbol));
 
-        /* TODO: Get prediction otherwise;
-        int[] prediction = biServiceConnection.biService.getPrediction();
-
-        int hours  = prediction[0];
-        int mins   = prediction[1];
-        //int status = prediction[2];
-
-        if (info.status == BatteryInfo.STATUS_FULLY_CHARGED) {
+        if (info.prediction.what == Predictor.Prediction.NONE) {
             tv = (TextView) view.findViewById(R.id.time_remaining);
             tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + str.statuses[info.status] + "</font>")); // TODO: color
         } else {
             String until_text;
 
-            if (info.status == BatteryInfo.STATUS_CHARGING)
+            if (info.prediction.what == Predictor.Prediction.UNTIL_CHARGED)
                 until_text = "until charged"; // TODO: Translatable
             else
                 until_text = "until drained"; // TODO: Translatable
 
             tv = (TextView) view.findViewById(R.id.time_remaining);
-            // TODO: Translatable ("h" and "m"); color
-            tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + hours + "h</font> " +
-                                                  "<font color=\"#33b5e5\"><small>" +  mins + "m</small></font>"));
+            if (info.prediction.days > 0)
+                // TODO: Translatable, color, better layout
+                tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + info.prediction.days + "d</font> " +
+                                                      "<font color=\"#33b5e5\"><small>" + info.prediction.hours + "h</small></font>"));
+            else if (info.prediction.hours > 0)
+                // TODO: Translatable ("h" and "m"); color
+                tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + info.prediction.hours + "h</font> " +
+                                                      "<font color=\"#33b5e5\"><small>" + info.prediction.minutes + "m</small></font>"));
+            else
+                // TODO: Translatable, color, better layout
+                tv.setText(android.text.Html.fromHtml("<font color=\"#33b5e5\"><small>" + info.prediction.minutes + "mins</small></font>"));
+
 
             tv = (TextView) view.findViewById(R.id.until_what);
             tv.setText(until_text);
         }
 
         int secs = (int) ((System.currentTimeMillis() - info.last_status_cTM) / 1000);
-           hours = secs / (60 * 60);
-            mins = (secs / 60) % 60;
+        int hours = secs / (60 * 60);
+        int mins = (secs / 60) % 60;
 
         String s = str.statuses[info.status];
 
@@ -343,7 +359,6 @@ public class CurrentInfoFragment extends Fragment {
         tv.setText(s);
 
         updateLockscreenButton();
-        */
     }
 
     private void updateLockscreenButton() {
@@ -358,9 +373,9 @@ public class CurrentInfoFragment extends Fragment {
         editor.putBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, b);
         editor.commit();
 
-        /* TODO: Convert to message
-        biServiceConnection.biService.reloadSettings();
-        */
+        Message outgoing = Message.obtain();
+        outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_RELOAD_SETTINGS;
+        try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
 
         updateLockscreenButton();
 
