@@ -21,16 +21,19 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
-import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -65,7 +68,8 @@ public class BatteryInfoService extends Service {
     private LogDatabase log_db;
     private BatteryLevel bl;
     private BatteryInfo info;
-    private java.util.HashSet<OnBatteryInfoUpdatedListener> biuListeners;
+    private java.util.HashSet<Messenger> clientMessengers;
+    private final Messenger messenger = new Messenger(new MessageHandler());
 
     private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfoService";
 
@@ -152,7 +156,7 @@ public class BatteryInfoService extends Service {
 
         info = new BatteryInfo();
 
-        biuListeners = new java.util.HashSet<OnBatteryInfoUpdatedListener>();
+        clientMessengers = new java.util.HashSet<Messenger>();
 
         predictor = new Predictor(context);
         bl = new BatteryLevel(context, BatteryLevel.SIZE_NOTIFICATION);
@@ -200,37 +204,134 @@ public class BatteryInfoService extends Service {
         mHandler.removeCallbacks(mNotify);
         mNotificationManager.cancelAll();
         log_db.close();
+        stopForeground(true);
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        return mBinder;
+        return messenger.getBinder();
     }
 
-    public class LocalBinder extends Binder {
-        public BatteryInfoService getService() {
-            return BatteryInfoService.this;
+    public class MessageHandler extends Handler {
+        @Override
+        public void handleMessage(Message message) {
+            switch (message.what) {
+            case RemoteConnection.SERVICE_REGISTER_CLIENT:
+                clientMessengers.add(message.replyTo);
+
+                Message message = Message.obtain();
+                message.what = MessageHandler.CLIENT_SERVICE_CONNECTED;
+                message.replyTo.send(message);
+                break;
+            case RemoteConnection.SERVICE_UNREGISTER_CLIENT:
+                clientMessengers.remove(message.replyTo);
+                break;
+            default:
+                super.handleMessage(message);
+            }
         }
     }
 
-    private final IBinder mBinder = new LocalBinder();
+    public static class RemoteConnection implements ServiceConnection {
+        // Messages clients send to the service
+        public static final int SERVICE_REGISTER_CLIENT = 0;
+        public static final int SERVICE_UNREGISTER_CLIENT = 1;
 
-    public interface OnBatteryInfoUpdatedListener {
-        public void onBatteryInfoUpdated(BatteryInfo bi);
+        // Messages the service sends to clients
+        public static final int CLIENT_BATTERY_INFO_UPDATED = 0;
+        public static final int CLIENT_SERVICE_CONNECTED = 1;
+
+        public Messenger serviceMessenger;
+        private Messenger clientMessenger;
+
+        public RemoteConnection(Messenger m) {
+            clientMessenger = m;
+        }
+
+        public void onServiceConnected(ComponentName name, IBinder iBinder) {
+            serviceMessenger = new Messenger(iBinder);
+
+            Message message = Message.obtain();
+            message.what = MessageHandler.SERVICE_REGISTER_CLIENT;
+            message.replyTo = clientMessenger;
+            serviceMessenger.send(message);
+        }
+
+        public void onServiceDisconnected(ComponentName name) {
+            serviceMessenger = null;
+        }
     }
+
+    /*
+    // TODO: Include prediction as info.seconds_left.  Have static methods for doing math on that.
+    public int[] getPrediction() {
+        int secs_left;
+
+        if (info.status == BatteryInfo.STATUS_CHARGING) {
+            secs_left = predictor.secondsUntilCharged();
+        } else {
+            secs_left = predictor.secondsUntilDrained();
+        }
+
+        int hours_left = secs_left / (60 * 60);
+        int  mins_left = (secs_left / 60) % 60;
+
+        return new int[] {hours_left, mins_left};
+    }
+
+    public void reloadSettings() {
+        reloadSettings(false);
+    }
+
+    public void reloadSettings(boolean cancelFirst) {
+        str = new Str(res); // Language override may have changed
+
+        if (cancelFirst) stopForeground(true);
+
+        if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
+            setEnablednessOfKeyguard(false);
+        else
+            setEnablednessOfKeyguard(true);
+
+        //unregisterReceiver(mBatteryInfoReceiver); // It appears that there's no need to unregister first
+        registerReceiver(mBatteryInfoReceiver, batteryChanged);
+    }
+
+    public Boolean pluginHasSettings() {
+        if (pluginServiceConnection.service == null) return false;
+
+        try {
+            Class<?> c = pluginServiceConnection.service.getClass();
+            java.lang.reflect.Method m = c.getMethod("hasSettings", EMPTY_CLASS_ARRAY);
+            return (Boolean) m.invoke(pluginServiceConnection.service, EMPTY_OBJECT_ARRAY);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public void configurePlugin() {
+        if (pluginServiceConnection.service == null) return;
+
+        try {
+            Class<?> c = pluginServiceConnection.service.getClass();
+            java.lang.reflect.Method m = c.getMethod("configure", EMPTY_CLASS_ARRAY);
+            m.invoke(pluginServiceConnection.service, EMPTY_OBJECT_ARRAY);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    */
 
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
-        public void onReceive(Context receiver_context, Intent intent) { // TODO: Should I use receiver_context over context?
+        public void onReceive(Context c, Intent intent) {
             if (! Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) return;
 
-            handlePlugins();
-
+            setupPlugins();
             updateBatteryInfo(intent);
 
-            predictor.update(info.percent, info.status, info.plugged);
-
-            if (statusChanged())
+            if (statusHasChanged())
                 handleUpdateWithChangedStatus();
             else
                 handleUpdateWithSameStatus();
@@ -301,7 +402,7 @@ public class BatteryInfoService extends Service {
 
     private void doNotify() {
         if (! pluginPackage.equals("none")) {
-            // TODO: What's with these four delayed posts?  Should I set up a callback mechanism?
+            // TODO: Set up callback mechanism with plugins V2
             mHandler.postDelayed(mPluginNotify,  100);
             mHandler.postDelayed(mPluginNotify,  300);
             mHandler.postDelayed(mPluginNotify,  900);
@@ -311,45 +412,7 @@ public class BatteryInfoService extends Service {
         }
     }
 
-    private void handlePlugins() {
-        mHandler.removeCallbacks(mPluginNotify);
-        mHandler.removeCallbacks(mNotify);
-
-        String desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_PLUGIN, "none");
-        if (! desiredPluginPackage.equals("none")) {
-            SharedPreferences.Editor settings_editor = settings.edit();
-            settings_editor.putString(SettingsActivity.KEY_ICON_SET, desiredPluginPackage);
-            settings_editor.putString(SettingsActivity.KEY_ICON_PLUGIN, "none");
-            settings_editor.commit();
-        }
-
-        desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_SET, "none");
-        if (desiredPluginPackage.startsWith("builtin.")) desiredPluginPackage = "none";
-
-        if (! pluginPackage.equals(desiredPluginPackage) && ! pluginPackage.equals("none")) disconnectPlugin();
-
-        if (! pluginPackage.equals(desiredPluginPackage) && ! desiredPluginPackage.equals("none")) {
-            try {
-                Context pluginContext = getApplicationContext().createPackageContext(desiredPluginPackage, Context.CONTEXT_INCLUDE_CODE);
-                ClassLoader pluginClassLoader = pluginContext.getClassLoader();
-                Class pluginClass = pluginClassLoader.loadClass(desiredPluginPackage + ".PluginService");
-                pluginIntent = new Intent(pluginContext, pluginClass);
-
-                startService(pluginIntent);
-                if (! bindService(pluginIntent, pluginServiceConnection, 0)) {
-                    stopService(pluginIntent);
-                    throw new Exception();
-                }
-
-                pluginPackage = desiredPluginPackage;
-            } catch (Exception e) {
-                e.printStackTrace();
-                pluginPackage = "none";
-            }
-        }
-    }
-
-    /* I take advantage of (count on) R.java having resources alphabetical and incrementing by one. */
+    // I take advantage of (count on) R.java having resources alphabetical and incrementing by one.
     private int iconFor(int percent) {
         String default_set = "builtin.classic";
         if (android.os.Build.VERSION.SDK_INT >= 11)
@@ -404,14 +467,8 @@ public class BatteryInfoService extends Service {
         info.percent = level * 100 / scale;
         info.percent = attemptOnePercentHack(info.percent);
 
-        // TODO: This block is untested under actual wireless charging
         // Treat unplugged plugged as unpluggged status, unless charging wirelessly
-        if (info.plugged == BatteryInfo.PLUGGED_UNPLUGGED) {
-            if (info.status == BatteryInfo.STATUS_CHARGING)
-                info.plugged = BatteryInfo.PLUGGED_WIRELESS; // Some devices say they're unplugged
-            else
-                info.status = BatteryInfo.STATUS_UNPLUGGED;
-        }
+        if (info.plugged == BatteryInfo.PLUGGED_UNPLUGGED) info.status = BatteryInfo.STATUS_UNPLUGGED;
 
         if (info.status  > BatteryInfo.STATUS_MAX) { info.status  = BatteryInfo.STATUS_UNKNOWN; }
         if (info.health  > BatteryInfo.HEALTH_MAX) { info.health  = BatteryInfo.HEALTH_UNKNOWN; }
@@ -421,9 +478,16 @@ public class BatteryInfoService extends Service {
         info.last_plugged = sp_store.getInt(KEY_LAST_PLUGGED, -1);
         info.last_status_cTM = sp_store.getLong(KEY_LAST_STATUS_CTM, -1);
         info.last_percent = sp_store.getInt(KEY_LAST_PERCENT, -1);
+
+        predictor.update(info.percent, info.status, info.plugged);
+
+        if (info.status == BatteryInfo.STATUS_CHARGING)
+            info.secs_left = predictor.secondsUntilCharged();
+        else
+            info.secs_left = predictor.secondsUntilDrained();
     }
 
-    private boolean statusChanged() {
+    private boolean statusHasChanged() {
         int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
 
         return (info.last_status != info.status || info.last_status_cTM == -1 || info.last_percent == -1 ||
@@ -564,6 +628,27 @@ public class BatteryInfoService extends Service {
         editor.commit();
     }
 
+    private Notification parseAlarmCursor(Cursor c) {
+        Notification notification = new Notification(R.drawable.stat_notify_alarm, null, System.currentTimeMillis());
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+
+        String ringtone = c.getString(alarms.INDEX_RINGTONE);
+        if (! ringtone.equals(""))
+            notification.sound = android.net.Uri.parse(ringtone);
+
+        if (c.getInt(alarms.INDEX_VIBRATE) == 1)
+            if (mAudioManager.getRingerMode() != mAudioManager.RINGER_MODE_SILENT)
+                /* I couldn't get the Notification to vibrate, so I do it myself... */
+                mVibrator.vibrate(new long[] {0, 200, 200, 400}, -1);
+
+        if (c.getInt(alarms.INDEX_LIGHTS) == 1) {
+            notification.flags    |= Notification.FLAG_SHOW_LIGHTS;
+            notification.defaults |= Notification.DEFAULT_LIGHTS;
+        }
+
+        return notification;
+    }
+
     private int attemptOnePercentHack(int percent) {
         java.io.File hack_file = new java.io.File("/sys/class/power_supply/battery/charge_counter");
 
@@ -602,27 +687,6 @@ public class BatteryInfoService extends Service {
         }
 
         return percent;
-    }
-
-    private Notification parseAlarmCursor(Cursor c) {
-        Notification notification = new Notification(R.drawable.stat_notify_alarm, null, System.currentTimeMillis());
-        notification.flags |= Notification.FLAG_AUTO_CANCEL;
-
-        String ringtone = c.getString(alarms.INDEX_RINGTONE);
-        if (! ringtone.equals(""))
-            notification.sound = android.net.Uri.parse(ringtone);
-
-        if (c.getInt(alarms.INDEX_VIBRATE) == 1)
-            if (mAudioManager.getRingerMode() != mAudioManager.RINGER_MODE_SILENT)
-                /* I couldn't get the Notification to vibrate, so I do it myself... */
-                mVibrator.vibrate(new long[] {0, 200, 200, 400}, -1);
-
-        if (c.getInt(alarms.INDEX_LIGHTS) == 1) {
-            notification.flags    |= Notification.FLAG_SHOW_LIGHTS;
-            notification.defaults |= Notification.DEFAULT_LIGHTS;
-        }
-
-        return notification;
     }
 
     private void setEnablednessOfKeyguard(boolean enabled) {
@@ -666,77 +730,48 @@ public class BatteryInfoService extends Service {
         }
     };
 
+    private void setupPlugins() {
+        mHandler.removeCallbacks(mPluginNotify);
+        mHandler.removeCallbacks(mNotify);
+
+        String desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_PLUGIN, "none");
+        if (! desiredPluginPackage.equals("none")) {
+            SharedPreferences.Editor settings_editor = settings.edit();
+            settings_editor.putString(SettingsActivity.KEY_ICON_SET, desiredPluginPackage);
+            settings_editor.putString(SettingsActivity.KEY_ICON_PLUGIN, "none");
+            settings_editor.commit();
+        }
+
+        desiredPluginPackage = settings.getString(SettingsActivity.KEY_ICON_SET, "none");
+        if (desiredPluginPackage.startsWith("builtin.")) desiredPluginPackage = "none";
+
+        if (! pluginPackage.equals(desiredPluginPackage) && ! pluginPackage.equals("none")) disconnectPlugin();
+
+        if (! pluginPackage.equals(desiredPluginPackage) && ! desiredPluginPackage.equals("none")) {
+            try {
+                Context pluginContext = getApplicationContext().createPackageContext(desiredPluginPackage, Context.CONTEXT_INCLUDE_CODE);
+                ClassLoader pluginClassLoader = pluginContext.getClassLoader();
+                Class pluginClass = pluginClassLoader.loadClass(desiredPluginPackage + ".PluginService");
+                pluginIntent = new Intent(pluginContext, pluginClass);
+
+                startService(pluginIntent);
+                if (! bindService(pluginIntent, pluginServiceConnection, 0)) {
+                    stopService(pluginIntent);
+                    throw new Exception();
+                }
+
+                pluginPackage = desiredPluginPackage;
+            } catch (Exception e) {
+                e.printStackTrace();
+                pluginPackage = "none";
+            }
+        }
+    }
+
     private void disconnectPlugin() {
         unbindService(pluginServiceConnection);
         stopService(pluginIntent);
         pluginServiceConnection.service = null;
         pluginPackage = "none";
-    }
-
-    public void reloadSettings() {
-        reloadSettings(false);
-    }
-
-    public void reloadSettings(boolean cancelFirst) {
-        str = new Str(res); /* Language override may have changed */
-
-        if (cancelFirst) stopForeground(true);
-
-        if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
-            setEnablednessOfKeyguard(false);
-        else
-            setEnablednessOfKeyguard(true);
-
-        //unregisterReceiver(mBatteryInfoReceiver); /* It appears that there's no need to unregister first */
-        registerReceiver(mBatteryInfoReceiver, batteryChanged);
-    }
-
-    public Boolean pluginHasSettings() {
-        if (pluginServiceConnection.service == null) return false;
-
-        try {
-            Class<?> c = pluginServiceConnection.service.getClass();
-            java.lang.reflect.Method m = c.getMethod("hasSettings", EMPTY_CLASS_ARRAY);
-            return (Boolean) m.invoke(pluginServiceConnection.service, EMPTY_OBJECT_ARRAY);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public void configurePlugin() {
-        if (pluginServiceConnection.service == null) return;
-
-        try {
-            Class<?> c = pluginServiceConnection.service.getClass();
-            java.lang.reflect.Method m = c.getMethod("configure", EMPTY_CLASS_ARRAY);
-            m.invoke(pluginServiceConnection.service, EMPTY_OBJECT_ARRAY);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void registerOnBatteryInfoUpdatedListener(OnBatteryInfoUpdatedListener listener) {
-        biuListeners.add(listener);
-        listener.onBatteryInfoUpdated(info);
-    }
-
-    public void unregisterOnBatteryInfoUpdatedListener(OnBatteryInfoUpdatedListener listener) {
-        biuListeners.remove(listener);
-    }
-
-    public int[] getPrediction() {
-        int secs_left;
-
-        if (info.status == BatteryInfo.STATUS_CHARGING) {
-            secs_left = predictor.secondsUntilCharged();
-        } else {
-            secs_left = predictor.secondsUntilDrained();
-        }
-
-        int hours_left = secs_left / (60 * 60);
-        int  mins_left = (secs_left / 60) % 60;
-
-        return new int[] {hours_left, mins_left};
     }
 }

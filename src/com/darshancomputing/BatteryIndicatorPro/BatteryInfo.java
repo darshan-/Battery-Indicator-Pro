@@ -50,6 +50,6 @@ class BatteryInfo {
         last_plugged,
         last_percent;
 
-    public long
-        last_status_cTM;
+    public long last_status_cTM;
+    public Predictor.Prediction prediction;
 }

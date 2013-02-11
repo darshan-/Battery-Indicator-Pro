@@ -115,7 +115,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private static final int DIALOG_CONFIRM_TEN_PERCENT_DISABLE = 1;
 
     private Intent biServiceIntent;
+        /* TODO: Convert to message
     private BIServiceConnection biServiceConnection;
+        */
 
     private Resources res;
     private PreferenceScreen mPreferenceScreen;
@@ -186,14 +188,18 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private final Handler mHandler = new Handler();
     Runnable rShowPluginSettings = new Runnable() {
         public void run() {
+        /* TODO: Convert to message
             if (biServiceConnection.biService == null) {
                 bindService(biServiceIntent, biServiceConnection, 0);
                 return;
             }
+        */
 
             Boolean hasSettings = false;
             try {
+        /* TODO: Convert to message
                 hasSettings = biServiceConnection.biService.pluginHasSettings();
+        */
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -338,8 +344,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         setEnablednessOfMutuallyExclusive(KEY_CONFIRM_DISABLE_LOCKING, KEY_FINISH_AFTER_TOGGLE_LOCK);
 
         biServiceIntent = new Intent(this, BatteryInfoService.class);
+        /* TODO: Convert to message
         biServiceConnection = new BIServiceConnection();
         bindService(biServiceIntent, biServiceConnection, 0);
+        */
     }
 
     public static Locale codeToLocale (String code) {
@@ -386,18 +394,22 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private void resetService(boolean cancelFirst) {
+        /* TODO: Convert to message
         try {
             biServiceConnection.biService.reloadSettings(cancelFirst);
         } catch (Exception e) {
             startService(new Intent(this, BatteryInfoService.class));
         }
+        */
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
+        /* TODO: Convert to message
         if (biServiceConnection != null) unbindService(biServiceConnection);
+        */
     }
 
     @Override
@@ -498,8 +510,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
             return true;
         } else if (key.equals(KEY_PLUGIN_SETTINGS)) {
-            biServiceConnection.biService.configurePlugin();
-
+            //TODO: convert biServiceConnection.biService.configurePlugin();
             return true;
         } else {
             return false;

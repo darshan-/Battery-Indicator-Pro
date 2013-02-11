@@ -10,7 +10,7 @@
       android:label="@string/app_full_name"
       android:icon="@drawable/battery"
       android:hardwareAccelerated="true"
-      android:process="com.darshancomputing.BatteryIndicatorPro"
+      android:process="com.darshancomputing.BatteryBotPro"
   >
     <activity
         android:name=".BatteryInfoActivity"
@@ -62,7 +62,10 @@
         android:excludeFromRecents="true"
     />
 
-    <service android:name=".BatteryInfoService" />
+    <service
+        android:name=".BatteryInfoService"
+        android:process="com.darshancomputing.BatteryBotPro.BIS"
+    />
 
     <receiver
         android:name=".BootCompletedReceiver"

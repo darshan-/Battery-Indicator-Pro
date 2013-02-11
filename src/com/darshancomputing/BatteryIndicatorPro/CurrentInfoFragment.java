@@ -30,7 +30,10 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -47,11 +50,13 @@ import android.widget.Toast;
 
 import android.support.v4.app.Fragment;
 
-public class CurrentInfoFragment extends Fragment implements BatteryInfoService.OnBatteryInfoUpdatedListener {
+public class CurrentInfoFragment extends Fragment {
     private Intent biServiceIntent;
     private SharedPreferences settings;
     private SharedPreferences sp_store;
-    private final CallbackServiceConnection biServiceConnection = new CallbackServiceConnection();
+
+    private final Messenger messenger = new Messenger(new MessageHandler());
+    private final BatteryInfoService.RemoteConnection serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
 
     private static final Intent batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY)
         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -71,6 +76,12 @@ public class CurrentInfoFragment extends Fragment implements BatteryInfoService.
     private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
     private static final int DIALOG_CONFIRM_CLOSE = 1;
     private static final int DIALOG_FIRST_RUN = 2;
+
+    public class MessageHandler extends Handler {
+        @Override
+        public void HandleMessage(Message m) {
+        }
+    }
 
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
@@ -121,7 +132,7 @@ public class CurrentInfoFragment extends Fragment implements BatteryInfoService.
 
         biServiceIntent = new Intent(getActivity(), BatteryInfoService.class);
         getActivity().startService(biServiceIntent);
-        getActivity().bindService(biServiceIntent, biServiceConnection, 0);
+        getActivity().bindService(biServiceIntent, serviceConnection, 0);
 
         SharedPreferences.Editor editor = sp_store.edit();
         editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, true);
@@ -131,7 +142,7 @@ public class CurrentInfoFragment extends Fragment implements BatteryInfoService.
     @Override
     public void onDestroy() {
         super.onDestroy();
-        getActivity().unbindService(biServiceConnection);
+        getActivity().unbindService(serviceConnection);
         bl.recycle();
     }
 
@@ -145,20 +156,14 @@ public class CurrentInfoFragment extends Fragment implements BatteryInfoService.
         getActivity().finish();
     }*/
 
-    private class CallbackServiceConnection extends BIServiceConnection {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            super.onServiceConnected(name, service);
-            biService.registerOnBatteryInfoUpdatedListener(CurrentInfoFragment.this);
-        }
-    }
-
     @Override
     public void onResume() {
         super.onResume();
 
+        /* TODO: Convert to message
         if (biServiceConnection.biService != null)
             biServiceConnection.biService.registerOnBatteryInfoUpdatedListener(this);
+        */
 
         getActivity().registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
     }
@@ -167,8 +172,10 @@ public class CurrentInfoFragment extends Fragment implements BatteryInfoService.
     public void onPause() {
         super.onPause();
 
+        /* TODO: Convert to message
         if (biServiceConnection.biService != null)
             biServiceConnection.biService.unregisterOnBatteryInfoUpdatedListener(this);
+        */
 
         getActivity().unregisterReceiver(mBatteryInfoReceiver);
     }
@@ -285,6 +292,7 @@ public class CurrentInfoFragment extends Fragment implements BatteryInfoService.
         TextView tv = (TextView) view.findViewById(R.id.level);
         tv.setText("" + info.percent + res.getString(R.string.percent_symbol));
 
+        /* TODO: Get prediction otherwise;
         int[] prediction = biServiceConnection.biService.getPrediction();
 
         int hours  = prediction[0];
@@ -318,7 +326,7 @@ public class CurrentInfoFragment extends Fragment implements BatteryInfoService.
         String s = str.statuses[info.status];
 
         if (info.status == BatteryInfo.STATUS_CHARGING)
-            s += " " + str.pluggeds[info.last_plugged]; /* Add '(AC)', '(USB)', '(?)', or '(Wireless)' */
+            s += " " + str.pluggeds[info.last_plugged];
 
         // TODO: Don't show 'since 100%' for Fully Charged status
         tv = (TextView) view.findViewById(R.id.status);
@@ -335,6 +343,7 @@ public class CurrentInfoFragment extends Fragment implements BatteryInfoService.
         tv.setText(s);
 
         updateLockscreenButton();
+        */
     }
 
     private void updateLockscreenButton() {
@@ -349,7 +358,9 @@ public class CurrentInfoFragment extends Fragment implements BatteryInfoService.
         editor.putBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, b);
         editor.commit();
 
+        /* TODO: Convert to message
         biServiceConnection.biService.reloadSettings();
+        */
 
         updateLockscreenButton();
 

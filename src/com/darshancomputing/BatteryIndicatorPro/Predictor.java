@@ -177,4 +177,31 @@ public class Predictor {
 
         return sum / recent.size();
     }
+
+    public static class Prediction {
+        public static final int UNTIL_DRAINED;
+        public static final int UNTIL_CHARGED;
+
+        // If days > 0, then minutes is undefined and hours is ronded to the closest hour (rounding minutes up or down)
+        public int days, hours, minutes, until_what;
+
+        public Prediction(int seconds_left, int status) {
+        }
+    }
+
+    // Constant DAYS_HOURS, HOURS_MINUTES, or MINUTES
+    public static int[] getPrediction() {
+        int secs_left;
+
+        if (info.status == BatteryInfo.STATUS_CHARGING) {
+            secs_left = predictor.secondsUntilCharged();
+        } else {
+            secs_left = predictor.secondsUntilDrained();
+        }
+
+        int hours_left = secs_left / (60 * 60);
+        int  mins_left = (secs_left / 60) % 60;
+
+        return new int[] {hours_left, mins_left};
+    }
 }
