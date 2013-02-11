@@ -178,30 +178,31 @@ public class Predictor {
         return sum / recent.size();
     }
 
+    // If days > 0, then minutes is undefined and hours is rounded to the closest hour (rounding minutes up or down)
     public static class Prediction {
-        public static final int UNTIL_DRAINED;
-        public static final int UNTIL_CHARGED;
+        public static final int NONE          = 0;
+        public static final int UNTIL_DRAINED = 1;
+        public static final int UNTIL_CHARGED = 2;
 
-        // If days > 0, then minutes is undefined and hours is ronded to the closest hour (rounding minutes up or down)
-        public int days, hours, minutes, until_what;
+        public int days, hours, minutes, what;
 
-        public Prediction(int seconds_left, int status) {
+        public void update(int seconds, int status) {
+            if (status == STATUS_FULLY_CHARGED) what = NONE;
+            else if (status == STATUS_CHARGING) what = UNTIL_CHARGED;
+            else                                what = UNTIL_DRAINED;
+
+            days = 0;
+            hours = seconds / (60 * 60);
+            minutes = (seconds / 60) % 60;
+
+            if (hours < 24) {
+                days = 0;
+            } else {
+                if (minutes >= 30) hours += 1;
+
+                days = hours / 24;
+                hours = days % 24;
+            }
         }
-    }
-
-    // Constant DAYS_HOURS, HOURS_MINUTES, or MINUTES
-    public static int[] getPrediction() {
-        int secs_left;
-
-        if (info.status == BatteryInfo.STATUS_CHARGING) {
-            secs_left = predictor.secondsUntilCharged();
-        } else {
-            secs_left = predictor.secondsUntilDrained();
-        }
-
-        int hours_left = secs_left / (60 * 60);
-        int  mins_left = (secs_left / 60) % 60;
-
-        return new int[] {hours_left, mins_left};
     }
 }

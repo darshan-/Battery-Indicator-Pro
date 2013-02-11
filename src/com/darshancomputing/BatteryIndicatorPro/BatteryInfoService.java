@@ -214,20 +214,20 @@ public class BatteryInfoService extends Service {
 
     public class MessageHandler extends Handler {
         @Override
-        public void handleMessage(Message message) {
-            switch (message.what) {
+        public void handleMessage(Message incoming) {
+            switch (incoming.what) {
             case RemoteConnection.SERVICE_REGISTER_CLIENT:
-                clientMessengers.add(message.replyTo);
+                clientMessengers.add(incoming.replyTo);
 
-                Message message = Message.obtain();
-                message.what = MessageHandler.CLIENT_SERVICE_CONNECTED;
-                message.replyTo.send(message);
+                Message outgoing = Message.obtain();
+                outgoing.what = RemoteConnection.CLIENT_SERVICE_CONNECTED;
+                try { incoming.replyTo.send(outgoing); } catch (android.os.RemoteException e) {}
                 break;
             case RemoteConnection.SERVICE_UNREGISTER_CLIENT:
-                clientMessengers.remove(message.replyTo);
+                clientMessengers.remove(incoming.replyTo);
                 break;
             default:
-                super.handleMessage(message);
+                super.handleMessage(incoming);
             }
         }
     }
@@ -251,10 +251,10 @@ public class BatteryInfoService extends Service {
         public void onServiceConnected(ComponentName name, IBinder iBinder) {
             serviceMessenger = new Messenger(iBinder);
 
-            Message message = Message.obtain();
-            message.what = MessageHandler.SERVICE_REGISTER_CLIENT;
-            message.replyTo = clientMessenger;
-            serviceMessenger.send(message);
+            Message outgoing = Message.obtain();
+            outgoing.what = SERVICE_REGISTER_CLIENT;
+            outgoing.replyTo = clientMessenger;
+            try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
         }
 
         public void onServiceDisconnected(ComponentName name) {
@@ -336,8 +336,12 @@ public class BatteryInfoService extends Service {
             else
                 handleUpdateWithSameStatus();
 
-            for (OnBatteryInfoUpdatedListener listener : biuListeners)
-                listener.onBatteryInfoUpdated(info);
+            for (Messenger messenger : clientMessengers) {
+                // TODO: Can I obtain and set `what' field above the loop and send the same message to multiple clients?
+                Message outgoing = Message.obtain();
+                outgoing.what = RemoteConnection.CLIENT_BATTERY_INFO_UPDATED;
+                try { messenger.send(outgoing); } catch (android.os.RemoteException e) {}
+            }
 
             prepareNotification();
             doNotify();
@@ -348,23 +352,19 @@ public class BatteryInfoService extends Service {
     };
 
     private void prepareNotification() {
-        if (info.status == BatteryInfo.STATUS_FULLY_CHARGED) {
+        if (info.prediction.what == Predictor.Prediction.NONE) {
             mainNotificationTitle = str.statuses[info.status];
         } else {
             // TODO: Pro option to choose between long, medium, and short
-            int[] prediction = getPrediction();
 
-            if (prediction[0] == 0) {
-                mainNotificationTitle = str.n_minutes_long(prediction[1]);
-            } else if (prediction[0] < 24) {
-                mainNotificationTitle = str.n_hours_m_minutes_short(prediction[0], prediction[1]);
-                //mainNotificationTitle = "" + prediction[0] + ":" + prediction[1] + " hours";
-            } else {
-                if (prediction[1] >= 30) prediction[0] += 1;
-                mainNotificationTitle = str.n_days_m_hours(prediction[0] / 24, prediction[0] % 24);
-            }
+            if (info.prediction.days > 0)
+                mainNotificationTitle = str.n_days_m_hours(info.prediction.days, info.prediction.hours);
+            else if (info.prediction.hours > 0)
+                mainNotificationTitle = str.n_hours_m_minutes_short(info.prediction.hours, info.prediction.minutes);
+            else
+                mainNotificationTitle = str.n_minutes_long(info.prediction.minutes);
 
-            if (info.status == BatteryInfo.STATUS_CHARGING)
+            if (info.prediction.what == Predictor.Prediction.UNTIL_CHARGED)
                 mainNotificationTitle += " until charged"; // TODO: Translatable
             else
                 mainNotificationTitle += " left"; // TODO: Translatable
@@ -481,10 +481,14 @@ public class BatteryInfoService extends Service {
 
         predictor.update(info.percent, info.status, info.plugged);
 
+        int secs_left;
+
         if (info.status == BatteryInfo.STATUS_CHARGING)
-            info.secs_left = predictor.secondsUntilCharged();
+            secs_left = predictor.secondsUntilCharged();
         else
-            info.secs_left = predictor.secondsUntilDrained();
+            secs_left = predictor.secondsUntilDrained();
+
+        info.prediction.update(secs_left, info.status);
     }
 
     private boolean statusHasChanged() {

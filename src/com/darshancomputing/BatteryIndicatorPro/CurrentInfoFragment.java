@@ -79,7 +79,7 @@ public class CurrentInfoFragment extends Fragment {
 
     public class MessageHandler extends Handler {
         @Override
-        public void HandleMessage(Message m) {
+        public void handleMessage(Message m) {
         }
     }
 

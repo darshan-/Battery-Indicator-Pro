@@ -51,5 +51,5 @@ class BatteryInfo {
         last_percent;
 
     public long last_status_cTM;
-    public Predictor.Prediction prediction;
+    public Predictor.Prediction prediction = new Predictor.Prediction();
 }
