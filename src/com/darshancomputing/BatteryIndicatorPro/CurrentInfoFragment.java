@@ -85,7 +85,8 @@ public class CurrentInfoFragment extends Fragment {
             case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
                 System.out.println("................. received CLIENT_SERVICE_CONNECTED");
                 serviceMessenger = incoming.replyTo;
-                // Fall through to update info
+                sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
+                break;
             case BatteryInfoService.RemoteConnection.CLIENT_BATTERY_INFO_UPDATED:
                 System.out.println("................. received CLIENT_INFO_UPDATED");
                 BatteryInfo info = new BatteryInfo(); // TODO: Retreive info from Service
@@ -95,6 +96,13 @@ public class CurrentInfoFragment extends Fragment {
                 super.handleMessage(incoming);
             }
         }
+    }
+
+    private void sendServiceMessage(int what) {
+        Message outgoing = Message.obtain();
+        outgoing.what = what;
+        outgoing.replyTo = messenger;
+        try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
     }
 
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
@@ -127,19 +135,19 @@ public class CurrentInfoFragment extends Fragment {
         res = getResources();
         str = new Str(res);
         context = getActivity().getApplicationContext();
-        settings = PreferenceManager.getDefaultSharedPreferences(context);
         bl = new BatteryLevel(context, res.getInteger(R.integer.bl_inSampleSize));
 
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
 
-        sp_store = context.getSharedPreferences("sp_store", Context.MODE_MULTI_PROCESS);
+        settings = context.getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
+        sp_store = context.getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
 
         disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
 
         if (settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
-            SharedPreferences.Editor editor = settings.edit();
+            SharedPreferences.Editor editor = sp_store.edit();
             editor.putBoolean(SettingsActivity.KEY_FIRST_RUN, false);
             editor.commit();
         }
@@ -174,11 +182,7 @@ public class CurrentInfoFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        /* TODO: Convert to message
-        if (biServiceConnection.biService != null)
-            biServiceConnection.biService.registerOnBatteryInfoUpdatedListener(this);
-        */
-
+        if (serviceMessenger != null) sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
         getActivity().registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
     }
 
@@ -186,11 +190,7 @@ public class CurrentInfoFragment extends Fragment {
     public void onPause() {
         super.onPause();
 
-        /* TODO: Convert to message
-        if (biServiceConnection.biService != null)
-            biServiceConnection.biService.unregisterOnBatteryInfoUpdatedListener(this);
-        */
-
+        if (serviceMessenger != null) sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_UNREGISTER_CLIENT);
         getActivity().unregisterReceiver(mBatteryInfoReceiver);
     }
 

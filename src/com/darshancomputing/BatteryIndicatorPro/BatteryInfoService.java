@@ -109,6 +109,7 @@ public class BatteryInfoService extends Service {
     private final Runnable mPluginNotify = new Runnable() {
         public void run() {
             try {
+                System.out.println("................. stopping foreground");
                 stopForeground(true);
                 if (pluginServiceConnection.service == null) return;
 
@@ -132,6 +133,7 @@ public class BatteryInfoService extends Service {
         public void run() {
             if (! pluginPackage.equals("none")) disconnectPlugin();
 
+            System.out.println("................. starting foreground");
             startForeground(NOTIFICATION_PRIMARY, mainNotification);
             mHandler.removeCallbacks(mPluginNotify);
             mHandler.removeCallbacks(mNotify);
@@ -170,8 +172,7 @@ public class BatteryInfoService extends Service {
         mVibrator = (android.os.Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         mAudioManager = (android.media.AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
-        settings = PreferenceManager.getDefaultSharedPreferences(context);
-        sp_store = context.getSharedPreferences("sp_store", Context.MODE_MULTI_PROCESS);
+        loadSettingsFiles();
 
         Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
         mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
@@ -204,6 +205,7 @@ public class BatteryInfoService extends Service {
         mHandler.removeCallbacks(mNotify);
         mNotificationManager.cancelAll();
         log_db.close();
+        System.out.println("................. stopping foreground");
         stopForeground(true);
     }
 
@@ -216,14 +218,15 @@ public class BatteryInfoService extends Service {
         @Override
         public void handleMessage(Message incoming) {
             switch (incoming.what) {
+            case RemoteConnection.SERVICE_CLIENT_CONNECTED:
+                System.out.println("................. received SERVICE_CLIENT_CONNECTED");
+
+                sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_SERVICE_CONNECTED);
+                break;
             case RemoteConnection.SERVICE_REGISTER_CLIENT:
                 System.out.println("................. received SERVICE_REGISTER_CLIENT");
                 clientMessengers.add(incoming.replyTo);
-
-                Message outgoing = Message.obtain();
-                outgoing.what = RemoteConnection.CLIENT_SERVICE_CONNECTED;
-                outgoing.replyTo = messenger; // TODO: read in client
-                try { incoming.replyTo.send(outgoing); } catch (android.os.RemoteException e) {}
+                sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_BATTERY_INFO_UPDATED);
                 break;
             case RemoteConnection.SERVICE_UNREGISTER_CLIENT:
                 System.out.println("................. received SERVICE_UNREGISTER_CLIENT");
@@ -234,6 +237,7 @@ public class BatteryInfoService extends Service {
                 reloadSettings(false);
                 break;
             case RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS:
+                System.out.println("................. received SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS");
                 reloadSettings(true);
                 break;
             default:
@@ -242,16 +246,24 @@ public class BatteryInfoService extends Service {
         }
     }
 
+    private void sendClientMessage(Messenger clientMessenger, int what) {
+        Message outgoing = Message.obtain();
+        outgoing.what = what;
+        outgoing.replyTo = messenger;
+        try { clientMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
+    }
+
     public static class RemoteConnection implements ServiceConnection {
         // Messages clients send to the service
-        public static final int SERVICE_REGISTER_CLIENT = 0;
-        public static final int SERVICE_UNREGISTER_CLIENT = 1;
-        public static final int SERVICE_RELOAD_SETTINGS = 2;
-        public static final int SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS = 3;
+        public static final int SERVICE_CLIENT_CONNECTED = 0;
+        public static final int SERVICE_REGISTER_CLIENT = 1;
+        public static final int SERVICE_UNREGISTER_CLIENT = 2;
+        public static final int SERVICE_RELOAD_SETTINGS = 3;
+        public static final int SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS = 4;
 
         // Messages the service sends to clients
-        public static final int CLIENT_BATTERY_INFO_UPDATED = 0;
-        public static final int CLIENT_SERVICE_CONNECTED = 1;
+        public static final int CLIENT_SERVICE_CONNECTED = 0;
+        public static final int CLIENT_BATTERY_INFO_UPDATED = 1;
 
         public Messenger serviceMessenger;
         private Messenger clientMessenger;
@@ -265,7 +277,7 @@ public class BatteryInfoService extends Service {
             serviceMessenger = new Messenger(iBinder);
 
             Message outgoing = Message.obtain();
-            outgoing.what = SERVICE_REGISTER_CLIENT;
+            outgoing.what = SERVICE_CLIENT_CONNECTED;
             outgoing.replyTo = clientMessenger;
             try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
         }
@@ -275,10 +287,19 @@ public class BatteryInfoService extends Service {
         }
     }
 
-    private void reloadSettings(boolean cancelFirst) {
-        str = new Str(res); // Language override may have changed
-        sp_store = context.getSharedPreferences("sp_store", Context.MODE_MULTI_PROCESS);
+    private void loadSettingsFiles() {
+        System.out.println("................. loading settings files");
+        settings = context.getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
+        sp_store = context.getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
+    }
 
+    private void reloadSettings(boolean cancelFirst) {
+        System.out.println("................. reloading settings");
+        loadSettingsFiles();
+
+        str = new Str(res); // Language override may have changed
+
+        if (cancelFirst) System.out.println("................. stopping foreground");
         if (cancelFirst) stopForeground(true);
 
         if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
@@ -320,6 +341,7 @@ public class BatteryInfoService extends Service {
         @Override
         public void onReceive(Context c, Intent intent) {
             if (! Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) return;
+            System.out.println("................. received ACTION_BATTERY_CHANGED");
 
             setupPlugins();
             updateBatteryInfo(intent);
@@ -364,6 +386,7 @@ public class BatteryInfoService extends Service {
         }
 
         Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
+        System.out.println("................. convertF: " + convertF);
         mainNotificationText = str.healths[info.health] + " / " + str.formatTemp(info.temperature, convertF);
 
         if (info.voltage > 500)

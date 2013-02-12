@@ -17,6 +17,7 @@ package com.darshancomputing.BatteryIndicatorPro;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -28,11 +29,14 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
+import android.os.Messenger;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,6 +45,9 @@ import android.view.WindowManager;
 import java.util.Locale;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
+    public static final String SETTINGS_FILE = "com.darshancomputing.BatteryIndicatorPro_preferences";
+    public static final String SP_STORE_FILE = "sp_store";
+
     public static final String KEY_THEME_SETTINGS = "theme_settings";
     public static final String KEY_ALARM_SETTINGS = "alarm_settings";
     public static final String KEY_ALARM_EDIT_SETTINGS = "alarm_edit_settings";
@@ -115,9 +122,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private static final int DIALOG_CONFIRM_TEN_PERCENT_DISABLE = 1;
 
     private Intent biServiceIntent;
-        /* TODO: Convert to message
-    private BIServiceConnection biServiceConnection;
-        */
+    private Messenger serviceMessenger;
+    private final Messenger messenger = new Messenger(new MessageHandler());
+    private final BatteryInfoService.RemoteConnection serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
 
     private Resources res;
     private PreferenceScreen mPreferenceScreen;
@@ -185,6 +192,20 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     //private String oldLanguage = null;
 
+    public class MessageHandler extends Handler {
+        @Override
+        public void handleMessage(Message incoming) {
+            switch (incoming.what) {
+            case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
+                System.out.println("................. SA received CLIENT_SERVICE_CONNECTED");
+                serviceMessenger = incoming.replyTo;
+                break;
+            default:
+                super.handleMessage(incoming);
+            }
+        }
+    }
+
     private final Handler mHandler = new Handler();
     Runnable rShowPluginSettings = new Runnable() {
         public void run() {
@@ -229,7 +250,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (android.os.Build.VERSION.SDK_INT >= 14)
             getActionBar().setHomeButtonEnabled(true);
 
-        mSharedPreferences = getPreferenceManager().getSharedPreferences();
+        PreferenceManager pm = getPreferenceManager();
+        pm.setSharedPreferencesName(SETTINGS_FILE);
+        pm.setSharedPreferencesMode(Context.MODE_MULTI_PROCESS);
+        mSharedPreferences = pm.getSharedPreferences();
 
         //oldLanguage = mSharedPreferences.getString(KEY_LANGUAGE_OVERRIDE, "default");
 
@@ -344,10 +368,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         setEnablednessOfMutuallyExclusive(KEY_CONFIRM_DISABLE_LOCKING, KEY_FINISH_AFTER_TOGGLE_LOCK);
 
         biServiceIntent = new Intent(this, BatteryInfoService.class);
-        /* TODO: Convert to message
-        biServiceConnection = new BIServiceConnection();
-        bindService(biServiceIntent, biServiceConnection, 0);
-        */
+        bindService(biServiceIntent, serviceConnection, 0);
     }
 
     public static Locale codeToLocale (String code) {
@@ -394,22 +415,27 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private void resetService(boolean cancelFirst) {
-        /* TODO: Convert to message
+        mSharedPreferences.edit().commit(); // Force file to be saved
+
+        Message outgoing = Message.obtain();
+
+        if (cancelFirst)
+            outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS;
+        else
+            outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_RELOAD_SETTINGS;
+
         try {
-            biServiceConnection.biService.reloadSettings(cancelFirst);
-        } catch (Exception e) {
+            serviceMessenger.send(outgoing);
+        } catch (android.os.RemoteException e) {
             startService(new Intent(this, BatteryInfoService.class));
         }
-        */
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-        /* TODO: Convert to message
-        if (biServiceConnection != null) unbindService(biServiceConnection);
-        */
+        if (serviceConnection != null) unbindService(serviceConnection);
     }
 
     @Override
