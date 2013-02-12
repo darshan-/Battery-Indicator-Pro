@@ -197,7 +197,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         public void handleMessage(Message incoming) {
             switch (incoming.what) {
             case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
-                System.out.println("................. SA received CLIENT_SERVICE_CONNECTED");
                 serviceMessenger = incoming.replyTo;
                 break;
             default:

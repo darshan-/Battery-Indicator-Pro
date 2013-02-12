@@ -83,13 +83,12 @@ public class CurrentInfoFragment extends Fragment {
         public void handleMessage(Message incoming) {
             switch (incoming.what) {
             case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
-                System.out.println("................. received CLIENT_SERVICE_CONNECTED");
                 serviceMessenger = incoming.replyTo;
                 sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
                 break;
             case BatteryInfoService.RemoteConnection.CLIENT_BATTERY_INFO_UPDATED:
-                System.out.println("................. received CLIENT_INFO_UPDATED");
-                BatteryInfo info = new BatteryInfo(); // TODO: Retreive info from Service
+                BatteryInfo info = new BatteryInfo();
+                info.loadBundle(incoming.getData());
                 handleUpdatedBatteryInfo(info);
                 break;
             default:
