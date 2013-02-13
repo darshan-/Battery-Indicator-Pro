@@ -684,6 +684,10 @@ public class LogViewFragment extends ListFragment {
                 return super.getLong(columnIndex);
         }
 
+        // TODO: This was introduced in API 11.  It seems to be safely ignored by APIs less than 11, other than
+        //         taking a while for the verifier to no-op it.  Is it worth overriding to add only to
+        //         API 11+ devices?  I think it only slows things down on the first run, and not noticeably on most devices.
+        /*
         @Override
         public int getType(int columnIndex) {
             if (columnIndex == deltaColumnIndex)
@@ -691,6 +695,7 @@ public class LogViewFragment extends ListFragment {
             else
                 return super.getType(columnIndex);
         }
+        */
 
         @Override
         public boolean isNull(int columnIndex) {

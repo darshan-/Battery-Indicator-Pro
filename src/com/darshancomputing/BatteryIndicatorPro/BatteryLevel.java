@@ -39,10 +39,12 @@ class BatteryLevel {
     }
 
     public BatteryLevel(Context context, int inSampleSize) {
+        Logger.l("BL constructor");
         Resources res = context.getResources();
         //?context = null;
 
         BitmapFactory bf = new BitmapFactory();
+        Logger.l("created bitmap factory");
         BitmapFactory.Options bfo = new BitmapFactory.Options();
         bfo.inDensity = DisplayMetrics.DENSITY_DEFAULT;
         bfo.inScaled = false;
@@ -52,6 +54,7 @@ class BatteryLevel {
         battery_top    = bf.decodeResource(res, R.drawable.empty_battery_top   , bfo);
         battery_body   = bf.decodeResource(res, R.drawable.empty_battery_body  , bfo);
         battery_bottom = bf.decodeResource(res, R.drawable.empty_battery_bottom, bfo);
+        Logger.l("decoded bitmap resources");
         //?res = null;
 
            width = battery_top.getWidth();
@@ -60,8 +63,10 @@ class BatteryLevel {
         bottom_h = battery_bottom.getHeight();
 
         canvas = new Canvas();
+        Logger.l("created canvas");
 
         battery = Bitmap.createBitmap(width, top_h + body_h + bottom_h, Bitmap.Config.ARGB_8888);
+        Logger.l("created bitmap");
         battery.setDensity(DisplayMetrics.DENSITY_DEFAULT);
         canvas.setBitmap(battery);
 
@@ -77,24 +82,32 @@ class BatteryLevel {
         bitmap_paint.setAntiAlias(true);
         bitmap_paint.setDither(true);
 
-        setLevel(0); // TODO: Does it make sense to show an empty battery at first, in case it take a moment to get level?
+        Logger.l("not setting level");
+        //setLevel(0); // TODO: Does it make sense to show an empty battery at first, in case it take a moment to get level?
+        Logger.l("didn't set level; BL consctructor finished");
     }
 
     public void setLevel(int level) {
+        Logger.l("setLevel() start");
         if (level < 0) level = 0; // I suspect we might get called with -1 in certain circumstances
 
         int rect_top = top_h + (body_h * (100 - level) / 100);
         int rect_bottom = top_h + body_h;
 
+        Logger.l("creating RectF");
         RectF body_rect = new RectF(0, rect_top, width, rect_bottom);
+        Logger.l("created RectF");
 
         canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR);
+        Logger.l("Cleared rect");
 
         canvas.drawRoundRect(body_rect, 7.5f, 7.5f, fill_paint);
+        Logger.l("drew rect");
 
         canvas.drawBitmap(battery_top   , 0, 0             , bitmap_paint);
         canvas.drawBitmap(battery_body  , 0, top_h         , bitmap_paint);
         canvas.drawBitmap(battery_bottom, 0, top_h + body_h, bitmap_paint);
+        Logger.l("drew bitmaps; setLevel() finished");
     }
 
     public Bitmap getBitmap() {

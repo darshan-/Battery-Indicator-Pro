@@ -52,4 +52,23 @@ public class Logger {
             fout.flush();
         } catch (Exception e) {e.printStackTrace();}
     }
+
+    private static long lastMillis = -1;
+    private static long startMillis = -1;
+
+    public static void l(String s) {
+        long curMillis = System.currentTimeMillis();
+        String time = "+" + (curMillis - lastMillis);
+        if (lastMillis < 0) {
+            time = "0+0";
+            startMillis = curMillis;
+        }
+        lastMillis = curMillis;
+        System.out.println("............_______________ " + time + "ms: " + s);
+        //System.out.println("............+++++++++++++++ " + curMillis + "ms: " + s);
+    }
+
+    public static void lt() {
+        System.out.println("............_______________ total: " + (System.currentTimeMillis() - startMillis) + "ms");
+    }
 }

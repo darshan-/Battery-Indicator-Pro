@@ -51,13 +51,13 @@ import android.widget.Toast;
 import android.support.v4.app.Fragment;
 
 public class CurrentInfoFragment extends Fragment {
-    private Intent biServiceIntent;
+    public Intent biServiceIntent;
     private SharedPreferences settings;
     private SharedPreferences sp_store;
 
     private Messenger serviceMessenger;
     private final Messenger messenger = new Messenger(new MessageHandler());
-    private final BatteryInfoService.RemoteConnection serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
+    public final BatteryInfoService.RemoteConnection serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
 
     private static final Intent batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY)
         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -78,15 +78,30 @@ public class CurrentInfoFragment extends Fragment {
     private static final int DIALOG_CONFIRM_CLOSE = 1;
     private static final int DIALOG_FIRST_RUN = 2;
 
+    private Handler handler = new Handler();
+    private final Runnable runBindService = new Runnable() {
+        public void run() {
+            Logger.l("runBindService.run()");
+            getActivity().bindService(biServiceIntent, serviceConnection, 0);
+            Logger.l("called bindService()");
+        }
+    };
+
     public class MessageHandler extends Handler {
         @Override
         public void handleMessage(Message incoming) {
             switch (incoming.what) {
             case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
+                Logger.l("Client received CLIENT_SERVICE_CONNECTED");
                 serviceMessenger = incoming.replyTo;
+                Logger.l("Client sending SERVICE_REGISTER_CLIENT");
                 sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
+                Logger.l("Client sent SERVICE_REGISTER_CLIENT");
                 break;
             case BatteryInfoService.RemoteConnection.CLIENT_BATTERY_INFO_UPDATED:
+                // TODO: Is it possible to get this too soon, now that the Activity is binding for us?
+                //   That is, before onCreate(), etc. have finished?
+                Logger.l("Client received CLIENT_BATTERY_INFO_UPDATED");
                 BatteryInfo info = new BatteryInfo();
                 info.loadBundle(incoming.getData());
                 handleUpdatedBatteryInfo(info);
@@ -109,6 +124,11 @@ public class CurrentInfoFragment extends Fragment {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (! Intent.ACTION_BATTERY_CHANGED.equals(action)) return;
+            Logger.l("Client received ACTION_BATTERY_CHANGED");
+
+            if (serviceMessenger == null) {
+                handler.post(runBindService);
+            }
 
             // TODO: Make sure Service is running?  Or else remove this altogether
         }
@@ -116,54 +136,80 @@ public class CurrentInfoFragment extends Fragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Logger.l("CIF.onCreateView() start");
         view = inflater.inflate(R.layout.current_info, container, false);
+        Logger.l("inflated layout");
 
         blv = (ImageView) view.findViewById(R.id.battery_level_view);
         blv.setImageBitmap(bl.getBitmap());
+        Logger.l("set bitmap");
 
         toggle_lock_screen_b = (Button) view.findViewById(R.id.toggle_lock_screen_b);
         battery_use_b = (Button) view.findViewById(R.id.battery_use_b);
 
+        updateLockscreenButton(); // TODO: This button should be disabled until Service is connected
         bindButtons();
 
+        Logger.l("CIF.onCreateView() finish");
         return view;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        // TODO: These three lines would be pretty simple to put in containing Activity's onCreate, 
+        //        if that gets us attached any sooner...
+        //       Alternatively (or in addition), percent, status, plugged, status_since, and prediction
+        //        could be put into sp_store and read perhaps more quickly than the Bundle.  Certainly
+        //        that would be quicker at launch, and might be quicker overall, so it should be tested.
+        Logger.l("CIF.onCreate() start");
+        //biServiceIntent = new Intent(getActivity(), BatteryInfoService.class);
+        //getActivity().startService(biServiceIntent);
+
         res = getResources();
+        Logger.l("got resources");
         str = new Str(res);
+        Logger.l("instantiated Str");
         context = getActivity().getApplicationContext();
+        Logger.l("got context");
+
         bl = new BatteryLevel(context, res.getInteger(R.integer.bl_inSampleSize));
+        Logger.l("created BatteryLevel");
 
         super.onCreate(savedInstanceState);
+        Logger.l("called super.onC()");
 
         setHasOptionsMenu(true);
+        Logger.l("st hasOptionsMenu");
 
         settings = context.getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
         sp_store = context.getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
+        Logger.l("opened sharedPref files");
 
         disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
+        Logger.l("got boolean");
 
         if (settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
+            // Show first_run dialog
             SharedPreferences.Editor editor = sp_store.edit();
             editor.putBoolean(SettingsActivity.KEY_FIRST_RUN, false);
             editor.commit();
         }
-
-        biServiceIntent = new Intent(getActivity(), BatteryInfoService.class);
-        getActivity().startService(biServiceIntent);
-        getActivity().bindService(biServiceIntent, serviceConnection, 0);
+        Logger.l("dealt with first_run");
 
         SharedPreferences.Editor editor = sp_store.edit();
+        Logger.l("created editor");
         editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, true);
+        Logger.l("put boolean");
         editor.commit();
+        Logger.l("committed");
+
+        Logger.l("CIF.onCreate() finish");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        getActivity().unbindService(serviceConnection);
+        getActivity().unbindService(serviceConnection); // TODO: Move to Activity if the other stuff stays there
         bl.recycle();
     }
 
@@ -180,17 +226,32 @@ public class CurrentInfoFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        Logger.l("CIF.onResume() start");
 
-        if (serviceMessenger != null) sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
-        getActivity().registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
+        if (serviceMessenger != null) {
+            Logger.l("Client sending SERVICE_REGISTER_CLIENT");
+            sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
+            Logger.l("Client sent SERVICE_REGISTER_CLIENT");
+        }
+
+        Logger.l("Client registering for ACTION_BATTERY_CHANGED");
+        //getActivity().registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
+        context.registerReceiver(null, batteryChangedFilter);
+        Logger.l("discarded sticky ACTION_BATTERY_CHANGED");
+        handler.postDelayed(runBindService, 3000);
+        Logger.l("posted to handler to bind to service in 3000ms");
+        Logger.l("CIF.onResume() finish");
+        Logger.lt();
+        android.os.Debug.stopMethodTracing();
     }
 
     @Override
     public void onPause() {
         super.onPause();
 
+        handler.removeCallbacks(runBindService);
         if (serviceMessenger != null) sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_UNREGISTER_CLIENT);
-        getActivity().unregisterReceiver(mBatteryInfoReceiver);
+        //getActivity().unregisterReceiver(mBatteryInfoReceiver);
     }
 
     @Override
@@ -327,7 +388,7 @@ public class CurrentInfoFragment extends Fragment {
                                                       "<font color=\"#33b5e5\"><small>" + info.prediction.minutes + "m</small></font>"));
             else
                 // TODO: Translatable, color, better layout
-                tv.setText(android.text.Html.fromHtml("<font color=\"#33b5e5\"><small>" + info.prediction.minutes + "mins</small></font>"));
+                tv.setText(android.text.Html.fromHtml("<font color=\"#33b5e5\"><small>" + info.prediction.minutes + " mins</small></font>"));
 
 
             tv = (TextView) view.findViewById(R.id.until_what);

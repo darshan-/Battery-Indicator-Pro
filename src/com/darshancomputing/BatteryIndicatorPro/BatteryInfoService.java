@@ -80,10 +80,6 @@ public class BatteryInfoService extends Service {
     private static final int NOTIFICATION_ALARM_HEALTH = 4;
     private static final int NOTIFICATION_ALARM_TEMP   = 5;
 
-    public static final String KEY_LAST_STATUS_CTM = "last_status_cTM";
-    public static final String KEY_LAST_STATUS = "last_status";
-    public static final String KEY_LAST_PERCENT = "last_percent";
-    public static final String KEY_LAST_PLUGGED = "last_plugged";
     public static final String KEY_PREVIOUS_CHARGE = "previous_charge";
     public static final String KEY_PREVIOUS_TEMP = "previous_temp";
     public static final String KEY_PREVIOUS_HEALTH = "previous_health";
@@ -217,11 +213,17 @@ public class BatteryInfoService extends Service {
         public void handleMessage(Message incoming) {
             switch (incoming.what) {
             case RemoteConnection.SERVICE_CLIENT_CONNECTED:
+                Logger.l("Service received SERVICE_CLIENT_CONNECTED");
+                Logger.l("Service sending CLIENT_SERVICE_CONNECTED");
                 sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_SERVICE_CONNECTED);
+                Logger.l("Service sent CLIENT_SERVICE_CONNECTED");
                 break;
             case RemoteConnection.SERVICE_REGISTER_CLIENT:
+                Logger.l("Service received SERVICE_REGISTER_CLIENT");
                 clientMessengers.add(incoming.replyTo);
+                Logger.l("Service sending BATTERY_INFO_UPDATED");
                 sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_BATTERY_INFO_UPDATED, info.toBundle());
+                Logger.l("Service sent BATTERY_INFO_UPDATED");
                 break;
             case RemoteConnection.SERVICE_UNREGISTER_CLIENT:
                 clientMessengers.remove(incoming.replyTo);
@@ -270,12 +272,14 @@ public class BatteryInfoService extends Service {
         }
 
         public void onServiceConnected(ComponentName name, IBinder iBinder) {
+            Logger.l("SERVICE connected");
             serviceMessenger = new Messenger(iBinder);
 
             Message outgoing = Message.obtain();
             outgoing.what = SERVICE_CLIENT_CONNECTED;
             outgoing.replyTo = clientMessenger;
             try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
+            Logger.l("SERVICE connected done");
         }
 
         public void onServiceDisconnected(ComponentName name) {
@@ -458,33 +462,13 @@ public class BatteryInfoService extends Service {
         }
     }
 
+    // The main issue would be the Predictor:
+    //  Do that separetely, and only from the Service?  Have Activity talk to Service only for that?
+    //  Have Activity have its own Predictor, somehow seeded from Service's?
+    // Anybody that needs ACTION_BATTERY_UPDATED can register for it itself; that's no heaver than all the IPC
+    // Pass in sp_store, or remove those fields from BatteryInfo and deal with them seperately where needed?
     private void updateBatteryInfo(Intent intent) {
-        int level = intent.getIntExtra("level", 50);
-        int scale = intent.getIntExtra("scale", 100);
-
-        info.status = intent.getIntExtra("status", BatteryInfo.STATUS_UNKNOWN);
-        info.health = intent.getIntExtra("health", BatteryInfo.HEALTH_UNKNOWN);
-        info.plugged = intent.getIntExtra("plugged", BatteryInfo.PLUGGED_UNKNOWN);
-        info.temperature = intent.getIntExtra("temperature", 0);
-        info.voltage = intent.getIntExtra("voltage", 0);
-        //info.technology = intent.getStringExtra("technology");
-
-        info.percent = level * 100 / scale;
-        info.percent = attemptOnePercentHack(info.percent);
-
-        // Treat unplugged plugged as unpluggged status, unless charging wirelessly
-        if (info.plugged == BatteryInfo.PLUGGED_UNPLUGGED) info.status = BatteryInfo.STATUS_UNPLUGGED;
-
-        if (info.status  > BatteryInfo.STATUS_MAX) { info.status  = BatteryInfo.STATUS_UNKNOWN; }
-        if (info.health  > BatteryInfo.HEALTH_MAX) { info.health  = BatteryInfo.HEALTH_UNKNOWN; }
-        if (info.plugged > BatteryInfo.PLUGGED_MAX){ info.plugged = BatteryInfo.PLUGGED_UNKNOWN; }
-
-        info.last_status = sp_store.getInt(KEY_LAST_STATUS, -1);
-        info.last_plugged = sp_store.getInt(KEY_LAST_PLUGGED, -1);
-        info.last_status_cTM = sp_store.getLong(KEY_LAST_STATUS_CTM, -1);
-        info.last_percent = sp_store.getInt(KEY_LAST_PERCENT, -1);
-
-        predictor.update(info.percent, info.status, info.plugged);
+        info.load(intent, sp_store);
 
         int secs_left;
 
@@ -499,8 +483,11 @@ public class BatteryInfoService extends Service {
     private boolean statusHasChanged() {
         int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
 
-        return (info.last_status != info.status || info.last_status_cTM == -1 || info.last_percent == -1 ||
-                info.last_status_cTM > System.currentTimeMillis() || info.last_plugged != info.plugged ||
+        return (info.last_status != info.status ||
+                info.last_status_cTM == BatteryInfo.DEFAULT_LAST_STATUS_CTM ||
+                info.last_percent == BatteryInfo.DEFAULT_LAST_PERCENT ||
+                info.last_status_cTM > System.currentTimeMillis() ||
+                info.last_plugged != info.plugged ||
                 (info.plugged == BatteryInfo.PLUGGED_UNPLUGGED && info.percent > previous_charge + 20));
     }
 
@@ -656,46 +643,6 @@ public class BatteryInfoService extends Service {
         }
 
         return notification;
-    }
-
-    private int attemptOnePercentHack(int percent) {
-        java.io.File hack_file = new java.io.File("/sys/class/power_supply/battery/charge_counter");
-
-        if (hack_file.exists()) {
-            try {
-                java.io.FileReader fReader = new java.io.FileReader(hack_file);
-                java.io.BufferedReader bReader = new java.io.BufferedReader(fReader, 8);
-                String line = bReader.readLine();
-                bReader.close();
-
-                int charge_counter = Integer.valueOf(line);
-
-                if (charge_counter < percent + 10 && charge_counter > percent - 10) {
-                    if (charge_counter > 100) // This happens
-                        charge_counter = 100;
-
-                    if (charge_counter < 0)   // This could happen?
-                        charge_counter = 0;
-
-                    percent = charge_counter;
-                } else {
-                    /* The Log messages are only really useful to me and might as well be left hardwired here in English. */
-                    Log.e(LOG_TAG, "charge_counter file exists but with value " + charge_counter +
-                          " which is inconsistent with percent: " + percent);
-                }
-            } catch (java.io.FileNotFoundException e) {
-                Log.e(LOG_TAG, "charge_counter file doesn't exist");
-                e.printStackTrace();
-            } catch (java.io.IOException e) {
-                Log.e(LOG_TAG, "Error reading charge_counter file");
-                e.printStackTrace();
-            } catch (NumberFormatException e) {
-                Log.e(LOG_TAG, "Read charge_counter file but couldn't convert contents to int");
-                e.printStackTrace();
-            }
-        }
-
-        return percent;
     }
 
     private void setEnablednessOfKeyguard(boolean enabled) {

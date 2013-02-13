@@ -14,7 +14,10 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 
 class BatteryInfo {
     public static final int STATUS_UNPLUGGED     = 0;
@@ -41,6 +44,25 @@ class BatteryInfo {
     public static final int HEALTH_COLD        = 7;
     public static final int HEALTH_MAX         = HEALTH_COLD;
 
+    public static final String KEY_LAST_STATUS_CTM = "last_status_cTM";
+    public static final String KEY_LAST_STATUS = "last_status";
+    public static final String KEY_LAST_PERCENT = "last_percent";
+    public static final String KEY_LAST_PLUGGED = "last_plugged";
+
+    public static final long DEFAULT_LAST_STATUS_CTM = -1;
+    public static final int DEFAULT_LAST_STATUS = -1;
+    public static final int DEFAULT_LAST_PERCENT = -1;
+    public static final int DEFAULT_LAST_PLUGGED = -1;
+
+    private static final String EXTRA_LEVEL = "level";
+    private static final String EXTRA_SCALE = "scale";
+    private static final String EXTRA_STATUS = "status";
+    private static final String EXTRA_HEALTH = "health";
+    private static final String EXTRA_PLUGGED = "plugged";
+    private static final String EXTRA_TEMPERATURE = "temperature";
+    private static final String EXTRA_VOLTAGE = "voltage";
+    private static final String EXTRA_TECHNOLOGY = "technology";
+
     private static final String FIELD_PERCENT = "percent";
     private static final String FIELD_STATUS = "status";
     private static final String FIELD_HEALTH = "health";
@@ -58,6 +80,8 @@ class BatteryInfo {
     private static final String FIELD_PREDICTION_MINUTES = "prediction_minutes";
     private static final String FIELD_PREDICTION_WHAT = "prediction_what";
 
+    private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfo";
+
     public int
         percent,
         status,
@@ -71,6 +95,40 @@ class BatteryInfo {
 
     public long last_status_cTM;
     public Predictor.Prediction prediction = new Predictor.Prediction();
+
+    public load(Intent intent, SharedPreferences sp_store) {
+        load(intent);
+        load(sp_store);
+    }
+
+    public load(Intent intent) {
+        int level = intent.getIntExtra(EXTRA_LEVEL, 50);
+        int scale = intent.getIntExtra(EXTRA_SCALE, 100);
+
+        info.status = intent.getIntExtra(EXTRA_STATUS, BatteryInfo.STATUS_UNKNOWN);
+        info.health = intent.getIntExtra(EXTRA_HEALTH, BatteryInfo.HEALTH_UNKNOWN);
+        info.plugged = intent.getIntExtra(EXTRA_PLUGGED, BatteryInfo.PLUGGED_UNKNOWN);
+        info.temperature = intent.getIntExtra(EXTRA_TEMPERATURE, 0);
+        info.voltage = intent.getIntExtra(EXTRA_VOLTAGE, 0);
+        //info.technology = intent.getStringExtra(EXTRA_TECHNOLOGY);
+
+        info.percent = level * 100 / scale;
+        info.percent = attemptOnePercentHack(info.percent);
+
+        // Treat unplugged plugged as unpluggged status, unless charging wirelessly
+        if (info.plugged == BatteryInfo.PLUGGED_UNPLUGGED) info.status = BatteryInfo.STATUS_UNPLUGGED;
+
+        if (info.status  > BatteryInfo.STATUS_MAX) { info.status  = BatteryInfo.STATUS_UNKNOWN; }
+        if (info.health  > BatteryInfo.HEALTH_MAX) { info.health  = BatteryInfo.HEALTH_UNKNOWN; }
+        if (info.plugged > BatteryInfo.PLUGGED_MAX){ info.plugged = BatteryInfo.PLUGGED_UNKNOWN; }
+    }
+
+    public load(SharedPreferences sp_store) {
+        last_status = sp_store.getInt(KEY_LAST_STATUS, DEFAULT_LAST_STATUS);
+        last_plugged = sp_store.getInt(KEY_LAST_PLUGGED, DEFAULT_LAST_PLUGGED);
+        last_status_cTM = sp_store.getLong(KEY_LAST_STATUS_CTM, DEFAULT_STATUS_CTM);
+        last_percent = sp_store.getInt(KEY_LAST_PERCENT, DEFAULT_LAST_PERCENT);
+    }
 
     public Bundle toBundle() {
         Bundle bundle = new Bundle();
@@ -112,5 +170,45 @@ class BatteryInfo {
         prediction.hours = bundle.getInt(FIELD_PREDICTION_HOURS);
         prediction.minutes = bundle.getInt(FIELD_PREDICTION_MINUTES);
         prediction.what = bundle.getInt(FIELD_PREDICTION_WHAT);
+    }
+
+    private static int attemptOnePercentHack(int percent) {
+        java.io.File hack_file = new java.io.File("/sys/class/power_supply/battery/charge_counter");
+
+        if (hack_file.exists()) {
+            try {
+                java.io.FileReader fReader = new java.io.FileReader(hack_file);
+                java.io.BufferedReader bReader = new java.io.BufferedReader(fReader, 8);
+                String line = bReader.readLine();
+                bReader.close();
+
+                int charge_counter = Integer.valueOf(line);
+
+                if (charge_counter < percent + 10 && charge_counter > percent - 10) {
+                    if (charge_counter > 100) // This happens
+                        charge_counter = 100;
+
+                    if (charge_counter < 0)   // This could happen?
+                        charge_counter = 0;
+
+                    percent = charge_counter;
+                } else {
+                    /* The Log messages are only really useful to me and might as well be left hardwired here in English. */
+                    Log.e(LOG_TAG, "charge_counter file exists but with value " + charge_counter +
+                          " which is inconsistent with percent: " + percent);
+                }
+            } catch (java.io.FileNotFoundException e) {
+                Log.e(LOG_TAG, "charge_counter file doesn't exist");
+                e.printStackTrace();
+            } catch (java.io.IOException e) {
+                Log.e(LOG_TAG, "Error reading charge_counter file");
+                e.printStackTrace();
+            } catch (NumberFormatException e) {
+                Log.e(LOG_TAG, "Read charge_counter file but couldn't convert contents to int");
+                e.printStackTrace();
+            }
+        }
+
+        return percent;
     }
 }
