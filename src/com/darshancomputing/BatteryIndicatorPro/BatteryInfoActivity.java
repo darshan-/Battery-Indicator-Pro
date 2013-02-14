@@ -45,11 +45,6 @@ public class BatteryInfoActivity extends FragmentActivity {
         Logger.l("BIA.onCreate() start");
         super.onCreate(savedInstanceState);
         Logger.l("called super.onC()");
-        //currentInfoFragment.biServiceIntent = new Intent(this, BatteryInfoService.class);
-        //Logger.l("instantiated Intent");
-        //startService(currentInfoFragment.biServiceIntent);
-        //Logger.l("called startService()");
-        //bindService(currentInfoFragment.biServiceIntent, currentInfoFragment.serviceConnection, 0);
 
         res = getResources();
         Logger.l("got resources");
@@ -78,7 +73,16 @@ public class BatteryInfoActivity extends FragmentActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        Logger.l("BIA.onWFC() called with: " + hasFocus);
+        Logger.lt();
+    }
+
     public static class BatteryInfoPagerAdapter extends FragmentPagerAdapter {
+        public CurrentInfoFragment currentInfoFragment;
+
         public BatteryInfoPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -92,8 +96,12 @@ public class BatteryInfoActivity extends FragmentActivity {
         @Override
         public Fragment getItem(int position) {
             //return currentInfoFragment;
-            if (position == 0) return new CurrentInfoFragment();
-            else               return new LogViewFragment();
+            if (position == 0) {
+                currentInfoFragment = new CurrentInfoFragment();
+                return currentInfoFragment;
+            } else {
+                return new LogViewFragment();
+            }
         }
 
         @Override

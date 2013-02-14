@@ -79,19 +79,23 @@ public class CurrentInfoFragment extends Fragment {
     private static final int DIALOG_CONFIRM_CLOSE = 1;
     private static final int DIALOG_FIRST_RUN = 2;
 
-    private Handler handler = new Handler();
-    private final Runnable runBindService = new Runnable() {
+    //private Handler handler = new Handler();
+    /*private final Runnable runBindService = new Runnable() {
         public void run() {
             Logger.l("runBindService.run()");
-            if (! serviceConnected) {
-                context.bindService(biServiceIntent, serviceConnection, 0);
-                serviceConnected = true;
-                Logger.l("called bindService()");
-            } else {
-                Logger.l("skipped bindService() because serviceConnected is true");
-            }
+            bindService();
         }
-    };
+    };*/
+
+    public void bindService() {
+        if (! serviceConnected) {
+            context.bindService(biServiceIntent, serviceConnection, 0);
+            serviceConnected = true;
+            Logger.l("called bindService()");
+        } else {
+            Logger.l("skipped bindService() because serviceConnected is true");
+        }
+    }
 
     public class MessageHandler extends Handler {
         @Override
@@ -130,6 +134,7 @@ public class CurrentInfoFragment extends Fragment {
         try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
     }
 
+    /*
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -148,6 +153,7 @@ public class CurrentInfoFragment extends Fragment {
             // TODO: Make sure Service is running?  Or else remove this altogether
         }
     };
+    */
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -171,11 +177,6 @@ public class CurrentInfoFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        // TODO: These three lines would be pretty simple to put in containing Activity's onCreate, 
-        //        if that gets us attached any sooner...
-        //       Alternatively (or in addition), percent, status, plugged, status_since, and prediction
-        //        could be put into sp_store and read perhaps more quickly than the Bundle.  Certainly
-        //        that would be quicker at launch, and might be quicker overall, so it should be tested.
         Logger.l("CIF.onCreate() start");
 
         res = getResources();
@@ -222,6 +223,12 @@ public class CurrentInfoFragment extends Fragment {
         biServiceIntent = new Intent(context, BatteryInfoService.class);
         context.startService(biServiceIntent);
         Logger.l("called startService()");
+
+        //handler.postDelayed(runBindService, 3000);
+        //Logger.l("posted to handler to bind to service in 3000ms");
+
+        bindService();
+        Logger.l("immediate call to bindService()");
 
         Logger.l("CIF.onCreate() finish");
     }
@@ -270,8 +277,6 @@ public class CurrentInfoFragment extends Fragment {
         handleUpdatedBatteryInfo(info);
 
         Logger.l("used sticky ACTION_BATTERY_CHANGED without actually registering receiver");
-        handler.postDelayed(runBindService, 3000);
-        Logger.l("posted to handler to bind to service in 3000ms");
         //context.bindService(biServiceIntent, serviceConnection, 0);
         //Logger.l("called bindService()");
         Logger.l("CIF.onResume() finish");
@@ -283,7 +288,7 @@ public class CurrentInfoFragment extends Fragment {
     public void onPause() {
         super.onPause();
 
-        handler.removeCallbacks(runBindService);
+        //handler.removeCallbacks(runBindService);
         if (serviceMessenger != null) sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_UNREGISTER_CLIENT);
         //context.unregisterReceiver(mBatteryInfoReceiver);
     }
@@ -419,6 +424,8 @@ public class CurrentInfoFragment extends Fragment {
         if (info.prediction.what == BatteryInfo.Prediction.NONE) {
             tv = (TextView) view.findViewById(R.id.time_remaining);
             tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + str.statuses[info.status] + "</font>")); // TODO: color
+            tv = (TextView) view.findViewById(R.id.until_what);
+            tv.setText("");
         } else {
             String until_text;
 
