@@ -51,13 +51,14 @@ import android.widget.Toast;
 import android.support.v4.app.Fragment;
 
 public class CurrentInfoFragment extends Fragment {
-    public Intent biServiceIntent;
     private SharedPreferences settings;
     private SharedPreferences sp_store;
 
+    private Intent biServiceIntent;
     private Messenger serviceMessenger;
     private final Messenger messenger = new Messenger(new MessageHandler());
-    public final BatteryInfoService.RemoteConnection serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
+    private BatteryInfoService.RemoteConnection serviceConnection;
+    private boolean serviceConnected;
 
     private static final Intent batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY)
         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -82,14 +83,24 @@ public class CurrentInfoFragment extends Fragment {
     private final Runnable runBindService = new Runnable() {
         public void run() {
             Logger.l("runBindService.run()");
-            getActivity().bindService(biServiceIntent, serviceConnection, 0);
-            Logger.l("called bindService()");
+            if (! serviceConnected) {
+                context.bindService(biServiceIntent, serviceConnection, 0);
+                serviceConnected = true;
+                Logger.l("called bindService()");
+            } else {
+                Logger.l("skipped bindService() because serviceConnected is true");
+            }
         }
     };
 
     public class MessageHandler extends Handler {
         @Override
         public void handleMessage(Message incoming) {
+            if (! serviceConnected) {
+                Logger.l("serviceConected is false; ignoring message " + incoming);
+                return;
+            }
+
             switch (incoming.what) {
             case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
                 Logger.l("Client received CLIENT_SERVICE_CONNECTED");
@@ -130,6 +141,10 @@ public class CurrentInfoFragment extends Fragment {
                 handler.post(runBindService);
             }
 
+            BatteryInfo info = new BatteryInfo();
+            info.load(intent);
+            handleUpdatedBatteryInfo(info);
+
             // TODO: Make sure Service is running?  Or else remove this altogether
         }
     };
@@ -162,14 +177,12 @@ public class CurrentInfoFragment extends Fragment {
         //        could be put into sp_store and read perhaps more quickly than the Bundle.  Certainly
         //        that would be quicker at launch, and might be quicker overall, so it should be tested.
         Logger.l("CIF.onCreate() start");
-        //biServiceIntent = new Intent(getActivity(), BatteryInfoService.class);
-        //getActivity().startService(biServiceIntent);
 
         res = getResources();
         Logger.l("got resources");
         str = new Str(res);
         Logger.l("instantiated Str");
-        context = getActivity().getApplicationContext();
+        context = getActivity();
         Logger.l("got context");
 
         bl = new BatteryLevel(context, res.getInteger(R.integer.bl_inSampleSize));
@@ -203,14 +216,27 @@ public class CurrentInfoFragment extends Fragment {
         editor.commit();
         Logger.l("committed");
 
+        serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
+        Logger.l("created serviceConnection");
+
+        biServiceIntent = new Intent(context, BatteryInfoService.class);
+        context.startService(biServiceIntent);
+        Logger.l("called startService()");
+
         Logger.l("CIF.onCreate() finish");
     }
 
     @Override
     public void onDestroy() {
+        Logger.l("CIF.onDestroy() start");
         super.onDestroy();
-        getActivity().unbindService(serviceConnection); // TODO: Move to Activity if the other stuff stays there
+        if (serviceConnected) {
+            context.unbindService(serviceConnection);
+            serviceConnected = false;
+            Logger.l("set serviceConnected to false");
+        }
         bl.recycle();
+        Logger.l("CIF.onDestroy() finish");
     }
 
     /*private void restartIfLanguageChanged() {
@@ -234,15 +260,23 @@ public class CurrentInfoFragment extends Fragment {
             Logger.l("Client sent SERVICE_REGISTER_CLIENT");
         }
 
-        Logger.l("Client registering for ACTION_BATTERY_CHANGED");
-        //getActivity().registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
-        context.registerReceiver(null, batteryChangedFilter);
-        Logger.l("discarded sticky ACTION_BATTERY_CHANGED");
+        //Logger.l("Client registering for ACTION_BATTERY_CHANGED");
+        //context.registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
+        Logger.l("Client grabbing sticky ACTION_BATTERY_CHANGED intent");
+        Intent bc_intent = context.registerReceiver(null, batteryChangedFilter);
+        BatteryInfo info = new BatteryInfo();
+        info.load(bc_intent);
+        info.load(sp_store);
+        handleUpdatedBatteryInfo(info);
+
+        Logger.l("used sticky ACTION_BATTERY_CHANGED without actually registering receiver");
         handler.postDelayed(runBindService, 3000);
         Logger.l("posted to handler to bind to service in 3000ms");
+        //context.bindService(biServiceIntent, serviceConnection, 0);
+        //Logger.l("called bindService()");
         Logger.l("CIF.onResume() finish");
         Logger.lt();
-        android.os.Debug.stopMethodTracing();
+        //android.os.Debug.stopMethodTracing();
     }
 
     @Override
@@ -251,7 +285,7 @@ public class CurrentInfoFragment extends Fragment {
 
         handler.removeCallbacks(runBindService);
         if (serviceMessenger != null) sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_UNREGISTER_CLIENT);
-        //getActivity().unregisterReceiver(mBatteryInfoReceiver);
+        //context.unregisterReceiver(mBatteryInfoReceiver);
     }
 
     @Override
@@ -269,6 +303,22 @@ public class CurrentInfoFragment extends Fragment {
             return true;
         case R.id.menu_close:
             //showDialog(DIALOG_CONFIRM_CLOSE); // TODO
+            // TODO: put back in dialog
+            SharedPreferences.Editor editor = sp_store.edit();
+            editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false);
+            editor.commit();
+
+            getActivity().finishActivity(1);
+
+            if (serviceConnected) {
+                context.unbindService(serviceConnection);
+                context.stopService(biServiceIntent);
+                serviceConnected = false;
+            }
+
+            getActivity().finish();
+            // TODO: put back in dialog
+
             return true;
         case R.id.menu_help:
             mStartActivity(HelpActivity.class);
@@ -366,13 +416,13 @@ public class CurrentInfoFragment extends Fragment {
         TextView tv = (TextView) view.findViewById(R.id.level);
         tv.setText("" + info.percent + res.getString(R.string.percent_symbol));
 
-        if (info.prediction.what == Predictor.Prediction.NONE) {
+        if (info.prediction.what == BatteryInfo.Prediction.NONE) {
             tv = (TextView) view.findViewById(R.id.time_remaining);
             tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + str.statuses[info.status] + "</font>")); // TODO: color
         } else {
             String until_text;
 
-            if (info.prediction.what == Predictor.Prediction.UNTIL_CHARGED)
+            if (info.prediction.what == BatteryInfo.Prediction.UNTIL_CHARGED)
                 until_text = "until charged"; // TODO: Translatable
             else
                 until_text = "until drained"; // TODO: Translatable
@@ -470,14 +520,14 @@ public class CurrentInfoFragment extends Fragment {
     };
 
     private void mStartActivity(Class c) {
-        ComponentName comp = new ComponentName(getActivity().getPackageName(), c.getName());
+        ComponentName comp = new ComponentName(context.getPackageName(), c.getName());
         //startActivity(new Intent().setComponent(comp));
         startActivityForResult(new Intent().setComponent(comp), 1);
         //getActivity().finish();
     }
 
     private void bindButtons() {
-        if (getActivity().getPackageManager().resolveActivity(batteryUseIntent, 0) == null) {
+        if (context.getPackageManager().resolveActivity(batteryUseIntent, 0) == null) {
             battery_use_b.setEnabled(false); /* TODO: change how the disabled button looks */
         } else {
             battery_use_b.setOnClickListener(buButtonListener);

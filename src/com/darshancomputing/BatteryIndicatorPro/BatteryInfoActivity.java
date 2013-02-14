@@ -30,13 +30,14 @@ public class BatteryInfoActivity extends FragmentActivity {
     private Resources res;
     private BatteryInfoPagerAdapter pagerAdapter;
     private ViewPager viewPager;
-    private static CurrentInfoFragment currentInfoFragment;
+    //private static CurrentInfoFragment currentInfoFragment;
 
     static {
-        android.os.Debug.startMethodTracing();
+        //android.os.Debug.startMethodTracing();
         Logger.l("BIA static block");
-        currentInfoFragment = new CurrentInfoFragment();
-        Logger.l("instantiated CIF; static block finished");
+        //currentInfoFragment = new CurrentInfoFragment();
+        //Logger.l("instantiated CIF");
+        Logger.l("static block finished");
     }
 
     @Override
@@ -44,10 +45,10 @@ public class BatteryInfoActivity extends FragmentActivity {
         Logger.l("BIA.onCreate() start");
         super.onCreate(savedInstanceState);
         Logger.l("called super.onC()");
-        currentInfoFragment.biServiceIntent = new Intent(this, BatteryInfoService.class);
-        Logger.l("instantiated Intent");
-        startService(currentInfoFragment.biServiceIntent);
-        Logger.l("called startService()");
+        //currentInfoFragment.biServiceIntent = new Intent(this, BatteryInfoService.class);
+        //Logger.l("instantiated Intent");
+        //startService(currentInfoFragment.biServiceIntent);
+        //Logger.l("called startService()");
         //bindService(currentInfoFragment.biServiceIntent, currentInfoFragment.serviceConnection, 0);
 
         res = getResources();
@@ -84,15 +85,15 @@ public class BatteryInfoActivity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            return 1; // TODO
+            return 2; // TODO
         }
 
         // TODO: Put Fragment types and page titles in Arrays or Map or something.
         @Override
         public Fragment getItem(int position) {
-            return currentInfoFragment;
-            /*if (position == 0) return currentInfoFragment;
-              else               return new LogViewFragment();*/
+            //return currentInfoFragment;
+            if (position == 0) return new CurrentInfoFragment();
+            else               return new LogViewFragment();
         }
 
         @Override

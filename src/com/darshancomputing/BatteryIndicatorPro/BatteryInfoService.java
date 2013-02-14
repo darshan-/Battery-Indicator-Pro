@@ -272,14 +272,14 @@ public class BatteryInfoService extends Service {
         }
 
         public void onServiceConnected(ComponentName name, IBinder iBinder) {
-            Logger.l("SERVICE connected");
+            Logger.l("service connected (client process)");
             serviceMessenger = new Messenger(iBinder);
 
             Message outgoing = Message.obtain();
             outgoing.what = SERVICE_CLIENT_CONNECTED;
             outgoing.replyTo = clientMessenger;
             try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
-            Logger.l("SERVICE connected done");
+            Logger.l("service connected done (client process)");
         }
 
         public void onServiceDisconnected(ComponentName name) {
@@ -361,7 +361,7 @@ public class BatteryInfoService extends Service {
     };
 
     private void prepareNotification() {
-        if (info.prediction.what == Predictor.Prediction.NONE) {
+        if (info.prediction.what == BatteryInfo.Prediction.NONE) {
             mainNotificationTitle = str.statuses[info.status];
         } else {
             // TODO: Pro option to choose between long, medium, and short
@@ -373,7 +373,7 @@ public class BatteryInfoService extends Service {
             else
                 mainNotificationTitle = str.n_minutes_long(info.prediction.minutes);
 
-            if (info.prediction.what == Predictor.Prediction.UNTIL_CHARGED)
+            if (info.prediction.what == BatteryInfo.Prediction.UNTIL_CHARGED)
                 mainNotificationTitle += " until charged"; // TODO: Translatable
             else
                 mainNotificationTitle += " left"; // TODO: Translatable
@@ -462,22 +462,9 @@ public class BatteryInfoService extends Service {
         }
     }
 
-    // The main issue would be the Predictor:
-    //  Do that separetely, and only from the Service?  Have Activity talk to Service only for that?
-    //  Have Activity have its own Predictor, somehow seeded from Service's?
-    // Anybody that needs ACTION_BATTERY_UPDATED can register for it itself; that's no heaver than all the IPC
-    // Pass in sp_store, or remove those fields from BatteryInfo and deal with them seperately where needed?
     private void updateBatteryInfo(Intent intent) {
         info.load(intent, sp_store);
-
-        int secs_left;
-
-        if (info.status == BatteryInfo.STATUS_CHARGING)
-            secs_left = predictor.secondsUntilCharged();
-        else
-            secs_left = predictor.secondsUntilDrained();
-
-        info.prediction.update(secs_left, info.status);
+        predictor.update(info);
     }
 
     private boolean statusHasChanged() {
@@ -502,10 +489,10 @@ public class BatteryInfoService extends Service {
                 log_db.prune(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAX_LOG_AGE, str.default_max_log_age)));
         }
 
-        editor.putLong(KEY_LAST_STATUS_CTM, time);
-        editor.putInt(KEY_LAST_STATUS, info.status);
-        editor.putInt(KEY_LAST_PERCENT, info.percent);
-        editor.putInt(KEY_LAST_PLUGGED, info.plugged);
+        editor.putLong(BatteryInfo.KEY_LAST_STATUS_CTM, time);
+        editor.putInt(BatteryInfo.KEY_LAST_STATUS, info.status);
+        editor.putInt(BatteryInfo.KEY_LAST_PERCENT, info.percent);
+        editor.putInt(BatteryInfo.KEY_LAST_PLUGGED, info.plugged);
         editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
         editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
         editor.putInt(KEY_PREVIOUS_HEALTH, info.health);

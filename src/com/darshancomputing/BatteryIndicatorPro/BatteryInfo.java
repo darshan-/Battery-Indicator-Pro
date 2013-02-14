@@ -94,39 +94,67 @@ class BatteryInfo {
         last_percent;
 
     public long last_status_cTM;
-    public Predictor.Prediction prediction = new Predictor.Prediction();
+    public Prediction prediction = new Prediction();
 
-    public load(Intent intent, SharedPreferences sp_store) {
+    // If days > 0, then minutes is undefined and hours is rounded to the closest hour (rounding minutes up or down)
+    public class Prediction {
+        public static final int NONE          = 0;
+        public static final int UNTIL_DRAINED = 1;
+        public static final int UNTIL_CHARGED = 2;
+
+        public int days, hours, minutes, what;
+
+        public void update(int seconds) {
+            if (status == STATUS_FULLY_CHARGED) what = NONE;
+            else if (status == STATUS_CHARGING) what = UNTIL_CHARGED;
+            else                                what = UNTIL_DRAINED;
+
+            days = 0;
+            hours = seconds / (60 * 60);
+            minutes = (seconds / 60) % 60;
+
+            if (hours < 24) {
+                days = 0;
+            } else {
+                if (minutes >= 30) hours += 1;
+
+                days = hours / 24;
+                hours = days % 24;
+            }
+        }
+    }
+
+    public void load(Intent intent, SharedPreferences sp_store) {
         load(intent);
         load(sp_store);
     }
 
-    public load(Intent intent) {
+    public void load(Intent intent) {
         int level = intent.getIntExtra(EXTRA_LEVEL, 50);
         int scale = intent.getIntExtra(EXTRA_SCALE, 100);
 
-        info.status = intent.getIntExtra(EXTRA_STATUS, BatteryInfo.STATUS_UNKNOWN);
-        info.health = intent.getIntExtra(EXTRA_HEALTH, BatteryInfo.HEALTH_UNKNOWN);
-        info.plugged = intent.getIntExtra(EXTRA_PLUGGED, BatteryInfo.PLUGGED_UNKNOWN);
-        info.temperature = intent.getIntExtra(EXTRA_TEMPERATURE, 0);
-        info.voltage = intent.getIntExtra(EXTRA_VOLTAGE, 0);
-        //info.technology = intent.getStringExtra(EXTRA_TECHNOLOGY);
+        status = intent.getIntExtra(EXTRA_STATUS, STATUS_UNKNOWN);
+        health = intent.getIntExtra(EXTRA_HEALTH, HEALTH_UNKNOWN);
+        plugged = intent.getIntExtra(EXTRA_PLUGGED, PLUGGED_UNKNOWN);
+        temperature = intent.getIntExtra(EXTRA_TEMPERATURE, 0);
+        voltage = intent.getIntExtra(EXTRA_VOLTAGE, 0);
+        //technology = intent.getStringExtra(EXTRA_TECHNOLOGY);
 
-        info.percent = level * 100 / scale;
-        info.percent = attemptOnePercentHack(info.percent);
+        percent = level * 100 / scale;
+        percent = attemptOnePercentHack(percent);
 
         // Treat unplugged plugged as unpluggged status, unless charging wirelessly
-        if (info.plugged == BatteryInfo.PLUGGED_UNPLUGGED) info.status = BatteryInfo.STATUS_UNPLUGGED;
+        if (plugged == PLUGGED_UNPLUGGED) status = STATUS_UNPLUGGED;
 
-        if (info.status  > BatteryInfo.STATUS_MAX) { info.status  = BatteryInfo.STATUS_UNKNOWN; }
-        if (info.health  > BatteryInfo.HEALTH_MAX) { info.health  = BatteryInfo.HEALTH_UNKNOWN; }
-        if (info.plugged > BatteryInfo.PLUGGED_MAX){ info.plugged = BatteryInfo.PLUGGED_UNKNOWN; }
+        if (status  > STATUS_MAX) { status  = STATUS_UNKNOWN; }
+        if (health  > HEALTH_MAX) { health  = HEALTH_UNKNOWN; }
+        if (plugged > PLUGGED_MAX){ plugged = PLUGGED_UNKNOWN; }
     }
 
-    public load(SharedPreferences sp_store) {
+    public void load(SharedPreferences sp_store) {
         last_status = sp_store.getInt(KEY_LAST_STATUS, DEFAULT_LAST_STATUS);
         last_plugged = sp_store.getInt(KEY_LAST_PLUGGED, DEFAULT_LAST_PLUGGED);
-        last_status_cTM = sp_store.getLong(KEY_LAST_STATUS_CTM, DEFAULT_STATUS_CTM);
+        last_status_cTM = sp_store.getLong(KEY_LAST_STATUS_CTM, DEFAULT_LAST_STATUS_CTM);
         last_percent = sp_store.getInt(KEY_LAST_PERCENT, DEFAULT_LAST_PERCENT);
     }
 

@@ -29,10 +29,6 @@ public class Predictor {
     private static final int RECENT_SIZE = 10;
     private static final int MAX_RECENT_REPLACED = 3;
 
-    private static final int STATUS_UNPLUGGED     = 0;
-    private static final int STATUS_CHARGING      = 2;
-    private static final int STATUS_FULLY_CHARGED = 5;
-
     private static final int PLUGGED_USB = 2;
 
     private double ave_discharge;
@@ -68,29 +64,28 @@ public class Predictor {
         }
     }
 
-    public void update(int level, int status, int plugged) {
-        logger.log("level = " + level);
-        if (level == last_level && status == last_status) {
+    public void update(BatteryInfo info) {
+        logger.log("info.percent = " + info.percent);
+        if (info.percent == last_level && info.status == last_status) {
             logger.log("No change; returning immediately");
+            updateInfoPrediction(info);
             return;
         }
-        if (last_ms == 0 || status == STATUS_FULLY_CHARGED || status != last_status) {
+        if (last_ms == 0 || info.status == BatteryInfo.STATUS_FULLY_CHARGED || info.status != last_status) {
             logger.log("Initial update or fully charged: ");
-            logger.log("last_ms = " + last_ms + ", status = " + status + ", last_status = " + last_status);
-            setLasts(level, status, plugged);
-            full_data_point = false;
+            logger.log("last_ms = " + last_ms + ", info.status = " + info.status + ", last_status = " + last_status);
+            finishUpdate(info, false);
             return;
         }
 
-        if (status == STATUS_UNPLUGGED) {
-            int level_diff = last_level - level;
+        if (info.status == BatteryInfo.STATUS_UNPLUGGED) {
+            int level_diff = last_level - info.percent;
             double ms_diff = (double) (System.currentTimeMillis() - last_ms);
             ms_diff /= level_diff;
 
             if (!full_data_point && ms_diff < ave_discharge) {
                 logger.log("Incomplete data point");
-                full_data_point = true;
-                setLasts(level, status, plugged);
+                finishUpdate(info, true);
                 return;
             }
 
@@ -111,16 +106,15 @@ public class Predictor {
             }
         }
 
-        if (status == STATUS_CHARGING) {
-            double level_diff = (double) (level - last_level);
+        if (info.status == BatteryInfo.STATUS_CHARGING) {
+            double level_diff = (double) (info.percent - last_level);
             double ms_diff = (double) (System.currentTimeMillis() - last_ms);
             ms_diff /= level_diff;
 
             if (last_plugged == PLUGGED_USB) ms_diff /= 2;
 
             if (!full_data_point && ms_diff < ave_recharge) {
-                full_data_point = true;
-                setLasts(level, status, plugged);
+                finishUpdate(info, true);
                 return;
             }
 
@@ -134,12 +128,28 @@ public class Predictor {
         }
 
         editor.commit();
-        full_data_point = true;
-        setLasts(level, status, plugged);
+        finishUpdate(info, true);
+    }
+
+    private void finishUpdate(BatteryInfo info, boolean full) {
+        full_data_point = full;
+        setLasts(info);
+        updateInfoPrediction(info);
+    }
+
+    private void updateInfoPrediction(BatteryInfo info) {
+        int secs_left;
+
+        if (info.status == BatteryInfo.STATUS_CHARGING)
+            secs_left = secondsUntilCharged();
+        else
+            secs_left = secondsUntilDrained();
+
+        info.prediction.update(secs_left);
     }
 
     public int secondsUntilDrained() {
-        if (last_status != STATUS_UNPLUGGED) {
+        if (last_status != BatteryInfo.STATUS_UNPLUGGED) {
             return -1;
         }
 
@@ -148,11 +158,11 @@ public class Predictor {
     }
 
     public int secondsUntilCharged() {
-        if (last_status == STATUS_FULLY_CHARGED) {
+        if (last_status == BatteryInfo.STATUS_FULLY_CHARGED) {
             return 0;
         }
 
-        if (last_status != STATUS_CHARGING) {
+        if (last_status != BatteryInfo.STATUS_CHARGING) {
             return -1;
         }
 
@@ -161,10 +171,10 @@ public class Predictor {
         return (int) ms_remaining;
     }
 
-    private void setLasts(int level, int status, int plugged) {
-        last_level = level;
-        last_status = status;
-        last_plugged = plugged;
+    private void setLasts(BatteryInfo info) {
+        last_level = info.percent;
+        last_status = info.status;
+        last_plugged = info.plugged;
         last_ms = System.currentTimeMillis();
     }
 
@@ -176,33 +186,5 @@ public class Predictor {
         }
 
         return sum / recent.size();
-    }
-
-    // If days > 0, then minutes is undefined and hours is rounded to the closest hour (rounding minutes up or down)
-    public static class Prediction {
-        public static final int NONE          = 0;
-        public static final int UNTIL_DRAINED = 1;
-        public static final int UNTIL_CHARGED = 2;
-
-        public int days, hours, minutes, what;
-
-        public void update(int seconds, int status) {
-            if (status == STATUS_FULLY_CHARGED) what = NONE;
-            else if (status == STATUS_CHARGING) what = UNTIL_CHARGED;
-            else                                what = UNTIL_DRAINED;
-
-            days = 0;
-            hours = seconds / (60 * 60);
-            minutes = (seconds / 60) % 60;
-
-            if (hours < 24) {
-                days = 0;
-            } else {
-                if (minutes >= 30) hours += 1;
-
-                days = hours / 24;
-                hours = days % 24;
-            }
-        }
     }
 }
