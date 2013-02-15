@@ -497,11 +497,6 @@ public class BatteryInfoService extends Service {
         editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
         editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
 
-        info.last_status_cTM = time;
-        info.last_status = info.status; // TODO: It makes sense to set these here, right?
-        info.last_plugged = info.plugged;
-        info.last_percent = info.percent;
-
         /* TODO: Af first glance, I think I want to do this, but think about it a bit and decide for sure... */
         mNotificationManager.cancel(NOTIFICATION_ALARM_CHARGE);
 
