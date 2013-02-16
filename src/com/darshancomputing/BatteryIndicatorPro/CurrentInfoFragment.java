@@ -49,6 +49,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 
 public class CurrentInfoFragment extends Fragment {
@@ -75,10 +76,6 @@ public class CurrentInfoFragment extends Fragment {
     private ImageView blv;
 
     //private String oldLanguage = null;
-
-    private static final int DIALOG_CONFIRM_DISABLE_KEYGUARD = 0;
-    private static final int DIALOG_CONFIRM_CLOSE = 1;
-    private static final int DIALOG_FIRST_RUN = 2;
 
     private static final String LOG_TAG = "BatteryIndicator.CIF";
 
@@ -227,23 +224,8 @@ public class CurrentInfoFragment extends Fragment {
             mStartActivity(SettingsActivity.class);
             return true;
         case R.id.menu_close:
-            //showDialog(DIALOG_CONFIRM_CLOSE); // TODO
-            // TODO: put back in dialog
-            SharedPreferences.Editor editor = sp_store.edit();
-            editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false);
-            editor.commit();
-
-            getActivity().finishActivity(1);
-
-            if (serviceConnected) {
-                context.unbindService(serviceConnection);
-                context.stopService(biServiceIntent);
-                serviceConnected = false;
-            }
-
-            getActivity().finish();
-            // TODO: put back in dialog
-
+            DialogFragment df = new ConfirmCloseDialogFragment();
+            df.show(getFragmentManager(), "TODO: What is this string for?2");
             return true;
         case R.id.menu_help:
             mStartActivity(HelpActivity.class);
@@ -262,77 +244,70 @@ public class CurrentInfoFragment extends Fragment {
     }
     */
 
-    // TODO: Re-implement dialogs
-    /* 
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        Dialog dialog;
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        switch (id) {
-        case DIALOG_CONFIRM_DISABLE_KEYGUARD:
-            builder.setTitle(res.getString(R.string.confirm_disable))
+    public static class ConfirmDisableKeyguardDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            Resources res = getActivity().getResources();
+            return new AlertDialog.Builder(getActivity())
+                .setTitle(res.getString(R.string.confirm_disable))
                 .setMessage(res.getString(R.string.confirm_disable_hint))
                 .setCancelable(false)
-                .setPositiveButton(res.getString(R.string.yes), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface di, int id) {
-                        setDisableLocking(true);
-                        di.cancel();
-                    }
-                })
-                .setNegativeButton(res.getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface di, int id) {
-                        di.cancel();
-                    }
-                });
+                .setPositiveButton(res.getString(R.string.yes),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            ((BatteryInfoActivity) getActivity()).currentInfoFragment.setDisableLocking(true);
+                            di.cancel();
+                        }
+                    })
+                .setNegativeButton(res.getString(R.string.cancel),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            di.cancel();
+                        }
+                    })
+                .create();
+        }
+    }
 
-            dialog = builder.create();
-            break;
-        case DIALOG_CONFIRM_CLOSE:
-            builder.setTitle(res.getString(R.string.confirm_close))
+    public static class ConfirmCloseDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            Resources res = getActivity().getResources();
+            return new AlertDialog.Builder(getActivity())
+                .setTitle(res.getString(R.string.confirm_close))
                 .setMessage(res.getString(R.string.confirm_close_hint))
-                .setPositiveButton(res.getString(R.string.yes), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface di, int id) {
-                        SharedPreferences.Editor editor = sp_store.edit();
-                        editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false);
-                        editor.commit();
+                .setPositiveButton(res.getString(R.string.yes),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            ((BatteryInfoActivity) getActivity()).currentInfoFragment.closeApp();
+                            di.cancel();
+                        }
+                    })
+                .setNegativeButton(res.getString(R.string.cancel),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            di.cancel();
+                        }
+                    })
+                .create();
+        }
+    }
 
-                        finishActivity(1);
-                        stopService(biServiceIntent);
-                        getActivity().finish();
+    public void closeApp() {
+        SharedPreferences.Editor editor = sp_store.edit();
+        editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false);
+        editor.commit();
 
-                        di.cancel();
-                    }
-                })
-                .setNegativeButton(res.getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface di, int id) {
-                        di.cancel();
-                    }
-                });
+        getActivity().finishActivity(1);
 
-            dialog = builder.create();
-            break;
-        case DIALOG_FIRST_RUN:
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
-            View layout = inflater.inflate(R.layout.first_run_message, (LinearLayout) view.findViewById(R.id.layout_root));
-
-            builder.setTitle(res.getString(R.string.first_run_title))
-                .setView(layout)
-                .setPositiveButton(res.getString(R.string.okay), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface di, int id) {
-                        di.cancel();
-                    }
-                });
-
-            dialog = builder.create();
-            break;
-        default:
-            dialog = null;
+        if (serviceConnected) {
+            context.unbindService(serviceConnection);
+            context.stopService(biServiceIntent);
+            serviceConnected = false;
         }
 
-        return dialog;
+        getActivity().finish();
     }
-    */
 
     private void handleUpdatedBatteryInfo(BatteryInfo info) {
         bl.setLevel(info.percent);
@@ -438,13 +413,39 @@ public class CurrentInfoFragment extends Fragment {
                 setDisableLocking(false);
             } else {
                 if (settings.getBoolean(SettingsActivity.KEY_CONFIRM_DISABLE_LOCKING, true)) {
-                    //showDialog(DIALOG_CONFIRM_DISABLE_KEYGUARD); // TODO
+                    DialogFragment df = new ConfirmDisableKeyguardDialogFragment();
+                    df.show(getFragmentManager(), "TODO: What is this string for?");
                 } else {
                     setDisableLocking(true);
                 }
             }
         }
     };
+
+
+    // TODO: Re-implement dialogs
+    /*
+        case DIALOG_FIRST_RUN:
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
+            View layout = inflater.inflate(R.layout.first_run_message, (LinearLayout) view.findViewById(R.id.layout_root));
+
+            builder.setTitle(res.getString(R.string.first_run_title))
+                .setView(layout)
+                .setPositiveButton(res.getString(R.string.okay), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface di, int id) {
+                        di.cancel();
+                    }
+                });
+
+            dialog = builder.create();
+            break;
+        default:
+            dialog = null;
+        }
+
+        return dialog;
+    }
+    */
 
     private void mStartActivity(Class c) {
         ComponentName comp = new ComponentName(context.getPackageName(), c.getName());

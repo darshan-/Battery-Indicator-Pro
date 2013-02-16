@@ -30,7 +30,7 @@ public class BatteryInfoActivity extends FragmentActivity {
     private Resources res;
     private BatteryInfoPagerAdapter pagerAdapter;
     private ViewPager viewPager;
-    //private static CurrentInfoFragment currentInfoFragment;
+    public static CurrentInfoFragment currentInfoFragment;
 
     //static {
         //android.os.Debug.startMethodTracing();
@@ -85,11 +85,10 @@ public class BatteryInfoActivity extends FragmentActivity {
         // TODO: Put Fragment types and page titles in Arrays or Map or something.
         @Override
         public Fragment getItem(int position) {
-            //return currentInfoFragment;
             if (position == 0) {
-                //currentInfoFragment = new CurrentInfoFragment();
-                //return currentInfoFragment;
-                return new CurrentInfoFragment();
+                currentInfoFragment = new CurrentInfoFragment();
+                return currentInfoFragment;
+                //return new CurrentInfoFragment();
             } else {
                 return new LogViewFragment();
             }
