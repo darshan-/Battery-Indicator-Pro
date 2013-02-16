@@ -119,7 +119,7 @@ class BatteryInfo {
                 if (minutes >= 30) hours += 1;
 
                 days = hours / 24;
-                hours = days % 24;
+                hours = hours % 24;
             }
         }
     }
