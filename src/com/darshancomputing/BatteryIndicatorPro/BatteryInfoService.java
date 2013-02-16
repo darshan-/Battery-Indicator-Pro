@@ -213,17 +213,11 @@ public class BatteryInfoService extends Service {
         public void handleMessage(Message incoming) {
             switch (incoming.what) {
             case RemoteConnection.SERVICE_CLIENT_CONNECTED:
-                Logger.l("Service received SERVICE_CLIENT_CONNECTED");
-                Logger.l("Service sending CLIENT_SERVICE_CONNECTED");
                 sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_SERVICE_CONNECTED);
-                Logger.l("Service sent CLIENT_SERVICE_CONNECTED");
                 break;
             case RemoteConnection.SERVICE_REGISTER_CLIENT:
-                Logger.l("Service received SERVICE_REGISTER_CLIENT");
                 clientMessengers.add(incoming.replyTo);
-                Logger.l("Service sending BATTERY_INFO_UPDATED");
                 sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_BATTERY_INFO_UPDATED, info.toBundle());
-                Logger.l("Service sent BATTERY_INFO_UPDATED");
                 break;
             case RemoteConnection.SERVICE_UNREGISTER_CLIENT:
                 clientMessengers.remove(incoming.replyTo);
@@ -272,14 +266,12 @@ public class BatteryInfoService extends Service {
         }
 
         public void onServiceConnected(ComponentName name, IBinder iBinder) {
-            Logger.l("service connected (client process)");
             serviceMessenger = new Messenger(iBinder);
 
             Message outgoing = Message.obtain();
             outgoing.what = SERVICE_CLIENT_CONNECTED;
             outgoing.replyTo = clientMessenger;
             try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
-            Logger.l("service connected done (client process)");
         }
 
         public void onServiceDisconnected(ComponentName name) {

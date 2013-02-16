@@ -32,35 +32,24 @@ public class BatteryInfoActivity extends FragmentActivity {
     private ViewPager viewPager;
     //private static CurrentInfoFragment currentInfoFragment;
 
-    static {
+    //static {
         //android.os.Debug.startMethodTracing();
-        Logger.l("BIA static block");
-        //currentInfoFragment = new CurrentInfoFragment();
-        //Logger.l("instantiated CIF");
-        Logger.l("static block finished");
-    }
+    //}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Logger.l("BIA.onCreate() start");
         super.onCreate(savedInstanceState);
-        Logger.l("called super.onC()");
 
         res = getResources();
-        Logger.l("got resources");
 
         setContentView(R.layout.battery_info);
-        Logger.l("set content view");
 
         pagerAdapter = new BatteryInfoPagerAdapter(getSupportFragmentManager());
-        Logger.l("instantiated pager adapter");
         viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(pagerAdapter);
-        Logger.l("set pager adapter");
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
         tabStrip.setTabIndicatorColor(0x33b5e5);
-        Logger.l("BIA.onCreate() finish");
     }
 
     @Override
@@ -73,15 +62,16 @@ public class BatteryInfoActivity extends FragmentActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    /*
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        Logger.l("BIA.onWFC() called with: " + hasFocus);
-        Logger.lt();
+        android.os.Debug.stopMethodTracing();
     }
+    */
 
     public static class BatteryInfoPagerAdapter extends FragmentPagerAdapter {
-        public CurrentInfoFragment currentInfoFragment;
+        //public CurrentInfoFragment currentInfoFragment;
 
         public BatteryInfoPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -97,8 +87,9 @@ public class BatteryInfoActivity extends FragmentActivity {
         public Fragment getItem(int position) {
             //return currentInfoFragment;
             if (position == 0) {
-                currentInfoFragment = new CurrentInfoFragment();
-                return currentInfoFragment;
+                //currentInfoFragment = new CurrentInfoFragment();
+                //return currentInfoFragment;
+                return new CurrentInfoFragment();
             } else {
                 return new LogViewFragment();
             }
