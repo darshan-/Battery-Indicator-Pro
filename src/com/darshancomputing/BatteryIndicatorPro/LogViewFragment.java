@@ -18,18 +18,15 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -51,11 +48,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class LogViewFragment extends ListFragment {
+    private static BatteryInfoActivity activity;
     private LogDatabase logs;
-    private Resources res;
-    private Context context;
-    private SharedPreferences settings;
-    private Str str;
     private Col col;
     private Cursor completeCursor;
     private Cursor filteredCursor;
@@ -86,6 +80,10 @@ public class LogViewFragment extends ListFragment {
             String action = intent.getAction();
             if (! Intent.ACTION_BATTERY_CHANGED.equals(action)) return;
 
+            // TODO: Do this better.  Perphaps have the Activity be the client of the Service, or perhaps
+            //  leave it with CIF as client, but it calls Activity.infoUpdated() after receiving message
+            //  from Service.  If so, make sure (and document) that Service shouldn't send that message
+            //  until after logs have been updated (and not just info).  Perhaps even renaming message.
             /* Give the service a couple seconds to process the update */
             mHandler.postDelayed(mUpdateStatus, 2 * 1000);
         }
@@ -101,7 +99,7 @@ public class LogViewFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState)  {
         super.onActivityCreated(savedInstanceState);
 
-        View logs_header = View.inflate(context, R.layout.logs_header, null);
+        View logs_header = View.inflate(activity.context, R.layout.logs_header, null);
         header_text = (TextView) logs_header.findViewById(R.id.header_text);
         getListView().addHeaderView(logs_header, null, false);
         setHeaderText();
@@ -111,23 +109,20 @@ public class LogViewFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = getActivity().getApplicationContext();
-        res = getResources();
+        activity = (BatteryInfoActivity) getActivity();
 
         setHasOptionsMenu(true);
         //setMenuVisibility(true);
 
-        settings = PreferenceManager.getDefaultSharedPreferences(context);
-        convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
-        str = new Str(res);
+        convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
         col = new Col();
 
-        logs = new LogDatabase(context);
+        logs = new LogDatabase(activity.context);
         completeCursor = logs.getAllLogs(false);
         timeDeltaCursor = new TimeDeltaCursor(completeCursor);
         filteredCursor = new FilteredCursor(timeDeltaCursor);
 
-        mAdapter = new LogAdapter(context, filteredCursor);
+        mAdapter = new LogAdapter(activity.context, filteredCursor);
     }
 
     @Override
@@ -140,13 +135,13 @@ public class LogViewFragment extends ListFragment {
     @Override
     public void onResume() {
         super.onResume();
-        getActivity().registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
+        activity.registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        getActivity().unregisterReceiver(mBatteryInfoReceiver);
+        activity.unregisterReceiver(mBatteryInfoReceiver);
     }
 
     // TODO: Re-implement dialogs
@@ -154,12 +149,12 @@ public class LogViewFragment extends ListFragment {
     @Override
     protected Dialog onCreateDialog(int id) {
         Dialog dialog;
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         switch (id) {
         case DIALOG_CONFIRM_CLEAR_LOGS:
-            builder.setTitle(str.confirm_clear_logs)
-                .setPositiveButton(str.yes, new DialogInterface.OnClickListener() {
+            builder.setTitle(activity.str.confirm_clear_logs)
+                .setPositiveButton(activity.str.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             logs.clearAllLogs();
                             reloadList(false);
@@ -167,7 +162,7 @@ public class LogViewFragment extends ListFragment {
                             di.cancel();
                         }
                     })
-                .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(activity.str.cancel, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             di.cancel();
                         }
@@ -176,13 +171,13 @@ public class LogViewFragment extends ListFragment {
             dialog = builder.create();
             break;
         case DIALOG_CONFIGURE_LOG_FILTER:
-            final boolean[] checked_items = new boolean[str.log_filter_pref_keys.length];
+            final boolean[] checked_items = new boolean[activity.str.log_filter_pref_keys.length];
 
             for (int i = 0; i < checked_items.length; i++) {
-                checked_items[i] = settings.getBoolean(str.log_filter_pref_keys[i], true);
+                checked_items[i] = activity.settings.getBoolean(activity.str.log_filter_pref_keys[i], true);
             }
 
-            builder.setTitle(str.configure_log_filter)
+            builder.setTitle(activity.str.configure_log_filter)
                 .setMultiChoiceItems(R.array.log_filters, checked_items,
                                      new DialogInterface.OnMultiChoiceClickListener() {
                                          @Override
@@ -190,7 +185,7 @@ public class LogViewFragment extends ListFragment {
                                              checked_items[id] = isChecked;
                                          }
                                      })
-                .setPositiveButton(str.okay, new DialogInterface.OnClickListener() {
+                .setPositiveButton(activity.str.okay, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             di.cancel(); // setFilters() is called in onCancel()
                         }
@@ -211,10 +206,10 @@ public class LogViewFragment extends ListFragment {
     */
 
     private void setFilters(boolean[] checked_items) {
-        SharedPreferences.Editor editor = settings.edit();
+        SharedPreferences.Editor editor = activity.settings.edit();
 
         for (int i = 0; i < checked_items.length; i++) {
-            editor.putBoolean(str.log_filter_pref_keys[i], checked_items[i]);
+            editor.putBoolean(activity.str.log_filter_pref_keys[i], checked_items[i]);
         }
 
         editor.commit();
@@ -272,7 +267,7 @@ public class LogViewFragment extends ListFragment {
 
             return true;
         case android.R.id.home:
-            startActivity(new Intent(getActivity(), BatteryInfoActivity.class));
+            startActivity(new Intent(activity, BatteryInfoActivity.class));
             return true;
         default:
             return super.onOptionsItemSelected(item);
@@ -298,19 +293,19 @@ public class LogViewFragment extends ListFragment {
         int count = filteredCursor.getCount();
 
         if (count == 0)
-            header_text.setText(str.logs_empty);
+            header_text.setText(activity.str.logs_empty);
         else
-            header_text.setText(str.n_log_items(count));
+            header_text.setText(activity.str.n_log_items(count));
     }
 
     private void exportCSV() {
         String state = Environment.getExternalStorageState();
 
         if (state != null && state.equals(Environment.MEDIA_MOUNTED_READ_ONLY)) {
-            Toast.makeText(context, str.read_only_storage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity.context, activity.str.read_only_storage, Toast.LENGTH_SHORT).show();
             return;
         } else if (state == null || !state.equals(Environment.MEDIA_MOUNTED)) {
-            Toast.makeText(context, str.inaccessible_w_reason + state, Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity.context, activity.str.inaccessible_w_reason + state, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -320,11 +315,12 @@ public class LogViewFragment extends ListFragment {
         File root    = Environment.getExternalStorageDirectory();
         File csvFile = new File(root, csvFileName);
 
-        String[] csvFields = {str.date, str.time, str.status, str.charge, str.temperature, str.voltage};
+        String[] csvFields = {activity.str.date, activity.str.time, activity.str.status,
+                              activity.str.charge, activity.str.temperature, activity.str.voltage};
 
         try {
             if (!csvFile.createNewFile() || !csvFile.canWrite()) {
-                Toast.makeText(context, str.inaccessible_storage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity.context, activity.str.inaccessible_storage, Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -357,11 +353,11 @@ public class LogViewFragment extends ListFragment {
                         status_age  = statusCodes[2];
 
                         if (status_age == LogDatabase.STATUS_OLD)
-                            s = str.log_statuses_old[status];
+                            s = activity.str.log_statuses_old[status];
                         else
-                            s = str.log_statuses[status];
+                            s = activity.str.log_statuses[status];
                         if (plugged > 0)
-                            s += " " + str.pluggeds[plugged];
+                            s += " " + activity.str.pluggeds[plugged];
 
                         buf.write(s + ",");
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_CHARGE)) {
@@ -376,11 +372,11 @@ public class LogViewFragment extends ListFragment {
             }
             buf.close();
         } catch (Exception e) {
-            Toast.makeText(context, str.inaccessible_storage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity.context, activity.str.inaccessible_storage, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Toast.makeText(context, str.file_written, Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity.context, activity.str.file_written, Toast.LENGTH_SHORT).show();
     }
 
     // Based on http://stackoverflow.com/a/7343721/1427098
@@ -408,12 +404,12 @@ public class LogViewFragment extends ListFragment {
             int wrappedCursorPos = wrappedCursor.getPosition();
             int statusCodeIndex = wrappedCursor.getColumnIndexOrThrow(LogDatabase.KEY_STATUS_CODE);
 
-            boolean show_plugged_in    = settings.getBoolean("plugged_in",    true);
-            boolean show_unplugged     = settings.getBoolean("unplugged",     true);
-            boolean show_charging      = settings.getBoolean("charging",      true);
-            boolean show_discharging   = settings.getBoolean("discharging",   true);
-            boolean show_fully_charged = settings.getBoolean("fully_charged", true);
-            boolean show_unknown       = settings.getBoolean("unknown",       true);
+            boolean show_plugged_in    = activity.settings.getBoolean("plugged_in",    true);
+            boolean show_unplugged     = activity.settings.getBoolean("unplugged",     true);
+            boolean show_charging      = activity.settings.getBoolean("charging",      true);
+            boolean show_discharging   = activity.settings.getBoolean("discharging",   true);
+            boolean show_fully_charged = activity.settings.getBoolean("fully_charged", true);
+            boolean show_unknown       = activity.settings.getBoolean("unknown",       true);
 
             for (wrappedCursor.moveToFirst(); !wrappedCursor.isAfterLast(); wrappedCursor.moveToNext()) {
                 int statusCode    = wrappedCursor.getInt(statusCodeIndex);
@@ -748,7 +744,7 @@ public class LogViewFragment extends ListFragment {
             if (status_age == LogDatabase.STATUS_OLD) {
                  status_tv.setTextColor(col.old_status);
                 percent_tv.setTextColor(col.old_status);
-                s = str.log_statuses_old[status];
+                s = activity.str.log_statuses_old[status];
 
                 time_diff_tv.setVisibility(View.GONE);
             } else {
@@ -770,7 +766,7 @@ public class LogViewFragment extends ListFragment {
                     percent_tv.setTextColor(col.unknown);
                 }
 
-                s = str.log_statuses[status];
+                s = activity.str.log_statuses[status];
                 long delta;
 
                 switch (status) {
@@ -783,7 +779,7 @@ public class LogViewFragment extends ListFragment {
                         break;
                     }
 
-                    time_diff_tv.setText(String.format(res.getString(R.string.after_n_hours_plugged_in),
+                    time_diff_tv.setText(String.format(activity.res.getString(R.string.after_n_hours_plugged_in),
                                                        delta / 1000.0 / 60.0 / 60.0));
 
                     time_diff_tv.setVisibility(View.VISIBLE);
@@ -796,7 +792,7 @@ public class LogViewFragment extends ListFragment {
                         break;
                     }
 
-                    time_diff_tv.setText(String.format(res.getString(R.string.after_n_hours_unplugged),
+                    time_diff_tv.setText(String.format(activity.res.getString(R.string.after_n_hours_unplugged),
                                                        delta / 1000.0 / 60.0 / 60.0));
 
                     time_diff_tv.setVisibility(View.VISIBLE);
@@ -807,7 +803,7 @@ public class LogViewFragment extends ListFragment {
             }
 
             if (plugged > 0)
-                s += " " + str.pluggeds[plugged];
+                s += " " + activity.str.pluggeds[plugged];
 
             status_tv.setText(s);
 
@@ -817,11 +813,11 @@ public class LogViewFragment extends ListFragment {
             time_tv.setText(dateFormat.format(d) + "  " + timeFormat.format(d));
 
             int temperature = cursor.getInt(temperatureIndex);
-            if (temperature != 0) temp_volt_tv.setText("" + str.formatTemp(temperature, convertF));
+            if (temperature != 0) temp_volt_tv.setText("" + activity.str.formatTemp(temperature, convertF));
             else temp_volt_tv.setText(""); /* TextViews are reused */
 
             int voltage = cursor.getInt(voltageIndex);
-            if (voltage != 0) temp_volt_tv.setText(((String) temp_volt_tv.getText()) + " / " + str.formatVoltage(voltage));
+            if (voltage != 0) temp_volt_tv.setText(((String) temp_volt_tv.getText()) + " / " + activity.str.formatVoltage(voltage));
         }
     }
 
@@ -833,11 +829,11 @@ public class LogViewFragment extends ListFragment {
         public int unknown;
 
         public Col() {
-            old_status = res.getColor(R.color.log_old_status);
-            charged    = res.getColor(R.color.log_charged);
-            plugged    = res.getColor(R.color.log_plugged);
-            unplugged  = res.getColor(R.color.log_unplugged);
-            unknown    = res.getColor(R.color.log_unknown);
+            old_status = activity.res.getColor(R.color.log_old_status);
+            charged    = activity.res.getColor(R.color.log_charged);
+            plugged    = activity.res.getColor(R.color.log_plugged);
+            unplugged  = activity.res.getColor(R.color.log_unplugged);
+            unknown    = activity.res.getColor(R.color.log_unknown);
         }
     }
 }

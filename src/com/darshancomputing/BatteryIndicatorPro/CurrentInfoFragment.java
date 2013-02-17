@@ -25,16 +25,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -53,9 +50,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 
 public class CurrentInfoFragment extends Fragment {
-    private SharedPreferences settings;
-    private SharedPreferences sp_store;
-
+    private static BatteryInfoActivity activity;
     private Intent biServiceIntent;
     private Messenger serviceMessenger;
     private final Messenger messenger = new Messenger(new MessageHandler());
@@ -65,23 +60,21 @@ public class CurrentInfoFragment extends Fragment {
     private static final Intent batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY)
         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-    private Resources res;
-    private Context context;
     private View view;
-    private Str str;
     private Boolean disallowLockButton;
     private Button battery_use_b;
     private Button toggle_lock_screen_b;
     private BatteryLevel bl;
     private ImageView blv;
+    private BatteryInfo info = new BatteryInfo();
 
     //private String oldLanguage = null;
 
-    private static final String LOG_TAG = "BatteryIndicator.CIF";
+    private static final String LOG_TAG = "BatteryBot";
 
     public void bindService() {
         if (! serviceConnected) {
-            context.bindService(biServiceIntent, serviceConnection, 0);
+            activity.context.bindService(biServiceIntent, serviceConnection, 0);
             serviceConnected = true;
         }
     }
@@ -100,7 +93,6 @@ public class CurrentInfoFragment extends Fragment {
                 sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
                 break;
             case BatteryInfoService.RemoteConnection.CLIENT_BATTERY_INFO_UPDATED:
-                BatteryInfo info = new BatteryInfo();
                 info.loadBundle(incoming.getData());
                 handleUpdatedBatteryInfo(info);
                 break;
@@ -135,36 +127,33 @@ public class CurrentInfoFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        res = getResources();
-        str = new Str(res);
-        context = getActivity();
-
-        bl = new BatteryLevel(context, res.getInteger(R.integer.bl_inSampleSize));
-
         super.onCreate(savedInstanceState);
+
+        activity = (BatteryInfoActivity) getActivity();
+
+        bl = new BatteryLevel(activity.context, activity.res.getInteger(R.integer.bl_inSampleSize));
 
         setHasOptionsMenu(true);
 
-        settings = context.getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_PRIVATE);
-        sp_store = context.getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_PRIVATE);
+        disallowLockButton = activity.settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
 
-        disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
-
-        if (settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
+        if (activity.settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
             // TODO: Show first_run dialog
-            SharedPreferences.Editor editor = sp_store.edit();
+            SharedPreferences.Editor editor = activity.sp_store.edit();
             editor.putBoolean(SettingsActivity.KEY_FIRST_RUN, false);
             editor.commit();
         }
 
-        SharedPreferences.Editor editor = sp_store.edit();
+        // TODO: everything after here could happen in another thread?
+        //   They tend to take about 70ms on the myTouch
+        SharedPreferences.Editor editor = activity.sp_store.edit();
         editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, true);
         editor.commit();
 
         serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
 
-        biServiceIntent = new Intent(context, BatteryInfoService.class);
-        context.startService(biServiceIntent);
+        biServiceIntent = new Intent(activity.context, BatteryInfoService.class);
+        activity.context.startService(biServiceIntent);
         bindService();
     }
 
@@ -172,20 +161,20 @@ public class CurrentInfoFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         if (serviceConnected) {
-            context.unbindService(serviceConnection);
+            activity.context.unbindService(serviceConnection);
             serviceConnected = false;
         }
         bl.recycle();
     }
 
     /*private void restartIfLanguageChanged() {
-        String curLanguage = settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default");
+        String curLanguage = activity.settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default");
         if (curLanguage.equals(oldLanguage))
             return;
 
-        Str.overrideLanguage(res, getWindowManager(), curLanguage);
+        Str.overrideLanguage(activity.res, getWindowManager(), curLanguage);
         mStartActivity(BatteryInfoActivity.class);
-        getActivity().finish();
+        activity.finish();
     }*/
 
     @Override
@@ -195,10 +184,9 @@ public class CurrentInfoFragment extends Fragment {
         if (serviceMessenger != null)
             sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
 
-        Intent bc_intent = context.registerReceiver(null, batteryChangedFilter);
-        BatteryInfo info = new BatteryInfo();
+        Intent bc_intent = activity.context.registerReceiver(null, batteryChangedFilter);
         info.load(bc_intent);
-        info.load(sp_store);
+        info.load(activity.sp_store);
         handleUpdatedBatteryInfo(info);
     }
 
@@ -240,26 +228,25 @@ public class CurrentInfoFragment extends Fragment {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Boolean oldDisallow = disallowLockButton;
-        disallowLockButton = settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
+        disallowLockButton = activity.settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
     }
     */
 
     public static class ConfirmDisableKeyguardDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            Resources res = getActivity().getResources();
-            return new AlertDialog.Builder(getActivity())
-                .setTitle(res.getString(R.string.confirm_disable))
-                .setMessage(res.getString(R.string.confirm_disable_hint))
-                .setCancelable(false)
-                .setPositiveButton(res.getString(R.string.yes),
+            return new AlertDialog.Builder(activity)
+                .setTitle(activity.res.getString(R.string.confirm_disable))
+                .setMessage(activity.res.getString(R.string.confirm_disable_hint))
+                .setCancelable(false) // TODO: Doesn't work... Just remove and accept being cancelable?
+                .setPositiveButton(activity.res.getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
-                            ((BatteryInfoActivity) getActivity()).currentInfoFragment.setDisableLocking(true);
+                            ((BatteryInfoActivity) activity).currentInfoFragment.setDisableLocking(true);
                             di.cancel();
                         }
                     })
-                .setNegativeButton(res.getString(R.string.cancel),
+                .setNegativeButton(activity.res.getString(R.string.cancel),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             di.cancel();
@@ -272,18 +259,17 @@ public class CurrentInfoFragment extends Fragment {
     public static class ConfirmCloseDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            Resources res = getActivity().getResources();
-            return new AlertDialog.Builder(getActivity())
-                .setTitle(res.getString(R.string.confirm_close))
-                .setMessage(res.getString(R.string.confirm_close_hint))
-                .setPositiveButton(res.getString(R.string.yes),
+            return new AlertDialog.Builder(activity)
+                .setTitle(activity.res.getString(R.string.confirm_close))
+                .setMessage(activity.res.getString(R.string.confirm_close_hint))
+                .setPositiveButton(activity.res.getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
-                            ((BatteryInfoActivity) getActivity()).currentInfoFragment.closeApp();
+                            ((BatteryInfoActivity) activity).currentInfoFragment.closeApp();
                             di.cancel();
                         }
                     })
-                .setNegativeButton(res.getString(R.string.cancel),
+                .setNegativeButton(activity.res.getString(R.string.cancel),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             di.cancel();
@@ -294,19 +280,19 @@ public class CurrentInfoFragment extends Fragment {
     }
 
     public void closeApp() {
-        SharedPreferences.Editor editor = sp_store.edit();
+        SharedPreferences.Editor editor = activity.sp_store.edit();
         editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false);
         editor.commit();
 
-        getActivity().finishActivity(1);
+        activity.finishActivity(1);
 
         if (serviceConnected) {
-            context.unbindService(serviceConnection);
-            context.stopService(biServiceIntent);
+            activity.context.unbindService(serviceConnection);
+            activity.context.stopService(biServiceIntent);
             serviceConnected = false;
         }
 
-        getActivity().finish();
+        activity.finish();
     }
 
     private void handleUpdatedBatteryInfo(BatteryInfo info) {
@@ -314,11 +300,11 @@ public class CurrentInfoFragment extends Fragment {
         blv.invalidate();
 
         TextView tv = (TextView) view.findViewById(R.id.level);
-        tv.setText("" + info.percent + res.getString(R.string.percent_symbol));
+        tv.setText("" + info.percent + activity.res.getString(R.string.percent_symbol));
 
         if (info.prediction.what == BatteryInfo.Prediction.NONE) {
             tv = (TextView) view.findViewById(R.id.time_remaining);
-            tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + str.statuses[info.status] + "</font>")); // TODO: color
+            tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + activity.str.statuses[info.status] + "</font>")); // TODO: color
             tv = (TextView) view.findViewById(R.id.until_what);
             tv.setText("");
         } else {
@@ -351,10 +337,10 @@ public class CurrentInfoFragment extends Fragment {
         int hours = secs / (60 * 60);
         int mins = (secs / 60) % 60;
 
-        String s = str.statuses[info.status];
+        String s = activity.str.statuses[info.status];
 
         if (info.status == BatteryInfo.STATUS_CHARGING)
-            s += " " + str.pluggeds[info.last_plugged];
+            s += " " + activity.str.pluggeds[info.last_plugged];
 
         // TODO: Don't show 'since 100%' for Fully Charged status
         tv = (TextView) view.findViewById(R.id.status);
@@ -363,7 +349,7 @@ public class CurrentInfoFragment extends Fragment {
         s = "Since "; // TODO: Translatable
 
         if (info.status != BatteryInfo.STATUS_FULLY_CHARGED)
-            s += info.last_percent + str.percent_symbol + ", ";
+            s += info.last_percent + activity.str.percent_symbol + ", ";
 
         s += hours + "h " + mins + "m ago"; // TODO: Translatable
 
@@ -374,14 +360,14 @@ public class CurrentInfoFragment extends Fragment {
     }
 
     private void updateLockscreenButton() {
-        if (sp_store.getBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, false))
-            toggle_lock_screen_b.setText(res.getString(R.string.reenable_lock_screen));
+        if (activity.sp_store.getBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, false))
+            toggle_lock_screen_b.setText(activity.res.getString(R.string.reenable_lock_screen));
         else
-            toggle_lock_screen_b.setText(res.getString(R.string.disable_lock_screen));
+            toggle_lock_screen_b.setText(activity.res.getString(R.string.disable_lock_screen));
     }
 
     private void setDisableLocking(boolean b) {
-        SharedPreferences.Editor editor = sp_store.edit();
+        SharedPreferences.Editor editor = activity.sp_store.edit();
         editor.putBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, b);
         editor.commit();
 
@@ -391,7 +377,7 @@ public class CurrentInfoFragment extends Fragment {
 
         updateLockscreenButton();
 
-        if (settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_TOGGLE_LOCK, false)) getActivity().finish();
+        if (activity.settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_TOGGLE_LOCK, false)) activity.finish();
     }
 
     /* Battery Use */
@@ -399,7 +385,7 @@ public class CurrentInfoFragment extends Fragment {
         public void onClick(View v) {
             try {
                 startActivity(batteryUseIntent);
-                if (settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_BATTERY_USE, false)) getActivity().finish();
+                if (activity.settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_BATTERY_USE, false)) activity.finish();
             } catch (Exception e) {
                 battery_use_b.setEnabled(false);
             }
@@ -409,10 +395,10 @@ public class CurrentInfoFragment extends Fragment {
     /* Toggle Lock Screen */
     private final OnClickListener tlsButtonListener = new OnClickListener() {
         public void onClick(View v) {
-            if (sp_store.getBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, false)) {
+            if (activity.sp_store.getBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, false)) {
                 setDisableLocking(false);
             } else {
-                if (settings.getBoolean(SettingsActivity.KEY_CONFIRM_DISABLE_LOCKING, true)) {
+                if (activity.settings.getBoolean(SettingsActivity.KEY_CONFIRM_DISABLE_LOCKING, true)) {
                     DialogFragment df = new ConfirmDisableKeyguardDialogFragment();
                     df.show(getFragmentManager(), "TODO: What is this string for?");
                 } else {
@@ -426,12 +412,12 @@ public class CurrentInfoFragment extends Fragment {
     // TODO: Re-implement dialogs
     /*
         case DIALOG_FIRST_RUN:
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) activity.context.getSystemService(LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.first_run_message, (LinearLayout) view.findViewById(R.id.layout_root));
 
-            builder.setTitle(res.getString(R.string.first_run_title))
+            builder.setTitle(activity.res.getString(R.string.first_run_title))
                 .setView(layout)
-                .setPositiveButton(res.getString(R.string.okay), new DialogInterface.OnClickListener() {
+                .setPositiveButton(activity.res.getString(R.string.okay), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface di, int id) {
                         di.cancel();
                     }
@@ -448,14 +434,14 @@ public class CurrentInfoFragment extends Fragment {
     */
 
     private void mStartActivity(Class c) {
-        ComponentName comp = new ComponentName(context.getPackageName(), c.getName());
+        ComponentName comp = new ComponentName(activity.context.getPackageName(), c.getName());
         //startActivity(new Intent().setComponent(comp));
         startActivityForResult(new Intent().setComponent(comp), 1);
-        //getActivity().finish();
+        //activity.finish();
     }
 
     private void bindButtons() {
-        if (context.getPackageManager().resolveActivity(batteryUseIntent, 0) == null) {
+        if (activity.context.getPackageManager().resolveActivity(batteryUseIntent, 0) == null) {
             battery_use_b.setEnabled(false); /* TODO: change how the disabled button looks */
         } else {
             battery_use_b.setOnClickListener(buButtonListener);

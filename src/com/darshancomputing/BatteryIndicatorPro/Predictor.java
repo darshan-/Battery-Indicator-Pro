@@ -26,8 +26,8 @@ public class Predictor {
     private static final double WEIGHT_NEW_DATA =  1 - WEIGHT_OLD_AVERAGE;
     private static final double WEIGHT_AVERAGE = 0.1;
     private static final double WEIGHT_RECENT = 1 - WEIGHT_AVERAGE;
-    private static final int RECENT_SIZE = 10;
-    private static final int MAX_RECENT_REPLACED = 3;
+    private static final int RECENT_SIZE = 5;
+    private static final int MAX_RECENT_REPLACED = 5;
 
     private static final int PLUGGED_USB = 2;
 

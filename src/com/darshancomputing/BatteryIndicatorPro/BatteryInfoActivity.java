@@ -14,9 +14,12 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 
 import android.support.v4.app.Fragment;
@@ -27,10 +30,19 @@ import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 
 public class BatteryInfoActivity extends FragmentActivity {
-    private Resources res;
     private BatteryInfoPagerAdapter pagerAdapter;
     private ViewPager viewPager;
     public static CurrentInfoFragment currentInfoFragment;
+    public static LogViewFragment logViewFragment;
+    private long startMillis;
+
+    public Context context;
+    public Resources res;
+    public Str str;
+    public SharedPreferences settings;
+    public SharedPreferences sp_store;
+
+    private static final String LOG_TAG = "BatteryBot";
 
     //static {
         //android.os.Debug.startMethodTracing();
@@ -38,9 +50,15 @@ public class BatteryInfoActivity extends FragmentActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        startMillis = System.currentTimeMillis();
 
+        context = getApplicationContext();
         res = getResources();
+        str = new Str(res);
+        settings = context.getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_PRIVATE);
+        sp_store = context.getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_PRIVATE);
+
+        super.onCreate(savedInstanceState); // Recreates Fragments, so only call after doing necessary setup
 
         setContentView(R.layout.battery_info);
 
@@ -62,17 +80,15 @@ public class BatteryInfoActivity extends FragmentActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    /*
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        android.os.Debug.stopMethodTracing();
+        //android.os.Debug.stopMethodTracing();
+        if (hasFocus)
+            Log.i(LOG_TAG, "" + (System.currentTimeMillis() - startMillis) + "ms");
     }
-    */
 
     public static class BatteryInfoPagerAdapter extends FragmentPagerAdapter {
-        //public CurrentInfoFragment currentInfoFragment;
-
         public BatteryInfoPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -86,11 +102,13 @@ public class BatteryInfoActivity extends FragmentActivity {
         @Override
         public Fragment getItem(int position) {
             if (position == 0) {
-                currentInfoFragment = new CurrentInfoFragment();
+                if (currentInfoFragment == null)
+                    currentInfoFragment = new CurrentInfoFragment();
                 return currentInfoFragment;
-                //return new CurrentInfoFragment();
             } else {
-                return new LogViewFragment();
+                //if (logViewFragment == null) // Simpler to just make new one for now...
+                    logViewFragment = new LogViewFragment();
+                return logViewFragment;
             }
         }
 
