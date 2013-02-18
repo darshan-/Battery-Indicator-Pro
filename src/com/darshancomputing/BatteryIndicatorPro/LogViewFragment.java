@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,6 +36,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +61,8 @@ public class LogViewFragment extends ListFragment {
     private TextView header_text;
     private Boolean reversed = false;
     private Boolean convertF;
+
+    private static final String LOG_TAG = "BatteryBot";
 
     private static final int DIALOG_CONFIRM_CLEAR_LOGS   = 0;
     private static final int DIALOG_CONFIGURE_LOG_FILTER = 1;
@@ -91,19 +95,18 @@ public class LogViewFragment extends ListFragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mInflater = inflater;
-        return super.onCreateView(inflater, container, savedInstanceState);
-    }
+        View view = super.onCreateView(inflater, container, savedInstanceState);
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState)  {
-        super.onActivityCreated(savedInstanceState);
+        mInflater = inflater;
 
         View logs_header = View.inflate(activity.context, R.layout.logs_header, null);
         header_text = (TextView) logs_header.findViewById(R.id.header_text);
-        getListView().addHeaderView(logs_header, null, false);
+        ListView lv = (ListView) view.findViewById(android.R.id.list);
+        lv.addHeaderView(logs_header, null, false);
         setHeaderText();
         setListAdapter(mAdapter);
+
+        return view;
     }
 
     @Override
@@ -112,7 +115,7 @@ public class LogViewFragment extends ListFragment {
         activity = (BatteryInfoActivity) getActivity();
 
         setHasOptionsMenu(true);
-        //setMenuVisibility(true);
+        setRetainInstance(true);
 
         convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
         col = new Col();
@@ -135,13 +138,13 @@ public class LogViewFragment extends ListFragment {
     @Override
     public void onResume() {
         super.onResume();
-        activity.registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
+        activity.context.registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        activity.unregisterReceiver(mBatteryInfoReceiver);
+        activity.context.unregisterReceiver(mBatteryInfoReceiver);
     }
 
     // TODO: Re-implement dialogs

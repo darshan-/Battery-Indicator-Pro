@@ -106,7 +106,7 @@ public class BatteryInfoActivity extends FragmentActivity {
                     currentInfoFragment = new CurrentInfoFragment();
                 return currentInfoFragment;
             } else {
-                //if (logViewFragment == null) // Simpler to just make new one for now...
+                if (logViewFragment == null)
                     logViewFragment = new LogViewFragment();
                 return logViewFragment;
             }
