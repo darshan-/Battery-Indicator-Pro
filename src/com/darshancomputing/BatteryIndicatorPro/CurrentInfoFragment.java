@@ -134,6 +134,7 @@ public class CurrentInfoFragment extends Fragment {
         bl = new BatteryLevel(activity.context, activity.res.getInteger(R.integer.bl_inSampleSize));
 
         setHasOptionsMenu(true);
+        //setRetainInstance(true); // TODO: Sort out a clean way to do this?
 
         disallowLockButton = activity.settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
 
@@ -360,6 +361,8 @@ public class CurrentInfoFragment extends Fragment {
     }
 
     private void updateLockscreenButton() {
+        activity.loadSettingsFiles();
+
         if (activity.sp_store.getBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, false))
             toggle_lock_screen_b.setText(activity.res.getString(R.string.reenable_lock_screen));
         else

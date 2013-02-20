@@ -55,8 +55,7 @@ public class BatteryInfoActivity extends FragmentActivity {
         context = getApplicationContext();
         res = getResources();
         str = new Str(res);
-        settings = context.getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_PRIVATE);
-        sp_store = context.getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_PRIVATE);
+        loadSettingsFiles();
 
         super.onCreate(savedInstanceState); // Recreates Fragments, so only call after doing necessary setup
 
@@ -68,6 +67,11 @@ public class BatteryInfoActivity extends FragmentActivity {
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
         tabStrip.setTabIndicatorColor(0x33b5e5);
+    }
+
+    public void loadSettingsFiles() {
+        settings = context.getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
+        sp_store = context.getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
     }
 
     @Override
