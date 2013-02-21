@@ -153,8 +153,12 @@ public class Predictor {
             return -1;
         }
 
-        double ms_remaining = (recentAverage() * WEIGHT_RECENT + ave_discharge * WEIGHT_AVERAGE) * last_level;
-        return (int) (ms_remaining / 1000);
+        double predicted = (recentAverage() * WEIGHT_RECENT + ave_discharge * WEIGHT_AVERAGE);
+
+        if (predicted > ave_discharge)
+            predicted = ave_discharge;
+
+        return (int) (predicted * last_level / 1000);
     }
 
     public int secondsUntilCharged() {
@@ -167,6 +171,9 @@ public class Predictor {
         }
 
         double ms_remaining = (100 - last_level) * ave_recharge / 1000;
+        // TODO: It's probably not appropriate to assume USB charging is exactly half as fast as AC charging.
+        //  Should probably keep separte AC / USB / Wireless charging averages, which are the default when plugged in
+        //  The should also probably be usage-based, as the discharge ones are.  Change required here and in update(), at least.
         if (last_plugged == PLUGGED_USB) ms_remaining *= 2;
         return (int) ms_remaining;
     }

@@ -377,6 +377,7 @@ public class BatteryInfoService extends Service {
         if (info.voltage > 500)
             mainNotificationText += " / " + str.formatVoltage(info.voltage);
 
+        // TODO: Is it necessary to call new() every time here, or can I get away with just setting the icon on existing Notif.?
         mainNotification = new Notification(iconFor(info.percent), null, 0l);
 
         if (android.os.Build.VERSION.SDK_INT < 11) {
