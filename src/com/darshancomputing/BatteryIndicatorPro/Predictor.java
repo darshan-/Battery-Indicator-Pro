@@ -20,23 +20,24 @@ import android.content.SharedPreferences;
 import java.util.LinkedList;
 
 public class Predictor {
-    private static final int DEFAULT_DISCHARGE = 864 * 1000;
-    private static final int DEFAULT_RECHARGE = 108 * 1000;
-    private static final double WEIGHT_OLD_AVERAGE = 0.998;
-    private static final double WEIGHT_NEW_DATA =  1 - WEIGHT_OLD_AVERAGE;
-    private static final double WEIGHT_AVERAGE = 0.1;
-    private static final double WEIGHT_RECENT = 1 - WEIGHT_AVERAGE;
-    private static final int RECENT_SIZE = 5;
-    private static final int MAX_RECENT_REPLACED = 5;
+    private static final int DEFAULT_DISCHARGE    = 24 * 60 * 60 * 1000 / 100;
+    private static final int DEFAULT_RECHARGE_AC  =  3 * 60 * 60 * 1000 / 100;
+    private static final int DEFAULT_RECHARGE_WL  =  4 * 60 * 60 * 1000 / 100;
+    private static final int DEFAULT_RECHARGE_USB =  6 * 60 * 60 * 1000 / 100;
 
-    private static final int PLUGGED_USB = 2;
+    private static final int RECENT_DURATION = 5 * 60 * 1000;
 
     private double ave_discharge;
-    private double ave_recharge;
-    private LinkedList<Double> recent;
+    private double ave_recharge_ac;
+    private double ave_recharge_wl;
+    private double ave_recharge_usb;
 
-    private static final String KEY_AVE_DISCHARGE = "key_ave_discharge";
-    private static final String KEY_AVE_RECHARGE  = "key_ave_recharge";
+    private LinkedList<Double> recents;
+
+    private static final String KEY_AVE_DISCHARGE    = "key_ave_discharge";
+    private static final String KEY_AVE_RECHARGE_AC  = "key_ave_recharge_ac";
+    private static final String KEY_AVE_RECHARGE_WL  = "key_ave_recharge_wl";
+    private static final String KEY_AVE_RECHARGE_USB = "key_ave_recharge_usb";
 
     private long last_ms;
     private int last_level;
@@ -46,34 +47,28 @@ public class Predictor {
 
     private SharedPreferences sp_store;
     private SharedPreferences.Editor editor;
-    private Logger logger;
 
     public Predictor(Context context) {
         sp_store = context.getSharedPreferences("predictor_sp_store", 0);
         editor = sp_store.edit();
 
-        logger = new Logger(context, "Predictor");
+        ave_discharge    = sp_store.getFloat(KEY_AVE_DISCHARGE, DEFAULT_DISCHARGE);
+        ave_recharge_ac  = sp_store.getFloat(KEY_AVE_RECHARGE_AC,  DEFAULT_RECHARGE_AC);
+        ave_recharge_wl  = sp_store.getFloat(KEY_AVE_RECHARGE_WL,  DEFAULT_RECHARGE_WL);
+        ave_recharge_usb = sp_store.getFloat(KEY_AVE_RECHARGE_USB,  DEFAULT_RECHARGE_USB);
 
-        ave_discharge = sp_store.getFloat(KEY_AVE_DISCHARGE, DEFAULT_DISCHARGE);
-        ave_recharge  = sp_store.getFloat(KEY_AVE_RECHARGE,  DEFAULT_RECHARGE);
-        logger.log("Starting with: ave_d: " + ave_discharge + " ave_r: " + ave_recharge);
-        recent = new LinkedList<Double>();
-
-        for (int i = 0; i < RECENT_SIZE; i++) {
-            recent.add(ave_discharge);
-        }
+        recents = new LinkedList<Double>();
+        // TODO: `recents' is empty now; does update() need to test for emptiness and add the correct long-term average?
+        //   Should this contructor require the current status?
     }
 
     public void update(BatteryInfo info) {
-        logger.log("info.percent = " + info.percent);
         if (info.percent == last_level && info.status == last_status) {
-            logger.log("No change; returning immediately");
             updateInfoPrediction(info);
             return;
         }
+
         if (last_ms == 0 || info.status == BatteryInfo.STATUS_FULLY_CHARGED || info.status != last_status) {
-            logger.log("Initial update or fully charged: ");
-            logger.log("last_ms = " + last_ms + ", info.status = " + info.status + ", last_status = " + last_status);
             finishUpdate(info, false);
             return;
         }
@@ -84,7 +79,6 @@ public class Predictor {
             ms_diff /= level_diff;
 
             if (!full_data_point && ms_diff < ave_discharge) {
-                logger.log("Incomplete data point");
                 finishUpdate(info, true);
                 return;
             }
@@ -93,16 +87,13 @@ public class Predictor {
                 double sum = 0;
                 int n_replaced = 0;
                 do {
-                    sum += recent.removeFirst();
-                    recent.addLast(ms_diff);
+                    sum += recents.removeFirst();
+                    recents.addLast(ms_diff);
                     n_replaced += 1;
-                } while (ms_diff > sum + recent.peek() && n_replaced <= MAX_RECENT_REPLACED);
+                } while (ms_diff > sum + recents.peek() && n_replaced <= MAX_RECENT_REPLACED);
 
                 ave_discharge = ave_discharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
                 editor.putFloat(KEY_AVE_DISCHARGE, (float) ave_discharge);
-
-                logger.log("ave_discharge = " + ave_discharge);
-                logger.log("recent = " + recent);
             }
         }
 
@@ -119,8 +110,8 @@ public class Predictor {
             }
 
             for (int i = 0; i < level_diff; i++) {
-                recent.removeFirst();
-                recent.addLast(ave_discharge);
+                recents.removeFirst();
+                recents.addLast(ave_discharge);
 
                 ave_recharge = ave_recharge * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
                 editor.putFloat(KEY_AVE_RECHARGE, (float) ave_recharge);
@@ -188,10 +179,33 @@ public class Predictor {
     private double recentAverage() {
         double sum = 0;
 
-        for (int i = 0; i < recent.size(); i++) {
-            sum += recent.get(i);
+        for (int i = 0; i < recents.size(); i++) {
+            sum += recents.get(i);
         }
 
-        return sum / recent.size();
+        return sum / recents.size();
+    }
+
+    private double recentMillisecondsPerPoint() {
+        double total_points, total_ms;
+
+        for (Double t : recents) {
+            double needed_ms = RECENT_DURATION - total_ms;
+
+            if (t > needed_ms) {
+                total_points += needed_ms / t;
+                total_ms += needed_ms;
+                break;
+            }
+
+            total_points += 1;
+            total_ms += t;
+        }
+
+        if (total_ms < RECENT_DURATION) {
+            // Fill in rest with relevant long-term average
+        }
+
+        return RECENT_DURATION / total_points;
     }
 }

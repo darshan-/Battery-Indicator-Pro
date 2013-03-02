@@ -143,7 +143,7 @@ class BatteryInfo {
         percent = level * 100 / scale;
         percent = attemptOnePercentHack(percent);
 
-        // Treat unplugged plugged as unpluggged status, unless charging wirelessly
+        // Treat unplugged plugged as unpluggged status
         if (plugged == PLUGGED_UNPLUGGED) status = STATUS_UNPLUGGED;
 
         if (status  > STATUS_MAX) { status  = STATUS_UNKNOWN; }

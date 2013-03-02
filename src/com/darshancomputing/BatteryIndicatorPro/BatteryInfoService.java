@@ -380,10 +380,10 @@ public class BatteryInfoService extends Service {
         // TODO: Is it necessary to call new() every time here, or can I get away with just setting the icon on existing Notif.?
         mainNotification = new Notification(iconFor(info.percent), null, 0l);
 
-        if (android.os.Build.VERSION.SDK_INT < 11) {
+        //if (android.os.Build.VERSION.SDK_INT < 11) {
             notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
             notificationRV.setImageViewBitmap(R.id.battery_level_view, bl.getBitmap());
-        }
+        //}
 
         if (android.os.Build.VERSION.SDK_INT >= 16) {
             mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
