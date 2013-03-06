@@ -53,24 +53,23 @@ public class Predictor {
         editor = sp_store.edit();
 
         ave_discharge    = sp_store.getFloat(KEY_AVE_DISCHARGE, DEFAULT_DISCHARGE);
-        ave_recharge_ac  = sp_store.getFloat(KEY_AVE_RECHARGE_AC,  DEFAULT_RECHARGE_AC);
-        ave_recharge_wl  = sp_store.getFloat(KEY_AVE_RECHARGE_WL,  DEFAULT_RECHARGE_WL);
-        ave_recharge_usb = sp_store.getFloat(KEY_AVE_RECHARGE_USB,  DEFAULT_RECHARGE_USB);
+        ave_recharge_ac  = sp_store.getFloat(KEY_AVE_RECHARGE_AC, DEFAULT_RECHARGE_AC);
+        ave_recharge_wl  = sp_store.getFloat(KEY_AVE_RECHARGE_WL, DEFAULT_RECHARGE_WL);
+        ave_recharge_usb = sp_store.getFloat(KEY_AVE_RECHARGE_USB, DEFAULT_RECHARGE_USB);
 
         recents = new LinkedList<Double>();
-        // TODO: `recents' is empty now; does update() need to test for emptiness and add the correct long-term average?
-        //   Should this contructor require the current status?
     }
 
     public void update(BatteryInfo info) {
-        if (info.percent == last_level && info.status == last_status) {
+        if (info.status != last_status || info.plugged != last_plugged || last_ms == 0 || info.status == BatteryInfo.STATUS_FULLY_CHARGED) {
+            recents.clear();
+            setLasts(info);
             updateInfoPrediction(info);
             return;
         }
 
-        if (last_ms == 0 || info.status == BatteryInfo.STATUS_FULLY_CHARGED || info.status != last_status) {
-            finishUpdate(info, false);
-            return;
+        if (info.percent == last_level) {
+            // Handle partial data point: return early if too small, otherwise set flag, fall through, and treat mostly as normal
         }
 
         if (info.status == BatteryInfo.STATUS_UNPLUGGED) {
@@ -122,12 +121,6 @@ public class Predictor {
         finishUpdate(info, true);
     }
 
-    private void finishUpdate(BatteryInfo info, boolean full) {
-        full_data_point = full;
-        setLasts(info);
-        updateInfoPrediction(info);
-    }
-
     private void updateInfoPrediction(BatteryInfo info) {
         int secs_left;
 
@@ -162,9 +155,7 @@ public class Predictor {
         }
 
         double ms_remaining = (100 - last_level) * ave_recharge / 1000;
-        // TODO: It's probably not appropriate to assume USB charging is exactly half as fast as AC charging.
-        //  Should probably keep separte AC / USB / Wireless charging averages, which are the default when plugged in
-        //  The should also probably be usage-based, as the discharge ones are.  Change required here and in update(), at least.
+
         if (last_plugged == PLUGGED_USB) ms_remaining *= 2;
         return (int) ms_remaining;
     }
@@ -177,33 +168,39 @@ public class Predictor {
     }
 
     private double recentAverage() {
-        double sum = 0;
-
-        for (int i = 0; i < recents.size(); i++) {
-            sum += recents.get(i);
-        }
-
-        return sum / recents.size();
-    }
-
-    private double recentMillisecondsPerPoint() {
         double total_points, total_ms;
+        double needed_ms = RECENT_DURATION;
 
-        for (Double t : recents) {
-            double needed_ms = RECENT_DURATION - total_ms;
+        int i;
+        for (i = 0; i < recents.size(); i++) {
+            double t = recents.get(i);
 
             if (t > needed_ms) {
                 total_points += needed_ms / t;
                 total_ms += needed_ms;
+                needed_ms = 0;
                 break;
             }
 
             total_points += 1;
             total_ms += t;
+            needed_ms -= t;
         }
 
-        if (total_ms < RECENT_DURATION) {
-            // Fill in rest with relevant long-term average
+        while (recents.size() > i) // This is a convenient place to trim recents
+            recents.remove(i);
+
+        if (needed_ms > 0) {
+            if (last_status == BatteryInfo.STATUS_CHARGING) {
+                if (last_plugged == BatteryInfo.PLUGGED_USB)
+                    total_points == needed_ms / ave_recharge_usb;
+                else if (last_plugged == BatteryInfo.PLUGGED_WIRELESS)
+                    total_points == needed_ms / ave_recharge_wireless;
+                else
+                    total_points == needed_ms / ave_recharge_ac;
+            } else {
+                total_points += needed_ms / ave_discharge;
+            }
         }
 
         return RECENT_DURATION / total_points;
