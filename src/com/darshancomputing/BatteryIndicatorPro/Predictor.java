@@ -75,8 +75,12 @@ public class Predictor {
             return;
         }
 
-        // TODO: Sometimes the level can slide backwards (up while discharging or down while charging).
-        //  Account for that somehow, somewhere
+        if ((info.status == BatteryInfo.STATUS_CHARGING && info.percent < last_level) ||
+            (info.status != BatteryInfo.STATUS_CHARGING && info.percent > last_level))
+        {
+            // There may be better ways to account for this backslide, but the simplest solution is to just ignore it
+            return;
+        }
 
         int status = indexFor(info.status, info.plugged);
         int level_diff = java.lang.Math.abs(last_level - info.percent);
