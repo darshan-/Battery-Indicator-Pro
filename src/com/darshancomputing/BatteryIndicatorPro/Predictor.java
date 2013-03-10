@@ -49,7 +49,8 @@ public class Predictor {
     private int last_status;
     private int last_plugged;
     private int last_index;
-    private boolean full_data_point;
+    private double recent_average;
+    private boolean partial;
 
     private SharedPreferences sp_store;
     private SharedPreferences.Editor editor;
@@ -74,28 +75,41 @@ public class Predictor {
             return;
         }
 
-        if (info.percent == last_level) {
-            // Handle partial data point: return early if too small, otherwise set flag, fall through, and treat mostly as normal
-        }
+        // TODO: Sometimes the level can slide backwards (up while discharging or down while charging).
+        //  Account for that somehow, somewhere
 
         int status = indexFor(info.status, info.plugged);
         int level_diff = java.lang.Math.abs(last_level - info.percent);
-        ms_diff /= level_diff;
+        double ms_diff = (double) (System.currentTimeMillis() - last_ms);
 
-        if (!full_data_point && ms_diff < average[status]) {
-            finishUpdate(info, true);
-            return;
+        if (level_diff == 0) {
+            if (ms_diff <= recent_average)
+                return;
+
+            if (partial) {
+                recents.set(0, ms_diff);
+            } else {
+                recents.addFirst(ms_diff);
+                partial = true;
+            }
+        } else {
+            patial = false;
+
+            ms_diff /= level_diff;
+
+            for (int i = 0; i < level_diff; i++) {
+                recents.addFirst(ms_diff);
+
+                average[status] = average[status] * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
+                editor.putFloat(KEY_AVERAGE[status], (float) average[status]);
+            }
+
+            editor.commit();
         }
 
-        for (int i = 0; i < level_diff; i++) {
-            recents.addLast(ms_diff)
 
-            average[status] = average[status] * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
-            editor.putFloat(KEY_AVERAGE[status], (float) average[status]);
-        }
-
-        editor.commit();
-        finishUpdate(info, true);
+        setLasts(info);
+        updateInfoPrediction(info);
     }
 
     private void updateInfoPrediction(BatteryInfo info) {
@@ -171,7 +185,8 @@ public class Predictor {
         if (needed_ms > 0)
             total_points += average[last_index];
 
-        return RECENT_DURATION / total_points;
+        recent_average = RECENT_DURATION / total_points;
+        return recent_average;
     }
 
     private int indexFor(ing status, int plugged) {
