@@ -30,12 +30,12 @@ public class Predictor {
     private static final int[] DEFAULT = { 24 * 60 * 60 * 1000 / 100,
                                            3 * 60 * 60 * 1000 / 100,
                                            4 * 60 * 60 * 1000 / 100,
-                                           6 * 60 * 60 * 1000 / 100 }
+                                           6 * 60 * 60 * 1000 / 100 };
 
     private static final String[] KEY_AVERAGE = { "key_ave_discharge",
                                                   "key_ave_recharge_ac",
                                                   "key_ave_recharge_wl",
-                                                  "key_ave_recharge_usb" }
+                                                  "key_ave_recharge_usb" };
 
     private static final int RECENT_DURATION = 5 * 60 * 1000;
 
@@ -59,10 +59,10 @@ public class Predictor {
         sp_store = context.getSharedPreferences("predictor_sp_store", 0);
         editor = sp_store.edit();
 
-        average[DISCHARGE]    = sp_store.getFloat(KEY_AVE[DISCHARGE],    DEFAULT[DISCHARGE]);
-        average[RECHARGE_AC]  = sp_store.getFloat(KEY_AVE[RECHARGE_AC],  DEFAULT[RECHARGE_AC]);
-        average[RECHARGE_WL]  = sp_store.getFloat(KEY_AVE[RECHARGE_WL],  DEFAULT[RECHARGE_WL]);
-        average[RECHARGE_USB] = sp_store.getFloat(KEY_AVE[RECHARGE_USB], DEFAULT[RECHARGE_USB]);
+        average[DISCHARGE]    = sp_store.getFloat(KEY_AVERAGE[DISCHARGE],    DEFAULT[DISCHARGE]);
+        average[RECHARGE_AC]  = sp_store.getFloat(KEY_AVERAGE[RECHARGE_AC],  DEFAULT[RECHARGE_AC]);
+        average[RECHARGE_WL]  = sp_store.getFloat(KEY_AVERAGE[RECHARGE_WL],  DEFAULT[RECHARGE_WL]);
+        average[RECHARGE_USB] = sp_store.getFloat(KEY_AVERAGE[RECHARGE_USB], DEFAULT[RECHARGE_USB]);
 
         recents = new LinkedList<Double>();
     }
@@ -97,7 +97,7 @@ public class Predictor {
                 partial = true;
             }
         } else {
-            patial = false;
+            partial = false;
 
             ms_diff /= level_diff;
 
@@ -132,7 +132,7 @@ public class Predictor {
             return -1;
         }
 
-        double predicted = (recentAverage() * WEIGHT_RECENT + average[DISCHARGE] * WEIGHT_AVERAGE);
+        double predicted = recentAverage();
 
         if (predicted > average[DISCHARGE])
             predicted = average[DISCHARGE];
@@ -149,10 +149,7 @@ public class Predictor {
             return -1;
         }
 
-        double ms_remaining = (100 - last_level) * ave_recharge / 1000;
-
-        if (last_plugged == PLUGGED_USB) ms_remaining *= 2;
-        return (int) ms_remaining;
+        return (int) ((100 - last_level) * recentAverage() / 1000);
     }
 
     private void setLasts(BatteryInfo info) {
@@ -164,7 +161,8 @@ public class Predictor {
     }
 
     private double recentAverage() {
-        double total_points, total_ms;
+        double total_points = 0d;
+        double total_ms = 0d;
         double needed_ms = RECENT_DURATION;
 
         int i;
@@ -193,16 +191,16 @@ public class Predictor {
         return recent_average;
     }
 
-    private int indexFor(ing status, int plugged) {
+    private int indexFor(int status, int plugged) {
         if (status == BatteryInfo.STATUS_CHARGING) {
             if (plugged == BatteryInfo.PLUGGED_USB)
                 return RECHARGE_USB;
             else if (plugged == BatteryInfo.PLUGGED_WIRELESS)
-                return RECHARGE_WIRELESS
+                return RECHARGE_WL;
             else
                 return RECHARGE_AC;
         } else {
-            return DISCHARGING;
+            return DISCHARGE;
         }
     }
 }
