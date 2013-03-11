@@ -70,6 +70,7 @@ public class Predictor {
     public void update(BatteryInfo info) {
         if (info.status != last_status || info.plugged != last_plugged || last_ms == 0 || info.status == BatteryInfo.STATUS_FULLY_CHARGED) {
             recents.clear();
+            partial = false;
             setLasts(info);
             updateInfoPrediction(info);
             return;
@@ -108,11 +109,10 @@ public class Predictor {
                 editor.putFloat(KEY_AVERAGE[status], (float) average[status]);
             }
 
+            setLasts(info);
             editor.commit();
         }
 
-
-        setLasts(info);
         updateInfoPrediction(info);
     }
 
@@ -173,6 +173,11 @@ public class Predictor {
                 total_points += needed_ms / t;
                 total_ms += needed_ms;
                 needed_ms = 0;
+
+                i++;
+                while (recents.size() > i) // This is a convenient place to trim recents
+                    recents.remove(i);
+
                 break;
             }
 
@@ -181,11 +186,8 @@ public class Predictor {
             needed_ms -= t;
         }
 
-        while (recents.size() > i) // This is a convenient place to trim recents
-            recents.remove(i);
-
         if (needed_ms > 0)
-            total_points += average[last_index];
+            total_points += needed_ms / average[last_index];
 
         recent_average = RECENT_DURATION / total_points;
         return recent_average;
