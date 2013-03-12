@@ -71,12 +71,7 @@ public class Predictor {
     public void update(BatteryInfo info) {
         if (info.status != last_status || info.plugged != last_plugged || last_ms == 0 || info.status == BatteryInfo.STATUS_FULLY_CHARGED) {
             recents.clear();
-
-            if (partial) {
-                recents.remove(0);
-                partial = false;
-            }
-
+            partial = false;
             initial = true;
             setLasts(info);
             updateInfoPrediction(info);
@@ -114,6 +109,7 @@ public class Predictor {
 
             if (initial && ms_diff < average[status]) { // Non-useful initial level change after status change
                 initial = false;
+                setLasts(info);
                 return;
             }
 
