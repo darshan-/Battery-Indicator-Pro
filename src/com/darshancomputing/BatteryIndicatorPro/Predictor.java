@@ -51,6 +51,7 @@ public class Predictor {
     private int last_index;
     private double recent_average;
     private boolean partial;
+    private boolean initial;
 
     private SharedPreferences sp_store;
     private SharedPreferences.Editor editor;
@@ -71,6 +72,7 @@ public class Predictor {
         if (info.status != last_status || info.plugged != last_plugged || last_ms == 0 || info.status == BatteryInfo.STATUS_FULLY_CHARGED) {
             recents.clear();
             partial = false;
+            initial = true;
             setLasts(info);
             updateInfoPrediction(info);
             return;
@@ -101,6 +103,13 @@ public class Predictor {
             partial = false;
 
             ms_diff /= level_diff;
+
+            if (initial && ms_diff < average[status]) { // Non-useful initial level change after status change
+                initial = false;
+                return;
+            }
+
+            initial = false;
 
             for (int i = 0; i < level_diff; i++) {
                 recents.addFirst(ms_diff);
@@ -134,8 +143,9 @@ public class Predictor {
 
         double predicted = recentAverage();
 
-        if (predicted > average[DISCHARGE])
-            predicted = average[DISCHARGE];
+        // TODO: Add option to cap prediction at long-term average?
+        /*if (predicted > average[DISCHARGE])
+          predicted = average[DISCHARGE];*/
 
         return (int) (predicted * last_level / 1000);
     }
