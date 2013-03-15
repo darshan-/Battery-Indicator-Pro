@@ -14,6 +14,7 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.app.AlarmManager;
 import android.app.KeyguardManager;
 import android.app.KeyguardManager.KeyguardLock;
 import android.app.Notification;
@@ -45,6 +46,7 @@ public class BatteryInfoService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private final IntentFilter userPresent    = new IntentFilter(Intent.ACTION_USER_PRESENT);
     private PendingIntent mainWindowPendingIntent;
+    private PendingIntent updatePredictorPendingIntent;
     private Intent alarmsIntent;
 
     private final PluginServiceConnection pluginServiceConnection = new PluginServiceConnection();
@@ -52,6 +54,7 @@ public class BatteryInfoService extends Service {
     private String pluginPackage;
 
     private NotificationManager mNotificationManager;
+    private AlarmManager alarmManager;
     private SharedPreferences settings;
     private SharedPreferences sp_store;
 
@@ -85,6 +88,8 @@ public class BatteryInfoService extends Service {
     public static final String KEY_PREVIOUS_HEALTH = "previous_health";
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_SERVICE_DESIRED = "serviceDesired";
+
+    private static final String EXTRA_UPDATE_PREDICTOR = "com.darshancomputing.BatteryBotPro.EXTRA_UPDATE_PREDICTOR";
 
 
     private static final Object[] EMPTY_OBJECT_ARRAY = {};
@@ -167,10 +172,16 @@ public class BatteryInfoService extends Service {
         mVibrator = (android.os.Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         mAudioManager = (android.media.AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
+        alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
         loadSettingsFiles();
 
         Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
         mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
+
+        Intent updatePredictorIntent = new Intent(Intent.ACTION_BATTERY_CHANGED);
+        updatePredictorIntent.putExtra(EXTRA_UPDATE_PREDICTOR, true);
+        updatePredictorPendingIntent = PendingIntent.getBroadcast(context, 0, updatePredictorIntent, 0);
 
         alarmsIntent = new Intent(context, AlarmsActivity.class);
 
@@ -331,6 +342,11 @@ public class BatteryInfoService extends Service {
         public void onReceive(Context c, Intent intent) {
             if (! Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) return;
 
+            if (intent.getBooleanExtra(EXTRA_UPDATE_PREDICTOR, false)) {
+                predictor.update(info);
+                return;
+            }
+
             setupPlugins();
             updateBatteryInfo(intent);
 
@@ -349,6 +365,8 @@ public class BatteryInfoService extends Service {
 
             if (alarms.anyActiveAlarms())
                 handleAlarms();
+
+            alarmManager.set(AlarmManager.ELAPSED_REALTIME, android.os.SystemClock.elapsedRealtime() + 2000, updatePredictorPendingIntent);
         }
     };
 
