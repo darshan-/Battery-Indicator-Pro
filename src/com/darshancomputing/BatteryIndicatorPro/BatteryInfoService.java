@@ -179,9 +179,9 @@ public class BatteryInfoService extends Service {
         Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
         mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
 
-        Intent updatePredictorIntent = new Intent(Intent.ACTION_BATTERY_CHANGED);
+        Intent updatePredictorIntent = new Intent(context, BatteryInfoService.class);
         updatePredictorIntent.putExtra(EXTRA_UPDATE_PREDICTOR, true);
-        updatePredictorPendingIntent = PendingIntent.getBroadcast(context, 0, updatePredictorIntent, 0);
+        updatePredictorPendingIntent = PendingIntent.getService(context, 0, updatePredictorIntent, 0);
 
         alarmsIntent = new Intent(context, AlarmsActivity.class);
 
@@ -212,6 +212,14 @@ public class BatteryInfoService extends Service {
         mNotificationManager.cancelAll();
         log_db.close();
         stopForeground(true);
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        if (intent.getBooleanExtra(EXTRA_UPDATE_PREDICTOR, false))
+            update(null);
+
+        return Service.START_STICKY;
     }
 
     @Override
@@ -342,33 +350,37 @@ public class BatteryInfoService extends Service {
         public void onReceive(Context c, Intent intent) {
             if (! Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) return;
 
-            if (intent.getBooleanExtra(EXTRA_UPDATE_PREDICTOR, false)) {
-                predictor.update(info);
-                return;
-            }
-
-            setupPlugins();
-            updateBatteryInfo(intent);
-
-            if (statusHasChanged())
-                handleUpdateWithChangedStatus();
-            else
-                handleUpdateWithSameStatus();
-
-            for (Messenger messenger : clientMessengers) {
-                // TODO: Can I send the same message to multiple clients instead of sending duplicates?
-                sendClientMessage(messenger, RemoteConnection.CLIENT_BATTERY_INFO_UPDATED, info.toBundle());
-            }
-
-            prepareNotification();
-            doNotify();
-
-            if (alarms.anyActiveAlarms())
-                handleAlarms();
-
-            alarmManager.set(AlarmManager.ELAPSED_REALTIME, android.os.SystemClock.elapsedRealtime() + 2000, updatePredictorPendingIntent);
+            update(intent);
         }
     };
+
+    private void update(Intent intent) {
+        setupPlugins();
+
+        if (intent != null)
+            updateBatteryInfo(intent);
+        else
+            predictor.update(info);
+
+        if (statusHasChanged())
+            handleUpdateWithChangedStatus();
+        else
+            handleUpdateWithSameStatus();
+
+        for (Messenger messenger : clientMessengers) {
+            // TODO: Can I send the same message to multiple clients instead of sending duplicates?
+            sendClientMessage(messenger, RemoteConnection.CLIENT_BATTERY_INFO_UPDATED, info.toBundle());
+        }
+
+        prepareNotification();
+        doNotify();
+
+        if (alarms.anyActiveAlarms())
+            handleAlarms();
+
+        System.out.println("Setting alarm for 10 seconds from now");
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME, android.os.SystemClock.elapsedRealtime() + (2 * 60 * 1000), updatePredictorPendingIntent);
+    }
 
     private void prepareNotification() {
         if (info.prediction.what == BatteryInfo.Prediction.NONE) {
