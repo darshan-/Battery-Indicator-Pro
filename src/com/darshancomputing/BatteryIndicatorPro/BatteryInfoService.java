@@ -378,7 +378,6 @@ public class BatteryInfoService extends Service {
         if (alarms.anyActiveAlarms())
             handleAlarms();
 
-        System.out.println("Setting alarm for 10 seconds from now");
         alarmManager.set(AlarmManager.ELAPSED_REALTIME, android.os.SystemClock.elapsedRealtime() + (2 * 60 * 1000), updatePredictorPendingIntent);
     }
 
