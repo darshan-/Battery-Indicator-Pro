@@ -40,6 +40,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.ListFragment;
 
 import java.io.BufferedWriter;
@@ -63,9 +64,6 @@ public class LogViewFragment extends ListFragment {
     private Boolean convertF;
 
     private static final String LOG_TAG = "BatteryBot";
-
-    private static final int DIALOG_CONFIRM_CLEAR_LOGS   = 0;
-    private static final int DIALOG_CONFIGURE_LOG_FILTER = 1;
 
     private static final String[] CSV_ORDER = {LogDatabase.KEY_TIME, LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, 
                                                LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE};
@@ -147,40 +145,40 @@ public class LogViewFragment extends ListFragment {
         activity.context.unregisterReceiver(mBatteryInfoReceiver);
     }
 
-    // TODO: Re-implement dialogs
-    /* 
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        Dialog dialog;
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-
-        switch (id) {
-        case DIALOG_CONFIRM_CLEAR_LOGS:
-            builder.setTitle(activity.str.confirm_clear_logs)
-                .setPositiveButton(activity.str.yes, new DialogInterface.OnClickListener() {
+    public class ConfirmClearLogsDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            return new AlertDialog.Builder(activity)
+                .setTitle(activity.res.getString(R.string.confirm_clear_logs))
+                .setPositiveButton(activity.res.getString(R.string.yes),
+                    new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             logs.clearAllLogs();
                             reloadList(false);
-
                             di.cancel();
                         }
                     })
-                .setNegativeButton(activity.str.cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(activity.res.getString(R.string.cancel),
+                    new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             di.cancel();
                         }
-                    });
+                    })
+                .create();
+        }
+    }
 
-            dialog = builder.create();
-            break;
-        case DIALOG_CONFIGURE_LOG_FILTER:
-            final boolean[] checked_items = new boolean[activity.str.log_filter_pref_keys.length];
+    public class ConfigureLogFilterDialogFragment extends DialogFragment {
+        final boolean[] checked_items = new boolean[activity.str.log_filter_pref_keys.length];
 
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
             for (int i = 0; i < checked_items.length; i++) {
                 checked_items[i] = activity.settings.getBoolean(activity.str.log_filter_pref_keys[i], true);
             }
 
-            builder.setTitle(activity.str.configure_log_filter)
+            return new AlertDialog.Builder(activity)
+                .setTitle(activity.res.getString(R.string.configure_log_filter))
                 .setMultiChoiceItems(R.array.log_filters, checked_items,
                                      new DialogInterface.OnMultiChoiceClickListener() {
                                          @Override
@@ -188,25 +186,20 @@ public class LogViewFragment extends ListFragment {
                                              checked_items[id] = isChecked;
                                          }
                                      })
-                .setPositiveButton(activity.str.okay, new DialogInterface.OnClickListener() {
+                .setPositiveButton(activity.res.getString(R.string.okay),
+                    new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             di.cancel(); // setFilters() is called in onCancel()
                         }
                     })
-                .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                        public void onCancel(DialogInterface di) {
-                            setFilters(checked_items);
-                        }
-                    });
-            dialog = builder.create();
-            break;
-        default:
-            dialog = null;
+                .create();
         }
 
-        return dialog;
+        @Override
+        public void onCancel(DialogInterface di) {
+            setFilters(checked_items);
+        }
     }
-    */
 
     private void setFilters(boolean[] checked_items) {
         SharedPreferences.Editor editor = activity.settings.edit();
@@ -251,13 +244,17 @@ public class LogViewFragment extends ListFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        DialogFragment df;
+
         switch (item.getItemId()) {
         case R.id.menu_clear:
-            //showDialog(DIALOG_CONFIRM_CLEAR_LOGS); //TODO: re-implement
+            df = new ConfirmClearLogsDialogFragment();
+            df.show(getFragmentManager(), "TODO: What is this string for?");
 
             return true;
         case R.id.menu_log_filter:
-            //showDialog(DIALOG_CONFIGURE_LOG_FILTER); //TODO: re-implement
+            df = new ConfigureLogFilterDialogFragment();
+            df.show(getFragmentManager(), "TODO: What is this string for?2");
 
             return true;
         case R.id.menu_export:

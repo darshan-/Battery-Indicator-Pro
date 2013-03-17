@@ -139,7 +139,7 @@ public class CurrentInfoFragment extends Fragment {
         disallowLockButton = activity.settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
 
         if (activity.settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
-            // TODO: Show first_run dialog
+            // If you ever need a first-run dialog again, this is when you would show it
             SharedPreferences.Editor editor = activity.sp_store.edit();
             editor.putBoolean(SettingsActivity.KEY_FIRST_RUN, false);
             editor.commit();

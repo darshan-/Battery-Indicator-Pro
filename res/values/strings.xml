@@ -46,23 +46,7 @@
     other devices, as far as I know, should always leave this off.
   </string>
 
-  <string formatted="false" name="first_run_title">Thank you!</string>
-  <string formatted="false" name="first_run_message">Thanks
-    for your donation/purchase!  <b><i>This is very important</i> :</b>\n
-
-    \n• If you have a \"<b>task killer</b>\" / process manager of some kind, you should either
-      uninstall it or try to get it to ignore BatteryBot Pro.  Even if you
-      have it set to ignore the free version, <i>you still need to tell it to
-      ignore this Pro version</i> !\n
-  </string>
-  <string formatted="false" name="first_run_message_free">Thanks
-    for downloading BatteryBot!  <b><i>This is very important</i> :</b>\n
-
-    \n• If you have a \"<b>task killer</b>\" / process manager of some kind, you should either
-      uninstall it or try to get it to ignore BatteryBot.
-  </string>
   <string formatted="false" name="okay">Okay</string>
-
   <string formatted="false" name="none">None</string>
 
   <string formatted="false" name="menu_settings">Settings</string>
