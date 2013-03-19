@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2013 Josiah Barber (aka Darshan)
+    Copyright (c) 2010-2013 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ public class SettingsHelpActivity extends Activity {
         res = getResources();
 
         // Stranglely disabled by default for API level 14+
-        if (res.getBoolean(R.bool.api_level_14_plus))
+        if (android.os.Build.VERSION.SDK_INT >= 14)
             getActionBar().setHomeButtonEnabled(true);
 
         if (pref_screen == null) {
@@ -46,9 +46,6 @@ public class SettingsHelpActivity extends Activity {
         } else if (pref_screen.equals(SettingsActivity.KEY_THEME_SETTINGS)) {
             setContentView(R.layout.theme_settings_help);
             setWindowSubtitle(res.getString(R.string.theme_settings));
-        } else if (pref_screen.equals(SettingsActivity.KEY_TIME_SETTINGS)) {
-            setContentView(R.layout.time_settings_help);
-            setWindowSubtitle(res.getString(R.string.time_settings));
         } else if (pref_screen.equals(SettingsActivity.KEY_OTHER_SETTINGS)) {
             setContentView(R.layout.other_settings_help);
             setWindowSubtitle(res.getString(R.string.other_settings));
@@ -85,7 +82,7 @@ public class SettingsHelpActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case android.R.id.home:
-            startActivity(new Intent(this, BatteryIndicator.class));
+            startActivity(new Intent(this, BatteryInfoActivity.class));
             return true;
         default:
             return super.onOptionsItemSelected(item);

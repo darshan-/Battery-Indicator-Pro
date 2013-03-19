@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string-array name="mw_theme_pref_values">
-    <item>default</item>
-    <item>DISABLED</item>
-    <item>DISABLED</item>
-  </string-array>
-
   <bool name="show_main_title">true</bool>
-  <bool name="override_list_activity_layout">false</bool>
 </resources>

@@ -5,6 +5,8 @@
       android:icon="@+android:drawable/ic_menu_add"
       android:title="@string/menu_get_plugins"
       android:showAsAction="always|withText"
+      android:visible="false"
+      android:enabled="false"
   />
 
   <item

@@ -2,13 +2,8 @@
 <resources>
   <string name="app_full_name" formatted="false">Estado da Bateria Pro</string>
   <string name="app_launcher_name" formatted="false">Estado da Bateria Pro</string>
-  <string name="settings_activity_name" formatted="false">Estado da Bateria Pro - Definições</string>
-  <string name="help_activity_name" formatted="false">Estado da Bateria Pro - Ajuda</string>
   <string name="help_activity_subtitle" formatted="false">Ajuda</string>
-  <string name="log_view_activity_name" formatted="false">Estado da Bateria - Relatórios</string>
   <string name="app_full_name_free" formatted="false">Estado da Bateria</string>
-  <string name="settings_activity_name_free" formatted="false">Estado da Bateria - Definições</string>
-  <string name="help_activity_name_free" formatted="false">Estado da Bateria - Ajuda</string>
   <string name="battery_use_b" formatted="false">Ver Uso da Bateria</string>
   <string name="upgrade_donate_b" formatted="false">Fazer Upgrade/Doar...</string>
   <string name="reenable_lock_screen" formatted="false">Reactivar o Lock Screen</string>
@@ -23,12 +18,8 @@
   <string name="confirm_ten_percent_enable" formatted="false">Activar mesmo o modo 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Desactivar mesmo o modo 10%?</string>
   <string name="confirm_ten_percent_hint" formatted="false">Aviso: Mudar esta definição (tanto desactivar como activar) vai repor as tuas definições de cor.\n\nSe tens um Motorola Droid, Droid X, Droid 2, Defy, ou um Samsung Moment, deves activar isto quando instalares a aplicação, e depois não lhe mexer mais. Nos outros telemóveis, pelo que sei, deves deixar isto sempre desactivado.</string>
-  <string name="first_run_title" formatted="false">Obrigado!</string>
-  <string name="first_run_message" formatted="false">Obrigado pela tua doação/compra! <b> <i>Estes dois pontos são muito importantes</i> </b>\n• Se tiveres um \"<b>task killer</b>\" ou um manager de processos de qualquer tipo, deves desinstalá-lo ou deves fazer com que ele ignore o Estado da Bateria Pro. Mesmo que o tenhas configurado para ignorar a versão gratuita, <i>ainda tens que o fazer ignorar esta versão Pro</i>!\n\n• Se tens um <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, ou um <b>Samsung Moment</b>, deves activar o \"Modo 10%\" nas \"Outras Definições\".</string>
-  <string name="first_run_message_free" formatted="false">Obrigado por instalares o Estado da Bateria! <b><i>Isto é importante</i> :</b>\n\n• Se tiveres um \"<b>task killer</b>\" ou um manager de processos de qualquer tipo, deves desinstalá-lo ou deves fazer com que ele ignore o Estado da Bateria.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Nenhum</string>
-  <string name="menu_logs" formatted="false">Relatórios</string>
   <string name="menu_settings" formatted="false">Definições</string>
   <string name="menu_close" formatted="false">Fechar</string>
   <string name="menu_help" formatted="false">Ajuda</string>
@@ -71,7 +62,6 @@
   <string name="charging_from" formatted="false">A carregar de</string>
   <string name="fully_charged" formatted="false">Completamente Carregado</string>
   <string name="since" formatted="false">Desde</string>
-  <string name="one_six_needed" formatted="false">Lamento, precisas de Android 1.6 ou superior!</string>
   <string name="currently_using" formatted="false">A usar</string>
   <string name="currently_set_to" formatted="false">"Definido para: "</string>
   <string name="currently_disabled" formatted="false">Desactivado</string>
@@ -91,7 +81,6 @@
   <string name="settings_overview" formatted="false">Visão Geral</string>
   <string name="theme_settings" formatted="false">Cores e Temas</string>
   <string name="theme_settings_summary" formatted="false">Controlar cores dos ícones e temas das janelas</string>
-  <string name="time_settings" formatted="false">Definições da hora</string>
   <string name="alarm_settings_subtitle" formatted="false">Definições dos alarmes</string>
   <string name="alarm_settings" formatted="false">Alarmes</string>
   <string name="alarm_settings_summary" formatted="false">Controlar notificações para a bateria baixa/cheia</string>

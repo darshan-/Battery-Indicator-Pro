@@ -43,34 +43,12 @@
     <item name="android:lineSpacingMultiplier">1.1</item>
   </style>
 
-  <style name="bi_theme" parent="@android:style/Theme.Translucent">
-    <item name="android:windowNoTitle">true</item>
-    <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
-    <item name="android:windowBackground">@color/semi_transparent</item>
-    <item name="android:windowIsTranslucent">true</item>
-    <!--item name="android:windowAnimationStyle">@android:style/Animation.Activity</item-->
-    <!--item name="android:windowAnimationStyle">@null</item-->
-  </style>
-
-  <color name="semi_transparent">#a000</color>
-
   <style name="bi_help_theme" parent="@android:style/Theme.Light">
   </style>
 
   <style name="alarm_list_left_column">
     <item name="android:layout_width">68dp</item>
     <item name="android:layout_height">68dp</item>
-  </style>
-
-  <style name="main_ll">
-    <item name="android:gravity">center_horizontal|bottom</item>
-  </style>
-
-  <style name="main_content">
-    <item name="android:paddingLeft">5dp</item>
-    <item name="android:paddingTop">2dp</item>
-    <item name="android:paddingRight">5dp</item>
-    <item name="android:paddingBottom">2dp</item>
   </style>
 
   <color name="android_green">#A4C639</color>
@@ -99,27 +77,27 @@
     <item>143</item>
   </array>
 
-  <dimen name="main_frame_width">220dp</dimen>
-  <dimen name="time_remaining_label_width">135dp</dimen>
-  <dimen name="time_remaining_estimate_width">53dp</dimen>
-  <dimen name="time_remaining_padding_bottom">3dp</dimen>
-  <dimen name="time_remaining_text_size">14dp</dimen>
-  <dimen name="status_since_padding_bottom">3dp</dimen>
-  <dimen name="status_since_text_size">14dp</dimen>
-  <dimen name="pre_buttons_padding">3dp</dimen>
   <dimen name="between_buttons_padding">4dp</dimen>
-  <dimen name="post_buttons_padding">0dp</dimen>
-  <dimen name="main_window_hint_height">18sp</dimen><!-- Hack! wrap_content not allowed here, but view needs to be hidden in v11+, so height can't be hardwired as wrap_content in layout. -->
-  <dimen name="main_window_hint_padding_left">4dp</dimen>
-  <dimen name="main_window_hint_padding_bottom">3dp</dimen>
-  <dimen name="main_window_hint_text_size">14sp</dimen>
-  <dimen name="main_window_final_padding">2dp</dimen>
-  <dimen name="main_title">20dp</dimen>
-
   <dimen name="bu_button_fs">16sp</dimen>
   <dimen name="bu_button_height">56dp</dimen>
   <dimen name="bu_button_height_fs">66dp</dimen>
   <dimen name="tls_button_fs">16sp</dimen>
   <dimen name="tls_button_height">56dp</dimen>
   <dimen name="tls_button_height_fs">66dp</dimen>
+
+  <dimen name="bia_level">36sp</dimen>
+  <dimen name="bia_time_remaining">24sp</dimen>
+  <dimen name="bia_status">20sp</dimen>
+  <dimen name="bia_until_what">16sp</dimen>
+  <integer name="bif_padding_weight">1</integer>
+  <dimen name="bis_side_padding">15dp</dimen>
+
+  <style name="NotificationText">
+    <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+  </style>
+  <style name="NotificationTitle">
+    <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">17dp</item>
+  </style>
 </resources>

@@ -2,14 +2,9 @@
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
   <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
-  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Configurações</string>
-  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Ajuda</string>
   <string name="help_activity_subtitle" formatted="false">Ajuda</string>
-  <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Logs</string>
   <string name="log_view_activity_subtitle" formatted="false">Logs</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
-  <string name="settings_activity_name_free" formatted="false">Battery Indicator - Configurações</string>
-  <string name="help_activity_name_free" formatted="false">Battery Indicator - Ajuda</string>
   <string name="battery_use_b" formatted="false">Exibir Uso da Bateria</string>
   <string name="upgrade_donate_b" formatted="false">Fazer Upgrade/Doar...</string>
   <string name="reenable_lock_screen" formatted="false">Reativar o Bloqueio de Tela</string>
@@ -20,18 +15,12 @@
   <string name="cancel" formatted="false">Cancelar</string>
   <string name="confirm_close" formatted="false">Deseja realmente fechar?</string>
   <string name="confirm_close_hint" formatted="false">O Estado da Bateria será fechado completamente, e não será mais exibido na barra de estado.\n\nSe quiser sair da janela principal e manter o indicador rodando, aperte Cancelar e depois a tecla BACK do seu aparelho.</string>
-  <string name="need_uninstall" formatted="false">Desinstalação Necessária</string>
-  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro precisa ser desinstalado e reinstalado para completar esse upgrade. Sinto muito pelo inconveniente. Isso é necessário devido a uma limitação técnica do Android. Isso não será mais necessário para upgrades futuros.\n\nApós clicar OK para dispensar essa mensagem, você apenas terá que clicar e OK novamente quando o Android te pedir permissão para desinstalar. Após isso, você será levado à tela do Market onde poderá reinstalar o aplicativo.\n\nA maior parte dos usuários terão suas preferências restauradas, com exceção dos alarmes que terão de ser recriados. Isso não é garantido, portanto revise suas configurações após reinstalar.\n\nObrigado, e espero que você goste de todas as novas features!</string>
   <string name="confirm_clear_logs" formatted="false">Limpar todos os logs?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Ativar mesmo o modo 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Desativar mesmo o modo 10%?</string>
   <string name="confirm_ten_percent_hint" formatted="false">Aviso: Mudar esta definição (tanto ativando como desativando) vai resetar as configurações de cor.\n\nSe você possui um Motorola Droid, Droid X, Droid 2, Defy, ou um Samsung Moment, você deve ativar essa opção quando instalar o aplicativo, e depois não mexer mais. Em outros aparelhos, até onde sei, essa opção deve estar sempre desativada.</string>
-  <string name="first_run_title" formatted="false">Obrigado!</string>
-  <string name="first_run_message" formatted="false">Obrigado por sua doação/compra! <b> <i>Estes dois pontos são muito importantes</i> </b>\n• Se você usa um \"<b>task killer</b>\" ou um gerenciador de processos, você deve desinstalá-los ou fazer com que eles ignorem o Battery Indicator Pro. Mesmo que eles estejam configurados para ignorar a versão gratuita, <i>será necessário fazê-los ignorar esta versão Pro</i>!\n\n• Se você possui um <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, ou um <b>Samsung Moment</b>, você deve ativar o \"Modo 10%\" nas \"Outras Definições\".</string>
-  <string name="first_run_message_free" formatted="false">Obrigado por instalar o Battery Indicator! <b><i>Isto é importante</i> :</b>\n\n• Se você usa um \"<b>task killer</b>\" ou um gerenciador de processos, você deve desinstalá-los ou fazer com que eles ignorem o Battery Indicator Pro.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Nenhum</string>
-  <string name="menu_logs" formatted="false">Relatórios</string>
   <string name="menu_settings" formatted="false">Configurações</string>
   <string name="menu_close" formatted="false">Fechar</string>
   <string name="menu_help" formatted="false">Ajuda</string>
@@ -75,7 +64,6 @@
   <string name="charging_from" formatted="false">Carregando de</string>
   <string name="fully_charged" formatted="false">Completamente Carregado</string>
   <string name="since" formatted="false">Desde</string>
-  <string name="one_six_needed" formatted="false">Desculpe, Android 1.6 ou superior é necessário!</string>
   <string name="currently_using" formatted="false">Usando</string>
   <string name="currently_set_to" formatted="false">"Definido para: "</string>
   <string name="currently_disabled" formatted="false">Desativado</string>
@@ -97,8 +85,6 @@
   <string name="settings_overview" formatted="false">Visão Geral</string>
   <string name="theme_settings" formatted="false">Cores e Temas</string>
   <string name="theme_settings_summary" formatted="false">Configurar as cores dos ícones e temas das janelas</string>
-  <string name="time_settings" formatted="false">Configurações de Hora</string>
-  <string name="time_settings_summary" formatted="false">Controlar estimativas e aproximações de tempo</string>
   <string name="alarm_settings_subtitle" formatted="false">Definições dos alarmes</string>
   <string name="alarm_settings" formatted="false">Alarmes</string>
   <string name="alarm_settings_summary" formatted="false">Controlar notificações para a bateria baixa/cheia</string>
@@ -106,7 +92,6 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Mais Configurações na versão Pro</string>
   <string name="add_alarm" formatted="false">Adicionar alarme</string>
   <string name="pref_cat_themes" formatted="false">Temas</string>
-  <string name="pref_main_window_theme" formatted="false">Tema da Janela Principal</string>
   <string name="pref_cat_logging" formatted="false">Relatórios</string>
   <string name="pref_enable_logging" formatted="false">Ativar Relatórios</string>
   <string name="pref_enable_logging_summary" formatted="false">Registrar mudanças no estado da bateria?</string>

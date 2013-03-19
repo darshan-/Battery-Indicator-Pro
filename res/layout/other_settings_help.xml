@@ -55,11 +55,5 @@
     <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_autostart_at_boot" />
     <TextView style="@style/help_text" android:text="@string/pref_autostart_at_boot_help" />
-
-    <View style="@style/help_cat_pre_margin" />
-    <TextView style="@style/help_cat"  android:text="@string/pref_cat_charge_as_text" />
-    <View style="@style/help_cat_post_margin" />
-    <TextView style="@style/help_pref" android:text="@string/pref_charge_as_text" />
-    <TextView style="@style/help_text" android:text="@string/pref_charge_as_text_help" />
 </LinearLayout>
 </ScrollView>

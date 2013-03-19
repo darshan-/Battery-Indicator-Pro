@@ -2,15 +2,10 @@
 <resources>
   <string name="app_full_name" formatted="false">电量指示器专业版</string>
   <string name="app_launcher_name" formatted="false">电量指示器</string>
-  <string name="settings_activity_name" formatted="false">电量指示器专业版 - 设置项</string>
   <string name="settings_activity_subtitle" formatted="false">设置</string>
-  <string name="help_activity_name" formatted="false">电量指示器专业版 - 帮助</string>
   <string name="help_activity_subtitle" formatted="false">帮助</string>
-  <string name="log_view_activity_name" formatted="false">电量指示器专业版 - 日志</string>
   <string name="log_view_activity_subtitle" formatted="false">日志</string>
   <string name="app_full_name_free" formatted="false">电量指示器</string>
-  <string name="settings_activity_name_free" formatted="false">电量指示器 - 设置项</string>
-  <string name="help_activity_name_free" formatted="false">电量指示器 - 帮助</string>
   <string name="battery_use_b" formatted="false">查看电量使用情况</string>
   <string name="upgrade_donate_b" formatted="false">升级/捐助...</string>
   <string name="reenable_lock_screen" formatted="false">恢复自动锁屏</string>
@@ -24,12 +19,8 @@
   <string name="confirm_clear_logs" formatted="false">确认清理所有日志？</string>
   <string name="confirm_ten_percent_enable" formatted="false">确认开启10%模式？</string>
   <string name="confirm_ten_percent_disable" formatted="false">确认开启10%模式</string>
-  <string name="first_run_title" formatted="false">非常感谢！</string>
-  <string name="first_run_message" formatted="false">非常感谢您的购买或捐助！<b> <i>您的支持对我们来说非常重要！</i> </b> • 如果您安装了“<b>任务杀手</b>”之类的进程管理工具，请卸载或将“电量指示器专业版”加入到自动关闭排除列表中。如果您曾使用过免费版的该软件，<i>您仍然需要将此专业版加入到排除列表</i> ！ • 如果您使用的是<b>Motorola Droid</b>、<b>Droid X</b>、 <b>Droid 2</b>、<b>Defy</b>或<b>Samsung Moment</b>机型，请在“其他设置”中勾选“10%步进模式”。</string>
-  <string name="first_run_message_free" formatted="false">感谢下载试用“电量指示器”! <b> <i>重要提示：</i> </b> 如果您安装了“<b>任务杀手</b>”之类的进程管理工具，请将其卸载或将“电量指示器专业版”加入到自动关闭排除列表中。</string>
   <string name="okay" formatted="false">完成</string>
   <string name="none" formatted="false">无</string>
-  <string name="menu_logs" formatted="false">日志</string>
   <string name="menu_settings" formatted="false">设置项</string>
   <string name="menu_close" formatted="false">关闭</string>
   <string name="menu_help" formatted="false">帮助</string>
@@ -85,7 +76,6 @@
   <string name="charging_from" formatted="false">充电起始电量</string>
   <string name="fully_charged" formatted="false">完全充满</string>
   <string name="since" formatted="false">开始于</string>
-  <string name="one_six_needed" formatted="false">对不起，此功能仅支持Android 1.6+版本系统！</string>
   <string name="currently_using" formatted="false">当前使用</string>
   <string name="currently_set_to" formatted="false">"当前设置为"</string>
   <string name="currently_disabled" formatted="false">当前不可用</string>
@@ -117,9 +107,6 @@
   <string name="theme_settings" formatted="false">色彩主题</string>
   <string name="theme_settings_summary" formatted="false">设置图标色彩及窗口主题</string>
   <string name="theme_settings_help" formatted="false">您可以选择主窗口显示主题及设置图标变化色彩。</string>
-  <string name="time_settings" formatted="false">时间设置</string>
-  <string name="time_settings_summary" formatted="false">定制时间预估方式</string>
-  <string name="time_settings_help" formatted="false">您可在此界面可设置电池状态变化后（例如：拔下电源）所经历时间估计方式。 您也可以设置预估USB/AC方式充电、省电/正常/频繁/持续使用手机剩余时间的基准值。</string>
   <string name="alarm_settings_subtitle" formatted="false">警报器设置</string>
   <string name="alarm_settings" formatted="false">警报器</string>
   <string name="alarm_settings_summary" formatted="false">控制电池信息通知</string>
@@ -130,8 +117,6 @@
   <string name="pref_please_upgrade" formatted="false">专业版包含了以红色、黄色及绿色图标提示剩余电量等级、电池状态记录、自动/手动关闭锁屏、充电/放电剩余时间预估等多种高级功能。</string>
   <string name="add_alarm" formatted="false">添加警报器</string>
   <string name="pref_cat_themes" formatted="false">主题</string>
-  <string name="pref_main_window_theme" formatted="false">主窗口显示主题</string>
-  <string name="pref_main_window_theme_help" formatted="false">设置主窗口显示主题，默认以传统Android系统小窗口方式显示。如果您希望文字信息更便于阅读，可选择全屏窗口主题。其他主题仅供娱乐。</string>
   <string name="pref_cat_logging" formatted="false">日志记录</string>
   <string name="pref_enable_logging" formatted="false">启用日志记录功能</string>
   <string name="pref_enable_logging_summary" formatted="false">确认记录电池状态信息？</string>
@@ -164,52 +149,9 @@
   <string name="pref_autostart_at_boot" formatted="false">开机自启动方式</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">确认允许电量指示器开机时自启动？</string>
   <string name="pref_autostart_at_boot_help" formatted="false">设置是否允许电量指示器在开机时自启动。 ”关机前运行中”选项仅在手动关闭电量指示器时有效。若您使用其他方式，如使用任务杀手进行关闭，则本程序无法确认是否由您关闭，选择该方式后仍会在开机时自启动。</string>
-  <string name="pref_cat_charge_as_text" formatted="false">文本显示电量</string>
-  <string name="pref_charge_as_text" formatted="false">文本显示电量</string>
-  <string name="pref_charge_as_text_summary" formatted="false">确认以大字体文本在图标旁显示剩余电量？</string>
-  <string name="pref_charge_as_text_help" formatted="false">鉴于部分视力不佳用户的要求，此功能可在通知栏下拉托盘中电量指示器图标右侧以易阅读的大字体显示剩余电量信息，原电量图标无任何改变。勾选/取消此项只能在通知栏下拉托盘中看到变化，但此功能有胜于无，且对有需求的用户而言易于实现。 为节约宝贵的显示空间，经过多次单调乏味的调试实现此功能，在不使用百分符号的前提下，文本已能完美的显示并易于阅读。对于部分非常小型的设备而言，开启此功能可能导致AM/PM字符偏离原位导致不协调。</string>
   <string name="lang_system_selected" formatted="false">系统选择</string>
   <string name="pref_cat_language" formatted="false">语言</string>
   <string name="pref_language_override_summary" formatted="false">选择语言:</string>
-  <string name="pref_cat_status_duration" formatted="false">状态时长</string>
-  <string name="pref_status_dur_est" formatted="false">估算前持续时间</string>
-  <string name="pref_status_dur_est_summary" formatted="false">开始估算剩余时间前持续时间</string>
-  <string name="pref_status_dur_est_help" formatted="false">设置通知信息从诸如“拔下电源开始于1:10 PM”到“拔下电源已1小时”的转换前持续时间。第一种显示精确到分钟的状态变化信息显示更为准确，但多数用户喜欢更简便的方式以估计状态持续时间，因此更乐于使用比默认12小时计时法更简便的提示信息。</string>
-  <string name="pref_cat_time_remaining_estimates" formatted="false">剩余时间预估</string>
-  <string name="pref_cat_time_remaining_estimates_help" formatted="false">该剩余时间预估功能可能与传统功能有所不同，但更为优秀，您能根据使用的情况调整电池使用时间基准值并及时修正。默认基准时间为大量统计结果，由于机型种类、使用习惯的不同，您可能需要修正这些基准值。但好处是只有您才知道诸如“正常使用”分类的含义，并使用自定义的基准值，以避免被错误的预估值所迷惑。</string>
-  <string name="pref_show_charge_time" formatted="false">显示充电时间</string>
-  <string name="pref_show_charge_time_summary" formatted="false">确认充电时显示剩余时间？</string>
-  <string name="pref_show_charge_time_help" formatted="false">若启用次功能，则主窗口会在您充电时显示预估的充满剩余时间（基于您在下方的设置值）。</string>
-  <string name="pref_usb_charge_time" formatted="false">USB充电模式</string>
-  <string name="pref_usb_charge_time_summary" formatted="false">从0%到100%电量USB充电所需时间</string>
-  <string name="pref_usb_charge_time_help" formatted="false">输入您估计的使用USB接口充电时剩余电量从0%到100%所需时长。</string>
-  <string name="pref_ac_charge_time" formatted="false">AC充电模式</string>
-  <string name="pref_ac_charge_time_summary" formatted="false">从0%到100%电量AC充电所需时间</string>
-  <string name="pref_ac_charge_time_help" formatted="false">输入您估计的使用AC适配器充电时剩余电量从0%到100%所需时长。</string>
-  <string name="pref_show_light_usage" formatted="false">显示省电使用时间</string>
-  <string name="pref_show_light_usage_summary" formatted="false">确认显示省电使用剩余时间？</string>
-  <string name="pref_show_light_usage_help" formatted="false">是否在主窗口显示您所认为的“省电使用”方式剩余电量持续时间？</string>
-  <string name="pref_light_usage_time" formatted="false">省电使用</string>
-  <string name="pref_light_usage_time_summary" formatted="false">省电使用时电量从100%到0%放电时间</string>
-  <string name="pref_light_usage_time_help" formatted="false">输入以您所认为的“省电使用”方式将电量从100%消耗至0%所需时间？</string>
-  <string name="pref_show_normal_usage" formatted="false">显示正常使用时间</string>
-  <string name="pref_show_normal_usage_summary" formatted="false">确认正常使用剩余时间？</string>
-  <string name="pref_show_normal_usage_help" formatted="false">是否在主窗口显示您所认为的“正常使用”方式剩余电量持续时间？</string>
-  <string name="pref_normal_usage_time" formatted="false">正常使用</string>
-  <string name="pref_normal_usage_time_summary" formatted="false">正常使用时电量从100%到0%放电时间</string>
-  <string name="pref_normal_usage_time_help" formatted="false">输入以您所认为的“正常使用”方式将电量从100%消耗至0%所需时间？</string>
-  <string name="pref_show_heavy_usage" formatted="false">显示频繁使用时间</string>
-  <string name="pref_show_heavy_usage_summary" formatted="false">确认频繁使用剩余时间？</string>
-  <string name="pref_show_heavy_usage_help" formatted="false">是否在主窗口显示您所认为的“频繁使用”方式剩余电量持续时间？</string>
-  <string name="pref_heavy_usage_time" formatted="false">频繁使用</string>
-  <string name="pref_heavy_usage_time_summary" formatted="false">频繁使用时电量从100%到0%放电时间</string>
-  <string name="pref_heavy_usage_time_help" formatted="false">输入以您所认为的“频繁使用”方式将电量从100%消耗至0%所需时间？</string>
-  <string name="pref_show_constant_usage" formatted="false">显示持续使用时间</string>
-  <string name="pref_show_constant_usage_summary" formatted="false">确认持续持续使用剩余时间？</string>
-  <string name="pref_show_constant_usage_help" formatted="false">是否在主窗口显示您所认为的“持续使用”方式剩余电量持续时间？</string>
-  <string name="pref_constant_usage_time" formatted="false">持续使用</string>
-  <string name="pref_constant_usage_time_summary" formatted="false">持续使用时电量从100%到0%放电时间</string>
-  <string name="pref_constant_usage_time_help" formatted="false">输入以您所认为的“持续使用”方式将电量从100%消耗至0%所需时间？</string>
   <string name="pref_cat_plugin_settings" formatted="false">插件设置</string>
   <string name="pref_plugin_settings" formatted="false">插件设置</string>
   <string name="pref_plugin_settings_summary" formatted="false">修改此插件的设置</string>
@@ -252,9 +194,6 @@
   <string name="silent" formatted="false">静音</string>
   <string name="pref_alarm_vibrate" formatted="false">震动</string>
   <string name="pref_alarm_lights" formatted="false">闪光</string>
-  <string name="mw_theme_default_small" formatted="false">默认小窗口</string>
-  <string name="mw_theme_colorful_small" formatted="false">彩色小窗口</string>
-  <string name="mw_theme_full_window" formatted="false">全屏窗口</string>
   <string name="boot_pref_always" formatted="false">始终</string>
   <string name="boot_pref_never" formatted="false">从不</string>
   <string name="boot_pref_if_running" formatted="false">关机时运行</string>

@@ -11,7 +11,7 @@
        android:key="enable_logging"
        android:title="@string/pref_enable_logging"
        android:summary="@string/pref_enable_logging_summary"
-       android:defaultValue="false"
+       android:defaultValue="true"
     />
 
     <ListPreference
@@ -98,15 +98,6 @@
        android:entryValues="@array/boot_pref_values"
        android:dialogTitle="@string/pref_autostart_at_boot_summary"
        android:defaultValue="auto"
-    />
-  </PreferenceCategory>
-
-  <PreferenceCategory android:title="@string/pref_cat_charge_as_text">
-    <CheckBoxPreference
-       android:key="charge_as_text"
-       android:title="@string/pref_charge_as_text"
-       android:summary="@string/pref_charge_as_text_summary"
-       android:defaultValue="false"
     />
   </PreferenceCategory>
 

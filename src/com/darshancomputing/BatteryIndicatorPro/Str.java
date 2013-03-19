@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010 Josiah Barber (aka Darshan)
+    Copyright (c) 2010-2013 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -148,6 +148,30 @@ public class Str {
 
     public String for_n_hours(int n) {
         return String.format(res.getQuantityString(R.plurals.for_n_hours, n), n);
+    }
+
+    public String n_hours_m_minutes_long(int n, int m) {
+        return (String.format(res.getQuantityString(R.plurals.n_hours_long, n), n) +
+                String.format(res.getQuantityString(R.plurals.n_minutes_long, m), m));
+    }
+
+    public String n_minutes_long(int n) {
+        return String.format(res.getQuantityString(R.plurals.n_minutes_long, n), n);
+    }
+
+    public String n_hours_m_minutes_medium(int n, int m) {
+        return (String.format(res.getQuantityString(R.plurals.n_hours_medium, n), n) +
+                String.format(res.getQuantityString(R.plurals.n_minutes_medium, m), m));
+    }
+
+    public String n_hours_m_minutes_short(int n, int m) {
+        return (String.format(res.getQuantityString(R.plurals.n_hours_short, n), n) +
+                String.format(res.getQuantityString(R.plurals.n_minutes_short, m), m));
+    }
+
+    public String n_days_m_hours(int n, int m) {
+        return (String.format(res.getQuantityString(R.plurals.n_days, n), n) +
+                String.format(res.getQuantityString(R.plurals.n_hours, m), m));
     }
 
     public String n_log_items(int n) {

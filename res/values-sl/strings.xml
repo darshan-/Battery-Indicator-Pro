@@ -2,11 +2,8 @@
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
   <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
-  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Nastavitve</string>
   <string name="settings_activity_subtitle" formatted="false">Nastavitve</string>
-  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Pomoč</string>
   <string name="help_activity_subtitle" formatted="false">Pomoč</string>
-  <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Poročila</string>
   <string name="log_view_activity_subtitle" formatted="false">Poročila</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
   <string name="battery_use_b" formatted="false">Poglej porabo baterije</string>
@@ -19,16 +16,11 @@
   <string name="cancel" formatted="false">Prekliči</string>
   <string name="confirm_close" formatted="false">Ste prepričani da želite zapreti?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator bo popolnoma zaprt in ga ne boste več videli v statusni vrstici.\n\nČe bi radi zaprli le glavno okno in pustili indikator zagnan, pritisnite Prekliči in nato samo pritisnite tipko NAZAJ na napravi da zapustite glavno okno.</string>
-  <string name="need_uninstall" formatted="false">Potrebno je odstranjevanje</string>
   <string name="confirm_clear_logs" formatted="false">Ste prepričani da želite izbrisati vsa poročila?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Ste prepričani da želite omogočiti 10% način?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Ste prepričani da želite onemogočiti 10% način?</string>
-  <string name="first_run_title" formatted="false">Hvala!</string>
-  <string name="first_run_message" formatted="false">Hvala za vašo donacijo/nakup! <b><i>Sledeče tri točke so zelo pomembne</i> :</b>\n\n• Če uporabljate kakršnokoli \"<b>task killer</b>\" / aplikacijo, jo morate ali odstraniti ali dodati Battery Indicator Pro na seznam izjem. Tudi če ste že dodali brezplačno verzijo na seznam izjem, <i>morate še vedno dodati plačljivo verzijo</i> !\n\n• Če vaša naprava privzeto prikazuje stopnjo baterije le v 10% inkrementih (<b>večina Motorola naprav</b>), potem morate vklopiti \"One-percent Hack\" v \"Druge nastavitve\" da omogočite 1% inkremente.\n\n• Če je vaša statusna vrstica črna, posebaj če uporabljate Android 3 ali novejši, je priporočeno da naložite vtičnik \"Black Square\".</string>
-  <string name="first_run_message_free" formatted="false">Hvala za namestitev aplikacije Battery Indicator! <b><i>Sledeči dve točki sta zelo pomembni</i> :</b>\n\n• Če uporabljate kakršnokoli \"<b>task killer</b>\" / aplikacijo, jo morate ali odstraniti ali dodati Battery Indicator na seznam izjem.\n• Če vaša naprava privzeto prikazuje stopnjo baterije le v 10% inkrementih (<b>večina Motorola naprav</b>), potem morate vklopiti \"One-percent Hack\" v \"Druge nastavitve\" da omogočite 1% inkremente.</string>
   <string name="okay" formatted="false">Vredu</string>
   <string name="none" formatted="false">Noben</string>
-  <string name="menu_logs" formatted="false">Poročila</string>
   <string name="menu_settings" formatted="false">Nastavitve</string>
   <string name="menu_close" formatted="false">Zapri</string>
   <string name="menu_help" formatted="false">Pomoč</string>
@@ -99,7 +91,6 @@
   <string name="charging_from" formatted="false">Polnjenje od</string>
   <string name="fully_charged" formatted="false">Napolnjeno</string>
   <string name="since" formatted="false">od</string>
-  <string name="one_six_needed" formatted="false">Oprostite, potreben je Android 1.6+!</string>
   <string name="currently_using" formatted="false">Trenutno uporabljeno</string>
   <string name="currently_set_to" formatted="false">"Trenutno nastavljeno na: "</string>
   <string name="currently_disabled" formatted="false">Trenutno onemogočeno</string>
@@ -114,8 +105,6 @@
   <string name="theme_settings" formatted="false">Barve in preobleke</string>
   <string name="theme_settings_summary" formatted="false">Nadzoruj barvo ikon in preoblek</string>
   <string name="theme_settings_help" formatted="false">Spremenite lahko preobleko za glavno okno in nadzor če in kdaj ikona za obveščanje spremeni barvo.</string>
-  <string name="time_settings" formatted="false">Nastavitve časa</string>
-  <string name="time_settings_summary" formatted="false">Nadzoruj časovne napovedi in približke</string>
   <string name="alarm_settings_subtitle" formatted="false">Nastavitve alarma</string>
   <string name="alarm_settings" formatted="false">Alarmi</string>
   <string name="alarm_settings_summary" formatted="false">Nadzoruj obvestila za slabo/polno baterijo</string>
@@ -124,7 +113,6 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Več nastavitev v Pro različici</string>
   <string name="add_alarm" formatted="false">Dodaj alarm</string>
   <string name="pref_cat_themes" formatted="false">Preobleke</string>
-  <string name="pref_main_window_theme" formatted="false">Preobleka glavnega okna</string>
   <string name="pref_cat_logging" formatted="false">Beleženje</string>
   <string name="pref_enable_logging" formatted="false">Omogoči beleženje</string>
   <string name="pref_enable_logging_summary" formatted="false">Beležim spremembo stanj baterije?</string>
@@ -144,40 +132,8 @@
   <string name="pref_cat_autostart" formatted="false">Samodejni zagon</string>
   <string name="pref_autostart_at_boot" formatted="false">Samodejni zagon ob zagonu</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">Zaženi Battery Indicator ko se naprava zažene:</string>
-  <string name="pref_charge_as_text_summary" formatted="false">Prikaži kot besedilo zraven okone?</string>
   <string name="pref_cat_language" formatted="false">Jezik</string>
   <string name="pref_language_override_summary" formatted="false">Izberi jezik:</string>
-  <string name="pref_status_dur_est" formatted="false">Kdaj napovedujem</string>
-  <string name="pref_status_dur_est_summary" formatted="false">Začni napovedovanje po spremembi statusa:</string>
-  <string name="pref_cat_time_remaining_estimates" formatted="false">Predviden preostali čas</string>
-  <string name="pref_show_charge_time" formatted="false">Pokaži čas polnjenja</string>
-  <string name="pref_show_charge_time_summary" formatted="false">Pokažem preostali čas polnjenja med polnjenjem?</string>
-  <string name="pref_usb_charge_time" formatted="false">USB polnjenje</string>
-  <string name="pref_usb_charge_time_summary" formatted="false">USB čas polnjenja od 0% do 100% v urah:</string>
-  <string name="pref_usb_charge_time_help" formatted="false">Izberite kako dolgo mislite da bo vaša baterija potrebovala, da se popolnooma napolni od 0% do 100% na USB napajanju.</string>
-  <string name="pref_ac_charge_time" formatted="false">AC polnjenje</string>
-  <string name="pref_ac_charge_time_summary" formatted="false">AC čas polnjenja od 0% do 100% v urah:</string>
-  <string name="pref_ac_charge_time_help" formatted="false">Izberite kako dolgo mislite da bo vaša baterija potrebovala, da se popolnooma napolni od 0% do 100% na AC napajanju.</string>
-  <string name="pref_show_light_usage" formatted="false">Pokaži lahko uporabo</string>
-  <string name="pref_show_light_usage_summary" formatted="false">Pokažem preostanek časa pri lahki uporabi?</string>
-  <string name="pref_light_usage_time" formatted="false">Lahka uporaba</string>
-  <string name="pref_light_usage_time_summary" formatted="false">Čas lahke uporabe od 100% do 0% v urah:</string>
-  <string name="pref_light_usage_time_help" formatted="false">Izberite kako dolgo mislite da bo vaša baterija potrebovala, da se popolnooma sprazni od 100% do 0% pri \"Lahki uporabi\".</string>
-  <string name="pref_show_normal_usage" formatted="false">Pokaži normalno uporabo</string>
-  <string name="pref_show_normal_usage_summary" formatted="false">Pokažem preostanek časa pri normalni uporabi?</string>
-  <string name="pref_normal_usage_time" formatted="false">Normalna uporaba</string>
-  <string name="pref_normal_usage_time_summary" formatted="false">Čas normalne uporabe od 100% do 0% v urah:</string>
-  <string name="pref_normal_usage_time_help" formatted="false">Izberite kako dolgo mislite da bo vaša baterija potrebovala, da se popolnooma sprazni od 100% do 0% pri \"Normalni uporabi\".</string>
-  <string name="pref_show_heavy_usage" formatted="false">Pokaži težko uporabo</string>
-  <string name="pref_show_heavy_usage_summary" formatted="false">Pokažem preostanek časa pri težki uporabi?</string>
-  <string name="pref_heavy_usage_time" formatted="false">Težka uporaba</string>
-  <string name="pref_heavy_usage_time_summary" formatted="false">Čas težke uporabe od 100% do 0% v urah:</string>
-  <string name="pref_heavy_usage_time_help" formatted="false">Izberite kako dolgo mislite da bo vaša baterija potrebovala, da se popolnooma sprazni od 100% do 0% pri \"Težki uporabi\".</string>
-  <string name="pref_show_constant_usage" formatted="false">Pokaži nenehno uporabo</string>
-  <string name="pref_show_constant_usage_summary" formatted="false">Pokažem preostanek časa pri nenehni uporabi?</string>
-  <string name="pref_constant_usage_time" formatted="false">Nenehna uporaba</string>
-  <string name="pref_constant_usage_time_summary" formatted="false">Čas nenehne uporabe od 100% do 0% v urah:</string>
-  <string name="pref_constant_usage_time_help" formatted="false">Izberite kako dolgo mislite da bo vaša baterija potrebovala, da se popolnooma sprazni od 100% do 0% pri \"Nenehni uporabi\".</string>
   <string name="pref_cat_plugin_settings" formatted="false">Nastavitve vtičnikov</string>
   <string name="pref_plugin_settings" formatted="false">Nastavitve vtičnikov</string>
   <string name="pref_plugin_settings_summary" formatted="false">Uredi nastavitve za ta vtičnik</string>

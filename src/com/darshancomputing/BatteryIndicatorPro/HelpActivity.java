@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009, 2010 Josiah Barber (aka Darshan)
+    Copyright (c) 2009-2013 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ public class HelpActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         // Stranglely disabled by default for API level 14+
-        if (getResources().getBoolean(R.bool.api_level_14_plus))
+        if (android.os.Build.VERSION.SDK_INT >= 14)
             getActionBar().setHomeButtonEnabled(true);
 
         setContentView(R.layout.help);
@@ -61,7 +61,7 @@ public class HelpActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case android.R.id.home:
-            startActivity(new Intent(this, BatteryIndicator.class));
+            startActivity(new Intent(this, BatteryInfoActivity.class));
             return true;
         default:
             return super.onOptionsItemSelected(item);

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010 Josiah Barber (aka Darshan)
+    Copyright (c) 2010-2013 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -70,13 +70,8 @@ public class AlarmEditActivity extends PreferenceActivity {
         alarms = new AlarmDatabase(context);
         settings = PreferenceManager.getDefaultSharedPreferences(context);
 
-        if (res.getBoolean(R.bool.override_list_activity_layout)) {
-            setContentView(R.layout.list_activity);
-            getListView().setDivider(res.getDrawable(R.drawable.my_divider));
-        }
-
         // Stranglely disabled by default for API level 14+
-        if (res.getBoolean(R.bool.api_level_14_plus))
+        if (android.os.Build.VERSION.SDK_INT >= 14)
             getActionBar().setHomeButtonEnabled(true);
 
         mCursor = alarms.getAlarm(getIntent().getIntExtra(EXTRA_ALARM_ID, -1));

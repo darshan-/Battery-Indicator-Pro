@@ -8,14 +8,6 @@
 
   <PreferenceCategory android:title="@string/pref_cat_themes">
     <ListPreference
-       android:key="main_window_theme"
-       android:title="@string/pref_main_window_theme"
-       android:entries="@array/mw_theme_pref_entries" 
-       android:entryValues="@array/mw_theme_pref_values"
-       android:defaultValue="default"
-    />
-
-    <ListPreference
        android:key="icon_set"
        android:title="@string/pref_icon_set"
        android:entries="@array/icon_set_entries"

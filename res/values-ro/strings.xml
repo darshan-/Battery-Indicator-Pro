@@ -2,15 +2,10 @@
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
   <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
-  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Setari</string>
   <string name="settings_activity_subtitle" formatted="false">Setari</string>
-  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Ajutor</string>
   <string name="help_activity_subtitle" formatted="false">Ajutor</string>
-  <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Loguri</string>
   <string name="log_view_activity_subtitle" formatted="false">Loguri</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
-  <string name="settings_activity_name_free" formatted="false">Battery Indicator - Setari</string>
-  <string name="help_activity_name_free" formatted="false">Battery Indicator - Ajutor</string>
   <string name="battery_use_b" formatted="false">Vizualizeaza Utilizarea Bateriei</string>
   <string name="upgrade_donate_b" formatted="false">Upgrade/Doneaza</string>
   <string name="reenable_lock_screen" formatted="false">Reactiveaza Blocare Ecran</string>
@@ -21,18 +16,12 @@
   <string name="cancel" formatted="false">Anuleaza</string>
   <string name="confirm_close" formatted="false">Sigur inchideti?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator se va inchide complet. Informatiile despre baterie nu vor mai fi afisate in bara de stare a telefonului./n Daca doriti sa inchideti fereastra principala, pastrand afisarea informatiilor despre baterie, apasati Anuleaza si apoi butonul BACK al telefonului.</string>
-  <string name="need_uninstall" formatted="false">Dezinstalare Necesara</string>
-  <string name="need_uninstall_hint" formatted="false">Pentru a efectua acest upgrade important, aplicatia Battery Indicator Pro trebuie sa fie dezinstalata iar apoi reinstalata. Ne cerem scuze pentru eventualele neplaceri. Aceasta operatie este necesara datorita unor limitari tehnice ale sistemului Android. Viitoarele upgrade-uri nu vor mai solicita aceasta operatie.\nDupa ce apasati \'Okay\' ca sa inchideti acest mesaj, apasati \'Okay\' din nou cand. Android o sa va ceara aprobabrea dezinstalarii. Veti fi apoi redirectionati catre pagina Market de unde puteti reinstala aplicatia.\n\nCu exceptia alarmelor, majoritatea preferintelor utilizatorilor vor fi restaurate. Alarmele vor trebui recreate. Totusi, nu exista nicio garantie, deci va rugam sa revizuiti setarile aplicatiei dupa reinstalare. /n /n Multumim. (speram sa va placa noile functionalitati!)</string>
   <string name="confirm_clear_logs" formatted="false">Sigur stergeti toate logurile?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Sigur activati modul 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Sigur dezactivati modul 10%</string>
   <string name="confirm_ten_percent_hint" formatted="false">Avertisment: Schimbarea acestei setari (fie activarea fie dezactivarea ei) va reseta schema de culori.\nDaca aveti un Motorola Droid, Droid X, Droid 2, Defy, sau Samsung Moment, ar trebui sa activati aceasta setare imediat dupa prima instalare a aplicatiei si sa nu o modificati ulterior. Pentru toate celelalte dispozitive, din cate stim pana acum, aceasta setare nu ar trebui activata.</string>
-  <string name="first_run_title" formatted="false">Multumim!</string>
-  <string name="first_run_message" formatted="false">Multumim pentru comanda/donatia facuta! <b><i>Urmatoarele doua puncte sunt foarte importante</i></b> • Daca aveti instalat un program \"<b>task killer</b>\"/manager de procese, etc - ar trebui fie sa-l dezinstalati, fie sa-l setati astfel incat sa ignore Battery Indicator Pro. Chiar daca l-ati configurat deja sa ignore versiunea gratuita, <i>trebuie sa-l configurati sa ignore si versiunea Pro</i>.!\n• Daca aveti un <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b> sau <b>Samsung Moment</b>, ar trebui sa activati modul 10% (10% Mode) din meniul \"Alte Setari\"</string>
-  <string name="first_run_message_free" formatted="false">Multumim pentru ca ati instalat Battery Indicator! <b><i>Urmatorul punct este important</i></b> • Daca aveti instalat un program \"<b>task killer</b>\"/manager de procese, etc - ar trebui fie sa-l dezinstalati, fie sa-l setati astfel incat sa ignore Battery Indicator.</string>
   <string name="okay" formatted="false">Okay</string>
   <string name="none" formatted="false">Nimic/Gol</string>
-  <string name="menu_logs" formatted="false">Loguri</string>
   <string name="menu_settings" formatted="false">Setari</string>
   <string name="menu_close" formatted="false">Inchide</string>
   <string name="menu_help" formatted="false">Ajutor</string>
@@ -76,7 +65,6 @@
   <string name="charging_from" formatted="false">Se incarca de la</string>
   <string name="fully_charged" formatted="false">Incarcata Complet</string>
   <string name="since" formatted="false">De la</string>
-  <string name="one_six_needed" formatted="false">Ne pare rau - Doar pentru Android 1.6+!</string>
   <string name="currently_using" formatted="false">Folosire curenta</string>
   <string name="currently_set_to" formatted="false">"Acum setat la: "</string>
   <string name="currently_disabled" formatted="false">Dezactivat Acum</string>

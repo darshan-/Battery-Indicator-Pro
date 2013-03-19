@@ -2,14 +2,9 @@
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
   <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
-  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Nastavení</string>
   <string name="settings_activity_subtitle" formatted="false">Nastavení</string>
-  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Nápověda</string>
-  <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Záznamy</string>
   <string name="log_view_activity_subtitle" formatted="false">Záznamy</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
-  <string name="settings_activity_name_free" formatted="false">Battery Indicator - Nastavení</string>
-  <string name="help_activity_name_free" formatted="false">Battery Indicator - Nápověda</string>
   <string name="battery_use_b" formatted="false">Zobrazit využití baterie</string>
   <string name="upgrade_donate_b" formatted="false">Upgrade/Podpořit vývoj...</string>
   <string name="reenable_lock_screen" formatted="false">Opět povolit zámek obrazovky</string>
@@ -24,11 +19,7 @@
   <string name="confirm_ten_percent_enable" formatted="false">Opravdu povolit 10% Mode?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Opravdu zakázat 10% Mode?</string>
   <string name="confirm_ten_percent_hint" formatted="false">Upozornění: Změnou tohoto nastavení resetujete nastavení barevného schématu.\n\nPokud vlastníte přístroj Motorola Droid, Droid X, Droid 2, Defy, nebo Samsung Moment, měli by jste toto nastavení zapnout při prvním spuštění aplikace a ponechat zapnuté. Všechny ostatní telefony, pokud vím, by měly mít toto nastavení vypnuto.</string>
-  <string name="first_run_title" formatted="false">Děkuji !</string>
-  <string name="first_run_message" formatted="false">Děkuji za podporu nákupem !<b><i>Následující dva body jsou velice důležité</i> :</b>\n\n• Pokud používáte \"<b>task killer</b>\" / nějaký druh process manageru měli by jste jej odinstalovat nebo zkusit nastavit ingnorovat pro Battery Indicator Pro<i>a to i přesto, že jste již nastavili ignorovat pro FREE verzi Battery Indicator.</i> !\n\n• Pokud vlastníte následující přístroje:<b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, nebo <b>Samsung Moment</b>, měli by jste zapnout volbu \"10% Mód\" v oddíle \"Ostatní nastavení\".</string>
-  <string name="first_run_message_free" formatted="false">Děkuji za stažení aplikace Battery Indicator! <b><i>Toto je důležitá informace</i> :</b>\n\nPokud používáte \"<b>task killer</b>\" / nějaký druh process manageru měli by jste jej odinstalovat nebo zkusit nastavit ingnorovat pro Battery Indicator.</string>
   <string name="okay" formatted="false">O.K.</string>
-  <string name="menu_logs" formatted="false">Záznamy</string>
   <string name="menu_settings" formatted="false">Nastavení</string>
   <string name="menu_close" formatted="false">Zavřít</string>
   <string name="menu_help" formatted="false">Nápověda</string>
@@ -100,7 +91,6 @@
   <string name="charging_from" formatted="false">Nabíjení od</string>
   <string name="fully_charged" formatted="false">Plně nabito</string>
   <string name="since" formatted="false">od</string>
-  <string name="one_six_needed" formatted="false">Sorry, potřebuješ Android 1.6 a vyšší !</string>
   <string name="currently_using" formatted="false">Aktuální používání</string>
   <string name="currently_set_to" formatted="false">"Aktuálně nastaveno: "</string>
   <string name="currently_disabled" formatted="false">Aktuálně zakázáno</string>
@@ -128,9 +118,6 @@
   <string name="theme_settings" formatted="false">Barvy a témata</string>
   <string name="theme_settings_summary" formatted="false">Barvy ikon a témata oken</string>
   <string name="theme_settings_help" formatted="false">Můžete změnit témata pro zobrazení hlavního okna a nastavit barvy pro ikonu při změně stavu.</string>
-  <string name="time_settings" formatted="false">Nastavení časů</string>
-  <string name="time_settings_summary" formatted="false">Nastavení časů pro odhady a průměrování</string>
-  <string name="time_settings_help" formatted="false">Zde můžete ovládat kdy se oznámení přepne z přesného zobrazení času kdy se změnil stav telefonu (připojen / nepřipojen) na průměrný stav kolik času (hodin) uběhlo od změny stavu.\n\nMůžete také ovládat který odhad chcete zobrazit pro zbývající čas při nabíjení přes USB nebo nabíječku a občasném/běžném/častém/nepřetržitém použití a upravit principy odhadů.</string>
   <string name="alarm_settings_subtitle" formatted="false">Nastavení upozornění</string>
   <string name="alarm_settings" formatted="false">Upozornění</string>
   <string name="alarm_settings_summary" formatted="false">Ovládání oznámení pro nízký stav nebo plně nabitou baterii.</string>
@@ -141,7 +128,6 @@
   <string name="pref_please_upgrade" formatted="false">Pro verze obsahuje mnohem více nastavení a funkcí, včetně zelené, oranžové a červené ikony stavu, témata pro okno, záznamy stavu baterie, nastavení zámku obrazovky, odhady časů zbývající energie atd.</string>
   <string name="add_alarm" formatted="false">Přidat upozornění</string>
   <string name="pref_cat_themes" formatted="false">Témata</string>
-  <string name="pref_main_window_theme" formatted="false">Téma hlavního okna</string>
   <string name="pref_cat_logging" formatted="false">Záznamy</string>
   <string name="pref_enable_logging" formatted="false">Povolit záznamy</string>
   <string name="pref_enable_logging_summary" formatted="false">Záznamy změnu stavu baterie ?</string>
@@ -167,35 +153,6 @@
   <string name="pref_cat_autostart" formatted="false">Automatické spuštění</string>
   <string name="pref_autostart_at_boot" formatted="false">Automatické spuštění při startu telefonu</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">Spustit Battery Indicator jakmile je zařízení spuštěno:</string>
-  <string name="pref_cat_charge_as_text" formatted="false">Textové zobrazení úrovně nabití</string>
-  <string name="pref_charge_as_text" formatted="false">Textové zobrazení úrovně nabití</string>
-  <string name="pref_charge_as_text_summary" formatted="false">Zobrazit úroveň nabití jako text vedle ikony ?</string>
-  <string name="pref_cat_status_duration" formatted="false">Stav trvání</string>
-  <string name="pref_status_dur_est" formatted="false">Kdy odhadovat</string>
-  <string name="pref_status_dur_est_summary" formatted="false">Začít odhadovat hodiny jakmile se stav změní:</string>
-  <string name="pref_cat_time_remaining_estimates" formatted="false">Odhad zbývajícího času</string>
-  <string name="pref_show_charge_time" formatted="false">Zobrazit čas plného nabití</string>
-  <string name="pref_show_charge_time_summary" formatted="false">Zobrazit čas zbývající do plného nabití ?</string>
-  <string name="pref_usb_charge_time" formatted="false">Nabíjení přes USB</string>
-  <string name="pref_usb_charge_time_summary" formatted="false">Čas který je zapotřebí k nabítí z 0% do 100% při nabíjení přes USB:</string>
-  <string name="pref_ac_charge_time" formatted="false">Nabíjení přes nabíječku</string>
-  <string name="pref_ac_charge_time_summary" formatted="false">Čas který je zapotřebí k nabití z 0% do 100% při nabíjení přes nabíječku:</string>
-  <string name="pref_show_light_usage" formatted="false">Zobrazit občasné používání</string>
-  <string name="pref_show_light_usage_summary" formatted="false">Zobrazit zbývající čas při občasném používání ?</string>
-  <string name="pref_light_usage_time" formatted="false">Občasné používání</string>
-  <string name="pref_light_usage_time_summary" formatted="false">Čas do vybití ze 100% na 0% v hodinách při občasném používání:</string>
-  <string name="pref_show_normal_usage" formatted="false">Zobrazit běžné používání</string>
-  <string name="pref_show_normal_usage_summary" formatted="false">Zobrazit zbývající čas při běžném používání ?</string>
-  <string name="pref_normal_usage_time" formatted="false">Běžné používání</string>
-  <string name="pref_normal_usage_time_summary" formatted="false">Čas do vybití ze 100% na 0% v hodinách při běžném používání:</string>
-  <string name="pref_show_heavy_usage" formatted="false">Zobrazit časté používání</string>
-  <string name="pref_show_heavy_usage_summary" formatted="false">Zobrazit zbývající čas při častém používání ?</string>
-  <string name="pref_heavy_usage_time" formatted="false">Časté používání</string>
-  <string name="pref_heavy_usage_time_summary" formatted="false">Čas do vybití ze 100% na 0% v hodinách při častém používání:</string>
-  <string name="pref_show_constant_usage" formatted="false">Zobrazit nepřetržité používání</string>
-  <string name="pref_show_constant_usage_summary" formatted="false">Zobrazit zbývající čas při nepřetržitém používání ?</string>
-  <string name="pref_constant_usage_time" formatted="false">Nepřetržité používání</string>
-  <string name="pref_constant_usage_time_summary" formatted="false">Čas do vybití ze 100% na 0% v hodinách při nepřetržitém používání:</string>
   <string name="pref_cat_color" formatted="false">Barva Ikony</string>
   <string name="pref_color_preview" formatted="false">Náhled barev</string>
   <string name="pref_red" formatted="false">Použít červenou ikonu</string>
@@ -234,9 +191,6 @@
   <string name="pref_alarm_vibrate_help" formatted="false">Pokud vše poběží tak jak má, pak toto nastavení zapne vibrace při spuštění alarmu, pokud ovšem není aktuálně nastaven Silent Mode, pokud tedy nemáte ovšem povoleny vibrace v Silent Modu. Jinými slovy, mělo by to dělat co od této funkce očekávate. Pokud ne, pak mi napište email.</string>
   <string name="pref_alarm_lights" formatted="false">Blikání osvětlení</string>
   <string name="pref_alarm_lights_help" formatted="false">Nastavte jestliže chcete použít upozornění pomocí osvětlení. Standardně bliká LED dioda nebo trackball. Mé zkušenosti ovšem ukazují, že skoro každé zařízení mělo problémy s tímto nastavením. Pokud tedy zaškrtnete používání této funkce, pak systém upozornění bude žádat Váš Android o blikání osvětlení, ale je bez záruky, že to bude fungovat...</string>
-  <string name="mw_theme_default_small" formatted="false">Standardní malé</string>
-  <string name="mw_theme_colorful_small" formatted="false">Barevné malé</string>
-  <string name="mw_theme_full_window" formatted="false">Plné okno</string>
   <string name="boot_pref_always" formatted="false">Vždy</string>
   <string name="boot_pref_never" formatted="false">Nikdy</string>
   <string name="boot_pref_if_running" formatted="false">Ručně</string>

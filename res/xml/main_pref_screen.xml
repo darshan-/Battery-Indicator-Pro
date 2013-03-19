@@ -19,12 +19,6 @@
   />
 
   <Preference
-     android:key="time_settings"
-     android:title="@string/time_settings"
-     android:summary="@string/time_settings_summary"
-  />
-
-  <Preference
      android:key="alarm_settings"
      android:title="@string/alarm_settings"
      android:summary="@string/alarm_settings_summary"

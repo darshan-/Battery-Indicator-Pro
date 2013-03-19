@@ -2,15 +2,10 @@
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
   <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
-  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Ajustes</string>
   <string name="settings_activity_subtitle" formatted="false">Ajustes</string>
-  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Ayuda</string>
   <string name="help_activity_subtitle" formatted="false">Ayuda</string>
-  <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Registro</string>
   <string name="log_view_activity_subtitle" formatted="false">Registro</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
-  <string name="settings_activity_name_free" formatted="false">Battery Indicator - Ajustes</string>
-  <string name="help_activity_name_free" formatted="false">Battery Indicator - Ayuda</string>
   <string name="battery_use_b" formatted="false">Ver uso de batería</string>
   <string name="upgrade_donate_b" formatted="false">Actualizar/Donar...</string>
   <string name="reenable_lock_screen" formatted="false">Reactivar Pantalla de Bloqueo</string>
@@ -22,11 +17,7 @@
   <string name="confirm_close" formatted="false">¿Está seguro de que desea cerrar la aplicación?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator se cerrará completamente, y dejará de aparecer en la barra de estado.\n\nSi solamente desea abandonar la ventana principal pero manteniendo activo el indicador, pulse la tecla VOLVER de su teléfono.</string>
   <string name="confirm_clear_logs" formatted="false">¿Está seguro de que desea borrar el registro?</string>
-  <string name="first_run_title" formatted="false">¡Gracias!</string>
-  <string name="first_run_message" formatted="false">¡Gracias por su donación/compra! <b><i>Información de interés</i> :</b>\n\n• Si tiene instalado algún \"<b>gestor de tareas</b>\" debería desinstalarlo o configurarlo para que ignore Battery Indicator Pro. Aunque ya lo tuviera configurado para ignorar Battery Indicator, debe repetir el proceso para Battery Indicator Pro.\n\n• Si su teléfono es un <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, o <b>Samsung Moment</b>, debe activar el \"Modo 10%\" en \"Otros Ajustes\".</string>
-  <string name="first_run_message_free" formatted="false">¡Gracias por descargar Battery Indicator! <b><i>Información de interés</i> :</b>\n\nSi tiene instalado algún \"<b>gestor de tareas</b>\" debería desinstalarlo o configurarlo para que ignore Battery Indicator.\n</string>
   <string name="okay" formatted="false">Ok</string>
-  <string name="menu_logs" formatted="false">Registro</string>
   <string name="menu_settings" formatted="false">Ajustes</string>
   <string name="menu_close" formatted="false">Cerrar</string>
   <string name="menu_help" formatted="false">Ayuda</string>
@@ -83,7 +74,6 @@
   <string name="charging_from" formatted="false">Cargando desde</string>
   <string name="fully_charged" formatted="false">Cargado</string>
   <string name="since" formatted="false">desde</string>
-  <string name="one_six_needed" formatted="false">Lo siento, se requiere Android 1.6 o superior</string>
   <string name="currently_using" formatted="false">Usando actualmente</string>
   <string name="currently_set_to" formatted="false">"Seleccionado:"</string>
   <string name="currently_disabled" formatted="false">Desactivado</string>
@@ -115,16 +105,11 @@
   <string name="theme_settings" formatted="false">Colores y temas</string>
   <string name="theme_settings_summary" formatted="false">Controla los colores del icono y los temas para la ventana</string>
   <string name="theme_settings_help" formatted="false">Puede cambiar el tema para la ventana principal y controlar si el icono de la barra de estado cambia de color, y cuándo debe hacerlo.</string>
-  <string name="time_settings" formatted="false">Ajustes de tiempo</string>
-  <string name="time_settings_summary" formatted="false">Controla las estimaciones de tiempo y las aproximaciones</string>
-  <string name="time_settings_help" formatted="false">Desde aquí puede controlar cuando la notificación pasa de decir exactamente cuándo ha cambiado el estado del teléfono (de \"Enchufado\" a \"Desenchufado\", por ejemplo) a decir aproximadamente cuántas horas han pasado desde el cambio.\n\nTambién puede controlar las estimaciones que desee ver, tanto para el tiempo de carga restante (ya sea con conexión a la red o por USB) como para el tiempo restante de uso ligero/normal/intensivo/constante, y ajustar los parámetros para estas estimaciones.</string>
   <string name="other_settings" formatted="false">Otros ajustes</string>
   <string name="other_settings_help" formatted="false">Todos los demás ajustes están en esta página, incluyendo el registro, la pantalla de bloqueo, la unidad de temperatura, el autoarranque de la aplicación, y mucho más.</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">Más ajustes en la versión Pro</string>
   <string name="pref_please_upgrade" formatted="false">La versión Pro tiene muchos más ajustes y funcionalidades, incluyendo icono en verde, ámbar y rojo para el icono de la barra de estado, temas para la ventana, registro de cambios de estado de la batería, desactivación manual o automática de la pantalla de bloqueo, estimaciones de tiempos restantes de carga y descarga, y mucho más.</string>
   <string name="pref_cat_themes" formatted="false">Temas</string>
-  <string name="pref_main_window_theme" formatted="false">Temas de la ventana</string>
-  <string name="pref_main_window_theme_help" formatted="false">Establece el tema para la ventana principal. Por defecto, el tema es aproximadamente el de un cuadro de diálogo estándar de Android, como ha sido siempre. El tema Pantalla completa es útil si le gustan las cosas grandes y fáciles de leer. El resto de temas están ahí sólo por diversión.</string>
   <string name="pref_cat_logging" formatted="false">Registro</string>
   <string name="pref_enable_logging" formatted="false">Activar registro</string>
   <string name="pref_enable_logging_summary" formatted="false">¿Registrar cambios de estado de la batería?</string>
@@ -157,49 +142,6 @@
   <string name="pref_autostart_at_boot" formatted="false">Autoarrancar al inicio</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">¿Arrancar Battery Indicator al encender el dispositivo?</string>
   <string name="pref_autostart_at_boot_help" formatted="false">Controla si Battery Indicator arranca automáticamente cuando se enciende el dispositivo.\n\nLa opción \"Si estaba ejecutándose al apagar\" recuerda la última vez que ha iniciado o cerrado manualmente Battery Indicator. Si ha matado el proceso de Battery Indicator por otro medio, como un gestor de tareas, Battery Indicator no sabrá que lo ha parado y arrancará automáticamente al inicio aunque tenga marcada esta opción.</string>
-  <string name="pref_cat_charge_as_text" formatted="false">Nivel de carga textual</string>
-  <string name="pref_charge_as_text" formatted="false">Nivel de carga textual</string>
-  <string name="pref_charge_as_text_summary" formatted="false">¿Mostrar el nivel de carga como un texto maś grande junto al icono?</string>
-  <string name="pref_charge_as_text_help" formatted="false">Algunos usuarios con problemas de visión me pidieron que añadiera esta opción, en la que el nivel de carga se muestra como un texto (más grande y fácil de leer) justo al lado del icono que aparece al bajar la barra de notificaciones. El icono en sí mismo no será diferente, por lo que el efecto sólo será apreciable al bajar la barra, pero es mejor que nada, y suficientemente fácil de añadir al programa para aquellos que lo pidieron.\n\nPara ahorrar espacio, simplemente he puesto el número junto al icono. Esto además resulta ser más fácil de leer que si se incluyera también el tanto por ciento, y evita problemas de espacio en pantalla. Aun así, si tiene una pantalla especialmente pequeña esto podría hacer que el AM/PM que se muestra a la derecha no se viera completamente bien.</string>
-  <string name="pref_cat_status_duration" formatted="false">Duración de estado (Desde/Durante...)</string>
-  <string name="pref_status_dur_est" formatted="false">Cuándo aproximar</string>
-  <string name="pref_status_dur_est_summary" formatted="false">Horas a las que se empieza a aproximar tras el cambio de estado</string>
-  <string name="pref_status_dur_est_help" formatted="false">Determina cuando la notificación pasa de decir, por ejemplo, \"Desenchufado desde la 1:10 PM\" a decir algo como \"Desenchufado desde hace una hora\". La primera forma es más exacta, pero muchos usuarios prefieren la sgeunda por ser más fácil de comprender, y pueden querer que se produzca este cambio antes de 12 horas, que es el valor por defecto.</string>
-  <string name="pref_cat_time_remaining_estimates" formatted="false">Estimaciones de tiempo restante</string>
-  <string name="pref_cat_time_remaining_estimates_help" formatted="false">Estas estimaciones están hechas de una manera algo distinta a lo que puede estar acostumbrado, pero creo que para mejor. Se controla lo que la aplicación usa como base para estimar el tiempo de batería restante, por lo que si usted cree que está mal, puede cambiarlo. He utilizado valores que creo razonables, pero dependen mucho del teléfono y del uso que se le dé, por lo que probablemente tenga que modificarlos. Pero eso es algo bueno, porque sólo usted sabe qué significa \"Uso normal\" o \"Uso intensivo\" para usted, y puede establecer tiempos adaptados al uso que hace del teléfono.</string>
-  <string name="pref_show_charge_time" formatted="false">Mostrar tiempo de carga</string>
-  <string name="pref_show_charge_time_summary" formatted="false">¿Mostrar tiempo de carga restante cuando el teléfono está cargando?</string>
-  <string name="pref_show_charge_time_help" formatted="false">Si está activo, cuando el teléfono está cargando la ventana principal mostrará una estimación de cuánto tiempo queda para que el teléfono esté completamente cargado, basada en los ajustes que seleccione más abajo.</string>
-  <string name="pref_usb_charge_time" formatted="false">Carga USB</string>
-  <string name="pref_usb_charge_time_summary" formatted="false">Tiempo de carga USB de 0% a 100% (en horas)</string>
-  <string name="pref_usb_charge_time_help" formatted="false">Seleccione cuánto tiempo calcula que tarda su batería en cargarse completamente de 0% a 100% cuando el teléfono está está conectado por USB.</string>
-  <string name="pref_ac_charge_time" formatted="false">Carga Red</string>
-  <string name="pref_ac_charge_time_summary" formatted="false">Tiempo de carga Red de 0% a 100% (en horas)</string>
-  <string name="pref_ac_charge_time_help" formatted="false">Seleccione cuánto tiempo calcula que tarda su batería en cargarse completamente de 0% a 100% cuando el teléfono está está conectado a la red eléctrica.</string>
-  <string name="pref_show_light_usage" formatted="false">Mostrar uso ligero</string>
-  <string name="pref_show_light_usage_summary" formatted="false">¿Mostrar tiempo restante de uso ligero?</string>
-  <string name="pref_show_light_usage_help" formatted="false">Indica si mostrar o no una estimación (en la ventana de principal) del tiempo restante para que la batería se descargue completamente haciendo lo que usted considere como \"Uso ligero\" del teléfono.</string>
-  <string name="pref_light_usage_time" formatted="false">Uso ligero</string>
-  <string name="pref_light_usage_time_summary" formatted="false">Tiempo de uso ligero de 100% a 0% en horas</string>
-  <string name="pref_light_usage_time_help" formatted="false">Seleccione cuánto cree que tardaría su batería en descargarse completamente (de 100% a 0%) haciendo lo que usted considere como \"Uso ligero\" del teléfono.</string>
-  <string name="pref_show_normal_usage" formatted="false">Mostrar uso normal</string>
-  <string name="pref_show_normal_usage_summary" formatted="false">¿Mostrar tiempo restante de uso normal?</string>
-  <string name="pref_show_normal_usage_help" formatted="false">Indica si mostrar o no una estimación (en la ventana de principal) del tiempo restante para que la batería se descargue completamente haciendo lo que usted considere como \"Uso normal\" del teléfono.</string>
-  <string name="pref_normal_usage_time" formatted="false">Uso normal</string>
-  <string name="pref_normal_usage_time_summary" formatted="false">Tiempo de uso normal de 100% a 0% en horas</string>
-  <string name="pref_normal_usage_time_help" formatted="false">Seleccione cuánto cree que tardaría su batería en descargarse completamente (de 100% a 0%) haciendo lo que usted considere como \"Uso normal\" del teléfono.</string>
-  <string name="pref_show_heavy_usage" formatted="false">Mostrar uso intensivo</string>
-  <string name="pref_show_heavy_usage_summary" formatted="false">¿Mostrar tiempo restante de uso intensivo?</string>
-  <string name="pref_show_heavy_usage_help" formatted="false">Indica si mostrar o no una estimación (en la ventana de principal) del tiempo restante para que la batería se descargue completamente haciendo lo que usted considere como \"Uso intensivo\" del teléfono.</string>
-  <string name="pref_heavy_usage_time" formatted="false">Uso intensivo</string>
-  <string name="pref_heavy_usage_time_summary" formatted="false">Tiempo de uso intensivo de 100% a 0% en horas</string>
-  <string name="pref_heavy_usage_time_help" formatted="false">Seleccione cuánto cree que tardaría su batería en descargarse completamente (de 100% a 0%) haciendo lo que usted considere como \"Uso intensivo\" del teléfono.</string>
-  <string name="pref_show_constant_usage" formatted="false">Mostrar uso constante</string>
-  <string name="pref_show_constant_usage_summary" formatted="false">¿Mostrar tiempo restante de uso constante?</string>
-  <string name="pref_show_constant_usage_help" formatted="false">Indica si mostrar o no una estimación (en la ventana de principal) del tiempo restante para que la batería se descargue completamente haciendo lo que usted considere como \"Uso constante\" del teléfono.</string>
-  <string name="pref_constant_usage_time" formatted="false">Uso constante</string>
-  <string name="pref_constant_usage_time_summary" formatted="false">Tiempo de uso constante de 100% a 0% en horas</string>
-  <string name="pref_constant_usage_time_help" formatted="false">Seleccione cuánto cree que tardaría su batería en descargarse completamente (de 100% a 0%) haciendo lo que usted considere como \"Uso constante\" del teléfono.</string>
   <string name="pref_cat_color" formatted="false">Icono coloreado</string>
   <string name="pref_cat_color_help" formatted="false">De cara a mantener el paquete de Battery Indicator razonablemente ligero, hay algunas limitaciones para los colores. Actualmente se puede tener el icono rojo hasta el 30%, el ámbar hasta el 50% y el verde desde el 20%. Creo que son compromisos razonables que deben funcionar para el 99% de los usuarios.\n\nPara dar al usuario el máximo control posible, los colores pueden ser apagados y encendidos individualmente. Esto efectivamente significa que puede tener incluso un esquema de cuatro colores, en el que el icono sea verde si la batería está muy cargada, luego gris, luego ámbar y finalmente rojo. En cualquier caso, la mayoría de la gente tendrá establecidos los umbrales para el icono ámbar y el verde en el mismo valor, por lo que el icon no llegará nunca a ser gris.</string>
   <string name="pref_color_preview" formatted="false">Vista previa del color</string>
@@ -228,9 +170,6 @@
   <string name="pref_ten_percent_mode" formatted="false">Modo 10%</string>
   <string name="pref_ten_percent_mode_summary" formatted="false">¡Lea la ayuda primero!</string>
   <string name="pref_ten_percent_mode_help" formatted="false"><b>Nota:</b> ¡Marcar o desmarcar esto reiniciará sus ajustes de color de iconos!\n\nEsta opción limpia los ajustes de color de iconos para que tengan más sentido en dispositivos que sólo muestran el nivel de carga en incrementos del 10%. Según los datos proporcionados por los usuarios, esto incluye los siguientes dispositivos:\n\n• Motorola Droid (original)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nHasta donde yo sé, todos los demás dispositivos informan cada 1%, y <i>no</i> debería activar esta opción si tiene uno de ellos.</string>
-  <string name="mw_theme_default_small" formatted="false">Por defecto (Pequeña)</string>
-  <string name="mw_theme_colorful_small" formatted="false">Colorida (Pequeña)</string>
-  <string name="mw_theme_full_window" formatted="false">Pantalla completa</string>
   <string name="boot_pref_always" formatted="false">Siempre</string>
   <string name="boot_pref_never" formatted="false">Nunca</string>
   <string name="boot_pref_if_running" formatted="false">Si estaba ejecutándose al apagar</string>

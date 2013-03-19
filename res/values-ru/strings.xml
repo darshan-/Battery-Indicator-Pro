@@ -2,12 +2,7 @@
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
   <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
-  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Настройки</string>
-  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Помощь</string>
-  <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Журнал работы</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
-  <string name="settings_activity_name_free" formatted="false">Battery Indicator - Настройки</string>
-  <string name="help_activity_name_free" formatted="false">Battery Indicator - Помощь</string>
   <string name="battery_use_b" formatted="false">Посмотреть использование батареи</string>
   <string name="upgrade_donate_b" formatted="false">Улучшить/Помочь проекту</string>
   <string name="reenable_lock_screen" formatted="false">Включить блокировку экрана</string>
@@ -18,17 +13,12 @@
   <string name="cancel" formatted="false">Отмена</string>
   <string name="confirm_close" formatted="false">Действительно закрыть?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator будет полностью закрыт и Вы не увидите индикатор в строке состояния.\n\nЕсли Вы хотите выйти из главного меню и оставить индикатор активным, нажмите \"Отмена\" и после этого просто нажмите кнопку \"BACK\" для выхода из главного меню.</string>
-  <string name="need_uninstall_hint" formatted="false">Battery Indicator Pro необходимо удалить и установить заново для завершения крупного обновления. Прошу прощения за неудобства! Это необходимо сделать ввиду технических ограничений операционной системы Android. Этого больше не потребуется делать при последующих обновлениях.\n\nПосле того, как Вы нажмете \'Okay\' для закрытия этого сообщения, Вам будет нужно просто еще раз нажать \'Okay\', когда Android попросит разрешения удалить программу. Затем Вы перейдете на страницу Android Market, где сможете переустановить приложение.\n\nУ большинства пользователей настройки приложения сохраняться, за исключением настроек оповещений, которые необходимо будет настроить заново. И всё же, я не могу гарантировать, что настройки сохранятся, поэтому проверьте их после переустановки.\n\nСпасибо, я надеюсь, Вам понравятся новые функции!</string>
   <string name="confirm_clear_logs" formatted="false">Действительно удалить весь журнал работы?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Действительно включить режим 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Действительно выключить режим 10%?</string>
   <string name="confirm_ten_percent_hint" formatted="false">ВНИМАНИЕ: Изменение этой настройки (её включение и выключение) сбросит Ваши цветовые настройки программы.\n\nЕсли Вы являетесь владельцем Motorola Droid, Droid X, Droid 2, Defy или Samsung Moment, Вы обязательно должны включить данную настройку сразу же после установки этого приложения. Для остальных устройств данную настройку следует отключить.</string>
-  <string name="first_run_title" formatted="false">Спасибо!</string>
-  <string name="first_run_message" formatted="false">Спасибо за покупку программы! <b> <i>Важные моменты: </i> </b>\n\n• Если у Вас установлена программа отслеживающая запущенные процессы <b>Task killer</b> или подобная, убедитесь в том что в данной программе можно внести в исключения Battery Indicator Pro. Если Вы внесли в исключения бесплатную версию Battery Indicator, после установки Battery Indicator Pro <i>Вам понадобится внести её исключения тоже.</i>!\n• Если Вы являетесь владельцем <b>Motorola Droid</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, или <b>Samsung Moment</b> Вы должны включить \"режим 10%\" в расширенных настройках.</string>
-  <string name="first_run_message_free" formatted="false">Спасибо за установку Battery Indicator! <b> <i>Обратите внимание на следующие два пункта: </i> </b>\n\n• Если у Вас установлена программа отслеживающая запущенные процессы <b>Task killer</b> или подобная, убедитесь в том что в данной программе можно внести в исключения Battery Indicator.</string>
   <string name="okay" formatted="false">Да</string>
   <string name="none" formatted="false">Нет</string>
-  <string name="menu_logs" formatted="false">Журнал работы</string>
   <string name="menu_settings" formatted="false">Настройки</string>
   <string name="menu_close" formatted="false">Закрыть</string>
   <string name="menu_help" formatted="false">Помощь</string>
@@ -100,7 +90,6 @@
   <string name="charging_from" formatted="false">Заряжается с</string>
   <string name="fully_charged" formatted="false">Полностью заряжено</string>
   <string name="since" formatted="false">С</string>
-  <string name="one_six_needed" formatted="false">Извините, для работы необходим Android 1.6 и старше!</string>
   <string name="currently_using" formatted="false">Текущее использование</string>
   <string name="currently_set_to" formatted="false">"Текущая настройка: "</string>
   <string name="currently_disabled" formatted="false">Сейчас отключено</string>
@@ -120,7 +109,6 @@
   <string name="settings_overview" formatted="false">Обзор</string>
   <string name="theme_settings" formatted="false">Цвета и Темы</string>
   <string name="theme_settings_summary" formatted="false">Цвета индикатора и темы окна</string>
-  <string name="time_settings" formatted="false">Настройки времени</string>
   <string name="alarm_settings_subtitle" formatted="false">Настройки оповещений</string>
   <string name="alarm_settings" formatted="false">Оповещения</string>
   <string name="alarm_settings_summary" formatted="false">Настройка оповещений для низкого/полного заряда батареи</string>
@@ -136,9 +124,6 @@
   <string name="pref_alarm_ringtone" formatted="false">Мелодия</string>
   <string name="silent" formatted="false">Беззвучно</string>
   <string name="pref_alarm_vibrate" formatted="false">Вибратор</string>
-  <string name="mw_theme_default_small" formatted="false">По умолчанию - маленькая</string>
-  <string name="mw_theme_colorful_small" formatted="false">Colorful Small</string>
-  <string name="mw_theme_full_window" formatted="false">На полный экран</string>
   <string name="boot_pref_always" formatted="false">Всегда</string>
   <string name="boot_pref_never" formatted="false">Никогда</string>
   <string name="boot_pref_if_running" formatted="false">Если было запущено при выключении</string>

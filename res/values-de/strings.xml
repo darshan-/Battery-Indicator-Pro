@@ -2,15 +2,10 @@
 <resources>
   <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
   <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
-  <string name="settings_activity_name" formatted="false">Battery Indicator Pro - Einstellungen</string>
   <string name="settings_activity_subtitle" formatted="false">Einstellungen</string>
-  <string name="help_activity_name" formatted="false">Battery Indicator Pro - Hilfe</string>
   <string name="help_activity_subtitle" formatted="false">Hilfe</string>
-  <string name="log_view_activity_name" formatted="false">Battery Indicator Pro - Protokoll</string>
   <string name="log_view_activity_subtitle" formatted="false">Protokoll</string>
   <string name="app_full_name_free" formatted="false">Battery Indicator</string>
-  <string name="settings_activity_name_free" formatted="false">Battery Indicator - Einstellungen</string>
-  <string name="help_activity_name_free" formatted="false">Battery Indicator - Hilfe</string>
   <string name="battery_use_b" formatted="false">Akkuverbrauch anzeigen</string>
   <string name="upgrade_donate_b" formatted="false">Erweitern/Spenden...</string>
   <string name="reenable_lock_screen" formatted="false">Bildschirmsperre einschalten</string>
@@ -25,12 +20,8 @@
   <string name="confirm_ten_percent_enable" formatted="false">Wirklich 10% Modus einschalten?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Wirklich 10% Modus ausschalten?</string>
   <string name="confirm_ten_percent_hint" formatted="false">Warnung: Ändern dieser Einstellnung (ein- und ausschalten) führt dazu, dass die Farbeinstellungen zurückgesetzt werden.\n\nBei einem Motorola Droid, Droid X, Droid 2, Defy, or Samsung Moment, sollten Sie diese Einstellung einschalten. Bei allen anderen Geräten kann es, meines Wissens nach, immer ausgeschaltet bleiben.</string>
-  <string name="first_run_title" formatted="false">Danke!</string>
-  <string name="first_run_message" formatted="false">Vielen Dank für Ihre Spende / Kauf! <b><i>Diese beiden Punkte sind sehr wichtig</i> :</b>\n\n• Wenn Sie einen \"<b> Task Killer </b>\" / Prozess-Manager in irgendeiner Art haben, sollten Sie ihn entweder deinstallieren oder versuchen \'Battery Indicator Pro\' zu ignorieren. Auch wenn die kostenlose Version ignoriert wurde, <i> Sie müssen die Pro-Version erneut ignorieren </i>!\n\n• Wenn sie eins folgender Geräte haben: <b>Motorola Milestone</b>, <b>Droid X</b>, <b>Droid 2</b>, <b>Defy</b>, oder <b>Samsung Moment</b>, sollten sie den \"10% Modus\" in Punkt \"Andere Einstellungen\" setzen.</string>
-  <string name="first_run_message_free" formatted="false">Vielen Dank für das von Battery Indicator! <b><i>Dies ist wichtig,</i>: </b>\n\nWenn Sie einen \"<b>Task Killer</b>\" / Prozess-Manager in irgendeiner Art haben, sollten Sie ihn entweder deinstallieren oder versuchen das er \'Battery Indicator\' ignoriert.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Keine(n)</string>
-  <string name="menu_logs" formatted="false">Protokoll</string>
   <string name="menu_settings" formatted="false">Einstellungen</string>
   <string name="menu_close" formatted="false">Schließen</string>
   <string name="menu_help" formatted="false">Hilfe</string>
@@ -102,7 +93,6 @@
   <string name="charging_from" formatted="false">Lädt von</string>
   <string name="fully_charged" formatted="false">Voll geladen</string>
   <string name="since" formatted="false">Seit</string>
-  <string name="one_six_needed" formatted="false">Entschuldigung, Android 1.6+ wird benötigt!</string>
   <string name="currently_using" formatted="false">Im Moment</string>
   <string name="currently_set_to" formatted="false">"Im Moment gesetzt auf: "</string>
   <string name="currently_disabled" formatted="false">Im Moment ausgeschalten</string>
@@ -131,8 +121,6 @@
   <string name="settings_overview" formatted="false">Übersicht</string>
   <string name="theme_settings" formatted="false">Farben und Themes</string>
   <string name="theme_settings_summary" formatted="false">Einstellen der Icon-Farben und Fenster-Themes</string>
-  <string name="time_settings" formatted="false">Zeit Einstellungen</string>
-  <string name="time_settings_summary" formatted="false">Einstellung für Zeitschätzung und -vohersage</string>
   <string name="alarm_settings_subtitle" formatted="false">Alarm Einstellungen</string>
   <string name="alarm_settings" formatted="false">Alarme</string>
   <string name="alarm_settings_summary" formatted="false">Einstellung für Benachrichtigungen bei niedriger/voller Batterie.</string>
@@ -141,7 +129,6 @@
   <string name="pref_please_upgrade" formatted="false">Die Pro-Version hat mehr Einstellungen und Funktionen, wie grüne, gelbe und rote Icons, Alarme, Window-Themes, Batteriestatus-Protokollierung, automatische/manuelle Bildschirmsperre Abschaltung, Lade-/Entladezeit-Schätzung und mehr.</string>
   <string name="add_alarm" formatted="false">Alarm hinzufügen</string>
   <string name="pref_cat_themes" formatted="false">Themes</string>
-  <string name="pref_main_window_theme" formatted="false">Haupt Window-Theme</string>
   <string name="pref_cat_logging" formatted="false">Protokollierung</string>
   <string name="pref_enable_logging" formatted="false">Protokollierung einschalten</string>
   <string name="pref_enable_logging_summary" formatted="false">Batteriestatusänderungen protokollieren?</string>
@@ -164,35 +151,6 @@
   <string name="pref_cat_autostart" formatted="false">Autostart</string>
   <string name="pref_autostart_at_boot" formatted="false">Autostart beim Gerätestart</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">Battery Indicator starten wenn Gerät startet:</string>
-  <string name="pref_cat_charge_as_text" formatted="false">Ladezustand als Text</string>
-  <string name="pref_charge_as_text" formatted="false">Ladezustand als Text</string>
-  <string name="pref_charge_as_text_summary" formatted="false">Den Ladezustand als größeren Text neben dem Icon anzeigen?</string>
-  <string name="pref_cat_status_duration" formatted="false">Statusdauer (Zeit/Stunden)</string>
-  <string name="pref_status_dur_est" formatted="false">Ab wann Näherung</string>
-  <string name="pref_status_dur_est_summary" formatted="false">Näherung in Stunden seit Statusänderung:</string>
-  <string name="pref_cat_time_remaining_estimates" formatted="false">Restzeit Schätzung</string>
-  <string name="pref_show_charge_time" formatted="false">Ladezeit anzeigen</string>
-  <string name="pref_show_charge_time_summary" formatted="false">Während des Ladens, das vorrausichtliche Ende anzeigen?</string>
-  <string name="pref_usb_charge_time" formatted="false">Laden über USB</string>
-  <string name="pref_usb_charge_time_summary" formatted="false">USB Ladezeit von 0% to 100% in Stunden:</string>
-  <string name="pref_ac_charge_time" formatted="false">Laden über Netzkabel</string>
-  <string name="pref_ac_charge_time_summary" formatted="false">Netzkabel Ladezeit von 0% to 100% in Stunden:</string>
-  <string name="pref_show_light_usage" formatted="false">Geringe Benutzung anzeigen</string>
-  <string name="pref_show_light_usage_summary" formatted="false">Restzeit bei geringer Benutzung anzeigen?</string>
-  <string name="pref_light_usage_time" formatted="false">Geringe Benutzung</string>
-  <string name="pref_light_usage_time_summary" formatted="false">Laufzeit bei geringer Benutzung von 0% to 100% in Stunden:</string>
-  <string name="pref_show_normal_usage" formatted="false">Normale Benutzung anzeigen</string>
-  <string name="pref_show_normal_usage_summary" formatted="false">Restzeit bei normaler Benutzung anzeigen?</string>
-  <string name="pref_normal_usage_time" formatted="false">Normale Benutzung</string>
-  <string name="pref_normal_usage_time_summary" formatted="false">Laufzeit bei normaler Benutzung von 0% to 100% in Stunden:</string>
-  <string name="pref_show_heavy_usage" formatted="false">Starke Benutzung anzeigen</string>
-  <string name="pref_show_heavy_usage_summary" formatted="false">Restzeit bei starker Benutzung anzeigen?</string>
-  <string name="pref_heavy_usage_time" formatted="false">Starke Benutzung</string>
-  <string name="pref_heavy_usage_time_summary" formatted="false">Laufzeit bei starker Benutzung von 0% to 100% in Stunden:</string>
-  <string name="pref_show_constant_usage" formatted="false">Dauernder Benutzung anzeigen</string>
-  <string name="pref_show_constant_usage_summary" formatted="false">Restzeit bei dauernder Benutzung anzeigen?</string>
-  <string name="pref_constant_usage_time" formatted="false">Dauernde Benutzung</string>
-  <string name="pref_constant_usage_time_summary" formatted="false">Laufzeit bei dauernder Benutzung von 0% to 100% in Stunden:</string>
   <string name="pref_cat_color" formatted="false">Icon Farbe</string>
   <string name="pref_color_preview" formatted="false">Farbvorschau</string>
   <string name="pref_red" formatted="false">Rotes Icon anzeigen</string>
@@ -224,9 +182,6 @@
   <string name="silent" formatted="false">Still</string>
   <string name="pref_alarm_vibrate" formatted="false">Vibration</string>
   <string name="pref_alarm_lights" formatted="false">Lampe</string>
-  <string name="mw_theme_default_small" formatted="false">Standard klein</string>
-  <string name="mw_theme_colorful_small" formatted="false">Bunt klein</string>
-  <string name="mw_theme_full_window" formatted="false">Ganzes Bildschirm</string>
   <string name="boot_pref_always" formatted="false">Immer</string>
   <string name="boot_pref_never" formatted="false">Nie</string>
   <string name="boot_pref_if_running" formatted="false">Wenn es beim Herunterfahren läuft</string>

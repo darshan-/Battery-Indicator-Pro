@@ -11,4 +11,7 @@
   <style name="main_ll">
     <item name="android:gravity">center_horizontal|top</item>
   </style>
+
+  <integer name="bif_padding_weight">0</integer>
+  <dimen name="bis_side_padding">0dp</dimen>
 </resources>
