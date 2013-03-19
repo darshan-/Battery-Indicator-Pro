@@ -395,9 +395,9 @@ public class BatteryInfoService extends Service {
                 mainNotificationTitle = str.n_minutes_long(info.prediction.minutes);
 
             if (info.prediction.what == BatteryInfo.Prediction.UNTIL_CHARGED)
-                mainNotificationTitle += " until charged"; // TODO: Translatable
+                mainNotificationTitle += res.getString(R.string.notification_until_charged);
             else
-                mainNotificationTitle += " left"; // TODO: Translatable
+                mainNotificationTitle += res.getString(R.string.notification_until_drained);
         }
 
         Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);

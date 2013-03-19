@@ -320,9 +320,9 @@ public class CurrentInfoFragment extends Fragment {
             String until_text;
 
             if (info.prediction.what == BatteryInfo.Prediction.UNTIL_CHARGED)
-                until_text = "until charged"; // TODO: Translatable
+                until_text = activity.res.getString(R.string.activity_until_charged);
             else
-                until_text = "until drained"; // TODO: Translatable
+                until_text = activity.res.getString(R.string.activity_until_drained);
 
             tv = (TextView) view.findViewById(R.id.time_remaining);
             if (info.prediction.days > 0)
@@ -419,8 +419,6 @@ public class CurrentInfoFragment extends Fragment {
         }
     };
 
-
-    // TODO: Re-implement dialogs
     /*
         case DIALOG_FIRST_RUN:
             LayoutInflater inflater = (LayoutInflater) activity.context.getSystemService(LAYOUT_INFLATER_SERVICE);

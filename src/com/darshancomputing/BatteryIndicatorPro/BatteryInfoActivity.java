@@ -94,7 +94,7 @@ public class BatteryInfoActivity extends FragmentActivity {
             Log.i(LOG_TAG, "" + (System.currentTimeMillis() - startMillis) + "ms");
     }
 
-    public static class BatteryInfoPagerAdapter extends FragmentPagerAdapter {
+    public class BatteryInfoPagerAdapter extends FragmentPagerAdapter {
         public BatteryInfoPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -120,8 +120,8 @@ public class BatteryInfoActivity extends FragmentActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            if (position == 1) return "Current Info".toUpperCase(); // TODO: Translatable
-            else               return "History".toUpperCase();      // TODO: Translatable
+            if (position == 1) return res.getString(R.string.tab_current_info).toUpperCase();
+            else               return res.getString(R.string.tab_history).toUpperCase();
         }
     }
 }

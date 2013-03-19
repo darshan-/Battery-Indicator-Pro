@@ -147,10 +147,6 @@ public class Predictor {
 
         double predicted = recentAverage();
 
-        // TODO: Add option to cap prediction at long-term average?
-        /*if (predicted > average[DISCHARGE])
-          predicted = average[DISCHARGE];*/
-
         return (int) (predicted * last_level / 1000);
     }
 

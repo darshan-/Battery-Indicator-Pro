@@ -49,6 +49,14 @@
   <string formatted="false" name="okay">Okay</string>
   <string formatted="false" name="none">None</string>
 
+  <string formatted="false" name="tab_current_info">Current Info</string>
+  <string formatted="false" name="tab_history">History</string>
+
+  <string formatted="false" name="notification_until_charged">" until charged"</string>
+  <string formatted="false" name="notification_until_drained">" left"</string>
+  <string formatted="false" name="activity_until_charged">until charged</string>
+  <string formatted="false" name="activity_until_drained">until drained</string>
+
   <string formatted="false" name="menu_settings">Settings</string>
   <string formatted="false" name="menu_close">Close</string>
   <string formatted="false" name="menu_help">Help</string>
