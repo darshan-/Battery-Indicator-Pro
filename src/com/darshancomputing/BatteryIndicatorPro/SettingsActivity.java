@@ -761,6 +761,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         }
 
         int nPackages = packages.size();
+        nPackages = 0; // TODO: Remove this line to re-enable plugins
         for (int i=0; i < nPackages; i++) {
             PackageInfo pi = packages.get(i);
             if (pi.packageName.matches("com\\.darshancomputing\\.BatteryIndicatorPro\\.IconPluginV1\\..+")){

@@ -450,6 +450,8 @@ public class BatteryInfoService extends Service {
             default_set = "builtin.plain_number";
 
         String icon_set = settings.getString(SettingsActivity.KEY_ICON_SET, "null");
+        if (! icon_set.startsWith("builtin.")) icon_set = "null"; // TODO: Remove this line to re-enable plugins
+
         if (icon_set.equals("null")) {
             icon_set = default_set;
 
