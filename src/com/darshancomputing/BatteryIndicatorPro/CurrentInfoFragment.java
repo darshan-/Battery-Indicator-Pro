@@ -349,21 +349,22 @@ public class CurrentInfoFragment extends Fragment {
         String s = activity.str.statuses[info.status];
 
         if (info.status == BatteryInfo.STATUS_CHARGING)
-            s += " " + activity.str.pluggeds[info.last_plugged];
+            s += " " + activity.str.pluggeds[info.plugged];
 
-        // TODO: Don't show 'since 100%' for Fully Charged status
         tv = (TextView) view.findViewById(R.id.status);
         tv.setText(s);
 
-        s = "Since "; // TODO: Translatable
+        if (info.last_percent >= 0) {
+            s = "Since "; // TODO: Translatable
 
-        if (info.status != BatteryInfo.STATUS_FULLY_CHARGED)
-            s += info.last_percent + activity.str.percent_symbol + ", ";
+            if (info.status != BatteryInfo.STATUS_FULLY_CHARGED)
+                s += info.last_percent + activity.str.percent_symbol + ", ";
 
-        s += hours + "h " + mins + "m ago"; // TODO: Translatable
+            s += hours + "h " + mins + "m ago"; // TODO: Translatable
 
-        tv = (TextView) view.findViewById(R.id.status_duration);
-        tv.setText(s);
+            tv = (TextView) view.findViewById(R.id.status_duration);
+            tv.setText(s);
+        }
 
         updateLockscreenButton();
     }
