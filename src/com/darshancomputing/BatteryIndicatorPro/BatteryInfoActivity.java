@@ -67,6 +67,8 @@ public class BatteryInfoActivity extends FragmentActivity {
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
         tabStrip.setTabIndicatorColor(0x33b5e5);
+
+        viewPager.setCurrentItem(1);
     }
 
     public void loadSettingsFiles() {
@@ -76,8 +78,8 @@ public class BatteryInfoActivity extends FragmentActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && viewPager.getCurrentItem() > 0) {
-            viewPager.setCurrentItem(0); // TODO: Or to current - 1?
+        if (keyCode == KeyEvent.KEYCODE_BACK && viewPager.getCurrentItem() != 1) {
+            viewPager.setCurrentItem(1);
             return true;
         }
 
@@ -105,7 +107,7 @@ public class BatteryInfoActivity extends FragmentActivity {
         // TODO: Put Fragment types and page titles in Arrays or Map or something.
         @Override
         public Fragment getItem(int position) {
-            if (position == 0) {
+            if (position == 1) {
                 if (currentInfoFragment == null)
                     currentInfoFragment = new CurrentInfoFragment();
                 return currentInfoFragment;
@@ -118,7 +120,7 @@ public class BatteryInfoActivity extends FragmentActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            if (position == 0) return "Current Info".toUpperCase(); // TODO: Translatable
+            if (position == 1) return "Current Info".toUpperCase(); // TODO: Translatable
             else               return "History".toUpperCase();      // TODO: Translatable
         }
     }
