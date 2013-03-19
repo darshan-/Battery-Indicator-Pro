@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
-  <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
+  <string name="app_full_name" formatted="false">BatteryBot Pro</string>
+  <string name="app_launcher_name" formatted="false">BatteryBot</string>
   <string name="settings_activity_subtitle" formatted="false">Ustawienia</string>
   <string name="help_activity_subtitle" formatted="false">Pomoc</string>
   <string name="log_view_activity_subtitle" formatted="false">Logi</string>
-  <string name="app_full_name_free" formatted="false">Battery Indicator</string>
+  <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Sprawdź zużycie baterii</string>
   <string name="upgrade_donate_b" formatted="false">Ulepsz/Wspomóż...</string>
   <string name="reenable_lock_screen" formatted="false">Ponownie włącz blok. ekranu</string>

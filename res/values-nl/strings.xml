@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
-  <string name="app_launcher_name" formatted="false">Battery Indicator Pro</string>
+  <string name="app_full_name" formatted="false">BatteryBot Pro</string>
+  <string name="app_launcher_name" formatted="false">BatteryBot</string>
   <string name="settings_activity_subtitle" formatted="false">Instellingen</string>
   <string name="help_activity_subtitle" formatted="false">Help</string>
   <string name="log_view_activity_subtitle" formatted="false">Logboeken</string>
-  <string name="app_full_name_free" formatted="false">Battery Indicator</string>
+  <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Batterijgebruik bekijken</string>
   <string name="upgrade_donate_b" formatted="false">Upgraden of doneren</string>
-  <string name="reenable_lock_screen" formatted="false">Schermvergrendeling weer toestaan</string>
-  <string name="disable_lock_screen" formatted="false">Schermvergrendeling voorkomen</string>
-  <string name="confirm_disable" formatted="false">Schermvergrendeling voorkomen?</string>
+  <string name="reenable_lock_screen" formatted="false">Schermvergrendeling inschakelen</string>
+  <string name="disable_lock_screen" formatted="false">Schermvergrendeling uitschakelen</string>
+  <string name="confirm_disable" formatted="false">Wil je de schermvergrendeling uitschakelen?</string>
   <string name="confirm_disable_hint" formatted="false">(Je kunt deze bevestiging uitzetten bij de instellingen)</string>
   <string name="yes" formatted="false">Ja</string>
   <string name="cancel" formatted="false">Annuleren</string>
   <string name="confirm_close" formatted="false">Sluiten?</string>
-  <string name="confirm_close_hint" formatted="false">Battery Indicator zal volledig worden afgesloten, en het statusbalkicoon zal ook weggaan.\n\nWil je alleen dit venster sluiten en de indicator actief houden, druk dan op Annulerem en druk op de TERUG knop om het venster te sluiten.</string>
+  <string name="confirm_close_hint" formatted="false">Battery Indicator zal volledig worden afgesloten, en het statusbalkicoon zal ook weggaan.\n\nWil je alleen dit venster sluiten en de indicator actief houden, druk dan op \'Annuleren\' en druk op de TERUG knop om het venster te sluiten.</string>
   <string name="confirm_clear_logs" formatted="false">Alle logboeken verwijderen?</string>
   <string name="configure_log_filter" formatted="false">Welke logitems laten zien?</string>
   <string name="confirm_ten_percent_enable" formatted="false">10% Modus activeren?</string>
