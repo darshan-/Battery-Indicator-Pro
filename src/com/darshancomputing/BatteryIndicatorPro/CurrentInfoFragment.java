@@ -219,6 +219,14 @@ public class CurrentInfoFragment extends Fragment {
         case R.id.menu_help:
             mStartActivity(HelpActivity.class);
             return true;
+        case R.id.menu_rate_and_review:
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                                         Uri.parse("market://details?id=com.darshancomputing.BatteryIndicatorPro")));
+            } catch (Exception e) {
+                Toast.makeText(activity.getApplicationContext(), "Sorry, can't launch Market!", Toast.LENGTH_SHORT).show();
+            }
+            return true;
         default:
             return super.onOptionsItemSelected(item);
         }
