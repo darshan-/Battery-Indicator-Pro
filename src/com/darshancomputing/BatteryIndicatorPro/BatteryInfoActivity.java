@@ -86,14 +86,6 @@ public class BatteryInfoActivity extends FragmentActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        //android.os.Debug.stopMethodTracing();
-        if (hasFocus)
-            Log.i(LOG_TAG, "" + (System.currentTimeMillis() - startMillis) + "ms");
-    }
-
     public class BatteryInfoPagerAdapter extends FragmentPagerAdapter {
         public BatteryInfoPagerAdapter(FragmentManager fm) {
             super(fm);
