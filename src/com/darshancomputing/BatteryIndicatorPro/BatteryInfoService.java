@@ -217,7 +217,7 @@ public class BatteryInfoService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent.getBooleanExtra(EXTRA_UPDATE_PREDICTOR, false))
+        if (intent != null && intent.getBooleanExtra(EXTRA_UPDATE_PREDICTOR, false))
             update(null);
 
         return Service.START_STICKY;
