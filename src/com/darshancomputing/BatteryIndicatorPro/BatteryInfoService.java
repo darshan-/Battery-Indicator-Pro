@@ -203,6 +203,7 @@ public class BatteryInfoService extends Service {
 
     @Override
     public void onDestroy() {
+        alarmManager.cancel(updatePredictorPendingIntent);
         setEnablednessOfKeyguard(true);
         alarms.close();
         if (! pluginPackage.equals("none")) disconnectPlugin();
