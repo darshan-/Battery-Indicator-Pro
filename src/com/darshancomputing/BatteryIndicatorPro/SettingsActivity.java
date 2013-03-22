@@ -64,6 +64,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_ICON_PLUGIN = "icon_plugin";
     public static final String KEY_ICON_SET = "icon_set";
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
+    public static final String KEY_NOTIFY_STATUS_DURATION = "notify_status_duration";
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_TEN_PERCENT_MODE = "ten_percent_mode";
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
@@ -90,7 +91,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_MAIN_NOTIFICATION_PRIORITY, KEY_ICON_SET,
                                                 KEY_MAX_LOG_AGE/*, KEY_LANGUAGE_OVERRIDE*/};
 
-    private static final String[] RESET_SERVICE = {KEY_CONVERT_F,
+    private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_NOTIFY_STATUS_DURATION,
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
                                                    KEY_NOTIFY_WHEN_KG_DISABLED, KEY_ICON_SET,

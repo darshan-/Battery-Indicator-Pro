@@ -39,6 +39,12 @@
     <TextView style="@style/help_text" android:text="@string/pref_main_notification_priority_help" />
 
     <View style="@style/help_cat_pre_margin" />
+    <TextView style="@style/help_cat"  android:text="@string/pref_cat_notification_content" />
+    <View style="@style/help_cat_post_margin" />
+    <TextView style="@style/help_pref" android:text="@string/pref_notify_status_duration" />
+    <TextView style="@style/help_text" android:text="@string/pref_notify_status_duration_help" />
+
+    <View style="@style/help_cat_pre_margin" />
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_battery_use" />
     <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_finish_after_battery_use" />
