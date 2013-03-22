@@ -47,6 +47,7 @@
 	    android:layout_width="fill_parent"
             android:layout_gravity="center_horizontal"
             android:textSize="@dimen/tls_button_fs"
+            android:enabled="false"
     />
   </LinearLayout>
 </LinearLayout>

@@ -89,6 +89,7 @@ public class CurrentInfoFragment extends Fragment {
 
             switch (incoming.what) {
             case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
+                setEnablednessOfLockButton();
                 serviceMessenger = incoming.replyTo;
                 sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
                 break;
@@ -119,7 +120,7 @@ public class CurrentInfoFragment extends Fragment {
         toggle_lock_screen_b = (Button) view.findViewById(R.id.toggle_lock_screen_b);
         battery_use_b = (Button) view.findViewById(R.id.battery_use_b);
 
-        updateLockscreenButton(); // TODO: This button should be disabled until Service is connected
+        updateLockscreenButton();
         bindButtons();
 
         return view;
@@ -135,8 +136,6 @@ public class CurrentInfoFragment extends Fragment {
 
         setHasOptionsMenu(true);
         //setRetainInstance(true); // TODO: Sort out a clean way to do this?
-
-        disallowLockButton = activity.settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
 
         if (activity.settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
             // If you ever need a first-run dialog again, this is when you would show it
@@ -232,14 +231,10 @@ public class CurrentInfoFragment extends Fragment {
         }
     }
 
-    // TODO
-    /*
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Boolean oldDisallow = disallowLockButton;
-        disallowLockButton = activity.settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        setEnablednessOfLockButton();
     }
-    */
 
     public static class ConfirmDisableKeyguardDialogFragment extends DialogFragment {
         @Override
@@ -458,5 +453,9 @@ public class CurrentInfoFragment extends Fragment {
         }
 
         toggle_lock_screen_b.setOnClickListener(tlsButtonListener);
+    }
+
+    private void setEnablednessOfLockButton() {
+        toggle_lock_screen_b.setEnabled(! activity.settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false));
     }
 }
