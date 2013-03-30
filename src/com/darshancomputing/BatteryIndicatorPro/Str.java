@@ -164,6 +164,11 @@ public class Str {
                 String.format(res.getQuantityString(R.plurals.n_minutes_medium, m), m));
     }
 
+    public String n_hours_long_m_minutes_medium(int n, int m) {
+        return (String.format(res.getQuantityString(R.plurals.n_hours_long, n), n) +
+                String.format(res.getQuantityString(R.plurals.n_minutes_medium, m), m));
+    }
+
     public String n_hours_m_minutes_short(int n, int m) {
         return (String.format(res.getQuantityString(R.plurals.n_hours_short, n), n) +
                 String.format(res.getQuantityString(R.plurals.n_minutes_short, m), m));

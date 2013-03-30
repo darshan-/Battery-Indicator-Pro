@@ -2,4 +2,11 @@
 <resources>
   <style name="bi_help_theme" parent="@android:style/Theme.Holo.Light">
   </style>
+
+  <style name="NotificationTextIcon" parent="NotificationTitle">
+    <item name="android:background">#222</item>
+    <item name="android:textColor">#fff</item>
+  </style>
+
+  <dimen name="main_notification_text_padding_left">10dp</dimen>
 </resources>

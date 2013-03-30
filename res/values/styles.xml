@@ -100,4 +100,9 @@
     <item name="android:textStyle">bold</item>
     <item name="android:textSize">17dp</item>
   </style>
+
+  <style name="NotificationTextIcon" parent="NotificationTitle">
+  </style>
+
+  <dimen name="main_notification_text_padding_left">3dp</dimen>
 </resources>
