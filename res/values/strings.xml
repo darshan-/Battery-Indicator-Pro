@@ -157,10 +157,12 @@
   </plurals>
 
   <plurals name="n_hours_medium">
+    <item quantity="one">"%d hr, "</item>
     <item quantity="other">"%d hrs, "</item>
   </plurals>
 
   <plurals name="n_minutes_medium">
+    <item quantity="one">%d min.</item>
     <item quantity="other">%d mins.</item>
   </plurals>
 
