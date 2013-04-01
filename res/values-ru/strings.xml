@@ -2,23 +2,29 @@
 <resources>
   <string name="app_full_name" formatted="false">BatteryBot Pro</string>
   <string name="app_launcher_name" formatted="false">BatteryBot</string>
+  <string name="settings_activity_subtitle" formatted="false">Настройки</string>
+  <string name="help_activity_subtitle" formatted="false">Помощь</string>
+  <string name="log_view_activity_subtitle" formatted="false">Журналы</string>
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Посмотреть использование батареи</string>
   <string name="upgrade_donate_b" formatted="false">Улучшить/Помочь проекту</string>
   <string name="reenable_lock_screen" formatted="false">Включить блокировку экрана</string>
   <string name="disable_lock_screen" formatted="false">Выключить блокировку экрана</string>
-  <string name="confirm_disable" formatted="false">Вы действительно хотите отключить блокировку экрана?</string>
-  <string name="confirm_disable_hint" formatted="false">Подсказка: Вы можете отключить \"запрос подтверждения\" в настройках...</string>
+  <string name="confirm_disable" formatted="false">Действительно отключить блокировку экрана?</string>
+  <string name="confirm_disable_hint" formatted="false">Подсказка: Отключите этот диалог подтверждения в настройках...</string>
   <string name="yes" formatted="false">Да</string>
   <string name="cancel" formatted="false">Отмена</string>
   <string name="confirm_close" formatted="false">Действительно закрыть?</string>
-  <string name="confirm_close_hint" formatted="false">Battery Indicator будет полностью закрыт и Вы не увидите индикатор в строке состояния.\n\nЕсли Вы хотите выйти из главного меню и оставить индикатор активным, нажмите \"Отмена\" и после этого просто нажмите кнопку \"BACK\" для выхода из главного меню.</string>
-  <string name="confirm_clear_logs" formatted="false">Действительно удалить весь журнал работы?</string>
+  <string name="confirm_close_hint" formatted="false">Battery Indicator будет полностью закрыт и Вы не увидите индикатор в строке состояния.\n\nЕсли Вы хотите выйти из главного окна и оставить индикатор активным, нажмите \"Отмена\" и после этого просто нажмите кнопку \"Назад\" для выхода из главного окна.</string>
+  <string name="confirm_clear_logs" formatted="false">Действительно очистить журнал?</string>
+  <string name="configure_log_filter" formatted="false">Какие элементы журнала показывать?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Действительно включить режим 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Действительно выключить режим 10%?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">ВНИМАНИЕ: Изменение этой настройки (её включение и выключение) сбросит Ваши цветовые настройки программы.\n\nЕсли Вы являетесь владельцем Motorola Droid, Droid X, Droid 2, Defy или Samsung Moment, Вы обязательно должны включить данную настройку сразу же после установки этого приложения. Для остальных устройств данную настройку следует отключить.</string>
+  <string name="confirm_ten_percent_hint" formatted="false">Предупреждение: Изменение этой настройки (её включение и выключение) сбросит Ваши цветовые настройки программы.\n\nЕсли Вы являетесь владельцем Motorola Droid, Droid X, Droid 2, Defy или Samsung Moment, Вы обязательно должны включить данную настройку сразу же после установки этого приложения. Для остальных устройств данную настройку следует отключить.</string>
   <string name="okay" formatted="false">Да</string>
   <string name="none" formatted="false">Нет</string>
+  <string name="tab_current_info" formatted="false">Текущая информация</string>
+  <string name="tab_history" formatted="false">История</string>
   <string name="menu_settings" formatted="false">Настройки</string>
   <string name="menu_close" formatted="false">Закрыть</string>
   <string name="menu_help" formatted="false">Помощь</string>

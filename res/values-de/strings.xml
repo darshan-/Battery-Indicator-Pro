@@ -10,16 +10,17 @@
   <string name="upgrade_donate_b" formatted="false">Erweitern/Spenden...</string>
   <string name="reenable_lock_screen" formatted="false">Bildschirmsperre einschalten</string>
   <string name="disable_lock_screen" formatted="false">Bildschirmsperre ausschalten</string>
-  <string name="confirm_disable" formatted="false">Wirklich Bildschirmsperre ausschalten?</string>
-  <string name="confirm_disable_hint" formatted="false">Tip: Die Bestätigungsabfrage in den Einstellungen ausschalten...</string>
+  <string name="confirm_disable" formatted="false">Soll die Bildschirmsperre wirklich ausgeschaltet werden?</string>
+  <string name="confirm_disable_hint" formatted="false">Tipp: Sie können den Bestätigungsdialog in den Einstellungen ausschalten...</string>
   <string name="yes" formatted="false">Ja</string>
   <string name="cancel" formatted="false">Abbrechen</string>
   <string name="confirm_close" formatted="false">Wirklich schließen?</string>
-  <string name="confirm_close_hint" formatted="false">Battery Indicator wird komplett beendet, damit wird auch die Anzeige im Statusbalken verschwinden.\n\nWenn sie nur das Fenster schließen wollen und die Anzeige im Statusbalken behalten, dann drücken Sie Abbrechen und benutzen sie die ZURÜCK-Schaltfläche ihres Gerätes.</string>
+  <string name="confirm_close_hint" formatted="false">Battery Indicator wird komplett beendet, damit wird auch die Anzeige im Statusbalken verschwinden.\n\nWenn sie nur das Fenster schließen wollen und die Anzeige im Statusbalken behalten, dann drücken Sie \"Abbrechen\" und benutzen sie die \"ZURÜCK\"-Schaltfläche ihres Gerätes.</string>
   <string name="confirm_clear_logs" formatted="false">Wirklich alle Protokolle löschen?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Wirklich 10% Modus einschalten?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Wirklich 10% Modus ausschalten?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Warnung: Ändern dieser Einstellnung (ein- und ausschalten) führt dazu, dass die Farbeinstellungen zurückgesetzt werden.\n\nBei einem Motorola Droid, Droid X, Droid 2, Defy, or Samsung Moment, sollten Sie diese Einstellung einschalten. Bei allen anderen Geräten kann es, meines Wissens nach, immer ausgeschaltet bleiben.</string>
+  <string name="configure_log_filter" formatted="false">Welche Elemente sollen angezeigt werden?</string>
+  <string name="confirm_ten_percent_enable" formatted="false">Soll der 10%-Modus wirklich eingeschaltet werden?</string>
+  <string name="confirm_ten_percent_disable" formatted="false">Soll der 10%-Modus wirklich ausgeschaltet werden?</string>
+  <string name="confirm_ten_percent_hint" formatted="false">Warnung: Das Ändern dieser Einstellung (sowohl das Ein-, als auch das Ausschalten) führt dazu, dass die Farbeinstellungen zurückgesetzt werden.\n\nBei den Modellen Motorola Droid, Droid X, Droid 2, Defy, or Samsung Moment, sollten Sie diese Einstellung von Anfang an einschalten. Bei allen anderen Geräten kann es, meines Wissens nach, immer ausgeschaltet bleiben.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Keine(n)</string>
   <string name="menu_settings" formatted="false">Einstellungen</string>
