@@ -96,6 +96,7 @@
   <string formatted="false" name="status">status</string>
   <string formatted="false" name="charge">charge_percentage</string>
   <string formatted="false" name="temperature">degrees_celsius</string>
+  <string formatted="false" name="temperature_f">degrees_fahrenheit</string>
   <string formatted="false" name="voltage">volts</string>
 
   <string formatted="false" name="status_unplugged">Unplugged</string>

@@ -315,8 +315,8 @@ public class LogViewFragment extends ListFragment {
         File root    = Environment.getExternalStorageDirectory();
         File csvFile = new File(root, csvFileName);
 
-        String[] csvFields = {activity.str.date, activity.str.time, activity.str.status,
-                              activity.str.charge, activity.str.temperature, activity.str.voltage};
+        String[] csvFields = {activity.str.date, activity.str.time, activity.str.status, activity.str.charge,
+                              activity.str.temperature, activity.str.temperature_f, activity.str.voltage};
 
         try {
             if (!csvFile.createNewFile() || !csvFile.canWrite()) {
@@ -363,7 +363,9 @@ public class LogViewFragment extends ListFragment {
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_CHARGE)) {
                         buf.write(String.valueOf(completeCursor.getInt(mAdapter.chargeIndex)) + ",");
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_TEMPERATURE)) {
-                        buf.write(String.valueOf(completeCursor.getInt(mAdapter.temperatureIndex) / 10.0) + ",");
+                        int temperature = completeCursor.getInt(mAdapter.temperatureIndex);
+                        buf.write(String.valueOf(temperature / 10.0) + ",");
+                        buf.write(String.valueOf(java.lang.Math.round(temperature * 9 / 5.0) / 10.0 + 32.0) + ",");
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_VOLTAGE)) {
                         buf.write(String.valueOf(completeCursor.getInt(mAdapter.voltageIndex) / 1000.0));
                     }

@@ -66,6 +66,7 @@ public class Str {
     public String status;
     public String charge;
     public String temperature;
+    public String temperature_f;
     public String voltage;
     
     public String[] statuses;
@@ -125,12 +126,13 @@ public class Str {
         read_only_storage     = res.getString(R.string.read_only_storage);
         file_written          = res.getString(R.string.file_written);
 
-        date        = res.getString(R.string.date);
-        time        = res.getString(R.string.time);
-        status      = res.getString(R.string.status);
-        charge      = res.getString(R.string.charge);
-        temperature = res.getString(R.string.temperature);
-        voltage     = res.getString(R.string.voltage);
+        date          = res.getString(R.string.date);
+        time          = res.getString(R.string.time);
+        status        = res.getString(R.string.status);
+        charge        = res.getString(R.string.charge);
+        temperature   = res.getString(R.string.temperature);
+        temperature_f = res.getString(R.string.temperature_f);
+        voltage       = res.getString(R.string.voltage);
 
         statuses            = res.getStringArray(R.array.statuses);
         log_statuses        = res.getStringArray(R.array.log_statuses);
