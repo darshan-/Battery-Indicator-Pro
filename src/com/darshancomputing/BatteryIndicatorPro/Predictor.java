@@ -28,9 +28,9 @@ public class Predictor {
     private double[] average = new double[4];
 
     private static final int[] DEFAULT = { 24 * 60 * 60 * 1000 / 100,
-                                           3 * 60 * 60 * 1000 / 100,
-                                           4 * 60 * 60 * 1000 / 100,
-                                           6 * 60 * 60 * 1000 / 100 };
+                                            3 * 60 * 60 * 1000 / 100,
+                                            4 * 60 * 60 * 1000 / 100,
+                                            6 * 60 * 60 * 1000 / 100 };
 
     private static final String[] KEY_AVERAGE = { "key_ave_discharge",
                                                   "key_ave_recharge_ac",

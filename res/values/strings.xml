@@ -351,10 +351,20 @@
     help from whatever settings page you are on.
   </string>
 
-  <string formatted="false" name="theme_settings">Icons and Themes</string>
-  <string formatted="false" name="theme_settings_summary">Control icon sets and theming</string>
-  <string formatted="false" name="theme_settings_help">
+  <string formatted="false" name="notification_settings">Notification</string>
+  <string formatted="false" name="notification_settings_summary">Configure the notification</string>
+  <string formatted="false" name="notification_settings_help">
+    You can configure which content to show in the pull-down notification and control its appearance.
+  </string>
+  <string formatted="false" name="status_bar_icon_settings">Status Bar Icon</string>
+  <string formatted="false" name="status_bar_icon_settings_summary">Control icon sets</string>
+  <string formatted="false" name="status_bar_icon_settings_help">
     You can select which icon set to use and change the settings for the icon set (e.g., colors).
+  </string>
+  <string formatted="false" name="lock_screen_settings">Lock Screen</string>
+  <string formatted="false" name="lock_screen_settings_summary">Configure the feature to disable the lock screen</string>
+  <string formatted="false" name="lock_screen_settings_help">
+    You can configure several aspects about the feature to automatically or manually disable your device\'s lock screen.
   </string>
   <string formatted="false" name="alarm_settings_subtitle">Alarm Settings</string>
   <string formatted="false" name="alarm_settings">Alarms</string>
@@ -365,7 +375,6 @@
     the battery level drops below 20%).
   </string>
   <string formatted="false" name="other_settings">Other Settings</string>
-  <!--string name="other_settings_summary"></string-->
   <string formatted="false" name="other_settings_help">
     All other settings are on this page, including logging, lock
     screen, temperature unit, autostart, and more.
