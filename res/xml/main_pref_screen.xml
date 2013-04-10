@@ -13,9 +13,22 @@
   />
 
   <Preference
-     android:key="theme_settings"
-     android:title="@string/theme_settings"
-     android:summary="@string/theme_settings_summary"
+     android:key="notification_settings"
+     android:title="@string/notification_settings"
+     android:summary="@string/notification_settings_summary"
+  />
+
+  <Preference
+     android:key="status_bar_icon_settings"
+     android:title="@string/status_bar_icon_settings"
+     android:summary="@string/status_bar_icon_settings_summary"
+  />
+
+
+  <Preference
+     android:key="keyguard_settings"
+     android:title="@string/keyguard_settings"
+     android:summary="@string/keyguard_settings_summary"
   />
 
   <Preference

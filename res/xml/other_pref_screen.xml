@@ -24,64 +24,6 @@
     />
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="@string/pref_cat_keyguard">
-    <CheckBoxPreference
-       android:key="notify_when_kg_disabled"
-       android:title="@string/pref_notify_when_kg_disabled"
-       android:summary="@string/pref_notify_when_kg_disabled_summary"
-       android:defaultValue="true"
-    />
-
-    <CheckBoxPreference
-       android:key="confirm_disable_lock_screen"
-       android:title="@string/pref_confirm_manual_disable"
-       android:summary="@string/pref_confirm_manual_disable_summary"
-       android:defaultValue="true"
-    />
-
-    <CheckBoxPreference
-       android:key="finish_after_toggle_lock"
-       android:title="@string/pref_finish_after_toggle_lock"
-       android:summary="@string/pref_finish_after_toggle_lock_summary"
-       android:defaultValue="false"
-    />
-
-    <CheckBoxPreference
-       android:key="auto_disable_lock_screen"
-       android:title="@string/pref_auto_disable"
-       android:summary="@string/pref_auto_disable_summary"
-       android:defaultValue="false"
-    />
-
-    <CheckBoxPreference
-       android:key="disallow_disable_lock_screen"
-       android:title="@string/pref_disallow_disable_lock_screen"
-       android:summary="@string/pref_disallow_disable_lock_screen_summary"
-       android:defaultValue="false"
-    />
-  </PreferenceCategory>
-
-  <PreferenceCategory android:title="@string/pref_cat_notification_priority">
-    <ListPreference
-       android:key="main_notification_priority"
-       android:title="@string/pref_main_notification_priority"
-       android:entries="@array/notification_priority_entries" 
-       android:entryValues="@array/notification_priority_values"
-       android:dialogTitle="@string/pref_main_notification_priority_summary"
-       android:defaultValue="@string/default_main_notification_priority"
-       android:enabled="@bool/api_level_16_plus"
-    />
-  </PreferenceCategory>
-
-  <PreferenceCategory android:title="@string/pref_cat_notification_content">
-    <CheckBoxPreference
-       android:key="notify_status_duration"
-       android:title="@string/pref_notify_status_duration"
-       android:summary="@string/pref_notify_status_duration_summary"
-       android:defaultValue="false"
-    />
-  </PreferenceCategory>
-
   <PreferenceCategory android:title="@string/pref_cat_battery_use">
     <CheckBoxPreference
        android:key="finish_after_battery_use"

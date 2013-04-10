@@ -195,6 +195,9 @@
     <item quantity="other">For %d Hours</item>
   </plurals>
 
+  <string name="dialog_color_picker">Choose Color</string>
+  <string name="press_color_to_apply">Apply old or new color:</string>
+
   <string formatted="false" name="currently_using">Currently using</string>
   <string formatted="false" name="currently_set_to">"Currently set to: "</string>
   <string formatted="false" name="currently_disabled">Currently Disabled</string>
@@ -351,8 +354,8 @@
     help from whatever settings page you are on.
   </string>
 
-  <string formatted="false" name="notification_settings">Notification</string>
-  <string formatted="false" name="notification_settings_summary">Configure the notification</string>
+  <string formatted="false" name="notification_settings">Main Notification</string>
+  <string formatted="false" name="notification_settings_summary">Configure the main notification</string>
   <string formatted="false" name="notification_settings_help">
     You can configure which content to show in the pull-down notification and control its appearance.
   </string>
@@ -361,9 +364,9 @@
   <string formatted="false" name="status_bar_icon_settings_help">
     You can select which icon set to use and change the settings for the icon set (e.g., colors).
   </string>
-  <string formatted="false" name="lock_screen_settings">Lock Screen</string>
-  <string formatted="false" name="lock_screen_settings_summary">Configure the feature to disable the lock screen</string>
-  <string formatted="false" name="lock_screen_settings_help">
+  <string formatted="false" name="keyguard_settings">Lock Screen</string>
+  <string formatted="false" name="keyguard_settings_summary">Configure the feature to disable the lock screen</string>
+  <string formatted="false" name="keyguard_settings_help">
     You can configure several aspects about the feature to automatically or manually disable your device\'s lock screen.
   </string>
   <string formatted="false" name="alarm_settings_subtitle">Alarm Settings</string>
@@ -390,7 +393,54 @@
 
   <string formatted="false" name="add_alarm">Add alarm</string>
 
-  <string formatted="false" name="pref_cat_themes">Themes</string>
+  <string formatted="false" name="pref_cat_notification_content">Content</string>
+
+  <string formatted="false" name="pref_icon_area_content">Icon Area Content</string>
+  <string formatted="false" name="pref_icon_area_content_help">
+  </string>
+  <string formatted="false" name="pref_top_line_content">Top Line Content</string>
+  <string formatted="false" name="pref_top_line_content_help">
+  </string>
+  <string formatted="false" name="pref_bottom_line_content">Bottom Line Content</string>
+  <string formatted="false" name="pref_bottom_line_content_help">
+  </string>
+  <string formatted="false" name="pref_time_remaining_verbosity">Time Remaining Verbosity</string>
+  <string formatted="false" name="pref_time_remaining_verbosity_help">
+  </string>
+  <string formatted="false" name="pref_status_duration_in_vital_signs">Status Duration in Vital Signs</string>
+  <string formatted="false" name="pref_status_duration_in_vital_signs_summary">
+    Include Time Since Status Change in Vital Signs?
+  </string>
+  <string formatted="false" name="pref_status_duration_in_vital_signs_help">
+  </string>
+
+  <string formatted="false" name="pref_cat_notification_appearance">Appearance</string>
+
+  <string formatted="false" name="pref_cat_notification_priority">Notification Priority</string>
+  <string formatted="false" name="pref_cat_notification_priority_help">
+    On Jelly Bean and up (Android 4.1 and over), notifications can have a priority set.
+    The effect(s) of changing the priority are not guaranteed, but in general:\n
+
+    \n• Setting it to \"Minimum\" should in most cases remove the status bar icon but
+    still show the notification in the pull-down notification tray.\n
+
+    \n• Setting it to \"Low\" should allow other notifications, such as new email, to appear
+    above the BatteryBot notification. This is nice in cases like email where the
+    notification is expandable (expandable notifications are automatically expanded when
+    they are the top notification).\n
+
+    \nPriorities \"Default\" and above seem to usually leave BatteryBot as the top
+    notification, but I imagine there are edge cases where the higher priorities make a difference.\n
+
+    \nAgain, the exact behavior may vary between devices and is not guaranteed.
+  </string>
+  <string formatted="false" name="pref_main_notification_priority">Main Notification Priority</string>
+  <string formatted="false" name="pref_main_notification_priority_help">
+    Set the priority of the main notification.  Alarms, plugins, and any other notifications are not
+    affected by this setting, but they may in the future have configurable priority.
+  </string>
+
+  <string formatted="false" name="pref_cat_icon_set">Icon Set</string>
   <string formatted="false" name="pref_icon_set">Icon Set</string>
   <string formatted="false" name="pref_icon_set_help">
     Android comes in many flavors, so there is no one perfect icon set
@@ -496,40 +546,6 @@
     If you have an alternative lock screen that allows access to the
     notification tray when the screen is locked, you might want to
     enabled this option for security reasons.
-  </string>
-
-  <string formatted="false" name="pref_cat_notification_priority">Notification Priority</string>
-  <string formatted="false" name="pref_cat_notification_priority_help">
-    On Jelly Bean and up (Android 4.1 and over), notifications can have a priority set.
-    The effect(s) of changing the priority are not guaranteed, but in general:\n
-
-    \n• Setting it to \"Minimum\" should in most cases remove the status bar icon but
-    still show the notification in the pull-down notification tray.\n
-
-    \n• Setting it to \"Low\" should allow other notifications, such as new email, to appear
-    above the BatteryBot notification. This is nice in cases like email where the
-    notification is expandable (expandable notifications are automatically expanded when
-    they are the top notification).\n
-
-    \nPriorities \"Default\" and above seem to usually leave BatteryBot as the top
-    notification, but I imagine there are edge cases where the higher priorities make a difference.\n
-
-    \nAgain, the exact behavior may vary between devices and is not guaranteed.
-  </string>
-  <string formatted="false" name="pref_main_notification_priority">Main Notification Priority</string>
-  <string formatted="false" name="pref_main_notification_priority_help">
-    Set the priority of the main notification.  Alarms, plugins, and any other notifications are not
-    affected by this setting, but they may in the future have configurable priority.
-  </string>
-
-  <string formatted="false" name="pref_cat_notification_content">Notification Content</string>
-  <string formatted="false" name="pref_notify_status_duration">Show Status Duration</string>
-  <string formatted="false" name="pref_notify_status_duration_summary">Show time since status changed rather than estimate of time remaining?</string>
-  <string formatted="false" name="pref_notify_status_duration_help">
-    Enable this setting if you\'d prefer the main notification to show
-    the time since the status changed (e.g., \"Unplugged for 5
-    hours\") rather than the estimate of time remaining.  Both pieces
-    of information are available from the main window.
   </string>
 
   <string formatted="false" name="pref_cat_battery_use">Battery Use</string>

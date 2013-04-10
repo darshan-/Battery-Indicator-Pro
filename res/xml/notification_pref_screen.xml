@@ -1,0 +1,110 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <Preference
+     android:title="@string/pref_hint"
+     android:layout="@layout/hint"
+     android:enabled="false"
+     android:selectable="false"
+  />
+
+  <PreferenceCategory android:title="@string/pref_cat_notification_content">
+    <ListPreference
+       android:key="icon_area"
+       android:title="@string/pref_icon_area_content"
+       android:entries="@array/icon_area_content_entries" 
+       android:entryValues="@array/icon_area_content_values"
+       android:dialogTitle="@string/pref_icon_area_content_summary"
+       android:defaultValue="@string/default_icon_area_content"
+    />
+
+    <ListPreference
+       android:key="top_line"
+       android:title="@string/pref_top_line_content"
+       android:entries="@array/top_line_content_entries" 
+       android:entryValues="@array/top_line_content_values"
+       android:dialogTitle="@string/pref_top_line_content_summary"
+       android:defaultValue="@string/default_top_line_content"
+    />
+
+    <ListPreference
+       android:key="bottom_line"
+       android:title="@string/pref_bottom_line_content"
+       android:entries="@array/bottom_line_content_entries" 
+       android:entryValues="@array/bottom_line_content_values"
+       android:dialogTitle="@string/pref_bottom_line_content_summary"
+       android:defaultValue="@string/default_bottom_line_content"
+    />
+
+    <ListPreference
+       android:key="time_remaining_verbosity"
+       android:title="@string/pref_time_remaining_verbosity"
+       android:entries="@array/time_remaining_verbosity_entries" 
+       android:entryValues="@array/time_remaining_verbosity_values"
+       android:dialogTitle="@string/pref_time_remaining_verbosity_summary"
+       android:defaultValue="@string/default_time_remaining_verbosity"
+    />
+
+    <CheckBoxPreference
+       android:key="status_duration_in_vital_signs"
+       android:title="@string/pref_status_duration_in_vital_signs"
+       android:summary="@string/pref_status_duration_in_vital_signs_summary"
+       android:defaultValue="false"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/pref_cat_notification_appearance">
+    <CheckBoxPreference
+       android:key="override_percentage_text_color"
+       android:title="@string/pref_override_percentage_text_color"
+       android:summary="@string/pref_override_percentage_text_color_summary"
+       android:defaultValue="false"
+    />
+
+    <net.margaritov.preference.colorpicker.ColorPickerPreference 
+        android:key="notification_percentage_text_color"
+        android:title="@string/pref_notificaton_percentage_text_color" 
+    />
+
+    <CheckBoxPreference
+       android:key="show_box_around_icon_area"
+       android:title="@string/pref_show_box_around_icon_area"
+       android:summary="@string/pref_show_box_around_icon_area_summary"
+       android:defaultValue="false"
+    />
+
+    <CheckBoxPreference
+       android:key="override_top_line_color"
+       android:title="@string/pref_override_top_line_color"
+       android:summary="@string/pref_override_top_line_color_summary"
+       android:defaultValue="false"
+    />
+
+    <net.margaritov.preference.colorpicker.ColorPickerPreference 
+        android:key="notification_top_line_color"
+        android:title="@string/pref_notification_top_line_color" 
+    />
+
+    <CheckBoxPreference
+       android:key="override_bottom_line_color"
+       android:title="@string/pref_override_bottom_line_color"
+       android:summary="@string/pref_override_bottom_line_color_summary"
+       android:defaultValue="false"
+    />
+
+    <net.margaritov.preference.colorpicker.ColorPickerPreference 
+        android:key="notification_bottom_line_color"
+        android:title="@string/pref_notification_bottom_line_color" 
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/pref_cat_notification_priority">
+    <ListPreference
+       android:key="main_notification_priority"
+       android:title="@string/pref_main_notification_priority"
+       android:entries="@array/notification_priority_entries" 
+       android:entryValues="@array/notification_priority_values"
+       android:dialogTitle="@string/pref_main_notification_priority_summary"
+       android:defaultValue="@string/default_main_notification_priority"
+       android:enabled="@bool/api_level_16_plus"
+    />
+  </PreferenceCategory>
+</PreferenceScreen>

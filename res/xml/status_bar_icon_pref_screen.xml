@@ -6,7 +6,7 @@
      android:selectable="false"
   />
 
-  <PreferenceCategory android:title="@string/pref_cat_themes">
+  <PreferenceCategory android:title="@string/pref_cat_icon_set">
     <ListPreference
        android:key="icon_set"
        android:title="@string/pref_icon_set"
