@@ -22,7 +22,7 @@
     <ListPreference
         android:key="type"
         android:persistent="false"
-        android:entries="@array/alarm_type_entries" 
+        android:entries="@array/alarm_type_entries"
         android:entryValues="@array/alarm_type_values"
         android:dialogTitle="@string/pref_alarm_type_summary"
         android:title="@string/pref_alarm_type"

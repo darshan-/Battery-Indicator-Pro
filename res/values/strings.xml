@@ -548,6 +548,16 @@
     enabled this option for security reasons.
   </string>
 
+  <string formatted="false" name="pref_cat_notification_content">Notification Content</string>
+  <string formatted="false" name="pref_notify_status_duration">Show Status Duration</string>
+  <string formatted="false" name="pref_notify_status_duration_summary">Show time since status changed rather than estimate of time remaining?</string>
+  <string formatted="false" name="pref_notify_status_duration_help">
+    Enable this setting if you\'d prefer the main notification to show
+    the time since the status changed (e.g., \"Unplugged for 5
+    hours\") rather than the estimate of time remaining.  Both pieces
+    of information are available from the main window.
+  </string>
+
   <string formatted="false" name="pref_cat_battery_use">Battery Use</string>
   <string formatted="false" name="pref_finish_after_battery_use">Exit After Launching</string>
   <string formatted="false" name="pref_finish_after_battery_use_summary">Exit main window immediately after launching Battery Use?</string>

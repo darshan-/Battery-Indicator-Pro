@@ -24,9 +24,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
-public class ColorPickerDialog 
-	extends 
-		Dialog 
+public class ColorPickerDialog
+	extends
+		Dialog
 	implements
 		ColorPickerView.OnColorChangedListener,
 		View.OnClickListener {
@@ -71,9 +71,9 @@ public class ColorPickerDialog
 		mNewColor = (ColorPickerPanelView) layout.findViewById(R.id.new_color_panel);
 		
 		((LinearLayout) mOldColor.getParent()).setPadding(
-			Math.round(mColorPicker.getDrawingOffset()), 
-			0, 
-			Math.round(mColorPicker.getDrawingOffset()), 
+			Math.round(mColorPicker.getDrawingOffset()),
+			0,
+			Math.round(mColorPicker.getDrawingOffset()),
 			0
 		);	
 		
