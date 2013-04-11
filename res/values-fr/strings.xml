@@ -122,9 +122,6 @@
   <string name="pref_hint" formatted="false">Appuyez sur MENU pour afficher l\'aide.</string>
   <string name="settings_overview" formatted="false">Aperçu</string>
   <string name="settings_overview_help" formatted="false">Les paramètres sont organisés en quatre parties (décrites ci-dessous). Chaque partie possède sa propre page d\'aide la décrivant. Appuyez simplement sur MENU (sur les tablettes, MENU n\'est pas nécessaire) puis Aide pour obtenir de l\'aide concernant la page sur laquelle vous êtes.</string>
-  <string name="theme_settings" formatted="false">Couleurs et Thèmes</string>
-  <string name="theme_settings_summary" formatted="false">Changez la couleur de l\'icône et le thème de la fenêtre</string>
-  <string name="theme_settings_help" formatted="false">Vous pouvez changer le thème de la fenêtre principale et choisir si et quand la couleur de l\'icône doit changer.</string>
   <string name="alarm_settings_subtitle" formatted="false">Paramètres des alarmes</string>
   <string name="alarm_settings" formatted="false">Alarmes</string>
   <string name="alarm_settings_summary" formatted="false">Paramétrez les notifications de batterie faible/chargée</string>
@@ -134,7 +131,6 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Autres paramètres (version Pro)</string>
   <string name="pref_please_upgrade" formatted="false">La version Pro possède de nombreux autres paramètres et fonctionnalités, comme la couleur de l\'icône, les thèmes de la fenêtre principale, et bien plus...</string>
   <string name="add_alarm" formatted="false">Ajouter une alarme</string>
-  <string name="pref_cat_themes" formatted="false">Thèmes</string>
   <string name="pref_cat_logging" formatted="false">Journalisation</string>
   <string name="pref_enable_logging" formatted="false">Activer la journalisation</string>
   <string name="pref_enable_logging_summary" formatted="false">Enregistrer les états de la batterie ?</string>

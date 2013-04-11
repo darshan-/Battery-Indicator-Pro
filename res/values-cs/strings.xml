@@ -115,9 +115,6 @@
   <string name="pref_hint" formatted="false">Tip: Stiskněte MENU pro nápovědu.</string>
   <string name="settings_overview" formatted="false">Přehled</string>
   <string name="settings_overview_help" formatted="false">Nastavení jsou rozdělena do tří oddělených stránek, tak jak je popsáno níže. Každá stránka má svou vlastní nápovědu popisující dostupná nastavení. Jednoduše stikněte MENU pro popis jednotlivých nastavení dostupných na stránce nastavení.</string>
-  <string name="theme_settings" formatted="false">Barvy a témata</string>
-  <string name="theme_settings_summary" formatted="false">Barvy ikon a témata oken</string>
-  <string name="theme_settings_help" formatted="false">Můžete změnit témata pro zobrazení hlavního okna a nastavit barvy pro ikonu při změně stavu.</string>
   <string name="alarm_settings_subtitle" formatted="false">Nastavení upozornění</string>
   <string name="alarm_settings" formatted="false">Upozornění</string>
   <string name="alarm_settings_summary" formatted="false">Ovládání oznámení pro nízký stav nebo plně nabitou baterii.</string>
@@ -127,7 +124,6 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Více nastavení pouze ve verzi Pro</string>
   <string name="pref_please_upgrade" formatted="false">Pro verze obsahuje mnohem více nastavení a funkcí, včetně zelené, oranžové a červené ikony stavu, témata pro okno, záznamy stavu baterie, nastavení zámku obrazovky, odhady časů zbývající energie atd.</string>
   <string name="add_alarm" formatted="false">Přidat upozornění</string>
-  <string name="pref_cat_themes" formatted="false">Témata</string>
   <string name="pref_cat_logging" formatted="false">Záznamy</string>
   <string name="pref_enable_logging" formatted="false">Povolit záznamy</string>
   <string name="pref_enable_logging_summary" formatted="false">Záznamy změnu stavu baterie ?</string>

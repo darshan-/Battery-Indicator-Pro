@@ -59,7 +59,7 @@
        android:defaultValue="false"
     />
 
-    <net.margaritov.preference.colorpicker.ColorPickerPreference 
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
         android:key="notification_percentage_text_color"
         android:title="@string/pref_notificaton_percentage_text_color"
     />
@@ -78,7 +78,7 @@
        android:defaultValue="false"
     />
 
-    <net.margaritov.preference.colorpicker.ColorPickerPreference 
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
         android:key="notification_top_line_color"
         android:title="@string/pref_notification_top_line_color"
     />
@@ -90,7 +90,7 @@
        android:defaultValue="false"
     />
 
-    <net.margaritov.preference.colorpicker.ColorPickerPreference 
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
         android:key="notification_bottom_line_color"
         android:title="@string/pref_notification_bottom_line_color"
     />

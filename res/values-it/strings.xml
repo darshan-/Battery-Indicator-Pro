@@ -122,9 +122,6 @@
   <string name="pref_hint" formatted="false">Suggerimento: Premi MENU\' per aiuto.</string>
   <string name="settings_overview" formatted="false">Panoramica</string>
   <string name="settings_overview_help" formatted="false">Le impostazioni sono organizzate in tre pagine separate, descritte qui di seguito. Ogni pagina ha una sua pagina di aiuto che descrive le impostazioni. Basta premere MENU\' - Aiuto per ottenere aiuto su qualunque impostazione presente nella pagina.</string>
-  <string name="theme_settings" formatted="false">Colori e Temi</string>
-  <string name="theme_settings_summary" formatted="false">Controlla i colori delle icone e i temi delle schermate</string>
-  <string name="theme_settings_help" formatted="false">E\' possibile modificare il tema per la schermata principale e controllare se e quando l\'icona di notifica cambierà colore.</string>
   <string name="alarm_settings_subtitle" formatted="false">Impostazioni allarme</string>
   <string name="alarm_settings" formatted="false">Allarmi</string>
   <string name="alarm_settings_summary" formatted="false">Notifiche di controllo per batteria scarica/carica</string>
@@ -134,7 +131,6 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Altre impostazioni nella versione Pro</string>
   <string name="pref_please_upgrade" formatted="false">La versione Pro ha molte impostazioni e caratteristiche, tra cui icone verdi, ambra, e rosse, temi finestre, log stato batteria, disabilitazione automatica/manuale blocco schermo, stime tempo rimanente di carica/scarica, e altro.</string>
   <string name="add_alarm" formatted="false">Aggiungi allarme</string>
-  <string name="pref_cat_themes" formatted="false">Temi</string>
   <string name="pref_cat_logging" formatted="false">Registro</string>
   <string name="pref_enable_logging" formatted="false">Abilita registro</string>
   <string name="pref_enable_logging_summary" formatted="false">Registrare i cambiamenti di stato della batteria?</string>

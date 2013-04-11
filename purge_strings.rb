@@ -2,9 +2,10 @@
 
 require 'nokogiri'
 
-string_to_remove = ['first_run_message',
-                    'first_run_message_free',
-                    'first_run_title']
+string_to_remove = ['pref_cat_themes',
+                    'theme_settings',
+                    'theme_settings_summary',
+                    'theme_settings_help']
 string_files = []
 
 Dir.glob('res/values*').each do |d|

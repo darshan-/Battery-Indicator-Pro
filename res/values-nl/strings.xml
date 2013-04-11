@@ -122,9 +122,6 @@
   <string name="pref_hint" formatted="false">(Druk op MENU voor help)</string>
   <string name="settings_overview" formatted="false">Overzicht</string>
   <string name="settings_overview_help" formatted="false">De instellingen zijn verdeeld over drie verschillende pagina\'s, zoals onder beschreven. Elke pagina heeft zijn eigen helppagina over de instellingen op die pagina. Druk op MENU en dan Help voor help.</string>
-  <string name="theme_settings" formatted="false">Iconen en thema\'s</string>
-  <string name="theme_settings_summary" formatted="false">Iconen en vensterthema\'s wijzigen</string>
-  <string name="theme_settings_help" formatted="false">Je kunt het thema voor het hoofdvenster wijzigen en kiezen of het icoon van kleur moet veranderen.</string>
   <string name="alarm_settings_subtitle" formatted="false">Alarminstellingen</string>
   <string name="alarm_settings" formatted="false">Alarmen</string>
   <string name="alarm_settings_summary" formatted="false">Meldingen voor lege of volle batterij instellen</string>
@@ -134,7 +131,6 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Meer instellingen in Battery Indicator Pro!</string>
   <string name="pref_please_upgrade" formatted="false">De Pro versie heeft veel meer instellingen en mogelijkheden, waaronder gekleurde icoontjes, alarmen, thema\'s, logboeken, schermvergrendeling voorkomen, geschatte tijd resterend en meer!</string>
   <string name="add_alarm" formatted="false">Alarm toevoegen</string>
-  <string name="pref_cat_themes" formatted="false">Thema\'s</string>
   <string name="pref_icon_set" formatted="false">Iconen</string>
   <string name="pref_icon_set_help" formatted="false">Er zijn verschillende soorten Android, dus er is niet een perfecte set iconen die overal goed werken. Je kunt plugins gebruiken voor meer iconen, maar er zijn nu 3 standaard opties./n /n</string>
   <string name="pref_cat_charging_indicator" formatted="false">Indicatie tijdens opladen</string>

@@ -83,15 +83,12 @@
   <string name="help_cat_contact" formatted="false">Contato</string>
   <string name="pref_hint" formatted="false">Sugestão: Pressiona a tecla MENU para ajuda.</string>
   <string name="settings_overview" formatted="false">Visão Geral</string>
-  <string name="theme_settings" formatted="false">Cores e Temas</string>
-  <string name="theme_settings_summary" formatted="false">Configurar as cores dos ícones e temas das janelas</string>
   <string name="alarm_settings_subtitle" formatted="false">Definições dos alarmes</string>
   <string name="alarm_settings" formatted="false">Alarmes</string>
   <string name="alarm_settings_summary" formatted="false">Controlar notificações para a bateria baixa/cheia</string>
   <string name="other_settings" formatted="false">Outras Configurações</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">Mais Configurações na versão Pro</string>
   <string name="add_alarm" formatted="false">Adicionar alarme</string>
-  <string name="pref_cat_themes" formatted="false">Temas</string>
   <string name="pref_cat_logging" formatted="false">Relatórios</string>
   <string name="pref_enable_logging" formatted="false">Ativar Relatórios</string>
   <string name="pref_enable_logging_summary" formatted="false">Registrar mudanças no estado da bateria?</string>

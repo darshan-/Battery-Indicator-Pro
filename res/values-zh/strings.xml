@@ -91,14 +91,10 @@
   <string name="pref_hint" formatted="false"><b>提示：</b>單擊「選單」獲取說明。</string>
   <string name="settings_overview" formatted="false">預覽</string>
   <string name="settings_overview_help" formatted="false">設定包括如下所述的三個獨立頁面。各頁面的說明信息獨立顯示，在「選單」-「說明」內容中可獲取當前頁面的說明信息。</string>
-  <string name="theme_settings" formatted="false">色彩主題</string>
-  <string name="theme_settings_summary" formatted="false">設定圖標色彩及視窗主題</string>
-  <string name="theme_settings_help" formatted="false">您可以選擇主視窗顯示主題及設定圖標變化色彩。</string>
   <string name="other_settings" formatted="false">其他設定</string>
   <string name="other_settings_help" formatted="false">此頁面包含其他的設定，包括日誌功能、螢幕鎖功能、溫度單位、自動啟動方式等。</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">專業版的更多設定</string>
   <string name="pref_please_upgrade" formatted="false">專業版包含了以紅色、黃色及綠色圖標提示剩餘電量等級、電池狀態記錄、自動/手動關閉鎖屏、充電/放電剩餘時間預估等多種高級功能。</string>
-  <string name="pref_cat_themes" formatted="false">主題</string>
   <string name="pref_cat_logging" formatted="false">日誌記錄</string>
   <string name="pref_enable_logging" formatted="false">啟用日誌記錄功能</string>
   <string name="pref_enable_logging_summary" formatted="false">確認記錄電池狀態信息？</string>

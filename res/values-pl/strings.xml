@@ -122,9 +122,6 @@
   <string name="pref_hint" formatted="false">Podpowiedź: Naciśnij Menu po pomoc.</string>
   <string name="settings_overview" formatted="false">Przegląd</string>
   <string name="settings_overview_help" formatted="false">Ustawienia są posegregowane na 4 osobne strony. Każda strona ma własną pomoc, która opisuje ustawienia na niej. Po prostu naciśnij MENU a następnie Pomoc (na tabletach MENU nie jest wymagane) aby ją uzyskać.</string>
-  <string name="theme_settings" formatted="false">Kolory i Tematy</string>
-  <string name="theme_settings_summary" formatted="false">Ustaw kolory ikon i okien</string>
-  <string name="theme_settings_help" formatted="false">Możesz zmienić temat kolorystyczny i kontrolować kolory ikon statusu.</string>
   <string name="alarm_settings_subtitle" formatted="false">Ustawienia alarmów</string>
   <string name="alarm_settings" formatted="false">Alarmy</string>
   <string name="alarm_settings_summary" formatted="false">Ustaw powiadomienia o niskim/pełnym poziomie baterii</string>
@@ -134,7 +131,6 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Więcej ustawień w wersji Pro</string>
   <string name="pref_please_upgrade" formatted="false">Wersja Pro ma wiele innych ustawień, włączając w to kolorowe ikony, wtyczki z ikonami, alarmy, tematy, zapisywanie stanu baterii w logach, auto/ ręczne wyłączenie blokady ekranu, przybliżone czasy ładowania/rozładowania i wiele więcej.</string>
   <string name="add_alarm" formatted="false">Dodaj alarm</string>
-  <string name="pref_cat_themes" formatted="false">Tematy</string>
   <string name="pref_cat_logging" formatted="false">Logowanie</string>
   <string name="pref_enable_logging" formatted="false">Włącz logowanie</string>
   <string name="pref_enable_logging_summary" formatted="false">Czy logować zmiany stanu baterii?</string>

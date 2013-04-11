@@ -548,7 +548,6 @@
     enabled this option for security reasons.
   </string>
 
-  <string formatted="false" name="pref_cat_notification_content">Notification Content</string>
   <string formatted="false" name="pref_notify_status_duration">Show Status Duration</string>
   <string formatted="false" name="pref_notify_status_duration_summary">Show time since status changed rather than estimate of time remaining?</string>
   <string formatted="false" name="pref_notify_status_duration_help">

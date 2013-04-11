@@ -104,9 +104,6 @@
   <string name="pref_hint" formatted="false"><b>提示：</b>单击“菜单”获取帮助。</string>
   <string name="settings_overview" formatted="false">预览</string>
   <string name="settings_overview_help" formatted="false">设置项包括如下所述的三个独立页面。各页面的帮助信息独立显示，在“菜单”-“帮助”内容中可获取当前页面的帮助信息。</string>
-  <string name="theme_settings" formatted="false">色彩主题</string>
-  <string name="theme_settings_summary" formatted="false">设置图标色彩及窗口主题</string>
-  <string name="theme_settings_help" formatted="false">您可以选择主窗口显示主题及设置图标变化色彩。</string>
   <string name="alarm_settings_subtitle" formatted="false">警报器设置</string>
   <string name="alarm_settings" formatted="false">警报器</string>
   <string name="alarm_settings_summary" formatted="false">控制电池信息通知</string>
@@ -116,7 +113,6 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">专业版的更多设置项</string>
   <string name="pref_please_upgrade" formatted="false">专业版包含了以红色、黄色及绿色图标提示剩余电量等级、电池状态记录、自动/手动关闭锁屏、充电/放电剩余时间预估等多种高级功能。</string>
   <string name="add_alarm" formatted="false">添加警报器</string>
-  <string name="pref_cat_themes" formatted="false">主题</string>
   <string name="pref_cat_logging" formatted="false">日志记录</string>
   <string name="pref_enable_logging" formatted="false">启用日志记录功能</string>
   <string name="pref_enable_logging_summary" formatted="false">确认记录电池状态信息？</string>

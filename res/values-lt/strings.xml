@@ -121,9 +121,6 @@
   <string name="pref_hint" formatted="false">Patarimas: Spauskite MENU pagalbai.</string>
   <string name="settings_overview" formatted="false">Apžvalga</string>
   <string name="settings_overview_help" formatted="false">Nustatymai yra sugrupuoti į keturis atskirus puslapius, aprašytus žemiau. Kiekvienas puslapis turi savo pagalbos puslapį, kuriame aprašyti galimi nustatymai ir jų reikšmės. Paprasčiausiai spauskite MENU mygtuką, tada \"Pagalba\" (planšetiniuose kompiuteriuose, MENU nėra būtinas), kad gautumėte informaciją apie kiekvieną puslapyje esantį nustatymą.</string>
-  <string name="theme_settings" formatted="false">Spalvos ir Temos</string>
-  <string name="theme_settings_summary" formatted="false">Valdyti ikonos spalvas ir lango temas</string>
-  <string name="theme_settings_help" formatted="false">Galite pakeisti pagrindinio lango temą ir valdyti, kada perspėjimai pakeičia ikonos spalvą.</string>
   <string name="alarm_settings_subtitle" formatted="false">Aliarmo Nustatymai</string>
   <string name="alarm_settings" formatted="false">Aliarmai</string>
   <string name="alarm_settings_summary" formatted="false">Valdyti tuščios/pilnos baterijos pranešimus</string>
@@ -133,7 +130,6 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Daugiau nustatytmų Pro versijoje</string>
   <string name="pref_please_upgrade" formatted="false">Pro versija turi daug daugiau nustatymų ir funkcijų: spalvotos ikonos, atsisiunčiami ikonų papildiniai, aliarmai, lango temos, baterijos statuso įrašų sudarymas, auto/rankinis ekrano užrakto išjungimas, įkrovimo/iškrovimo likęs laikas ir daugiau.</string>
   <string name="add_alarm" formatted="false">Pridėti aliarmą</string>
-  <string name="pref_cat_themes" formatted="false">Temos</string>
   <string name="pref_cat_logging" formatted="false">Įrašų sudarymas</string>
   <string name="pref_enable_logging" formatted="false">Įjungti įrašų sudarymą</string>
   <string name="pref_enable_logging_summary" formatted="false">Įrašinėti baterijos būsenos pakitimus?</string>

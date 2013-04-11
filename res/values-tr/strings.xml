@@ -105,8 +105,8 @@
   <string name="help_cat_changelog" formatted="false">Değişiklik Listesi</string>
   <string name="help_changelog" formatted="false">çevrimiçi Değişiklik Listesi <a href="http://code.google.com/p/battery-indicator/wiki/Changelog?tm=6">ni gör</a></string>
   <string name="help_cat_introduction" formatted="false">Giriş</string>
-  <string name="help_introduction" formatted="false">Bu, <i>Battery Indicator Pro</i>, popüler bedava uygulama <i>Battery Indicator </i>\'ün \"Pro\" sürümüdür. Bu uygulamayı Android Market\'ten satın alabilirsiniz, ancak aynı zamanda bir açık kaynak projesi olduğundan, projenin web sayfası <a href="http://code.google.com/p/battery-indicator/"></a> adresinden kaynak kodunu ücretsiz indirebilirsiniz.</string>
-  <string name="help_introduction_free" formatted="false">Bu, <i>Battery Indicator</i>, <i>Battery Indicator</i> uygulama ailesinin ücretsiz sürümüdür. bu uygulamayı Android Market\'ten satın alabilirsiniz, ancak aynı zamanda bir açık kaynak projesi olduğundan, projenin web sayfası <a href="http://code.google.com/p/battery-indicator/"></a> adresinden kaynak kodunu ücretsiz indirebilirsiniz.\n\nLütfen bağış yaparak: <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">adresinden Pro Version\'a yükseltmeyi düşünün</a>.</string>
+  <string name="help_introduction" formatted="false">Bu, <i>Battery Indicator Pro</i>, popüler bedava uygulama <i>Battery Indicator </i>\'ün \"Pro\" sürümüdür. Bu uygulamayı Android Market\'ten satın alabilirsiniz, ancak aynı zamanda bir açık kaynak projesi olduğundan, projenin web sayfası <a href="http://code.google.com/p/battery-indicator/"/> adresinden kaynak kodunu ücretsiz indirebilirsiniz.</string>
+  <string name="help_introduction_free" formatted="false">Bu, <i>Battery Indicator</i>, <i>Battery Indicator</i> uygulama ailesinin ücretsiz sürümüdür. bu uygulamayı Android Market\'ten satın alabilirsiniz, ancak aynı zamanda bir açık kaynak projesi olduğundan, projenin web sayfası <a href="http://code.google.com/p/battery-indicator/"/> adresinden kaynak kodunu ücretsiz indirebilirsiniz.\n\nLütfen bağış yaparak: <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">adresinden Pro Version\'a yükseltmeyi düşünün</a>.</string>
   <string name="help_cat_summary" formatted="false">Özet</string>
   <string name="help_cat_limitations" formatted="false">Sınırlamalar</string>
   <string name="help_limitations" formatted="false">(<i>Bunlar benim kontrolüm dışında.</i>)\n\n•Sistem batarya simgesini kaldırmanın yolu yok.\n</string>
@@ -121,15 +121,12 @@
   <string name="pref_hint" formatted="false">İpucu: Yardım için MENU tuşuna bas.</string>
   <string name="settings_overview" formatted="false">Genel Bakış</string>
   <string name="settings_overview_help" formatted="false">Aşağıda açıklandığı gibi, Ayarlar dört ayrı sayfa içerisinden düzenlenebilir. Her sayfa ayarları açıklayan kendi yardım sayfasına sahiptir. Bulunduğunuz sayfada hangi ayar için yardım almak istiyorsanız sadece MENU tuşuna basın (tabletler için, Menu gereklli değildir).</string>
-  <string name="theme_settings" formatted="false">Renkler ve Temalar</string>
-  <string name="theme_settings_summary" formatted="false">Simge ayarları ve pencere temalarını konrolet</string>
   <string name="alarm_settings_subtitle" formatted="false">Alarm Ayarları</string>
   <string name="alarm_settings" formatted="false">Alarmlar</string>
   <string name="alarm_settings_summary" formatted="false">Düşük/tam dolu batarya için uyarıları düzenle</string>
   <string name="other_settings" formatted="false">Diğer Ayarlar</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">Pro da fazla ayarlar</string>
   <string name="add_alarm" formatted="false">Alarm ekle</string>
-  <string name="pref_cat_themes" formatted="false">Temalar</string>
   <string name="pref_icon_set" formatted="false">Simge ayarla</string>
   <string name="pref_cat_charging_indicator" formatted="false">Şarj oluyor Göstergesi</string>
   <string name="pref_cat_logging" formatted="false">Kayıt Tutma</string>

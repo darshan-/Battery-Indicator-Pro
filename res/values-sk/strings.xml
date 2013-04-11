@@ -121,9 +121,6 @@
   <string name="pref_hint" formatted="false">Nápoveda: pre pomoc stlačte MENU.</string>
   <string name="settings_overview" formatted="false">Prehľad</string>
   <string name="settings_overview_help" formatted="false">Nastavenia sú zoradené do troch samostaných stránok ako je popísané nižšie. Každá stránka má vlastnú stránku pomoci popisujúcu nastavenia na konkrétnej stránke. Jednoducho stlačte MENU a potom Pomocník (na tabletoch MENU nie je požadované) aby ste našli pomoc na ktorejkoľvek stránke.</string>
-  <string name="theme_settings" formatted="false">Farby a Témy</string>
-  <string name="theme_settings_summary" formatted="false">Ovládajte farbu ikonky a tému okna</string>
-  <string name="theme_settings_help" formatted="false">Môžete zmeniť tému pre hlavné okno a nastaviť kedy sa zmení farba ikony v notifikačnej lište.</string>
   <string name="alarm_settings_subtitle" formatted="false">Nastavenie upozornení</string>
   <string name="alarm_settings" formatted="false">Upozornenia</string>
   <string name="alarm_settings_summary" formatted="false">Nastavte notifikácie pre vybitú / nabitú batériu</string>
@@ -131,7 +128,6 @@
   <string name="other_settings_help" formatted="false">Všetky ostatné nastavenia sú na tejto stránke, vrátane zaznamenávania, zámku obrazovky, jednotiek teploty, auto-štartu a iných.</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">Viac nastavení vo verzii Pro</string>
   <string name="add_alarm" formatted="false">Pridať upozornenie</string>
-  <string name="pref_cat_themes" formatted="false">Témy</string>
   <string name="pref_cat_logging" formatted="false">Zaznamenávanie</string>
   <string name="pref_enable_logging" formatted="false">Zapnúť zaznamenávanie</string>
   <string name="pref_enable_logging_summary" formatted="false">Zaznamenávať zmeny stavu batérie?</string>
