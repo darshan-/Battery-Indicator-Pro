@@ -35,16 +35,13 @@ import android.view.View;
 
 /**
  * Displays a color picker to the user and allow them
- * to select a color. A slider for the alpha channel is
- * also available. Enable it by setting
- * setAlphaSliderVisible(boolean) to true.
+ * to select a color.
  * @author Daniel Nilsson
  */
 public class ColorPickerView extends View {
 
 	private final static int	PANEL_SAT_VAL = 0;
 	private final static int	PANEL_HUE = 1;
-	private final static int	PANEL_ALPHA = 2;
 
 	/**
 	 * The width in pixels of the border
@@ -57,9 +54,6 @@ public class ColorPickerView extends View {
 	 */
 	private float 		HUE_PANEL_WIDTH = 30f;
 	/**
-	 * The height in dp of the alpha panel
-	 */
-	private float		ALPHA_PANEL_HEIGHT = 20f;
 	/**
 	 * The distance in dp between the different
 	 * color panels.
@@ -86,25 +80,19 @@ public class ColorPickerView extends View {
 	private Paint		mHuePaint;
 	private Paint		mHueTrackerPaint;
 
-	private Paint		mAlphaPaint;
-	private Paint		mAlphaTextPaint;
-
 	private Paint		mBorderPaint;
 
 	private Shader		mValShader;
 	private Shader		mSatShader;
 	private Shader		mHueShader;
-	private Shader		mAlphaShader;
 
-	private int			mAlpha = 0xff;
+	private int		mAlpha = 0xff;
 	private float		mHue = 360f;
 	private float 		mSat = 0f;
 	private float 		mVal = 0f;
 
-	private String		mAlphaSliderText = "";
 	private int 		mSliderTrackerColor = 0xff1c1c1c;
 	private int 		mBorderColor = 0xff6E6E6E;
-	private boolean		mShowAlphaPanel = false;
 
 	/*
 	 * To remember which panel that has the "focus" when
@@ -128,9 +116,6 @@ public class ColorPickerView extends View {
 
 	private RectF	mSatValRect;
 	private RectF 	mHueRect;
-	private RectF	mAlphaRect;
-
-	private AlphaPatternDrawable	mAlphaPattern;
 
 	private Point	mStartTouchPoint = null;
 
@@ -156,7 +141,6 @@ public class ColorPickerView extends View {
 		PALETTE_CIRCLE_TRACKER_RADIUS *= mDensity;
 		RECTANGLE_TRACKER_OFFSET *= mDensity;
 		HUE_PANEL_WIDTH *= mDensity;
-		ALPHA_PANEL_HEIGHT *= mDensity;
 		PANEL_SPACING = PANEL_SPACING * mDensity;
 
 		mDrawingOffset = calculateRequiredOffset();
@@ -174,8 +158,6 @@ public class ColorPickerView extends View {
 		mSatValTrackerPaint = new Paint();
 		mHuePaint = new Paint();
 		mHueTrackerPaint = new Paint();
-		mAlphaPaint = new Paint();
-		mAlphaTextPaint = new Paint();
 		mBorderPaint = new Paint();
 
 
@@ -187,14 +169,6 @@ public class ColorPickerView extends View {
 		mHueTrackerPaint.setStyle(Style.STROKE);
 		mHueTrackerPaint.setStrokeWidth(2f * mDensity);
 		mHueTrackerPaint.setAntiAlias(true);
-
-		mAlphaTextPaint.setColor(0xff1c1c1c);
-		mAlphaTextPaint.setTextSize(14f * mDensity);
-		mAlphaTextPaint.setAntiAlias(true);
-		mAlphaTextPaint.setTextAlign(Align.CENTER);
-		mAlphaTextPaint.setFakeBoldText(true);
-
-
 	}
 
 	private float calculateRequiredOffset(){
@@ -224,8 +198,6 @@ public class ColorPickerView extends View {
 
 		drawSatValPanel(canvas);
 		drawHuePanel(canvas);
-		drawAlphaPanel(canvas);
-
 	}
 
 	private void drawSatValPanel(Canvas canvas){
@@ -296,55 +268,6 @@ public class ColorPickerView extends View {
 
 	}
 
-	private void drawAlphaPanel(Canvas canvas){
-
-		if(!mShowAlphaPanel || mAlphaRect == null || mAlphaPattern == null) return;
-
-		final RectF rect = mAlphaRect;
-
-		if(BORDER_WIDTH_PX > 0){
-			mBorderPaint.setColor(mBorderColor);
-			canvas.drawRect(rect.left - BORDER_WIDTH_PX,
-					rect.top - BORDER_WIDTH_PX,
-					rect.right + BORDER_WIDTH_PX,
-					rect.bottom + BORDER_WIDTH_PX,
-					mBorderPaint);
-		}
-
-
-		mAlphaPattern.draw(canvas);
-
-		float[] hsv = new float[]{mHue,mSat,mVal};
-		int color = Color.HSVToColor(hsv);
-		int acolor = Color.HSVToColor(0, hsv);
-
-		mAlphaShader = new LinearGradient(rect.left, rect.top, rect.right, rect.top,
-				color, acolor, TileMode.CLAMP);
-
-
-		mAlphaPaint.setShader(mAlphaShader);
-
-		canvas.drawRect(rect, mAlphaPaint);
-
-		if(mAlphaSliderText != null && mAlphaSliderText!= ""){
-			canvas.drawText(mAlphaSliderText, rect.centerX(), rect.centerY() + 4 * mDensity, mAlphaTextPaint);
-		}
-
-		float rectWidth = 4 * mDensity / 2;
-
-		Point p = alphaToPoint(mAlpha);
-
-		RectF r = new RectF();
-		r.left = p.x - rectWidth;
-		r.right = p.x + rectWidth;
-		r.top = rect.top - RECTANGLE_TRACKER_OFFSET;
-		r.bottom = rect.bottom + RECTANGLE_TRACKER_OFFSET;
-
-		canvas.drawRoundRect(r, 2, 2, mHueTrackerPaint);
-
-	}
-
-
 	private Point hueToPoint(float hue){
 
 		final RectF rect = mHueRect;
@@ -370,20 +293,6 @@ public class ColorPickerView extends View {
 		p.y = (int) ((1f - val) * height + rect.top);
 
 		return p;
-	}
-
-	private Point alphaToPoint(int alpha){
-
-		final RectF rect = mAlphaRect;
-		final float width = rect.width();
-
-		Point p = new Point();
-
-		p.x = (int) (width - (alpha * width / 0xff) + rect.left);
-		p.y = (int) rect.top;
-
-		return p;
-
 	}
 
 	private float[] pointToSatVal(float x, float y){
@@ -439,27 +348,7 @@ public class ColorPickerView extends View {
 
 		return 360f - (y * 360f / height);
 	}
-
-	private int pointToAlpha(int x){
-
-		final RectF rect = mAlphaRect;
-		final int width = (int) rect.width();
-
-		if(x < rect.left){
-			x = 0;
-		}
-		else if(x > rect.right){
-			x = width;
-		}
-		else{
-			x = x - (int)rect.left;
-		}
-
-		return 0xff - (x * 0xff / width);
-
-	}
-
-
+    
 	@Override
 	public boolean onTrackballEvent(MotionEvent event) {
 
@@ -515,30 +404,6 @@ public class ColorPickerView extends View {
 				mHue = hue;
 
 				update = true;
-
-				break;
-
-			case PANEL_ALPHA:
-
-				if(!mShowAlphaPanel || mAlphaRect == null){
-					update = false;
-				}
-				else{
-
-					int alpha = (int) (mAlpha - x*10);
-
-					if(alpha < 0){
-						alpha = 0;
-					}
-					else if(alpha > 0xff){
-						alpha = 0xff;
-					}
-
-					mAlpha = alpha;
-
-
-					update = true;
-				}
 
 				break;
 			}
@@ -634,15 +499,6 @@ public class ColorPickerView extends View {
 
 			update = true;
 		}
-		else if(mAlphaRect != null && mAlphaRect.contains(startX, startY)){
-
-			mLastTouchedPanel = PANEL_ALPHA;
-
-			mAlpha = pointToAlpha((int)event.getX());
-
-			update = true;
-		}
-
 
 		return update;
 	}
@@ -662,32 +518,15 @@ public class ColorPickerView extends View {
 		widthAllowed = chooseWidth(widthMode, widthAllowed);
 		heightAllowed = chooseHeight(heightMode, heightAllowed);
 		
-		if(!mShowAlphaPanel){
-			
-			height = (int) (widthAllowed - PANEL_SPACING - HUE_PANEL_WIDTH);
+                width = (int) (heightAllowed + HUE_PANEL_WIDTH);
 
-			//If calculated height (based on the width) is more than the allowed height.
-			if(height > heightAllowed || getTag().equals("landscape")) {
-				height = heightAllowed;
-				width = (int) (height + PANEL_SPACING + HUE_PANEL_WIDTH);
-			}
-			else{
-				width = widthAllowed;
-			}
-		}
-		else{
-
-			width = (int) (heightAllowed - ALPHA_PANEL_HEIGHT + HUE_PANEL_WIDTH);
-
-			if(width > widthAllowed){
-				width = widthAllowed;
-				height = (int) (widthAllowed - HUE_PANEL_WIDTH + ALPHA_PANEL_HEIGHT);
-			}
-			else{
-				height = heightAllowed;
-			}
-
-		}
+                if(width > widthAllowed){
+                    width = widthAllowed;
+                    height = (int) (widthAllowed - HUE_PANEL_WIDTH);
+                }
+                else{
+                    height = heightAllowed;
+                }
 		
 		setMeasuredDimension(width, height);
 	}
@@ -712,22 +551,12 @@ public class ColorPickerView extends View {
 
 		int width = getPrefferedHeight();
 
-		if(mShowAlphaPanel){
-			width -= (PANEL_SPACING + ALPHA_PANEL_HEIGHT);
-		}
-
-
 		return (int) (width + HUE_PANEL_WIDTH + PANEL_SPACING);
-
 	}
 
 	private int getPrefferedHeight(){
 
 		int height = (int)(200 * mDensity);
-
-		if(mShowAlphaPanel){
-			height += PANEL_SPACING + ALPHA_PANEL_HEIGHT;
-		}
 
 		return height;
 	}
@@ -746,17 +575,12 @@ public class ColorPickerView extends View {
 
 		setUpSatValRect();
 		setUpHueRect();
-		setUpAlphaRect();
 	}
 
 	private void setUpSatValRect(){
 
 		final RectF	dRect = mDrawingRect;
 		float panelSide = dRect.height() - BORDER_WIDTH_PX * 2;
-
-		if(mShowAlphaPanel){
-			panelSide -= PANEL_SPACING + ALPHA_PANEL_HEIGHT;
-		}
 
 		float left = dRect.left + BORDER_WIDTH_PX;
 		float top = dRect.top + BORDER_WIDTH_PX;
@@ -771,35 +595,11 @@ public class ColorPickerView extends View {
 
 		float left = dRect.right - HUE_PANEL_WIDTH + BORDER_WIDTH_PX;
 		float top = dRect.top + BORDER_WIDTH_PX;
-		float bottom = dRect.bottom - BORDER_WIDTH_PX - (mShowAlphaPanel ? (PANEL_SPACING + ALPHA_PANEL_HEIGHT) : 0);
+		float bottom = dRect.bottom - BORDER_WIDTH_PX - 0;
 		float right = dRect.right - BORDER_WIDTH_PX;
 
 		mHueRect = new RectF(left, top, right, bottom);
 	}
-
-	private void setUpAlphaRect() {
-
-		if(!mShowAlphaPanel) return;
-
-		final RectF	dRect = mDrawingRect;
-
-		float left = dRect.left + BORDER_WIDTH_PX;
-		float top = dRect.bottom - ALPHA_PANEL_HEIGHT + BORDER_WIDTH_PX;
-		float bottom = dRect.bottom - BORDER_WIDTH_PX;
-		float right = dRect.right - BORDER_WIDTH_PX;
-
-		mAlphaRect = new RectF(left, top, right, bottom);
-
-		mAlphaPattern = new AlphaPatternDrawable((int) (5 * mDensity));
-		mAlphaPattern.setBounds(
-			Math.round(mAlphaRect.left),
-			Math.round(mAlphaRect.top),
-			Math.round(mAlphaRect.right),
-			Math.round(mAlphaRect.bottom)
-		);
-
-	}
-
 
 	/**
 	 * Set a OnColorChangedListener to get notified when the color
@@ -883,31 +683,6 @@ public class ColorPickerView extends View {
 		return mDrawingOffset;
 	}
 
-	/**
-	 * Set if the user is allowed to adjust the alpha panel. Default is false.
-	 * If it is set to false no alpha will be set.
-	 * @param visible
-	 */
-	public void setAlphaSliderVisible(boolean visible){
-
-		if(mShowAlphaPanel != visible){
-			mShowAlphaPanel = visible;
-
-			/*
-			 * Reset all shader to force a recreation.
-			 * Otherwise they will not look right after
-			 * the size of the view has changed.
-			 */
-			mValShader = null;
-			mSatShader = null;
-			mHueShader = null;
-			mAlphaShader = null;;
-
-			requestLayout();
-		}
-
-	}
-
 	public void setSliderTrackerColor(int color){
 		mSliderTrackerColor = color;
 
@@ -918,35 +693,5 @@ public class ColorPickerView extends View {
 
 	public int getSliderTrackerColor(){
 		return mSliderTrackerColor;
-	}
-
-	/**
-	 * Set the text that should be shown in the
-	 * alpha slider. Set to null to disable text.
-	 * @param res string resource id.
-	 */
-	public void setAlphaSliderText(int res){
-		String text = getContext().getString(res);
-		setAlphaSliderText(text);
-	}
-
-	/**
-	 * Set the text that should be shown in the
-	 * alpha slider. Set to null to disable text.
-	 * @param text Text that should be shown.
-	 */
-	public void setAlphaSliderText(String text){
-		mAlphaSliderText = text;
-		invalidate();
-	}
-
-	/**
-	 * Get the current value of the text
-	 * that will be shown in the alpha
-	 * slider.
-	 * @return
-	 */
-	public String getAlphaSliderText(){
-		return mAlphaSliderText;
 	}
 }

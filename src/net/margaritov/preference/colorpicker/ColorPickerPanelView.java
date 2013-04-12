@@ -49,9 +49,6 @@ public class ColorPickerPanelView extends View {
 	private RectF		mDrawingRect;
 	private RectF		mColorRect;
 
-	private AlphaPatternDrawable mAlphaPattern;
-
-
 	public ColorPickerPanelView(Context context){
 		this(context, null);
 	}
@@ -80,10 +77,6 @@ public class ColorPickerPanelView extends View {
 		if(BORDER_WIDTH_PX > 0){
 			mBorderPaint.setColor(mBorderColor);
 			canvas.drawRect(mDrawingRect, mBorderPaint);
-		}
-
-		if(mAlphaPattern != null){
-			mAlphaPattern.draw(canvas);
 		}
 
 		mColorPaint.setColor(mColor);
@@ -123,16 +116,6 @@ public class ColorPickerPanelView extends View {
 		float right = dRect.right - BORDER_WIDTH_PX;
 
 		mColorRect = new RectF(left,top, right, bottom);
-
-		mAlphaPattern = new AlphaPatternDrawable((int)(5 * mDensity));
-
-		mAlphaPattern.setBounds(
-			Math.round(mColorRect.left),
-			Math.round(mColorRect.top),
-			Math.round(mColorRect.right),
-			Math.round(mColorRect.bottom)
-		);
-
 	}
 
 	/**
