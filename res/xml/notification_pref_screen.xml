@@ -12,25 +12,22 @@
        android:title="@string/pref_icon_area_content"
        android:entries="@array/icon_area_content_entries"
        android:entryValues="@array/icon_area_content_values"
-       android:dialogTitle="@string/pref_icon_area_content_summary"
        android:defaultValue="@string/default_icon_area_content"
     />
 
     <ListPreference
        android:key="top_line"
        android:title="@string/pref_top_line_content"
-       android:entries="@array/top_line_content_entries"
-       android:entryValues="@array/top_line_content_values"
-       android:dialogTitle="@string/pref_top_line_content_summary"
+       android:entries="@array/notification_line_content_entries"
+       android:entryValues="@array/notification_line_content_values"
        android:defaultValue="@string/default_top_line_content"
     />
 
     <ListPreference
        android:key="bottom_line"
        android:title="@string/pref_bottom_line_content"
-       android:entries="@array/bottom_line_content_entries"
-       android:entryValues="@array/bottom_line_content_values"
-       android:dialogTitle="@string/pref_bottom_line_content_summary"
+       android:entries="@array/notification_line_content_entries"
+       android:entryValues="@array/notification_line_content_values"
        android:defaultValue="@string/default_bottom_line_content"
     />
 
@@ -39,7 +36,6 @@
        android:title="@string/pref_time_remaining_verbosity"
        android:entries="@array/time_remaining_verbosity_entries"
        android:entryValues="@array/time_remaining_verbosity_values"
-       android:dialogTitle="@string/pref_time_remaining_verbosity_summary"
        android:defaultValue="@string/default_time_remaining_verbosity"
     />
 
@@ -61,7 +57,8 @@
 
     <net.margaritov.preference.colorpicker.ColorPickerPreference
         android:key="notification_percentage_text_color"
-        android:title="@string/pref_notificaton_percentage_text_color"
+        android:title="@string/pref_notification_percentage_text_color"
+        android:defaultValue="@color/main_notification_default_override_text_color"
     />
 
     <CheckBoxPreference
@@ -72,27 +69,29 @@
     />
 
     <CheckBoxPreference
-       android:key="override_top_line_color"
-       android:title="@string/pref_override_top_line_color"
-       android:summary="@string/pref_override_top_line_color_summary"
+       android:key="override_top_line_text_color"
+       android:title="@string/pref_override_top_line_text_color"
+       android:summary="@string/pref_override_top_line_text_color_summary"
        android:defaultValue="false"
     />
 
     <net.margaritov.preference.colorpicker.ColorPickerPreference
-        android:key="notification_top_line_color"
-        android:title="@string/pref_notification_top_line_color"
+        android:key="notification_top_line_text_color"
+        android:title="@string/pref_notification_top_line_text_color"
+        android:defaultValue="@color/main_notification_default_override_text_color"
     />
 
     <CheckBoxPreference
-       android:key="override_bottom_line_color"
-       android:title="@string/pref_override_bottom_line_color"
-       android:summary="@string/pref_override_bottom_line_color_summary"
+       android:key="override_bottom_line_text_color"
+       android:title="@string/pref_override_bottom_line_text_color"
+       android:summary="@string/pref_override_bottom_line_text_color_summary"
        android:defaultValue="false"
     />
 
     <net.margaritov.preference.colorpicker.ColorPickerPreference
-        android:key="notification_bottom_line_color"
-        android:title="@string/pref_notification_bottom_line_color"
+        android:key="notification_bottom_line_text_color"
+        android:title="@string/pref_notification_bottom_line_text_color"
+        android:defaultValue="@color/main_notification_default_override_text_color"
     />
   </PreferenceCategory>
 
@@ -102,7 +101,6 @@
        android:title="@string/pref_main_notification_priority"
        android:entries="@array/notification_priority_entries"
        android:entryValues="@array/notification_priority_values"
-       android:dialogTitle="@string/pref_main_notification_priority_summary"
        android:defaultValue="@string/default_main_notification_priority"
        android:enabled="@bool/api_level_16_plus"
     />

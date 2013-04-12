@@ -105,4 +105,6 @@
   </style>
 
   <dimen name="main_notification_text_padding_left">3dp</dimen>
+
+  <color name="main_notification_default_override_text_color">#000</color>
 </resources>

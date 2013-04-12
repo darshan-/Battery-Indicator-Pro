@@ -9,4 +9,6 @@
   </style>
 
   <dimen name="main_notification_text_padding_left">10dp</dimen>
+
+  <color name="main_notification_default_override_text_color">#fff</color>
 </resources>

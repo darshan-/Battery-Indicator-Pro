@@ -493,4 +493,47 @@
   </string-array>
 
   <bool name="long_notification_okay">false</bool>
+
+  <string-array name="icon_area_content_entries">
+    <item>@string/battery_graphic</item>
+    <item>@string/charge_percentage</item>
+    <item>@string/both</item>
+  </string-array>
+
+  <string-array name="icon_area_content_values">
+    <item>graphic</item>
+    <item>percentage</item>
+    <item>both</item>
+  </string-array>
+
+  <string name="default_icon_area_content">percentage</string>
+
+  <string-array name="notification_line_content_entries">
+    <item>@string/time_remaining</item>
+    <item>@string/time_since_status_change</item>
+    <item>@string/vital_signs</item>
+  </string-array>
+
+  <string-array name="notification_line_content_values">
+    <item>remaining</item>
+    <item>since</item>
+    <item>vitals</item>
+  </string-array>
+
+  <string name="default_top_line_content">remaining</string>
+  <string name="default_bottom_line_content">vitals</string>
+
+  <string-array name="time_remaining_verbosity_entries">
+    <item>@string/condensed</item>
+    <item>@string/normal</item>
+    <item>@string/verbose</item>
+  </string-array>
+
+  <string-array name="time_remaining_verbosity_values">
+    <item>condensed</item>
+    <item>normal</item>
+    <item>verbose</item>
+  </string-array>
+
+  <string name="default_time_remaining_verbosity">normal</string>
 </resources>

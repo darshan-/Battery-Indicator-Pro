@@ -396,23 +396,65 @@
   <string formatted="false" name="pref_cat_notification_content">Content</string>
 
   <string formatted="false" name="pref_icon_area_content">Icon Area Content</string>
+  <string formatted="false" name="pref_icon_area_content_summary"></string>
   <string formatted="false" name="pref_icon_area_content_help">
   </string>
+  <string formatted="false" name="battery_graphic">Battery Graphic</string>
+  <string formatted="false" name="charge_percentage">Charge Percentage</string>
+  <string formatted="false" name="both">Both</string>
+
   <string formatted="false" name="pref_top_line_content">Top Line Content</string>
+  <string formatted="false" name="pref_top_line_content_summary"></string>
   <string formatted="false" name="pref_top_line_content_help">
   </string>
   <string formatted="false" name="pref_bottom_line_content">Bottom Line Content</string>
+  <string formatted="false" name="pref_bottom_line_content_summary"></string>
   <string formatted="false" name="pref_bottom_line_content_help">
   </string>
+  <string formatted="false" name="time_remaining">Time Remaining</string>
+  <string formatted="false" name="time_since_status_change">Time Since Status Change</string>
+  <string formatted="false" name="vital_signs">Vital Signs</string>
+
   <string formatted="false" name="pref_time_remaining_verbosity">Time Remaining Verbosity</string>
   <string formatted="false" name="pref_time_remaining_verbosity_help">
   </string>
+  <string formatted="false" name="condensed">Condensed</string>
+  <string formatted="false" name="normal">Normal</string>
+  <string formatted="false" name="verbose">Verbose</string>
+
   <string formatted="false" name="pref_status_duration_in_vital_signs">Status Duration in Vital Signs</string>
   <string formatted="false" name="pref_status_duration_in_vital_signs_summary">
     Include Time Since Status Change in Vital Signs?
   </string>
   <string formatted="false" name="pref_status_duration_in_vital_signs_help">
   </string>
+  <string formatted="false" name="pref_show_box_around_icon_area">Show Box Around Icon Area</string>
+  <string formatted="false" name="pref_show_box_around_icon_area_summary">
+    Show background color box in icon area?
+  </string>
+  <string formatted="false" name="pref_show_box_around_icon_area_help">
+  </string>
+  <string formatted="false" name="pref_override_percentage_text_color">Override Percentage Text Color</string>
+  <string formatted="false" name="pref_override_percentage_text_color_summary">
+    Choose custom color for percentage text?
+  </string>
+  <string formatted="false" name="pref_override_percentage_text_color_help">
+  </string>
+  <string formatted="false" name="pref_notification_percentage_text_color">Percentage Text Color</string>
+  <string formatted="false" name="pref_override_top_line_text_color">Override Top Line Text Color</string>
+  <string formatted="false" name="pref_override_top_line_text_color_summary">
+    Choose custom color for top line text?
+  </string>
+  <string formatted="false" name="pref_override_top_line_text_color_help">
+  </string>
+  <string formatted="false" name="pref_notification_top_line_text_color">Top Line Text Color</string>
+  <string formatted="false" name="pref_override_bottom_line_text_color">Override Bottom Line Text Color</string>
+  <string formatted="false" name="pref_override_bottom_line_text_color_summary">
+    Choose custom color for bottom line text?
+  </string>
+  <string formatted="false" name="pref_override_bottom_line_text_color_help">
+  </string>
+  <string formatted="false" name="pref_notification_bottom_line_text_color">Bottom Line Text Color</string>
 
   <string formatted="false" name="pref_cat_notification_appearance">Appearance</string>
 
