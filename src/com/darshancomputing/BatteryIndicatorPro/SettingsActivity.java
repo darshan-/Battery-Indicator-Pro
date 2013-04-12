@@ -82,22 +82,51 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_GREEN = "use_green";
     public static final String KEY_GREEN_THRESH = "green_threshold";
     public static final String KEY_COLOR_PREVIEW = "color_preview";
+    public static final String KEY_ICON_AREA = "icon_area";
+    public static final String KEY_TOP_LINE = "top_line";
+    public static final String KEY_BOTTOM_LINE = "bottom_line";
+    public static final String KEY_TIME_REMAINING_VERBOSITY = "time_remaining_verbosity";
+    public static final String KEY_STATUS_DURATION_IN_VITAL_SIGNS = "status_duration_in_vital_signs";
+    public static final String KEY_OVERRIDE_PERCENTAGE_TEXT_COLOR = "override_percentage_text_color";
+    public static final String KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR = "notification_percentage_text_color";
+    public static final String KEY_SHOW_BOX_AROUND_ICON_AREA = "show_box_around_icon_area";
+    public static final String KEY_OVERRIDE_TOP_LINE_TEXT_COLOR = "override_top_line_text_color";
+    public static final String KEY_NOTIFICATION_TOP_LINE_TEXT_COLOR = "notification_top_line_text_color";
+    public static final String KEY_OVERRIDE_BOTTOM_LINE_TEXT_COLOR = "override_bottom_line_text_color";
+    public static final String KEY_NOTIFICATION_BOTTOM_LINE_TEXT_COLOR = "notification_bottom_line_text_color";
     public static final String KEY_FIRST_RUN = "first_run";
     //public static final String KEY_LANGUAGE_OVERRIDE = "language_override";
 
-    private static final String[] PARENTS    = {KEY_ENABLE_LOGGING, KEY_RED,        KEY_AMBER,        KEY_GREEN};
-    private static final String[] DEPENDENTS = {KEY_MAX_LOG_AGE,    KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH};
+    private static final String[] PARENTS    = {KEY_ENABLE_LOGGING,
+                                                KEY_RED,
+                                                KEY_AMBER,
+                                                KEY_GREEN,
+                                                KEY_OVERRIDE_PERCENTAGE_TEXT_COLOR,
+                                                KEY_OVERRIDE_TOP_LINE_TEXT_COLOR,
+                                                KEY_OVERRIDE_BOTTOM_LINE_TEXT_COLOR
+    };
+    private static final String[] DEPENDENTS = {KEY_MAX_LOG_AGE,
+                                                KEY_RED_THRESH,
+                                                KEY_AMBER_THRESH,
+                                                KEY_GREEN_THRESH,
+                                                KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
+                                                KEY_NOTIFICATION_TOP_LINE_TEXT_COLOR,
+                                                KEY_NOTIFICATION_BOTTOM_LINE_TEXT_COLOR
+    };
 
     private static final String[] LIST_PREFS = {KEY_AUTOSTART, KEY_STATUS_DUR_EST,
                                                 KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
                                                 KEY_MAIN_NOTIFICATION_PRIORITY, KEY_ICON_SET,
-                                                KEY_MAX_LOG_AGE/*, KEY_LANGUAGE_OVERRIDE*/};
+                                                KEY_MAX_LOG_AGE, KEY_ICON_AREA, KEY_TOP_LINE, KEY_BOTTOM_LINE,
+                                                KEY_TIME_REMAINING_VERBOSITY
+    };
 
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_NOTIFY_STATUS_DURATION,
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
                                                    KEY_NOTIFY_WHEN_KG_DISABLED, KEY_ICON_SET,
-                                                   KEY_INDICATE_CHARGING, KEY_TEN_PERCENT_MODE}; /* 10% mode changes color settings */
+                                                   KEY_INDICATE_CHARGING, KEY_TEN_PERCENT_MODE /* 10% mode changes color settings */
+    };
 
     private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_MAIN_NOTIFICATION_PRIORITY};
 
