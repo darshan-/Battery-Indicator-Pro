@@ -138,7 +138,7 @@ public class AlarmsActivity extends Activity {
         switch (item.getItemId()) {
         case R.id.menu_help:
             ComponentName comp = new ComponentName(getPackageName(), SettingsHelpActivity.class.getName());
-            Intent intent = new Intent().setComponent(comp).putExtra(SettingsActivity.EXTRA_SCREEN, SettingsActivity.KEY_ALARM_SETTINGS);
+            Intent intent = new Intent().setComponent(comp).putExtra(SettingsActivity.EXTRA_SCREEN, SettingsActivity.KEY_ALARMS_SETTINGS);
             startActivity(intent);
 
             return true;

@@ -1,20 +1,24 @@
 /*
- * Copyright (C) 2011 Sergey Margaritov
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+    Copyright (c) 2013 Darshan-Josiah Barber
 
-package net.margaritov.preference.colorpicker;
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+
+    Modified from original which was:
+      * Copyright (C) 2010 Daniel Nilsson
+      * Licensed under the Apache License, Version 2.0
+      * At http://github.com/attenzione/android-ColorPickerPreference
+*/
+
+package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -45,7 +49,6 @@ public class ColorPickerPreference
 	ColorPickerDialog mDialog;
 	private int mValue = Color.BLACK;
 	private float mDensity = 0;
-	private boolean mAlphaSliderEnabled = false;
 
 	public ColorPickerPreference(Context context) {
 		super(context);
@@ -75,9 +78,6 @@ public class ColorPickerPreference
 	private void init(Context context, AttributeSet attrs) {
 		mDensity = getContext().getResources().getDisplayMetrics().density;
 		setOnPreferenceClickListener(this);
-		if (attrs != null) {
-			mAlphaSliderEnabled = attrs.getAttributeBooleanValue(null, "alphaSlider", false);
-		}
 	}
 
 	@Override
@@ -106,7 +106,7 @@ public class ColorPickerPreference
 		}
 		widgetFrameView.addView(iView);
 		widgetFrameView.setMinimumWidth(0);
-		iView.setBackgroundDrawable(new AlphaPatternDrawable((int)(5 * mDensity)));
+		//iView.setBackgroundDrawable(new AlphaPatternDrawable((int)(5 * mDensity)));
 		iView.setImageBitmap(getPreviewBitmap());
 	}
 
@@ -152,21 +152,10 @@ public class ColorPickerPreference
 	protected void showDialog(Bundle state) {
 		mDialog = new ColorPickerDialog(getContext(), mValue);
 		mDialog.setOnColorChangedListener(this);
-		if (mAlphaSliderEnabled) {
-			mDialog.setAlphaSliderVisible(true);
-		}
 		if (state != null) {
 			mDialog.onRestoreInstanceState(state);
 		}
 		mDialog.show();
-	}
-
-	/**
-	 * Toggle Alpha Slider visibility (by default it's disabled)
-	 * @param enable
-	 */
-	public void setAlphaSliderEnabled(boolean enable) {
-		mAlphaSliderEnabled = enable;
 	}
 
 	/**

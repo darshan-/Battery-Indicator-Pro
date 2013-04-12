@@ -48,8 +48,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String SETTINGS_FILE = "com.darshancomputing.BatteryIndicatorPro_preferences";
     public static final String SP_STORE_FILE = "sp_store";
 
-    public static final String KEY_THEME_SETTINGS = "theme_settings";
-    public static final String KEY_ALARM_SETTINGS = "alarm_settings";
+    public static final String KEY_NOTIFICATION_SETTINGS = "notification_settings";
+    public static final String KEY_STATUS_BAR_ICON_SETTINGS = "status_bar_icon_settings";
+    public static final String KEY_KEYGUARD_SETTINGS = "keyguard_settings";
+    public static final String KEY_ALARMS_SETTINGS = "alarms_settings";
     public static final String KEY_ALARM_EDIT_SETTINGS = "alarm_edit_settings";
     public static final String KEY_OTHER_SETTINGS = "other_settings";
     public static final String KEY_CONFIRM_DISABLE_LOCKING = "confirm_disable_lock_screen";
@@ -260,11 +262,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (pref_screen == null) {
             setPrefScreen(R.xml.main_pref_screen);
             setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
-        } else if (pref_screen.equals(KEY_THEME_SETTINGS)) {
-            setPrefScreen(R.xml.theme_pref_screen);
-            setWindowSubtitle(res.getString(R.string.theme_settings));
+        } else if (pref_screen.equals(KEY_STATUS_BAR_ICON_SETTINGS)) {
+            setPrefScreen(R.xml.status_bar_icon_pref_screen);
+            setWindowSubtitle(res.getString(R.string.status_bar_icon_settings));
 
-            menu_res = R.menu.theme_settings;
+            menu_res = R.menu.status_bar_icon_settings;
 
             ten_percent_mode = mSharedPreferences.getBoolean(KEY_TEN_PERCENT_MODE, false);
 
@@ -336,6 +338,12 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 mHandler.postDelayed(rShowPluginSettings,  600);
                 mHandler.postDelayed(rShowPluginSettings, 1000);
             }
+        } else if (pref_screen.equals(KEY_NOTIFICATION_SETTINGS)) {
+            setPrefScreen(R.xml.notification_pref_screen);
+            setWindowSubtitle(res.getString(R.string.notification_settings));
+        } else if (pref_screen.equals(KEY_KEYGUARD_SETTINGS)) {
+            setPrefScreen(R.xml.keyguard_pref_screen);
+            setWindowSubtitle(res.getString(R.string.keyguard_settings));
         } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
             setPrefScreen(R.xml.other_pref_screen);
             setWindowSubtitle(res.getString(R.string.other_settings));
@@ -525,12 +533,13 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         String key = preference.getKey();
         if (key == null) {
             return false;
-        } else if (key.equals(KEY_THEME_SETTINGS) || key.equals(KEY_OTHER_SETTINGS)) {
+        } else if (key.equals(KEY_NOTIFICATION_SETTINGS) || key.equals(KEY_STATUS_BAR_ICON_SETTINGS) ||
+                   key.equals(KEY_KEYGUARD_SETTINGS) || key.equals(KEY_OTHER_SETTINGS)) {
             ComponentName comp = new ComponentName(getPackageName(), SettingsActivity.class.getName());
             startActivity(new Intent().setComponent(comp).putExtra(EXTRA_SCREEN, key));
 
             return true;
-        } else if (key.equals(KEY_ALARM_SETTINGS)) {
+        } else if (key.equals(KEY_ALARMS_SETTINGS)) {
             ComponentName comp = new ComponentName(getPackageName(), AlarmsActivity.class.getName());
             startActivity(new Intent().setComponent(comp));
 

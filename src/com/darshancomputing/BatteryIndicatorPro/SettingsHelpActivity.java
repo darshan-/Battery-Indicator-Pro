@@ -43,15 +43,21 @@ public class SettingsHelpActivity extends Activity {
         if (pref_screen == null) {
             setContentView(R.layout.main_settings_help);
             setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
-        } else if (pref_screen.equals(SettingsActivity.KEY_THEME_SETTINGS)) {
-            setContentView(R.layout.theme_settings_help);
-            setWindowSubtitle(res.getString(R.string.theme_settings));
+        } else if (pref_screen.equals(SettingsActivity.KEY_NOTIFICATION_SETTINGS)) {
+            setContentView(R.layout.notification_settings_help);
+            setWindowSubtitle(res.getString(R.string.notification_settings));
+        } else if (pref_screen.equals(SettingsActivity.KEY_STATUS_BAR_ICON_SETTINGS)) {
+            setContentView(R.layout.status_bar_icon_settings_help);
+            setWindowSubtitle(res.getString(R.string.status_bar_icon_settings));
+        } else if (pref_screen.equals(SettingsActivity.KEY_KEYGUARD_SETTINGS)) {
+            setContentView(R.layout.keyguard_settings_help);
+            setWindowSubtitle(res.getString(R.string.keyguard_settings));
         } else if (pref_screen.equals(SettingsActivity.KEY_OTHER_SETTINGS)) {
             setContentView(R.layout.other_settings_help);
             setWindowSubtitle(res.getString(R.string.other_settings));
 
             has_links = new int[] {};
-        } else if (pref_screen.equals(SettingsActivity.KEY_ALARM_SETTINGS)) {
+        } else if (pref_screen.equals(SettingsActivity.KEY_ALARMS_SETTINGS)) {
             setContentView(R.layout.alarm_settings_help);
             setWindowSubtitle(res.getString(R.string.alarm_settings));
         } else if (pref_screen.equals(SettingsActivity.KEY_ALARM_EDIT_SETTINGS)) {
