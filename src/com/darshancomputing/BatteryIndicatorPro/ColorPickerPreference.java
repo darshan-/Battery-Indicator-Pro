@@ -82,26 +82,31 @@ public class ColorPickerPreference extends Preference implements Preference.OnPr
     }
 
     private void setPreviewColor() {
+        if (! isEnabled()) return;
         if (mView == null) return;
         ImageView iView = new ImageView(getContext());
-        LinearLayout widgetFrameView = ((LinearLayout)mView.findViewById(android.R.id.widget_frame));
+        LinearLayout widgetFrameView = ((LinearLayout) mView.findViewById(android.R.id.widget_frame));
         if (widgetFrameView == null) return;
         widgetFrameView.setVisibility(View.VISIBLE);
-        widgetFrameView.setPadding(
-                                   widgetFrameView.getPaddingLeft(),
+        widgetFrameView.setPadding(widgetFrameView.getPaddingLeft(),
                                    widgetFrameView.getPaddingTop(),
-                                   (int)(mDensity * 8),
-                                   widgetFrameView.getPaddingBottom()
-                                   );
-        // remove already create preview image
+                                   (int) (mDensity * 8),
+                                   widgetFrameView.getPaddingBottom());
+        // remove already created preview image
         int count = widgetFrameView.getChildCount();
-        if (count > 0) {
+        if (count > 0)
             widgetFrameView.removeViews(0, count);
-        }
+
         widgetFrameView.addView(iView);
         widgetFrameView.setMinimumWidth(0);
-        //iView.setBackgroundDrawable(new AlphaPatternDrawable((int)(5 * mDensity)));
         iView.setImageBitmap(getPreviewBitmap());
+    }
+
+    private void setPreviewVisible(boolean visible) {
+        if (mView == null) return;
+        LinearLayout widgetFrameView = ((LinearLayout) mView.findViewById(android.R.id.widget_frame));
+        if (widgetFrameView == null) return;
+        widgetFrameView.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
     }
 
     private Bitmap getPreviewBitmap() {
@@ -150,6 +155,12 @@ public class ColorPickerPreference extends Preference implements Preference.OnPr
             mDialog.onRestoreInstanceState(state);
         }
         mDialog.show();
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        setPreviewVisible(enabled);
+        super.setEnabled(enabled);
     }
 
     @Override
