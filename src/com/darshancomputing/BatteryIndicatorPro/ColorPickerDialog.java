@@ -1,5 +1,13 @@
 /*
-    Copyright (c) 2013 Darshan-Josiah Barber
+    Modified from original source which was:
+      * Copyright (C) 2010 Daniel Nilsson
+      * Licensed under the Apache License, Version 2.0
+      * At http://github.com/attenzione/android-ColorPickerPreference
+
+    This file, or at least the changes from the original are
+
+      Copyright (c) 2013 Darshan-Josiah Barber
+
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -11,11 +19,6 @@
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
-
-    Modified from original which was:
-      * Copyright (C) 2010 Daniel Nilsson
-      * Licensed under the Apache License, Version 2.0
-      * At http://github.com/attenzione/android-ColorPickerPreference
 */
 
 package com.darshancomputing.BatteryIndicatorPro;
@@ -28,115 +31,83 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
-public class ColorPickerDialog
-	extends
-		Dialog
-	implements
-		ColorPickerView.OnColorChangedListener,
-		View.OnClickListener {
+public class ColorPickerDialog extends Dialog implements ColorPickerView.OnColorChangedListener,
+                                                         View.OnClickListener {
+    private ColorPickerView mColorPicker;
+    private ColorPickerPanelView mOldColor;
+    private ColorPickerPanelView mNewColor;
+    private OnColorChangedListener mListener;
 
-	private ColorPickerView mColorPicker;
+    public interface OnColorChangedListener {
+        public void onColorChanged(int color);
+    }
 
-	private ColorPickerPanelView mOldColor;
-	private ColorPickerPanelView mNewColor;
+    public ColorPickerDialog(Context context, int initialColor) {
+        super(context);
+        init(initialColor);
+    }
 
-	private OnColorChangedListener mListener;
+    private void init(int color) {
+        getWindow().setFormat(PixelFormat.RGBA_8888); // To fight color banding.
+        setUp(color);
+    }
 
-	public interface OnColorChangedListener {
-		public void onColorChanged(int color);
-	}
-	
-	public ColorPickerDialog(Context context, int initialColor) {
-		super(context);
+    private void setUp(int color) {
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.dialog_color_picker, null);
 
-		init(initialColor);
-	}
+        setContentView(layout);
+        setTitle(R.string.dialog_color_picker);
 
-	private void init(int color) {
-		// To fight color banding.
-		getWindow().setFormat(PixelFormat.RGBA_8888);
+        mColorPicker = (ColorPickerView) layout.findViewById(R.id.color_picker_view);
+        mOldColor = (ColorPickerPanelView) layout.findViewById(R.id.old_color_panel);
+        mNewColor = (ColorPickerPanelView) layout.findViewById(R.id.new_color_panel);
 
-		setUp(color);
+        ((LinearLayout) mOldColor.getParent()).setPadding(Math.round(mColorPicker.getDrawingOffset()), 0,
+                                                          Math.round(mColorPicker.getDrawingOffset()), 0);
 
-	}
+        mOldColor.setOnClickListener(this);
+        mNewColor.setOnClickListener(this);
+        mColorPicker.setOnColorChangedListener(this);
+        mOldColor.setColor(color);
+        mColorPicker.setColor(color, true);
+    }
 
-	private void setUp(int color) {
-		
-		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		
-		View layout = inflater.inflate(R.layout.dialog_color_picker, null);
+    @Override
+    public void onColorChanged(int color) {
+        mNewColor.setColor(color);
+    }
 
-		setContentView(layout);
+    public void setOnColorChangedListener(OnColorChangedListener listener){
+        mListener = listener;
+    }
 
-		setTitle(R.string.dialog_color_picker);
-		
-		mColorPicker = (ColorPickerView) layout.findViewById(R.id.color_picker_view);
-		mOldColor = (ColorPickerPanelView) layout.findViewById(R.id.old_color_panel);
-		mNewColor = (ColorPickerPanelView) layout.findViewById(R.id.new_color_panel);
-		
-		((LinearLayout) mOldColor.getParent()).setPadding(
-			Math.round(mColorPicker.getDrawingOffset()),
-			0,
-			Math.round(mColorPicker.getDrawingOffset()),
-			0
-		);	
-		
-		mOldColor.setOnClickListener(this);
-		mNewColor.setOnClickListener(this);
-		mColorPicker.setOnColorChangedListener(this);
-		mOldColor.setColor(color);
-		mColorPicker.setColor(color, true);
+    public int getColor() {
+        return mColorPicker.getColor();
+    }
 
-	}
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.new_color_panel) {
+            if (mListener != null) {
+                mListener.onColorChanged(mNewColor.getColor());
+            }
+        }
+        dismiss();
+    }
 
-	@Override
-	public void onColorChanged(int color) {
+    @Override
+    public Bundle onSaveInstanceState() {
+        Bundle state = super.onSaveInstanceState();
+        state.putInt("old_color", mOldColor.getColor());
+        state.putInt("new_color", mNewColor.getColor());
+        return state;
+    }
 
-		mNewColor.setColor(color);
-
-		/*
-		if (mListener != null) {
-			mListener.onColorChanged(color);
-		}
-		*/
-
-	}
-
-	/**
-	 * Set a OnColorChangedListener to get notified when the color
-	 * selected by the user has changed.
-	 * @param listener
-	 */
-	public void setOnColorChangedListener(OnColorChangedListener listener){
-		mListener = listener;
-	}
-
-	public int getColor() {
-		return mColorPicker.getColor();
-	}
-
-	@Override
-	public void onClick(View v) {
-		if (v.getId() == R.id.new_color_panel) {
-			if (mListener != null) {
-				mListener.onColorChanged(mNewColor.getColor());
-			}
-		}
-		dismiss();
-	}
-	
-	@Override
-	public Bundle onSaveInstanceState() {
-		Bundle state = super.onSaveInstanceState();
-		state.putInt("old_color", mOldColor.getColor());
-		state.putInt("new_color", mNewColor.getColor());
-		return state;
-	}
-	
-	@Override
-	public void onRestoreInstanceState(Bundle savedInstanceState) {
-		super.onRestoreInstanceState(savedInstanceState);
-		mOldColor.setColor(savedInstanceState.getInt("old_color"));
-		mColorPicker.setColor(savedInstanceState.getInt("new_color"), true);
-	}
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mOldColor.setColor(savedInstanceState.getInt("old_color"));
+        mColorPicker.setColor(savedInstanceState.getInt("new_color"), true);
+    }
 }

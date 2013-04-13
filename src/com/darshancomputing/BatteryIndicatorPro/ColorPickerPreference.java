@@ -1,21 +1,24 @@
 /*
-    Copyright (c) 2013 Darshan-Josiah Barber
+  Modified from original source which was:
+  * Copyright (C) 2010 Daniel Nilsson
+  * Licensed under the Apache License, Version 2.0
+  * At http://github.com/attenzione/android-ColorPickerPreference
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+  This file, or at least the changes from the original are
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+  Copyright (c) 2013 Darshan-Josiah Barber
 
 
-    Modified from original which was:
-      * Copyright (C) 2010 Daniel Nilsson
-      * Licensed under the Apache License, Version 2.0
-      * At http://github.com/attenzione/android-ColorPickerPreference
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
 */
 
 package com.darshancomputing.BatteryIndicatorPro;
@@ -34,188 +37,119 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-/**
- * A preference type that allows a user to choose a time
- * @author Sergey Margaritov
- */
-public class ColorPickerPreference
-	extends
-		Preference
-	implements
-		Preference.OnPreferenceClickListener,
-		ColorPickerDialog.OnColorChangedListener {
+public class ColorPickerPreference extends Preference implements Preference.OnPreferenceClickListener,
+                                                                 ColorPickerDialog.OnColorChangedListener {
+    View mView;
+    ColorPickerDialog mDialog;
+    private int mValue = Color.BLACK;
+    private float mDensity = 0;
 
-	View mView;
-	ColorPickerDialog mDialog;
-	private int mValue = Color.BLACK;
-	private float mDensity = 0;
-
-	public ColorPickerPreference(Context context) {
-		super(context);
-		init(context, null);
-	}
-
-	public ColorPickerPreference(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		init(context, attrs);
-	}
-
-	public ColorPickerPreference(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		init(context, attrs);
-	}
-
-	@Override
-	protected Object onGetDefaultValue(TypedArray a, int index) {
-		return a.getColor(index, Color.BLACK);
-	}
-
-	@Override
-	protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
-		onColorChanged(restoreValue ? getPersistedInt(mValue) : (Integer) defaultValue);
-	}
-
-	private void init(Context context, AttributeSet attrs) {
-		mDensity = getContext().getResources().getDisplayMetrics().density;
-		setOnPreferenceClickListener(this);
-	}
-
-	@Override
-	protected void onBindView(View view) {
-		super.onBindView(view);
-		mView = view;
-		setPreviewColor();
-	}
-
-	private void setPreviewColor() {
-		if (mView == null) return;
-		ImageView iView = new ImageView(getContext());
-		LinearLayout widgetFrameView = ((LinearLayout)mView.findViewById(android.R.id.widget_frame));
-		if (widgetFrameView == null) return;
-		widgetFrameView.setVisibility(View.VISIBLE);
-		widgetFrameView.setPadding(
-			widgetFrameView.getPaddingLeft(),
-			widgetFrameView.getPaddingTop(),
-			(int)(mDensity * 8),
-			widgetFrameView.getPaddingBottom()
-		);
-		// remove already create preview image
-		int count = widgetFrameView.getChildCount();
-		if (count > 0) {
-			widgetFrameView.removeViews(0, count);
-		}
-		widgetFrameView.addView(iView);
-		widgetFrameView.setMinimumWidth(0);
-		//iView.setBackgroundDrawable(new AlphaPatternDrawable((int)(5 * mDensity)));
-		iView.setImageBitmap(getPreviewBitmap());
-	}
-
-	private Bitmap getPreviewBitmap() {
-		int d = (int) (mDensity * 31); //30dip
-		int color = mValue;
-		Bitmap bm = Bitmap.createBitmap(d, d, Config.ARGB_8888);
-		int w = bm.getWidth();
-		int h = bm.getHeight();
-		int c = color;
-		for (int i = 0; i < w; i++) {
-			for (int j = i; j < h; j++) {
-				c = (i <= 1 || j <= 1 || i >= w-2 || j >= h-2) ? Color.GRAY : color;
-				bm.setPixel(i, j, c);
-				if (i != j) {
-					bm.setPixel(j, i, c);
-				}
-			}
-		}
-
-		return bm;
-	}
-
-	@Override
-	public void onColorChanged(int color) {
-		if (isPersistent()) {
-			persistInt(color);
-		}
-		mValue = color;
-		setPreviewColor();
-		try {
-			getOnPreferenceChangeListener().onPreferenceChange(this, color);
-		} catch (NullPointerException e) {
-
-		}
-	}
-
-	public boolean onPreferenceClick(Preference preference) {
-		showDialog(null);
-		return false;
-	}
-	
-	protected void showDialog(Bundle state) {
-		mDialog = new ColorPickerDialog(getContext(), mValue);
-		mDialog.setOnColorChangedListener(this);
-		if (state != null) {
-			mDialog.onRestoreInstanceState(state);
-		}
-		mDialog.show();
-	}
-
-	/**
-	 * For custom purposes. Not used by ColorPickerPreferrence
-	 * @param color
-	 * @author Unknown
-	 */
-    public static String convertToARGB(int color) {
-        String alpha = Integer.toHexString(Color.alpha(color));
-        String red = Integer.toHexString(Color.red(color));
-        String green = Integer.toHexString(Color.green(color));
-        String blue = Integer.toHexString(Color.blue(color));
-
-        if (alpha.length() == 1) {
-            alpha = "0" + alpha;
-        }
-
-        if (red.length() == 1) {
-            red = "0" + red;
-        }
-
-        if (green.length() == 1) {
-            green = "0" + green;
-        }
-
-        if (blue.length() == 1) {
-            blue = "0" + blue;
-        }
-
-        return "#" + alpha + red + green + blue;
+    public ColorPickerPreference(Context context) {
+        super(context);
+        init(context, null);
     }
 
-    /**
-     * For custom purposes. Not used by ColorPickerPreferrence
-     * @param argb
-     * @throws NumberFormatException
-     * @author Unknown
-     */
-    public static int convertToColorInt(String argb) throws NumberFormatException {
+    public ColorPickerPreference(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context, attrs);
+    }
 
-    	if (argb.startsWith("#")) {
-            argb = argb.replace("#", "");
-    	}
+    public ColorPickerPreference(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init(context, attrs);
+    }
 
-        int alpha = -1, red = -1, green = -1, blue = -1;
+    @Override
+    protected Object onGetDefaultValue(TypedArray a, int index) {
+        return a.getColor(index, Color.BLACK);
+    }
 
-        if (argb.length() == 8) {
-            alpha = Integer.parseInt(argb.substring(0, 2), 16);
-            red = Integer.parseInt(argb.substring(2, 4), 16);
-            green = Integer.parseInt(argb.substring(4, 6), 16);
-            blue = Integer.parseInt(argb.substring(6, 8), 16);
+    @Override
+    protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
+        onColorChanged(restoreValue ? getPersistedInt(mValue) : (Integer) defaultValue);
+    }
+
+    private void init(Context context, AttributeSet attrs) {
+        mDensity = getContext().getResources().getDisplayMetrics().density;
+        setOnPreferenceClickListener(this);
+    }
+
+    @Override
+    protected void onBindView(View view) {
+        super.onBindView(view);
+        mView = view;
+        setPreviewColor();
+    }
+
+    private void setPreviewColor() {
+        if (mView == null) return;
+        ImageView iView = new ImageView(getContext());
+        LinearLayout widgetFrameView = ((LinearLayout)mView.findViewById(android.R.id.widget_frame));
+        if (widgetFrameView == null) return;
+        widgetFrameView.setVisibility(View.VISIBLE);
+        widgetFrameView.setPadding(
+                                   widgetFrameView.getPaddingLeft(),
+                                   widgetFrameView.getPaddingTop(),
+                                   (int)(mDensity * 8),
+                                   widgetFrameView.getPaddingBottom()
+                                   );
+        // remove already create preview image
+        int count = widgetFrameView.getChildCount();
+        if (count > 0) {
+            widgetFrameView.removeViews(0, count);
         }
-        else if (argb.length() == 6) {
-            alpha = 255;
-            red = Integer.parseInt(argb.substring(0, 2), 16);
-            green = Integer.parseInt(argb.substring(2, 4), 16);
-            blue = Integer.parseInt(argb.substring(4, 6), 16);
+        widgetFrameView.addView(iView);
+        widgetFrameView.setMinimumWidth(0);
+        //iView.setBackgroundDrawable(new AlphaPatternDrawable((int)(5 * mDensity)));
+        iView.setImageBitmap(getPreviewBitmap());
+    }
+
+    private Bitmap getPreviewBitmap() {
+        int d = (int) (mDensity * 31); //30dip
+        int color = mValue;
+        Bitmap bm = Bitmap.createBitmap(d, d, Config.ARGB_8888);
+        int w = bm.getWidth();
+        int h = bm.getHeight();
+        int c = color;
+        for (int i = 0; i < w; i++) {
+            for (int j = i; j < h; j++) {
+                c = (i <= 1 || j <= 1 || i >= w-2 || j >= h-2) ? Color.GRAY : color;
+                bm.setPixel(i, j, c);
+                if (i != j) {
+                    bm.setPixel(j, i, c);
+                }
+            }
         }
 
-        return Color.argb(alpha, red, green, blue);
+        return bm;
+    }
+
+    @Override
+    public void onColorChanged(int color) {
+        if (isPersistent()) {
+            persistInt(color);
+        }
+        mValue = color;
+        setPreviewColor();
+        try {
+            getOnPreferenceChangeListener().onPreferenceChange(this, color);
+        } catch (NullPointerException e) {
+
+        }
+    }
+
+    public boolean onPreferenceClick(Preference preference) {
+        showDialog(null);
+        return false;
+    }
+
+    protected void showDialog(Bundle state) {
+        mDialog = new ColorPickerDialog(getContext(), mValue);
+        mDialog.setOnColorChangedListener(this);
+        if (state != null) {
+            mDialog.onRestoreInstanceState(state);
+        }
+        mDialog.show();
     }
 
     @Override
@@ -263,7 +197,7 @@ public class ColorPickerPreference
         
         @SuppressWarnings("unused")
         public static final Parcelable.Creator<SavedState> CREATOR =
-                new Parcelable.Creator<SavedState>() {
+            new Parcelable.Creator<SavedState>() {
             public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);
             }

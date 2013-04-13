@@ -1,21 +1,24 @@
 /*
-    Copyright (c) 2013 Darshan-Josiah Barber
+  Modified from original source which was:
+  * Copyright (C) 2010 Daniel Nilsson
+  * Licensed under the Apache License, Version 2.0
+  * At http://github.com/attenzione/android-ColorPickerPreference
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+  This file, or at least the changes from the original are
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+  Copyright (c) 2013 Darshan-Josiah Barber
 
 
-    Modified from original which was:
-      * Copyright (C) 2010 Daniel Nilsson
-      * Licensed under the Apache License, Version 2.0
-      * At http://github.com/attenzione/android-ColorPickerPreference
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
 */
 
 package com.darshancomputing.BatteryIndicatorPro;
@@ -27,132 +30,94 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-/**
- * This class draws a panel which which will be filled with a color which can be set.
- * It can be used to show the currently selected color which you will get from
- * the {@link ColorPickerView}.
- * @author Daniel Nilsson
- *
- */
 public class ColorPickerPanelView extends View {
+    private final static float BORDER_WIDTH_PX = 1;
+    private float mDensity = 1f;
+    private int   mBorderColor = 0xff6E6E6E;
+    private int   mColor = 0xff000000;
+    private Paint mBorderPaint;
+    private Paint mColorPaint;
+    private RectF mDrawingRect;
+    private RectF mColorRect;
 
-	/**
-	 * The width in pixels of the border
-	 * surrounding the color panel.
-	 */
-	private final static float	BORDER_WIDTH_PX = 1;
+    public ColorPickerPanelView(Context context){
+        this(context, null);
+    }
 
-	private float mDensity = 1f;
+    public ColorPickerPanelView(Context context, AttributeSet attrs){
+        this(context, attrs, 0);
+    }
 
-	private int 		mBorderColor = 0xff6E6E6E;
-	private int 		mColor = 0xff000000;
+    public ColorPickerPanelView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init();
+    }
 
-	private Paint		mBorderPaint;
-	private Paint		mColorPaint;
+    private void init(){
+        mBorderPaint = new Paint();
+        mColorPaint = new Paint();
+        mDensity = getContext().getResources().getDisplayMetrics().density;
+    }
 
-	private RectF		mDrawingRect;
-	private RectF		mColorRect;
+    @Override
+    protected void onDraw(Canvas canvas) {
+        final RectF rect = mColorRect;
 
-	public ColorPickerPanelView(Context context){
-		this(context, null);
-	}
+        if(BORDER_WIDTH_PX > 0){
+            mBorderPaint.setColor(mBorderColor);
+            canvas.drawRect(mDrawingRect, mBorderPaint);
+        }
 
-	public ColorPickerPanelView(Context context, AttributeSet attrs){
-		this(context, attrs, 0);
-	}
+        mColorPaint.setColor(mColor);
+        canvas.drawRect(rect, mColorPaint);
+    }
 
-	public ColorPickerPanelView(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		init();
-	}
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int width = MeasureSpec.getSize(widthMeasureSpec);
+        int height = MeasureSpec.getSize(heightMeasureSpec);
+        setMeasuredDimension(width, height);
+    }
 
-	private void init(){
-		mBorderPaint = new Paint();
-		mColorPaint = new Paint();
-		mDensity = getContext().getResources().getDisplayMetrics().density;
-	}
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
 
+        mDrawingRect = new RectF();
+        mDrawingRect.left =  getPaddingLeft();
+        mDrawingRect.right  = w - getPaddingRight();
+        mDrawingRect.top = getPaddingTop();
+        mDrawingRect.bottom = h - getPaddingBottom();
 
-	@Override
-	protected void onDraw(Canvas canvas) {
+        setUpColorRect();
+    }
 
-		final RectF	rect = mColorRect;
+    private void setUpColorRect(){
+        final RectF dRect = mDrawingRect;
 
-		if(BORDER_WIDTH_PX > 0){
-			mBorderPaint.setColor(mBorderColor);
-			canvas.drawRect(mDrawingRect, mBorderPaint);
-		}
+        float left = dRect.left + BORDER_WIDTH_PX;
+        float top = dRect.top + BORDER_WIDTH_PX;
+        float bottom = dRect.bottom - BORDER_WIDTH_PX;
+        float right = dRect.right - BORDER_WIDTH_PX;
 
-		mColorPaint.setColor(mColor);
+        mColorRect = new RectF(left,top, right, bottom);
+    }
 
-		canvas.drawRect(rect, mColorPaint);
-	}
+    public void setColor(int color){
+        mColor = color;
+        invalidate();
+    }
 
-	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    public int getColor(){
+        return mColor;
+    }
 
-		int width = MeasureSpec.getSize(widthMeasureSpec);
-		int height = MeasureSpec.getSize(heightMeasureSpec);
+    public void setBorderColor(int color){
+        mBorderColor = color;
+        invalidate();
+    }
 
-		setMeasuredDimension(width, height);
-	}
-
-	@Override
-	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-		super.onSizeChanged(w, h, oldw, oldh);
-
-		mDrawingRect = new RectF();
-		mDrawingRect.left =  getPaddingLeft();
-		mDrawingRect.right  = w - getPaddingRight();
-		mDrawingRect.top = getPaddingTop();
-		mDrawingRect.bottom = h - getPaddingBottom();
-
-		setUpColorRect();
-
-	}
-
-	private void setUpColorRect(){
-		final RectF	dRect = mDrawingRect;
-
-		float left = dRect.left + BORDER_WIDTH_PX;
-		float top = dRect.top + BORDER_WIDTH_PX;
-		float bottom = dRect.bottom - BORDER_WIDTH_PX;
-		float right = dRect.right - BORDER_WIDTH_PX;
-
-		mColorRect = new RectF(left,top, right, bottom);
-	}
-
-	/**
-	 * Set the color that should be shown by this view.
-	 * @param color
-	 */
-	public void setColor(int color){
-		mColor = color;
-		invalidate();
-	}
-
-	/**
-	 * Get the color currently show by this view.
-	 * @return
-	 */
-	public int getColor(){
-		return mColor;
-	}
-
-	/**
-	 * Set the color of the border surrounding the panel.
-	 * @param color
-	 */
-	public void setBorderColor(int color){
-		mBorderColor = color;
-		invalidate();
-	}
-
-	/**
-	 * Get the color of the border surrounding the panel.
-	 */
-	public int getBorderColor(){
-		return mBorderColor;
-	}
-
+    public int getBorderColor(){
+        return mBorderColor;
+    }
 }
