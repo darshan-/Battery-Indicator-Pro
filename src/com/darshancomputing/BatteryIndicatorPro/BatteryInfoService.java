@@ -399,9 +399,16 @@ public class BatteryInfoService extends Service {
 
             if (info.prediction.days > 0)
                 mainNotificationTitle = str.n_days_m_hours(info.prediction.days, info.prediction.hours);
-            else if (info.prediction.hours > 0)
-                mainNotificationTitle = str.n_hours_long_m_minutes_medium(info.prediction.hours, info.prediction.minutes);
-            else
+            else if (info.prediction.hours > 0) {
+                String verbosity = settings.getString(SettingsActivity.KEY_TIME_REMAINING_VERBOSITY,
+                                                      res.getString(R.string.default_time_remaining_verbosity));
+                if (verbosity.equals("condensed"))
+                    mainNotificationTitle = str.n_hours_m_minutes_medium(info.prediction.hours, info.prediction.minutes);
+                else if (verbosity.equals("verbose"))
+                    mainNotificationTitle = str.n_hours_m_minutes_long(info.prediction.hours, info.prediction.minutes);
+                else
+                    mainNotificationTitle = str.n_hours_long_m_minutes_medium(info.prediction.hours, info.prediction.minutes);
+            } else
                 mainNotificationTitle = str.n_minutes_long(info.prediction.minutes);
 
             if (info.prediction.what == BatteryInfo.Prediction.UNTIL_CHARGED)
