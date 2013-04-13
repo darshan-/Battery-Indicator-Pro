@@ -412,9 +412,12 @@ public class BatteryInfoService extends Service {
 
         Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
         mainNotificationText = str.healths[info.health] + " / " + str.formatTemp(info.temperature, convertF);
-
         if (info.voltage > 500)
             mainNotificationText += " / " + str.formatVoltage(info.voltage);
+        if (settings.getBoolean(SettingsActivity.KEY_STATUS_DURATION_IN_VITAL_SIGNS, false)) {
+            float statusDurationHours = (System.currentTimeMillis() - info.last_status_cTM) / (60 * 60 * 1000f);
+            mainNotificationText += " / " + String.format("%.1f", statusDurationHours) + "h"; // TODO: Translatable 'h'
+        }
 
         // TODO: Is it necessary to call new() every time here, or can I get away with just setting the icon on existing Notif.?
         mainNotification = new Notification(iconFor(info.percent), null, 0l);
