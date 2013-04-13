@@ -437,6 +437,16 @@ public class BatteryInfoService extends Service {
         notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTitle));
         notificationRV.setTextViewText(R.id.bottom_line, mainNotificationText);
 
+        if (settings.getBoolean(SettingsActivity.KEY_OVERRIDE_PERCENTAGE_TEXT_COLOR, false))
+            notificationRV.setTextColor(R.id.percent, settings.getInt(SettingsActivity.KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
+                                                                      R.color.main_notification_default_override_text_color));
+        if (settings.getBoolean(SettingsActivity.KEY_OVERRIDE_TOP_LINE_COLOR, false))
+            notificationRV.setTextColor(R.id.top_line, settings.getInt(SettingsActivity.KEY_NOTIFICATION_TOP_LINE_COLOR,
+                                                                      R.color.main_notification_default_override_text_color));
+        if (settings.getBoolean(SettingsActivity.KEY_OVERRIDE_BOTTOM_LINE_COLOR, false))
+            notificationRV.setTextColor(R.id.bottom_line, settings.getInt(SettingsActivity.KEY_NOTIFICATION_BOTTOM_LINE_COLOR,
+                                                                      R.color.main_notification_default_override_text_color));
+
         mainNotification.contentIntent = mainWindowPendingIntent;
         mainNotification.contentView = notificationRV;
     }

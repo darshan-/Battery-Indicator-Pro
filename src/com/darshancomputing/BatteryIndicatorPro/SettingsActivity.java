@@ -125,10 +125,22 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
                                                    KEY_NOTIFY_WHEN_KG_DISABLED, KEY_ICON_SET,
-                                                   KEY_INDICATE_CHARGING, KEY_TEN_PERCENT_MODE /* 10% mode changes color settings */
+                                                   KEY_INDICATE_CHARGING, KEY_TEN_PERCENT_MODE, /* 10% mode changes color settings */
+                                                   KEY_TOP_LINE, KEY_BOTTOM_LINE,
+                                                   KEY_TIME_REMAINING_VERBOSITY,
+                                                   KEY_STATUS_DURATION_IN_VITAL_SIGNS,
+                                                   KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
+                                                   KEY_SHOW_BOX_AROUND_ICON_AREA,
+                                                   KEY_NOTIFICATION_TOP_LINE_COLOR,
+                                                   KEY_NOTIFICATION_BOTTOM_LINE_COLOR
     };
 
-    private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_MAIN_NOTIFICATION_PRIORITY};
+    private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_MAIN_NOTIFICATION_PRIORITY,
+                                                                            KEY_ICON_AREA,
+                                                                            KEY_OVERRIDE_PERCENTAGE_TEXT_COLOR,
+                                                                            KEY_OVERRIDE_TOP_LINE_COLOR,
+                                                                            KEY_OVERRIDE_BOTTOM_LINE_COLOR,
+    };
 
     public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
 
