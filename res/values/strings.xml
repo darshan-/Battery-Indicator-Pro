@@ -440,22 +440,22 @@
   </string>
   <string formatted="false" name="pref_override_percentage_text_color_help">
   </string>
-  <string formatted="false" name="pref_notification_percentage_text_color">Percentage Text Color</string>
+  <string formatted="false" name="pref_notification_percentage_text_color">Percentage Color</string>
   <string formatted="false" name="pref_notification_percentage_text_color_help">
   </string>
-  <string formatted="false" name="pref_override_top_line_text_color">Override Top Line Text Color</string>
-  <string formatted="false" name="pref_override_top_line_text_color_summary">
+  <string formatted="false" name="pref_override_top_line_color">Override Top Line Color</string>
+  <string formatted="false" name="pref_override_top_line_color_summary">
     Choose custom color for top line text?
   </string>
-  <string formatted="false" name="pref_notification_top_line_text_color_help">
+  <string formatted="false" name="pref_notification_top_line_color_help">
   </string>
-  <string formatted="false" name="pref_notification_top_line_text_color">Top Line Text Color</string>
-  <string formatted="false" name="pref_override_bottom_line_text_color">Override Bottom Line Text Color</string>
-  <string formatted="false" name="pref_override_bottom_line_text_color_summary">
+  <string formatted="false" name="pref_notification_top_line_color">Top Line Color</string>
+  <string formatted="false" name="pref_override_bottom_line_color">Override Bottom Line Text Color</string>
+  <string formatted="false" name="pref_override_bottom_line_color_summary">
     Choose custom color for bottom line text?
   </string>
-  <string formatted="false" name="pref_notification_bottom_line_text_color">Bottom Line Text Color</string>
-  <string formatted="false" name="pref_notification_bottom_line_text_color_help">
+  <string formatted="false" name="pref_notification_bottom_line_color">Bottom Line Color</string>
+  <string formatted="false" name="pref_notification_bottom_line_color_help">
   </string>
 
   <string formatted="false" name="pref_cat_notification_appearance">Appearance</string>

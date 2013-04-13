@@ -90,10 +90,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_OVERRIDE_PERCENTAGE_TEXT_COLOR = "override_percentage_text_color";
     public static final String KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR = "notification_percentage_text_color";
     public static final String KEY_SHOW_BOX_AROUND_ICON_AREA = "show_box_around_icon_area";
-    public static final String KEY_OVERRIDE_TOP_LINE_TEXT_COLOR = "override_top_line_text_color";
-    public static final String KEY_NOTIFICATION_TOP_LINE_TEXT_COLOR = "notification_top_line_text_color";
-    public static final String KEY_OVERRIDE_BOTTOM_LINE_TEXT_COLOR = "override_bottom_line_text_color";
-    public static final String KEY_NOTIFICATION_BOTTOM_LINE_TEXT_COLOR = "notification_bottom_line_text_color";
+    public static final String KEY_OVERRIDE_TOP_LINE_COLOR = "override_top_line_color";
+    public static final String KEY_NOTIFICATION_TOP_LINE_COLOR = "notification_top_line_color";
+    public static final String KEY_OVERRIDE_BOTTOM_LINE_COLOR = "override_bottom_line_color";
+    public static final String KEY_NOTIFICATION_BOTTOM_LINE_COLOR = "notification_bottom_line_color";
     public static final String KEY_FIRST_RUN = "first_run";
     //public static final String KEY_LANGUAGE_OVERRIDE = "language_override";
 
@@ -102,16 +102,16 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_AMBER,
                                                 KEY_GREEN,
                                                 KEY_OVERRIDE_PERCENTAGE_TEXT_COLOR,
-                                                KEY_OVERRIDE_TOP_LINE_TEXT_COLOR,
-                                                KEY_OVERRIDE_BOTTOM_LINE_TEXT_COLOR
+                                                KEY_OVERRIDE_TOP_LINE_COLOR,
+                                                KEY_OVERRIDE_BOTTOM_LINE_COLOR
     };
     private static final String[] DEPENDENTS = {KEY_MAX_LOG_AGE,
                                                 KEY_RED_THRESH,
                                                 KEY_AMBER_THRESH,
                                                 KEY_GREEN_THRESH,
                                                 KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
-                                                KEY_NOTIFICATION_TOP_LINE_TEXT_COLOR,
-                                                KEY_NOTIFICATION_BOTTOM_LINE_TEXT_COLOR
+                                                KEY_NOTIFICATION_TOP_LINE_COLOR,
+                                                KEY_NOTIFICATION_BOTTOM_LINE_COLOR
     };
 
     private static final String[] LIST_PREFS = {KEY_AUTOSTART, KEY_STATUS_DUR_EST,
