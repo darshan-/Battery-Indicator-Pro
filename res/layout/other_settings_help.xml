@@ -19,32 +19,6 @@
     <TextView style="@style/help_text" android:text="@string/pref_max_log_age_help" />
 
     <View style="@style/help_cat_pre_margin" />
-    <TextView style="@style/help_cat"  android:text="@string/pref_cat_keyguard" />
-    <TextView style="@style/help_text" android:text="@string/pref_cat_keyguard_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_notify_when_kg_disabled" />
-    <TextView style="@style/help_text" android:text="@string/pref_notify_when_kg_disabled_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_confirm_manual_disable" />
-    <TextView style="@style/help_text" android:text="@string/pref_confirm_manual_disable_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_finish_after_toggle_lock" />
-    <TextView style="@style/help_text" android:text="@string/pref_finish_after_toggle_lock_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_auto_disable" />
-    <TextView style="@style/help_text" android:text="@string/pref_auto_disable_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_disallow_disable_lock_screen" />
-    <TextView style="@style/help_text" android:text="@string/pref_disallow_disable_lock_screen_help" />
-
-    <View style="@style/help_cat_pre_margin" />
-    <TextView style="@style/help_cat"  android:text="@string/pref_cat_notification_priority" />
-    <TextView style="@style/help_text" android:text="@string/pref_cat_notification_priority_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_main_notification_priority" />
-    <TextView style="@style/help_text" android:text="@string/pref_main_notification_priority_help" />
-
-    <View style="@style/help_cat_pre_margin" />
-    <TextView style="@style/help_cat"  android:text="@string/pref_cat_notification_content" />
-    <View style="@style/help_cat_post_margin" />
-    <TextView style="@style/help_pref" android:text="@string/pref_notify_status_duration" />
-    <TextView style="@style/help_text" android:text="@string/pref_notify_status_duration_help" />
-
-    <View style="@style/help_cat_pre_margin" />
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_battery_use" />
     <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_finish_after_battery_use" />

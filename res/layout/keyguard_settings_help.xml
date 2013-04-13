@@ -11,36 +11,18 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
   >
-    <TextView style="@style/help_cat"  android:text="@string/pref_cat_icon_set" />
-    <View style="@style/help_cat_post_margin" />
-    <TextView style="@style/help_pref" android:text="@string/pref_icon_set" />
-    <TextView style="@style/help_text" android:text="@string/pref_icon_set_help" />
-
     <View style="@style/help_cat_pre_margin" />
-    <TextView style="@style/help_cat"  android:text="@string/pref_cat_charging_indicator" />
-    <View style="@style/help_cat_post_margin" />
-    <TextView style="@style/help_pref" android:text="@string/pref_indicate_charging" />
-    <TextView style="@style/help_text" android:text="@string/pref_indicate_charging_help" />
-
-
-    <View style="@style/help_cat_pre_margin" />
-    <TextView style="@style/help_cat"  android:text="@string/pref_cat_color" />
-    <TextView style="@style/help_text" android:text="@string/pref_cat_color_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_color_preview" />
-    <TextView style="@style/help_text" android:text="@string/pref_color_preview_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_red" />
-    <TextView style="@style/help_text" android:text="@string/pref_red_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_red_thresh" />
-    <TextView style="@style/help_text" android:text="@string/pref_red_thresh_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_amber" />
-    <TextView style="@style/help_text" android:text="@string/pref_amber_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_amber_thresh" />
-    <TextView style="@style/help_text" android:text="@string/pref_amber_thresh_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_green" />
-    <TextView style="@style/help_text" android:text="@string/pref_green_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_green_thresh" />
-    <TextView style="@style/help_text" android:text="@string/pref_green_thresh_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_ten_percent_mode" />
-    <TextView style="@style/help_text" android:text="@string/pref_ten_percent_mode_help" />
+    <TextView style="@style/help_cat"  android:text="@string/pref_cat_keyguard" />
+    <TextView style="@style/help_text" android:text="@string/pref_cat_keyguard_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_notify_when_kg_disabled" />
+    <TextView style="@style/help_text" android:text="@string/pref_notify_when_kg_disabled_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_confirm_manual_disable" />
+    <TextView style="@style/help_text" android:text="@string/pref_confirm_manual_disable_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_finish_after_toggle_lock" />
+    <TextView style="@style/help_text" android:text="@string/pref_finish_after_toggle_lock_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_auto_disable" />
+    <TextView style="@style/help_text" android:text="@string/pref_auto_disable_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_disallow_disable_lock_screen" />
+    <TextView style="@style/help_text" android:text="@string/pref_disallow_disable_lock_screen_help" />
   </LinearLayout>
 </ScrollView>
