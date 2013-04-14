@@ -4,11 +4,12 @@
   </style>
 
   <style name="NotificationTextIcon" parent="NotificationTitle">
-    <item name="android:background">#222</item>
-    <item name="android:textColor">#fff</item>
+    <item name="android:background">@color/notification_box_default_color</item>
+    <item name="android:textColor">@color/main_notification_default_override_text_color</item>
   </style>
 
   <dimen name="main_notification_text_padding_left">10dp</dimen>
 
+  <color name="notification_box_default_color">#222</color>
   <color name="main_notification_default_override_text_color">#fff</color>
 </resources>
