@@ -429,10 +429,8 @@ public class BatteryInfoService extends Service {
         // TODO: Is it necessary to call new() every time here, or can I get away with just setting the icon on existing Notif.?
         mainNotification = new Notification(iconFor(info.percent), null, 0l);
 
-        //if (relevant settings have changed) {
-            notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
-            notificationRV.setImageViewBitmap(R.id.battery_level_view, bl.getBitmap());
-        //}
+        notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
+        notificationRV.setImageViewBitmap(R.id.battery_level_view, bl.getBitmap());
 
         if (android.os.Build.VERSION.SDK_INT >= 16) {
             mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
@@ -456,6 +454,13 @@ public class BatteryInfoService extends Service {
         if (settings.getBoolean(SettingsActivity.KEY_OVERRIDE_BOTTOM_LINE_COLOR, false))
             notificationRV.setTextColor(R.id.bottom_line, settings.getInt(SettingsActivity.KEY_NOTIFICATION_BOTTOM_LINE_COLOR,
                                                                       R.color.main_notification_default_override_text_color));
+
+        boolean default_show_box = res.getBoolean(R.bool.default_show_box_around_icon_area);
+        boolean show_box = settings.getBoolean(SettingsActivity.KEY_SHOW_BOX_AROUND_ICON_AREA, default_show_box);
+        if (show_box != default_show_box) {
+            int color = show_box ? res.getColor(R.color.notification_box_default_color) : 0x00000000;
+            notificationRV.setInt(R.id.percent, "setBackgroundColor", color);
+        }
 
         mainNotification.contentIntent = mainWindowPendingIntent;
         mainNotification.contentView = notificationRV;

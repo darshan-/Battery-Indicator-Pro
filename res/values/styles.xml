@@ -106,5 +106,7 @@
 
   <dimen name="main_notification_text_padding_left">3dp</dimen>
 
+  <color name="notification_box_default_color">#222</color>
   <color name="main_notification_default_override_text_color">#000</color>
+  <bool name="default_show_box_around_icon_area">false</bool>
 </resources>

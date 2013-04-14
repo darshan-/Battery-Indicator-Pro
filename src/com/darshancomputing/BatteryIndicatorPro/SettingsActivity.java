@@ -130,7 +130,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_TIME_REMAINING_VERBOSITY,
                                                    KEY_STATUS_DURATION_IN_VITAL_SIGNS,
                                                    KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
-                                                   KEY_SHOW_BOX_AROUND_ICON_AREA,
                                                    KEY_NOTIFICATION_TOP_LINE_COLOR,
                                                    KEY_NOTIFICATION_BOTTOM_LINE_COLOR
     };
@@ -140,6 +139,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                                             KEY_OVERRIDE_PERCENTAGE_TEXT_COLOR,
                                                                             KEY_OVERRIDE_TOP_LINE_COLOR,
                                                                             KEY_OVERRIDE_BOTTOM_LINE_COLOR,
+                                                                            KEY_SHOW_BOX_AROUND_ICON_AREA
     };
 
     public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";

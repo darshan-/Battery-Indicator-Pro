@@ -65,7 +65,7 @@
        android:key="show_box_around_icon_area"
        android:title="@string/pref_show_box_around_icon_area"
        android:summary="@string/pref_show_box_around_icon_area_summary"
-       android:defaultValue="false"
+       android:defaultValue="@bool/default_show_box_around_icon_area"
     />
 
     <CheckBoxPreference
