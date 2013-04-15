@@ -383,12 +383,8 @@ public class BatteryInfoService extends Service {
     }
 
     private void prepareNotification() {
-        if (settings.getBoolean(SettingsActivity.KEY_NOTIFY_STATUS_DURATION, false))
-            mainNotificationTopLine = statusDurationLine();
-        else
-            mainNotificationTopLine = predictionLine();
-
-        mainNotificationBottomLine = vitalStatsLine();
+        mainNotificationTopLine = lineFor(SettingsActivity.KEY_TOP_LINE);
+        mainNotificationBottomLine = lineFor(SettingsActivity.KEY_BOTTOM_LINE);
 
         // TODO: Is it necessary to call new() every time here, or can I get away with just setting the icon on existing Notif.?
         mainNotification = new Notification(iconFor(info.percent), null, 0l);
@@ -428,6 +424,17 @@ public class BatteryInfoService extends Service {
 
         mainNotification.contentIntent = mainWindowPendingIntent;
         mainNotification.contentView = notificationRV;
+    }
+
+    private String lineFor(String key) {
+        String req = settings.getString(key, key.equals(SettingsActivity.KEY_TOP_LINE) ? "remaining" : "vitals");
+
+        if (req.equals("remaining"))
+            return predictionLine();
+        else if (req.equals("vitals"))
+            return vitalStatsLine();
+        else
+            return statusDurationLine();
     }
 
     private String predictionLine() {
