@@ -383,48 +383,12 @@ public class BatteryInfoService extends Service {
     }
 
     private void prepareNotification() {
-        if (settings.getBoolean(SettingsActivity.KEY_NOTIFY_STATUS_DURATION, false)) {
-            long statusDuration = System.currentTimeMillis() - info.last_status_cTM;
-            int statusDurationHours = (int)((statusDuration + (1000 * 60 * 30)) / (1000 * 60 * 60));
+        if (settings.getBoolean(SettingsActivity.KEY_NOTIFY_STATUS_DURATION, false))
+            mainNotificationTopLine = statusDurationLine();
+        else
+            mainNotificationTopLine = predictionLine();
 
-            mainNotificationTopLine = str.statuses[info.status] + " ";
-            if (statusDuration < 1000 * 60 * 60)
-                mainNotificationTopLine += str.since + " " + formatTime(new Date(info.last_status_cTM));
-            else
-                mainNotificationTopLine += str.for_n_hours(statusDurationHours);
-        } else if (info.prediction.what == BatteryInfo.Prediction.NONE) {
-            mainNotificationTopLine = str.statuses[info.status];
-        } else {
-            // TODO: Pro option to choose between long, medium, and short
-
-            if (info.prediction.days > 0)
-                mainNotificationTopLine = str.n_days_m_hours(info.prediction.days, info.prediction.hours);
-            else if (info.prediction.hours > 0) {
-                String verbosity = settings.getString(SettingsActivity.KEY_TIME_REMAINING_VERBOSITY,
-                                                      res.getString(R.string.default_time_remaining_verbosity));
-                if (verbosity.equals("condensed"))
-                    mainNotificationTopLine = str.n_hours_m_minutes_medium(info.prediction.hours, info.prediction.minutes);
-                else if (verbosity.equals("verbose"))
-                    mainNotificationTopLine = str.n_hours_m_minutes_long(info.prediction.hours, info.prediction.minutes);
-                else
-                    mainNotificationTopLine = str.n_hours_long_m_minutes_medium(info.prediction.hours, info.prediction.minutes);
-            } else
-                mainNotificationTopLine = str.n_minutes_long(info.prediction.minutes);
-
-            if (info.prediction.what == BatteryInfo.Prediction.UNTIL_CHARGED)
-                mainNotificationTopLine += res.getString(R.string.notification_until_charged);
-            else
-                mainNotificationTopLine += res.getString(R.string.notification_until_drained);
-        }
-
-        Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
-        mainNotificationBottomLine = str.healths[info.health] + " / " + str.formatTemp(info.temperature, convertF);
-        if (info.voltage > 500)
-            mainNotificationBottomLine += " / " + str.formatVoltage(info.voltage);
-        if (settings.getBoolean(SettingsActivity.KEY_STATUS_DURATION_IN_VITAL_SIGNS, false)) {
-            float statusDurationHours = (System.currentTimeMillis() - info.last_status_cTM) / (60 * 60 * 1000f);
-            mainNotificationBottomLine += " / " + String.format("%.1f", statusDurationHours) + "h"; // TODO: Translatable 'h'
-        }
+        mainNotificationBottomLine = vitalStatsLine();
 
         // TODO: Is it necessary to call new() every time here, or can I get away with just setting the icon on existing Notif.?
         mainNotification = new Notification(iconFor(info.percent), null, 0l);
@@ -464,6 +428,62 @@ public class BatteryInfoService extends Service {
 
         mainNotification.contentIntent = mainWindowPendingIntent;
         mainNotification.contentView = notificationRV;
+    }
+
+    private String predictionLine() {
+        String line;
+
+        if (info.prediction.what == BatteryInfo.Prediction.NONE) {
+            line = str.statuses[info.status];
+        } else {
+            if (info.prediction.days > 0)
+                line = str.n_days_m_hours(info.prediction.days, info.prediction.hours);
+            else if (info.prediction.hours > 0) {
+                String verbosity = settings.getString(SettingsActivity.KEY_TIME_REMAINING_VERBOSITY,
+                                                      res.getString(R.string.default_time_remaining_verbosity));
+                if (verbosity.equals("condensed"))
+                    line = str.n_hours_m_minutes_medium(info.prediction.hours, info.prediction.minutes);
+                else if (verbosity.equals("verbose"))
+                    line = str.n_hours_m_minutes_long(info.prediction.hours, info.prediction.minutes);
+                else
+                    line = str.n_hours_long_m_minutes_medium(info.prediction.hours, info.prediction.minutes);
+            } else
+                line = str.n_minutes_long(info.prediction.minutes);
+
+            if (info.prediction.what == BatteryInfo.Prediction.UNTIL_CHARGED)
+                line += res.getString(R.string.notification_until_charged);
+            else
+                line += res.getString(R.string.notification_until_drained);
+        }
+
+        return line;
+    }
+
+    private String vitalStatsLine() {
+        Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
+        String line = str.healths[info.health] + " / " + str.formatTemp(info.temperature, convertF);
+
+        if (info.voltage > 500)
+            line += " / " + str.formatVoltage(info.voltage);
+        if (settings.getBoolean(SettingsActivity.KEY_STATUS_DURATION_IN_VITAL_SIGNS, false)) {
+            float statusDurationHours = (System.currentTimeMillis() - info.last_status_cTM) / (60 * 60 * 1000f);
+            line += " / " + String.format("%.1f", statusDurationHours) + "h"; // TODO: Translatable 'h'
+        }
+
+        return line;
+    }
+
+    private String statusDurationLine() {
+        long statusDuration = System.currentTimeMillis() - info.last_status_cTM;
+        int statusDurationHours = (int) ((statusDuration + (1000 * 60 * 30)) / (1000 * 60 * 60));
+        String line = str.statuses[info.status] + " ";
+
+        if (statusDuration < 1000 * 60 * 60)
+            line += str.since + " " + formatTime(new Date(info.last_status_cTM));
+        else
+            line += str.for_n_hours(statusDurationHours);
+
+        return line;
     }
 
     private void doNotify() {
