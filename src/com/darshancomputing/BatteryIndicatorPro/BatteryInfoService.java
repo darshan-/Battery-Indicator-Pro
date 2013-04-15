@@ -102,7 +102,7 @@ public class BatteryInfoService extends Service {
 
     /* Global variables for these Notification Runnables */
     private Notification mainNotification;
-    private String mainNotificationTitle, mainNotificationText;
+    private String mainNotificationTopLine, mainNotificationBottomLine;
     private RemoteViews notificationRV;
 
     private Predictor predictor;
@@ -119,7 +119,7 @@ public class BatteryInfoService extends Service {
                                                                                 String.class, String.class,
                                                                                 PendingIntent.class});
                 m.invoke(pluginServiceConnection.service, new Object[] {info.percent, info.status,
-                                                                        mainNotificationTitle, mainNotificationText,
+                                                                        mainNotificationTopLine, mainNotificationBottomLine,
                                                                         mainWindowPendingIntent});
 
                 mHandler.removeCallbacks(mPluginNotify);
@@ -387,43 +387,43 @@ public class BatteryInfoService extends Service {
             long statusDuration = System.currentTimeMillis() - info.last_status_cTM;
             int statusDurationHours = (int)((statusDuration + (1000 * 60 * 30)) / (1000 * 60 * 60));
 
-            mainNotificationTitle = str.statuses[info.status] + " ";
+            mainNotificationTopLine = str.statuses[info.status] + " ";
             if (statusDuration < 1000 * 60 * 60)
-                mainNotificationTitle += str.since + " " + formatTime(new Date(info.last_status_cTM));
+                mainNotificationTopLine += str.since + " " + formatTime(new Date(info.last_status_cTM));
             else
-                mainNotificationTitle += str.for_n_hours(statusDurationHours);
+                mainNotificationTopLine += str.for_n_hours(statusDurationHours);
         } else if (info.prediction.what == BatteryInfo.Prediction.NONE) {
-            mainNotificationTitle = str.statuses[info.status];
+            mainNotificationTopLine = str.statuses[info.status];
         } else {
             // TODO: Pro option to choose between long, medium, and short
 
             if (info.prediction.days > 0)
-                mainNotificationTitle = str.n_days_m_hours(info.prediction.days, info.prediction.hours);
+                mainNotificationTopLine = str.n_days_m_hours(info.prediction.days, info.prediction.hours);
             else if (info.prediction.hours > 0) {
                 String verbosity = settings.getString(SettingsActivity.KEY_TIME_REMAINING_VERBOSITY,
                                                       res.getString(R.string.default_time_remaining_verbosity));
                 if (verbosity.equals("condensed"))
-                    mainNotificationTitle = str.n_hours_m_minutes_medium(info.prediction.hours, info.prediction.minutes);
+                    mainNotificationTopLine = str.n_hours_m_minutes_medium(info.prediction.hours, info.prediction.minutes);
                 else if (verbosity.equals("verbose"))
-                    mainNotificationTitle = str.n_hours_m_minutes_long(info.prediction.hours, info.prediction.minutes);
+                    mainNotificationTopLine = str.n_hours_m_minutes_long(info.prediction.hours, info.prediction.minutes);
                 else
-                    mainNotificationTitle = str.n_hours_long_m_minutes_medium(info.prediction.hours, info.prediction.minutes);
+                    mainNotificationTopLine = str.n_hours_long_m_minutes_medium(info.prediction.hours, info.prediction.minutes);
             } else
-                mainNotificationTitle = str.n_minutes_long(info.prediction.minutes);
+                mainNotificationTopLine = str.n_minutes_long(info.prediction.minutes);
 
             if (info.prediction.what == BatteryInfo.Prediction.UNTIL_CHARGED)
-                mainNotificationTitle += res.getString(R.string.notification_until_charged);
+                mainNotificationTopLine += res.getString(R.string.notification_until_charged);
             else
-                mainNotificationTitle += res.getString(R.string.notification_until_drained);
+                mainNotificationTopLine += res.getString(R.string.notification_until_drained);
         }
 
         Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
-        mainNotificationText = str.healths[info.health] + " / " + str.formatTemp(info.temperature, convertF);
+        mainNotificationBottomLine = str.healths[info.health] + " / " + str.formatTemp(info.temperature, convertF);
         if (info.voltage > 500)
-            mainNotificationText += " / " + str.formatVoltage(info.voltage);
+            mainNotificationBottomLine += " / " + str.formatVoltage(info.voltage);
         if (settings.getBoolean(SettingsActivity.KEY_STATUS_DURATION_IN_VITAL_SIGNS, false)) {
             float statusDurationHours = (System.currentTimeMillis() - info.last_status_cTM) / (60 * 60 * 1000f);
-            mainNotificationText += " / " + String.format("%.1f", statusDurationHours) + "h"; // TODO: Translatable 'h'
+            mainNotificationBottomLine += " / " + String.format("%.1f", statusDurationHours) + "h"; // TODO: Translatable 'h'
         }
 
         // TODO: Is it necessary to call new() every time here, or can I get away with just setting the icon on existing Notif.?
@@ -442,8 +442,8 @@ public class BatteryInfoService extends Service {
         bl.setLevel(info.percent);
 
         notificationRV.setTextViewText(R.id.percent, "" + info.percent + str.percent_symbol);
-        notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTitle));
-        notificationRV.setTextViewText(R.id.bottom_line, mainNotificationText);
+        notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTopLine));
+        notificationRV.setTextViewText(R.id.bottom_line, mainNotificationBottomLine);
 
         if (settings.getBoolean(SettingsActivity.KEY_OVERRIDE_PERCENTAGE_TEXT_COLOR, false))
             notificationRV.setTextColor(R.id.percent, settings.getInt(SettingsActivity.KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
