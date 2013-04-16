@@ -39,6 +39,7 @@ import android.os.Messenger;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.RemoteViews;
 import java.util.Date;
 
@@ -163,7 +164,7 @@ public class BatteryInfoService extends Service {
         predictor = new Predictor(context);
         bl = new BatteryLevel(context, BatteryLevel.SIZE_NOTIFICATION);
         notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
-        notificationRV.setImageViewBitmap(R.id.battery_level_view, bl.getBitmap());
+        notificationRV.setImageViewBitmap(R.id.battery, bl.getBitmap());
 
         alarms = new AlarmDatabase(context);
 
@@ -390,7 +391,7 @@ public class BatteryInfoService extends Service {
         mainNotification = new Notification(iconFor(info.percent), null, 0l);
 
         notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
-        notificationRV.setImageViewBitmap(R.id.battery_level_view, bl.getBitmap());
+        notificationRV.setImageViewBitmap(R.id.battery, bl.getBitmap());
 
         if (android.os.Build.VERSION.SDK_INT >= 16) {
             mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
@@ -398,6 +399,19 @@ public class BatteryInfoService extends Service {
         }
 
         mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
+
+        String icon_area = settings.getString(SettingsActivity.KEY_ICON_AREA, res.getString(R.string.default_icon_area_content));
+
+        if (icon_area.equals("percentage")) {
+            notificationRV.setViewVisibility(R.id.percent, View.VISIBLE);
+            notificationRV.setViewVisibility(R.id.battery, View.GONE);
+        } else if (icon_area.equals("graphic")) {
+            notificationRV.setViewVisibility(R.id.percent, View.GONE);
+            notificationRV.setViewVisibility(R.id.battery, View.VISIBLE);
+        } else {
+            notificationRV.setViewVisibility(R.id.percent, View.VISIBLE);
+            notificationRV.setViewVisibility(R.id.battery, View.VISIBLE);
+        }
 
         bl.setLevel(info.percent);
 
@@ -420,6 +434,7 @@ public class BatteryInfoService extends Service {
         if (show_box != default_show_box) {
             int color = show_box ? res.getColor(R.color.notification_box_default_color) : 0x00000000;
             notificationRV.setInt(R.id.percent, "setBackgroundColor", color);
+            notificationRV.setInt(R.id.battery, "setBackgroundColor", color);
         }
 
         mainNotification.contentIntent = mainWindowPendingIntent;
