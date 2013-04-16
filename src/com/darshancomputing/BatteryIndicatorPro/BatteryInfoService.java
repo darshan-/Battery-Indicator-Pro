@@ -163,8 +163,6 @@ public class BatteryInfoService extends Service {
 
         predictor = new Predictor(context);
         bl = new BatteryLevel(context, BatteryLevel.SIZE_NOTIFICATION);
-        notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
-        notificationRV.setImageViewBitmap(R.id.battery, bl.getBitmap());
 
         alarms = new AlarmDatabase(context);
 
@@ -390,9 +388,6 @@ public class BatteryInfoService extends Service {
         // TODO: Is it necessary to call new() every time here, or can I get away with just setting the icon on existing Notif.?
         mainNotification = new Notification(iconFor(info.percent), null, 0l);
 
-        notificationRV = new RemoteViews(getPackageName(), R.layout.main_notification);
-        notificationRV.setImageViewBitmap(R.id.battery, bl.getBitmap());
-
         if (android.os.Build.VERSION.SDK_INT >= 16) {
             mainNotification.priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
                                                                            str.default_main_notification_priority));
@@ -402,17 +397,21 @@ public class BatteryInfoService extends Service {
 
         String icon_area = settings.getString(SettingsActivity.KEY_ICON_AREA, res.getString(R.string.default_icon_area_content));
 
+        int layout_id = R.layout.main_notification;
+        if (icon_area.equals("both"))
+            layout_id = R.layout.main_notification_both;
+
+        notificationRV = new RemoteViews(getPackageName(), layout_id);
+
         if (icon_area.equals("percentage")) {
             notificationRV.setViewVisibility(R.id.percent, View.VISIBLE);
             notificationRV.setViewVisibility(R.id.battery, View.GONE);
         } else if (icon_area.equals("graphic")) {
             notificationRV.setViewVisibility(R.id.percent, View.GONE);
             notificationRV.setViewVisibility(R.id.battery, View.VISIBLE);
-        } else {
-            notificationRV.setViewVisibility(R.id.percent, View.VISIBLE);
-            notificationRV.setViewVisibility(R.id.battery, View.VISIBLE);
         }
 
+        notificationRV.setImageViewBitmap(R.id.battery, bl.getBitmap());
         bl.setLevel(info.percent);
 
         notificationRV.setTextViewText(R.id.percent, "" + info.percent + str.percent_symbol);
