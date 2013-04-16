@@ -4,7 +4,6 @@
   </style>
 
   <style name="NotificationTextIcon" parent="NotificationTitle">
-    <item name="android:background">@color/notification_box_default_color</item>
     <item name="android:textColor">@color/main_notification_default_override_text_color</item>
   </style>
 

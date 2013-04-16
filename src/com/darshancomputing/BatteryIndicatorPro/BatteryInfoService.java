@@ -398,8 +398,8 @@ public class BatteryInfoService extends Service {
         String icon_area = settings.getString(SettingsActivity.KEY_ICON_AREA, res.getString(R.string.default_icon_area_content));
 
         int layout_id = R.layout.main_notification;
-        if (icon_area.equals("both"))
-            layout_id = R.layout.main_notification_both;
+        if (icon_area.equals("percentage_first"))
+            layout_id = R.layout.main_notification_percentage_first;
 
         notificationRV = new RemoteViews(getPackageName(), layout_id);
 
@@ -430,10 +430,13 @@ public class BatteryInfoService extends Service {
 
         boolean default_show_box = res.getBoolean(R.bool.default_show_box_around_icon_area);
         boolean show_box = settings.getBoolean(SettingsActivity.KEY_SHOW_BOX_AROUND_ICON_AREA, default_show_box);
-        if (show_box != default_show_box) {
-            int color = show_box ? res.getColor(R.color.notification_box_default_color) : 0x00000000;
-            notificationRV.setInt(R.id.percent, "setBackgroundColor", color);
-            notificationRV.setInt(R.id.battery, "setBackgroundColor", color);
+
+        if (show_box) {
+            int color = res.getColor(R.color.notification_box_default_color);
+            if (! icon_area.equals("battery_first"))
+                notificationRV.setInt(R.id.percent, "setBackgroundColor", color);
+            if (! icon_area.equals("percentage_first"))
+                notificationRV.setInt(R.id.battery, "setBackgroundColor", color);
         }
 
         mainNotification.contentIntent = mainWindowPendingIntent;

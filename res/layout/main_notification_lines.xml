@@ -4,7 +4,6 @@
               android:layout_width="0px"
               android:layout_height="fill_parent"
               android:layout_weight="1.0"
-              android:paddingLeft="@dimen/main_notification_text_padding_left"
 >
   <TextView android:id="@+id/top_line"
             android:layout_width="fill_parent"

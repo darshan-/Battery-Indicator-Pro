@@ -401,7 +401,8 @@
   </string>
   <string formatted="false" name="battery_graphic">Battery Graphic</string>
   <string formatted="false" name="charge_percentage">Charge Percentage</string>
-  <string formatted="false" name="both">Both</string>
+  <string formatted="false" name="percentage_first">Percentage, Battery</string>
+  <string formatted="false" name="battery_first">Battery, Percentage</string>
 
   <string formatted="false" name="pref_top_line_content">Top Line Content</string>
   <string formatted="false" name="pref_top_line_content_summary"></string>

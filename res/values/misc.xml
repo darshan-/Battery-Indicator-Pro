@@ -495,15 +495,17 @@
   <bool name="long_notification_okay">false</bool>
 
   <string-array name="icon_area_content_entries">
-    <item>@string/battery_graphic</item>
     <item>@string/charge_percentage</item>
-    <item>@string/both</item>
+    <item>@string/battery_graphic</item>
+    <item>@string/percentage_first</item>
+    <item>@string/battery_first</item>
   </string-array>
 
   <string-array name="icon_area_content_values">
-    <item>graphic</item>
     <item>percentage</item>
-    <item>both</item>
+    <item>graphic</item>
+    <item>percentage_first</item>
+    <item>battery_first</item>
   </string-array>
 
   <string name="default_icon_area_content">percentage</string>

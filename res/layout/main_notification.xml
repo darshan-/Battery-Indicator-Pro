@@ -5,6 +5,7 @@
               android:layout_width="fill_parent"
               android:layout_height="64dp"
 >
-  <include layout="@layout/battery_percent_single" />
+  <include layout="@layout/battery_percent" />
+  <LinearLayout android:layout_width="@dimen/main_notification_text_padding_left" android:layout_height="fill_parent" />
   <include layout="@layout/main_notification_lines" />
 </LinearLayout>
