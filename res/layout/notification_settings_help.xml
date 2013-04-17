@@ -25,15 +25,7 @@
     <TextView style="@style/help_text" android:text="@string/pref_status_duration_in_vital_signs_help" />
 
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_notification_appearance" />
-    <View style="@style/help_cat_post_margin" />
-    <TextView style="@style/help_pref" android:text="@string/pref_notification_percentage_text_color" />
-    <TextView style="@style/help_text" android:text="@string/pref_notification_percentage_text_color_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_show_box_around_icon_area" />
-    <TextView style="@style/help_text" android:text="@string/pref_show_box_around_icon_area_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_notification_top_line_color" />
-    <TextView style="@style/help_text" android:text="@string/pref_notification_top_line_color_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_notification_bottom_line_color" />
-    <TextView style="@style/help_text" android:text="@string/pref_notification_bottom_line_color_help" />
+    <TextView style="@style/help_text" android:text="@string/pref_cat_notification_appearance_help" />
 
     <View style="@style/help_cat_pre_margin" />
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_notification_priority" />

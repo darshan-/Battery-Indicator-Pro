@@ -418,16 +418,16 @@ public class BatteryInfoService extends Service {
         notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTopLine));
         notificationRV.setTextViewText(R.id.bottom_line, mainNotificationBottomLine);
 
-        if (settings.getBoolean(SettingsActivity.KEY_OVERRIDE_PERCENTAGE_TEXT_COLOR, false))
+        /*if (settings.getBoolean(SettingsActivity.KEY_CUSTOM_PERCENTAGE_TEXT_COLOR, false))
             notificationRV.setTextColor(R.id.percent, settings.getInt(SettingsActivity.KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
-                                                                      R.color.main_notification_default_override_text_color));
-        if (settings.getBoolean(SettingsActivity.KEY_OVERRIDE_TOP_LINE_COLOR, false))
+                                                                      R.color.main_notification_default_custom_text_color));
+        if (settings.getBoolean(SettingsActivity.KEY_CUSTOM_TOP_LINE_COLOR, false))
             notificationRV.setTextColor(R.id.top_line, settings.getInt(SettingsActivity.KEY_NOTIFICATION_TOP_LINE_COLOR,
-                                                                      R.color.main_notification_default_override_text_color));
-        if (settings.getBoolean(SettingsActivity.KEY_OVERRIDE_BOTTOM_LINE_COLOR, false))
+                                                                      R.color.main_notification_default_custom_text_color));
+        if (settings.getBoolean(SettingsActivity.KEY_CUSTOM_BOTTOM_LINE_COLOR, false))
             notificationRV.setTextColor(R.id.bottom_line, settings.getInt(SettingsActivity.KEY_NOTIFICATION_BOTTOM_LINE_COLOR,
-                                                                      R.color.main_notification_default_override_text_color));
-
+                                                                      R.color.main_notification_default_custom_text_color));
+        */
         boolean default_show_box = res.getBoolean(R.bool.default_show_box_around_icon_area);
         boolean show_box = settings.getBoolean(SettingsActivity.KEY_SHOW_BOX_AROUND_ICON_AREA, default_show_box);
 

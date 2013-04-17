@@ -538,4 +538,18 @@
   </string-array>
 
   <string name="default_time_remaining_verbosity">normal</string>
+
+  <string-array name="notification_text_color_values">
+    <item>default</item>
+    <item>black</item>
+    <item>white</item>
+    <item>custom</item>
+  </string-array>
+
+  <string-array name="notification_text_color_entries">
+    <item>@string/system_default</item>
+    <item>@string/black</item>
+    <item>@string/white</item>
+    <item>@string/custom</item>
+  </string-array>
 </resources>

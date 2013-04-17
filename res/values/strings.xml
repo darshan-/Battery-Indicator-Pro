@@ -396,8 +396,9 @@
   <string formatted="false" name="pref_cat_notification_content">Content</string>
 
   <string formatted="false" name="pref_icon_area_content">Icon Area Content</string>
-  <string formatted="false" name="pref_icon_area_content_summary"></string>
   <string formatted="false" name="pref_icon_area_content_help">
+    Choose what you wish to see at the left end of the notification in the icon area.
+    You can have just the battery graphic, just the textual charge percentage, or both, in either order.
   </string>
   <string formatted="false" name="battery_graphic">Battery Graphic</string>
   <string formatted="false" name="charge_percentage">Charge Percentage</string>
@@ -405,12 +406,15 @@
   <string formatted="false" name="battery_first">Battery, Percentage</string>
 
   <string formatted="false" name="pref_top_line_content">Top Line Content</string>
-  <string formatted="false" name="pref_top_line_content_summary"></string>
   <string formatted="false" name="pref_top_line_content_help">
+    Configure what goes in the top line of the notification: estimated
+    time remaining (configurable elsewhere), how long since the status
+    has changed (plugged in, unplugged, or fully charged), or the
+    battery vital signs (battery health, temperature, and voltage).
   </string>
   <string formatted="false" name="pref_bottom_line_content">Bottom Line Content</string>
-  <string formatted="false" name="pref_bottom_line_content_summary"></string>
   <string formatted="false" name="pref_bottom_line_content_help">
+    You have the same options for the bottom line as for the top line.
   </string>
   <string formatted="false" name="time_remaining">Time Remaining</string>
   <string formatted="false" name="time_since_status_change">Time Since Status Change</string>
@@ -418,6 +422,11 @@
 
   <string formatted="false" name="pref_time_remaining_verbosity">Time Remaining Verbosity</string>
   <string formatted="false" name="pref_time_remaining_verbosity_help">
+    Devices come in all shapes and sizes, so most translations need to
+    use abbreviations to ensure that the time-remaining estimate fits
+    comfortably in the notification area.  If it still doesn\'t fit,
+    you can opt for the condensed format.  If you have plenty of room,
+    you might prefer the verbose setting.
   </string>
   <string formatted="false" name="condensed">Condensed</string>
   <string formatted="false" name="normal">Normal</string>
@@ -428,38 +437,32 @@
     Include Time Since Status Change in Vital Signs?
   </string>
   <string formatted="false" name="pref_status_duration_in_vital_signs_help">
+    If set, the vital signs line will also include the number of hours
+    since the device became unplugged, plugged in, or fully charged.
   </string>
+
+  <string formatted="false" name="pref_cat_notification_appearance">Appearance</string>
+  <string formatted="false" name="pref_cat_notification_appearance_help">
+    You can override the colors for the notification text if the defaults are hard to read
+    or if you just prefer something different.  You can also choose to override whether or not
+    to show a box around the icon area.
+  </string>
+
+  <string formatted="false" name="pref_notification_percentage_text_color">Percentage Text Color</string>
+  <string formatted="false" name="pref_custom_percentage_text_color">Custom Percentage Color</string>
+  <string formatted="false" name="pref_notification_top_line_color">Top Line Text Color</string>
+  <string formatted="false" name="pref_custom_top_line_color">Custom Top Line Color</string>
+  <string formatted="false" name="pref_notification_bottom_line_color">Bottom Line Text Color</string>
+  <string formatted="false" name="pref_custom_bottom_line_color">Custom Bottom Line Color</string>
   <string formatted="false" name="pref_show_box_around_icon_area">Show Box Around Icon Area</string>
   <string formatted="false" name="pref_show_box_around_icon_area_summary">
     Show background color box in icon area?
   </string>
-  <string formatted="false" name="pref_show_box_around_icon_area_help">
-  </string>
-  <string formatted="false" name="pref_override_percentage_text_color">Override Percentage Text Color</string>
-  <string formatted="false" name="pref_override_percentage_text_color_summary">
-    Choose custom color for percentage text?
-  </string>
-  <string formatted="false" name="pref_override_percentage_text_color_help">
-  </string>
-  <string formatted="false" name="pref_notification_percentage_text_color">Percentage Color</string>
-  <string formatted="false" name="pref_notification_percentage_text_color_help">
-  </string>
-  <string formatted="false" name="pref_override_top_line_color">Override Top Line Color</string>
-  <string formatted="false" name="pref_override_top_line_color_summary">
-    Choose custom color for top line text?
-  </string>
-  <string formatted="false" name="pref_notification_top_line_color_help">
-  </string>
-  <string formatted="false" name="pref_notification_top_line_color">Top Line Color</string>
-  <string formatted="false" name="pref_override_bottom_line_color">Override Bottom Line Text Color</string>
-  <string formatted="false" name="pref_override_bottom_line_color_summary">
-    Choose custom color for bottom line text?
-  </string>
-  <string formatted="false" name="pref_notification_bottom_line_color">Bottom Line Color</string>
-  <string formatted="false" name="pref_notification_bottom_line_color_help">
-  </string>
 
-  <string formatted="false" name="pref_cat_notification_appearance">Appearance</string>
+  <string formatted="false" name="system_default">System Default</string>
+  <string formatted="false" name="black">Black</string>
+  <string formatted="false" name="white">White</string>
+  <string formatted="false" name="custom">Custom...</string>
 
   <string formatted="false" name="pref_cat_notification_priority">Notification Priority</string>
   <string formatted="false" name="pref_cat_notification_priority_help">

@@ -4,11 +4,11 @@
   </style>
 
   <style name="NotificationTextIcon" parent="NotificationTitle">
-    <item name="android:textColor">@color/main_notification_default_override_text_color</item>
+    <item name="android:textColor">@color/main_notification_default_custom_text_color</item>
   </style>
 
   <dimen name="main_notification_text_padding_left">10dp</dimen>
 
-  <color name="main_notification_default_override_text_color">#fff</color>
+  <color name="main_notification_default_custom_text_color">#fff</color>
   <bool name="default_show_box_around_icon_area">true</bool>
 </resources>

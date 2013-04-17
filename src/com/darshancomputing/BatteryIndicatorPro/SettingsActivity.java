@@ -87,38 +87,44 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_BOTTOM_LINE = "bottom_line";
     public static final String KEY_TIME_REMAINING_VERBOSITY = "time_remaining_verbosity";
     public static final String KEY_STATUS_DURATION_IN_VITAL_SIGNS = "status_duration_in_vital_signs";
-    public static final String KEY_OVERRIDE_PERCENTAGE_TEXT_COLOR = "override_percentage_text_color";
     public static final String KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR = "notification_percentage_text_color";
+    public static final String KEY_CUSTOM_PERCENTAGE_TEXT_COLOR = "custom_percentage_text_color";
     public static final String KEY_SHOW_BOX_AROUND_ICON_AREA = "show_box_around_icon_area";
-    public static final String KEY_OVERRIDE_TOP_LINE_COLOR = "override_top_line_color";
     public static final String KEY_NOTIFICATION_TOP_LINE_COLOR = "notification_top_line_color";
-    public static final String KEY_OVERRIDE_BOTTOM_LINE_COLOR = "override_bottom_line_color";
+    public static final String KEY_CUSTOM_TOP_LINE_COLOR = "custom_top_line_color";
     public static final String KEY_NOTIFICATION_BOTTOM_LINE_COLOR = "notification_bottom_line_color";
+    public static final String KEY_CUSTOM_BOTTOM_LINE_COLOR = "custom_bottom_line_color";
     public static final String KEY_FIRST_RUN = "first_run";
     //public static final String KEY_LANGUAGE_OVERRIDE = "language_override";
 
     private static final String[] PARENTS    = {KEY_ENABLE_LOGGING,
                                                 KEY_RED,
                                                 KEY_AMBER,
-                                                KEY_GREEN,
-                                                KEY_OVERRIDE_PERCENTAGE_TEXT_COLOR,
-                                                KEY_OVERRIDE_TOP_LINE_COLOR,
-                                                KEY_OVERRIDE_BOTTOM_LINE_COLOR
+                                                KEY_GREEN
     };
     private static final String[] DEPENDENTS = {KEY_MAX_LOG_AGE,
                                                 KEY_RED_THRESH,
                                                 KEY_AMBER_THRESH,
-                                                KEY_GREEN_THRESH,
-                                                KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
-                                                KEY_NOTIFICATION_TOP_LINE_COLOR,
-                                                KEY_NOTIFICATION_BOTTOM_LINE_COLOR
+                                                KEY_GREEN_THRESH
+    };
+
+    private static final String[] COLOR_PARENTS    = {KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
+                                                      KEY_NOTIFICATION_TOP_LINE_COLOR,
+                                                      KEY_NOTIFICATION_BOTTOM_LINE_COLOR
+    };
+    private static final String[] COLOR_DEPENDENTS = {KEY_CUSTOM_PERCENTAGE_TEXT_COLOR,
+                                                      KEY_CUSTOM_TOP_LINE_COLOR,
+                                                      KEY_CUSTOM_BOTTOM_LINE_COLOR
     };
 
     private static final String[] LIST_PREFS = {KEY_AUTOSTART, KEY_STATUS_DUR_EST,
                                                 KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
                                                 KEY_MAIN_NOTIFICATION_PRIORITY, KEY_ICON_SET,
                                                 KEY_MAX_LOG_AGE, KEY_ICON_AREA, KEY_TOP_LINE, KEY_BOTTOM_LINE,
-                                                KEY_TIME_REMAINING_VERBOSITY
+                                                KEY_TIME_REMAINING_VERBOSITY,
+                                                KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
+                                                KEY_NOTIFICATION_TOP_LINE_COLOR,
+                                                KEY_NOTIFICATION_BOTTOM_LINE_COLOR
     };
 
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_NOTIFY_STATUS_DURATION,
@@ -136,9 +142,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_MAIN_NOTIFICATION_PRIORITY,
                                                                             KEY_ICON_AREA,
-                                                                            KEY_OVERRIDE_PERCENTAGE_TEXT_COLOR,
-                                                                            KEY_OVERRIDE_TOP_LINE_COLOR,
-                                                                            KEY_OVERRIDE_BOTTOM_LINE_COLOR,
+                                                                            KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
+                                                                            KEY_NOTIFICATION_TOP_LINE_COLOR,
+                                                                            KEY_NOTIFICATION_BOTTOM_LINE_COLOR,
                                                                             KEY_SHOW_BOX_AROUND_ICON_AREA
     };
 
@@ -410,6 +416,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         for (int i=0; i < PARENTS.length; i++)
             setEnablednessOfDeps(i);
 
+        for (int i=0; i < COLOR_PARENTS.length; i++)
+            setEnablednessOfColorDeps(i);
+
         for (int i=0; i < LIST_PREFS.length; i++)
             updateListPrefSummary(LIST_PREFS[i]);
 
@@ -627,8 +636,13 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         for (int i=0; i < PARENTS.length; i++) {
             if (key.equals(PARENTS[i])) {
                 setEnablednessOfDeps(i);
-                if (i == 0) setEnablednessOfDeps(1); /* Doubled charge key */
-                if (i == 2) setEnablednessOfDeps(3); /* Doubled charge key */
+                break;
+            }
+        }
+
+        for (int i=0; i < COLOR_PARENTS.length; i++) {
+            if (key.equals(COLOR_PARENTS[i])) {
+                setEnablednessOfColorDeps(i);
                 break;
             }
         }
@@ -688,6 +702,18 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             dependent.setEnabled(false);
 
         updateListPrefSummary(DEPENDENTS[index]);
+    }
+
+    private void setEnablednessOfColorDeps(int index) {
+        Preference dependent = mPreferenceScreen.findPreference(COLOR_DEPENDENTS[index]);
+        if (dependent == null) return;
+
+        if (mSharedPreferences.getString(COLOR_PARENTS[index], "default").equals("custom"))
+            dependent.setEnabled(true);
+        else
+            dependent.setEnabled(false);
+
+        updateListPrefSummary(COLOR_DEPENDENTS[index]);
     }
 
     private void setEnablednessOfMutuallyExclusive(String key1, String key2) {

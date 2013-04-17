@@ -48,17 +48,18 @@
   </PreferenceCategory>
 
   <PreferenceCategory android:title="@string/pref_cat_notification_appearance">
-    <CheckBoxPreference
-       android:key="override_percentage_text_color"
-       android:title="@string/pref_override_percentage_text_color"
-       android:summary="@string/pref_override_percentage_text_color_summary"
-       android:defaultValue="false"
+    <ListPreference
+       android:key="notification_percentage_text_color"
+       android:title="@string/pref_notification_percentage_text_color"
+       android:entries="@array/notification_text_color_entries"
+       android:entryValues="@array/notification_text_color_values"
+       android:defaultValue="default"
     />
 
     <com.darshancomputing.BatteryIndicatorPro.ColorPickerPreference
-        android:key="notification_percentage_text_color"
-        android:title="@string/pref_notification_percentage_text_color"
-        android:defaultValue="@color/main_notification_default_override_text_color"
+        android:key="custom_percentage_text_color"
+        android:title="@string/pref_custom_percentage_text_color"
+        android:defaultValue="@color/main_notification_default_custom_text_color"
     />
 
     <CheckBoxPreference
@@ -68,30 +69,32 @@
        android:defaultValue="@bool/default_show_box_around_icon_area"
     />
 
-    <CheckBoxPreference
-       android:key="override_top_line_color"
-       android:title="@string/pref_override_top_line_color"
-       android:summary="@string/pref_override_top_line_color_summary"
-       android:defaultValue="false"
+    <ListPreference
+       android:key="notification_top_line_color"
+       android:title="@string/pref_notification_top_line_color"
+       android:entries="@array/notification_text_color_entries"
+       android:entryValues="@array/notification_text_color_values"
+       android:defaultValue="default"
     />
 
     <com.darshancomputing.BatteryIndicatorPro.ColorPickerPreference
-        android:key="notification_top_line_color"
-        android:title="@string/pref_notification_top_line_color"
-        android:defaultValue="@color/main_notification_default_override_text_color"
+        android:key="custom_top_line_color"
+        android:title="@string/pref_custom_top_line_color"
+        android:defaultValue="@color/main_notification_default_custom_text_color"
     />
 
-    <CheckBoxPreference
-       android:key="override_bottom_line_color"
-       android:title="@string/pref_override_bottom_line_color"
-       android:summary="@string/pref_override_bottom_line_color_summary"
-       android:defaultValue="false"
+    <ListPreference
+       android:key="notification_bottom_line_color"
+       android:title="@string/pref_notification_bottom_line_color"
+       android:entries="@array/notification_text_color_entries"
+       android:entryValues="@array/notification_text_color_values"
+       android:defaultValue="default"
     />
 
     <com.darshancomputing.BatteryIndicatorPro.ColorPickerPreference
-        android:key="notification_bottom_line_color"
-        android:title="@string/pref_notification_bottom_line_color"
-        android:defaultValue="@color/main_notification_default_override_text_color"
+        android:key="custom_bottom_line_color"
+        android:title="@string/pref_custom_bottom_line_color"
+        android:defaultValue="@color/main_notification_default_custom_text_color"
     />
   </PreferenceCategory>
 
