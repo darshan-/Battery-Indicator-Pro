@@ -135,9 +135,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_TOP_LINE, KEY_BOTTOM_LINE,
                                                    KEY_TIME_REMAINING_VERBOSITY,
                                                    KEY_STATUS_DURATION_IN_VITAL_SIGNS,
-                                                   KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
-                                                   KEY_NOTIFICATION_TOP_LINE_COLOR,
-                                                   KEY_NOTIFICATION_BOTTOM_LINE_COLOR
+                                                   KEY_CUSTOM_PERCENTAGE_TEXT_COLOR,
+                                                   KEY_CUSTOM_TOP_LINE_COLOR,
+                                                   KEY_CUSTOM_BOTTOM_LINE_COLOR
     };
 
     private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_MAIN_NOTIFICATION_PRIORITY,

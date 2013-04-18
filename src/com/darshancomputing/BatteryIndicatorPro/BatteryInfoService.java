@@ -418,21 +418,22 @@ public class BatteryInfoService extends Service {
         notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTopLine));
         notificationRV.setTextViewText(R.id.bottom_line, mainNotificationBottomLine);
 
-        /*if (settings.getBoolean(SettingsActivity.KEY_CUSTOM_PERCENTAGE_TEXT_COLOR, false))
-            notificationRV.setTextColor(R.id.percent, settings.getInt(SettingsActivity.KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
-                                                                      R.color.main_notification_default_custom_text_color));
-        if (settings.getBoolean(SettingsActivity.KEY_CUSTOM_TOP_LINE_COLOR, false))
-            notificationRV.setTextColor(R.id.top_line, settings.getInt(SettingsActivity.KEY_NOTIFICATION_TOP_LINE_COLOR,
-                                                                      R.color.main_notification_default_custom_text_color));
-        if (settings.getBoolean(SettingsActivity.KEY_CUSTOM_BOTTOM_LINE_COLOR, false))
-            notificationRV.setTextColor(R.id.bottom_line, settings.getInt(SettingsActivity.KEY_NOTIFICATION_BOTTOM_LINE_COLOR,
-                                                                      R.color.main_notification_default_custom_text_color));
-        */
+        int color;
+        color = colorFor(SettingsActivity.KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR, SettingsActivity.KEY_CUSTOM_PERCENTAGE_TEXT_COLOR);
+        if (color != 0)
+            notificationRV.setTextColor(R.id.percent, color);
+        color = colorFor(SettingsActivity.KEY_NOTIFICATION_TOP_LINE_COLOR, SettingsActivity.KEY_CUSTOM_TOP_LINE_COLOR);
+        if (color != 0)
+            notificationRV.setTextColor(R.id.top_line, color);
+        color = colorFor(SettingsActivity.KEY_NOTIFICATION_BOTTOM_LINE_COLOR, SettingsActivity.KEY_CUSTOM_BOTTOM_LINE_COLOR);
+        if (color != 0)
+            notificationRV.setTextColor(R.id.bottom_line, color);
+
         boolean default_show_box = res.getBoolean(R.bool.default_show_box_around_icon_area);
         boolean show_box = settings.getBoolean(SettingsActivity.KEY_SHOW_BOX_AROUND_ICON_AREA, default_show_box);
 
         if (show_box) {
-            int color = res.getColor(R.color.notification_box_default_color);
+            color = res.getColor(R.color.notification_box_default_color);
             if (! icon_area.equals("battery_first"))
                 notificationRV.setInt(R.id.percent, "setBackgroundColor", color);
             if (! icon_area.equals("percentage_first"))
@@ -441,6 +442,19 @@ public class BatteryInfoService extends Service {
 
         mainNotification.contentIntent = mainWindowPendingIntent;
         mainNotification.contentView = notificationRV;
+    }
+
+    // Since alpha values aren't permitted, return 0 for default
+    private int colorFor(String colorKey, String customKey) {
+        String colorString = settings.getString(colorKey, "default");
+        if (colorString.equals("default"))
+            return 0;
+        else if (colorString.equals("white"))
+            return 0xffffffff;
+        else if (colorString.equals("black"))
+            return 0xff000000 ;
+        else
+            return settings.getInt(customKey, R.color.main_notification_default_custom_text_color);
     }
 
     private String lineFor(String key) {
