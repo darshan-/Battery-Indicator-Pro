@@ -2,6 +2,9 @@
 <resources>
   <string name="app_full_name" formatted="false">BatteryBot Pro</string>
   <string name="app_launcher_name" formatted="false">BatteryBot</string>
+  <string name="settings_activity_subtitle" formatted="false">Beállítások</string>
+  <string name="help_activity_subtitle" formatted="false">Segítség</string>
+  <string name="log_view_activity_subtitle" formatted="false">Naplók</string>
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Akku használat</string>
   <string name="upgrade_donate_b" formatted="false">Vásárlás/Adományozás</string>
@@ -14,10 +17,12 @@
   <string name="confirm_close" formatted="false">Biztosan bezárja?</string>
   <string name="confirm_close_hint" formatted="false">A Battery Indicator most teljesen bezárul, és az állapotsorban sem lesz látható.\n\nHa tovább kívánja futtatni a Battery Indicatort, és csak a főablakot szeretné elhagyni, válassz a \"Mégsem\"-et majd használja a Vissza gombot!</string>
   <string name="confirm_clear_logs" formatted="false">Biztosan töröl minden naplót?</string>
+  <string name="configure_log_filter" formatted="false">Milyen események legyenek naplózva?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Biztosan engedélyezi a 10% módot?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Biztosan letiltja a 10% módot?</string>
   <string name="confirm_ten_percent_hint" formatted="false">FIGYELEM: Ennek a beállításnak a megváltoztatása (engedélyezése vagy tiltása egyaránt) a színbeállítások visszaállítását eredményezi!\n\nMotorola Droid, Droid X, Droid 2, Defy, illetve Samsung Moment készüléken az alkalmazás első használatakor célszerű ezt bekapcsolni, és így tartani. A legtöbb telefonon azonban kikapcsolva kell hagyni ezt a funkciót.</string>
   <string name="okay" formatted="false">Rendben</string>
+  <string name="tab_current_info" formatted="false">Jelenlengi információ</string>
   <string name="menu_settings" formatted="false">Beállítások</string>
   <string name="menu_close" formatted="false">Bezárás</string>
   <string name="menu_help" formatted="false">Súgó</string>
@@ -103,12 +108,12 @@
   <string name="help_summary" formatted="false">A <i>Battery Indicator Pro</i> egy egyszerű akku felügyelő eszköz az Android™ mobil operációs rendszerhez. Fő feladata, hogy az állapotsoron megjelenítse az akku töltöttségi állapotát jelző ikont.\n\nA Pro verzió azonban számos hasznos funkciót tartalmaz még. A vörös, sárga és zöld ikonok mellett a 3.0 verziótól az alábbiakat nyújtja:\n\n• Szabadon beállítható a töltés/lemerítésre vonatkozó becslés.\n• Az akku állapotának naplózása.\n• A főablakhoz tartozó témák. (pl. egy teljes méretű ablak, nagy betűméretű, jól olvasható szövegekkel.).\n• A képernyőzár tiltása és engedélyezése azzal az opcióval, hogy a töltő csatlakoztatásakor automatikusan letiltja azt, majd a töltés megszűnésekor újra engedélyezi.\n• Számos további felfedezésre váró hasznos funkció.</string>
   <string name="help_summary_free" formatted="false">A <i>Battery Indicator</i> egy egyszerű akku felügyelő eszköz az Android™ mobil operációs rendszerhez. Fő feladata, hogy az állapotsoron megjeleníti az akku töltöttségi állapotát jelző ikont.\n\nA Pro verzió azonban számos hasznos funkciót tartalmaz még. A vörös, sárga és zöld ikonok mellett a 3.0 verzió az alábbiakat nyújtja:\n\n• Szabadon beállítható a töltés/lemerítésre vonatkozó becslés.\n• Az akku állapotának naplózása.\n• A főablakhoz tartozó témák. (pl. egy teljes méretű ablak, nagy betűméretű, jól olvasható szövegekkel.).\n• A képernyőzár tiltása és engedélyezése azzal az opcióval, hogy a töltő csatlakoztatásakor automatikusan letiltja azt, majd a töltés megszűnésekor újra engedélyezi.\n• Számos további felfedezésre váró hasznos funkció.</string>
   <string name="help_cat_limitations" formatted="false">Korlátok</string>
-  <string name="help_limitations" formatted="false">(<i>Ezekre sajnos nincs hatásom.</i>)\n\n• Nincs mód a beépített akku ikon elrejtésére.\n• A program csak azt tudja megjeleníteni, amit a telefon jelent számára. A legtöbb készülék 1%-os pontossággal jelzi az akku állapotát, de néhány (pl. a Motorola Droid modellek) csak 10%-os pontosságot tudnak.\n• Az ikon az állapotsorban és a szöveg az értesítési területen szorosan összetartozik. Nem lehet az egyik a másik nélkül.\n• Bizonyos alkamazások telepíthetők cserélhető adathozdozóra (SD kártyára), mások nem. A Battery Indicator az utóbbi csoportba tartozik. További magyarázatot találhat a <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">projekt GYIK-jében</a></string>
-  <string name="help_cat_features" formatted="false">Jellemzők</string>
+  <string name="help_limitations" formatted="false">(<i>Ezeken sajnos nem tudok változtatni.</i>)\n\n• Nincs mód a beépített akku ikon elrejtésére.\n• A program csak azt tudja megjeleníteni, amit a telefon jelent számára. A legtöbb készülék 1%-os pontossággal jelzi az akku állapotát, de néhány (pl. a Motorola Droid modellek) csak 10%-os pontosságot tudnak.\n• Az ikon az állapotsorban és a szöveg az értesítési területen szorosan összetartozik. Nem lehet az egyik a másik nélkül.\n• Bizonyos alkamazások telepíthetők cserélhető adathozdozóra (SD kártyára), mások nem. A Battery Indicator az utóbbi csoportba tartozik. További magyarázatot találhat a <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">projekt GYIK-jében</a></string>
+  <string name="help_cat_features" formatted="false">Tulajdonságok</string>
   <string name="help_features" formatted="false">• Kicsi, egyszerű, könnyen olvasható.\n• Nem végez folyamatos lekérdezést. Az Android akku állapotra vonatkozó broadcast üzeneteit dolgozza fel, frissíti az ikont, majd visszakapcsol alvás módba. Ez azt jelenti, hogy csak kevés memóriát foglal, és lényegében semmivel nem terheli a CPU-t, végeredményben nem meríti az akkut. Pesszimista becslés szerint hozzávetőleg 1 perc használati idő csökkenést eredményezhet minden teljes feltöltési ciklusban. Ha bármi olyat tapasztal, ami ennél rosszabb, akkor minden bizonnyal egy másik alkalmazás (pl. \"task killer\") gyakorol hatást a Battery Indicaror normál működésére\n• Könnyen elérhető az akku használat képernyő (legalább Android 1.6 szükséges).\n• Beállítható, hogy bekapcsoláskor automatikusan induljon el, ne induljon el, vagy csak akkor induljon el, ha kikapcsoláskor futott a program.\n• Sok más, amiről vagy megfeledkeztem, vagy nem annyira jelentős, hogy önmagában említsem, de emeli az alkalmazás értékét.\n• A megelégedés, amit a fejlesztő támogatása okoz. (Amit nagyon köszönök!)</string>
-  <string name="help_cat_no_warranty" formatted="false">Nincs Garancia</string>
+  <string name="help_cat_no_warranty" formatted="false">Nincs garancia</string>
   <string name="help_no_warranty" formatted="false">Ezt a szoftvert annak reményében terjesztjük, hogy hasznosnak bizonyul, de MINDENNEMŰ GARANCIA NÉLKÜL, kizárva még az általában beleértett garanciákat is, mint a FORGALMAZHATÓSÁG, vagy A CÉLNAK VALÓ MEGFELELÉS.\n\nBár minden elvárhatót megteszek, hogy megbizonyosodjak a szoftver helyes és zavartalan működéséről, kizárt bárminemű felelősség a szoftver használatából eredő minden kár vagy okozott kellemetlenség miatt.</string>
-  <string name="help_cat_acknowledgments" formatted="false">Köszönetnyilvánítások</string>
+  <string name="help_cat_acknowledgments" formatted="false">Köszönetnyilvánítás</string>
   <string name="help_acknowledgments" formatted="false">Ez az alkalmazás csak angolul lenne elérhető az alábbi önkéntes fordítók nagyvonalú közreműködése nélkül. Köszönöm!\n\nKöszönet illeti a Google-t és valamennyi nyílt-forrás programozót, akik munkájukkal elérhetővé tették az Android platformot és ezt az alkalmazást.\n\nAz indító ikon (az álló elem ikon ami a Marketen is látható) az <a href="http://www.oxygen-icons.org">Oxygen ikon témán</a> alapul, és a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-ShareAlike 3.0</a> licenc szerint használt.</string>
   <string name="help_cat_translations" formatted="false">Fordítások</string>
   <string name="help_translations" formatted="false">Szükségem van segítségre az alkalmazásnak más nyelvekre való fordításához. Ha szeretne segíteni, kérem küldjön egy <a href="mailto:android@darshancomputing.com">e-mailt</a>. Ha nem utasítja el kifejezetten, segítségének elismeréseként neve bekerül ebbe a fejezetbe.</string>
@@ -127,6 +132,10 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">További beállítások a Pro verzióban</string>
   <string name="pref_please_upgrade" formatted="false">A Pro verzió számos további beállítással és képességgel rendelkezik. Pl. zöld, sárga és vörös ikon, riasztások, ablak témák, akku állapot naplózása, képernyőzár kézi és automatikus tiltása, becslés a hátralévő töltési vagy használati időre, stb.</string>
   <string name="add_alarm" formatted="false">Riasztás hozzáadása</string>
+  <string name="pref_icon_set" formatted="false">Ikon stílus</string>
+  <string name="pref_indicate_charging" formatted="false">Töltés jelzése</string>
+  <string name="pref_indicate_charging_summary" formatted="false">Látszódjon az ikonon a töltés?</string>
+  <string name="pref_indicate_charging_help" formatted="false">Valamelyik ikon stílus megváltozik töltéskor, például egy villám jellel a szám alatt. Kikapcsolhatja a funkciót, ha jobban szeretné enélkül szeretné használni.</string>
   <string name="pref_cat_logging" formatted="false">Naplózás</string>
   <string name="pref_enable_logging" formatted="false">Naplózás engedélyezése</string>
   <string name="pref_enable_logging_summary" formatted="false">Naplózza az akku állapotának változásait?</string>
@@ -136,6 +145,9 @@
   <string name="pref_max_log_age_help" formatted="false">Ha a naplózás engedélyezett, minden esetben, amikor tölteni kezdi a készüléket, az ennél régebbi bejegyzések törlődnek.</string>
   <string name="pref_cat_keyguard" formatted="false">Képernyő-/billentyűzár</string>
   <string name="pref_cat_keyguard_help" formatted="false">Az Android megengedi, hogy az alkalmazások letiltsák és újra engedélyezzék a képernyőzárat. Ezen túlmenően azonban semmilyen hatása nincsen. — Pl. nem lehet megadni, hogy melyik billentyűvel záródjon le vagy oldódjon fel.</string>
+  <string name="pref_notify_when_kg_disabled" formatted="false">Kikapcsolt állapot jelzése</string>
+  <string name="pref_notify_when_kg_disabled_summary" formatted="false">Jelezze, ha ki van kapcsolva a képernyőzár?</string>
+  <string name="pref_notify_when_kg_disabled_help" formatted="false">Ha bekapcsolja, egy különálló ikon fog megjelenni, ha az alkalmazás tiltja a képernyőzárat.</string>
   <string name="pref_confirm_manual_disable" formatted="false">Kézi tiltás megerősítése</string>
   <string name="pref_confirm_manual_disable_summary" formatted="false">Kérjen megerősítést, ha kézzel tiltja a képernyőzárat?</string>
   <string name="pref_confirm_manual_disable_help" formatted="false">Ha bejelöli, egy megerősítő kérdés jelenik meg, amikor kézileg kezdeményezi a képernyőzár tiltását. Ennek célja, hogy megelőzze a képernyőzár nem szándékos, véletlenszerű letiltását. Ha rendszeresen le szoktat tiltani a képernyőzárat, ezt várhatóan kikapcsolja majd.</string>
@@ -162,7 +174,7 @@
   <string name="pref_cat_language" formatted="false">Nyelv</string>
   <string name="pref_language_override" formatted="false">Nyelv megváltoztatása</string>
   <string name="pref_language_override_summary" formatted="false">Válasszon nyelvet:</string>
-  <string name="pref_language_override_help" formatted="false">Ha az ön nyelvre fordítás hiányos vagy pontatlan, és jobban szeretne másikat, itt választhat.</string>
+  <string name="pref_language_override_help" formatted="false">Ha az ön nyelvre fordítás hiányos vagy pontatlan, és jobban szeretne másikat, itt választhat egyet.</string>
   <string name="pref_cat_plugin_settings" formatted="false">Bővítmény beállítások</string>
   <string name="pref_plugin_settings" formatted="false">Bővítmény beállítások</string>
   <string name="pref_plugin_settings_summary" formatted="false">Bővítmény beállításainak szerkesztése</string>
@@ -230,6 +242,9 @@
   <string name="age_2_weeks" formatted="false">2 hét</string>
   <string name="age_3_weeks" formatted="false">3 hét</string>
   <string name="age_4_weeks" formatted="false">4 hét</string>
+  <string name="icon_set_classic" formatted="false">Klasszikus</string>
+  <string name="icon_set_plain" formatted="false">Egyszerű számok</string>
+  <string name="icon_set_smaller" formatted="false">Kisebb számok</string>
   <plurals name="n_log_items">
     <item quantity="zero">%d naplóelem</item>
     <item quantity="one">%d naplóelem</item>

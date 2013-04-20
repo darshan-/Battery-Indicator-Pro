@@ -131,6 +131,10 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Meer instellingen in Battery Indicator Pro!</string>
   <string name="pref_please_upgrade" formatted="false">De Pro versie heeft veel meer instellingen en mogelijkheden, waaronder gekleurde icoontjes, alarmen, thema\'s, logboeken, schermvergrendeling voorkomen, geschatte tijd resterend en meer!</string>
   <string name="add_alarm" formatted="false">Alarm toevoegen</string>
+  <string name="pref_cat_notification_priority" formatted="false">Prioriteit van melding</string>
+  <string name="pref_cat_notification_priority_help" formatted="false">Bij Android 4.1 en hoger hebben meldingen een prioriteit. Deze kun je hier aanpassen.\n\n- Minimaal verwijderd het statusicoon maar laat de melding nog wel zien in de meldingslijst.\n- Laag laat andere meldingen zoals email zien voor de Battery Indicator melding. - Standaard is standaard.\n- Hoog laat Battery Indicator als eerste zien.</string>
+  <string name="pref_main_notification_priority" formatted="false">Prioriteit van melding</string>
+  <string name="pref_main_notification_priority_help" formatted="false">Stel de prioriteit van de melding in. Deze instelling heeft geen effect op alarmen, plugins en andere meldingen.</string>
   <string name="pref_icon_set" formatted="false">Iconen</string>
   <string name="pref_icon_set_help" formatted="false">Er zijn verschillende soorten Android, dus er is niet een perfecte set iconen die overal goed werken. Je kunt plugins gebruiken voor meer iconen, maar er zijn nu 3 standaard opties./n /n</string>
   <string name="pref_cat_charging_indicator" formatted="false">Indicatie tijdens opladen</string>
@@ -161,10 +165,6 @@
   <string name="pref_disallow_disable_lock_screen" formatted="false">Handmatig uitschakelen niet toestaan</string>
   <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Schakel de voorkom schermvergrendeling knop uit</string>
   <string name="pref_disallow_disable_lock_screen_help" formatted="false">Als je een alternatieve schermvergendeling gebruikt waarbij je toegang hebt tot de notificaties kun je dit beter aanzetten voor de veiligheid.</string>
-  <string name="pref_cat_notification_priority" formatted="false">Prioriteit van melding</string>
-  <string name="pref_cat_notification_priority_help" formatted="false">Bij Android 4.1 en hoger hebben meldingen een prioriteit. Deze kun je hier aanpassen.\n\n- Minimaal verwijderd het statusicoon maar laat de melding nog wel zien in de meldingslijst.\n- Laag laat andere meldingen zoals email zien voor de Battery Indicator melding. - Standaard is standaard.\n- Hoog laat Battery Indicator als eerste zien.</string>
-  <string name="pref_main_notification_priority" formatted="false">Prioriteit van melding</string>
-  <string name="pref_main_notification_priority_help" formatted="false">Stel de prioriteit van de melding in. Deze instelling heeft geen effect op alarmen, plugins en andere meldingen.</string>
   <string name="pref_cat_battery_use" formatted="false">Batterijgebruik</string>
   <string name="pref_finish_after_battery_use" formatted="false">Sluiten na starten</string>
   <string name="pref_finish_after_battery_use_summary" formatted="false">Hoofdvenster sluiten na bekijken van batterijgebruik</string>
