@@ -190,7 +190,7 @@ public class ColorPickerPreference extends Preference implements Preference.OnPr
 
     private static class SavedState extends BaseSavedState {
         Bundle dialogBundle;
-        
+
         public SavedState(Parcel source) {
             super(source);
             dialogBundle = source.readBundle();
@@ -205,7 +205,7 @@ public class ColorPickerPreference extends Preference implements Preference.OnPr
         public SavedState(Parcelable superState) {
             super(superState);
         }
-        
+
         @SuppressWarnings("unused")
         public static final Parcelable.Creator<SavedState> CREATOR =
             new Parcelable.Creator<SavedState>() {

@@ -288,7 +288,7 @@ public class ColorPickerView extends View {
 
         return 360f - (y * 360f / height);
     }
-    
+
     @Override
     public boolean onTrackballEvent(MotionEvent event) {
         float x = event.getX();

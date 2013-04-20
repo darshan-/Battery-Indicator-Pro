@@ -2,7 +2,7 @@
 <!-- Based on code that was Copyright (C) 2010 Daniel Nilsson,
       originally licensed under the Apache License, Version 2.0 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:paddingLeft="5dp"
@@ -19,7 +19,7 @@
   />
 
   <TextView android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"	
+	    android:layout_height="wrap_content"
 	    android:text="@string/press_color_to_apply"
 	    android:gravity="left"
 	    android:layout_marginLeft="6dp"
@@ -42,7 +42,7 @@
     />
 
     <TextView android:layout_width="wrap_content"
-	      android:layout_height="fill_parent"	
+	      android:layout_height="fill_parent"
 	      android:text="→"
 	      android:textSize="20sp"
 	      android:gravity="center"
