@@ -544,7 +544,7 @@
     <item>#000000</item>
     <item>#ffffff</item>
     <item>#33b5e5</item>
-    <item>custom</item>
+    <!--item>custom</item-->
   </string-array>
 
   <string-array name="notification_text_color_entries">
@@ -552,6 +552,6 @@
     <item>@string/black</item>
     <item>@string/white</item>
     <item>@string/ics_blue</item>
-    <item>@string/custom</item>
+    <!--item>@string/custom</item-->
   </string-array>
 </resources>
