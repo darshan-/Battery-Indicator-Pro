@@ -541,8 +541,9 @@
 
   <string-array name="notification_text_color_values">
     <item>default</item>
-    <item>black</item>
-    <item>white</item>
+    <item>#000000</item>
+    <item>#ffffff</item>
+    <item>#33b5e5</item>
     <item>custom</item>
   </string-array>
 
@@ -550,6 +551,7 @@
     <item>@string/system_default</item>
     <item>@string/black</item>
     <item>@string/white</item>
+    <item>@string/ics_blue</item>
     <item>@string/custom</item>
   </string-array>
 </resources>

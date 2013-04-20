@@ -447,14 +447,34 @@ public class BatteryInfoService extends Service {
     // Since alpha values aren't permitted, return 0 for default
     private int colorFor(String colorKey, String customKey) {
         String colorString = settings.getString(colorKey, "default");
-        if (colorString.equals("default"))
-            return 0;
-        else if (colorString.equals("white"))
-            return 0xffffffff;
-        else if (colorString.equals("black"))
-            return 0xff000000 ;
-        else
+
+        if (colorString.charAt(0) == '#')
+            return colorFromHex(colorString);
+        else if (colorString.equals("custom"))
             return settings.getInt(customKey, R.color.main_notification_default_custom_text_color);
+        else
+            return 0;
+    }
+
+    private static int colorFromHex(String hex) {
+        if (hex.length() != 7) return 0;
+        if (hex.charAt(0) != '#') return 0;
+
+        int color = 0xff;
+
+        for (int i = 1; i <= 6; i++) {
+            color <<= 4;
+            char c = hex.charAt(i);
+
+            if (c >= '0' && c <= '9')
+                color += c - '0';
+            else if (c >= 'A' && c <= 'F')
+                color += c - 'A' + 10;
+            else if (c >= 'a' && c <= 'f')
+                color += c - 'a' + 10;
+        }
+
+        return color;
     }
 
     private String lineFor(String key) {

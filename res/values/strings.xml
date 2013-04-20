@@ -462,6 +462,7 @@
   <string formatted="false" name="system_default">System Default</string>
   <string formatted="false" name="black">Black</string>
   <string formatted="false" name="white">White</string>
+  <string formatted="false" name="ics_blue">Android ICS Blue</string>
   <string formatted="false" name="custom">Custom...</string>
 
   <string formatted="false" name="pref_cat_notification_priority">Notification Priority</string>
