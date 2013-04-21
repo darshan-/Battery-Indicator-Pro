@@ -439,6 +439,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         for (int i=0; i < LIST_PREFS.length; i++)
             updateListPrefSummary(LIST_PREFS[i]);
 
+        setEnablednessOfPercentageTextColor();
+
         updateConvertFSummary();
         setEnablednessOfMutuallyExclusive(KEY_CONFIRM_DISABLE_LOCKING, KEY_FINISH_AFTER_TOGGLE_LOCK);
 
@@ -650,9 +652,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             restartThisScreen(); // To show/hide icon-set/plugin settings
         }
 
-        if (key.equals(KEY_USE_SYSTEM_NOTIFICATION_LAYOUT)) {
+        if (key.equals(KEY_USE_SYSTEM_NOTIFICATION_LAYOUT))
             restartThisScreen();
-        }
+
+        if (key.equals(KEY_ICON_AREA))
+            setEnablednessOfPercentageTextColor();
 
         for (int i=0; i < PARENTS.length; i++) {
             if (key.equals(PARENTS[i])) {
@@ -754,6 +758,16 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             dependent.setEnabled(false);
 
         updateListPrefSummary(COLOR_DEPENDENTS[index]);
+    }
+
+    private void setEnablednessOfPercentageTextColor() {
+        Preference dependent = mPreferenceScreen.findPreference(KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR);
+        if (dependent == null) return;
+
+        if (mSharedPreferences.getString(KEY_ICON_AREA, res.getString(R.string.default_icon_area_content)) .equals("graphic"))
+            dependent.setEnabled(false);
+        else
+            dependent.setEnabled(true);
     }
 
     private void setEnablednessOfMutuallyExclusive(String key1, String key2) {
