@@ -11,6 +11,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
   >
+    <TextView style="@style/help_cat"  android:text="@string/pref_cat_notification_layout" />
+    <View style="@style/help_cat_post_margin" />
+    <TextView style="@style/help_pref" android:text="@string/pref_use_system_notification_layout" />
+    <TextView style="@style/help_text" android:text="@string/pref_use_system_notification_layout_help" />
+
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_notification_content" />
     <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_icon_area_content" />

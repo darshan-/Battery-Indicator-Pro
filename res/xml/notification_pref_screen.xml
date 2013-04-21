@@ -6,6 +6,15 @@
      android:selectable="false"
   />
 
+  <PreferenceCategory android:title="@string/pref_cat_notification_layout">
+    <CheckBoxPreference
+       android:key="use_system_notification_layout"
+       android:title="@string/pref_use_system_notification_layout"
+       android:summary="@string/pref_use_system_notification_layout_summary"
+       android:defaultValue="false"
+    />
+  </PreferenceCategory>
+
   <PreferenceCategory android:title="@string/pref_cat_notification_content">
     <ListPreference
        android:key="icon_area"
@@ -47,7 +56,10 @@
     />
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="@string/pref_cat_notification_appearance">
+  <PreferenceCategory
+      android:key="category_notification_appearance"
+      android:title="@string/pref_cat_notification_appearance"
+  >
     <ListPreference
        android:key="notification_percentage_text_color"
        android:title="@string/pref_notification_percentage_text_color"

@@ -82,11 +82,13 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_GREEN = "use_green";
     public static final String KEY_GREEN_THRESH = "green_threshold";
     public static final String KEY_COLOR_PREVIEW = "color_preview";
+    public static final String KEY_USE_SYSTEM_NOTIFICATION_LAYOUT = "use_system_notification_layout";
     public static final String KEY_ICON_AREA = "icon_area";
     public static final String KEY_TOP_LINE = "top_line";
     public static final String KEY_BOTTOM_LINE = "bottom_line";
     public static final String KEY_TIME_REMAINING_VERBOSITY = "time_remaining_verbosity";
     public static final String KEY_STATUS_DURATION_IN_VITAL_SIGNS = "status_duration_in_vital_signs";
+    public static final String KEY_CAT_NOTIFICATION_APPEARANCE = "category_notification_appearance";
     public static final String KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR = "notification_percentage_text_color";
     public static final String KEY_CUSTOM_PERCENTAGE_TEXT_COLOR = "custom_percentage_text_color";
     public static final String KEY_SHOW_BOX_AROUND_ICON_AREA = "show_box_around_icon_area";
@@ -106,6 +108,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_RED_THRESH,
                                                 KEY_AMBER_THRESH,
                                                 KEY_GREEN_THRESH
+    };
+
+    private static final String[] INVERSE_PARENTS    = {KEY_USE_SYSTEM_NOTIFICATION_LAYOUT
+    };
+    private static final String[] INVERSE_DEPENDENTS = {KEY_ICON_AREA
     };
 
     private static final String[] COLOR_PARENTS    = {KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
@@ -145,7 +152,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                                             KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
                                                                             KEY_NOTIFICATION_TOP_LINE_COLOR,
                                                                             KEY_NOTIFICATION_BOTTOM_LINE_COLOR,
-                                                                            KEY_SHOW_BOX_AROUND_ICON_AREA
+                                                                            KEY_SHOW_BOX_AROUND_ICON_AREA,
+                                                                            KEY_USE_SYSTEM_NOTIFICATION_LAYOUT
     };
 
     public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
@@ -388,6 +396,12 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else if (pref_screen.equals(KEY_NOTIFICATION_SETTINGS)) {
             setPrefScreen(R.xml.notification_pref_screen);
             setWindowSubtitle(res.getString(R.string.notification_settings));
+
+            if (mSharedPreferences.getBoolean(KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, false)) {
+                PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_NOTIFICATION_APPEARANCE);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
+            }
         } else if (pref_screen.equals(KEY_KEYGUARD_SETTINGS)) {
             setPrefScreen(R.xml.keyguard_pref_screen);
             setWindowSubtitle(res.getString(R.string.keyguard_settings));
@@ -415,6 +429,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         for (int i=0; i < PARENTS.length; i++)
             setEnablednessOfDeps(i);
+
+        for (int i=0; i < INVERSE_PARENTS.length; i++)
+            setEnablednessOfInverseDeps(i);
 
         for (int i=0; i < COLOR_PARENTS.length; i++)
             setEnablednessOfColorDeps(i);
@@ -633,9 +650,20 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             restartThisScreen(); // To show/hide icon-set/plugin settings
         }
 
+        if (key.equals(KEY_USE_SYSTEM_NOTIFICATION_LAYOUT)) {
+            restartThisScreen();
+        }
+
         for (int i=0; i < PARENTS.length; i++) {
             if (key.equals(PARENTS[i])) {
                 setEnablednessOfDeps(i);
+                break;
+            }
+        }
+
+        for (int i=0; i < INVERSE_PARENTS.length; i++) {
+            if (key.equals(INVERSE_PARENTS[i])) {
+                setEnablednessOfInverseDeps(i);
                 break;
             }
         }
@@ -702,6 +730,18 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             dependent.setEnabled(false);
 
         updateListPrefSummary(DEPENDENTS[index]);
+    }
+
+    private void setEnablednessOfInverseDeps(int index) {
+        Preference dependent = mPreferenceScreen.findPreference(INVERSE_DEPENDENTS[index]);
+        if (dependent == null) return;
+
+        if (mSharedPreferences.getBoolean(INVERSE_PARENTS[index], false))
+            dependent.setEnabled(false);
+        else
+            dependent.setEnabled(true);
+
+        updateListPrefSummary(INVERSE_DEPENDENTS[index]);
     }
 
     private void setEnablednessOfColorDeps(int index) {

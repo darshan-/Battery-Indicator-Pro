@@ -393,8 +393,23 @@
 
   <string formatted="false" name="add_alarm">Add alarm</string>
 
-  <string formatted="false" name="pref_cat_notification_content">Content</string>
+  <string formatted="false" name="pref_cat_notification_layout">Layout</string>
+  <string formatted="false" name="pref_use_system_notification_layout">Use System Layout</string>
+  <string formatted="false" name="pref_use_system_notification_layout_summary">Use system notification layout rather than custom BatteryBot layout?</string>
+  <string formatted="false" name="pref_use_system_notification_layout_help">
+    If enabled, the system notification layout will be used instead of
+    BatteryBot\'s custom layout. The system layout is less
+    customizable, but a small minority of devices don\'t report
+    default colors properly, making the custom layout ugly or hard to
+    read. Other devices use an unusual layout, making the custom
+    layout not fit in. Selecting this option will ensure that the
+    notification will look like any other notification.\n
 
+    \nNote that this will result in having the status bar icon used in
+    the notification.
+  </string>
+
+  <string formatted="false" name="pref_cat_notification_content">Content</string>
   <string formatted="false" name="pref_icon_area_content">Icon Area Content</string>
   <string formatted="false" name="pref_icon_area_content_help">
     Choose what you wish to see at the left end of the notification in the icon area.
