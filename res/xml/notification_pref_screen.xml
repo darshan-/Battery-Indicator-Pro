@@ -68,11 +68,11 @@
        android:defaultValue="default"
     />
 
-    <!--com.darshancomputing.BatteryIndicatorPro.ColorPickerPreference
+    <com.darshancomputing.BatteryIndicatorPro.ColorPickerPreference
         android:key="custom_percentage_text_color"
         android:title="@string/pref_custom_percentage_text_color"
         android:defaultValue="@color/main_notification_default_custom_text_color"
-    /-->
+    />
 
     <CheckBoxPreference
        android:key="show_box_around_icon_area"
@@ -89,11 +89,11 @@
        android:defaultValue="default"
     />
 
-    <!--com.darshancomputing.BatteryIndicatorPro.ColorPickerPreference
+    <com.darshancomputing.BatteryIndicatorPro.ColorPickerPreference
         android:key="custom_top_line_color"
         android:title="@string/pref_custom_top_line_color"
         android:defaultValue="@color/main_notification_default_custom_text_color"
-    /-->
+    />
 
     <ListPreference
        android:key="notification_bottom_line_color"
@@ -103,11 +103,11 @@
        android:defaultValue="default"
     />
 
-    <!--com.darshancomputing.BatteryIndicatorPro.ColorPickerPreference
+    <com.darshancomputing.BatteryIndicatorPro.ColorPickerPreference
         android:key="custom_bottom_line_color"
         android:title="@string/pref_custom_bottom_line_color"
         android:defaultValue="@color/main_notification_default_custom_text_color"
-    /-->
+    />
   </PreferenceCategory>
 
   <PreferenceCategory android:title="@string/pref_cat_notification_priority">
