@@ -17,15 +17,43 @@ package com.darshancomputing.BatteryIndicatorPro;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import java.util.LinkedList;
-
 public class Predictor {
     private static final int DISCHARGE    = 0;
     private static final int RECHARGE_AC  = 1;
     private static final int RECHARGE_WL  = 2;
     private static final int RECHARGE_USB = 3;
 
-    private double[] average = new double[4];
+    public static final int ONE_MINUTE      = 60 * 1000;
+    public static final int FIVE_MINUTES    = ONE_MINUTE *  5;
+    public static final int TEN_MINUTES     = ONE_MINUTE * 10;
+    public static final int FIFTEEN_MINUTES = ONE_MINUTE * 15;
+    public static final int THIRTY_MINUTES  = ONE_MINUTE * 30;
+    public static final int ONE_HOUR        = ONE_MINUTE * 60;
+    public static final int TWO_HOURS       = ONE_HOUR *  2;
+    public static final int THREE_HOURS     = ONE_HOUR *  3;
+    public static final int FOUR_HOURS      = ONE_HOUR *  4;
+    public static final int SIX_HOURS       = ONE_HOUR *  6;
+    public static final int EIGHT_HOURS     = ONE_HOUR *  8;
+    public static final int TWELVE_HOURS    = ONE_HOUR * 12;
+    public static final int ONE_DAY         = ONE_HOUR * 24;
+
+    public static final int TYPE_FIVE_MINUTES    =  1;
+    public static final int TYPE_TEN_MINUTES     =  2;
+    public static final int TYPE_FIFTEEN_MINUTES =  3;
+    public static final int TYPE_THIRTY_MINUTES  =  4;
+    public static final int TYPE_ONE_HOUR        =  5;
+    public static final int TYPE_TWO_HOURS       =  6;
+    public static final int TYPE_THREE_HOURS     =  7;
+    public static final int TYPE_FOUR_HOURS      =  8;
+    public static final int TYPE_SIX_HOURS       =  9;
+    public static final int TYPE_EIGHT_HOURS     = 10;
+    public static final int TYPE_TWELVE_HOURS    = 11;
+    public static final int TYPE_ONE_DAY         = 12;
+    public static final int TYPE_STATUS_CHANGE   = 13;
+    public static final int TYPE_LONG_TERM       = 14;
+
+    private static final double WEIGHT_OLD_AVERAGE = 0.998;
+    private static final double WEIGHT_NEW_DATA =  1 - WEIGHT_OLD_AVERAGE;
 
     private static final int[] DEFAULT = { 24 * 60 * 60 * 1000 / 100,
                                             3 * 60 * 60 * 1000 / 100,
@@ -37,19 +65,22 @@ public class Predictor {
                                                   "key_ave_recharge_wl",
                                                   "key_ave_recharge_usb" };
 
-    private static final int RECENT_DURATION = 5 * 60 * 1000;
+    private int recent_duration = FIVE_MINUTES;
+    private int prediction_type = TYPE_FIVE_MINUTES;
 
-    private static final double WEIGHT_OLD_AVERAGE = 0.998;
-    private static final double WEIGHT_NEW_DATA =  1 - WEIGHT_OLD_AVERAGE;
+    private long[] timestamps = new long[101];
+    private int ts_head_index;
 
-    private LinkedList<Double> recents;
+    private double[] average = new double[4];
 
-    private long last_ms;
+    private double recent_average;
+
+    private long last_ms;    // TODO: Can probably get rid of this with improved Predictor?
     private int last_level;
     private int last_status;
     private int last_plugged;
-    private int last_index;
-    private double recent_average;
+    private int last_aveArrayIndex;
+
     private boolean partial;
     private boolean initial;
 
@@ -64,8 +95,6 @@ public class Predictor {
         average[RECHARGE_AC]  = sp_store.getFloat(KEY_AVERAGE[RECHARGE_AC],  DEFAULT[RECHARGE_AC]);
         average[RECHARGE_WL]  = sp_store.getFloat(KEY_AVERAGE[RECHARGE_WL],  DEFAULT[RECHARGE_WL]);
         average[RECHARGE_USB] = sp_store.getFloat(KEY_AVERAGE[RECHARGE_USB], DEFAULT[RECHARGE_USB]);
-
-        recents = new LinkedList<Double>();
     }
 
     public void update(BatteryInfo info) {
@@ -85,7 +114,7 @@ public class Predictor {
             return;
         }
 
-        int status = indexFor(info.status, info.plugged);
+        int status = aveArrayIndexFor(info.status, info.plugged);
         int level_diff = java.lang.Math.abs(last_level - info.percent);
         double ms_diff = (double) (System.currentTimeMillis() - last_ms);
 
@@ -166,7 +195,7 @@ public class Predictor {
         last_level = info.percent;
         last_status = info.status;
         last_plugged = info.plugged;
-        last_index = indexFor(last_status, last_plugged);
+        last_aveArrayIndex = aveArrayIndexFor(last_status, last_plugged);
         last_ms = System.currentTimeMillis();
     }
 
@@ -197,13 +226,13 @@ public class Predictor {
         }
 
         if (needed_ms > 0)
-            total_points += needed_ms / average[last_index];
+            total_points += needed_ms / average[last_aveArrayIndex];
 
         recent_average = RECENT_DURATION / total_points;
         return recent_average;
     }
 
-    private int indexFor(int status, int plugged) {
+    private int aveArrayIndexFor(int status, int plugged) {
         if (status == BatteryInfo.STATUS_CHARGING) {
             if (plugged == BatteryInfo.PLUGGED_USB)
                 return RECHARGE_USB;
