@@ -69,20 +69,16 @@ public class Predictor {
     private int prediction_type = TYPE_FIVE_MINUTES;
 
     private long[] timestamps = new long[101];
-    private int ts_head_index;
+    private int ts_head;
 
     private double[] average = new double[4];
 
     private double recent_average;
 
-    private long last_ms;    // TODO: Can probably get rid of this with improved Predictor?
     private int last_level;
     private int last_status;
     private int last_plugged;
-    private int last_aveArrayIndex;
-
-    private boolean partial;
-    private boolean initial;
+    private int last_charging_status;
 
     private SharedPreferences sp_store;
     private SharedPreferences.Editor editor;
@@ -98,57 +94,47 @@ public class Predictor {
     }
 
     public void update(BatteryInfo info) {
-        if (info.status != last_status || info.plugged != last_plugged || last_ms == 0 || info.status == BatteryInfo.STATUS_FULLY_CHARGED) {
-            recents.clear();
-            partial = false;
-            initial = true;
+        if (info.status != last_status ||
+            info.plugged != last_plugged ||
+            info.status == BatteryInfo.STATUS_FULLY_CHARGED ||
+            (info.status == BatteryInfo.STATUS_CHARGING && info.percent < ts_head) ||
+            (info.status == BatteryInfo.STATUS_DISCHARGING && info.percent > ts_head)
+           )
+        {
+            ts_head = info.percent;
             setLasts(info);
             updateInfoPrediction(info);
             return;
         }
 
         if ((info.status == BatteryInfo.STATUS_CHARGING && info.percent < last_level) ||
-            (info.status != BatteryInfo.STATUS_CHARGING && info.percent > last_level))
+            (info.status != BatteryInfo.STATUS_DISCHARGING && info.percent > last_level)
+           )
         {
-            // There may be better ways to account for this backslide, but the simplest solution is to just ignore it
+            setLasts(info);
+            updateInfoPrediction(info);
             return;
         }
 
-        int status = aveArrayIndexFor(info.status, info.plugged);
-        int level_diff = java.lang.Math.abs(last_level - info.percent);
-        double ms_diff = (double) (System.currentTimeMillis() - last_ms);
+        int level_diff = Math.abs(last_level - info.percent);
 
-        if (level_diff == 0) {
-            if (ms_diff <= recent_average)
-                return;
+        if (level_diff != 0) {
+            long now = System.elapsedRealtime();
+            timestamps[info.level] = now;
 
-            if (partial) {
-                recents.set(0, ms_diff);
-            } else {
-                recents.addFirst(ms_diff);
-                partial = true;
-            }
-        } else {
-            if (partial) {
-                recents.remove(0);
-                partial = false;
-            }
+            double ms_per_point = ((double) (now - last_ms)) / level_diff;
 
-            ms_diff /= level_diff;
-
-            if (initial && ms_diff < average[status]) { // Non-useful initial level change after status change
-                initial = false;
+            if (Math.abs(ts_head - info.level) <= 1 && ms_per_point < average[charging_status]) {
+                // Initial level change may happen promptly and should not shorten prediction
                 setLasts(info);
                 return;
             }
 
-            initial = false;
+            int charging_status = chargingStatusFor(info.status, info.plugged);
 
             for (int i = 0; i < level_diff; i++) {
-                recents.addFirst(ms_diff);
-
-                average[status] = average[status] * WEIGHT_OLD_AVERAGE + ms_diff * WEIGHT_NEW_DATA;
-                editor.putFloat(KEY_AVERAGE[status], (float) average[status]);
+                average[charging_status] = average[charging_status] * WEIGHT_OLD_AVERAGE + ms_per_point * WEIGHT_NEW_DATA;
+                editor.putFloat(KEY_AVERAGE[charging_status], (float) average[charging_status]);
             }
 
             setLasts(info);
@@ -195,7 +181,7 @@ public class Predictor {
         last_level = info.percent;
         last_status = info.status;
         last_plugged = info.plugged;
-        last_aveArrayIndex = aveArrayIndexFor(last_status, last_plugged);
+        last_charging_status = chargingStatusFor(last_status, last_plugged);
         last_ms = System.currentTimeMillis();
     }
 
@@ -226,13 +212,13 @@ public class Predictor {
         }
 
         if (needed_ms > 0)
-            total_points += needed_ms / average[last_aveArrayIndex];
+            total_points += needed_ms / average[last_charging_status];
 
         recent_average = RECENT_DURATION / total_points;
         return recent_average;
     }
 
-    private int aveArrayIndexFor(int status, int plugged) {
+    private int chargingStatusFor(int status, int plugged) {
         if (status == BatteryInfo.STATUS_CHARGING) {
             if (plugged == BatteryInfo.PLUGGED_USB)
                 return RECHARGE_USB;
