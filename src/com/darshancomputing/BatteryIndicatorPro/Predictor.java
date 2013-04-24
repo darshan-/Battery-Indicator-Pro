@@ -96,24 +96,24 @@ public class Predictor {
     }
 
     public void update(BatteryInfo info) {
-        dir_inc = info.status == BatteryInfo.STATUS_CHARGING ? -1 : 1;
-
         if (info.status != last_status ||
             info.plugged != last_plugged ||
             info.status == BatteryInfo.STATUS_FULLY_CHARGED ||
             (info.status == BatteryInfo.STATUS_CHARGING && info.percent < ts_head) ||
-            (info.status == BatteryInfo.STATUS_DISCHARGING && info.percent > ts_head)
-           )
+            (info.status == BatteryInfo.STATUS_DISCHARGING && info.percent > ts_head))
         {
             ts_head = info.percent;
+            dir_inc = info.status == BatteryInfo.STATUS_CHARGING ? -1 : 1;
+
+            timestamps[info.percent] = SystemClock.elapsedRealtime();
+
             setLasts(info);
             updateInfoPrediction(info);
             return;
         }
 
         if ((info.status == BatteryInfo.STATUS_CHARGING && info.percent < last_level) ||
-            (info.status != BatteryInfo.STATUS_DISCHARGING && info.percent > last_level)
-           )
+            (info.status == BatteryInfo.STATUS_DISCHARGING && info.percent > last_level))
         {
             setLasts(info);
             updateInfoPrediction(info);
@@ -193,8 +193,12 @@ public class Predictor {
         double total_ms = 0d;
         double needed_ms = recent_duration;
 
-        for (int i = last_level; i != ts_head; i += dir_inc) {
-            double t = timestamps[i];
+        for (int i = last_level - dir_inc; i != ts_head; i += dir_inc) {
+            double t;
+            if (i == last_level - dir_inc)
+                t = SystemClock.elapsedRealtime() - timestamps[last_level];
+            else
+                t = timestamps[i] - timestamps[i + dir_inc];
 
             if (t > needed_ms) {
                 total_points += needed_ms / t;
