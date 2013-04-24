@@ -16,6 +16,7 @@ package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.SystemClock;
 
 public class Predictor {
     private static final int DISCHARGE    = 0;
@@ -79,6 +80,7 @@ public class Predictor {
     private int last_status;
     private int last_plugged;
     private int last_charging_status;
+    private int dir_inc; // -1 if charging; 1 if discharging; unspecified otherwise. For iterating over timestamps.
 
     private SharedPreferences sp_store;
     private SharedPreferences.Editor editor;
@@ -94,6 +96,8 @@ public class Predictor {
     }
 
     public void update(BatteryInfo info) {
+        dir_inc = info.status == BatteryInfo.STATUS_CHARGING ? -1 : 1;
+
         if (info.status != last_status ||
             info.plugged != last_plugged ||
             info.status == BatteryInfo.STATUS_FULLY_CHARGED ||
@@ -119,28 +123,28 @@ public class Predictor {
         int level_diff = Math.abs(last_level - info.percent);
 
         if (level_diff != 0) {
-            long now = System.elapsedRealtime();
-            timestamps[info.level] = now;
+            long now = SystemClock.elapsedRealtime();
+            timestamps[info.percent] = now;
 
+            long last_ms = timestamps[info.percent] - timestamps[info.percent + dir_inc]; // TODO: I'm pretty sure this is safe indexing...
             double ms_per_point = ((double) (now - last_ms)) / level_diff;
 
-            if (Math.abs(ts_head - info.level) <= 1 && ms_per_point < average[charging_status]) {
-                // Initial level change may happen promptly and should not shorten prediction
+            int charging_status = chargingStatusFor(info.status, info.plugged);
+
+            // Initial level change may happen promptly and should not shorten prediction
+            if (Math.abs(ts_head - info.percent) <= 1 && ms_per_point < average[charging_status]) {
                 setLasts(info);
                 return;
             }
-
-            int charging_status = chargingStatusFor(info.status, info.plugged);
 
             for (int i = 0; i < level_diff; i++) {
                 average[charging_status] = average[charging_status] * WEIGHT_OLD_AVERAGE + ms_per_point * WEIGHT_NEW_DATA;
                 editor.putFloat(KEY_AVERAGE[charging_status], (float) average[charging_status]);
             }
-
-            setLasts(info);
             editor.commit();
         }
 
+        setLasts(info);
         updateInfoPrediction(info);
     }
 
@@ -178,31 +182,24 @@ public class Predictor {
     }
 
     private void setLasts(BatteryInfo info) {
-        last_level = info.percent;
+        last_level = info.percent; // TODO: Resolve level/percent discrepancy?
         last_status = info.status;
         last_plugged = info.plugged;
         last_charging_status = chargingStatusFor(last_status, last_plugged);
-        last_ms = System.currentTimeMillis();
     }
 
     private double recentAverage() {
         double total_points = 0d;
         double total_ms = 0d;
-        double needed_ms = RECENT_DURATION;
+        double needed_ms = recent_duration;
 
-        int i;
-        for (i = 0; i < recents.size(); i++) {
-            double t = recents.get(i);
+        for (int i = last_level; i != ts_head; i += dir_inc) {
+            double t = timestamps[i];
 
             if (t > needed_ms) {
                 total_points += needed_ms / t;
                 total_ms += needed_ms;
                 needed_ms = 0;
-
-                i++;
-                while (recents.size() > i) // This is a convenient place to trim recents
-                    recents.remove(i);
-
                 break;
             }
 
@@ -214,7 +211,7 @@ public class Predictor {
         if (needed_ms > 0)
             total_points += needed_ms / average[last_charging_status];
 
-        recent_average = RECENT_DURATION / total_points;
+        recent_average = recent_duration / total_points;
         return recent_average;
     }
 
