@@ -195,10 +195,12 @@ public class Predictor {
 
         for (int i = last_level - dir_inc; i != ts_head; i += dir_inc) {
             double t;
-            if (i == last_level - dir_inc)
+            if (i == last_level - dir_inc) {
                 t = SystemClock.elapsedRealtime() - timestamps[last_level];
-            else
+                if (t < recent_average) continue;
+            } else {
                 t = timestamps[i] - timestamps[i + dir_inc];
+            }
 
             if (t > needed_ms) {
                 total_points += needed_ms / t;
