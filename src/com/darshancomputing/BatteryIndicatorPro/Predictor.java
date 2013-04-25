@@ -37,6 +37,7 @@ public class Predictor {
     public static final int EIGHT_HOURS     = ONE_HOUR *  8;
     public static final int TWELVE_HOURS    = ONE_HOUR * 12;
     public static final int ONE_DAY         = ONE_HOUR * 24;
+    public static final int SINCE_STATUS_CHANGE = -1;
 
     public static final int TYPE_FIVE_MINUTES    =  1;
     public static final int TYPE_TEN_MINUTES     =  2;
@@ -121,14 +122,16 @@ public class Predictor {
         }
 
         int level_diff = Math.abs(last_level - info.percent);
+        long now = SystemClock.elapsedRealtime();
+        double ms_diff = (double) (now - timestamps[last_level]);
 
-        if (level_diff != 0) {
-            long now = SystemClock.elapsedRealtime();
+        if (level_diff == 0) {
+            if (ms_diff <= recent_average)
+                return;
+        } else {
             timestamps[info.percent] = now;
 
-            long last_ms = timestamps[info.percent] - timestamps[info.percent + dir_inc]; // TODO: I'm pretty sure this is safe indexing...
-            double ms_per_point = ((double) (now - last_ms)) / level_diff;
-
+            double ms_per_point = ms_diff / level_diff;
             int charging_status = chargingStatusFor(info.status, info.plugged);
 
             // Initial level change may happen promptly and should not shorten prediction
@@ -193,14 +196,13 @@ public class Predictor {
         double total_ms = 0d;
         double needed_ms = recent_duration;
 
-        for (int i = last_level - dir_inc; i != ts_head; i += dir_inc) {
+        for (int i = last_level - dir_inc; i != ts_head && last_level != ts_head; i += dir_inc) {
             double t;
-            if (i == last_level - dir_inc) {
+
+            if (i == last_level - dir_inc)
                 t = SystemClock.elapsedRealtime() - timestamps[last_level];
-                if (t < recent_average) continue;
-            } else {
+            else
                 t = timestamps[i] - timestamps[i + dir_inc];
-            }
 
             if (t > needed_ms) {
                 total_points += needed_ms / t;
