@@ -129,13 +129,14 @@ public class Predictor {
             if (ms_diff <= recent_average)
                 return;
         } else {
-            timestamps[info.percent] = now;
-
             double ms_per_point = ms_diff / level_diff;
             int charging_status = chargingStatusFor(info.status, info.plugged);
 
+            for (int i = 0; i < level_diff; i += 1)
+                timestamps[info.percent + (i * dir_inc)] = now - (long) (i * ms_per_point);
+
             // Initial level change may happen promptly and should not shorten prediction
-            if (Math.abs(ts_head - info.percent) <= 1 && ms_per_point < average[charging_status]) {
+            if (Math.abs(ts_head - info.percent) <= 1 && ms_per_point < recent_average) {
                 setLasts(info);
                 return;
             }
