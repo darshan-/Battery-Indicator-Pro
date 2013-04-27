@@ -197,13 +197,15 @@ public class Predictor {
         double total_ms = 0d;
         double needed_ms = recent_duration;
 
-        for (int i = last_level - dir_inc; i != ts_head && last_level != ts_head; i += dir_inc) {
+        for (int i = last_level - dir_inc; i != ts_head; i += dir_inc) {
             double t;
 
             if (i == last_level - dir_inc) {
+                // Pre-run through loop with partial point
                 t = SystemClock.elapsedRealtime() - timestamps[last_level];
-                if (t < recent_average) // This happens whenever level first changes
-                    continue;
+
+                // This happens whenever level first changes (otherwise update() already returned)
+                if (t < recent_average) continue;
             } else {
                 t = timestamps[i] - timestamps[i + dir_inc];
             }
@@ -219,6 +221,7 @@ public class Predictor {
             total_ms += t;
             needed_ms -= t;
         }
+
 
         if (needed_ms > 0)
             total_points += needed_ms / average[last_charging_status];
