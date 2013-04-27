@@ -78,7 +78,7 @@ public class Predictor {
     private double recent_average;
 
     private int last_level;
-    private int last_status;
+    private int last_status = -1; // Impossible value, so first update knows it's the first update
     private int last_plugged;
     private int last_charging_status;
     private int dir_inc; // -1 if charging; 1 if discharging; unspecified otherwise. For iterating over timestamps.
@@ -230,7 +230,6 @@ public class Predictor {
             total_ms += t;
             needed_ms -= t;
         }
-
 
         if (needed_ms > 0)
             total_points += needed_ms / average[last_charging_status];
