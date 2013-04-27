@@ -82,6 +82,8 @@ public class Predictor {
     private int last_plugged;
     private int last_charging_status;
     private int dir_inc; // -1 if charging; 1 if discharging; unspecified otherwise. For iterating over timestamps.
+    private long now;
+    private boolean partial;
 
     private SharedPreferences sp_store;
     private SharedPreferences.Editor editor;
@@ -97,6 +99,8 @@ public class Predictor {
     }
 
     public void update(BatteryInfo info) {
+        now = SystemClock.elapsedRealtime();
+
         if (info.status != last_status ||
             info.plugged != last_plugged ||
             info.status == BatteryInfo.STATUS_FULLY_CHARGED ||
@@ -105,8 +109,9 @@ public class Predictor {
         {
             ts_head = info.percent;
             dir_inc = info.status == BatteryInfo.STATUS_CHARGING ? -1 : 1;
+            partial = false;
 
-            timestamps[info.percent] = SystemClock.elapsedRealtime();
+            timestamps[info.percent] = now;
 
             setLasts(info);
             updateInfoPrediction(info);
@@ -116,19 +121,21 @@ public class Predictor {
         if ((info.status == BatteryInfo.STATUS_CHARGING && info.percent < last_level) ||
             (info.status == BatteryInfo.STATUS_DISCHARGING && info.percent > last_level))
         {
+            partial = false;
             setLasts(info);
             updateInfoPrediction(info);
             return;
         }
 
         int level_diff = Math.abs(last_level - info.percent);
-        long now = SystemClock.elapsedRealtime();
         double ms_diff = (double) (now - timestamps[last_level]);
 
         if (level_diff == 0) {
+            partial = true;
             if (ms_diff <= recent_average)
                 return;
         } else {
+            partial = false;
             double ms_per_point = ms_diff / level_diff;
             int charging_status = chargingStatusFor(info.status, info.plugged);
 
@@ -170,7 +177,9 @@ public class Predictor {
 
         double predicted = recentAverage();
 
-        return (int) (predicted * last_level / 1000);
+        int level = last_level;
+        if (partial) level -= dir_inc;
+        return (int) (predicted * level / 1000);
     }
 
     public int secondsUntilCharged() {
@@ -182,7 +191,9 @@ public class Predictor {
             return -1;
         }
 
-        return (int) ((100 - last_level) * recentAverage() / 1000);
+        int level = last_level;
+        if (partial) level -= dir_inc;
+        return (int) ((100 - level) * recentAverage() / 1000);
     }
 
     private void setLasts(BatteryInfo info) {
@@ -197,18 +208,16 @@ public class Predictor {
         double total_ms = 0d;
         double needed_ms = recent_duration;
 
-        for (int i = last_level - dir_inc; i != ts_head; i += dir_inc) {
+        int start = last_level;
+        if (partial) start -= dir_inc;
+
+        for (int i = start; i != ts_head; i += dir_inc) {
             double t;
 
-            if (i == last_level - dir_inc) {
-                // Pre-run through loop with partial point
-                t = SystemClock.elapsedRealtime() - timestamps[last_level];
-
-                // This happens whenever level first changes (otherwise update() already returned)
-                if (t < recent_average) continue;
-            } else {
+            if (i == start && partial)
+                t = now - timestamps[last_level];
+            else
                 t = timestamps[i] - timestamps[i + dir_inc];
-            }
 
             if (t > needed_ms) {
                 total_points += needed_ms / t;
