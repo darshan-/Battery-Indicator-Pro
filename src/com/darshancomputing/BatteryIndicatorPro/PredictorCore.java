@@ -104,7 +104,7 @@ public class PredictorCore {
         }
 
         if ((info.status == BatteryInfo.STATUS_CHARGING && info.percent < last_level) ||
-            (info.status == BatteryInfo.STATUS_DISCHARGING && info.percent > last_level))
+            (info.status == BatteryInfo.STATUS_UNPLUGGED && info.percent > last_level))
         {
             partial = false;
             setLasts(info);
