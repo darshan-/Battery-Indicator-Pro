@@ -1,0 +1,3 @@
+#!/bin/bash
+
+javac com/darshancomputing/BatteryIndicatorPro/Test.java && java com.darshancomputing.BatteryIndicatorPro.Test

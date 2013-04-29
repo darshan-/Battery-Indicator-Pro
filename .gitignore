@@ -25,3 +25,5 @@ my-release-key.keystore
 # res/drawable*/g_outline.png
 
 release-versions/current
+
+*.class
