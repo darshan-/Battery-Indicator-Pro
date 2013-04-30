@@ -27,25 +27,77 @@ public class Test {
         pc.update(bi, now);
         print();
 
-        for (int i = 0; i < 10; i++) {
-            bi.percent -= 1;
-            now += 60 * 1000;
+        /*
+        now += 60 * 1000;
+        bi.percent = 98;
+        bi.plugged = BatteryInfo.PLUGGED_AC;
+        bi.status  = BatteryInfo.STATUS_CHARGING;
+        pc.update(bi, now);
+        print();
+
+        now += 60 * 1000;
+        bi.percent = 98;
+        pc.update(bi, now);
+        print();
+
+        now += 60 * 1000;
+        bi.percent = 98;
+        pc.update(bi, now);
+        print();
+
+        now += 60 * 1000;
+        bi.percent = 99;
+        pc.update(bi, now);
+        print();
+
+        now += 60 * 1000;
+        bi.percent = 99;
+        pc.update(bi, now);
+        print();
+
+        now += 60 * 1000;
+        bi.percent = 100;
+        pc.update(bi, now);
+        print();
+
+        now += 60 * 1000;
+        bi.percent = 100;
+        pc.update(bi, now);
+        print();
+
+        now += 60 * 1000;
+        bi.status = BatteryInfo.STATUS_FULLY_CHARGED;
+        pc.update(bi, now);
+        print();
+        */
+
+        for (int i = 0; i < 10 * 20; i++) {
+            if (i % 20 == 0) bi.percent -= 1;
+            now += 3 * 1000;
             pc.update(bi, now);
             print();
         }
 
-        bi.percent = 0;
+        for (int i = 0; i < 50; i++) {
+            now += 3 * 1000;
+            pc.update(bi, now);
+            print();
+        }
+
+        for (int i = 0; i < 20; i++) {
+            if (i % 20 == 0) bi.percent -= 1;
+            now += 3 * 1000;
+            pc.update(bi, now);
+            print();
+        }
+
+        bi.percent = 88;
         now += 60 * 1000;
         pc.update(bi, now);
         print();
 
-        bi.percent = 88;
-        now += 5;
-        pc.update(bi, now);
-        print();
-
-        for (int i = 0; i < 40; i++) {
-            bi.percent -= 1;
+        for (int i = 0; i < 40 * 2; i++) {
+            if (i % 2 == 0) bi.percent -= 1;
             now += 60 * 1000;
             pc.update(bi, now);
             print();
@@ -53,6 +105,18 @@ public class Test {
     }
 
     private static void print() {
-        System.out.println("" + bi.percent + "%; drained in " + pc.secondsUntilDrained() + " seconds.");
+        switch(bi.status) {
+        case  BatteryInfo.STATUS_UNPLUGGED:
+            System.out.println("" + (now/1000) + ": " + bi.percent + "%; drained in " + pc.last_seconds_remaining + " seconds.");
+            break;
+        case  BatteryInfo.STATUS_CHARGING:
+            System.out.println("" + (now/1000) + ": " + bi.percent + "%; charged in " + pc.last_seconds_remaining + " seconds.");
+            break;
+        case  BatteryInfo.STATUS_FULLY_CHARGED:
+            System.out.println("" + (now/1000) + ": " + bi.percent + "%; fully charged.");
+            break;
+        default:
+            System.out.println("" + (now/1000) + ": unknown status: " + bi.status);
+        }
     }
 }
