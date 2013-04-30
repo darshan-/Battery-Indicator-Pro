@@ -68,13 +68,16 @@ public class PredictorCore {
 
     private double recent_average;
 
+    private BatteryInfo cur_info;
     private int last_level;
     private int last_status = -1; // Impossible value, so first update knows it's the first update
     private int last_plugged;
-    public int last_charging_status;
     private int dir_inc; // -1 if charging; 1 if discharging; unspecified otherwise. For iterating over timestamps.
     private long now;
     private boolean partial;
+
+    public int cur_charging_status; // TODO make getters and make private
+    public int last_seconds_remaining;
 
     public PredictorCore(float ave_discharge, float ave_recharge_ac, float ave_recharge_wl, float ave_recharge_usb) {
         average[DISCHARGE]    = ave_discharge    == -1 ? DEFAULT[DISCHARGE]    : ave_discharge;
@@ -84,6 +87,8 @@ public class PredictorCore {
     }
 
     public void update(BatteryInfo info, long when) {
+        cur_info = info;
+        cur_charging_status = chargingStatusFor(info.status, info.plugged);
         now = when;
 
         if (info.status != last_status ||
@@ -94,12 +99,10 @@ public class PredictorCore {
         {
             ts_head = info.percent;
             dir_inc = info.status == BatteryInfo.STATUS_CHARGING ? -1 : 1;
+
             partial = false;
-
             timestamps[info.percent] = now;
-
-            setLasts(info);
-            updateInfoPrediction(info);
+            updateInfoPrediction();
             return;
         }
 
@@ -107,86 +110,93 @@ public class PredictorCore {
             (info.status == BatteryInfo.STATUS_UNPLUGGED && info.percent > last_level))
         {
             partial = false;
-            setLasts(info);
-            updateInfoPrediction(info);
+            timestamps[info.percent] = now;
+            updateInfoPrediction();
             return;
         }
 
         int level_diff = Math.abs(last_level - info.percent);
-        double ms_diff = (double) (now - timestamps[last_level]);
 
         if (level_diff == 0) {
-            partial = true;
-            if (ms_diff <= recent_average)
+            if (shouldStartPartial())
+                partial = true;
+            else
                 return;
         } else {
             partial = false;
+            double ms_diff = (double) (now - timestamps[last_level]);
             double ms_per_point = ms_diff / level_diff;
-            int charging_status = chargingStatusFor(info.status, info.plugged);
 
             for (int i = 0; i < level_diff; i += 1)
                 timestamps[info.percent + (i * dir_inc)] = now - (long) (i * ms_per_point);
 
             // Initial level change may happen promptly and should not shorten prediction
             if (Math.abs(ts_head - info.percent) <= 1 && ms_per_point < recent_average) {
-                setLasts(info);
+                setLasts();
                 return;
             }
 
             for (int i = 0; i < level_diff; i++)
-                average[charging_status] = average[charging_status] * WEIGHT_OLD_AVERAGE + ms_per_point * WEIGHT_NEW_DATA;
+                average[cur_charging_status] = average[cur_charging_status] * WEIGHT_OLD_AVERAGE + ms_per_point * WEIGHT_NEW_DATA;
         }
 
-        setLasts(info);
-        updateInfoPrediction(info);
+        updateInfoPrediction();
     }
 
     public double getLongTermAverage() {
-        return average[last_charging_status];
+        return average[cur_charging_status];
     }
 
-    private void updateInfoPrediction(BatteryInfo info) {
-        int secs_left;
+    private boolean shouldStartPartial() {
+        double ms_diff = (double) (now - timestamps[last_level]);
+        if (ms_diff <= recent_average) return false;
+        if (secondsLeftIfPartial() <= last_seconds_remaining) return false;
+        return true;
+    }
 
-        if (info.status == BatteryInfo.STATUS_CHARGING)
-            secs_left = secondsUntilCharged();
+    private int secondsLeftIfPartial() {
+        boolean old_partial = partial;
+        partial = true;
+        int ret = secondsLeft();
+        partial = old_partial;
+        return ret;
+    }
+
+    private void updateInfoPrediction() {
+        last_seconds_remaining = secondsLeft();
+        cur_info.prediction.update(last_seconds_remaining);
+        setLasts();
+    }
+
+    private int secondsLeft() {
+        recent_average = recentAverage();
+
+        if (cur_info.status == BatteryInfo.STATUS_CHARGING)
+            return secondsUntilCharged();
+        else if (cur_info.status == BatteryInfo.STATUS_UNPLUGGED)
+            return secondsUntilDrained();
         else
-            secs_left = secondsUntilDrained();
-
-        info.prediction.update(secs_left);
+            return 0;
     }
 
-    public int secondsUntilDrained() {
-        if (last_status != BatteryInfo.STATUS_UNPLUGGED) {
-            return -1;
-        }
+    private int secondsUntilDrained() {
+        double predicted = recent_average;
 
-        double predicted = recentAverage();
-
-        int level = last_level;
+        int level = cur_info.percent;
         if (partial) level -= dir_inc;
         return (int) (predicted * level / 1000);
     }
 
-    public int secondsUntilCharged() {
-        if (last_status == BatteryInfo.STATUS_FULLY_CHARGED) {
-            return 0;
-        }
-
-        if (last_status != BatteryInfo.STATUS_CHARGING) {
-            return -1;
-        }
-
-        int level = last_level;
+    private int secondsUntilCharged() {
+        int level = cur_info.percent;
         if (partial) level -= dir_inc;
-        return (int) ((100 - level) * recentAverage() / 1000);
+        return (int) ((100 - level) * recent_average / 1000);
     }
 
-    private void setLasts(BatteryInfo info) {
-        last_level = info.percent; // TODO: Resolve level/percent discrepancy?
-        last_status = info.status;
-        last_plugged = info.plugged;
-        last_charging_status = chargingStatusFor(last_status, last_plugged);
+    private void setLasts() {
+        last_level = cur_info.percent; // TODO: Resolve level/percent discrepancy?
+        last_status = cur_info.status;
+        last_plugged = cur_info.plugged;
     }
 
     private double recentAverage() {
@@ -194,14 +204,14 @@ public class PredictorCore {
         double total_ms = 0d;
         double needed_ms = recent_duration;
 
-        int start = last_level;
+        int start = cur_info.percent;
         if (partial) start -= dir_inc;
 
         for (int i = start; i != ts_head; i += dir_inc) {
             double t;
 
             if (i == start && partial)
-                t = now - timestamps[last_level];
+                t = now - timestamps[cur_info.percent];
             else
                 t = timestamps[i] - timestamps[i + dir_inc];
 
@@ -218,10 +228,9 @@ public class PredictorCore {
         }
 
         if (needed_ms > 0)
-            total_points += needed_ms / average[last_charging_status];
+            total_points += needed_ms / average[cur_charging_status];
 
-        recent_average = recent_duration / total_points;
-        return recent_average;
+        return recent_duration / total_points;
     }
 
     private int chargingStatusFor(int status, int plugged) {
