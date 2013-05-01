@@ -96,7 +96,7 @@ public class PredictorCore {
             info.plugged != last_plugged ||
             info.status == BatteryInfo.STATUS_FULLY_CHARGED ||
             (info.status == BatteryInfo.STATUS_CHARGING && info.percent < ts_head) ||
-            (info.status == BatteryInfo.STATUS_DISCHARGING && info.percent > ts_head))
+            (info.status == BatteryInfo.STATUS_UNPLUGGED && info.percent > ts_head))
         {
             initial = true;
             partial = false;
