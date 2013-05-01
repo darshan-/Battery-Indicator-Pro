@@ -58,6 +58,7 @@ public class BatteryInfoService extends Service {
     private AlarmManager alarmManager;
     private SharedPreferences settings;
     private SharedPreferences sp_store;
+    SharedPreferences.Editor sps_editor;
 
     private KeyguardLock kl;
     private KeyguardManager km;
@@ -73,7 +74,7 @@ public class BatteryInfoService extends Service {
     private LogDatabase log_db;
     private BatteryLevel bl;
     private BatteryInfo info;
-    private int previous_charge;
+    private long now;
     private java.util.HashSet<Messenger> clientMessengers;
     private final Messenger messenger = new Messenger(new MessageHandler());
 
@@ -356,12 +357,13 @@ public class BatteryInfoService extends Service {
     };
 
     private void update(Intent intent) {
+        now = System.currentTimeMillis();
+        sps_editor = sp_store.edit();
+
         setupPlugins();
 
         if (intent != null)
             info.load(intent, sp_store);
-
-        previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
 
         predictor.update(info);
 
@@ -381,7 +383,18 @@ public class BatteryInfoService extends Service {
         if (alarms.anyActiveAlarms())
             handleAlarms();
 
+        syncSpsEditor();
+
         alarmManager.set(AlarmManager.ELAPSED_REALTIME, android.os.SystemClock.elapsedRealtime() + (2 * 60 * 1000), updatePredictorPendingIntent);
+    }
+
+    private void syncSpsEditor() {
+        sps_editor.commit();
+
+        info.last_status_cTM = now;
+        info.last_status = info.status;
+        info.last_percent = info.percent;
+        info.last_plugged = info.plugged;
     }
 
     private void prepareNotification() {
@@ -531,7 +544,7 @@ public class BatteryInfoService extends Service {
         if (info.voltage > 500)
             line += " / " + str.formatVoltage(info.voltage);
         if (settings.getBoolean(SettingsActivity.KEY_STATUS_DURATION_IN_VITAL_SIGNS, false)) {
-            float statusDurationHours = (System.currentTimeMillis() - info.last_status_cTM) / (60 * 60 * 1000f);
+            float statusDurationHours = (now - info.last_status_cTM) / (60 * 60 * 1000f);
             line += " / " + String.format("%.1f", statusDurationHours) + "h"; // TODO: Translatable 'h'
         }
 
@@ -539,7 +552,7 @@ public class BatteryInfoService extends Service {
     }
 
     private String statusDurationLine() {
-        long statusDuration = System.currentTimeMillis() - info.last_status_cTM;
+        long statusDuration = now - info.last_status_cTM;
         int statusDurationHours = (int) ((statusDuration + (1000 * 60 * 30)) / (1000 * 60 * 60));
         String line = str.statuses[info.status] + " ";
 
@@ -607,18 +620,17 @@ public class BatteryInfoService extends Service {
     }
 
     private boolean statusHasChanged() {
+        int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
+
         return (info.last_status != info.status ||
                 info.last_status_cTM == BatteryInfo.DEFAULT_LAST_STATUS_CTM ||
                 info.last_percent == BatteryInfo.DEFAULT_LAST_PERCENT ||
-                info.last_status_cTM > System.currentTimeMillis() ||
+                info.last_status_cTM > now ||
                 info.last_plugged != info.plugged ||
                 (info.plugged == BatteryInfo.PLUGGED_UNPLUGGED && info.percent > previous_charge + 20));
     }
 
     private void handleUpdateWithChangedStatus() {
-        SharedPreferences.Editor editor = sp_store.edit();
-        long now = System.currentTimeMillis();
-
         if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, true)) {
             log_db.logStatus(info, now, LogDatabase.STATUS_NEW);
 
@@ -632,10 +644,10 @@ public class BatteryInfoService extends Service {
 
         if (info.last_status != info.status && settings.getBoolean(SettingsActivity.KEY_AUTO_DISABLE_LOCKING, false)) {
             if (info.last_status == BatteryInfo.STATUS_UNPLUGGED) {
-                editor.putBoolean(KEY_DISABLE_LOCKING, true);
+                sps_editor.putBoolean(KEY_DISABLE_LOCKING, true);
                 setEnablednessOfKeyguard(false);
             } else if (info.status == BatteryInfo.STATUS_UNPLUGGED) {
-                editor.putBoolean(KEY_DISABLE_LOCKING, false);
+                sps_editor.putBoolean(KEY_DISABLE_LOCKING, false);
                 setEnablednessOfKeyguard(true);
 
                 /* If the screen was on, "inside" the keyguard, when the keyguard was disabled, then we're
@@ -653,44 +665,31 @@ public class BatteryInfoService extends Service {
             }
         }
 
-        editor.putLong(BatteryInfo.KEY_LAST_STATUS_CTM, now);
-        editor.putInt(BatteryInfo.KEY_LAST_STATUS, info.status);
-        editor.putInt(BatteryInfo.KEY_LAST_PERCENT, info.percent);
-        editor.putInt(BatteryInfo.KEY_LAST_PLUGGED, info.plugged);
-        editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
-        editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
-        editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
-
-        editor.commit();
-
-        // These should stay in sync with saved values, as they represent "last saved status", etc.
-        info.last_status_cTM = now;
-        info.last_status = info.status;
-        info.last_percent = info.percent;
-        info.last_plugged = info.plugged;
+        sps_editor.putLong(BatteryInfo.KEY_LAST_STATUS_CTM, now);
+        sps_editor.putInt(BatteryInfo.KEY_LAST_STATUS, info.status);
+        sps_editor.putInt(BatteryInfo.KEY_LAST_PERCENT, info.percent);
+        sps_editor.putInt(BatteryInfo.KEY_LAST_PLUGGED, info.plugged);
+        sps_editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
+        sps_editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
+        sps_editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
     }
 
     private void handleUpdateWithSameStatus() {
-        SharedPreferences.Editor editor = sp_store.edit();
-        long time = System.currentTimeMillis();
-
         if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, true))
-            log_db.logStatus(info, time, LogDatabase.STATUS_OLD);
+            log_db.logStatus(info, now, LogDatabase.STATUS_OLD);
 
         if (info.percent % 10 == 0) {
-            editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
-            editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
-            editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
+            sps_editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
+            sps_editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
+            sps_editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
         }
-
-        editor.commit();
     }
 
     private void handleAlarms() {
         Cursor c;
         Notification notification;
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0, alarmsIntent, 0);
-        SharedPreferences.Editor editor = sp_store.edit();
+        int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
 
         if (info.status == BatteryInfo.STATUS_FULLY_CHARGED && info.last_status == BatteryInfo.STATUS_CHARGING) {
             c = alarms.activeAlarmFull();
@@ -704,7 +703,7 @@ public class BatteryInfoService extends Service {
 
         c = alarms.activeAlarmChargeDrops(info.percent, previous_charge);
         if (c != null) {
-            editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
+            sps_editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
             notification = parseAlarmCursor(c);
             notification.setLatestEventInfo(context, str.alarm_charge_drops + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
                                             str.alarm_text, contentIntent);
@@ -714,7 +713,7 @@ public class BatteryInfoService extends Service {
 
         c = alarms.activeAlarmChargeRises(info.percent, previous_charge);
         if (c != null && info.status != BatteryInfo.STATUS_UNPLUGGED) {
-            editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
+            sps_editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
             notification = parseAlarmCursor(c);
             notification.setLatestEventInfo(context, str.alarm_charge_rises + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
                                             str.alarm_text, contentIntent);
@@ -725,7 +724,7 @@ public class BatteryInfoService extends Service {
         c = alarms.activeAlarmTempRises(info.temperature, sp_store.getInt(KEY_PREVIOUS_TEMP, 1));
         if (c != null) {
             Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
-            editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
+            sps_editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
             notification = parseAlarmCursor(c);
             notification.setLatestEventInfo(context, str.alarm_temp_rises +
                                             str.formatTemp(c.getInt(alarms.INDEX_THRESHOLD), convertF, false),
@@ -737,7 +736,7 @@ public class BatteryInfoService extends Service {
         if (info.health > BatteryInfo.HEALTH_GOOD && info.health != sp_store.getInt(KEY_PREVIOUS_HEALTH, BatteryInfo.HEALTH_GOOD)) {
             c = alarms.activeAlarmFailure();
             if (c != null) {
-                editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
+                sps_editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
                 notification = parseAlarmCursor(c);
                 notification.setLatestEventInfo(context, str.alarm_health_failure + str.healths[info.health],
                                                 str.alarm_text, contentIntent);
@@ -745,12 +744,10 @@ public class BatteryInfoService extends Service {
                 c.close();
             }
         }
-
-        editor.commit();
     }
 
     private Notification parseAlarmCursor(Cursor c) {
-        Notification notification = new Notification(R.drawable.stat_notify_alarm, null, System.currentTimeMillis());
+        Notification notification = new Notification(R.drawable.stat_notify_alarm, null, now);
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
 
         String ringtone = c.getString(alarms.INDEX_RINGTONE);
