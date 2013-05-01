@@ -696,7 +696,7 @@ public class BatteryInfoService extends Service {
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0, alarmsIntent, 0);
         int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
 
-        if (info.status == BatteryInfo.STATUS_FULLY_CHARGED && info.last_status == BatteryInfo.STATUS_CHARGING) {
+        if (info.status == BatteryInfo.STATUS_FULLY_CHARGED && info.status != info.last_status) {
             c = alarms.activeAlarmFull();
             if (c != null) {
                 notification = parseAlarmCursor(c);
