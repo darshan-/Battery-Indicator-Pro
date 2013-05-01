@@ -72,12 +72,13 @@ public class PredictorCore {
     private int last_level;
     private int last_status = -1; // Impossible value, so first update knows it's the first update
     private int last_plugged;
+    private int last_seconds_remaining;
     private int dir_inc; // -1 if charging; 1 if discharging; unspecified otherwise. For iterating over timestamps.
     private long now;
     private boolean partial;
+    private boolean initial;
 
     public int cur_charging_status; // TODO make getters and make private
-    public int last_seconds_remaining;
 
     public PredictorCore(float ave_discharge, float ave_recharge_ac, float ave_recharge_wl, float ave_recharge_usb) {
         average[DISCHARGE]    = ave_discharge    == -1 ? DEFAULT[DISCHARGE]    : ave_discharge;
@@ -88,7 +89,7 @@ public class PredictorCore {
 
     public void update(BatteryInfo info, long when) {
         cur_info = info;
-        cur_charging_status = chargingStatusFor(info.status, info.plugged);
+        cur_charging_status = chargingStatusForCurInfo();
         now = when;
 
         if (info.status != last_status ||
@@ -97,11 +98,15 @@ public class PredictorCore {
             (info.status == BatteryInfo.STATUS_CHARGING && info.percent < ts_head) ||
             (info.status == BatteryInfo.STATUS_DISCHARGING && info.percent > ts_head))
         {
+            initial = true;
+            partial = false;
+
             ts_head = info.percent;
             dir_inc = info.status == BatteryInfo.STATUS_CHARGING ? -1 : 1;
 
-            partial = false;
             timestamps[info.percent] = now;
+            recent_average = average[cur_charging_status];
+
             updateInfoPrediction();
             return;
         }
@@ -131,10 +136,14 @@ public class PredictorCore {
                 timestamps[info.percent + (i * dir_inc)] = now - (long) (i * ms_per_point);
 
             // Initial level change may happen promptly and should not shorten prediction
-            if (Math.abs(ts_head - info.percent) <= 1 && ms_per_point < recent_average) {
+            if (initial && ms_per_point < recent_average) {
+                initial = false;
+                ts_head = info.percent;
                 setLasts();
                 return;
             }
+
+            initial = false;
 
             for (int i = 0; i < level_diff; i++)
                 average[cur_charging_status] = average[cur_charging_status] * WEIGHT_OLD_AVERAGE + ms_per_point * WEIGHT_NEW_DATA;
@@ -233,11 +242,11 @@ public class PredictorCore {
         return recent_duration / total_points;
     }
 
-    private int chargingStatusFor(int status, int plugged) {
-        if (status == BatteryInfo.STATUS_CHARGING) {
-            if (plugged == BatteryInfo.PLUGGED_USB)
+    private int chargingStatusForCurInfo() {
+        if (cur_info.status == BatteryInfo.STATUS_CHARGING) {
+            if (cur_info.plugged == BatteryInfo.PLUGGED_USB)
                 return RECHARGE_USB;
-            else if (plugged == BatteryInfo.PLUGGED_WIRELESS)
+            else if (cur_info.plugged == BatteryInfo.PLUGGED_WIRELESS)
                 return RECHARGE_WL;
             else
                 return RECHARGE_AC;
