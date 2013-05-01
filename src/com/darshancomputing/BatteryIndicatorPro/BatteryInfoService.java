@@ -75,6 +75,7 @@ public class BatteryInfoService extends Service {
     private BatteryLevel bl;
     private BatteryInfo info;
     private long now;
+    private boolean updated_lasts;
     private java.util.HashSet<Messenger> clientMessengers;
     private final Messenger messenger = new Messenger(new MessageHandler());
 
@@ -359,6 +360,7 @@ public class BatteryInfoService extends Service {
     private void update(Intent intent) {
         now = System.currentTimeMillis();
         sps_editor = sp_store.edit();
+        updated_lasts = false;
 
         setupPlugins();
 
@@ -391,10 +393,12 @@ public class BatteryInfoService extends Service {
     private void syncSpsEditor() {
         sps_editor.commit();
 
-        info.last_status_cTM = now;
-        info.last_status = info.status;
-        info.last_percent = info.percent;
-        info.last_plugged = info.plugged;
+        if (updated_lasts) {
+            info.last_status_cTM = now;
+            info.last_status = info.status;
+            info.last_percent = info.percent;
+            info.last_plugged = info.plugged;
+        }
     }
 
     private void prepareNotification() {
@@ -665,6 +669,7 @@ public class BatteryInfoService extends Service {
             }
         }
 
+        updated_lasts = true;
         sps_editor.putLong(BatteryInfo.KEY_LAST_STATUS_CTM, now);
         sps_editor.putInt(BatteryInfo.KEY_LAST_STATUS, info.status);
         sps_editor.putInt(BatteryInfo.KEY_LAST_PERCENT, info.percent);
