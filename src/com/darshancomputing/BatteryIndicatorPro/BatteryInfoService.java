@@ -73,6 +73,7 @@ public class BatteryInfoService extends Service {
     private LogDatabase log_db;
     private BatteryLevel bl;
     private BatteryInfo info;
+    private int previous_charge;
     private java.util.HashSet<Messenger> clientMessengers;
     private final Messenger messenger = new Messenger(new MessageHandler());
 
@@ -360,6 +361,8 @@ public class BatteryInfoService extends Service {
         if (intent != null)
             info.load(intent, sp_store);
 
+        previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
+
         predictor.update(info);
 
         if (statusHasChanged())
@@ -604,8 +607,6 @@ public class BatteryInfoService extends Service {
     }
 
     private boolean statusHasChanged() {
-        int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
-
         return (info.last_status != info.status ||
                 info.last_status_cTM == BatteryInfo.DEFAULT_LAST_STATUS_CTM ||
                 info.last_percent == BatteryInfo.DEFAULT_LAST_PERCENT ||
@@ -626,7 +627,8 @@ public class BatteryInfoService extends Service {
         }
 
         /* TODO: Af first glance, I think I want to do this, but think about it a bit and decide for sure... */
-        mNotificationManager.cancel(NOTIFICATION_ALARM_CHARGE);
+        if (info.status != info.last_status && info.status == BatteryInfo.STATUS_UNPLUGGED)
+            mNotificationManager.cancel(NOTIFICATION_ALARM_CHARGE);
 
         if (info.last_status != info.status && settings.getBoolean(SettingsActivity.KEY_AUTO_DISABLE_LOCKING, false)) {
             if (info.last_status == BatteryInfo.STATUS_UNPLUGGED) {
@@ -689,7 +691,6 @@ public class BatteryInfoService extends Service {
         Notification notification;
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0, alarmsIntent, 0);
         SharedPreferences.Editor editor = sp_store.edit();
-        int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
 
         if (info.status == BatteryInfo.STATUS_FULLY_CHARGED && info.last_status == BatteryInfo.STATUS_CHARGING) {
             c = alarms.activeAlarmFull();
