@@ -374,18 +374,18 @@ public class BatteryInfoService extends Service {
         else
             handleUpdateWithSameStatus();
 
-        for (Messenger messenger : clientMessengers) {
-            // TODO: Can I send the same message to multiple clients instead of sending duplicates?
-            sendClientMessage(messenger, RemoteConnection.CLIENT_BATTERY_INFO_UPDATED, info.toBundle());
-        }
-
         prepareNotification();
         doNotify();
 
         if (alarms.anyActiveAlarms())
             handleAlarms();
 
-        syncSpsEditor();
+        syncSpsEditor(); // Important to sync after other Service code that uses 'lasts' but before sending info to client
+
+        for (Messenger messenger : clientMessengers) {
+            // TODO: Can I send the same message to multiple clients instead of sending duplicates?
+            sendClientMessage(messenger, RemoteConnection.CLIENT_BATTERY_INFO_UPDATED, info.toBundle());
+        }
 
         alarmManager.set(AlarmManager.ELAPSED_REALTIME, android.os.SystemClock.elapsedRealtime() + (2 * 60 * 1000), updatePredictorPendingIntent);
     }
