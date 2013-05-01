@@ -358,9 +358,9 @@ public class BatteryInfoService extends Service {
         setupPlugins();
 
         if (intent != null)
-            updateBatteryInfo(intent);
-        else
-            predictor.update(info);
+            info.load(intent, sp_store);
+
+        predictor.update(info);
 
         if (statusHasChanged())
             handleUpdateWithChangedStatus();
@@ -603,11 +603,6 @@ public class BatteryInfoService extends Service {
         }
     }
 
-    private void updateBatteryInfo(Intent intent) {
-        info.load(intent, sp_store);
-        predictor.update(info);
-    }
-
     private boolean statusHasChanged() {
         int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
 
@@ -621,22 +616,14 @@ public class BatteryInfoService extends Service {
 
     private void handleUpdateWithChangedStatus() {
         SharedPreferences.Editor editor = sp_store.edit();
-        long time = System.currentTimeMillis();
+        long now = System.currentTimeMillis();
 
         if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, true)) {
-            log_db.logStatus(info, time, LogDatabase.STATUS_NEW);
+            log_db.logStatus(info, now, LogDatabase.STATUS_NEW);
 
             if (info.status != info.last_status && info.last_status == BatteryInfo.STATUS_UNPLUGGED)
                 log_db.prune(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAX_LOG_AGE, str.default_max_log_age)));
         }
-
-        editor.putLong(BatteryInfo.KEY_LAST_STATUS_CTM, time);
-        editor.putInt(BatteryInfo.KEY_LAST_STATUS, info.status);
-        editor.putInt(BatteryInfo.KEY_LAST_PERCENT, info.percent);
-        editor.putInt(BatteryInfo.KEY_LAST_PLUGGED, info.plugged);
-        editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
-        editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
-        editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
 
         /* TODO: Af first glance, I think I want to do this, but think about it a bit and decide for sure... */
         mNotificationManager.cancel(NOTIFICATION_ALARM_CHARGE);
@@ -664,7 +651,21 @@ public class BatteryInfoService extends Service {
             }
         }
 
+        editor.putLong(BatteryInfo.KEY_LAST_STATUS_CTM, now);
+        editor.putInt(BatteryInfo.KEY_LAST_STATUS, info.status);
+        editor.putInt(BatteryInfo.KEY_LAST_PERCENT, info.percent);
+        editor.putInt(BatteryInfo.KEY_LAST_PLUGGED, info.plugged);
+        editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
+        editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
+        editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
+
         editor.commit();
+
+        // These should stay in sync with saved values, as they represent "last saved status", etc.
+        info.last_status_cTM = now;
+        info.last_status = info.status;
+        info.last_percent = info.percent;
+        info.last_plugged = info.plugged;
     }
 
     private void handleUpdateWithSameStatus() {
