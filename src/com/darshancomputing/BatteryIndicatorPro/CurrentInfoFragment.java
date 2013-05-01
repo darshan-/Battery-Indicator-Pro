@@ -341,10 +341,10 @@ public class CurrentInfoFragment extends Fragment {
         int hours = secs / (60 * 60);
         int mins = (secs / 60) % 60;
 
-        String s = activity.str.statuses[info.status];
+        String s = activity.str.statuses[info.last_status];
 
-        if (info.status == BatteryInfo.STATUS_CHARGING)
-            s += " " + activity.str.pluggeds[info.plugged];
+        if (info.last_status == BatteryInfo.STATUS_CHARGING)
+            s += " " + activity.str.pluggeds[info.last_plugged];
 
         tv = (TextView) view.findViewById(R.id.status);
         tv.setText(s);
@@ -352,7 +352,7 @@ public class CurrentInfoFragment extends Fragment {
         if (info.last_percent >= 0) {
             s = "Since "; // TODO: Translatable
 
-            if (info.status != BatteryInfo.STATUS_FULLY_CHARGED)
+            if (info.last_status != BatteryInfo.STATUS_FULLY_CHARGED)
                 s += info.last_percent + activity.str.percent_symbol + ", ";
 
             s += hours + "h " + mins + "m ago"; // TODO: Translatable
