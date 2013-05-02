@@ -17,6 +17,7 @@ package com.darshancomputing.BatteryIndicatorPro;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 
 class BatteryInfo {
@@ -75,10 +76,8 @@ class BatteryInfo {
 
     private static final String FIELD_LAST_STATUS_CTM = "last_status_cTM";
 
-    private static final String FIELD_PREDICTION_DAYS = "prediction_days";
-    private static final String FIELD_PREDICTION_HOURS = "prediction_hours";
-    private static final String FIELD_PREDICTION_MINUTES = "prediction_minutes";
     private static final String FIELD_PREDICTION_WHAT = "prediction_what";
+    private static final String FIELD_PREDICTION_WHEN = "prediction_when";
 
     private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfo";
 
@@ -96,26 +95,38 @@ class BatteryInfo {
     public long last_status_cTM;
     public Prediction prediction = new Prediction();
 
-    // If days > 0, then minutes is undefined and hours is rounded to the closest hour (rounding minutes up or down)
     public class Prediction {
         public static final int NONE          = 0;
         public static final int UNTIL_DRAINED = 1;
         public static final int UNTIL_CHARGED = 2;
 
-        public int days, hours, minutes, what;
+        public int what;
+        public long when;
 
-        public void update(int seconds) {
+        public void update(long ts) {
+            when = ts;
+
             if (status == STATUS_FULLY_CHARGED) what = NONE;
             else if (status == STATUS_CHARGING) what = UNTIL_CHARGED;
             else                                what = UNTIL_DRAINED;
+        }
 
+        public RelativeTime getRelativeTime() {
+            return new RelativeTime(when, SystemClock.elapsedRealtime());
+        }
+    }
+
+    public class RelativeTime {
+        public int days, hours, minutes;
+
+        // If days > 0, then minutes is undefined and hours is rounded to the closest hour (rounding minutes up or down)
+        public RelativeTime(long to, long from) {
+            int seconds = (int) ((to - from) / 1000);
             days = 0;
             hours = seconds / (60 * 60);
             minutes = (seconds / 60) % 60;
 
-            if (hours < 24) {
-                days = 0;
-            } else {
+            if (hours >= 24) {
                 if (minutes >= 30) hours += 1;
 
                 days = hours / 24;
@@ -173,10 +184,8 @@ class BatteryInfo {
 
         bundle.putLong(FIELD_LAST_STATUS_CTM, last_status_cTM);
 
-        bundle.putInt(FIELD_PREDICTION_DAYS, prediction.days);
-        bundle.putInt(FIELD_PREDICTION_HOURS, prediction.hours);
-        bundle.putInt(FIELD_PREDICTION_MINUTES, prediction.minutes);
-        bundle.putInt(FIELD_PREDICTION_WHAT, prediction.what);
+        bundle.putInt( FIELD_PREDICTION_WHAT, prediction.what);
+        bundle.putLong(FIELD_PREDICTION_WHEN, prediction.when);
 
         return bundle;
     }
@@ -194,10 +203,8 @@ class BatteryInfo {
 
         last_status_cTM = bundle.getLong(FIELD_LAST_STATUS_CTM);
 
-        prediction.days = bundle.getInt(FIELD_PREDICTION_DAYS);
-        prediction.hours = bundle.getInt(FIELD_PREDICTION_HOURS);
-        prediction.minutes = bundle.getInt(FIELD_PREDICTION_MINUTES);
-        prediction.what = bundle.getInt(FIELD_PREDICTION_WHAT);
+        prediction.what = bundle.getInt( FIELD_PREDICTION_WHAT);
+        prediction.when = bundle.getLong(FIELD_PREDICTION_WHEN);
     }
 
     private static int attemptOnePercentHack(int percent) {
