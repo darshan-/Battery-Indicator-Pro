@@ -368,6 +368,7 @@ public class BatteryInfoService extends Service {
             info.load(intent, sp_store);
 
         predictor.update(info);
+        info.prediction.updateRelativeTime();
 
         if (statusHasChanged())
             handleUpdateWithChangedStatus();
@@ -514,7 +515,7 @@ public class BatteryInfoService extends Service {
 
     private String predictionLine() {
         String line;
-        BatteryInfo.RelativeTime predicted = info.prediction.getRelativeTime();
+        BatteryInfo.RelativeTime predicted = info.prediction.last_rtime;
 
         if (info.prediction.what == BatteryInfo.Prediction.NONE) {
             line = str.statuses[info.status];

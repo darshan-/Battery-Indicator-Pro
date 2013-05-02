@@ -76,6 +76,9 @@ class BatteryInfo {
 
     private static final String FIELD_LAST_STATUS_CTM = "last_status_cTM";
 
+    private static final String FIELD_PREDICTION_DAYS = "prediction_days";
+    private static final String FIELD_PREDICTION_HOURS = "prediction_hours";
+    private static final String FIELD_PREDICTION_MINUTES = "prediction_minutes";
     private static final String FIELD_PREDICTION_WHAT = "prediction_what";
     private static final String FIELD_PREDICTION_WHEN = "prediction_when";
 
@@ -102,6 +105,7 @@ class BatteryInfo {
 
         public int what;
         public long when;
+        public RelativeTime last_rtime = new RelativeTime();
 
         public void update(long ts) {
             when = ts;
@@ -111,16 +115,16 @@ class BatteryInfo {
             else                                what = UNTIL_DRAINED;
         }
 
-        public RelativeTime getRelativeTime() {
-            return new RelativeTime(when, SystemClock.elapsedRealtime());
+        public void updateRelativeTime() {
+            last_rtime.update(when, SystemClock.elapsedRealtime());
         }
     }
 
-    public class RelativeTime {
+    public static class RelativeTime {
         public int days, hours, minutes;
 
         // If days > 0, then minutes is undefined and hours is rounded to the closest hour (rounding minutes up or down)
-        public RelativeTime(long to, long from) {
+        public void update(long to, long from) {
             int seconds = (int) ((to - from) / 1000);
             days = 0;
             hours = seconds / (60 * 60);
@@ -184,6 +188,10 @@ class BatteryInfo {
 
         bundle.putLong(FIELD_LAST_STATUS_CTM, last_status_cTM);
 
+        bundle.putInt(FIELD_PREDICTION_DAYS, prediction.last_rtime.days);
+        bundle.putInt(FIELD_PREDICTION_HOURS, prediction.last_rtime.hours);
+        bundle.putInt(FIELD_PREDICTION_MINUTES, prediction.last_rtime.minutes);
+
         bundle.putInt( FIELD_PREDICTION_WHAT, prediction.what);
         bundle.putLong(FIELD_PREDICTION_WHEN, prediction.when);
 
@@ -202,6 +210,10 @@ class BatteryInfo {
         last_percent = bundle.getInt(FIELD_LAST_PERCENT);
 
         last_status_cTM = bundle.getLong(FIELD_LAST_STATUS_CTM);
+
+        prediction.last_rtime.days = bundle.getInt(FIELD_PREDICTION_DAYS);
+        prediction.last_rtime.hours = bundle.getInt(FIELD_PREDICTION_HOURS);
+        prediction.last_rtime.minutes = bundle.getInt(FIELD_PREDICTION_MINUTES);
 
         prediction.what = bundle.getInt( FIELD_PREDICTION_WHAT);
         prediction.when = bundle.getLong(FIELD_PREDICTION_WHEN);

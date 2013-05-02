@@ -320,7 +320,7 @@ public class CurrentInfoFragment extends Fragment {
                 until_text = activity.res.getString(R.string.activity_until_drained);
 
             tv = (TextView) view.findViewById(R.id.time_remaining);
-            BatteryInfo.RelativeTime predicted = info.prediction.getRelativeTime();
+            BatteryInfo.RelativeTime predicted = info.prediction.last_rtime;
 
             if (predicted.days > 0)
                 // TODO: Translatable, color, better layout
