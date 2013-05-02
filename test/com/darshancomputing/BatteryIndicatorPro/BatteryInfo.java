@@ -91,26 +91,38 @@ class BatteryInfo {
     public long last_status_cTM;
     public Prediction prediction = new Prediction();
 
-    // If days > 0, then minutes is undefined and hours is rounded to the closest hour (rounding minutes up or down)
     public class Prediction {
         public static final int NONE          = 0;
         public static final int UNTIL_DRAINED = 1;
         public static final int UNTIL_CHARGED = 2;
 
-        public int days, hours, minutes, what;
+        public long when;
+        public int what;
 
-        public void update(int seconds) {
+        public void update(long ts) {
+            when = ts;
+
             if (status == STATUS_FULLY_CHARGED) what = NONE;
             else if (status == STATUS_CHARGING) what = UNTIL_CHARGED;
             else                                what = UNTIL_DRAINED;
+        }
 
+        public RelativeTime getRelativeTime(long from) {
+            return new RelativeTime(when, from);
+        }
+    }
+
+    public class RelativeTime {
+        public int days, hours, minutes;
+
+        // If days > 0, then minutes is undefined and hours is rounded to the closest hour (rounding minutes up or down)
+        public RelativeTime(long to, long from) {
+            int seconds = (int) ((to - from) / 1000);
             days = 0;
             hours = seconds / (60 * 60);
             minutes = (seconds / 60) % 60;
 
-            if (hours < 24) {
-                days = 0;
-            } else {
+            if (hours >= 24) {
                 if (minutes >= 30) hours += 1;
 
                 days = hours / 24;

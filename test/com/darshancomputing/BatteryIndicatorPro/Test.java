@@ -78,18 +78,54 @@ public class Test {
                                  95,
                                  94, 94, 94, 94, 94, 94, 94, 94, 94, 94,
                                  96, 96,
-                                 95, 95, 95, 95,
-                                 94, 94,
-                                 93, 93,
+                                 95, 95, 95, 95, 95, 95, 95, 95,
+                                 94, 94, 94, 94, 94, 94, 94, 94,
+                                 93, 93, 93, 93, 93, 93, 93, 93,
                                  92, 92, 92, 92, 92,
                                  91, 91, 91, 91, 91,
                                  90, 90,
-                                 89,
+                                 89, 89,
                                  88, 88, 88, 88, 88, 88, 88,
                                  87
         };
 
         for (int l : level_by_minute) {
+            bi.percent = l;
+            pc.update(bi, now);
+            print();
+            now += 60 * 1000;
+        }
+
+        bi.status = BatteryInfo.STATUS_CHARGING;
+        bi.plugged = BatteryInfo.PLUGGED_AC;
+
+        int level_by_minute2[] = {87, 87,
+                                  88, 88, 88,
+                                  90, 90, 90,
+                                  91, 91, 91,
+                                  92, 92, 92,
+                                  93, 93, 93, 93,
+                                  94, 94,
+                                  95, 95, 95,
+                                  100, 100
+        };
+
+        for (int l : level_by_minute2) {
+            bi.percent = l;
+            pc.update(bi, now);
+            now += 60 * 1000;
+            print();
+        }
+
+        bi.status = BatteryInfo.STATUS_UNPLUGGED;
+        bi.plugged = BatteryInfo.PLUGGED_UNPLUGGED;
+
+        int level_by_minute3[] = {100, 100,
+                                  99, 99,
+                                  100
+        };
+
+        for (int l : level_by_minute3) {
             bi.percent = l;
             pc.update(bi, now);
             now += 60 * 1000;
@@ -114,8 +150,10 @@ public class Test {
     }
 
     private static String prettyTimeRemaining(BatteryInfo info) {
+        BatteryInfo.RelativeTime predicted = info.prediction.getRelativeTime(now);
+
         return "" +
-            (info.prediction.days * 24 + info.prediction.hours) + "h " +
-            info.prediction.minutes + "m";
+            (predicted.days * 24 + predicted.hours) + "h " +
+            predicted.minutes + "m";
     }
 }
