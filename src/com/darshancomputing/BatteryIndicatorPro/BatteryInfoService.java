@@ -629,9 +629,7 @@ public class BatteryInfoService extends Service {
         int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
 
         return (info.last_status != info.status ||
-                info.last_status_cTM == BatteryInfo.DEFAULT_LAST_STATUS_CTM ||
-                info.last_percent == BatteryInfo.DEFAULT_LAST_PERCENT ||
-                info.last_status_cTM > now ||
+                info.last_status_cTM >= now ||
                 info.last_plugged != info.plugged ||
                 (info.plugged == BatteryInfo.PLUGGED_UNPLUGGED && info.percent > previous_charge + 20));
     }

@@ -50,11 +50,6 @@ class BatteryInfo {
     public static final String KEY_LAST_PERCENT = "last_percent";
     public static final String KEY_LAST_PLUGGED = "last_plugged";
 
-    public static final long DEFAULT_LAST_STATUS_CTM = -1;
-    public static final int DEFAULT_LAST_STATUS = -1;
-    public static final int DEFAULT_LAST_PERCENT = -1;
-    public static final int DEFAULT_LAST_PLUGGED = -1;
-
     private static final String EXTRA_LEVEL = "level";
     private static final String EXTRA_SCALE = "scale";
     private static final String EXTRA_STATUS = "status";
@@ -164,13 +159,20 @@ class BatteryInfo {
         if (status  > STATUS_MAX) { status  = STATUS_UNKNOWN; }
         if (health  > HEALTH_MAX) { health  = HEALTH_UNKNOWN; }
         if (plugged > PLUGGED_MAX){ plugged = PLUGGED_UNKNOWN; }
+
+        if (last_status_cTM == 0) { // Brand new BatteryInfo
+            last_status  = status;
+            last_plugged = plugged;
+            last_percent = percent;
+            last_status_cTM = System.currentTimeMillis();
+        }
     }
 
     public void load(SharedPreferences sp_store) {
-        last_status = sp_store.getInt(KEY_LAST_STATUS, DEFAULT_LAST_STATUS);
-        last_plugged = sp_store.getInt(KEY_LAST_PLUGGED, DEFAULT_LAST_PLUGGED);
-        last_status_cTM = sp_store.getLong(KEY_LAST_STATUS_CTM, DEFAULT_LAST_STATUS_CTM);
-        last_percent = sp_store.getInt(KEY_LAST_PERCENT, DEFAULT_LAST_PERCENT);
+        last_status = sp_store.getInt(KEY_LAST_STATUS, status);
+        last_plugged = sp_store.getInt(KEY_LAST_PLUGGED, plugged);
+        last_status_cTM = sp_store.getLong(KEY_LAST_STATUS_CTM, System.currentTimeMillis());
+        last_percent = sp_store.getInt(KEY_LAST_PERCENT, percent);
     }
 
     public Bundle toBundle() {
