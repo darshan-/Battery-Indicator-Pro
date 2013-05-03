@@ -40,6 +40,10 @@ public class Predictor {
                                sp_store.getFloat(KEY_AVERAGE[PredictorCore.RECHARGE_USB], -1));
     }
 
+    public void setPredictionType(int type) {
+        pc.setPredictionType(type);
+    }
+
     public void update(BatteryInfo info) {
         pc.update(info, SystemClock.elapsedRealtime());
         editor.putFloat(KEY_AVERAGE[pc.cur_charging_status],
