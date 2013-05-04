@@ -47,7 +47,7 @@ public class PredictorCore {
                                             4 * 60 * 60 * 1000 / 100,
                                             6 * 60 * 60 * 1000 / 100 };
 
-    private int prediction_type = FIFTEEN_MINUTES;
+    private int prediction_type = 5;//FIFTEEN_MINUTES;
 
     private long[] timestamps = new long[101];
     private int ts_head;
@@ -287,7 +287,7 @@ public class PredictorCore {
             needed_points -= 1;
         }
 
-        if (needed_points < total_points)
+        if (needed_points > total_points)
             total_ms += needed_points * average[cur_charging_status];
 
         return total_ms / duration_in_points;
