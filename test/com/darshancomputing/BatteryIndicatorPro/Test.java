@@ -107,15 +107,23 @@ public class Test {
                                   93, 93, 93, 93,
                                   94, 94,
                                   95, 95, 95,
-                                  100, 100
+                                  96, 96, 96,
+                                  97, 97, 97,
+                                  98, 98, 98,
+                                  99, 99, 99,
+                                  100, 100, 100, 100, 100, 100
         };
 
         for (int l : level_by_minute2) {
             bi.percent = l;
             pc.update(bi, now);
-            now += 60 * 1000;
             print();
+            now += 60 * 1000;
         }
+
+        bi.status = BatteryInfo.STATUS_FULLY_CHARGED;
+        print();
+        now += 60 * 1000;
 
         bi.status = BatteryInfo.STATUS_UNPLUGGED;
         bi.plugged = BatteryInfo.PLUGGED_UNPLUGGED;
@@ -128,8 +136,8 @@ public class Test {
         for (int l : level_by_minute3) {
             bi.percent = l;
             pc.update(bi, now);
-            now += 60 * 1000;
             print();
+            now += 60 * 1000;
         }
     }
 
