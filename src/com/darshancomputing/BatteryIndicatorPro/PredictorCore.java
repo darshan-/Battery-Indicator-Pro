@@ -36,6 +36,7 @@ public class PredictorCore {
 
     public static final int SINCE_STATUS_CHANGE = -1;
     public static final int LONG_TERM = -2;
+    public static final int AUTOMAGIC = -3;
 
     private static final int MIN_PREDICTION = ONE_MINUTE;
 
@@ -47,7 +48,7 @@ public class PredictorCore {
                                             4 * 60 * 60 * 1000 / 100,
                                             6 * 60 * 60 * 1000 / 100 };
 
-    private int prediction_type = 5;//FIFTEEN_MINUTES;
+    private int prediction_type = AUTOMAGIC;//5;//FIFTEEN_MINUTES;
 
     private long[] timestamps = new long[101];
     private int ts_head;
@@ -228,8 +229,19 @@ public class PredictorCore {
             return recentAverageByPoints(prediction_type);
         else if (prediction_type == SINCE_STATUS_CHANGE)
             return recentAverageByPoints(Math.abs(ts_head - cur_info.percent));
+        else if (prediction_type == AUTOMAGIC)
+            return middleOf(recentAverageByTime(FIVE_MINUTES), recentAverageByPoints(5), average[cur_charging_status]);
         else //if (prediction_type == LONG_TERM)
             return average[cur_charging_status];
+    }
+
+    private double middleOf(double first, double second, double third) {
+        if ((first >= second && second >= third) || (third >= second && second >= first))
+            return second;
+        else if ((second >= first && first >= third) || (third >= first && first >= second))
+            return first;
+        else
+            return third;
     }
 
     private double recentAverageByTime(double duration_in_ms) {
