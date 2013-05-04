@@ -37,6 +37,8 @@ public class PredictorCore {
     public static final int SINCE_STATUS_CHANGE = -1;
     public static final int LONG_TERM = -2;
 
+    private static final int MIN_PREDICTION = ONE_MINUTE;
+
     private static final double WEIGHT_OLD_AVERAGE = 0.998;
     private static final double WEIGHT_NEW_DATA =  1 - WEIGHT_OLD_AVERAGE;
 
@@ -81,6 +83,11 @@ public class PredictorCore {
         cur_info = info;
         cur_charging_status = chargingStatusForCurInfo();
         now = when;
+
+        if (last_prediction < now + MIN_PREDICTION) {
+            last_prediction = now + MIN_PREDICTION;
+            info.prediction.update(last_prediction);
+        }
 
         if (info.status != last_status ||
             info.plugged != last_plugged ||
@@ -165,6 +172,10 @@ public class PredictorCore {
 
     private void updateInfoPrediction() {
         last_prediction = prediction();
+
+        if (last_prediction < now + MIN_PREDICTION)
+            last_prediction = now + MIN_PREDICTION;
+
         cur_info.prediction.update(last_prediction);
         setLasts();
     }
@@ -201,7 +212,7 @@ public class PredictorCore {
             from = now;
         }
 
-        return from + (long) ((100 - level) * recent_average);
+        return from + (long) ((101 - level) * recent_average);
     }
 
     private void setLasts() {

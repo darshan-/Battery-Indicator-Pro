@@ -102,6 +102,8 @@ class BatteryInfo {
         public long when;
         public RelativeTime last_rtime = new RelativeTime();
 
+        private static final int MIN_PREDICTION = 60 * 1000;
+
         public void update(long ts) {
             when = ts;
 
@@ -111,7 +113,12 @@ class BatteryInfo {
         }
 
         public void updateRelativeTime() {
-            last_rtime.update(when, SystemClock.elapsedRealtime());
+            long now = SystemClock.elapsedRealtime();
+
+            if (when < now + MIN_PREDICTION)
+                when = now + MIN_PREDICTION;
+
+            last_rtime.update(when, now);
         }
     }
 
