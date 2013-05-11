@@ -140,6 +140,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_NOTIFY_WHEN_KG_DISABLED, KEY_ICON_SET,
                                                    KEY_INDICATE_CHARGING, KEY_TEN_PERCENT_MODE, /* 10% mode changes color settings */
                                                    KEY_TOP_LINE, KEY_BOTTOM_LINE,
+                                                   KEY_ENABLE_LOGGING,
                                                    KEY_TIME_REMAINING_VERBOSITY,
                                                    KEY_STATUS_DURATION_IN_VITAL_SIGNS,
                                                    KEY_CUSTOM_PERCENTAGE_TEXT_COLOR,
@@ -503,7 +504,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         try {
             serviceMessenger.send(outgoing);
-        } catch (android.os.RemoteException e) {
+        } catch (Exception e) {
             startService(new Intent(this, BatteryInfoService.class));
         }
     }
