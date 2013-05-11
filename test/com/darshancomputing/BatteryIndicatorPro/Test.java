@@ -20,7 +20,7 @@ public class Test {
     private static long now = 0l;
 
     public static void main(String[] args) {
-        pc = new PredictorCore(-1, -1, -1, -1);
+        pc = new PredictorCore(55 * 60 * 60 * 1000 / 100, -1, -1, -1);
         bi = new BatteryInfo();
         now = 0l;
 
@@ -72,6 +72,7 @@ public class Test {
         print();
         */
 
+        /*
         int level_by_minute[] = {98, 98,
                                  97, 97,
                                  96, 96,
@@ -139,6 +140,42 @@ public class Test {
             print();
             now += 60 * 1000;
         }
+        */
+
+        int minutes_by_level[] = {89,
+                                  21,
+                                  11,
+                                  6,
+                                  2,
+                                  2,
+                                  1,
+                                  3,
+                                  3,
+                                  2,
+                                  3,
+                                  268,
+                                  457,
+                                  88,
+                                  1,
+                                  1,
+                                  2,
+                                  1,
+                                  3,
+                                  2
+        };
+
+        bi.percent = 100;
+        pc.update(bi, now);
+        print();
+
+        for (int m : minutes_by_level) {
+            bi.percent -= 1;
+            for (int i = 0; i < m; i++) {
+                now += 60 * 1000;
+                pc.update(bi, now);
+                print();
+            }
+        }
     }
 
     private static void print() {
@@ -161,7 +198,8 @@ public class Test {
         BatteryInfo.RelativeTime predicted = info.prediction.getRelativeTime(now);
 
         return "" +
-            (predicted.days * 24 + predicted.hours) + "h " +
+            predicted.days + "d " +
+            predicted.hours + "h " +
             predicted.minutes + "m";
     }
 }
