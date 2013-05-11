@@ -281,6 +281,7 @@ public class PredictorCore {
     private double recentAverageByPoints(double duration_in_points) {
         double total_ms = 0d;
         double needed_points = duration_in_points;
+        //double cur = -1d;//For using only most recent when it's large enough
 
         int start = cur_info.percent;
         if (partial) start -= dir_inc;
@@ -293,6 +294,8 @@ public class PredictorCore {
             else
                 new_ms = timestamps[i] - timestamps[i + dir_inc];
 
+            //if (cur < 0) cur = new_ms;//For using only most recent when it's large enough
+            //
             total_ms += new_ms;
             needed_points -= 1;
         }
@@ -300,6 +303,7 @@ public class PredictorCore {
         if (needed_points > 0)
             total_ms += needed_points * average[cur_charging_status];
 
+        //if (cur > total_ms / 2) return cur;//For using only most recent when it's large enough
         return total_ms / duration_in_points;
     }
 
