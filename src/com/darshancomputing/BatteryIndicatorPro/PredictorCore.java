@@ -49,7 +49,7 @@ public class PredictorCore {
                                             4 * 60 * 60 * 1000 / 100,
                                             6 * 60 * 60 * 1000 / 100 };
 
-    private int prediction_type = -4;//AUTOMAGIC;//5;//FIFTEEN_MINUTES;
+    private int prediction_type = AUTOMAGIC;
 
     private long[] timestamps = new long[101];
     private int ts_head;
