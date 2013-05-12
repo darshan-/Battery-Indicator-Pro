@@ -17,13 +17,27 @@
   <string name="confirm_close" formatted="false">¿Está seguro de que desea cerrar la aplicación?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator se cerrará completamente, y dejará de aparecer en la barra de estado.\n\nSi solamente desea abandonar la ventana principal pero manteniendo activo el indicador, pulse la tecla VOLVER de su teléfono.</string>
   <string name="confirm_clear_logs" formatted="false">¿Está seguro de que desea borrar el registro?</string>
+  <string name="configure_log_filter" formatted="false">¿Que registro desea ver?</string>
+  <string name="confirm_ten_percent_enable" formatted="false">¿Activar realmente el modo 10%?</string>
+  <string name="confirm_ten_percent_disable" formatted="false">¿Desactivar realmente el modo 10%?</string>
   <string name="okay" formatted="false">Ok</string>
+  <string name="none" formatted="false">Ninguno</string>
+  <string name="tab_current_info" formatted="false">Informacion actual</string>
+  <string name="tab_history" formatted="false">Historial</string>
+  <string name="notification_until_charged" formatted="false">" hasta carga completa"</string>
+  <string name="notification_until_drained" formatted="false">" restantes"</string>
+  <string name="activity_until_charged" formatted="false">hasta carga completa</string>
+  <string name="activity_until_drained" formatted="false">hasta vaciado</string>
   <string name="menu_settings" formatted="false">Ajustes</string>
   <string name="menu_close" formatted="false">Cerrar</string>
   <string name="menu_help" formatted="false">Ayuda</string>
+  <string name="menu_rate_and_review" formatted="false">Opinar y valorar</string>
   <string name="menu_clear" formatted="false">Limpiar</string>
   <string name="menu_reverse" formatted="false">Orden inverso</string>
+  <string name="menu_log_filter" formatted="false">Filtro</string>
   <string name="menu_export" formatted="false">Exportar a CSV</string>
+  <string name="menu_delete_alarm" formatted="false">Borrar alarma</string>
+  <string name="menu_get_plugins" formatted="false">Obtener plugins</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Fahrenheit</string>
@@ -47,6 +61,7 @@
   <string name="status" formatted="false">estado</string>
   <string name="charge" formatted="false">porcentaje_carga</string>
   <string name="temperature" formatted="false">grados_celsius</string>
+  <string name="temperature_f" formatted="false">grados_fahrenheit</string>
   <string name="voltage" formatted="false">voltios</string>
   <string name="status_unplugged" formatted="false">Desenchufado</string>
   <string name="status_unknown" formatted="false">Desconocido</string>
@@ -62,11 +77,20 @@
   <string name="health_overvoltage" formatted="false">Sobretensión</string>
   <string name="health_failure" formatted="false">Fallo</string>
   <string name="health_cold" formatted="false">Frío</string>
-  <string name="plugged_unplugged" formatted="false">Unplugged</string>
+  <string name="plugged_unplugged" formatted="false">Desenchufado</string>
   <string name="plugged_ac" formatted="false">(Red)</string>
   <string name="plugged_usb" formatted="false">(USB)</string>
   <string name="plugged_unknown" formatted="false">(?)</string>
   <string name="plugged_wireless" formatted="false">(WL)</string>
+  <string name="alarm_type_fully_charged" formatted="false">Carga completada</string>
+  <string name="alarm_type_charge_drops" formatted="false">La carga esta por debajo de</string>
+  <string name="alarm_type_charge_rises" formatted="false">La carga es superior a</string>
+  <string name="alarm_type_temperature_rises" formatted="false">La temperatura es superior a</string>
+  <string name="alarm_fully_charged" formatted="false">La bateria esta completamente cargada</string>
+  <string name="alarm_charge_drops" formatted="false">"La carga de la bateria es inferior a "</string>
+  <string name="alarm_charge_rises" formatted="false">"La carga de la bateria es superior a "</string>
+  <string name="alarm_temp_rises" formatted="false">"La Temperatura de la bateria es superior a "</string>
+  <string name="alarm_text" formatted="false">Seleccionar para editar alarmas</string>
   <string name="logs_empty" formatted="false">El registro está vacío</string>
   <string name="after_n_hours_unplugged" formatted="false">Después de %1.1f horas desenchufado</string>
   <string name="after_n_hours_plugged_in" formatted="false">Después de %1.1f horas enchufado</string>
@@ -74,6 +98,8 @@
   <string name="charging_from" formatted="false">Cargando desde</string>
   <string name="fully_charged" formatted="false">Cargado</string>
   <string name="since" formatted="false">desde</string>
+  <string name="dialog_color_picker" formatted="false">Elegir color</string>
+  <string name="press_color_to_apply" formatted="false">A`plicar color viejo o nuevo</string>
   <string name="currently_using" formatted="false">Usando actualmente</string>
   <string name="currently_set_to" formatted="false">"Seleccionado:"</string>
   <string name="currently_disabled" formatted="false">Desactivado</string>
@@ -102,6 +128,10 @@
   <string name="pref_hint" formatted="false">Pulse MENU para ver la ayuda.</string>
   <string name="settings_overview" formatted="false">Visión general</string>
   <string name="settings_overview_help" formatted="false">Los ajustes están divididos en tres páginas, y cada una de ellas tiene su propia página de ayuda describiendo los ajustes que se pueden realizar en ella. Pulse MENU-Ayuda para obtener ayuda de la página concreta en la que esté.</string>
+  <string name="notification_settings" formatted="false">Notificaciones</string>
+  <string name="keyguard_settings" formatted="false">Pantalla de Bloqueo</string>
+  <string name="alarm_settings_subtitle" formatted="false">Ajustes de alarma</string>
+  <string name="alarm_settings" formatted="false">Alarmas</string>
   <string name="other_settings" formatted="false">Otros ajustes</string>
   <string name="other_settings_help" formatted="false">Todos los demás ajustes están en esta página, incluyendo el registro, la pantalla de bloqueo, la unidad de temperatura, el autoarranque de la aplicación, y mucho más.</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">Más ajustes en la versión Pro</string>
