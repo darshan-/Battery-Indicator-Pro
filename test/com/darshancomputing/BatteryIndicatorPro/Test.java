@@ -142,7 +142,7 @@ public class Test {
         }
         */
 
-        int minutes_by_level[] = {89,
+        /*int minutes_by_level[] = {89,
                                   21,
                                   11,
                                   6,
@@ -161,6 +161,31 @@ public class Test {
                                   2,
                                   1,
                                   3,
+                                  2,
+                                  3,
+                                  2
+                                  };*/
+
+        int minutes_by_level[] = {45,
+                                  21,
+                                  11,
+                                  2,
+                                  3,
+                                  26,
+                                  45,
+                                  88,
+                                  20,
+                                  10,
+                                  20,
+                                  10,
+                                  30,
+                                  2,
+                                  3,
+                                  20,
+                                  25,
+                                  20,
+                                  6,
+                                  1,
                                   2
         };
 
@@ -197,9 +222,9 @@ public class Test {
     private static String prettyTimeRemaining(BatteryInfo info) {
         BatteryInfo.RelativeTime predicted = info.prediction.getRelativeTime(now);
 
-        return "" +
-            predicted.days + "d " +
-            predicted.hours + "h " +
-            predicted.minutes + "m";
+        if (predicted.days > 0)
+            return "" + predicted.days + "d " + predicted.hours + "h";
+        else
+            return "" + predicted.hours + "h " + predicted.minutes + "m";
     }
 }
