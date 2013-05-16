@@ -4,7 +4,7 @@
     package="com.darshancomputing.BatteryIndicatorPro"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
     android:versionCode="011132"
-    android:versionName="8.0.9 (Beta)"
+    android:versionName="8.1.0-dev (Beta)"
 >
   <application
       android:label="@string/app_full_name"
@@ -71,7 +71,7 @@
     <receiver
         android:name=".BootCompletedReceiver"
         android:enabled="true"
-        android:exported="false"
+        android:exported="true"
         android:process="com.darshancomputing.BatteryBotPro.BCR"
     >
       <intent-filter>
@@ -81,6 +81,22 @@
         <action android:name="android.intent.action.PACKAGE_REPLACED" />
         <data android:scheme="package" android:path="com.darshancomputing.BatteryIndicatorPro" />
       </intent-filter>
+    </receiver>
+
+
+    <receiver
+        android:name="BatteryInfoAppWidgetProvider"
+        android:enabled="true"
+        android:exported="true"
+        android:process="com.darshancomputing.BatteryBotPro.BIAWP"
+    >
+      <intent-filter>
+        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+      </intent-filter>
+      <meta-data
+          android:name="android.appwidget.provider"
+          android:resource="@xml/battery_info_app_widget_info"
+      />
     </receiver>
   </application>
 
