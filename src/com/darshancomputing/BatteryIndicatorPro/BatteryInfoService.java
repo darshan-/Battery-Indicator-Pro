@@ -21,6 +21,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.appwidget.AppWidgetManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -867,5 +868,22 @@ public class BatteryInfoService extends Service {
         stopService(pluginIntent);
         pluginServiceConnection.service = null;
         pluginPackage = "none";
+    }
+
+    public static void onWidgetUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        for (int i = 0; i < appWidgetIds.length; i++) {
+            int appWidgetId = appWidgetIds[i];
+
+            Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
+            PendingIntent mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
+
+            RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.battery_info_app_widget);
+            rv.setOnClickPendingIntent(R.id.widget_layout, mainWindowPendingIntent);
+
+            appWidgetManager.updateAppWidget(appWidgetId, rv);
+        }
+    }
+
+    public static void onWidgetDeleted(Context context, int[] appWidgetIds) {
     }
 }

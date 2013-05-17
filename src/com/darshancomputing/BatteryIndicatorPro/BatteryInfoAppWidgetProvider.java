@@ -14,25 +14,22 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
-import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
-import android.content.Intent;
-import android.widget.RemoteViews;
 
 public class BatteryInfoAppWidgetProvider extends AppWidgetProvider {
+    public void onEnabled(Context context) {
+    }
+
+    public void onDisabled(Context context) {
+    }
+
+    public void onDeleted(Context context, int[] appWidgetIds) {
+        BatteryInfoService.onWidgetDeleted(context, appWidgetIds);
+    }
+
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        for (int i = 0; i < appWidgetIds.length; i++) {
-            int appWidgetId = appWidgetIds[i];
-
-            Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
-            PendingIntent mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
-
-            RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.battery_info_app_widget);
-            rv.setOnClickPendingIntent(R.id.widget_layout, mainWindowPendingIntent);
-
-            appWidgetManager.updateAppWidget(appWidgetId, rv);
-        }
+        BatteryInfoService.onWidgetUpdate(context, appWidgetManager, appWidgetIds);
     }
 }

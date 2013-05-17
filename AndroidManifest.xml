@@ -88,7 +88,7 @@
         android:name="BatteryInfoAppWidgetProvider"
         android:enabled="true"
         android:exported="true"
-        android:process="com.darshancomputing.BatteryBotPro.BIAWP"
+        android:process="com.darshancomputing.BatteryBotPro.BIS"
     >
       <intent-filter>
         <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
