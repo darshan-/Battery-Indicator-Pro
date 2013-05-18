@@ -402,10 +402,14 @@ public class BatteryInfoService extends Service {
     }
 
     private void updateWidgets() {
+        Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
+        PendingIntent mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
+
         for (Integer widgetId : widgetIds) {
             // TODO: remove id from Set if something goes wrong?
             RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.battery_info_app_widget);
             rv.setTextViewText(R.id.level, "" + info.percent + str.percent_symbol);
+            rv.setOnClickPendingIntent(R.id.widget_layout, mainWindowPendingIntent);
             widgetManager.updateAppWidget(widgetId, rv);
         }
     }
@@ -893,14 +897,6 @@ public class BatteryInfoService extends Service {
 
         for (int i = 0; i < appWidgetIds.length; i++) {
             widgetIds.add(appWidgetIds[i]);
-
-            Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
-            PendingIntent mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
-
-            RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.battery_info_app_widget);
-            rv.setOnClickPendingIntent(R.id.widget_layout, mainWindowPendingIntent);
-
-            appWidgetManager.updateAppWidget(appWidgetIds[i], rv);
         }
 
         context.startService(new Intent(context, BatteryInfoService.class));

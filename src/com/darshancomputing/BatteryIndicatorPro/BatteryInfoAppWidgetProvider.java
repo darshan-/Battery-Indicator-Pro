@@ -19,12 +19,6 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 
 public class BatteryInfoAppWidgetProvider extends AppWidgetProvider {
-    public void onEnabled(Context context) {
-    }
-
-    public void onDisabled(Context context) {
-    }
-
     public void onDeleted(Context context, int[] appWidgetIds) {
         BatteryInfoService.onWidgetDeleted(context, appWidgetIds);
     }
