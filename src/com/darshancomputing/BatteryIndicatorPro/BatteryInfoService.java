@@ -206,7 +206,8 @@ public class BatteryInfoService extends Service {
 
         pluginPackage = "none";
 
-        registerReceiver(mBatteryInfoReceiver, batteryChanged);
+        Intent bc_intent = registerReceiver(mBatteryInfoReceiver, batteryChanged);
+        info.load(bc_intent, sp_store);
     }
 
     @Override
