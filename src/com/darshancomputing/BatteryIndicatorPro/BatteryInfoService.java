@@ -225,8 +225,9 @@ public class BatteryInfoService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent != null && intent.getBooleanExtra(EXTRA_UPDATE_PREDICTOR, false))
-            update(null);
+        // TODO: Do I need a filter, or is it okay to just update(null) every time?
+        //if (intent != null && intent.getBooleanExtra(EXTRA_UPDATE_PREDICTOR, false))
+        update(null);
 
         return Service.START_STICKY;
     }
@@ -890,21 +891,23 @@ public class BatteryInfoService extends Service {
         widgetManager = appWidgetManager;
 
         for (int i = 0; i < appWidgetIds.length; i++) {
-            int appWidgetId = appWidgetIds[i];
-            widgetIds.add(appWidgetId);
+            widgetIds.add(appWidgetIds[i]);
 
-            Intent mainWindowIntent =  new Intent(context, BatteryInfoActivity.class);
+            Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
             PendingIntent mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
 
             RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.battery_info_app_widget);
             rv.setOnClickPendingIntent(R.id.widget_layout, mainWindowPendingIntent);
 
-            appWidgetManager.updateAppWidget(appWidgetId, rv);
+            appWidgetManager.updateAppWidget(appWidgetIds[i], rv);
         }
 
         context.startService(new Intent(context, BatteryInfoService.class));
     }
 
     public static void onWidgetDeleted(Context context, int[] appWidgetIds) {
+        for (int i = 0; i < appWidgetIds.length; i++) {
+            widgetIds.remove(appWidgetIds[i]);
+        }
     }
 }
