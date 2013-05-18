@@ -10,5 +10,13 @@
                 android:orientation="horizontal"
                 android:background="@android:color/black"
   >
+    <TextView android:id="@+id/level"
+	      android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:gravity="center"
+              android:textColor="#fff"
+              android:textSize="20dp"
+              android:text="XX%"
+    />
   </LinearLayout>
 </FrameLayout>

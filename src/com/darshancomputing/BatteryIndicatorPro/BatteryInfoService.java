@@ -42,7 +42,9 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
+
 import java.util.Date;
+import java.util.HashSet;
 
 public class BatteryInfoService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
@@ -79,6 +81,9 @@ public class BatteryInfoService extends Service {
     private boolean updated_lasts;
     private java.util.HashSet<Messenger> clientMessengers;
     private final Messenger messenger = new Messenger(new MessageHandler());
+
+    private static HashSet<Integer> widgetIds = new HashSet<Integer>();
+    private static AppWidgetManager widgetManager;
 
     private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfoService";
 
@@ -382,6 +387,8 @@ public class BatteryInfoService extends Service {
         if (alarms.anyActiveAlarms())
             handleAlarms();
 
+        updateWidgets();
+
         syncSpsEditor(); // Important to sync after other Service code that uses 'lasts' but before sending info to client
 
         for (Messenger messenger : clientMessengers) {
@@ -390,6 +397,15 @@ public class BatteryInfoService extends Service {
         }
 
         alarmManager.set(AlarmManager.ELAPSED_REALTIME, android.os.SystemClock.elapsedRealtime() + (2 * 60 * 1000), updatePredictorPendingIntent);
+    }
+
+    private void updateWidgets() {
+        for (Integer widgetId : widgetIds) {
+            // TODO: remove id from Set if something goes wrong?
+            RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.battery_info_app_widget);
+            rv.setTextViewText(R.id.level, "" + info.percent + str.percent_symbol);
+            widgetManager.updateAppWidget(widgetId, rv);
+        }
     }
 
     private void syncSpsEditor() {
@@ -871,10 +887,13 @@ public class BatteryInfoService extends Service {
     }
 
     public static void onWidgetUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        widgetManager = appWidgetManager;
+
         for (int i = 0; i < appWidgetIds.length; i++) {
             int appWidgetId = appWidgetIds[i];
+            widgetIds.add(appWidgetId);
 
-            Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
+            Intent mainWindowIntent =  new Intent(context, BatteryInfoActivity.class);
             PendingIntent mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
 
             RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.battery_info_app_widget);
@@ -882,6 +901,8 @@ public class BatteryInfoService extends Service {
 
             appWidgetManager.updateAppWidget(appWidgetId, rv);
         }
+
+        context.startService(new Intent(context, BatteryInfoService.class));
     }
 
     public static void onWidgetDeleted(Context context, int[] appWidgetIds) {
