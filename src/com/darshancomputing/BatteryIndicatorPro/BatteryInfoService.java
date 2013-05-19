@@ -206,6 +206,12 @@ public class BatteryInfoService extends Service {
 
         pluginPackage = "none";
 
+        // TODO: This probably a good idea, in case the Service is ever killed?
+        widgetManager = AppWidgetManager.getInstance(context);
+        int[] ids = widgetManager.getAppWidgetIds(new ComponentName(context, BatteryInfoAppWidgetProvider.class));
+        for (int i = 0; i < ids.length; i++)
+            widgetIds.add(ids[i]);
+
         Intent bc_intent = registerReceiver(mBatteryInfoReceiver, batteryChanged);
         info.load(bc_intent, sp_store);
     }
