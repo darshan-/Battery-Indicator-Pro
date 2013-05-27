@@ -68,6 +68,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
     public static final String KEY_NOTIFY_STATUS_DURATION = "notify_status_duration";
     public static final String KEY_AUTOSTART = "autostart";
+    public static final String KEY_PREDICTOR_TYPE = "predictor_type";
     public static final String KEY_TEN_PERCENT_MODE = "ten_percent_mode";
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
     public static final String KEY_CAT_COLOR = "category_color";
@@ -131,7 +132,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_TIME_REMAINING_VERBOSITY,
                                                 KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
                                                 KEY_NOTIFICATION_TOP_LINE_COLOR,
-                                                KEY_NOTIFICATION_BOTTOM_LINE_COLOR
+                                                KEY_NOTIFICATION_BOTTOM_LINE_COLOR,
+                                                KEY_PREDICTOR_TYPE
     };
 
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_NOTIFY_STATUS_DURATION,

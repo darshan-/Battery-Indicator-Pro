@@ -654,6 +654,33 @@
     set to this.
   </string>
 
+  <string formatted="false" name="predictor_sensitive">Sensitive</string>
+  <string formatted="false" name="predictor_conservative">Conservative</string>
+  <string formatted="false" name="predictor_since_status_change">Since Status Change</string>
+  <string formatted="false" name="predictor_long_term_ave">Long-term Average</string>
+
+  <string formatted="false" name="pref_cat_predictor">Time-Remaining Estimates</string>
+  <string formatted="false" name="pref_predictor_type">Estimate Type</string>
+  <string formatted="false" name="pref_predictor_type_help">
+    Here you can select how BatteryBot Pro will predict your remaining
+    battery life / time until fully charged.\n
+
+    \nThe \"Sensitive\" algorithm is strictly based on your last five
+    minutes of usage.  If your primary concern is \"How long will my
+    battery last if I keep doing what I\'m doing?\" then this is the
+    algorithm for you.\n
+
+    \nThe \"Conservative\" algorithm is the default.  It is also based
+    on recent usage, but it tries not to vary from your long-term
+    average too freely.\n
+
+    \nSelect \"Since Status Change\" to have the prediction based
+    strictly on your current session.\n
+
+    \nFinally, you can have the prediction based solely on your
+    long-term average usage.
+  </string>
+
   <string formatted="false" name="lang_system_selected">System-selected</string>
   <string formatted="false" name="pref_cat_language">Language</string>
   <string formatted="false" name="pref_language_override">Language Override</string>

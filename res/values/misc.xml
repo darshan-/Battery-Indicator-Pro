@@ -554,4 +554,21 @@
     <item>@string/ics_blue</item>
     <item>@string/custom</item>
   </string-array>
+
+  <string-array name="predictor_type_entries">
+    <item>@string/predictor_sensitive</item>
+    <item>@string/predictor_conservative</item>
+    <item>@string/predictor_since_status_change</item>
+    <item>@string/predictor_long_term_ave</item>
+  </string-array>
+
+  <!-- See PredictorCore.java -->
+  <string-array name="predictor_type_values">
+    <item>300000</item>
+    <item>-3</item>
+    <item>-1</item>
+    <item>-2</item>
+  </string-array>
+
+  <string name="default_predictor_type">-3</string>
 </resources>

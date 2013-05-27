@@ -44,6 +44,10 @@ public class Predictor {
         pc.setPredictionType(type);
     }
 
+    public void setPredictionType(String type) {
+        pc.setPredictionType(Integer.valueOf(type));
+    }
+
     public void update(BatteryInfo info) {
         pc.update(info, SystemClock.elapsedRealtime());
         editor.putFloat(KEY_AVERAGE[pc.cur_charging_status],

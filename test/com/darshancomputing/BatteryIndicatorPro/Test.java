@@ -166,7 +166,7 @@ public class Test {
                                   2
                                   };*/
 
-        int minutes_by_level[] = {45,
+        int minutes_by_level[] = {//45,
                                   21,
                                   11,
                                   2,
@@ -177,7 +177,7 @@ public class Test {
                                   2,
                                   3,
                                   1,
-                                  24*60,
+                                  //24*60,
                                   /*45,
                                   88,
                                   20,
@@ -202,8 +202,19 @@ public class Test {
         for (int m : minutes_by_level) {
             bi.percent -= 1;
             for (int i = 0; i < m; i++) {
+                if (i % 2 == 0) pc.update(bi, now);
+                System.out.println("automagic");
+                pc.setPredictionType(PredictorCore.AUTOMAGIC);
                 now += 60 * 1000;
                 pc.update(bi, now);
+                print();
+                System.out.println("five_minutes");
+                pc.setPredictionType(PredictorCore.FIVE_MINUTES);
+                pc.update(bi, now+1);
+                print();
+                System.out.println("long_term");
+                pc.setPredictionType(PredictorCore.LONG_TERM);
+                pc.update(bi, now+2);
                 print();
             }
         }
