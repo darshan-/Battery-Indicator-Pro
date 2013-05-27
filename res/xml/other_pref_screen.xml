@@ -54,11 +54,11 @@
 
   <PreferenceCategory android:title="@string/pref_cat_predictor">
     <ListPreference
-       android:key="predictor_type"
-       android:title="@string/pref_predictor_type"
-       android:entries="@array/predictor_type_entries"
-       android:entryValues="@array/predictor_type_values"
-       android:defaultValue="@string/default_predictor_type"
+       android:key="prediction_type"
+       android:title="@string/pref_prediction_type"
+       android:entries="@array/prediction_type_entries"
+       android:entryValues="@array/prediction_type_values"
+       android:defaultValue="@string/default_prediction_type"
     />
   </PreferenceCategory>
 

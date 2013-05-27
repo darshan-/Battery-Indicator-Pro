@@ -660,8 +660,8 @@
   <string formatted="false" name="predictor_long_term_ave">Long-term Average</string>
 
   <string formatted="false" name="pref_cat_predictor">Time-Remaining Estimates</string>
-  <string formatted="false" name="pref_predictor_type">Estimate Type</string>
-  <string formatted="false" name="pref_predictor_type_help">
+  <string formatted="false" name="pref_prediction_type">Estimate Type</string>
+  <string formatted="false" name="pref_prediction_type_help">
     Here you can select how BatteryBot Pro will predict your remaining
     battery life / time until fully charged.\n
 
