@@ -17,7 +17,7 @@
     <ListPreference
        android:key="max_log_age"
        android:title="@string/pref_max_log_age"
-       android:entries="@array/max_log_age_entries" 
+       android:entries="@array/max_log_age_entries"
        android:entryValues="@array/max_log_age_values"
        android:dialogTitle="@string/pref_max_log_age_summary"
        android:defaultValue="@string/default_max_log_age"
@@ -45,10 +45,20 @@
     <ListPreference
        android:key="autostart"
        android:title="@string/pref_autostart_at_boot"
-       android:entries="@array/boot_pref_entries" 
+       android:entries="@array/boot_pref_entries"
        android:entryValues="@array/boot_pref_values"
        android:dialogTitle="@string/pref_autostart_at_boot_summary"
        android:defaultValue="auto"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/pref_cat_predictor">
+    <ListPreference
+       android:key="prediction_type"
+       android:title="@string/pref_prediction_type"
+       android:entries="@array/prediction_type_entries"
+       android:entryValues="@array/prediction_type_values"
+       android:defaultValue="@string/default_prediction_type"
     />
   </PreferenceCategory>
 

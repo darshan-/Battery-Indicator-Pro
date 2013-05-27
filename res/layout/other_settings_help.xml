@@ -35,5 +35,11 @@
     <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_autostart_at_boot" />
     <TextView style="@style/help_text" android:text="@string/pref_autostart_at_boot_help" />
+
+    <View style="@style/help_cat_pre_margin" />
+    <TextView style="@style/help_cat"  android:text="@string/pref_cat_predictor" />
+    <View style="@style/help_cat_post_margin" />
+    <TextView style="@style/help_pref" android:text="@string/pref_prediction_type" />
+    <TextView style="@style/help_text" android:text="@string/pref_prediction_type_help" />
 </LinearLayout>
 </ScrollView>

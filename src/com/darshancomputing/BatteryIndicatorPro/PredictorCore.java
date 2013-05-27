@@ -56,16 +56,15 @@ public class PredictorCore {
 
     private double[] average = new double[4];
 
-    private double recent_average;
-
     private BatteryInfo cur_info;
     private int last_level;
     private int last_status = -1; // Impossible value, so first update knows it's the first update
     private int last_plugged;
     private long last_prediction;
+    private double last_recent_average;
     private int dir_inc; // -1 if charging; 1 if discharging; unspecified otherwise. For iterating over timestamps.
     private long now;
-    private boolean partial;
+    private boolean use_partial;
     private boolean initial;
 
     public int cur_charging_status; // TODO make getters and make private
@@ -78,7 +77,19 @@ public class PredictorCore {
     }
 
     public void setPredictionType(int type) {
+        if (type == prediction_type)
+            return;
+
         prediction_type = type;
+        use_partial = false;
+        last_prediction = prediction();
+
+        if (timestamps[last_level] != now && shouldUsePartial()) {
+            use_partial = true;
+            last_prediction = prediction();
+        }
+
+        saveLastPredictionToInfo();
     }
 
     public void update(BatteryInfo info, long when) {
@@ -98,13 +109,12 @@ public class PredictorCore {
             (info.status == BatteryInfo.STATUS_UNPLUGGED && info.percent > ts_head))
         {
             initial = true;
-            partial = false;
+            use_partial = false;
 
             ts_head = info.percent;
             dir_inc = info.status == BatteryInfo.STATUS_CHARGING ? -1 : 1;
 
             timestamps[info.percent] = now;
-            recent_average = average[cur_charging_status];
 
             updateInfoPrediction();
             return;
@@ -113,7 +123,7 @@ public class PredictorCore {
         if ((info.status == BatteryInfo.STATUS_CHARGING && info.percent < last_level) ||
             (info.status == BatteryInfo.STATUS_UNPLUGGED && info.percent > last_level))
         {
-            partial = false;
+            use_partial = false;
             timestamps[info.percent] = now;
             updateInfoPrediction();
             return;
@@ -123,11 +133,11 @@ public class PredictorCore {
 
         if (level_diff == 0) {
             if (shouldUsePartial())
-                partial = true;
+                use_partial = true;
             else
                 return;
         } else {
-            partial = false;
+            use_partial = false;
             double ms_diff = (double) (now - timestamps[last_level]);
             double ms_per_point = ms_diff / level_diff;
 
@@ -135,7 +145,7 @@ public class PredictorCore {
                 timestamps[info.percent + (i * dir_inc)] = now - (long) (i * ms_per_point);
 
             // Initial level change may happen promptly and should not shorten prediction
-            if (initial && ms_per_point < recent_average) {
+            if (initial && ms_per_point < last_recent_average) {
                 initial = false;
                 ts_head = info.percent;
                 setLasts();
@@ -156,35 +166,41 @@ public class PredictorCore {
     }
 
     private boolean shouldUsePartial() {
-        if (partial) return true;
+        if (use_partial) return true;
 
         double ms_diff = (double) (now - timestamps[last_level]);
-        if (ms_diff <= recent_average) return false;
+        if (ms_diff <= last_recent_average) return false;
         if (predictionIfPartial() <= last_prediction) return false;
         return true;
     }
 
     private long predictionIfPartial() {
-        boolean old_partial = partial;
-        partial = true;
+        return predictionIfPartialIs(true);
+    }
+
+    private long predictionIfPartialIs(boolean supposed) {
+        boolean old_partial = use_partial;
+        use_partial = supposed;
         long ret = prediction();
-        partial = old_partial;
+        use_partial = old_partial;
         return ret;
     }
 
     private void updateInfoPrediction() {
         last_prediction = prediction();
 
+        saveLastPredictionToInfo();
+        setLasts();
+    }
+
+    private void saveLastPredictionToInfo() {
         if (last_prediction < now + MIN_PREDICTION)
             last_prediction = now + MIN_PREDICTION;
 
         cur_info.prediction.update(last_prediction);
-        setLasts();
     }
 
     private long prediction() {
-        recent_average = recentAverage();
-
         if (cur_info.status == BatteryInfo.STATUS_CHARGING)
             return whenCharged();
         else if (cur_info.status == BatteryInfo.STATUS_UNPLUGGED)
@@ -197,30 +213,31 @@ public class PredictorCore {
         int level = cur_info.percent;
         long from = timestamps[cur_info.percent];
 
-        if (partial) {
+        if (use_partial) {
             level -= dir_inc;
             from = now;
         }
 
-        return from + (long) (recent_average * level);
+        return from + (long) (recentAverage() * level);
     }
 
     private long whenCharged() {
         int level = cur_info.percent;
         long from = timestamps[cur_info.percent];
 
-        if (partial) {
+        if (use_partial) {
             level -= dir_inc;
             from = now;
         }
 
-        return from + (long) ((101 - level) * recent_average);
+        return from + (long) ((101 - level) * recentAverage());
     }
 
     private void setLasts() {
         last_level = cur_info.percent; // TODO: Resolve level/percent discrepancy?
         last_status = cur_info.status;
         last_plugged = cur_info.plugged;
+        last_recent_average = recentAverage();
     }
 
     private double recentAverage() {
@@ -255,12 +272,12 @@ public class PredictorCore {
         double needed_points = recents.length;
 
         int start = cur_info.percent;
-        if (partial) start -= dir_inc;
+        if (use_partial) start -= dir_inc;
 
         for (int i = start, ri = 0; ri < recents.length; ri++, i += dir_inc) {
             if (i >= ts_head)
                 recents[ri] = average[cur_charging_status];
-            else if (i == start && partial)
+            else if (i == start && use_partial)
                 recents[ri] = now - timestamps[cur_info.percent];
             else
                 recents[ri] = timestamps[i] - timestamps[i + dir_inc];
@@ -284,12 +301,12 @@ public class PredictorCore {
         double needed_ms = duration_in_ms;
 
         int start = cur_info.percent;
-        if (partial) start -= dir_inc;
+        if (use_partial) start -= dir_inc;
 
         for (int i = start; i != ts_head; i += dir_inc) {
             double potential_ms;
 
-            if (i == start && partial)
+            if (i == start && use_partial)
                 potential_ms = now - timestamps[cur_info.percent];
             else
                 potential_ms = timestamps[i] - timestamps[i + dir_inc];
@@ -318,12 +335,12 @@ public class PredictorCore {
         //double cur = -1d;//For using only most recent when it's large enough
 
         int start = cur_info.percent;
-        if (partial) start -= dir_inc;
+        if (use_partial) start -= dir_inc;
 
         for (int i = start; i != ts_head && needed_points > 0; i += dir_inc) {
             double new_ms;
 
-            if (i == start && partial)
+            if (i == start && use_partial)
                 new_ms = now - timestamps[cur_info.percent];
             else
                 new_ms = timestamps[i] - timestamps[i + dir_inc];

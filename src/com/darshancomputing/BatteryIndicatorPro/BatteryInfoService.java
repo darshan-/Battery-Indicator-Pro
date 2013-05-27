@@ -381,6 +381,8 @@ public class BatteryInfoService extends Service {
         if (intent != null)
             info.load(intent, sp_store);
 
+        predictor.setPredictionType(settings.getString(SettingsActivity.KEY_PREDICTION_TYPE,
+                                                       str.default_prediction_type));
         predictor.update(info);
         info.prediction.updateRelativeTime();
 
