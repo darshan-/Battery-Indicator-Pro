@@ -81,6 +81,10 @@ public class PredictorCore {
             return;
 
         prediction_type = type;
+
+        if (cur_info == null)
+            return;
+
         use_partial = false;
         last_prediction = prediction();
 
@@ -330,14 +334,14 @@ public class PredictorCore {
     }
 
     private double recentAverageByPoints(double duration_in_points) {
-        if (duration_in_points < 1)
-            return average[cur_charging_status];
-
         double total_ms = 0d;
         double needed_points = duration_in_points;
 
         int start = cur_info.percent;
         if (use_partial) start -= dir_inc;
+
+        if (start == ts_head || needed_points < 1)
+            return average[cur_charging_status];
 
         for (int i = start; i != ts_head && needed_points > 0; i += dir_inc) {
             double new_ms;
