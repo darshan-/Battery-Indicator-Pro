@@ -199,10 +199,20 @@ public class Test {
         pc.update(bi, now);
         print();
 
+                pc.setPredictionType(PredictorCore.SINCE_STATUS_CHANGE);
+                now += 60 * 1000;
+                pc.update(bi, now);
+                print();
+
         for (int m : minutes_by_level) {
             bi.percent -= 1;
             for (int i = 0; i < m; i++) {
                 if (i % 2 == 0) pc.update(bi, now);
+                System.out.println("session");
+                pc.setPredictionType(PredictorCore.SINCE_STATUS_CHANGE);
+                now += 60 * 1000;
+                pc.update(bi, now);
+                print();
                 System.out.println("automagic");
                 pc.setPredictionType(PredictorCore.AUTOMAGIC);
                 now += 60 * 1000;
