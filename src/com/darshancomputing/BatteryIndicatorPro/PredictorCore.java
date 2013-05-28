@@ -250,7 +250,8 @@ public class PredictorCore {
         else if (prediction_type > 0)
             return recentAverageByPoints(prediction_type);
         else if (prediction_type == SINCE_STATUS_CHANGE)
-            return recentAverageByPoints(Math.abs(ts_head - cur_info.percent));
+            //return recentAverageByPoints(Math.abs(ts_head - cur_info.percent));
+            return recentAverageBySession();
         else if (prediction_type == AUTOMAGIC)
             return middleOf(recentAverageByTime(FIVE_MINUTES), recentAverageByPoints(5), average[cur_charging_status]);
         else if (prediction_type == WEIGHTED_FIVE)
@@ -346,7 +347,7 @@ public class PredictorCore {
         for (int i = start; i != ts_head && needed_points > 0; i += dir_inc) {
             double new_ms;
 
-            if (i == start && use_partial)
+            if (i == start && use_partial) // TODO: If timestamps[cur_level] is set every time, I shouldn't need a special case here...
                 new_ms = now - timestamps[cur_info.percent];
             else
                 new_ms = timestamps[i] - timestamps[i + dir_inc];
@@ -359,6 +360,24 @@ public class PredictorCore {
             total_ms += needed_points * average[cur_charging_status];
 
         return total_ms / duration_in_points;
+    }
+
+    private double recentAverageBySession() {
+        double total_ms = 0d;
+        double total_points = 0d;
+
+        if (use_partial) {
+            total_ms += now - timestamps[cur_info.percent];
+            total_points += 1;
+        }
+
+        total_ms += timestamps[cur_info.percent] - timestamps[ts_head];
+        total_points += ts_head - cur_info.percent;
+
+        if (total_points < 1)
+            return average[cur_charging_status];
+
+        return total_ms / total_points;
     }
 
     private int chargingStatusForCurInfo() {

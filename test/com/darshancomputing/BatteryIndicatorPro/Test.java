@@ -166,7 +166,8 @@ public class Test {
                                   2
                                   };*/
 
-        int minutes_by_level[] = {//45,
+        int minutes_by_level[] = {300,
+                                  145,
                                   21,
                                   11,
                                   2,
@@ -196,18 +197,17 @@ public class Test {
         };
 
         bi.percent = 100;
-        pc.update(bi, now);
-        print();
+        //pc.update(bi, now);
+        //print();
 
-                pc.setPredictionType(PredictorCore.SINCE_STATUS_CHANGE);
+        pc.setPredictionType(PredictorCore.SINCE_STATUS_CHANGE);
+
+        for (int m : minutes_by_level) {
+            for (int i = 0; i < m; i++) {
                 now += 60 * 1000;
                 pc.update(bi, now);
                 print();
-
-        for (int m : minutes_by_level) {
-            bi.percent -= 1;
-            for (int i = 0; i < m; i++) {
-                if (i % 2 == 0) pc.update(bi, now);
+                /*if (i % 2 == 0) pc.update(bi, now);
                 System.out.println("session");
                 pc.setPredictionType(PredictorCore.SINCE_STATUS_CHANGE);
                 now += 60 * 1000;
@@ -225,8 +225,9 @@ public class Test {
                 System.out.println("long_term");
                 pc.setPredictionType(PredictorCore.LONG_TERM);
                 pc.update(bi, now+2);
-                print();
+                print();*/
             }
+            bi.percent -= 1;
         }
     }
 
