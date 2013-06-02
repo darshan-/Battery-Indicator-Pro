@@ -76,6 +76,7 @@ public class BatteryInfoService extends Service {
     private AlarmDatabase alarms;
     private LogDatabase log_db;
     private BatteryLevel bl;
+    private CircleWidgetBackground cwbg;
     private BatteryInfo info;
     private long now;
     private boolean updated_lasts;
@@ -172,6 +173,7 @@ public class BatteryInfoService extends Service {
 
         predictor = new Predictor(context);
         bl = new BatteryLevel(context, BatteryLevel.SIZE_NOTIFICATION);
+        cwbg = new CircleWidgetBackground(context);
 
         alarms = new AlarmDatabase(context);
 
@@ -208,6 +210,7 @@ public class BatteryInfoService extends Service {
 
         // TODO: This probably a good idea, in case the Service is ever killed?
         widgetManager = AppWidgetManager.getInstance(context);
+
         int[] ids = widgetManager.getAppWidgetIds(new ComponentName(context, BatteryInfoAppWidgetProvider.class));
         for (int i = 0; i < ids.length; i++)
             widgetIds.add(ids[i]);
@@ -415,8 +418,9 @@ public class BatteryInfoService extends Service {
 
         for (Integer widgetId : widgetIds) {
             // TODO: remove id from Set if something goes wrong?
-            RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.battery_info_app_widget);
+            RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.circle_app_widget);
             rv.setTextViewText(R.id.level, "" + info.percent + str.percent_symbol);
+            rv.setImageViewBitmap(R.id.circle_widget_image_view, cwbg.getBitmap());
             rv.setOnClickPendingIntent(R.id.widget_layout, mainWindowPendingIntent);
             widgetManager.updateAppWidget(widgetId, rv);
         }
@@ -468,6 +472,7 @@ public class BatteryInfoService extends Service {
 
             notificationRV.setImageViewBitmap(R.id.battery, bl.getBitmap());
             bl.setLevel(info.percent);
+            cwbg.setLevel(info.percent);
 
             notificationRV.setTextViewText(R.id.percent, "" + info.percent + str.percent_symbol);
             notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTopLine));

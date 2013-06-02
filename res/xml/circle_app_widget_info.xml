@@ -7,7 +7,7 @@
     android:updatePeriodMillis="0"
     android:resizeMode="horizontal"
     android:widgetCategory="home_screen|keyguard"
-    android:initialLayout="@layout/battery_info_app_widget"
+    android:initialLayout="@layout/circle_app_widget"
 />
 <!--
     android:initialKeyguardLayout="@layout/battery_info_keyguard_app_widget"

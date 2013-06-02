@@ -3,13 +3,15 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              android:padding="@dimen/widget_margin"
+             android:id="@+id/widget_layout"
 >
-  <LinearLayout android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/widget_layout"
-                android:orientation="horizontal"
-                android:background="@android:color/black"
-  >
+  <ImageView android:id="@+id/circle_widget_image_view"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:scaleType="centerInside"
+             android:src="@drawable/circle"
+  />
+
     <TextView android:id="@+id/level"
 	      android:layout_width="fill_parent"
               android:layout_height="fill_parent"
@@ -18,5 +20,5 @@
               android:textSize="20dp"
               android:text="XX%"
     />
-  </LinearLayout>
+  <!--/LinearLayout-->
 </FrameLayout>
