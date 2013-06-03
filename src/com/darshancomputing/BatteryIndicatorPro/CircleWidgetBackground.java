@@ -17,12 +17,10 @@ package com.darshancomputing.BatteryIndicatorPro;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 
 class CircleWidgetBackground {
@@ -67,14 +65,15 @@ class CircleWidgetBackground {
     public void setLevel(int level) {
         if (level < 0) level = 0; // I suspect we might get called with -1 in certain circumstances
 
-        RectF outer_oval = new RectF(0, 0, DIMEN, DIMEN);
+        int top_left = 0 + (int) (ARC_STROKE_WIDTH / 2);
+        int bottom_right = DIMEN - (int) (ARC_STROKE_WIDTH / 2);
 
-        int inner_top_left = 0 + (int) (ARC_STROKE_WIDTH / 2);
-        int inner_bottom_right = DIMEN - (int) (ARC_STROKE_WIDTH / 2);
-        RectF inner_oval = new RectF(inner_top_left, inner_top_left, inner_bottom_right, inner_bottom_right);
+        RectF oval = new RectF(top_left, top_left, bottom_right, bottom_right);
 
-        canvas.drawArc(outer_oval, 0.0f, 360.0f, true, bg_paint);
-        canvas.drawArc(inner_oval, -90.0f, level * 360.0f / 100.0f, false, arc_paint);
+        canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR);
+
+        canvas.drawArc(oval, 0.0f, 360.0f, true, bg_paint);
+        canvas.drawArc(oval, -90.0f, level * 360.0f / 100.0f, false, arc_paint);
     }
 
     public Bitmap getBitmap() {

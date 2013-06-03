@@ -5,7 +5,7 @@
     android:minResizeWidth="36dp"
     android:minResizeHeight="36dp"
     android:updatePeriodMillis="0"
-    android:resizeMode="horizontal"
+    android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen|keyguard"
     android:initialLayout="@layout/circle_app_widget"
 />
