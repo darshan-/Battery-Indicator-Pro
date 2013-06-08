@@ -5,11 +5,11 @@
     android:minResizeWidth="36dp"
     android:minResizeHeight="36dp"
     android:updatePeriodMillis="0"
-    android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen|keyguard"
     android:initialLayout="@layout/circle_app_widget"
 />
 <!--
+    android:resizeMode="horizontal|vertical"
     android:initialKeyguardLayout="@layout/battery_info_keyguard_app_widget"
     android:previewImage="@drawable/widget_preview"
 

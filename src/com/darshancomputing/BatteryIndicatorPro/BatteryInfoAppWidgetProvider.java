@@ -26,4 +26,8 @@ public class BatteryInfoAppWidgetProvider extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         BatteryInfoService.onWidgetUpdate(context, appWidgetManager, appWidgetIds);
     }
+
+    //public void onAppWidgetOptionsChanged(Context context, AppWidgetManager appwidgetManager,
+    //                                      int appWidgetId, Bundle newOptions) {
+    //}
 }

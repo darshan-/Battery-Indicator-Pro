@@ -24,8 +24,8 @@ import android.graphics.RectF;
 import android.util.DisplayMetrics;
 
 class CircleWidgetBackground {
-    private static final int DIMEN = 256;
-    private static final float ARC_STROKE_WIDTH = 18.0f;
+    private static final int DIMEN = 128;
+    private static final float ARC_STROKE_WIDTH = DIMEN * 0.07f;
 
     private static final int BLACK = 0xff000000;
     private static final int ICS_BLUE = 0xff33b5e5;
@@ -57,6 +57,7 @@ class CircleWidgetBackground {
         arc_paint.setAntiAlias(true);
         arc_paint.setStrokeWidth(ARC_STROKE_WIDTH);
         arc_paint.setStyle(Paint.Style.STROKE);
+        //arc_paint.setStrokeCap(Paint.Cap.ROUND);
         arc_paint.setDither(true);
 
         //setLevel(100); // TODO: Would this be helpful?
@@ -74,6 +75,10 @@ class CircleWidgetBackground {
 
         canvas.drawArc(oval, 0.0f, 360.0f, true, bg_paint);
         canvas.drawArc(oval, -90.0f, level * 360.0f / 100.0f, false, arc_paint);
+
+        //if (android.os.Build.VERSION.SDK_INT >= 11) { // Resizeable widgets
+        //    canvas.drawText(R.id.level, "" + info.percent + str.percent_symbol);
+        //}
     }
 
     public Bitmap getBitmap() {

@@ -419,7 +419,11 @@ public class BatteryInfoService extends Service {
         for (Integer widgetId : widgetIds) {
             // TODO: remove id from Set if something goes wrong?
             RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.circle_app_widget);
-            rv.setTextViewText(R.id.level, "" + info.percent + str.percent_symbol);
+
+            //if (android.os.Build.VERSION.SDK_INT < 11) { // No resizeable widgets
+                rv.setTextViewText(R.id.level, "" + info.percent + str.percent_symbol);
+            //}
+
             rv.setImageViewBitmap(R.id.circle_widget_image_view, cwbg.getBitmap());
             rv.setOnClickPendingIntent(R.id.widget_layout, mainWindowPendingIntent);
             widgetManager.updateAppWidget(widgetId, rv);
