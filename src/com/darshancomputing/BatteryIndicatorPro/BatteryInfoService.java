@@ -21,6 +21,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.appwidget.AppWidgetManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -41,7 +42,9 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
+
 import java.util.Date;
+import java.util.HashSet;
 
 public class BatteryInfoService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
@@ -73,11 +76,15 @@ public class BatteryInfoService extends Service {
     private AlarmDatabase alarms;
     private LogDatabase log_db;
     private BatteryLevel bl;
+    private CircleWidgetBackground cwbg;
     private BatteryInfo info;
     private long now;
     private boolean updated_lasts;
     private java.util.HashSet<Messenger> clientMessengers;
     private final Messenger messenger = new Messenger(new MessageHandler());
+
+    private static HashSet<Integer> widgetIds = new HashSet<Integer>();
+    private static AppWidgetManager widgetManager;
 
     private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfoService";
 
@@ -166,6 +173,7 @@ public class BatteryInfoService extends Service {
 
         predictor = new Predictor(context);
         bl = new BatteryLevel(context, BatteryLevel.SIZE_NOTIFICATION);
+        cwbg = new CircleWidgetBackground(context);
 
         alarms = new AlarmDatabase(context);
 
@@ -200,6 +208,13 @@ public class BatteryInfoService extends Service {
 
         pluginPackage = "none";
 
+        // TODO: This probably a good idea, in case the Service is ever killed?
+        widgetManager = AppWidgetManager.getInstance(context);
+
+        int[] ids = widgetManager.getAppWidgetIds(new ComponentName(context, BatteryInfoAppWidgetProvider.class));
+        for (int i = 0; i < ids.length; i++)
+            widgetIds.add(ids[i]);
+
         Intent bc_intent = registerReceiver(mBatteryInfoReceiver, batteryChanged);
         info.load(bc_intent, sp_store);
     }
@@ -220,8 +235,9 @@ public class BatteryInfoService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent != null && intent.getBooleanExtra(EXTRA_UPDATE_PREDICTOR, false))
-            update(null);
+        // TODO: Do I need a filter, or is it okay to just update(null) every time?
+        //if (intent != null && intent.getBooleanExtra(EXTRA_UPDATE_PREDICTOR, false))
+        update(null);
 
         return Service.START_STICKY;
     }
@@ -384,6 +400,8 @@ public class BatteryInfoService extends Service {
         if (alarms.anyActiveAlarms())
             handleAlarms();
 
+        updateWidgets();
+
         syncSpsEditor(); // Important to sync after other Service code that uses 'lasts' but before sending info to client
 
         for (Messenger messenger : clientMessengers) {
@@ -392,6 +410,24 @@ public class BatteryInfoService extends Service {
         }
 
         alarmManager.set(AlarmManager.ELAPSED_REALTIME, android.os.SystemClock.elapsedRealtime() + (2 * 60 * 1000), updatePredictorPendingIntent);
+    }
+
+    private void updateWidgets() {
+        Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
+        PendingIntent mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
+
+        for (Integer widgetId : widgetIds) {
+            // TODO: remove id from Set if something goes wrong?
+            RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.circle_app_widget);
+
+            //if (android.os.Build.VERSION.SDK_INT < 11) { // No resizeable widgets
+                rv.setTextViewText(R.id.level, "" + info.percent + str.percent_symbol);
+            //}
+
+            rv.setImageViewBitmap(R.id.circle_widget_image_view, cwbg.getBitmap());
+            rv.setOnClickPendingIntent(R.id.widget_layout, mainWindowPendingIntent);
+            widgetManager.updateAppWidget(widgetId, rv);
+        }
     }
 
     private void syncSpsEditor() {
@@ -440,6 +476,7 @@ public class BatteryInfoService extends Service {
 
             notificationRV.setImageViewBitmap(R.id.battery, bl.getBitmap());
             bl.setLevel(info.percent);
+            cwbg.setLevel(info.percent);
 
             notificationRV.setTextViewText(R.id.percent, "" + info.percent + str.percent_symbol);
             notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTopLine));
@@ -870,5 +907,21 @@ public class BatteryInfoService extends Service {
         stopService(pluginIntent);
         pluginServiceConnection.service = null;
         pluginPackage = "none";
+    }
+
+    public static void onWidgetUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        widgetManager = appWidgetManager;
+
+        for (int i = 0; i < appWidgetIds.length; i++) {
+            widgetIds.add(appWidgetIds[i]);
+        }
+
+        context.startService(new Intent(context, BatteryInfoService.class));
+    }
+
+    public static void onWidgetDeleted(Context context, int[] appWidgetIds) {
+        for (int i = 0; i < appWidgetIds.length; i++) {
+            widgetIds.remove(appWidgetIds[i]);
+        }
     }
 }

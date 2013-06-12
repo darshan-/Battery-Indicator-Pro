@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:padding="@dimen/widget_margin"
+             android:id="@+id/widget_layout"
+>
+  <ImageView android:id="@+id/circle_widget_image_view"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:scaleType="fitCenter"
+             android:src="@drawable/circle"
+  />
+
+    <TextView android:id="@+id/level"
+	      android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:gravity="center"
+              android:textColor="#fff"
+              android:textSize="20dp"
+              android:text="XX%"
+    />
+  <!--/LinearLayout-->
+</FrameLayout>

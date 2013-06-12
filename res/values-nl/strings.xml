@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_full_name" formatted="false">Battery Indicator Pro</string>
-  <string name="app_launcher_name" formatted="false">Battery Indicator</string>
+  <string name="app_full_name" formatted="false">BatteryBot Pro</string>
+  <string name="app_launcher_name" formatted="false">BatteryBot</string>
   <string name="settings_activity_subtitle" formatted="false">Instellingen</string>
   <string name="help_activity_subtitle" formatted="false">Help</string>
   <string name="log_view_activity_subtitle" formatted="false">Logboeken</string>
-  <string name="app_full_name_free" formatted="false">Battery Indicator</string>
+  <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Batterijgebruik bekijken</string>
   <string name="upgrade_donate_b" formatted="false">Upgraden of doneren</string>
   <string name="reenable_lock_screen" formatted="false">Schermvergrendeling inschakelen</string>
@@ -79,7 +79,7 @@
   <string name="plugged_ac" formatted="false">(AC)</string>
   <string name="plugged_usb" formatted="false">(USB)</string>
   <string name="plugged_unknown" formatted="false">(?)</string>
-  <string name="plugged_wireless" formatted="false">(WL)</string>
+  <string name="plugged_wireless" formatted="false">(Draadloos)</string>
   <string name="alarm_type_fully_charged" formatted="false">Volledig opgeladen</string>
   <string name="alarm_type_charge_drops" formatted="false">Lading komt onder</string>
   <string name="alarm_type_charge_rises" formatted="false">Lading komt boven</string>
@@ -113,16 +113,16 @@
   <string name="help_changelog" formatted="false">Bekijk de <a href="http://code.google.com/p/battery-indicator/wiki/Changelog?tm=6">lijst van wijzigingen</a>.</string>
   <string name="help_cat_introduction" formatted="false">Inleiding</string>
   <string name="help_introduction" formatted="false">Dit is <i>Battery Indicator Pro</i>, de \"Pro\" versie van de populaire gratis applicatie <i>Battery Indicator</i>. Je kunt deze applicatie aanschaffen via Android Market, maar het is een open-source project. Dit betekent dat je de broncode gratis kunt downloaden via <a href="http://code.google.com/p/battery-indicator/">de project website</a>.</string>
-  <string name="help_introduction_free" formatted="false">Dit is <i>Battery Indicator</i>, de gratis applicatie van de <i>Battery Indicator</i> familie. Je kunt deze applicatie gratie downloaden via Android Market, maar het is een open-source project. Dit betekent dat je de broncode gratis kunt downloaden via <a href="http://code.google.com/p/battery-indicator/">de project website</a>.\n\nOverweeg de aanschaf van <i>Battery Indicator Pro</i> via de Android Market <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Versie</a>.</string>
+  <string name="help_introduction_free" formatted="false">Dit is <i>BatteryBot</i>, de gratis applicatie van de <i>BatteryBot</i> familie. Je kunt deze applicatie gratie downloaden via Android Market, maar het is een open-source project. Dit betekent dat je de broncode gratis kunt downloaden via <a href="http://code.google.com/p/battery-indicator/">de project website</a>.\n\nOverweeg de aanschaf van <i>BatteryBot Pro</i> via de Android Market <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Versie</a>.</string>
   <string name="help_cat_summary" formatted="false">Samenvatting</string>
-  <string name="help_summary" formatted="false"><i>Battery Indicator Pro</i> Is een lichtgewicht batterij indicator voor Android. Zijn belangrijkste functie is dat hij de statusbalk voorziet van een icoon waaraan je kan zien hoeveel procent batterij je nog hebt.\n\nDeze Pro versie biedt echter voor meer nut dan dat. Naast het bieden van rood, oranje en groene pictogrammen, heeft het ook de volgende belangrijke kenmerken vanaf versie 3.0:\n\n• Volledig configureerbaar geschatte laad/ontlaad tijd over.\n• Opslaan van de batterij status in een logboek.\n• Thema\'s voor het hoofdvenster (inclusief een full-size venster met grote, makkelijk te lezen tekst).\n• Handmatig uitschakelen / opnieuw inschakelen van het vergrendelingsscherm, met de optie om automatisch uit te schakelen wanneer aangesloten en opnieuw inschakelen wanneer losgekoppeld.\n• Veel meer nuttige dingen die je zult ontdekken tijdens het gebruiken van deze app.</string>
-  <string name="help_summary_free" formatted="false"><i>Battery Indicator</i> Is een lichtgewicht batterij indicator voor Android. Zijn belangrijkste functie is dat hij de statusbalk voorziet van een icoon waaraan je kan zien hoeveel procent batterij je nog hebt.\n\nDeze Pro versie biedt echter voor meer nut dan dat. Naast het bieden van rood, oranje en groene pictogrammen, heeft het ook de volgende belangrijke kenmerken vanaf versie 3.0:\n\n• Volledig configureerbaar geschatte laad/ontlaad tijd over.\n• Opslaan van de batterij status in een logboek.\n• Thema\'s voor het hoofdvenster (inclusief een full-size venster met grote, makkelijk te lezen tekst).\n• Handmatig uitschakelen / opnieuw inschakelen van het vergrendelingsscherm, met de optie om automatisch uit te schakelen wanneer aangesloten en opnieuw inschakelen wanneer losgekoppeld.\n• Veel meer nuttige dingen die je zult ontdekken tijdens het gebruiken van deze app.</string>
+  <string name="help_summary" formatted="false"><i>BatteryBot Pro</i> Is een lichtgewicht batterij indicator voor Android. Zijn belangrijkste functie is dat hij de statusbalk voorziet van een icoon waaraan je kan zien hoeveel procent batterij je nog hebt.\n\nDeze Pro versie biedt echter voor meer nut dan dat. Naast het bieden van rood, oranje en groene pictogrammen, heeft het ook de volgende belangrijke kenmerken vanaf versie 3.0:\n\n• Volledig configureerbaar geschatte laad/ontlaad tijd over.\n• Opslaan van de batterij status in een logboek.\n• Thema\'s voor het hoofdvenster (inclusief een full-size venster met grote, makkelijk te lezen tekst).\n• Handmatig uitschakelen / opnieuw inschakelen van het vergrendelingsscherm, met de optie om automatisch uit te schakelen wanneer aangesloten en opnieuw inschakelen wanneer losgekoppeld.\n• Veel meer nuttige dingen die je zult ontdekken tijdens het gebruiken van deze app.</string>
+  <string name="help_summary_free" formatted="false"><i>BatteryBot</i> Is een lichtgewicht batterij indicator voor Android. Zijn belangrijkste functie is dat hij de statusbalk voorziet van een icoon waaraan je kan zien hoeveel procent batterij je nog hebt.\n\nDeze Pro versie biedt echter voor meer nut dan dat. Naast het bieden van rood, oranje en groene pictogrammen, heeft het ook de volgende belangrijke kenmerken vanaf versie 3.0:\n\n• Volledig configureerbaar geschatte laad/ontlaad tijd over.\n• Opslaan van de batterij status in een logboek.\n• Thema\'s voor het hoofdvenster (inclusief een full-size venster met grote, makkelijk te lezen tekst).\n• Handmatig uitschakelen / opnieuw inschakelen van het vergrendelingsscherm, met de optie om automatisch uit te schakelen wanneer aangesloten en opnieuw inschakelen wanneer losgekoppeld.\n• Veel meer nuttige dingen die je zult ontdekken tijdens het gebruiken van deze app.</string>
   <string name="help_cat_limitations" formatted="false">Beperkingen</string>
   <string name="help_limitations" formatted="false">(<i>Dit ligt buiten mijn macht.</i>)\n\n• De app kan alleen wat het apparaat hem vertelt. De meeste apparaten rapporteren elke 1%, maar een paar (met name de Motorola Droid modellen) rapporteren slechts elke 10%.\n• Er is geen manier om het ingebouwde batterij-icoontje te verwijderen.\n• De mededeling pictogram in de statusbalk en de boodschap die u ziet in de melding lade zijn met elkaar verbonden, je kunt niet een van beide hebben.\n• Bij veel apps moet het mogelijk zijn de installatie op een verwijderbaar opslagmedium (SD-kaart)uit te voeren, bij sommigen niet. Batterij indicator is van de laatste groep. Zie <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">het project FAQ</a>.</string>
   <string name="help_cat_features" formatted="false">Mogelijkheden</string>
   <string name="help_features" formatted="false">• Klein, simpel en makkelijk te lezen.\n• Het vraagt geen statistieken aan het systeem. Het ontvangt een melding van het systeem als de batterijstatus verandert, update dan het icoon en gaat weer slapen. Wat dit betekent is dat het een klein beetje RAM gebruik en bijna geen CPU, dus het kost geen batterijduur.\n• Makkelijk toegang tot batterijgebruik scherm (Android 1.6+).\n• Optie om automatisch te starten bij opstarten.\n• Veel meer dat ik vergeten ben of dat te klein is om te noemen.\n• De bevrediging van het steunen van de ontwikkelaar. (Ik waardeer het zeer!)</string>
   <string name="help_cat_no_warranty" formatted="false">Geen garantie</string>
-  <string name="help_no_warranty" formatted="false">Deze software wordt uitgegeven in de hoop dat het nuttig zal zijn, maar ZONDER ENIGE GARANTIE; zonder zelfs de impliciete garantie van VERKOOPBAARHEID of GESCHIKTHEID VOOR EEN BEPAALD DOEL.\n\nTerwijl ik mijn best doe om ervoor te zorgen dat het goed werkt en geen problemen veroorzaken, ben ik niet verantwoordelijk voor eventuele schade of overlast dat wordt veroorzaakt onder alle omstandigheden.</string>
+  <string name="help_no_warranty" formatted="false">Deze software wordt uitgegeven in de hoop dat het nuttig zal zijn, maar ZONDER ENIGE GARANTIE; zonder zelfs de impliciete garantie van verkoopbaarheid of geschiktheid voor een bepaald doel.\n\nTerwijl ik mijn best doe om ervoor te zorgen dat het goed werkt en geen problemen veroorzaken, ben ik niet verantwoordelijk voor eventuele schade of overlast dat wordt veroorzaakt onder alle omstandigheden.</string>
   <string name="help_cat_acknowledgments" formatted="false">Erkenningen</string>
   <string name="help_acknowledgments" formatted="false">Deze app zou alleen beschikbaar zijn in het Engels ware het niet voor de hulp van de vrijwillige vertalers. Bedankt!\n\nVeel dank gaat uit naar Google en alle andere open-source programmeurs die het Android-platform en deze app mogelijk te maken.\n\nHet opstartpictogram (de rechtopstaande batterij die u ziet in de markt) is gebaseerd op een icoon uit <a href="http://www.oxygen-icons.org">het Oxygen icoon thema</a> en gebruikt onder de <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-ShareAlike 3.0 Licentie</a>.</string>
   <string name="help_cat_translations" formatted="false">Vertaling</string>
@@ -140,32 +140,45 @@
   <string name="status_bar_icon_settings_summary" formatted="false">Iconen</string>
   <string name="status_bar_icon_settings_help" formatted="false">Je kunt selecteren welke iconen je wilt gebruiken.</string>
   <string name="keyguard_settings" formatted="false">Schermvergrendeling</string>
+  <string name="keyguard_settings_summary" formatted="false">Gebruik deze instelling om de schermvergrendeling uit te schakelen</string>
+  <string name="keyguard_settings_help" formatted="false">Je kunt de schermvergrendeling handmatig of automatisch uitschakelen.</string>
   <string name="alarm_settings_subtitle" formatted="false">Alarminstellingen</string>
   <string name="alarm_settings" formatted="false">Alarmen</string>
   <string name="alarm_settings_summary" formatted="false">Meldingen voor lege of volle batterij instellen</string>
-  <string name="alarm_settings_help" formatted="false">Je kunt een notificatie ontvangen als je batterijniveau onder een bepaald punt komt.</string>
+  <string name="alarm_settings_help" formatted="false">Je kunt een melding ontvangen als je batterijniveau onder een bepaald punt komt.</string>
   <string name="other_settings" formatted="false">Overige instellingen</string>
   <string name="other_settings_help" formatted="false">Alle andere instellingen zijn te vinden op deze pagina, waaronder logboeken, vergrendeling, temperatuureenheid, automatisch starten en meer.</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">Meer instellingen in Battery Indicator Pro!</string>
   <string name="pref_please_upgrade" formatted="false">De Pro versie heeft veel meer instellingen en mogelijkheden, waaronder gekleurde icoontjes, alarmen, thema\'s, logboeken, schermvergrendeling voorkomen, geschatte tijd resterend en meer!</string>
   <string name="add_alarm" formatted="false">Alarm toevoegen</string>
+  <string name="pref_cat_notification_layout" formatted="false">Layout</string>
+  <string name="pref_use_system_notification_layout" formatted="false">Gebruik standaardlayout</string>
+  <string name="pref_use_system_notification_layout_summary" formatted="false">Wilt u de standaardlayout van android gebruiken voor meldingen?</string>
+  <string name="pref_use_system_notification_layout_help" formatted="false">Wanneer ingeschakeld zal de standaardlayout van Android gebruikt worden voor meldingen in plaats van BatteryBot\'s aangepaste layout.</string>
   <string name="pref_cat_notification_content" formatted="false">Inhoud</string>
   <string name="pref_icon_area_content" formatted="false">Icooninhoud</string>
+  <string name="pref_icon_area_content_help" formatted="false">Kies wat je wilt zien aan de linkerkant van de melding.</string>
   <string name="battery_graphic" formatted="false">Batterijicoon</string>
   <string name="charge_percentage" formatted="false">Ladingsniveau</string>
   <string name="percentage_first" formatted="false">Percentage, batterij</string>
   <string name="battery_first" formatted="false">Batterij, percentage</string>
   <string name="pref_top_line_content" formatted="false">Inhoud van bovenste lijn</string>
+  <string name="pref_top_line_content_help" formatted="false">Kies wat je wilt zien in de bovenste regel van de melding.</string>
   <string name="pref_bottom_line_content" formatted="false">Inhoud van onderste lijn</string>
+  <string name="pref_bottom_line_content_help" formatted="false">Je kunt de onderste regel op dezelfde manier aanpassen als de bovenste regel.</string>
   <string name="time_remaining" formatted="false">Tijd resterend</string>
   <string name="time_since_status_change" formatted="false">Tijd sinds wijziging in status</string>
   <string name="vital_signs" formatted="false">Gezondheid</string>
   <string name="pref_time_remaining_verbosity" formatted="false">Uitgebreidheid van weergave van resterende tijd</string>
+  <string name="pref_time_remaining_verbosity_help" formatted="false">Hier kun je instellen hoe uitgebreid de beschrijving van de tijd moet zijn, zodat het op je scherm past.</string>
   <string name="condensed" formatted="false">Minimaal</string>
   <string name="normal" formatted="false">Normaal</string>
   <string name="verbose" formatted="false">Uitgebreid</string>
   <string name="pref_status_duration_in_vital_signs" formatted="false">Tijd van status</string>
+  <string name="pref_status_duration_in_vital_signs_summary" formatted="false">Laat tijd sinds wijziging zien in de onderste regel van de melding?</string>
+  <string name="pref_status_duration_in_vital_signs_help" formatted="false">Stel dit in om de tijd sinds de laatste statuswijziging te laten zien in de onderste regel.</string>
   <string name="pref_cat_notification_appearance" formatted="false">Uiterlijk</string>
+  <string name="pref_cat_notification_appearance_help" formatted="false">Je kunt de kleuren voor de meldingstekst instellen.</string>
   <string name="pref_notification_percentage_text_color" formatted="false">Kleur van percentage</string>
   <string name="pref_custom_percentage_text_color" formatted="false">Aangepaste kleur van percentage</string>
   <string name="pref_notification_top_line_color" formatted="false">Kleur van bovenste lijn</string>
@@ -173,6 +186,7 @@
   <string name="pref_notification_bottom_line_color" formatted="false">Kleur van onderste lijn</string>
   <string name="pref_custom_bottom_line_color" formatted="false">Aangepaste kleur van onderste lijn</string>
   <string name="pref_show_box_around_icon_area" formatted="false">Icoon omlijnen</string>
+  <string name="pref_show_box_around_icon_area_summary" formatted="false">Laat achtergrond zien bij icoon?</string>
   <string name="system_default" formatted="false">Standaard</string>
   <string name="black" formatted="false">Zwart</string>
   <string name="white" formatted="false">Wit</string>
@@ -212,8 +226,10 @@
   <string name="pref_auto_disable_help" formatted="false">Als je dit aanzet zal de schermvergrendeling automatisch uitschakelen tijdens het opladen.</string>
   <string name="pref_disallow_disable_lock_screen" formatted="false">Handmatig uitschakelen niet toestaan</string>
   <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Schakel de voorkom schermvergrendeling knop uit</string>
-  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Als je een alternatieve schermvergendeling gebruikt waarbij je toegang hebt tot de notificaties kun je dit beter aanzetten voor de veiligheid.</string>
+  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Als je een alternatieve schermvergendeling gebruikt waarbij je toegang hebt tot de meldingen kun je dit beter aanzetten voor de veiligheid.</string>
   <string name="pref_notify_status_duration" formatted="false">Laat tijd van status zien</string>
+  <string name="pref_notify_status_duration_summary" formatted="false">Laat de tijd zien sinds de laatste statuswijziging in plaats van de resterende tijd?</string>
+  <string name="pref_notify_status_duration_help" formatted="false">Stel dit in als je wilt zien hoe lang geleden de laatste statuswijziging was.</string>
   <string name="pref_cat_battery_use" formatted="false">Batterijgebruik</string>
   <string name="pref_finish_after_battery_use" formatted="false">Sluiten na starten</string>
   <string name="pref_finish_after_battery_use_summary" formatted="false">Hoofdvenster sluiten na bekijken van batterijgebruik</string>
@@ -238,24 +254,24 @@
   <string name="pref_color_preview" formatted="false">Voorbeeld van kleuren</string>
   <string name="pref_color_preview_help" formatted="false">Het kleurvoorbeeld is ervoor bedoeld om zichtbaar te maken wat voor effect de kleurinstellingen zulllen hebben.</string>
   <string name="pref_red" formatted="false">Rode icoon gebruiken</string>
-  <string name="pref_red_summary" formatted="false">Gebruik rode icoon als batterij bijna leeg is</string>
+  <string name="pref_red_summary" formatted="false">Rode icoon gebruiken als batterij bijna leeg is</string>
   <string name="pref_red_help" formatted="false">Kies of je een rood icoon wilt laten zien onder een bepaald niveau.</string>
   <string name="pref_red_thresh" formatted="false">Voorwaarde voor rode icoon</string>
-  <string name="pref_red_thresh_summary" formatted="false">Laat rode icoon zien onder dit ladingsniveau:</string>
-  <string name="pref_red_thresh_summary10" formatted="false">Laat rode icoon zien bij of onder dit ladingsniveau:</string>
+  <string name="pref_red_thresh_summary" formatted="false">Rode icoon gebruiken onder dit ladingsniveau:</string>
+  <string name="pref_red_thresh_summary10" formatted="false">Rode icoon gebruiken bij of onder dit ladingsniveau:</string>
   <string name="pref_red_thresh_help" formatted="false">Hier kun je instellen wanneer het icoon rood moet worden.</string>
   <string name="pref_amber" formatted="false">Oranje icoon gebruiken</string>
-  <string name="pref_amber_summary" formatted="false">Gebruik oranje icoon als lading gemiddeld is</string>
+  <string name="pref_amber_summary" formatted="false">Oranje icoon gebruiken als lading gemiddeld is</string>
   <string name="pref_amber_help" formatted="false">Kies of je een oranje icoon wilt laten zien onder een bepaald niveau.</string>
   <string name="pref_amber_thresh" formatted="false">Voorwaarde voor oranje icoon</string>
-  <string name="pref_amber_thresh_summary" formatted="false">Laat oranje icoon zien onder dit ladingsniveau:</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">Laat oranje icoon zien bij of onder dit ladingsniveau:</string>
+  <string name="pref_amber_thresh_summary" formatted="false">Oranje icoon gebruiken onder dit ladingsniveau:</string>
+  <string name="pref_amber_thresh_summary10" formatted="false">Oranje icoon gebruiken bij of onder dit ladingsniveau:</string>
   <string name="pref_amber_thresh_help" formatted="false">Hier kun je instellen wanneer het icoon geel moet worden.</string>
   <string name="pref_green" formatted="false">Groene icoon gebruiken</string>
-  <string name="pref_green_summary" formatted="false">Gebruik groene icoon als lading hoog is</string>
+  <string name="pref_green_summary" formatted="false">Groene icoon gebruiken als lading hoog is</string>
   <string name="pref_green_help" formatted="false">Kies of je een groen icoon wilt laten zien op of boven een bepaald niveau.</string>
   <string name="pref_green_thresh" formatted="false">Voorwaarde voor groene icoon</string>
-  <string name="pref_green_thresh_summary" formatted="false">Laat groene icoon zien bij of boven dit ladingsniveau:</string>
+  <string name="pref_green_thresh_summary" formatted="false">Groene icoon gebruiken bij of boven dit ladingsniveau:</string>
   <string name="pref_green_thresh_help" formatted="false">Hier kun je instellen wanneer het icoon groen moet worden.</string>
   <string name="pref_cat_device_specific" formatted="false">Apparaatspecifieke instellingen</string>
   <string name="pref_ten_percent_mode" formatted="false">10% modus</string>
@@ -274,15 +290,15 @@
   <string name="alarm_pref_not_used" formatted="false">Niet gebruikt voor dit alarmtype</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Voorwaarde voor alarm:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Voor lading en temperatuuralarmen moet je de lading of temperatuur instellen waarop het alarm afgaat.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Notificatieinstellingen</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Hier kun je verschillende aspecten van de alarm notificaties instellen.</string>
+  <string name="pref_cat_notification_settings" formatted="false">Meldingsinstellingen</string>
+  <string name="pref_cat_notification_settings_help" formatted="false">Hier kun je verschillende aspecten van de alarmmelding instellen.</string>
   <string name="pref_alarm_ringtone" formatted="false">Beltoon</string>
   <string name="pref_alarm_ringtone_help" formatted="false">Kies welk geluid moet worden gebruikt voor het alarm. Kies \'Stil\' voor geen geluid.</string>
   <string name="silent" formatted="false">Stil</string>
   <string name="pref_alarm_vibrate" formatted="false">Trillen</string>
   <string name="pref_alarm_vibrate_help" formatted="false">Als het goed is laat deze optie het apparaat trillen als het alarm afgaat.</string>
   <string name="pref_alarm_lights" formatted="false">LED activeren</string>
-  <string name="pref_alarm_lights_help" formatted="false">Stelt in of de notificatie het lampje op je apparaat moet laten knipperen. (Niet alle apparaten hebben zo\'n lampje.)</string>
+  <string name="pref_alarm_lights_help" formatted="false">Stelt in of de melding het lampje op je apparaat moet laten knipperen. (Niet alle apparaten hebben zo\'n lampje.)</string>
   <string name="boot_pref_always" formatted="false">Altijd</string>
   <string name="boot_pref_never" formatted="false">Nooit</string>
   <string name="boot_pref_if_running" formatted="false">Wanneer ingeschakeld bij afsluiten</string>

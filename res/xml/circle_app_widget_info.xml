@@ -1,0 +1,18 @@
+<appwidget-provider
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="36dp"
+    android:minHeight="36dp"
+    android:minResizeWidth="36dp"
+    android:minResizeHeight="36dp"
+    android:updatePeriodMillis="0"
+    android:widgetCategory="home_screen|keyguard"
+    android:initialLayout="@layout/circle_app_widget"
+    android:label="@string/circle_widget"
+    android:previewImage="@drawable/circle_widget_preview"
+/>
+<!--
+    android:resizeMode="horizontal|vertical"
+    android:initialKeyguardLayout="@layout/battery_info_keyguard_app_widget"
+    android:previewImage="@drawable/widget_preview"
+
+-->
