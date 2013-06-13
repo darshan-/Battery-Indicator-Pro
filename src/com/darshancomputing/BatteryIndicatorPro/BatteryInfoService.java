@@ -419,6 +419,8 @@ public class BatteryInfoService extends Service {
         Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
         PendingIntent mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
 
+        cwbg.setLevel(info.percent);
+
         for (Integer widgetId : widgetIds) {
             // TODO: remove id from Set if something goes wrong?
             RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.circle_app_widget);
@@ -479,7 +481,6 @@ public class BatteryInfoService extends Service {
 
             notificationRV.setImageViewBitmap(R.id.battery, bl.getBitmap());
             bl.setLevel(info.percent);
-            cwbg.setLevel(info.percent);
 
             notificationRV.setTextViewText(R.id.percent, "" + info.percent + str.percent_symbol);
             notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTopLine));
