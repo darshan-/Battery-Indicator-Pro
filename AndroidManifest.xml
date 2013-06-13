@@ -89,6 +89,7 @@
         android:enabled="true"
         android:exported="true"
         android:process="com.darshancomputing.BatteryBotPro.BIS"
+        android:label="@string/circle_widget"
     >
       <intent-filter>
         <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
