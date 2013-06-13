@@ -99,6 +99,7 @@ public class BatteryInfoService extends Service {
     public static final String KEY_PREVIOUS_HEALTH = "previous_health";
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_SERVICE_DESIRED = "serviceDesired";
+    public static final String KEY_SHOW_NOTIFICATION = "show_notification";
 
     private static final String EXTRA_UPDATE_PREDICTOR = "com.darshancomputing.BatteryBotPro.EXTRA_UPDATE_PREDICTOR";
 
@@ -394,8 +395,10 @@ public class BatteryInfoService extends Service {
         else
             handleUpdateWithSameStatus();
 
-        prepareNotification();
-        doNotify();
+        if (sp_store.getBoolean(KEY_SHOW_NOTIFICATION, true)) {
+            prepareNotification();
+            doNotify();
+        }
 
         if (alarms.anyActiveAlarms())
             handleAlarms();

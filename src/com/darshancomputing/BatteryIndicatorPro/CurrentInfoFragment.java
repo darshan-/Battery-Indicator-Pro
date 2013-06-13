@@ -206,6 +206,31 @@ public class CurrentInfoFragment extends Fragment {
     }
 
     @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        if (activity.sp_store.getBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true)) {
+            menu.findItem(R.id.menu_show_notification).setEnabled(false);
+            menu.findItem(R.id.menu_show_notification).setVisible(false);
+            menu.findItem(R.id.menu_hide_notification).setEnabled(true);
+            menu.findItem(R.id.menu_hide_notification).setVisible(true);
+        } else {
+            menu.findItem(R.id.menu_show_notification).setEnabled(true);
+            menu.findItem(R.id.menu_show_notification).setVisible(true);
+            menu.findItem(R.id.menu_hide_notification).setEnabled(false);
+            menu.findItem(R.id.menu_hide_notification).setVisible(false);
+        }
+    }
+
+    private void setShowNotification(boolean show) {
+            SharedPreferences.Editor editor = activity.sp_store.edit();
+            editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, show);
+            editor.commit();
+
+            Message outgoing = Message.obtain();
+            outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS;
+            try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case R.id.menu_settings:
@@ -217,6 +242,12 @@ public class CurrentInfoFragment extends Fragment {
             return true;
         case R.id.menu_help:
             mStartActivity(HelpActivity.class);
+            return true;
+        case R.id.menu_show_notification:
+            setShowNotification(true);
+            return true;
+        case R.id.menu_hide_notification:
+            setShowNotification(false);
             return true;
         case R.id.menu_rate_and_review:
             try {
