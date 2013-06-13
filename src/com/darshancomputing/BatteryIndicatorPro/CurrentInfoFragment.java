@@ -207,22 +207,21 @@ public class CurrentInfoFragment extends Fragment {
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
+        MenuItem item = menu.findItem(R.id.menu_show_notification);
+
         if (activity.sp_store.getBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true)) {
-            menu.findItem(R.id.menu_show_notification).setEnabled(false);
-            menu.findItem(R.id.menu_show_notification).setVisible(false);
-            menu.findItem(R.id.menu_hide_notification).setEnabled(true);
-            menu.findItem(R.id.menu_hide_notification).setVisible(true);
+            item.setIcon(R.drawable.ic_menu_stop);
+            item.setTitle(R.string.menu_hide_notification);
         } else {
-            menu.findItem(R.id.menu_show_notification).setEnabled(true);
-            menu.findItem(R.id.menu_show_notification).setVisible(true);
-            menu.findItem(R.id.menu_hide_notification).setEnabled(false);
-            menu.findItem(R.id.menu_hide_notification).setVisible(false);
+            item.setIcon(R.drawable.ic_menu_notifications);
+            item.setTitle(R.string.menu_show_notification);
         }
     }
 
-    private void setShowNotification(boolean show) {
+    private void toggleShowNotification() {
             SharedPreferences.Editor editor = activity.sp_store.edit();
-            editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, show);
+            editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION,
+                              ! activity.sp_store.getBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true));
             editor.commit();
 
             Message outgoing = Message.obtain();
@@ -244,10 +243,7 @@ public class CurrentInfoFragment extends Fragment {
             mStartActivity(HelpActivity.class);
             return true;
         case R.id.menu_show_notification:
-            setShowNotification(true);
-            return true;
-        case R.id.menu_hide_notification:
-            setShowNotification(false);
+            toggleShowNotification();
             return true;
         case R.id.menu_rate_and_review:
             try {
