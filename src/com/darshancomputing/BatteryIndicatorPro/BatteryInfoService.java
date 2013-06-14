@@ -61,7 +61,7 @@ public class BatteryInfoService extends Service {
     private AlarmManager alarmManager;
     private SharedPreferences settings;
     private SharedPreferences sp_store;
-    SharedPreferences.Editor sps_editor;
+    private static SharedPreferences.Editor sps_editor;
 
     private KeyguardLock kl;
     private KeyguardManager km;
@@ -80,11 +80,12 @@ public class BatteryInfoService extends Service {
     private BatteryInfo info;
     private long now;
     private boolean updated_lasts;
-    private java.util.HashSet<Messenger> clientMessengers;
-    private final Messenger messenger = new Messenger(new MessageHandler());
+    private static java.util.HashSet<Messenger> clientMessengers;
+    private static Messenger messenger;
 
     private static HashSet<Integer> widgetIds = new HashSet<Integer>();
     private static AppWidgetManager widgetManager;
+    private static int actualNumWidgets = 0;
 
     private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfoService";
 
@@ -100,6 +101,8 @@ public class BatteryInfoService extends Service {
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_SERVICE_DESIRED = "serviceDesired";
     public static final String KEY_SHOW_NOTIFICATION = "show_notification";
+
+    public static final String KEY_ACTUAL_NUM_WIDGETS = "actual_num_widgets";
 
     private static final String EXTRA_UPDATE_PREDICTOR = "com.darshancomputing.BatteryBotPro.EXTRA_UPDATE_PREDICTOR";
 
@@ -170,6 +173,7 @@ public class BatteryInfoService extends Service {
 
         info = new BatteryInfo();
 
+        messenger = new Messenger(new MessageHandler());
         clientMessengers = new java.util.HashSet<Messenger>();
 
         predictor = new Predictor(context);
@@ -216,6 +220,8 @@ public class BatteryInfoService extends Service {
         for (int i = 0; i < ids.length; i++)
             widgetIds.add(ids[i]);
 
+        actualNumWidgets = sp_store.getInt(KEY_ACTUAL_NUM_WIDGETS, 0);
+
         Intent bc_intent = registerReceiver(mBatteryInfoReceiver, batteryChanged);
         info.load(bc_intent, sp_store);
     }
@@ -258,6 +264,12 @@ public class BatteryInfoService extends Service {
             case RemoteConnection.SERVICE_REGISTER_CLIENT:
                 clientMessengers.add(incoming.replyTo);
                 sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_BATTERY_INFO_UPDATED, info.toBundle());
+
+                if (actualNumWidgets == 0)
+                    sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_SERVICE_CLOSEABLE);
+                else
+                    sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_SERVICE_UNCLOSEABLE);
+
                 break;
             case RemoteConnection.SERVICE_UNREGISTER_CLIENT:
                 clientMessengers.remove(incoming.replyTo);
@@ -274,11 +286,11 @@ public class BatteryInfoService extends Service {
         }
     }
 
-    private void sendClientMessage(Messenger clientMessenger, int what) {
+    private static void sendClientMessage(Messenger clientMessenger, int what) {
         sendClientMessage(clientMessenger, what, null);
     }
 
-    private void sendClientMessage(Messenger clientMessenger, int what, Bundle data) {
+    private static void sendClientMessage(Messenger clientMessenger, int what, Bundle data) {
         Message outgoing = Message.obtain();
         outgoing.what = what;
         outgoing.replyTo = messenger;
@@ -297,6 +309,8 @@ public class BatteryInfoService extends Service {
         // Messages the service sends to clients
         public static final int CLIENT_SERVICE_CONNECTED = 0;
         public static final int CLIENT_BATTERY_INFO_UPDATED = 1;
+        public static final int CLIENT_SERVICE_CLOSEABLE = 2;
+        public static final int CLIENT_SERVICE_UNCLOSEABLE = 3;
 
         public Messenger serviceMessenger;
         private Messenger clientMessenger;
@@ -916,16 +930,47 @@ public class BatteryInfoService extends Service {
     public static void onWidgetUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         widgetManager = appWidgetManager;
 
+        boolean wasCloseable = false;
+
+        if (actualNumWidgets == 0)
+            wasCloseable = true;
+
+        int oldCount = widgetIds.size();
+
         for (int i = 0; i < appWidgetIds.length; i++) {
             widgetIds.add(appWidgetIds[i]);
         }
 
+        actualNumWidgets += widgetIds.size() - oldCount; // Number of new IDs we didn't know about
+
+        sps_editor.putInt(KEY_ACTUAL_NUM_WIDGETS, actualNumWidgets);
+        sps_editor.commit();
+
         context.startService(new Intent(context, BatteryInfoService.class));
+
+        if (wasCloseable && actualNumWidgets > 0) {
+            for (Messenger messenger : clientMessengers) {
+                sendClientMessage(messenger, RemoteConnection.CLIENT_SERVICE_UNCLOSEABLE);
+            }
+        }
     }
 
     public static void onWidgetDeleted(Context context, int[] appWidgetIds) {
         for (int i = 0; i < appWidgetIds.length; i++) {
             widgetIds.remove(appWidgetIds[i]);
+            actualNumWidgets -= 1;
+        }
+
+        if (actualNumWidgets < 0)
+            actualNumWidgets = 0;
+
+        sps_editor.putInt(KEY_ACTUAL_NUM_WIDGETS, actualNumWidgets);
+        sps_editor.commit();
+
+        if (actualNumWidgets == 0) {
+            for (Messenger messenger : clientMessengers) {
+                sendClientMessage(messenger, RemoteConnection.CLIENT_SERVICE_CLOSEABLE);
+            }
         }
     }
 }
