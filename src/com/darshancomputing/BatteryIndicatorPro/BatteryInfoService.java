@@ -85,7 +85,7 @@ public class BatteryInfoService extends Service {
 
     private static HashSet<Integer> widgetIds = new HashSet<Integer>();
     private static AppWidgetManager widgetManager;
-    private static int actualNumWidgets = 0;
+    private static boolean widgetsPresent = false;
 
     private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfoService";
 
@@ -101,8 +101,6 @@ public class BatteryInfoService extends Service {
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_SERVICE_DESIRED = "serviceDesired";
     public static final String KEY_SHOW_NOTIFICATION = "show_notification";
-
-    public static final String KEY_ACTUAL_NUM_WIDGETS = "actual_num_widgets";
 
     private static final String EXTRA_UPDATE_PREDICTOR = "com.darshancomputing.BatteryBotPro.EXTRA_UPDATE_PREDICTOR";
 
@@ -220,8 +218,6 @@ public class BatteryInfoService extends Service {
         for (int i = 0; i < ids.length; i++)
             widgetIds.add(ids[i]);
 
-        actualNumWidgets = sp_store.getInt(KEY_ACTUAL_NUM_WIDGETS, 0);
-
         Intent bc_intent = registerReceiver(mBatteryInfoReceiver, batteryChanged);
         info.load(bc_intent, sp_store);
     }
@@ -265,10 +261,10 @@ public class BatteryInfoService extends Service {
                 clientMessengers.add(incoming.replyTo);
                 sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_BATTERY_INFO_UPDATED, info.toBundle());
 
-                if (actualNumWidgets == 0)
-                    sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_SERVICE_CLOSEABLE);
-                else
+                if (widgetsPresent)
                     sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_SERVICE_UNCLOSEABLE);
+                else
+                    sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_SERVICE_CLOSEABLE);
 
                 break;
             case RemoteConnection.SERVICE_UNREGISTER_CLIENT:
@@ -930,47 +926,32 @@ public class BatteryInfoService extends Service {
     public static void onWidgetUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         widgetManager = appWidgetManager;
 
-        boolean wasCloseable = false;
-
-        if (actualNumWidgets == 0)
-            wasCloseable = true;
-
-        int oldCount = widgetIds.size();
-
         for (int i = 0; i < appWidgetIds.length; i++) {
             widgetIds.add(appWidgetIds[i]);
         }
 
-        actualNumWidgets += widgetIds.size() - oldCount; // Number of new IDs we didn't know about
-
-        sps_editor.putInt(KEY_ACTUAL_NUM_WIDGETS, actualNumWidgets);
-        sps_editor.commit();
-
         context.startService(new Intent(context, BatteryInfoService.class));
-
-        if (wasCloseable && actualNumWidgets > 0) {
-            for (Messenger messenger : clientMessengers) {
-                sendClientMessage(messenger, RemoteConnection.CLIENT_SERVICE_UNCLOSEABLE);
-            }
-        }
     }
 
     public static void onWidgetDeleted(Context context, int[] appWidgetIds) {
         for (int i = 0; i < appWidgetIds.length; i++) {
             widgetIds.remove(appWidgetIds[i]);
-            actualNumWidgets -= 1;
         }
+    }
 
-        if (actualNumWidgets < 0)
-            actualNumWidgets = 0;
+    public static void onWidgetEnabled(Context context) {
+        widgetsPresent = true;
 
-        sps_editor.putInt(KEY_ACTUAL_NUM_WIDGETS, actualNumWidgets);
-        sps_editor.commit();
+        for (Messenger messenger : clientMessengers) {
+            sendClientMessage(messenger, RemoteConnection.CLIENT_SERVICE_UNCLOSEABLE);
+        }
+    }
 
-        if (actualNumWidgets == 0) {
-            for (Messenger messenger : clientMessengers) {
-                sendClientMessage(messenger, RemoteConnection.CLIENT_SERVICE_CLOSEABLE);
-            }
+    public static void onWidgetDisabled(Context context) {
+        widgetsPresent = false;
+
+        for (Messenger messenger : clientMessengers) {
+            sendClientMessage(messenger, RemoteConnection.CLIENT_SERVICE_CLOSEABLE);
         }
     }
 }

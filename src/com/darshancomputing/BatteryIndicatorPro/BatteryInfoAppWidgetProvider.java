@@ -19,12 +19,20 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 
 public class BatteryInfoAppWidgetProvider extends AppWidgetProvider {
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        BatteryInfoService.onWidgetUpdate(context, appWidgetManager, appWidgetIds);
+    }
+
     public void onDeleted(Context context, int[] appWidgetIds) {
         BatteryInfoService.onWidgetDeleted(context, appWidgetIds);
     }
 
-    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        BatteryInfoService.onWidgetUpdate(context, appWidgetManager, appWidgetIds);
+    public void onEnabled(Context context) {
+        BatteryInfoService.onWidgetEnabled(context);
+    }
+
+    public void onDisabled(Context context) {
+        BatteryInfoService.onWidgetDisabled(context);
     }
 
     //public void onAppWidgetOptionsChanged(Context context, AppWidgetManager appwidgetManager,
