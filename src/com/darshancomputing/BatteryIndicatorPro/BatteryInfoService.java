@@ -59,8 +59,8 @@ public class BatteryInfoService extends Service {
 
     private NotificationManager mNotificationManager;
     private AlarmManager alarmManager;
-    private SharedPreferences settings;
-    private SharedPreferences sp_store;
+    private static SharedPreferences settings;
+    private static SharedPreferences sp_store;
     private static SharedPreferences.Editor sps_editor;
 
     private KeyguardLock kl;
@@ -101,6 +101,8 @@ public class BatteryInfoService extends Service {
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_SERVICE_DESIRED = "serviceDesired";
     public static final String KEY_SHOW_NOTIFICATION = "show_notification";
+
+    public static final String KEY_WIDGETS_PRESENT = "widgets_present";
 
     private static final String EXTRA_UPDATE_PREDICTOR = "com.darshancomputing.BatteryBotPro.EXTRA_UPDATE_PREDICTOR";
 
@@ -187,7 +189,7 @@ public class BatteryInfoService extends Service {
 
         alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
-        loadSettingsFiles();
+        loadSettingsFiles(context);
 
         Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
         mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
@@ -217,6 +219,8 @@ public class BatteryInfoService extends Service {
         int[] ids = widgetManager.getAppWidgetIds(new ComponentName(context, BatteryInfoAppWidgetProvider.class));
         for (int i = 0; i < ids.length; i++)
             widgetIds.add(ids[i]);
+
+        widgetsPresent = sp_store.getBoolean(KEY_WIDGETS_PRESENT, false);
 
         Intent bc_intent = registerReceiver(mBatteryInfoReceiver, batteryChanged);
         info.load(bc_intent, sp_store);
@@ -329,13 +333,13 @@ public class BatteryInfoService extends Service {
         }
     }
 
-    private void loadSettingsFiles() {
+    private static void loadSettingsFiles(Context context) {
         settings = context.getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
         sp_store = context.getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
     }
 
     private void reloadSettings(boolean cancelFirst) {
-        loadSettingsFiles();
+        loadSettingsFiles(context);
 
         str = new Str(res); // Language override may have changed
 
@@ -942,6 +946,13 @@ public class BatteryInfoService extends Service {
     public static void onWidgetEnabled(Context context) {
         widgetsPresent = true;
 
+        if (sp_store == null) loadSettingsFiles(context);
+        sps_editor = sp_store.edit();
+        sps_editor.putBoolean(KEY_WIDGETS_PRESENT, widgetsPresent);
+        sps_editor.commit();
+
+        if (clientMessengers == null) return;
+
         for (Messenger messenger : clientMessengers) {
             sendClientMessage(messenger, RemoteConnection.CLIENT_SERVICE_UNCLOSEABLE);
         }
@@ -949,6 +960,13 @@ public class BatteryInfoService extends Service {
 
     public static void onWidgetDisabled(Context context) {
         widgetsPresent = false;
+
+        if (sp_store == null) loadSettingsFiles(context);
+        sps_editor = sp_store.edit();
+        sps_editor.putBoolean(KEY_WIDGETS_PRESENT, widgetsPresent);
+        sps_editor.commit();
+
+        if (clientMessengers == null) return;
 
         for (Messenger messenger : clientMessengers) {
             sendClientMessage(messenger, RemoteConnection.CLIENT_SERVICE_CLOSEABLE);
