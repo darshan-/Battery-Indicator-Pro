@@ -63,6 +63,8 @@
   <string formatted="false" name="menu_close">Close</string>
   <string formatted="false" name="menu_help">Help</string>
   <string formatted="false" name="menu_rate_and_review">Rate &amp; Review</string>
+  <string formatted="false" name="menu_show_notification">Show Notification</string>
+  <string formatted="false" name="menu_hide_notification">Hide Notification</string>
   <string formatted="false" name="menu_clear">Clear</string>
   <string formatted="false" name="menu_reverse">Reverse Order</string>
   <string formatted="false" name="menu_log_filter">Filter</string>

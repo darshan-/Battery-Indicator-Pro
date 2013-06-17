@@ -8,6 +8,13 @@
   />
 
   <item
+      android:id="@+id/menu_show_notification"
+      android:icon="@drawable/ic_menu_notifications"
+      android:title="@string/menu_show_notification"
+      android:showAsAction="never"
+  />
+
+  <item
       android:id="@+id/menu_help"
       android:icon="@+android:drawable/ic_menu_help"
       android:title="@string/menu_help"

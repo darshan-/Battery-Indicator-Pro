@@ -56,6 +56,7 @@ public class CurrentInfoFragment extends Fragment {
     private final Messenger messenger = new Messenger(new MessageHandler());
     private BatteryInfoService.RemoteConnection serviceConnection;
     private boolean serviceConnected;
+    private boolean serviceCloseable = false;
 
     private static final Intent batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY)
         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -96,6 +97,14 @@ public class CurrentInfoFragment extends Fragment {
             case BatteryInfoService.RemoteConnection.CLIENT_BATTERY_INFO_UPDATED:
                 info.loadBundle(incoming.getData());
                 handleUpdatedBatteryInfo(info);
+                break;
+            case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CLOSEABLE:
+                serviceCloseable = true;
+                System.out.println("received service closeable");
+                break;
+            case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_UNCLOSEABLE:
+                serviceCloseable = false;
+                System.out.println("received service uncloseable");
                 break;
             default:
                 super.handleMessage(incoming);
@@ -206,6 +215,36 @@ public class CurrentInfoFragment extends Fragment {
     }
 
     @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        MenuItem snItem = menu.findItem(R.id.menu_show_notification);
+        MenuItem closeItem = menu.findItem(R.id.menu_close);
+
+        if (activity.sp_store.getBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true)) {
+            snItem.setIcon(R.drawable.ic_menu_stop);
+            snItem.setTitle(R.string.menu_hide_notification);
+        } else {
+            snItem.setIcon(R.drawable.ic_menu_notifications);
+            snItem.setTitle(R.string.menu_show_notification);
+        }
+
+        if (serviceCloseable)
+            closeItem.setEnabled(true);
+        else
+            closeItem.setEnabled(false);
+    }
+
+    private void toggleShowNotification() {
+            SharedPreferences.Editor editor = activity.sp_store.edit();
+            editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION,
+                              ! activity.sp_store.getBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true));
+            editor.commit();
+
+            Message outgoing = Message.obtain();
+            outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS;
+            try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case R.id.menu_settings:
@@ -217,6 +256,9 @@ public class CurrentInfoFragment extends Fragment {
             return true;
         case R.id.menu_help:
             mStartActivity(HelpActivity.class);
+            return true;
+        case R.id.menu_show_notification:
+            toggleShowNotification();
             return true;
         case R.id.menu_rate_and_review:
             try {
