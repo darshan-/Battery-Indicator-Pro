@@ -17,19 +17,28 @@
   <string name="confirm_close" formatted="false">Zamknąć?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator zostanie zamknięty i nie będziesz widział statusu w powiadomieniach.\n\nJeżeli chcesz widzieć status, zostaw program uruchomiony naciskając Anuluj a następnie przycisk Wstecz.</string>
   <string name="confirm_clear_logs" formatted="false">Usunąć wszystkie logi?</string>
+  <string name="configure_log_filter" formatted="false">Co pokazać w dzienniku?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Włączyć tryb 10%?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Wyłączyć tryb 10%</string>
   <string name="confirm_ten_percent_hint" formatted="false">Uwaga: Zmiana tego ustawienia (zarówno włączenie jak i wyłączenie) zresetuje ustawienia koloru.\n\nJeżeli posiadasz Motorolę Droid, Droid X, Droid 2, Defy, lub Samsunga Moment, przy pierwszym uruchomieniu aplikacji powinieneś włączyć i zostawić tę opcję. Użytkownicy pozostałych urządzeń powinni zostawić opcję wyłączoną.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Żaden</string>
+  <string name="tab_current_info" formatted="false">Aktualny stan</string>
+  <string name="tab_history" formatted="false">Historia</string>
+  <string name="notification_until_charged" formatted="false">" do naładowania"</string>
+  <string name="notification_until_drained" formatted="false">" pozostało"</string>
+  <string name="activity_until_charged" formatted="false">do naładowania</string>
+  <string name="activity_until_drained" formatted="false">do rozładowania</string>
   <string name="menu_settings" formatted="false">Ustawienia</string>
   <string name="menu_close" formatted="false">Zamknij</string>
   <string name="menu_help" formatted="false">Pomoc</string>
+  <string name="menu_rate_and_review" formatted="false">Oceń i zrecenzuj</string>
   <string name="menu_clear" formatted="false">Wyczyść</string>
   <string name="menu_reverse" formatted="false">Odwróć kolejność</string>
+  <string name="menu_log_filter" formatted="false">Filtruj</string>
   <string name="menu_export" formatted="false">Eksport do CSV</string>
   <string name="menu_delete_alarm" formatted="false">Usuń alarm</string>
-  <string name="menu_get_plugins" formatted="false">Ściągnij dodatki</string>
+  <string name="menu_get_plugins" formatted="false">Pobierz wtyczki</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Fahrenheit</string>
@@ -42,8 +51,8 @@
   <string name="normal_usage" formatted="false">Normalne użytk., pozostało:</string>
   <string name="heavy_usage" formatted="false">Mocne użytk., pozostało:</string>
   <string name="constant_usage" formatted="false">Ciągłe użytk., pozostało:</string>
-  <string name="press_back_to_leave" formatted="false">Naciśnij Wstecz aby wyjść.</string>
-  <string name="press_menu_for_more" formatted="false">Naciśnij Menu dla więcej opcji.</string>
+  <string name="press_back_to_leave" formatted="false">Naciśnij WSTECZ aby wyjść.</string>
+  <string name="press_menu_for_more" formatted="false">Naciśnij MENU dla więcej opcji.</string>
   <string name="inaccessible_storage" formatted="false">Karta SD jest niedostępna.</string>
   <string name="inaccessible_w_reason" formatted="false">Karta SD jest niedostępna:</string>
   <string name="read_only_storage" formatted="false">Karta SD jest w trybie tylko do odczytu.</string>
@@ -53,6 +62,7 @@
   <string name="status" formatted="false">status</string>
   <string name="charge" formatted="false">poziom_naładowania</string>
   <string name="temperature" formatted="false">stopni_celcjusza</string>
+  <string name="temperature_f" formatted="false">stopni_fahrenheita</string>
   <string name="voltage" formatted="false">woltów</string>
   <string name="status_unplugged" formatted="false">Odłączony</string>
   <string name="status_unknown" formatted="false">Nieznany</string>
@@ -67,7 +77,7 @@
   <string name="health_dead" formatted="false">Martwa</string>
   <string name="health_overvoltage" formatted="false">Przeładowana</string>
   <string name="health_failure" formatted="false">Defekt</string>
-  <string name="health_cold" formatted="false">Cold</string>
+  <string name="health_cold" formatted="false">Zimna</string>
   <string name="plugged_unplugged" formatted="false">Odłączony</string>
   <string name="plugged_ac" formatted="false">(AC)</string>
   <string name="plugged_usb" formatted="false">(USB)</string>
@@ -90,10 +100,14 @@
   <string name="alarm_health_failure" formatted="false">"Stan zdrowia baterii: "</string>
   <string name="alarm_text" formatted="false">Edytuj alarmy.</string>
   <string name="logs_empty" formatted="false">Brak logów</string>
+  <string name="after_n_hours_unplugged" formatted="false">Po %1.1f godzinach odłączono</string>
+  <string name="after_n_hours_plugged_in" formatted="false">Po %1.1f godzinach podłączono</string>
   <string name="discharging_from" formatted="false">Rozładowywanie od</string>
   <string name="charging_from" formatted="false">Ładowanie od</string>
   <string name="fully_charged" formatted="false">W pełni naładowana</string>
-  <string name="since" formatted="false">Od</string>
+  <string name="since" formatted="false">od</string>
+  <string name="dialog_color_picker" formatted="false">Wybierz kolor</string>
+  <string name="press_color_to_apply" formatted="false">Zastosuj stary lub nowy kolor:</string>
   <string name="currently_using" formatted="false">W użyciu</string>
   <string name="currently_set_to" formatted="false">"Ustawione na: "</string>
   <string name="currently_disabled" formatted="false">Wyłączone</string>
@@ -119,9 +133,18 @@
   <string name="help_subcat_translators" formatted="false">Tłumacze</string>
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="help_contact" formatted="false">Jeżeli masz pytanie lub problem, zobacz <a href="http://code.google.com/ p/battery-indicator/wiki/FAQ?tm=6">FAQ projektu</a> i sposób kontaktu że mną.</string>
-  <string name="pref_hint" formatted="false">Podpowiedź: Naciśnij Menu po pomoc.</string>
+  <string name="pref_hint" formatted="false">Podpowiedź: Naciśnij MENU po pomoc.</string>
   <string name="settings_overview" formatted="false">Przegląd</string>
   <string name="settings_overview_help" formatted="false">Ustawienia są posegregowane na 4 osobne strony. Każda strona ma własną pomoc, która opisuje ustawienia na niej. Po prostu naciśnij MENU a następnie Pomoc (na tabletach MENU nie jest wymagane) aby ją uzyskać.</string>
+  <string name="notification_settings" formatted="false">Główne powiadomienia</string>
+  <string name="notification_settings_summary" formatted="false">Skonfiguruj główne powiadomienia.</string>
+  <string name="notification_settings_help" formatted="false">Możesz skonfigurować treść, którą widać po rozwinięciu w notyfikacjach i zmieniać jej wygląd.</string>
+  <string name="status_bar_icon_settings" formatted="false">Ikona paska stanu</string>
+  <string name="status_bar_icon_settings_summary" formatted="false">Zmień zestaw ikon</string>
+  <string name="status_bar_icon_settings_help" formatted="false">Możesz wybrać, który zestaw ikon chcesz używać i zmieniać ustawienia dla danego zestawu ikon (np. kolorów).</string>
+  <string name="keyguard_settings" formatted="false">Ekran blokady</string>
+  <string name="keyguard_settings_summary" formatted="false">Skonfiguruj funkcję by wyłączyć ekran blokady</string>
+  <string name="keyguard_settings_help" formatted="false">Możesz skonfigurować różne aspekty funkcji, by ręcznie lub automatycznie wyłączyć ekran blokady.</string>
   <string name="alarm_settings_subtitle" formatted="false">Ustawienia alarmów</string>
   <string name="alarm_settings" formatted="false">Alarmy</string>
   <string name="alarm_settings_summary" formatted="false">Ustaw powiadomienia o niskim/pełnym poziomie baterii</string>
@@ -131,6 +154,58 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Więcej ustawień w wersji Pro</string>
   <string name="pref_please_upgrade" formatted="false">Wersja Pro ma wiele innych ustawień, włączając w to kolorowe ikony, wtyczki z ikonami, alarmy, tematy, zapisywanie stanu baterii w logach, auto/ ręczne wyłączenie blokady ekranu, przybliżone czasy ładowania/rozładowania i wiele więcej.</string>
   <string name="add_alarm" formatted="false">Dodaj alarm</string>
+  <string name="pref_cat_notification_layout" formatted="false">Kompozycja</string>
+  <string name="pref_use_system_notification_layout" formatted="false">Użyj kompozycji systemu</string>
+  <string name="pref_use_system_notification_layout_summary" formatted="false">Użyć systemowego wyglądu notyfikacji zamiast wyglądu BatteryBot?</string>
+  <string name="pref_use_system_notification_layout_help" formatted="false">Jeśli opcja jest włączona, stosowany będzie wygląd systemowy notyfikacji zamiast niestandardowego układu BatteryBot. Wygląd systemowy jest mniej konfigurowalny, ale niewielka część urządzeń nie zgłasza domyślnych kolorów poprawnie, przez co wygląd jest brzydki lub ciężko cokolwiek odczytać. Inne urządzenia wykorzystują nietypowy wygląd, czyniąc układ niestandardowy zbyt dużym. Wybór tej opcji zapewni, że powiadomienie będzie wyglądać jak te inne.\n\nNote that this will result in having the status bar icon used in the notification.</string>
+  <string name="pref_cat_notification_content" formatted="false">Treść</string>
+  <string name="pref_icon_area_content" formatted="false">Zawartość obszaru ikony</string>
+  <string name="pref_icon_area_content_help" formatted="false">Wybierz co chcesz zobaczyć po lewej stronie powiadomienia w notyfikacjach po rozwinięciu. Możesz wybrać tylko grafikę baterii, tekstowy procent naładowania lub oba w dowolnej kolejności.</string>
+  <string name="battery_graphic" formatted="false">Bateria graficzna</string>
+  <string name="charge_percentage" formatted="false">Procent naładowania</string>
+  <string name="percentage_first" formatted="false">Procent, bateria</string>
+  <string name="battery_first" formatted="false">Bateria, procent</string>
+  <string name="pref_top_line_content" formatted="false">Zawartość górnego wiersza</string>
+  <string name="pref_top_line_content_help" formatted="false">Skonfiguruj co się ma pojawiać w górnym wierszu: szacowany pozostały czas (konfigurowalne w innym miejscu), czas od zmiany stanu (podłączony, odłączony, w pełni naładowany) lub stan baterii (zdrowie baterii, temperatura i napięcie).</string>
+  <string name="pref_bottom_line_content" formatted="false">Zawartość dolnego wiersza</string>
+  <string name="pref_bottom_line_content_help" formatted="false">Masz te same opcje dla dolnej linii, jak dla górnej linii.</string>
+  <string name="time_remaining" formatted="false">Pozostały czas</string>
+  <string name="time_since_status_change" formatted="false">Czas od zmiany stanu</string>
+  <string name="vital_signs" formatted="false">Stan zdrowia</string>
+  <string name="pref_time_remaining_verbosity" formatted="false">Rozwlekłość pozostałego czasu</string>
+  <string name="pref_time_remaining_verbosity_help" formatted="false">Urządzenia są w różnych kształtach i rozmiarach, więc w większości tłumaczeń należy używać skrótów w celu zapewnienia, że pozostały czas mieści się w obszarze powiadomień. Jeśli nadal nie pasuje, można zdecydować się na skrócony format. Jeśli masz dużo miejsca, możesz ustawić rozwlekły.</string>
+  <string name="condensed" formatted="false">Zagęszczony</string>
+  <string name="normal" formatted="false">Normalny</string>
+  <string name="verbose" formatted="false">Rozwlekły</string>
+  <string name="pref_status_duration_in_vital_signs" formatted="false">Czas trwania w stanie zdrowia</string>
+  <string name="pref_status_duration_in_vital_signs_summary" formatted="false">Uwzględnić czas od zmiany stanu w stanie zdrowia?</string>
+  <string name="pref_status_duration_in_vital_signs_help" formatted="false">Jeśli ustawisz, linia stanu zdrowia będzie zawierała również kiedy urządzenie zostało odłączone, podłączone lub w pełni naładowane.</string>
+  <string name="pref_cat_notification_appearance" formatted="false">Wygląd</string>
+  <string name="pref_cat_notification_appearance_help" formatted="false">Możesz zmienić kolory dla tekstu powiadomienia jeśli domyślne są nieczytelne lub jeśli po prostu wolisz coś innego. Możesz również wybrać, zastąpić lub pokazać ramkę wokół obszaru ikon.</string>
+  <string name="pref_notification_percentage_text_color" formatted="false">Kolor procentów</string>
+  <string name="pref_custom_percentage_text_color" formatted="false">Własne kolory procentów</string>
+  <string name="pref_notification_top_line_color" formatted="false">Kolor tekstu górnego wiersza</string>
+  <string name="pref_custom_top_line_color" formatted="false">Własny kolor tekstu górnego wiersza</string>
+  <string name="pref_notification_bottom_line_color" formatted="false">Kolor tekstu dolnego wiersza</string>
+  <string name="pref_custom_bottom_line_color" formatted="false">Własny kolor tekstu dolnego wiersza</string>
+  <string name="pref_show_box_around_icon_area" formatted="false">Pokaż pole wokół obszaru ikony</string>
+  <string name="pref_show_box_around_icon_area_summary" formatted="false">Pokazać kolorowe pole w obszarze ikony?</string>
+  <string name="system_default" formatted="false">Ustawienia domyślne</string>
+  <string name="black" formatted="false">Czarny</string>
+  <string name="white" formatted="false">Biały</string>
+  <string name="ics_blue" formatted="false">Android ICS Niebieski</string>
+  <string name="custom" formatted="false">Własny...</string>
+  <string name="pref_cat_notification_priority" formatted="false">Priorytet powiadomienia</string>
+  <string name="pref_cat_notification_priority_help" formatted="false">Na Jelly Bean i wyżej (Android 4.1 i powyżej), powiadomienia mogą mieć ustawiony priorytet. Efekt(y) zmiany priorytetu nie są gwarantowane, ale ogólnie:\n\n• Ustawienie na \"Minimum\" powinno w większości przypadków usunąć ikonę na pasku stanu, ale wciąż pokazywać powiadomienie w rozwijanym pasku notyfikacji.\n\n• Ustawienie na \"Low\" powinny umożliwić innym powiadamianie (np. nowe wiadomości e-mail) nad powiadomieniem BatteryBot. To jest fajne w przypadkach takich np. jak e-mail, w którym powiadomienie jest rozwijane (rozszerzalne powiadomienia są automatycznie rozwijane, gdy są na górze).\n\nPriorytet \"Default\" zazwyczaj zostawia BatteryBot u samej góry, ale są przypadki, gdzie wyższe priorytety to zmieniają.\n\nPowtarzam, dokładne zachowanie może ulec zmianie i nie jest gwarantowane.</string>
+  <string name="pref_main_notification_priority" formatted="false">Główny priorytet powiadomienia</string>
+  <string name="pref_main_notification_priority_help" formatted="false">Ustaw priorytet głównego powiadomienia. Alarmy, wtyczki oraz wszelkie inne powiadomienia nie mają wpływu na to ustawienie, ale mogą w przyszłości konfigurowalny priorytet.</string>
+  <string name="pref_cat_icon_set" formatted="false">Zestaw ikon</string>
+  <string name="pref_icon_set" formatted="false">Zestaw ikon</string>
+  <string name="pref_icon_set_help" formatted="false">Android jest w wielu wersjach, więc nie istnieje jeden idealny zestaw ikon, który działa dobrze na każdym urządzeniu. Użytkownicy wersji Pro mogą korzystać z wtyczek, aby uzyskać więcej opcji, ale do dyspozycji są trzy wbudowane zestawy ikon, które powinny być chociaż jeden dobrym rozwiązaniem dla praktycznie każdego urządzenia.\n\n\"Classic\" to oryginalny zestaw ikon z 2009 roku. Jest wciąż najlepsza dla starszych urządzeń, ale nowsze wersje Androida (począwszy od Android 3.0, Honeycomb) kurczą i przyciemniają ikony powiadomień, co czyni ten zestaw bardzo trudnym do odczytania.\n\n\"Plain number\" jest domyślne dla wszystkich nowych urządzeń z systemem Android. Jest to bardzo duży biały numer, który jest dobrze widoczny nawet po skurczeniu i przyciemnieniu. Podczas ładowania pod numerkiem pokazuje się \"błyskawica\".\n\n\"Smaller number\" jest jak \"Plain number\" ale mniejszy, bo niektóre nowsze urządzenia nie kurczą ikonek jak seryjny Android i \"Plain number\" robi się bardzo duży.\n\nJeśli masz jakieś wtyczki ikon do BatteryBot Pro zainstalowane (naciśnij przycisk MENU, a następnie Pobierz Wtyczki by otrzymać darmowe wtyczki) to możesz wybrać spośród nich tutaj.</string>
+  <string name="pref_cat_charging_indicator" formatted="false">Wskaźnik naładowania</string>
+  <string name="pref_indicate_charging" formatted="false">Wskaźnik ładowania</string>
+  <string name="pref_indicate_charging_summary" formatted="false">Zmienić wskaźnik w podczas ładowania?</string>
+  <string name="pref_indicate_charging_help" formatted="false">Niektóre zestawy ikon pokazują, gdy akumulator jest w trakcie ładowania, np. pokazując błyskawice pod wskaźnikiem. Wyłącz to ustawienie, jeśli wolisz tego nie robić.</string>
   <string name="pref_cat_logging" formatted="false">Logowanie</string>
   <string name="pref_enable_logging" formatted="false">Włącz logowanie</string>
   <string name="pref_enable_logging_summary" formatted="false">Czy logować zmiany stanu baterii?</string>
@@ -140,6 +215,9 @@
   <string name="pref_max_log_age_help" formatted="false">Jeżeli zapisywanie logów jest aktywne, za każdym razem gdy podpinasz urządzenie, logi starsze od tego będą usuwane.</string>
   <string name="pref_cat_keyguard" formatted="false">Blokada ekranu</string>
   <string name="pref_cat_keyguard_help" formatted="false">Android pozwala aplikacjom na wyłączenie i włączenie. co nazywamy \"keyguard\", lub po prostu blokadą ekranu. Pomiędzy włączeniem i wyłączeniem nie ma kontroli — nie wiem, którym klawiszem włączyć ekran.</string>
+  <string name="pref_notify_when_kg_disabled" formatted="false">Informuj kiedy wyłączony</string>
+  <string name="pref_notify_when_kg_disabled_summary" formatted="false">Wskazywać, kiedy ekran blokady jest wyłączony?</string>
+  <string name="pref_notify_when_kg_disabled_help" formatted="false">Jeśli zaznaczone, oddzielne powiadomienie pojawi się wskazując kiedy aplikacja wyłącza ekran blokady.</string>
   <string name="pref_confirm_manual_disable" formatted="false">Potwierdź manualne wyłączenie</string>
   <string name="pref_confirm_manual_disable_summary" formatted="false">Potwierdzać kiedy blok. ekranu wyłączana ręcznie?</string>
   <string name="pref_confirm_manual_disable_help" formatted="false">Jeżeli zaznaczone, okienko z potwierdzeniem wyświetla się przy manualnym wyłączeniu blokady. Jest to na wypadek gdy nowi użytkownicy przypadkowo zablokują urządzenie bez ich wiedzy. Jeżeli wyłączysz blokadę bez potrzeby, prawdopodobnie będziesz chciał włączyć ją ponownie.</string>
@@ -152,9 +230,12 @@
   <string name="pref_disallow_disable_lock_screen" formatted="false">Nie pozwól na ręczne wyłączenie</string>
   <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Nie pozwalaj na użycie przycisku ręcznego wyłączenie blokady ekranu?</string>
   <string name="pref_disallow_disable_lock_screen_help" formatted="false">Jeżeli masz alternatywą blokadę, która umożliwia dostęp do paska powiadomień, powinieneś włączyć tę opcję dla bezpieczeństwa.</string>
+  <string name="pref_notify_status_duration" formatted="false">Pokaż czas stanu</string>
+  <string name="pref_notify_status_duration_summary" formatted="false">Pokaż czas od kiedy status się zmienił zamiast prognozy pozostałego czasu?</string>
+  <string name="pref_notify_status_duration_help" formatted="false">Włącz to ustawienie, jeśli wolisz główne powiadomienie pokazujące czas od zmiany statusu (np. \"Odłączony przez 5 godzin\"), a nie szacunku czasu pozostałego. Obie informacje są dostępne z głównego okna.</string>
   <string name="pref_cat_battery_use" formatted="false">Użycie baterii</string>
   <string name="pref_finish_after_battery_use" formatted="false">Zakończ po uruchomieniu</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">Zakończ zaraz po uruchomieniu ekranu zużycia baterii?</string>
+  <string name="pref_finish_after_battery_use_summary" formatted="false">Zakończyć zaraz po uruchomieniu ekranu zużycia baterii?</string>
   <string name="pref_finish_after_battery_use_help" formatted="false">Jeżeli każde naciśnięcie ekranu ma dla ciebie znaczenie powinieneś włączyć tę opcję. Zabezpieczenia to przed natychmiastowym zamknięciem głównego okna Battery Indicatora przy uruchomieniu Użycia baterii</string>
   <string name="pref_cat_temperature_unit" formatted="false">Jednostka temperatury</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Konwertuj na Fahrenheita</string>
@@ -211,11 +292,16 @@
   <string name="pref_alarm_threshold" formatted="false">Poziom</string>
   <string name="alarm_pref_not_used" formatted="false">Nie używane przez ten typ alarmu</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Poziom alarmu:</string>
+  <string name="pref_alarm_threshold_help" formatted="false">Dla ładowania i temperatury alarmów, należy ustawić poziom temperatury lub ładowania, który wywoła alarm.</string>
   <string name="pref_cat_notification_settings" formatted="false">Ustawienia powiadomień</string>
+  <string name="pref_cat_notification_settings_help" formatted="false">Tu możesz kontrolować różne aspekty powiadomień alarmowych, które są tworzone by powiadamiać kiedy alarm zostanie wyzwolony.</string>
   <string name="pref_alarm_ringtone" formatted="false">Dzwonek</string>
-  <string name="silent" formatted="false">Wuciszony</string>
+  <string name="pref_alarm_ringtone_help" formatted="false">Tutaj można kontrolować, który dźwięk odtwarzany będzie w momencie alarmu. Wybierz \"Wyciszony\", jeśli nie chcesz odtwarzać dźwięku.</string>
+  <string name="silent" formatted="false">Wyciszony</string>
   <string name="pref_alarm_vibrate" formatted="false">Wibracja</string>
+  <string name="pref_alarm_vibrate_help" formatted="false">Jeśli wszystko pójdzie dobrze, ustawienie tej opcji sprawi, że urządzenie będzie wibrować podczas alarmu, chyba że urządzenie jest w trybie wyciszonym, chyba że urządzenie skonfigurować w wibracje nawet w trybie cichym. Innymi słowy, należy zrobić to, czego się spodziewać. Proszę napisz do mnie, jeśli coś pójdzie źle.</string>
   <string name="pref_alarm_lights" formatted="false">Flash</string>
+  <string name="pref_alarm_lights_help" formatted="false">Określa, czy powiadomienie powinno włączyć światła urządzenia domyślnie. Na ogół miga dioda LED lub trackball. Może być taka sytuacja, że system Android poprosi o zezwolenie na użycie światła urządzenia, ale nie zawsze tak musi być.</string>
   <string name="boot_pref_always" formatted="false">Zawsze</string>
   <string name="boot_pref_never" formatted="false">Nigdy</string>
   <string name="boot_pref_if_running" formatted="false">Jeżeli uruchomiona przy wyłączaniu</string>
@@ -232,9 +318,46 @@
   <string name="age_2_weeks" formatted="false">2 tygodnie</string>
   <string name="age_3_weeks" formatted="false">3 tygodnie</string>
   <string name="age_4_weeks" formatted="false">4 tygodnie</string>
+  <string name="notification_priority_max" formatted="false">Maksymalny</string>
+  <string name="notification_priority_high" formatted="false">Wysoki</string>
+  <string name="notification_priority_default" formatted="false">Domyślny</string>
+  <string name="notification_priority_low" formatted="false">Niski</string>
+  <string name="notification_priority_min" formatted="false">Minimalny</string>
+  <string name="icon_set_classic" formatted="false">Klasyczny</string>
+  <string name="icon_set_plain" formatted="false">Zwykły numer</string>
+  <string name="icon_set_smaller" formatted="false">Mniejszy numer</string>
   <plurals name="n_log_items">
     <item quantity="one">%d Log</item>
     <item quantity="other">%d Logów</item>
+  </plurals>
+  <plurals name="n_hours_long">
+    <item quantity="one">"%d godzina, "</item>
+  </plurals>
+  <plurals name="n_minutes_long">
+    <item quantity="one">%d minuta</item>
+    <item quantity="other">%d minuty</item>
+  </plurals>
+  <plurals name="n_hours_medium">
+    <item quantity="one">"%d godz, "</item>
+    <item quantity="other">"%d godz, "</item>
+  </plurals>
+  <plurals name="n_minutes_medium">
+    <item quantity="one">%d min.</item>
+    <item quantity="other">%d min.</item>
+  </plurals>
+  <plurals name="n_hours_short">
+    <item quantity="other">"%dh "</item>
+  </plurals>
+  <plurals name="n_minutes_short">
+    <item quantity="other">%dm</item>
+  </plurals>
+  <plurals name="n_days">
+    <item quantity="one">"%d dzień, "</item>
+    <item quantity="other">"%d dni, "</item>
+  </plurals>
+  <plurals name="n_hours">
+    <item quantity="one">%d godzina</item>
+    <item quantity="other">%d godzin</item>
   </plurals>
   <plurals name="for_n_hours">
     <item quantity="one">Przez %d godzinę</item>
