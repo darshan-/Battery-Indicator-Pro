@@ -100,11 +100,9 @@ public class CurrentInfoFragment extends Fragment {
                 break;
             case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CLOSEABLE:
                 serviceCloseable = true;
-                System.out.println("received service closeable");
                 break;
             case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_UNCLOSEABLE:
                 serviceCloseable = false;
-                System.out.println("received service uncloseable");
                 break;
             default:
                 super.handleMessage(incoming);

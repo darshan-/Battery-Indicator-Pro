@@ -14,6 +14,7 @@
   <string formatted="false" name="disable_lock_screen">Disable Lock Screen</string>
 
   <string formatted="false" name="circle_widget">BatteryBot Circle</string>
+  <string formatted="false" name="full_widget">BatteryBot Full</string>
 
   <string formatted="false" name="confirm_disable">Really disable lock screen?</string>
   <string formatted="false" name="confirm_disable_hint">

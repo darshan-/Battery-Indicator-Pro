@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="@dimen/widget_margin"
+              android:id="@+id/widget_layout"
+              android:background="@android:color/black"
+>
+  <ImageView android:id="@+id/battery_level_view"
+             android:layout_height="fill_parent"
+             android:layout_width="0px"
+             android:layout_weight="0.2"
+             android:scaleType="fitCenter"
+             android:paddingTop="4dp"
+             android:paddingBottom="4dp"
+             android:paddingLeft="14dp"
+  />
+
+  <TextView android:id="@+id/level"
+            android:layout_height="fill_parent"
+	    android:layout_width="0px"
+            android:layout_weight="0.4"
+            android:gravity="center_horizontal|center_vertical"
+            android:textColor="#fff"
+            android:textSize="32dp"
+            android:text="XX%"
+  />
+
+  <LinearLayout android:orientation="vertical"
+                android:layout_height="fill_parent"
+                android:layout_width="0px"
+                android:layout_weight="0.4"
+  >
+    <TextView android:id="@+id/time_remaining"
+	      android:layout_width="fill_parent"
+              android:layout_height="0px"
+              android:layout_weight="0.5"
+              android:gravity="center_horizontal|bottom"
+              android:textColor="#fff"
+              android:textSize="16dp"
+              android:text="X time"
+    />
+
+    <TextView android:id="@+id/until_what"
+	      android:layout_width="fill_parent"
+              android:layout_height="0px"
+              android:layout_weight="0.5"
+              android:gravity="center_horizontal|top"
+              android:textColor="#fff"
+              android:textSize="12dp"
+              android:text="until such"
+    />
+  </LinearLayout>
+</LinearLayout>

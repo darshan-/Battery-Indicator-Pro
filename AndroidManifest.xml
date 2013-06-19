@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.darshancomputing.BatteryIndicatorPro"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
-    android:versionCode="011148"
-    android:versionName="8.1.1"
+    android:versionCode="011149"
+    android:versionName="8.1.2-beta"
 >
   <application
       android:label="@string/app_full_name"
@@ -83,7 +83,6 @@
       </intent-filter>
     </receiver>
 
-
     <receiver
         android:name="BatteryInfoAppWidgetProvider"
         android:enabled="true"
@@ -97,6 +96,22 @@
       <meta-data
           android:name="android.appwidget.provider"
           android:resource="@xml/circle_app_widget_info"
+      />
+    </receiver>
+
+    <receiver
+        android:name="FullAppWidgetProvider"
+        android:enabled="true"
+        android:exported="true"
+        android:process="com.darshancomputing.BatteryBotPro.BIS"
+        android:label="@string/full_widget"
+    >
+      <intent-filter>
+        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+      </intent-filter>
+      <meta-data
+          android:name="android.appwidget.provider"
+          android:resource="@xml/full_app_widget_info"
       />
     </receiver>
   </application>
