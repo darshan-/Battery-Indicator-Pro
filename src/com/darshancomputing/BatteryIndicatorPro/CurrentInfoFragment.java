@@ -346,38 +346,10 @@ public class CurrentInfoFragment extends Fragment {
         TextView tv = (TextView) view.findViewById(R.id.level);
         tv.setText("" + info.percent + activity.res.getString(R.string.percent_symbol));
 
-        if (info.prediction.what == BatteryInfo.Prediction.NONE) {
-            tv = (TextView) view.findViewById(R.id.time_remaining);
-            tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + activity.str.statuses[info.status] + "</font>")); // TODO: color
-            tv = (TextView) view.findViewById(R.id.until_what);
-            tv.setText("");
-        } else {
-            String until_text;
-
-            if (info.prediction.what == BatteryInfo.Prediction.UNTIL_CHARGED)
-                until_text = activity.res.getString(R.string.activity_until_charged);
-            else
-                until_text = activity.res.getString(R.string.activity_until_drained);
-
-            tv = (TextView) view.findViewById(R.id.time_remaining);
-            BatteryInfo.RelativeTime predicted = info.prediction.last_rtime;
-
-            if (predicted.days > 0)
-                // TODO: Translatable, color, better layout
-                tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + predicted.days + "d</font> " +
-                                                      "<font color=\"#33b5e5\"><small>" + predicted.hours + "h</small></font>"));
-            else if (predicted.hours > 0)
-                // TODO: Translatable ("h" and "m"); color
-                tv.setText(android.text.Html.fromHtml("<font color=\"#6fc14b\">" + predicted.hours + "h</font> " +
-                                                      "<font color=\"#33b5e5\"><small>" + predicted.minutes + "m</small></font>"));
-            else
-                // TODO: Translatable, color, better layout
-                tv.setText(android.text.Html.fromHtml("<font color=\"#33b5e5\"><small>" + predicted.minutes + " mins</small></font>"));
-
-
-            tv = (TextView) view.findViewById(R.id.until_what);
-            tv.setText(until_text);
-        }
+        tv = (TextView) view.findViewById(R.id.time_remaining);
+        tv.setText(activity.str.timeRemaining(info));
+        tv = (TextView) view.findViewById(R.id.until_what);
+        tv.setText(activity.str.untilWhat(info));
 
         int secs = (int) ((System.currentTimeMillis() - info.last_status_cTM) / 1000);
         int hours = secs / (60 * 60);

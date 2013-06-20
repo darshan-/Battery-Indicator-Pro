@@ -446,12 +446,13 @@ public class BatteryInfoService extends Service {
                 rv.setImageViewBitmap(R.id.circle_widget_image_view, cwbg.getBitmap());
             } else {
                 rv = new RemoteViews(context.getPackageName(), R.layout.full_app_widget);
+
                 rv.setImageViewBitmap(R.id.battery_level_view, bl.getBitmap());
+                rv.setTextViewText(R.id.time_remaining, str.timeRemaining(info));
+                rv.setTextViewText(R.id.until_what, str.untilWhat(info));
             }
 
-            //if (android.os.Build.VERSION.SDK_INT < 11) { // No resizeable widgets
-                rv.setTextViewText(R.id.level, "" + info.percent + str.percent_symbol);
-            //}
+            rv.setTextViewText(R.id.level, "" + info.percent + str.percent_symbol);
 
             rv.setOnClickPendingIntent(R.id.widget_layout, mainWindowPendingIntent);
             widgetManager.updateAppWidget(widgetId, rv);

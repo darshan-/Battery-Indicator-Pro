@@ -233,4 +233,30 @@ public class Str {
                You'd actually do that from SettingsActivity, so execution would never actually get here. */
         }
     }
+
+    public android.text.Spanned timeRemaining(BatteryInfo info) {
+        if (info.prediction.what == BatteryInfo.Prediction.NONE) {
+            return android.text.Html.fromHtml("<font color=\"#6fc14b\">" + statuses[info.status] + "</font>");
+        } else {
+            BatteryInfo.RelativeTime predicted = info.prediction.last_rtime;
+
+            if (predicted.days > 0)
+                return android.text.Html.fromHtml("<font color=\"#6fc14b\">" + predicted.days + "d</font> " +
+                                                  "<font color=\"#33b5e5\"><small>" + predicted.hours + "h</small></font>");
+            else if (predicted.hours > 0)
+                return android.text.Html.fromHtml("<font color=\"#6fc14b\">" + predicted.hours + "h</font> " +
+                                                  "<font color=\"#33b5e5\"><small>" + predicted.minutes + "m</small></font>");
+            else
+                return android.text.Html.fromHtml("<font color=\"#33b5e5\"><small>" + predicted.minutes + " mins</small></font>");
+        }
+    }
+
+    public String untilWhat(BatteryInfo info) {
+        if (info.prediction.what == BatteryInfo.Prediction.NONE)
+            return "";
+        else if (info.prediction.what == BatteryInfo.Prediction.UNTIL_CHARGED)
+            return res.getString(R.string.activity_until_charged);
+        else
+            return res.getString(R.string.activity_until_drained);
+    }
 }
