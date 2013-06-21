@@ -85,7 +85,7 @@ public class BatteryInfoService extends Service {
 
     private static HashSet<Integer> widgetIds = new HashSet<Integer>();
     private static AppWidgetManager widgetManager;
-    private static boolean widgetsPresent = false;
+    private static int nWidgetsPresent = 0;
 
     private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfoService";
 
@@ -103,6 +103,7 @@ public class BatteryInfoService extends Service {
     public static final String KEY_SHOW_NOTIFICATION = "show_notification";
 
     public static final String KEY_WIDGETS_PRESENT = "widgets_present";
+    public static final String KEY_NWIDGETS_PRESENT = "n_widgets_present";
 
     private static final String EXTRA_UPDATE_PREDICTOR = "com.darshancomputing.BatteryBotPro.EXTRA_UPDATE_PREDICTOR";
 
@@ -220,7 +221,16 @@ public class BatteryInfoService extends Service {
         for (int i = 0; i < ids.length; i++)
             widgetIds.add(ids[i]);
 
-        widgetsPresent = sp_store.getBoolean(KEY_WIDGETS_PRESENT, false);
+        nWidgetsPresent = sp_store.getInt(KEY_NWIDGETS_PRESENT, 0);
+
+        if (sp_store.getBoolean(KEY_WIDGETS_PRESENT, false)) {
+            nWidgetsPresent += 1; // v8.1.1 Circle widget
+
+            sps_editor = sp_store.edit();
+            sps_editor.putBoolean(KEY_WIDGETS_PRESENT, false);
+            sps_editor.putInt(KEY_NWIDGETS_PRESENT, nWidgetsPresent);
+            sps_editor.commit();
+        }
 
         Intent bc_intent = registerReceiver(mBatteryInfoReceiver, batteryChanged);
         info.load(bc_intent, sp_store);
@@ -265,7 +275,7 @@ public class BatteryInfoService extends Service {
                 clientMessengers.add(incoming.replyTo);
                 sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_BATTERY_INFO_UPDATED, info.toBundle());
 
-                if (widgetsPresent)
+                if (nWidgetsPresent > 0)
                     sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_SERVICE_UNCLOSEABLE);
                 else
                     sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_SERVICE_CLOSEABLE);
@@ -954,11 +964,11 @@ public class BatteryInfoService extends Service {
     }
 
     public static void onWidgetEnabled(Context context) {
-        widgetsPresent = true;
+        nWidgetsPresent += 1;
 
         if (sp_store == null) loadSettingsFiles(context);
         sps_editor = sp_store.edit();
-        sps_editor.putBoolean(KEY_WIDGETS_PRESENT, widgetsPresent);
+        sps_editor.putInt(KEY_NWIDGETS_PRESENT, nWidgetsPresent);
         sps_editor.commit();
 
         if (clientMessengers == null) return;
@@ -969,11 +979,11 @@ public class BatteryInfoService extends Service {
     }
 
     public static void onWidgetDisabled(Context context) {
-        widgetsPresent = false;
+        nWidgetsPresent -= 1;
 
         if (sp_store == null) loadSettingsFiles(context);
         sps_editor = sp_store.edit();
-        sps_editor.putBoolean(KEY_WIDGETS_PRESENT, widgetsPresent);
+        sps_editor.putInt(KEY_NWIDGETS_PRESENT, nWidgetsPresent);
         sps_editor.commit();
 
         if (clientMessengers == null) return;
