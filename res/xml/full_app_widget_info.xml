@@ -8,5 +8,5 @@
     android:updatePeriodMillis="0"
     android:widgetCategory="home_screen|keyguard"
     android:initialLayout="@layout/full_app_widget"
-    android:previewImage="@drawable/battery"
+    android:previewImage="@drawable/full_widget_preview"
 />
