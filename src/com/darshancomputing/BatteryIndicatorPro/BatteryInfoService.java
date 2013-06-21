@@ -458,8 +458,16 @@ public class BatteryInfoService extends Service {
                 rv = new RemoteViews(context.getPackageName(), R.layout.full_app_widget);
 
                 rv.setImageViewBitmap(R.id.battery_level_view, bl.getBitmap());
-                rv.setTextViewText(R.id.time_remaining, str.timeRemaining(info));
-                rv.setTextViewText(R.id.until_what, str.untilWhat(info));
+
+                if (info.prediction.what == BatteryInfo.Prediction.NONE) {
+                    rv.setTextViewText(R.id.fully_charged, str.timeRemaining(info));
+                    rv.setTextViewText(R.id.time_remaining, "");
+                    rv.setTextViewText(R.id.until_what, "");
+                } else {
+                    rv.setTextViewText(R.id.fully_charged, "");
+                    rv.setTextViewText(R.id.time_remaining, str.timeRemaining(info));
+                    rv.setTextViewText(R.id.until_what, str.untilWhat(info));
+                }
             }
 
             rv.setTextViewText(R.id.level, "" + info.percent + str.percent_symbol);

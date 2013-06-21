@@ -30,28 +30,40 @@
               android:text="XX%"
     />
 
-    <LinearLayout android:orientation="vertical"
-                  android:layout_height="fill_parent"
-                  android:layout_width="0px"
-                  android:layout_weight="0.4"
+    <FrameLayout android:layout_height="fill_parent"
+                 android:layout_width="0px"
+                 android:layout_weight="0.4"
     >
-      <TextView android:id="@+id/time_remaining"
+      <TextView android:id="@+id/fully_charged"
 	        android:layout_width="fill_parent"
-                android:layout_height="0px"
-                android:layout_weight="0.5"
-                android:gravity="center_horizontal|bottom"
+                android:layout_height="fill_parent"
+                android:gravity="center_horizontal|center_vertical"
                 android:textColor="#fff"
                 android:textSize="20dp"
       />
 
-      <TextView android:id="@+id/until_what"
-	        android:layout_width="fill_parent"
-                android:layout_height="0px"
-                android:layout_weight="0.5"
-                android:gravity="center_horizontal|top"
-                android:textColor="#fff"
-                android:textSize="14dp"
-      />
-    </LinearLayout>
+      <LinearLayout android:orientation="vertical"
+                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+      >
+        <TextView android:id="@+id/time_remaining"
+	          android:layout_width="fill_parent"
+                  android:layout_height="0px"
+                  android:layout_weight="0.5"
+                  android:gravity="center_horizontal|bottom"
+                  android:textColor="#fff"
+                  android:textSize="20dp"
+        />
+
+        <TextView android:id="@+id/until_what"
+	          android:layout_width="fill_parent"
+                  android:layout_height="0px"
+                  android:layout_weight="0.5"
+                  android:gravity="center_horizontal|top"
+                  android:textColor="#fff"
+                  android:textSize="14dp"
+        />
+      </LinearLayout>
+    </FrameLayout>
   </LinearLayout>
 </FrameLayout>
