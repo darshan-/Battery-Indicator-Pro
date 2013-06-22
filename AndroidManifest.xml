@@ -4,7 +4,7 @@
     package="com.darshancomputing.BatteryIndicatorPro"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
     android:versionCode="011150"
-    android:versionName="8.1.2"
+    android:versionName="8.1.3"
 >
   <application
       android:label="@string/app_full_name"

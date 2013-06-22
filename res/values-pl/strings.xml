@@ -105,7 +105,7 @@
   <string name="discharging_from" formatted="false">Rozładowywanie od</string>
   <string name="charging_from" formatted="false">Ładowanie od</string>
   <string name="fully_charged" formatted="false">W pełni naładowana</string>
-  <string name="since" formatted="false">od</string>
+  <string name="since" formatted="false">Od</string>
   <string name="dialog_color_picker" formatted="false">Wybierz kolor</string>
   <string name="press_color_to_apply" formatted="false">Zastosuj stary lub nowy kolor:</string>
   <string name="currently_using" formatted="false">W użyciu</string>
@@ -155,7 +155,7 @@
   <string name="pref_please_upgrade" formatted="false">Wersja Pro ma wiele innych ustawień, włączając w to kolorowe ikony, wtyczki z ikonami, alarmy, tematy, zapisywanie stanu baterii w logach, auto/ ręczne wyłączenie blokady ekranu, przybliżone czasy ładowania/rozładowania i wiele więcej.</string>
   <string name="add_alarm" formatted="false">Dodaj alarm</string>
   <string name="pref_cat_notification_layout" formatted="false">Kompozycja</string>
-  <string name="pref_use_system_notification_layout" formatted="false">Użyj kompozycji systemu</string>
+  <string name="pref_use_system_notification_layout" formatted="false">Użyj wyglądu systemowego</string>
   <string name="pref_use_system_notification_layout_summary" formatted="false">Użyć systemowego wyglądu notyfikacji zamiast wyglądu BatteryBot?</string>
   <string name="pref_use_system_notification_layout_help" formatted="false">Jeśli opcja jest włączona, stosowany będzie wygląd systemowy notyfikacji zamiast niestandardowego układu BatteryBot. Wygląd systemowy jest mniej konfigurowalny, ale niewielka część urządzeń nie zgłasza domyślnych kolorów poprawnie, przez co wygląd jest brzydki lub ciężko cokolwiek odczytać. Inne urządzenia wykorzystują nietypowy wygląd, czyniąc układ niestandardowy zbyt dużym. Wybór tej opcji zapewni, że powiadomienie będzie wyglądać jak te inne.\n\nNote that this will result in having the status bar icon used in the notification.</string>
   <string name="pref_cat_notification_content" formatted="false">Treść</string>
@@ -201,7 +201,7 @@
   <string name="pref_main_notification_priority_help" formatted="false">Ustaw priorytet głównego powiadomienia. Alarmy, wtyczki oraz wszelkie inne powiadomienia nie mają wpływu na to ustawienie, ale mogą w przyszłości konfigurowalny priorytet.</string>
   <string name="pref_cat_icon_set" formatted="false">Zestaw ikon</string>
   <string name="pref_icon_set" formatted="false">Zestaw ikon</string>
-  <string name="pref_icon_set_help" formatted="false">Android jest w wielu wersjach, więc nie istnieje jeden idealny zestaw ikon, który działa dobrze na każdym urządzeniu. Użytkownicy wersji Pro mogą korzystać z wtyczek, aby uzyskać więcej opcji, ale do dyspozycji są trzy wbudowane zestawy ikon, które powinny być chociaż jeden dobrym rozwiązaniem dla praktycznie każdego urządzenia.\n\n\"Classic\" to oryginalny zestaw ikon z 2009 roku. Jest wciąż najlepsza dla starszych urządzeń, ale nowsze wersje Androida (począwszy od Android 3.0, Honeycomb) kurczą i przyciemniają ikony powiadomień, co czyni ten zestaw bardzo trudnym do odczytania.\n\n\"Plain number\" jest domyślne dla wszystkich nowych urządzeń z systemem Android. Jest to bardzo duży biały numer, który jest dobrze widoczny nawet po skurczeniu i przyciemnieniu. Podczas ładowania pod numerkiem pokazuje się \"błyskawica\".\n\n\"Smaller number\" jest jak \"Plain number\" ale mniejszy, bo niektóre nowsze urządzenia nie kurczą ikonek jak seryjny Android i \"Plain number\" robi się bardzo duży.\n\nJeśli masz jakieś wtyczki ikon do BatteryBot Pro zainstalowane (naciśnij przycisk MENU, a następnie Pobierz Wtyczki by otrzymać darmowe wtyczki) to możesz wybrać spośród nich tutaj.</string>
+  <string name="pref_icon_set_help" formatted="false">Android jest w wielu wersjach, więc nie istnieje jeden idealny zestaw ikon, który działa dobrze na każdym urządzeniu. Użytkownicy wersji Pro mogą korzystać z wtyczek, aby uzyskać więcej opcji, ale do dyspozycji są trzy wbudowane zestawy ikon, które powinny być chociaż jeden dobrym rozwiązaniem dla praktycznie każdego urządzenia.\n\n\"Klasyczny\" to oryginalny zestaw ikon z 2009 roku. Jest wciąż najlepsza dla starszych urządzeń, ale nowsze wersje Androida (począwszy od Android 3.0, Honeycomb) kurczą i przyciemniają ikony powiadomień, co czyni ten zestaw bardzo trudnym do odczytania.\n\n\"Zwykły numer\" jest domyślne dla wszystkich nowych urządzeń z systemem Android. Jest to bardzo duży biały numer, który jest dobrze widoczny nawet po skurczeniu i przyciemnieniu. Podczas ładowania pod numerkiem pokazuje się \"błyskawica\".\n\n\"Mniejszy numer\" jest jak \"Plain number\" ale mniejszy, bo niektóre nowsze urządzenia nie kurczą ikonek jak seryjny Android i \"Plain number\" robi się bardzo duży.\n\nJeśli masz jakieś wtyczki ikon do BatteryBot Pro zainstalowane (naciśnij przycisk MENU, a następnie Pobierz Wtyczki by otrzymać darmowe wtyczki) to możesz wybrać spośród nich tutaj.</string>
   <string name="pref_cat_charging_indicator" formatted="false">Wskaźnik naładowania</string>
   <string name="pref_indicate_charging" formatted="false">Wskaźnik ładowania</string>
   <string name="pref_indicate_charging_summary" formatted="false">Zmienić wskaźnik w podczas ładowania?</string>
@@ -332,6 +332,7 @@
   </plurals>
   <plurals name="n_hours_long">
     <item quantity="one">"%d godzina, "</item>
+    <item quantity="other">"%d godzin, "</item>
   </plurals>
   <plurals name="n_minutes_long">
     <item quantity="one">%d minuta</item>
