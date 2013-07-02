@@ -15,21 +15,30 @@
   <string name="yes" formatted="false">Ja</string>
   <string name="cancel" formatted="false">Abbrechen</string>
   <string name="confirm_close" formatted="false">Wirklich schließen?</string>
-  <string name="confirm_close_hint" formatted="false">Battery Indicator wird komplett beendet, damit wird auch die Anzeige im Statusbalken verschwinden.\n\nWenn sie nur das Fenster schließen wollen und die Anzeige im Statusbalken behalten, dann drücken Sie \"Abbrechen\" und benutzen sie die \"ZURÜCK\"-Schaltfläche ihres Gerätes.</string>
+  <string name="confirm_close_hint" formatted="false">Battery Indicator wird komplett beendet, somit wird auch die Anzeige im Statusbalken verschwinden.\n\nWenn Sie nur das Fenster schließen wollen und die Anzeige im Statusbalken behalten, dann drücken Sie \"Abbrechen\" und benutzen Sie die \"ZURÜCK\"-Schaltfläche ihres Gerätes.</string>
   <string name="confirm_clear_logs" formatted="false">Wirklich alle Protokolle löschen?</string>
   <string name="configure_log_filter" formatted="false">Welche Elemente sollen angezeigt werden?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Soll der 10%-Modus wirklich eingeschaltet werden?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Soll der 10%-Modus wirklich ausgeschaltet werden?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Warnung: Das Ändern dieser Einstellung (sowohl das Ein-, als auch das Ausschalten) führt dazu, dass die Farbeinstellungen zurückgesetzt werden.\n\nBei den Modellen Motorola Droid, Droid X, Droid 2, Defy, or Samsung Moment, sollten Sie diese Einstellung von Anfang an einschalten. Bei allen anderen Geräten kann es, meines Wissens nach, immer ausgeschaltet bleiben.</string>
-  <string name="okay" formatted="false">OK</string>
+  <string name="confirm_ten_percent_hint" formatted="false">Warnung: Das Ändern dieser Einstellung (sowohl das Ein-, als auch das Ausschalten) führt dazu, dass die Farbeinstellungen zurückgesetzt werden.\n\nBei den Modellen Motorola Droid, Droid X, Droid 2, Defy und dem Samsung Moment, sollten Sie diese Einstellung von Anfang an einschalten. Bei allen anderen Geräten kann es meines Wissens nach immer ausgeschaltet bleiben.</string>
+  <string name="okay" formatted="false">Okay</string>
   <string name="none" formatted="false">Keine(n)</string>
+  <string name="tab_current_info" formatted="false">Derzeitige Info</string>
+  <string name="tab_history" formatted="false">Verlauf</string>
+  <string name="notification_until_charged" formatted="false">" bis vollständig aufgeladen"</string>
+  <string name="notification_until_drained" formatted="false">" verbleibend"</string>
+  <string name="activity_until_charged" formatted="false">bis vollständig aufgeladen</string>
+  <string name="activity_until_drained" formatted="false">bis Akku leer ist</string>
   <string name="menu_settings" formatted="false">Einstellungen</string>
   <string name="menu_close" formatted="false">Schließen</string>
   <string name="menu_help" formatted="false">Hilfe</string>
+  <string name="menu_rate_and_review" formatted="false">Bewerten</string>
   <string name="menu_clear" formatted="false">Löschen</string>
-  <string name="menu_reverse" formatted="false">Umgedrehte Anordnung</string>
+  <string name="menu_reverse" formatted="false">Umgekehrte Anordnung</string>
+  <string name="menu_log_filter" formatted="false">Filter</string>
   <string name="menu_export" formatted="false">CSV exportieren</string>
   <string name="menu_delete_alarm" formatted="false">Alarm löschen</string>
+  <string name="menu_get_plugins" formatted="false">Plugins kriegen</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Fahrenheit</string>
@@ -37,7 +46,7 @@
   <string name="celsius" formatted="false">Celsius</string>
   <string name="celsius_symbol" formatted="false">C</string>
   <string name="volt_symbol" formatted="false">V</string>
-  <string name="fully_charged_in" formatted="false">Voll geladen in:</string>
+  <string name="fully_charged_in" formatted="false">Vollgeladen in:</string>
   <string name="light_usage" formatted="false">Übrig bei geringer Benutzung:</string>
   <string name="normal_usage" formatted="false">Übrig bei normaler Benutzung:</string>
   <string name="heavy_usage" formatted="false">Übrig bei starker Benutzung:</string>
@@ -47,12 +56,13 @@
   <string name="inaccessible_storage" formatted="false">SD-Karte ist nicht verfügbar.</string>
   <string name="inaccessible_w_reason" formatted="false">SD-Karte nicht verfügbar:</string>
   <string name="read_only_storage" formatted="false">SD-Karte ist schreibgeschützt.</string>
-  <string name="file_written" formatted="false">Datei wurde erfolgreich in das Wurzelverzeichnis ihrer SD-Karte geschrieben.</string>
+  <string name="file_written" formatted="false">Datei wurde erfolgreich in das Rootverzeichnis ihrer SD-Karte geschrieben.</string>
   <string name="date" formatted="false">Datum</string>
   <string name="time" formatted="false">Zeit</string>
   <string name="status" formatted="false">Status</string>
   <string name="charge" formatted="false">Ladung in Prozent</string>
   <string name="temperature" formatted="false">Grad Celsius</string>
+  <string name="temperature_f" formatted="false">Grad Fahrenheit</string>
   <string name="voltage" formatted="false">Volt</string>
   <string name="status_unplugged" formatted="false">Ausgesteckt</string>
   <string name="status_unknown" formatted="false">Unbekannt</string>
@@ -64,17 +74,17 @@
   <string name="health_unknown" formatted="false">Unbekannt</string>
   <string name="health_good" formatted="false">Guter Zustand</string>
   <string name="health_overheat" formatted="false">Überhitzung</string>
-  <string name="health_dead" formatted="false">Tot</string>
+  <string name="health_dead" formatted="false">Leer</string>
   <string name="health_overvoltage" formatted="false">Überladung</string>
   <string name="health_failure" formatted="false">Fehler</string>
-  <string name="health_cold" formatted="false">Cold</string>
+  <string name="health_cold" formatted="false">Kalt</string>
   <string name="plugged_unplugged" formatted="false">Nicht angeschlossen</string>
   <string name="plugged_ac" formatted="false">(Netz)</string>
   <string name="plugged_usb" formatted="false">(USB)</string>
   <string name="plugged_unknown" formatted="false">(?)</string>
-  <string name="plugged_wireless" formatted="false">(WL)</string>
+  <string name="plugged_wireless" formatted="false">(Wireless)</string>
   <string name="alarm_type_fully_charged" formatted="false">Voll geladen</string>
-  <string name="alarm_type_charge_drops" formatted="false">Ladung unterschreite</string>
+  <string name="alarm_type_charge_drops" formatted="false">Ladung unterschreitet...</string>
   <string name="alarm_type_charge_rises" formatted="false">Ladung überschreitet...</string>
   <string name="alarm_type_temperature_rises" formatted="false">Temperatur überschreitet</string>
   <string name="alarm_type_health_failure" formatted="false">Zustand Störung</string>
@@ -83,10 +93,10 @@
   <string name="alarm_type_entry_charge_rises" formatted="false">Ladung überschreitet...</string>
   <string name="alarm_type_entry_temperature_rises" formatted="false">Temperatur überschreitet...</string>
   <string name="alarm_type_entry_health_failure" formatted="false">Status gestört</string>
-  <string name="alarm_fully_charged" formatted="false">Batterie ist nun voll geladen</string>
-  <string name="alarm_charge_drops" formatted="false">"Batterieladung ist unter "</string>
-  <string name="alarm_charge_rises" formatted="false">"Batterieladung ist über "</string>
-  <string name="alarm_temp_rises" formatted="false">"Batterietemperatur ist über "</string>
+  <string name="alarm_fully_charged" formatted="false">Akku ist nun voll geladen</string>
+  <string name="alarm_charge_drops" formatted="false">"Akkuladung ist unter "</string>
+  <string name="alarm_charge_rises" formatted="false">"Akkuladung ist über "</string>
+  <string name="alarm_temp_rises" formatted="false">"Akkutemperatur ist über "</string>
   <string name="alarm_health_failure" formatted="false">"Batteriezustand ist: "</string>
   <string name="alarm_text" formatted="false">Auswählen um Alarme zu bearbeiten.</string>
   <string name="logs_empty" formatted="false">Protokoll ist leer</string>
@@ -94,15 +104,17 @@
   <string name="charging_from" formatted="false">Lädt von</string>
   <string name="fully_charged" formatted="false">Voll geladen</string>
   <string name="since" formatted="false">Seit</string>
-  <string name="currently_using" formatted="false">Im Moment</string>
+  <string name="dialog_color_picker" formatted="false">Farbe auswählen</string>
+  <string name="press_color_to_apply" formatted="false">Übernehme alte oder neue Farbe</string>
+  <string name="currently_using" formatted="false">Im Moment in Benutzung</string>
   <string name="currently_set_to" formatted="false">"Im Moment gesetzt auf: "</string>
   <string name="currently_disabled" formatted="false">Im Moment ausgeschalten</string>
   <string name="help_cat_version" formatted="false">Version</string>
   <string name="help_cat_changelog" formatted="false">Änderungsprotokoll</string>
   <string name="help_changelog" formatted="false">Besuchen Sie die <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">Versionshistorie, auf der Projekt-FAQ seite (engl.)</a>.</string>
   <string name="help_cat_introduction" formatted="false">Einführung</string>
-  <string name="help_introduction" formatted="false">Dies ist <i>Battery Indicator Pro</i>, die \"Pro\"-Version des beliebten App, <i> Battery Indicator</i>. Es ist erhältlich im Android Market, aber es ist ein Open Source Projekt, d.h. Sie können die Quellen frei erhalten auf <a href="http://code.google.com/p/battery-indicator/">der Projekt-Website</a>.</string>
-  <string name="help_introduction_free" formatted="false">Dies ist <i>Battery Indicator</i>, die freier Version der <i>Battery Indicator</i> Produktfamilie. Es ist erhältlich im Android Market, aber es ist ein Open Source Projekt, d.h. Sie können die Quellen frei erhalten auf <a href="http://code.google.com/p/battery-indicator/">der Projekt-Website</a>.\n\nBitte denken Sie über eine Spende nach, in dem sie auf die <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Version</a> aktualisieren.</string>
+  <string name="help_introduction" formatted="false">Dies ist <i>Battery Indicator Pro</i>, die \"Pro\"-Version des beliebten App, <i> Battery Indicator</i>. Sie ist erhältlich im Android Market. Jedoch ist dies ein Open Source Projekt, d.h. Sie haben auf <a href="http://code.google.com/p/battery-indicator/">der Projekt-Website</a> Zugriff auf die verwendeten Quellen.</string>
+  <string name="help_introduction_free" formatted="false">Dies ist <i>Battery Indicator</i>, die kostenlose Version der <i>Battery Indicator</i> Produktfamilie. Sie ist erhältlich im Android Market, jedoch ist dies ein Open Source Projekt, d.h. Sie haben auf <a href="http://code.google.com/p/battery-indicator/">der Projekt-Website</a> Zugriff auf die verwendeten Quellen.\n\nBitte denken Sie über eine Spende nach, indem Sie auf die <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Version</a> aktualisieren.</string>
   <string name="help_cat_summary" formatted="false">Zusammenfassung</string>
   <string name="help_summary" formatted="false"><i>Battery Indicator Pro</i> ist eine leichtgewichtige Batterieanzeige für das Android ™ Betriebssystem für Mobilgeräte. Die Kernfunktion ist das Icon in der Statusleiste, die den verbleibenden Prozentsatz der Batterieladung anzeigt.\n\nDiese Pro-Version bietet noch viel mehr Nutzen als das. Neben der Anzeige des Icons in rot, gelb und grün, hat es auch die folgenden Hauptfunktionen ab Version 3.0:\n\ n• Vollständig konfigurierbare geschätzt Lade / Entlade-Zeit.\n• Protokollierung des Ladezustands des Akkus.\n• Themes für das Hauptfenster (einschließlich eines Vollbildschirm-Fensters mit großem und leicht zu lesendem Text).\n• Manuelles deaktivieren / reaktivieren der Bildschirmsperre mit der Option sie automatisch zu deaktivieren, wenn eingesteckt und wieder zu aktivieren, wenn ausgesteckt.\n• Viele weitere nützliche Dinge, die Sie beim benutzen entdecken werden.</string>
   <string name="help_summary_free" formatted="false"><i>Battery Indicator Pro</i> ist eine leichtgewichtige Batterieanzeige für das Android™ Betriebssystem für Mobilgeräte. Die Kernfunktion ist das Icon in der Statusleiste, die den verbleibenden Prozentsatz der Batterieladung anzeigt.\n\nDie Pro-Version bietet noch viel mehr Nutzen. Neben der Anzeige des Icons in rot, gelb und grün, hat es auch die folgenden Hauptfunktionen ab Version 3.0:\n\n• Vollständig konfigurierbare geschätzte Lade-/Entladezeit.\n• Protokollierung des Ladezustands des Akkus.\n• Themes für das Hauptfenster (einschließlich eines Vollbildschirm-Fensters mit großem und leicht zu lesendem Text).\n• Manuelles deaktivieren / reaktivieren der Bildschirmsperre mit der Option sie automatisch zu deaktivieren, wenn eingesteckt und wieder zu aktivieren, wenn ausgesteckt.\n• Viele weitere nützliche Dinge, die Sie beim benutzen entdecken werden.</string>
