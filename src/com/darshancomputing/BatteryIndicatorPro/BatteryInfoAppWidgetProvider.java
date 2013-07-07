@@ -18,6 +18,15 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 
+/*
+ * Each widget type needs its own AppWidgetProvider class in order to show up in the widget list.
+ *
+ * This is the base class that other widget types can simply extend.
+ *
+ * For historical reasons, this base class is directly used as the AppWidgetProvider for the Circle widget,
+ *  and this can't be changed without breaking existing installations.
+ */
+
 public class BatteryInfoAppWidgetProvider extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         BatteryInfoService.onWidgetUpdate(context, appWidgetManager, appWidgetIds);
