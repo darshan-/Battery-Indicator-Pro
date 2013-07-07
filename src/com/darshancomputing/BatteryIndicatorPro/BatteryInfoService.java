@@ -83,6 +83,8 @@ public class BatteryInfoService extends Service {
     private static java.util.HashSet<Messenger> clientMessengers;
     private static Messenger messenger;
 
+    private static HashSet<Integer> widgetIds = new HashSet<Integer>();
+    private static AppWidgetManager widgetManager;
     private static int nWidgetsPresent = 0;
 
     private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfoService";
@@ -211,6 +213,19 @@ public class BatteryInfoService extends Service {
             setEnablednessOfKeyguard(false);
 
         pluginPackage = "none";
+
+        widgetManager = AppWidgetManager.getInstance(context);
+
+        Class[] appWidgetProviders = {BatteryInfoAppWidgetProvider.class, /* Circle widget! */
+                                             FullAppWidgetProvider.class};
+
+         for (int i = 0; i < appWidgetProviders.length; i++) {
+            int[] ids = widgetManager.getAppWidgetIds(new ComponentName(context, appWidgetProviders[i]));
+
+            for (int j = 0; j < ids.length; j++) {
+                widgetIds.add(ids[j]);
+            }
+        }
 
         nWidgetsPresent = sp_store.getInt(KEY_NWIDGETS_PRESENT, 0);
 
@@ -431,25 +446,11 @@ public class BatteryInfoService extends Service {
     }
 
     private void updateWidgets() {
-        AppWidgetManager widgetManager = AppWidgetManager.getInstance(context);
         Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
         PendingIntent mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
 
           bl.setLevel(info.percent);
         cwbg.setLevel(info.percent);
-
-        Class[] appWidgetProviders = {BatteryInfoAppWidgetProvider.class, /* Circle widget! */
-                                             FullAppWidgetProvider.class};
-
-        HashSet<Integer> widgetIds = new HashSet<Integer>();
-
-        for (int i = 0; i < appWidgetProviders.length; i++) {
-            int[] ids = widgetManager.getAppWidgetIds(new ComponentName(context, appWidgetProviders[i]));
-
-            for (int j = 0; j < ids.length; j++) {
-                widgetIds.add(ids[j]);
-            }
-        }
 
         for (Integer widgetId : widgetIds) {
             RemoteViews rv;
@@ -961,10 +962,19 @@ public class BatteryInfoService extends Service {
     }
 
     public static void onWidgetUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        widgetManager = appWidgetManager;
+
+        for (int i = 0; i < appWidgetIds.length; i++) {
+            widgetIds.add(appWidgetIds[i]);
+        }
+
         context.startService(new Intent(context, BatteryInfoService.class));
     }
 
     public static void onWidgetDeleted(Context context, int[] appWidgetIds) {
+        for (int i = 0; i < appWidgetIds.length; i++) {
+            widgetIds.remove(appWidgetIds[i]);
+        }
     }
 
     public static void onWidgetEnabled(Context context) {
