@@ -21,7 +21,7 @@
   <string name="confirm_ten_percent_enable" formatted="false">Soll der 10%-Modus wirklich eingeschaltet werden?</string>
   <string name="confirm_ten_percent_disable" formatted="false">Soll der 10%-Modus wirklich ausgeschaltet werden?</string>
   <string name="confirm_ten_percent_hint" formatted="false">Warnung: Das Ändern dieser Einstellung (sowohl das Ein-, als auch das Ausschalten) führt dazu, dass die Farbeinstellungen zurückgesetzt werden.\n\nBei den Modellen Motorola Droid, Droid X, Droid 2, Defy und dem Samsung Moment, sollten Sie diese Einstellung von Anfang an einschalten. Bei allen anderen Geräten kann es meines Wissens nach immer ausgeschaltet bleiben.</string>
-  <string name="okay" formatted="false">Okay</string>
+  <string name="okay" formatted="false">In Ordnung</string>
   <string name="none" formatted="false">Keine(n)</string>
   <string name="tab_current_info" formatted="false">Derzeitige Info</string>
   <string name="tab_history" formatted="false">Verlauf</string>
@@ -38,7 +38,7 @@
   <string name="menu_log_filter" formatted="false">Filter</string>
   <string name="menu_export" formatted="false">CSV exportieren</string>
   <string name="menu_delete_alarm" formatted="false">Alarm löschen</string>
-  <string name="menu_get_plugins" formatted="false">Plugins kriegen</string>
+  <string name="menu_get_plugins" formatted="false">Plugins erhalten</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Fahrenheit</string>
@@ -51,12 +51,12 @@
   <string name="normal_usage" formatted="false">Übrig bei normaler Benutzung:</string>
   <string name="heavy_usage" formatted="false">Übrig bei starker Benutzung:</string>
   <string name="constant_usage" formatted="false">Übrig bei dauernder Benutzung:</string>
-  <string name="press_back_to_leave" formatted="false">ZURÜCK drücken zum beenden.</string>
+  <string name="press_back_to_leave" formatted="false">ZURÜCK drücken zum Beenden.</string>
   <string name="press_menu_for_more" formatted="false">MENÜ drücken für mehr Möglichkeiten.</string>
   <string name="inaccessible_storage" formatted="false">SD-Karte ist nicht verfügbar.</string>
   <string name="inaccessible_w_reason" formatted="false">SD-Karte nicht verfügbar:</string>
   <string name="read_only_storage" formatted="false">SD-Karte ist schreibgeschützt.</string>
-  <string name="file_written" formatted="false">Datei wurde erfolgreich in das Rootverzeichnis ihrer SD-Karte geschrieben.</string>
+  <string name="file_written" formatted="false">Datei wurde erfolgreich in das Rootverzeichnis der SD-Karte geschrieben.</string>
   <string name="date" formatted="false">Datum</string>
   <string name="time" formatted="false">Zeit</string>
   <string name="status" formatted="false">Status</string>
@@ -113,10 +113,10 @@
   <string name="help_cat_changelog" formatted="false">Änderungsprotokoll</string>
   <string name="help_changelog" formatted="false">Besuchen Sie die <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">Versionshistorie, auf der Projekt-FAQ seite (engl.)</a>.</string>
   <string name="help_cat_introduction" formatted="false">Einführung</string>
-  <string name="help_introduction" formatted="false">Dies ist <i>Battery Indicator Pro</i>, die \"Pro\"-Version des beliebten App, <i> Battery Indicator</i>. Sie ist erhältlich im Android Market. Jedoch ist dies ein Open Source Projekt, d.h. Sie haben auf <a href="http://code.google.com/p/battery-indicator/">der Projekt-Website</a> Zugriff auf die verwendeten Quellen.</string>
+  <string name="help_introduction" formatted="false">Dies ist <i>Battery Indicator Pro</i>, die \"Pro\"-Version der beliebten App, <i> Battery Indicator</i>. Sie ist erhältlich im Android Market. Jedoch ist dies ein Open Source Projekt, d.h. Sie haben auf <a href="http://code.google.com/p/battery-indicator/">der Projekt-Website</a> Zugriff auf die verwendeten Quellen.</string>
   <string name="help_introduction_free" formatted="false">Dies ist <i>Battery Indicator</i>, die kostenlose Version der <i>Battery Indicator</i> Produktfamilie. Sie ist erhältlich im Android Market, jedoch ist dies ein Open Source Projekt, d.h. Sie haben auf <a href="http://code.google.com/p/battery-indicator/">der Projekt-Website</a> Zugriff auf die verwendeten Quellen.\n\nBitte denken Sie über eine Spende nach, indem Sie auf die <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Version</a> aktualisieren.</string>
   <string name="help_cat_summary" formatted="false">Zusammenfassung</string>
-  <string name="help_summary" formatted="false"><i>Battery Indicator Pro</i> ist eine leichtgewichtige Batterieanzeige für das Android ™ Betriebssystem für Mobilgeräte. Die Kernfunktion ist das Icon in der Statusleiste, die den verbleibenden Prozentsatz der Batterieladung anzeigt.\n\nDiese Pro-Version bietet noch viel mehr Nutzen als das. Neben der Anzeige des Icons in rot, gelb und grün, hat es auch die folgenden Hauptfunktionen ab Version 3.0:\n\ n• Vollständig konfigurierbare geschätzt Lade / Entlade-Zeit.\n• Protokollierung des Ladezustands des Akkus.\n• Themes für das Hauptfenster (einschließlich eines Vollbildschirm-Fensters mit großem und leicht zu lesendem Text).\n• Manuelles deaktivieren / reaktivieren der Bildschirmsperre mit der Option sie automatisch zu deaktivieren, wenn eingesteckt und wieder zu aktivieren, wenn ausgesteckt.\n• Viele weitere nützliche Dinge, die Sie beim benutzen entdecken werden.</string>
+  <string name="help_summary" formatted="false"><i>Battery Indicator Pro</i> ist eine leichtgewichtige Batterieanzeige für das Android ™ Betriebssystem für Mobilgeräte. Die Kernfunktion ist das Icon in der Statusleiste, die den verbleibenden Prozentsatz der Batterieladung anzeigt.\n\nDiese Pro-Version bietet noch viel mehr Nutzen als das. Neben der Anzeige des Icons in rot, gelb und grün, hat es auch die folgenden Hauptfunktionen ab Version 3.0:\n\ n• Vollständig konfigurierbare geschätzt Lade / Entlade-Zeit.\n• Protokollierung des Ladezustands des Akkus.\n• Themes für das Hauptfenster (einschließlich eines Vollbildschirm-Fensters mit großem und leicht zu lesendem Text).\n• Manuelles deaktivieren / reaktivieren der Bildschirmsperre mit der Option sie automatisch beim Laden zu deaktivieren, und wieder zu aktivieren, wenn das Netzteil ausgesteckt wird.\n• Viele weitere nützliche Dinge, die Sie beim Benutzen entdecken werden.</string>
   <string name="help_summary_free" formatted="false"><i>Battery Indicator Pro</i> ist eine leichtgewichtige Batterieanzeige für das Android™ Betriebssystem für Mobilgeräte. Die Kernfunktion ist das Icon in der Statusleiste, die den verbleibenden Prozentsatz der Batterieladung anzeigt.\n\nDie Pro-Version bietet noch viel mehr Nutzen. Neben der Anzeige des Icons in rot, gelb und grün, hat es auch die folgenden Hauptfunktionen ab Version 3.0:\n\n• Vollständig konfigurierbare geschätzte Lade-/Entladezeit.\n• Protokollierung des Ladezustands des Akkus.\n• Themes für das Hauptfenster (einschließlich eines Vollbildschirm-Fensters mit großem und leicht zu lesendem Text).\n• Manuelles deaktivieren / reaktivieren der Bildschirmsperre mit der Option sie automatisch zu deaktivieren, wenn eingesteckt und wieder zu aktivieren, wenn ausgesteckt.\n• Viele weitere nützliche Dinge, die Sie beim benutzen entdecken werden.</string>
   <string name="help_cat_limitations" formatted="false">Einschränkungen</string>
   <string name="help_limitations" formatted="false">(<i> Diese sind außerhalb meiner Kontrolle. </i>)\n\n• Die Anwendung kann nur die von Gerät gelieferten Werte anzeigen. Die meisten Geräte melden jedes 1%, aber ein paar (vor allem die Motorola Droid Modelle) nur alle 10%.\n• Es gibt keine Möglichkeit, das systemeigene Batterie-Symbol zu entfernen.\n• Das Symbol im Infobereich in der Statusleiste und die Nachricht, die Sie in den Benachrichtigungen sehen sind miteinander verbunden - man kann das eine nicht ohne das andere haben.\n• Viele Anwendungen sollten die Installation auf SD-Karte erlauben, einige nicht. Battery Indicator gehört zu den Letzteren. Für weitere Erklärungen siehe <a href="http://code.google.com/p/battery-indicator/wiki/FAQ"> das Projekt FAQ (engl.)</a>a.</string>
@@ -132,6 +132,7 @@
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="pref_hint" formatted="false">Tip: MENÜ drücken für Hilfe.</string>
   <string name="settings_overview" formatted="false">Übersicht</string>
+  <string name="settings_overview_help" formatted="false">Die Einstellungen sind unterteilt in separate Seite (siehe unten stehende Beschreibung). Jede Seite enthält eine eigene Hilfe-Seite, welche die Einstellungen beschreibt. Drücken Sie einfach MENÜ, danach Hilfe (auf Tablets entfällt das Drücken des MENÜ-Buttons), um Hilfe für jedwede Einstellung zu erhalten.</string>
   <string name="alarm_settings_subtitle" formatted="false">Alarm Einstellungen</string>
   <string name="alarm_settings" formatted="false">Alarme</string>
   <string name="alarm_settings_summary" formatted="false">Einstellung für Benachrichtigungen bei niedriger/voller Batterie.</string>
@@ -139,6 +140,13 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Mehr Einstellungen in der Pro-Version</string>
   <string name="pref_please_upgrade" formatted="false">Die Pro-Version hat mehr Einstellungen und Funktionen, wie grüne, gelbe und rote Icons, Alarme, Window-Themes, Batteriestatus-Protokollierung, automatische/manuelle Bildschirmsperre Abschaltung, Lade-/Entladezeit-Schätzung und mehr.</string>
   <string name="add_alarm" formatted="false">Alarm hinzufügen</string>
+  <string name="battery_graphic" formatted="false">Akkudarstellung</string>
+  <string name="charge_percentage" formatted="false">Aufladung Prozent</string>
+  <string name="percentage_first" formatted="false">Prozentanteil, Akku</string>
+  <string name="battery_first" formatted="false">Akku, Prozentanteil</string>
+  <string name="time_remaining" formatted="false">Verbleibende Restlaufzeit</string>
+  <string name="time_since_status_change" formatted="false">Vergangene Zeit seit Statusänderung</string>
+  <string name="vital_signs" formatted="false">Vitalzeichen</string>
   <string name="pref_cat_logging" formatted="false">Protokollierung</string>
   <string name="pref_enable_logging" formatted="false">Protokollierung einschalten</string>
   <string name="pref_enable_logging_summary" formatted="false">Batteriestatusänderungen protokollieren?</string>
