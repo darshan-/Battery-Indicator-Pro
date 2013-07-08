@@ -332,13 +332,13 @@
   </string>
 
   <string formatted="false" name="help_cat_translations">Translations</string>
-  <string formatted="false" name="help_translations">I
-    need help translating this app to other languages.  If you would
-    like to help, please send me
-    an <a href="mailto:android%2Btranslations@darshancomputing.com">email</a>.
-    (This address is only for translation; see Contact section below
-    for all other inquiries.)  Unless you prefer me not to, I will add
-    your name to this section in acknowledgment of your assistance.
+  <string formatted="false" name="help_translations">
+    I need help translating this app to new languages and maintaining
+    the existing translations.  If you would like to help, please send
+    me an <a
+    href="mailto:support%2Btranslations@batterybot.info">email</a>.
+    Please let me know if and how you would like your name listed in
+    this section in acknowledgment of your assistance.
   </string>
 
   <string formatted="false" name="help_subcat_translators">Translators</string>
@@ -346,7 +346,7 @@
   <string formatted="false" name="help_cat_contact">Contact</string>
   <string formatted="false" name="help_contact">If
     you have a question or a problem, please
-    <a href="mailto:battery-indicator-support@darshancomputing.com">email me</a>.\n
+    <a href="mailto:support@batterybot.info">email me</a>.\n
   </string>
 
   <string formatted="false" name="pref_hint">Hint: Press MENU for help.</string>

@@ -96,10 +96,9 @@
   <string name="currently_disabled" formatted="false">Trenutno onemogočeno</string>
   <string name="help_cat_version" formatted="false">Različica</string>
   <string name="help_cat_translations" formatted="false">Prevodi</string>
-  <string name="help_translations" formatted="false">Potrebujem pomoč pri prevajanju aplikacije v druge jezike. Če bi radi pomagali, mi prosim pošljite <a href="mailto:android%2Btranslations@darshancomputing.com">e-pošto</a>. (Ta e-pošta je samo za prevajanje; poglej Kontakt sekcijo spodaj za vsa ostala povpraševanja.) Razen če želite drugače, bom dodal vaše ime v to sekcijo kot dokaz da ste sodelovali.</string>
+  <string name="help_translations" formatted="false">Potrebujem pomoč pri prevajanju aplikacije v druge jezike. Če bi radi pomagali, mi prosim pošljite <a href="mailto:support%2Btranslations@batterybot.info">e-pošto</a>. (Ta e-pošta je samo za prevajanje; poglej Kontakt sekcijo spodaj za vsa ostala povpraševanja.) Razen če želite drugače, bom dodal vaše ime v to sekcijo kot dokaz da ste sodelovali.</string>
   <string name="help_subcat_translators" formatted="false">Prevajalci</string>
   <string name="help_cat_contact" formatted="false">Kontakt</string>
-  <string name="help_contact" formatted="false">Če imate vprašanje ali problem, prosim poglejte <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">the project FAQ</a> za koncakt.\n</string>
   <string name="pref_hint" formatted="false">Namig: Pritisnite MENU za pomoč.</string>
   <string name="settings_overview" formatted="false">Povzetek</string>
   <string name="alarm_settings_subtitle" formatted="false">Nastavitve alarma</string>

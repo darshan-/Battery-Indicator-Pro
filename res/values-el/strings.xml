@@ -117,7 +117,6 @@
   <string name="help_cat_translations" formatted="false">Μεταφράσεις</string>
   <string name="help_subcat_translators" formatted="false">Μεταφραστές</string>
   <string name="help_cat_contact" formatted="false">Επικοινωνία</string>
-  <string name="help_contact" formatted="false">Αν έχετε κάποια ερώτηση ή πρόβλημα, παρακαλώ δείτε <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">the project FAQ</a> πώς να επικοινωνήσετε μαζί μου.\n</string>
   <string name="pref_hint" formatted="false">Συμβουλή: Πατήστε MENU για βοήθεια</string>
   <string name="settings_overview" formatted="false">Επισκόπηση</string>
   <string name="settings_overview_help" formatted="false">Οι ρυθμίσεις είναι οργανωμένες σε τέσσερις ξεχωριστές σελίδες, όπως περιγράφεται πιο κάτω. Κάθε σελίδα έχει τη δική της σελίδα βοήθειας που περιγράφει τις ρυθμίσεις της σελίδας αυτής. Απλά πατήστε MENU και μετά Βοήθεια (στα tablets, το MENU δεν είναι αναγκαίο) για να πάρετε βοήθεια σε όποια σελίδα ρυθμίσεων βρίσκεστε.</string>

@@ -114,10 +114,9 @@
   <string name="help_cat_no_warranty" formatted="false">Garanti Yok</string>
   <string name="help_cat_acknowledgments" formatted="false">Onaylar</string>
   <string name="help_cat_translations" formatted="false">Çeviriler</string>
-  <string name="help_translations" formatted="false">Bu uygulamayı diğer dillere çevirmek için yardıma ihtiyacım var. Eğer yardım etmek isterseniz, lütfen bana bir <a href="mailto:android%2Btranslations@darshancomputing.com">eposta gönderin</a>. (Bu adres yalnızca çeviri içidir; Tüm diğer sorular için aşağıda İletişim bölümüne bakın.) Aksini tercih etmediğiniz sürece, yardımlarınız için adınızı bu bölümdeki teşekkür kısmına ekleyeceğim.</string>
+  <string name="help_translations" formatted="false">Bu uygulamayı diğer dillere çevirmek için yardıma ihtiyacım var. Eğer yardım etmek isterseniz, lütfen bana bir <a href="mailto:support%2Btranslations@batterybot.info">eposta gönderin</a>. (Bu adres yalnızca çeviri içidir; Tüm diğer sorular için aşağıda İletişim bölümüne bakın.) Aksini tercih etmediğiniz sürece, yardımlarınız için adınızı bu bölümdeki teşekkür kısmına ekleyeceğim.</string>
   <string name="help_subcat_translators" formatted="false">Çevirmenler</string>
   <string name="help_cat_contact" formatted="false">Kişi</string>
-  <string name="help_contact" formatted="false">Eğer herhangi bir sorunuz yada bir probleminiz varsa, benimle nasıl bağlantı kuracağınız için lütfen <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">proje SSS </a> sayfasına bakınız.\n</string>
   <string name="pref_hint" formatted="false">İpucu: Yardım için MENU tuşuna bas.</string>
   <string name="settings_overview" formatted="false">Genel Bakış</string>
   <string name="settings_overview_help" formatted="false">Aşağıda açıklandığı gibi, Ayarlar dört ayrı sayfa içerisinden düzenlenebilir. Her sayfa ayarları açıklayan kendi yardım sayfasına sahiptir. Bulunduğunuz sayfada hangi ayar için yardım almak istiyorsanız sadece MENU tuşuna basın (tabletler için, Menu gereklli değildir).</string>

@@ -84,10 +84,8 @@
   <string name="help_cat_acknowledgments" formatted="false">聲明</string>
   <string name="help_acknowledgments" formatted="false">由於暫無慷慨的翻譯者協助，本程序僅提供英文版本，非常感謝您的支持！\n\n得益於Google及其他開源專案，本軟體功能得以實現。\n\n軟體圖標（可見於Android Market軟體主頁右上角）的設計靈感來源於<a href="http://www.oxygen-icons.org"> Oxygen圖標主題</a>並在<a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-ShareAlike 3.0 License</a>的規範下有限使用。</string>
   <string name="help_cat_translations" formatted="false">多語言化</string>
-  <string name="help_translations" formatted="false">開發者需要更多的幫助以實現將軟體翻譯成除英文外的其他語言。如果您樂於提供幫助，請聯繫開發者的 <a href="mailto:android@darshancomputing.com">電子郵件</a>。開發者將隨後在軟體幫助中的「聲明」項加入幫助者的名字。</string>
   <string name="help_subcat_translators" formatted="false">翻譯志願者名單</string>
   <string name="help_cat_contact" formatted="false">聯繫方式</string>
-  <string name="help_contact" formatted="false">如果您在使用中遇到任何疑問，請先參閱<a href="http://code.google.com/p/battery-indicator/wiki/FAQ">軟體FAQ</a>。\n\n如果您有任何反饋信息，或FAQ中無法解答的任何疑問，請聯繫開發者的電子郵件<a href="mailto:android@darshancomputing.com">android@darshancomputing.com</a>。</string>
   <string name="pref_hint" formatted="false"><b>提示：</b>單擊「選單」獲取說明。</string>
   <string name="settings_overview" formatted="false">預覽</string>
   <string name="settings_overview_help" formatted="false">設定包括如下所述的三個獨立頁面。各頁面的說明信息獨立顯示，在「選單」-「說明」內容中可獲取當前頁面的說明信息。</string>

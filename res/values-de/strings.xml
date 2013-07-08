@@ -127,7 +127,7 @@
   <string name="help_cat_acknowledgments" formatted="false">Danksagungen</string>
   <string name="help_acknowledgments" formatted="false">Diese App wäre nur in englischer Sprache zur Verfügung, ohne die großzügige Unterstützung durch die ehrenamtlichen Übersetzer. Vielen Dank!\n\nGroßer Dank gebührt Google und allen Open-Source-Programmierern, die die Android-Plattform und diese App möglich machen.\n\nDas Starter-Symbol (die aufrechte Batterie, die Sie im Android-Market sehen) ist auf ein Symbol von <a href="http://www.oxygen-icons.org">auf Basis des Oxygen Icon-Themes</a> und unter der verwendet <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-Share Alike 3.0 License</a>.</string>
   <string name="help_cat_translations" formatted="false">Übersetzungen</string>
-  <string name="help_translations" formatted="false">Ich brauche Hilfe bei der Übersetzung dieses App in andere Sprachen. Wenn Sie helfen möchten, bitte senden Sie mir eine <a href="mailto:android@darshancomputing.com">E-Mail</a>. Es seid denn Sie wollen es nicht, werde ich Ihren Namen diesem Abschnitt hinzufügen als Anerkennung Ihrer Unterstützung.</string>
+  <string name="help_translations" formatted="false">Ich brauche Hilfe bei der Übersetzung dieses App in andere Sprachen. Wenn Sie helfen möchten, bitte senden Sie mir eine <a href="mailto:support%2Btranslations@batterybot.info">E-Mail</a>. Es seid denn Sie wollen es nicht, werde ich Ihren Namen diesem Abschnitt hinzufügen als Anerkennung Ihrer Unterstützung.</string>
   <string name="help_subcat_translators" formatted="false">Übersetzer</string>
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="pref_hint" formatted="false">Tip: MENÜ drücken für Hilfe.</string>

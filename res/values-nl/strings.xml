@@ -126,10 +126,9 @@
   <string name="help_cat_acknowledgments" formatted="false">Erkenningen</string>
   <string name="help_acknowledgments" formatted="false">Deze app zou alleen beschikbaar zijn in het Engels ware het niet voor de hulp van de vrijwillige vertalers. Bedankt!\n\nVeel dank gaat uit naar Google en alle andere open-source programmeurs die het Android-platform en deze app mogelijk te maken.\n\nHet opstartpictogram (de rechtopstaande batterij die u ziet in de markt) is gebaseerd op een icoon uit <a href="http://www.oxygen-icons.org">het Oxygen icoon thema</a> en gebruikt onder de <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-ShareAlike 3.0 Licentie</a>.</string>
   <string name="help_cat_translations" formatted="false">Vertaling</string>
-  <string name="help_translations" formatted="false">Ik heb hulp nodig het vertalen van deze app naar andere talen. Als u wilt helpen, stuur me een <a href="mailto:android@darshancomputing.com">e-mail</a>. Tenzij u het liever niet wilt, zal ik uw naam toevoegen aan deze sectie ter bevestiging van uw hulp.</string>
+  <string name="help_translations" formatted="false">Ik heb hulp nodig het vertalen van deze app naar andere talen. Als u wilt helpen, stuur me een <a href="mailto:support%2Btranslations@batterybot.info">e-mail</a>. Tenzij u het liever niet wilt, zal ik uw naam toevoegen aan deze sectie ter bevestiging van uw hulp.</string>
   <string name="help_subcat_translators" formatted="false">Vertalers</string>
   <string name="help_cat_contact" formatted="false">Contact</string>
-  <string name="help_contact" formatted="false">Als u vragen of problemen heeft, kijk dan op <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">het FAQ</a> voor contactinformatie.\n</string>
   <string name="pref_hint" formatted="false">(Druk op MENU voor help)</string>
   <string name="settings_overview" formatted="false">Overzicht</string>
   <string name="settings_overview_help" formatted="false">De instellingen zijn verdeeld over drie verschillende pagina\'s, zoals onder beschreven. Elke pagina heeft zijn eigen helppagina over de instellingen op die pagina. Druk op MENU en dan Help voor help.</string>

@@ -110,7 +110,6 @@
   <string name="help_cat_no_warranty" formatted="false">Отказ от гарантий</string>
   <string name="help_subcat_translators" formatted="false">Переводчики</string>
   <string name="help_cat_contact" formatted="false">Контакты</string>
-  <string name="help_contact" formatted="false">Если у Вас возникнут вопросы или проблемы, пожалуйста перейдите по ссылке<a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">FAQ проекта</a>, чтобы узнать как можно связаться со мной.\n</string>
   <string name="pref_hint" formatted="false">Подсказка: Нажмите MENU для вызова помощи.</string>
   <string name="settings_overview" formatted="false">Обзор</string>
   <string name="alarm_settings_subtitle" formatted="false">Настройки оповещений</string>
