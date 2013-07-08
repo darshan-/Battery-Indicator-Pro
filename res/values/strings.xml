@@ -332,8 +332,8 @@
   </string>
 
   <string formatted="false" name="help_cat_translations">Translations</string>
-  <string formatted="false" name="help_translations">
-    I need help translating this app to new languages and maintaining
+  <string formatted="false" name="help_translations">I
+    need help translating this app to new languages and maintaining
     the existing translations.  If you would like to help, please send
     me an <a
     href="mailto:support%2Btranslations@batterybot.info">email</a>.
