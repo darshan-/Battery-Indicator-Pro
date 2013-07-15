@@ -100,10 +100,7 @@
   <string name="currently_disabled" formatted="false">Dezactivat Acum</string>
   <string name="help_cat_version" formatted="false">Versiune</string>
   <string name="help_cat_changelog" formatted="false">Jurnal Schimbari</string>
-  <string name="help_changelog" formatted="false">Consultati <a href="http://code.google.com/p/battery-indicator/wiki/Changelog?tm=6">lista schimbarilor online</a>.</string>
-  <string name="help_cat_introduction" formatted="false">Introducere</string>
-  <string name="help_cat_summary" formatted="false">Cuprins</string>
-  <string name="help_cat_limitations" formatted="false">Limitari</string>
+  <string name="help_changelog" formatted="false">Consultati <a href="http://batterybot.info/changelog">lista schimbarilor online</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">Nu se ofera garantie</string>
   <string name="help_cat_translations" formatted="false">Traduceri</string>
   <string name="help_subcat_translators" formatted="false">Traducatori</string>

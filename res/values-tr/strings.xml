@@ -103,14 +103,7 @@
   <string name="currently_disabled" formatted="false">Şu An Etkin Değil</string>
   <string name="help_cat_version" formatted="false">Sürüm</string>
   <string name="help_cat_changelog" formatted="false">Değişiklik Listesi</string>
-  <string name="help_changelog" formatted="false">çevrimiçi Değişiklik Listesi <a href="http://code.google.com/p/battery-indicator/wiki/Changelog?tm=6">ni gör</a></string>
-  <string name="help_cat_introduction" formatted="false">Giriş</string>
-  <string name="help_introduction" formatted="false">Bu, <i>Battery Indicator Pro</i>, popüler bedava uygulama <i>Battery Indicator </i>\'ün \"Pro\" sürümüdür. Bu uygulamayı Android Market\'ten satın alabilirsiniz, ancak aynı zamanda bir açık kaynak projesi olduğundan, projenin web sayfası <a href="http://code.google.com/p/battery-indicator/"></a> adresinden kaynak kodunu ücretsiz indirebilirsiniz.</string>
-  <string name="help_introduction_free" formatted="false">Bu, <i>Battery Indicator</i>, <i>Battery Indicator</i> uygulama ailesinin ücretsiz sürümüdür. bu uygulamayı Android Market\'ten satın alabilirsiniz, ancak aynı zamanda bir açık kaynak projesi olduğundan, projenin web sayfası <a href="http://code.google.com/p/battery-indicator/"></a> adresinden kaynak kodunu ücretsiz indirebilirsiniz.\n\nLütfen bağış yaparak: <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">adresinden Pro Version\'a yükseltmeyi düşünün</a>.</string>
-  <string name="help_cat_summary" formatted="false">Özet</string>
-  <string name="help_cat_limitations" formatted="false">Sınırlamalar</string>
-  <string name="help_limitations" formatted="false">(<i>Bunlar benim kontrolüm dışında.</i>)\n\n•Sistem batarya simgesini kaldırmanın yolu yok.\n</string>
-  <string name="help_cat_features" formatted="false">Özellikler</string>
+  <string name="help_changelog" formatted="false">çevrimiçi Değişiklik Listesi <a href="http://batterybot.info/changelog">ni gör</a></string>
   <string name="help_cat_no_warranty" formatted="false">Garanti Yok</string>
   <string name="help_cat_acknowledgments" formatted="false">Onaylar</string>
   <string name="help_cat_translations" formatted="false">Çeviriler</string>

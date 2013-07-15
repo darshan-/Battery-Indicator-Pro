@@ -211,98 +211,32 @@
 
   <string formatted="false" name="help_cat_changelog">Changelog</string>
   <string formatted="false" name="help_changelog">
-    See the <a href="http://code.google.com/p/battery-indicator/wiki/Changelog?tm=6">online Changelog</a>.
+    Please see the <a href="http://batterybot.info/changelog">online Changelog</a>.
   </string>
 
-  <string formatted="false" name="help_cat_introduction">Introduction</string>
-  <string formatted="false" name="help_introduction">This
-    is <i>BatteryBot Pro</i>, the \"Pro\" version of the
-    popular free app, <i>BatteryBot</i>.  It\'s available for
-    purchase from the Android Market, but it\'s an open source
-    project, which means you can download the source for free
-    from <a href="http://code.google.com/p/battery-indicator/">the
-    project website</a>.
-  </string>
-  <string formatted="false" name="help_introduction_free">This
-    is <i>BatteryBot</i>, the free version of the
-    <i>BatteryBot</i> family of apps.  It\'s available from
-    the Android Market, and it\'s an open source project,
-    which means you can download the source for free
-    from <a href="http://code.google.com/p/battery-indicator/">the
-    project website</a>.\n
-
-    \nPlease consider donating by upgrading to the
-    <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro
-      Version</a>.
+  <string formatted="false" name="help_cat_faq">Frequently Asked Questions</string>
+  <string formatted="false" name="help_faq">
+    Please see the <a href="http://batterybot.info/faq">online FAQ</a>.
   </string>
 
-  <string formatted="false" name="help_cat_summary">Summary</string>
-  <string formatted="false" name="help_summary"><i>BatteryBot
-    Pro</i> is a lightweight battery indicator for the
-    Android™ mobile operating system.  Its core feature is that it
-    provides an icon that lives in the status bar and shows you the
-    percentage of battery charge left.\n
-
-    \nThis Pro version offers a great deal more utility than that,
-    however.  Besides offering red, amber, and green icons, it also
-    has the following key features as of version 3.0:\n
-
-    \n• Fully automated estimated charge/discharge time left.
-    \n• Downloadable icon plugins.
-    \n• Logging of battery state.
-    \n• Manually disable/reenable the device lock screen, with the option
-    to automatically disable it when plugged in and reenable it when unplugged.
-    \n• Many more useful things that you\'ll discover throughout.
-  </string>
-  <string formatted="false" name="help_summary_free"><i>BatteryBot</i>
-    is a lightweight battery indicator for the
-    Android™ mobile operating system.  Its core feature is that it
-    provides an icon that lives in the status bar and shows you the
-    percentage of battery charge left.\n
-
-    \nThe Pro version offers a great deal more utility than that,
-    however.  Besides offering red, amber, and green icons, it also
-    has the following key features as of version 3.0:\n
-
-    \n• Fully automated estimated charge/discharge time left.
-    \n• Downloadable icon plugins.
-    \n• Logging of battery state.
-    \n• Manually disable/reenable the device lock screen, with the option
-    to automatically disable it when plugged in and reenable it when unplugged.
-    \n• Many more useful things that you\'ll discover throughout.
+  <string formatted="false" name="help_cat_website">Website</string>
+  <string formatted="false" name="help_website">More
+    infomation is available at the <a
+    href="http://batterybot.info/">BatteryBot website</a>.
   </string>
 
-  <string formatted="false" name="help_cat_limitations">Limitations</string>
-  <string formatted="false" name="help_limitations">(<i>These
-    are out of my control.</i>)\n
-
-    \n• There\'s no way to remove the built-in battery icon.
-    \n• The notification icon in the status bar and the message you see in the
-    notification tray are tied together — you can\'t have one without the other.
-    \n• Many apps should allow installation to removable storage (SD card); some
-    should not.  BatteryBot is of the latter group.  See
-    <a href="http://code.google.com/p/battery-indicator/wiki/FAQ?tm=6">the project
-      FAQ</a> if you\'d like further explanation.
+  <string formatted="false" name="help_cat_open_source">Open Source</string>
+  <string formatted="false" name="help_open_source">This
+    is an open source project, which means you can <a
+    href="http://batterybot.info/sourcecode">download the source
+    code</a>.
   </string>
 
-  <string formatted="false" name="help_cat_features">Features</string>
-  <string formatted="false" name="help_features">
-    • Small, simple, and easy to read.
-    \n• It doesn\'t do any polling. It receives a broadcast message from the OS
-    when the battery status changes, then it simply updates the icon and
-    goes back to sleep. What this means is that it will take up a small
-    amount of RAM, but essentially 0 CPU cycles, so it can\'t drain your
-    battery.  I estimate that it will cost you about 1 minute of usage time
-    off of a full discharge as a worst case scenario.  If you are experiencing
-    anything worse than that, you probably have another app (such as a \"task
-    killer\" app of some kind) interfering with BatteryBot\'s normal
-    operation.
-    \n• Easy access to Battery Use screen (requires Android 1.6+).
-    \n• Configure to always start on boot, never start on boot, or start on boot
-    if the app was running on shutdown.
-    \n• Lots more that I\'m either forgetting or seem too minor to mention on
-    their on, but that add up to a great app.
-    \n• The satisfaction of supporting the developer. (I really appreciate it!)
+  <string formatted="false" name="help_cat_donate">Donate</string>
+  <string formatted="false" name="help_donate">Please
+    consider donating by upgrading to the <a
+    href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro
+    Version</a>.
   </string>
 
   <string formatted="false" name="help_cat_no_warranty">No Warranty</string>
@@ -345,8 +279,8 @@
 
   <string formatted="false" name="help_cat_contact">Contact</string>
   <string formatted="false" name="help_contact">If
-    you have a question or a problem, please
-    <a href="mailto:support@batterybot.info">email me</a>.\n
+    you have a question, a problem, or a comment, please
+    <a href="mailto:support@batterybot.info">email me</a>.
   </string>
 
   <string formatted="false" name="pref_hint">Hint: Press MENU for help.</string>

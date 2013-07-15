@@ -25,8 +25,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class HelpActivity extends Activity {
-    private static final int[] HAS_LINKS = {R.id.introduction, R.id.changelog,
-                                            R.id.limitations, R.id.acknowledgments,
+    private static final int[] HAS_LINKS = {R.id.changelog, R.id.faq, R.id.website,
+                                            R.id.open_source, R.id.acknowledgments,
                                             R.id.translations, R.id.contact};
 
     @Override

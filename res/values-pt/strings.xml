@@ -67,11 +67,7 @@
   <string name="currently_disabled" formatted="false">Desactivado</string>
   <string name="help_cat_version" formatted="false">Versão</string>
   <string name="help_cat_changelog" formatted="false">Relatório das mudanças</string>
-  <string name="help_changelog" formatted="false">Vê a <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">história das versões na página do projecto</a>.</string>
-  <string name="help_cat_introduction" formatted="false">Introdução</string>
-  <string name="help_cat_summary" formatted="false">Sumário</string>
-  <string name="help_cat_limitations" formatted="false">Limitações</string>
-  <string name="help_cat_features" formatted="false">Funções</string>
+  <string name="help_changelog" formatted="false">Vê a <a href="http://batterybot.info/changelog">história das versões na página do projecto</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">Sem Garantia</string>
   <string name="help_cat_acknowledgments" formatted="false">Agradecimentos</string>
   <string name="help_cat_translations" formatted="false">Traduções</string>

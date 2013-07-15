@@ -17,20 +17,11 @@
     <TextView style="@style/help_cat"  android:text="@string/help_cat_changelog" />
     <TextView android:id="@+id/changelog" style="@style/help_text" android:text="@string/help_changelog" />
 
-    <TextView style="@style/help_cat"  android:text="@string/help_cat_introduction" />
-    <TextView android:id="@+id/introduction" style="@style/help_text" android:text="@string/help_introduction" />
+    <TextView style="@style/help_cat"  android:text="@string/help_cat_faq" />
+    <TextView android:id="@+id/faq" style="@style/help_text" android:text="@string/help_faq" />
 
-    <TextView style="@style/help_cat"  android:text="@string/help_cat_summary" />
-    <TextView style="@style/help_text" android:text="@string/help_summary" />
-
-    <TextView style="@style/help_cat"  android:text="@string/help_cat_limitations" />
-    <TextView android:id="@+id/limitations" style="@style/help_text" android:text="@string/help_limitations" />
-
-    <TextView style="@style/help_cat"  android:text="@string/help_cat_features" />
-    <TextView style="@style/help_text" android:text="@string/help_features" />
-
-    <TextView style="@style/help_cat"  android:text="@string/help_cat_no_warranty" />
-    <TextView style="@style/help_text" android:text="@string/help_no_warranty" />
+    <TextView style="@style/help_cat"  android:text="@string/help_cat_open_source" />
+    <TextView android:id="@+id/open_source" style="@style/help_text" android:text="@string/help_open_source" />
 
     <TextView style="@style/help_cat"  android:text="@string/help_cat_acknowledgments" />
     <TextView android:id="@+id/acknowledgments" style="@style/help_text" android:text="@string/help_acknowledgments" />
@@ -42,5 +33,11 @@
 
     <TextView style="@style/help_cat"  android:text="@string/help_cat_contact" />
     <TextView android:id="@+id/contact" style="@style/help_text" android:text="@string/help_contact" />
+
+    <TextView style="@style/help_cat"  android:text="@string/help_cat_website" />
+    <TextView android:id="@+id/website" style="@style/help_text" android:text="@string/help_website" />
+
+    <TextView style="@style/help_cat"  android:text="@string/help_cat_no_warranty" />
+    <TextView style="@style/help_text" android:text="@string/help_no_warranty" />
   </LinearLayout>
 </ScrollView>

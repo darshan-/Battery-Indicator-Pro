@@ -81,17 +81,6 @@
   <string name="currently_disabled" formatted="false">当前不可用</string>
   <string name="help_cat_version" formatted="false">版本</string>
   <string name="help_cat_changelog" formatted="false">更新日志</string>
-  <string name="help_changelog" formatted="false">，。请访问<a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">项目FAQ</a>以获取版本历史。</string>
-  <string name="help_cat_introduction" formatted="false">软件介绍</string>
-  <string name="help_introduction" formatted="false">本软件为<i>电量指示器专业版</i>，是热门免费软件<i>电量指示器</i>的专业版本， 目前已在电子市场上提供购买服务。本软件为开源项目，您可在<a href="http://code.google.com/p/battery-indicator/">项目网站</a>下载免费开源代码。</string>
-  <string name="help_introduction_free" formatted="false">本软件为<i>电量指示器</i>，<i>电量指示器</i>系列软件的免费版本。 目前已在电子市场上提供下载服务。本软件为开源项目，您可在<a href="http://code.google.com/p/battery-indicator/">项目网站</a>下载免费开源代码。 请考虑购买以升级至<a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">专业版本</a>。</string>
-  <string name="help_cat_summary" formatted="false">综述</string>
-  <string name="help_summary" formatted="false"><i>电量指示器</i>是应用于Android™手机操作系统的小型软件，主要功能即在系统状态栏中以图标形式显示电池剩余电量信息。 免费版本可以红色、黄色及绿色图标提示剩余电量等级，3.0专业版更包含了以下多种高级功能： • 可定制的预估充电/放电剩余时间。 • 将电池状态通过日志进行记录。 • 多种窗口主题（包括便于阅读的大字体文本全屏窗口）。 • 可手动禁用/启用自动锁屏功能，以实现在充电时禁止系统自动锁屏，并在拔下电源后恢复系统默认值的功能。 • 更多的惊喜等待您的发掘。</string>
-  <string name="help_summary_free" formatted="false"><i>电量指示器</i>是应用于Android™手机操作系统的小型软件，主要功能即在系统状态栏中以图标形式显示电池剩余电量信息。 免费版本可以红色、黄色及绿色图标提示剩余电量等级，3.0专业版更包含了以下多种高级功能： • 可定制的预估充电/放电剩余时间。 • 将电池状态通过日志进行记录。 • 多种窗口主题（包括便于阅读的大字体文本全屏窗口）。 • 可手动禁用/启用自动锁屏功能，以实现在充电时禁止系统自动锁屏，并在拔下电源后恢复系统默认值的功能。 • 更多的惊喜等待您的发掘。</string>
-  <string name="help_cat_limitations" formatted="false">软件局限</string>
-  <string name="help_limitations" formatted="false">(<i>以下所述功能受多方面局限</i>) • 本软件以被动形式收集系统信息。大部分手机以%1的步进报告电量剩余信息，但少部分机型（以Motorola Droid机型为主） 则以10%的步进报告电量剩余信息。 • 无法实现移除系统自带电量图标。 • 通知栏图标和通知栏托盘文本信息为统一的整体，无法单独使用其中的任意一项。 • 部分软件允许安装到SD卡存储空间，但有些软件则无法实现，电量指示器则为一例。具体缘由请参考 <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">项目FAQ</a>。</string>
-  <string name="help_cat_features" formatted="false">特性</string>
-  <string name="help_features" formatted="false">• 精简并便于阅读。 • 本软件不进行主动扫描，仅在电池状态改变时收集系统广播信息作为依据来更新图标显示并即时转入省电模式。从而实现节约 运行内存和几乎不使用CPU的省电特性。估计在使一块正常电池完全放电的时间内，本软件仅使用了约一分钟时间的电量。如果您 发现软件运行异常，请检查是否安装了其他（如“任务杀手”之类的）软件干扰电量指示器的正常运行。 • 快捷访问系统电量使用详情界面（需要Android 1.6以上版本支持）。 • 可设置为“始终自动启动”、“从不自动启动”或“关机前运行中”三种软件自启动方式。 • 更多其他未包含在此介绍内的小特性，等待着您的发掘。 • 支持开发者的荣耀感。（在此表示非常感谢！）</string>
   <string name="help_cat_no_warranty" formatted="false">免责申明</string>
   <string name="help_no_warranty" formatted="false">本软件旨在提高系统的易用性，并<b>无任何承担责任的义务</b>。<b>不对使用软件实现特殊功能的实用性做任何承诺</b>。 软件开发者将尽其所能最求软件的正常工作及流畅运行，但对任何情况下可能导致的使用者的不适或设备损坏不承担任何责任。</string>
   <string name="help_cat_acknowledgments" formatted="false">声明</string>
@@ -99,7 +88,6 @@
   <string name="help_cat_translations" formatted="false">多语言化</string>
   <string name="help_subcat_translators" formatted="false">翻译志愿者名单</string>
   <string name="help_cat_contact" formatted="false">联系方式</string>
-  <string name="help_contact" formatted="false">如果您在使用中遇到任何疑问，请先参阅<a href="http://code.google.com/p/battery-indicator/wiki/FAQ">软件FAQ</a>。 如果您有任何反馈信息，或FAQ中无法解答的任何疑问，请联系开发者的电子邮件<a href="mailto:support@batterybot.info">support@batterybot.info</a>。</string>
   <string name="pref_hint" formatted="false"><b>提示：</b>单击“菜单”获取帮助。</string>
   <string name="settings_overview" formatted="false">预览</string>
   <string name="settings_overview_help" formatted="false">设置项包括如下所述的三个独立页面。各页面的帮助信息独立显示，在“菜单”-“帮助”内容中可获取当前页面的帮助信息。</string>

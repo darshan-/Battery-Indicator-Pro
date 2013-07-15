@@ -68,17 +68,6 @@
   <string name="currently_disabled" formatted="false">當前不可用</string>
   <string name="help_cat_version" formatted="false">版本</string>
   <string name="help_cat_changelog" formatted="false">更新日誌</string>
-  <string name="help_changelog" formatted="false">請訪問<a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">專案FAQ</a>以獲取版本歷史。</string>
-  <string name="help_cat_introduction" formatted="false">軟體介紹</string>
-  <string name="help_introduction" formatted="false">本軟體為<i>電量指示器專業版</i>，是熱門免費軟體<i>電量指示器</i>的專業版本， 目前已在Android Market上提供購買服務。本軟體為開源專案，您可在<a href="http://code.google.com/p/battery-indicator/">專案網站</a>下載免費開源代碼。</string>
-  <string name="help_introduction_free" formatted="false">本軟體為<i>電量指示器</i>，<i>電量指示器</i>系列軟體的免費版本。 目前已在Android Market上提供下載服務。本軟體為開源專案，您可在<a href="http://code.google.com/p/battery-indicator/">專案網站</a>下載免費開源代碼。\n請考慮購買以升級至<a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">專業版本</a>。</string>
-  <string name="help_cat_summary" formatted="false">摘要</string>
-  <string name="help_summary" formatted="false"><i>電量指示器專業版</i>是應用於Android™手機作業系統的小型軟體，主要功能即在系統狀態列中以圖標形式顯示電池剩餘電量信息。\n\n此專業版提供了更多功能。除了可以紅色、黃色及綠色圖標提示剩餘電量等級，更包含了以下3.0版多種高級功能：\n\n‧ 可設定的預估充電/放電剩餘時間。\n‧ 將電池狀態通過日誌進行記錄。\n‧ 多種視窗主題（包括便於閱讀的大字體文本全屏視窗）。\n‧ 可手動禁用/啟用自動鎖屏功能，以實現在充電時禁止系統自動鎖屏，並在拔下電源後恢復系統預設值的功能。\n‧ 更多的驚喜等待您的發掘。</string>
-  <string name="help_summary_free" formatted="false"><i>電量指示器</i>是應用於Android™手機作業系統的小型軟體，主要功能即在系統狀態列中以圖標形式顯示電池剩餘電量信息。\n\n專業版提供了更多功能。除了可以紅色、黃色及綠色圖標提示剩餘電量等級，更包含了以下3.0版多種高級功能：\n\n‧ 可定制的預估充電/放電剩餘時間。\n‧ 將電池狀態通過日誌進行記錄。\n‧ 多種視窗主題（包括便於閱讀的大字體文本全屏視窗）。\n‧ 可手動禁用/啟用自動鎖屏功能，以實現在充電時禁止系統自動鎖屏，並在拔下電源後恢復系統預設值的功能。\n‧ 更多的驚喜等待您的發掘。</string>
-  <string name="help_cat_limitations" formatted="false">軟體侷限</string>
-  <string name="help_limitations" formatted="false">(<i>以下所述功能受多方面侷限</i>)\n\n‧ 本軟體以被動形式收集系統信息。大部分手機以%1的步進報告電量剩餘信息，但少部分機型（以Motorola Droid機型為主） 則以10%的步進報告電量剩餘信息。\n‧ 無法移除系統自帶電量圖標。\n‧ 狀態列圖標和狀態列托盤文本信息為統一的整體，無法單獨使用其中的任意一項。\n‧ 部分軟體允許安裝到SD卡存儲空間，但有些軟體則無法實現，電量指示器則為一例。具體緣由請參考 <a href="http://code.google.com/p/battery-indicator/wiki/FAQ">專案FAQ</a>。</string>
-  <string name="help_cat_features" formatted="false">特性</string>
-  <string name="help_features" formatted="false">‧ 精簡並便於閱讀。\n‧ 本軟體不進行主動掃瞄，僅在電池狀態改變時收集系統廣播信息作為依據來更新圖標顯示並即時轉入省電模式。從而實現節約 運行記憶體和幾乎不使用CPU的省電特性。估計在使一塊正常電池完全放電的時間內，本軟體僅使用了約一分鐘時間的電量。如果您 發現軟體運行異常，請檢查是否安裝了其他（如「任務殺手」之類的）軟體干擾電量指示器的正常運行。\n‧ 快捷訪問系統電量使用詳情界面（需要Android 1.6以上版本支持）。\n‧ 可設定為「始終自動啟動」、「從不自動啟動」或「關機前運行中」三種軟體自動啟動方式。\n‧ 更多其他未包含在此介紹內的小特性，等待著您的發掘。\n‧ 支持開發者的榮耀感。（在此表示非常感謝！）</string>
   <string name="help_cat_no_warranty" formatted="false">免責申明</string>
   <string name="help_no_warranty" formatted="false">本軟體旨在提高系統的易用性，並<b>無任何承擔責任的義務</b>。<b>不對使用軟體實現特殊功能的實用性做任何承諾</b>。\n\n軟體開發者將盡其所能最求軟體的正常工作及流暢運行，但對任何情況下可能導致的使用者的不適或設備損壞不承擔任何責任。</string>
   <string name="help_cat_acknowledgments" formatted="false">聲明</string>

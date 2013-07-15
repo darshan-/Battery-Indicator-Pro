@@ -69,13 +69,7 @@
   <string name="currently_disabled" formatted="false">Desativado</string>
   <string name="help_cat_version" formatted="false">Versão</string>
   <string name="help_cat_changelog" formatted="false">Relatório das mudanças</string>
-  <string name="help_changelog" formatted="false">Veja o <a href="http://code.google.com/p/battery-indicator/wiki/FAQ#What's_new_in_the_update?">histórico de mudanças na página do projeto</a>.</string>
-  <string name="help_cat_introduction" formatted="false">Introdução</string>
-  <string name="help_introduction" formatted="false">Esse é o <i>Battery Indicator Pro</i>, a versão \"Pro\" do popular aplicativo gratuito, <i>Battery Indicator</i>. Ele está disponível para compra a partir do Android Market, mas é um projeto de código livre, o que significa que você pode fazer o download do código fonte na <a href="http://code.google.com/p/battery-indicator/">página do projeto</a>.</string>
-  <string name="help_introduction_free" formatted="false">Esse é o <i>Battery Indicator</i>, a versão gratuita da família de aplicativos <i>Battery Indicator</i>. Ele está disponível no Android Market e é um projeto de código livre, o que significa que você pode fazer o download do código fonte na <a href="http://code.google.com/p/battery-indicator/">página do projeto</a>.\n\nPor favor, ajude o projeto, através de doações e comprando a <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">versão Pro</a>.</string>
-  <string name="help_cat_summary" formatted="false">Resumo</string>
-  <string name="help_cat_limitations" formatted="false">Limitações</string>
-  <string name="help_cat_features" formatted="false">Funções</string>
+  <string name="help_changelog" formatted="false">Veja o <a href="http://batterybot.info/changelog">histórico de mudanças na página do projeto</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">Sem Garantia</string>
   <string name="help_cat_acknowledgments" formatted="false">Agradecimentos</string>
   <string name="help_cat_translations" formatted="false">Traduções</string>
