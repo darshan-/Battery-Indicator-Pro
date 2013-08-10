@@ -336,37 +336,37 @@
   <string name="icon_set_plain" formatted="false">رقم كبير</string>
   <string name="icon_set_smaller" formatted="false">رقم صغير</string>
   <plurals name="n_log_items">
-    <item quantity="one">%سجل المحتوى</item>
-    <item quantity="other">% سجل المحتوى</item>
+    <item quantity="one">%dسجل المحتوى</item>
+    <item quantity="other">%d سجل المحتوى</item>
   </plurals>
   <plurals name="n_hours_long">
-    <item quantity="one">% ساعة</item>
-    <item quantity="other">%ساعة</item>
+    <item quantity="one">%d ساعة</item>
+    <item quantity="other">%dساعة</item>
   </plurals>
   <plurals name="n_minutes_long">
-    <item quantity="one">% دقيقة</item>
-    <item quantity="other">%دقائق</item>
+    <item quantity="one">%d دقيقة</item>
+    <item quantity="other">%dدقائق</item>
   </plurals>
   <plurals name="n_hours_medium">
-    <item quantity="one">"% س, "</item>
-    <item quantity="other">"% ساعات, "</item>
+    <item quantity="one">"%d س, "</item>
+    <item quantity="other">"%d ساعات, "</item>
   </plurals>
   <plurals name="n_minutes_medium">
-    <item quantity="one">%دق</item>
-    <item quantity="other">%دقا</item>
+    <item quantity="one">%dدق</item>
+    <item quantity="other">%dدقا</item>
   </plurals>
   <plurals name="n_hours_short">
-    <item quantity="other">"% س "</item>
+    <item quantity="other">"%d س "</item>
   </plurals>
   <plurals name="n_days">
-    <item quantity="other">"% ايام , "</item>
+    <item quantity="other">"%d ايام , "</item>
   </plurals>
   <plurals name="n_hours">
-    <item quantity="one">% ساعة</item>
-    <item quantity="other">%ساعات</item>
+    <item quantity="one">%d ساعة</item>
+    <item quantity="other">%dساعات</item>
   </plurals>
   <plurals name="for_n_hours">
-    <item quantity="one">ل %ساعة</item>
-    <item quantity="other">ل %ساعات</item>
+    <item quantity="one">ل %dساعة</item>
+    <item quantity="other">ل %dساعات</item>
   </plurals>
 </resources>
