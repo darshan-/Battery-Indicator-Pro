@@ -244,7 +244,7 @@ public class AlarmEditActivity extends PreferenceActivity {
             lp.setEnabled(true);
 
             if (resetValue) {
-                mAdapter.setThreshold(str.temp_alarm_values[3]);
+                mAdapter.setThreshold("460");
                 lp.setValue(mAdapter.threshold);
             }
         } else if (mAdapter.type.equals("charge_drops") || mAdapter.type.equals("charge_rises")) {

@@ -252,6 +252,11 @@
   </string-array>
 
   <string-array name="temp_alarm_entries">
+    <item>30°C / 86°F</item>
+    <item>32°C / 90°F</item>
+    <item>34°C / 93°F</item>
+    <item>36°C / 97°F</item>
+    <item>38°C / 100°F</item>
     <item>40°C / 104°F</item>
     <item>42°C / 108°F</item>
     <item>44°C / 111°F</item>
@@ -265,6 +270,11 @@
     <item>60°C / 140°F</item>
   </string-array>
   <string-array name="temp_alarm_values">
+    <item>300</item>
+    <item>320</item>
+    <item>340</item>
+    <item>360</item>
+    <item>380</item>
     <item>400</item>
     <item>420</item>
     <item>440</item>
