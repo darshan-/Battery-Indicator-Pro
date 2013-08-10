@@ -119,9 +119,10 @@
   <string name="help_cat_acknowledgments" formatted="false">Uznania</string>
   <string name="help_acknowledgments" formatted="false">Aplikacja byłaby dostępna tylko po angielsku gdyby nie wsparcie tłumaczy wolontariuszy. Dzięki!\n\nWielkie dzięki dla Google i innych programistów open-source którzy stworzyli Androida, i bez których ta aplikacja by nie zaistniała.\n\nIkona launchera (prawa górna, którą widzisz w Markecie) jest na bazie ikony z <a href="http://www.oxygen-icons.org">tematu Oxygen icons</a> i użyta na licencji <a href="http://creativecommons.org/licenses/by- sa/3.0/">Creative Common Attribution-ShareAlike 3.0</a>.</string>
   <string name="help_cat_translations" formatted="false">Tłumaczenia</string>
-  <string name="help_translations" formatted="false">Potrzebuje pomocy z przetłumaczeniem tej apki na inne języki. Jeżeli chciałbyś pomóc, wyslij<a href="mailto:support%2Btranslations@batterybot.info">email</a>. (Ten adres jest tylko do korespondencji nt. tłumaczenia; zobacz sekcję Kontakt poniżej dla dalszych informacji) Dopóki nie powiadomisz mnie o tym, umieszczę Twoje imię w sekcji Uznania.</string>
+  <string name="help_translations" formatted="false">Potrzebuje pomocy z przetłumaczeniem tej apki na inne języki. Jeżeli chciałbyś pomóc, wyslij <a href="mailto:support%2Btranslations@batterybot.info">email</a> (ten adres jest tylko do korespondencji nt. tłumaczenia; zobacz sekcję Kontakt poniżej dla dalszych informacji). Daj mi znać czy chcesz, by Twoje imię w uznaniu za pomoc zostało wymienione w tej sekcji.</string>
   <string name="help_subcat_translators" formatted="false">Tłumacze</string>
   <string name="help_cat_contact" formatted="false">Kontakt</string>
+  <string name="help_contact" formatted="false">Jeśli masz pytanie, problem lub uwagi, proszę <a href="mailto:support@batterybot.info">napisz do mnie</a>.</string>
   <string name="pref_hint" formatted="false">Podpowiedź: Naciśnij MENU po pomoc.</string>
   <string name="settings_overview" formatted="false">Przegląd</string>
   <string name="settings_overview_help" formatted="false">Ustawienia są posegregowane na 4 osobne strony. Każda strona ma własną pomoc, która opisuje ustawienia na niej. Po prostu naciśnij MENU a następnie Pomoc (na tabletach MENU nie jest wymagane) aby ją uzyskać.</string>

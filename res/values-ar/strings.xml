@@ -8,7 +8,7 @@
   <string name="app_full_name_free" formatted="false">مؤشر البطارية</string>
   <string name="battery_use_b" formatted="false">عرض استخدام البطارية</string>
   <string name="upgrade_donate_b" formatted="false">ترقية/تبرع</string>
-  <string name="reenable_lock_screen" formatted="false">إعادة قفل الشاشة</string>
+  <string name="reenable_lock_screen" formatted="false">إعادة تمكين قفل الشاشة</string>
   <string name="disable_lock_screen" formatted="false">تعطيل قفل الشاشة</string>
   <string name="circle_widget" formatted="false">دائرةالمؤشر</string>
   <string name="full_widget" formatted="false">البطاية كاملة الشحن</string>
@@ -17,11 +17,11 @@
   <string name="yes" formatted="false">نعم</string>
   <string name="cancel" formatted="false">لا</string>
   <string name="confirm_close" formatted="false">تأكيد الغلق؟</string>
-  <string name="confirm_close_hint" formatted="false">\nبرنامج المؤشر سوف يتم غلقه بشكل تام ولن تراه في شريط الاشعارات\nاذا اردت ان تغادر البرنامج وتريد ان يبقى المؤشر مشغل اضغط على الغاء وبعدها اظغط على زر الرجوع للمغادرة البرنامج</string>
+  <string name="confirm_close_hint" formatted="false">برنامج المؤشر سوف يتم غلقه بشكل تام ولن تراه في شريط الاشعارات\n\nاذا اردت ان تغادر البرنامج وتريد ان يبقى المؤشر مشغل اضغط على الغاء وبعدها اظغط على زر الرجوع للمغادرة البرنامج</string>
   <string name="confirm_clear_logs" formatted="false">هل تريد مسح السجلات ؟</string>
   <string name="configure_log_filter" formatted="false">رؤية عناصر السجلات؟</string>
-  <string name="confirm_ten_percent_enable" formatted="false">هل تريد تمكين نظام 10% ؟</string>
-  <string name="confirm_ten_percent_disable" formatted="false">هل تريد تعطيل نظام 10% ؟</string>
+  <string name="confirm_ten_percent_enable" formatted="false">هل تريد تمكين نمط 10% ؟</string>
+  <string name="confirm_ten_percent_disable" formatted="false">هل تريد تعطيل نمط 10% ؟</string>
   <string name="confirm_ten_percent_hint" formatted="false">تحذير:تغيير هذه الاعدادات(اي تمكينها وتعطيلها) سوف يعيد الوان الاعدادات\n\nاذا كنت تملك هاتف موتولارلا او اكس او 2 او دايفي او سامسونغ مومينت يجب عليك تشغيل هذا الاعداد عندما تحصل على هذا التطبيق لاول مرةومن ثم اتركه’اما الهواتف الاخرى فلا يجب التلاعب بهذا الاعداد ويجب تركه في حالة الايقاف</string>
   <string name="okay" formatted="false">موافق</string>
   <string name="none" formatted="false">لا\ولاواحد</string>
@@ -118,6 +118,14 @@
   <string name="help_cat_version" formatted="false">الاصدار</string>
   <string name="help_cat_changelog" formatted="false">التغيير</string>
   <string name="help_changelog" formatted="false">انظر الى<a href="http://batterybot.info/changelog">التغيير بالانترنيت</a></string>
+  <string name="help_cat_faq" formatted="false">اسئلة واجوبة</string>
+  <string name="help_faq" formatted="false"><a href="http://batterybot.info/faq">online FAQ</a> ارجوك اطلع على هذا</string>
+  <string name="help_cat_website" formatted="false">الموقع</string>
+  <string name="help_website" formatted="false">المزيد من المعلومات متاحة على <a href="http://batterybot.info/">BatteryBot website</a></string>
+  <string name="help_cat_open_source" formatted="false">مفتوح المصدر</string>
+  <string name="help_open_source" formatted="false">هذا مشروع مفتوح المصدر مما يعني انك قادر على تنزيل المصادر <a href="http://batterybot.info/sourcecode">تنزيل مصادر التطبيق</a>.</string>
+  <string name="help_cat_donate" formatted="false">تبرع</string>
+  <string name="help_donate" formatted="false">ارجوك كن من المتبرعين بشرائك النسخة الكاملة <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">النسخة الكاملة</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">لا ضمان</string>
   <string name="help_no_warranty" formatted="false">يتم نشر هذا التطبيق على امل ان يكون مفيدا وعملي لكن من دون اي ضمان حتى دون صلاحية التسويق وللاستخدام لغرض معين\n\nبينما أنا أبذل قصارى جهدي للتأكد من أنه يعمل بشكل جيد ولا يسبب المشاكل، وأنا لست مسؤولا عن أي ضرر أو إزعاج قد يسببه تحت أي ظرف من الظروف</string>
   <string name="help_cat_acknowledgments" formatted="false">شكر وتقدير</string>
@@ -149,7 +157,7 @@
   <string name="pref_please_upgrade" formatted="false">اصدار النسخة الكاملة يحتوي على اعدادات ومميزات اكثر ايقونات منبهات وسجلات حالة البطارية والتعطيل الاوتوماتيكي والعادي لقفل الشاشة والشحن المنقضي والمتبقي والمزيد</string>
   <string name="add_alarm" formatted="false">اضافة تنبيه</string>
   <string name="pref_cat_notification_layout" formatted="false">التصميم</string>
-  <string name="pref_use_system_notification_layout" formatted="false">استخدام التصميم النظتمي</string>
+  <string name="pref_use_system_notification_layout" formatted="false">استخدام التصميم النظامي</string>
   <string name="pref_use_system_notification_layout_summary" formatted="false">استخدام الاشعارات النظامية بالاحرى تخصيص اعدادات تصميم المؤشر؟</string>
   <string name="pref_use_system_notification_layout_help" formatted="false">اذا تم التمكين الاشعارات النظاميةسوف تختلط مع الاشعارات الخاصة بلمؤشر الاحترافي الاشعارات النظامية اقل تخصيص لكن عدد لايذكر من الاجهزة لاتعمل هذا الخيار معها بشكل ملائم بحيث ان التصاميم ستصبح قبيحة وهناك هواتف اخرى لاتطابق الحجم الخاص بالتصاميم تمكين هذا الخير سيؤدي الاشعارات وسوف يقفل اقي الاشعارات\n\nلاحظ أن هذا سوف يؤدي إلى وجود رمز شريط المعلومات المستخدمة في الاشعارات.</string>
   <string name="pref_cat_notification_content" formatted="false">المحتوى</string>
@@ -172,5 +180,193 @@
   <string name="normal" formatted="false">عادي</string>
   <string name="verbose" formatted="false">مسهب</string>
   <string name="pref_status_duration_in_vital_signs" formatted="false">مدة الوضع في العلامات الحيوية</string>
+  <string name="pref_status_duration_in_vital_signs_summary" formatted="false">الوقت الماضي منذ تغيير الحالة</string>
+  <string name="pref_status_duration_in_vital_signs_help" formatted="false">اذا تم ضبط العلامات الحيوية سوف بيلغك ان الجهاز كم من الزمن مضى من الشحن والتفريغ</string>
+  <string name="pref_cat_notification_appearance" formatted="false">المطهر</string>
+  <string name="pref_cat_notification_appearance_help" formatted="false">يمكنك تجاوز الألوان للاطلاع على نص الاشعارات إذا كان التخلف يصعب قراءة أو إذا كنت تفضل ذلك مجرد شيء مختلف. يمكنك أيضا اختيار لتجاوز أو عدم إظهار مربع حول المنطقة ايقونة.</string>
+  <string name="pref_notification_percentage_text_color" formatted="false">نسبة لون النص</string>
+  <string name="pref_custom_percentage_text_color" formatted="false">النسبة المئوية المخصصة</string>
+  <string name="pref_notification_top_line_color" formatted="false">لون الخط العلوي</string>
+  <string name="pref_custom_top_line_color" formatted="false">تخصيص لون الخط العلوي</string>
+  <string name="pref_notification_bottom_line_color" formatted="false">لون الخط السفلي</string>
+  <string name="pref_custom_bottom_line_color" formatted="false">تخصيص لون الخط السفلي</string>
+  <string name="pref_show_box_around_icon_area" formatted="false">عرض صندوق مربع حول الايقونة</string>
+  <string name="pref_show_box_around_icon_area_summary" formatted="false">اظهار اللوان الخلفية في منطقة الايقونة</string>
+  <string name="system_default" formatted="false">النظام الافتراضي</string>
+  <string name="black" formatted="false">اسود</string>
+  <string name="white" formatted="false">ابيض</string>
+  <string name="ics_blue" formatted="false">نظام الاندرويد ايس كريم ساندويش ازرق</string>
+  <string name="custom" formatted="false">مخصص</string>
+  <string name="pref_cat_notification_priority" formatted="false">اولوية الاشعار</string>
+  <string name="pref_cat_notification_priority_help" formatted="false">الجيلي بين واعلى(ANDROID 4.1)الاشعارات يمكن ان تملك اولوية المؤثرات لايمكن توليدها الا في العام\n\nالضبط المصغر ويمكن عرضه في بعض الاحيان في شريط الاشعارات اسحب الشريط للاسفل\n\nالضبط الواطئ بحيث تكون الاشعارات في الاعلى بشكل اوتوماتيكي وانه رائع\n\nالضبط الاعتيادي هو ايضا في الاعلى لكن بشكل افتراضي للجهاز وسوف يشكل تغيير في العرض\n\nملاحظة قد تختلف الاعدادات من جهاز لاخر وانه مضمونا</string>
+  <string name="pref_main_notification_priority" formatted="false">اولوية الاشعارات الرئيسية</string>
+  <string name="pref_main_notification_priority_help" formatted="false">تعيين الأولوية للاشعار الرئيسي. لا تتأثرالمنبهات ، والإضافات، وأية إخطارات أخرى بواسطة هذا الإعداد، ولكنها قد تكون في المستقبل قد شكلي الأولوية.</string>
+  <string name="pref_cat_icon_set" formatted="false">ضبط ايقونة</string>
+  <string name="pref_icon_set" formatted="false">ضبط الايقونة</string>
+  <string name="pref_icon_set_help" formatted="false">الاندرويد يأتي بنسخ عديدة ولاتوجد ايقونة تعمل بشكل كامل على كل الاجهزة المستخدمين المحترفين يمكنهم جلب بعض الاضافات للحصول على خيارات اكثر لكن توجد ثلاث خيارات هي التي تعمل على كل الاجهزة\n\nالشكل الكلاسيكي هو الافتراضي والاصلي الذي يأتي منذ 2009 مع نسخة اندرويد3.0 القديمة والتي تسمى بقرص العسل و يجعل ايقونة الاشعارات سهلة القراءة\n\nشكل الارقام الكبيرة والتي تأتي لجميع الهواتف الجديدة لكن هناك هواتف ضغيرة وجديدة مما يؤدي الى عدم تركيب الارقام بشكل مناسب\n\nشكل الارقام الصغيرة وهوه مايفضله الذي يتركون شكل الارقام الكبيرة بسب عدم التركيب بشكل جيد لهواتفهم\n\nاذا كنت قد اشتريت النسخة الكاملة لهذا التطبيق فسوف تحصل على اضافات مجانية اضغط على خيارات واضغط على الحصول على اضافات مجانية او اضغط على الخيارات السريعة الموجودة في الشريط للهواتف الجديدة</string>
+  <string name="pref_cat_charging_indicator" formatted="false">مؤشر الشحن</string>
+  <string name="pref_indicate_charging" formatted="false">اشارة الى الشحن</string>
+  <string name="pref_indicate_charging_summary" formatted="false">تغيير لايقونة للتنبيه عند الشحن؟</string>
+  <string name="pref_indicate_charging_help" formatted="false">بعض مجموعات الأيقونات تشير عندما يتم شحن البطارية، على سبيل المثال من خلال إظهار الضوء السفلي . تعطيل هذا الإعداد إذا كنت تفضل ذلك أن لا يفعل ذلك.</string>
+  <string name="pref_cat_logging" formatted="false">تسجيل</string>
+  <string name="pref_enable_logging" formatted="false">تمكين التسجيل</string>
+  <string name="pref_enable_logging_summary" formatted="false">تسجيل حالة تغيير البطارية ؟</string>
+  <string name="pref_enable_logging_help" formatted="false">اذا تم تمكين هذا الخيار سوف يقوم التطبيق بتسجيل حالة تغييرات البطارية</string>
+  <string name="pref_max_log_age" formatted="false">الاحد الاقصى للسجلات</string>
+  <string name="pref_max_log_age_summary" formatted="false">حذف السجلات القديمة بعد:</string>
+  <string name="pref_max_log_age_help" formatted="false">اذا تم تمكين السجلات سوف يتم حذف السجلات القديمة من فترة لاخرى وسوف يتم التبديل بالسجلات الجديدة</string>
+  <string name="pref_cat_keyguard" formatted="false">قفل الشاشة / حارس المفاتيح</string>
+  <string name="pref_cat_keyguard_help" formatted="false">الاندرويد عادة يقوم بتعطيل وتمكين حارس المفاتيح وانت تعتقد انه مثل قفل الشاشة عند اعادة تكرار هذه الحالة سوف تفقد السيطرة على هاتفك كمثال انك لاتستطيع ان توقد شاشة هاتفك</string>
+  <string name="pref_notify_when_kg_disabled" formatted="false">تعطيل الاشعار عند</string>
+  <string name="pref_notify_when_kg_disabled_summary" formatted="false">تنبيه عند تعطيل قفل الشاشة</string>
+  <string name="pref_notify_when_kg_disabled_help" formatted="false">إذا تم، سيظهر اشعار منفصل مبينا تعطيل قفل الشاشة.</string>
+  <string name="pref_confirm_manual_disable" formatted="false">تأكيد التعطيل اليدوي</string>
+  <string name="pref_confirm_manual_disable_summary" formatted="false">تأكيد عندما يتم تعطيل قفل الشاشة يدويا؟</string>
+  <string name="pref_confirm_manual_disable_help" formatted="false">إذا تم، سيكون على الحوار تأكيد يطفو على السطح عندما كنت في محاولة لتعطيل قفل الشاشة يدويا. ويهدف هذا في المقام الأول لمنع المستخدمين الجدد من غير قصد تعطيل قفل الشاشة من دون أن يعرفوا ذلك. إذا تم تعطيل قفل الشاشة مع أي انتظام،</string>
+  <string name="pref_finish_after_toggle_lock" formatted="false">خروج بعد التبديل</string>
+  <string name="pref_finish_after_toggle_lock_summary" formatted="false">خروج اطار رئيسي مباشرة عندما يمكن ويعطل؟</string>
+  <string name="pref_finish_after_toggle_lock_help" formatted="false">اذا كنت من الاشخص الذين يملكون عملا شاق سوف تحتاج لتمكين قفل الشاشة لاتحتاج الى اعادة فتح وقفل الشاشة وسوف تعود الى ما كنت تفعله ببساطة ويكمنه تمكين الخيار من الاعدادات الخاصة بالتطبيق التي تجدها عند سحب الشريط العلوي\n\nلاسباب واضحة يتم تمكين هذا الخيار واذا لم يعجبك فيمكنك تعطيله</string>
+  <string name="pref_auto_disable" formatted="false">قفل الشاشة بشكل اوتوماتيكي</string>
+  <string name="pref_auto_disable_summary" formatted="false">تعطيل قفل الشاشة عند السحن</string>
+  <string name="pref_auto_disable_help" formatted="false">اذا تم تمكين هذا الخيار فسوف يتم تعطيل قفل الشاشة بشكل اوتوماتيكي عند الشحن وظهور علامة موصول اما اذا فصل الجهاز فسوف يمكن قفل الشاشة مرة اخرى\n\nان هذا الخيار يعتبر مفيد في العمل الشاق و القيادة ايضا</string>
+  <string name="pref_disallow_disable_lock_screen" formatted="false">تعطيل دليل عد السماح</string>
+  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">استخدام عدم السماح لتعطيل زر قفل الشاشة؟</string>
+  <string name="pref_disallow_disable_lock_screen_help" formatted="false">إذا كان لديك شاشة القفل البديلة التي تتيح الوصول إلى علبة الإخطار عند قفل الشاشة، قد ترغب في تمكين هذا الخيار لأسباب أمنية.</string>
+  <string name="pref_notify_status_duration" formatted="false">مدة عرض الحالة</string>
+  <string name="pref_notify_status_duration_summary" formatted="false">تظهر منذ متى تم تغيير الوضع بدلا من تقدير الوقت المتبقي؟</string>
+  <string name="pref_notify_status_duration_help" formatted="false">تمكين هذا الإعداد إذا كنت تفضل الإخطار الرئيسي لعرض الوقت منذ تغيير حالة (على سبيل المثال، \"موصول لمدة 5 ساعات\") بدلا من تقدير الوقت المتبقي. كل قطعة من المعلومات المتاحة من النافذة الرئيسية.</string>
+  <string name="pref_cat_battery_use" formatted="false">استخدام البطارية</string>
+  <string name="pref_finish_after_battery_use" formatted="false">خروج بعد التشغيل</string>
+  <string name="pref_finish_after_battery_use_summary" formatted="false">خروج الإطار الرئيسي مباشرة بعد تشغيل استخدام البطارية؟</string>
+  <string name="pref_finish_after_battery_use_help" formatted="false">اذا كنت من الاشخاص الاعمال الشاقة سوف تفضل تمكين هذا الخيار</string>
+  <string name="pref_cat_temperature_unit" formatted="false">وحدة درجة الحرارة</string>
+  <string name="pref_convert_to_fahrenheit" formatted="false">تحويل إلى فهرنهايت</string>
+  <string name="pref_convert_to_fahrenheit_help" formatted="false">الاندرويد وحدة قياس حرارته هي الدرجة السليزية اذا كنت تفضل رؤية درجة الحرارة بالفهرنهايت تحقق من هذا الخيار وسوف يحول لتطبيق درجة الحرارة لك</string>
+  <string name="pref_cat_autostart" formatted="false">تشغيل تلقائي</string>
+  <string name="pref_autostart_at_boot" formatted="false">تشغيل تلقائي عند بدء الهاتف</string>
+  <string name="pref_autostart_at_boot_summary" formatted="false">تشغيل التطبيق عند اقلاع الهاتف</string>
+  <string name="pref_autostart_at_boot_help" formatted="false">السيطرة تبدا مع بدا التشغيل الخاص بالهاتف\n\nاذا كنت في وضع الايقاف سوف يتوقف البرنامج تلقائيا اما اذا كنت تستعمل برامج القتل مثل TASK KILLER فأن التطبيق لايعلم بأنك اوقفته وبذلك سوف يعمل التطبيق اذا اعدت تشغيل الهاتف اذا كنت قد ضبطت الاعدد</string>
+  <string name="predictor_sensitive" formatted="false">الحساس</string>
+  <string name="predictor_conservative" formatted="false">المعتدل</string>
+  <string name="predictor_since_status_change" formatted="false">منذ تغيير الحالة</string>
+  <string name="predictor_long_term_ave" formatted="false">طويل الاجل</string>
+  <string name="pref_cat_predictor" formatted="false">تقديرات الوقت المتبقي</string>
+  <string name="pref_prediction_type" formatted="false">نوع التقدير</string>
+  <string name="pref_prediction_type_help" formatted="false">هنا يمكنك الاختيار بالمؤشر الاحترافي من البطارية المتبقية الى مشحونة بالكامل\n\nوضع الحساس ويعتمد على الخوارزمية في عمله حيث هو يعتمد على الوقت المتبقي للبطارية و عندما تفعله الان ن تستمر به الى الشحن الكامل\n\nوضع المحافظ ويعتمد ايضا على الخورارزمية لكنه يحاول على الحصول على التقدير الصحيح دوما\n\nوضع منذ تم التغيير وهو يعتمد بشكل اساسي على الاوضاع التي سبقته\n\nواخيرا يمكن التنبؤ على استخدان عادي بشكل طويل المدا</string>
+  <string name="lang_system_selected" formatted="false">مختارة النظام</string>
+  <string name="pref_cat_language" formatted="false">اللغة</string>
+  <string name="pref_language_override" formatted="false">تجاوز اللغة</string>
+  <string name="pref_language_override_summary" formatted="false">اختر اللغة:</string>
+  <string name="pref_language_override_help" formatted="false">إذا كانت الترجمة إلى لغتك غير مكتملة أو غير دقيقة وكنت تفضل آخرى، ربما أفضل ترجمة، قد تختار القيام بذلك هنا.</string>
+  <string name="pref_cat_plugin_settings" formatted="false">اعدادات البرنامج المساعد</string>
+  <string name="pref_plugin_settings" formatted="false">اعدادات البرنامج المساعد</string>
+  <string name="pref_plugin_settings_summary" formatted="false">تعديل إعدادات هذا البرنامج المساعد</string>
+  <string name="pref_cat_color" formatted="false">لون الايقونة</string>
+  <string name="pref_cat_color_help" formatted="false">من أجل الحفاظ على الحزمة ثنائي صغيرة الحجم بشكل معقول، وهناك بعض القيود للألوان. في وقت كتابة هذا التقرير، هل يمكن أن يكون رمز أحمر تصل إلى 30٪، وهو رمز الاصفر تصل إلى 50٪، وأيقونة خضراء منخفضة تصل إلى 20٪. أعتقد أن هذه هي التنازلات المعقولة التي يجب أن تعمل لمدة 99٪ من المستخدمين\n\nلتعطيك أقصى قدر من السيطرة، يمكن أن تحول الألوان أو إيقاف تشغيلها بشكل مستقل. هذا يعني أنك يمكن أن يكون بقدر ما نظام ألوان أربعة مستويات، حيث الرمز هو أخضر عندما يكون كامل جدا، ثم تدرج الرمادي، ثم الأصفر، ثم الأحمر. بطبيعة الحال، فإن معظم الناس لديهم على الارجح عتبات الاصفر والأخضر تعيين إلى نفس القيمة، بحيث يتم أبدا رمز الرمادي.</string>
+  <string name="pref_color_preview" formatted="false">معاينة الالوان</string>
+  <string name="pref_color_preview_help" formatted="false">نأمل من معاينة الالوان ان تختار الالوان التي سوف تظهر على هاتفك\n\n10%غير قابلة لتخصيص لانها اداء النظام اي لا معنى لها</string>
+  <string name="pref_red" formatted="false">استخدام الايقونة الحمراء</string>
+  <string name="pref_red_summary" formatted="false">استخدام الايقونة الحمراء عندما يكون الشحن واطئ</string>
+  <string name="pref_red_help" formatted="false">ام تريد استخدام اللون الاحمر عند نسبة محددة</string>
+  <string name="pref_red_thresh" formatted="false">نسبة الاحمر</string>
+  <string name="pref_red_thresh_summary" formatted="false">ماهي النسبة المسوؤلة الواطئة لاظهار اللون الاحمر:</string>
+  <string name="pref_red_thresh_summary10" formatted="false">ماهي النسبة المسوؤلة الواطئة او اقل لاظهار اللون الاحمر:</string>
+  <string name="pref_red_thresh_help" formatted="false">في وضع اللون الاحمر يشغل في حالات \"عند او في \" في 10\n\nخيارات النسبة المئوية للون الاحمر تشمل مضاعافات رقم 5 ويمكن عندها توفر الايقونة الحمراء\n\n10% لايوجد له نسبة ولا يحتاج لتفسير</string>
+  <string name="pref_amber" formatted="false">استخدام الايقونة الصفراء</string>
+  <string name="pref_amber_summary" formatted="false">استخدام الايقونة الصفراء عندما يكون الشحن متوسط؟</string>
+  <string name="pref_amber_help" formatted="false">ام تريد استخدام اللون الاصفر عند نسبة محددة</string>
+  <string name="pref_amber_thresh" formatted="false">نسبة الاصفر</string>
+  <string name="pref_amber_thresh_summary" formatted="false">ماهي النسبة المسوؤلةالواطئة لاظهار اللون الاحمر:</string>
+  <string name="pref_amber_thresh_summary10" formatted="false">ماهي النسبة المسوؤلة الواطئة ام اقل لاظهار اللون الاحمر:</string>
+  <string name="pref_amber_thresh_help" formatted="false">في وضع اللون الاصفر يشغل في حالات \"عند او في \" في 10\n\nخيارات النسبة المئوية للون الاحمر تشمل مضاعافات رقم 5 ويمكن عندها توفر الايقونة الصفراءعلى سبيل المثال، إذا قمت بتعيين عتبة الحمراء إلى 15، ثم الخيار الاقل هنا سيكون 20\n\n10% لايوجد له نسبة ولا يحتاج لتفسير</string>
+  <string name="pref_green" formatted="false">استخدام الايقونة الخضراء</string>
+  <string name="pref_green_summary" formatted="false">استخدام الايقونة الخضراء عندما يكون الشحن عالي؟</string>
+  <string name="pref_green_help" formatted="false">ام تريد استخدام اللون الاخضر عند نسبة محددة</string>
+  <string name="pref_green_thresh" formatted="false">نسبة الاخضر</string>
+  <string name="pref_green_thresh_summary" formatted="false">استخدام اللون الاخضر عندما يكون الشحن عند نسبة معين او اعلى:</string>
+  <string name="pref_green_thresh_help" formatted="false">حدد مستوى شحن التي ينبغي أن تكون عليه الايقونة خضراء عند أو فوق\n\nالخيارات لنسبة الخضراء تشمل جميع القيم في مضاعفات رقم 5 التي توجد الرموز الخضراء المتاحة، بدءا من أعلى عتبة بالموقع الذي تم إعداده للأحمر أو الاصفر. على سبيل المثال، إذا قمت بتعيين عتبة الاصفر إلى 40، ثم الخيار الاقل هنا سوف تكون 40\n\n10% لايوجد له نسبة ولا يحتاج لتفسير</string>
+  <string name="pref_cat_device_specific" formatted="false">اعدادات النظام المعينة</string>
+  <string name="pref_ten_percent_mode" formatted="false">10% نمط</string>
+  <string name="pref_ten_percent_mode_summary" formatted="false">!اقرا المساعدة اولا</string>
+  <string name="pref_ten_percent_mode_help" formatted="false"><b> ملاحظة: </b> سوف يتم فحص أو إلغاء تحديد هذا إعادة تعيين إعدادات لون الرمز الخاص بك\n\nهذا الإعداد ينظف إعدادات ايقونة الالوان ليكون أكثر منطقية على الأجهزة التي تظهر فقط في مستوى شحن 10٪ زيادات. وفقا لتقارير وقوائم، التي تضم هذه الأجهزة\n\nموتولارا الاصلي\nموتولارا اكس\nموتولارا 2\nموتولارا ديفي\nسامسونج مومينت\n\nبقدر ما انا اعلم جميع الهواتف الاخرى تخطأ بنسبة 1% لذا يجب عدم التلاعب بهذا الاعدادات</string>
+  <string name="alarms_overview" formatted="false">النظرة العامة على المنبهات</string>
+  <string name="alarms_overview_help" formatted="false">هذه الصفحة تؤدي الى اعدادات المنبهات للتمكين والتعطيل السريع او حذف المنبه\n\nلاضافة منبه جديد اضغط على كلمة اضافة منبه وهذا سوف يؤديك الى اعدادات المنبه لاختيار المنبه الجديد راجع قسم مساعده للحصول على التفاصيل\n\nاسفل كلمة اضافة منبه هذه قائمة تحتوي على المنبهات التي قمت بأنشاها\n\nلتعديل على منبه اضغط عليه فقط\nلحذف منبه ضغطة طويلة عليه واختر حذف المنبه ويمكنك حذفها من قائمة الاعدادات الرئيسية واختيار خذف المنبه\nللتبديل بسرعة ما إذا تم تمكين التنبيه، اضغط على أيقونة المنبه على يسار النص التنبيه يمكنك أيضا تمكين أو تعطيل التنبيه من صفحة إعدادات التنبيه الفردية</string>
+  <string name="pref_alarm_enabled" formatted="false">تمكين التنبيه</string>
+  <string name="pref_alarm_enabled_help" formatted="false">إذا كنت ترغب في تعطيل التنبيه مؤقتا دون الحاجة إلى إعادة ذلك عندما تريد ذلك مرة أخرى، يمكنك إيقاف تشغيله وإما هنا أو في صفحة الاشعارات الرئيسي.</string>
+  <string name="pref_cat_alarm_conditions" formatted="false">ظروف التنبيه</string>
+  <string name="pref_cat_alarm_conditions_help" formatted="false">هذا هو المكان الذي يمكنك التحكم في أي ظروف تؤدي إلى التنبيه</string>
   <string name="pref_alarm_type" formatted="false">نوع المنبه</string>
+  <string name="pref_alarm_type_summary" formatted="false">تشغيل التنبيه عندما تكون البطارية :</string>
+  <string name="pref_alarm_type_help" formatted="false">هناك خمسة انواع من التنبيه يمكنك الاختيار فيما بينها\n\nعندامتلاء البطارية في هذا الوضع التنبيه سوف ينبهك التطبيق من تغيير حالة البطارية من جاري الشحن الى امتلاء البطارية وهناك الكثير من الاجهزة تشخن عند ربطها بالقابس عندما تكون 100% حالة البطارية\n\nهذا الخيار يمكنك اختياره من اجل حالة الحرارة و التنبيه عليها\n\nحقول البطارية هذا ينبهك الى شيء ما على سبيل المثال حالة جيدة او غير معروف كما ان الهاتف سيخبرك بها</string>
+  <string name="pref_alarm_threshold" formatted="false">نسبة</string>
+  <string name="alarm_pref_not_used" formatted="false">لا تستخدم لهذا النوع التنبيه</string>
+  <string name="pref_alarm_threshold_summary" formatted="false">نسبة التنبيه:</string>
+  <string name="pref_alarm_threshold_help" formatted="false">للرسوم ودرجة الحرارة وأجهزة الإنذار، تحتاج إلى ضبط على مستوى درجة الحرارة أو شحن من شأنها أن تؤدي إلى التنبيه</string>
+  <string name="pref_cat_notification_settings" formatted="false">اعدادات الاشعارات</string>
+  <string name="pref_cat_notification_settings_help" formatted="false">هذا هو المكان الذي يمكن التحقق من الجوانب المختلفة للاشعارات الخاصة بالتنبيه يتم إنشاؤه لإشعارك  عندما ينبهك الانذار.</string>
+  <string name="pref_alarm_ringtone" formatted="false">نغمة</string>
+  <string name="pref_alarm_ringtone_help" formatted="false">هنا يمكنك ادارة النغمة التي تسمعها عندما ينبهك التطبيق اختر صامت اذا لم ترد سماع النغمة</string>
+  <string name="silent" formatted="false">صامت</string>
+  <string name="pref_alarm_vibrate" formatted="false">اهتزاز</string>
+  <string name="pref_alarm_vibrate_help" formatted="false">إذا سارت الامور بشكل جيد، سوف يحدد هذا الخيار جعل الجهاز يهتز عندما يتم تشغيل الإنذار، ما لم يكون الجهاز في الوضع الصامت، إلا إذا كنت تملك جهاز ليهتز حتى في وضع الصامت. وبعبارة أخرى، ينبغي أن تفعل ما كنت تتوقع. يرجى مراسلتي لي إذا ما سارت الأمور على العكس.</string>
+  <string name="pref_alarm_lights" formatted="false">الفلاش</string>
+  <string name="pref_alarm_lights_help" formatted="false">ما إذا كان شعارات  يجب تمكين مجموعات الاضواء الافتراضية للجهاز. هذا الوميض عموما LED أو كرة التتبع. لاحظ أن كل جهاز أندرويد لقد استخدم وكانت الاخطاء طفيفة في هذا القسم. إذا كان لديك فحص هذا، ثم سوف يطلب شعارات  أندرويد إلى وميض الأضواء، ولكن قد لا يحدث دائما في الواقع.</string>
+  <string name="boot_pref_always" formatted="false">دائما</string>
+  <string name="boot_pref_never" formatted="false">ابدا</string>
+  <string name="boot_pref_if_running" formatted="false">اذا كان مغلق</string>
+  <string name="status_dur_always" formatted="false">دائما</string>
+  <string name="status_dur_after_1h" formatted="false">بعد ساعة واحد</string>
+  <string name="status_dur_after_2h" formatted="false">بعد ساعتين</string>
+  <string name="status_dur_after_3h" formatted="false">بعد ثلاث ساعات</string>
+  <string name="status_dur_after_6h" formatted="false">بعد ست ساعات</string>
+  <string name="status_dur_after_12h" formatted="false">بعد 12 ساعة</string>
+  <string name="age_1_day" formatted="false">يوم واحد</string>
+  <string name="age_2_days" formatted="false">يومان</string>
+  <string name="age_4_days" formatted="false">اربعة ايام</string>
+  <string name="age_1_week" formatted="false">اسبوع</string>
+  <string name="age_2_weeks" formatted="false">اسبوعين</string>
+  <string name="age_3_weeks" formatted="false">ثلاث اسابيع</string>
+  <string name="age_4_weeks" formatted="false">اربعة اسابيع</string>
+  <string name="notification_priority_max" formatted="false">ممتلىء</string>
+  <string name="notification_priority_high" formatted="false">عالي</string>
+  <string name="notification_priority_default" formatted="false">افتراضي</string>
+  <string name="notification_priority_low" formatted="false">واطىء</string>
+  <string name="notification_priority_min" formatted="false">مصغر</string>
+  <string name="icon_set_classic" formatted="false">كلاسيك</string>
+  <string name="icon_set_plain" formatted="false">رقم كبير</string>
+  <string name="icon_set_smaller" formatted="false">رقم صغير</string>
+  <plurals name="n_log_items">
+    <item quantity="one">%سجل المحتوى</item>
+    <item quantity="other">% سجل المحتوى</item>
+  </plurals>
+  <plurals name="n_hours_long">
+    <item quantity="one">% ساعة</item>
+    <item quantity="other">%ساعة</item>
+  </plurals>
+  <plurals name="n_minutes_long">
+    <item quantity="one">% دقيقة</item>
+    <item quantity="other">%دقائق</item>
+  </plurals>
+  <plurals name="n_hours_medium">
+    <item quantity="one">"% س, "</item>
+    <item quantity="other">"% ساعات, "</item>
+  </plurals>
+  <plurals name="n_minutes_medium">
+    <item quantity="one">%دق</item>
+    <item quantity="other">%دقا</item>
+  </plurals>
+  <plurals name="n_hours_short">
+    <item quantity="other">"% س "</item>
+  </plurals>
+  <plurals name="n_days">
+    <item quantity="other">"% ايام , "</item>
+  </plurals>
+  <plurals name="n_hours">
+    <item quantity="one">% ساعة</item>
+    <item quantity="other">%ساعات</item>
+  </plurals>
+  <plurals name="for_n_hours">
+    <item quantity="one">ل %ساعة</item>
+    <item quantity="other">ل %ساعات</item>
+  </plurals>
 </resources>

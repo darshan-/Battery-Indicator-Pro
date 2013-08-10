@@ -10,6 +10,8 @@
   <string name="upgrade_donate_b" formatted="false">Erweitern/Spenden...</string>
   <string name="reenable_lock_screen" formatted="false">Bildschirmsperre einschalten</string>
   <string name="disable_lock_screen" formatted="false">Bildschirmsperre ausschalten</string>
+  <string name="circle_widget" formatted="false">BatteryBot Kreis</string>
+  <string name="full_widget" formatted="false">BatteryBot Voll</string>
   <string name="confirm_disable" formatted="false">Soll die Bildschirmsperre wirklich ausgeschaltet werden?</string>
   <string name="confirm_disable_hint" formatted="false">Tipp: Sie können den Bestätigungsdialog in den Einstellungen ausschalten...</string>
   <string name="yes" formatted="false">Ja</string>
@@ -23,7 +25,7 @@
   <string name="confirm_ten_percent_hint" formatted="false">Warnung: Das Ändern dieser Einstellung (sowohl das Ein-, als auch das Ausschalten) führt dazu, dass die Farbeinstellungen zurückgesetzt werden.\n\nBei den Modellen Motorola Droid, Droid X, Droid 2, Defy und dem Samsung Moment, sollten Sie diese Einstellung von Anfang an einschalten. Bei allen anderen Geräten kann es meines Wissens nach immer ausgeschaltet bleiben.</string>
   <string name="okay" formatted="false">In Ordnung</string>
   <string name="none" formatted="false">Keine(n)</string>
-  <string name="tab_current_info" formatted="false">Derzeitige Info</string>
+  <string name="tab_current_info" formatted="false">Aktuelle Info</string>
   <string name="tab_history" formatted="false">Verlauf</string>
   <string name="notification_until_charged" formatted="false">" bis vollständig aufgeladen"</string>
   <string name="notification_until_drained" formatted="false">" verbleibend"</string>
@@ -33,6 +35,8 @@
   <string name="menu_close" formatted="false">Schließen</string>
   <string name="menu_help" formatted="false">Hilfe</string>
   <string name="menu_rate_and_review" formatted="false">Bewerten</string>
+  <string name="menu_show_notification" formatted="false">Zeige Benachrichtigung</string>
+  <string name="menu_hide_notification" formatted="false">Verstecke Benachrichtigung</string>
   <string name="menu_clear" formatted="false">Löschen</string>
   <string name="menu_reverse" formatted="false">Umgekehrte Anordnung</string>
   <string name="menu_log_filter" formatted="false">Filter</string>
@@ -46,11 +50,11 @@
   <string name="celsius" formatted="false">Celsius</string>
   <string name="celsius_symbol" formatted="false">C</string>
   <string name="volt_symbol" formatted="false">V</string>
-  <string name="fully_charged_in" formatted="false">Vollgeladen in:</string>
+  <string name="fully_charged_in" formatted="false">Akku voll in:</string>
   <string name="light_usage" formatted="false">Übrig bei geringer Benutzung:</string>
   <string name="normal_usage" formatted="false">Übrig bei normaler Benutzung:</string>
   <string name="heavy_usage" formatted="false">Übrig bei starker Benutzung:</string>
-  <string name="constant_usage" formatted="false">Übrig bei dauernder Benutzung:</string>
+  <string name="constant_usage" formatted="false">Übrig bei durchgehender Benutzung:</string>
   <string name="press_back_to_leave" formatted="false">ZURÜCK drücken zum Beenden.</string>
   <string name="press_menu_for_more" formatted="false">MENÜ drücken für mehr Möglichkeiten.</string>
   <string name="inaccessible_storage" formatted="false">SD-Karte ist nicht verfügbar.</string>
@@ -111,6 +115,12 @@
   <string name="currently_disabled" formatted="false">Im Moment ausgeschalten</string>
   <string name="help_cat_version" formatted="false">Version</string>
   <string name="help_cat_changelog" formatted="false">Änderungsprotokoll</string>
+  <string name="help_cat_faq" formatted="false">Fragen und Antworten</string>
+  <string name="help_faq" formatted="false">Bitte nachsehen <a href="http://batterybot.info/faq">online FAQ</a>.</string>
+  <string name="help_cat_website" formatted="false">Webseite</string>
+  <string name="help_website" formatted="false">Weitere Informationen sind verfügbar unter <a href="http://batterybot.info/">BatteryBot website</a>.</string>
+  <string name="help_open_source" formatted="false">Dies ist ein Open Source Projekt, was bedeutet du kannst den <a href="http://batterybot.info/sourcecode">Source Code runterladen</a>.</string>
+  <string name="help_cat_donate" formatted="false">Spenden</string>
   <string name="help_cat_no_warranty" formatted="false">Keine Garantie</string>
   <string name="help_no_warranty" formatted="false">Diese Software ist in der Hoffnung erstellt, dass sie nützlich sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite Garantie der MARKTGÄNGIGKEIT oder EIGNUNG FÜR EINEN BESTIMMTEN ZWECK.\n\nWährend ich mein Bestes gebe, um sicherzustellen, dass sie gut funktioniert und sie keine Probleme erzeugt, bin ich keinen Umständen verantwortlich für jegliche Schäden oder Unannehmlichkeiten.</string>
   <string name="help_cat_acknowledgments" formatted="false">Danksagungen</string>
@@ -122,6 +132,9 @@
   <string name="pref_hint" formatted="false">Tip: MENÜ drücken für Hilfe.</string>
   <string name="settings_overview" formatted="false">Übersicht</string>
   <string name="settings_overview_help" formatted="false">Die Einstellungen sind unterteilt in separate Seite (siehe unten stehende Beschreibung). Jede Seite enthält eine eigene Hilfe-Seite, welche die Einstellungen beschreibt. Drücken Sie einfach MENÜ, danach Hilfe (auf Tablets entfällt das Drücken des MENÜ-Buttons), um Hilfe für jedwede Einstellung zu erhalten.</string>
+  <string name="notification_settings" formatted="false">Benachrichtigungen</string>
+  <string name="notification_settings_summary" formatted="false">Bearbeite die Benachrichtigungen</string>
+  <string name="status_bar_icon_settings" formatted="false">Status Bar Icon</string>
   <string name="alarm_settings_subtitle" formatted="false">Alarm Einstellungen</string>
   <string name="alarm_settings" formatted="false">Alarme</string>
   <string name="alarm_settings_summary" formatted="false">Einstellung für Benachrichtigungen bei niedriger/voller Batterie.</string>
@@ -205,6 +218,13 @@
   <string name="age_2_weeks" formatted="false">2 Wochen</string>
   <string name="age_3_weeks" formatted="false">3 Wochen</string>
   <string name="age_4_weeks" formatted="false">4 Wochen</string>
+  <string name="notification_priority_max" formatted="false">Maximum</string>
+  <string name="notification_priority_high" formatted="false">Hoch</string>
+  <string name="notification_priority_default" formatted="false">Standard</string>
+  <string name="notification_priority_low" formatted="false">Klein</string>
+  <string name="notification_priority_min" formatted="false">Minimum</string>
+  <string name="icon_set_classic" formatted="false">Klassik</string>
+  <string name="icon_set_smaller" formatted="false">kleinere Nummer</string>
   <plurals name="n_log_items">
     <item quantity="one">%d Protokoll Eintrag</item>
     <item quantity="other">%d Protokoll Einträge</item>

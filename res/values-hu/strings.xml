@@ -95,19 +95,28 @@
   <string name="charging_from" formatted="false">Töltés innen:</string>
   <string name="fully_charged" formatted="false">Teljesen feltöltve</string>
   <string name="since" formatted="false">óta</string>
-  <string name="currently_using" formatted="false">Jelenleg használatban</string>
+  <string name="currently_using" formatted="false">Jelenleg használatban:</string>
   <string name="currently_set_to" formatted="false">"Jelenlegi beállítás:"</string>
   <string name="currently_disabled" formatted="false">Jelenleg Letiltva</string>
   <string name="help_cat_version" formatted="false">Verzió</string>
   <string name="help_cat_changelog" formatted="false">Változások</string>
+  <string name="help_changelog" formatted="false">Nézze meg a <a href="http://batterybot.info/changelog">változtatások listáját</a>.</string>
+  <string name="help_cat_faq" formatted="false">Gyakran ismételt kérdések</string>
+  <string name="help_cat_website" formatted="false">Weboldal</string>
+  <string name="help_website" formatted="false">További információkért látogasson el a <a href="http://batterybot.info/">BatteryBot weboldalára</a>.</string>
+  <string name="help_cat_open_source" formatted="false">Nyílt forráskód</string>
+  <string name="help_open_source" formatted="false">Ez egy nyílt kódú projekt, ami azt jelenti, hogy <a href="http://batterybot.info/sourcecode">letöltheted a forráskódot</a>.</string>
+  <string name="help_cat_donate" formatted="false">Adományozás</string>
+  <string name="help_donate" formatted="false">Kérlek, fontold meg az adományozást a <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Verzió</a>ra való frissítéssel.</string>
   <string name="help_cat_no_warranty" formatted="false">Nincs garancia</string>
   <string name="help_no_warranty" formatted="false">Ezt a szoftvert annak reményében terjesztjük, hogy hasznosnak bizonyul, de MINDENNEMŰ GARANCIA NÉLKÜL, kizárva még az általában beleértett garanciákat is, mint a FORGALMAZHATÓSÁG, vagy A CÉLNAK VALÓ MEGFELELÉS.\n\nBár minden elvárhatót megteszek, hogy megbizonyosodjak a szoftver helyes és zavartalan működéséről, kizárt bárminemű felelősség a szoftver használatából eredő minden kár vagy okozott kellemetlenség miatt.</string>
   <string name="help_cat_acknowledgments" formatted="false">Köszönetnyilvánítás</string>
-  <string name="help_acknowledgments" formatted="false">Ez az alkalmazás csak angolul lenne elérhető az alábbi önkéntes fordítók nagyvonalú közreműködése nélkül. Köszönöm!\n\nKöszönet illeti a Google-t és valamennyi nyílt-forrás programozót, akik munkájukkal elérhetővé tették az Android platformot és ezt az alkalmazást.\n\nAz indító ikon (az álló elem ikon ami a Marketen is látható) az <a href="http://www.oxygen-icons.org">Oxygen ikon témán</a> alapul, és a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-ShareAlike 3.0</a> licenc szerint használt.</string>
+  <string name="help_acknowledgments" formatted="false">Ez az alkalmazás csak angolul lenne elérhető az önkéntes fordítók nagyvonalú közreműködése nélkül. Köszönöm!\n\nKöszönet illeti a Google-t és valamennyi programozót, akik munkájukkal elérhetővé tették az Android platformot és ezt az alkalmazást.\n\nAz indító ikon (az álló elem ikon ami a Marketen is látható) az <a href="http://www.oxygen-icons.org">Oxygen ikon témán</a> alapul, és a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-ShareAlike 3.0</a> licenc szerint használt.</string>
   <string name="help_cat_translations" formatted="false">Fordítások</string>
-  <string name="help_translations" formatted="false">Szükségem van segítségre az alkalmazásnak más nyelvekre való fordításához. Ha szeretne segíteni, kérem küldjön egy <a href="mailto:support%2Btranslations@batterybot.info">e-mailt</a>. Ha nem utasítja el kifejezetten, segítségének elismeréseként neve bekerül ebbe a fejezetbe.</string>
+  <string name="help_translations" formatted="false">Szükségem van segítségre az alkalmazás más nyelvekre való fordításához. Ha szeretnél segíteni, kérlek küldj egy <a href="mailto:support%2Btranslations@batterybot.info">e-mailt</a>. Ha nem utasítja el, segítségének elismeréseként neve bekerül ebbe a fejezetbe.</string>
   <string name="help_subcat_translators" formatted="false">Fordítók</string>
   <string name="help_cat_contact" formatted="false">Kapcsolat</string>
+  <string name="help_contact" formatted="false">Ha kérdésed vagy problémád akad, küld egy<a href="mailto:support@batterybot.info">email</a>-t. (Ezt a fejlesztők válaszolják meg, és általában csak angolul beszélnek.)</string>
   <string name="pref_hint" formatted="false">TIPP: Segítséghez nyomja meg a MENÜ gombot!</string>
   <string name="settings_overview" formatted="false">Áttekintés</string>
   <string name="settings_overview_help" formatted="false">A beállításokat három oldalra összegyűtve találja az alábbiak szerint. Minden oldal saját súgóval rendelkezik az ott található beállítások leírásával. Ezeket a MENÜ gomb - Súgó opcióval érheti el..</string>
@@ -118,9 +127,21 @@
   <string name="other_settings" formatted="false">Egyéb beállítások</string>
   <string name="other_settings_help" formatted="false">Miden további beállítás ezen az oldalon található: naplózás, képernyőzár, hőmérséklet mértékegysége, automatikus indulás, stb.</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">További beállítások a Pro verzióban</string>
-  <string name="pref_please_upgrade" formatted="false">A Pro verzió számos további beállítással és képességgel rendelkezik. Pl. zöld, sárga és vörös ikon, riasztások, ablak témák, akku állapot naplózása, képernyőzár kézi és automatikus tiltása, becslés a hátralévő töltési vagy használati időre, stb.</string>
+  <string name="pref_please_upgrade" formatted="false">A Pro verzió számos további beállítással és funkcióval rendelkezik. Pl. zöld, sárga és vörös ikon, riasztások, ablak témák, akku állapot naplózása, képernyőzár kézi és automatikus tiltása, becslés a hátralévő töltési vagy használati időre, stb.</string>
   <string name="add_alarm" formatted="false">Riasztás hozzáadása</string>
+  <string name="pref_cat_notification_layout" formatted="false">Elrendezés</string>
+  <string name="pref_use_system_notification_layout" formatted="false">Alap elredndezés használata</string>
+  <string name="pref_use_system_notification_layout_summary" formatted="false">Alap elrendezés használata a BatteryBot-elrendezés helyett</string>
+  <string name="battery_graphic" formatted="false">Akku ikon kinézete</string>
+  <string name="time_remaining" formatted="false">Hátralévő idő</string>
+  <string name="system_default" formatted="false">Alapértelmezett</string>
+  <string name="black" formatted="false">Fekete</string>
+  <string name="white" formatted="false">Fehér</string>
+  <string name="ics_blue" formatted="false">Android ICS Kék</string>
+  <string name="custom" formatted="false">Egyedi...</string>
+  <string name="pref_cat_icon_set" formatted="false">Ikon stílus</string>
   <string name="pref_icon_set" formatted="false">Ikon stílus</string>
+  <string name="pref_cat_charging_indicator" formatted="false">Töltésjelző</string>
   <string name="pref_indicate_charging" formatted="false">Töltés jelzése</string>
   <string name="pref_indicate_charging_summary" formatted="false">Látszódjon az ikonon a töltés?</string>
   <string name="pref_indicate_charging_help" formatted="false">Valamelyik ikon stílus megváltozik töltéskor, például egy villám jellel a szám alatt. Kikapcsolhatja a funkciót, ha jobban szeretné enélkül szeretné használni.</string>
@@ -159,6 +180,8 @@
   <string name="pref_autostart_at_boot" formatted="false">Automatikus indítás bekapcsoláskor</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">A Battery Indicator elindítása a készülék bekapcsolásakor:</string>
   <string name="pref_autostart_at_boot_help" formatted="false">Beállíthatja, hogy a Battery Indicator milyen esetekben induljon el a készülék bekapcsolásakor.\n\nA \"Ha kikapcsoláskor aktív\" opcióval az alkalmazás automatikusan elindul, ha kikapcsoláskor aktív volt. Tehát ha leállítja egy task killer-rel, akkor a Battery Indicator nem fogja tudni, hogy leállította, és a készülék indításakor bekapcsol.</string>
+  <string name="pref_cat_predictor" formatted="false">Hátralévő idő becslések</string>
+  <string name="pref_prediction_type" formatted="false">Becslés típusa</string>
   <string name="pref_cat_language" formatted="false">Nyelv</string>
   <string name="pref_language_override" formatted="false">Nyelv megváltoztatása</string>
   <string name="pref_language_override_summary" formatted="false">Válasszon nyelvet:</string>
@@ -230,6 +253,11 @@
   <string name="age_2_weeks" formatted="false">2 hét</string>
   <string name="age_3_weeks" formatted="false">3 hét</string>
   <string name="age_4_weeks" formatted="false">4 hét</string>
+  <string name="notification_priority_max" formatted="false">Maximum</string>
+  <string name="notification_priority_high" formatted="false">Magas</string>
+  <string name="notification_priority_default" formatted="false">Alapértelmezett</string>
+  <string name="notification_priority_low" formatted="false">Alacsony</string>
+  <string name="notification_priority_min" formatted="false">Minimum</string>
   <string name="icon_set_classic" formatted="false">Klasszikus</string>
   <string name="icon_set_plain" formatted="false">Egyszerű számok</string>
   <string name="icon_set_smaller" formatted="false">Kisebb számok</string>
@@ -240,6 +268,13 @@
     <item quantity="few">%d naplóelem</item>
     <item quantity="many">%d naplóelem</item>
     <item quantity="other">%d naplóelem</item>
+  </plurals>
+  <plurals name="n_days">
+    <item quantity="one">"%d nap, "</item>
+    <item quantity="other">"%d nap, "</item>
+  </plurals>
+  <plurals name="n_hours">
+    <item quantity="other">%d óra</item>
   </plurals>
   <plurals name="for_n_hours">
     <item quantity="one">%d órája</item>
