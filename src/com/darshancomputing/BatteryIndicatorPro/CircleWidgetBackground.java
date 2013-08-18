@@ -30,7 +30,7 @@ class CircleWidgetBackground {
     private static final int BLACK = 0xff000000;
     private static final int ICS_BLUE = 0xff33b5e5;
 
-    private static final int BG_COLOR = BLACK;
+    private static final int BG_COLOR = 0xff222222;//BLACK;
     private static final int ARC_COLOR = ICS_BLUE;
 
     private Bitmap bitmap;

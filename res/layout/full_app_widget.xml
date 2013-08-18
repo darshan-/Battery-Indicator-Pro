@@ -8,7 +8,7 @@
   <LinearLayout android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/black"
+                android:background="@drawable/full_widget_rounded_rectangle"
   >
     <ImageView android:id="@+id/battery_level_view"
                android:layout_height="fill_parent"
@@ -23,7 +23,7 @@
 	      android:layout_width="wrap_content"
               android:gravity="center_horizontal|center_vertical"
               android:textColor="#fff"
-              android:textSize="32dp"
+              android:textSize="40dp"
               android:text="XX%"
     />
 
