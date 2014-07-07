@@ -455,7 +455,10 @@ public class BatteryInfoService extends Service {
         for (Integer widgetId : widgetIds) {
             RemoteViews rv;
 
-            int initLayout = widgetManager.getAppWidgetInfo(widgetId).initialLayout;
+            android.appwidget.AppWidgetProviderInfo awpInfo = widgetManager.getAppWidgetInfo(widgetId);
+            if (awpInfo == null) continue; // Based on Developer Console crash reports, this can be null sometimes
+
+            int initLayout = awpInfo.initialLayout;
 
             if (initLayout == R.layout.circle_app_widget) {
                 rv = new RemoteViews(context.getPackageName(), R.layout.circle_app_widget);
