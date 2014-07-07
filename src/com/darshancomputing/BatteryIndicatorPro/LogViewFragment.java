@@ -27,6 +27,9 @@ import android.database.CursorWrapper;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Message;
+import android.os.Messenger;
+import android.util.Log;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -68,6 +71,51 @@ public class LogViewFragment extends ListFragment {
     private static final String[] CSV_ORDER = {LogDatabase.KEY_TIME, LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, 
                                                LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE};
 
+    private final Messenger messenger = new Messenger(new MessageHandler());
+    private boolean serviceConnected;
+    private Messenger serviceMessenger;
+    private BatteryInfoService.RemoteConnection serviceConnection;
+
+    public void bindService() {
+        if (! serviceConnected) {
+            Intent biServiceIntent = new Intent(activity.context, BatteryInfoService.class);
+            serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
+
+            activity.context.bindService(biServiceIntent, serviceConnection, 0);
+            serviceConnected = true;
+        }
+    }
+
+    public class MessageHandler extends Handler {
+        @Override
+        public void handleMessage(Message incoming) {
+            if (! serviceConnected) {
+                Log.i(LOG_TAG, "serviceConected is false; ignoring message: " + incoming);
+                return;
+            }
+
+            switch (incoming.what) {
+            case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
+                serviceMessenger = incoming.replyTo;
+                sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
+                break;
+            case BatteryInfoService.RemoteConnection.CLIENT_BATTERY_INFO_UPDATED:
+                reloadList(false);
+                break;
+            default:
+                super.handleMessage(incoming);
+            }
+        }
+    }
+
+    private void sendServiceMessage(int what) {
+        Message outgoing = Message.obtain();
+        outgoing.what = what;
+        outgoing.replyTo = messenger;
+        try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
+    }
+
+    /*
     private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private final Handler mHandler = new Handler();
     private final Runnable mUpdateStatus = new Runnable() {
@@ -86,10 +134,12 @@ public class LogViewFragment extends ListFragment {
             //  leave it with CIF as client, but it calls Activity.infoUpdated() after receiving message
             //  from Service.  If so, make sure (and document) that Service shouldn't send that message
             //  until after logs have been updated (and not just info).  Perhaps even renaming message.
-            /* Give the service a couple seconds to process the update */
+
+            // Give the service a couple seconds to process the update
             mHandler.postDelayed(mUpdateStatus, 2 * 1000);
         }
     };
+*/
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -124,11 +174,18 @@ public class LogViewFragment extends ListFragment {
         filteredCursor = new FilteredCursor(timeDeltaCursor);
 
         mAdapter = new LogAdapter(activity.context, filteredCursor);
+
+        serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
+        bindService();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (serviceConnected) {
+            activity.context.unbindService(serviceConnection);
+            serviceConnected = false;
+        }
         completeCursor.close();
         logs.close();
     }
@@ -136,13 +193,13 @@ public class LogViewFragment extends ListFragment {
     @Override
     public void onResume() {
         super.onResume();
-        activity.context.registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
+        //activity.context.registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        activity.context.unregisterReceiver(mBatteryInfoReceiver);
+        //activity.context.unregisterReceiver(mBatteryInfoReceiver);
     }
 
     public class ConfirmClearLogsDialogFragment extends DialogFragment {
