@@ -26,6 +26,8 @@
   <string name="menu_settings" formatted="false">Ayarlar</string>
   <string name="menu_close" formatted="false">Kapat</string>
   <string name="menu_help" formatted="false">Yardım</string>
+  <string name="menu_show_notification" formatted="false">Bildirimleri Göster</string>
+  <string name="menu_hide_notification" formatted="false">Bildirimleri Gizle</string>
   <string name="menu_clear" formatted="false">Temizle</string>
   <string name="menu_reverse" formatted="false">Tersten Sırala</string>
   <string name="menu_log_filter" formatted="false">Filtrele</string>
@@ -55,6 +57,7 @@
   <string name="status" formatted="false">durum</string>
   <string name="charge" formatted="false">şarj_yüzdesi</string>
   <string name="temperature" formatted="false">santigrad_derece</string>
+  <string name="temperature_f" formatted="false">fahrenhayt_derece</string>
   <string name="voltage" formatted="false">volt</string>
   <string name="status_unplugged" formatted="false">Çıkartıldı</string>
   <string name="status_unknown" formatted="false">Bilinmiyor</string>
@@ -74,8 +77,8 @@
   <string name="plugged_ac" formatted="false">(AC)</string>
   <string name="plugged_usb" formatted="false">(USB)</string>
   <string name="plugged_unknown" formatted="false">(?)</string>
-  <string name="plugged_wireless" formatted="false">(Wi-Fi)</string>
-  <string name="alarm_type_fully_charged" formatted="false">Tam Doldu</string>
+  <string name="plugged_wireless" formatted="false">(Kablosuz)</string>
+  <string name="alarm_type_fully_charged" formatted="false">Tamamiyle Doldu</string>
   <string name="alarm_type_charge_drops" formatted="false">Şarj altına düşerse</string>
   <string name="alarm_type_charge_rises" formatted="false">Şarz üzerine çıkarsa</string>
   <string name="alarm_type_temperature_rises" formatted="false">Sıcaklık üzerine çıkarsa</string>
@@ -84,8 +87,8 @@
   <string name="alarm_type_entry_charge_drops" formatted="false">Şarj altına düşerse...</string>
   <string name="alarm_type_entry_charge_rises" formatted="false">Şarj üstüne çıkarsa...</string>
   <string name="alarm_type_entry_temperature_rises" formatted="false">Sıcaklı üzerine çıkarsa...</string>
-  <string name="alarm_type_entry_health_failure" formatted="false">Sağlık bozuk</string>
-  <string name="alarm_fully_charged" formatted="false">Pil tamamen şarj oldu</string>
+  <string name="alarm_type_entry_health_failure" formatted="false">Sağlık başarısız</string>
+  <string name="alarm_fully_charged" formatted="false">Pil şimdi tamamen şarj oldu</string>
   <string name="alarm_charge_drops" formatted="false">"Pil şarjı şu değerin altında "</string>
   <string name="alarm_charge_rises" formatted="false">"Pil şarjı şu değerin üstünde "</string>
   <string name="alarm_temp_rises" formatted="false">"Pil sıcaklığı şu değerin üstünde "</string>
@@ -98,12 +101,19 @@
   <string name="charging_from" formatted="false">den şarj ediliyor</string>
   <string name="fully_charged" formatted="false">Şarj Tam Dolu</string>
   <string name="since" formatted="false">den itibaren</string>
+  <string name="dialog_color_picker" formatted="false">Renk Seç</string>
+  <string name="press_color_to_apply" formatted="false">Eski veya yeni rengi uygula:</string>
   <string name="currently_using" formatted="false">Şu an kullanılıyor</string>
   <string name="currently_set_to" formatted="false">"Şu an buna ayarlı: "</string>
   <string name="currently_disabled" formatted="false">Şu An Etkin Değil</string>
   <string name="help_cat_version" formatted="false">Sürüm</string>
   <string name="help_cat_changelog" formatted="false">Değişiklik Listesi</string>
   <string name="help_changelog" formatted="false">çevrimiçi Değişiklik Listesi <a href="http://batterybot.info/changelog">ni gör</a></string>
+  <string name="help_cat_faq" formatted="false">Sıkça Sorulan SOrular</string>
+  <string name="help_faq" formatted="false">Online yardım için lütfen <a href="http://batterybot.info/faq">bakınız</a>.</string>
+  <string name="help_cat_website" formatted="false">Website</string>
+  <string name="help_cat_open_source" formatted="false">Açık Kaynak</string>
+  <string name="help_cat_donate" formatted="false">Bağış</string>
   <string name="help_cat_no_warranty" formatted="false">Garanti Yok</string>
   <string name="help_cat_acknowledgments" formatted="false">Onaylar</string>
   <string name="help_cat_translations" formatted="false">Çeviriler</string>
