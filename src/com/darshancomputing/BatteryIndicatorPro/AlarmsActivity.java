@@ -63,8 +63,10 @@ public class AlarmsActivity extends Activity {
         str = new Str(res);
 
         // Stranglely disabled by default for API level 14+
-        if (android.os.Build.VERSION.SDK_INT >= 14)
+        if (android.os.Build.VERSION.SDK_INT >= 14) {
             getActionBar().setHomeButtonEnabled(true);
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         setContentView(R.layout.alarms);
         setWindowSubtitle(res.getString(R.string.alarm_settings));
@@ -143,7 +145,7 @@ public class AlarmsActivity extends Activity {
 
             return true;
         case android.R.id.home:
-            startActivity(new Intent(this, BatteryInfoActivity.class));
+            finish();
             return true;
         default:
             return super.onOptionsItemSelected(item);

@@ -34,8 +34,10 @@ public class HelpActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         // Stranglely disabled by default for API level 14+
-        if (android.os.Build.VERSION.SDK_INT >= 14)
+        if (android.os.Build.VERSION.SDK_INT >= 14) {
             getActionBar().setHomeButtonEnabled(true);
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         setContentView(R.layout.help);
 
@@ -61,7 +63,7 @@ public class HelpActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case android.R.id.home:
-            startActivity(new Intent(this, BatteryInfoActivity.class));
+            finish();
             return true;
         default:
             return super.onOptionsItemSelected(item);

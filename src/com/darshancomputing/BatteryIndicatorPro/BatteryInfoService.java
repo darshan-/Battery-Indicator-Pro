@@ -511,7 +511,8 @@ public class BatteryInfoService extends Service {
 
         mainNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
 
-        if (settings.getBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, false)) {
+        if (settings.getBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT,
+                                res.getBoolean(R.bool.default_use_system_notification_layout))) {
             mainNotification.setLatestEventInfo(context, mainNotificationTopLine, mainNotificationBottomLine, mainWindowPendingIntent);
         } else {
             String icon_area = settings.getString(SettingsActivity.KEY_ICON_AREA, res.getString(R.string.default_icon_area_content));

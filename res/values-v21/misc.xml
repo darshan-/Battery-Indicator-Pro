@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Resources that are neither styles nor strings to be translated. -->
+<resources>
+  <bool name="api_level_21_plus">true</bool>
+  <bool name="default_use_system_notification_layout">true</bool>
+</resources>

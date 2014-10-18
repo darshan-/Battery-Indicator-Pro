@@ -57,6 +57,11 @@ public class BatteryInfoActivity extends FragmentActivity {
         str = new Str(res);
         loadSettingsFiles();
 
+        if (android.os.Build.VERSION.SDK_INT >= 14) {
+            getActionBar().setHomeButtonEnabled(true);
+            getActionBar().setDisplayShowHomeEnabled(true);
+        }
+
         super.onCreate(savedInstanceState); // Recreates Fragments, so only call after doing necessary setup
 
         setContentView(R.layout.battery_info);

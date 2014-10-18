@@ -37,8 +37,10 @@ public class SettingsHelpActivity extends Activity {
         res = getResources();
 
         // Stranglely disabled by default for API level 14+
-        if (android.os.Build.VERSION.SDK_INT >= 14)
+        if (android.os.Build.VERSION.SDK_INT >= 14) {
             getActionBar().setHomeButtonEnabled(true);
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         if (pref_screen == null) {
             setContentView(R.layout.main_settings_help);
@@ -88,7 +90,7 @@ public class SettingsHelpActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case android.R.id.home:
-            startActivity(new Intent(this, BatteryInfoActivity.class));
+            finish();
             return true;
         default:
             return super.onOptionsItemSelected(item);

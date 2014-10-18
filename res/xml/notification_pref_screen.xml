@@ -11,7 +11,7 @@
        android:key="use_system_notification_layout"
        android:title="@string/pref_use_system_notification_layout"
        android:summary="@string/pref_use_system_notification_layout_summary"
-       android:defaultValue="false"
+       android:defaultValue="@bool/default_use_system_notification_layout"
     />
   </PreferenceCategory>
 
