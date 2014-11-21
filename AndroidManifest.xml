@@ -62,6 +62,12 @@
         android:excludeFromRecents="true"
     />
 
+    <activity
+        android:name=".LockActivity"
+        android:stateNotNeeded="true"
+        android:excludeFromRecents="true"
+    />
+
     <service
         android:name=".BatteryInfoService"
         android:process="com.darshancomputing.BatteryBotPro.BIS"

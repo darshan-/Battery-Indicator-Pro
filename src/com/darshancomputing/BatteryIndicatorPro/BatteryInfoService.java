@@ -49,6 +49,7 @@ import java.util.HashSet;
 public class BatteryInfoService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private final IntentFilter userPresent    = new IntentFilter(Intent.ACTION_USER_PRESENT);
+    private final IntentFilter screenOff      = new IntentFilter(Intent.ACTION_SCREEN_OFF);
     private PendingIntent mainWindowPendingIntent;
     private PendingIntent updatePredictorPendingIntent;
     private Intent alarmsIntent;
@@ -240,6 +241,8 @@ public class BatteryInfoService extends Service {
 
         Intent bc_intent = registerReceiver(mBatteryInfoReceiver, batteryChanged);
         info.load(bc_intent, sp_store);
+
+        registerReceiver(screenOffReceiver, screenOff);
     }
 
     @Override
@@ -402,6 +405,18 @@ public class BatteryInfoService extends Service {
             if (! Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) return;
 
             update(intent);
+        }
+    };
+
+    private final BroadcastReceiver screenOffReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context c, Intent intent) {
+            if (! Intent.ACTION_SCREEN_OFF.equals(intent.getAction())) return;
+
+            ComponentName comp = new ComponentName(context.getPackageName(),
+                                                   LockActivity.class.getName());
+            context.startActivity(new Intent().setComponent(comp).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            System.out.println("######################################################### screen off");
         }
     };
 
