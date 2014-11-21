@@ -46,6 +46,9 @@
   <style name="bi_help_theme" parent="@android:style/Theme.Light">
   </style>
 
+  <style name="lollilock_theme" parent="@android:style/Theme.Wallpaper">
+  </style>
+
   <style name="alarm_list_left_column">
     <item name="android:layout_width">68dp</item>
     <item name="android:layout_height">68dp</item>

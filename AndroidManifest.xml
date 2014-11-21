@@ -64,6 +64,7 @@
 
     <activity
         android:name=".LockActivity"
+        android:theme="@style/lollilock_theme"
         android:stateNotNeeded="true"
         android:excludeFromRecents="true"
     />
