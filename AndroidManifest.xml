@@ -67,6 +67,8 @@
         android:theme="@style/lollilock_theme"
         android:stateNotNeeded="true"
         android:excludeFromRecents="true"
+        android:screenOrientation="portrait"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
     />
 
     <service
