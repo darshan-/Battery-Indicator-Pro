@@ -15,13 +15,22 @@
                 android:gravity="center_horizontal|bottom"
                 android:textSize="80dp"
                 android:fontFamily="sans-serif-thin"
+  /-->
+  <AnalogClock android:id="@+id/clock"
+               android:layout_height="fill_parent"
+               android:layout_width="fill_parent"
+               android:scaleX="1.6"
+               android:scaleY="1.6"
+               android:layout_weight="0.5"
+               android:gravity="center_horizontal|bottom"
   />
   <TextView android:id="@+id/text"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
-            android:layout_weight="0.4"
+            android:layout_weight="0.5"
             android:gravity="center_horizontal|top"
-            android:text=""
             android:textSize="18dp"
-  /-->
+            android:fontFamily="sans-serif-normal"
+            android:text="Darshan Computing, LLC"
+  />
 </LinearLayout>
