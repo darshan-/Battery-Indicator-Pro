@@ -161,6 +161,7 @@ public class BatteryInfoService extends Service {
         public void run() {
             kl = km.newKeyguardLock(getPackageName());
             kl.disableKeyguard();
+            unregisterReceiver(screenOffReceiver);
             updateKeyguardNotification();
         }
     };
@@ -252,6 +253,7 @@ public class BatteryInfoService extends Service {
         alarms.close();
         if (! pluginPackage.equals("none")) disconnectPlugin();
         unregisterReceiver(mBatteryInfoReceiver);
+        unregisterReceiver(screenOffReceiver);
         mHandler.removeCallbacks(mPluginNotify);
         mHandler.removeCallbacks(mNotify);
         mNotificationManager.cancelAll();
@@ -889,16 +891,19 @@ public class BatteryInfoService extends Service {
                 unregisterReceiver(mUserPresentReceiver);
                 mHandler.removeCallbacks(runDisableKeyguard);
                 kl.reenableKeyguard();
+                registerReceiver(screenOffReceiver, screenOff);
                 kl = null;
             }
         } else {
             if (km.inKeyguardRestrictedInputMode()) {
                 registerReceiver(mUserPresentReceiver, userPresent);
             } else {
-                if (kl != null)
+                if (kl != null) {
                     kl.reenableKeyguard();
-                else
+                    registerReceiver(screenOffReceiver, screenOff);
+                } else {
                     registerReceiver(mUserPresentReceiver, userPresent);
+                }
 
                 mHandler.postDelayed(runDisableKeyguard,  300);
             }

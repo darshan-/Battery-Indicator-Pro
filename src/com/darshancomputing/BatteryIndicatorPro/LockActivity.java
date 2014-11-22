@@ -52,7 +52,13 @@ public class LockActivity extends Activity {
 
         res = getResources();
         context = getApplicationContext();
+
         settings = PreferenceManager.getDefaultSharedPreferences(context);
+        sp_store = context.getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
+
+        boolean lockDisabled = sp_store.getBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, false);
+
+        if (lockDisabled) finish();
     }
 
     @Override
@@ -74,6 +80,7 @@ public class LockActivity extends Activity {
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
+
         if (hasFocus) {
             hideNav();
         }
