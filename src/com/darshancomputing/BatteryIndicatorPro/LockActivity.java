@@ -48,7 +48,7 @@ public class LockActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //setContentView(R.layout.lollilock);
+        setContentView(R.layout.lollilock);
 
         res = getResources();
         context = getApplicationContext();
