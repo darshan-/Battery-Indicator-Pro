@@ -514,6 +514,11 @@ public class BatteryInfoService extends Service {
         if (settings.getBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT,
                                 res.getBoolean(R.bool.default_use_system_notification_layout))) {
             mainNotification.setLatestEventInfo(context, mainNotificationTopLine, mainNotificationBottomLine, mainWindowPendingIntent);
+
+            /* This must be set AFTER setLatestEventInfo(), which resets it to PRIVATE */
+            if (android.os.Build.VERSION.SDK_INT >= 21) {
+                mainNotification.visibility = Notification.VISIBILITY_PUBLIC;
+            }
         } else {
             String icon_area = settings.getString(SettingsActivity.KEY_ICON_AREA, res.getString(R.string.default_icon_area_content));
 
@@ -797,6 +802,12 @@ public class BatteryInfoService extends Service {
             if (c != null) {
                 notification = parseAlarmCursor(c);
                 notification.setLatestEventInfo(context, str.alarm_fully_charged, str.alarm_text, contentIntent);
+
+                /* This must be set AFTER setLatestEventInfo(), which resets it to PRIVATE */
+                if (android.os.Build.VERSION.SDK_INT >= 21) {
+                    notification.visibility = Notification.VISIBILITY_PUBLIC;
+                }
+
                 mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, notification);
                 c.close();
             }
@@ -808,6 +819,12 @@ public class BatteryInfoService extends Service {
             notification = parseAlarmCursor(c);
             notification.setLatestEventInfo(context, str.alarm_charge_drops + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
                                             str.alarm_text, contentIntent);
+
+            /* This must be set AFTER setLatestEventInfo(), which resets it to PRIVATE */
+            if (android.os.Build.VERSION.SDK_INT >= 21) {
+                notification.visibility = Notification.VISIBILITY_PUBLIC;
+            }
+
             mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, notification);
             c.close();
         }
@@ -818,6 +835,12 @@ public class BatteryInfoService extends Service {
             notification = parseAlarmCursor(c);
             notification.setLatestEventInfo(context, str.alarm_charge_rises + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol,
                                             str.alarm_text, contentIntent);
+
+            /* This must be set AFTER setLatestEventInfo(), which resets it to PRIVATE */
+            if (android.os.Build.VERSION.SDK_INT >= 21) {
+                notification.visibility = Notification.VISIBILITY_PUBLIC;
+            }
+
             mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, notification);
             c.close();
         }
@@ -830,6 +853,12 @@ public class BatteryInfoService extends Service {
             notification.setLatestEventInfo(context, str.alarm_temp_rises +
                                             str.formatTemp(c.getInt(alarms.INDEX_THRESHOLD), convertF, false),
                                             str.alarm_text, contentIntent);
+
+            /* This must be set AFTER setLatestEventInfo(), which resets it to PRIVATE */
+            if (android.os.Build.VERSION.SDK_INT >= 21) {
+                notification.visibility = Notification.VISIBILITY_PUBLIC;
+            }
+
             mNotificationManager.notify(NOTIFICATION_ALARM_TEMP, notification);
             c.close();
         }
@@ -841,6 +870,12 @@ public class BatteryInfoService extends Service {
                 notification = parseAlarmCursor(c);
                 notification.setLatestEventInfo(context, str.alarm_health_failure + str.healths[info.health],
                                                 str.alarm_text, contentIntent);
+
+                /* This must be set AFTER setLatestEventInfo(), which resets it to PRIVATE */
+                if (android.os.Build.VERSION.SDK_INT >= 21) {
+                    notification.visibility = Notification.VISIBILITY_PUBLIC;
+                }
+
                 mNotificationManager.notify(NOTIFICATION_ALARM_HEALTH, notification);
                 c.close();
             }
