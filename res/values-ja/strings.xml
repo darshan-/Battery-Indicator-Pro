@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string formatted="false" name="app_full_name">BatteryBot Pro</string>
+  <string formatted="false" name="app_launcher_name">BatteryBot</string>
+  <string formatted="false" name="settings_activity_subtitle">設定</string>
+  <string formatted="false" name="help_activity_subtitle">ヘルプ</string>
+  <string formatted="false" name="log_view_activity_subtitle">ログ</string>
+
+  <string formatted="false" name="app_full_name_free">BatteryBot</string>
+
+  <string formatted="false" name="battery_use_b">バッテリーの使用を表示する</string>
+  <string formatted="false" name="upgrade_donate_b">アップグレード/寄付...</string>
+  <string formatted="false" name="reenable_lock_screen">ロック画面を再有効化する</string>
+  <string formatted="false" name="disable_lock_screen">ロック画面を無効にする</string>
+
+  <string formatted="false" name="circle_widget">BatteryBot サークル</string>
+  <string formatted="false" name="full_widget">BatteryBot フル</string>
+
+  <string formatted="false" name="confirm_disable">ロック画面を無効にしてもよろしいですか?</string>
+  <string formatted="false" name="confirm_disable_hint">
+    ヒント: 設定でこの確認ダイアログを無効にできます...
+  </string>
+  <string formatted="false" name="yes">はい</string>
+  <string formatted="false" name="cancel">キャンセル</string>
+
+  <string formatted="false" name="confirm_close">閉じてもよろしいですか?</string>
+  <string formatted="false" name="confirm_close_hint">
+    BatteryBot は完全に閉じます。ステータスバーに
+    表示されなくなります。\n
+
+    \nメインウインドウから離れるだけで、インジケーターの
+    実行を続ける場合は、キャンセルまたはデバイスの戻る
+    ボタンを押してください。
+  </string>
+
+  <string formatted="false" name="confirm_clear_logs">ログをすべてクリアしてもよろしいですか?</string>
+
+  <string formatted="false" name="configure_log_filter">どのログ項目を表示しますか?</string>
+
+  <string formatted="false" name="confirm_ten_percent_enable">10% モードを有効にしますか?</string>
+  <string formatted="false" name="confirm_ten_percent_disable">10% モードを無効にしますか?</string>
+  <string formatted="false" name="confirm_ten_percent_hint">
+    警告: この設定を変更すると (有効および無効)
+    色の設定がリセットされます。\n
+
+    \nMotorola Droid, Droid X, Droid 2, Defy,
+    または Samsung Moment をお持ちの場合は、アプリの導入時に
+    最初にこれをオンにして、そのままにする必要があります。
+    その他のデバイスでは私の知る限り常にオフにします。
+  </string>
+
+  <string formatted="false" name="okay">OK</string>
+  <string formatted="false" name="none">なし</string>
+
+  <string formatted="false" name="tab_current_info">現在の情報</string>
+  <string formatted="false" name="tab_history">履歴</string>
+
+  <string formatted="false" name="notification_until_charged">" 充電まで"</string>
+  <string formatted="false" name="notification_until_drained">" 残"</string>
+  <string formatted="false" name="activity_until_charged">充電まで</string>
+  <string formatted="false" name="activity_until_drained">放電まで</string>
+
+  <string formatted="false" name="menu_settings">設定</string>
+  <string formatted="false" name="menu_close">閉じる</string>
+  <string formatted="false" name="menu_help">ヘルプ</string>
+  <string formatted="false" name="menu_rate_and_review">評価 &amp; レビュー</string>
+  <string formatted="false" name="menu_show_notification">通知を表示する</string>
+  <string formatted="false" name="menu_hide_notification">通知を非表示にする</string>
+  <string formatted="false" name="menu_clear">クリア</string>
+  <string formatted="false" name="menu_reverse">逆順</string>
+  <string formatted="false" name="menu_log_filter">フィルター</string>
+  <string formatted="false" name="menu_export">CSV をエクスポート</string>
+  <string formatted="false" name="menu_delete_alarm">アラームを削除</string>
+  <string formatted="false" name="menu_get_plugins">プラグインを入手</string>
+
+  <string formatted="false" name="percent_symbol">%</string>
+  <string formatted="false" name="degree_symbol">°</string>
+  <string formatted="false" name="fahrenheit">華氏</string>
+  <string formatted="false" name="fahrenheit_symbol">F</string>
+  <string formatted="false" name="celsius">セ氏</string>
+  <string formatted="false" name="celsius_symbol">C</string>
+  <string formatted="false" name="volt_symbol">V</string>
+
+  <string formatted="false" name="fully_charged_in">フル充電まで:</string>
+  <string formatted="false" name="light_usage">低負荷使用残:</string>
+  <string formatted="false" name="normal_usage">通常使用残:</string>
+  <string formatted="false" name="heavy_usage">高負荷使用残:</string>
+  <string formatted="false" name="constant_usage">連続使用残:</string>
+
+  <string formatted="false" name="press_back_to_leave">戻る を押すと離れます。</string>
+  <string formatted="false" name="press_menu_for_more">メニュー を押すと追加の項目があります。</string>
+
+  <string formatted="false" name="inaccessible_storage">SD カードにアクセスできません。</string>
+  <string formatted="false" name="inaccessible_w_reason">SD カードにアクセスできません: </string>
+  <string formatted="false" name="read_only_storage">SD カードは読み取り専用です。</string>
+  <string formatted="false" name="file_written">ファイルが SD カードのルートに正常に書き込まれました。</string>
+
+  <!-- These are used for the CSV export. -->
+  <string formatted="false" name="date">日付</string>
+  <string formatted="false" name="time">時刻</string>
+  <string formatted="false" name="status">ステータス</string>
+  <string formatted="false" name="charge">充電率</string>
+  <string formatted="false" name="temperature">セ氏度</string>
+  <string formatted="false" name="temperature_f">華氏度</string>
+  <string formatted="false" name="voltage">電圧</string>
+
+  <string formatted="false" name="status_unplugged">未接続</string>
+  <string formatted="false" name="status_unknown">不明</string>
+  <string formatted="false" name="status_charging">充電中</string>
+  <string formatted="false" name="status_discharging">放電中</string>
+  <string formatted="false" name="status_not_charging">非充電中</string>
+  <string formatted="false" name="status_fully_charged">フル充電</string>
+  <string formatted="false" name="status_plugged_in">接続済</string>
+
+  <string formatted="false" name="health_unknown">不明</string>
+  <string formatted="false" name="health_good">良好</string>
+  <string formatted="false" name="health_overheat">過熱</string>
+  <string formatted="false" name="health_dead">使用不能</string>
+  <string formatted="false" name="health_overvoltage">過電圧</string>
+  <string formatted="false" name="health_failure">障害</string>
+  <string formatted="false" name="health_cold">低温</string>
+  <string formatted="false" name="plugged_unplugged">未接続</string>
+  <string formatted="false" name="plugged_ac">(AC)</string>
+  <string formatted="false" name="plugged_usb">(USB)</string>
+  <string formatted="false" name="plugged_unknown">(?)</string>
+  <string formatted="false" name="plugged_wireless">(無線)</string>
+
+  <string formatted="false" name="alarm_type_fully_charged">フル充電されました</string>
+  <string formatted="false" name="alarm_type_charge_drops">残量が低下しました</string>
+  <string formatted="false" name="alarm_type_charge_rises">残量が上昇しました</string>
+  <string formatted="false" name="alarm_type_temperature_rises">温度が上昇しました</string>
+  <string formatted="false" name="alarm_type_health_failure">ステータス障害</string>
+  <string formatted="false" name="alarm_type_entry_fully_charged">フル充電になりました</string>
+  <string formatted="false" name="alarm_type_entry_charge_drops">残量が低下しました...</string>
+  <string formatted="false" name="alarm_type_entry_charge_rises">残量が上昇しました...</string>
+  <string formatted="false" name="alarm_type_entry_temperature_rises">温度が上昇しました...</string>
+  <string formatted="false" name="alarm_type_entry_health_failure">ステータス障害</string>
+
+  <string formatted="false" name="alarm_fully_charged">バッテリーがフル充電されました</string>
+  <string formatted="false" name="alarm_charge_drops">"バッテリー残量が低下しました "</string>
+  <string formatted="false" name="alarm_charge_rises">"バッテリー残量が上昇しました "</string>
+  <string formatted="false" name="alarm_temp_rises">"バッテリーの温度が上昇しました "</string>
+  <string formatted="false" name="alarm_health_failure">"バッテリーのステータス: "</string>
+  <string formatted="false" name="alarm_text">編集するアラームを選択してください。</string>
+
+  <string formatted="false" name="logs_empty">ログは空です</string>
+  <plurals name="n_log_items">
+    <item quantity="one">%d ログアイテム</item>
+    <item quantity="other">%d ログアイテム</item>
+  </plurals>
+
+  <string formatted="true" name="after_n_hours_unplugged">%1.1f 時間前プラグを抜きました</string>
+  <string formatted="true" name="after_n_hours_plugged_in">%1.1f 時間前プラグを挿しました</string>
+
+  <plurals name="n_hours_long">
+    <item quantity="one">"%d 時間 "</item>
+    <item quantity="other">"%d 時間 "</item>
+  </plurals>
+
+  <plurals name="n_minutes_long">
+    <item quantity="one">%d 分</item>
+    <item quantity="other">%d 分</item>
+  </plurals>
+
+  <plurals name="n_hours_medium">
+    <item quantity="one">"%d 時間 "</item>
+    <item quantity="other">"%d 時間 "</item>
+  </plurals>
+
+  <plurals name="n_minutes_medium">
+    <item quantity="one">%d 分</item>
+    <item quantity="other">%d 分</item>
+  </plurals>
+
+  <plurals name="n_hours_short">
+    <item quantity="other">"%d時間 "</item>
+  </plurals>
+
+  <plurals name="n_minutes_short">
+    <item quantity="other">%d分</item>
+  </plurals>
+
+  <plurals name="n_days">
+    <item quantity="one">"%d 日 "</item>
+    <item quantity="other">"%d 日 "</item>
+  </plurals>
+
+  <plurals name="n_hours">
+    <item quantity="one">%d 時間</item>
+    <item quantity="other">%d 時間</item>
+  </plurals>
+
+  <string formatted="false" name="discharging_from">放電開始</string>
+  <string formatted="false" name="charging_from">充電開始</string>
+  <string formatted="false" name="fully_charged">フル充電</string>
+
+  <string formatted="false" name="since">から</string>
+  <plurals name="for_n_hours">
+    <item quantity="one">%d 時間</item>
+    <item quantity="other">%d 時間</item>
+  </plurals>
+
+  <string name="dialog_color_picker">色を選択</string>
+  <string name="press_color_to_apply">古いまたは新しい色を適用:</string>
+
+  <string formatted="false" name="currently_using">現在使用中</string>
+  <string formatted="false" name="currently_set_to">"現在の設定: "</string>
+  <string formatted="false" name="currently_disabled">現在無効</string>
+
+  <string formatted="false" name="help_cat_version">バージョン</string>
+
+  <string formatted="false" name="help_cat_changelog">変更履歴</string>
+  <string formatted="false" name="help_changelog">
+    Please see the <a href="http://batterybot.info/changelog">オンライン変更履歴</a>.
+  </string>
+
+  <string formatted="false" name="help_cat_faq">よくある質問とその回答</string>
+  <string formatted="false" name="help_faq">
+    Please see the <a href="http://batterybot.info/faq">オンライン FAQ</a>.
+  </string>
+
+  <string formatted="false" name="help_cat_website">Webサイト</string>
+  <string formatted="false" name="help_website">さらに詳細な
+    情報は <a
+    href="http://batterybot.info/">BatteryBot webサイト</a> でご利用できます。
+  </string>
+
+  <string formatted="false" name="help_cat_open_source">オープンソース</string>
+  <string formatted="false" name="help_open_source">これは
+    オープンソースプロジェクトです。つまり <a
+    href="http://batterybot.info/sourcecode">ソースコードをダウンロード
+    </a> できます。
+  </string>
+
+  <string formatted="false" name="help_cat_donate">寄付</string>
+  <string formatted="false" name="help_donate">
+    寄付のために <a
+    href="market://details?id=com.darshancomputing.BatteryIndicatorPro">プロ
+    バージョン</a> へのアップグレードをご検討ください。
+  </string>
+
+  <string formatted="false" name="help_cat_no_warranty">無保証</string>
+  <string formatted="false" name="help_no_warranty">
+    このプログラムは有用であることを願って頒布されますが、
+    *全くの無保証* です。商業可能性の保証や特定目的への適合性は、
+    言外に示されたものも 含め、全く存在しません。\n
+
+    \n確実にこれが正しく機能し、問題を引き起こさないようにするため
+    最善を尽くしますが、いかなる状況下においても、
+    あらゆる損害や不便の責任は負いません。
+  </string>
+
+  <string formatted="false" name="help_cat_acknowledgments">謝辞</string>
+  <string formatted="false" name="help_acknowledgments">この
+    アプリはボランティア翻訳者の多大な協力によって
+    英語以外の言語で利用することができます。ありがとうございます!\n
+
+    \nGoogle とすべてのオープンソースのコーダーのおかげで
+    Android プラットフォームとこのアプリが作られています。大変感謝します。\n
+
+    \nランチャーアイコン (Google Play ストアで見られる縦のバッテリー) は
+    <a href="http://www.oxygen-icons.org">
+    Oxygen アイコンテーマ</a> のアイコンをベースにして、
+    <a href="http://creativecommons.org/licenses/by-sa/3.0/">クリエイティブコモンズ
+      Attribution-ShareAlike 3.0 ライセンス</a> の下に使用しています。
+  </string>
+
+  <string formatted="false" name="help_cat_translations">翻訳</string>
+  <string formatted="false" name="help_translations">私は
+    このアプリを新しい言語に翻訳し、既存の翻訳をメンテナンスする
+    支援が必要です。 もしご支援いただける場合は、私に <a
+    href="mailto:support%2Btranslations@batterybot.info">メール</a> をお送りください。
+    あなたの支援への謝辞として、あなたのお名前をこのセクションにもし記載してもよろしければ、
+    どのように記載するかを私にお知らせください。
+  </string>
+
+  <string formatted="false" name="help_subcat_translators">翻訳者</string>
+
+  <string formatted="false" name="help_cat_contact">問い合わせ</string>
+  <string formatted="false" name="help_contact">もし、
+    質問、問題、またはコメントなどがあれば、
+    <a href="mailto:support@batterybot.info">私にメール</a> をお送りください。
+  </string>
+
+  <string formatted="false" name="pref_hint">ヒント: ヘルプはメニューを押してください。</string>
+
+  <string formatted="false" name="settings_overview">概要</string>
+  <string formatted="false" name="settings_overview_help">
+    下記のように、設定は別のページにまとめられています。 各ページに、
+    そのページの設定を記載した、独自のヘルプページがあります。
+    ヘルプを表示するには、今いる設定ページでメニューを押すだけです。
+    (タブレットではメニューは必要ありません)
+  </string>
+
+  <string formatted="false" name="notification_settings">メイン通知</string>
+  <string formatted="false" name="notification_settings_summary">メイン通知を設定します</string>
+  <string formatted="false" name="notification_settings_help">
+    プルダウン通知に表示される内容を設定し、その外観をコントロールすることができます。
+  </string>
+  <string formatted="false" name="status_bar_icon_settings">ステータスバー アイコン</string>
+  <string formatted="false" name="status_bar_icon_settings_summary">アイコンセットのコントロール</string>
+  <string formatted="false" name="status_bar_icon_settings_help">
+    どのアイコンセットを使用するか選択して、アイコンセットの設定を変更することができます (色など)。
+  </string>
+  <string formatted="false" name="keyguard_settings">ロック画面</string>
+  <string formatted="false" name="keyguard_settings_summary">ロック画面を無効にする機能を設定します</string>
+  <string formatted="false" name="keyguard_settings_help">
+    デバイスのロック画面を自動または手動で無効にする機能について、いくつかの設定をすることができます。
+  </string>
+  <string formatted="false" name="alarm_settings_subtitle">アラーム設定</string>
+  <string formatted="false" name="alarm_settings">アラーム</string>
+  <string formatted="false" name="alarm_settings_summary">低残量/フル充電の通知をコントロール</string>
+  <string formatted="false" name="alarm_settings_help">
+    お使いのバッテリー残量が一定のレベルに達したときに、
+    BatteryBot があなたに通知することができます (例、バッテリーがフル充電された、
+    バッテリー残量が 20% を下回った)。
+  </string>
+  <string formatted="false" name="other_settings">その他の設定</string>
+  <string formatted="false" name="other_settings_help">
+    ロギング、ロック画面、温度の単位、自動開始、およびその他を含め、
+    その他のすべての設定はこのページにあります。
+  </string>
+
+  <string formatted="false" name="pref_cat_more_settings_in_pro">プロバージョンの追加設定</string>
+  <string formatted="false" name="pref_please_upgrade">
+    プロバージョンには、
+    カラフルなアイコン、アラーム、
+    バッテリーステータスのロギング、自動/手動のロック画面無効化、
+    充電/放電残の見積など、多くの追加設定や機能があります。
+  </string>
+
+  <string formatted="false" name="add_alarm">アラームを追加</string>
+
+  <string formatted="false" name="pref_cat_notification_layout">レイアウト</string>
+  <string formatted="false" name="pref_use_system_notification_layout">システムのレイアウトを使用する</string>
+  <string formatted="false" name="pref_use_system_notification_layout_summary">BatteryBot のカスタムレイアウトではなく、システムの通知レイアウトを使用しますか?</string>
+  <string formatted="false" name="pref_use_system_notification_layout_help">
+    有効にした場合、BatteryBot のカスタムレイアウトではなく、
+    システムの通知レイアウトを使用します。システムレイアウトはあまり
+    カスタマイズできませんが、一部のデバイスではデフォルトの色を
+    正しく表示しないため、カスタムレイアウトが見づらくまたは読みづらく
+    なります。他に一般的ではないレイアウトのデバイスは、カスタムレイアウトが
+    フィットしないことがあります。このオプションを選択すると、
+    通知が、他の通知のように表示されることを保証します。\n
+
+    \n通知で使用されるステータスバーアイコンが表示されるようになることとに
+    ご注意ください。
+  </string>
+
+  <string formatted="false" name="pref_cat_notification_content">コンテンツ</string>
+  <string formatted="false" name="pref_icon_area_content">アイコンエリアのコンテンツ</string>
+  <string formatted="false" name="pref_icon_area_content_help">
+    アイコンエリアにある通知の左端に表示したいものを選択してください。
+    バッテリー画像のみ、残量パーセントの文字のみ、または両方をいずれかの順序で表示することができます。
+  </string>
+  <string formatted="false" name="battery_graphic">バッテリー画像</string>
+  <string formatted="false" name="charge_percentage">残量パーセント</string>
+  <string formatted="false" name="percentage_first">パーセント、バッテリー</string>
+  <string formatted="false" name="battery_first">バッテリー、パーセント</string>
+
+  <string formatted="false" name="pref_top_line_content">最上行のコンテンツ</string>
+  <string formatted="false" name="pref_top_line_content_help">
+    通知の最上行の表示を設定します: 見積残り時間 (他の場所で設定可能)、
+    ステータスが変わってからの時間 (プラグを挿す、抜く、またはフル充電)、
+    またはバッテリーバイタルサイン (バッテリーの健康状態、温度、および電圧)。
+  </string>
+  <string formatted="false" name="pref_bottom_line_content">最下行のコンテンツ</string>
+  <string formatted="false" name="pref_bottom_line_content_help">
+    最上行と同様に、最下行にも同じオプションがあります。
+  </string>
+  <string formatted="false" name="time_remaining">残時間</string>
+  <string formatted="false" name="time_since_status_change">ステータス変更からの時間</string>
+  <string formatted="false" name="vital_signs">バイタルサイン</string>
+
+  <string formatted="false" name="pref_time_remaining_verbosity">残時間の詳細</string>
+  <string formatted="false" name="pref_time_remaining_verbosity_help">
+    デバイスにはすべての形やサイズ入っているので、見積残り時間が
+    通知エリアにフィットするように適切に略語を使用して調整するだけです。
+    それでもフィットしない場合は、圧縮した形式を選ぶことができます。
+    たくさんのスペースがある場合は、詳細な設定を行うことができます。
+  </string>
+  <string formatted="false" name="condensed">圧縮</string>
+  <string formatted="false" name="normal">通常</string>
+  <string formatted="false" name="verbose">詳細</string>
+
+  <string formatted="false" name="pref_status_duration_in_vital_signs">バイタルサインにステータスの期間を含める</string>
+  <string formatted="false" name="pref_status_duration_in_vital_signs_summary">
+    バイタルサインにステータスが変わってからの時間を含めますか?
+  </string>
+  <string formatted="false" name="pref_status_duration_in_vital_signs_help">
+    設定した場合は、デバイスのプラグを抜いた、挿した、またはフル充電
+    されてからの時間が、バイタルサインの行に含まれます。
+  </string>
+
+  <string formatted="false" name="pref_cat_notification_appearance">外観</string>
+  <string formatted="false" name="pref_cat_notification_appearance_help">
+    デフォルトの色では読むのが難しい、または別の色がお好みの場合は、
+    通知文字の色を上書きして変更することができます。また、アイコンエリアの周りに
+    ボックスを表示するかどうかを選択できます。
+  </string>
+
+  <string formatted="false" name="pref_notification_percentage_text_color">パーセントの文字色</string>
+  <string formatted="false" name="pref_custom_percentage_text_color">パーセントの色をカスタマイズ</string>
+  <string formatted="false" name="pref_notification_top_line_color">最上行の文字色</string>
+  <string formatted="false" name="pref_custom_top_line_color">最上行の色をカスタマイズ</string>
+  <string formatted="false" name="pref_notification_bottom_line_color">最下行の文字色</string>
+  <string formatted="false" name="pref_custom_bottom_line_color">最下行の色をカスタマイズ</string>
+  <string formatted="false" name="pref_show_box_around_icon_area">アイコンエリアの周りにボックスを表示</string>
+  <string formatted="false" name="pref_show_box_around_icon_area_summary">
+    アイコンエリアに背景色を表示しますか?
+  </string>
+
+  <string formatted="false" name="system_default">システムデフォルト</string>
+  <string formatted="false" name="black">黒</string>
+  <string formatted="false" name="white">白</string>
+  <string formatted="false" name="ics_blue">Android ICS 青</string>
+  <string formatted="false" name="custom">カスタマイズ...</string>
+
+  <string formatted="false" name="pref_cat_notification_priority">通知の優先度</string>
+  <string formatted="false" name="pref_cat_notification_priority_help">
+    Android 4.1 以上 (Jelly Bean 以降) では、通知に優先度を設定することができます。
+    優先度を変更した場合の影響は保証されていませんが、一般的には次のようになります:\n
+
+    \n• \"最低\" に設定すると、ほとんどの場合、ステータスバーのアイコンを削除しますが、
+    プルダウン通知トレイ内に通知が表示されます。\n
+
+    \n• \"低\" に設定すると、新しいメールなどの他の通知を、BatteryBot 通知の上部に
+    表示できるようになります。メールのように通知が展開可能な場合に適しています
+    (トップの通知のときに展開可能通知は自動的に展開されます)。\n
+
+    \n優先度が \"デフォルト\" 以上は、通常トップ通知として BatteryBot が残りますが、
+    より高い優先度のものがあればそうならない場合があります。\n
+
+    \nまた、動作はデバイス間で異なる場合があるため、確実に保証するものではありません。
+  </string>
+  <string formatted="false" name="pref_main_notification_priority">メイン通知の優先度</string>
+  <string formatted="false" name="pref_main_notification_priority_help">
+    メイン通知の優先度を設定します。アラーム、プラグイン、およびその他の通知は、
+    この設定の影響を受けませんが、将来的には優先度が設定可能になるかもしれません。
+  </string>
+
+  <string formatted="false" name="pref_cat_icon_set">アイコンセット</string>
+  <string formatted="false" name="pref_icon_set">アイコンセット</string>
+  <string formatted="false" name="pref_icon_set_help">
+    Android は多くの種類があるため、すべてのデバイス上でうまく動作する完全な
+    アイコンセットはありません。プロ ユーザーは、より多くのオプションを含んだ
+    プラグインを使用することができますが、ほぼすべてのデバイスに対して
+    少なくとも一つは良いオプションを提供しなければならないため、
+    3 つの組み込みアイコンセットがあります。\n
+
+    \n\"クラシック\" は、2009年からのオリジナルアイコンセットです。
+    古いデバイスで使用する場合は最高の選択ですが、新しいバージョンの
+    Android (Android 3.0, Honeycom 以降) では通知アイコンが小さく、
+    暗くなり、非常に見づらくなります。\n
+
+    \n\"数字のみ\" は、すべての新しい Android デバイスのデフォルトです。
+    小さく、暗く表示された後に、非常に大きな白い数字で、
+    はっきり表示されます。
+    充電中は数字の下に稲妻が表示されます。\n
+
+    \n\"小さい数字\" は \"数字のみ\" の小さいものです。
+    いくつかの新しいデバイスでは、これまでの Android のようにアイコンが
+    小さくならないため、\"数字のみ\" では非常に大きな数字が
+    コミカルに表示されます。\n
+
+    \nもしあなたが BatteryBot Pro のアイコン プラグインを
+    インストールされると、これら中から選択することができます
+    (メニューボタンを押して、プラグインを入手 から、無料のプラグインを
+    入手することができます。または新しいデバイスではアクションバーで
+    プラグインを入手 ボタンを押してください)。
+ </string>
+
+  <string formatted="false" name="pref_cat_charging_indicator">充電中インジケーター</string>
+  <string formatted="false" name="pref_indicate_charging">充電中を示す</string>
+  <string formatted="false" name="pref_indicate_charging_summary">充電中を示すアイコンを使用しますか?</string>
+  <string formatted="false" name="pref_indicate_charging_help">
+    いくつかのアイコンセットでは、充電中であることを示します。
+    たとえば、数字の下に稲妻が表示されます。その表示をしたくない場合は、
+    この設定を無効にしてください。
+  </string>
+
+  <string formatted="false" name="pref_cat_logging">ロギング</string>
+  <string formatted="false" name="pref_enable_logging">ログを有効にする</string>
+  <string formatted="false" name="pref_enable_logging_summary">バッテリーステータスの変更ログを取得しますか?</string>
+  <string formatted="false" name="pref_enable_logging_help">
+    有効にした場合、BatteryBot はバッテリーのステータスの変更を記録します。
+  </string>
+  <string formatted="false" name="pref_max_log_age">最大ログ履歴</string>
+  <string formatted="false" name="pref_max_log_age_summary">次より古いログを削除します:</string>
+  <string formatted="false" name="pref_max_log_age_help">
+    ロギングが有効になっている場合、あなたのデバイスを接続するたびに、
+    ここで指定した値よりも古いログを削除します。
+  </string>
+
+  <string formatted="false" name="pref_cat_keyguard">ロック画面 / キーガード</string>
+  <string formatted="false" name="pref_cat_keyguard_help">
+    あなたがおそらくロック画面として使用している \"キーガード\"
+    と呼ばれるアプリを、Android が無効にしたり、再度有効にできるようにします。
+    しかし、単に無効にしたり、再度有効にするだけで、
+    どのキーでロック解除するかなど、それ以上の制御はありません。
+  </string>
+  <string formatted="false" name="pref_notify_when_kg_disabled">無効時に通知する</string>
+  <string formatted="false" name="pref_notify_when_kg_disabled_summary">ロック画面が無効にされた時に通知しますか? </string>
+  <string formatted="false" name="pref_notify_when_kg_disabled_help">
+    チェックした場合、アプリがロック画面を無効にしたことを示す、
+    個別の通知が表示されます。
+  </string>
+  <string formatted="false" name="pref_confirm_manual_disable">手動での無効を確認する</string>
+  <string formatted="false" name="pref_confirm_manual_disable_summary">ロック画面を手動で無効にした時に確認しますか?</string>
+  <string formatted="false" name="pref_confirm_manual_disable_help">
+    チェックした場合、手動でロック画面を無効にしようとすると、
+    確認ダイアログがポップアップ表示されます。これは主に、
+    新しいユーザーが誤って、知らずにロック画面を無効にすることを
+    予防するためです。あなたが定期的にロック画面を無効にする場合は、
+    おそらくこれをオフにしたくなるでしょう。
+  </string>
+  <string formatted="false" name="pref_finish_after_toggle_lock">切り替え後に終了する</string>
+  <string formatted="false" name="pref_finish_after_toggle_lock_summary">無効/再度有効にした後にすぐメインウインドウを終了しますか?</string>
+  <string formatted="false" name="pref_finish_after_toggle_lock_help">
+    それぞれのキーストロークが (またはタッチスクリーンを押すのが)
+    煩わしい方は、これを有効にしたくなるかもしれません。
+    あなたの目的が単にロック画面を無効にしたり、再度有効にするだけで、
+    前の操作にそのまま戻りたい場合は、これで戻るボタンを押す必要がなくなります。
+    通知バーを引き下げて BatteryBot を選択して、ロック画面を切り替える
+    ボタンを押すだけです。画面を 3 回押すと前の操作に戻ります。\n
+
+    \n明らかに、前の設定が無効になっている場合のみ、有効にすることができます。
+    あるいは、その逆です。
+  </string>
+  <string formatted="false" name="pref_auto_disable">ロック画面を自動的に無効にする</string>
+  <string formatted="false" name="pref_auto_disable_summary">充電中にロック画面を無効にしますか?</string>
+  <string formatted="false" name="pref_auto_disable_help">
+    チェックした場合、デバイスに充電プラグが差し込まれると、
+    BatteryBot はロック画面を無効にします。プラグを抜くと
+    再度有効にします。\n
+
+    \nこのオプションを有効にしても、自動的に無効になる前に
+    ロックされた画面は、手動で一度ロック解除する必要があることに
+    ご注意ください。
+  </string>
+  <string formatted="false" name="pref_disallow_disable_lock_screen">手動での無効を禁止する</string>
+  <string formatted="false" name="pref_disallow_disable_lock_screen_summary">ロック画面を無効にするボタンの使用を禁止しますか?</string>
+  <string formatted="false" name="pref_disallow_disable_lock_screen_help">
+    画面がロックされているときに通知トレイにアクセス可能な、
+    別のロック画面がある場合は、セキュリティ上の理由から、
+    このオプションを有効にすることをお勧めします。
+  </string>
+
+  <string formatted="false" name="pref_notify_status_duration">ステータス時間を表示</string>
+  <string formatted="false" name="pref_notify_status_duration_summary">見積残り時間ではなく、ステータスが変わってからの時間を表示しますか?</string>
+  <string formatted="false" name="pref_notify_status_duration_help">
+    メイン通知で、見積残り時間ではなく、ステータスが変わってからの時間
+    (\"プラグを抜いてから 5 時間\" など) の表示をお好みの場合は、
+    この設定を有効にしてください。メインウインドウで両方の情報が入手できます。
+  </string>
+
+  <string formatted="false" name="pref_cat_battery_use">バッテリーの使用</string>
+  <string formatted="false" name="pref_finish_after_battery_use">起動後に終了する</string>
+  <string formatted="false" name="pref_finish_after_battery_use_summary">バッテリーの使用を起動した直後にメインウインドウを終了しますか?</string>
+  <string formatted="false" name="pref_finish_after_battery_use_help">
+    それぞれのキーストロークが (またはタッチスクリーンを押すのが)
+    煩わしい方は、これを有効にしたくなるかもしれません。
+    これを有効にすると、バッテリーの使用画面を起動した直後に、
+    BatteryBot のメインウインドウを閉じる、以前の動作のままにします。
+  </string>
+
+  <string formatted="false" name="pref_cat_temperature_unit">温度の単位</string>
+  <string formatted="false" name="pref_convert_to_fahrenheit">華氏に変換する</string>
+  <string formatted="false" name="pref_convert_to_fahrenheit_help">
+    Android はセ氏でバッテリ温度を報告します。バッテリー温度を華氏で
+    確認したい場合は、このオプションをチェックすると、アプリが変換します。
+  </string>
+
+  <string formatted="false" name="pref_cat_autostart">自動開始</string>
+  <string formatted="false" name="pref_autostart_at_boot">起動時に自動開始</string>
+  <string formatted="false" name="pref_autostart_at_boot_summary">デバイスが起動した時に BatteryBot を開始します:</string>
+  <string formatted="false" name="pref_autostart_at_boot_help">
+    デバイスの起動時に、BatteryBot が自動的に起動する必要があるか
+    コントロールします。\n
+
+    \n\"シャットダウン時に実行中の場合\" オプションは、BatteryBot を
+    直近に手動で開始または停止したかを考慮して動作します。
+    そのため、タスクキラーのように、他の手段で BatteryBot を kill した場合、
+    BatteryBot はあなたが停止したことがわからないため、
+    このオプションを設定していると、起動時に開始します。
+  </string>
+
+  <string formatted="false" name="predictor_sensitive">高感度</string>
+  <string formatted="false" name="predictor_conservative">保守的</string>
+  <string formatted="false" name="predictor_since_status_change">ステータスが変わったら</string>
+  <string formatted="false" name="predictor_long_term_ave">長期平均</string>
+
+  <string formatted="false" name="pref_cat_predictor">残時間の見積</string>
+  <string formatted="false" name="pref_prediction_type">見積の種類</string>
+  <string formatted="false" name="pref_prediction_type_help">
+    ここでは、バッテリーのフル充電からの残量/残時間を
+    BatteryBot Pro が予測する方法を選択することができます。\n
+
+    \n\"高感度\" アルゴリズムは、厳密に直近の5分間の使用量に基づいて求めます。
+    主に \"あとどのくらい今の操作を続けることができるか?\"
+    に関心がある場合は、このアルゴリズムをご利用ください。\n
+
+    \"保守的\" なアルゴリズムがデフォルトです。最近の使用状況に
+    基づいていますが、長期的な平均の使用状況から
+    あまり大きく変化しないようにします\n
+
+    \n厳密に現在のセッションに基づいて予測するには、
+    \"ステータスが変わってから\" を選択してください。\n
+
+    \n最終的に、長期的な平均の使用状況のみに基づいて、
+    予測することができます。
+ </string>
+
+  <string formatted="false" name="lang_system_selected">システムで選択</string>
+  <string formatted="false" name="pref_cat_language">言語</string>
+  <string formatted="false" name="pref_language_override">言語の上書き</string>
+  <string formatted="false" name="pref_language_override_summary">言語を選択:</string>
+  <string formatted="false" name="pref_language_override_help">
+    ご利用の言語の翻訳が不完全または不正確で、別の言語での
+    ご利用をお好みの場合、ここで選択することができます。
+  </string>
+
+  <string formatted="false" name="pref_cat_plugin_settings">プラグイン設定</string>
+  <string formatted="false" name="pref_plugin_settings">プラグイン設定</string>
+  <string formatted="false" name="pref_plugin_settings_summary">このプラグインの設定を編集します</string>
+
+  <string formatted="false" name="pref_cat_color">アイコンの色</string>
+  <string formatted="false" name="pref_cat_color_help">
+    BatteryBot のバイナリパッケージを適切に小さくするために、
+    色に関していくつかの制限があります。現時点では、
+    30% 高い赤のアイコン、50% 高い黄色のアイコン、
+    20% 低い緑のアイコンを使用することができます。
+    99% のユーザーにとって、利用する上で合理的なものと考えます。\n
+
+    \n独立して色をオンまたはオフにして、最大限にコントロールすることができます。
+    つまり、完全にフル充電のときにはアイコンが緑、その後グレースケール、
+    その後黄色、その後赤、という 4 段と多くのカラースキームを持つことができます。
+    もちろん、ほとんどの人は、アイコンがグレースケールにならないように、
+    おそらく黄色と緑に同じしきい値を設定するでしょう。
+  </string>
+  <string formatted="false" name="pref_color_preview">色のプレビュー</string>
+  <string formatted="false" name="pref_color_preview_help">
+    色のプレビューは、色の設定の結果を
+    簡単に視覚化して確認することができます。\n
+
+    \n意味がないため、これは 10% モードにはありません。
+  </string>
+  <string formatted="false" name="pref_red">赤のアイコンを使用する</string>
+  <string formatted="false" name="pref_red_summary">残量が少ない時に赤のアイコンを使用しますか?</string>
+  <string formatted="false" name="pref_red_help">
+    指定したしきい値を下回ったときに、赤のアイコンを使用するかどうかを指定します。
+  </string>
+  <string formatted="false" name="pref_red_thresh">赤のしきい値</string>
+  <string formatted="false" name="pref_red_thresh_summary">残量が次のパーセントを下回ると赤のアイコンにします:</string>
+  <string formatted="false" name="pref_red_thresh_summary10">残量が次のパーセント以下になると赤のアイコンにします:</string>
+  <string formatted="false" name="pref_red_thresh_help">
+    下回ったときに (10% モードでは、<i>その値</i>) アイコンを赤に変える充電レベルを指定します。\n
+
+    \n赤のしきい値のオプションには、赤のアイコンで利用可能な
+    すべての値 (5の倍数) が含まれています。\n
+
+    \n10% モードは、若干動作が異なりますが、各自でご確認の上
+    ご利用ください。
+  </string>
+  <string formatted="false" name="pref_amber">黄色のアイコンを使用する</string>
+  <string formatted="false" name="pref_amber_summary">残量が中間の時に黄色のアイコンを使用しますか?</string>
+  <string formatted="false" name="pref_amber_help">
+    指定したしきい値を下回ったときに、黄色のアイコンを使用するかどうかを指定します。
+  </string>
+  <string formatted="false" name="pref_amber_thresh">黄色のしきい値</string>
+  <string formatted="false" name="pref_amber_thresh_summary">残量が次のパーセントを下回ると黄色のアイコンにします:</string>
+  <string formatted="false" name="pref_amber_thresh_summary10">残量が次のパーセント以下になると黄色のアイコンにします:</string>
+  <string formatted="false" name="pref_amber_thresh_help">
+    下回ったときに (10% モードでは、<i>その値</i>) アイコンを黄色に変える
+    充電レベルを指定します。\n
+
+    \n黄色のしきい値のオプションには、黄色のアイコンで利用可能な
+    (存在する場合) 赤のしきい値を 5% ポイント上回ったところから始まる、
+    すべての値 (5の倍数) が含まれています。
+    例えば、赤のしきい値を 15 に設定した場合は、
+    ここで最も低いオプションは 20 のようになります。\n
+
+    \n10% モードは、若干動作が異なりますが、各自でご確認の上
+    ご利用ください。
+  </string>
+  <string formatted="false" name="pref_green">緑のアイコンを使用する</string>
+  <string formatted="false" name="pref_green_summary">残量が多い時に緑のアイコンを使用しますか?</string>
+  <string formatted="false" name="pref_green_help">
+    指定したしきい値以上のときに、緑のアイコンを使用するかどうかを指定します。
+  </string>
+  <string formatted="false" name="pref_green_thresh">緑のしきい値</string>
+  <string formatted="false" name="pref_green_thresh_summary">残量が次のパーセント以上のとき緑のアイコンにします:</string>
+  <string formatted="false" name="pref_green_thresh_help">
+    それ以上のときに、アイコンを緑に変える充電レベルを指定します。\n
+
+    \n緑のしきい値のオプションには、緑のアイコンで利用可能な
+    赤と黄色で設定した高いほうの有効なしきい値から始まる、
+    すべての値 (5の倍数) が含まれています。
+    例えば、黄色のしきい値を 40 に設定した場合は、
+    ここで最も低いオプションは 40 のようになります。\n
+
+    \n10% モードは、若干動作が異なりますが、各自でご確認の上
+    ご利用ください。
+  </string>
+
+  <string formatted="false" name="pref_cat_device_specific">デバイス固有の設定</string>
+  <!--string name="pref_cat_device_specific_help"></string-->
+  <string formatted="false" name="pref_ten_percent_mode">10% モード</string>
+  <string formatted="false" name="pref_ten_percent_mode_summary">はじめにヘルプをお読みください!</string>
+  <string formatted="false" name="pref_ten_percent_mode_help"><b>注意:</b>
+    これをチェックしたりチェックをオフにすると、アイコンの色の設定がリセットされます!\n
+
+    \nこの設定はアイコンの色の設定をクリーンアップして、
+    10% 刻みでのみ充電レベルを表示するデバイス上で効果があります。
+    ユーザーの報告によると、以下のデバイスが含まれます:\n
+
+    \n• Motorola Droid (オリジナル)
+    \n• Motorola Droid X
+    \n• Motorola Droid 2
+    \n• Motorola Defy
+    \n• Samsung Moment\n
+
+    \n私の知る限り、他のデバイスはすべて 1% ごとに報告するため、
+    これをオンにする必要は<i>ありません</i>。
+  </string>
+
+  <string formatted="false" name="alarms_overview">アラームの概要</string>
+  <string formatted="false" name="alarms_overview_help">
+    このページで、新しいアラームを追加する、既存のアラームをすばやく
+    有効または無効にする、アラームを削除することができます。\n
+
+    \n新しいアラームを追加するには、\"アラームを追加\" を押します -
+    これで、新しいアラームを作成して、アラーム設定ページへ移動します。
+    そこで新しいアラームの設定を変更することができます。
+    詳細については、そのページのヘルプを参照してください。\n
+
+    \n作成したすべてのアラームのリストの下に "\アラームを追加"\
+    ボタンがあります\n
+
+    \n• 既存のアラームを編集するには、それを押すだけです。
+    \n• 削除するには、それを長押しします。その後 \"アラームを削除\"
+    を選択します。 (個々のアラーム設定ページから、メニューを押して、
+    その後 \"アラームを削除\" でアラームを削除することもできます。)
+    \n• すばやくアラームを有効にするかどうかを切り替えるには、
+    アラームテキストの左側の、目覚まし時計のアイコンを押します。
+    (また、個々のアラーム設定ページから、アラームを有効または
+    無効にすることもできます。)
+  </string>
+
+  <string formatted="false" name="pref_alarm_enabled">アラームを有効にする</string>
+  <!--string name="pref_alarm_enabled_summary"></string-->
+  <string formatted="false" name="pref_alarm_enabled_help">
+    一時的にアラームを無効にするだけで、再び使用したくなったときに
+    再作成したくない場合、ここまたはメインのアラームのページで、
+    オフにすることができます。
+  </string>
+
+  <string formatted="false" name="pref_cat_alarm_conditions">アラームの条件</string>
+  <string formatted="false" name="pref_cat_alarm_conditions_help">
+    ここでアラームの発生する条件を指定します。
+  </string>
+  <string formatted="false" name="pref_alarm_type">アラームの種類</string>
+  <string formatted="false" name="pref_alarm_type_summary">バッテリーでアラームを発生します:</string>
+  <string formatted="false" name="pref_alarm_type_help">
+    現在 5 種類のアラームを選択することができます。\n
+
+    \n\"フル充電されました\" アラームは、お使いのバッテリーの状態が
+    \"充電中\" から \"フル充電\" に変わったときに通知します。
+    これは、多くのデバイスで 100% 充電と同じ意味ではないことに
+    ご注意ください。\n
+
+    \n充電の状態と温度のアラームは、そのアラームの種類を選択した後で、
+    以下のしきい値を設定する必要があります。\n
+
+    \n\"ステータス障害\" のアラームは、Android から報告される
+    お使いのバッテリーの状態が、\"不明\" や \"良好\"
+    以外のものになると通知されます。
+  </string>
+  <string formatted="false" name="pref_alarm_threshold">しきい値</string>
+  <string formatted="false" name="alarm_pref_not_used">このアラームの種類では使用しません</string>
+  <string formatted="false" name="pref_alarm_threshold_summary">アラームのしきい値:</string>
+  <string formatted="false" name="pref_alarm_threshold_help">
+    充電の状態と温度のアラームには、アラームを発生する
+    温度や充電のレベルを設定する必要があります。
+  </string>
+
+  <string formatted="false" name="pref_cat_notification_settings">通知設定</string>
+  <string formatted="false" name="pref_cat_notification_settings_help">
+    ここではアラームが発生したときに、作成されたアラーム通知を
+    さまざまな面でコントロールすることができます。
+  </string>
+  <string formatted="false" name="pref_alarm_ringtone">着信音</string>
+  <!--string name="pref_alarm_ringtone_summary"></string-->
+  <string formatted="false" name="pref_alarm_ringtone_help">
+    ここではアラームが発生したときに、どのサウンドを再生するか
+    コントロールすることができます。サウンドが再生されるように
+    する場合は、\'サイレント\' を選択してください。
+  </string>
+  <string formatted="false" name="silent">サイレント</string>
+  <string formatted="false" name="pref_alarm_vibrate">バイブレート</string>
+  <!--string name="pref_alarm_vibrate_summary"></string-->
+  <string formatted="false" name="pref_alarm_vibrate_help">
+    このオプションを設定すると、デバイスがサイレントモードでない限り、
+    サイレントモードでも振動するに設定したデバイスを含めて、
+    アラームが発生すると、デバイスが振動します。
+    言い換えれば、あなたが期待する通りに設定する必要があります。
+    何か不明な場合は、私にメールしてください。
+  </string>
+  <string formatted="false" name="pref_alarm_lights">ライトを点滅</string>
+  <!--string name="pref_alarm_lights_summary"></string-->
+  <string formatted="false" name="pref_alarm_lights_help">
+    通知が、デバイスのデフォルトのライトを有効にするかどうかを設定します。
+    これは一般的に LED またはトラックボールを点滅します。私が使用した
+    Android デバイスの一部で、この箇所に少しバグが含まれていました。
+    ご利用にあたってご注意ください。これをチェックした場合、
+    通知は Android にライトを点滅させるように要求しますが、
+    必ずしも実際には行われない場合があります。
+  </string>
+
+  <string formatted="false" name="boot_pref_always">常に</string>
+  <string formatted="false" name="boot_pref_never">なし</string>
+  <string formatted="false" name="boot_pref_if_running">シャットダウン時に実行中の場合</string>
+
+  <string formatted="false" name="status_dur_always">常に</string>
+  <string formatted="false" name="status_dur_after_1h">1 時間後</string>
+  <string formatted="false" name="status_dur_after_2h">2 時間後</string>
+  <string formatted="false" name="status_dur_after_3h">3 時間後</string>
+  <string formatted="false" name="status_dur_after_6h">6 時間後</string>
+  <string formatted="false" name="status_dur_after_12h">12 時間後</string>
+
+  <string formatted="false" name="age_1_day">1 日</string>
+  <string formatted="false" name="age_2_days">2 日</string>
+  <string formatted="false" name="age_4_days">4 日</string>
+  <string formatted="false" name="age_1_week">1 週間</string>
+  <string formatted="false" name="age_2_weeks">2 週間</string>
+  <string formatted="false" name="age_3_weeks">3 週間</string>
+  <string formatted="false" name="age_4_weeks">4 週間</string>
+
+  <string formatted="false" name="notification_priority_max">最高</string>
+  <string formatted="false" name="notification_priority_high">高</string>
+  <string formatted="false" name="notification_priority_default">デフォルト</string>
+  <string formatted="false" name="notification_priority_low">低</string>
+  <string formatted="false" name="notification_priority_min">最低</string>
+
+  <string formatted="false" name="icon_set_classic">クラシック</string>
+  <string formatted="false" name="icon_set_plain">数字のみ</string>
+  <string formatted="false" name="icon_set_smaller">小さい数字</string>
+</resources>
