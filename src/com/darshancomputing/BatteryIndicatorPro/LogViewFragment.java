@@ -341,6 +341,7 @@ public class LogViewFragment extends ListFragment {
             mAdapter.changeCursor(filteredCursor);
         } else {
             filteredCursor.requery();
+            mAdapter.notifyDataSetChanged();
         }
 
         setHeaderText();
