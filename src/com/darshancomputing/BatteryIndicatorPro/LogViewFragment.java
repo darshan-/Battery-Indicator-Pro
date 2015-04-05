@@ -281,6 +281,15 @@ public class LogViewFragment extends ListFragment {
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
 
+        // According to Play Developer Console, filteredCursor can be null here, even though it shouldn't be...
+        //  I guess onPrepareOptionsMenu() can be called before onCreate()?
+        if (filteredCursor == null) {
+            menu.findItem(R.id.menu_clear).setEnabled(false);
+            menu.findItem(R.id.menu_export).setEnabled(false);
+            menu.findItem(R.id.menu_reverse).setEnabled(false);
+            return;
+        }
+
         switch (filteredCursor.getCount()) {
         case 0:
             menu.findItem(R.id.menu_clear).setEnabled(false);
