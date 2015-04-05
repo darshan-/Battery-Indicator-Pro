@@ -34,7 +34,7 @@
   <string name="menu_settings" formatted="false">設定</string>
   <string name="menu_close" formatted="false">閉じる</string>
   <string name="menu_help" formatted="false">ヘルプ</string>
-  <string name="menu_rate_and_review" formatted="false">評価 &amp; レビュー</string>
+  <string name="menu_rate_and_review" formatted="false">評価 と レビュー</string>
   <string name="menu_show_notification" formatted="false">通知を表示する</string>
   <string name="menu_hide_notification" formatted="false">通知を非表示にする</string>
   <string name="menu_clear" formatted="false">クリア</string>
@@ -117,19 +117,19 @@
   <string name="currently_disabled" formatted="false">現在無効</string>
   <string name="help_cat_version" formatted="false">バージョン</string>
   <string name="help_cat_changelog" formatted="false">変更履歴</string>
-  <string name="help_changelog" formatted="false">Please see the <a href="http://batterybot.info/changelog">オンライン変更履歴</a>.</string>
+  <string name="help_changelog" formatted="false"><a href="http://batterybot.info/changelog">オンライン変更履歴</a> をご覧ください.</string>
   <string name="help_cat_faq" formatted="false">よくある質問とその回答</string>
   <string name="help_faq" formatted="false">Please see the <a href="http://batterybot.info/faq">オンライン FAQ</a>.</string>
   <string name="help_cat_website" formatted="false">Webサイト</string>
-  <string name="help_website" formatted="false">さらに詳細な 情報は <a href="http://batterybot.info/">BatteryBot webサイト</a> でご利用できます。</string>
+  <string name="help_website" formatted="false">さらに詳細な情報は <a href="http://batterybot.info/">BatteryBot webサイト</a> でご利用できます。</string>
   <string name="help_cat_open_source" formatted="false">オープンソース</string>
-  <string name="help_open_source" formatted="false">これは オープンソースプロジェクトです。つまり <a href="http://batterybot.info/sourcecode">ソースコードをダウンロード </a> できます。</string>
+  <string name="help_open_source" formatted="false">これはオープンソースプロジェクトです。 <a href="http://batterybot.info/sourcecode">ソースコードをダウンロード</a> することができます。</string>
   <string name="help_cat_donate" formatted="false">寄付</string>
   <string name="help_donate" formatted="false">寄付のために <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">プロ バージョン</a> へのアップグレードをご検討ください。</string>
   <string name="help_cat_no_warranty" formatted="false">無保証</string>
-  <string name="help_no_warranty" formatted="false">このプログラムは有用であることを願って頒布されますが、 *全くの無保証* です。商業可能性の保証や特定目的への適合性は、 言外に示されたものも 含め、全く存在しません。\n\n確実にこれが正しく機能し、問題を引き起こさないようにするため 最善を尽くしますが、いかなる状況下においても、 あらゆる損害や不便の責任は負いません。</string>
+  <string name="help_no_warranty" formatted="false">このプログラムは有用であることを願って頒布されますが、 *全くの無保証* です。商業可能性の保証や特定目的への適合性は、言外に示されたものも含め、全く存在しません。\n\n確実にこれが正しく機能し、問題を引き起こさないようにするため最善を尽くしますが、いかなる状況下においても、 あらゆる損害や不便の責任は負いません。</string>
   <string name="help_cat_acknowledgments" formatted="false">謝辞</string>
-  <string name="help_acknowledgments" formatted="false">この アプリはボランティア翻訳者の多大な協力によって 英語以外の言語で利用することができます。ありがとうございます!\n\nGoogle とすべてのオープンソースのコーダーのおかげで Android プラットフォームとこのアプリが作られています。大変感謝します。\n\nランチャーアイコン (Google Play ストアで見られる縦のバッテリー) は <a href="http://www.oxygen-icons.org"> Oxygen アイコンテーマ</a> のアイコンをベースにして、 <a href="http://creativecommons.org/licenses/by-sa/3.0/">クリエイティブコモンズ Attribution-ShareAlike 3.0 ライセンス</a> の下に使用しています。</string>
+  <string name="help_acknowledgments" formatted="false">この アプリはボランティア翻訳者の多大な協力によって 英語以外の言語で利用することができます。ありがとうございます!\n\nGoogle とすべてのオープンソースのコーダーのおかげで Android プラットフォームとこのアプリが作られています。大変感謝します。\n\nランチャーアイコン (Google Play ストアで見られる縦のバッテリー) は <a href="http://www.oxygen-icons.org">Oxygen アイコンテーマ</a> のアイコンをベースにして、 <a href="http://creativecommons.org/licenses/by-sa/3.0/">クリエイティブコモンズ Attribution-ShareAlike 3.0 ライセンス</a> の下に使用しています。</string>
   <string name="help_cat_translations" formatted="false">翻訳</string>
   <string name="help_translations" formatted="false">私は このアプリを新しい言語に翻訳し、既存の翻訳をメンテナンスする 支援が必要です。 もしご支援いただける場合は、私に <a href="mailto:support%2Btranslations@batterybot.info">メール</a> をお送りください。 あなたの支援への謝辞として、あなたのお名前をこのセクションにもし記載してもよろしければ、 どのように記載するかを私にお知らせください。</string>
   <string name="help_subcat_translators" formatted="false">翻訳者</string>
