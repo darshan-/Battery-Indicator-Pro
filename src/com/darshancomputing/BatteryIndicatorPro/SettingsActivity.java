@@ -351,30 +351,36 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 if (currentPlugin.equals("builtin.classic")) {
                     cat.setLayoutResource(R.layout.none);
 
-                    redEnabled   = mSharedPreferences.getBoolean(  KEY_RED, false);
-                    amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
-                    greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
+                    if (android.os.Build.VERSION.SDK_INT >= 21) {
+                        cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
+                        cat.removeAll();
+                        cat.setLayoutResource(R.layout.none);
+                    } else {
+                        redEnabled   = mSharedPreferences.getBoolean(  KEY_RED, false);
+                        amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
+                        greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
 
-                    iRedThresh   = Integer.valueOf(  redThresh.getValue()); /* Entries don't exist yet */
-                    iAmberThresh = Integer.valueOf(amberThresh.getValue());
-                    iGreenThresh = Integer.valueOf(greenThresh.getValue());
+                        iRedThresh   = Integer.valueOf(  redThresh.getValue()); /* Entries don't exist yet */
+                        iAmberThresh = Integer.valueOf(amberThresh.getValue());
+                        iGreenThresh = Integer.valueOf(greenThresh.getValue());
 
-                    mPreferenceScreen.findPreference(KEY_TEN_PERCENT_MODE)
-                        .setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
-                            {
-                                public boolean onPreferenceChange(final Preference preference, final Object newValue) {
-                                    showDialog((Boolean) newValue ? DIALOG_CONFIRM_TEN_PERCENT_ENABLE : DIALOG_CONFIRM_TEN_PERCENT_DISABLE);
-                                    return false;
-                                }
-                            });
+                        mPreferenceScreen.findPreference(KEY_TEN_PERCENT_MODE)
+                            .setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
+                                {
+                                    public boolean onPreferenceChange(final Preference preference, final Object newValue) {
+                                        showDialog((Boolean) newValue ? DIALOG_CONFIRM_TEN_PERCENT_ENABLE : DIALOG_CONFIRM_TEN_PERCENT_DISABLE);
+                                        return false;
+                                    }
+                                });
 
-                    if (ten_percent_mode) {
-                        /* These should always correspond to the logical (entry) value, not the actual stored value. */
-                        iRedThresh--;
-                        iAmberThresh--;
+                        if (ten_percent_mode) {
+                            /* These should always correspond to the logical (entry) value, not the actual stored value. */
+                            iRedThresh--;
+                            iAmberThresh--;
+                        }
+
+                        validateColorPrefs(null);
                     }
-
-                    validateColorPrefs(null);
 
                     cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CHARGING_INDICATOR);
                     cat.removeAll();
