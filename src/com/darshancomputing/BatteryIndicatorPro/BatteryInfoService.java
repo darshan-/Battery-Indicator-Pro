@@ -164,6 +164,11 @@ public class BatteryInfoService extends Service {
         }
     };
 
+    private final Runnable runRenotify = new Runnable() {
+        public void run() {
+            registerReceiver(mBatteryInfoReceiver, batteryChanged);
+        }
+    };
 
     @Override
     public void onCreate() {
@@ -650,6 +655,16 @@ public class BatteryInfoService extends Service {
 
         if (info.voltage > 500)
             line += " / " + str.formatVoltage(info.voltage);
+        if (settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
+            settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_VITAL_STATS, false)) {
+            Long current = null;
+            if (settings.getBoolean(SettingsActivity.KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS))
+                current = CurrentHack.getAvgCurrent();
+            if (current == null) // Either don't prefer avg or avg isn't available
+                current = CurrentHack.getCurrent();
+            if (current != null)
+                line += " / " + String.valueOf(current) + "mA";
+        }
         if (settings.getBoolean(SettingsActivity.KEY_STATUS_DURATION_IN_VITAL_SIGNS, false)) {
             float statusDurationHours = (now - info.last_status_cTM) / (60 * 60 * 1000f);
             line += " / " + String.format("%.1f", statusDurationHours) + "h"; // TODO: Translatable 'h'
@@ -706,7 +721,7 @@ public class BatteryInfoService extends Service {
             return ((info.status == BatteryInfo.STATUS_CHARGING && indicate_charging) ? chargingIcon0 : plainIcon0) + info.percent;
         } else if (icon_set.equals("builtin.smaller_number")) {
             return ((info.status == BatteryInfo.STATUS_CHARGING && indicate_charging) ? small_chargingIcon0 : small_plainIcon0) + info.percent;
-        } else if (android.os.Build.VERSION.SDK_INT >= 21){
+        } else if (android.os.Build.VERSION.SDK_INT >= 21) {
             // Classic set is desired, but colors break notification icons on API level 21+
             return R.drawable.b000 + info.percent;
         } else {
@@ -744,6 +759,13 @@ public class BatteryInfoService extends Service {
 
             if (info.status != info.last_status && info.last_status == BatteryInfo.STATUS_UNPLUGGED)
                 log_db.prune(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAX_LOG_AGE, str.default_max_log_age)));
+        }
+
+        if (settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
+            settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_VITAL_STATS, false)) {
+            mHandler.postDelayed(runRenotify, 1000);
+            mHandler.postDelayed(runRenotify, 3000);
+            mHandler.postDelayed(runRenotify, 6000);
         }
 
         /* TODO: Af first glance, I think I want to do this, but think about it a bit and decide for sure... */
@@ -923,7 +945,7 @@ public class BatteryInfoService extends Service {
                 else
                     registerReceiver(mUserPresentReceiver, userPresent);
 
-                mHandler.postDelayed(runDisableKeyguard,  300);
+                mHandler.postDelayed(runDisableKeyguard, 300);
             }
         }
 

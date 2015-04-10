@@ -103,6 +103,7 @@
   <string formatted="false" name="temperature">degrees_celsius</string>
   <string formatted="false" name="temperature_f">degrees_fahrenheit</string>
   <string formatted="false" name="voltage">volts</string>
+  <string formatted="false" name="current">milliamperes</string>
 
   <string formatted="false" name="status_unplugged">Unplugged</string>
   <string formatted="false" name="status_unknown">Unknown</string>
@@ -316,6 +317,16 @@
     reaches a certain point (e.g., the battery becomes fully charged,
     the battery level drops below 20%).
   </string>
+  <string formatted="false" name="current_settings_subtitle">Current Settings</string>
+  <string formatted="false" name="current_settings">Current</string>
+  <string formatted="false" name="current_settings_summary">Hack to access battery current (amperes)</string>
+  <string formatted="false" name="current_settings_help">
+    Android does NOT provide a means for apps to access information
+    about the battery current (amperes).  However, a hack is available
+    that allows many devices to potentially get this information.
+    This is NOT guaranteed to work.  This section allows you to see if
+    the hack might work and to configure it if so.
+  </string>
   <string formatted="false" name="other_settings">Other Settings</string>
   <string formatted="false" name="other_settings_help">
     All other settings are on this page, including logging, lock
@@ -472,6 +483,20 @@
     the Get Plugins button on the Action Bar on newer devices), you
     can choose among them here.
   </string>
+
+  <string formatted="false" name="pref_cat_current_hack">Current (ampere) hack</string>
+  <string formatted="false" name="current_hack_warning">
+    NOTE: Android does NOT provide a means for apps to access
+    information about the battery current (amperes).  However, a hack
+    is available that allows many devices to potentially get this
+    information.  This is NOT guaranteed to work.
+  </string>
+  <string formatted="false" name="current_hack_not_supported">Sorry, the hack is not supported on this device.</string>
+  <string formatted="false" name="current_hack_maybe_supported">The hack MIGHT work on this device.</string>
+
+  <!--
+      * Enable hack [only if possibly supported]
+  -->
 
   <string formatted="false" name="pref_cat_charging_indicator">Charging Indicator</string>
   <string formatted="false" name="pref_indicate_charging">Indicate Charging</string>

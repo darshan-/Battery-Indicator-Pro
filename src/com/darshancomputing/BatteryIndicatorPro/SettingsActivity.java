@@ -97,15 +97,32 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_CUSTOM_TOP_LINE_COLOR = "custom_top_line_color";
     public static final String KEY_NOTIFICATION_BOTTOM_LINE_COLOR = "notification_bottom_line_color";
     public static final String KEY_CUSTOM_BOTTOM_LINE_COLOR = "custom_bottom_line_color";
+    public static final String KEY_ENABLE_CURRENT_HACK = "enable_current_hack";
+    public static final String KEY_DISPLAY_CURRENT_IN_VITAL_STATS = "display_current_in_vital_stats";
+    public static final String KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS = "prefer_current_avg_in_vital_stats";
+    public static final String KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW = "display_current_in_main_window";
+    public static final String KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW = "prefer_current_avg_in_main_window";
     public static final String KEY_FIRST_RUN = "first_run";
     //public static final String KEY_LANGUAGE_OVERRIDE = "language_override";
 
     private static final String[] PARENTS    = {KEY_ENABLE_LOGGING,
+                                                KEY_ENABLE_CURRENT_HACK,
+                                                KEY_ENABLE_CURRENT_HACK,
+                                                KEY_ENABLE_CURRENT_HACK,
+                                                KEY_ENABLE_CURRENT_HACK,
+                                                KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
+                                                KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW,
                                                 KEY_RED,
                                                 KEY_AMBER,
                                                 KEY_GREEN
     };
     private static final String[] DEPENDENTS = {KEY_MAX_LOG_AGE,
+                                                KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
+                                                KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW,
+                                                KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
+                                                KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW,
+                                                KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
+                                                KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW,
                                                 KEY_RED_THRESH,
                                                 KEY_AMBER_THRESH,
                                                 KEY_GREEN_THRESH
@@ -148,6 +165,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_CUSTOM_PERCENTAGE_TEXT_COLOR,
                                                    KEY_CUSTOM_TOP_LINE_COLOR,
                                                    KEY_CUSTOM_BOTTOM_LINE_COLOR,
+                                                   KEY_ENABLE_CURRENT_HACK,
+                                                   KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
+                                                   KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
+                                                   KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW,
+                                                   KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW,
                                                    KEY_PREDICTION_TYPE
     };
 
@@ -417,6 +439,15 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else if (pref_screen.equals(KEY_KEYGUARD_SETTINGS)) {
             setPrefScreen(R.xml.keyguard_pref_screen);
             setWindowSubtitle(res.getString(R.string.keyguard_settings));
+        } else if (pref_screen.equals(KEY_CURRENT_HACK_SETTINGS)) {
+            setPrefScreen(R.xml.current_hack_pref_screen);
+            setWindowSubtitle(res.getString(R.string.current_hack_settings));
+
+            if (CurrentHack.getCurrent() == null) {
+                PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.current_hack_unsupported);
+            }
         } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
             setPrefScreen(R.xml.other_pref_screen);
             setWindowSubtitle(res.getString(R.string.other_settings));
