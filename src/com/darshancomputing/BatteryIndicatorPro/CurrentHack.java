@@ -294,7 +294,7 @@ class CurrentHack {
     public static Long getAvgCurrent() {
         File f;
         if (BUILD_MODEL.contains("nexus 7")
-            || BUILD_MODEL.contains("one")
+            || (BUILD_MODEL.contains("one") && !BUILD_MODEL.contains("nexus"))
             || BUILD_MODEL.contains("lg-d851")) {
             f = new File("/sys/class/power_supply/battery/current_avg");
             if (f.exists()) {
