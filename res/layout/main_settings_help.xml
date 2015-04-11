@@ -20,14 +20,14 @@
     <TextView style="@style/help_pref" android:text="@string/status_bar_icon_settings" />
     <TextView style="@style/help_text" android:text="@string/status_bar_icon_settings_help" />
 
+    <TextView style="@style/help_pref" android:text="@string/keyguard_settings" />
+    <TextView style="@style/help_text" android:text="@string/keyguard_settings_help" />
+
     <TextView style="@style/help_pref" android:text="@string/current_hack_settings" />
     <TextView style="@style/help_text" android:text="@string/current_hack_settings_help" />
 
     <TextView style="@style/help_pref" android:text="@string/alarm_settings" />
     <TextView style="@style/help_text" android:text="@string/alarm_settings_help" />
-
-    <TextView style="@style/help_pref" android:text="@string/keyguard_settings" />
-    <TextView style="@style/help_text" android:text="@string/keyguard_settings_help" />
 
     <TextView style="@style/help_pref" android:text="@string/other_settings" />
     <TextView style="@style/help_text" android:text="@string/other_settings_help" />

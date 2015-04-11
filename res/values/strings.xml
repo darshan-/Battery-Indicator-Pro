@@ -526,7 +526,9 @@
     When enabled, the hack will be attempted and will display the
     result in the main window.  This value will be refreshed whenever
     the system sends new battery information, but you can refresh the
-    value at any time by simply tapping the displayed value.
+    value at any time by simply tapping the displayed value.  (Note
+    that some devices rarely or never update the underlying data, so
+    the value may not appear to change on tap.)
   </string>
 
   <string formatted="false" name="pref_prefer_current_avg_in_vital_stats">Prefer average in vital stats</string>
@@ -555,7 +557,12 @@
     If you have the hack set to display mA in the main window, you can
     refresh the value by simply tapping it.  If you want to see
     frequent updates without having to tap, you can enable this option
-    to auto-refresh the value every two seconds while the window is visible.
+    to auto-refresh the value every two seconds while the window is visible.\n
+
+    \nNote that some devices rarely or never update the underlying
+    data, so the value may not appear to change even though the app is
+    refreshing the displayed value to match the data retrieved from
+    the system.
   </string>
 
   <string formatted="false" name="pref_cat_charging_indicator">Charging Indicator</string>
