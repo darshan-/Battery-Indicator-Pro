@@ -763,10 +763,10 @@ public class BatteryInfoService extends Service {
 
         if (settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
             settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_VITAL_STATS, false)) {
-            mHandler.postDelayed(runRenotify, 2000);
-            mHandler.postDelayed(runRenotify, 6000);
-            mHandler.postDelayed(runRenotify, 20000);
-            mHandler.postDelayed(runRenotify, 60000);
+            mHandler.postDelayed(runRenotify, 1000);
+            mHandler.postDelayed(runRenotify, 3000);
+            mHandler.postDelayed(runRenotify, 9000);
+            mHandler.postDelayed(runRenotify, 27000);
         }
 
         /* TODO: Af first glance, I think I want to do this, but think about it a bit and decide for sure... */

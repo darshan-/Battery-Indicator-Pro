@@ -23,7 +23,7 @@
     <TextView android:id="@+id/level"
 	      android:layout_width="fill_parent"
               android:layout_height="0px"
-              android:layout_weight="0.6"
+              android:layout_weight="0.5"
               android:gravity="center_horizontal|bottom"
               android:textColor="#fff"
               android:textSize="@dimen/bia_level"
@@ -32,7 +32,7 @@
     <TextView android:id="@+id/time_remaining"
 	      android:layout_width="fill_parent"
               android:layout_height="0px"
-              android:layout_weight="0.4"
+              android:layout_weight="0.5"
               android:gravity="center_horizontal|bottom"
               android:textColor="#fff"
               android:textSize="@dimen/bia_time_remaining"
@@ -41,11 +41,22 @@
     <TextView android:id="@+id/until_what"
 	      android:layout_width="fill_parent"
               android:layout_height="0px"
-              android:layout_weight="0.5"
+              android:layout_weight="0.3"
               android:gravity="center_horizontal|top"
               android:textColor="#fff"
               android:textSize="@dimen/bia_until_what"
     />
+
+    <TextView android:id="@+id/mA"
+	      android:layout_width="fill_parent"
+              android:layout_height="0px"
+              android:layout_weight="0.3"
+              android:gravity="center_horizontal|top"
+              android:textColor="#fff"
+              android:textSize="@dimen/bia_until_what"
+              android:clickable="true"
+    />
+
   </LinearLayout>
   <View android:layout_width="0px"
         android:layout_height="fill_parent"

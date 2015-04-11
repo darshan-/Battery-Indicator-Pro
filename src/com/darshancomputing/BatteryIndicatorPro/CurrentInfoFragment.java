@@ -127,6 +127,9 @@ public class CurrentInfoFragment extends Fragment {
         toggle_lock_screen_b = (Button) view.findViewById(R.id.toggle_lock_screen_b);
         battery_use_b = (Button) view.findViewById(R.id.battery_use_b);
 
+        TextView tv = (TextView) view.findViewById(R.id.mA);
+        tv.setOnClickListener(mAListener);
+
         updateLockscreenButton();
         bindButtons();
 
@@ -375,7 +378,29 @@ public class CurrentInfoFragment extends Fragment {
             tv.setText(s);
         }
 
+        refreshCurrent();
+
         updateLockscreenButton();
+    }
+
+    private void refreshCurrent() {
+        String s = "";
+
+        if (activity.settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
+            activity.settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW, false)) {
+            Long current = null;
+
+            if (activity.settings.getBoolean(SettingsActivity.KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW, false))
+                current = CurrentHack.getAvgCurrent();
+            if (current == null) // Either don't prefer avg or avg isn't available
+                current = CurrentHack.getCurrent();
+            if (current != null)
+                s += String.valueOf(current) + "mA";
+        }
+
+        // User may have just turned off hack or main window display of it, so we need to always set the text
+        TextView tv = (TextView) view.findViewById(R.id.mA);
+        tv.setText(s);
     }
 
     private void updateLockscreenButton() {
@@ -400,6 +425,13 @@ public class CurrentInfoFragment extends Fragment {
 
         if (activity.settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_TOGGLE_LOCK, false)) activity.finish();
     }
+
+    /* mA TextView */
+    private final OnClickListener mAListener = new OnClickListener() {
+        public void onClick(View v) {
+            refreshCurrent();
+        }
+    };
 
     /* Battery Use */
     private final OnClickListener buButtonListener = new OnClickListener() {

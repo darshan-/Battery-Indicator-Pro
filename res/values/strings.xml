@@ -499,7 +499,7 @@
     Attempt to enable the current (mA) hack?
   </string>
   <string formatted="false" name="pref_enable_current_hack_help">
-    hen this setting is enabled, the other options regarding the
+    When this setting is enabled, the other options regarding the
     hack will be usable.
   </string>
 
@@ -523,8 +523,9 @@
   </string>
   <string formatted="false" name="pref_display_current_in_main_window_help">
     When enabled, the hack will be attempted and will display the
-    result in the main window.  This value will be refreshed
-    frequently while the window is visible.
+    result in the main window.  This value will be refreshed whenever
+    the system sends new battery information, but you can refresh the
+    value at any time by simply tapping the displayed value.
   </string>
 
   <string formatted="false" name="pref_prefer_current_avg_in_vital_stats">Prefer average in vital stats</string>
