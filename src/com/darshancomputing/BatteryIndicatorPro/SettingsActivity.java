@@ -51,6 +51,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_NOTIFICATION_SETTINGS = "notification_settings";
     public static final String KEY_STATUS_BAR_ICON_SETTINGS = "status_bar_icon_settings";
     public static final String KEY_KEYGUARD_SETTINGS = "keyguard_settings";
+    public static final String KEY_CURRENT_HACK_SETTINGS = "current_hack_settings";
     public static final String KEY_ALARMS_SETTINGS = "alarms_settings";
     public static final String KEY_ALARM_EDIT_SETTINGS = "alarm_edit_settings";
     public static final String KEY_OTHER_SETTINGS = "other_settings";
@@ -97,19 +98,19 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_CUSTOM_TOP_LINE_COLOR = "custom_top_line_color";
     public static final String KEY_NOTIFICATION_BOTTOM_LINE_COLOR = "notification_bottom_line_color";
     public static final String KEY_CUSTOM_BOTTOM_LINE_COLOR = "custom_bottom_line_color";
+    public static final String KEY_CAT_CURRENT_HACK_MAIN = "category_current_hack_main";
+    public static final String KEY_CAT_CURRENT_HACK_UNSUPPORTED = "category_current_hack_unsupported";
     public static final String KEY_ENABLE_CURRENT_HACK = "enable_current_hack";
+    public static final String KEY_CAT_CURRENT_HACK_NOTIFICATION = "category_current_hack_notification";
     public static final String KEY_DISPLAY_CURRENT_IN_VITAL_STATS = "display_current_in_vital_stats";
     public static final String KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS = "prefer_current_avg_in_vital_stats";
+    public static final String KEY_CAT_CURRENT_HACK_MAIN_WINDOW = "category_current_hack_main_window";
     public static final String KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW = "display_current_in_main_window";
     public static final String KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW = "prefer_current_avg_in_main_window";
     public static final String KEY_FIRST_RUN = "first_run";
     //public static final String KEY_LANGUAGE_OVERRIDE = "language_override";
 
     private static final String[] PARENTS    = {KEY_ENABLE_LOGGING,
-                                                KEY_ENABLE_CURRENT_HACK,
-                                                KEY_ENABLE_CURRENT_HACK,
-                                                KEY_ENABLE_CURRENT_HACK,
-                                                KEY_ENABLE_CURRENT_HACK,
                                                 KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
                                                 KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW,
                                                 KEY_RED,
@@ -117,16 +118,19 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_GREEN
     };
     private static final String[] DEPENDENTS = {KEY_MAX_LOG_AGE,
-                                                KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
-                                                KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW,
-                                                KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
-                                                KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW,
                                                 KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
                                                 KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW,
                                                 KEY_RED_THRESH,
                                                 KEY_AMBER_THRESH,
                                                 KEY_GREEN_THRESH
     };
+
+    private static final String[] CURRENT_HACK_DEPENDENTS = {KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
+                                                             KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
+                                                             KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW,
+                                                             KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW
+    };
+
 
     private static final String[] INVERSE_PARENTS    = {KEY_USE_SYSTEM_NOTIFICATION_LAYOUT
     };
@@ -444,9 +448,19 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             setWindowSubtitle(res.getString(R.string.current_hack_settings));
 
             if (CurrentHack.getCurrent() == null) {
-                PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK);
+                PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_MAIN);
                 cat.removeAll();
-                cat.setLayoutResource(R.layout.current_hack_unsupported);
+                cat.setLayoutResource(R.layout.none);
+                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_NOTIFICATION);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
+                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_MAIN_WINDOW);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
+            } else {
+                PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_UNSUPPORTED);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
             }
         } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
             setPrefScreen(R.xml.other_pref_screen);
@@ -481,6 +495,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         for (int i=0; i < LIST_PREFS.length; i++)
             updateListPrefSummary(LIST_PREFS[i]);
+
+        if (pref_screen != null &&
+            pref_screen.equals(KEY_CURRENT_HACK_SETTINGS) &&
+            !mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))
+            setEnablednessOfCurrentHackDeps(false);
 
         setEnablednessOfPercentageTextColor();
 
@@ -646,6 +665,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (key == null) {
             return false;
         } else if (key.equals(KEY_NOTIFICATION_SETTINGS) || key.equals(KEY_STATUS_BAR_ICON_SETTINGS) ||
+                   key.equals(KEY_CURRENT_HACK_SETTINGS) ||
                    key.equals(KEY_KEYGUARD_SETTINGS) || key.equals(KEY_OTHER_SETTINGS)) {
             ComponentName comp = new ComponentName(getPackageName(), SettingsActivity.class.getName());
             startActivity(new Intent().setComponent(comp).putExtra(EXTRA_SCREEN, key));
@@ -741,6 +761,18 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             restartThisScreen();
         }*/
 
+
+        if (key.equals(KEY_ENABLE_CURRENT_HACK)) {
+            if (mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))
+                setEnablednessOfCurrentHackDeps(true);
+
+            for (int i=0; i < PARENTS.length; i++)
+                setEnablednessOfDeps(i);
+
+            if (!mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))
+                setEnablednessOfCurrentHackDeps(false);
+        }
+
         for (int i=0; i < RESET_SERVICE.length; i++) {
             if (key.equals(RESET_SERVICE[i])) {
                 resetService();
@@ -777,6 +809,16 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             dependent.setEnabled(false);
 
         updateListPrefSummary(DEPENDENTS[index]);
+    }
+
+    private void setEnablednessOfCurrentHackDeps(boolean enabled) {
+        for (int i = 0; i < CURRENT_HACK_DEPENDENTS.length; i++) {
+            Preference dependent = mPreferenceScreen.findPreference(CURRENT_HACK_DEPENDENTS[i]);
+
+            if (dependent == null) return;
+
+            dependent.setEnabled(enabled);
+        }
     }
 
     private void setEnablednessOfInverseDeps(int index) {

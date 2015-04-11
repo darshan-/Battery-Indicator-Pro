@@ -31,6 +31,12 @@
   />
 
   <Preference
+     android:key="current_hack_settings"
+     android:title="@string/current_hack_settings"
+     android:summary="@string/current_hack_settings_summary"
+  />
+
+  <Preference
      android:key="alarms_settings"
      android:title="@string/alarm_settings"
      android:summary="@string/alarm_settings_summary"

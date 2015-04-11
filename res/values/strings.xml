@@ -309,6 +309,20 @@
   <string formatted="false" name="keyguard_settings_help">
     You can configure several aspects about the feature to automatically or manually disable your device\'s lock screen.
   </string>
+  <string formatted="false" name="current_hack_settings">Current (mA) Hack</string>
+  <string formatted="false" name="current_hack_settings_summary">Advanced settings for enabling mA info</string>
+  <string formatted="false" name="current_hack_settings_help">
+    Android does NOT provide a means for apps to access information
+    about the battery current.  However, a hack is available
+    that allows many devices to potentially get this information.\n
+
+    \nThis is NOT guaranteed to work.  It may not work at all or it
+    may appear to work but only result in nonsense values.\n
+
+    \nSettings to turn on the hack, if possible, and control how it is
+    used are available in this section.
+  </string>
+
   <string formatted="false" name="alarm_settings_subtitle">Alarm Settings</string>
   <string formatted="false" name="alarm_settings">Alarms</string>
   <string formatted="false" name="alarm_settings_summary">Control notifications for low/full battery</string>
@@ -316,16 +330,6 @@
     You can have BatteryBot notify you when your battery level
     reaches a certain point (e.g., the battery becomes fully charged,
     the battery level drops below 20%).
-  </string>
-  <string formatted="false" name="current_settings_subtitle">Current Settings</string>
-  <string formatted="false" name="current_settings">Current</string>
-  <string formatted="false" name="current_settings_summary">Hack to access battery current (amperes)</string>
-  <string formatted="false" name="current_settings_help">
-    Android does NOT provide a means for apps to access information
-    about the battery current (amperes).  However, a hack is available
-    that allows many devices to potentially get this information.
-    This is NOT guaranteed to work.  This section allows you to see if
-    the hack might work and to configure it if so.
   </string>
   <string formatted="false" name="other_settings">Other Settings</string>
   <string formatted="false" name="other_settings_help">
@@ -484,19 +488,61 @@
     can choose among them here.
   </string>
 
-  <string formatted="false" name="pref_cat_current_hack">Current (ampere) hack</string>
-  <string formatted="false" name="current_hack_warning">
-    NOTE: Android does NOT provide a means for apps to access
-    information about the battery current (amperes).  However, a hack
-    is available that allows many devices to potentially get this
-    information.  This is NOT guaranteed to work.
-  </string>
-  <string formatted="false" name="current_hack_not_supported">Sorry, the hack is not supported on this device.</string>
+  <string formatted="false" name="pref_cat_current_hack_main">Main Control</string>
+  <string formatted="false" name="pref_cat_current_hack_unsupported">Current (mA) Hack Unsupported</string>
+
+  <string formatted="false" name="pref_current_hack_unsupported">Sorry, the current (mA) hack is not supported on this device.</string>
   <string formatted="false" name="current_hack_maybe_supported">The hack MIGHT work on this device.</string>
 
-  <!--
-      * Enable hack [only if possibly supported]
-  -->
+  <string formatted="false" name="pref_enable_current_hack">Enable hack</string>
+  <string formatted="false" name="pref_enable_current_hack_summary">
+    Attempt to enable the current (mA) hack?
+  </string>
+  <string formatted="false" name="pref_enable_current_hack_help">
+    hen this setting is enabled, the other options regarding the
+    hack will be usable.
+  </string>
+
+  <string formatted="false" name="pref_cat_current_hack_notification">Notification</string>
+  <string formatted="false" name="pref_display_current_in_vital_stats">Display in vital stats</string>
+  <string formatted="false" name="pref_display_current_in_vital_stats_summary">
+    Display current (mA) in main notification vital stats?
+  </string>
+  <string formatted="false" name="pref_display_current_in_vital_stats_help">
+    When enabled, the hack will be attempted and will display the
+    result in the main notification vital stats line.  Note that you
+    must have the main notification configured to display vital stats
+    in order to see this.  This value will only refresh when the
+    system sends new battery information.
+  </string>
+
+  <string formatted="false" name="pref_cat_current_hack_main_window">Main Window</string>
+  <string formatted="false" name="pref_display_current_in_main_window">Display in main window</string>
+  <string formatted="false" name="pref_display_current_in_main_window_summary">
+    Display current (mA) in main window?
+  </string>
+  <string formatted="false" name="pref_display_current_in_main_window_help">
+    When enabled, the hack will be attempted and will display the
+    result in the main window.  This value will be refreshed
+    frequently while the window is visible.
+  </string>
+
+  <string formatted="false" name="pref_prefer_current_avg_in_vital_stats">Prefer average in vital stats</string>
+  <string formatted="false" name="pref_prefer_current_avg_in_vital_stats_summary">
+    Try to use current_avg in main notification vital stats?
+  </string>
+  <string formatted="false" name="pref_prefer_current_avg_in_main_window">Prefer average in main window</string>
+  <string formatted="false" name="pref_prefer_current_avg_in_main_window_summary">
+    Try to use current_avg in main window?
+  </string>
+  <string formatted="false" name="pref_prefer_current_avg_help">
+    Some systems have a further hack available, giving a recent
+    average of the current rather than an instantaneous reading of it.
+    What this means varies from device to device and is only available
+    on some devices.  This may give a more stable value (if all goes
+    well), it may return the same value, or it may return an unusable
+    value (in which case you should turn this option off).
+  </string>
 
   <string formatted="false" name="pref_cat_charging_indicator">Charging Indicator</string>
   <string formatted="false" name="pref_indicate_charging">Indicate Charging</string>

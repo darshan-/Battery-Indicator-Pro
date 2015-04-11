@@ -1,12 +1,20 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-  <PreferenceCategory android:title="@string/pref_cat_current_hack">
+  <PreferenceCategory
+      android:key="category_current_hack_main"
+      android:title="@string/pref_cat_current_hack_main"
+  >
     <CheckBoxPreference
        android:key="enable_current_hack"
        android:title="@string/pref_enable_current_hack"
        android:summary="@string/pref_enable_current_hack_summary"
        android:defaultValue="false"
     />
+  </PreferenceCategory>
 
+  <PreferenceCategory
+      android:key="category_current_hack_notification"
+      android:title="@string/pref_cat_current_hack_notification"
+  >
     <CheckBoxPreference
        android:key="display_current_in_vital_stats"
        android:title="@string/pref_display_current_in_vital_stats"
@@ -20,7 +28,12 @@
        android:summary="@string/pref_prefer_current_avg_in_vital_stats_summary"
        android:defaultValue="false"
     />
+  </PreferenceCategory>
 
+  <PreferenceCategory
+      android:key="category_current_hack_main_window"
+      android:title="@string/pref_cat_current_hack_main_window"
+  >
     <CheckBoxPreference
        android:key="display_current_in_main_window"
        android:title="@string/pref_display_current_in_main_window"
@@ -33,6 +46,17 @@
        android:title="@string/pref_prefer_current_avg_in_main_window"
        android:summary="@string/pref_prefer_current_avg_in_main_window_summary"
        android:defaultValue="false"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory
+      android:key="category_current_hack_unsupported"
+      android:title="@string/pref_cat_current_hack_unsupported"
+  >
+    <Preference
+       android:summary="@string/pref_current_hack_unsupported"
+       android:layout="@layout/current_hack_unsupported_pref"
+       android:enabled="false"
     />
   </PreferenceCategory>
 </PreferenceScreen>

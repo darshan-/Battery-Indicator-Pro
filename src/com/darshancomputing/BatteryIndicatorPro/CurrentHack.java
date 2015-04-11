@@ -16,9 +16,11 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.util.Log;
+
 import java.io.File;
 
-public static class CurrentHack {
+class CurrentHack {
     private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - CurrentHack";
     private static final String BUILD_MODEL = android.os.Build.MODEL.toLowerCase(java.util.Locale.ENGLISH);
 

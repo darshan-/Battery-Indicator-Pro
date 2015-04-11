@@ -54,6 +54,9 @@ public class SettingsHelpActivity extends Activity {
         } else if (pref_screen.equals(SettingsActivity.KEY_KEYGUARD_SETTINGS)) {
             setContentView(R.layout.keyguard_settings_help);
             setWindowSubtitle(res.getString(R.string.keyguard_settings));
+        } else if (pref_screen.equals(SettingsActivity.KEY_CURRENT_HACK_SETTINGS)) {
+            setContentView(R.layout.current_hack_settings_help);
+            setWindowSubtitle(res.getString(R.string.current_hack_settings));
         } else if (pref_screen.equals(SettingsActivity.KEY_OTHER_SETTINGS)) {
             setContentView(R.layout.other_settings_help);
             setWindowSubtitle(res.getString(R.string.other_settings));
