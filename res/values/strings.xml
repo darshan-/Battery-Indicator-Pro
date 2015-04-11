@@ -514,7 +514,11 @@
     result in the main notification vital stats line.  Note that you
     must have the main notification configured to display vital stats
     in order to see this.  This value will only refresh when the
-    system sends new battery information.
+    system sends new battery information.\n
+
+    \nOn most devices, a negative value indicates a net drain from the
+    battery and a positive value indicates that the battery is being
+    charged.  Not all devices generate values this way, however.
   </string>
 
   <string formatted="false" name="pref_cat_current_hack_main_window">Main Window</string>
@@ -528,7 +532,11 @@
     the system sends new battery information, but you can refresh the
     value at any time by simply tapping the displayed value.  (Note
     that some devices rarely or never update the underlying data, so
-    the value may not appear to change on tap.)
+    the value may not appear to change on tap.)\n
+
+    \nOn most devices, a negative value indicates a net drain from the
+    battery and a positive value indicates that the battery is being
+    charged.  Not all devices generate values this way, however.
   </string>
 
   <string formatted="false" name="pref_prefer_current_avg_in_vital_stats">Prefer average in vital stats</string>
