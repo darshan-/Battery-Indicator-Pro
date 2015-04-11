@@ -340,9 +340,10 @@
   <string formatted="false" name="pref_cat_more_settings_in_pro">More Settings in Pro</string>
   <string formatted="false" name="pref_please_upgrade">
     The Pro version has many more settings and features, including
+    current (mA) information,
     colorful icons, alarms,
     battery state logging, auto/manual lock screen disable,
-    charge/discharge remaining estimates, and more.
+    and more.
   </string>
 
   <string formatted="false" name="add_alarm">Add alarm</string>
