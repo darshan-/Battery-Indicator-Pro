@@ -173,8 +173,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_ENABLE_CURRENT_HACK,
                                                    KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
                                                    KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
-                                                   KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW,
-                                                   KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW,
                                                    KEY_PREDICTION_TYPE
     };
 
