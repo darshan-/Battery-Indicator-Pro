@@ -536,6 +536,7 @@
   <string formatted="false" name="pref_prefer_current_avg_in_main_window_summary">
     Try to use current_avg in main window?
   </string>
+
   <string formatted="false" name="pref_prefer_current_avg_help">
     Some systems have a further hack available, giving a recent
     average of the current rather than an instantaneous reading of it.
@@ -543,6 +544,17 @@
     on some devices.  This may give a more stable value (if all goes
     well), it may return the same value, or it may return an unusable
     value (in which case you should turn this option off).
+  </string>
+
+  <string formatted="false" name="pref_auto_refresh_current_in_main_window">Auto-refresh mA in main window</string>
+  <string formatted="false" name="pref_auto_refresh_current_in_main_window_summary">
+    Auto-refresh mA every two seconds?
+  </string>
+  <string formatted="false" name="pref_auto_refresh_current_in_main_window_help">
+    If you have the hack set to display mA in the main window, you can
+    refresh the value by simply tapping it.  If you want to see
+    frequent updates without having to tap, you can enable this option
+    to auto-refresh the value every two seconds while the window is visible.
   </string>
 
   <string formatted="false" name="pref_cat_charging_indicator">Charging Indicator</string>

@@ -73,6 +73,14 @@ public class CurrentInfoFragment extends Fragment {
 
     private static final String LOG_TAG = "BatteryBot";
 
+    private final Handler mHandler = new Handler();
+    private final Runnable mARefresher = new Runnable() {
+        public void run() {
+            refreshCurrent();
+            mHandler.postDelayed(mARefresher, 2000);
+        }
+    };
+
     public void bindService() {
         if (! serviceConnected) {
             activity.context.bindService(biServiceIntent, serviceConnection, 0);
@@ -198,11 +206,18 @@ public class CurrentInfoFragment extends Fragment {
         info.load(bc_intent);
         info.load(activity.sp_store);
         handleUpdatedBatteryInfo(info);
+
+        if (activity.settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
+            activity.settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW, false) &&
+            activity.settings.getBoolean(SettingsActivity.KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW, false))
+            mHandler.postDelayed(mARefresher, 2000);
     }
 
     @Override
     public void onPause() {
         super.onPause();
+
+        mHandler.removeCallbacks(mARefresher);
 
         if (serviceMessenger != null)
             sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_UNREGISTER_CLIENT);
@@ -378,9 +393,10 @@ public class CurrentInfoFragment extends Fragment {
             tv.setText(s);
         }
 
-        refreshCurrent();
-
         updateLockscreenButton();
+
+        // Call after updateLockScreenButton() so settings are reloaded
+        refreshCurrent();
     }
 
     private void refreshCurrent() {

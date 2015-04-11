@@ -36,6 +36,8 @@
     <TextView style="@style/help_text" android:text="@string/pref_display_current_in_main_window_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_prefer_current_avg_in_main_window" />
     <TextView style="@style/help_text" android:text="@string/pref_prefer_current_avg_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_auto_refresh_current_in_main_window" />
+    <TextView style="@style/help_text" android:text="@string/pref_auto_refresh_current_in_main_window_help" />
 
   </LinearLayout>
 </ScrollView>

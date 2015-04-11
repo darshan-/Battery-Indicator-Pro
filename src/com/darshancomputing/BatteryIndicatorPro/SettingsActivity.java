@@ -107,6 +107,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_CAT_CURRENT_HACK_MAIN_WINDOW = "category_current_hack_main_window";
     public static final String KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW = "display_current_in_main_window";
     public static final String KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW = "prefer_current_avg_in_main_window";
+    public static final String KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW = "auto_refresh_current_in_main_window";
     public static final String KEY_FIRST_RUN = "first_run";
     //public static final String KEY_LANGUAGE_OVERRIDE = "language_override";
 
@@ -117,20 +118,20 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                 KEY_AMBER,
                                                 KEY_GREEN
     };
-    private static final String[] DEPENDENTS = {KEY_MAX_LOG_AGE,
-                                                KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
-                                                KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW,
-                                                KEY_RED_THRESH,
-                                                KEY_AMBER_THRESH,
-                                                KEY_GREEN_THRESH
+    private static final String[][] DEPENDENTS = {{KEY_MAX_LOG_AGE},
+                                                  {KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS},
+                                                  {KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW, KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW},
+                                                  {KEY_RED_THRESH},
+                                                  {KEY_AMBER_THRESH},
+                                                  {KEY_GREEN_THRESH}
     };
 
     private static final String[] CURRENT_HACK_DEPENDENTS = {KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
                                                              KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
                                                              KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW,
-                                                             KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW
+                                                             KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW,
+                                                             KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW
     };
-
 
     private static final String[] INVERSE_PARENTS    = {KEY_USE_SYSTEM_NOTIFICATION_LAYOUT
     };
@@ -800,15 +801,17 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private void setEnablednessOfDeps(int index) {
-        Preference dependent = mPreferenceScreen.findPreference(DEPENDENTS[index]);
-        if (dependent == null) return;
+        for (int i = 0; i < DEPENDENTS[index].length; i++) {
+            Preference dependent = mPreferenceScreen.findPreference(DEPENDENTS[index][i]);
+            if (dependent == null) return;
 
-        if (mSharedPreferences.getBoolean(PARENTS[index], false))
-            dependent.setEnabled(true);
-        else
-            dependent.setEnabled(false);
+            if (mSharedPreferences.getBoolean(PARENTS[index], false))
+                dependent.setEnabled(true);
+            else
+                dependent.setEnabled(false);
 
-        updateListPrefSummary(DEPENDENTS[index]);
+            updateListPrefSummary(DEPENDENTS[index][i]);
+        }
     }
 
     private void setEnablednessOfCurrentHackDeps(boolean enabled) {
