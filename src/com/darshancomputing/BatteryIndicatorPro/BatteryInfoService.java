@@ -724,7 +724,7 @@ public class BatteryInfoService extends Service {
         } else if (android.os.Build.VERSION.SDK_INT >= 21 &&
                    !settings.getBoolean(SettingsActivity.KEY_CLASSIC_COLOR_MODE, false)) {
             // Classic set is desired, but colors break notification icons on API level 21+
-            return R.drawable.b000 + info.percent;
+            return R.drawable.w000 + info.percent;
         } else {
             if (settings.getBoolean(SettingsActivity.KEY_RED, res.getBoolean(R.bool.default_use_red)) &&
                 info.percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, str.default_red_thresh)) &&
