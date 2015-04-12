@@ -734,6 +734,22 @@
   <string formatted="false" name="pref_plugin_settings">Plugin Settings</string>
   <string formatted="false" name="pref_plugin_settings_summary">Edit settings for this plugin</string>
 
+  <string formatted="false" name="pref_classic_color_mode">Force Classic Color Mode</string>
+  <string formatted="false" name="pref_classic_color_mode_summary">
+    This usually does not work; please read the help
+  </string>
+  <string formatted="false" name="pref_classic_color_mode_help">
+    Starting with Android 5.0 (Lollipop), colored notification icons
+    officially no longer work on Android, making the Classic icon show
+    up as solid white. So by default, on these devices the app uses a
+    plain white outline with white number.\n
+
+    \nHowever, not all devices follow the spec, so this is not
+    necessary and does not work correctly everywhere.  You can try to
+    make the Classic icon set work in the classic way by turning this
+    option on.  Remember, on most devices this will just make the icon
+    turn solid white.
+  </string>
   <string formatted="false" name="pref_cat_color">Icon Color</string>
   <string formatted="false" name="pref_cat_color_help">
     In order to keep the binary package for BatteryBot

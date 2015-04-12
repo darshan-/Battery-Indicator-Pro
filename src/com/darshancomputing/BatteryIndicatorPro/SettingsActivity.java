@@ -70,8 +70,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_NOTIFY_STATUS_DURATION = "notify_status_duration";
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_PREDICTION_TYPE = "prediction_type";
+    public static final String KEY_CLASSIC_COLOR_MODE = "classic_color_mode";
     public static final String KEY_TEN_PERCENT_MODE = "ten_percent_mode";
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
+    public static final String KEY_CAT_CLASSIC_COLOR_MODE = "category_classic_color_mode";
     public static final String KEY_CAT_COLOR = "category_color";
     public static final String KEY_CAT_CHARGING_INDICATOR = "category_charging_indicator";
     public static final String KEY_CAT_PLUGIN_SETTINGS = "category_plugin_settings";
@@ -376,7 +378,14 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 if (currentPlugin.equals("builtin.classic")) {
                     cat.setLayoutResource(R.layout.none);
 
-                    if (android.os.Build.VERSION.SDK_INT >= 21) {
+                    if (android.os.Build.VERSION.SDK_INT < 21) {
+                        cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CLASSIC_COLOR_MODE);
+                        cat.removeAll();
+                        cat.setLayoutResource(R.layout.none);
+                    }
+
+                    if (android.os.Build.VERSION.SDK_INT >= 21 &&
+                        !mSharedPreferences.getBoolean(KEY_CLASSIC_COLOR_MODE, false)) {
                         cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
                         cat.removeAll();
                         cat.setLayoutResource(R.layout.none);
@@ -416,11 +425,18 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                     cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
                     cat.removeAll();
                     cat.setLayoutResource(R.layout.none);
+                    cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CLASSIC_COLOR_MODE);
+                    cat.removeAll();
+                    cat.setLayoutResource(R.layout.none);
                 }
             } else {
                 PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
                 cat.removeAll();
                 cat.setLayoutResource(R.layout.none);
+                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CLASSIC_COLOR_MODE);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
+
                 cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CHARGING_INDICATOR);
                 cat.removeAll();
                 cat.setLayoutResource(R.layout.none);
@@ -708,6 +724,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         if (key.equals(KEY_TEN_PERCENT_MODE))
             resetColorsToDefaults();
+
+        if (key.equals(KEY_CLASSIC_COLOR_MODE)) {
+            resetService();
+            restartThisScreen(); // To show/hide icon-set/plugin settings
+        }
 
         if (key.equals(KEY_ICON_SET)) {
             resetService();

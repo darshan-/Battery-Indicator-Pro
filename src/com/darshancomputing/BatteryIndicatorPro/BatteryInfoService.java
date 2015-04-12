@@ -721,7 +721,8 @@ public class BatteryInfoService extends Service {
             return ((info.status == BatteryInfo.STATUS_CHARGING && indicate_charging) ? chargingIcon0 : plainIcon0) + info.percent;
         } else if (icon_set.equals("builtin.smaller_number")) {
             return ((info.status == BatteryInfo.STATUS_CHARGING && indicate_charging) ? small_chargingIcon0 : small_plainIcon0) + info.percent;
-        } else if (android.os.Build.VERSION.SDK_INT >= 21) {
+        } else if (android.os.Build.VERSION.SDK_INT >= 21 &&
+                   !settings.getBoolean(SettingsActivity.KEY_CLASSIC_COLOR_MODE, false)) {
             // Classic set is desired, but colors break notification icons on API level 21+
             return R.drawable.b000 + info.percent;
         } else {

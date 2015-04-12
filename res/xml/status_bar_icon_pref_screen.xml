@@ -40,6 +40,18 @@
   </PreferenceCategory>
 
   <PreferenceCategory
+      android:key="category_classic_color_mode"
+      android:title="@string/pref_classic_color_mode"
+  >
+    <CheckBoxPreference
+       android:key="classic_color_mode"
+       android:title="@string/pref_classic_color_mode"
+       android:summary="@string/pref_classic_color_mode_summary"
+       android:defaultValue="false"
+    />
+  </PreferenceCategory>
+
+  <PreferenceCategory
       android:key="category_color"
       android:title="@string/pref_cat_color"
   >

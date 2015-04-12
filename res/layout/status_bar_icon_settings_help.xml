@@ -22,6 +22,11 @@
     <TextView style="@style/help_pref" android:text="@string/pref_indicate_charging" />
     <TextView style="@style/help_text" android:text="@string/pref_indicate_charging_help" />
 
+    <View style="@style/help_cat_pre_margin" />
+    <TextView style="@style/help_cat"  android:text="@string/pref_classic_color_mode" />
+    <View style="@style/help_cat_post_margin" />
+    <TextView style="@style/help_pref" android:text="@string/pref_classic_color_mode" />
+    <TextView style="@style/help_text" android:text="@string/pref_classic_color_mode_help" />
 
     <View style="@style/help_cat_pre_margin" />
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_color" />
