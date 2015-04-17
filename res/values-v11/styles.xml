@@ -11,4 +11,8 @@
 
   <color name="main_notification_default_custom_text_color">#fff</color>
   <bool name="default_show_box_around_icon_area">true</bool>
+
+  <style name="SelectableItem">
+    <item name="android:background">?android:attr/selectableItemBackground</item>
+  </style>
 </resources>

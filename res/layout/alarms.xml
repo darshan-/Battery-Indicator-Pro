@@ -20,9 +20,10 @@
     />
 
     <LinearLayout android:id="@+id/add_alarm"
+                  style="@style/SelectableItem"
                   android:clickable="true"
                   android:focusable="true"
-                  android:background="@drawable/list_selector_background"
+                  android:longClickable="false"
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:orientation="horizontal"
@@ -41,7 +42,6 @@
                 android:layout_width="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/list_item"
                 android:text="@string/add_alarm"
       />
     </LinearLayout>
@@ -55,7 +55,7 @@
 
     <LinearLayout android:id="@+id/alarms_list"
                   android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
+                  android:layout_height="fill_parent"
                   android:orientation="vertical"
     />
   </LinearLayout>

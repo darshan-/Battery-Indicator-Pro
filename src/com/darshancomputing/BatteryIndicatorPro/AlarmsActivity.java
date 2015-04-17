@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.DataSetObserver;
-import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -36,9 +35,9 @@ import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 public class AlarmsActivity extends Activity {
@@ -51,7 +50,6 @@ public class AlarmsActivity extends Activity {
     private LinearLayout mAlarmsList;
 
     private int curId; /* The alarm id for the View that was just long-pressed */
-    private TransitionDrawable curTrans = null; /* The currently active TransitionDrawable */
     private int curIndex; /* The ViewGroup index of the currently focused item (to set focus after deletion) */
 
     @Override
@@ -76,7 +74,6 @@ public class AlarmsActivity extends Activity {
 
         mInflater = LayoutInflater.from(context);
         mAlarmsList = (LinearLayout) findViewById(R.id.alarms_list);
-        populateList();
         mCursor.registerDataSetObserver(new AlarmsObserver());
 
         View addAlarm = findViewById(R.id.add_alarm);
@@ -101,7 +98,7 @@ public class AlarmsActivity extends Activity {
 
         if (mCursor.moveToFirst()) {
             while (! mCursor.isAfterLast()) {
-                View v = mInflater.inflate(R.layout.alarm_item , mAlarmsList, false);
+                View v = mInflater.inflate(R.layout.alarm_item, mAlarmsList, false);
                 bindView(v);
                 mAlarmsList.addView(v, mAlarmsList.getChildCount());
                 mCursor.moveToNext();
@@ -185,19 +182,10 @@ public class AlarmsActivity extends Activity {
         }
     }
 
-    private TransitionDrawable castToTransitionDrawable(android.graphics.drawable.Drawable d) {
-        try {
-            return (TransitionDrawable) d;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
     private void bindView(View view) {
         final  TextView summary_tv  = (TextView)       view.findViewById(R.id.alarm_summary);
         final      View summary_box =                  view.findViewById(R.id.alarm_summary_box);
-        final      View indicator   =                  view.findViewById(R.id.indicator);
-        final ImageView barOnOff    = (ImageView) indicator.findViewById(R.id.bar_onoff);
+        final CompoundButton toggle = (CompoundButton) view.findViewById(R.id.toggle);
 
         final int    id  = mCursor.getInt   (AlarmDatabase.INDEX_ID);
         String     type  = mCursor.getString(AlarmDatabase.INDEX_TYPE);
@@ -214,12 +202,13 @@ public class AlarmsActivity extends Activity {
         }
         final String summary = s;
 
-        barOnOff.setImageResource(enabled ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
         summary_tv.setText(summary);
 
-        indicator.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                barOnOff.setImageResource(alarms.toggleEnabled(id) ? R.drawable.ic_indicator_on : R.drawable.ic_indicator_off);
+        toggle.setChecked(enabled);
+
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                alarms.setEnabled(id, isChecked);
             }
         });
 
@@ -228,27 +217,8 @@ public class AlarmsActivity extends Activity {
                 curId = id;
                 curIndex = mAlarmsList.indexOfChild((View) v.getParent().getParent());
 
-                if (curTrans != null) {
-                    curTrans.resetTransition();
-                    curTrans = null;
-                }
-
                 getMenuInflater().inflate(R.menu.alarm_item_context, menu);
                 menu.setHeaderTitle(summary);
-            }
-        });
-
-        summary_box.setOnTouchListener(new OnTouchListener() {
-            public boolean onTouch(View v, android.view.MotionEvent m) {
-                if (v.isPressed() && curTrans == null ) {
-                    curTrans = castToTransitionDrawable(v.getBackground().getCurrent());
-                    if (curTrans != null) curTrans.startTransition(350);
-                } else if (! v.isPressed() && curTrans != null) {
-                    curTrans.resetTransition();
-                    curTrans = null;
-                }
-
-                return false;
             }
         });
 
@@ -256,14 +226,6 @@ public class AlarmsActivity extends Activity {
             public boolean onKey(View v, int keyCode, android.view.KeyEvent event) {
                 if (keyCode == event.KEYCODE_DPAD_CENTER && event.getAction() == event.ACTION_DOWN)
                     v.setPressed(true);
-
-                if (v.isPressed() && curTrans == null) {
-                    curTrans = castToTransitionDrawable(v.getBackground().getCurrent());
-                    if (curTrans != null) curTrans.startTransition(350);
-                } else if (curTrans != null) {
-                    curTrans.resetTransition();
-                    curTrans = null;
-                }
 
                 return false;
             }
