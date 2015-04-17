@@ -33,7 +33,7 @@
                  android:layout_height="68dp"
                  android:duplicateParentState="true"
                  android:gravity="center"
-                 android:scaleType="center"
+                 android:scaleType="fitCenter"
                  android:src="@drawable/add_alarm"
       />
 
