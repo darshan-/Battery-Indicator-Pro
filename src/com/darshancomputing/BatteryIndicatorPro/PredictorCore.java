@@ -280,7 +280,7 @@ public class PredictorCore {
         if (use_partial) start -= dir_inc;
 
         for (int i = start, ri = 0; ri < recents.length; ri++, i += dir_inc) {
-            if (i >= ts_head)
+            if (i >= ts_head || i < 0)
                 recents[ri] = average[cur_charging_status];
             else if (i == start && use_partial)
                 recents[ri] = now - timestamps[cur_info.percent];
