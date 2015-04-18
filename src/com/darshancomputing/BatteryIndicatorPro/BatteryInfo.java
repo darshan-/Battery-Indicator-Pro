@@ -160,6 +160,7 @@ class BatteryInfo {
         percent = level * 100 / scale;
         percent = attemptOnePercentHack(percent);
         if (percent > 100) percent = 100;
+        if (percent < 0  ) percent = 0; // Developer console shows negative percent can actually be reported
 
         // Treat unplugged plugged as unpluggged status
         if (plugged == PLUGGED_UNPLUGGED) status = STATUS_UNPLUGGED;
