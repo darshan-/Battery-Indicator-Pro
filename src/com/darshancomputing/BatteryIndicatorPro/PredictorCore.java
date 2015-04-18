@@ -37,7 +37,7 @@ public class PredictorCore {
     public static final int SINCE_STATUS_CHANGE = -1;
     public static final int LONG_TERM = -2;
     public static final int AUTOMAGIC = -3;
-    public static final int WEIGHTED_FIVE = -4;
+    //public static final int WEIGHTED_FIVE = -4;
 
     private static final int MIN_PREDICTION = ONE_MINUTE;
 
@@ -254,8 +254,8 @@ public class PredictorCore {
             return recentAverageBySession();
         else if (prediction_type == AUTOMAGIC)
             return middleOf(recentAverageByTime(FIVE_MINUTES), recentAverageByPoints(5), average[cur_charging_status]);
-        else if (prediction_type == WEIGHTED_FIVE)
-            return weightedAverageFivePoints();
+        //else if (prediction_type == WEIGHTED_FIVE)
+        //    return weightedAverageFivePoints();
         else //if (prediction_type == LONG_TERM)
             return average[cur_charging_status];
     }
@@ -269,7 +269,7 @@ public class PredictorCore {
             return third;
     }
 
-    private double recents[] = new double[5]; // Don't want to allocate every time
+/*    private double recents[] = new double[5]; // Don't want to allocate every time
     private static final double recencyWeights[]  = {0.39, 0.27, 0.18, 0.11, 0.05}; // Most recent to least recent
     //private static final double durationWeights[] = {0.09, 0.13, 0.18, 0.25, 0.30}; // Shortest to longest
     private double weightedAverageFivePoints() {
@@ -299,7 +299,7 @@ public class PredictorCore {
 
         return average;// / 2.0;
     }
-
+*/
     private double recentAverageByTime(double duration_in_ms) {
         double total_points = 0d;
         double total_ms = 0d;
