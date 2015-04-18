@@ -125,7 +125,7 @@ public class PredictorCore {
         }
 
         if ((info.status == BatteryInfo.STATUS_CHARGING && info.percent < last_level) ||
-            (info.status == BatteryInfo.STATUS_UNPLUGGED && info.percent > last_level))
+            (info.status != BatteryInfo.STATUS_CHARGING && info.percent > last_level))
         {
             use_partial = false;
             timestamps[info.percent] = now;
