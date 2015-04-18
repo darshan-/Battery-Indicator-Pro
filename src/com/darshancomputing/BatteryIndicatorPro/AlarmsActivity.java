@@ -111,6 +111,7 @@ public class AlarmsActivity extends Activity {
         super.onDestroy();
         mCursor.close();
         alarms.close();
+        mAlarmsList.removeAllViews(); // Don't want any instance state saved
     }
 
     @Override
@@ -123,7 +124,6 @@ public class AlarmsActivity extends Activity {
     protected void onPause() {
         super.onPause();
         mCursor.deactivate();
-        mAlarmsList.removeAllViews(); // Don't want any instance state saved
     }
 
     @Override
