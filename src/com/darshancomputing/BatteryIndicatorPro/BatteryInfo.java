@@ -252,8 +252,7 @@ class BatteryInfo {
                     percent = charge_counter;
                 } else {
                     /* The Log messages are only really useful to me and might as well be left hardwired here in English. */
-                    Log.e(LOG_TAG, "charge_counter file exists but with value " + charge_counter +
-                          " which is inconsistent with percent: " + percent);
+                    // Log.e(LOG_TAG, "charge_counter file exists but with value " + charge_counter + " which is inconsistent with percent: " + percent);
                 }
             } catch (java.io.FileNotFoundException e) {
                 Log.e(LOG_TAG, "charge_counter file doesn't exist");
