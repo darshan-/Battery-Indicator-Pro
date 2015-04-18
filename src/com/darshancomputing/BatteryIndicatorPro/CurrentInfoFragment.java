@@ -122,7 +122,7 @@ public class CurrentInfoFragment extends Fragment {
         Message outgoing = Message.obtain();
         outgoing.what = what;
         outgoing.replyTo = messenger;
-        try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
+        try { if (serviceMessenger != null) serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
     }
 
     @Override
@@ -257,7 +257,7 @@ public class CurrentInfoFragment extends Fragment {
 
             Message outgoing = Message.obtain();
             outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS;
-            try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
+            try { if (serviceMessenger != null) serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
     }
 
     @Override
@@ -435,7 +435,7 @@ public class CurrentInfoFragment extends Fragment {
 
         Message outgoing = Message.obtain();
         outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_RELOAD_SETTINGS;
-        try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
+        try { if (serviceMessenger != null) serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
 
         updateLockscreenButton();
 
