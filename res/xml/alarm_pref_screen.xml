@@ -7,7 +7,7 @@
   />
 
   <Preference
-     android:layout="@layout/my_divider"
+     android:layout="@layout/divider_after_hint"
      android:enabled="false"
      android:selectable="false"
   />

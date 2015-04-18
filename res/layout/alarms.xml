@@ -12,12 +12,7 @@
   >
     <include layout="@layout/hint" />
 
-    <ImageView android:layout_width="fill_parent"
-               android:layout_height="wrap_content"
-               android:scaleType="fitXY"
-               android:gravity="fill_horizontal"
-               android:src="@drawable/my_divider"
-    />
+    <include layout="@layout/divider_after_hint" />
 
     <LinearLayout android:id="@+id/add_alarm"
                   style="@style/SelectableItem"
@@ -46,12 +41,7 @@
       />
     </LinearLayout>
 
-    <ImageView android:layout_width="fill_parent"
-               android:layout_height="wrap_content"
-               android:scaleType="fitXY"
-               android:gravity="fill_horizontal"
-               android:src="@drawable/my_divider"
-    />
+    <View style="@style/divider"/>
 
     <LinearLayout android:id="@+id/alarms_list"
                   android:layout_width="fill_parent"

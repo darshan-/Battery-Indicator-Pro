@@ -118,4 +118,12 @@
   <bool name="default_show_box_around_icon_area">false</bool>
 
   <dimen name="widget_margin">8dp</dimen>
+
+  <style name="divider">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">0.6dp</item>
+    <item name="android:layout_marginLeft">7dp</item>
+    <item name="android:layout_marginRight">7dp</item>
+    <item name="android:background">?android:attr/listDivider</item>
+  </style>
 </resources>

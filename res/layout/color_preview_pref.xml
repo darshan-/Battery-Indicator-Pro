@@ -25,10 +25,5 @@
              android:gravity="fill_horizontal"
   />
 
-  <ImageView android:layout_width="fill_parent"
-             android:layout_height="wrap_content"
-             android:scaleType="fitXY"
-             android:gravity="fill_horizontal"
-             android:src="@drawable/my_divider"
-  />
+  <View style="@style/divider"/>
 </LinearLayout>
