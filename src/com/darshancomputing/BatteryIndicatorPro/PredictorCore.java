@@ -311,7 +311,7 @@ public class PredictorCore {
         for (int i = start; i != ts_head; i += dir_inc) {
             double potential_ms;
 
-            if (i == start && use_partial)
+            if ((i == start && use_partial) || (i + dir_inc > 100) || (i + dir_inc < 0))
                 potential_ms = now - timestamps[cur_info.percent];
             else
                 potential_ms = timestamps[i] - timestamps[i + dir_inc];
@@ -347,7 +347,7 @@ public class PredictorCore {
         for (int i = start; i != ts_head && needed_points > 0; i += dir_inc) {
             double new_ms;
 
-            if (i == start && use_partial) // TODO: If timestamps[cur_level] is set every time, I shouldn't need a special case here...
+            if ((i == start && use_partial) || (i + dir_inc > 100) || (i + dir_inc < 0))
                 new_ms = now - timestamps[cur_info.percent];
             else
                 new_ms = timestamps[i] - timestamps[i + dir_inc];
