@@ -90,7 +90,7 @@ public class LogViewFragment extends ListFragment {
         @Override
         public void handleMessage(Message incoming) {
             if (! serviceConnected) {
-                Log.i(LOG_TAG, "serviceConected is false; ignoring message: " + incoming);
+                Log.i(LOG_TAG, "serviceConnected is false; ignoring message: " + incoming);
                 return;
             }
 
