@@ -33,7 +33,7 @@
     button to leave the main window.\n
 
     \nIf you want to hide the notification but keep widgets running,
-    pres Cancel and then Hide Notification.
+    press Cancel and then Hide Notification.
   </string>
 
   <string formatted="false" name="confirm_clear_logs">Really clear all logs?</string>
