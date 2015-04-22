@@ -36,13 +36,13 @@ public class BatteryInfoAppWidgetProvider extends AppWidgetProvider {
         BatteryInfoService.onWidgetDeleted(context, appWidgetIds);
     }
 
-    public void onEnabled(Context context) {
-        BatteryInfoService.onWidgetEnabled(context);
-    }
+    //public void onEnabled(Context context) {
+    //    BatteryInfoService.onWidgetEnabled(context);
+    //}
 
-    public void onDisabled(Context context) {
-        BatteryInfoService.onWidgetDisabled(context);
-    }
+    //public void onDisabled(Context context) {
+    //    BatteryInfoService.onWidgetDisabled(context);
+    //}
 
     //public void onAppWidgetOptionsChanged(Context context, AppWidgetManager appwidgetManager,
     //                                      int appWidgetId, Bundle newOptions) {

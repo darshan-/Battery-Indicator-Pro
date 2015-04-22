@@ -85,7 +85,6 @@ public class BatteryInfoService extends Service {
 
     private static HashSet<Integer> widgetIds = new HashSet<Integer>();
     private static AppWidgetManager widgetManager;
-    private static int nWidgetsPresent = 0;
 
     private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfoService";
 
@@ -101,9 +100,6 @@ public class BatteryInfoService extends Service {
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_SERVICE_DESIRED = "serviceDesired";
     public static final String KEY_SHOW_NOTIFICATION = "show_notification";
-
-    public static final String KEY_WIDGETS_PRESENT = "widgets_present";
-    public static final String KEY_NWIDGETS_PRESENT = "n_widgets_present";
 
     private static final String EXTRA_UPDATE_PREDICTOR = "com.darshancomputing.BatteryBotPro.EXTRA_UPDATE_PREDICTOR";
 
@@ -224,23 +220,12 @@ public class BatteryInfoService extends Service {
         Class[] appWidgetProviders = {BatteryInfoAppWidgetProvider.class, /* Circle widget! */
                                              FullAppWidgetProvider.class};
 
-         for (int i = 0; i < appWidgetProviders.length; i++) {
+        for (int i = 0; i < appWidgetProviders.length; i++) {
             int[] ids = widgetManager.getAppWidgetIds(new ComponentName(context, appWidgetProviders[i]));
 
             for (int j = 0; j < ids.length; j++) {
                 widgetIds.add(ids[j]);
             }
-        }
-
-        nWidgetsPresent = sp_store.getInt(KEY_NWIDGETS_PRESENT, 0);
-
-        if (sp_store.getBoolean(KEY_WIDGETS_PRESENT, false)) {
-            nWidgetsPresent += 1; // v8.1.1 Circle widget
-
-            sps_editor = sp_store.edit();
-            sps_editor.putBoolean(KEY_WIDGETS_PRESENT, false);
-            sps_editor.putInt(KEY_NWIDGETS_PRESENT, nWidgetsPresent);
-            sps_editor.commit();
         }
 
         Intent bc_intent = registerReceiver(mBatteryInfoReceiver, batteryChanged);
@@ -256,8 +241,10 @@ public class BatteryInfoService extends Service {
         unregisterReceiver(mBatteryInfoReceiver);
         mHandler.removeCallbacks(mPluginNotify);
         mHandler.removeCallbacks(mNotify);
+        mHandler.removeCallbacks(runRenotify);
         mNotificationManager.cancelAll();
         log_db.close();
+        updateWidgets(null);
         stopForeground(true);
     }
 
@@ -285,12 +272,6 @@ public class BatteryInfoService extends Service {
             case RemoteConnection.SERVICE_REGISTER_CLIENT:
                 clientMessengers.add(incoming.replyTo);
                 sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_BATTERY_INFO_UPDATED, info.toBundle());
-
-                if (nWidgetsPresent > 0)
-                    sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_SERVICE_UNCLOSEABLE);
-                else
-                    sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_SERVICE_CLOSEABLE);
-
                 break;
             case RemoteConnection.SERVICE_UNREGISTER_CLIENT:
                 clientMessengers.remove(incoming.replyTo);
@@ -330,8 +311,6 @@ public class BatteryInfoService extends Service {
         // Messages the service sends to clients
         public static final int CLIENT_SERVICE_CONNECTED = 0;
         public static final int CLIENT_BATTERY_INFO_UPDATED = 1;
-        public static final int CLIENT_SERVICE_CLOSEABLE = 2;
-        public static final int CLIENT_SERVICE_UNCLOSEABLE = 3;
 
         public Messenger serviceMessenger;
         private Messenger clientMessenger;
@@ -438,7 +417,7 @@ public class BatteryInfoService extends Service {
         if (alarms.anyActiveAlarms())
             handleAlarms();
 
-        updateWidgets();
+        updateWidgets(info);
 
         syncSpsEditor(); // Important to sync after other Service code that uses 'lasts' but before sending info to client
 
@@ -450,12 +429,16 @@ public class BatteryInfoService extends Service {
         alarmManager.set(AlarmManager.ELAPSED_REALTIME, android.os.SystemClock.elapsedRealtime() + (2 * 60 * 1000), updatePredictorPendingIntent);
     }
 
-    private void updateWidgets() {
+    private void updateWidgets(BatteryInfo info) {
         Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
         PendingIntent mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
 
-          bl.setLevel(info.percent);
-        cwbg.setLevel(info.percent);
+        if (info == null) {
+            cwbg.setLevel(0);
+        } else {
+            bl.setLevel(info.percent);
+            cwbg.setLevel(info.percent);
+        }
 
         for (Integer widgetId : widgetIds) {
             RemoteViews rv;
@@ -471,20 +454,30 @@ public class BatteryInfoService extends Service {
             } else {
                 rv = new RemoteViews(context.getPackageName(), R.layout.full_app_widget);
 
-                rv.setImageViewBitmap(R.id.battery_level_view, bl.getBitmap());
-
-                if (info.prediction.what == BatteryInfo.Prediction.NONE) {
-                    rv.setTextViewText(R.id.fully_charged, str.timeRemaining(info));
+                if (info == null) {
+                    rv.setImageViewBitmap(R.id.battery_level_view, null);
+                    rv.setTextViewText(R.id.fully_charged, "");
                     rv.setTextViewText(R.id.time_remaining, "");
                     rv.setTextViewText(R.id.until_what, "");
                 } else {
-                    rv.setTextViewText(R.id.fully_charged, "");
-                    rv.setTextViewText(R.id.time_remaining, str.timeRemaining(info));
-                    rv.setTextViewText(R.id.until_what, str.untilWhat(info));
+                    rv.setImageViewBitmap(R.id.battery_level_view, bl.getBitmap());
+
+                    if (info.prediction.what == BatteryInfo.Prediction.NONE) {
+                        rv.setTextViewText(R.id.fully_charged, str.timeRemaining(info));
+                        rv.setTextViewText(R.id.time_remaining, "");
+                        rv.setTextViewText(R.id.until_what, "");
+                    } else {
+                        rv.setTextViewText(R.id.fully_charged, "");
+                        rv.setTextViewText(R.id.time_remaining, str.timeRemaining(info));
+                        rv.setTextViewText(R.id.until_what, str.untilWhat(info));
+                    }
                 }
             }
 
-            rv.setTextViewText(R.id.level, "" + info.percent + str.percent_symbol);
+            if (info == null)
+                rv.setTextViewText(R.id.level, "XX" + str.percent_symbol);
+            else
+                rv.setTextViewText(R.id.level, "" + info.percent + str.percent_symbol);
 
             rv.setOnClickPendingIntent(R.id.widget_layout, mainWindowPendingIntent);
             widgetManager.updateAppWidget(widgetId, rv);
@@ -1040,36 +1033,6 @@ public class BatteryInfoService extends Service {
     public static void onWidgetDeleted(Context context, int[] appWidgetIds) {
         for (int i = 0; i < appWidgetIds.length; i++) {
             widgetIds.remove(appWidgetIds[i]);
-        }
-    }
-
-    public static void onWidgetEnabled(Context context) {
-        nWidgetsPresent += 1;
-
-        if (sp_store == null) loadSettingsFiles(context);
-        sps_editor = sp_store.edit();
-        sps_editor.putInt(KEY_NWIDGETS_PRESENT, nWidgetsPresent);
-        sps_editor.commit();
-
-        if (clientMessengers == null) return;
-
-        for (Messenger messenger : clientMessengers) {
-            sendClientMessage(messenger, RemoteConnection.CLIENT_SERVICE_UNCLOSEABLE);
-        }
-    }
-
-    public static void onWidgetDisabled(Context context) {
-        nWidgetsPresent -= 1;
-
-        if (sp_store == null) loadSettingsFiles(context);
-        sps_editor = sp_store.edit();
-        sps_editor.putInt(KEY_NWIDGETS_PRESENT, nWidgetsPresent);
-        sps_editor.commit();
-
-        if (clientMessengers == null) return;
-
-        for (Messenger messenger : clientMessengers) {
-            sendClientMessage(messenger, RemoteConnection.CLIENT_SERVICE_CLOSEABLE);
         }
     }
 }
