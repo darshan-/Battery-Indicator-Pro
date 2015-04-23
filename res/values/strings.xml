@@ -693,7 +693,10 @@
     So if you kill BatteryBot through some other
     means, like a task killer, then BatteryBot doesn\'t know
     you stopped it, and it will still start at boot up if you have it
-    set to this.
+    set to this.\n
+
+    \nNOTE: Android will always start BatteryBot on boot if you have an
+    BatteryBot desktop widgets.  In that case this settings is irrelevant.
   </string>
 
   <string formatted="false" name="predictor_sensitive">Sensitive</string>

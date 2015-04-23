@@ -29,6 +29,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
         String startPref = settings.getString(SettingsActivity.KEY_AUTOSTART, "auto");
 
+        // Note: Regardless of anything here, Android will start the Service on boot if there are any desktop widgets
         if (startPref.equals("always") ||
             (startPref.equals("auto") && sp_store.getBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false))){
             ComponentName comp = new ComponentName(context.getPackageName(),
