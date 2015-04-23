@@ -151,6 +151,7 @@ public class LogViewFragment extends ListFragment {
         header_text = (TextView) logs_header.findViewById(R.id.header_text);
         ListView lv = (ListView) view.findViewById(android.R.id.list);
         lv.addHeaderView(logs_header, null, false);
+        lv.setFastScrollEnabled(true);
         setHeaderText();
         setListAdapter(mAdapter);
 
