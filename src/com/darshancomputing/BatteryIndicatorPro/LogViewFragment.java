@@ -887,7 +887,8 @@ public class LogViewFragment extends ListFragment {
             else temp_volt_tv.setText(""); /* TextViews are reused */
 
             int voltage = cursor.getInt(voltageIndex);
-            if (voltage != 0) temp_volt_tv.setText(((String) temp_volt_tv.getText().toString()) + " / " + activity.str.formatVoltage(voltage));
+            if (voltage != 0) temp_volt_tv.setText(((String) temp_volt_tv.getText().toString()) +
+                                                   " / " + activity.str.formatVoltage(voltage));
         }
     }
 
