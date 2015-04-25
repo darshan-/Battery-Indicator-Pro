@@ -455,7 +455,7 @@ public class BatteryInfoService extends Service {
                 rv = new RemoteViews(context.getPackageName(), R.layout.full_app_widget);
 
                 if (info == null) {
-                    rv.setImageViewBitmap(R.id.battery_level_view, null);
+                    rv.setImageViewBitmap(R.id.battery_level_view, cwbg.getBitmap());
                     rv.setTextViewText(R.id.fully_charged, "");
                     rv.setTextViewText(R.id.time_remaining, "");
                     rv.setTextViewText(R.id.until_what, "");
