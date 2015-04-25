@@ -55,7 +55,7 @@ import java.util.Date;
 
 public class LogViewFragment extends ListFragment {
     private static BatteryInfoActivity activity;
-    private LogDatabase logs;
+    public LogDatabase logs;
     private Col col;
     private Cursor completeCursor;
     private Cursor filteredCursor;
@@ -203,7 +203,7 @@ public class LogViewFragment extends ListFragment {
         //activity.context.unregisterReceiver(mBatteryInfoReceiver);
     }
 
-    public class ConfirmClearLogsDialogFragment extends DialogFragment {
+    public static class ConfirmClearLogsDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             return new AlertDialog.Builder(activity)
@@ -211,8 +211,8 @@ public class LogViewFragment extends ListFragment {
                 .setPositiveButton(activity.res.getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
-                            logs.clearAllLogs();
-                            reloadList(false);
+                            ((BatteryInfoActivity) activity).logViewFragment.logs.clearAllLogs();
+                            ((BatteryInfoActivity) activity).logViewFragment.reloadList(false);
                             di.cancel();
                         }
                     })
@@ -226,7 +226,7 @@ public class LogViewFragment extends ListFragment {
         }
     }
 
-    public class ConfigureLogFilterDialogFragment extends DialogFragment {
+    public static class ConfigureLogFilterDialogFragment extends DialogFragment {
         final boolean[] checked_items = new boolean[activity.str.log_filter_pref_keys.length];
 
         @Override
@@ -255,7 +255,7 @@ public class LogViewFragment extends ListFragment {
 
         @Override
         public void onCancel(DialogInterface di) {
-            setFilters(checked_items);
+            ((BatteryInfoActivity) activity).logViewFragment.setFilters(checked_items);
         }
     }
 
@@ -341,7 +341,7 @@ public class LogViewFragment extends ListFragment {
         }
     }
 
-    private void reloadList(Boolean newQuery){
+    public void reloadList(Boolean newQuery){
         if (newQuery) {
             completeCursor.close();
             completeCursor = logs.getAllLogs(reversed);
