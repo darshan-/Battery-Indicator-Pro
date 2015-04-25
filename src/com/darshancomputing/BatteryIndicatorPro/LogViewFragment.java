@@ -242,20 +242,16 @@ public class LogViewFragment extends ListFragment {
                                          @Override
                                          public void onClick(DialogInterface di, int id, boolean isChecked) {
                                              checked_items[id] = isChecked;
+                                             ((BatteryInfoActivity) activity).logViewFragment.setFilters(checked_items);
                                          }
                                      })
                 .setPositiveButton(activity.res.getString(R.string.okay),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
-                            di.cancel(); // setFilters() is called in onCancel()
+                            di.cancel();
                         }
                     })
                 .create();
-        }
-
-        @Override
-        public void onCancel(DialogInterface di) {
-            ((BatteryInfoActivity) activity).logViewFragment.setFilters(checked_items);
         }
     }
 
