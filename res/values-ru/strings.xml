@@ -15,7 +15,7 @@
   <string name="yes" formatted="false">Да</string>
   <string name="cancel" formatted="false">Отмена</string>
   <string name="confirm_close" formatted="false">Действительно закрыть?</string>
-  <string name="confirm_close_hint" formatted="false">Battery Indicator будет полностью закрыт и Вы не увидите индикатор в строке состояния.\n\nЕсли Вы хотите выйти из главного окна и оставить индикатор активным, нажмите \"Отмена\" и после этого просто нажмите кнопку \"Назад\" для выхода из главного окна.</string>
+  <string name="confirm_close_hint" formatted="false">BatteryBot будет полностью закрыт и Вы более не увидите индикатор в строке состояния. Виджеты рабочего стола работать не будут.\n\nЕсли Вы хотите только выйти из главного окна и оставить индикатор работающим, нажмите \"Отмена\" и после этого нажмите кнопку \"Назад\" вашего устройства.\n\nЕсли вы хотите скрыть уведомление, но оставить виджеты работающими, нажмите \"Отмена\" и затем \"Скрыть уведомление\".</string>
   <string name="confirm_clear_logs" formatted="false">Действительно очистить журнал?</string>
   <string name="configure_log_filter" formatted="false">Какие элементы журнала показывать?</string>
   <string name="confirm_ten_percent_enable" formatted="false">Действительно включить режим 10%?</string>
@@ -25,13 +25,22 @@
   <string name="none" formatted="false">Нет</string>
   <string name="tab_current_info" formatted="false">Текущая информация</string>
   <string name="tab_history" formatted="false">История</string>
+  <string name="notification_until_charged" formatted="false">" до полного заряда"</string>
+  <string name="notification_until_drained" formatted="false">" осталось"</string>
+  <string name="activity_until_charged" formatted="false">до полного заряда</string>
+  <string name="activity_until_drained" formatted="false">до полного разряда</string>
   <string name="menu_settings" formatted="false">Настройки</string>
   <string name="menu_close" formatted="false">Закрыть</string>
   <string name="menu_help" formatted="false">Помощь</string>
+  <string name="menu_rate_and_review" formatted="false">Оценить и дать отзыв</string>
+  <string name="menu_show_notification" formatted="false">Показать уведомление</string>
+  <string name="menu_hide_notification" formatted="false">Скрыть уведомление</string>
   <string name="menu_clear" formatted="false">Очистить</string>
   <string name="menu_reverse" formatted="false">Обратный порядок</string>
+  <string name="menu_log_filter" formatted="false">Фильтр</string>
   <string name="menu_export" formatted="false">Экспортировать в CSV</string>
-  <string name="menu_delete_alarm" formatted="false">Удалить оповещение</string>
+  <string name="menu_delete_alarm" formatted="false">Удалить предупреждение</string>
+  <string name="menu_get_plugins" formatted="false">Получить расширения</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Фаренгейт</string>
@@ -40,88 +49,223 @@
   <string name="celsius_symbol" formatted="false">C</string>
   <string name="volt_symbol" formatted="false">v</string>
   <string name="fully_charged_in" formatted="false">Полностью заряжено в:</string>
-  <string name="light_usage" formatted="false">Минимум использования, осталось:</string>
+  <string name="light_usage" formatted="false">Экономичное использование, осталось:</string>
   <string name="normal_usage" formatted="false">Нормальное использование, осталось:</string>
   <string name="heavy_usage" formatted="false">Активное использование, осталось:</string>
   <string name="constant_usage" formatted="false">Постоянное использование, осталось:</string>
   <string name="press_back_to_leave" formatted="false">Нажмите BACK для выхода.</string>
-  <string name="press_menu_for_more" formatted="false">Нажмите MENU для настройки.</string>
-  <string name="inaccessible_storage" formatted="false">SD Card недоступна.</string>
-  <string name="inaccessible_w_reason" formatted="false">SD Card недоступна:</string>
-  <string name="read_only_storage" formatted="false">SD Card доступна только для чтения.</string>
-  <string name="file_written" formatted="false">Файл успешно сохранен в корень SD карты.</string>
+  <string name="press_menu_for_more" formatted="false">Нажмите MENU для дальнейшей настройки.</string>
+  <string name="inaccessible_storage" formatted="false">SD-карта недоступна.</string>
+  <string name="inaccessible_w_reason" formatted="false">SD-карта недоступна:</string>
+  <string name="read_only_storage" formatted="false">SD-карта доступна только для чтения.</string>
+  <string name="file_written" formatted="false">Файл успешно сохранен в корень SD-карты.</string>
   <string name="date" formatted="false">дата</string>
   <string name="time" formatted="false">время</string>
   <string name="status" formatted="false">состояние</string>
   <string name="charge" formatted="false">процент_заряда</string>
   <string name="temperature" formatted="false">градусы_цельсия</string>
-  <string name="voltage" formatted="false">Напряжение</string>
-  <string name="status_unplugged" formatted="false">Отключен</string>
+  <string name="temperature_f" formatted="false">градусы_фаренгейта</string>
+  <string name="voltage" formatted="false">вольт</string>
+  <string name="current" formatted="false">миллиампер</string>
+  <string name="status_unplugged" formatted="false">Работает от аккумулятора</string>
   <string name="status_unknown" formatted="false">Неизвестно</string>
   <string name="status_charging" formatted="false">Заряжается</string>
   <string name="status_discharging" formatted="false">Разряжается</string>
   <string name="status_not_charging" formatted="false">Не заряжается</string>
-  <string name="status_fully_charged" formatted="false">Полностью заряжен</string>
-  <string name="status_plugged_in" formatted="false">Подключен</string>
+  <string name="status_fully_charged" formatted="false">Полностью заряжено</string>
+  <string name="status_plugged_in" formatted="false">Подключено к сети</string>
   <string name="health_unknown" formatted="false">Неизвестно</string>
   <string name="health_good" formatted="false">Хорошее состояние</string>
   <string name="health_overheat" formatted="false">Перегрев</string>
-  <string name="health_dead" formatted="false">Смерть</string>
+  <string name="health_dead" formatted="false">Аккумулятор вышел из строя</string>
   <string name="health_overvoltage" formatted="false">Превышено напряжение</string>
   <string name="health_failure" formatted="false">Сбой</string>
   <string name="health_cold" formatted="false">Cold</string>
-  <string name="plugged_unplugged" formatted="false">Отключено</string>
+  <string name="plugged_unplugged" formatted="false">Отключено от сети</string>
   <string name="plugged_ac" formatted="false">(AC)</string>
   <string name="plugged_usb" formatted="false">(USB)</string>
   <string name="plugged_unknown" formatted="false">(?)</string>
-  <string name="plugged_wireless" formatted="false">(WL)</string>
+  <string name="plugged_wireless" formatted="false">(Беспроводное ЗУ)</string>
   <string name="alarm_type_fully_charged" formatted="false">Полностью заряжено</string>
   <string name="alarm_type_charge_drops" formatted="false">Заряд падает ниже</string>
   <string name="alarm_type_charge_rises" formatted="false">Заряд поднимается выше</string>
   <string name="alarm_type_temperature_rises" formatted="false">Температура поднимается выше</string>
   <string name="alarm_type_health_failure" formatted="false">Неисправность</string>
-  <string name="alarm_type_entry_fully_charged" formatted="false">Становится полностью заряжен</string>
+  <string name="alarm_type_entry_fully_charged" formatted="false">Становится полностью заряженным</string>
   <string name="alarm_type_entry_charge_drops" formatted="false">Заряд падает ниже...</string>
   <string name="alarm_type_entry_charge_rises" formatted="false">Заряд поднимается выше...</string>
   <string name="alarm_type_entry_temperature_rises" formatted="false">Температура поднимается выше...</string>
   <string name="alarm_type_entry_health_failure" formatted="false">Неисправность</string>
-  <string name="alarm_fully_charged" formatted="false">Батарея полностью заряжена</string>
-  <string name="alarm_charge_drops" formatted="false">"Уровень заряда аккумулятора ниже "</string>
-  <string name="alarm_charge_rises" formatted="false">"Уровень заряда аккумулятора выше "</string>
-  <string name="alarm_temp_rises" formatted="false">"Температура батареи выше "</string>
-  <string name="alarm_health_failure" formatted="false">"Состояние батареи: "</string>
-  <string name="alarm_text" formatted="false">Выберите для редактирования оповещений.</string>
-  <string name="logs_empty" formatted="false">Файл журнала работы пуст</string>
-  <string name="discharging_from" formatted="false">Разряжается с</string>
-  <string name="charging_from" formatted="false">Заряжается с</string>
+  <string name="alarm_fully_charged" formatted="false">Аккумулятор полностью заряжен</string>
+  <string name="alarm_charge_drops" formatted="false">"Заряд аккумулятора ниже "</string>
+  <string name="alarm_charge_rises" formatted="false">"Заряд аккумулятора выше "</string>
+  <string name="alarm_temp_rises" formatted="false">"Температура аккумулятора выше "</string>
+  <string name="alarm_health_failure" formatted="false">"Состояние аккумулятора: "</string>
+  <string name="alarm_text" formatted="false">Выберите для редактирования предупреждений.</string>
+  <string name="logs_empty" formatted="false">Журналы пусты</string>
+  <string name="after_n_hours_unplugged" formatted="false">После %1.1f часов работы от аккумулятора</string>
+  <string name="after_n_hours_plugged_in" formatted="false">После %1.1f часов подключения к сети</string>
+  <string name="discharging_from" formatted="false">Разряжается от</string>
+  <string name="charging_from" formatted="false">Заряжается от</string>
   <string name="fully_charged" formatted="false">Полностью заряжено</string>
-  <string name="since" formatted="false">С</string>
-  <string name="currently_using" formatted="false">Текущее использование</string>
+  <string name="since" formatted="false">После</string>
+  <string name="dialog_color_picker" formatted="false">Выберите цвет</string>
+  <string name="press_color_to_apply" formatted="false">Применить старый или новый цвет:</string>
+  <string name="currently_using" formatted="false">Сейчас использует</string>
   <string name="currently_set_to" formatted="false">"Текущая настройка: "</string>
   <string name="currently_disabled" formatted="false">Сейчас отключено</string>
   <string name="help_cat_version" formatted="false">Версия</string>
   <string name="help_cat_changelog" formatted="false">Журнал изменений</string>
   <string name="help_changelog" formatted="false">Смотрите в <a href="http://batterybot.info/changelog">истории изменений программы</a>.</string>
+  <string name="help_cat_faq" formatted="false">Часто задаваемые вопросы</string>
+  <string name="help_faq" formatted="false">Смотрите <a href="http://www.batterybot.info/faq">online FAQ</a>.</string>
+  <string name="help_cat_website" formatted="false">Сайт</string>
+  <string name="help_website" formatted="false">Больше информации доступно на <a href="http://www.batterybot.info/">сайте BatteryBot</a>.</string>
+  <string name="help_cat_open_source" formatted="false">Открытый исходный код</string>
+  <string name="help_open_source" formatted="false">Это проект с открытым исходным кодом. Вы можете скачать <a href="http://www.batterybot.info/sourcecode">исходный код программы</a>.</string>
+  <string name="help_cat_donate" formatted="false">Пожертвовать</string>
+  <string name="help_donate" formatted="false">Вы можете внести свое пожертвование переходом на <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Version</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">Отказ от гарантий</string>
+  <string name="help_no_warranty" formatted="false">Это приложение распространяется в надежде, что оно принесет пользу, но БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ; даже без подразумеваемых гарантий ТОВАРНОЙ ПРИГОДНОСТИ или СООТВЕТСТВИЯ ДЛЯ КОНКРЕТНОГО НАМЕРЕНИЯ.\n\nХотя я прикладываю все свои усилия для того, чтобы приложение работало правильно и не вызывало проблем, тем не менее, я не несу ответственность за какие-либо повреждения или неудобства, которые могут возникнуть при некоторых обстоятельствах.</string>
+  <string name="help_cat_acknowledgments" formatted="false">Благодарности</string>
+  <string name="help_acknowledgments" formatted="false">Без благородной помощи со стороны добровольцев-переводчиков это приложение было бы доступно только на английском. Спасибо им всем!\n\nБольшое спасибо компании Google и всем программистам открытого исходного кода, которые сделали возможными платформу Android и само это приложение.\n\nЗначок приложения (вертикально ориентированная батарейка, которую вы видите в магазине приложений) основан на пиктограмме из <a href="http://www.oxygen-icons.org">темы Oxygen</a> и используется на условиях лицензии <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-ShareAlike 3.0 License</a>.</string>
+  <string name="help_cat_translations" formatted="false">Переводы/локализация</string>
+  <string name="help_translations" formatted="false">Мне необходима помощь в переводе этого приложения на новые языки, а также помощь в поддержке имеющихся переводов. Если у вас есть желание помочь, напишите мне <a href="mailto:support%2Btranslations@batterybot.info">письмо</a>. Если вы желаете, чтобы ваше имя было указано в этом разделе в знак признательности за ваше содействие, пожалуйста, сообщите мне желаемое написание вашего имени.</string>
   <string name="help_subcat_translators" formatted="false">Переводчики</string>
   <string name="help_cat_contact" formatted="false">Контакты</string>
-  <string name="pref_hint" formatted="false">Подсказка: Нажмите MENU для вызова помощи.</string>
+  <string name="help_contact" formatted="false">Если у вас есть вопросы, проблемы или комментарии, пожалуйста <a href="mailto:support@batterybot.info">напишите мне</a>.</string>
+  <string name="pref_hint" formatted="false">Подсказка: Для вызова помощи нажмите MENU.</string>
   <string name="settings_overview" formatted="false">Обзор</string>
+  <string name="settings_overview_help" formatted="false">Все настройки разбиты на несколько страниц. Каждая страница настроек имеет свою соответствующую страницу помощи. Просто нажмите MENU, затем Help (на планшетах MENU не обязательно) для получения справки по настройкам текущей страницы.</string>
+  <string name="notification_settings" formatted="false">Основное уведомление</string>
+  <string name="notification_settings_summary" formatted="false">Настройте основное уведомление</string>
+  <string name="notification_settings_help" formatted="false">Вы можете настроить - что и как показывать в опускающемся уведомлении (шторке).</string>
+  <string name="status_bar_icon_settings" formatted="false">Значок строки уведомлений</string>
+  <string name="status_bar_icon_settings_summary" formatted="false">Наборы значков</string>
+  <string name="status_bar_icon_settings_help" formatted="false">Можно выбрать используемый набор значков, а также изменить настройки для набора (например, цвета).</string>
+  <string name="keyguard_settings" formatted="false">Экран блокировки</string>
+  <string name="keyguard_settings_summary" formatted="false">Настройка отключения экрана блокировки</string>
+  <string name="keyguard_settings_help" formatted="false">Можно произвести настройку автоматического или ручного отключения экрана блокировки вашего устройства.</string>
+  <string name="current_hack_settings" formatted="false">Измерение тока (mA)</string>
+  <string name="current_hack_settings_summary" formatted="false">Настройки для измерения тока (mA)</string>
+  <string name="current_hack_settings_help" formatted="false">Система Android не предоставляет приложениям информации о токе аккумулятора. Тем не менее, существует обходной трюк, потенциально позволяющий получить эти данные.\n\nНЕТ НИКАКОЙ гарантии, что этот трюк будет работать. Он может не работать вообще или же работать, но выдавать при этом бессмысленные значения.\n\nВ этом разделе находятся настройки включения этого трюка, а также его использования, если это возможно.</string>
   <string name="alarm_settings_subtitle" formatted="false">Настройки оповещений</string>
   <string name="alarm_settings" formatted="false">Оповещения</string>
-  <string name="alarm_settings_summary" formatted="false">Настройка оповещений для низкого/полного заряда батареи</string>
-  <string name="alarm_settings_help" formatted="false">Вы можете настроить оповещение, когда заряд батареи достигает определенного уровня (например, батарея полностью заряжается, уровень заряда опускается ниже 20%).</string>
+  <string name="alarm_settings_summary" formatted="false">Настройка уведомлений для низкого/полного заряда аккумулятора</string>
+  <string name="alarm_settings_help" formatted="false">Вы можете настроить BatteryBot таким образом, чтобы получить уведомление о том, что заряд аккумулятора достигает определенного уровня (например, аккумулятор становится полностью заряженным, уровень заряда опускается ниже 20%).</string>
   <string name="other_settings" formatted="false">Другие настройки</string>
-  <string name="other_settings_help" formatted="false">Все остальные настройки, включая настройки журнала работы, блокировки экрана, единицы измерения, автозагрузка и другие Вы можете найти на этой странице.</string>
+  <string name="other_settings_help" formatted="false">На этой странице вы можете найти все остальные настройки, включая настройку журнала работы, блокировки экрана, единиц измерения, автозагрузки и другие.</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">Больше настроек в версии Pro</string>
-  <string name="pref_cat_color" formatted="false">Цвет индикатора</string>
-  <string name="pref_alarm_threshold" formatted="false">Предел</string>
-  <string name="alarm_pref_not_used" formatted="false">Не используется для этого типа оповещения</string>
-  <string name="pref_alarm_threshold_summary" formatted="false">Предел срабатывания:</string>
-  <string name="pref_cat_notification_settings" formatted="false">Настройки оповещений</string>
+  <string name="pref_please_upgrade" formatted="false">В версии Pro имеется намного больше настроек и функций, включая информацию о токе аккумулятора (mA), полноцветные значки, предупреждения, журнал состояния аккумулятора, автоматическое/ручное отключение блокировки экрана и многое другое.</string>
+  <string name="add_alarm" formatted="false">Добавить предупреждение</string>
+  <string name="pref_cat_notification_layout" formatted="false">Разметка</string>
+  <string name="pref_use_system_notification_layout" formatted="false">Использовать системную разметку</string>
+  <string name="pref_use_system_notification_layout_summary" formatted="false">Использовать системную разметку уведомлений вместо настраиваемой?</string>
+  <string name="pref_use_system_notification_layout_help" formatted="false">Если включено, будет использоваться системная разметка уведомлений вместо настраиваемой в BatteryBot. Системная разметка настраивается не столь гибко, однако некоторые устройства не передают правильно цвета по умолчанию, что приводит к тому, что пользовательская разметка выглядит некрасиво или получается трудночитаемой. В некоторых устройствах используется необычная разметка, что приводит к тому, что настраиваемая разметка уведомлений вообще не подходит. Выбор данной опции гарантирует, что уведомление программы будет выглядеть так же, как и любое другое.\n\nУчтите, что это приведет к отображению значка панели уведомлений в самом уведомлении.</string>
+  <string name="pref_cat_notification_content" formatted="false">Содержание</string>
+  <string name="pref_icon_area_content" formatted="false">Содержание области значка</string>
+  <string name="pref_icon_area_content_help" formatted="false">Укажите, что вы хотите видеть с левой стороны уведомления в области значка. Это может быть только изображение батарейки, только заряд аккумулятора в процентах или то и другое в любом порядке.</string>
+  <string name="battery_graphic" formatted="false">Изображение батарейки</string>
+  <string name="charge_percentage" formatted="false">Заряд в процентах</string>
+  <string name="percentage_first" formatted="false">Проценты, Батарейка</string>
+  <string name="battery_first" formatted="false">Батарейка, Проценты</string>
+  <string name="pref_top_line_content" formatted="false">Содержимое верхней строчки</string>
+  <string name="pref_top_line_content_help" formatted="false">Настройте содержимое верхней строчки уведомления: оценка оставшегося времени (настраивается отдельно), время, прошедшее с момента изменения состояния (заряжается, работает от аккумулятора или полностью заряжен), или жизненно важные параметры аккумулятора (состояние, температура и напряжение).</string>
+  <string name="pref_bottom_line_content" formatted="false">Содержимое нижней строчки</string>
+  <string name="pref_bottom_line_content_help" formatted="false">Для нижней строчки применимы те же параметры, что и для верхней.</string>
+  <string name="time_remaining" formatted="false">Оставшееся время</string>
+  <string name="time_since_status_change" formatted="false">Время, прошедшее с момента изменения состояния</string>
+  <string name="vital_signs" formatted="false">Жизненно важные параметры</string>
+  <string name="pref_time_remaining_verbosity" formatted="false">Подробность указания оставшегося времени</string>
+  <string name="pref_time_remaining_verbosity_help" formatted="false">Устройства бывают самых разных форм и размеров, поэтому в большинстве языков приходится использовать сокращения для того, чтобы оценка оставшегося времени помещалась в области уведомления. Если она по-прежнему не помещается, вы можете использовать сжатый формат. Если места на экране вашего устройства достаточно, вы можете использовать подробный формат.</string>
+  <string name="condensed" formatted="false">Сжатый</string>
+  <string name="normal" formatted="false">Обычный</string>
+  <string name="verbose" formatted="false">Подробный</string>
+  <string name="pref_status_duration_in_vital_signs" formatted="false">Продолжительность состояния в терминах жизненно важных параметров</string>
+  <string name="pref_status_duration_in_vital_signs_summary" formatted="false">Включать время с момента изменения состояния жизненно важных параметров?</string>
+  <string name="pref_status_duration_in_vital_signs_help" formatted="false">Если выбрано, строка жизненно важных параметров также будет включать время, прошедшее с момента отключения или подключения зарядного устройства или с момента полной зарядки аккумулятора.</string>
+  <string name="pref_cat_notification_appearance" formatted="false">Внешний вид</string>
+  <string name="pref_cat_notification_appearance_help" formatted="false">Можно переопределить цвета для текста уведомления, если цвета по умолчанию читаются с трудом или вы просто предпочитаете нечто особенное. Вы также можете включить/выключить показ рамки вокруг области значка.</string>
+  <string name="pref_notification_percentage_text_color" formatted="false">Цвет текста процентов</string>
+  <string name="pref_custom_percentage_text_color" formatted="false">Настраиваемый цвет текста процентов</string>
+  <string name="pref_notification_top_line_color" formatted="false">Цвет текста верхней строчки</string>
+  <string name="pref_custom_top_line_color" formatted="false">Настраиваемый цвет текста верхней строчки</string>
+  <string name="pref_notification_bottom_line_color" formatted="false">Цвет текста нижней строчки</string>
+  <string name="pref_custom_bottom_line_color" formatted="false">Настраиваемый цвет текста нижней строчки</string>
+  <string name="pref_show_box_around_icon_area" formatted="false">Показать рамку вокруг области значка</string>
+  <string name="pref_show_box_around_icon_area_summary" formatted="false">Показать прямоугольник фонового цвета в области значка?</string>
+  <string name="system_default" formatted="false">Системные умолчания</string>
+  <string name="black" formatted="false">Черный</string>
+  <string name="white" formatted="false">Белый</string>
+  <string name="ics_blue" formatted="false">Android ICS синий</string>
+  <string name="custom" formatted="false">Настраиваемый</string>
+  <string name="pref_cat_notification_priority" formatted="false">Приоритет уведомления</string>
+  <string name="pref_cat_notification_priority_help" formatted="false">Начиная с Android версии Jelly Bean и выше (Android 4.1 и выше), для уведомлений возможна установка приоритета. Результат изменения приоритета не гарантируется, но в целом:\n\n• Установка приоритета на \"Минимум\" в большинстве случаев должна приводить к удалению значка с панели уведомлений, но по-прежнему показывать уведомление на опускающейся панели (шторке).\n\n• Установка приоритета в \"Низкий\" должна допускать появление других уведомлений, таких как уведомления о поступившей электронной почте, над уведомлением BatteryBot. Это прекрасно в таких случаях, как электронная почта, где уведомления являются растяжимыми (они автоматически растягиваются, если являются самыми верхними).\n\nПриоритеты \"По умолчанию\" и выше обычно делают уведомление BatteryBot самым верхним, но я могу представить ситуации, в которых более высокие приоритеты могут поменять картину.\n\nИ еще раз: точное поведение может варьироваться в зависимости от устройства и не гарантируется.</string>
+  <string name="pref_auto_disable" formatted="false">Автоматически отключить блокировку экрана</string>
+  <string name="pref_auto_disable_summary" formatted="false">Отключить блокировку экрана во время зарядки?</string>
+  <string name="pref_disallow_disable_lock_screen" formatted="false">Не разрешать ручное отключение</string>
+  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Не разрешать использование кнопки отключения блокировки экрана?</string>
+  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Если у вас имеется альтернативный экран блокировки, дающий доступ к шторке уведомлений при заблокированном экране, вы можете включить эту опцию по соображениям безопасности.</string>
+  <string name="pref_notify_status_duration" formatted="false">Показывать продолжительность состояния</string>
+  <string name="pref_notify_status_duration_summary" formatted="false">Показывать время с момента изменения состояния или оценку оставшегося времени?</string>
+  <string name="pref_notify_status_duration_help" formatted="false">Включите эту опцию, если предпочитаете, чтобы в главном уведомлении было показано время, прошедшее с момента изменения состояния (например, \"Работает от аккумулятора в течение 5 часов\"), а не оценку оставшегося времени работы. Обе характеристики доступны в главном окне приложения.</string>
+  <string name="pref_cat_battery_use" formatted="false">Использование аккумулятора</string>
+  <string name="pref_finish_after_battery_use" formatted="false">Выйти после запуска</string>
+  <string name="pref_finish_after_battery_use_summary" formatted="false">Закрыть основное окно сразу после запуска \"Использование аккумулятора\"?</string>
+  <string name="pref_finish_after_battery_use_help" formatted="false">Если вы цените каждое свое прикосновение к клавиатуре или экрану, можете включить эту опцию. Таким образом главное окно BattaryBot будет закрыто немедленно после открытия экрана \"Использование аккумулятора\".</string>
+  <string name="pref_cat_temperature_unit" formatted="false">Единицы измерения температуры</string>
+  <string name="pref_convert_to_fahrenheit" formatted="false">Преобразовать к Фаренгейту</string>
+  <string name="pref_convert_to_fahrenheit_help" formatted="false">Система Android сообщает температуру аккумулятора в градусах Цельсия. Если для вас предпочтительнее градусы Фаренгейта, выберите эту опцию, и приложение осуществит преобразование для вас.</string>
+  <string name="pref_cat_autostart" formatted="false">Автозапуск</string>
+  <string name="pref_autostart_at_boot" formatted="false">Автозапуск при загрузке</string>
+  <string name="pref_autostart_at_boot_summary" formatted="false">Запустить BatteryBot при загрузке устройства:</string>
+  <string name="pref_autostart_at_boot_help" formatted="false">Управляет автоматическим запуском BatteryBot во время загрузки устройства.\n\nОпция \"Если было запущено при выключении\" работает применительно к той ситуации, когда вы в последний раз вручную запускали или останавливали BatteryBot. Поэтому, если вы прервали работу BatteryBot иными средствами, например, с помощью task killer, то BatteryBot \"не знает\", что вы его остановили, и по-прежнему запустится при загрузке устройства, если эта опция выбрана.</string>
+  <string name="predictor_sensitive" formatted="false">Чувствительный</string>
+  <string name="predictor_conservative" formatted="false">Консервативный</string>
+  <string name="predictor_since_status_change" formatted="false">С момента изменения состояния</string>
+  <string name="predictor_long_term_ave" formatted="false">Среднее за большой период</string>
+  <string name="pref_cat_predictor" formatted="false">Оценки оставшегося времени</string>
+  <string name="pref_prediction_type" formatted="false">Тип оценки</string>
+  <string name="lang_system_selected" formatted="false">Язык системы</string>
+  <string name="pref_cat_language" formatted="false">Язык</string>
+  <string name="pref_language_override" formatted="false">Переопределить язык</string>
+  <string name="pref_language_override_summary" formatted="false">Выберите язык:</string>
+  <string name="pref_language_override_help" formatted="false">Если перевод на ваш язык неполон или неточен и вы хотели бы пользоваться другим, возможно, более хорошим переводом, вы можете сделать этот выбор здесь.</string>
+  <string name="pref_cat_plugin_settings" formatted="false">Настройки плагинов</string>
+  <string name="pref_plugin_settings" formatted="false">Настройки плагинов</string>
+  <string name="pref_plugin_settings_summary" formatted="false">Редактировать настройки для плагина</string>
+  <string name="pref_classic_color_mode" formatted="false">Применить классический цветовой режим</string>
+  <string name="pref_classic_color_mode_summary" formatted="false">Это обычно не работает; пожалуйста, прочтите справку</string>
+  <string name="pref_classic_color_mode_help" formatted="false">Начиная с Android 5.0 (Lollipop), цветные значки уведомлений официально больше не поддерживаются, при этом классический значок BatteryBot выглядит сплошным белым. Поэтому на подобных устройствах приложение использует простой белый контур с белыми цифрами.\n\nОднако, не все устройства строго следуют спецификациям, поэтому сказанное выше не является обязательным не везде работает корректно. Вы можете попробовать настроить стандартное отображение классического значка включением этой опции. Помните, что на большинстве устройств это только приведет к тому, что значок станет сплошным белым.</string>
+  <string name="pref_cat_color" formatted="false">Цвет значка</string>
+  <string name="pref_cat_color_help" formatted="false">Для того, чтобы сохранить двоичный пакет BatteryBot достаточно маленьким, накладываются определенные ограничения на использование цветов. В настоящий момент красный значок не может быть выше 30%, янтарный - не выше 50%, зеленый - не ниже 20%. Я полагаю, что это разумный компромисс, который должен устроить 99% пользователей.\n\nДля того, чтобы предоставить вам максимальную гибкость в настройке, цвета могут включаться и выключаться независимо друг от друга. Это означает, что у вас есть четырехярусная цветовая схема, в которой значок имеет зеленый цвет, когда аккумулятор полностью заряжен, затем серый, затем янтарный, затем красный. Конечно, большинство людей, вероятно, пороговые значения для янтарного и зеленого устанавливают в одно значение, поэтому значок никогда не будет серым.</string>
+  <string name="pref_color_preview" formatted="false">Предварительный просмотр цвета</string>
+  <string name="pref_red" formatted="false">Использовать красный значок</string>
+  <string name="pref_red_summary" formatted="false">Использовать красный значок при низком заряде?</string>
+  <string name="pref_red_help" formatted="false">Использовать или нет красный значок при заряде ниже заданного порога?</string>
+  <string name="pref_red_thresh" formatted="false">Порог для красного</string>
+  <string name="pref_red_thresh_summary" formatted="false">Процент заряда, ниже которого цвет значка - красный</string>
+  <string name="pref_red_thresh_summary10" formatted="false">Процент заряда, при котором или ниже которого цвет значка - красный</string>
+  <string name="alarms_overview" formatted="false">Обзор предупреждений</string>
+  <string name="pref_alarm_enabled" formatted="false">Включить предупреждение</string>
+  <string name="pref_alarm_enabled_help" formatted="false">На основной странице предупреждений вы можете отключать и включать предупреждения.</string>
+  <string name="pref_cat_alarm_conditions" formatted="false">Условия предупреждения</string>
+  <string name="pref_cat_alarm_conditions_help" formatted="false">Здесь осуществляется настройка событий, приводящих к появлению предупреждения.</string>
+  <string name="pref_alarm_type" formatted="false">Тип предупреждения</string>
+  <string name="pref_alarm_type_summary" formatted="false">Предупредить, если аккумулятор:</string>
+  <string name="pref_alarm_type_help" formatted="false">Вы можете выбрать из имеющихся пяти типов предупреждений.\n\nПредупреждение \"Становится полностью заряженным\" сообщит вам, что состояние аккумулятора меняется с \"Заряжается\" на \"Полностью заряжен\". Учтите, что для многих устройств это не обязательно то же самое, что и 100% заряд.\n\n</string>
+  <string name="pref_alarm_threshold" formatted="false">Порог</string>
+  <string name="alarm_pref_not_used" formatted="false">Не используется для этого типа предупреждения</string>
+  <string name="pref_alarm_threshold_summary" formatted="false">Порог срабатывания:</string>
+  <string name="pref_alarm_threshold_help" formatted="false">Для предупреждений о заряде и температуре необходимо установить температуру или уровень заряда, приводящих к возникновению предупреждения.</string>
+  <string name="pref_cat_notification_settings" formatted="false">Настройки уведомлений</string>
+  <string name="pref_cat_notification_settings_help" formatted="false">Настройка параметров уведомлений, возникающих при наступлении определенных событий.</string>
   <string name="pref_alarm_ringtone" formatted="false">Мелодия</string>
+  <string name="pref_alarm_ringtone_help" formatted="false">Настройка мелодии, которая прозвучит при возникновении предупреждения. Выберите \'Беззвучно\', если вы не хотите получать звуковые уведомления.</string>
   <string name="silent" formatted="false">Беззвучно</string>
-  <string name="pref_alarm_vibrate" formatted="false">Вибратор</string>
+  <string name="pref_alarm_vibrate" formatted="false">Вибрация</string>
+  <string name="pref_alarm_vibrate_help" formatted="false">Если все идет нормально, выбор этой опции приведет к вибрации устройства в случае возникновения предупреждения, если устройство не находится в беззвучном режиме или вы настроили устройство так, чтобы оно вибрировало даже в беззвучном режиме. Другими словами, должно происходить то, что вы ожидаете. Сообщите мне, если что-то пойдет не так.</string>
+  <string name="pref_alarm_lights_help" formatted="false">Устанавливает, должно ли уведомление включать световой индикатор устройства по умолчанию. Обычно это приводит к мерцанию светодиода. Имейте в виду, что любое Android-устройство, которое я использовал, было немного \"глючным\" в этой части. Если будет выбрана данная настройка, уведомление обратится к Android с запросом на включение светового индикатора, но не всегда в действительности это произойдет.</string>
   <string name="boot_pref_always" formatted="false">Всегда</string>
   <string name="boot_pref_never" formatted="false">Никогда</string>
   <string name="boot_pref_if_running" formatted="false">Если было запущено при выключении</string>
@@ -134,8 +278,20 @@
   <string name="age_1_day" formatted="false">1 день</string>
   <string name="age_2_days" formatted="false">2 дня</string>
   <string name="age_4_days" formatted="false">4 дня</string>
-  <string name="age_1_week" formatted="false">1 неделю</string>
-  <string name="age_2_weeks" formatted="false">2-х недель</string>
+  <string name="age_1_week" formatted="false">1 неделя</string>
+  <string name="age_2_weeks" formatted="false">2 недели</string>
   <string name="age_3_weeks" formatted="false">3 недели</string>
-  <string name="age_4_weeks" formatted="false">4 недель</string>
+  <string name="age_4_weeks" formatted="false">4 недели</string>
+  <string name="notification_priority_max" formatted="false">Максимальный</string>
+  <string name="notification_priority_high" formatted="false">Высокий</string>
+  <string name="notification_priority_default" formatted="false">По умолчанию</string>
+  <string name="notification_priority_low" formatted="false">Низкий</string>
+  <string name="notification_priority_min" formatted="false">Минимальный</string>
+  <string name="icon_set_classic" formatted="false">Классический</string>
+  <string name="icon_set_plain" formatted="false">Просто число</string>
+  <string name="icon_set_smaller" formatted="false">Мелкий шрифт</string>
+  <plurals name="n_log_items">
+    <item quantity="one">%d элемент журнала</item>
+    <item quantity="other">%d элементов журнала</item>
+  </plurals>
 </resources>
