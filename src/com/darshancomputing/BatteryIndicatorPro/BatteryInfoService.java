@@ -100,6 +100,8 @@ public class BatteryInfoService extends Service {
     public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_SERVICE_DESIRED = "serviceDesired";
     public static final String KEY_SHOW_NOTIFICATION = "show_notification";
+    public static final String LAST_SDK_API = "last_sdk_api";
+
 
     private static final String EXTRA_UPDATE_PREDICTOR = "com.darshancomputing.BatteryBotPro.EXTRA_UPDATE_PREDICTOR";
 
@@ -192,6 +194,7 @@ public class BatteryInfoService extends Service {
         alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         loadSettingsFiles(context);
+        sdkVersioning();
 
         Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
         mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
@@ -388,6 +391,21 @@ public class BatteryInfoService extends Service {
             update(intent);
         }
     };
+
+    // Does anything needed when SDK API level increases and sets LAST_SDK_API
+    private void sdkVersioning(){
+        SharedPreferences.Editor sps_editor = sp_store.edit();
+        SharedPreferences.Editor settings_editor = settings.edit();
+
+        if (sp_store.getInt(LAST_SDK_API, 0) < 21 && android.os.Build.VERSION.SDK_INT >= 21) {
+            settings_editor.putBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, true);
+        }
+
+        sps_editor.putInt(LAST_SDK_API, android.os.Build.VERSION.SDK_INT);
+
+        sps_editor.commit();
+        settings_editor.commit();
+    }
 
     private void update(Intent intent) {
         now = System.currentTimeMillis();
