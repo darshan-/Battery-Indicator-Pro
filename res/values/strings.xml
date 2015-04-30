@@ -639,7 +639,7 @@
   <string formatted="false" name="pref_auto_disable_summary">Disable the lock screen when charging?</string>
   <string formatted="false" name="pref_auto_disable_help">
     If checked, then whenever the device is plugged in, BatteryBot
-    with disable the lock screen, and whenever the device is
+    will disable the lock screen, and whenever the device is
     unplugged, it will enable it again.\n
 
     \nNote that with this option enabled, you will still have to
