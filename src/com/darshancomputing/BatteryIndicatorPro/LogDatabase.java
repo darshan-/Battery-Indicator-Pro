@@ -18,6 +18,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class LogDatabase {
@@ -41,8 +42,26 @@ public class LogDatabase {
 
     public LogDatabase(Context context) {
         mSQLOpenHelper = new SQLOpenHelper(context);
-        rdb = mSQLOpenHelper.getReadableDatabase();
-        wdb = mSQLOpenHelper.getWritableDatabase();
+
+        openDBs();
+    }
+
+    private void openDBs(){
+        if (rdb == null || !rdb.isOpen()) {
+            try {
+                rdb = mSQLOpenHelper.getReadableDatabase();
+            } catch (SQLiteException e) {
+                rdb = null;
+            }
+        }
+
+        if (wdb == null || !wdb.isOpen()) {
+            try {
+                wdb = mSQLOpenHelper.getWritableDatabase();
+            } catch (SQLiteException e) {
+                rdb = null;
+            }
+        }
     }
 
     public void close() {
@@ -54,39 +73,57 @@ public class LogDatabase {
         String order = "DESC";
         if (reversed) order = "ASC";
 
-        return rdb.rawQuery("SELECT * FROM " + LOG_TABLE_NAME + " ORDER BY " + KEY_TIME + " " + order, null);
+        openDBs();
+
+        try {
+            return rdb.rawQuery("SELECT * FROM " + LOG_TABLE_NAME + " ORDER BY " + KEY_TIME + " " + order, null);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public void logStatus(BatteryInfo info, long time, int status_age) {
         Boolean duplicate = false;
 
-        Cursor lastLog = rdb.rawQuery("SELECT * FROM " + LOG_TABLE_NAME
-                                     + " ORDER BY " + KEY_TIME + " DESC LIMIT 1", null);
+        openDBs();
 
-        if (lastLog.moveToFirst()){
-            int statusCode = lastLog.getInt(lastLog.getColumnIndexOrThrow(KEY_STATUS_CODE));
-            int lastCharge = lastLog.getInt(lastLog.getColumnIndexOrThrow(KEY_CHARGE));
-            int[] a = decodeStatus(statusCode);
-            int lastStatus  = a[0];
-            int lastPlugged = a[1];
+        try {
+            Cursor lastLog = rdb.rawQuery("SELECT * FROM " + LOG_TABLE_NAME
+                                          + " ORDER BY " + KEY_TIME + " DESC LIMIT 1", null);
 
-            if (info.percent == lastCharge && info.status == lastStatus && info.plugged == lastPlugged)
-                duplicate = true;
+            if (lastLog.moveToFirst()){
+                int statusCode = lastLog.getInt(lastLog.getColumnIndexOrThrow(KEY_STATUS_CODE));
+                int lastCharge = lastLog.getInt(lastLog.getColumnIndexOrThrow(KEY_CHARGE));
+                int[] a = decodeStatus(statusCode);
+                int lastStatus  = a[0];
+                int lastPlugged = a[1];
+
+                if (info.percent == lastCharge && info.status == lastStatus && info.plugged == lastPlugged)
+                    duplicate = true;
+            }
+
+            if (! duplicate)
+                wdb.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (NULL, "
+                            + encodeStatus(info.status, info.plugged, status_age) + " ," + info.percent + " ," + time
+                            + " ," + info.temperature + " ," + info.voltage + ")");
+
+            lastLog.close();
+        } catch (Exception e) {
+            // Maybe disk is full?  Okay to drop this log rather than crash.
         }
-
-        if (! duplicate)
-            wdb.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (NULL, "
-                       + encodeStatus(info.status, info.plugged, status_age) + " ," + info.percent + " ," + time
-                       + " ," + info.temperature + " ," + info.voltage + ")");
-
-        lastLog.close();
     }
 
     public void prune(int max_hours) {
         long currentTM = System.currentTimeMillis();
         long oldest_log = currentTM - ((long) max_hours * 60 * 60 * 1000);
 
-        wdb.execSQL("DELETE FROM " + LOG_TABLE_NAME + " WHERE " + KEY_TIME + " < " + oldest_log);
+        openDBs();
+
+        try {
+            wdb.execSQL("DELETE FROM " + LOG_TABLE_NAME + " WHERE " + KEY_TIME + " < " + oldest_log);
+        } catch (Exception e) {
+            // Maybe disk is full?  Okay to just return rather than crash.
+        }
     }
 
     /* My cursor adapter was getting a bit complicated since it could only see one datum at a time, and
