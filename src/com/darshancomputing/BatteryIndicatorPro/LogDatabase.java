@@ -65,8 +65,10 @@ public class LogDatabase {
     }
 
     public void close() {
-        rdb.close();
-        wdb.close();
+        if (rdb != null)
+            rdb.close();
+        if (wdb != null)
+            wdb.close();
     }
 
     public Cursor getAllLogs(Boolean reversed) {
@@ -109,7 +111,7 @@ public class LogDatabase {
 
             lastLog.close();
         } catch (Exception e) {
-            // Maybe disk is full?  Okay to drop this log rather than crash.
+            // Maybe storage is full?  Okay to drop this log rather than crash.
         }
     }
 
@@ -122,7 +124,7 @@ public class LogDatabase {
         try {
             wdb.execSQL("DELETE FROM " + LOG_TABLE_NAME + " WHERE " + KEY_TIME + " < " + oldest_log);
         } catch (Exception e) {
-            // Maybe disk is full?  Okay to just return rather than crash.
+            // Maybe storage is full?  Okay to just return rather than crash.
         }
     }
 

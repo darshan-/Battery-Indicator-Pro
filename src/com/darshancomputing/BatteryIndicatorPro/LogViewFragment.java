@@ -63,8 +63,10 @@ public class LogViewFragment extends ListFragment {
     private LayoutInflater mInflater;
     private LogAdapter mAdapter;
     private TextView header_text;
-    private Boolean reversed = false;
     private Boolean convertF;
+
+    private boolean reversed;
+    private boolean noDB;
 
     private static final String LOG_TAG = "BatteryBot";
 
@@ -152,6 +154,8 @@ public class LogViewFragment extends ListFragment {
         ListView lv = (ListView) view.findViewById(android.R.id.list);
         lv.addHeaderView(logs_header, null, false);
         lv.setFastScrollEnabled(true);
+        if (noDB)
+            return view;
         setHeaderText();
         setListAdapter(mAdapter);
 
@@ -171,6 +175,12 @@ public class LogViewFragment extends ListFragment {
 
         logs = new LogDatabase(activity.context);
         completeCursor = logs.getAllLogs(false);
+
+        if (completeCursor == null) {
+            noDB = true;
+            return;
+        }
+
         timeDeltaCursor = new TimeDeltaCursor(completeCursor);
         filteredCursor = new FilteredCursor(timeDeltaCursor);
 
@@ -187,7 +197,8 @@ public class LogViewFragment extends ListFragment {
             activity.context.unbindService(serviceConnection);
             serviceConnected = false;
         }
-        completeCursor.close();
+        if (completeCursor != null)
+            completeCursor.close();
         logs.close();
     }
 
