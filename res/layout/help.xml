@@ -37,6 +37,9 @@
     <TextView style="@style/help_cat"  android:text="@string/help_cat_website" />
     <TextView android:id="@+id/website" style="@style/help_text" android:text="@string/help_website" />
 
+    <TextView style="@style/help_cat"  android:text="@string/help_cat_google_plus" />
+    <TextView android:id="@+id/google_plus" style="@style/help_text" android:text="@string/help_google_plus" />
+
     <TextView style="@style/help_cat"  android:text="@string/help_cat_no_warranty" />
     <TextView style="@style/help_text" android:text="@string/help_no_warranty" />
   </LinearLayout>
