@@ -39,6 +39,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AlarmsActivity extends Activity {
     private AlarmDatabase alarms;
@@ -80,6 +81,9 @@ public class AlarmsActivity extends Activity {
         addAlarm.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 int id = alarms.addAlarm();
+                if (id < 0) {
+                    Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show();
+                }
                 ComponentName comp = new ComponentName(getPackageName(), AlarmEditActivity.class.getName());
                 startActivity(new Intent().setComponent(comp).putExtra(AlarmEditActivity.EXTRA_ALARM_ID, id));
             }

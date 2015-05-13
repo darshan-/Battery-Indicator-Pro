@@ -19,6 +19,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class AlarmDatabase {
@@ -49,116 +50,190 @@ public class AlarmDatabase {
 
     public AlarmDatabase(Context context) {
         mSQLOpenHelper = new SQLOpenHelper(context);
-        rdb = mSQLOpenHelper.getReadableDatabase();
-        wdb = mSQLOpenHelper.getWritableDatabase();
+
+        openDBs();
+    }
+
+    private void openDBs(){
+        if (rdb == null || !rdb.isOpen()) {
+            try {
+                rdb = mSQLOpenHelper.getReadableDatabase();
+            } catch (SQLiteException e) {
+                rdb = null;
+            }
+        }
+
+        if (wdb == null || !wdb.isOpen()) {
+            try {
+                wdb = mSQLOpenHelper.getWritableDatabase();
+            } catch (SQLiteException e) {
+                rdb = null;
+            }
+        }
     }
 
     public void close() {
-        rdb.close();
-        wdb.close();
+        if (rdb != null)
+            rdb.close();
+        if (wdb != null)
+            wdb.close();
     }
 
     public Cursor getAllAlarms(Boolean reversed) {
         String order = "DESC";
         if (reversed) order = "ASC";
 
-        return rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " ORDER BY " + KEY_ID + " " + order, null);
+        openDBs();
+
+        try {
+            return rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " ORDER BY " + KEY_ID + " " + order, null);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public Cursor getAlarm(int id) {
-        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_ID + "=" + id + " LIMIT 1", null);
-        c.moveToFirst();
-        return c;
+        openDBs();
+
+        try {
+            Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_ID + "=" + id + " LIMIT 1", null);
+            c.moveToFirst();
+            return c;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public Boolean anyActiveAlarms() {
-        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE ENABLED=1 LIMIT 1", null);
-        Boolean b = (c.getCount() > 0);
-        c.close();
-        return b;
+        openDBs();
+
+        try {
+            Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE ENABLED=1 LIMIT 1", null);
+            Boolean b = (c.getCount() > 0);
+            c.close();
+            return b;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public Cursor activeAlarmFull() {
-        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE + "='fully_charged' AND ENABLED=1 LIMIT 1", null);
+        openDBs();
 
-        if (c.getCount() == 0) {
-            c.close();
+        try {
+            Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE + "='fully_charged' AND ENABLED=1 LIMIT 1", null);
+
+            if (c.getCount() == 0) {
+                c.close();
+                return null;
+            }
+
+            c.moveToFirst();
+            return c;
+        } catch (Exception e) {
             return null;
         }
-
-        c.moveToFirst();
-        return c;
     }
 
     public Cursor activeAlarmChargeDrops(int current, int previous) {
-        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE +
-                                "='charge_drops' AND ENABLED=1 AND " +
-                                KEY_THRESHOLD + ">"  + current + " AND " +
-                                KEY_THRESHOLD + "<=" + previous + 
-                                " LIMIT 1", null);
+        openDBs();
 
-        if (c.getCount() == 0) {
-            c.close();
+        try {
+            Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE +
+                                    "='charge_drops' AND ENABLED=1 AND " +
+                                    KEY_THRESHOLD + ">"  + current + " AND " +
+                                    KEY_THRESHOLD + "<=" + previous +
+                                    " LIMIT 1", null);
+
+            if (c.getCount() == 0) {
+                c.close();
+                return null;
+            }
+
+            c.moveToFirst();
+            return c;
+        } catch (Exception e) {
             return null;
         }
-
-        c.moveToFirst();
-        return c;
     }
 
     public Cursor activeAlarmChargeRises(int current, int previous) {
-        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE +
-                                "='charge_rises' AND ENABLED=1 AND " +
-                                KEY_THRESHOLD + "<"  + current + " AND " +
-                                KEY_THRESHOLD + ">=" + previous + 
-                                " LIMIT 1", null);
+        openDBs();
 
-        if (c.getCount() == 0) {
-            c.close();
+        try {
+            Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE +
+                                    "='charge_rises' AND ENABLED=1 AND " +
+                                    KEY_THRESHOLD + "<"  + current + " AND " +
+                                    KEY_THRESHOLD + ">=" + previous +
+                                    " LIMIT 1", null);
+
+            if (c.getCount() == 0) {
+                c.close();
+                return null;
+            }
+
+            c.moveToFirst();
+            return c;
+        } catch (Exception e) {
             return null;
         }
-
-        c.moveToFirst();
-        return c;
     }
 
     public Cursor activeAlarmTempRises(int current, int previous) {
-        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE +
-                                "='temp_rises' AND ENABLED=1 AND " +
-                                KEY_THRESHOLD + "<"  + current + " AND " +
-                                KEY_THRESHOLD + ">=" + previous + 
-                                " LIMIT 1", null);
+        openDBs();
 
-        if (c.getCount() == 0) {
-            c.close();
+        try {
+            Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE +
+                                    "='temp_rises' AND ENABLED=1 AND " +
+                                    KEY_THRESHOLD + "<"  + current + " AND " +
+                                    KEY_THRESHOLD + ">=" + previous +
+                                    " LIMIT 1", null);
+
+            if (c.getCount() == 0) {
+                c.close();
+                return null;
+            }
+
+            c.moveToFirst();
+            return c;
+        } catch (Exception e) {
             return null;
         }
-
-        c.moveToFirst();
-        return c;
     }
 
     public Cursor activeAlarmFailure() {
-        Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE + "='health_failure' AND ENABLED=1 LIMIT 1", null);
+        openDBs();
 
-        if (c.getCount() == 0) {
-            c.close();
+        try {
+            Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE + "='health_failure' AND ENABLED=1 LIMIT 1", null);
+
+            if (c.getCount() == 0) {
+                c.close();
+                return null;
+            }
+
+            c.moveToFirst();
+            return c;
+        } catch (Exception e) {
             return null;
         }
-
-        c.moveToFirst();
-        return c;
     }
 
     public int addAlarm(Boolean enabled, String type, String threshold, String ringtone, Boolean vibrate, Boolean lights) {
-        ContentValues cv = new ContentValues();
-        cv.put(KEY_ENABLED, enabled ? 1 : 0);
-        cv.put(KEY_TYPE, type);
-        cv.put(KEY_THRESHOLD, threshold);
-        cv.put(KEY_RINGTONE, ringtone);
-        cv.put(KEY_VIBRATE, vibrate ? 1 : 0);
-        cv.put(KEY_LIGHTS, lights ? 1 : 0);
-        return (int) wdb.insert(ALARM_TABLE_NAME, null, cv);
+        openDBs();
+
+        try {
+            ContentValues cv = new ContentValues();
+            cv.put(KEY_ENABLED, enabled ? 1 : 0);
+            cv.put(KEY_TYPE, type);
+            cv.put(KEY_THRESHOLD, threshold);
+            cv.put(KEY_RINGTONE, ringtone);
+            cv.put(KEY_VIBRATE, vibrate ? 1 : 0);
+            cv.put(KEY_LIGHTS, lights ? 1 : 0);
+            return (int) wdb.insert(ALARM_TABLE_NAME, null, cv);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     public int addAlarm() {
@@ -168,52 +243,105 @@ public class AlarmDatabase {
     public int setEnabled(int id, Boolean enabled) {
         ContentValues cv = new ContentValues();
         cv.put(KEY_ENABLED, enabled ? 1 : 0);
-        return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
+
+        openDBs();
+
+        try {
+            return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     public int setVibrate(int id, Boolean vibrate) {
         ContentValues cv = new ContentValues();
         cv.put(KEY_VIBRATE, vibrate ? 1 : 0);
-        return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
+
+        openDBs();
+
+        try {
+            return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     public int setLights(int id, Boolean lights) {
         ContentValues cv = new ContentValues();
         cv.put(KEY_LIGHTS, lights ? 1 : 0);
-        return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
+
+        openDBs();
+
+        try {
+            return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     public Boolean toggleEnabled(int id) {
-        Cursor c = rdb.query(ALARM_TABLE_NAME, new String[] {KEY_ENABLED}, KEY_ID + "=" + id, null, null, null, null, null);
-        c.moveToFirst();
-        Boolean newEnabled = !(c.getInt(0) == 1);
-        c.close();
+        openDBs();
 
-        setEnabled(id, newEnabled);
+        try {
+            Cursor c = rdb.query(ALARM_TABLE_NAME, new String[] {KEY_ENABLED}, KEY_ID + "=" + id, null, null, null, null, null);
+            c.moveToFirst();
+            Boolean newEnabled = !(c.getInt(0) == 1);
+            c.close();
 
-        return newEnabled;
+            setEnabled(id, newEnabled);
+
+            return newEnabled;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public int setType(int id, String type) {
         ContentValues cv = new ContentValues();
         cv.put(KEY_TYPE, type);
-        return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
+
+        openDBs();
+
+        try {
+            return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     public int setThreshold(int id, String threshold) {
         ContentValues cv = new ContentValues();
         cv.put(KEY_THRESHOLD, threshold);
-        return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
+
+        openDBs();
+
+        try {
+            return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     public int setRingtone(int id, String ringtone) {
         ContentValues cv = new ContentValues();
         cv.put(KEY_RINGTONE, ringtone);
-        return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
+
+        openDBs();
+
+        try {
+            return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     public void deleteAlarm(int id) {
-        wdb.delete(ALARM_TABLE_NAME, KEY_ID + "=" + id, null);
+        openDBs();
+
+        try {
+            wdb.delete(ALARM_TABLE_NAME, KEY_ID + "=" + id, null);
+        } catch (Exception e) {
+        }
     }
 
     public void deleteAllAlarms() {
