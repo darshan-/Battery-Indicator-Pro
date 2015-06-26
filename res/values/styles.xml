@@ -84,9 +84,12 @@
     <item>143</item>
   </array>
 
-  <dimen name="between_buttons_padding">4dp</dimen>
+  <dimen name="between_buttons_padding">8dp</dimen>
   <dimen name="bu_button_fs">16sp</dimen>
-  <dimen name="bu_button_height">75dp</dimen>
+  <dimen name="bu_button_height">65dp</dimen>
+
+  <dimen name="vital_stats_icon">22dp</dimen>
+  <dimen name="vital_stats_text">14dp</dimen>
 
   <dimen name="bia_level">36sp</dimen>
   <dimen name="bia_time_remaining">24sp</dimen>

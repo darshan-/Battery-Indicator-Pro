@@ -46,17 +46,6 @@
               android:textColor="#fff"
               android:textSize="@dimen/bia_until_what"
     />
-
-    <TextView android:id="@+id/mA"
-	      android:layout_width="fill_parent"
-              android:layout_height="0px"
-              android:layout_weight="0.3"
-              android:gravity="center_horizontal|top"
-              android:textColor="#fff"
-              android:textSize="@dimen/bia_until_what"
-              android:clickable="true"
-    />
-
   </LinearLayout>
   <View android:layout_width="0px"
         android:layout_height="fill_parent"

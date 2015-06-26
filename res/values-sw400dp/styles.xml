@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="bu_button_height">75dp</dimen>
+  <dimen name="vital_stats_icon">28dp</dimen>
+  <dimen name="vital_stats_text">16dp</dimen>
+</resources>

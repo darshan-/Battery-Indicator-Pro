@@ -64,6 +64,12 @@ public class CurrentInfoFragment extends Fragment {
     private Button battery_use_b;
     private BatteryLevel bl;
     private ImageView blv;
+    private View current_icon;
+    private TextView tv_temp;
+    private TextView tv_health;
+    private TextView tv_voltage;
+    private TextView tv_current;
+
     private BatteryInfo info = new BatteryInfo();
 
     //private String oldLanguage = null;
@@ -124,8 +130,13 @@ public class CurrentInfoFragment extends Fragment {
 
         battery_use_b = (Button) view.findViewById(R.id.battery_use_b);
 
-        TextView tv = (TextView) view.findViewById(R.id.mA);
-        tv.setOnClickListener(mAListener);
+        view.findViewById(R.id.vital_stats).setOnClickListener(vsListener);
+        current_icon = view.findViewById(R.id.current_icon);
+
+        tv_temp = (TextView) view.findViewById(R.id.temp);
+        tv_health = (TextView) view.findViewById(R.id.health);
+        tv_voltage = (TextView) view.findViewById(R.id.voltage);
+        tv_current = (TextView) view.findViewById(R.id.current);
 
         bindButtons();
 
@@ -351,6 +362,13 @@ public class CurrentInfoFragment extends Fragment {
             tv.setText(s);
         }
 
+        Boolean convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
+
+        tv_health.setText(activity.str.healths[info.health]);
+        tv_temp.setText(activity.str.formatTemp(info.temperature, convertF));
+        if (info.voltage > 500)
+            tv_voltage.setText(activity.str.formatVoltage(info.voltage));
+
         refreshCurrent();
     }
 
@@ -358,7 +376,10 @@ public class CurrentInfoFragment extends Fragment {
         String s = "";
 
         if (activity.settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
-            activity.settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW, false)) {
+            activity.settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW, false))
+        {
+            current_icon.setVisibility(View.VISIBLE);
+
             Long current = null;
 
             if (activity.settings.getBoolean(SettingsActivity.KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW, false))
@@ -367,15 +388,16 @@ public class CurrentInfoFragment extends Fragment {
                 current = CurrentHack.getCurrent();
             if (current != null)
                 s += String.valueOf(current) + "mA";
+        } else {
+            current_icon.setVisibility(View.INVISIBLE);
         }
 
         // User may have just turned off hack or main window display of it, so we need to always set the text
-        TextView tv = (TextView) view.findViewById(R.id.mA);
-        tv.setText(s);
+        tv_current.setText(s);
     }
 
     /* mA TextView */
-    private final OnClickListener mAListener = new OnClickListener() {
+    private final OnClickListener vsListener = new OnClickListener() {
         public void onClick(View v) {
             refreshCurrent();
         }

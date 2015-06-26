@@ -24,22 +24,95 @@
             android:textSize="@dimen/bia_until_what"
   />
 
-  <LinearLayout android:orientation="vertical"
+  <LinearLayout android:id="@+id/vital_stats"
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="0px"
-                android:layout_weight="0.8"
+                android:layout_weight="0.5"
                 android:gravity="center"
+                android:clickable="true"
   >
-    <View android:layout_width="fill_parent"
-          android:layout_height="@dimen/between_buttons_padding"
-    />
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_height="wrap_content"
+                  android:layout_width="fill_parent"
+    >
+      <ImageView android:layout_width="@dimen/vital_stats_icon"
+                 android:layout_height="@dimen/vital_stats_icon"
+                 android:scaleType="fitCenter"
+                 android:padding="2dp"
+                 android:src="@drawable/temp"
+      />
+      <TextView android:id="@+id/temp"
+                android:layout_height="wrap_content"
+                android:layout_width="0px"
+                android:layout_weight="0.5"
+                android:gravity="center_vertical|left"
+                android:textSize="@dimen/vital_stats_text"
+      />
 
+      <ImageView android:layout_width="@dimen/vital_stats_icon"
+                 android:layout_height="@dimen/vital_stats_icon"
+                 android:scaleType="fitCenter"
+                 android:padding="2dp"
+                 android:src="@drawable/health"
+      />
+      <TextView android:id="@+id/health"
+                android:layout_height="wrap_content"
+                android:layout_width="0px"
+                android:layout_weight="0.5"
+                android:gravity="center_vertical|left"
+                android:textSize="@dimen/vital_stats_text"
+      />
+    </LinearLayout>
+
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_height="wrap_content"
+                  android:layout_width="fill_parent"
+    >
+
+      <ImageView android:layout_width="@dimen/vital_stats_icon"
+                 android:layout_height="@dimen/vital_stats_icon"
+                 android:scaleType="fitCenter"
+                 android:padding="2dp"
+                 android:src="@drawable/voltage"
+      />
+
+      <TextView android:id="@+id/voltage"
+                android:layout_height="wrap_content"
+                android:layout_width="0px"
+                android:layout_weight="0.5"
+                android:gravity="center_vertical|left"
+                android:textSize="@dimen/vital_stats_text"
+      />
+
+      <ImageView android:id="@+id/current_icon"
+                 android:layout_width="@dimen/vital_stats_icon"
+                 android:layout_height="@dimen/vital_stats_icon"
+                 android:scaleType="fitCenter"
+                 android:padding="2dp"
+                 android:src="@drawable/current"
+      />
+      <TextView android:id="@+id/current"
+                android:layout_height="wrap_content"
+	        android:layout_width="0px"
+                android:layout_weight="0.5"
+                android:gravity="center_vertical|left"
+                android:textSize="@dimen/vital_stats_text"
+      />
+    </LinearLayout>
+  </LinearLayout>
+
+  <LinearLayout android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="0.5"
+  >
     <Button android:id="@+id/battery_use_b"
             android:layout_height="@dimen/bu_button_height"
 	    android:layout_width="fill_parent"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:textSize="@dimen/bu_button_fs"
             android:text="@string/battery_use_b"
-     />
+    />
   </LinearLayout>
 </LinearLayout>
