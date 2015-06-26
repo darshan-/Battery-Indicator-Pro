@@ -8,9 +8,6 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Batterijgebruik bekijken</string>
   <string name="upgrade_donate_b" formatted="false">Upgraden of doneren</string>
-  <string name="reenable_lock_screen" formatted="false">Schermvergrendeling inschakelen</string>
-  <string name="disable_lock_screen" formatted="false">Schermvergrendeling uitschakelen</string>
-  <string name="confirm_disable" formatted="false">Wil je de schermvergrendeling uitschakelen?</string>
   <string name="confirm_disable_hint" formatted="false">(Je kunt deze bevestiging uitzetten bij de instellingen)</string>
   <string name="yes" formatted="false">Ja</string>
   <string name="cancel" formatted="false">Annuleren</string>
@@ -128,9 +125,6 @@
   <string name="status_bar_icon_settings" formatted="false">Status icoon</string>
   <string name="status_bar_icon_settings_summary" formatted="false">Iconen</string>
   <string name="status_bar_icon_settings_help" formatted="false">Je kunt selecteren welke iconen je wilt gebruiken.</string>
-  <string name="keyguard_settings" formatted="false">Schermvergrendeling</string>
-  <string name="keyguard_settings_summary" formatted="false">Gebruik deze instelling om de schermvergrendeling uit te schakelen</string>
-  <string name="keyguard_settings_help" formatted="false">Je kunt de schermvergrendeling handmatig of automatisch uitschakelen.</string>
   <string name="alarm_settings_subtitle" formatted="false">Alarminstellingen</string>
   <string name="alarm_settings" formatted="false">Alarmen</string>
   <string name="alarm_settings_summary" formatted="false">Meldingen voor lege of volle batterij instellen</string>
@@ -199,23 +193,6 @@
   <string name="pref_max_log_age" formatted="false">Maximale logboek leeftijd</string>
   <string name="pref_max_log_age_summary" formatted="false">Verwijder logboeken ouder dan:</string>
   <string name="pref_max_log_age_help" formatted="false">Wanneer het logboek is ingeschakeld zullen alle logs ouder dan dit worden verwijderd wanneer je je apparaat aansluit.</string>
-  <string name="pref_cat_keyguard" formatted="false">Schermvergendeling</string>
-  <string name="pref_cat_keyguard_help" formatted="false">Android geeft apps toestemming om de schermvergrendeling aan en uit te schakelen.</string>
-  <string name="pref_notify_when_kg_disabled" formatted="false">Melding geven wanneer uitgeschakeld</string>
-  <string name="pref_notify_when_kg_disabled_summary" formatted="false">Geef melding wanneer schermvergrendeling is uitgeschakeld</string>
-  <string name="pref_notify_when_kg_disabled_help" formatted="false">Geeft wanneer ingeschakeld een aparte melding wanneer de schermvergrendeling is uitgeschakeld.</string>
-  <string name="pref_confirm_manual_disable" formatted="false">Confirmatie bij handmatig vergrendeling voorkomen</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">Vraag om confirmatie bij handmatig vergrendeling voorkomen</string>
-  <string name="pref_confirm_manual_disable_help" formatted="false">Wanneer dit is ingeschakeld wordt er om een bevestiging gevraagd als je de schermvergrendeling tijdelijk wilt uitschakelen.</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Sluiten na schakelen</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Sluit hoofdvenster meteen na wijzigen van schermvergrendeling</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">Als je minder wilt klikken kun je deze optie aanzetten.</string>
-  <string name="pref_auto_disable" formatted="false">Schermvergrendeling automatisch uitschakelen</string>
-  <string name="pref_auto_disable_summary" formatted="false">Voorkom schermvergrendeling tijdens opladen</string>
-  <string name="pref_auto_disable_help" formatted="false">Als je dit aanzet zal de schermvergrendeling automatisch uitschakelen tijdens het opladen.</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">Handmatig uitschakelen niet toestaan</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Schakel de voorkom schermvergrendeling knop uit</string>
-  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Als je een alternatieve schermvergendeling gebruikt waarbij je toegang hebt tot de meldingen kun je dit beter aanzetten voor de veiligheid.</string>
   <string name="pref_notify_status_duration" formatted="false">Laat tijd van status zien</string>
   <string name="pref_notify_status_duration_summary" formatted="false">Laat de tijd zien sinds de laatste statuswijziging in plaats van de resterende tijd?</string>
   <string name="pref_notify_status_duration_help" formatted="false">Stel dit in als je wilt zien hoe lang geleden de laatste statuswijziging was.</string>

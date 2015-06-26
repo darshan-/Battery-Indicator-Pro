@@ -15,8 +15,6 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.AlarmManager;
-import android.app.KeyguardManager;
-import android.app.KeyguardManager.KeyguardLock;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -63,12 +61,8 @@ public class BatteryInfoService extends Service {
     private static SharedPreferences sp_store;
     private static SharedPreferences.Editor sps_editor;
 
-    private KeyguardLock kl;
-    private KeyguardManager km;
     private android.os.Vibrator mVibrator;
     private android.media.AudioManager mAudioManager;
-
-    private Notification kgUnlockedNotification;
 
     private Context context;
     private Resources res;
@@ -89,7 +83,6 @@ public class BatteryInfoService extends Service {
     private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfoService";
 
     private static final int NOTIFICATION_PRIMARY      = 1;
-    private static final int NOTIFICATION_KG_UNLOCKED  = 2;
     private static final int NOTIFICATION_ALARM_CHARGE = 3;
     private static final int NOTIFICATION_ALARM_HEALTH = 4;
     private static final int NOTIFICATION_ALARM_TEMP   = 5;
@@ -97,7 +90,6 @@ public class BatteryInfoService extends Service {
     public static final String KEY_PREVIOUS_CHARGE = "previous_charge";
     public static final String KEY_PREVIOUS_TEMP = "previous_temp";
     public static final String KEY_PREVIOUS_HEALTH = "previous_health";
-    public static final String KEY_DISABLE_LOCKING = "disable_lock_screen";
     public static final String KEY_SERVICE_DESIRED = "serviceDesired";
     public static final String KEY_SHOW_NOTIFICATION = "show_notification";
     public static final String LAST_SDK_API = "last_sdk_api";
@@ -154,14 +146,6 @@ public class BatteryInfoService extends Service {
         }
     };
 
-    private final Runnable runDisableKeyguard = new Runnable() {
-        public void run() {
-            kl = km.newKeyguardLock(getPackageName());
-            kl.disableKeyguard();
-            updateKeyguardNotification();
-        }
-    };
-
     private final Runnable runRenotify = new Runnable() {
         public void run() {
             registerReceiver(mBatteryInfoReceiver, batteryChanged);
@@ -205,17 +189,6 @@ public class BatteryInfoService extends Service {
 
         alarmsIntent = new Intent(context, AlarmsActivity.class);
 
-        kgUnlockedNotification = new Notification(R.drawable.kg_unlocked, null, 0);
-        kgUnlockedNotification.flags |= Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
-
-        kgUnlockedNotification.setLatestEventInfo(context, "Lock Screen Disabled",
-                                                  "Press to re-enable", mainWindowPendingIntent);
-
-        km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
-
-        if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
-            setEnablednessOfKeyguard(false);
-
         pluginPackage = "none";
 
         widgetManager = AppWidgetManager.getInstance(context);
@@ -238,7 +211,6 @@ public class BatteryInfoService extends Service {
     @Override
     public void onDestroy() {
         alarmManager.cancel(updatePredictorPendingIntent);
-        setEnablednessOfKeyguard(true);
         alarms.close();
         if (! pluginPackage.equals("none")) disconnectPlugin();
         unregisterReceiver(mBatteryInfoReceiver);
@@ -347,11 +319,6 @@ public class BatteryInfoService extends Service {
         str = new Str(res); // Language override may have changed
 
         if (cancelFirst) stopForeground(true);
-
-        if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
-            setEnablednessOfKeyguard(false);
-        else
-            setEnablednessOfKeyguard(true);
 
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
     }
@@ -785,29 +752,6 @@ public class BatteryInfoService extends Service {
         if (info.status != info.last_status && info.status == BatteryInfo.STATUS_UNPLUGGED)
             mNotificationManager.cancel(NOTIFICATION_ALARM_CHARGE);
 
-        if (info.last_status != info.status && settings.getBoolean(SettingsActivity.KEY_AUTO_DISABLE_LOCKING, false)) {
-            if (info.last_status == BatteryInfo.STATUS_UNPLUGGED) {
-                sps_editor.putBoolean(KEY_DISABLE_LOCKING, true);
-                setEnablednessOfKeyguard(false);
-            } else if (info.status == BatteryInfo.STATUS_UNPLUGGED) {
-                sps_editor.putBoolean(KEY_DISABLE_LOCKING, false);
-                setEnablednessOfKeyguard(true);
-
-                /* If the screen was on, "inside" the keyguard, when the keyguard was disabled, then we're
-                   still inside it now, even if the screen is off.  So we aquire a wakelock that forces the
-                   screen to turn on, then release it.  If the screen is on now, this has no effect, but
-                   if it's off, then either the user will press the power button or the screen will turn
-                   itself off after the normal timeout.  Either way, when the screen goes off, the keyguard
-                   will now be enabled properly. */
-                PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-                PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK |
-                                                          PowerManager.ACQUIRE_CAUSES_WAKEUP |
-                                                          PowerManager.ON_AFTER_RELEASE, getPackageName());
-                wl.acquire();
-                wl.release();
-            }
-        }
-
         updated_lasts = true;
         sps_editor.putLong(BatteryInfo.KEY_LAST_STATUS_CTM, now);
         sps_editor.putInt(BatteryInfo.KEY_LAST_STATUS, info.status);
@@ -940,47 +884,6 @@ public class BatteryInfoService extends Service {
 
         return notification;
     }
-
-    private void setEnablednessOfKeyguard(boolean enabled) {
-        if (enabled) {
-            if (kl != null) {
-                unregisterReceiver(mUserPresentReceiver);
-                mHandler.removeCallbacks(runDisableKeyguard);
-                kl.reenableKeyguard();
-                kl = null;
-            }
-        } else {
-            if (km.inKeyguardRestrictedInputMode()) {
-                registerReceiver(mUserPresentReceiver, userPresent);
-            } else {
-                if (kl != null)
-                    kl.reenableKeyguard();
-                else
-                    registerReceiver(mUserPresentReceiver, userPresent);
-
-                mHandler.postDelayed(runDisableKeyguard, 300);
-            }
-        }
-
-        updateKeyguardNotification();
-    }
-
-    private void updateKeyguardNotification() {
-        if (kl != null && settings.getBoolean(SettingsActivity.KEY_NOTIFY_WHEN_KG_DISABLED, true))
-            mNotificationManager.notify(NOTIFICATION_KG_UNLOCKED, kgUnlockedNotification);
-        else
-            mNotificationManager.cancel(NOTIFICATION_KG_UNLOCKED);
-    }
-
-    private final BroadcastReceiver mUserPresentReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (Intent.ACTION_USER_PRESENT.equals(intent.getAction())){
-                if (sp_store.getBoolean(KEY_DISABLE_LOCKING, false))
-                    setEnablednessOfKeyguard(false);
-            }
-        }
-    };
 
     private String formatTime(Date d) {
         String format = android.provider.Settings.System.getString(getContentResolver(),

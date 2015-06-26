@@ -7,9 +7,6 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Exibir Uso da Bateria</string>
   <string name="upgrade_donate_b" formatted="false">Fazer Upgrade/Doar...</string>
-  <string name="reenable_lock_screen" formatted="false">Reativar o Bloqueio de Tela</string>
-  <string name="disable_lock_screen" formatted="false">Desabilitar o Bloqueio de Tela</string>
-  <string name="confirm_disable" formatted="false">Deseja realmente desativar o bloqueio de tela?</string>
   <string name="confirm_disable_hint" formatted="false">Sugestão: Essa confirmação pode ser desativada nas configurações...</string>
   <string name="yes" formatted="false">Sim</string>
   <string name="cancel" formatted="false">Cancelar</string>

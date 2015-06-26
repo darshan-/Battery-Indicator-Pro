@@ -7,9 +7,6 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Zobrazit využití baterie</string>
   <string name="upgrade_donate_b" formatted="false">Upgrade/Podpořit vývoj...</string>
-  <string name="reenable_lock_screen" formatted="false">Opět povolit zámek obrazovky</string>
-  <string name="disable_lock_screen" formatted="false">Zakázat zámek obrazovky</string>
-  <string name="confirm_disable" formatted="false">Skutečně zakázat zámek obrazovky</string>
   <string name="confirm_disable_hint" formatted="false">Nápověda: Zakázat tento potvrzovací dialog v nastavení...</string>
   <string name="yes" formatted="false">Ano</string>
   <string name="cancel" formatted="false">Zrušit</string>
@@ -120,17 +117,6 @@
   <string name="pref_max_log_age" formatted="false">Maximální stáří záznamů</string>
   <string name="pref_max_log_age_summary" formatted="false">Vymazat záznamy starší než:</string>
   <string name="pref_max_log_age_help" formatted="false">Pokud jsou záznamy povoleny, pak všechny starší budou vždy vymazány.</string>
-  <string name="pref_cat_keyguard" formatted="false">Zámek obrazovky / Ochrana klávesnice</string>
-  <string name="pref_cat_keyguard_help" formatted="false">Android dovoluje aplikaci zakázat a obnovit zámek obrazovky. Kromě této jednoduché funkcionality není možno nastavit nic víc. Nemůžete nastavit například která klávesa bude bude zámek ovládat.</string>
-  <string name="pref_confirm_manual_disable" formatted="false">Potvrdit ruční vypnutí</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">Vyžádat potvrzení pro ruční vypnutí zámku obrazovky ?</string>
-  <string name="pref_confirm_manual_disable_help" formatted="false">Pokud je tato volba vybrána, bude vždy při pokusu o ruční vypnutí zámku obrazovky zobrazen potvrzovací dialog. Toto je primárně určeno pro nové uživatele, abychom předešli nechtěnému zakázání zámku obrazovky. Pokud víte co děláte, pak tuto volbu vypněte.</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Ukončit po přepnutí</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Ukončit hlavní okno okamžitě po zakázání/obnovení ?</string>
-  <string name="pref_auto_disable" formatted="false">Automaticky zakázat zámek obrazovky</string>
-  <string name="pref_auto_disable_summary" formatted="false">Zakázat zámek obrazovky v průběhu nabíjení ?</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">Nepovolit ruční vypnutí</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Nepovolit použití tlačítka pro ruční vypnutí zámku obrazovky ?</string>
   <string name="pref_cat_battery_use" formatted="false">Využití baterie</string>
   <string name="pref_finish_after_battery_use" formatted="false">Ukončit po spuštění</string>
   <string name="pref_finish_after_battery_use_summary" formatted="false">Ukončit hlavní okno ihned jakmile je zobrazeno Využití baterie.</string>

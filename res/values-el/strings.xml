@@ -8,9 +8,6 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Χρήση Μπαταρίας</string>
   <string name="upgrade_donate_b" formatted="false">Αναβάθμιση/Δωρεά</string>
-  <string name="reenable_lock_screen" formatted="false">Ενεργοποίηση Κλειδώματος Οθόνης</string>
-  <string name="disable_lock_screen" formatted="false">Απενεργοποίηση Κλειδώματος Οθόνης</string>
-  <string name="confirm_disable" formatted="false">Πραγματικά θέλετε να απενεργοποιήσετε το κλείδωμα της Οθόνης;</string>
   <string name="confirm_disable_hint" formatted="false">Συμβουλή: Απενεργοποιήστε αυτό το μήνυμα στις ρυθμίσεις...</string>
   <string name="yes" formatted="false">Ναι</string>
   <string name="cancel" formatted="false">Ακύρωση</string>
@@ -126,20 +123,6 @@
   <string name="pref_max_log_age" formatted="false">Μέγιστη Περίοδος Καταγραφής</string>
   <string name="pref_max_log_age_summary" formatted="false">Διαγραφή λίστας δεδομένων παλαιότερης από:</string>
   <string name="pref_max_log_age_help" formatted="false">Αν η καταγραφή είναι ενεργοποιημένη, τότε όποτε συνδέετε τη συσκευή στην πρίζα, όλες οι παλαιότερες καταγραφές θα διαγραφούν.</string>
-  <string name="pref_cat_keyguard" formatted="false">Κλείδωμα Οθόνης / Φύλαξη Οθόνης</string>
-  <string name="pref_cat_keyguard_help" formatted="false">Το Android επιτρέπει σε εφαρομογές να ενεργοποιούν και να απενεργοποιούν αυτό που λέμε \"keyguard\", το οποίο πιθανόν να έχετε στο μυαλό σας ως κλείδωμα οθόνης. Πέρα όμως από την ενεργοποίηση και την απενεργοποίηση δεν υπάρχει άλλος έλεγχος - δεν μπορούμε να ελέξουμε ποια πλήκτρα ενεργοποιούν την οθόνη, για παράδειγμα.</string>
-  <string name="pref_confirm_manual_disable" formatted="false">Επιβεβαίωση Χειροκίνητης Απενεργοποίησης</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">Επιβεβαίωση χειροκίνητης απενεργοποίησης κλειδώματος οθόνης;</string>
-  <string name="pref_confirm_manual_disable_help" formatted="false">Αν επιλεγεί, μια ερώτηση επιβεβαίωσης θα αναδυθεί όταν προσπαθείτε να απενεργοποιήσετε χειροκίνητα το κλείδωμα της οθόνης. Αυτό γίνεται κυρίως για να παρεμποδίσει τους νέους χρήστες από το να απενεργοποιήσουν το κλείδωμα της οθόνης της συσκευής τους κατά λάθος χωρίς να το γνωρίζουν. Αν απενεργοποιείτε το κλείδωμα της οθόνης σας περιοδικά, ίσως να θέλετε να ακυρώσετε την επιβεβαίωση αυτή.</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Έξοδος Μετά από Εναλλαγή</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Έξοδος από κυρίως παράθυρο μετά από απ/ενεργοποίηση;</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">Αν είστε κάποιος για τον οποίο κάθε πάτημα κουμπιού (ή της οθόνης) μετρά, θα θέλατε να το ενεργοποιήσετε αυτό. Αν ο στόχος σας είναι απλά να απενεργοποιήσετε ή να ενεργοποιήσετε το κλείδωμα οθόνης και μετά να επιστρέψετε σε αυτό που κάνατε, αυτό θα σας απαλλάξει από το να πατάτε το πλήκτρο BACK. Απλά κατεβάστε τη μπάρα ειδοποιήσεων, και πατήστε το κουμπί για εναλλαγή στο κλείδωμα οθόνης: τρία πατήματα στην οθόνη και είστε πίσω σε αυτό που κάνατε.\n\nΓια ξεκάθαρους λόγους, μπορείτε να το ενεργοποιήσετε αν ήταν απενεργοποιημένο και αντίστροφα.</string>
-  <string name="pref_auto_disable" formatted="false">Αυτόματη απενεργοποίηση Κλειδώματος Οθόνης</string>
-  <string name="pref_auto_disable_summary" formatted="false">Απενεργοποίηση Κλειδώματος Οθόνης κατά τη φόρτιση;</string>
-  <string name="pref_auto_disable_help" formatted="false">Αν είναι επιλεγμένο, τότε όποτε συνδέεται η συσκευή με το ρεύμα, ο Battery indicator θα απενεργοποιεί το κλείδωμα της οθόνης και όποτε αποσυνδέεται η συσκευή, θα ξαναενεργοποιεί το κλείδωμα της οθόνης.\n\nΣημειώστε ότι με αυτή την επιλογή ενεργοποιημένη, θα πρέπει να ενεργοποιήσετε χειροκίνητα το κλείδωμα της οθόνης μια φορά πριν να γίνεται αυτόματα η εναλλαγή.</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">Αποτροπή Χειροκίνητης Απενεργοποίησης</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Αποτροπή χρήσης πλήκτρου κλειδώματος οθόνης;</string>
-  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Αν έχετε ένα εναλλακτικό πρόγραμμα κλειδώματος οθόνης το οποίο σας δίνει πρόσβαση στη γραμμή ειδοποιήσεων όταν η οθόνη είναι κλειδωμένη, θα πρέπει να ενεργοποιήσετε αυτή την επιλογή για λόγους ασφαλείας.</string>
   <string name="pref_cat_battery_use" formatted="false">Χρήση Μπαταρίας</string>
   <string name="pref_finish_after_battery_use" formatted="false">Έξοδος μετά την Προβολή</string>
   <string name="pref_finish_after_battery_use_summary" formatted="false">Έξοδος από το κυρίως παράθυρο αμέσως μετά την προβολή Χρήσης Μπαταρίας;</string>

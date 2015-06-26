@@ -8,11 +8,8 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">バッテリーの使用を表示する</string>
   <string name="upgrade_donate_b" formatted="false">アップグレード/寄付...</string>
-  <string name="reenable_lock_screen" formatted="false">ロック画面を再有効化する</string>
-  <string name="disable_lock_screen" formatted="false">ロック画面を無効にする</string>
   <string name="circle_widget" formatted="false">BatteryBot サークル</string>
   <string name="full_widget" formatted="false">BatteryBot フル</string>
-  <string name="confirm_disable" formatted="false">ロック画面を無効にしてもよろしいですか?</string>
   <string name="confirm_disable_hint" formatted="false">ヒント: 設定でこの確認ダイアログを無効にできます...</string>
   <string name="yes" formatted="false">はい</string>
   <string name="cancel" formatted="false">キャンセル</string>
@@ -144,9 +141,6 @@
   <string name="status_bar_icon_settings" formatted="false">ステータスバー アイコン</string>
   <string name="status_bar_icon_settings_summary" formatted="false">アイコンセットのコントロール</string>
   <string name="status_bar_icon_settings_help" formatted="false">どのアイコンセットを使用するか選択して、アイコンセットの設定を変更することができます (色など)。</string>
-  <string name="keyguard_settings" formatted="false">ロック画面</string>
-  <string name="keyguard_settings_summary" formatted="false">ロック画面を無効にする機能を設定します</string>
-  <string name="keyguard_settings_help" formatted="false">デバイスのロック画面を自動または手動で無効にする機能について、いくつかの設定をすることができます。</string>
   <string name="alarm_settings_subtitle" formatted="false">アラーム設定</string>
   <string name="alarm_settings" formatted="false">アラーム</string>
   <string name="alarm_settings_summary" formatted="false">低残量/フル充電の通知をコントロール</string>
@@ -215,23 +209,6 @@
   <string name="pref_max_log_age" formatted="false">最大ログ履歴</string>
   <string name="pref_max_log_age_summary" formatted="false">次より古いログを削除します:</string>
   <string name="pref_max_log_age_help" formatted="false">ロギングが有効になっている場合、あなたのデバイスを接続するたびに、 ここで指定した値よりも古いログを削除します。</string>
-  <string name="pref_cat_keyguard" formatted="false">ロック画面 / キーガード</string>
-  <string name="pref_cat_keyguard_help" formatted="false">あなたがおそらくロック画面として使用している \"キーガード\" と呼ばれるアプリを、Android が無効にしたり、再度有効にできるようにします。 しかし、単に無効にしたり、再度有効にするだけで、 どのキーでロック解除するかなど、それ以上の制御はありません。</string>
-  <string name="pref_notify_when_kg_disabled" formatted="false">無効時に通知する</string>
-  <string name="pref_notify_when_kg_disabled_summary" formatted="false">ロック画面が無効にされた時に通知しますか?</string>
-  <string name="pref_notify_when_kg_disabled_help" formatted="false">チェックした場合、アプリがロック画面を無効にしたことを示す、 個別の通知が表示されます。</string>
-  <string name="pref_confirm_manual_disable" formatted="false">手動での無効を確認する</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">ロック画面を手動で無効にした時に確認しますか?</string>
-  <string name="pref_confirm_manual_disable_help" formatted="false">チェックした場合、手動でロック画面を無効にしようとすると、 確認ダイアログがポップアップ表示されます。これは主に、 新しいユーザーが誤って、知らずにロック画面を無効にすることを 予防するためです。あなたが定期的にロック画面を無効にする場合は、 おそらくこれをオフにしたくなるでしょう。</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">切り替え後に終了する</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">無効/再度有効にした後にすぐメインウインドウを終了しますか?</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">それぞれのキーストロークが (またはタッチスクリーンを押すのが) 煩わしい方は、これを有効にしたくなるかもしれません。 あなたの目的が単にロック画面を無効にしたり、再度有効にするだけで、 前の操作にそのまま戻りたい場合は、これで戻るボタンを押す必要がなくなります。 通知バーを引き下げて BatteryBot を選択して、ロック画面を切り替える ボタンを押すだけです。画面を 3 回押すと前の操作に戻ります。\n\n明らかに、前の設定が無効になっている場合のみ、有効にすることができます。 あるいは、その逆です。</string>
-  <string name="pref_auto_disable" formatted="false">ロック画面を自動的に無効にする</string>
-  <string name="pref_auto_disable_summary" formatted="false">充電中にロック画面を無効にしますか?</string>
-  <string name="pref_auto_disable_help" formatted="false">チェックした場合、デバイスに充電プラグが差し込まれると、 BatteryBot はロック画面を無効にします。プラグを抜くと 再度有効にします。\n\nこのオプションを有効にしても、自動的に無効になる前に ロックされた画面は、手動で一度ロック解除する必要があることに ご注意ください。</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">手動での無効を禁止する</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">ロック画面を無効にするボタンの使用を禁止しますか?</string>
-  <string name="pref_disallow_disable_lock_screen_help" formatted="false">画面がロックされているときに通知トレイにアクセス可能な、 別のロック画面がある場合は、セキュリティ上の理由から、 このオプションを有効にすることをお勧めします。</string>
   <string name="pref_notify_status_duration" formatted="false">ステータス時間を表示</string>
   <string name="pref_notify_status_duration_summary" formatted="false">見積残り時間ではなく、ステータスが変わってからの時間を表示しますか?</string>
   <string name="pref_notify_status_duration_help" formatted="false">メイン通知で、見積残り時間ではなく、ステータスが変わってからの時間 (\"プラグを抜いてから 5 時間\" など) の表示をお好みの場合は、 この設定を有効にしてください。メインウインドウで両方の情報が入手できます。</string>

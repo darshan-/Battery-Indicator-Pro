@@ -8,9 +8,6 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Utilisation de la batterie</string>
   <string name="upgrade_donate_b" formatted="false">Mettre à niveau/Faire un don...</string>
-  <string name="reenable_lock_screen" formatted="false">Réactiver l\'écran de verrouillage</string>
-  <string name="disable_lock_screen" formatted="false">Désactiver l\'écran de verrouillage</string>
-  <string name="confirm_disable" formatted="false">Désactiver l\'écran de verrouillage ?</string>
   <string name="confirm_disable_hint" formatted="false">Conseil : Vous pouvez désactiver ce message dans les paramètres...</string>
   <string name="yes" formatted="false">Oui</string>
   <string name="cancel" formatted="false">Annuler</string>
@@ -127,20 +124,6 @@
   <string name="pref_max_log_age" formatted="false">Âge maximal du journal</string>
   <string name="pref_max_log_age_summary" formatted="false">Supprimer les journaux plus ancients que :</string>
   <string name="pref_max_log_age_help" formatted="false">Lorsque la journalisation est activée que vous branchez votre téléphone les journaux les plus vieux sont supprimés.</string>
-  <string name="pref_cat_keyguard" formatted="false">Écran de verrouillage</string>
-  <string name="pref_cat_keyguard_help" formatted="false">Android autorise les applications à désactiver/réactiver l\'écran de verrouillage. On peux désactiver/réactiver le verrouillage mais pas plus, par exemple on ne peut pas allumer ou éteindre l\'écran.</string>
-  <string name="pref_confirm_manual_disable" formatted="false">Confirmer la désactivation</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">Confirmer lorsque l\'écran de verrouillage est manuellement désactivé ?</string>
-  <string name="pref_confirm_manual_disable_help" formatted="false">Si l\'option est cochée un message de confirmation sera affiché quand vous essayerez de désactiver l\'écran de verrouillage. Cela permet aux nouveaux utilisateurs de ne pas désactiver l\'écran de verrouillage sans le savoir. Si vous êtes ammenés à désactiver régulièrement l\'écran de verrouillage vous devriez peut-être décocher cette option.</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Quitter la fenêtre principale</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Quitter la fenêtre principale lors d\'une désactivation/réactivation ?</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">Si vous êtes quelqu\'un pour qui chaque geste compte vous activerez probablement cette option. Si votre but est de désactiver/réactiver simplement l\'écran de verrouillage et de retourner à ce que vous faisiez, cette option vous permettra de ne pas à avoir à presser la touche retour. Dépliez juste la barre de notification, touchez l\'icône de Battery Indicator et pressez le bouton pour désactiver/réactiver l\'écran de verrouillage : En trois pressions sur l\'écran vous êtes de retour à ce que vous faisiez.\n\nPour des raisons évidentes vous pouvez activer cette option seulement si l\'option précédente est désactivée et vice versa.</string>
-  <string name="pref_auto_disable" formatted="false">Auto-désactivation de l\'écran de verrouillage</string>
-  <string name="pref_auto_disable_summary" formatted="false">Désactiver automatiquement l\'écran de verrouillage lors de la charge ?</string>
-  <string name="pref_auto_disable_help" formatted="false">Si l\'option est cochée et que le téléphone est branché, Battery Indicator désactivera l\'écran de verrouillage et si le téléphone est débranché l\'écran de verrouillage sera réactivé.\n\nSi cette option est activée vous aurez à déverrouiller manuellement l\'écran de verrouillage une fois avant que l\'auto-désactivation prenne effet.</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">Interdire la désactivation manuelle</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Désactive le bouton de désactivation manuelle de l\'écran de verrouillage.</string>
-  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Si vous avez un écran de verrouillage alternatif qui autorise l\'accès à la barre de notification lorsque le téléphone est verrouillé, vous aurez à activer cette option pour des raisons de sécurité.</string>
   <string name="pref_cat_battery_use" formatted="false">Utilisation de la Batterie</string>
   <string name="pref_finish_after_battery_use" formatted="false">Quitter après le lancement</string>
   <string name="pref_finish_after_battery_use_summary" formatted="false">Quitter la fenêtre principale lorsque l\'utilisation de la batterie est lancé ?</string>

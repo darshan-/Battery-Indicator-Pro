@@ -8,9 +8,6 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Poglej porabo baterije</string>
   <string name="upgrade_donate_b" formatted="false">Nadgradi/doniraj...</string>
-  <string name="reenable_lock_screen" formatted="false">Ponovno omogoči zaklepanje zaslona</string>
-  <string name="disable_lock_screen" formatted="false">Onemogoči zaklepanje zaslona</string>
-  <string name="confirm_disable" formatted="false">Ste prepričani da želite onemogočiti zaklepanje zaslona?</string>
   <string name="confirm_disable_hint" formatted="false">Namig: Onemogočite to vprašanje v nastavitvah...</string>
   <string name="yes" formatted="false">Da</string>
   <string name="cancel" formatted="false">Prekliči</string>
@@ -113,12 +110,6 @@
   <string name="pref_enable_logging_summary" formatted="false">Beležim spremembo stanj baterije?</string>
   <string name="pref_max_log_age" formatted="false">Največja starost poročila</string>
   <string name="pref_max_log_age_summary" formatted="false">Izbriši poročila starejša od:</string>
-  <string name="pref_confirm_manual_disable" formatted="false">Potrditev ročnega onemogočenja</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">Zahtevaj potrditev po ročnem onemogočenju zaklepanja zaslona?</string>
-  <string name="pref_auto_disable" formatted="false">Samodejno zakleni zaslon</string>
-  <string name="pref_auto_disable_summary" formatted="false">Onemogočim zaklepanje zaslona med polnjenjem?</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">Prepreči ročno onemogočenje</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Onemogoči uporabo gumba za onemogočenje zaklepanja zaslona?</string>
   <string name="pref_cat_battery_use" formatted="false">Poraba baterije</string>
   <string name="pref_finish_after_battery_use" formatted="false">Zapri po zagonu</string>
   <string name="pref_finish_after_battery_use_summary" formatted="false">Zapri glavno okno takoj po zagonu Porabe baterije?</string>

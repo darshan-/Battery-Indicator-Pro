@@ -8,9 +8,6 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Pil Kullanımını Gör</string>
   <string name="upgrade_donate_b" formatted="false">Yükselt/Bağış Yap...</string>
-  <string name="reenable_lock_screen" formatted="false">Ekran Kilidini Tekrar Etkinleştir</string>
-  <string name="disable_lock_screen" formatted="false">Ekran Kilidini Kaldır</string>
-  <string name="confirm_disable" formatted="false">Ekran kilidini gerçekten kaldır?</string>
   <string name="confirm_disable_hint" formatted="false">İpucu: Bu onay mesajı ayarlar\'dan kaldırılabilir...</string>
   <string name="yes" formatted="false">Evet</string>
   <string name="cancel" formatted="false">İptal</string>
@@ -137,9 +134,6 @@
   <string name="pref_enable_logging" formatted="false">Kayıt Tutmayı Etkinleştir</string>
   <string name="pref_max_log_age" formatted="false">Maksimum Kayıt Yaşı</string>
   <string name="pref_max_log_age_summary" formatted="false">Şundan eski kayıtları sil:</string>
-  <string name="pref_cat_keyguard" formatted="false">Kilit Ekranı / Tuşkilidi</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">Elle Devre Dışı Bırakmayı Engelle</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Ekran kilidi tuşunun etkinliğini kaldırmayı engelle?</string>
   <string name="pref_cat_battery_use" formatted="false">Pil Kullanımı</string>
   <string name="pref_finish_after_battery_use" formatted="false">Başladıktan Sonra Çık</string>
   <string name="pref_cat_temperature_unit" formatted="false">Sıcaklık Birimi</string>

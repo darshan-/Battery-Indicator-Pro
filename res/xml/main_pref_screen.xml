@@ -25,12 +25,6 @@
   />
 
   <Preference
-     android:key="keyguard_settings"
-     android:title="@string/keyguard_settings"
-     android:summary="@string/keyguard_settings_summary"
-  />
-
-  <Preference
      android:key="current_hack_settings"
      android:title="@string/current_hack_settings"
      android:summary="@string/current_hack_settings_summary"

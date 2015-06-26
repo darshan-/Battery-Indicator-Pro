@@ -8,9 +8,6 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Vizualizeaza Utilizarea Bateriei</string>
   <string name="upgrade_donate_b" formatted="false">Upgrade/Doneaza</string>
-  <string name="reenable_lock_screen" formatted="false">Reactiveaza Blocare Ecran</string>
-  <string name="disable_lock_screen" formatted="false">Dezactiveaza Blocare Ecran</string>
-  <string name="confirm_disable" formatted="false">Dezactivati blocarea ecranului?</string>
   <string name="confirm_disable_hint" formatted="false">Sugestie: Dezactiveaza acest mesaj de confirmare din meniul setari...</string>
   <string name="yes" formatted="false">Da</string>
   <string name="cancel" formatted="false">Anuleaza</string>

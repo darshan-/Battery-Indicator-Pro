@@ -8,11 +8,8 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Akkuverbrauch anzeigen</string>
   <string name="upgrade_donate_b" formatted="false">Upgrade/Spenden...</string>
-  <string name="reenable_lock_screen" formatted="false">Bildschirmsperre einschalten</string>
-  <string name="disable_lock_screen" formatted="false">Bildschirmsperre ausschalten</string>
   <string name="circle_widget" formatted="false">BatteryBot Kreis</string>
   <string name="full_widget" formatted="false">BatteryBot Voll</string>
-  <string name="confirm_disable" formatted="false">Soll die Bildschirmsperre wirklich ausgeschaltet werden?</string>
   <string name="confirm_disable_hint" formatted="false">Tipp: Sie können den Bestätigung Dialog in den Einstellungen ausschalten...</string>
   <string name="yes" formatted="false">Ja</string>
   <string name="cancel" formatted="false">Abbrechen</string>
@@ -156,15 +153,6 @@
   <string name="pref_enable_logging_summary" formatted="false">Batteriestatusänderungen protokollieren?</string>
   <string name="pref_max_log_age" formatted="false">Maximales Protokollalter</string>
   <string name="pref_max_log_age_summary" formatted="false">Löschen von Protokollen älter als:</string>
-  <string name="pref_cat_keyguard" formatted="false">Bildschirm- und Tastatursperre</string>
-  <string name="pref_confirm_manual_disable" formatted="false">Manuelles Ausschalten bestätigen</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">Bestätigung beim manuellen Ausschalten der Bildschirmsperre?</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Nach Umschalten verlassen</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Hauptfenster unmittelbar nach dem Ein-/Ausschalten verlassen?</string>
-  <string name="pref_auto_disable" formatted="false">Bildschirmsperre automatisch aufheben</string>
-  <string name="pref_auto_disable_summary" formatted="false">Bildschirmsperre aufheben, wenn Gerät geladen wird?</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">Manuelles Aufheben verbieten</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Funktion der Bildschirmsperre-Aufheben-Schaltfläche unterdrücken?</string>
   <string name="pref_cat_battery_use" formatted="false">Akkuverbrauch</string>
   <string name="pref_finish_after_battery_use" formatted="false">Schließen nach dem Aufrufen</string>
   <string name="pref_finish_after_battery_use_summary" formatted="false">Hauptfenster schließen, wenn Akkuverbrauch aufgerufen wird?</string>

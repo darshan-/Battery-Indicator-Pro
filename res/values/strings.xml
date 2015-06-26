@@ -10,13 +10,8 @@
 
   <string formatted="false" name="battery_use_b">View Battery Use</string>
   <string formatted="false" name="upgrade_donate_b">Upgrade/Donate...</string>
-  <string formatted="false" name="reenable_lock_screen">Reenable Lock Screen</string>
-  <string formatted="false" name="disable_lock_screen">Disable Lock Screen</string>
-
   <string formatted="false" name="circle_widget">BatteryBot Circle</string>
   <string formatted="false" name="full_widget">BatteryBot Full</string>
-
-  <string formatted="false" name="confirm_disable">Really disable lock screen?</string>
   <string formatted="false" name="confirm_disable_hint">
     Hint: Disable this confirmation dialog in the settings...
   </string>
@@ -225,28 +220,24 @@
 
   <string formatted="false" name="help_cat_google_plus">Google Plus Page</string>
   <string formatted="false" name="help_google_plus">Consider
-    folowing the <a
-    href="https://www.google.com/+BatterybotInfoAndroid">Google Plus Page</a>
+    folowing the <a href="https://www.google.com/+BatterybotInfoAndroid">Google Plus Page</a>
     for announcements and polls.
   </string>
 
   <string formatted="false" name="help_cat_website">Website</string>
   <string formatted="false" name="help_website">More
-    infomation is available at the <a
-    href="http://www.batterybot.info/">BatteryBot website</a>.
+    infomation is available at the <a href="http://www.batterybot.info/">BatteryBot website</a>.
   </string>
 
   <string formatted="false" name="help_cat_open_source">Open Source</string>
   <string formatted="false" name="help_open_source">This
-    is an open source project, which means you can <a
-    href="http://www.batterybot.info/sourcecode">download the source
+    is an open source project, which means you can <a href="http://www.batterybot.info/sourcecode">download the source
     code</a>.
   </string>
 
   <string formatted="false" name="help_cat_donate">Donate</string>
   <string formatted="false" name="help_donate">Please
-    consider donating by upgrading to the <a
-    href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro
+    consider donating by upgrading to the <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro
     Version</a>.
   </string>
 
@@ -280,8 +271,7 @@
   <string formatted="false" name="help_translations">I
     need help translating this app to new languages and maintaining
     the existing translations.  If you would like to help, please send
-    me an <a
-    href="mailto:support%2Btranslations@batterybot.info">email</a>.
+    me an <a href="mailto:support%2Btranslations@batterybot.info">email</a>.
     Please let me know if and how you would like your name listed in
     this section in acknowledgment of your assistance.
   </string>
@@ -313,11 +303,6 @@
   <string formatted="false" name="status_bar_icon_settings_summary">Control icon sets</string>
   <string formatted="false" name="status_bar_icon_settings_help">
     You can select which icon set to use and change the settings for the icon set (e.g., colors).
-  </string>
-  <string formatted="false" name="keyguard_settings">Lock Screen</string>
-  <string formatted="false" name="keyguard_settings_summary">Configure the feature to disable the lock screen</string>
-  <string formatted="false" name="keyguard_settings_help">
-    You can configure several aspects about the feature to automatically or manually disable your device\'s lock screen.
   </string>
   <string formatted="false" name="current_hack_settings">Current (mA) Hack</string>
   <string formatted="false" name="current_hack_settings_summary">Advanced settings for enabling mA info</string>
@@ -604,63 +589,6 @@
     If logging is enabled, then whenever you plug in your device, logs
     older than this will be deleted.
   </string>
-
-  <string formatted="false" name="pref_cat_keyguard">Lock Screen / Keyguard</string>
-  <string formatted="false" name="pref_cat_keyguard_help">
-    Android allows apps to disable and reenable what it calls the
-    \"keyguard\", which you probably think of as the lock screen.
-    Beyond simply disabling and reenabling it, however, there is no
-    more control — I can\'t control which keys turn the screen on, for
-    example.
-  </string>
-  <string formatted="false" name="pref_notify_when_kg_disabled">Notify When Disabled</string>
-  <string formatted="false" name="pref_notify_when_kg_disabled_summary">Indicate when lock screen is disabled? </string>
-  <string formatted="false" name="pref_notify_when_kg_disabled_help">
-    If checked, a separate notification will be shown indicating when
-    the app is disabling the lock screen.
-  </string>
-  <string formatted="false" name="pref_confirm_manual_disable">Confirm Manual Disable</string>
-  <string formatted="false" name="pref_confirm_manual_disable_summary">Confirm when manually disabling lock screen?</string>
-  <string formatted="false" name="pref_confirm_manual_disable_help">
-    If checked, a confirmation dialog will pop up when you try to
-    manually disable the lock screen.  This is primarily intended to
-    prevent new users from accidentally disabling their lock screen
-    without knowing it.  If you disable the lock screen with any
-    regularity, you\'ll probably want to turn this off.
-  </string>
-  <string formatted="false" name="pref_finish_after_toggle_lock">Exit After Toggling</string>
-  <string formatted="false" name="pref_finish_after_toggle_lock_summary">Exit main window immediately after dis/reenabling?</string>
-  <string formatted="false" name="pref_finish_after_toggle_lock_help">
-    If you\'re someone for whom every keystroke (or touchscreen press)
-    matters, you\'ll probably want to enable this.  If your goal is to
-    simply disable or reenable the lock screen and then get back to
-    what you\'re doing, this keeps you from having to press the BACK
-    key.  Just pull down the notification bar, press on BatteryBot,
-    and press the button to toggle the lock screen: three
-    screen presses and you\'re back to what you were doing.\n
-
-    \nFor obvious reasons, you can only enable this if the previous
-    setting is disabled, and vice versa.
-  </string>
-  <string formatted="false" name="pref_auto_disable">Auto-disable Lock Screen</string>
-  <string formatted="false" name="pref_auto_disable_summary">Disable the lock screen when charging?</string>
-  <string formatted="false" name="pref_auto_disable_help">
-    If checked, then whenever the device is plugged in, BatteryBot
-    will disable the lock screen, and whenever the device is
-    unplugged, it will enable it again.\n
-
-    \nNote that with this option enabled, you will still have to
-    manually pass through the lock screen once before it will be
-    auto-disabled.
-  </string>
-  <string formatted="false" name="pref_disallow_disable_lock_screen">Disallow Manual Disable</string>
-  <string formatted="false" name="pref_disallow_disable_lock_screen_summary">Disallow use of the disable lock screen button?</string>
-  <string formatted="false" name="pref_disallow_disable_lock_screen_help">
-    If you have an alternative lock screen that allows access to the
-    notification tray when the screen is locked, you might want to
-    enabled this option for security reasons.
-  </string>
-
   <string formatted="false" name="pref_notify_status_duration">Show Status Duration</string>
   <string formatted="false" name="pref_notify_status_duration_summary">Show time since status changed rather than estimate of time remaining?</string>
   <string formatted="false" name="pref_notify_status_duration_help">

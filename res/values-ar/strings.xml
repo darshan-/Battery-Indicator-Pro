@@ -8,11 +8,8 @@
   <string name="app_full_name_free" formatted="false">مؤشر البطارية</string>
   <string name="battery_use_b" formatted="false">عرض استخدام البطارية</string>
   <string name="upgrade_donate_b" formatted="false">ترقية/تبرع</string>
-  <string name="reenable_lock_screen" formatted="false">إعادة تمكين قفل الشاشة</string>
-  <string name="disable_lock_screen" formatted="false">تعطيل قفل الشاشة</string>
   <string name="circle_widget" formatted="false">دائرةالمؤشر</string>
   <string name="full_widget" formatted="false">البطاية كاملة الشحن</string>
-  <string name="confirm_disable" formatted="false">تأكيد تعطيل قفل الشاشة؟</string>
   <string name="confirm_disable_hint" formatted="false">تلميح: تعطيل هذا الخيار من الاعدادات</string>
   <string name="yes" formatted="false">نعم</string>
   <string name="cancel" formatted="false">لا</string>
@@ -144,9 +141,6 @@
   <string name="status_bar_icon_settings" formatted="false">ايقونة شريط الحالة</string>
   <string name="status_bar_icon_settings_summary" formatted="false">السيطرة على الايقونة</string>
   <string name="status_bar_icon_settings_help" formatted="false">يمكنك الاختيار من الايقونات لجعلها المستخدمة وتغير اعدادات الايقونة المستخدمة</string>
-  <string name="keyguard_settings" formatted="false">قفل الشاشة</string>
-  <string name="keyguard_settings_summary" formatted="false">ضبط الاعدادات لقفل الشاشة</string>
-  <string name="keyguard_settings_help" formatted="false">يمكنك الاعداد حول الاختيار الاتوماتيكي او العادي لقفل الشاشة</string>
   <string name="alarm_settings_subtitle" formatted="false">اعدادات المنبه</string>
   <string name="alarm_settings" formatted="false">المنبهات</string>
   <string name="alarm_settings_summary" formatted="false">اعداد الاشعارات للاسفل\كامل البطارية</string>
@@ -215,23 +209,6 @@
   <string name="pref_max_log_age" formatted="false">الاحد الاقصى للسجلات</string>
   <string name="pref_max_log_age_summary" formatted="false">حذف السجلات القديمة بعد:</string>
   <string name="pref_max_log_age_help" formatted="false">اذا تم تمكين السجلات سوف يتم حذف السجلات القديمة من فترة لاخرى وسوف يتم التبديل بالسجلات الجديدة</string>
-  <string name="pref_cat_keyguard" formatted="false">قفل الشاشة / حارس المفاتيح</string>
-  <string name="pref_cat_keyguard_help" formatted="false">الاندرويد عادة يقوم بتعطيل وتمكين حارس المفاتيح وانت تعتقد انه مثل قفل الشاشة عند اعادة تكرار هذه الحالة سوف تفقد السيطرة على هاتفك كمثال انك لاتستطيع ان توقد شاشة هاتفك</string>
-  <string name="pref_notify_when_kg_disabled" formatted="false">تعطيل الاشعار عند</string>
-  <string name="pref_notify_when_kg_disabled_summary" formatted="false">تنبيه عند تعطيل قفل الشاشة</string>
-  <string name="pref_notify_when_kg_disabled_help" formatted="false">إذا تم، سيظهر اشعار منفصل مبينا تعطيل قفل الشاشة.</string>
-  <string name="pref_confirm_manual_disable" formatted="false">تأكيد التعطيل اليدوي</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">تأكيد عندما يتم تعطيل قفل الشاشة يدويا؟</string>
-  <string name="pref_confirm_manual_disable_help" formatted="false">إذا تم، سيكون على الحوار تأكيد يطفو على السطح عندما كنت في محاولة لتعطيل قفل الشاشة يدويا. ويهدف هذا في المقام الأول لمنع المستخدمين الجدد من غير قصد تعطيل قفل الشاشة من دون أن يعرفوا ذلك. إذا تم تعطيل قفل الشاشة مع أي انتظام،</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">خروج بعد التبديل</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">خروج اطار رئيسي مباشرة عندما يمكن ويعطل؟</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">اذا كنت من الاشخص الذين يملكون عملا شاق سوف تحتاج لتمكين قفل الشاشة لاتحتاج الى اعادة فتح وقفل الشاشة وسوف تعود الى ما كنت تفعله ببساطة ويكمنه تمكين الخيار من الاعدادات الخاصة بالتطبيق التي تجدها عند سحب الشريط العلوي\n\nلاسباب واضحة يتم تمكين هذا الخيار واذا لم يعجبك فيمكنك تعطيله</string>
-  <string name="pref_auto_disable" formatted="false">قفل الشاشة بشكل اوتوماتيكي</string>
-  <string name="pref_auto_disable_summary" formatted="false">تعطيل قفل الشاشة عند السحن</string>
-  <string name="pref_auto_disable_help" formatted="false">اذا تم تمكين هذا الخيار فسوف يتم تعطيل قفل الشاشة بشكل اوتوماتيكي عند الشحن وظهور علامة موصول اما اذا فصل الجهاز فسوف يمكن قفل الشاشة مرة اخرى\n\nان هذا الخيار يعتبر مفيد في العمل الشاق و القيادة ايضا</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">تعطيل دليل عد السماح</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">استخدام عدم السماح لتعطيل زر قفل الشاشة؟</string>
-  <string name="pref_disallow_disable_lock_screen_help" formatted="false">إذا كان لديك شاشة القفل البديلة التي تتيح الوصول إلى علبة الإخطار عند قفل الشاشة، قد ترغب في تمكين هذا الخيار لأسباب أمنية.</string>
   <string name="pref_notify_status_duration" formatted="false">مدة عرض الحالة</string>
   <string name="pref_notify_status_duration_summary" formatted="false">تظهر منذ متى تم تغيير الوضع بدلا من تقدير الوقت المتبقي؟</string>
   <string name="pref_notify_status_duration_help" formatted="false">تمكين هذا الإعداد إذا كنت تفضل الإخطار الرئيسي لعرض الوقت منذ تغيير حالة (على سبيل المثال، \"موصول لمدة 5 ساعات\") بدلا من تقدير الوقت المتبقي. كل قطعة من المعلومات المتاحة من النافذة الرئيسية.</string>

@@ -8,9 +8,6 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Sprawdź zużycie baterii</string>
   <string name="upgrade_donate_b" formatted="false">Ulepsz/Wspomóż...</string>
-  <string name="reenable_lock_screen" formatted="false">Ponownie włącz blok. ekranu</string>
-  <string name="disable_lock_screen" formatted="false">Wyłącz blok. ekranu</string>
-  <string name="confirm_disable" formatted="false">Czy wyłączyć blok. ekranu?</string>
   <string name="confirm_disable_hint" formatted="false">Podpowiedź: To potwierdzenie możesz wyłączyć w ustawieniach.</string>
   <string name="yes" formatted="false">Tak</string>
   <string name="cancel" formatted="false">Anuluj</string>
@@ -132,9 +129,6 @@
   <string name="status_bar_icon_settings" formatted="false">Ikona paska stanu</string>
   <string name="status_bar_icon_settings_summary" formatted="false">Zmień zestaw ikon</string>
   <string name="status_bar_icon_settings_help" formatted="false">Możesz wybrać, który zestaw ikon chcesz używać i zmieniać ustawienia dla danego zestawu ikon (np. kolorów).</string>
-  <string name="keyguard_settings" formatted="false">Ekran blokady</string>
-  <string name="keyguard_settings_summary" formatted="false">Skonfiguruj funkcję by wyłączyć ekran blokady</string>
-  <string name="keyguard_settings_help" formatted="false">Możesz skonfigurować różne aspekty funkcji, by ręcznie lub automatycznie wyłączyć ekran blokady.</string>
   <string name="alarm_settings_subtitle" formatted="false">Ustawienia alarmów</string>
   <string name="alarm_settings" formatted="false">Alarmy</string>
   <string name="alarm_settings_summary" formatted="false">Ustaw powiadomienia o niskim/pełnym poziomie baterii</string>
@@ -203,23 +197,6 @@
   <string name="pref_max_log_age" formatted="false">Maksymalny czas logu</string>
   <string name="pref_max_log_age_summary" formatted="false">Usuń logi starsze niż:</string>
   <string name="pref_max_log_age_help" formatted="false">Jeżeli zapisywanie logów jest aktywne, za każdym razem gdy podpinasz urządzenie, logi starsze od tego będą usuwane.</string>
-  <string name="pref_cat_keyguard" formatted="false">Blokada ekranu</string>
-  <string name="pref_cat_keyguard_help" formatted="false">Android pozwala aplikacjom na wyłączenie i włączenie. co nazywamy \"keyguard\", lub po prostu blokadą ekranu. Pomiędzy włączeniem i wyłączeniem nie ma kontroli — nie wiem, którym klawiszem włączyć ekran.</string>
-  <string name="pref_notify_when_kg_disabled" formatted="false">Informuj kiedy wyłączony</string>
-  <string name="pref_notify_when_kg_disabled_summary" formatted="false">Wskazywać, kiedy ekran blokady jest wyłączony?</string>
-  <string name="pref_notify_when_kg_disabled_help" formatted="false">Jeśli zaznaczone, oddzielne powiadomienie pojawi się wskazując kiedy aplikacja wyłącza ekran blokady.</string>
-  <string name="pref_confirm_manual_disable" formatted="false">Potwierdź manualne wyłączenie</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">Potwierdzać kiedy blok. ekranu wyłączana ręcznie?</string>
-  <string name="pref_confirm_manual_disable_help" formatted="false">Jeżeli zaznaczone, okienko z potwierdzeniem wyświetla się przy manualnym wyłączeniu blokady. Jest to na wypadek gdy nowi użytkownicy przypadkowo zablokują urządzenie bez ich wiedzy. Jeżeli wyłączysz blokadę bez potrzeby, prawdopodobnie będziesz chciał włączyć ją ponownie.</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Zakończ po zmianie blokady</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Zakończ zaraz po zablok. ekranu?</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">Jeżeli twoim celem jest wyłączenie/włączenie ekranu blokowania i powrót do tego, co robileś wcześniej ta opcja powstrzymuje od wciśnięcia klawisza WSTECZ. Po prostu rozwiń pasek powiadomień, wciśnij na Battery Indicator i wciśnij przycisk by zmienić blokadę ekranu: trzy przyciśnięcia ekranu i wracasz do tego co robileś wcześniej.\n\nZ przyczyn oczywistych, ta opcja może być włączona jeśli wcześniejsza jest wyłączona i odwrotnie.</string>
-  <string name="pref_auto_disable" formatted="false">Automatycznie wyłącz blok. ekranu</string>
-  <string name="pref_auto_disable_summary" formatted="false">Czy wyłączyć blok. ekranu podczas ładowania?</string>
-  <string name="pref_auto_disable_help" formatted="false">Jeżeli zaznaczone i urządzenie jest podłączone, blokada zostanie wyłączona. Jeżeli odłączone - blokada zostanie włączona.\n\nPamiętaj, musisz raz ręcznie odblokować urządzenie, by ta opcja działała.</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">Nie pozwól na ręczne wyłączenie</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Nie pozwalaj na użycie przycisku ręcznego wyłączenie blokady ekranu?</string>
-  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Jeżeli masz alternatywą blokadę, która umożliwia dostęp do paska powiadomień, powinieneś włączyć tę opcję dla bezpieczeństwa.</string>
   <string name="pref_notify_status_duration" formatted="false">Pokaż czas stanu</string>
   <string name="pref_notify_status_duration_summary" formatted="false">Pokaż czas od kiedy status się zmienił zamiast prognozy pozostałego czasu?</string>
   <string name="pref_notify_status_duration_help" formatted="false">Włącz to ustawienie, jeśli wolisz główne powiadomienie pokazujące czas od zmiany statusu (np. \"Odłączony przez 5 godzin\"), a nie szacunku czasu pozostałego. Obie informacje są dostępne z głównego okna.</string>

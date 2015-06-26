@@ -8,9 +8,6 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Akku használat</string>
   <string name="upgrade_donate_b" formatted="false">Vásárlás/Adományozás</string>
-  <string name="reenable_lock_screen" formatted="false">Képernyőzár engedélyezése</string>
-  <string name="disable_lock_screen" formatted="false">Képernyőzár tiltása</string>
-  <string name="confirm_disable" formatted="false">Biztosan letiltja a képernyőzárat?</string>
   <string name="confirm_disable_hint" formatted="false">Tipp: A beállítások között a megerősítés kérése letiltható...</string>
   <string name="yes" formatted="false">Igen</string>
   <string name="cancel" formatted="false">Mégsem</string>
@@ -152,23 +149,6 @@
   <string name="pref_max_log_age" formatted="false">Napló időszaka</string>
   <string name="pref_max_log_age_summary" formatted="false">Törölje az ennél régebbi bejegyzéseket:</string>
   <string name="pref_max_log_age_help" formatted="false">Ha a naplózás engedélyezett, minden esetben, amikor tölteni kezdi a készüléket, az ennél régebbi bejegyzések törlődnek.</string>
-  <string name="pref_cat_keyguard" formatted="false">Képernyő-/billentyűzár</string>
-  <string name="pref_cat_keyguard_help" formatted="false">Az Android megengedi, hogy az alkalmazások letiltsák és újra engedélyezzék a képernyőzárat. Ezen túlmenően azonban semmilyen hatása nincsen. — Pl. nem lehet megadni, hogy melyik billentyűvel záródjon le vagy oldódjon fel.</string>
-  <string name="pref_notify_when_kg_disabled" formatted="false">Kikapcsolt állapot jelzése</string>
-  <string name="pref_notify_when_kg_disabled_summary" formatted="false">Jelezze, ha ki van kapcsolva a képernyőzár?</string>
-  <string name="pref_notify_when_kg_disabled_help" formatted="false">Ha bekapcsolja, egy különálló ikon fog megjelenni, ha az alkalmazás tiltja a képernyőzárat.</string>
-  <string name="pref_confirm_manual_disable" formatted="false">Kézi tiltás megerősítése</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">Kérjen megerősítést, ha kézzel tiltja a képernyőzárat?</string>
-  <string name="pref_confirm_manual_disable_help" formatted="false">Ha bejelöli, egy megerősítő kérdés jelenik meg, amikor kézileg kezdeményezi a képernyőzár tiltását. Ennek célja, hogy megelőzze a képernyőzár nem szándékos, véletlenszerű letiltását. Ha rendszeresen le szoktat tiltani a képernyőzárat, ezt várhatóan kikapcsolja majd.</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Kilépés a váltás után</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Tiltás/engedélyezés után egyből bezárja a főablakot?</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">Ez a funkció azok számára készült, akiknek minden billentyű leütés (vagy képernyő érintés) számít. Ha egyszerűen csak le akarja tiltani a képernyőzárat, majd folytatni amit csinált, ez megkíméli attól, hogy a VISSZA gombbal kelljen bajlódnia. Csak húzza le az értesítési területet, érintse meg a Battery Indicator ikonját, majd a váltó gombot! Három érintés, és ott folytatja, ahol abbahagyta.\n\nNyilván csak akkor engedélyezheti ezt, ha az előző opció tiltva van, illetve megfordítva.</string>
-  <string name="pref_auto_disable" formatted="false">Képernyőzár automatikus tiltása</string>
-  <string name="pref_auto_disable_summary" formatted="false">Letiltja a képernyőzárat töltés közben?</string>
-  <string name="pref_auto_disable_help" formatted="false">Ha bejelöli, a Battery Indicator letiltja a képernyőzárat töltéskor, és amikor a készülék nem töltődik, újra bekapcsolja.\n\nNote that with this option enabled, you will still have to manually pass through the lock screen once before it will be auto-disabled.</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">Kézi tiltás letiltása</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Letiltja a Képernyőzár tiltása gombot?</string>
-  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Ha olyan képernyőzárat használ, amely elérhatőve teszi az értesítési felületet lezárt képernyőnél, akkor érdemes ezt az opciót használni a készülék biztonsága érdekében.</string>
   <string name="pref_cat_battery_use" formatted="false">Akku használat</string>
   <string name="pref_finish_after_battery_use" formatted="false">Kilépés az akku használat megnyitásakor</string>
   <string name="pref_finish_after_battery_use_summary" formatted="false">Kilépjen a fő ablakból amikor megnyitja az Akku használatot?</string>

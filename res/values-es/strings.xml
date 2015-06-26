@@ -8,9 +8,6 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Ver uso de batería</string>
   <string name="upgrade_donate_b" formatted="false">Actualizar/Donar...</string>
-  <string name="reenable_lock_screen" formatted="false">Reactivar Pantalla de Bloqueo</string>
-  <string name="disable_lock_screen" formatted="false">Desactivar Pantalla de Bloqueo</string>
-  <string name="confirm_disable" formatted="false">¿Desea desactivar la pantalla de bloqueo?</string>
   <string name="confirm_disable_hint" formatted="false">Consejo: Puede desactivar este cuadro de confirmación en los Ajustes.</string>
   <string name="yes" formatted="false">Sí</string>
   <string name="cancel" formatted="false">Cancelar</string>
@@ -118,7 +115,6 @@
   <string name="settings_overview" formatted="false">Visión general</string>
   <string name="settings_overview_help" formatted="false">Los ajustes están divididos en tres páginas, y cada una de ellas tiene su propia página de ayuda describiendo los ajustes que se pueden realizar en ella. Pulse MENU-Ayuda para obtener ayuda de la página concreta en la que esté.</string>
   <string name="notification_settings" formatted="false">Notificaciones</string>
-  <string name="keyguard_settings" formatted="false">Pantalla de Bloqueo</string>
   <string name="alarm_settings_subtitle" formatted="false">Ajustes de alarma</string>
   <string name="alarm_settings" formatted="false">Alarmas</string>
   <string name="other_settings" formatted="false">Otros ajustes</string>
@@ -132,20 +128,6 @@
   <string name="pref_max_log_age" formatted="false">Antigüedad máxima</string>
   <string name="pref_max_log_age_summary" formatted="false">Borrar logs anteriores a:</string>
   <string name="pref_max_log_age_help" formatted="false">Si el registro está activado, cada vez que enchufe el teléfono se borrarán los logs anteriores al tiempo seleccionado.</string>
-  <string name="pref_cat_keyguard" formatted="false">Pantalla de bloqueo</string>
-  <string name="pref_cat_keyguard_help" formatted="false">Android permite a las aplicaciones activar y desactivar la pantalla de bloqueo (\"Keyguard\"), pero solamente permite activarla y desactivarla, no se puede controlar, por ejemplo, qué teclas activan la pantalla.</string>
-  <string name="pref_confirm_manual_disable" formatted="false">Confirmar desactivación</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">¿Pedir confirmación cuando se desactive manualmente la pantalla de bloqueo?</string>
-  <string name="pref_confirm_manual_disable_help" formatted="false">Si está marcada, se mostrará un diálogo de confirmación cuando intente desactivar manualmente la pantalla de bloqueo. Esto está hecho así para impedir que usuarios nuevos puedan desactivar accidentalmente la pantalla de bloqueo. Si lo haces con una cierta regularidad, probablemente querrás desactivar esta confirmación.</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Cerrar ventana</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">¿Cerrar la ventana principal inmediatamente después de activar/desactivar?</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">Si quiere simplemente poder activar o desactivar la pantalla de bloqueo y volver a lo que estaba haciendo, esto le evita tener que pulsar la tecla ATRÁS. Simplemente baje la barra de notificaciones, pulse sobre el icono de Battery Indicator, y pulse el botón para activar/desactivar la pantalla de bloqueo.\n\nPor motivos obvios, sólo puede activar esto si la opción anterior está desactivada, y viceversa.</string>
-  <string name="pref_auto_disable" formatted="false">Desactivar en carga</string>
-  <string name="pref_auto_disable_summary" formatted="false">¿Desactivar automáticamente la pantalla de bloqueo cuando el teléfono esté cargando?</string>
-  <string name="pref_auto_disable_help" formatted="false">Si está activa, siempre que el dispositivo se esté cargando Battery Indicator desactivará la pantalla de bloqueo, y volverá a activarla cuando se desconecte.\n\nNota: aun con esta opción activada, deberá pasar manualmente por la pantalla de bloqueo una primera vez antes de que se desactive automáticamente.</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">Impedir desactivación</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">¿Impedir el uso del botón de desactivación de la pantalla de bloqueo?</string>
-  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Si tiene una pantalla de bloqueo alternativa que permite el acceso a la barra de notificaciones cuando la pantalla esté bloqueada, quizás quiera mantener esta opción activada por motivos de seguridad.</string>
   <string name="pref_cat_battery_use" formatted="false">Uso de batería</string>
   <string name="pref_finish_after_battery_use" formatted="false">Cerrar ventana</string>
   <string name="pref_finish_after_battery_use_summary" formatted="false">¿Cerrar la ventana principal tras abrir Uso de batería?</string>

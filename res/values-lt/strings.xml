@@ -8,9 +8,6 @@
   <string name="app_full_name_free" formatted="false">Baterijos Indikatorius</string>
   <string name="battery_use_b" formatted="false">Baterijos naudojimas</string>
   <string name="upgrade_donate_b" formatted="false">Patobulinti/Paremti...</string>
-  <string name="reenable_lock_screen" formatted="false">Įjungti Ekrano Užraktą</string>
-  <string name="disable_lock_screen" formatted="false">Išjungti Ekrano Užraktą</string>
-  <string name="confirm_disable" formatted="false">Ar tikrai norite išjungti?</string>
   <string name="confirm_disable_hint" formatted="false">Patarimas: Išjunkite ši patvirtinimą nustatymuose...</string>
   <string name="yes" formatted="false">Taip</string>
   <string name="cancel" formatted="false">Nutraukti</string>
@@ -124,15 +121,6 @@
   <string name="pref_enable_logging_summary" formatted="false">Įrašinėti baterijos būsenos pakitimus?</string>
   <string name="pref_max_log_age" formatted="false">Ilgiausias įrašo gyvavimas</string>
   <string name="pref_max_log_age_summary" formatted="false">Ištrinti senesnius įrašus nei:</string>
-  <string name="pref_cat_keyguard" formatted="false">Ekrano / Klaviatūros Užraktas</string>
-  <string name="pref_confirm_manual_disable" formatted="false">Patvirtinti Rankinį Išjungimą</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">Patvirtinti kai rankinių būdu išjungimas ekrano užraktas?</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Išeiti po perjungimo</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Išjungti pagrindinį langą po įjungimo/išjungimo?</string>
-  <string name="pref_auto_disable" formatted="false">Ekrano Užrakto Auto-išjugimas</string>
-  <string name="pref_auto_disable_summary" formatted="false">Išjungti ekrano užraktą kai įkraunama?</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">Neleisti Rankinio Išjungimo</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Neleisti naudoti ekrano užrakto išjungimo mygtuko?</string>
   <string name="pref_cat_battery_use" formatted="false">Baterijos Naudojimas</string>
   <string name="pref_finish_after_battery_use" formatted="false">Išeiti kai paleidžiama</string>
   <string name="pref_finish_after_battery_use_summary" formatted="false">Išeiti iš pagrindinio lango po Baterijos Naudojimo paleidimo?</string>

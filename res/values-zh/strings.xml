@@ -5,9 +5,6 @@
   <string name="app_full_name_free" formatted="false">電量指示器</string>
   <string name="battery_use_b" formatted="false">查看電量使用情況</string>
   <string name="upgrade_donate_b" formatted="false">升級/捐助...</string>
-  <string name="reenable_lock_screen" formatted="false">恢復自動鎖屏</string>
-  <string name="disable_lock_screen" formatted="false">關閉自動鎖屏</string>
-  <string name="confirm_disable" formatted="false">確認禁止自動鎖屏？</string>
   <string name="confirm_disable_hint" formatted="false">提示：可在「設定」中關閉此提示信息。</string>
   <string name="yes" formatted="false">確認</string>
   <string name="cancel" formatted="false">取消</string>
@@ -89,20 +86,6 @@
   <string name="pref_max_log_age" formatted="false">日誌記錄有效期</string>
   <string name="pref_max_log_age_summary" formatted="false">日誌記錄有效期限：</string>
   <string name="pref_max_log_age_help" formatted="false">若啟用本功能，過期日誌將在手機充電時被清除。</string>
-  <string name="pref_cat_keyguard" formatted="false">螢幕/鍵盤鎖</string>
-  <string name="pref_cat_keyguard_help" formatted="false">Android系統允許軟體禁用或恢復所謂的「鍵盤/螢幕鎖」功能。除此之外，其他諸如設定喚醒快捷鍵的功能均無法實現。</string>
-  <string name="pref_confirm_manual_disable" formatted="false">手動禁用確認</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">手動禁用自動鎖屏時進行提示確認？</string>
-  <string name="pref_confirm_manual_disable_help" formatted="false">若勾選此項，您在手動禁用自動鎖屏時將彈出確認信息。旨在防止用戶誤操作禁用了自動鎖屏。若禁用自動鎖屏後軟體運行不正常，請去掉此項勾選。</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">切換後退出</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">確認在禁用/恢復自動鎖屏後退出主視窗？</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">如果您發現按鍵（或觸摸屏點擊）異常，可勾選此項以實現快速禁用/恢復自動鎖屏功能並返回之前行為。您僅需下拉狀態列，點擊電量指示器圖標，觸摸切換按鈕，三次點擊即可進行切換並返回之前的行為。\n由於系統原因，您僅在勾選了前一選項後，本選項才可用。</string>
-  <string name="pref_auto_disable" formatted="false">自動禁用自動鎖屏</string>
-  <string name="pref_auto_disable_summary" formatted="false">確認在充電式禁用自動鎖屏？</string>
-  <string name="pref_auto_disable_help" formatted="false">若勾選此項，則在充電時，電量指示器將禁用自動鎖屏功能，並在拔下電源後恢復系統預設值。\n\n需注意的是，即使勾選了此項，自動禁用自動鎖屏前，螢幕鎖界面仍將出現一次。</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">禁止手動禁用</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">確認禁止使用「禁用自動鎖屏」按鈕？</string>
-  <string name="pref_disallow_disable_lock_screen_help" formatted="false">若您使用第三方鎖屏工具實現鎖屏後訪問狀態列，鑒於安全原因，請勾選此項。</string>
   <string name="pref_cat_battery_use" formatted="false">電池使用情況</string>
   <string name="pref_finish_after_battery_use" formatted="false">啟動後退出</string>
   <string name="pref_finish_after_battery_use_summary" formatted="false">確認啟動電量使用情況界面後退出主視窗？</string>

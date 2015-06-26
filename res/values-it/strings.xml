@@ -8,9 +8,6 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Mostra utilizzo batteria</string>
   <string name="upgrade_donate_b" formatted="false">Aggiorna/Dona...</string>
-  <string name="reenable_lock_screen" formatted="false">Riattiva blocca schermo</string>
-  <string name="disable_lock_screen" formatted="false">Disabilita blocca schermo</string>
-  <string name="confirm_disable" formatted="false">Vuoi davvero disabilitare il blocca schermo?</string>
   <string name="confirm_disable_hint" formatted="false">Suggerimento: Disattiva questa finestra di conferma nelle impostazioni...</string>
   <string name="yes" formatted="false">Sì</string>
   <string name="cancel" formatted="false">Annulla</string>
@@ -145,20 +142,6 @@
   <string name="pref_max_log_age" formatted="false">Periodo massimo registro</string>
   <string name="pref_max_log_age_summary" formatted="false">Cancella registri più vecchi di:</string>
   <string name="pref_max_log_age_help" formatted="false">Se il logging è abilitato, ogni volta che colleghi il telefono, i registri più vecchi saranno cancellati.</string>
-  <string name="pref_cat_keyguard" formatted="false">Blocca schermo / Keyguard</string>
-  <string name="pref_cat_keyguard_help" formatted="false">Android permette alle applicazioni di disattivare e riabilitare quello che definisce \"keyguard\", che probabilemente intende come blocco schermo. Oltre alla semplice disattivazione e riabilitazione, comunque, non c\'è altro controllo — non posso controllare quali tasti accendono lo schermo, per esempio.</string>
-  <string name="pref_confirm_manual_disable" formatted="false">Conferma disabilitazione manuale</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">Confermare quando disabilitare manualmente il blocca schermo?</string>
-  <string name="pref_confirm_manual_disable_help" formatted="false">Se selezionato, una finestra di conferma apparirà quando si cercherà di disattivare manualmente il blocco schermo. Questo è prevalentemente destinato a impedire che i nuovi utenti disabilitino accidentalmente il blocco schermo senza saperlo. Se si disattiva il blocco schermo spesso , probabilmente si vorrà attivare questa opzione.</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Uscita dopo attivazione/disattivazione</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Uscire dalla finestra principale subito dopo dis/abilitazione?</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">Se sei una persona per la quale ogni sequenza di tasti (o tocco sullo schermo) è un problema, probabilmente vorrai abilitare questa opzione. Se il vostro obiettivo è semplicemente disattivare o riabilitare il blocco schermo e poi tornare a quello che stavate facendo, questo ti impedisce di dover premere il tasto INDIETRO. Basta trascinare verso il basso la barra delle notifiche, premere su Battery Indicator, e quindi il pulsante per passare al blocco schermo: tre tocchi sullo schermo e tornerai a quello che stavi facendo.\n\nPer ovvi motivi, è possibile attivare questa funzione solo se la precedente impostazione è disabilitata, e vice versa.</string>
-  <string name="pref_auto_disable" formatted="false">Disabilitazione automatica blocco schermo</string>
-  <string name="pref_auto_disable_summary" formatted="false">Disabilitare il blocco schermo quando è in carica?</string>
-  <string name="pref_auto_disable_help" formatted="false">Se selezionato, ogni volta che il dispositivo è collegato, Battery Indicator disabiliterà il blocco schermo, e quando il dispositivo verrà scollegato, sarà di nuovo riabilitato.\n\nDa notare che con questa opzione abilitata, sarà comunque necessario passare manualmente attraverso il blocco schermo una volta prima che si disabiliti automaticamente.</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">Rifiuta disabilitazione manuale</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Non permettere l\'uso del pulsante disabilita blocco schermo?</string>
-  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Se si dispone di un blocco schermo alternativo che permette l\' accesso alla barra delle notifiche quando lo schermo è bloccato, si potrebbe voler attivare questa opzione per ragioni di sicurezza.</string>
   <string name="pref_cat_battery_use" formatted="false">Uso batteria</string>
   <string name="pref_finish_after_battery_use" formatted="false">Esci dopo l\'avvio</string>
   <string name="pref_finish_after_battery_use_summary" formatted="false">Uscire dalla finestra principale immediatamente dopo aver avviato \"Uso Batteria\"?</string>

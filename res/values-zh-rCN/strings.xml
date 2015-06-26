@@ -8,9 +8,6 @@
   <string name="app_full_name_free" formatted="false">电量指示器</string>
   <string name="battery_use_b" formatted="false">查看电量使用情况</string>
   <string name="upgrade_donate_b" formatted="false">升级/捐助...</string>
-  <string name="reenable_lock_screen" formatted="false">恢复自动锁屏</string>
-  <string name="disable_lock_screen" formatted="false">关闭自动锁屏</string>
-  <string name="confirm_disable" formatted="false">确认禁止自动锁屏？</string>
   <string name="confirm_disable_hint" formatted="false">提示：可在“设置项”中关闭此提示信息。</string>
   <string name="yes" formatted="false">确认</string>
   <string name="cancel" formatted="false">取消</string>
@@ -107,20 +104,6 @@
   <string name="pref_max_log_age" formatted="false">日志记录有效期</string>
   <string name="pref_max_log_age_summary" formatted="false">日志记录有效期限：</string>
   <string name="pref_max_log_age_help" formatted="false">若启用本功能，过期日志将在手机充电时被清除。</string>
-  <string name="pref_cat_keyguard" formatted="false">屏幕/键盘锁</string>
-  <string name="pref_cat_keyguard_help" formatted="false">Android系统允许软件禁用或恢复所谓的“键盘/屏幕锁”功能。除此之外，其他诸如设置唤醒快捷键的功能均无法实现。</string>
-  <string name="pref_confirm_manual_disable" formatted="false">手动禁用确认</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">手动禁用自动锁屏时进行提示确认？</string>
-  <string name="pref_confirm_manual_disable_help" formatted="false">若勾选此项，您在手动禁用自动锁屏时将弹出确认信息。旨在防止用户误操作禁用了自动锁屏。若禁用自动锁屏后软件运行不正常，请去掉此项勾选。</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">切换后退出</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">确认在禁用/恢复自动锁屏后退出主窗口？</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">如果您发现按键（或触摸屏点击）异常，可勾选此项以实现快速禁用/恢复自动锁屏功能并返回之前行为。您仅需下拉通知栏，点击电量指示器图标，触摸切换按钮，三次点击即可进行切换并返回之前的行为。 由于系统原因，您仅在勾选了前一选项后，本选项才可用。</string>
-  <string name="pref_auto_disable" formatted="false">自动禁用自动锁屏</string>
-  <string name="pref_auto_disable_summary" formatted="false">确认在充电式禁用自动锁屏？</string>
-  <string name="pref_auto_disable_help" formatted="false">若勾选此项，则在充电时，电量指示器将禁用自动锁屏功能，并在拔下电源后恢复系统默认值。 需注意的是，即使勾选了此项，自动禁用自动锁屏前，屏幕锁界面仍将出现一次。</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">禁止手动禁用</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">确认禁止使用“禁用自动锁屏”按钮？</string>
-  <string name="pref_disallow_disable_lock_screen_help" formatted="false">若您使用第三方锁屏工具实现锁屏后访问通知栏，鉴于安全原因，请勾选此项。</string>
   <string name="pref_cat_battery_use" formatted="false">电池使用情况</string>
   <string name="pref_finish_after_battery_use" formatted="false">启动后退出</string>
   <string name="pref_finish_after_battery_use_summary" formatted="false">确认启动电量使用情况界面后退出主窗口？</string>

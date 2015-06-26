@@ -8,9 +8,6 @@
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">Посмотреть использование аккумулятора</string>
   <string name="upgrade_donate_b" formatted="false">Улучшить/Помочь проекту</string>
-  <string name="reenable_lock_screen" formatted="false">Включить блокировку экрана</string>
-  <string name="disable_lock_screen" formatted="false">Выключить блокировку экрана</string>
-  <string name="confirm_disable" formatted="false">Действительно отключить блокировку экрана?</string>
   <string name="confirm_disable_hint" formatted="false">Подсказка: Отключите этот диалог подтверждения в настройках...</string>
   <string name="yes" formatted="false">Да</string>
   <string name="cancel" formatted="false">Отмена</string>
@@ -143,9 +140,6 @@
   <string name="status_bar_icon_settings" formatted="false">Значок строки уведомлений</string>
   <string name="status_bar_icon_settings_summary" formatted="false">Наборы значков</string>
   <string name="status_bar_icon_settings_help" formatted="false">Можно выбрать используемый набор значков, а также изменить настройки для набора (например, цвет).</string>
-  <string name="keyguard_settings" formatted="false">Экран блокировки</string>
-  <string name="keyguard_settings_summary" formatted="false">Настройка отключения экрана блокировки</string>
-  <string name="keyguard_settings_help" formatted="false">Можно произвести настройку автоматического или ручного отключения экрана блокировки вашего устройства.</string>
   <string name="current_hack_settings" formatted="false">Измерение тока (mA)</string>
   <string name="current_hack_settings_summary" formatted="false">Настройки для измерения тока (mA)</string>
   <string name="current_hack_settings_help" formatted="false">Система Android не предоставляет приложениям информации о токе аккумулятора. Тем не менее, существует обходной способ, потенциально позволяющий получить эти данные.\n\nНЕТ НИКАКОЙ гарантии, что этот способ будет работать. Он может не работать вообще или же работать, но выдавать при этом бессмысленные значения.\n\nВ этом разделе находятся настройки включения этого способа, а также его использования, если это возможно.</string>
@@ -240,23 +234,6 @@
   <string name="pref_max_log_age" formatted="false">Максимальный возраст журнала</string>
   <string name="pref_max_log_age_summary" formatted="false">Удалить журналы старше:</string>
   <string name="pref_max_log_age_help" formatted="false">Если включено ведение журнала, то при каждом подключении зарядного устройства более старые, чем указанная величина, журналы будут удаляться.</string>
-  <string name="pref_cat_keyguard" formatted="false">Блокировка экрана / клавиатуры</string>
-  <string name="pref_cat_keyguard_help" formatted="false">Система Android разрешает приложениям включать или отключать так называемую блокировку экрана / клавиатуры. Более детальных настроек не существует. К примеру, нельзя указать кнопки включения экрана.</string>
-  <string name="pref_notify_when_kg_disabled" formatted="false">Уведомлять, когда отключена</string>
-  <string name="pref_notify_when_kg_disabled_summary" formatted="false">Показывать отключение блокировки экрана?</string>
-  <string name="pref_notify_when_kg_disabled_help" formatted="false">Если выбрано, то будет показано отдельное уведомление когда приложение отключает блокировку экрана.</string>
-  <string name="pref_confirm_manual_disable" formatted="false">Подтвердить ручное отключение</string>
-  <string name="pref_confirm_manual_disable_summary" formatted="false">Подтверждать в случае ручного отключения блокировки экрана?</string>
-  <string name="pref_confirm_manual_disable_help" formatted="false">Если выбрано, на экране появится окно подтверждения при попытке ручного отключения блокировки экрана. Основное назначение - предотвращение случайного отключения блокировки экрана. Если вы регулярно отключаете блокировку, возможно, подтверждения вы захотите выключить.</string>
-  <string name="pref_finish_after_toggle_lock" formatted="false">Выход после переключения</string>
-  <string name="pref_finish_after_toggle_lock_summary" formatted="false">Выйти из главного окна сразу после переключения?</string>
-  <string name="pref_finish_after_toggle_lock_help" formatted="false">Если для вас важно каждое прикосновение к экрану, вы можете захотеть включить эту опцию. Если нужно просто отключить или включить блокировку экрана, а затем вернуться к своим занятиям, это избавит вас от использования кнопки BACK (Назад). Просто раскройте панель уведомления, коснитесь BatteryBot, затем коснитесь этого переключателя: всего три касания и вы вернулись к своим делам.\n\nОчевидно, что включить эту опцию возможно только при выключенной предыдущей настройке и наоборот.</string>
-  <string name="pref_auto_disable" formatted="false">Автоматически отключить блокировку экрана</string>
-  <string name="pref_auto_disable_summary" formatted="false">Отключить блокировку экрана во время зарядки?</string>
-  <string name="pref_auto_disable_help" formatted="false">Если выбрано, то при каждом подключении устройства к сети BatteryBot отключит блокировку экрана, а при каждом отключении от сети включит ее вновь.</string>
-  <string name="pref_disallow_disable_lock_screen" formatted="false">Не разрешать ручное отключение</string>
-  <string name="pref_disallow_disable_lock_screen_summary" formatted="false">Не разрешать использование кнопки отключения блокировки экрана?</string>
-  <string name="pref_disallow_disable_lock_screen_help" formatted="false">Если у вас имеется альтернативный экран блокировки, дающий доступ к панели уведомлений (шторке) при заблокированном экране, вы можете включить эту опцию по соображениям безопасности.</string>
   <string name="pref_notify_status_duration" formatted="false">Показывать продолжительность состояния</string>
   <string name="pref_notify_status_duration_summary" formatted="false">Показывать время с момента изменения состояния или оценку оставшегося времени?</string>
   <string name="pref_notify_status_duration_help" formatted="false">Включите эту опцию, если предпочитаете, чтобы в главном уведомлении было показано время, прошедшее с момента изменения состояния (например, \"Работает от аккумулятора в течение 5 часов\"), а не оценку оставшегося времени работы. Обе характеристики доступны в главном окне приложения.</string>

@@ -50,17 +50,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     public static final String KEY_NOTIFICATION_SETTINGS = "notification_settings";
     public static final String KEY_STATUS_BAR_ICON_SETTINGS = "status_bar_icon_settings";
-    public static final String KEY_KEYGUARD_SETTINGS = "keyguard_settings";
     public static final String KEY_CURRENT_HACK_SETTINGS = "current_hack_settings";
     public static final String KEY_ALARMS_SETTINGS = "alarms_settings";
     public static final String KEY_ALARM_EDIT_SETTINGS = "alarm_edit_settings";
     public static final String KEY_OTHER_SETTINGS = "other_settings";
-    public static final String KEY_CONFIRM_DISABLE_LOCKING = "confirm_disable_lock_screen";
-    public static final String KEY_FINISH_AFTER_TOGGLE_LOCK = "finish_after_toggle_lock";
     public static final String KEY_FINISH_AFTER_BATTERY_USE = "finish_after_battery_use";
-    public static final String KEY_NOTIFY_WHEN_KG_DISABLED = "notify_when_kg_disabled";
-    public static final String KEY_AUTO_DISABLE_LOCKING = "auto_disable_lock_screen";
-    public static final String KEY_DISALLOW_DISABLE_LOCK_SCREEN = "disallow_disable_lock_screen";
     public static final String KEY_MAIN_NOTIFICATION_PRIORITY = "main_notification_priority";
     public static final String KEY_ENABLE_LOGGING = "enable_logging";
     public static final String KEY_MAX_LOG_AGE = "max_log_age";
@@ -161,9 +155,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     };
 
     private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_NOTIFY_STATUS_DURATION,
-                                                   KEY_AUTO_DISABLE_LOCKING, KEY_RED, KEY_RED_THRESH,
+                                                   KEY_RED, KEY_RED_THRESH,
                                                    KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
-                                                   KEY_NOTIFY_WHEN_KG_DISABLED, KEY_ICON_SET,
+                                                   KEY_ICON_SET,
                                                    KEY_INDICATE_CHARGING, KEY_TEN_PERCENT_MODE, /* 10% mode changes color settings */
                                                    KEY_TOP_LINE, KEY_BOTTOM_LINE,
                                                    KEY_ENABLE_LOGGING,
@@ -455,9 +449,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 cat.removeAll();
                 cat.setLayoutResource(R.layout.none);
             }
-        } else if (pref_screen.equals(KEY_KEYGUARD_SETTINGS)) {
-            setPrefScreen(R.xml.keyguard_pref_screen);
-            setWindowSubtitle(res.getString(R.string.keyguard_settings));
         } else if (pref_screen.equals(KEY_CURRENT_HACK_SETTINGS)) {
             setPrefScreen(R.xml.current_hack_pref_screen);
             setWindowSubtitle(res.getString(R.string.current_hack_settings));
@@ -519,7 +510,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         setEnablednessOfPercentageTextColor();
 
         updateConvertFSummary();
-        setEnablednessOfMutuallyExclusive(KEY_CONFIRM_DISABLE_LOCKING, KEY_FINISH_AFTER_TOGGLE_LOCK);
 
         biServiceIntent = new Intent(this, BatteryInfoService.class);
         bindService(biServiceIntent, serviceConnection, 0);
@@ -681,7 +671,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             return false;
         } else if (key.equals(KEY_NOTIFICATION_SETTINGS) || key.equals(KEY_STATUS_BAR_ICON_SETTINGS) ||
                    key.equals(KEY_CURRENT_HACK_SETTINGS) ||
-                   key.equals(KEY_KEYGUARD_SETTINGS) || key.equals(KEY_OTHER_SETTINGS)) {
+                   key.equals(KEY_OTHER_SETTINGS)) {
             ComponentName comp = new ComponentName(getPackageName(), SettingsActivity.class.getName());
             startActivity(new Intent().setComponent(comp).putExtra(EXTRA_SCREEN, key));
 
@@ -768,9 +758,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 break;
             }
         }
-
-        if (key.equals(KEY_CONFIRM_DISABLE_LOCKING) || key.equals(KEY_FINISH_AFTER_TOGGLE_LOCK))
-            setEnablednessOfMutuallyExclusive(KEY_CONFIRM_DISABLE_LOCKING, KEY_FINISH_AFTER_TOGGLE_LOCK);
 
         if (key.equals(KEY_CONVERT_F)) {
             updateConvertFSummary();

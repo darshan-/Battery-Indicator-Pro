@@ -61,9 +61,7 @@ public class CurrentInfoFragment extends Fragment {
         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private View view;
-    private Boolean disallowLockButton;
     private Button battery_use_b;
-    private Button toggle_lock_screen_b;
     private BatteryLevel bl;
     private ImageView blv;
     private BatteryInfo info = new BatteryInfo();
@@ -97,7 +95,6 @@ public class CurrentInfoFragment extends Fragment {
 
             switch (incoming.what) {
             case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
-                setEnablednessOfLockButton();
                 serviceMessenger = incoming.replyTo;
                 sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
                 break;
@@ -125,13 +122,11 @@ public class CurrentInfoFragment extends Fragment {
         blv = (ImageView) view.findViewById(R.id.battery_level_view);
         blv.setImageBitmap(bl.getBitmap());
 
-        toggle_lock_screen_b = (Button) view.findViewById(R.id.toggle_lock_screen_b);
         battery_use_b = (Button) view.findViewById(R.id.battery_use_b);
 
         TextView tv = (TextView) view.findViewById(R.id.mA);
         tv.setOnClickListener(mAListener);
 
-        updateLockscreenButton();
         bindButtons();
 
         return view;
@@ -278,31 +273,7 @@ public class CurrentInfoFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        setEnablednessOfLockButton();
-    }
-
-    public static class ConfirmDisableKeyguardDialogFragment extends DialogFragment {
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            return new AlertDialog.Builder(activity)
-                .setTitle(activity.res.getString(R.string.confirm_disable))
-                .setMessage(activity.res.getString(R.string.confirm_disable_hint))
-                .setCancelable(false) // TODO: Doesn't work... Just remove and accept being cancelable?
-                .setPositiveButton(activity.res.getString(R.string.yes),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface di, int id) {
-                            ((BatteryInfoActivity) activity).currentInfoFragment.setDisableLocking(true);
-                            di.cancel();
-                        }
-                    })
-                .setNegativeButton(activity.res.getString(R.string.cancel),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface di, int id) {
-                            di.cancel();
-                        }
-                    })
-                .create();
-        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public static class ConfirmCloseDialogFragment extends DialogFragment {
@@ -380,9 +351,6 @@ public class CurrentInfoFragment extends Fragment {
             tv.setText(s);
         }
 
-        updateLockscreenButton();
-
-        // Call after updateLockScreenButton() so settings are reloaded
         refreshCurrent();
     }
 
@@ -406,29 +374,6 @@ public class CurrentInfoFragment extends Fragment {
         tv.setText(s);
     }
 
-    private void updateLockscreenButton() {
-        activity.loadSettingsFiles();
-
-        if (activity.sp_store.getBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, false))
-            toggle_lock_screen_b.setText(activity.res.getString(R.string.reenable_lock_screen));
-        else
-            toggle_lock_screen_b.setText(activity.res.getString(R.string.disable_lock_screen));
-    }
-
-    private void setDisableLocking(boolean b) {
-        SharedPreferences.Editor editor = activity.sp_store.edit();
-        editor.putBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, b);
-        editor.commit();
-
-        Message outgoing = Message.obtain();
-        outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_RELOAD_SETTINGS;
-        try { if (serviceMessenger != null) serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
-
-        updateLockscreenButton();
-
-        if (activity.settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_TOGGLE_LOCK, false)) activity.finish();
-    }
-
     /* mA TextView */
     private final OnClickListener mAListener = new OnClickListener() {
         public void onClick(View v) {
@@ -444,22 +389,6 @@ public class CurrentInfoFragment extends Fragment {
                 if (activity.settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_BATTERY_USE, false)) activity.finish();
             } catch (Exception e) {
                 battery_use_b.setEnabled(false);
-            }
-        }
-    };
-
-    /* Toggle Lock Screen */
-    private final OnClickListener tlsButtonListener = new OnClickListener() {
-        public void onClick(View v) {
-            if (activity.sp_store.getBoolean(BatteryInfoService.KEY_DISABLE_LOCKING, false)) {
-                setDisableLocking(false);
-            } else {
-                if (activity.settings.getBoolean(SettingsActivity.KEY_CONFIRM_DISABLE_LOCKING, true)) {
-                    DialogFragment df = new ConfirmDisableKeyguardDialogFragment();
-                    df.show(getFragmentManager(), "TODO: What is this string for?");
-                } else {
-                    setDisableLocking(true);
-                }
             }
         }
     };
@@ -500,11 +429,5 @@ public class CurrentInfoFragment extends Fragment {
         } else {
             battery_use_b.setOnClickListener(buButtonListener);
         }
-
-        toggle_lock_screen_b.setOnClickListener(tlsButtonListener);
-    }
-
-    private void setEnablednessOfLockButton() {
-        toggle_lock_screen_b.setEnabled(! activity.settings.getBoolean(SettingsActivity.KEY_DISALLOW_DISABLE_LOCK_SCREEN, false));
     }
 }

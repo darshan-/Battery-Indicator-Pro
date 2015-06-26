@@ -6,9 +6,6 @@
   <string name="app_full_name_free" formatted="false">Estado da Bateria</string>
   <string name="battery_use_b" formatted="false">Ver Uso da Bateria</string>
   <string name="upgrade_donate_b" formatted="false">Fazer Upgrade/Doar...</string>
-  <string name="reenable_lock_screen" formatted="false">Reactivar o Lock Screen</string>
-  <string name="disable_lock_screen" formatted="false">Desactivar o Lock Screen</string>
-  <string name="confirm_disable" formatted="false">Desactivar mesmo o Lock Screen?</string>
   <string name="confirm_disable_hint" formatted="false">Sugestão: Pode desactivar esta confirmação nas definições...</string>
   <string name="yes" formatted="false">Sim</string>
   <string name="cancel" formatted="false">Cancelar</string>
