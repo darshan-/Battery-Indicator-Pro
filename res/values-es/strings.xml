@@ -120,7 +120,7 @@
   <string name="other_settings" formatted="false">Otros ajustes</string>
   <string name="other_settings_help" formatted="false">Todos los demás ajustes están en esta página, incluyendo el registro, la pantalla de bloqueo, la unidad de temperatura, el autoarranque de la aplicación, y mucho más.</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">Más ajustes en la versión Pro</string>
-  <string name="pref_please_upgrade" formatted="false">La versión Pro tiene muchos más ajustes y funcionalidades, incluyendo icono en verde, ámbar y rojo para el icono de la barra de estado, temas para la ventana, registro de cambios de estado de la batería, desactivación manual o automática de la pantalla de bloqueo, estimaciones de tiempos restantes de carga y descarga, y mucho más.</string>
+  <string name="pref_please_upgrade" formatted="false">La versión Pro tiene muchos más ajustes y funcionalidades, incluyendo icono en verde, ámbar y rojo para el icono de la barra de estado, temas para la ventana, registro de cambios de estado de la batería, estimaciones de tiempos restantes de carga y descarga, y mucho más.</string>
   <string name="pref_cat_logging" formatted="false">Registro</string>
   <string name="pref_enable_logging" formatted="false">Activar registro</string>
   <string name="pref_enable_logging_summary" formatted="false">¿Registrar cambios de estado de la batería?</string>
