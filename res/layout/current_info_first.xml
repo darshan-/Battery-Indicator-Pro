@@ -9,7 +9,7 @@
 
   <ImageView android:id="@+id/battery_level_view"
              android:layout_width="0px"
-             android:layout_weight="5"
+             android:layout_weight="@integer/current_info_top_left_weight"
              android:layout_height="fill_parent"
              android:scaleType="fitCenter"
              android:padding="10dp"
@@ -17,7 +17,7 @@
 
   <LinearLayout android:orientation="vertical"
                 android:layout_width="0px"
-                android:layout_weight="5"
+                android:layout_weight="@integer/current_info_top_right_weight"
                 android:layout_height="fill_parent"
   >
     <TextView android:id="@+id/level"
@@ -29,23 +29,52 @@
               android:textSize="@dimen/bia_level"
     />
 
-    <TextView android:id="@+id/time_remaining"
-	      android:layout_width="fill_parent"
-              android:layout_height="0px"
-              android:layout_weight="0.5"
-              android:gravity="center_horizontal|bottom"
-              android:textColor="#fff"
-              android:textSize="@dimen/bia_time_remaining"
-    />
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_width="fill_parent"
+                  android:layout_height="0px"
+                  android:layout_weight="0.44"
+                  android:paddingTop="10dp"
+                  android:gravity="center_horizontal|bottom"
+    >
+      <ImageView android:id="@+id/clock"
+                 android:layout_width="@dimen/plugged_icon"
+                 android:layout_height="match_parent"
+                 android:scaleType="fitCenter"
+                 android:padding="2dp"
+                 android:gravity="center"
+                 android:src="@drawable/clock"
+      />
 
-    <TextView android:id="@+id/until_what"
-	      android:layout_width="fill_parent"
-              android:layout_height="0px"
-              android:layout_weight="0.3"
-              android:gravity="center_horizontal|top"
-              android:textColor="#fff"
-              android:textSize="@dimen/bia_until_what"
-    />
+      <LinearLayout android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+      >
+        <TextView android:id="@+id/time_remaining"
+	          android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:gravity="center_horizontal|bottom"
+                  android:textColor="#fff"
+                  android:textSize="@dimen/bia_time_remaining"
+        />
+
+        <TextView android:id="@+id/until_what"
+	          android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:gravity="center_horizontal|top"
+                  android:textColor="#fff"
+                  android:textSize="@dimen/bia_until_what"
+        />
+      </LinearLayout>
+
+      <ImageView android:layout_width="@dimen/plugged_icon"
+                 android:layout_height="@dimen/plugged_icon"
+                 android:scaleType="fitCenter"
+                 android:padding="2dp"
+                 android:src="@drawable/clock"
+                 android:visibility="invisible"
+      />
+    </LinearLayout>
   </LinearLayout>
   <View android:layout_width="0px"
         android:layout_height="fill_parent"

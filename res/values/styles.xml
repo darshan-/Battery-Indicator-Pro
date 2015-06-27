@@ -91,7 +91,10 @@
   <dimen name="vital_stats_icon">22dp</dimen>
   <dimen name="vital_stats_text">14dp</dimen>
 
-  <dimen name="bia_level">36sp</dimen>
+  <integer name="current_info_top_left_weight">4</integer>
+  <integer name="current_info_top_right_weight">6</integer>
+
+  <dimen name="bia_level">40sp</dimen>
   <dimen name="bia_time_remaining">24sp</dimen>
   <dimen name="bia_status">20sp</dimen>
   <dimen name="bia_until_what">16sp</dimen>
