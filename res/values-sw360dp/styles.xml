@@ -2,7 +2,7 @@
 <resources>
   <dimen name="bia_level">46sp</dimen>
   <dimen name="bu_button_height">70dp</dimen>
-  <dimen name="plugged_icon">36dp</dimen>
+  <dimen name="plugged_icon">46dp</dimen>
   <dimen name="vital_stats_icon">26dp</dimen>
   <dimen name="vital_stats_text">14dp</dimen>
 

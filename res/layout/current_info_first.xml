@@ -66,14 +66,6 @@
                   android:textSize="@dimen/bia_until_what"
         />
       </LinearLayout>
-
-      <ImageView android:layout_width="@dimen/plugged_icon"
-                 android:layout_height="@dimen/plugged_icon"
-                 android:scaleType="fitCenter"
-                 android:padding="2dp"
-                 android:src="@drawable/clock"
-                 android:visibility="invisible"
-      />
     </LinearLayout>
   </LinearLayout>
   <View android:layout_width="0px"
