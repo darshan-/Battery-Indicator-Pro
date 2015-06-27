@@ -4,25 +4,52 @@
               android:paddingLeft="@dimen/bis_side_padding"
               android:paddingRight="@dimen/bis_side_padding"
 >
-  <TextView android:id="@+id/status"
-            android:layout_width="fill_parent"
-            android:layout_height="0px"
-            android:layout_weight="0.23"
-            android:gravity="center_horizontal|bottom"
-            android:paddingTop="10dp"
-            android:textColor="#6fc14b"
-            android:textSize="@dimen/bia_status"
-  />
+  <LinearLayout android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="0.44"
+                android:paddingTop="10dp"
+                android:gravity="center_horizontal|bottom"
+  >
+    <ImageView android:id="@+id/plugged_icon"
+               android:layout_width="@dimen/plugged_icon"
+               android:layout_height="match_parent"
+               android:scaleType="fitCenter"
+               android:padding="2dp"
+               android:gravity="center"
+               android:src="@drawable/not_unplugged"
+    />
 
-  <TextView android:id="@+id/status_duration"
-            android:layout_width="fill_parent"
-            android:layout_height="0px"
-            android:layout_weight="0.17"
-            android:gravity="center_horizontal|top"
-            android:paddingTop="5dp"
-            android:textColor="#fff"
-            android:textSize="@dimen/bia_until_what"
-  />
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="wrap_content"
+                  android:layout_height="fill_parent"
+                  android:gravity="center"
+    >
+      <TextView android:id="@+id/status"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:gravity="center_horizontal|bottom"
+                android:textColor="#6fc14b"
+                android:textSize="@dimen/bia_status"
+      />
+      <TextView android:id="@+id/status_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|top"
+                android:paddingTop="5dp"
+                android:textColor="#fff"
+                android:textSize="@dimen/bia_until_what"
+      />
+    </LinearLayout>
+
+    <ImageView android:layout_width="@dimen/plugged_icon"
+               android:layout_height="@dimen/plugged_icon"
+               android:scaleType="fitCenter"
+               android:padding="2dp"
+               android:src="@drawable/not_unplugged"
+               android:visibility="invisible"
+    />
+  </LinearLayout>
 
   <LinearLayout android:id="@+id/vital_stats"
                 android:orientation="vertical"
@@ -43,7 +70,7 @@
                  android:src="@drawable/temp"
       />
       <TextView android:id="@+id/temp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/vital_stats_icon"
                 android:layout_width="0px"
                 android:layout_weight="0.5"
                 android:gravity="center_vertical|left"
@@ -57,7 +84,7 @@
                  android:src="@drawable/health"
       />
       <TextView android:id="@+id/health"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/vital_stats_icon"
                 android:layout_width="0px"
                 android:layout_weight="0.5"
                 android:gravity="center_vertical|left"
@@ -78,7 +105,7 @@
       />
 
       <TextView android:id="@+id/voltage"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/vital_stats_icon"
                 android:layout_width="0px"
                 android:layout_weight="0.5"
                 android:gravity="center_vertical|left"
@@ -93,7 +120,7 @@
                  android:src="@drawable/current"
       />
       <TextView android:id="@+id/current"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/vital_stats_icon"
 	        android:layout_width="0px"
                 android:layout_weight="0.5"
                 android:gravity="center_vertical|left"

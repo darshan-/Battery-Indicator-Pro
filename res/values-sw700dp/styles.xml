@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <dimen name="bia_level">64sp</dimen>
   <dimen name="bu_button_height">85dp</dimen>
+  <dimen name="plugged_icon">48dp</dimen>
   <dimen name="vital_stats_icon">34dp</dimen>
   <dimen name="vital_stats_text">20dp</dimen>
 </resources>

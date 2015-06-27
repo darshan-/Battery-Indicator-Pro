@@ -87,6 +87,7 @@
   <dimen name="bu_button_fs">16sp</dimen>
   <dimen name="bu_button_height">65dp</dimen>
 
+  <dimen name="plugged_icon">28dp</dimen>
   <dimen name="vital_stats_icon">22dp</dimen>
   <dimen name="vital_stats_text">14dp</dimen>
 
