@@ -64,7 +64,7 @@
   <string name="temperature_f" formatted="false">градусы_фаренгейта</string>
   <string name="voltage" formatted="false">вольт</string>
   <string name="current" formatted="false">миллиампер</string>
-  <string name="status_unplugged" formatted="false">Работает от аккумулятора</string>
+  <string name="status_unplugged" formatted="false">отключен</string>
   <string name="status_unknown" formatted="false">Неизвестно</string>
   <string name="status_charging" formatted="false">Заряжается</string>
   <string name="status_discharging" formatted="false">Разряжается</string>
