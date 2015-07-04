@@ -1,9 +1,9 @@
 <appwidget-provider
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="62dp"
-    android:minHeight="62dp"
-    android:minResizeWidth="62dp"
-    android:minResizeHeight="62dp"
+    android:minWidth="40dp"
+    android:minHeight="40dp"
+    android:minResizeWidth="40dp"
+    android:minResizeHeight="40dp"
     android:updatePeriodMillis="0"
     android:widgetCategory="home_screen|keyguard"
     android:initialLayout="@layout/circle_app_widget"
