@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_full_name" formatted="false">電量指示器專業版</string>
-  <string name="app_launcher_name" formatted="false">電量指示器</string>
-  <string name="app_full_name_free" formatted="false">電量指示器</string>
+  <string name="app_full_name" formatted="false">BatteryBot專業版</string>
+  <string name="app_launcher_name" formatted="false">BatteryBot</string>
+  <string name="settings_activity_subtitle" formatted="false">設定</string>
+  <string name="help_activity_subtitle" formatted="false">幫助</string>
+  <string name="log_view_activity_subtitle" formatted="false">記錄</string>
+  <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">查看電量使用情況</string>
   <string name="upgrade_donate_b" formatted="false">升級/捐助...</string>
   <string name="confirm_disable_hint" formatted="false">提示：可在「設定」中關閉此提示信息。</string>
@@ -12,6 +15,8 @@
   <string name="confirm_close_hint" formatted="false">電量指示器將完全退出，狀態列電量指示圖標將不再顯示。\n\n如果您想讓本程序背景運行，可以單擊手機「返回」鍵關閉主視窗。</string>
   <string name="confirm_clear_logs" formatted="false">確認清理所有日誌？</string>
   <string name="okay" formatted="false">完成</string>
+  <string name="tab_current_info" formatted="false">現在狀況</string>
+  <string name="tab_history" formatted="false">紀錄</string>
   <string name="menu_settings" formatted="false">設定</string>
   <string name="menu_close" formatted="false">關閉</string>
   <string name="menu_help" formatted="false">說明</string>
@@ -36,7 +41,10 @@
   <string name="inaccessible_w_reason" formatted="false">SD卡無法存取：</string>
   <string name="read_only_storage" formatted="false">SD卡已設定為「唯讀」模式。</string>
   <string name="file_written" formatted="false">文件已在SD卡根目錄成功創建。</string>
-  <string name="status_unplugged" formatted="false">拔下電源</string>
+  <string name="date" formatted="false">日期</string>
+  <string name="time" formatted="false">時間</string>
+  <string name="status" formatted="false">狀態</string>
+  <string name="status_unplugged" formatted="false">電源中斷</string>
   <string name="status_unknown" formatted="false">未知</string>
   <string name="status_charging" formatted="false">充電中</string>
   <string name="status_discharging" formatted="false">放電中</string>
