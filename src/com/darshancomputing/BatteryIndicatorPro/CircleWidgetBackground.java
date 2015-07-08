@@ -24,8 +24,8 @@ import android.graphics.RectF;
 import android.util.DisplayMetrics;
 
 class CircleWidgetBackground {
-    private static final int DIMEN = 128;
-    private static final float ARC_STROKE_WIDTH = DIMEN * 0.07f;
+    private final int DIMEN;
+    private final float ARC_STROKE_WIDTH;
 
     private static final int BLACK = 0xff000000;
     private static final int ICS_BLUE = 0xff33b5e5;
@@ -42,8 +42,11 @@ class CircleWidgetBackground {
 
         canvas = new Canvas();
 
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        DIMEN = (int) (72 * (metrics.densityDpi / 160.0));
+        ARC_STROKE_WIDTH = DIMEN * 0.07f;
+
         bitmap = Bitmap.createBitmap(DIMEN, DIMEN, Bitmap.Config.ARGB_8888);
-        bitmap.setDensity(DisplayMetrics.DENSITY_DEFAULT);
         canvas.setBitmap(bitmap);
 
         bg_paint = new Paint();
