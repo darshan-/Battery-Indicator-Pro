@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2013 Darshan-Josiah Barber
+    Copyright (c) 2009-2015 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -50,7 +50,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 
 public class CurrentInfoFragment extends Fragment {
-    private static BatteryInfoActivity activity;
+    private BatteryInfoActivity activity;
     private Intent biServiceIntent;
     private Messenger serviceMessenger;
     private final Messenger messenger = new Messenger(new MessageHandler());
@@ -292,13 +292,15 @@ public class CurrentInfoFragment extends Fragment {
     public static class ConfirmCloseDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final BatteryInfoActivity activity = (BatteryInfoActivity) getActivity();
+
             return new AlertDialog.Builder(activity)
                 .setTitle(activity.res.getString(R.string.confirm_close))
                 .setMessage(activity.res.getString(R.string.confirm_close_hint))
                 .setPositiveButton(activity.res.getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
-                            ((BatteryInfoActivity) activity).currentInfoFragment.closeApp();
+                            activity.currentInfoFragment.closeApp();
                             di.cancel();
                         }
                     })
