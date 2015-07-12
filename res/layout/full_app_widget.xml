@@ -15,7 +15,7 @@
                android:layout_width="0px"
                android:layout_weight="0.3"
                android:scaleType="fitCenter"
-               android:padding="4dp"
+               android:padding="8dp"
     />
 
     <TextView android:id="@+id/level"
