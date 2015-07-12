@@ -12,7 +12,7 @@
              android:layout_weight="@integer/current_info_top_left_weight"
              android:layout_height="fill_parent"
              android:scaleType="fitCenter"
-             android:padding="10dp"
+             android:padding="@dimen/battery_padding"
   />
 
   <LinearLayout android:orientation="vertical"

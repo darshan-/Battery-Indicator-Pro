@@ -26,10 +26,10 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 
 class BatteryLevel {
-    private int width, top_h, body_h, bottom_h;
+    private int width, top_h, body_h;
     private Canvas canvas;
     private Paint fill_paint, bitmap_paint;
-    private Bitmap battery_top, battery_body, battery_bottom, battery;
+    private Bitmap battery_top, battery_body, battery;
 
     public static final int SIZE_LARGE = 1;
     public static final int SIZE_NOTIFICATION = 4;
@@ -51,17 +51,15 @@ class BatteryLevel {
 
         battery_top    = bf.decodeResource(res, R.drawable.empty_battery_top   , bfo);
         battery_body   = bf.decodeResource(res, R.drawable.empty_battery_body  , bfo);
-        battery_bottom = bf.decodeResource(res, R.drawable.empty_battery_bottom, bfo);
         //?res = null;
 
            width = battery_top.getWidth();
            top_h = battery_top.getHeight();
           body_h = battery_body.getHeight();
-        bottom_h = battery_bottom.getHeight();
 
         canvas = new Canvas();
 
-        battery = Bitmap.createBitmap(width, top_h + body_h + bottom_h, Bitmap.Config.ARGB_8888);
+        battery = Bitmap.createBitmap(width, top_h + body_h, Bitmap.Config.ARGB_8888);
         battery.setDensity(DisplayMetrics.DENSITY_DEFAULT);
         canvas.setBitmap(battery);
 
@@ -94,7 +92,6 @@ class BatteryLevel {
 
         canvas.drawBitmap(battery_top   , 0, 0             , bitmap_paint);
         canvas.drawBitmap(battery_body  , 0, top_h         , bitmap_paint);
-        canvas.drawBitmap(battery_bottom, 0, top_h + body_h, bitmap_paint);
     }
 
     public Bitmap getBitmap() {
@@ -104,7 +101,6 @@ class BatteryLevel {
     public void recycle() {
         battery_top.recycle();
         battery_body.recycle();
-        battery_bottom.recycle();
         battery.recycle();
     }
 }
