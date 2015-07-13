@@ -338,7 +338,7 @@ public class CurrentInfoFragment extends Fragment {
         tv.setText("" + info.percent + activity.res.getString(R.string.percent_symbol));
 
         tv = (TextView) view.findViewById(R.id.time_remaining);
-        tv.setText(activity.str.timeRemaining(info));
+        tv.setText(activity.str.timeRemainingMainScreen(info));
         tv = (TextView) view.findViewById(R.id.until_what);
         tv.setText(activity.str.untilWhat(info));
 

@@ -251,6 +251,15 @@ public class Str {
         }
     }
 
+    // Shows mdash rather than "Fully Charged" when no prediction.
+    //   The widget still wants the old behavior.
+    public android.text.Spanned timeRemainingMainScreen(BatteryInfo info) {
+        if (info.prediction.what == BatteryInfo.Prediction.NONE)
+            return android.text.Html.fromHtml("&nbsp;&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;");
+        else
+            return timeRemaining(info);
+    }
+
     public String untilWhat(BatteryInfo info) {
         if (info.prediction.what == BatteryInfo.Prediction.NONE)
             return "";
