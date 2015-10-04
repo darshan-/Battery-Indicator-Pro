@@ -17,6 +17,8 @@ package com.darshancomputing.BatteryIndicatorPro;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -45,9 +47,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 
 public class CurrentInfoFragment extends Fragment {
     private BatteryInfoActivity activity;

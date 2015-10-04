@@ -16,6 +16,8 @@ package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.ListFragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -42,9 +44,6 @@ import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.ListFragment;
 
 import java.io.BufferedWriter;
 import java.io.File;
