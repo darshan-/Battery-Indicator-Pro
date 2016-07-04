@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.darshancomputing.BatteryIndicatorPro"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
-    android:versionCode="013001"
-    android:versionName="9.1.0-dev"
+    android:versionCode="013003"
+    android:versionName="10.0.0-dev"
 >
   <application
       android:label="@string/app_full_name"
@@ -118,7 +118,7 @@
 
   <uses-sdk
       android:minSdkVersion="13"
-      android:targetSdkVersion="23"
+      android:targetSdkVersion="24"
   />
 
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
