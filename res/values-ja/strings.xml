@@ -65,6 +65,7 @@
   <string name="temperature" formatted="false">セ氏度</string>
   <string name="temperature_f" formatted="false">華氏度</string>
   <string name="voltage" formatted="false">電圧</string>
+  <string name="current" formatted="false">ミリアンペア</string>
   <string name="status_unplugged" formatted="false">未接続</string>
   <string name="status_unknown" formatted="false">不明</string>
   <string name="status_charging" formatted="false">充電中</string>
@@ -116,7 +117,9 @@
   <string name="help_cat_changelog" formatted="false">変更履歴</string>
   <string name="help_changelog" formatted="false"><a href="http://batterybot.info/changelog">オンライン変更履歴</a> をご覧ください.</string>
   <string name="help_cat_faq" formatted="false">よくある質問とその回答</string>
-  <string name="help_faq" formatted="false">Please see the <a href="http://batterybot.info/faq">オンライン FAQ</a>.</string>
+  <string name="help_faq" formatted="false"><a href="http://batterybot.info/faq">オンライン FAQ</a> をご覧ください.</string>
+  <string name="help_cat_google_plus" formatted="false">Google+ ページ</string>
+  <string name="help_google_plus" formatted="false">お知らせや最新情報の入手は <a href="https://www.google.com/+BatterybotInfoAndroid">Google+ ページ</a> をフォローしてください.</string>
   <string name="help_cat_website" formatted="false">Webサイト</string>
   <string name="help_website" formatted="false">さらに詳細な情報は <a href="http://batterybot.info/">BatteryBot webサイト</a> でご利用できます。</string>
   <string name="help_cat_open_source" formatted="false">オープンソース</string>
@@ -141,6 +144,9 @@
   <string name="status_bar_icon_settings" formatted="false">ステータスバー アイコン</string>
   <string name="status_bar_icon_settings_summary" formatted="false">アイコンセットのコントロール</string>
   <string name="status_bar_icon_settings_help" formatted="false">どのアイコンセットを使用するか選択して、アイコンセットの設定を変更することができます (色など)。</string>
+  <string name="current_hack_settings" formatted="false">電流 (mA) ハック</string>
+  <string name="current_hack_settings_summary" formatted="false">mA 情報を有効にする詳細設定</string>
+  <string name="current_hack_settings_help" formatted="false">Android は、バッテリー電流に関する情報にアクセスするための手段をアプリに提供していません。しかし、ハックは、多くのデバイスでこの情報を取得することができるようになります。\n\nこの動作は保証されません。全く動作しない可能性もあります。または動作しても全く意味のない値になることもあります。\n\n設定が可能な場合は、ハックをオンにして、このセクションで使用する方法を制御します。</string>
   <string name="alarm_settings_subtitle" formatted="false">アラーム設定</string>
   <string name="alarm_settings" formatted="false">アラーム</string>
   <string name="alarm_settings_summary" formatted="false">低残量/フル充電の通知をコントロール</string>
@@ -198,6 +204,29 @@
   <string name="pref_cat_icon_set" formatted="false">アイコンセット</string>
   <string name="pref_icon_set" formatted="false">アイコンセット</string>
   <string name="pref_icon_set_help" formatted="false">Android は多くの種類があるため、すべてのデバイス上でうまく動作する完全な アイコンセットはありません。プロ ユーザーは、より多くのオプションを含んだ プラグインを使用することができますが、ほぼすべてのデバイスに対して 少なくとも一つは良いオプションを提供しなければならないため、 3 つの組み込みアイコンセットがあります。\n\n\"クラシック\" は、2009年からのオリジナルアイコンセットです。 古いデバイスで使用する場合は最高の選択ですが、新しいバージョンの Android (Android 3.0, Honeycom 以降) では通知アイコンが小さく、 暗くなり、非常に見づらくなります。\n\n\"数字のみ\" は、すべての新しい Android デバイスのデフォルトです。 小さく、暗く表示された後に、非常に大きな白い数字で、 はっきり表示されます。 充電中は数字の下に稲妻が表示されます。\n\n\"小さい数字\" は \"数字のみ\" の小さいものです。 いくつかの新しいデバイスでは、これまでの Android のようにアイコンが 小さくならないため、\"数字のみ\" では非常に大きな数字が コミカルに表示されます。\n\nもしあなたが BatteryBot Pro のアイコン プラグインを インストールされると、これら中から選択することができます (メニューボタンを押して、プラグインを入手 から、無料のプラグインを 入手することができます。または新しいデバイスではアクションバーで プラグインを入手 ボタンを押してください)。</string>
+  <string name="pref_cat_current_hack_main" formatted="false">メイン コントロール</string>
+  <string name="pref_cat_current_hack_unsupported" formatted="false">電流 (mA) ハックはサポートされていません</string>
+  <string name="pref_current_hack_unsupported" formatted="false">申し訳ありません、このデバイスで電流 (mA) ハックはサポートされていません。</string>
+  <string name="current_hack_maybe_supported" formatted="false">ハックはこのデバイスで動作する可能性があります。</string>
+  <string name="pref_enable_current_hack" formatted="false">ハックを有効にする</string>
+  <string name="pref_enable_current_hack_summary" formatted="false">電流 (mA) ハックを有効にしてみますか?</string>
+  <string name="pref_enable_current_hack_help" formatted="false">この設定を有効にすると、ハックに関する他のオプションが使用可能になります。</string>
+  <string name="pref_cat_current_hack_notification" formatted="false">通知</string>
+  <string name="pref_display_current_in_vital_stats" formatted="false">バイタル統計に表示</string>
+  <string name="pref_display_current_in_vital_stats_summary" formatted="false">メイン通知のバイタル統計に電流 (mA) を表示しますか?</string>
+  <string name="pref_display_current_in_vital_stats_help" formatted="false">有効にすると、ハックを試行して、メイン通知のバイタル統計行に結果が表示されます。これを表示するには、メイン通知にバイタル統計を表示するように設定する必要があることにご注意ください。システムが新しいバッテリー情報を送信したときにのみ、この値は更新されます。\n\nほとんどのデバイスで、負の値は、バッテリーからの純流出を示し、正の値は、バッテリーが充電されていることを示しています。しかし、すべてのデバイスでこのように値を生成するとは限りません。</string>
+  <string name="pref_cat_current_hack_main_window" formatted="false">メインウインドウ</string>
+  <string name="pref_display_current_in_main_window" formatted="false">メインウインドウに表示</string>
+  <string name="pref_display_current_in_main_window_summary" formatted="false">メインウインドウに電流 (mA) を表示しますか?</string>
+  <string name="pref_display_current_in_main_window_help" formatted="false">有効にすると、ハックを試行し、メインウィンドウに結果が表示されます。システムが新しいバッテリー情報を送信するたびにこの値が更新されますが、表示された値をタップすることで、いつでも値を更新することができます。 (いくつかのデバイスはほとんど、またはまったく基になるデータを更新しないため、タップで表示する値が変更されない場合があることにご注意ください。)\n\nほとんどのデバイスで、負の値は、バッテリーからの純流出を示し、正の値は、バッテリーが充電されていることを示しています。しかし、すべてのデバイスでこのように値を生成するとは限りません。</string>
+  <string name="pref_prefer_current_avg_in_vital_stats" formatted="false">バイタル統計に平均を表示する</string>
+  <string name="pref_prefer_current_avg_in_vital_stats_summary" formatted="false">メイン通知のバイタル統計に平均電流を使用しますか?</string>
+  <string name="pref_prefer_current_avg_in_main_window" formatted="false">メインウインドウに平均を表示する</string>
+  <string name="pref_prefer_current_avg_in_main_window_summary" formatted="false">メインウインドウに平均電流を使用しますか?</string>
+  <string name="pref_prefer_current_avg_help" formatted="false">一部のシステムではさらにハックを利用して、読み取った瞬間だけでなく、最近の電流の平均を取得することができます。これはデバイスによって異なり、一部のデバイスでのみ使用できます。 (すべてがうまくいけば) 安定した値を取得することもありますが、同じ値を返すこと、使用できない値を返すこともあります (その場合、このオプションをオフにする必要があります)。</string>
+  <string name="pref_auto_refresh_current_in_main_window" formatted="false">メインウインドウの mA を自動更新する</string>
+  <string name="pref_auto_refresh_current_in_main_window_summary" formatted="false">2 秒ごとに mA を自動更新しますか?</string>
+  <string name="pref_auto_refresh_current_in_main_window_help" formatted="false">メインウィンドウに　mA　を表示するハックを設定した場合、それをタップして値を更新することができます。タップすることなく、頻繁に更新を確認したい場合、このオプションを有効にすると、ウィンドウが表示されている間、値を 2 秒ごとに自動更新することができます\n\nいくつかのデバイスはほとんど、またはまったく基になるデータを更新しないため、アプリがシステムから取得したデータで表示された値を更新しても、表示が更新したように見えない場合があることにご注意ください。</string>
   <string name="pref_cat_charging_indicator" formatted="false">充電中インジケーター</string>
   <string name="pref_indicate_charging" formatted="false">充電中を示す</string>
   <string name="pref_indicate_charging_summary" formatted="false">充電中を示すアイコンを使用しますか?</string>
@@ -238,6 +267,9 @@
   <string name="pref_cat_plugin_settings" formatted="false">プラグイン設定</string>
   <string name="pref_plugin_settings" formatted="false">プラグイン設定</string>
   <string name="pref_plugin_settings_summary" formatted="false">このプラグインの設定を編集します</string>
+  <string name="pref_classic_color_mode" formatted="false">強制的にクラシックカラーモードにする</string>
+  <string name="pref_classic_color_mode_summary" formatted="false">これは通常動作しません。ヘルプをお読みください</string>
+  <string name="pref_classic_color_mode_help" formatted="false">Android 5.0 (Lollipop) から、着色された通知アイコンはもはや公式には Android 上で動作しません。クラシックアイコンは白い四角としてを表示されます。そのためデフォルトでは、これらのデバイス上で、アプリは白い番号と白いアウトラインを使用します。\n\nしかし、すべてのデバイスが仕様に従っているわけではないので、これは必要ではなく、すべてにおいて正常に動作するわけではありません。このオプションをオンにすることによって、クラシックな方法で、クラシックアイコンセットを動作させてみることができます。覚えておいてほしいのは、ほとんどのデバイスでこれはアイコンがただの白い四角になります、。</string>
   <string name="pref_cat_color" formatted="false">アイコンの色</string>
   <string name="pref_cat_color_help" formatted="false">BatteryBot のバイナリパッケージを適切に小さくするために、 色に関していくつかの制限があります。現時点では、 30% 高い赤のアイコン、50% 高い黄色のアイコン、 20% 低い緑のアイコンを使用することができます。 99% のユーザーにとって、利用する上で合理的なものと考えます。\n\n独立して色をオンまたはオフにして、最大限にコントロールすることができます。 つまり、完全にフル充電のときにはアイコンが緑、その後グレースケール、 その後黄色、その後赤、という 4 段と多くのカラースキームを持つことができます。 もちろん、ほとんどの人は、アイコンがグレースケールにならないように、 おそらく黄色と緑に同じしきい値を設定するでしょう。</string>
   <string name="pref_color_preview" formatted="false">色のプレビュー</string>

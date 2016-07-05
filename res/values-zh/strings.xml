@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_full_name" formatted="false">BatteryBot專業版</string>
+  <string name="app_full_name" formatted="false">BatteryBot Pro版</string>
   <string name="app_launcher_name" formatted="false">BatteryBot</string>
   <string name="settings_activity_subtitle" formatted="false">設定</string>
   <string name="help_activity_subtitle" formatted="false">幫助</string>
   <string name="log_view_activity_subtitle" formatted="false">記錄</string>
   <string name="app_full_name_free" formatted="false">BatteryBot</string>
   <string name="battery_use_b" formatted="false">查看電量使用情況</string>
-  <string name="upgrade_donate_b" formatted="false">升級/捐助...</string>
-  <string name="confirm_disable_hint" formatted="false">提示：可在「設定」中關閉此提示信息。</string>
+  <string name="upgrade_donate_b" formatted="false">升級/贊助...</string>
+  <string name="confirm_disable_hint" formatted="false">提示：可在「設定」中關閉此確認視窗。</string>
   <string name="yes" formatted="false">確認</string>
   <string name="cancel" formatted="false">取消</string>
   <string name="confirm_close" formatted="false">確認退出？</string>
-  <string name="confirm_close_hint" formatted="false">電量指示器將完全退出，狀態列電量指示圖標將不再顯示。\n\n如果您想讓本程序背景運行，可以單擊手機「返回」鍵關閉主視窗。</string>
+  <string name="confirm_close_hint" formatted="false">BatteryBot將完全退出，狀態列電量指示圖標將不再顯示。\n\n如果您想讓本程序背景運行，可以單擊手機「返回」鍵關閉主視窗。</string>
   <string name="confirm_clear_logs" formatted="false">確認清理所有日誌？</string>
   <string name="okay" formatted="false">完成</string>
+  <string name="none" formatted="false">無</string>
   <string name="tab_current_info" formatted="false">現在狀況</string>
   <string name="tab_history" formatted="false">紀錄</string>
   <string name="menu_settings" formatted="false">設定</string>
@@ -40,10 +41,11 @@
   <string name="inaccessible_storage" formatted="false">SD卡無法存取。</string>
   <string name="inaccessible_w_reason" formatted="false">SD卡無法存取：</string>
   <string name="read_only_storage" formatted="false">SD卡已設定為「唯讀」模式。</string>
-  <string name="file_written" formatted="false">文件已在SD卡根目錄成功創建。</string>
+  <string name="file_written" formatted="false">文件已在SD卡根目錄成功建立。</string>
   <string name="date" formatted="false">日期</string>
   <string name="time" formatted="false">時間</string>
   <string name="status" formatted="false">狀態</string>
+  <string name="current" formatted="false">mA</string>
   <string name="status_unplugged" formatted="false">電源中斷</string>
   <string name="status_unknown" formatted="false">未知</string>
   <string name="status_charging" formatted="false">充電中</string>
@@ -52,41 +54,57 @@
   <string name="status_fully_charged" formatted="false">電池充滿</string>
   <string name="status_plugged_in" formatted="false">插入電源</string>
   <string name="health_unknown" formatted="false">未知</string>
-  <string name="health_good" formatted="false">正常</string>
+  <string name="health_good" formatted="false">電池健康良好</string>
   <string name="health_overheat" formatted="false">過熱</string>
   <string name="health_dead" formatted="false">損壞</string>
   <string name="health_overvoltage" formatted="false">超壓</string>
   <string name="health_failure" formatted="false">錯誤</string>
   <string name="health_cold" formatted="false">Cold</string>
-  <string name="plugged_unplugged" formatted="false">Unplugged</string>
+  <string name="plugged_unplugged" formatted="false">電源中斷</string>
   <string name="plugged_ac" formatted="false">(AC)</string>
   <string name="plugged_usb" formatted="false">(USB)</string>
   <string name="plugged_unknown" formatted="false">(?)</string>
   <string name="plugged_wireless" formatted="false">(WL)</string>
+  <string name="alarm_type_fully_charged" formatted="false">電池充滿</string>
+  <string name="alarm_fully_charged" formatted="false">電池已充滿</string>
   <string name="logs_empty" formatted="false">日誌記錄為空</string>
   <string name="discharging_from" formatted="false">放電起始電量</string>
   <string name="charging_from" formatted="false">充電起始電量</string>
   <string name="fully_charged" formatted="false">完全充滿</string>
   <string name="since" formatted="false">開始於</string>
-  <string name="currently_using" formatted="false">當前使用</string>
-  <string name="currently_set_to" formatted="false">"當前設定為"</string>
-  <string name="currently_disabled" formatted="false">當前不可用</string>
+  <string name="currently_using" formatted="false">目前使用</string>
+  <string name="currently_set_to" formatted="false">"目前設定為"</string>
+  <string name="currently_disabled" formatted="false">目前不可使用</string>
   <string name="help_cat_version" formatted="false">版本</string>
   <string name="help_cat_changelog" formatted="false">更新日誌</string>
+  <string name="help_changelog" formatted="false">請造訪一下<a href="http://www.batterybot.info/changelog">線上的更新日誌</a></string>
+  <string name="help_cat_faq" formatted="false">常見問答集</string>
+  <string name="help_faq" formatted="false">請造訪一下<a href="http://www.batterybot.info/faq">線上的常見問答集</a>。</string>
+  <string name="help_cat_google_plus" formatted="false">Google+ 頁面</string>
+  <string name="help_google_plus" formatted="false">考慮一下追蹤我們的<a href="https://www.google.com/+BatterybotInfoAndroid">Google+ 頁面</a>以接收新公告及投票。</string>
+  <string name="help_cat_website" formatted="false">網站</string>
+  <string name="help_website" formatted="false">更多資訊在<a href="http://www.batterybot.info/">BatteryBot 的網站</a>。</string>
+  <string name="help_cat_open_source" formatted="false">開放原始碼</string>
+  <string name="help_open_source" formatted="false">這是一個開源的計畫，也就是說，您可以從<a href="http://www.batterybot.info/sourcecode">這裡下載原始碼</a>。</string>
+  <string name="help_cat_donate" formatted="false">贊助</string>
+  <string name="help_donate" formatted="false">請考慮以升級到<a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro版</a>來贊助我們。</string>
   <string name="help_cat_no_warranty" formatted="false">免責申明</string>
   <string name="help_no_warranty" formatted="false">本軟體旨在提高系統的易用性，並<b>無任何承擔責任的義務</b>。<b>不對使用軟體實現特殊功能的實用性做任何承諾</b>。\n\n軟體開發者將盡其所能最求軟體的正常工作及流暢運行，但對任何情況下可能導致的使用者的不適或設備損壞不承擔任何責任。</string>
   <string name="help_cat_acknowledgments" formatted="false">聲明</string>
   <string name="help_acknowledgments" formatted="false">由於暫無慷慨的翻譯者協助，本程序僅提供英文版本，非常感謝您的支持！\n\n得益於Google及其他開源專案，本軟體功能得以實現。\n\n軟體圖標（可見於Android Market軟體主頁右上角）的設計靈感來源於<a href="http://www.oxygen-icons.org"> Oxygen圖標主題</a>並在<a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution-ShareAlike 3.0 License</a>的規範下有限使用。</string>
-  <string name="help_cat_translations" formatted="false">多語言化</string>
+  <string name="help_cat_translations" formatted="false">徵求翻譯者！</string>
   <string name="help_subcat_translators" formatted="false">翻譯志願者名單</string>
   <string name="help_cat_contact" formatted="false">聯繫方式</string>
+  <string name="help_contact" formatted="false">如果您有任何問題或建議，請寄<a href="mailto:support@batterybot.info">email給我</a>。</string>
   <string name="pref_hint" formatted="false"><b>提示：</b>單擊「選單」獲取說明。</string>
   <string name="settings_overview" formatted="false">預覽</string>
   <string name="settings_overview_help" formatted="false">設定包括如下所述的三個獨立頁面。各頁面的說明信息獨立顯示，在「選單」-「說明」內容中可獲取當前頁面的說明信息。</string>
   <string name="other_settings" formatted="false">其他設定</string>
   <string name="other_settings_help" formatted="false">此頁面包含其他的設定，包括日誌功能、螢幕鎖功能、溫度單位、自動啟動方式等。</string>
-  <string name="pref_cat_more_settings_in_pro" formatted="false">專業版的更多設定</string>
-  <string name="pref_please_upgrade" formatted="false">專業版包含了以紅色、黃色及綠色圖標提示剩餘電量等級、電池狀態記錄、自動/手動關閉鎖屏、充電/放電剩餘時間預估等多種高級功能。</string>
+  <string name="pref_cat_more_settings_in_pro" formatted="false">Pro版的更多設定</string>
+  <string name="pref_please_upgrade" formatted="false">Pro版包含了以紅色、黃色及綠色圖標提示剩餘電量等級、電池狀態記錄、自動/手動關閉鎖屏、充電/放電剩餘時間預估等多種高級功能。</string>
+  <string name="pref_cat_icon_set" formatted="false">圖示設定</string>
+  <string name="pref_icon_set" formatted="false">圖示設定</string>
   <string name="pref_cat_logging" formatted="false">日誌記錄</string>
   <string name="pref_enable_logging" formatted="false">啟用日誌記錄功能</string>
   <string name="pref_enable_logging_summary" formatted="false">確認記錄電池狀態信息？</string>
@@ -105,6 +123,7 @@
   <string name="pref_autostart_at_boot" formatted="false">開機自動啟動方式</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">確認允許電量指示器開機時自動啟動？</string>
   <string name="pref_autostart_at_boot_help" formatted="false">設定是否允許電量指示器在開機時自動啟動。\n\n」關機前運行中」選項僅在手動關閉電量指示器時有效。若您使用其他方式，如使用任務殺手進行關閉，則本程序無法確認是否由您關閉，選擇該方式後仍會在開機時自動啟動。</string>
+  <string name="pref_cat_language" formatted="false">語言</string>
   <string name="pref_cat_color" formatted="false">圖標顏色</string>
   <string name="pref_cat_color_help" formatted="false">為保證電量指示器的二進制數據包尺寸最小化，對圖標顏色做出如下限制：紅色圖標標示最大值為30%剩餘電量，黃色圖標標示最大值為50%剩餘電量，綠色圖標標示最小值為20%剩餘電量。開發者相信如此的限制能滿足99%的用戶需求。\n\n為保證用戶能夠最大限度的自定義該軟體，各色彩等級可單獨的開啟或關閉。最高可實現四級色彩顯示，綠色圖標表示電量充足，接著以灰色、黃色和紅色顯示剩餘電量等級。大部分用戶會將黃色標示上限及綠色標示下限設定為相同值，這樣將跳過灰色標示。</string>
   <string name="pref_color_preview" formatted="false">色彩預覽</string>
@@ -149,9 +168,39 @@
   <string name="age_2_weeks" formatted="false">二周</string>
   <string name="age_3_weeks" formatted="false">三周</string>
   <string name="age_4_weeks" formatted="false">四周</string>
+  <string name="notification_priority_default" formatted="false">預設</string>
+  <string name="icon_set_classic" formatted="false">經典圖示</string>
+  <string name="icon_set_plain" formatted="false">普通數字圖示</string>
+  <string name="icon_set_smaller" formatted="false">小數字圖示</string>
   <plurals name="n_log_items">
     <item quantity="one">%d項日誌記錄</item>
     <item quantity="other">%d項日誌記錄</item>
+  </plurals>
+  <plurals name="n_hours_long">
+    <item quantity="one">"%d小時,"</item>
+    <item quantity="other">"%d小時,"</item>
+  </plurals>
+  <plurals name="n_minutes_long">
+    <item quantity="one">%d分鐘</item>
+    <item quantity="other">%d分鐘</item>
+  </plurals>
+  <plurals name="n_hours_medium">
+    <item quantity="one">"%d小時,"</item>
+    <item quantity="other">"%d小時,"</item>
+  </plurals>
+  <plurals name="n_minutes_medium">
+    <item quantity="one">%d分鐘</item>
+    <item quantity="other">%d分鐘</item>
+  </plurals>
+  <plurals name="n_hours_short">
+    <item quantity="other">"%d小時"</item>
+  </plurals>
+  <plurals name="n_minutes_short">
+    <item quantity="other">%d分</item>
+  </plurals>
+  <plurals name="n_days">
+    <item quantity="one">"%d天,"</item>
+    <item quantity="other">"%d天,"</item>
   </plurals>
   <plurals name="for_n_hours">
     <item quantity="one">已%d小時</item>
