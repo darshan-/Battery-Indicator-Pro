@@ -8,6 +8,8 @@ gen
 #libs
 TODO
 my-release-key.keystore
+.gradle
+build
 
 !build.properties
 !ant.properties
