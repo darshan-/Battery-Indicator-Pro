@@ -91,6 +91,7 @@
   <string formatted="false" name="inaccessible_storage">SD Card is inaccessible.</string>
   <string formatted="false" name="inaccessible_w_reason">SD Card inaccessible: </string>
   <string formatted="false" name="read_only_storage">SD Card is read only.</string>
+  <string formatted="false" name="no_storage_permission">Storage permission not granted.</string>
   <string formatted="false" name="file_written">File successfully written to root of SD card.</string>
 
   <!-- These are used for the CSV export. -->

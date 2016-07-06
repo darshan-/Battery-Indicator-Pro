@@ -18,6 +18,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -44,6 +45,8 @@ public class BatteryInfoActivity extends FragmentActivity {
     public SharedPreferences sp_store;
 
     private static final String LOG_TAG = "BatteryBot";
+
+    public static final int PR_LVF_WRITE_STORAGE = 1;
 
     //static {
         //android.os.Debug.startMethodTracing();
@@ -93,6 +96,15 @@ public class BatteryInfoActivity extends FragmentActivity {
         }
 
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case PR_LVF_WRITE_STORAGE: {
+                logViewFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
+        }
     }
 
     public class BatteryInfoPagerAdapter extends FragmentPagerAdapter {

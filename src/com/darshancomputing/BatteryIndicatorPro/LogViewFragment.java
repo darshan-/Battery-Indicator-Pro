@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.CursorWrapper;
@@ -52,6 +53,9 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+
 public class LogViewFragment extends ListFragment {
     private static BatteryInfoActivity activity;
     public LogDatabase logs;
@@ -71,6 +75,8 @@ public class LogViewFragment extends ListFragment {
 
     private static final String[] CSV_ORDER = {LogDatabase.KEY_TIME, LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, 
                                                LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE};
+
+    private static final String P_WRITE_STORAGE = android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
     private final Messenger messenger = new Messenger(new MessageHandler());
     private boolean serviceConnected;
@@ -372,7 +378,25 @@ public class LogViewFragment extends ListFragment {
             header_text.setText(activity.str.n_log_items(count));
     }
 
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case BatteryInfoActivity.PR_LVF_WRITE_STORAGE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    exportCSV();
+                else
+                    Toast.makeText(activity.context, activity.str.no_storage_permission, Toast.LENGTH_SHORT).show();
+
+                return;
+            }
+        }
+    }
+
     private void exportCSV() {
+        if (ContextCompat.checkSelfPermission(activity, P_WRITE_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, new String[]{P_WRITE_STORAGE}, BatteryInfoActivity.PR_LVF_WRITE_STORAGE);
+            return;
+        }
+
         String state = Environment.getExternalStorageState();
 
         if (state != null && state.equals(Environment.MEDIA_MOUNTED_READ_ONLY)) {

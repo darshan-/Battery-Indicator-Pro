@@ -60,6 +60,7 @@ public class Str {
     public String inaccessible_storage;
     public String inaccessible_w_reason;
     public String read_only_storage;
+    public String no_storage_permission;
     public String file_written;
 
     public String time;
@@ -126,6 +127,7 @@ public class Str {
         inaccessible_storage  = res.getString(R.string.inaccessible_storage);
         inaccessible_w_reason = res.getString(R.string.inaccessible_w_reason);
         read_only_storage     = res.getString(R.string.read_only_storage);
+        no_storage_permission = res.getString(R.string.no_storage_permission);
         file_written          = res.getString(R.string.file_written);
 
         date          = res.getString(R.string.date);
