@@ -11,6 +11,7 @@
       android:icon="@drawable/battery"
       android:hardwareAccelerated="true"
       android:process="com.darshancomputing.BatteryBotPro"
+      android:allowBackup="false"
   >
     <activity
         android:name=".BatteryInfoActivity"
