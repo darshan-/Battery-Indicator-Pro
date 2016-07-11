@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2013 Darshan-Josiah Barber
+    Copyright (c) 2010-2014 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
