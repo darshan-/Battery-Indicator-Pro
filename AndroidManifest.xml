@@ -12,6 +12,7 @@
       android:hardwareAccelerated="true"
       android:process="com.darshancomputing.BatteryBotPro"
       android:allowBackup="false"
+      android:resizeableActivity="false"
   >
     <activity
         android:name=".BatteryInfoActivity"
