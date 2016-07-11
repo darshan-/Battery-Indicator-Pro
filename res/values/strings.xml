@@ -500,6 +500,31 @@
     hack will be usable.
   </string>
 
+  <string formatted="false" name="pref_current_hack_prefer_fs">Prefer old hack method</string>
+  <string formatted="false" name="pref_current_hack_prefer_fs_summary">
+    Prefer older, filesystem-based hack method?
+  </string>
+  <string formatted="false" name="pref_current_hack_prefer_fs_help">
+    Starting in Lollipop (Android 5.0), Android now provides a
+    somewhat less hackish way to access current (mA) information,
+    directly from the system BatteryManager.  However, it is still not
+    guaranteed to work at all or to work well.  It is the new default
+    on devices running Lollipop or newer, but BatteryBot will
+    automatically fall back to the old (filesystem-based) hack method
+    if it determines that the new method is unsupported.\n
+
+    \nThe new method sometimes works less well than the old
+    filesystem-based hack, or sometimes appears to work but does not
+    (e.g. always returning the same value).\n
+
+    \nOn devices running Lollipop or higher that appear to support
+    both hack methods, enabling this setting causes BatteryBot to use
+    the old, filesystem-based hack instead of the new,
+    BatteryManager-based one.  If running Lollipop or higher and you
+    seem to be having trouble with the current (mA) hack, try enabling
+    this setting.
+  </string>
+
   <string formatted="false" name="pref_cat_current_hack_notification">Notification</string>
   <string formatted="false" name="pref_display_current_in_vital_stats">Display in vital stats</string>
   <string formatted="false" name="pref_display_current_in_vital_stats_summary">

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2013 Darshan-Josiah Barber
+    Copyright (c) 2009-2016 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -97,6 +97,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_CAT_CURRENT_HACK_MAIN = "category_current_hack_main";
     public static final String KEY_CAT_CURRENT_HACK_UNSUPPORTED = "category_current_hack_unsupported";
     public static final String KEY_ENABLE_CURRENT_HACK = "enable_current_hack";
+    public static final String KEY_CURRENT_HACK_PREFER_FS = "current_hack_prefer_fs";
     public static final String KEY_CAT_CURRENT_HACK_NOTIFICATION = "category_current_hack_notification";
     public static final String KEY_DISPLAY_CURRENT_IN_VITAL_STATS = "display_current_in_vital_stats";
     public static final String KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS = "prefer_current_avg_in_vital_stats";
@@ -122,7 +123,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                   {KEY_GREEN_THRESH}
     };
 
-    private static final String[] CURRENT_HACK_DEPENDENTS = {KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
+    private static final String[] CURRENT_HACK_DEPENDENTS = {KEY_CURRENT_HACK_PREFER_FS,
+                                                             KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
                                                              KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
                                                              KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW,
                                                              KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW,
@@ -167,6 +169,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_CUSTOM_TOP_LINE_COLOR,
                                                    KEY_CUSTOM_BOTTOM_LINE_COLOR,
                                                    KEY_ENABLE_CURRENT_HACK,
+                                                   KEY_CURRENT_HACK_PREFER_FS,
                                                    KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
                                                    KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
                                                    KEY_PREDICTION_TYPE
@@ -212,6 +215,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private Resources res;
     private PreferenceScreen mPreferenceScreen;
     private SharedPreferences mSharedPreferences;
+    private CurrentHack currentHack;
 
     private String pref_screen;
 
@@ -339,6 +343,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         pm.setSharedPreferencesMode(Context.MODE_MULTI_PROCESS);
         mSharedPreferences = pm.getSharedPreferences();
 
+        currentHack = CurrentHack.getInstance(getApplicationContext());
+        currentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
+
         //oldLanguage = mSharedPreferences.getString(KEY_LANGUAGE_OVERRIDE, "default");
 
         if (pref_screen == null) {
@@ -453,7 +460,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             setPrefScreen(R.xml.current_hack_pref_screen);
             setWindowSubtitle(res.getString(R.string.current_hack_settings));
 
-            if (CurrentHack.getCurrent() == null) {
+            if (currentHack.getCurrent() == null) {
                 PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_MAIN);
                 cat.removeAll();
                 cat.setLayoutResource(R.layout.none);
@@ -779,6 +786,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             if (!mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))
                 setEnablednessOfCurrentHackDeps(false);
         }
+
+        if (key.equals(KEY_CURRENT_HACK_PREFER_FS))
+            currentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
 
         for (int i=0; i < RESET_SERVICE.length; i++) {
             if (key.equals(RESET_SERVICE[i])) {

@@ -16,6 +16,13 @@
        android:summary="@string/pref_enable_current_hack_summary"
        android:defaultValue="false"
     />
+
+    <CheckBoxPreference
+        android:key="current_hack_prefer_fs"
+        android:title="@string/pref_current_hack_prefer_fs"
+        android:summary="@string/pref_current_hack_prefer_fs_summary"
+        android:defaultValue="false"
+    />
   </PreferenceCategory>
 
   <PreferenceCategory

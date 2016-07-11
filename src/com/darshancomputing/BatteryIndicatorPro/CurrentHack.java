@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015 Darshan-Josiah Barber
+    Copyright (c) 2015-2016 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,21 +16,122 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.content.Context;
+import android.os.BatteryManager;
 import android.util.Log;
 
 import java.io.File;
 
+// Initially based on CurrentReaderFactory.java from CurrentWidget by Ran Manor (GPL v3)
 class CurrentHack {
     private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - CurrentHack";
     private static final String BUILD_MODEL = android.os.Build.MODEL.toLowerCase(java.util.Locale.ENGLISH);
 
-    // TODO: Have service set a timer to restart itself 2-3 seconds after plugged changes
+    public static final int HACK_METHOD_NONE = -1;
+    public static final int HACK_METHOD_BOTH = 0;
+    public static final int HACK_METHOD_FILE_SYSTEM = 1;
+    public static final int HACK_METHOD_BATTERY_MANAGER = 2;
 
-    // Based on CurrentReaderFactory.java from CurrentWidget by Ran Manor (GPL v3)
+    private static BatteryManager batteryManager;
+    private static boolean preferFS = false;
+    private static int method = HACK_METHOD_NONE;
+
+    private static CurrentHack instance;
+
+    protected CurrentHack(Context c) {
+        Context context = c.getApplicationContext();
+        batteryManager = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
+    }
+
+    public static CurrentHack getInstance(Context c) {
+        if (instance == null)
+            instance = new CurrentHack(c);
+
+        return instance;
+    }
+
+    public static void setPreferFS(boolean pfs) {
+        preferFS = pfs;
+
+        int avail = getHackMethodsAvailable();
+
+        if (avail == HACK_METHOD_BOTH)
+            if (preferFS)
+                method = HACK_METHOD_FILE_SYSTEM;
+            else
+                method = HACK_METHOD_BATTERY_MANAGER;
+        else
+            method = avail; // Only one or none supported
+    }
+
+    public static int getHackMethodsAvailable() {
+        boolean fs = false, bm = false;
+
+        if (getBMCurrent() != null)
+            bm = true;
+
+        if (getFSCurrent() != null)
+            fs = true;
+
+        if (bm && fs)
+            return HACK_METHOD_BOTH;
+
+        if (bm)
+            return HACK_METHOD_BATTERY_MANAGER;
+
+        if (fs)
+            return HACK_METHOD_FILE_SYSTEM;
+
+        return HACK_METHOD_NONE;
+    }
+
+    public static Long getCurrent() {
+        if (method == HACK_METHOD_NONE)
+            return null;
+
+        if (method == HACK_METHOD_FILE_SYSTEM)
+            return getFSCurrent();
+
+        return getBMCurrent();
+    }
+
+    public static Long getAvgCurrent() {
+        if (method == HACK_METHOD_NONE)
+            return null;
+
+        if (method == HACK_METHOD_FILE_SYSTEM)
+            return getFSAvgCurrent();
+
+        return getBMAvgCurrent();
+    }
+
+    private static Long getBMCurrent() {
+        if (android.os.Build.VERSION.SDK_INT < 21)
+            return null;
+
+        int current = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW);
+
+        if (current > Integer.MIN_VALUE)
+            return Long.valueOf(current) / 1000;
+        else
+            return null;
+    }
+
+    private static Long getBMAvgCurrent() {
+        if (android.os.Build.VERSION.SDK_INT < 21)
+            return null;
+
+        int current = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_AVERAGE);
+
+        if (current > Integer.MIN_VALUE)
+            return Long.valueOf(current) / 1000;
+        else
+            return null;
+    }
 
     // This usually returns an instantaneous reading of the current (current_now), but
     //  in some cases is probably a recent average.
-    public static Long getCurrent() {
+    private static Long getFSCurrent() {
         File f;
 
         // Galaxy S3
@@ -291,7 +392,7 @@ class CurrentHack {
         return null;
     }
 
-    public static Long getAvgCurrent() {
+    private static Long getFSAvgCurrent() {
         File f;
         if (BUILD_MODEL.contains("nexus 7")
             || (BUILD_MODEL.contains("one") && !BUILD_MODEL.contains("nexus"))

@@ -20,6 +20,8 @@
     <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_enable_current_hack" />
     <TextView style="@style/help_text" android:text="@string/pref_enable_current_hack_help" />
+    <TextView style="@style/help_pref" android:text="@string/pref_current_hack_prefer_fs" />
+    <TextView style="@style/help_text" android:text="@string/pref_current_hack_prefer_fs_help" />
 
     <View style="@style/help_cat_pre_margin" />
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_current_hack_notification" />

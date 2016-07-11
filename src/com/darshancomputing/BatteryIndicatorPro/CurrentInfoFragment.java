@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2015 Darshan-Josiah Barber
+    Copyright (c) 2009-2016 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -71,6 +71,7 @@ public class CurrentInfoFragment extends Fragment {
     private ImageView plugged_icon;
 
     private BatteryInfo info = new BatteryInfo();
+    private CurrentHack currentHack;
 
     //private String oldLanguage = null;
 
@@ -151,6 +152,9 @@ public class CurrentInfoFragment extends Fragment {
         activity = (BatteryInfoActivity) getActivity();
 
         bl = new BatteryLevel(activity.context, activity.res.getInteger(R.integer.bl_inSampleSize));
+
+        currentHack = CurrentHack.getInstance(activity.context);
+        currentHack.setPreferFS(activity.settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
 
         setHasOptionsMenu(true);
         //setRetainInstance(true); // TODO: Sort out a clean way to do this?
@@ -391,9 +395,9 @@ public class CurrentInfoFragment extends Fragment {
             Long current = null;
 
             if (activity.settings.getBoolean(SettingsActivity.KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW, false))
-                current = CurrentHack.getAvgCurrent();
+                current = currentHack.getAvgCurrent();
             if (current == null) // Either don't prefer avg or avg isn't available
-                current = CurrentHack.getCurrent();
+                current = currentHack.getCurrent();
             if (current != null)
                 s += String.valueOf(current) + "mA";
         } else {

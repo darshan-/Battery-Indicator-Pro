@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2013 Darshan-Josiah Barber
+    Copyright (c) 2009-2016 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -66,6 +66,7 @@ public class BatteryInfoService extends Service {
     private AlarmDatabase alarms;
     private LogDatabase log_db;
     private BatteryLevel bl;
+    private CurrentHack currentHack;
     private CircleWidgetBackground cwbg;
     private BatteryInfo info;
     private long now;
@@ -152,6 +153,9 @@ public class BatteryInfoService extends Service {
 
         loadSettingsFiles(context);
         sdkVersioning();
+
+        currentHack = CurrentHack.getInstance(context);
+        currentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
 
         Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
         mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
@@ -284,6 +288,7 @@ public class BatteryInfoService extends Service {
 
     private void reloadSettings(boolean cancelFirst) {
         loadSettingsFiles(context);
+        currentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
 
         str = new Str(res); // Language override may have changed
 
@@ -576,9 +581,9 @@ public class BatteryInfoService extends Service {
             settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_VITAL_STATS, false)) {
             Long current = null;
             if (settings.getBoolean(SettingsActivity.KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS, false))
-                current = CurrentHack.getAvgCurrent();
+                current = currentHack.getAvgCurrent();
             if (current == null) // Either don't prefer avg or avg isn't available
-                current = CurrentHack.getCurrent();
+                current = currentHack.getCurrent();
             if (current != null)
                 line += " / " + String.valueOf(current) + "mA";
         }
