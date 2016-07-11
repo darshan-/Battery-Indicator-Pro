@@ -73,6 +73,7 @@
   <color name="log_charged">@color/android_green</color>
   <color name="log_unknown">#f66</color>
   <color name="log_old_status">#ccc</color>
+  <color name="log_boot_completed">#886bc7</color>
 
   <!--color name="heavy_usage">#DD901C</color-->
 

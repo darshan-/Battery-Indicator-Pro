@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2013 Darshan-Josiah Barber
+    Copyright (c) 2010-2015 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -33,6 +33,10 @@ public class LogDatabase {
     public  static final String KEY_TEMPERATURE = "temperature";
     public  static final String KEY_VOLTAGE     = "voltage";
 
+    // Custom values for logging things other than BatteryInfo; must be negative
+    public static final int STATUS_BOOT_COMPLETED = -1;
+
+    // Values for status_age
     public static final int STATUS_NEW = 0;
     public static final int STATUS_OLD = 1;
 
@@ -115,6 +119,18 @@ public class LogDatabase {
         }
     }
 
+    public void logBoot() {
+        openDBs();
+
+        try {
+            wdb.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (NULL, "
+                        + STATUS_BOOT_COMPLETED + ",NULL," + System.currentTimeMillis()
+                        + ",NULL,NULL)");
+        } catch (Exception e) {
+            // Maybe storage is full?  Okay to drop this log rather than crash.
+        }
+    }
+
     public void prune(int max_hours) {
         long currentTM = System.currentTimeMillis();
         long oldest_log = currentTM - ((long) max_hours * 60 * 60 * 1000);
@@ -137,6 +153,9 @@ public class LogDatabase {
 
     /* Returns [status, plugged, status_age] */
     public static int[] decodeStatus(int statusCode) {
+        if (statusCode < 0) // Negative status for custom statuses like STATUS_BOOT_COMPLETED
+            return new int[]{statusCode, 0, 0};
+
         int[] a = new int[3];
 
         a[2] = statusCode / 100;

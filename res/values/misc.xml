@@ -368,6 +368,7 @@
     <item>charging</item>
     <item>discharging</item>
     <item>fully_charged</item>
+    <item>boot_completed</item>
     <item>unknown</item>
   </string-array>
 
@@ -433,6 +434,7 @@
     <item>@string/status_charging</item>
     <item>@string/status_discharging</item>
     <item>@string/status_fully_charged</item>
+    <item>@string/status_boot_completed</item>
     <item>@string/status_unknown</item>
   </string-array>
 

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2013 Darshan-Josiah Barber
+    Copyright (c) 2010-2016 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -450,10 +450,13 @@ public class LogViewFragment extends ListFragment {
                         plugged     = statusCodes[1];
                         status_age  = statusCodes[2];
 
-                        if (status_age == LogDatabase.STATUS_OLD)
+                        if (status == LogDatabase.STATUS_BOOT_COMPLETED)
+                            s = activity.str.status_boot_completed;
+                        else if (status_age == LogDatabase.STATUS_OLD)
                             s = activity.str.log_statuses_old[status];
                         else
                             s = activity.str.log_statuses[status];
+
                         if (plugged > 0)
                             s += " " + activity.str.pluggeds[plugged];
 
@@ -509,6 +512,7 @@ public class LogViewFragment extends ListFragment {
             boolean show_charging      = activity.settings.getBoolean("charging",      true);
             boolean show_discharging   = activity.settings.getBoolean("discharging",   true);
             boolean show_fully_charged = activity.settings.getBoolean("fully_charged", true);
+            boolean show_boot          = activity.settings.getBoolean("boot_completed", true);
             boolean show_unknown       = activity.settings.getBoolean("unknown",       true);
 
             for (wrappedCursor.moveToFirst(); !wrappedCursor.isAfterLast(); wrappedCursor.moveToNext()) {
@@ -519,6 +523,8 @@ public class LogViewFragment extends ListFragment {
                 int status_age    = statusCodes[2];
 
                 if (status == BatteryInfo.STATUS_FULLY_CHARGED && show_fully_charged) {
+                    shownIDs.add(wrappedCursor.getPosition());
+                } else if (status == LogDatabase.STATUS_BOOT_COMPLETED && show_boot) {
                     shownIDs.add(wrappedCursor.getPosition());
                 } else if ((status == BatteryInfo.STATUS_UNKNOWN ||
                             status == BatteryInfo.STATUS_DISCHARGING ||
@@ -841,7 +847,17 @@ public class LogViewFragment extends ListFragment {
 
             String s;
 
-            if (status_age == LogDatabase.STATUS_OLD) {
+            if (status == LogDatabase.STATUS_BOOT_COMPLETED)
+                percent_tv.setVisibility(View.GONE);
+            else
+                percent_tv.setVisibility(View.VISIBLE);
+
+            if (status == LogDatabase.STATUS_BOOT_COMPLETED) {
+                status_tv.setTextColor(col.boot);
+                s = activity.str.status_boot_completed;
+
+                time_diff_tv.setVisibility(View.GONE);
+            } else if (status_age == LogDatabase.STATUS_OLD) {
                  status_tv.setTextColor(col.old_status);
                 percent_tv.setTextColor(col.old_status);
                 s = activity.str.log_statuses_old[status];
@@ -928,6 +944,7 @@ public class LogViewFragment extends ListFragment {
         public int plugged;
         public int unplugged;
         public int unknown;
+        public int boot;
 
         public Col() {
             old_status = activity.res.getColor(R.color.log_old_status);
@@ -935,6 +952,7 @@ public class LogViewFragment extends ListFragment {
             plugged    = activity.res.getColor(R.color.log_plugged);
             unplugged  = activity.res.getColor(R.color.log_unplugged);
             unknown    = activity.res.getColor(R.color.log_unknown);
+            boot       = activity.res.getColor(R.color.log_boot_completed);
         }
     }
 }

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2013 Darshan-Josiah Barber
+    Copyright (c) 2010-2016 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -70,6 +70,8 @@ public class Str {
     public String temperature;
     public String temperature_f;
     public String voltage;
+
+    public String status_boot_completed;
     
     public String[] statuses;
     public String[] log_statuses;
@@ -137,6 +139,8 @@ public class Str {
         temperature   = res.getString(R.string.temperature);
         temperature_f = res.getString(R.string.temperature_f);
         voltage       = res.getString(R.string.voltage);
+
+        status_boot_completed = res.getString(R.string.status_boot_completed);
 
         statuses            = res.getStringArray(R.array.statuses);
         log_statuses        = res.getStringArray(R.array.log_statuses);

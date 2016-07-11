@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2013 Darshan-Josiah Barber
+    Copyright (c) 2009-2016 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -36,5 +36,9 @@ public class BootCompletedReceiver extends BroadcastReceiver {
                                                    BatteryInfoService.class.getName());
             context.startService(new Intent().setComponent(comp));
         }
+
+        // This receiver is called on PACKAGE_REPLACED, too, but we don't want to log boot in that case
+        if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction()) && settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, true))
+            new LogDatabase(context).logBoot();
     }
 }

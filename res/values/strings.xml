@@ -112,6 +112,8 @@
   <string formatted="false" name="status_fully_charged">Fully Charged</string>
   <string formatted="false" name="status_plugged_in">Plugged In</string>
 
+  <string formatted="false" name="status_boot_completed">Boot Completed</string>
+
   <string formatted="false" name="health_unknown">Unknown</string>
   <string formatted="false" name="health_good">Good Health</string>
   <string formatted="false" name="health_overheat">Overheat</string>
