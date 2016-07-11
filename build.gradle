@@ -17,6 +17,10 @@ android {
     compileSdkVersion 24
     buildToolsVersion "24.0.0"
 
+    dependencies {
+        compile "com.android.support:support-v13:23.3.0"
+    }
+
     defaultConfig {
         targetSdkVersion 24
 
