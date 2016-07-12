@@ -88,7 +88,7 @@ public class LogViewFragment extends ListFragment {
             Intent biServiceIntent = new Intent(activity, BatteryInfoService.class);
             serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
 
-            activity.bindService(biServiceIntent, serviceConnection, 0);
+            activity.getApplicationContext().bindService(biServiceIntent, serviceConnection, 0);
             serviceConnected = true;
         }
     }
@@ -199,7 +199,7 @@ public class LogViewFragment extends ListFragment {
     public void onDestroy() {
         super.onDestroy();
         if (serviceConnected) {
-            activity.unbindService(serviceConnection);
+            activity.getApplicationContext().unbindService(serviceConnection);
             serviceConnected = false;
         }
         if (completeCursor != null)

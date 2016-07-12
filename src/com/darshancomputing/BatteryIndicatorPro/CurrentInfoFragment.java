@@ -86,7 +86,7 @@ public class CurrentInfoFragment extends Fragment {
 
     public void bindService() {
         if (! serviceConnected) {
-            activity.bindService(biServiceIntent, serviceConnection, 0);
+            activity.getApplicationContext().bindService(biServiceIntent, serviceConnection, 0);
             serviceConnected = true;
         }
     }
@@ -182,7 +182,7 @@ public class CurrentInfoFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         if (serviceConnected) {
-            activity.unbindService(serviceConnection);
+            activity.getApplicationContext().unbindService(serviceConnection);
             serviceConnected = false;
         }
         bl.recycle();
@@ -324,7 +324,7 @@ public class CurrentInfoFragment extends Fragment {
         activity.finishActivity(1);
 
         if (serviceConnected) {
-            activity.unbindService(serviceConnection);
+            activity.getApplicationContext().unbindService(serviceConnection);
             activity.stopService(biServiceIntent);
             serviceConnected = false;
         }
