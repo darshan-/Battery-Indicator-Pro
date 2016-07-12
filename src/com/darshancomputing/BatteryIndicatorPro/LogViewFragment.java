@@ -122,32 +122,6 @@ public class LogViewFragment extends ListFragment {
         try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
     }
 
-    /*
-    private static final IntentFilter batteryChangedFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-    private final Handler mHandler = new Handler();
-    private final Runnable mUpdateStatus = new Runnable() {
-        public void run() {
-            reloadList(false);
-        }
-    };
-
-    private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (! Intent.ACTION_BATTERY_CHANGED.equals(action)) return;
-
-            // TODO: Do this better.  Perphaps have the Activity be the client of the Service, or perhaps
-            //  leave it with CIF as client, but it calls Activity.infoUpdated() after receiving message
-            //  from Service.  If so, make sure (and document) that Service shouldn't send that message
-            //  until after logs have been updated (and not just info).  Perhaps even renaming message.
-
-            // Give the service a couple seconds to process the update
-            mHandler.postDelayed(mUpdateStatus, 2 * 1000);
-        }
-    };
-*/
-
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
@@ -210,13 +184,11 @@ public class LogViewFragment extends ListFragment {
     @Override
     public void onResume() {
         super.onResume();
-        //activity.registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        //activity.unregisterReceiver(mBatteryInfoReceiver);
     }
 
     public static class ConfirmClearLogsDialogFragment extends DialogFragment {

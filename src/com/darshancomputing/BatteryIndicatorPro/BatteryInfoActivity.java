@@ -47,10 +47,6 @@ public class BatteryInfoActivity extends FragmentActivity {
 
     public static final int PR_LVF_WRITE_STORAGE = 1;
 
-    //static {
-        //android.os.Debug.startMethodTracing();
-    //}
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         startMillis = System.currentTimeMillis();

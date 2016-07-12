@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2013-2015 Darshan-Josiah Barber
+    Copyright (c) 2013-2016 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -40,7 +40,6 @@ class BatteryLevel {
 
     public BatteryLevel(Context context, int inSampleSize) {
         Resources res = context.getResources();
-        //?context = null;
 
         BitmapFactory bf = new BitmapFactory();
         BitmapFactory.Options bfo = new BitmapFactory.Options();
@@ -51,7 +50,6 @@ class BatteryLevel {
 
         battery_top    = bf.decodeResource(res, R.drawable.empty_battery_top   , bfo);
         battery_body   = bf.decodeResource(res, R.drawable.empty_battery_body  , bfo);
-        //?res = null;
 
            width = battery_top.getWidth();
            top_h = battery_top.getHeight();
