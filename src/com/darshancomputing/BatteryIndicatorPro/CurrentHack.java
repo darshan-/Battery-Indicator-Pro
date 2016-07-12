@@ -507,15 +507,15 @@ class CurrentHack {
                 line = bReader.readLine();
                 bReader.close();
             } catch (Exception e) {
-                Log.e(LOG_TAG, "Error reading normal current hack file");
-                e.printStackTrace();
+                //Log.e(LOG_TAG, "Error reading normal current hack file");
+                //e.printStackTrace();
             }
 
             if (line != null) {
                 try {
                     value = Long.parseLong(line);
                 } catch (NumberFormatException e) {
-                    Log.e(LOG_TAG, "Error parsing normal current hack file");
+                    //Log.e(LOG_TAG, "Error parsing normal current hack file");
                 }
 
                 if (convertToMillis && value != null)
@@ -548,7 +548,7 @@ class CurrentHack {
                             if (value != 0)
                                 break;
                         } catch (NumberFormatException e) {
-                            Log.e(LOG_TAG, "Error parsing BattAttr current hack file");
+                            //Log.e(LOG_TAG, "Error parsing BattAttr current hack file");
                         }
                     }
 
@@ -558,7 +558,7 @@ class CurrentHack {
                         try {
                             value = (-1)*Math.abs(Long.parseLong(text));
                         } catch (NumberFormatException e) {
-                            Log.e(LOG_TAG, "Error parsing BattAttr current hack file");
+                            //Log.e(LOG_TAG, "Error parsing BattAttr current hack file");
                         }
 
                         break;
@@ -569,8 +569,8 @@ class CurrentHack {
 
                 bReader.close();
             } catch (Exception e) {
-                Log.e(LOG_TAG, "Error reading BattAttr current hack file");
-                e.printStackTrace();
+                //Log.e(LOG_TAG, "Error reading BattAttr current hack file");
+                //e.printStackTrace();
             }
 
             return value;
@@ -601,15 +601,15 @@ class CurrentHack {
 
                 bReader.close();
             } catch (Exception e) {
-                Log.e(LOG_TAG, "Error reading SMText current hack file");
-                e.printStackTrace();
+                //Log.e(LOG_TAG, "Error reading SMText current hack file");
+                //e.printStackTrace();
             }
 
             if (success) {
                 try {
                     value = Long.parseLong(text);
                 } catch (NumberFormatException e) {
-                    Log.e(LOG_TAG, "Error parsing SMText current hack file");
+                    //Log.e(LOG_TAG, "Error parsing SMText current hack file");
                 }
             }
 

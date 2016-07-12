@@ -255,14 +255,14 @@ class BatteryInfo {
                     // Log.e(LOG_TAG, "charge_counter file exists but with value " + charge_counter + " which is inconsistent with percent: " + percent);
                 }
             } catch (java.io.FileNotFoundException e) {
-                Log.e(LOG_TAG, "charge_counter file doesn't exist");
-                e.printStackTrace();
+                //Log.e(LOG_TAG, "charge_counter file doesn't exist");
+                //e.printStackTrace();
             } catch (java.io.IOException e) {
-                Log.e(LOG_TAG, "Error reading charge_counter file");
-                e.printStackTrace();
+                //Log.e(LOG_TAG, "Error reading charge_counter file");
+                //e.printStackTrace();
             } catch (NumberFormatException e) {
-                Log.e(LOG_TAG, "Read charge_counter file but couldn't convert contents to int");
-                e.printStackTrace();
+                //Log.e(LOG_TAG, "Read charge_counter file but couldn't convert contents to int");
+                //e.printStackTrace();
             }
         }
 
