@@ -21,7 +21,6 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -87,7 +86,7 @@ public class CurrentInfoFragment extends Fragment {
 
     public void bindService() {
         if (! serviceConnected) {
-            activity.context.bindService(biServiceIntent, serviceConnection, 0);
+            activity.bindService(biServiceIntent, serviceConnection, 0);
             serviceConnected = true;
         }
     }
@@ -151,9 +150,9 @@ public class CurrentInfoFragment extends Fragment {
 
         activity = (BatteryInfoActivity) getActivity();
 
-        bl = new BatteryLevel(activity.context, activity.res.getInteger(R.integer.bl_inSampleSize));
+        bl = new BatteryLevel(activity, activity.res.getInteger(R.integer.bl_inSampleSize));
 
-        currentHack = CurrentHack.getInstance(activity.context);
+        currentHack = CurrentHack.getInstance(activity);
         currentHack.setPreferFS(activity.settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
 
         setHasOptionsMenu(true);
@@ -174,8 +173,8 @@ public class CurrentInfoFragment extends Fragment {
 
         serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
 
-        biServiceIntent = new Intent(activity.context, BatteryInfoService.class);
-        activity.context.startService(biServiceIntent);
+        biServiceIntent = new Intent(activity, BatteryInfoService.class);
+        activity.startService(biServiceIntent);
         bindService();
     }
 
@@ -183,7 +182,7 @@ public class CurrentInfoFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         if (serviceConnected) {
-            activity.context.unbindService(serviceConnection);
+            activity.unbindService(serviceConnection);
             serviceConnected = false;
         }
         bl.recycle();
@@ -206,7 +205,7 @@ public class CurrentInfoFragment extends Fragment {
         if (serviceMessenger != null)
             sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
 
-        Intent bc_intent = activity.context.registerReceiver(null, batteryChangedFilter);
+        Intent bc_intent = activity.registerReceiver(null, batteryChangedFilter);
         info.load(bc_intent);
         info.load(activity.sp_store);
         handleUpdatedBatteryInfo(info);
@@ -279,7 +278,7 @@ public class CurrentInfoFragment extends Fragment {
                 startActivity(new Intent(Intent.ACTION_VIEW,
                                          Uri.parse("market://details?id=com.darshancomputing.BatteryIndicatorPro")));
             } catch (Exception e) {
-                Toast.makeText(activity.getApplicationContext(), "Sorry, can't launch Market!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Sorry, can't launch Market!", Toast.LENGTH_SHORT).show();
             }
             return true;
         default:
@@ -325,8 +324,8 @@ public class CurrentInfoFragment extends Fragment {
         activity.finishActivity(1);
 
         if (serviceConnected) {
-            activity.context.unbindService(serviceConnection);
-            activity.context.stopService(biServiceIntent);
+            activity.unbindService(serviceConnection);
+            activity.stopService(biServiceIntent);
             serviceConnected = false;
         }
 
@@ -429,7 +428,7 @@ public class CurrentInfoFragment extends Fragment {
 
     /*
         case DIALOG_FIRST_RUN:
-            LayoutInflater inflater = (LayoutInflater) activity.context.getSystemService(LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) activity.getSystemService(LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.first_run_message, (LinearLayout) view.findViewById(R.id.layout_root));
 
             builder.setTitle(activity.res.getString(R.string.first_run_title))
@@ -451,14 +450,14 @@ public class CurrentInfoFragment extends Fragment {
     */
 
     private void mStartActivity(Class c) {
-        ComponentName comp = new ComponentName(activity.context.getPackageName(), c.getName());
+        ComponentName comp = new ComponentName(activity.getPackageName(), c.getName());
         //startActivity(new Intent().setComponent(comp));
         startActivityForResult(new Intent().setComponent(comp), 1);
         //activity.finish();
     }
 
     private void bindButtons() {
-        if (activity.context.getPackageManager().resolveActivity(batteryUseIntent, 0) == null) {
+        if (activity.getPackageManager().resolveActivity(batteryUseIntent, 0) == null) {
             battery_use_b.setEnabled(false); /* TODO: change how the disabled button looks */
         } else {
             battery_use_b.setOnClickListener(buButtonListener);

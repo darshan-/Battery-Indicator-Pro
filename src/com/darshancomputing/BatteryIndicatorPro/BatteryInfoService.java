@@ -53,14 +53,13 @@ public class BatteryInfoService extends Service {
 
     private NotificationManager mNotificationManager;
     private AlarmManager alarmManager;
-    private static SharedPreferences settings;
-    private static SharedPreferences sp_store;
-    private static SharedPreferences.Editor sps_editor;
+    private SharedPreferences settings;
+    private SharedPreferences sp_store;
+    private SharedPreferences.Editor sps_editor;
 
     private android.os.Vibrator mVibrator;
     private android.media.AudioManager mAudioManager;
 
-    private Context context;
     private Resources res;
     private Str str;
     private AlarmDatabase alarms;
@@ -129,50 +128,49 @@ public class BatteryInfoService extends Service {
     public void onCreate() {
         res = getResources();
         str = new Str(res);
-        context = getApplicationContext();
-        log_db = new LogDatabase(context);
+        log_db = new LogDatabase(this);
 
         info = new BatteryInfo();
 
         messenger = new Messenger(new MessageHandler());
         clientMessengers = new java.util.HashSet<Messenger>();
 
-        predictor = new Predictor(context);
-        bl = new BatteryLevel(context, BatteryLevel.SIZE_NOTIFICATION);
-        cwbg = new CircleWidgetBackground(context);
+        predictor = new Predictor(this);
+        bl = new BatteryLevel(this, BatteryLevel.SIZE_NOTIFICATION);
+        cwbg = new CircleWidgetBackground(this);
 
-        alarms = new AlarmDatabase(context);
+        alarms = new AlarmDatabase(this);
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mainNotificationB = new Notification.Builder(context);
+        mainNotificationB = new Notification.Builder(this);
 
-        mVibrator = (android.os.Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        mVibrator = (android.os.Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         mAudioManager = (android.media.AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
-        alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-        loadSettingsFiles(context);
+        loadSettingsFiles();
         sdkVersioning();
 
-        currentHack = CurrentHack.getInstance(context);
+        currentHack = CurrentHack.getInstance(this);
         currentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
 
-        Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
-        mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
+        Intent mainWindowIntent = new Intent(this, BatteryInfoActivity.class);
+        mainWindowPendingIntent = PendingIntent.getActivity(this, 0, mainWindowIntent, 0);
 
-        Intent updatePredictorIntent = new Intent(context, BatteryInfoService.class);
+        Intent updatePredictorIntent = new Intent(this, BatteryInfoService.class);
         updatePredictorIntent.putExtra(EXTRA_UPDATE_PREDICTOR, true);
-        updatePredictorPendingIntent = PendingIntent.getService(context, 0, updatePredictorIntent, 0);
+        updatePredictorPendingIntent = PendingIntent.getService(this, 0, updatePredictorIntent, 0);
 
-        alarmsIntent = new Intent(context, AlarmsActivity.class);
+        alarmsIntent = new Intent(this, AlarmsActivity.class);
 
-        widgetManager = AppWidgetManager.getInstance(context);
+        widgetManager = AppWidgetManager.getInstance(this);
 
         Class[] appWidgetProviders = {BatteryInfoAppWidgetProvider.class, /* Circle widget! */
                                              FullAppWidgetProvider.class};
 
         for (int i = 0; i < appWidgetProviders.length; i++) {
-            int[] ids = widgetManager.getAppWidgetIds(new ComponentName(context, appWidgetProviders[i]));
+            int[] ids = widgetManager.getAppWidgetIds(new ComponentName(this, appWidgetProviders[i]));
 
             for (int j = 0; j < ids.length; j++) {
                 widgetIds.add(ids[j]);
@@ -281,13 +279,13 @@ public class BatteryInfoService extends Service {
         }
     }
 
-    private static void loadSettingsFiles(Context context) {
-        settings = context.getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
-        sp_store = context.getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
+    private void loadSettingsFiles() {
+        settings = getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
+        sp_store = getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
     }
 
     private void reloadSettings(boolean cancelFirst) {
-        loadSettingsFiles(context);
+        loadSettingsFiles();
         currentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
 
         str = new Str(res); // Language override may have changed
@@ -360,8 +358,8 @@ public class BatteryInfoService extends Service {
     }
 
     private void updateWidgets(BatteryInfo info) {
-        Intent mainWindowIntent = new Intent(context, BatteryInfoActivity.class);
-        PendingIntent mainWindowPendingIntent = PendingIntent.getActivity(context, 0, mainWindowIntent, 0);
+        Intent mainWindowIntent = new Intent(this, BatteryInfoActivity.class);
+        PendingIntent mainWindowPendingIntent = PendingIntent.getActivity(this, 0, mainWindowIntent, 0);
 
         if (info == null) {
             cwbg.setLevel(0);
@@ -379,10 +377,10 @@ public class BatteryInfoService extends Service {
             int initLayout = awpInfo.initialLayout;
 
             if (initLayout == R.layout.circle_app_widget) {
-                rv = new RemoteViews(context.getPackageName(), R.layout.circle_app_widget);
+                rv = new RemoteViews(getPackageName(), R.layout.circle_app_widget);
                 rv.setImageViewBitmap(R.id.circle_widget_image_view, cwbg.getBitmap());
             } else {
-                rv = new RemoteViews(context.getPackageName(), R.layout.full_app_widget);
+                rv = new RemoteViews(getPackageName(), R.layout.full_app_widget);
 
                 if (info == null) {
                     rv.setImageViewBitmap(R.id.battery_level_view, cwbg.getBitmap());
@@ -712,7 +710,7 @@ public class BatteryInfoService extends Service {
     private void handleAlarms() {
         Cursor c;
         Notification.Builder nb;
-        PendingIntent contentIntent = PendingIntent.getActivity(context, 0, alarmsIntent, 0);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, alarmsIntent, 0);
         int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
 
         if (info.status == BatteryInfo.STATUS_FULLY_CHARGED && info.status != info.last_status) {
@@ -796,7 +794,7 @@ public class BatteryInfoService extends Service {
     }
 
     private Notification.Builder parseAlarmCursor(Cursor c) {
-        Notification.Builder nb = new Notification.Builder(context)
+        Notification.Builder nb = new Notification.Builder(this)
             .setSmallIcon(R.drawable.stat_notify_alarm)
             .setAutoCancel(true);
 

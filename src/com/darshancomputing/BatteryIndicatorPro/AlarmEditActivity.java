@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2014 Darshan-Josiah Barber
+    Copyright (c) 2010-2016 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -36,7 +36,6 @@ import android.view.MenuItem;
 
 public class AlarmEditActivity extends PreferenceActivity {
     private Resources res;
-    private Context context;
     private Str str;
     private PreferenceScreen mPreferenceScreen;
     private SharedPreferences settings;
@@ -64,11 +63,10 @@ public class AlarmEditActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        context = getApplicationContext();
         res = getResources();
         str = new Str(res);
-        alarms = new AlarmDatabase(context);
-        settings = PreferenceManager.getDefaultSharedPreferences(context);
+        alarms = new AlarmDatabase(this);
+        settings = PreferenceManager.getDefaultSharedPreferences(this);
 
         // Stranglely disabled by default for API level 14+
         if (android.os.Build.VERSION.SDK_INT >= 14) {

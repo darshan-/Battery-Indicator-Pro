@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2015 Darshan-Josiah Barber
+    Copyright (c) 2010-2016 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -44,7 +44,6 @@ import android.widget.Toast;
 public class AlarmsActivity extends Activity {
     private AlarmDatabase alarms;
     private Resources res;
-    private Context context;
     private Str str;
     private Cursor mCursor;
     private LayoutInflater mInflater;
@@ -57,7 +56,6 @@ public class AlarmsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        context = getApplicationContext();
         res = getResources();
         str = new Str(res);
 
@@ -70,10 +68,10 @@ public class AlarmsActivity extends Activity {
         setContentView(R.layout.alarms);
         setWindowSubtitle(res.getString(R.string.alarm_settings));
 
-        alarms = new AlarmDatabase(context);
+        alarms = new AlarmDatabase(this);
         mCursor = alarms.getAllAlarms(true);
 
-        mInflater = LayoutInflater.from(context);
+        mInflater = LayoutInflater.from(this);
         mAlarmsList = (LinearLayout) findViewById(R.id.alarms_list);
         mCursor.registerDataSetObserver(new AlarmsObserver());
 
@@ -82,7 +80,7 @@ public class AlarmsActivity extends Activity {
             public void onClick(View v) {
                 int id = alarms.addAlarm();
                 if (id < 0) {
-                    Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AlarmsActivity.this, "Error!", Toast.LENGTH_SHORT).show();
                 }
                 ComponentName comp = new ComponentName(getPackageName(), AlarmEditActivity.class.getName());
                 startActivity(new Intent().setComponent(comp).putExtra(AlarmEditActivity.EXTRA_ALARM_ID, id));
@@ -199,7 +197,7 @@ public class AlarmsActivity extends Activity {
 
         String s = str.alarm_types_display[str.indexOf(str.alarm_type_values, type)];
         if (type.equals("temp_rises")) {
-            Boolean convertF = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+            Boolean convertF = android.preference.PreferenceManager.getDefaultSharedPreferences(this)
                 .getBoolean(SettingsActivity.KEY_CONVERT_F, false);
             s += " " + str.formatTemp(Integer.valueOf(threshold), convertF, false);
         } else if (type.equals("charge_drops") || type.equals("charge_rises")) {

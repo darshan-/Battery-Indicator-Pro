@@ -38,7 +38,6 @@ public class BatteryInfoActivity extends FragmentActivity {
     public static LogViewFragment logViewFragment;
     private long startMillis;
 
-    public Context context;
     public Resources res;
     public Str str;
     public SharedPreferences settings;
@@ -56,7 +55,6 @@ public class BatteryInfoActivity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         startMillis = System.currentTimeMillis();
 
-        context = getApplicationContext();
         res = getResources();
         str = new Str(res);
         loadSettingsFiles();
@@ -84,8 +82,8 @@ public class BatteryInfoActivity extends FragmentActivity {
     }
 
     public void loadSettingsFiles() {
-        settings = context.getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
-        sp_store = context.getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
+        settings = getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
+        sp_store = getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
     }
 
     @Override

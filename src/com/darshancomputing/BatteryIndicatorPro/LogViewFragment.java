@@ -85,10 +85,10 @@ public class LogViewFragment extends ListFragment {
 
     public void bindService() {
         if (! serviceConnected) {
-            Intent biServiceIntent = new Intent(activity.context, BatteryInfoService.class);
+            Intent biServiceIntent = new Intent(activity, BatteryInfoService.class);
             serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
 
-            activity.context.bindService(biServiceIntent, serviceConnection, 0);
+            activity.bindService(biServiceIntent, serviceConnection, 0);
             serviceConnected = true;
         }
     }
@@ -154,7 +154,7 @@ public class LogViewFragment extends ListFragment {
 
         mInflater = inflater;
 
-        View logs_header = View.inflate(activity.context, R.layout.logs_header, null);
+        View logs_header = View.inflate(activity, R.layout.logs_header, null);
         header_text = (TextView) logs_header.findViewById(R.id.header_text);
         ListView lv = (ListView) view.findViewById(android.R.id.list);
         lv.addHeaderView(logs_header, null, false);
@@ -178,7 +178,7 @@ public class LogViewFragment extends ListFragment {
         convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
         col = new Col();
 
-        logs = new LogDatabase(activity.context);
+        logs = new LogDatabase(activity);
         completeCursor = logs.getAllLogs(false);
 
         if (completeCursor == null) {
@@ -189,7 +189,7 @@ public class LogViewFragment extends ListFragment {
         timeDeltaCursor = new TimeDeltaCursor(completeCursor);
         filteredCursor = new FilteredCursor(timeDeltaCursor);
 
-        mAdapter = new LogAdapter(activity.context, filteredCursor);
+        mAdapter = new LogAdapter(activity, filteredCursor);
 
         serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
         bindService();
@@ -199,7 +199,7 @@ public class LogViewFragment extends ListFragment {
     public void onDestroy() {
         super.onDestroy();
         if (serviceConnected) {
-            activity.context.unbindService(serviceConnection);
+            activity.unbindService(serviceConnection);
             serviceConnected = false;
         }
         if (completeCursor != null)
@@ -210,13 +210,13 @@ public class LogViewFragment extends ListFragment {
     @Override
     public void onResume() {
         super.onResume();
-        //activity.context.registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
+        //activity.registerReceiver(mBatteryInfoReceiver, batteryChangedFilter);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        //activity.context.unregisterReceiver(mBatteryInfoReceiver);
+        //activity.unregisterReceiver(mBatteryInfoReceiver);
     }
 
     public static class ConfirmClearLogsDialogFragment extends DialogFragment {
@@ -384,7 +384,7 @@ public class LogViewFragment extends ListFragment {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                     exportCSV();
                 else
-                    Toast.makeText(activity.context, activity.str.no_storage_permission, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, activity.str.no_storage_permission, Toast.LENGTH_SHORT).show();
 
                 return;
             }
@@ -400,10 +400,10 @@ public class LogViewFragment extends ListFragment {
         String state = Environment.getExternalStorageState();
 
         if (state != null && state.equals(Environment.MEDIA_MOUNTED_READ_ONLY)) {
-            Toast.makeText(activity.context, activity.str.read_only_storage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, activity.str.read_only_storage, Toast.LENGTH_SHORT).show();
             return;
         } else if (state == null || !state.equals(Environment.MEDIA_MOUNTED)) {
-            Toast.makeText(activity.context, activity.str.inaccessible_w_reason + state, Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, activity.str.inaccessible_w_reason + state, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -418,7 +418,7 @@ public class LogViewFragment extends ListFragment {
 
         try {
             if (!csvFile.createNewFile() || !csvFile.canWrite()) {
-                Toast.makeText(activity.context, activity.str.inaccessible_storage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, activity.str.inaccessible_storage, Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -475,11 +475,11 @@ public class LogViewFragment extends ListFragment {
             }
             buf.close();
         } catch (Exception e) {
-            Toast.makeText(activity.context, activity.str.inaccessible_storage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, activity.str.inaccessible_storage, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Toast.makeText(activity.context, activity.str.file_written, Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity, activity.str.file_written, Toast.LENGTH_SHORT).show();
     }
 
     // Based on http://stackoverflow.com/a/7343721/1427098

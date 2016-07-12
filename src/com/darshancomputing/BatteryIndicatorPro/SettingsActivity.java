@@ -343,7 +343,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         pm.setSharedPreferencesMode(Context.MODE_MULTI_PROCESS);
         mSharedPreferences = pm.getSharedPreferences();
 
-        currentHack = CurrentHack.getInstance(getApplicationContext());
+        currentHack = CurrentHack.getInstance(this);
         currentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
 
         //oldLanguage = mSharedPreferences.getString(KEY_LANGUAGE_OVERRIDE, "default");
