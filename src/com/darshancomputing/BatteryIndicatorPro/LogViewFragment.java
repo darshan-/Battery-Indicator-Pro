@@ -184,6 +184,7 @@ public class LogViewFragment extends ListFragment {
     @Override
     public void onResume() {
         super.onResume();
+        convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
     }
 
     @Override
