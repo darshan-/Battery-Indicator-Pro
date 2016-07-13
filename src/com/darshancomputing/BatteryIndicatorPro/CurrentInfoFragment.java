@@ -47,11 +47,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.ref.WeakReference;
+
 public class CurrentInfoFragment extends Fragment {
     private BatteryInfoActivity activity;
     private Intent biServiceIntent;
     private Messenger serviceMessenger;
-    private final Messenger messenger = new Messenger(new MessageHandler());
+    private static final MessageHandler messageHandler = new MessageHandler();
+    private static final Messenger messenger = new Messenger(messageHandler);
     private BatteryInfoService.RemoteConnection serviceConnection;
     private boolean serviceConnected;
 
@@ -91,22 +94,39 @@ public class CurrentInfoFragment extends Fragment {
         }
     }
 
-    public class MessageHandler extends Handler {
+    private static class MessageHandler extends Handler {
+        private WeakReference<CurrentInfoFragment> fragRef;
+
+        public void updateFragRef(CurrentInfoFragment f) {
+            fragRef = new WeakReference<CurrentInfoFragment>(f);
+        }
+
         @Override
         public void handleMessage(Message incoming) {
-            if (! serviceConnected) {
-                Log.i(LOG_TAG, "serviceConected is false; ignoring message: " + incoming);
+            if (fragRef == null) {
+                //Log.i(LOG_TAG, "fragRef is null; ignoring message: " + incoming);
+            }
+
+            CurrentInfoFragment cif = fragRef.get();
+
+            if (cif == null) {
+                //Log.i(LOG_TAG, "fragRef.get() returns null; ignoring message: " + incoming);
+                return;
+            }
+
+            if (! cif.serviceConnected) {
+                //Log.i(LOG_TAG, "serviceConected is false; ignoring message: " + incoming);
                 return;
             }
 
             switch (incoming.what) {
             case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
-                serviceMessenger = incoming.replyTo;
-                sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
+                cif.serviceMessenger = incoming.replyTo;
+                cif.sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
                 break;
             case BatteryInfoService.RemoteConnection.CLIENT_BATTERY_INFO_UPDATED:
-                info.loadBundle(incoming.getData());
-                handleUpdatedBatteryInfo(info);
+                cif.info.loadBundle(incoming.getData());
+                cif.handleUpdatedBatteryInfo(cif.info);
                 break;
             default:
                 super.handleMessage(incoming);
@@ -119,6 +139,13 @@ public class CurrentInfoFragment extends Fragment {
         outgoing.what = what;
         outgoing.replyTo = messenger;
         try { if (serviceMessenger != null) serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
+    }
+
+    @Override
+    public void onAttach(android.app.Activity a) {
+        super.onAttach(a);
+
+        messageHandler.updateFragRef(this);
     }
 
     @Override
