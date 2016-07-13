@@ -150,7 +150,7 @@ public class CurrentInfoFragment extends Fragment {
 
         activity = (BatteryInfoActivity) getActivity();
 
-        bl = new BatteryLevel(activity, activity.res.getInteger(R.integer.bl_inSampleSize));
+        bl = BatteryLevel.getInstance(activity, activity.res.getInteger(R.integer.bl_inSampleSize));
 
         currentHack = CurrentHack.getInstance(activity);
         currentHack.setPreferFS(activity.settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
@@ -181,11 +181,11 @@ public class CurrentInfoFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+
         if (serviceConnected) {
             activity.getApplicationContext().unbindService(serviceConnection);
             serviceConnected = false;
         }
-        bl.recycle();
     }
 
     /*private void restartIfLanguageChanged() {

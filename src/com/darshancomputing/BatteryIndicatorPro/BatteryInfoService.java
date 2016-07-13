@@ -136,7 +136,7 @@ public class BatteryInfoService extends Service {
         clientMessengers = new java.util.HashSet<Messenger>();
 
         predictor = new Predictor(this);
-        bl = new BatteryLevel(this, BatteryLevel.SIZE_NOTIFICATION);
+        bl = BatteryLevel.getInstance(this, BatteryLevel.SIZE_NOTIFICATION);
         cwbg = new CircleWidgetBackground(this);
 
         alarms = new AlarmDatabase(this);
