@@ -85,7 +85,7 @@ public class LogViewFragment extends ListFragment {
 
     public void bindService() {
         if (! serviceConnected) {
-            Intent biServiceIntent = new Intent(activity, BatteryInfoService.class);
+            Intent biServiceIntent = new Intent(activity.getApplicationContext(), BatteryInfoService.class);
             serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
 
             activity.getApplicationContext().bindService(biServiceIntent, serviceConnection, 0);
@@ -142,17 +142,12 @@ public class LogViewFragment extends ListFragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onAttach(android.app.Activity a) {
+        super.onAttach(a);
+
         activity = (BatteryInfoActivity) getActivity();
 
-        setHasOptionsMenu(true);
-        setRetainInstance(true);
-
-        convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
-        col = new Col();
-
-        logs = new LogDatabase(activity);
+        logs = new LogDatabase(activity.getApplicationContext());
         completeCursor = logs.getAllLogs(false);
 
         if (completeCursor == null) {
@@ -164,6 +159,17 @@ public class LogViewFragment extends ListFragment {
         filteredCursor = new FilteredCursor(timeDeltaCursor);
 
         mAdapter = new LogAdapter(activity, filteredCursor);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setHasOptionsMenu(true);
+        setRetainInstance(true);
+
+        convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
+        col = new Col();
 
         serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
         bindService();
@@ -200,8 +206,9 @@ public class LogViewFragment extends ListFragment {
                 .setPositiveButton(activity.res.getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
-                            ((BatteryInfoActivity) activity).logViewFragment.logs.clearAllLogs();
-                            ((BatteryInfoActivity) activity).logViewFragment.reloadList(false);
+                            LogViewFragment lvf = (LogViewFragment) getTargetFragment();
+                            lvf.logs.clearAllLogs();
+                            lvf.reloadList(false);
                             di.cancel();
                         }
                     })
@@ -231,7 +238,8 @@ public class LogViewFragment extends ListFragment {
                                          @Override
                                          public void onClick(DialogInterface di, int id, boolean isChecked) {
                                              checked_items[id] = isChecked;
-                                             ((BatteryInfoActivity) activity).logViewFragment.setFilters(checked_items);
+                                             LogViewFragment lvf = (LogViewFragment) getTargetFragment();
+                                             lvf.setFilters(checked_items);
                                          }
                                      })
                 .setPositiveButton(activity.res.getString(R.string.okay),
@@ -301,11 +309,13 @@ public class LogViewFragment extends ListFragment {
         switch (item.getItemId()) {
         case R.id.menu_clear:
             df = new ConfirmClearLogsDialogFragment();
+            df.setTargetFragment(this, 0);
             df.show(getFragmentManager(), "TODO: What is this string for?");
 
             return true;
         case R.id.menu_log_filter:
             df = new ConfigureLogFilterDialogFragment();
+            df.setTargetFragment(this, 0);
             df.show(getFragmentManager(), "TODO: What is this string for?2");
 
             return true;
@@ -317,9 +327,6 @@ public class LogViewFragment extends ListFragment {
             reversed = (reversed) ? false : true;
             reloadList(true);
 
-            return true;
-        case android.R.id.home:
-            startActivity(new Intent(activity, BatteryInfoActivity.class));
             return true;
         default:
             return super.onOptionsItemSelected(item);
