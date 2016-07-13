@@ -2,6 +2,7 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.darshancomputing.BatteryIndicatorPro"
+    xmlns:tools="http://schemas.android.com/tools"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
     android:versionCode="013003"
     android:versionName="10.0.0-dev"
@@ -14,6 +15,12 @@
       android:allowBackup="false"
       android:resizeableActivity="false"
   >
+    <!--
+        Temporarily put these two lines in <application> above to enable debugging of release build:
+
+        android:debuggable="true"
+        tools:ignore="HardcodedDebugMode"
+    -->
     <activity
         android:name=".BatteryInfoActivity"
         android:label="@string/app_full_name"
