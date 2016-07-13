@@ -24,6 +24,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.ViewGroup;
 
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerTabStrip;
@@ -34,9 +35,6 @@ import android.support.v13.app.FragmentPagerAdapter;
 public class BatteryInfoActivity extends FragmentActivity {
     private BatteryInfoPagerAdapter pagerAdapter;
     private ViewPager viewPager;
-    public static CurrentInfoFragment currentInfoFragment;
-    public static LogViewFragment logViewFragment;
-    private long startMillis;
 
     public Resources res;
     public Str str;
@@ -49,8 +47,6 @@ public class BatteryInfoActivity extends FragmentActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        startMillis = System.currentTimeMillis();
-
         res = getResources();
         str = new Str(res);
         loadSettingsFiles();
@@ -60,6 +56,9 @@ public class BatteryInfoActivity extends FragmentActivity {
         setContentView(R.layout.battery_info);
 
         pagerAdapter = new BatteryInfoPagerAdapter(getFragmentManager());
+
+        pagerAdapter.setActivity(this);
+
         viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(pagerAdapter);
 
@@ -70,11 +69,17 @@ public class BatteryInfoActivity extends FragmentActivity {
     }
 
     @Override
-    public void onAttachFragment(Fragment fragment) {
-        if (fragment instanceof CurrentInfoFragment)
-            currentInfoFragment = (CurrentInfoFragment) fragment;
-        if (fragment instanceof LogViewFragment)
-            logViewFragment = (LogViewFragment) fragment;
+    public void onStart() {
+        super.onStart();
+
+        pagerAdapter.setActivity(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        pagerAdapter.setActivity(null);
     }
 
     public void loadSettingsFiles() {
@@ -96,14 +101,29 @@ public class BatteryInfoActivity extends FragmentActivity {
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
             case PR_LVF_WRITE_STORAGE: {
-                logViewFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
+                LogViewFragment lvf = pagerAdapter.getLVF();
+
+                if (lvf != null)
+                    lvf.onRequestPermissionsResult(requestCode, permissions, grantResults);
             }
         }
     }
 
-    public class BatteryInfoPagerAdapter extends FragmentPagerAdapter {
+    // Must be static in order to avoid leaking reference to outer class (Activity)
+    public static class BatteryInfoPagerAdapter extends FragmentPagerAdapter {
+        private BatteryInfoActivity activity;
+        private LogViewFragment logViewFragment;
+
         public BatteryInfoPagerAdapter(FragmentManager fm) {
             super(fm);
+        }
+
+        public void setActivity(BatteryInfoActivity a) {
+            activity = a;
+        }
+
+        public LogViewFragment getLVF() {
+            return logViewFragment;
         }
 
         @Override
@@ -111,24 +131,37 @@ public class BatteryInfoActivity extends FragmentActivity {
             return 2; // TODO
         }
 
-        // TODO: Put Fragment types and page titles in Arrays or Map or something.
+        // getItem() is apparently intended to always create new Fragments!
         @Override
         public Fragment getItem(int position) {
-            if (position == 1) {
-                if (currentInfoFragment == null)
-                    currentInfoFragment = new CurrentInfoFragment();
-                return currentInfoFragment;
-            } else {
-                if (logViewFragment == null)
-                    logViewFragment = new LogViewFragment();
-                return logViewFragment;
+            switch (position) {
+                case 0:
+                    return new LogViewFragment();
+                case 1:
+                    return new CurrentInfoFragment();
+                default:
+                    return null;
             }
+        }
+
+        // instantiateItem(), on the other hand, either grabs a retained instance or creates a new one
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            Fragment fragment = (Fragment) super.instantiateItem(container, position);
+
+            if (position == 0)
+                logViewFragment = (LogViewFragment) fragment;
+
+            return fragment;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            if (position == 1) return res.getString(R.string.tab_current_info).toUpperCase();
-            else               return res.getString(R.string.tab_history).toUpperCase();
+            if (activity == null)
+                return "no activity yet";
+
+            if (position == 1) return activity.res.getString(R.string.tab_current_info).toUpperCase();
+            else               return activity.res.getString(R.string.tab_history).toUpperCase();
         }
     }
 }
