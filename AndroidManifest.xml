@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
     android:versionCode="013003"
-    android:versionName="10.0.0-dev"
+    android:versionName="10.0.0-beta1"
 >
   <application
       android:label="@string/app_full_name"
