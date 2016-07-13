@@ -290,7 +290,10 @@ public class BatteryInfoService extends Service {
 
         str = new Str(res); // Language override may have changed
 
-        if (cancelFirst) stopForeground(true);
+        if (cancelFirst) {
+            stopForeground(true);
+            mainNotificationB = new Notification.Builder(this);
+        }
 
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
     }
