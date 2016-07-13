@@ -292,6 +292,10 @@ public class CurrentInfoFragment extends Fragment {
             return true;
         case R.id.menu_close:
             DialogFragment df = new ConfirmCloseDialogFragment();
+            // Setting target to this leaks the Fragment, but that's sort of good, as it allows pressing Okay
+            //  to work even if the screen rotates.  Even if it rotates many times back and forth, only the
+            //  first Fragment is leaked, which will do the closing if Okay is pressed.  Once the dialog is
+            //  gone (even if canceled), then the it and the leaked Fragment will be garbage collected.
             df.setTargetFragment(this, 0);
             df.show(getFragmentManager(), "TODO: What is this string for?2");
             return true;
