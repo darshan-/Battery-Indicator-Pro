@@ -265,6 +265,7 @@ public class CurrentInfoFragment extends Fragment {
             return true;
         case R.id.menu_close:
             DialogFragment df = new ConfirmCloseDialogFragment();
+            df.setTargetFragment(this, 0);
             df.show(getFragmentManager(), "TODO: What is this string for?2");
             return true;
         case R.id.menu_help:
@@ -302,7 +303,8 @@ public class CurrentInfoFragment extends Fragment {
                 .setPositiveButton(activity.res.getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
-                            activity.currentInfoFragment.closeApp();
+                            CurrentInfoFragment cif = (CurrentInfoFragment) getTargetFragment();
+                            cif.closeApp();
                             di.cancel();
                         }
                     })
