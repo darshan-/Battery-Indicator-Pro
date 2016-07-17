@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <dimen name="bia_level">54sp</dimen>
-  <dimen name="bia_time_remaining">36sp</dimen>
-  <dimen name="bia_status">30sp</dimen>
-  <dimen name="bia_until_what">24sp</dimen>
-</resources>

@@ -51,6 +51,7 @@ import java.lang.ref.WeakReference;
 
 public class CurrentInfoFragment extends Fragment {
     private BatteryInfoActivity activity;
+    private float dpScale;
     private Intent biServiceIntent;
     private Messenger serviceMessenger;
     private static final MessageHandler messageHandler = new MessageHandler();
@@ -149,6 +150,11 @@ public class CurrentInfoFragment extends Fragment {
     }
 
     @Override
+    public void onConfigurationChanged (Configuration newConfig) {
+        setSizes(newConfig);
+    }
+
+    @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.current_info, container, false);
 
@@ -168,6 +174,8 @@ public class CurrentInfoFragment extends Fragment {
 
         bindButtons();
 
+        setSizes(getActivity().getResources().getConfiguration());
+
         return view;
     }
 
@@ -176,6 +184,8 @@ public class CurrentInfoFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         activity = (BatteryInfoActivity) getActivity();
+        dpScale = getActivity().getResources().getDisplayMetrics().density;
+
 
         bl = BatteryLevel.getInstance(activity, activity.res.getInteger(R.integer.bl_inSampleSize));
 
@@ -495,5 +505,121 @@ public class CurrentInfoFragment extends Fragment {
         } else {
             battery_use_b.setOnClickListener(buButtonListener);
         }
+    }
+
+    // Sets sizes of most Views based on current dimensions
+    // Must be called from onCreateView() after inflation and from onConfigurationChanged()
+    private void setSizes(Configuration config) {
+        boolean portrait = config.orientation == Configuration.ORIENTATION_PORTRAIT;
+
+        int screenWidth = (int) (config.screenWidthDp * dpScale);
+        int screenHeight = (int) (config.screenHeightDp * dpScale);
+        int minDimen = Math.min(screenWidth, screenHeight);
+        float aspectRatio = (float) screenWidth / screenHeight;
+
+        // System.out.println("...................................................." +
+        //                    "\n    config.screenWidthDp: " + config.screenWidthDp +
+        //                    "\n    config.screenHeightDp: " + config.screenHeightDp +
+        //                    "\n    config figured pixel width: " + screenWidth +
+        //                    "\n    config figured pixel height: " + screenHeight +
+        //                    "\n    aspectRatio: " + aspectRatio +
+        //                    "\n    portrait: " + portrait
+        //                    );
+
+        int plugged_icon_height;
+        int time_remaining_text_height, until_what_text_height;
+        int status_text_height;
+        int bu_height, bu_text_height;
+        int vital_icon_height, vital_text_height;
+
+        if (portrait) {
+            plugged_icon_height = (int) (screenHeight * 0.1);
+
+            time_remaining_text_height = (int) (screenHeight * 0.048);
+            until_what_text_height = (int) (screenHeight * 0.032);
+
+            status_text_height = (int) (screenHeight * 0.04);
+
+            bu_height = (int) (screenHeight * 0.14);
+            bu_text_height = (int) (screenHeight * 0.035);
+
+            vital_icon_height = (int) (screenHeight * 0.05);
+            vital_text_height = (int) (screenHeight * 0.03);
+        } else {
+            plugged_icon_height = (int) (screenHeight * 0.11);
+
+            time_remaining_text_height = (int) (screenHeight * 0.06);
+            until_what_text_height = (int) (screenHeight * 0.04);
+
+            status_text_height = (int) (screenHeight * 0.05);
+
+            bu_height = (int) (screenHeight * 0.18);
+            bu_text_height = (int) (screenHeight * 0.045);
+
+            vital_icon_height = (int) (screenHeight * 0.08);
+            vital_text_height = (int) (screenHeight * 0.05);
+        }
+
+        TextView level = (TextView) view.findViewById(R.id.level);
+        level.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, plugged_icon_height);
+
+        View clock = view.findViewById(R.id.clock);
+        clock.setLayoutParams(new LinearLayout.LayoutParams(plugged_icon_height,
+                                                            ViewGroup.LayoutParams.MATCH_PARENT));
+
+        TextView time_remaining = (TextView) view.findViewById(R.id.time_remaining);
+        time_remaining.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, time_remaining_text_height);
+
+        TextView until_what = (TextView) view.findViewById(R.id.until_what);
+        until_what.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, until_what_text_height);
+
+        TextView status = (TextView) view.findViewById(R.id.status);
+        status.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, status_text_height);
+
+        TextView status_duration = (TextView) view.findViewById(R.id.status_duration);
+        status_duration.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, until_what_text_height);
+
+        View plugged_icon = view.findViewById(R.id.plugged_icon);
+        plugged_icon.setLayoutParams(new LinearLayout.LayoutParams(plugged_icon_height,
+                                                                   ViewGroup.LayoutParams.MATCH_PARENT));
+
+        View plugged_spacer = view.findViewById(R.id.plugged_spacer);
+        plugged_spacer.setLayoutParams(new LinearLayout.LayoutParams(plugged_icon_height,
+                                                                     plugged_icon_height));
+
+        Button bu_button = (Button) view.findViewById(R.id.battery_use_b);
+        bu_button.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                                                bu_height));
+        bu_button.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, bu_text_height);
+
+        View temp_icon = view.findViewById(R.id.temp_icon);
+        temp_icon.setLayoutParams(new LinearLayout.LayoutParams(vital_icon_height, vital_icon_height));
+        TextView temp_text = (TextView) view.findViewById(R.id.temp);
+        temp_text.setLayoutParams(new LinearLayout.LayoutParams(0, vital_icon_height, 0.5f));
+        temp_text.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, vital_text_height);
+
+        View health_icon = view.findViewById(R.id.health_icon);
+        health_icon.setLayoutParams(new LinearLayout.LayoutParams(vital_icon_height, vital_icon_height));
+        TextView health_text = (TextView) view.findViewById(R.id.health);
+        health_text.setLayoutParams(new LinearLayout.LayoutParams(0, vital_icon_height, 0.5f));
+        health_text.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, vital_text_height);
+
+        View voltage_icon = view.findViewById(R.id.voltage_icon);
+        voltage_icon.setLayoutParams(new LinearLayout.LayoutParams(vital_icon_height, vital_icon_height));
+        TextView voltage_text = (TextView) view.findViewById(R.id.voltage);
+        voltage_text.setLayoutParams(new LinearLayout.LayoutParams(0, vital_icon_height, 0.5f));
+        voltage_text.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, vital_text_height);
+
+        View current_icon = view.findViewById(R.id.current_icon);
+        current_icon.setLayoutParams(new LinearLayout.LayoutParams(vital_icon_height, vital_icon_height));
+        TextView current_text = (TextView) view.findViewById(R.id.current);
+        current_text.setLayoutParams(new LinearLayout.LayoutParams(0, vital_icon_height, 0.5f));
+        current_text.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, vital_text_height);
+
+        // When in landscape but close to square, plugged icon gets cramped and cut off; make more room:
+        if (!portrait && aspectRatio < 1.32)
+            plugged_spacer.setVisibility(View.GONE);
+        else
+            plugged_spacer.setVisibility(View.INVISIBLE);
     }
 }

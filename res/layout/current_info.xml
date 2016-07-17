@@ -8,12 +8,17 @@
   <include layout="@layout/current_info_first"
            android:layout_height="0dp"
            android:layout_width="fill_parent"
-           android:layout_weight="0.5"
+           android:layout_weight="0.45"
   />
 
   <include layout="@layout/current_info_second"
            android:layout_height="0dp"
            android:layout_width="fill_parent"
-           android:layout_weight="0.5"
+           android:layout_weight="0.53"
+  />
+
+  <View android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight="0.02"
   />
 </LinearLayout>

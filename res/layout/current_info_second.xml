@@ -7,12 +7,12 @@
   <LinearLayout android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="0px"
-                android:layout_weight="0.44"
+                android:layout_weight="0.5"
                 android:paddingTop="10dp"
                 android:gravity="center_horizontal|bottom"
   >
     <ImageView android:id="@+id/plugged_icon"
-               android:layout_width="@dimen/plugged_icon"
+               android:layout_width="0px"
                android:layout_height="match_parent"
                android:scaleType="fitCenter"
                android:padding="2dp"
@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:gravity="center_horizontal|bottom"
                 android:textColor="#6fc14b"
-                android:textSize="@dimen/bia_status"
+                android:textSize="0px"
       />
       <TextView android:id="@+id/status_duration"
                 android:layout_width="wrap_content"
@@ -38,16 +38,14 @@
                 android:gravity="center_horizontal|top"
                 android:paddingTop="5dp"
                 android:textColor="#fff"
-                android:textSize="@dimen/bia_until_what"
+                android:textSize="0px"
       />
     </LinearLayout>
 
-    <ImageView android:layout_width="@dimen/plugged_icon"
-               android:layout_height="@dimen/plugged_icon"
-               android:scaleType="fitCenter"
-               android:padding="2dp"
-               android:src="@drawable/not_unplugged"
-               android:visibility="invisible"
+    <View android:id="@+id/plugged_spacer"
+          android:layout_width="0px"
+          android:layout_height="match_parent"
+          android:padding="2dp"
     />
   </LinearLayout>
 
@@ -63,32 +61,34 @@
                   android:layout_height="wrap_content"
                   android:layout_width="fill_parent"
     >
-      <ImageView android:layout_width="@dimen/vital_stats_icon"
-                 android:layout_height="@dimen/vital_stats_icon"
+      <ImageView android:id="@+id/temp_icon"
+                 android:layout_width="0px"
+                 android:layout_height="0px"
                  android:scaleType="fitCenter"
                  android:padding="2dp"
                  android:src="@drawable/temp"
       />
       <TextView android:id="@+id/temp"
-                android:layout_height="@dimen/vital_stats_icon"
+                android:layout_height="0px"
                 android:layout_width="0px"
                 android:layout_weight="0.5"
                 android:gravity="center_vertical|left"
-                android:textSize="@dimen/vital_stats_text"
+                android:textSize="0px"
       />
 
-      <ImageView android:layout_width="@dimen/vital_stats_icon"
-                 android:layout_height="@dimen/vital_stats_icon"
+      <ImageView android:id="@+id/health_icon"
+                 android:layout_width="0px"
+                 android:layout_height="0px"
                  android:scaleType="fitCenter"
                  android:padding="2dp"
                  android:src="@drawable/health"
       />
       <TextView android:id="@+id/health"
-                android:layout_height="@dimen/vital_stats_icon"
+                android:layout_height="0px"
                 android:layout_width="0px"
                 android:layout_weight="0.5"
                 android:gravity="center_vertical|left"
-                android:textSize="@dimen/vital_stats_text"
+                android:textSize="0px"
       />
     </LinearLayout>
 
@@ -97,34 +97,35 @@
                   android:layout_width="fill_parent"
     >
 
-      <ImageView android:layout_width="@dimen/vital_stats_icon"
-                 android:layout_height="@dimen/vital_stats_icon"
+      <ImageView android:id="@+id/voltage_icon"
+                 android:layout_width="0px"
+                 android:layout_height="0px"
                  android:scaleType="fitCenter"
                  android:padding="2dp"
                  android:src="@drawable/voltage"
       />
 
       <TextView android:id="@+id/voltage"
-                android:layout_height="@dimen/vital_stats_icon"
+                android:layout_height="0px"
                 android:layout_width="0px"
                 android:layout_weight="0.5"
                 android:gravity="center_vertical|left"
-                android:textSize="@dimen/vital_stats_text"
+                android:textSize="0px"
       />
 
       <ImageView android:id="@+id/current_icon"
-                 android:layout_width="@dimen/vital_stats_icon"
-                 android:layout_height="@dimen/vital_stats_icon"
+                 android:layout_width="0px"
+                 android:layout_height="0px"
                  android:scaleType="fitCenter"
                  android:padding="2dp"
                  android:src="@drawable/current"
       />
       <TextView android:id="@+id/current"
-                android:layout_height="@dimen/vital_stats_icon"
+                android:layout_height="0px"
 	        android:layout_width="0px"
                 android:layout_weight="0.5"
                 android:gravity="center_vertical|left"
-                android:textSize="@dimen/vital_stats_text"
+                android:textSize="0px"
       />
     </LinearLayout>
   </LinearLayout>
@@ -132,13 +133,13 @@
   <LinearLayout android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="0px"
-                android:layout_weight="0.5"
+                android:layout_weight="0.44"
   >
     <Button android:id="@+id/battery_use_b"
-            android:layout_height="@dimen/bu_button_height"
+            android:layout_height="0px"
 	    android:layout_width="fill_parent"
             android:layout_gravity="center"
-            android:textSize="@dimen/bu_button_fs"
+            android:textSize="0px"
             android:text="@string/battery_use_b"
     />
   </LinearLayout>
