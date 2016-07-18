@@ -244,6 +244,11 @@
     Version</a>.
   </string>
 
+  <string formatted="false" name="help_cat_privacy">Privacy</string>
+  <string formatted="false" name="help_privacy">
+    BatteryBot does not collect, store, or transmit any personal information.
+  </string>
+
   <string formatted="false" name="help_cat_no_warranty">No Warranty</string>
   <string formatted="false" name="help_no_warranty">
     This software is distributed in the hope that it will be useful, but
