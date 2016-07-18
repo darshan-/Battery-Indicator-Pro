@@ -47,9 +47,7 @@ import java.util.HashSet;
 public class BatteryInfoService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private final IntentFilter userPresent    = new IntentFilter(Intent.ACTION_USER_PRESENT);
-    private PendingIntent mainWindowPendingIntent;
-    private PendingIntent updatePredictorPendingIntent;
-    private Intent alarmsIntent;
+    private PendingIntent currentInfoPendingIntent, updatePredictorPendingIntent, alarmsPendingIntent;
 
     private NotificationManager mNotificationManager;
     private AlarmManager alarmManager;
@@ -83,6 +81,9 @@ public class BatteryInfoService extends Service {
     private static final int NOTIFICATION_ALARM_HEALTH = 4;
     private static final int NOTIFICATION_ALARM_TEMP   = 5;
 
+    private static final int RC_MAIN   = 100;
+    private static final int RC_ALARMS = 101;
+
     public static final String KEY_PREVIOUS_CHARGE = "previous_charge";
     public static final String KEY_PREVIOUS_TEMP = "previous_temp";
     public static final String KEY_PREVIOUS_HEALTH = "previous_health";
@@ -92,6 +93,9 @@ public class BatteryInfoService extends Service {
 
 
     private static final String EXTRA_UPDATE_PREDICTOR = "com.darshancomputing.BatteryBotPro.EXTRA_UPDATE_PREDICTOR";
+
+    public static final String EXTRA_CURRENT_INFO = "com.darshancomputing.BatteryBotPro.EXTRA_CURRENT_INFO";
+    public static final String EXTRA_EDIT_ALARMS  = "com.darshancomputing.BatteryBotPro.EXTRA_EDIT_ALARMS";
 
 
     private static final Object[] EMPTY_OBJECT_ARRAY = {};
@@ -155,14 +159,15 @@ public class BatteryInfoService extends Service {
         currentHack = CurrentHack.getInstance(this);
         currentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
 
-        Intent mainWindowIntent = new Intent(this, BatteryInfoActivity.class);
-        mainWindowPendingIntent = PendingIntent.getActivity(this, 0, mainWindowIntent, 0);
+        Intent currentInfoIntent = new Intent(this, BatteryInfoActivity.class).putExtra(EXTRA_CURRENT_INFO, true);
+        currentInfoPendingIntent = PendingIntent.getActivity(this, RC_MAIN, currentInfoIntent, 0);
 
         Intent updatePredictorIntent = new Intent(this, BatteryInfoService.class);
         updatePredictorIntent.putExtra(EXTRA_UPDATE_PREDICTOR, true);
         updatePredictorPendingIntent = PendingIntent.getService(this, 0, updatePredictorIntent, 0);
 
-        alarmsIntent = new Intent(this, AlarmsActivity.class);
+        Intent alarmsIntent = new Intent(this, BatteryInfoActivity.class).putExtra(EXTRA_EDIT_ALARMS, true);
+        alarmsPendingIntent = PendingIntent.getActivity(this, RC_ALARMS, alarmsIntent, 0);
 
         widgetManager = AppWidgetManager.getInstance(this);
 
@@ -361,8 +366,9 @@ public class BatteryInfoService extends Service {
     }
 
     private void updateWidgets(BatteryInfo info) {
-        Intent mainWindowIntent = new Intent(this, BatteryInfoActivity.class);
-        PendingIntent mainWindowPendingIntent = PendingIntent.getActivity(this, 0, mainWindowIntent, 0);
+        //Intent mainWindowIntent = new Intent(this, BatteryInfoActivity.class);
+        //PendingIntent mainWindowPendingIntent = PendingIntent.getActivity(this, RC_MAIN, mainWindowIntent, 0);
+        //PendingIntent currentInfoPendingIntent = PendingIntent.getActivity(this, RC_MAIN, currentInfoIntent, 0);
 
         if (info == null) {
             cwbg.setLevel(0);
@@ -410,7 +416,7 @@ public class BatteryInfoService extends Service {
             else
                 rv.setTextViewText(R.id.level, "" + info.percent + str.percent_symbol);
 
-            rv.setOnClickPendingIntent(R.id.widget_layout, mainWindowPendingIntent);
+            rv.setOnClickPendingIntent(R.id.widget_layout, currentInfoPendingIntent);
             widgetManager.updateAppWidget(widgetId, rv);
         }
     }
@@ -443,7 +449,7 @@ public class BatteryInfoService extends Service {
                                 res.getBoolean(R.bool.default_use_system_notification_layout))) {
             mainNotificationB.setContentTitle(mainNotificationTopLine)
                 .setContentText(mainNotificationBottomLine)
-                .setContentIntent(mainWindowPendingIntent);
+                .setContentIntent(currentInfoPendingIntent);
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
                 mainNotificationB.setVisibility(Notification.VISIBILITY_PUBLIC);
@@ -494,7 +500,7 @@ public class BatteryInfoService extends Service {
             }
 
             mainNotificationB.setContent(notificationRV)
-                .setContentIntent(mainWindowPendingIntent);
+                .setContentIntent(currentInfoPendingIntent);
         }
     }
 
@@ -713,7 +719,7 @@ public class BatteryInfoService extends Service {
     private void handleAlarms() {
         Cursor c;
         Notification.Builder nb;
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, alarmsIntent, 0);
+
         int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
 
         if (info.status == BatteryInfo.STATUS_FULLY_CHARGED && info.status != info.last_status) {
@@ -722,7 +728,7 @@ public class BatteryInfoService extends Service {
                 nb = parseAlarmCursor(c);
                 nb.setContentTitle(str.alarm_fully_charged)
                     .setContentText(str.alarm_text)
-                    .setContentIntent(contentIntent);
+                    .setContentIntent(alarmsPendingIntent);
 
                 if (android.os.Build.VERSION.SDK_INT >= 21)
                     nb.setVisibility(Notification.VISIBILITY_PUBLIC);
@@ -738,7 +744,7 @@ public class BatteryInfoService extends Service {
             nb = parseAlarmCursor(c);
             nb.setContentTitle(str.alarm_charge_drops + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol)
                 .setContentText(str.alarm_text)
-                .setContentIntent(contentIntent);
+                .setContentIntent(alarmsPendingIntent);
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
                 nb.setVisibility(Notification.VISIBILITY_PUBLIC);
@@ -753,7 +759,7 @@ public class BatteryInfoService extends Service {
             nb = parseAlarmCursor(c);
             nb.setContentTitle(str.alarm_charge_rises + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol)
                 .setContentText(str.alarm_text)
-                .setContentIntent(contentIntent);
+                .setContentIntent(alarmsPendingIntent);
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
                 nb.setVisibility(Notification.VISIBILITY_PUBLIC);
@@ -769,7 +775,7 @@ public class BatteryInfoService extends Service {
             nb = parseAlarmCursor(c);
             nb.setContentTitle(str.alarm_temp_rises + str.formatTemp(c.getInt(alarms.INDEX_THRESHOLD), convertF, false))
                 .setContentText(str.alarm_text)
-                .setContentIntent(contentIntent);
+                .setContentIntent(alarmsPendingIntent);
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
                 nb.setVisibility(Notification.VISIBILITY_PUBLIC);
@@ -785,7 +791,7 @@ public class BatteryInfoService extends Service {
                 nb = parseAlarmCursor(c);
                 nb.setContentTitle(str.alarm_health_failure + str.healths[info.health])
                     .setContentText(str.alarm_text)
-                    .setContentIntent(contentIntent);
+                    .setContentIntent(alarmsPendingIntent);
 
                 if (android.os.Build.VERSION.SDK_INT >= 21)
                     nb.setVisibility(Notification.VISIBILITY_PUBLIC);

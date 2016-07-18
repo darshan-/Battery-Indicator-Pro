@@ -66,6 +66,22 @@ public class BatteryInfoActivity extends FragmentActivity {
         tabStrip.setTabIndicatorColor(0x33b5e5);
 
         viewPager.setCurrentItem(1);
+        routeIntent(getIntent());
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        //setIntent(intent); // Not done by system automatically
+        routeIntent(intent);
+    }
+
+    private void routeIntent(Intent intent) {
+        if (intent.hasExtra(BatteryInfoService.EXTRA_EDIT_ALARMS))
+            viewPager.setCurrentItem(2);
+        else if (intent.hasExtra(BatteryInfoService.EXTRA_CURRENT_INFO))
+            viewPager.setCurrentItem(1);
     }
 
     @Override
@@ -128,7 +144,7 @@ public class BatteryInfoActivity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            return 2; // TODO
+            return 3;
         }
 
         // getItem() is apparently intended to always create new Fragments!
@@ -139,6 +155,8 @@ public class BatteryInfoActivity extends FragmentActivity {
                     return new LogViewFragment();
                 case 1:
                     return new CurrentInfoFragment();
+                case 2:
+                    return new AlarmsFragment();
                 default:
                     return null;
             }
@@ -158,10 +176,18 @@ public class BatteryInfoActivity extends FragmentActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             if (activity == null)
-                return "no activity yet";
+                return null;
 
-            if (position == 1) return activity.res.getString(R.string.tab_current_info).toUpperCase();
-            else               return activity.res.getString(R.string.tab_history).toUpperCase();
+            switch (position) {
+                case 0:
+                    return activity.res.getString(R.string.tab_history).toUpperCase();
+                case 1:
+                    return activity.res.getString(R.string.tab_current_info).toUpperCase();
+                case 2:
+                    return activity.res.getString(R.string.alarm_settings).toUpperCase();
+                default:
+                    return null;
+            }
         }
     }
 }

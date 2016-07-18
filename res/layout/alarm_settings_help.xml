@@ -11,7 +11,10 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
   >
-    <TextView style="@style/help_cat"  android:text="@string/alarms_overview" />
+    <TextView style="@style/help_cat" android:text="@string/alarm_settings" />
+    <TextView style="@style/help_text" android:text="@string/alarm_settings_help" />
+
+    <TextView style="@style/help_pref"  android:text="@string/alarms_overview" />
     <TextView style="@style/help_text" android:text="@string/alarms_overview_help" />
   </LinearLayout>
 </ScrollView>

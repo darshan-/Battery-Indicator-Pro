@@ -683,11 +683,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             startActivity(new Intent().setComponent(comp).putExtra(EXTRA_SCREEN, key));
 
             return true;
-        } else if (key.equals(KEY_ALARMS_SETTINGS)) {
-            ComponentName comp = new ComponentName(getPackageName(), AlarmsActivity.class.getName());
-            startActivity(new Intent().setComponent(comp));
-
-            return true;
         } else if (key.equals(KEY_PLUGIN_SETTINGS)) {
             //TODO: convert biServiceConnection.biService.configurePlugin();
             return true;

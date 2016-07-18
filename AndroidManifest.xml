@@ -42,17 +42,9 @@
     />
 
     <activity
-        android:name=".AlarmsActivity"
-        android:theme="@style/bi_settings_theme"
-        android:excludeFromRecents="true"
-        android:hardwareAccelerated="false"
-    />
-
-    <activity
         android:name=".AlarmEditActivity"
         android:theme="@style/bi_settings_theme"
         android:excludeFromRecents="true"
-        android:hardwareAccelerated="false"
     />
 
     <activity

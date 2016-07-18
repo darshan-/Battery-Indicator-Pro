@@ -15,6 +15,7 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -41,7 +42,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AlarmsActivity extends Activity {
+public class AlarmsFragment extends Fragment {
     private AlarmDatabase alarms;
     private Resources res;
     private Str str;
@@ -53,46 +54,47 @@ public class AlarmsActivity extends Activity {
     private int curIndex; /* The ViewGroup index of the currently focused item (to set focus after deletion) */
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
 
-        res = getResources();
-        str = new Str(res);
+        mInflater = inflater;
+        View view = mInflater.inflate(R.layout.alarms, container, false);
 
-        // Stranglely disabled by default for API level 14+
-        if (android.os.Build.VERSION.SDK_INT >= 14) {
-            getActionBar().setHomeButtonEnabled(true);
-            getActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        mAlarmsList = (LinearLayout) view.findViewById(R.id.alarms_list);
 
-        setContentView(R.layout.alarms);
-        setWindowSubtitle(res.getString(R.string.alarm_settings));
-
-        alarms = new AlarmDatabase(this);
-        mCursor = alarms.getAllAlarms(true);
-
-        mInflater = LayoutInflater.from(this);
-        mAlarmsList = (LinearLayout) findViewById(R.id.alarms_list);
-        mCursor.registerDataSetObserver(new AlarmsObserver());
-
-        View addAlarm = findViewById(R.id.add_alarm);
+        View addAlarm = view.findViewById(R.id.add_alarm);
         addAlarm.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 int id = alarms.addAlarm();
                 if (id < 0) {
-                    Toast.makeText(AlarmsActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Error!", Toast.LENGTH_SHORT).show();
                 }
-                ComponentName comp = new ComponentName(getPackageName(), AlarmEditActivity.class.getName());
+                ComponentName comp = new ComponentName(getActivity().getPackageName(), AlarmEditActivity.class.getName());
                 startActivity(new Intent().setComponent(comp).putExtra(AlarmEditActivity.EXTRA_ALARM_ID, id));
             }
         });
+
+        return view;
     }
 
-    private void setWindowSubtitle(String subtitle) {
-        if (res.getBoolean(R.bool.long_activity_names))
-            setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
-        else
-            setTitle(subtitle);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setHasOptionsMenu(true);
+        setRetainInstance(true);
+
+        alarms = new AlarmDatabase(getActivity().getApplicationContext());
+        mCursor = alarms.getAllAlarms(true);
+
+        mCursor.registerDataSetObserver(new AlarmsObserver());
+    }
+
+    @Override
+    public void onAttach(android.app.Activity a) {
+        super.onAttach(a);
+
+        str = ((BatteryInfoActivity) a).str;
     }
 
     private void populateList() {
@@ -109,7 +111,7 @@ public class AlarmsActivity extends Activity {
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         mCursor.close();
         alarms.close();
@@ -117,35 +119,32 @@ public class AlarmsActivity extends Activity {
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         mCursor.requery();
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         mCursor.deactivate();
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
         inflater.inflate(R.menu.settings, menu);
-        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case R.id.menu_help:
-            ComponentName comp = new ComponentName(getPackageName(), SettingsHelpActivity.class.getName());
+            ComponentName comp = new ComponentName(getActivity().getPackageName(), SettingsHelpActivity.class.getName());
             Intent intent = new Intent().setComponent(comp).putExtra(SettingsActivity.EXTRA_SCREEN, SettingsActivity.KEY_ALARMS_SETTINGS);
             startActivity(intent);
 
-            return true;
-        case android.R.id.home:
-            finish();
             return true;
         default:
             return super.onOptionsItemSelected(item);
@@ -197,8 +196,7 @@ public class AlarmsActivity extends Activity {
 
         String s = str.alarm_types_display[str.indexOf(str.alarm_type_values, type)];
         if (type.equals("temp_rises")) {
-            Boolean convertF = android.preference.PreferenceManager.getDefaultSharedPreferences(this)
-                .getBoolean(SettingsActivity.KEY_CONVERT_F, false);
+            Boolean convertF = ((BatteryInfoActivity) getActivity()).settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
             s += " " + str.formatTemp(Integer.valueOf(threshold), convertF, false);
         } else if (type.equals("charge_drops") || type.equals("charge_rises")) {
             s += " " + threshold + "%";
@@ -220,7 +218,7 @@ public class AlarmsActivity extends Activity {
                 curId = id;
                 curIndex = mAlarmsList.indexOfChild((View) v.getParent().getParent());
 
-                getMenuInflater().inflate(R.menu.alarm_item_context, menu);
+                getActivity().getMenuInflater().inflate(R.menu.alarm_item_context, menu);
                 menu.setHeaderTitle(summary);
             }
         });
@@ -236,7 +234,7 @@ public class AlarmsActivity extends Activity {
 
         summary_box.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                ComponentName comp = new ComponentName(getPackageName(), AlarmEditActivity.class.getName());
+                ComponentName comp = new ComponentName(getActivity().getPackageName(), AlarmEditActivity.class.getName());
                 startActivity(new Intent().setComponent(comp).putExtra(AlarmEditActivity.EXTRA_ALARM_ID, id));
             }
         });
