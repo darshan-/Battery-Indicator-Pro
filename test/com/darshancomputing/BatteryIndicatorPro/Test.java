@@ -229,6 +229,22 @@ public class Test {
             }
             bi.percent -= 1;
         }
+
+        bug001();
+    }
+
+    // Battery level increasing while STATUS_UNKNOWN causes integer overflow
+    private static void bug001() {
+        bi.status = BatteryInfo.STATUS_UNKNOWN;
+
+        bi.percent = 90;
+        pc.update(bi, now);
+        print();
+        now += (60 * 1000);
+
+        bi.percent = 91;
+        pc.update(bi, now);
+        print();
     }
 
     private static void print() {
@@ -243,7 +259,8 @@ public class Test {
             System.out.println("" + (now/60000.0) + ": " + bi.percent + "%; fully charged.");
             break;
         default:
-            System.out.println("" + (now/60000.0) + ": unknown status: " + bi.status);
+            System.out.println("" + (now/60000.0) + ": (Unknown status: " + bi.status + "); " + bi.percent + "%; " +
+                               prettyTimeRemaining(bi));
         }
     }
 
