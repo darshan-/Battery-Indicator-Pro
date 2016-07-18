@@ -62,8 +62,13 @@ public class AlarmsFragment extends Fragment {
 
         mAlarmsList = (LinearLayout) view.findViewById(R.id.alarms_list);
 
-        View addAlarm = view.findViewById(R.id.add_alarm);
-        addAlarm.setOnClickListener(new OnClickListener() {
+        if (mCursor == null) {
+            TextView addAlarmTv = (TextView) view.findViewById(R.id.add_alarm_tv);
+            addAlarmTv.setText("Database error!");
+            return view;
+        }
+
+        view.findViewById(R.id.add_alarm).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 int id = alarms.addAlarm();
                 if (id < 0) {
@@ -87,7 +92,8 @@ public class AlarmsFragment extends Fragment {
         alarms = new AlarmDatabase(getActivity().getApplicationContext());
         mCursor = alarms.getAllAlarms(true);
 
-        mCursor.registerDataSetObserver(new AlarmsObserver());
+        if (mCursor != null)
+            mCursor.registerDataSetObserver(new AlarmsObserver());
     }
 
     @Override
@@ -100,7 +106,7 @@ public class AlarmsFragment extends Fragment {
     private void populateList() {
         mAlarmsList.removeAllViews();
 
-        if (mCursor.moveToFirst()) {
+        if (mCursor != null && mCursor.moveToFirst()) {
             while (! mCursor.isAfterLast()) {
                 View v = mInflater.inflate(R.layout.alarm_item, mAlarmsList, false);
                 bindView(v);
@@ -113,7 +119,7 @@ public class AlarmsFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mCursor.close();
+        if (mCursor != null) mCursor.close();
         alarms.close();
         mAlarmsList.removeAllViews(); // Don't want any instance state saved
     }
@@ -121,13 +127,13 @@ public class AlarmsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mCursor.requery();
+        if (mCursor != null) mCursor.requery();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        mCursor.deactivate();
+        if (mCursor != null) mCursor.deactivate();
     }
 
     @Override
@@ -156,7 +162,7 @@ public class AlarmsFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.delete_alarm:
                 alarms.deleteAlarm(curId);
-                mCursor.requery();
+                if (mCursor != null) mCursor.requery();
 
                 int childCount = mAlarmsList.getChildCount();
                 if (curIndex < childCount)
