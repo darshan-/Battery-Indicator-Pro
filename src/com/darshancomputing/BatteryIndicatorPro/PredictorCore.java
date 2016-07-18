@@ -97,6 +97,9 @@ public class PredictorCore {
     }
 
     public void update(BatteryInfo info, long when) {
+        if (info.status == BatteryInfo.STATUS_UNKNOWN)
+            return;
+
         cur_info = info;
         cur_charging_status = chargingStatusForCurInfo();
         now = when;
