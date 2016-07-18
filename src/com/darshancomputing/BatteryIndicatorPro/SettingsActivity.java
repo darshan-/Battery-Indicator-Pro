@@ -365,6 +365,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             ListPreference iconSetPref = (ListPreference) mPreferenceScreen.findPreference(KEY_ICON_SET);
             setPluginPrefEntriesAndValues(iconSetPref);
             currentPlugin = iconSetPref.getValue();
+            if (currentPlugin == null)
+                currentPlugin = "builtin.plain_number";
 
             redThresh   = (ListPreference) mPreferenceScreen.findPreference(KEY_RED_THRESH);
             amberThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_AMBER_THRESH);
