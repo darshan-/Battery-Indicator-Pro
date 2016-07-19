@@ -809,7 +809,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (pref == null) return;
 
         pref.setSummary(res.getString(R.string.currently_using) + " " +
-                        (mSharedPreferences.getBoolean(KEY_CONVERT_F, false) ?
+                        (mSharedPreferences.getBoolean(KEY_CONVERT_F, res.getBoolean(R.bool.default_convert_to_fahrenheit)) ?
                          res.getString(R.string.fahrenheit) : res.getString(R.string.celsius)));
     }
 

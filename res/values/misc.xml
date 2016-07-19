@@ -591,4 +591,6 @@
   <string name="default_prediction_type">-3</string>
 
   <bool name="default_use_system_notification_layout">false</bool>
+
+  <bool name="default_convert_to_fahrenheit">false</bool>
 </resources>

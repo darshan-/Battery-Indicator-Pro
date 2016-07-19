@@ -579,7 +579,9 @@ public class BatteryInfoService extends Service {
     }
 
     private String vitalStatsLine() {
-        Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
+        Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+                                               res.getBoolean(R.bool.default_convert_to_fahrenheit));
+
         String line = str.healths[info.health] + " / " + str.formatTemp(info.temperature, convertF);
 
         if (info.voltage > 500)
@@ -768,7 +770,9 @@ public class BatteryInfoService extends Service {
 
         c = alarms.activeAlarmTempRises(info.temperature, sp_store.getInt(KEY_PREVIOUS_TEMP, 1));
         if (c != null) {
-            Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
+            Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+                                                   res.getBoolean(R.bool.default_convert_to_fahrenheit));
+
             sps_editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
             nb = parseAlarmCursor(c);
             nb.setContentTitle(str.alarm_temp_rises + str.formatTemp(c.getInt(alarms.INDEX_THRESHOLD), convertF, false))

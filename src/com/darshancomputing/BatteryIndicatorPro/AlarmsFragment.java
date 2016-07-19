@@ -49,6 +49,7 @@ public class AlarmsFragment extends Fragment {
     private Cursor mCursor;
     private LayoutInflater mInflater;
     private LinearLayout mAlarmsList;
+    private Boolean convertF;
 
     private int curId; /* The alarm id for the View that was just long-pressed */
     private int curIndex; /* The ViewGroup index of the currently focused item (to set focus after deletion) */
@@ -89,8 +90,13 @@ public class AlarmsFragment extends Fragment {
         setHasOptionsMenu(true);
         setRetainInstance(true);
 
-        alarms = new AlarmDatabase(getActivity().getApplicationContext());
+        BatteryInfoActivity activity = (BatteryInfoActivity) getActivity();
+
+        alarms = new AlarmDatabase(activity.getApplicationContext());
         mCursor = alarms.getAllAlarms(true);
+
+        convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+                                                activity.res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
         if (mCursor != null)
             mCursor.registerDataSetObserver(new AlarmsObserver());
@@ -127,6 +133,12 @@ public class AlarmsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        BatteryInfoActivity activity = (BatteryInfoActivity) getActivity();
+
+        convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+                                                activity.res.getBoolean(R.bool.default_convert_to_fahrenheit));
+
         if (mCursor != null) mCursor.requery();
     }
 
@@ -202,7 +214,6 @@ public class AlarmsFragment extends Fragment {
 
         String s = str.alarm_types_display[str.indexOf(str.alarm_type_values, type)];
         if (type.equals("temp_rises")) {
-            Boolean convertF = ((BatteryInfoActivity) getActivity()).settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
             s += " " + str.formatTemp(Integer.valueOf(threshold), convertF, false);
         } else if (type.equals("charge_drops") || type.equals("charge_rises")) {
             s += " " + threshold + "%";

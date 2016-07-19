@@ -168,7 +168,8 @@ public class LogViewFragment extends ListFragment {
         setHasOptionsMenu(true);
         setRetainInstance(true);
 
-        convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
+        convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+                                                activity.res.getBoolean(R.bool.default_convert_to_fahrenheit));
         col = new Col();
 
         serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
@@ -190,7 +191,8 @@ public class LogViewFragment extends ListFragment {
     @Override
     public void onResume() {
         super.onResume();
-        convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F, false);
+        convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+                                                activity.res.getBoolean(R.bool.default_convert_to_fahrenheit));
     }
 
     @Override
