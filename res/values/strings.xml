@@ -235,7 +235,13 @@
   <string formatted="false" name="help_cat_open_source">Open Source</string>
   <string formatted="false" name="help_open_source">This
     is an open source project, which means you can <a href="http://www.batterybot.info/sourcecode">download the source
-    code</a>.
+    code</a>.\n
+
+    \nYou can read more about the Darshan Computing business
+    philosophy at the <a
+    href="http://www.darshancomputing.com">Darshan Computing, LLC
+    website</a>.  (Summary: Always user-first, ad-free, and useful
+    free version.  Open source by default.)
   </string>
 
   <string formatted="false" name="help_cat_donate">Donate</string>
