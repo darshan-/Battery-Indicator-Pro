@@ -15,7 +15,6 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -41,6 +40,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import android.support.v4.app.Fragment;
 
 public class AlarmsFragment extends Fragment {
     private AlarmDatabase alarms;

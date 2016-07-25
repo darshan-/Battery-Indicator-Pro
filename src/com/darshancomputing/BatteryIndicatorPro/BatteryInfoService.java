@@ -15,8 +15,6 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.AlarmManager;
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
@@ -41,6 +39,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+
 import java.util.Date;
 import java.util.HashSet;
 
@@ -49,7 +50,7 @@ public class BatteryInfoService extends Service {
     private final IntentFilter userPresent    = new IntentFilter(Intent.ACTION_USER_PRESENT);
     private PendingIntent currentInfoPendingIntent, updatePredictorPendingIntent, alarmsPendingIntent;
 
-    private NotificationManager mNotificationManager;
+    private NotificationManagerCompat mNotificationManager;
     private AlarmManager alarmManager;
     private SharedPreferences settings;
     private SharedPreferences sp_store;
@@ -107,7 +108,7 @@ public class BatteryInfoService extends Service {
     private static final int small_chargingIcon0 = R.drawable.small_charging000;
 
     /* Global variables for these Notification Runnables */
-    private Notification.Builder mainNotificationB;
+    private NotificationCompat.Builder mainNotificationB;
     private String mainNotificationTopLine, mainNotificationBottomLine;
     private RemoteViews notificationRV;
 
@@ -145,8 +146,8 @@ public class BatteryInfoService extends Service {
 
         alarms = new AlarmDatabase(this);
 
-        mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mainNotificationB = new Notification.Builder(this);
+        mNotificationManager = NotificationManagerCompat.from(this);
+        mainNotificationB = new NotificationCompat.Builder(this);
 
         mVibrator = (android.os.Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         mAudioManager = (android.media.AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -297,7 +298,7 @@ public class BatteryInfoService extends Service {
 
         if (cancelFirst) {
             stopForeground(true);
-            mainNotificationB = new Notification.Builder(this);
+            mainNotificationB = new NotificationCompat.Builder(this);
         }
 
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
@@ -452,7 +453,7 @@ public class BatteryInfoService extends Service {
                 .setContentIntent(currentInfoPendingIntent);
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
-                mainNotificationB.setVisibility(Notification.VISIBILITY_PUBLIC);
+                mainNotificationB.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
         } else {
             String icon_area = settings.getString(SettingsActivity.KEY_ICON_AREA, res.getString(R.string.default_icon_area_content));
 
@@ -623,7 +624,9 @@ public class BatteryInfoService extends Service {
 
     // I take advantage of (count on) R.java having resources alphabetical and incrementing by one.
     private int iconFor(int percent) {
-        String default_set = "builtin.plain_number";
+        String default_set = "builtin.classic";
+        if (android.os.Build.VERSION.SDK_INT >= 11)
+            default_set = "builtin.plain_number";
 
         String icon_set = settings.getString(SettingsActivity.KEY_ICON_SET, "null");
         if (! icon_set.startsWith("builtin.")) icon_set = "null"; // TODO: Remove this line to re-enable plugins
@@ -718,7 +721,7 @@ public class BatteryInfoService extends Service {
 
     private void handleAlarms() {
         Cursor c;
-        Notification.Builder nb;
+        NotificationCompat.Builder nb;
 
         int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
 
@@ -731,7 +734,7 @@ public class BatteryInfoService extends Service {
                     .setContentIntent(alarmsPendingIntent);
 
                 if (android.os.Build.VERSION.SDK_INT >= 21)
-                    nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+                    nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
                 mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
                 c.close();
@@ -747,7 +750,7 @@ public class BatteryInfoService extends Service {
                 .setContentIntent(alarmsPendingIntent);
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
-                nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+                nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
             mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
             c.close();
@@ -762,7 +765,7 @@ public class BatteryInfoService extends Service {
                 .setContentIntent(alarmsPendingIntent);
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
-                nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+                nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
             mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
             c.close();
@@ -780,7 +783,7 @@ public class BatteryInfoService extends Service {
                 .setContentIntent(alarmsPendingIntent);
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
-                nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+                nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
             mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
             c.close();
@@ -796,7 +799,7 @@ public class BatteryInfoService extends Service {
                     .setContentIntent(alarmsPendingIntent);
 
                 if (android.os.Build.VERSION.SDK_INT >= 21)
-                    nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+                    nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
                 mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
                 c.close();
@@ -804,8 +807,8 @@ public class BatteryInfoService extends Service {
         }
     }
 
-    private Notification.Builder parseAlarmCursor(Cursor c) {
-        Notification.Builder nb = new Notification.Builder(this)
+    private NotificationCompat.Builder parseAlarmCursor(Cursor c) {
+        NotificationCompat.Builder nb = new NotificationCompat.Builder(this)
             .setSmallIcon(R.drawable.stat_notify_alarm)
             .setAutoCancel(true);
 
@@ -819,7 +822,7 @@ public class BatteryInfoService extends Service {
                 mVibrator.vibrate(new long[] {0, 200, 200, 400}, -1);
 
         if (c.getInt(alarms.INDEX_LIGHTS) == 1)
-            nb.setDefaults(Notification.DEFAULT_LIGHTS);
+            nb.setDefaults(NotificationCompat.DEFAULT_LIGHTS);
 
         return nb;
     }

@@ -46,6 +46,12 @@
   <style name="bi_help_theme" parent="@android:style/Theme.Light">
   </style>
 
+  <style name="bi_main_theme" parent="@android:style/Theme">
+  </style>
+
+  <style name="bi_settings_theme" parent="@android:style/Theme">
+  </style>
+
   <dimen name="compound_button_width">68dp</dimen>
   <style name="alarm_list_item_toggle">
     <item name="android:layout_width">wrap_content</item>

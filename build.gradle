@@ -17,12 +17,27 @@ android {
     compileSdkVersion 24
     buildToolsVersion "24.0.0"
 
+    configurations {
+        all*.exclude module: 'animated-vector-drawable'
+        all*.exclude module: 'support-vector-drawable'
+        all*.exclude module: 'support-annotations'
+    }
+
     dependencies {
-        compile "com.android.support:support-v13:23.3.0"
+        compile('com.android.support:appcompat-v7:23.3.0') {
+            exclude module:'support-vector-drawable'
+            exclude module:'animated-vector-drawable'
+            exclude module:'support-annotations'
+        }
     }
 
     defaultConfig {
+        minSdkVersion 7
         targetSdkVersion 24
+
+        vectorDrawables.useSupportLibrary = false
+
+        resConfigs "en", "cs", "de", "es", "fr", "hu", "it", "nl", "pl", "pt_BR", "pt", "ru", "sk", "tr", "zh_CN", "zh", "ro", "el", "lt", "ar", "sl", "ja" // Don't use support library translations for languages that the app doesn't have its own translations for
 
 //        jackOptions {
 //            enabled true
@@ -62,8 +77,9 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
-            //minifyEnabled true
-            //proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
+            minifyEnabled true   // Only enable on actual release builds
+            shrinkResources true // Only enable on actual release builds
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }

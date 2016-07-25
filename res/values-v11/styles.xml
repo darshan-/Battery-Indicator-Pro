@@ -3,6 +3,12 @@
   <style name="bi_help_theme" parent="@android:style/Theme.Holo.Light">
   </style>
 
+  <style name="bi_main_theme" parent="@android:style/Theme.Holo">
+  </style>
+
+  <style name="bi_settings_theme" parent="@android:style/Theme.Holo">
+  </style>
+
   <style name="NotificationTextIcon" parent="NotificationTitle">
     <item name="android:textColor">@color/main_notification_default_custom_text_color</item>
   </style>

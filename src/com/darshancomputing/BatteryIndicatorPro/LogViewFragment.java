@@ -16,8 +16,6 @@ package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.ListFragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -54,6 +52,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.ListFragment;
 import android.support.v4.content.ContextCompat;
 
 public class LogViewFragment extends ListFragment {

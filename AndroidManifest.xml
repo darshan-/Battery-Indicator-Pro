@@ -61,12 +61,6 @@
         android:excludeFromRecents="true"
     />
 
-    <activity
-        android:name=".LogViewActivity"
-        android:stateNotNeeded="true"
-        android:excludeFromRecents="true"
-    />
-
     <service
         android:name=".BatteryInfoService"
         android:process="com.darshancomputing.BatteryBotPro.BIS"
@@ -121,10 +115,11 @@
     </receiver>
   </application>
 
-  <uses-sdk
+  <!-- Rely on build.gradle now -->
+  <!--uses-sdk
       android:minSdkVersion="13"
       android:targetSdkVersion="24"
-  />
+  /-->
 
   <!-- Permissions now considered "normal", automatically granted on API 23+ -->
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />

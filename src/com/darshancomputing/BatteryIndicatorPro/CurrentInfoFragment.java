@@ -17,8 +17,6 @@ package com.darshancomputing.BatteryIndicatorPro;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.DialogInterface;
@@ -33,6 +31,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -46,6 +45,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 
 import java.lang.ref.WeakReference;
 
@@ -513,8 +515,20 @@ public class CurrentInfoFragment extends Fragment {
     private void setSizes(Configuration config) {
         boolean portrait = config.orientation == Configuration.ORIENTATION_PORTRAIT;
 
-        int screenWidth = (int) (config.screenWidthDp * dpScale);
-        int screenHeight = (int) (config.screenHeightDp * dpScale);
+        int screenWidth, screenHeight;
+
+        if (android.os.Build.VERSION.SDK_INT < 13) {
+            DisplayMetrics metrics = new DisplayMetrics();
+            getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+            screenWidth = metrics.widthPixels;
+            screenHeight = metrics.heightPixels;
+        } else {
+            screenWidth = (int) (config.screenWidthDp * dpScale);
+            screenHeight = (int) (config.screenHeightDp * dpScale);
+        }
+
+
         int minDimen = Math.min(screenWidth, screenHeight);
         float aspectRatio = (float) screenWidth / screenHeight;
 
