@@ -21,4 +21,6 @@
   <style name="SelectableItem">
     <item name="android:background">?android:attr/selectableItemBackground</item>
   </style>
+
+  <bool name="default_use_system_notification_layout">false</bool>
 </resources>

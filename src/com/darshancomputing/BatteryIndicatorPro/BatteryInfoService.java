@@ -114,11 +114,20 @@ public class BatteryInfoService extends Service {
 
     private Predictor predictor;
 
+    // Workaround for NotificationCompat.Builder losing custom content view on pre-Honeycomb
+    // See https://code.google.com/p/android/issues/detail?id=30495
+    private boolean needSetContentAgain = false;
+
     private final Handler mHandler = new Handler();
 
     private final Runnable mNotify = new Runnable() {
         public void run() {
-            startForeground(NOTIFICATION_PRIMARY, mainNotificationB.build());
+            android.app.Notification n = mainNotificationB.build();
+
+            if (needSetContentAgain)
+                n.contentView = notificationRV;
+
+            startForeground(NOTIFICATION_PRIMARY, n);
             mHandler.removeCallbacks(mNotify);
         }
     };
@@ -454,6 +463,8 @@ public class BatteryInfoService extends Service {
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
                 mainNotificationB.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+
+            needSetContentAgain = false;
         } else {
             String icon_area = settings.getString(SettingsActivity.KEY_ICON_AREA, res.getString(R.string.default_icon_area_content));
 
@@ -499,6 +510,9 @@ public class BatteryInfoService extends Service {
                 if (! icon_area.equals("percentage_first"))
                     notificationRV.setInt(R.id.battery, "setBackgroundColor", color);
             }
+
+            if (android.os.Build.VERSION.SDK_INT < 11)
+                needSetContentAgain = true;
 
             mainNotificationB.setContent(notificationRV)
                 .setContentIntent(currentInfoPendingIntent);
