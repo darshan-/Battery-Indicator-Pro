@@ -522,7 +522,7 @@ public class CurrentInfoFragment extends Fragment {
             getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
             screenWidth = metrics.widthPixels;
-            screenHeight = metrics.heightPixels;
+            screenHeight = (int) (metrics.heightPixels * 0.95);
         } else {
             screenWidth = (int) (config.screenWidthDp * dpScale);
             screenHeight = (int) (config.screenHeightDp * dpScale);
