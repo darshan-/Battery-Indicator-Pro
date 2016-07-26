@@ -790,6 +790,14 @@ public class LogViewFragment extends ListFragment {
         }
     }
 
+    private static class LogItemViewHolder {
+        public TextView status_tv;
+        public TextView percent_tv;
+        public TextView time_tv;
+        public TextView temp_volt_tv;
+        public TextView time_diff_tv;
+    }
+
     private class LogAdapter extends CursorAdapter {
         public int statusCodeIndex, chargeIndex, timeIndex, temperatureIndex, voltageIndex, timeDeltaIndex;
         public DateFormat dateFormat, timeFormat;
@@ -811,15 +819,28 @@ public class LogViewFragment extends ListFragment {
         }
 
         public View newView(Context context, Cursor cursor, ViewGroup parent) {
-            return mInflater.inflate(R.layout.log_item , parent, false);
+            View v = mInflater.inflate(R.layout.log_item , parent, false);
+            LogItemViewHolder vh = new LogItemViewHolder();
+
+            vh.status_tv = (TextView) v.findViewById(R.id.status);
+            vh.percent_tv = (TextView) v.findViewById(R.id.percent);
+            vh.time_tv = (TextView) v.findViewById(R.id.time);
+            vh.temp_volt_tv = (TextView) v.findViewById(R.id.temp_volt);
+            vh.time_diff_tv = (TextView) v.findViewById(R.id.time_diff);
+
+            v.setTag(vh);
+
+            return v;
         }
 
         public void bindView(View view, Context context, Cursor cursor) {
-            TextView    status_tv = (TextView) view.findViewById(R.id.status);
-            TextView   percent_tv = (TextView) view.findViewById(R.id.percent);
-            TextView      time_tv = (TextView) view.findViewById(R.id.time);
-            TextView temp_volt_tv = (TextView) view.findViewById(R.id.temp_volt);
-            TextView time_diff_tv = (TextView) view.findViewById(R.id.time_diff);
+            LogItemViewHolder vh = (LogItemViewHolder) view.getTag();
+
+            TextView    status_tv = vh.status_tv;
+            TextView   percent_tv = vh.percent_tv;
+            TextView      time_tv = vh.time_tv;
+            TextView temp_volt_tv = vh.temp_volt_tv;
+            TextView time_diff_tv = vh.time_diff_tv;
 
             int statusCode = cursor.getInt(statusCodeIndex);
             int[] statusCodes = LogDatabase.decodeStatus(statusCode);
