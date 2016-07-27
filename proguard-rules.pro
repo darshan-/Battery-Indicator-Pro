@@ -17,18 +17,24 @@
 # test thoroughly if you go this route.
 
 #-optimizations !code/simplification/arithmetic,!code/simplification/cast,!field/*,!class/merging/*
--optimizations code/simplification/arithmetic,!code/simplification/cast,!field/*,!class/merging/*
+###-optimizations code/simplification/arithmetic,!code/simplification/cast,!field/*,!class/merging/*
 #-optimizationpasses 5
--optimizationpasses 10
--allowaccessmodification
+###-optimizationpasses 10
+#-allowaccessmodification
 -dontpreverify
+#-dontobfuscate
 
+
+#-mergeinterfacesaggressively
 -dontusemixedcaseclassnames
 -dontskipnonpubliclibraryclasses
 -verbose
 
 #-whyareyoukeeping class android.support.v7.appcompat.R$style
 #-whyareyoukeeping class android.support.v7.view.ContextThemeWrapper
+
+#-whyareyoukeeping class android.support.v4.app.ActivityCompat
+#-whyareyoukeeping class android.support.v4.view.ViewCompat
 
 # -printseeds
 
@@ -56,18 +62,18 @@
 }
 
 # For enumeration classes, see http://proguard.sourceforge.net/manual/examples.html#enumerations
-# -keepclassmembers enum * {
-#     public static **[] values();
-#     public static ** valueOf(java.lang.String);
-# }
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
 
 -keepclassmembers class * implements android.os.Parcelable {
   public static final android.os.Parcelable$Creator CREATOR;
 }
 
-# -keepclassmembers class **.R$* {
-#     public static <fields>;
-# }
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
 
 # The support library contains references to newer platform versions.
 # Don't warn about those in case this app is linking against an older
