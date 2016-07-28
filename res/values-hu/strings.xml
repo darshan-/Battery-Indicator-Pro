@@ -97,12 +97,12 @@
   <string name="currently_disabled" formatted="false">Jelenleg Letiltva</string>
   <string name="help_cat_version" formatted="false">Verzió</string>
   <string name="help_cat_changelog" formatted="false">Változások</string>
-  <string name="help_changelog" formatted="false">Nézze meg a <a href="http://batterybot.info/changelog">változtatások listáját</a>.</string>
+  <string name="help_changelog" formatted="false">Nézze meg a <a href="https://www.batterybot.info/changelog">változtatások listáját</a>.</string>
   <string name="help_cat_faq" formatted="false">Gyakran ismételt kérdések</string>
   <string name="help_cat_website" formatted="false">Weboldal</string>
-  <string name="help_website" formatted="false">További információkért látogasson el a <a href="http://batterybot.info/">BatteryBot weboldalára</a>.</string>
+  <string name="help_website" formatted="false">További információkért látogasson el a <a href="https://www.batterybot.info/">BatteryBot weboldalára</a>.</string>
   <string name="help_cat_open_source" formatted="false">Nyílt forráskód</string>
-  <string name="help_open_source" formatted="false">Ez egy nyílt kódú projekt, ami azt jelenti, hogy <a href="http://batterybot.info/sourcecode">letöltheted a forráskódot</a>.</string>
+  <string name="help_open_source" formatted="false">Ez egy nyílt kódú projekt, ami azt jelenti, hogy <a href="https://www.batterybot.info/sourcecode">letöltheted a forráskódot</a>.</string>
   <string name="help_cat_donate" formatted="false">Adományozás</string>
   <string name="help_donate" formatted="false">Kérlek, fontold meg az adományozást a <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Verzió</a>ra való frissítéssel.</string>
   <string name="help_cat_no_warranty" formatted="false">Nincs garancia</string>

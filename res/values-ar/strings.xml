@@ -114,13 +114,13 @@
   <string name="currently_disabled" formatted="false">معطل حاليا</string>
   <string name="help_cat_version" formatted="false">الاصدار</string>
   <string name="help_cat_changelog" formatted="false">التغيير</string>
-  <string name="help_changelog" formatted="false">انظر الى<a href="http://batterybot.info/changelog">التغيير بالانترنيت</a></string>
+  <string name="help_changelog" formatted="false">انظر الى<a href="https://www.batterybot.info/changelog">التغيير بالانترنيت</a></string>
   <string name="help_cat_faq" formatted="false">اسئلة واجوبة</string>
-  <string name="help_faq" formatted="false"><a href="http://batterybot.info/faq">online FAQ</a> ارجوك اطلع على هذا</string>
+  <string name="help_faq" formatted="false"><a href="https://www.batterybot.info/faq">online FAQ</a> ارجوك اطلع على هذا</string>
   <string name="help_cat_website" formatted="false">الموقع</string>
-  <string name="help_website" formatted="false">المزيد من المعلومات متاحة على <a href="http://batterybot.info/">BatteryBot website</a></string>
+  <string name="help_website" formatted="false">المزيد من المعلومات متاحة على <a href="https://www.batterybot.info/">BatteryBot website</a></string>
   <string name="help_cat_open_source" formatted="false">مفتوح المصدر</string>
-  <string name="help_open_source" formatted="false">هذا مشروع مفتوح المصدر مما يعني انك قادر على تنزيل المصادر <a href="http://batterybot.info/sourcecode">تنزيل مصادر التطبيق</a>.</string>
+  <string name="help_open_source" formatted="false">هذا مشروع مفتوح المصدر مما يعني انك قادر على تنزيل المصادر <a href="https://www.batterybot.info/sourcecode">تنزيل مصادر التطبيق</a>.</string>
   <string name="help_cat_donate" formatted="false">تبرع</string>
   <string name="help_donate" formatted="false">ارجوك كن من المتبرعين بشرائك النسخة الكاملة <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">النسخة الكاملة</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">لا ضمان</string>

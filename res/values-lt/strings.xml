@@ -96,7 +96,7 @@
   <string name="currently_disabled" formatted="false">Dabar išjungta</string>
   <string name="help_cat_version" formatted="false">Versija</string>
   <string name="help_cat_changelog" formatted="false">Pakeitimų sąrašas</string>
-  <string name="help_changelog" formatted="false">Paskaitykite <a href="http://batterybot.info/changelog">pakeitimų sąrašą</a>.</string>
+  <string name="help_changelog" formatted="false">Paskaitykite <a href="https://www.batterybot.info/changelog">pakeitimų sąrašą</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">Nėra garantijų</string>
   <string name="help_no_warranty" formatted="false">Ši programa yra sukurta su viltimi, kad ji bus naudinga, bet be JOKIŲ GARANTIJŲ; net be numanomos garantijos PARDAVIMUI ar TINKAMUMUI TAM TIKRAM TIKSLUI.\n\nKol aš stengiuosi, kad būtų kuo geriau, veiktu kuo geriau ir nesudarytu jokių problemų, aš neatsakingas už jokią žalą ar nepatogumus, kuriuos sukels bet kokios aplinkybės.</string>
   <string name="help_cat_acknowledgments" formatted="false">Padėka</string>

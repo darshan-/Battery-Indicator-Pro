@@ -213,12 +213,12 @@
 
   <string formatted="false" name="help_cat_changelog">Changelog</string>
   <string formatted="false" name="help_changelog">
-    Please see the <a href="http://www.batterybot.info/changelog">online Changelog</a>.
+    Please see the <a href="https://www.batterybot.info/changelog">online Changelog</a>.
   </string>
 
   <string formatted="false" name="help_cat_faq">Frequently Asked Questions</string>
   <string formatted="false" name="help_faq">
-    Please see the <a href="http://www.batterybot.info/faq">online FAQ</a>.
+    Please see the <a href="https://www.batterybot.info/faq">online FAQ</a>.
   </string>
 
   <string formatted="false" name="help_cat_google_plus">Google Plus Page</string>
@@ -229,17 +229,17 @@
 
   <string formatted="false" name="help_cat_website">Website</string>
   <string formatted="false" name="help_website">More
-    infomation is available at the <a href="http://www.batterybot.info/">BatteryBot website</a>.
+    infomation is available at the <a href="https://www.batterybot.info/">BatteryBot website</a>.
   </string>
 
   <string formatted="false" name="help_cat_open_source">Open Source</string>
   <string formatted="false" name="help_open_source">This
-    is an open source project, which means you can <a href="http://www.batterybot.info/sourcecode">download the source
+    is an open source project, which means you can <a href="https://www.batterybot.info/sourcecode">download the source
     code</a>.\n
 
     \nYou can read more about the Darshan Computing business
     philosophy at the <a
-    href="http://www.darshancomputing.com">Darshan Computing, LLC
+    href="https://www.darshancomputing.com">Darshan Computing, LLC
     website</a>.  (Summary: Always user-first, ad-free, and useful
     free version.  Open source by default.)
   </string>

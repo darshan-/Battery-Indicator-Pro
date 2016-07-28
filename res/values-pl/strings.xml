@@ -110,7 +110,7 @@
   <string name="currently_disabled" formatted="false">Wyłączone</string>
   <string name="help_cat_version" formatted="false">Wersja</string>
   <string name="help_cat_changelog" formatted="false">Lista zmian</string>
-  <string name="help_changelog" formatted="false">Zobacz <a href="http://batterybot.info/changelog">listę zmian online</a></string>
+  <string name="help_changelog" formatted="false">Zobacz <a href="https://www.batterybot.info/changelog">listę zmian online</a></string>
   <string name="help_cat_no_warranty" formatted="false">Brak gwarancji</string>
   <string name="help_no_warranty" formatted="false">Ten program jest wydany z nadzieją, że będzie użyteczny, ale BEZ ŻADNEJ GWARANCJI.\n\nZ czasem gdy robię co mogę by aplikacja działała i nie powodowała żadnych problemów, nie jestem odpowiedzialny za jakiekolwiek zniszczenia urządzenia spowodowane niewłaściwym użytkowaniem aplikacji.</string>
   <string name="help_cat_acknowledgments" formatted="false">Uznania</string>

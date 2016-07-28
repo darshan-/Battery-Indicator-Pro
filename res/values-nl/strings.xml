@@ -107,7 +107,7 @@
   <string name="currently_disabled" formatted="false">Momenteel uitgeschakeld</string>
   <string name="help_cat_version" formatted="false">Versie</string>
   <string name="help_cat_changelog" formatted="false">Lijst van wijzigingen</string>
-  <string name="help_changelog" formatted="false">Bekijk de <a href="http://batterybot.info/changelog">lijst van wijzigingen</a>.</string>
+  <string name="help_changelog" formatted="false">Bekijk de <a href="https://www.batterybot.info/changelog">lijst van wijzigingen</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">Geen garantie</string>
   <string name="help_no_warranty" formatted="false">Deze software wordt uitgegeven in de hoop dat het nuttig zal zijn, maar ZONDER ENIGE GARANTIE; zonder zelfs de impliciete garantie van verkoopbaarheid of geschiktheid voor een bepaald doel.\n\nTerwijl ik mijn best doe om ervoor te zorgen dat het goed werkt en geen problemen veroorzaken, ben ik niet verantwoordelijk voor eventuele schade of overlast dat wordt veroorzaakt onder alle omstandigheden.</string>
   <string name="help_cat_acknowledgments" formatted="false">Erkenningen</string>

@@ -96,7 +96,7 @@
   <string name="currently_disabled" formatted="false">Απενεργοποιημένο Τώρα</string>
   <string name="help_cat_version" formatted="false">Έκδοση</string>
   <string name="help_cat_changelog" formatted="false">Αλλαγή λίστας καταγραφής</string>
-  <string name="help_changelog" formatted="false">Δέστε την <a href="http://batterybot.info/changelog">online Changelog</a>.</string>
+  <string name="help_changelog" formatted="false">Δέστε την <a href="https://www.batterybot.info/changelog">online Changelog</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">Καμιά Εγγύηση</string>
   <string name="help_no_warranty" formatted="false">Το πρόγραμμα αυτό διατίθεται με την ελπίδα ότι θα είναι χρήσιμο, αλλά ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ, χωρίς ακόμα την εννούμενη εγγύηση της ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή της ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΟ ΣΚΟΠΟ.\n\nΠαρόλο όμως που θα κάνω ό,τι καλύτερο μπορώ για να εξασφαλίσω ότι η εφαρμογή δουλεύει με τον καλύτερο τρόπο και δε δημιουργεί προβλήματα, δεν είμαι υπεύθυνος για οποιαδήποτε ζημιά ή αναστάτωση που μπορεί να δημιουργήσει κάτω από οποιεσδήποτε συνθήκες.</string>
   <string name="help_cat_acknowledgments" formatted="false">Ευχαριστίες</string>

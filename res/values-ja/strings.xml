@@ -115,15 +115,15 @@
   <string name="currently_disabled" formatted="false">現在無効</string>
   <string name="help_cat_version" formatted="false">バージョン</string>
   <string name="help_cat_changelog" formatted="false">変更履歴</string>
-  <string name="help_changelog" formatted="false"><a href="http://batterybot.info/changelog">オンライン変更履歴</a> をご覧ください.</string>
+  <string name="help_changelog" formatted="false"><a href="https://www.batterybot.info/changelog">オンライン変更履歴</a> をご覧ください.</string>
   <string name="help_cat_faq" formatted="false">よくある質問とその回答</string>
-  <string name="help_faq" formatted="false"><a href="http://batterybot.info/faq">オンライン FAQ</a> をご覧ください.</string>
+  <string name="help_faq" formatted="false"><a href="https://www.batterybot.info/faq">オンライン FAQ</a> をご覧ください.</string>
   <string name="help_cat_google_plus" formatted="false">Google+ ページ</string>
   <string name="help_google_plus" formatted="false">お知らせや最新情報の入手は <a href="https://www.google.com/+BatterybotInfoAndroid">Google+ ページ</a> をフォローしてください.</string>
   <string name="help_cat_website" formatted="false">Webサイト</string>
-  <string name="help_website" formatted="false">さらに詳細な情報は <a href="http://batterybot.info/">BatteryBot webサイト</a> でご利用できます。</string>
+  <string name="help_website" formatted="false">さらに詳細な情報は <a href="https://www.batterybot.info/">BatteryBot webサイト</a> でご利用できます。</string>
   <string name="help_cat_open_source" formatted="false">オープンソース</string>
-  <string name="help_open_source" formatted="false">これはオープンソースプロジェクトです。 <a href="http://batterybot.info/sourcecode">ソースコードをダウンロード</a> することができます。</string>
+  <string name="help_open_source" formatted="false">これはオープンソースプロジェクトです。 <a href="https://www.batterybot.info/sourcecode">ソースコードをダウンロード</a> することができます。</string>
   <string name="help_cat_donate" formatted="false">寄付</string>
   <string name="help_donate" formatted="false">寄付のために <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">プロ バージョン</a> へのアップグレードをご検討ください。</string>
   <string name="help_cat_no_warranty" formatted="false">無保証</string>

@@ -96,7 +96,7 @@
   <string name="currently_disabled" formatted="false">Actuellement désactivé</string>
   <string name="help_cat_version" formatted="false">Version</string>
   <string name="help_cat_changelog" formatted="false">Changelog</string>
-  <string name="help_changelog" formatted="false">Consultez <a href="http://batterybot.info/changelog">l\'historique en ligne des versions</a>.</string>
+  <string name="help_changelog" formatted="false">Consultez <a href="https://www.batterybot.info/changelog">l\'historique en ligne des versions</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">Aucune garantie</string>
   <string name="help_no_warranty" formatted="false">Ce logiciel est distribué dans l\'espoir qu\'il vous sera utile, mais SANS AUCUNE GARANTIE, sans même la garantie implicite de COMMERCIALISATION ou D\'ADAPTATION À UN USAGE PARTICULIER.\n\nCependant je fais de mon mieux pour m\'assurer qu\'il fonctionne correctement et qu\'il ne cause aucun problème mais je ne peux être tenu pour responsable de tout dysfonctionnement ou dommage qu\'il pourrait causer.</string>
   <string name="help_cat_acknowledgments" formatted="false">Remerciements</string>

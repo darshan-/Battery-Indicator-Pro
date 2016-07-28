@@ -105,9 +105,9 @@
   <string name="currently_disabled" formatted="false">Şu An Etkin Değil</string>
   <string name="help_cat_version" formatted="false">Sürüm</string>
   <string name="help_cat_changelog" formatted="false">Değişiklik Listesi</string>
-  <string name="help_changelog" formatted="false">çevrimiçi Değişiklik Listesi <a href="http://batterybot.info/changelog">ni gör</a></string>
+  <string name="help_changelog" formatted="false">çevrimiçi Değişiklik Listesi <a href="https://www.batterybot.info/changelog">ni gör</a></string>
   <string name="help_cat_faq" formatted="false">Sıkça Sorulan SOrular</string>
-  <string name="help_faq" formatted="false">Online yardım için lütfen <a href="http://batterybot.info/faq">bakınız</a>.</string>
+  <string name="help_faq" formatted="false">Online yardım için lütfen <a href="https://www.batterybot.info/faq">bakınız</a>.</string>
   <string name="help_cat_website" formatted="false">Website</string>
   <string name="help_cat_open_source" formatted="false">Açık Kaynak</string>
   <string name="help_cat_donate" formatted="false">Bağış</string>

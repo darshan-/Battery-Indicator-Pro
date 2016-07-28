@@ -96,7 +96,7 @@
   <string name="currently_disabled" formatted="false">Aktuálne vypnutý</string>
   <string name="help_cat_version" formatted="false">Verzia</string>
   <string name="help_cat_changelog" formatted="false">Zoznam zmien</string>
-  <string name="help_changelog" formatted="false">Pozrite sa na <a href="http://batterybot.info/changelog">históriu verzií na stránke projektu</a>.</string>
+  <string name="help_changelog" formatted="false">Pozrite sa na <a href="https://www.batterybot.info/changelog">históriu verzií na stránke projektu</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">Bez záruky</string>
   <string name="help_no_warranty" formatted="false">Tento softvér je ponúkaný v dúfaní, že bude užitočný ale BEZ AKEJKOĽVEK ZÁRUKY; neposkytujú sa ani odvodené záruky PREDAJNOSTI alebo VHODNOSTI PRE URČITÝ ÚČEL.\n\nAj keď som urobil všetko preto, aby som sa ubezpečil, že to funguje dobre a nespôsobuje problémy, nie som zodpovedný za prípadné škody alebo ťažkosti, ktoré to môže spôsobiť za žiadnych okolností.</string>
   <string name="help_cat_acknowledgments" formatted="false">Poďakovania</string>

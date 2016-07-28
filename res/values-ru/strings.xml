@@ -113,13 +113,13 @@
   <string name="currently_disabled" formatted="false">Сейчас отключен</string>
   <string name="help_cat_version" formatted="false">Версия</string>
   <string name="help_cat_changelog" formatted="false">Журнал изменений</string>
-  <string name="help_changelog" formatted="false">Смотрите в <a href="http://batterybot.info/changelog">истории изменений программы</a>.</string>
+  <string name="help_changelog" formatted="false">Смотрите в <a href="https://www.batterybot.info/changelog">истории изменений программы</a>.</string>
   <string name="help_cat_faq" formatted="false">Часто задаваемые вопросы</string>
-  <string name="help_faq" formatted="false">Смотрите <a href="http://www.batterybot.info/faq">online FAQ</a>.</string>
+  <string name="help_faq" formatted="false">Смотрите <a href="https://www.batterybot.info/faq">online FAQ</a>.</string>
   <string name="help_cat_website" formatted="false">Сайт</string>
-  <string name="help_website" formatted="false">Больше информации доступно на <a href="http://www.batterybot.info/">сайте BatteryBot</a>.</string>
+  <string name="help_website" formatted="false">Больше информации доступно на <a href="https://www.batterybot.info/">сайте BatteryBot</a>.</string>
   <string name="help_cat_open_source" formatted="false">Открытый исходный код</string>
-  <string name="help_open_source" formatted="false">Это проект с открытым исходным кодом. Вы можете скачать <a href="http://www.batterybot.info/sourcecode">исходный код программы</a>.</string>
+  <string name="help_open_source" formatted="false">Это проект с открытым исходным кодом. Вы можете скачать <a href="https://www.batterybot.info/sourcecode">исходный код программы</a>.</string>
   <string name="help_cat_donate" formatted="false">Пожертвовать</string>
   <string name="help_donate" formatted="false">Вы можете внести свое пожертвование перейдя на <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Version</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">Отказ от гарантий</string>

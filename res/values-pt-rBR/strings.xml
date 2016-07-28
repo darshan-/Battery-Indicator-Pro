@@ -66,7 +66,7 @@
   <string name="currently_disabled" formatted="false">Desativado</string>
   <string name="help_cat_version" formatted="false">Versão</string>
   <string name="help_cat_changelog" formatted="false">Relatório das mudanças</string>
-  <string name="help_changelog" formatted="false">Veja o <a href="http://batterybot.info/changelog">histórico de mudanças na página do projeto</a>.</string>
+  <string name="help_changelog" formatted="false">Veja o <a href="https://www.batterybot.info/changelog">histórico de mudanças na página do projeto</a>.</string>
   <string name="help_cat_no_warranty" formatted="false">Sem Garantia</string>
   <string name="help_cat_acknowledgments" formatted="false">Agradecimentos</string>
   <string name="help_cat_translations" formatted="false">Traduções</string>
