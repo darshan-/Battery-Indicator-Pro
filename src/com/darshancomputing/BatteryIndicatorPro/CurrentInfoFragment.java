@@ -78,6 +78,9 @@ public class CurrentInfoFragment extends Fragment {
     private BatteryInfo info = new BatteryInfo();
     private CurrentHack currentHack;
 
+    public static boolean awaitingNotificationUnblock;
+    public static boolean showingNotificationBlockDialog;
+
     //private String oldLanguage = null;
 
     private static final String LOG_TAG = "BatteryBot";
@@ -178,6 +181,15 @@ public class CurrentInfoFragment extends Fragment {
 
         setSizes(getActivity().getResources().getConfiguration());
 
+        if (! android.support.v4.app.NotificationManagerCompat.from(getActivity()).areNotificationsEnabled() &&
+            ! showingNotificationBlockDialog)
+        {
+            showingNotificationBlockDialog = true;
+            DialogFragment df = new NotificationsDisabledDialogFragment();
+            df.setTargetFragment(this, 0);
+            df.show(getFragmentManager(), "TODO: What is this string for?3");
+        }
+
         return view;
     }
 
@@ -241,8 +253,14 @@ public class CurrentInfoFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        if (serviceMessenger != null)
+        if (serviceMessenger != null) {
             sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
+
+            if (awaitingNotificationUnblock) {
+                awaitingNotificationUnblock = false;
+                sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS);
+            }
+        }
 
         Intent bc_intent = activity.registerReceiver(null, batteryChangedFilter);
         info.load(bc_intent);
@@ -333,6 +351,45 @@ public class CurrentInfoFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public static class NotificationsDisabledDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final BatteryInfoActivity activity = (BatteryInfoActivity) getActivity();
+
+            return new AlertDialog.Builder(activity)
+                .setTitle(activity.res.getString(R.string.notifications_disabled))
+                .setMessage(activity.res.getString(R.string.notifications_disabled_message))
+                .setPositiveButton(activity.res.getString(android.R.string.ok),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            final Intent i = new Intent();
+                            i.setAction(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                            i.addCategory(Intent.CATEGORY_DEFAULT);
+                            i.setData(Uri.parse("package:" + activity.getPackageName()));
+                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            //i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                            i.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                            activity.startActivity(i);
+
+                            CurrentInfoFragment.awaitingNotificationUnblock = true;
+                            CurrentInfoFragment.showingNotificationBlockDialog = false;
+
+                            di.cancel();
+                        }
+                    })
+                .setNegativeButton(activity.res.getString(R.string.cancel),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            CurrentInfoFragment.awaitingNotificationUnblock = false;
+                            CurrentInfoFragment.showingNotificationBlockDialog = false;
+
+                            di.cancel();
+                        }
+                    })
+                .create();
+        }
     }
 
     public static class ConfirmCloseDialogFragment extends DialogFragment {

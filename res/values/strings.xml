@@ -31,6 +31,22 @@
     press Cancel and then Hide Notification.
   </string>
 
+  <string formatted="false" name="notifications_disabled">Notifications are disabled!</string>
+  <string formatted="false" name="notifications_disabled_message">
+    You have blocked all notifications for BatteryBot.  This will
+    prevent BatteryBot from showing any notifications: the main
+    notification and any alarms you have set will all be blocked.\n
+
+    \nSince BatteryBot already allows you to turn the main
+    notification on or off as well as temporarily disable any alarms
+    you\'ve created, it is stongly recommended that you unblock the
+    BatteryBot notifications.  While they are blocked, it will appear
+    that BatteryBot is broken.\n
+
+    \nPlease press OK to be taken to the system settings where you can
+    unblock notifications for BatteryBot.
+  </string>
+
   <string formatted="false" name="confirm_clear_logs">Really clear all logs?</string>
 
   <string formatted="false" name="configure_log_filter">Show which log items?</string>
