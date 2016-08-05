@@ -190,6 +190,10 @@ public class CurrentInfoFragment extends Fragment {
             df.show(getFragmentManager(), "TODO: What is this string for?3");
         }
 
+        DialogFragment df = new NotificationWizardFragment();
+        df.setTargetFragment(this, 0);
+        df.show(getFragmentManager(), "TODO: What is this string for?4");
+
         return view;
     }
 

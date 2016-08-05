@@ -31,6 +31,23 @@
     press Cancel and then Hide Notification.
   </string>
 
+  <string formatted="false" name="notification_wizard_title">
+    How would you like to see the main BatteryBot notification?
+  </string>
+  <string formatted="false" name="notification_wizard_title_default">Default</string>
+  <string formatted="false" name="notification_wizard_title_minimal">Minimal</string>
+  <string formatted="false" name="notification_wizard_title_none">None</string>
+  <string formatted="false" name="notification_wizard_summary_default">
+    Battery percentage in status bar in addition to tray notification
+  </string>
+  <string formatted="false" name="notification_wizard_summary_minimal">
+    Just notification in tray, nothing in status bar
+  </string>
+  <string formatted="false" name="requires_api_level_16">(Requires Android 4.1+)</string>
+  <string formatted="false" name="notification_wizard_summary_none">
+    For those who only use the desktop widgets and/or main screen
+  </string>
+
   <string formatted="false" name="notifications_disabled">Notifications are disabled!</string>
   <string formatted="false" name="notifications_disabled_message">
     You have blocked all notifications for BatteryBot.  This will
