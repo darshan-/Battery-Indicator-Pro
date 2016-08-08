@@ -593,4 +593,6 @@
   <bool name="default_use_system_notification_layout">true</bool>
 
   <bool name="default_convert_to_fahrenheit">false</bool>
+
+  <bool name="default_prefer_fs_current_hack">true</bool>
 </resources>

@@ -134,10 +134,12 @@ public class CurrentInfoFragment extends Fragment {
         dpScale = getActivity().getResources().getDisplayMetrics().density;
 
         currentHack = CurrentHack.getInstance(getActivity());
-        currentHack.setPreferFS(pfrag.settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
+        currentHack.setPreferFS(pfrag.settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+                                                          pfrag.res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
         setHasOptionsMenu(true);
 
+        // Everything after here may make more sense in pfrag?
         if (pfrag.settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
             // If you ever need a first-run dialog again, this is when you would show it
             SharedPreferences.Editor editor = pfrag.sp_store.edit();

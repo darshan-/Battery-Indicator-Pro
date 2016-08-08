@@ -167,7 +167,8 @@ public class BatteryInfoService extends Service {
         sdkVersioning();
 
         currentHack = CurrentHack.getInstance(this);
-        currentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
+        currentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+                                                    res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
         Intent currentInfoIntent = new Intent(this, BatteryInfoActivity.class).putExtra(EXTRA_CURRENT_INFO, true);
         currentInfoPendingIntent = PendingIntent.getActivity(this, RC_MAIN, currentInfoIntent, 0);
@@ -301,7 +302,8 @@ public class BatteryInfoService extends Service {
 
     private void reloadSettings(boolean cancelFirst) {
         loadSettingsFiles();
-        currentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
+        currentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+                                                    res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
         str = new Str(res); // Language override may have changed
 

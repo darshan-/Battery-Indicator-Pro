@@ -341,7 +341,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         mSharedPreferences = pm.getSharedPreferences();
 
         currentHack = CurrentHack.getInstance(this);
-        currentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
+        currentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+                                                              res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
         if (pref_screen == null) {
             setPrefScreen(R.xml.main_pref_screen);
@@ -749,7 +750,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         }
 
         if (key.equals(KEY_CURRENT_HACK_PREFER_FS))
-            currentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
+            currentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+                                                                  res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
         for (int i=0; i < RESET_SERVICE.length; i++) {
             if (key.equals(RESET_SERVICE[i])) {

@@ -21,7 +21,7 @@
         android:key="current_hack_prefer_fs"
         android:title="@string/pref_current_hack_prefer_fs"
         android:summary="@string/pref_current_hack_prefer_fs_summary"
-        android:defaultValue="false"
+        android:defaultValue="@bool/default_prefer_fs_current_hack"
     />
   </PreferenceCategory>
 
