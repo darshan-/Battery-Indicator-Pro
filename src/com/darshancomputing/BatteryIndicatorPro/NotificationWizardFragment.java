@@ -55,86 +55,17 @@ import java.util.Date;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.ListFragment;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 
-
-
-
-
-
-
-
-// Use a retained Fragment to host service messenger?  Use it from all Fragments and and maybe
-//  even the settings activity?  So any fragments that are destroyed and recreated can grab it
-//  from the fragment manager and use it to send messages to the service?
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-Determining current setting:
-
- Default:
-  * Priority not minimum
-  * Notification not hidden
-
- Minimal:
-  * Priority minimum
-  * Notification not hidden
-
- None:
-  * Notification hidden
-
-So logic is:
-
-  if notification hidden:
-    None
-  else if priority minimum:
-    Minimal
-  else
-    Default
-
-
-
-Changing setting, on the other hand:
-
- None:
-  * Set notification to hidden
-  * Change priority to default, or leave as whatever it is?
-
- Minimal:
-  * Set notification to not hidden
-  * Change priority to minimum
-
- None:
-  * Set notification to not hidden
-  * If priority was minimum, change it to default
-  * If priority was not minimum, change to default or leave as whatever it is?
-
-*/
-
-// TODO: Either make this a singleton or use a boolean in CIF to ensure only created once
-//  (Only an issue on first run, when it's launched automatically).
-//  Or maybe not:  When it's launched manually, it's not an option.  And when it's launched
-//   automatically, it will be based on a setting "notification_wizard_ever_run", which is set
-//   to true when it is automatically shown.  That means first installs always see it when the
-//   main activity first opened.  It also means those who just upgraded to 10.0.0 (or higher, from lower)
-//   will see it the first time they open the main activity.  That is when that setting bool is changed.
-//   So even after a rotation, it won't have a reason to automatically launch it again.  And there's no
-//   reason to save that bool setting to true on manually launching, because it will have to be true
-//   already by the time user can get to anywhere to manually launch it.
 public class NotificationWizardFragment extends DialogFragment {
+    private static PersistentFragment pfrag;
     private String[] titles;
     private String[] summaries;
+
+    private static final int VALUE_DEFAULT = 0; // Maintain to match index in list
+    private static final int VALUE_MINIMAL = 1;
+    private static final int VALUE_NONE    = 2;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -142,7 +73,7 @@ public class NotificationWizardFragment extends DialogFragment {
         ListView lv = (ListView) v.findViewById(android.R.id.list);
         lv.setAdapter(new MyAdapter());
 
-        // TODO: Save settings from listener in Adapter?  Or only on okay (and offer Cancel option)?
+        // TODO: Save settings from listener in Adapter
         // Send BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS from onclicks
         return new AlertDialog.Builder(getActivity())
             .setView(v)
@@ -159,19 +90,55 @@ public class NotificationWizardFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final Resources res = getActivity().getResources();
+        pfrag = PersistentFragment.getInstance(getFragmentManager());
 
-        titles = new String[] {res.getString(R.string.notification_wizard_title_default),
-                               res.getString(R.string.notification_wizard_title_minimal),
-                               res.getString(R.string.notification_wizard_title_none)};
+        titles = new String[] {pfrag.res.getString(R.string.notification_wizard_title_default),
+                               pfrag.res.getString(R.string.notification_wizard_title_minimal),
+                               pfrag.res.getString(R.string.notification_wizard_title_none)};
 
-        summaries = new String[] {res.getString(R.string.notification_wizard_summary_default),
-                                  res.getString(R.string.notification_wizard_summary_minimal),
-                                  res.getString(R.string.notification_wizard_summary_none)};
+        summaries = new String[] {pfrag.res.getString(R.string.notification_wizard_summary_default),
+                                  pfrag.res.getString(R.string.notification_wizard_summary_minimal),
+                                  pfrag.res.getString(R.string.notification_wizard_summary_none)};
 
         if (android.os.Build.VERSION.SDK_INT < 16)
-            summaries[1] += " " + res.getString(R.string.requires_api_level_16);
-}
+            summaries[1] += " " + pfrag.res.getString(R.string.requires_api_level_16);
+    }
+
+    private int getValue() {
+        int priority = Integer.valueOf(pfrag.settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
+                                                                pfrag.str.default_main_notification_priority));
+
+        boolean show_notification = pfrag.sp_store.getBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
+
+        if (! show_notification)
+            return VALUE_NONE;
+
+        if (priority == NotificationCompat.PRIORITY_MIN)
+            return VALUE_MINIMAL;
+
+        return VALUE_DEFAULT;
+    }
+
+    /*
+
+      Changing setting:
+
+      None:
+      * Set notification to hidden
+      * Change priority to default, or leave as whatever it is?
+
+      Minimal:
+      * Set notification to not hidden
+      * Change priority to minimum
+
+      None:
+      * Set notification to not hidden
+      * If priority was minimum, change it to default
+      * If priority was not minimum, change to default or leave as whatever it is?
+
+      */
+    private void setValue(int v) {
+    }
 
     private class MyAdapter extends BaseAdapter {
         @Override
@@ -206,11 +173,8 @@ public class NotificationWizardFragment extends DialogFragment {
             ((TextView) convertView.findViewById(android.R.id.title)).setText(getItem(position));
             ((TextView) convertView.findViewById(android.R.id.summary)).setText(summaries[position]);
 
-            // TODO: Get current setting from settings
-            //  Note that changing notification priority should maybe set this to "other", and none selected?
-            // if (position == 0)
-            //     // Setting state on view directly doesn't work. See http://stackoverflow.com/questions/7202581
-            //     ((ListView) container).setItemChecked(position, true);
+            if (position == getValue())
+                ((ListView) container).setItemChecked(position, true);
 
             if (position == 1 && android.os.Build.VERSION.SDK_INT < 16)
                 convertView.setEnabled(false);
