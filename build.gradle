@@ -18,15 +18,11 @@ android {
     buildToolsVersion "24.0.0"
 
     configurations {
-        all*.exclude module: 'animated-vector-drawable'
-        all*.exclude module: 'support-vector-drawable'
         all*.exclude module: 'support-annotations'
     }
 
     dependencies {
-        compile('com.android.support:appcompat-v7:24.1.1') {
-            exclude module:'support-vector-drawable'
-            exclude module:'animated-vector-drawable'
+        compile('com.android.support:support-v4:24.1.1') {
             exclude module:'support-annotations'
         }
     }
