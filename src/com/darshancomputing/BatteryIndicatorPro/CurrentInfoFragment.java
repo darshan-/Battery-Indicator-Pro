@@ -49,17 +49,9 @@ import android.widget.Toast;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 
-import java.lang.ref.WeakReference;
-
 public class CurrentInfoFragment extends Fragment {
-    private BatteryInfoActivity activity;
+    private static PersistentFragment pfrag;
     private float dpScale;
-    private Intent biServiceIntent;
-    private Messenger serviceMessenger;
-    private static final MessageHandler messageHandler = new MessageHandler();
-    private static final Messenger messenger = new Messenger(messageHandler);
-    private BatteryInfoService.RemoteConnection serviceConnection;
-    private boolean serviceConnected;
 
     private static final Intent batteryUseIntent = new Intent(Intent.ACTION_POWER_USAGE_SUMMARY)
         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -81,8 +73,6 @@ public class CurrentInfoFragment extends Fragment {
     public static boolean awaitingNotificationUnblock;
     public static boolean showingNotificationBlockDialog;
 
-    //private String oldLanguage = null;
-
     private static final String LOG_TAG = "BatteryBot";
 
     private final Handler mHandler = new Handler();
@@ -93,67 +83,6 @@ public class CurrentInfoFragment extends Fragment {
         }
     };
 
-    public void bindService() {
-        if (! serviceConnected) {
-            activity.getApplicationContext().bindService(biServiceIntent, serviceConnection, 0);
-            serviceConnected = true;
-        }
-    }
-
-    private static class MessageHandler extends Handler {
-        private WeakReference<CurrentInfoFragment> fragRef;
-
-        public void updateFragRef(CurrentInfoFragment f) {
-            fragRef = new WeakReference<CurrentInfoFragment>(f);
-        }
-
-        @Override
-        public void handleMessage(Message incoming) {
-            if (fragRef == null) {
-                //Log.i(LOG_TAG, "fragRef is null; ignoring message: " + incoming);
-            }
-
-            CurrentInfoFragment cif = fragRef.get();
-
-            if (cif == null) {
-                //Log.i(LOG_TAG, "fragRef.get() returns null; ignoring message: " + incoming);
-                return;
-            }
-
-            if (! cif.serviceConnected) {
-                //Log.i(LOG_TAG, "serviceConected is false; ignoring message: " + incoming);
-                return;
-            }
-
-            switch (incoming.what) {
-            case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
-                cif.serviceMessenger = incoming.replyTo;
-                cif.sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
-                break;
-            case BatteryInfoService.RemoteConnection.CLIENT_BATTERY_INFO_UPDATED:
-                cif.info.loadBundle(incoming.getData());
-                cif.handleUpdatedBatteryInfo(cif.info);
-                break;
-            default:
-                super.handleMessage(incoming);
-            }
-        }
-    }
-
-    private void sendServiceMessage(int what) {
-        Message outgoing = Message.obtain();
-        outgoing.what = what;
-        outgoing.replyTo = messenger;
-        try { if (serviceMessenger != null) serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
-    }
-
-    @Override
-    public void onAttach(android.app.Activity a) {
-        super.onAttach(a);
-
-        messageHandler.updateFragRef(this);
-    }
-
     @Override
     public void onConfigurationChanged (Configuration newConfig) {
         setSizes(newConfig);
@@ -163,6 +92,7 @@ public class CurrentInfoFragment extends Fragment {
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.current_info, container, false);
 
+        bl = BatteryLevel.getInstance(getActivity(), pfrag.res.getInteger(R.integer.bl_inSampleSize));
         blv = (ImageView) view.findViewById(R.id.battery_level_view);
         blv.setImageBitmap(bl.getBitmap());
 
@@ -190,9 +120,7 @@ public class CurrentInfoFragment extends Fragment {
             df.show(getFragmentManager(), "TODO: What is this string for?3");
         }
 
-        DialogFragment df = new NotificationWizardFragment();
-        df.setTargetFragment(this, 0);
-        df.show(getFragmentManager(), "TODO: What is this string for?4");
+        // TODO: If wizard has never been shown, show it and mark it as shown
 
         return view;
     }
@@ -201,90 +129,60 @@ public class CurrentInfoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        activity = (BatteryInfoActivity) getActivity();
+        pfrag = PersistentFragment.getInstance(getFragmentManager());
+
         dpScale = getActivity().getResources().getDisplayMetrics().density;
 
-
-        bl = BatteryLevel.getInstance(activity, activity.res.getInteger(R.integer.bl_inSampleSize));
-
-        currentHack = CurrentHack.getInstance(activity);
-        currentHack.setPreferFS(activity.settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
+        currentHack = CurrentHack.getInstance(getActivity());
+        currentHack.setPreferFS(pfrag.settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
 
         setHasOptionsMenu(true);
-        //setRetainInstance(true); // TODO: Sort out a clean way to do this?
 
-        if (activity.settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
+        if (pfrag.settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
             // If you ever need a first-run dialog again, this is when you would show it
-            SharedPreferences.Editor editor = activity.sp_store.edit();
+            SharedPreferences.Editor editor = pfrag.sp_store.edit();
             editor.putBoolean(SettingsActivity.KEY_FIRST_RUN, false);
             editor.commit();
         }
 
         // TODO: everything after here could happen in another thread?
         //   They tend to take about 70ms on the myTouch
-        SharedPreferences.Editor editor = activity.sp_store.edit();
+        SharedPreferences.Editor editor = pfrag.sp_store.edit();
         editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, true);
         editor.commit();
-
-        serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
-
-        biServiceIntent = new Intent(activity, BatteryInfoService.class);
-        activity.startService(biServiceIntent);
-        bindService();
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onStart() {
+        super.onStart();
 
-        if (serviceConnected) {
-            activity.getApplicationContext().unbindService(serviceConnection);
-            serviceConnected = false;
-        }
-    }
+        pfrag.setCIF(this);
+        pfrag.sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
 
-    /*private void restartIfLanguageChanged() {
-        String curLanguage = activity.settings.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default");
-        if (curLanguage.equals(oldLanguage))
-            return;
-
-        Str.overrideLanguage(activity.res, getWindowManager(), curLanguage);
-        mStartActivity(BatteryInfoActivity.class);
-        activity.finish();
-    }*/
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        if (serviceMessenger != null) {
-            sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
-
-            if (awaitingNotificationUnblock) {
-                awaitingNotificationUnblock = false;
-                sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS);
-            }
+        if (awaitingNotificationUnblock) {
+            awaitingNotificationUnblock = false;
+            pfrag.sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS);
         }
 
-        Intent bc_intent = activity.registerReceiver(null, batteryChangedFilter);
+        Intent bc_intent = getActivity().registerReceiver(null, batteryChangedFilter);
         info.load(bc_intent);
-        info.load(activity.sp_store);
-        handleUpdatedBatteryInfo(info);
+        info.load(pfrag.sp_store);
+        handleUpdatedBatteryInfo();
 
-        if (activity.settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
-            activity.settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW, false) &&
-            activity.settings.getBoolean(SettingsActivity.KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW, false))
+        if (pfrag.settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
+            pfrag.settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW, false) &&
+            pfrag.settings.getBoolean(SettingsActivity.KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW, false))
             mHandler.postDelayed(mARefresher, 2000);
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onStop() {
+        super.onStop();
 
         mHandler.removeCallbacks(mARefresher);
 
-        if (serviceMessenger != null)
-            sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_UNREGISTER_CLIENT);
+        pfrag.sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_UNREGISTER_CLIENT);
+        pfrag.setCIF(null);
     }
 
     @Override
@@ -294,28 +192,20 @@ public class CurrentInfoFragment extends Fragment {
         inflater.inflate(R.menu.main, menu);
     }
 
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem snItem = menu.findItem(R.id.menu_show_notification);
+    // private void toggleShowNotification() {
+    //     SharedPreferences.Editor editor = pfrag.sp_store.edit();
+    //     editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION,
+    //                       ! pfrag.sp_store.getBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true));
+    //     editor.commit();
 
-        if (activity.sp_store.getBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true)) {
-            snItem.setIcon(R.drawable.ic_menu_stop);
-            snItem.setTitle(R.string.menu_hide_notification);
-        } else {
-            snItem.setIcon(R.drawable.ic_menu_notifications);
-            snItem.setTitle(R.string.menu_show_notification);
-        }
-    }
+    //     Message outgoing = Message.obtain();
+    //     outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS;
+    //     try { if (serviceMessenger != null) serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
+    // }
 
-    private void toggleShowNotification() {
-            SharedPreferences.Editor editor = activity.sp_store.edit();
-            editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION,
-                              ! activity.sp_store.getBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true));
-            editor.commit();
-
-            Message outgoing = Message.obtain();
-            outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS;
-            try { if (serviceMessenger != null) serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
+    public void showNotificationWizard() {
+        DialogFragment df = new NotificationWizardFragment();
+        df.show(getFragmentManager(), "TODO: What is this string for?4");
     }
 
     @Override
@@ -336,15 +226,15 @@ public class CurrentInfoFragment extends Fragment {
         case R.id.menu_help:
             mStartActivity(HelpActivity.class);
             return true;
-        case R.id.menu_show_notification:
-            toggleShowNotification();
+        case R.id.menu_notification_wizard:
+            showNotificationWizard();
             return true;
         case R.id.menu_rate_and_review:
             try {
                 startActivity(new Intent(Intent.ACTION_VIEW,
                                          Uri.parse("market://details?id=com.darshancomputing.BatteryIndicatorPro")));
             } catch (Exception e) {
-                Toast.makeText(activity, "Sorry, can't launch Market!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Sorry, can't launch Market!", Toast.LENGTH_SHORT).show();
             }
             return true;
         default:
@@ -360,22 +250,20 @@ public class CurrentInfoFragment extends Fragment {
     public static class NotificationsDisabledDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            final BatteryInfoActivity activity = (BatteryInfoActivity) getActivity();
-
-            return new AlertDialog.Builder(activity)
-                .setTitle(activity.res.getString(R.string.notifications_disabled))
-                .setMessage(activity.res.getString(R.string.notifications_disabled_message))
-                .setPositiveButton(activity.res.getString(android.R.string.ok),
+            return new AlertDialog.Builder(getActivity())
+                .setTitle(pfrag.res.getString(R.string.notifications_disabled))
+                .setMessage(pfrag.res.getString(R.string.notifications_disabled_message))
+                .setPositiveButton(pfrag.res.getString(android.R.string.ok),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             final Intent i = new Intent();
                             i.setAction(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                             i.addCategory(Intent.CATEGORY_DEFAULT);
-                            i.setData(Uri.parse("package:" + activity.getPackageName()));
+                            i.setData(Uri.parse("package:" + getActivity().getPackageName()));
                             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             //i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                             i.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-                            activity.startActivity(i);
+                            getActivity().startActivity(i);
 
                             CurrentInfoFragment.awaitingNotificationUnblock = true;
                             CurrentInfoFragment.showingNotificationBlockDialog = false;
@@ -383,7 +271,7 @@ public class CurrentInfoFragment extends Fragment {
                             di.cancel();
                         }
                     })
-                .setNegativeButton(activity.res.getString(R.string.cancel),
+                .setNegativeButton(pfrag.res.getString(R.string.cancel),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             CurrentInfoFragment.awaitingNotificationUnblock = false;
@@ -399,20 +287,17 @@ public class CurrentInfoFragment extends Fragment {
     public static class ConfirmCloseDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            final BatteryInfoActivity activity = (BatteryInfoActivity) getActivity();
-
-            return new AlertDialog.Builder(activity)
-                .setTitle(activity.res.getString(R.string.confirm_close))
-                .setMessage(activity.res.getString(R.string.confirm_close_hint))
-                .setPositiveButton(activity.res.getString(R.string.yes),
+            return new AlertDialog.Builder(getActivity())
+                .setTitle(pfrag.res.getString(R.string.confirm_close))
+                .setMessage(pfrag.res.getString(R.string.confirm_close_hint))
+                .setPositiveButton(pfrag.res.getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
-                            CurrentInfoFragment cif = (CurrentInfoFragment) getTargetFragment();
-                            cif.closeApp();
+                            pfrag.closeApp();
                             di.cancel();
                         }
                     })
-                .setNegativeButton(activity.res.getString(R.string.cancel),
+                .setNegativeButton(pfrag.res.getString(R.string.cancel),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             di.cancel();
@@ -422,42 +307,31 @@ public class CurrentInfoFragment extends Fragment {
         }
     }
 
-    public void closeApp() {
-        SharedPreferences.Editor editor = activity.sp_store.edit();
-        editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false);
-        editor.commit();
-
-        activity.finishActivity(1);
-
-        if (serviceConnected) {
-            activity.getApplicationContext().unbindService(serviceConnection);
-            activity.stopService(biServiceIntent);
-            serviceConnected = false;
-        }
-
-        activity.finish();
+    public void batteryInfoUpdated(Bundle bundle) {
+        info.loadBundle(bundle);
+        handleUpdatedBatteryInfo();
     }
 
-    private void handleUpdatedBatteryInfo(BatteryInfo info) {
+    private void handleUpdatedBatteryInfo() {
         bl.setLevel(info.percent);
         blv.invalidate();
 
         TextView tv = (TextView) view.findViewById(R.id.level);
-        tv.setText("" + info.percent + activity.res.getString(R.string.percent_symbol));
+        tv.setText("" + info.percent + pfrag.res.getString(R.string.percent_symbol));
 
         tv = (TextView) view.findViewById(R.id.time_remaining);
-        tv.setText(activity.str.timeRemainingMainScreen(info));
+        tv.setText(pfrag.str.timeRemainingMainScreen(info));
         tv = (TextView) view.findViewById(R.id.until_what);
-        tv.setText(activity.str.untilWhat(info));
+        tv.setText(pfrag.str.untilWhat(info));
 
         int secs = (int) ((System.currentTimeMillis() - info.last_status_cTM) / 1000);
         int hours = secs / (60 * 60);
         int mins = (secs / 60) % 60;
 
-        String s = activity.str.statuses[info.last_status];
+        String s = pfrag.str.statuses[info.last_status];
 
         if (info.last_status == BatteryInfo.STATUS_CHARGING)
-            s += " " + activity.str.pluggeds[info.last_plugged];
+            s += " " + pfrag.str.pluggeds[info.last_plugged];
 
         tv = (TextView) view.findViewById(R.id.status);
         tv.setText(s);
@@ -466,7 +340,7 @@ public class CurrentInfoFragment extends Fragment {
             s = "Since "; // TODO: Translatable
 
             if (info.last_status != BatteryInfo.STATUS_FULLY_CHARGED)
-                s += info.last_percent + activity.str.percent_symbol + ", ";
+                s += info.last_percent + pfrag.str.percent_symbol + ", ";
 
             s += hours + "h " + mins + "m ago"; // TODO: Translatable
 
@@ -474,13 +348,13 @@ public class CurrentInfoFragment extends Fragment {
             tv.setText(s);
         }
 
-        Boolean convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
-                                                        activity.res.getBoolean(R.bool.default_convert_to_fahrenheit));
+        Boolean convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+                                                        pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
-        tv_health.setText(activity.str.healths[info.health]);
-        tv_temp.setText(activity.str.formatTemp(info.temperature, convertF));
+        tv_health.setText(pfrag.str.healths[info.health]);
+        tv_temp.setText(pfrag.str.formatTemp(info.temperature, convertF));
         if (info.voltage > 500)
-            tv_voltage.setText(activity.str.formatVoltage(info.voltage));
+            tv_voltage.setText(pfrag.str.formatVoltage(info.voltage));
 
         if (info.last_status == BatteryInfo.STATUS_UNPLUGGED)
             plugged_icon.setImageResource(R.drawable.unplugged);
@@ -493,14 +367,14 @@ public class CurrentInfoFragment extends Fragment {
     private void refreshCurrent() {
         String s = "";
 
-        if (activity.settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
-            activity.settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW, false))
+        if (pfrag.settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
+            pfrag.settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW, false))
         {
             current_icon.setVisibility(View.VISIBLE);
 
             Long current = null;
 
-            if (activity.settings.getBoolean(SettingsActivity.KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW, false))
+            if (pfrag.settings.getBoolean(SettingsActivity.KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW, false))
                 current = currentHack.getAvgCurrent();
             if (current == null) // Either don't prefer avg or avg isn't available
                 current = currentHack.getCurrent();
@@ -526,7 +400,8 @@ public class CurrentInfoFragment extends Fragment {
         public void onClick(View v) {
             try {
                 startActivity(batteryUseIntent);
-                if (activity.settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_BATTERY_USE, false)) activity.finish();
+                // TODO: Remove this option and ignore it
+                if (pfrag.settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_BATTERY_USE, false)) getActivity().finish();
             } catch (Exception e) {
                 battery_use_b.setEnabled(false);
             }
@@ -535,12 +410,12 @@ public class CurrentInfoFragment extends Fragment {
 
     /*
         case DIALOG_FIRST_RUN:
-            LayoutInflater inflater = (LayoutInflater) activity.getSystemService(LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.first_run_message, (LinearLayout) view.findViewById(R.id.layout_root));
 
-            builder.setTitle(activity.res.getString(R.string.first_run_title))
+            builder.setTitle(pfrag.res.getString(R.string.first_run_title))
                 .setView(layout)
-                .setPositiveButton(activity.res.getString(R.string.okay), new DialogInterface.OnClickListener() {
+                .setPositiveButton(pfrag.res.getString(R.string.okay), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface di, int id) {
                         di.cancel();
                     }
@@ -557,14 +432,14 @@ public class CurrentInfoFragment extends Fragment {
     */
 
     private void mStartActivity(Class c) {
-        ComponentName comp = new ComponentName(activity.getPackageName(), c.getName());
+        ComponentName comp = new ComponentName(getActivity().getPackageName(), c.getName());
         //startActivity(new Intent().setComponent(comp));
         startActivityForResult(new Intent().setComponent(comp), 1);
-        //activity.finish();
+        //getActivity().finish();
     }
 
     private void bindButtons() {
-        if (activity.getPackageManager().resolveActivity(batteryUseIntent, 0) == null) {
+        if (getActivity().getPackageManager().resolveActivity(batteryUseIntent, 0) == null) {
             battery_use_b.setEnabled(false); /* TODO: change how the disabled button looks */
         } else {
             battery_use_b.setOnClickListener(buButtonListener);

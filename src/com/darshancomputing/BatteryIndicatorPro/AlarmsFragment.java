@@ -44,6 +44,7 @@ import android.widget.Toast;
 import android.support.v4.app.Fragment;
 
 public class AlarmsFragment extends Fragment {
+    private static PersistentFragment pfrag;
     private AlarmDatabase alarms;
     private Resources res;
     private Str str;
@@ -88,26 +89,19 @@ public class AlarmsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        pfrag = PersistentFragment.getInstance(getFragmentManager());
+
         setHasOptionsMenu(true);
-        setRetainInstance(true);
+        //setRetainInstance(true);
 
-        BatteryInfoActivity activity = (BatteryInfoActivity) getActivity();
-
-        alarms = new AlarmDatabase(activity.getApplicationContext());
+        alarms = new AlarmDatabase(getActivity().getApplicationContext());
         mCursor = alarms.getAllAlarms(true);
 
-        convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
-                                                activity.res.getBoolean(R.bool.default_convert_to_fahrenheit));
+        convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+                                             pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
         if (mCursor != null)
             mCursor.registerDataSetObserver(new AlarmsObserver());
-    }
-
-    @Override
-    public void onAttach(android.app.Activity a) {
-        super.onAttach(a);
-
-        str = ((BatteryInfoActivity) a).str;
     }
 
     private void populateList() {
@@ -128,17 +122,16 @@ public class AlarmsFragment extends Fragment {
         super.onDestroy();
         if (mCursor != null) mCursor.close();
         alarms.close();
-        mAlarmsList.removeAllViews(); // Don't want any instance state saved
+        if (mAlarmsList != null) // onCreateView may not have been called yet (e.g. if pager is at position 0)
+            mAlarmsList.removeAllViews(); // Don't want any instance state saved
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
-        BatteryInfoActivity activity = (BatteryInfoActivity) getActivity();
-
-        convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
-                                                activity.res.getBoolean(R.bool.default_convert_to_fahrenheit));
+        convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+                                             pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
         if (mCursor != null) mCursor.requery();
     }
@@ -213,9 +206,9 @@ public class AlarmsFragment extends Fragment {
         String threshold = mCursor.getString(AlarmDatabase.INDEX_THRESHOLD);
         Boolean enabled  = (mCursor.getInt(AlarmDatabase.INDEX_ENABLED) == 1);
 
-        String s = str.alarm_types_display[str.indexOf(str.alarm_type_values, type)];
+        String s = pfrag.str.alarm_types_display[pfrag.str.indexOf(pfrag.str.alarm_type_values, type)];
         if (type.equals("temp_rises")) {
-            s += " " + str.formatTemp(Integer.valueOf(threshold), convertF, false);
+            s += " " + pfrag.str.formatTemp(Integer.valueOf(threshold), convertF, false);
         } else if (type.equals("charge_drops") || type.equals("charge_rises")) {
             s += " " + threshold + "%";
         }

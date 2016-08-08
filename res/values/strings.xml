@@ -28,7 +28,7 @@
     button to leave the main window.\n
 
     \nIf you want to hide the notification but keep widgets running,
-    press Cancel and then Hide Notification.
+    press Cancel and then run the Notification Wizard to hide the notification.
   </string>
 
   <string formatted="false" name="notification_wizard_title">
@@ -95,8 +95,7 @@
   <string formatted="false" name="menu_close">Close</string>
   <string formatted="false" name="menu_help">Help</string>
   <string formatted="false" name="menu_rate_and_review">Rate &amp; Review</string>
-  <string formatted="false" name="menu_show_notification">Show Notification</string>
-  <string formatted="false" name="menu_hide_notification">Hide Notification</string>
+  <string formatted="false" name="menu_notification_wizard">Notification Wizard</string>
   <string formatted="false" name="menu_clear">Clear</string>
   <string formatted="false" name="menu_reverse">Reverse Order</string>
   <string formatted="false" name="menu_log_filter">Filter</string>

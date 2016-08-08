@@ -32,8 +32,6 @@
   <string name="menu_close" formatted="false">اغلاق</string>
   <string name="menu_help" formatted="false">مساعدة</string>
   <string name="menu_rate_and_review" formatted="false">تقييم ومراجعة التطبيق</string>
-  <string name="menu_show_notification" formatted="false">عرض الاشعارات</string>
-  <string name="menu_hide_notification" formatted="false">اخفاء الاشعارات</string>
   <string name="menu_clear" formatted="false">مسح</string>
   <string name="menu_reverse" formatted="false">ترتيب عكسي</string>
   <string name="menu_log_filter" formatted="false">تحديد</string>

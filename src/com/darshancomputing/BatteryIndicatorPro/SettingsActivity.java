@@ -106,7 +106,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW = "prefer_current_avg_in_main_window";
     public static final String KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW = "auto_refresh_current_in_main_window";
     public static final String KEY_FIRST_RUN = "first_run";
-    //public static final String KEY_LANGUAGE_OVERRIDE = "language_override";
 
     private static final String[] PARENTS    = {KEY_ENABLE_LOGGING,
                                                 KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
@@ -277,8 +276,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private static final Object[] EMPTY_OBJECT_ARRAY = {};
     private static final  Class[]  EMPTY_CLASS_ARRAY = {};
 
-    //private String oldLanguage = null;
-
     public class MessageHandler extends Handler {
         @Override
         public void handleMessage(Message incoming) {
@@ -345,8 +342,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         currentHack = CurrentHack.getInstance(this);
         currentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS, false));
-
-        //oldLanguage = mSharedPreferences.getString(KEY_LANGUAGE_OVERRIDE, "default");
 
         if (pref_screen == null) {
             setPrefScreen(R.xml.main_pref_screen);
@@ -480,21 +475,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
             setPrefScreen(R.xml.other_pref_screen);
             setWindowSubtitle(res.getString(R.string.other_settings));
-
-            /*ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_LANGUAGE_OVERRIDE);
-            CharSequence[] values  = lp.getEntryValues();
-            CharSequence[] entries = new CharSequence[values.length];
-
-            for (int i=0; i < values.length; ++i) {
-                if (values[i].toString().equals("default"))
-                    entries[i] = res.getString(R.string.lang_system_selected);
-                else {
-                    Locale locale = codeToLocale(values[i].toString());
-                    entries[i] = locale.getDisplayName(locale);
-                }
-            }
-
-            lp.setEntries(entries);*/
         } else {
             setPrefScreen(R.xml.main_pref_screen);
         }
@@ -554,15 +534,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         finish();
     }
 
-    /*private void restartIfLanguageChanged() {
-        String curLanguage = mSharedPreferences.getString(KEY_LANGUAGE_OVERRIDE, "default");
-        if (curLanguage.equals(oldLanguage))
-            return;
-
-        Str.overrideLanguage(res, getWindowManager(), curLanguage);
-        restartThisScreen();
-    }*/
-
     private void resetService() {
         resetService(false);
     }
@@ -595,7 +566,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     protected void onResume() {
         super.onResume();
 
-        //restartIfLanguageChanged();
         mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
@@ -766,12 +736,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (key.equals(KEY_CONVERT_F)) {
             updateConvertFSummary();
         }
-
-        /*if (key.equals(KEY_LANGUAGE_OVERRIDE)) {
-            Str.overrideLanguage(res, getWindowManager(), mSharedPreferences.getString(SettingsActivity.KEY_LANGUAGE_OVERRIDE, "default"));
-            restartThisScreen();
-        }*/
-
 
         if (key.equals(KEY_ENABLE_CURRENT_HACK)) {
             if (mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))

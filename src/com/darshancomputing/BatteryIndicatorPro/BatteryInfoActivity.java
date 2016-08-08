@@ -18,7 +18,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -35,28 +34,20 @@ public class BatteryInfoActivity extends FragmentActivity {
     private BatteryInfoPagerAdapter pagerAdapter;
     private ViewPager viewPager;
 
-    public Resources res;
-    public Str str;
-    public SharedPreferences settings;
-    public SharedPreferences sp_store;
-
     private static final String LOG_TAG = "BatteryBot";
 
     public static final int PR_LVF_WRITE_STORAGE = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        res = getResources();
-        str = new Str(res);
-        loadSettingsFiles();
-
-        super.onCreate(savedInstanceState); // Recreates Fragments, so only call after doing necessary setup
+        super.onCreate(savedInstanceState);
+        PersistentFragment.getInstance(getSupportFragmentManager()); // Calling here ensures PF created before other Fragments?
 
         setContentView(R.layout.battery_info);
 
         pagerAdapter = new BatteryInfoPagerAdapter(getSupportFragmentManager());
 
-        pagerAdapter.setActivity(this);
+        pagerAdapter.setContext(this);
 
         viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(pagerAdapter);
@@ -87,19 +78,14 @@ public class BatteryInfoActivity extends FragmentActivity {
     public void onStart() {
         super.onStart();
 
-        pagerAdapter.setActivity(this);
+        pagerAdapter.setContext(this);
     }
 
     @Override
     public void onStop() {
         super.onStop();
 
-        pagerAdapter.setActivity(null);
-    }
-
-    public void loadSettingsFiles() {
-        settings = getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
-        sp_store = getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
+        pagerAdapter.setContext(null);
     }
 
     @Override
@@ -126,15 +112,15 @@ public class BatteryInfoActivity extends FragmentActivity {
 
     // Must be static in order to avoid leaking reference to outer class (Activity)
     public static class BatteryInfoPagerAdapter extends FragmentPagerAdapter {
-        private BatteryInfoActivity activity;
+        private Context context;
         private LogViewFragment logViewFragment;
 
         public BatteryInfoPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
-        public void setActivity(BatteryInfoActivity a) {
-            activity = a;
+        public void setContext(Context c) {
+            context = c;
         }
 
         public LogViewFragment getLVF() {
@@ -174,16 +160,18 @@ public class BatteryInfoActivity extends FragmentActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            if (activity == null)
+            if (context == null)
                 return null;
+
+            Resources res = context.getResources();
 
             switch (position) {
                 case 0:
-                    return activity.res.getString(R.string.tab_history).toUpperCase();
+                    return res.getString(R.string.tab_history).toUpperCase();
                 case 1:
-                    return activity.res.getString(R.string.tab_current_info).toUpperCase();
+                    return res.getString(R.string.tab_current_info).toUpperCase();
                 case 2:
-                    return activity.res.getString(R.string.alarm_settings).toUpperCase();
+                    return res.getString(R.string.alarm_settings).toUpperCase();
                 default:
                     return null;
             }

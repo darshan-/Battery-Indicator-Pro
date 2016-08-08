@@ -32,8 +32,6 @@
   <string name="menu_close" formatted="false">閉じる</string>
   <string name="menu_help" formatted="false">ヘルプ</string>
   <string name="menu_rate_and_review" formatted="false">評価 と レビュー</string>
-  <string name="menu_show_notification" formatted="false">通知を表示する</string>
-  <string name="menu_hide_notification" formatted="false">通知を非表示にする</string>
   <string name="menu_clear" formatted="false">クリア</string>
   <string name="menu_reverse" formatted="false">逆順</string>
   <string name="menu_log_filter" formatted="false">フィルター</string>

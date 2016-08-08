@@ -57,7 +57,7 @@ import android.support.v4.app.ListFragment;
 import android.support.v4.content.ContextCompat;
 
 public class LogViewFragment extends ListFragment {
-    private static BatteryInfoActivity activity;
+    private static PersistentFragment pfrag;
     public LogDatabase logs;
     private Col col;
     private Cursor completeCursor;
@@ -78,57 +78,13 @@ public class LogViewFragment extends ListFragment {
 
     private static final String P_WRITE_STORAGE = android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
-    private final Messenger messenger = new Messenger(new MessageHandler());
-    private boolean serviceConnected;
-    private Messenger serviceMessenger;
-    private BatteryInfoService.RemoteConnection serviceConnection;
-
-    public void bindService() {
-        if (! serviceConnected) {
-            Intent biServiceIntent = new Intent(activity.getApplicationContext(), BatteryInfoService.class);
-            serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
-
-            activity.getApplicationContext().bindService(biServiceIntent, serviceConnection, 0);
-            serviceConnected = true;
-        }
-    }
-
-    public class MessageHandler extends Handler {
-        @Override
-        public void handleMessage(Message incoming) {
-            if (! serviceConnected) {
-                Log.i(LOG_TAG, "serviceConnected is false; ignoring message: " + incoming);
-                return;
-            }
-
-            switch (incoming.what) {
-            case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
-                serviceMessenger = incoming.replyTo;
-                sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
-                break;
-            case BatteryInfoService.RemoteConnection.CLIENT_BATTERY_INFO_UPDATED:
-                reloadList(false);
-                break;
-            default:
-                super.handleMessage(incoming);
-            }
-        }
-    }
-
-    private void sendServiceMessage(int what) {
-        Message outgoing = Message.obtain();
-        outgoing.what = what;
-        outgoing.replyTo = messenger;
-        try { serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
-    }
-
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
         mInflater = inflater;
 
-        View logs_header = View.inflate(activity, R.layout.logs_header, null);
+        View logs_header = View.inflate(getActivity(), R.layout.logs_header, null);
         header_text = (TextView) logs_header.findViewById(R.id.header_text);
         ListView lv = (ListView) view.findViewById(android.R.id.list);
         lv.addHeaderView(logs_header, null, false);
@@ -145,9 +101,9 @@ public class LogViewFragment extends ListFragment {
     public void onAttach(android.app.Activity a) {
         super.onAttach(a);
 
-        activity = (BatteryInfoActivity) getActivity();
+        pfrag = PersistentFragment.getInstance(getFragmentManager());
 
-        logs = new LogDatabase(activity.getApplicationContext());
+        logs = new LogDatabase(getActivity().getApplicationContext());
         completeCursor = logs.getAllLogs(false);
 
         if (completeCursor == null) {
@@ -158,7 +114,7 @@ public class LogViewFragment extends ListFragment {
         timeDeltaCursor = new TimeDeltaCursor(completeCursor);
         filteredCursor = new FilteredCursor(timeDeltaCursor);
 
-        mAdapter = new LogAdapter(activity, filteredCursor);
+        mAdapter = new LogAdapter(a, filteredCursor);
     }
 
     @Override
@@ -166,46 +122,46 @@ public class LogViewFragment extends ListFragment {
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
-        setRetainInstance(true);
+        //setRetainInstance(true);
 
-        convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
-                                                activity.res.getBoolean(R.bool.default_convert_to_fahrenheit));
+        convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+                                                pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
         col = new Col();
-
-        serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
-        bindService();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (serviceConnected) {
-            activity.getApplicationContext().unbindService(serviceConnection);
-            serviceConnected = false;
-        }
+
         if (completeCursor != null)
             completeCursor.close();
+
         logs.close();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        convertF = activity.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
-                                                activity.res.getBoolean(R.bool.default_convert_to_fahrenheit));
+
+        pfrag.setLVF(this);
+
+        convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+                                                pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
     }
 
     @Override
     public void onPause() {
         super.onPause();
+
+        pfrag.setLVF(null);
     }
 
     public static class ConfirmClearLogsDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            return new AlertDialog.Builder(activity)
-                .setTitle(activity.res.getString(R.string.confirm_clear_logs))
-                .setPositiveButton(activity.res.getString(R.string.yes),
+            return new AlertDialog.Builder(getActivity())
+                .setTitle(pfrag.res.getString(R.string.confirm_clear_logs))
+                .setPositiveButton(pfrag.res.getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             LogViewFragment lvf = (LogViewFragment) getTargetFragment();
@@ -214,7 +170,7 @@ public class LogViewFragment extends ListFragment {
                             di.cancel();
                         }
                     })
-                .setNegativeButton(activity.res.getString(R.string.cancel),
+                .setNegativeButton(pfrag.res.getString(R.string.cancel),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             di.cancel();
@@ -225,16 +181,16 @@ public class LogViewFragment extends ListFragment {
     }
 
     public static class ConfigureLogFilterDialogFragment extends DialogFragment {
-        final boolean[] checked_items = new boolean[activity.str.log_filter_pref_keys.length];
+        final boolean[] checked_items = new boolean[pfrag.str.log_filter_pref_keys.length];
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             for (int i = 0; i < checked_items.length; i++) {
-                checked_items[i] = activity.settings.getBoolean(activity.str.log_filter_pref_keys[i], true);
+                checked_items[i] = pfrag.settings.getBoolean(pfrag.str.log_filter_pref_keys[i], true);
             }
 
-            return new AlertDialog.Builder(activity)
-                .setTitle(activity.res.getString(R.string.configure_log_filter))
+            return new AlertDialog.Builder(getActivity())
+                .setTitle(pfrag.res.getString(R.string.configure_log_filter))
                 .setMultiChoiceItems(R.array.log_filters, checked_items,
                                      new DialogInterface.OnMultiChoiceClickListener() {
                                          @Override
@@ -244,7 +200,7 @@ public class LogViewFragment extends ListFragment {
                                              lvf.setFilters(checked_items);
                                          }
                                      })
-                .setPositiveButton(activity.res.getString(R.string.okay),
+                .setPositiveButton(pfrag.res.getString(R.string.okay),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             di.cancel();
@@ -255,10 +211,10 @@ public class LogViewFragment extends ListFragment {
     }
 
     private void setFilters(boolean[] checked_items) {
-        SharedPreferences.Editor editor = activity.settings.edit();
+        SharedPreferences.Editor editor = pfrag.settings.edit();
 
         for (int i = 0; i < checked_items.length; i++) {
-            editor.putBoolean(activity.str.log_filter_pref_keys[i], checked_items[i]);
+            editor.putBoolean(pfrag.str.log_filter_pref_keys[i], checked_items[i]);
         }
 
         editor.commit();
@@ -355,9 +311,9 @@ public class LogViewFragment extends ListFragment {
         int count = filteredCursor.getCount();
 
         if (count == 0)
-            header_text.setText(activity.str.logs_empty);
+            header_text.setText(pfrag.str.logs_empty);
         else
-            header_text.setText(activity.str.n_log_items(count));
+            header_text.setText(pfrag.str.n_log_items(count));
     }
 
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -366,26 +322,30 @@ public class LogViewFragment extends ListFragment {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                     exportCSV();
                 else
-                    Toast.makeText(activity, activity.str.no_storage_permission, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), pfrag.str.no_storage_permission, Toast.LENGTH_SHORT).show();
 
                 return;
             }
         }
     }
 
+    public void batteryInfoUpdated() {
+        reloadList(false);
+    }
+
     private void exportCSV() {
-        if (ContextCompat.checkSelfPermission(activity, P_WRITE_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity, new String[]{P_WRITE_STORAGE}, BatteryInfoActivity.PR_LVF_WRITE_STORAGE);
+        if (ContextCompat.checkSelfPermission(getActivity(), P_WRITE_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{P_WRITE_STORAGE}, BatteryInfoActivity.PR_LVF_WRITE_STORAGE);
             return;
         }
 
         String state = Environment.getExternalStorageState();
 
         if (state != null && state.equals(Environment.MEDIA_MOUNTED_READ_ONLY)) {
-            Toast.makeText(activity, activity.str.read_only_storage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), pfrag.str.read_only_storage, Toast.LENGTH_SHORT).show();
             return;
         } else if (state == null || !state.equals(Environment.MEDIA_MOUNTED)) {
-            Toast.makeText(activity, activity.str.inaccessible_w_reason + state, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), pfrag.str.inaccessible_w_reason + state, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -395,12 +355,12 @@ public class LogViewFragment extends ListFragment {
         File root    = Environment.getExternalStorageDirectory();
         File csvFile = new File(root, csvFileName);
 
-        String[] csvFields = {activity.str.date, activity.str.time, activity.str.status, activity.str.charge,
-                              activity.str.temperature, activity.str.temperature_f, activity.str.voltage};
+        String[] csvFields = {pfrag.str.date, pfrag.str.time, pfrag.str.status, pfrag.str.charge,
+                              pfrag.str.temperature, pfrag.str.temperature_f, pfrag.str.voltage};
 
         try {
             if (!csvFile.createNewFile() || !csvFile.canWrite()) {
-                Toast.makeText(activity, activity.str.inaccessible_storage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), pfrag.str.inaccessible_storage, Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -433,14 +393,14 @@ public class LogViewFragment extends ListFragment {
                         status_age  = statusCodes[2];
 
                         if (status == LogDatabase.STATUS_BOOT_COMPLETED)
-                            s = activity.str.status_boot_completed;
+                            s = pfrag.str.status_boot_completed;
                         else if (status_age == LogDatabase.STATUS_OLD)
-                            s = activity.str.log_statuses_old[status];
+                            s = pfrag.str.log_statuses_old[status];
                         else
-                            s = activity.str.log_statuses[status];
+                            s = pfrag.str.log_statuses[status];
 
                         if (plugged > 0)
-                            s += " " + activity.str.pluggeds[plugged];
+                            s += " " + pfrag.str.pluggeds[plugged];
 
                         buf.write(s + ",");
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_CHARGE)) {
@@ -457,11 +417,11 @@ public class LogViewFragment extends ListFragment {
             }
             buf.close();
         } catch (Exception e) {
-            Toast.makeText(activity, activity.str.inaccessible_storage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), pfrag.str.inaccessible_storage, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Toast.makeText(activity, activity.str.file_written, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), pfrag.str.file_written, Toast.LENGTH_SHORT).show();
     }
 
     // Based on http://stackoverflow.com/a/7343721/1427098
@@ -489,13 +449,13 @@ public class LogViewFragment extends ListFragment {
             int wrappedCursorPos = wrappedCursor.getPosition();
             int statusCodeIndex = wrappedCursor.getColumnIndexOrThrow(LogDatabase.KEY_STATUS_CODE);
 
-            boolean show_plugged_in    = activity.settings.getBoolean("plugged_in",    true);
-            boolean show_unplugged     = activity.settings.getBoolean("unplugged",     true);
-            boolean show_charging      = activity.settings.getBoolean("charging",      true);
-            boolean show_discharging   = activity.settings.getBoolean("discharging",   true);
-            boolean show_fully_charged = activity.settings.getBoolean("fully_charged", true);
-            boolean show_boot          = activity.settings.getBoolean("boot_completed", true);
-            boolean show_unknown       = activity.settings.getBoolean("unknown",       true);
+            boolean show_plugged_in    = pfrag.settings.getBoolean("plugged_in",    true);
+            boolean show_unplugged     = pfrag.settings.getBoolean("unplugged",     true);
+            boolean show_charging      = pfrag.settings.getBoolean("charging",      true);
+            boolean show_discharging   = pfrag.settings.getBoolean("discharging",   true);
+            boolean show_fully_charged = pfrag.settings.getBoolean("fully_charged", true);
+            boolean show_boot          = pfrag.settings.getBoolean("boot_completed", true);
+            boolean show_unknown       = pfrag.settings.getBoolean("unknown",       true);
 
             for (wrappedCursor.moveToFirst(); !wrappedCursor.isAfterLast(); wrappedCursor.moveToNext()) {
                 int statusCode    = wrappedCursor.getInt(statusCodeIndex);
@@ -857,13 +817,13 @@ public class LogViewFragment extends ListFragment {
 
             if (status == LogDatabase.STATUS_BOOT_COMPLETED) {
                 status_tv.setTextColor(col.boot);
-                s = activity.str.status_boot_completed;
+                s = pfrag.str.status_boot_completed;
 
                 time_diff_tv.setVisibility(View.GONE);
             } else if (status_age == LogDatabase.STATUS_OLD) {
                  status_tv.setTextColor(col.old_status);
                 percent_tv.setTextColor(col.old_status);
-                s = activity.str.log_statuses_old[status];
+                s = pfrag.str.log_statuses_old[status];
 
                 time_diff_tv.setVisibility(View.GONE);
             } else {
@@ -885,7 +845,7 @@ public class LogViewFragment extends ListFragment {
                     percent_tv.setTextColor(col.unknown);
                 }
 
-                s = activity.str.log_statuses[status];
+                s = pfrag.str.log_statuses[status];
                 long delta;
 
                 switch (status) {
@@ -898,7 +858,7 @@ public class LogViewFragment extends ListFragment {
                         break;
                     }
 
-                    time_diff_tv.setText(String.format(activity.res.getString(R.string.after_n_hours_plugged_in),
+                    time_diff_tv.setText(String.format(pfrag.res.getString(R.string.after_n_hours_plugged_in),
                                                        delta / 1000.0 / 60.0 / 60.0));
 
                     time_diff_tv.setVisibility(View.VISIBLE);
@@ -911,7 +871,7 @@ public class LogViewFragment extends ListFragment {
                         break;
                     }
 
-                    time_diff_tv.setText(String.format(activity.res.getString(R.string.after_n_hours_unplugged),
+                    time_diff_tv.setText(String.format(pfrag.res.getString(R.string.after_n_hours_unplugged),
                                                        delta / 1000.0 / 60.0 / 60.0));
 
                     time_diff_tv.setVisibility(View.VISIBLE);
@@ -922,7 +882,7 @@ public class LogViewFragment extends ListFragment {
             }
 
             if (plugged > 0)
-                s += " " + activity.str.pluggeds[plugged];
+                s += " " + pfrag.str.pluggeds[plugged];
 
             status_tv.setText(s);
 
@@ -932,12 +892,12 @@ public class LogViewFragment extends ListFragment {
             time_tv.setText(dateFormat.format(d) + "  " + timeFormat.format(d));
 
             int temperature = cursor.getInt(temperatureIndex);
-            if (temperature != 0) temp_volt_tv.setText("" + activity.str.formatTemp(temperature, convertF));
+            if (temperature != 0) temp_volt_tv.setText("" + pfrag.str.formatTemp(temperature, convertF));
             else temp_volt_tv.setText(""); /* TextViews are reused */
 
             int voltage = cursor.getInt(voltageIndex);
             if (voltage != 0) temp_volt_tv.setText(((String) temp_volt_tv.getText().toString()) +
-                                                   " / " + activity.str.formatVoltage(voltage));
+                                                   " / " + pfrag.str.formatVoltage(voltage));
         }
     }
 
@@ -950,12 +910,12 @@ public class LogViewFragment extends ListFragment {
         public int boot;
 
         public Col() {
-            old_status = activity.res.getColor(R.color.log_old_status);
-            charged    = activity.res.getColor(R.color.log_charged);
-            plugged    = activity.res.getColor(R.color.log_plugged);
-            unplugged  = activity.res.getColor(R.color.log_unplugged);
-            unknown    = activity.res.getColor(R.color.log_unknown);
-            boot       = activity.res.getColor(R.color.log_boot_completed);
+            old_status = pfrag.res.getColor(R.color.log_old_status);
+            charged    = pfrag.res.getColor(R.color.log_charged);
+            plugged    = pfrag.res.getColor(R.color.log_plugged);
+            unplugged  = pfrag.res.getColor(R.color.log_unplugged);
+            unknown    = pfrag.res.getColor(R.color.log_unknown);
+            boot       = pfrag.res.getColor(R.color.log_boot_completed);
         }
     }
 }

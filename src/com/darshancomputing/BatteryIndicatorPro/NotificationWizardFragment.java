@@ -22,6 +22,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.CursorWrapper;
@@ -56,6 +57,71 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.content.ContextCompat;
 
+
+
+
+
+
+
+
+// Use a retained Fragment to host service messenger?  Use it from all Fragments and and maybe
+//  even the settings activity?  So any fragments that are destroyed and recreated can grab it
+//  from the fragment manager and use it to send messages to the service?
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+Determining current setting:
+
+ Default:
+  * Priority not minimum
+  * Notification not hidden
+
+ Minimal:
+  * Priority minimum
+  * Notification not hidden
+
+ None:
+  * Notification hidden
+
+So logic is:
+
+  if notification hidden:
+    None
+  else if priority minimum:
+    Minimal
+  else
+    Default
+
+
+
+Changing setting, on the other hand:
+
+ None:
+  * Set notification to hidden
+  * Change priority to default, or leave as whatever it is?
+
+ Minimal:
+  * Set notification to not hidden
+  * Change priority to minimum
+
+ None:
+  * Set notification to not hidden
+  * If priority was minimum, change it to default
+  * If priority was not minimum, change to default or leave as whatever it is?
+
+*/
+
 // TODO: Either make this a singleton or use a boolean in CIF to ensure only created once
 //  (Only an issue on first run, when it's launched automatically).
 //  Or maybe not:  When it's launched manually, it's not an option.  And when it's launched
@@ -77,6 +143,7 @@ public class NotificationWizardFragment extends DialogFragment {
         lv.setAdapter(new MyAdapter());
 
         // TODO: Save settings from listener in Adapter?  Or only on okay (and offer Cancel option)?
+        // Send BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS from onclicks
         return new AlertDialog.Builder(getActivity())
             .setView(v)
             .setTitle(R.string.notification_wizard_title)
@@ -92,18 +159,18 @@ public class NotificationWizardFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final BatteryInfoActivity activity = (BatteryInfoActivity) getActivity();
+        final Resources res = getActivity().getResources();
 
-        titles = new String[] {activity.res.getString(R.string.notification_wizard_title_default),
-                               activity.res.getString(R.string.notification_wizard_title_minimal),
-                               activity.res.getString(R.string.notification_wizard_title_none)};
+        titles = new String[] {res.getString(R.string.notification_wizard_title_default),
+                               res.getString(R.string.notification_wizard_title_minimal),
+                               res.getString(R.string.notification_wizard_title_none)};
 
-        summaries = new String[] {activity.res.getString(R.string.notification_wizard_summary_default),
-                                  activity.res.getString(R.string.notification_wizard_summary_minimal),
-                                  activity.res.getString(R.string.notification_wizard_summary_none)};
+        summaries = new String[] {res.getString(R.string.notification_wizard_summary_default),
+                                  res.getString(R.string.notification_wizard_summary_minimal),
+                                  res.getString(R.string.notification_wizard_summary_none)};
 
         if (android.os.Build.VERSION.SDK_INT < 16)
-            summaries[1] += " " + activity.res.getString(R.string.requires_api_level_16);
+            summaries[1] += " " + res.getString(R.string.requires_api_level_16);
 }
 
     private class MyAdapter extends BaseAdapter {

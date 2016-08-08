@@ -8,9 +8,9 @@
   />
 
   <item
-      android:id="@+id/menu_show_notification"
+      android:id="@+id/menu_notification_wizard"
       android:icon="@drawable/ic_menu_notifications"
-      android:title="@string/menu_show_notification"
+      android:title="@string/menu_notification_wizard"
       android:showAsAction="never"
   />
 
