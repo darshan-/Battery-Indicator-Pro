@@ -63,6 +63,7 @@ public class NotificationWizardFragment extends DialogFragment {
     private static PersistentFragment pfrag;
     private String[] titles;
     private String[] summaries;
+    private ListView lv;
 
     private static final int VALUE_DEFAULT = 0; // Maintain to match index in list
     private static final int VALUE_MINIMAL = 1;
@@ -71,8 +72,7 @@ public class NotificationWizardFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         View v = getActivity().getLayoutInflater().inflate(R.layout.notification_wizard_content, null);
-        ListView lv = (ListView) v.findViewById(android.R.id.list);
-        lv.setAdapter(new MyAdapter());
+        lv = (ListView) v.findViewById(android.R.id.list);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -92,6 +92,23 @@ public class NotificationWizardFragment extends DialogFragment {
             .create();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        // On Nexus One (and presumably other older Android versions and/or slower devices) the ListView
+        //   kept calling the adapter's getView() after the Fragment was destroyed.  This resolves that.
+        lv.setAdapter(null);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        lv.setAdapter(new MyAdapter());
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
