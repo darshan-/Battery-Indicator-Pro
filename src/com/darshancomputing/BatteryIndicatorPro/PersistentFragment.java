@@ -102,12 +102,6 @@ public class PersistentFragment extends Fragment {
         loadSettingsFiles();
     }
 
-    public void loadSettingsFiles() {
-        settings = getActivity().getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
-        sp_service = getActivity().getSharedPreferences(SettingsActivity.SP_SERVICE_FILE, Context.MODE_MULTI_PROCESS);
-        sp_main = getActivity().getSharedPreferences(SettingsActivity.SP_MAIN_FILE, Context.MODE_MULTI_PROCESS);
-    }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -180,6 +174,12 @@ public class PersistentFragment extends Fragment {
 
     public void setLVF(LogViewFragment f) {
         lvf = f;
+    }
+
+    public void loadSettingsFiles() {
+        settings = getActivity().getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
+        sp_service = getActivity().getSharedPreferences(SettingsActivity.SP_SERVICE_FILE, Context.MODE_MULTI_PROCESS);
+        sp_main = getActivity().getSharedPreferences(SettingsActivity.SP_MAIN_FILE, Context.MODE_MULTI_PROCESS);
     }
 
     public void sendServiceMessage(int what) {
