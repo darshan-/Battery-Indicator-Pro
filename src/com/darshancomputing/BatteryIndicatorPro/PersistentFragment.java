@@ -41,7 +41,8 @@ public class PersistentFragment extends Fragment {
     public static final String FRAG_TAG = "pfrag";
 
     public SharedPreferences settings;
-    public SharedPreferences sp_store;
+    public SharedPreferences sp_service;
+    public SharedPreferences sp_main;
     public Resources res;
     public Str str;
 
@@ -98,10 +99,14 @@ public class PersistentFragment extends Fragment {
         getActivity().startService(biServiceIntent);
         bindService();
 
-        settings = getActivity().getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
-        sp_store = getActivity().getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
+        loadSettingsFiles();
     }
 
+    public void loadSettingsFiles() {
+        settings = getActivity().getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
+        sp_service = getActivity().getSharedPreferences(SettingsActivity.SP_SERVICE_FILE, Context.MODE_MULTI_PROCESS);
+        sp_main = getActivity().getSharedPreferences(SettingsActivity.SP_MAIN_FILE, Context.MODE_MULTI_PROCESS);
+    }
 
     @Override
     public void onDestroy() {
@@ -119,31 +124,23 @@ public class PersistentFragment extends Fragment {
 
         sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
 
-        // TODO: everything after here could happen in another thread?
-        //   They tend to take about 70ms on the myTouch
-        SharedPreferences.Editor editor = sp_store.edit();
-        editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, true);
-        editor.commit();
+        sp_main.edit().putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, true).commit();
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
-        if (sp_store.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
+        if (sp_main.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
             // If you ever need a first-run dialog again, this is when you would show it
-            SharedPreferences.Editor editor = sp_store.edit();
-            editor.putBoolean(SettingsActivity.KEY_FIRST_RUN, false);
-            editor.commit();
+
+            sp_main.edit().putBoolean(SettingsActivity.KEY_FIRST_RUN, false).commit();
         }
 
-        if (! sp_store.getBoolean(SettingsActivity.KEY_NOTIFICATION_WIZARD_EVER_RUN, false)) {
-            DialogFragment df = new NotificationWizardFragment();
-            df.show(getFragmentManager(), "Blarg");
+        if (! sp_main.getBoolean(SettingsActivity.KEY_NOTIFICATION_WIZARD_EVER_RUN, false)) {
+            sp_main.edit().putBoolean(SettingsActivity.KEY_NOTIFICATION_WIZARD_EVER_RUN, true).commit();
 
-            SharedPreferences.Editor editor = sp_store.edit();
-            editor.putBoolean(SettingsActivity.KEY_NOTIFICATION_WIZARD_EVER_RUN, true);
-            editor.commit();
+            new NotificationWizard().show(getFragmentManager(), "Blarg");
         }
     }
 
@@ -196,9 +193,7 @@ public class PersistentFragment extends Fragment {
     }
 
     public void closeApp() {
-        SharedPreferences.Editor editor = sp_store.edit();
-        editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false);
-        editor.commit();
+        sp_main.edit().putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false).commit();
 
         getActivity().finishActivity(1);
 

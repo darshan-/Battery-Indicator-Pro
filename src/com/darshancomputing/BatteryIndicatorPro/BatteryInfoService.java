@@ -53,7 +53,7 @@ public class BatteryInfoService extends Service {
     private NotificationManagerCompat mNotificationManager;
     private AlarmManager alarmManager;
     private SharedPreferences settings;
-    private SharedPreferences sp_store;
+    private SharedPreferences sp_service;
     private SharedPreferences.Editor sps_editor;
 
     private android.os.Vibrator mVibrator;
@@ -194,7 +194,7 @@ public class BatteryInfoService extends Service {
         }
 
         Intent bc_intent = registerReceiver(mBatteryInfoReceiver, batteryChanged);
-        info.load(bc_intent, sp_store);
+        info.load(bc_intent, sp_service);
     }
 
     @Override
@@ -244,6 +244,15 @@ public class BatteryInfoService extends Service {
             case RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS:
                 reloadSettings(true);
                 break;
+            case RemoteConnection.SERVICE_WIZARD_VALUE_DEFAULT:
+                wizardValueChanged(NotificationWizard.VALUE_DEFAULT);
+                break;
+            case RemoteConnection.SERVICE_WIZARD_VALUE_MINIMAL:
+                wizardValueChanged(NotificationWizard.VALUE_MINIMAL);
+                break;
+            case RemoteConnection.SERVICE_WIZARD_VALUE_NONE:
+                wizardValueChanged(NotificationWizard.VALUE_NONE);
+                break;
             default:
                 super.handleMessage(incoming);
             }
@@ -269,6 +278,9 @@ public class BatteryInfoService extends Service {
         public static final int SERVICE_UNREGISTER_CLIENT = 2;
         public static final int SERVICE_RELOAD_SETTINGS = 3;
         public static final int SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS = 4;
+        public static final int SERVICE_WIZARD_VALUE_DEFAULT = 5;
+        public static final int SERVICE_WIZARD_VALUE_MINIMAL = 6;
+        public static final int SERVICE_WIZARD_VALUE_NONE = 7;
 
         // Messages the service sends to clients
         public static final int CLIENT_SERVICE_CONNECTED = 0;
@@ -297,7 +309,7 @@ public class BatteryInfoService extends Service {
 
     private void loadSettingsFiles() {
         settings = getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
-        sp_store = getSharedPreferences(SettingsActivity.SP_STORE_FILE, Context.MODE_MULTI_PROCESS);
+        sp_service = getSharedPreferences(SettingsActivity.SP_SERVICE_FILE, Context.MODE_MULTI_PROCESS);
     }
 
     private void reloadSettings(boolean cancelFirst) {
@@ -315,6 +327,37 @@ public class BatteryInfoService extends Service {
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
     }
 
+    private void wizardValueChanged(int value) {
+        SharedPreferences.Editor sps_editor = sp_service.edit();
+        SharedPreferences.Editor settings_editor = settings.edit();
+
+        // Writing to settings here should only happen when Wizard open, so shouldn't have conflict
+        switch(value) {
+        case NotificationWizard.VALUE_NONE:
+            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, false);
+
+            break;
+        case NotificationWizard.VALUE_MINIMAL:
+            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
+            settings_editor.putString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
+                                      "" + NotificationCompat.PRIORITY_MIN);
+
+            break;
+        default:
+            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
+            int priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
+                                                              str.default_main_notification_priority));
+            if (priority == NotificationCompat.PRIORITY_MIN)
+                settings_editor.putString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
+                                          "" + NotificationCompat.PRIORITY_LOW);
+        }
+
+        sps_editor.commit();
+        settings_editor.commit();
+
+        reloadSettings(true);
+    }
+
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context c, Intent intent) {
@@ -326,10 +369,11 @@ public class BatteryInfoService extends Service {
 
     // Does anything needed when SDK API level increases and sets LAST_SDK_API
     private void sdkVersioning(){
-        SharedPreferences.Editor sps_editor = sp_store.edit();
+        SharedPreferences.Editor sps_editor = sp_service.edit();
         SharedPreferences.Editor settings_editor = settings.edit();
 
-        if (sp_store.getInt(LAST_SDK_API, 0) < 21 && android.os.Build.VERSION.SDK_INT >= 21) {
+        // Writing to settings here should only happen when Service first started, so shouldn't have conflict
+        if (sp_service.getInt(LAST_SDK_API, 0) < 21 && android.os.Build.VERSION.SDK_INT >= 21) {
             settings_editor.putBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, true);
         }
 
@@ -341,11 +385,11 @@ public class BatteryInfoService extends Service {
 
     private void update(Intent intent) {
         now = System.currentTimeMillis();
-        sps_editor = sp_store.edit();
+        sps_editor = sp_service.edit();
         updated_lasts = false;
 
         if (intent != null)
-            info.load(intent, sp_store);
+            info.load(intent, sp_service);
 
         predictor.setPredictionType(settings.getString(SettingsActivity.KEY_PREDICTION_TYPE,
                                                        str.default_prediction_type));
@@ -357,7 +401,7 @@ public class BatteryInfoService extends Service {
         else
             handleUpdateWithSameStatus();
 
-        if (sp_store.getBoolean(KEY_SHOW_NOTIFICATION, true)) {
+        if (sp_service.getBoolean(KEY_SHOW_NOTIFICATION, true)) {
             prepareNotification();
             doNotify();
         }
@@ -650,9 +694,8 @@ public class BatteryInfoService extends Service {
         if (icon_set.equals("null")) {
             icon_set = default_set;
 
-            SharedPreferences.Editor settings_editor = settings.edit();
-            settings_editor.putString(SettingsActivity.KEY_ICON_SET, default_set);
-            settings_editor.commit();
+            // Writing to settings here should only happen when Service first started, so shouldn't have conflict
+            settings.edit().putString(SettingsActivity.KEY_ICON_SET, default_set).commit();
         }
 
         Boolean indicate_charging = settings.getBoolean(SettingsActivity.KEY_INDICATE_CHARGING, true);
@@ -686,7 +729,7 @@ public class BatteryInfoService extends Service {
     }
 
     private boolean statusHasChanged() {
-        int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
+        int previous_charge = sp_service.getInt(KEY_PREVIOUS_CHARGE, 100);
 
         return (info.last_status != info.status ||
                 info.last_status_cTM >= now ||
@@ -739,7 +782,7 @@ public class BatteryInfoService extends Service {
         Cursor c;
         NotificationCompat.Builder nb;
 
-        int previous_charge = sp_store.getInt(KEY_PREVIOUS_CHARGE, 100);
+        int previous_charge = sp_service.getInt(KEY_PREVIOUS_CHARGE, 100);
 
         if (info.status == BatteryInfo.STATUS_FULLY_CHARGED && info.status != info.last_status) {
             c = alarms.activeAlarmFull();
@@ -787,7 +830,7 @@ public class BatteryInfoService extends Service {
             c.close();
         }
 
-        c = alarms.activeAlarmTempRises(info.temperature, sp_store.getInt(KEY_PREVIOUS_TEMP, 1));
+        c = alarms.activeAlarmTempRises(info.temperature, sp_service.getInt(KEY_PREVIOUS_TEMP, 1));
         if (c != null) {
             Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
                                                    res.getBoolean(R.bool.default_convert_to_fahrenheit));
@@ -805,7 +848,7 @@ public class BatteryInfoService extends Service {
             c.close();
         }
 
-        if (info.health > BatteryInfo.HEALTH_GOOD && info.health != sp_store.getInt(KEY_PREVIOUS_HEALTH, BatteryInfo.HEALTH_GOOD)) {
+        if (info.health > BatteryInfo.HEALTH_GOOD && info.health != sp_service.getInt(KEY_PREVIOUS_HEALTH, BatteryInfo.HEALTH_GOOD)) {
             c = alarms.activeAlarmFailure();
             if (c != null) {
                 sps_editor.putInt(KEY_PREVIOUS_HEALTH, info.health);

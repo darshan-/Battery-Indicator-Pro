@@ -46,7 +46,8 @@ import java.util.Locale;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
     public static final String SETTINGS_FILE = "com.darshancomputing.BatteryIndicatorPro_preferences";
-    public static final String SP_STORE_FILE = "sp_store";
+    public static final String SP_SERVICE_FILE = "sp_store";   // Only write from Service process
+    public static final String SP_MAIN_FILE = "sp_store_main"; // Only write from main process
 
     public static final String KEY_NOTIFICATION_SETTINGS = "notification_settings";
     public static final String KEY_STATUS_BAR_ICON_SETTINGS = "status_bar_icon_settings";

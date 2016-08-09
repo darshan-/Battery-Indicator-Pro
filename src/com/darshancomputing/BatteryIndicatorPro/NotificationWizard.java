@@ -59,15 +59,15 @@ import android.support.v4.app.ListFragment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 
-public class NotificationWizardFragment extends DialogFragment {
+public class NotificationWizard extends DialogFragment {
     private static PersistentFragment pfrag;
     private String[] titles;
     private String[] summaries;
     private ListView lv;
 
-    private static final int VALUE_DEFAULT = 0; // Maintain to match index in list
-    private static final int VALUE_MINIMAL = 1;
-    private static final int VALUE_NONE    = 2;
+    public static final int VALUE_DEFAULT = 0; // Maintain to match index in list
+    public static final int VALUE_MINIMAL = 1;
+    public static final int VALUE_NONE    = 2;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -105,6 +105,8 @@ public class NotificationWizardFragment extends DialogFragment {
     public void onResume() {
         super.onResume();
 
+        pfrag.loadSettingsFiles();
+
         lv.setAdapter(new MyAdapter());
     }
 
@@ -130,7 +132,7 @@ public class NotificationWizardFragment extends DialogFragment {
         int priority = Integer.valueOf(pfrag.settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
                                                                 pfrag.str.default_main_notification_priority));
 
-        boolean show_notification = pfrag.sp_store.getBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
+        boolean show_notification = pfrag.sp_service.getBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
 
         if (! show_notification)
             return VALUE_NONE;
@@ -142,32 +144,18 @@ public class NotificationWizardFragment extends DialogFragment {
     }
 
     private void setValue(int value) {
-        SharedPreferences.Editor sps_editor = pfrag.sp_store.edit();
-        SharedPreferences.Editor settings_editor = pfrag.settings.edit();
-
         switch(value) {
         case VALUE_NONE:
-            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, false);
+            pfrag.sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_WIZARD_VALUE_NONE);
 
             break;
         case VALUE_MINIMAL:
-            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
-            settings_editor.putString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                      "" + NotificationCompat.PRIORITY_MIN);
+            pfrag.sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_WIZARD_VALUE_MINIMAL);
 
             break;
         default:
-            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
-            int priority = Integer.valueOf(pfrag.settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                                                    pfrag.str.default_main_notification_priority));
-            if (priority == NotificationCompat.PRIORITY_MIN)
-                settings_editor.putString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                          "" + NotificationCompat.PRIORITY_LOW);
+            pfrag.sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_WIZARD_VALUE_DEFAULT);
         }
-
-        sps_editor.commit();
-        settings_editor.commit();
-        pfrag.sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS);
     }
 
     private class MyAdapter extends BaseAdapter {

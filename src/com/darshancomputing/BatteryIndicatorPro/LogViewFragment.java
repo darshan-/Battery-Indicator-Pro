@@ -122,11 +122,25 @@ public class LogViewFragment extends ListFragment {
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
-        //setRetainInstance(true);
 
         convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
                                                 pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
         col = new Col();
+
+        if (! pfrag.sp_main.getBoolean("log_filters_migrated_to_sp_main", false))
+            migrateFiltersToSpMain();
+    }
+
+    private void migrateFiltersToSpMain() {
+        SharedPreferences.Editor spm_editor = pfrag.sp_main.edit();
+
+        for (int i = 0; i < pfrag.str.log_filter_pref_keys.length; i++) {
+            spm_editor.putBoolean(pfrag.str.log_filter_pref_keys[i],
+                                  pfrag.settings.getBoolean(pfrag.str.log_filter_pref_keys[i], true));
+        }
+
+        spm_editor.putBoolean("log_filters_migrated_to_sp_main", true);
+        spm_editor.commit();
     }
 
     @Override
@@ -146,7 +160,7 @@ public class LogViewFragment extends ListFragment {
         pfrag.setLVF(this);
 
         convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
-                                                pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
+                                             pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
     }
 
     @Override
@@ -186,7 +200,7 @@ public class LogViewFragment extends ListFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             for (int i = 0; i < checked_items.length; i++) {
-                checked_items[i] = pfrag.settings.getBoolean(pfrag.str.log_filter_pref_keys[i], true);
+                checked_items[i] = pfrag.sp_main.getBoolean(pfrag.str.log_filter_pref_keys[i], true);
             }
 
             return new AlertDialog.Builder(getActivity())
@@ -211,13 +225,13 @@ public class LogViewFragment extends ListFragment {
     }
 
     private void setFilters(boolean[] checked_items) {
-        SharedPreferences.Editor editor = pfrag.settings.edit();
+        SharedPreferences.Editor spm_editor = pfrag.sp_main.edit();
 
         for (int i = 0; i < checked_items.length; i++) {
-            editor.putBoolean(pfrag.str.log_filter_pref_keys[i], checked_items[i]);
+            spm_editor.putBoolean(pfrag.str.log_filter_pref_keys[i], checked_items[i]);
         }
 
-        editor.commit();
+        spm_editor.commit();
 
         reloadList(false);
     }
@@ -449,13 +463,13 @@ public class LogViewFragment extends ListFragment {
             int wrappedCursorPos = wrappedCursor.getPosition();
             int statusCodeIndex = wrappedCursor.getColumnIndexOrThrow(LogDatabase.KEY_STATUS_CODE);
 
-            boolean show_plugged_in    = pfrag.settings.getBoolean("plugged_in",    true);
-            boolean show_unplugged     = pfrag.settings.getBoolean("unplugged",     true);
-            boolean show_charging      = pfrag.settings.getBoolean("charging",      true);
-            boolean show_discharging   = pfrag.settings.getBoolean("discharging",   true);
-            boolean show_fully_charged = pfrag.settings.getBoolean("fully_charged", true);
-            boolean show_boot          = pfrag.settings.getBoolean("boot_completed", true);
-            boolean show_unknown       = pfrag.settings.getBoolean("unknown",       true);
+            boolean show_plugged_in    = pfrag.sp_main.getBoolean("plugged_in",    true);
+            boolean show_unplugged     = pfrag.sp_main.getBoolean("unplugged",     true);
+            boolean show_charging      = pfrag.sp_main.getBoolean("charging",      true);
+            boolean show_discharging   = pfrag.sp_main.getBoolean("discharging",   true);
+            boolean show_fully_charged = pfrag.sp_main.getBoolean("fully_charged", true);
+            boolean show_boot          = pfrag.sp_main.getBoolean("boot_completed", true);
+            boolean show_unknown       = pfrag.sp_main.getBoolean("unknown",       true);
 
             for (wrappedCursor.moveToFirst(); !wrappedCursor.isAfterLast(); wrappedCursor.moveToNext()) {
                 int statusCode    = wrappedCursor.getInt(statusCodeIndex);

@@ -120,8 +120,6 @@ public class CurrentInfoFragment extends Fragment {
             df.show(getFragmentManager(), "TODO: What is this string for?3");
         }
 
-        // TODO: If wizard has never been shown, show it and mark it as shown
-
         return view;
     }
 
@@ -154,7 +152,7 @@ public class CurrentInfoFragment extends Fragment {
 
         Intent bc_intent = getActivity().registerReceiver(null, batteryChangedFilter);
         info.load(bc_intent);
-        info.load(pfrag.sp_store);
+        info.load(pfrag.sp_service);
         handleUpdatedBatteryInfo();
 
         if (pfrag.settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
@@ -178,20 +176,8 @@ public class CurrentInfoFragment extends Fragment {
         inflater.inflate(R.menu.main, menu);
     }
 
-    // private void toggleShowNotification() {
-    //     SharedPreferences.Editor editor = pfrag.sp_store.edit();
-    //     editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION,
-    //                       ! pfrag.sp_store.getBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true));
-    //     editor.commit();
-
-    //     Message outgoing = Message.obtain();
-    //     outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS;
-    //     try { if (serviceMessenger != null) serviceMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
-    // }
-
     public void showNotificationWizard() {
-        DialogFragment df = new NotificationWizardFragment();
-        df.show(getFragmentManager(), "TODO: What is this string for?4");
+        new NotificationWizard().show(getFragmentManager(), "nwf");
     }
 
     @Override
