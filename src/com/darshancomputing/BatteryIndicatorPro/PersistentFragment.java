@@ -24,6 +24,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
 
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
@@ -117,6 +118,33 @@ public class PersistentFragment extends Fragment {
         super.onStart();
 
         sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
+
+        // TODO: everything after here could happen in another thread?
+        //   They tend to take about 70ms on the myTouch
+        SharedPreferences.Editor editor = sp_store.edit();
+        editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, true);
+        editor.commit();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (sp_store.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
+            // If you ever need a first-run dialog again, this is when you would show it
+            SharedPreferences.Editor editor = sp_store.edit();
+            editor.putBoolean(SettingsActivity.KEY_FIRST_RUN, false);
+            editor.commit();
+        }
+
+        if (! sp_store.getBoolean(SettingsActivity.KEY_NOTIFICATION_WIZARD_EVER_RUN, false)) {
+            DialogFragment df = new NotificationWizardFragment();
+            df.show(getFragmentManager(), "Blarg");
+
+            SharedPreferences.Editor editor = sp_store.edit();
+            editor.putBoolean(SettingsActivity.KEY_NOTIFICATION_WIZARD_EVER_RUN, true);
+            editor.commit();
+        }
     }
 
     @Override

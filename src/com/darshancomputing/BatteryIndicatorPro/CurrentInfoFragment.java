@@ -138,20 +138,6 @@ public class CurrentInfoFragment extends Fragment {
                                                           pfrag.res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
         setHasOptionsMenu(true);
-
-        // Everything after here may make more sense in pfrag?
-        if (pfrag.settings.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
-            // If you ever need a first-run dialog again, this is when you would show it
-            SharedPreferences.Editor editor = pfrag.sp_store.edit();
-            editor.putBoolean(SettingsActivity.KEY_FIRST_RUN, false);
-            editor.commit();
-        }
-
-        // TODO: everything after here could happen in another thread?
-        //   They tend to take about 70ms on the myTouch
-        SharedPreferences.Editor editor = pfrag.sp_store.edit();
-        editor.putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, true);
-        editor.commit();
     }
 
     @Override
