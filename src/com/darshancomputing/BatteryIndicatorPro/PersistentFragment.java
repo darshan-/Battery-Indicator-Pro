@@ -113,10 +113,17 @@ public class PersistentFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onStart() {
+        super.onStart();
 
         sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_UNREGISTER_CLIENT);
     }
 
     @Override

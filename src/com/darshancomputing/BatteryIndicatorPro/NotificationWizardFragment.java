@@ -40,6 +40,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -73,8 +74,12 @@ public class NotificationWizardFragment extends DialogFragment {
         ListView lv = (ListView) v.findViewById(android.R.id.list);
         lv.setAdapter(new MyAdapter());
 
-        // TODO: Save settings from listener in Adapter
-        // Send BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS from onclicks
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                setValue(position);
+            }
+        });
+
         return new AlertDialog.Builder(getActivity())
             .setView(v)
             .setTitle(R.string.notification_wizard_title)
@@ -119,25 +124,33 @@ public class NotificationWizardFragment extends DialogFragment {
         return VALUE_DEFAULT;
     }
 
-    /*
+    private void setValue(int value) {
+        SharedPreferences.Editor sps_editor = pfrag.sp_store.edit();
+        SharedPreferences.Editor settings_editor = pfrag.settings.edit();
 
-      Changing setting:
+        switch(value) {
+        case VALUE_NONE:
+            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, false);
 
-      None:
-      * Set notification to hidden
-      * Change priority to default, or leave as whatever it is?
+            break;
+        case VALUE_MINIMAL:
+            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
+            settings_editor.putString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
+                                      "" + NotificationCompat.PRIORITY_MIN);
 
-      Minimal:
-      * Set notification to not hidden
-      * Change priority to minimum
+            break;
+        default:
+            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
+            int priority = Integer.valueOf(pfrag.settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
+                                                                    pfrag.str.default_main_notification_priority));
+            if (priority == NotificationCompat.PRIORITY_MIN)
+                settings_editor.putString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
+                                          "" + NotificationCompat.PRIORITY_LOW);
+        }
 
-      None:
-      * Set notification to not hidden
-      * If priority was minimum, change it to default
-      * If priority was not minimum, change to default or leave as whatever it is?
-
-      */
-    private void setValue(int v) {
+        sps_editor.commit();
+        settings_editor.commit();
+        pfrag.sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS);
     }
 
     private class MyAdapter extends BaseAdapter {

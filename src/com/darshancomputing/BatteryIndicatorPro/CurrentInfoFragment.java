@@ -182,8 +182,6 @@ public class CurrentInfoFragment extends Fragment {
         super.onStop();
 
         mHandler.removeCallbacks(mARefresher);
-
-        pfrag.sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_UNREGISTER_CLIENT);
         pfrag.setCIF(null);
     }
 
