@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.0'
+        classpath 'com.android.tools.build:gradle:2.1.2'
     }
 }
 
@@ -15,7 +15,7 @@ secureProperties.load(new FileInputStream("secure.properties"))
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+    buildToolsVersion "24.0.1"
 
     configurations {
         all*.exclude module: 'support-annotations'
@@ -35,9 +35,9 @@ android {
 
         resConfigs "ar", "cs", "de", "el", "en", "en-rUS", "es", "es-rUS", "fr", "hu", "it", "ja", "lt", "nl", "pl", "pt", "pt-rBR", "ro", "ru", "sk", "sl", "tr", "zh", "zh-rCN" // Don't use support library translations for languages that the app doesn't have its own translations for
 
-        // jackOptions {
-        //     enabled true
-        // }
+        jackOptions {
+            enabled true
+        }
     }
 
     compileOptions {
@@ -73,7 +73,7 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
-            // minifyEnabled true   // Only enable on actual release builds
+            minifyEnabled true   // Only enable on actual release builds
             // shrinkResources true // Only enable on actual release builds
             //proguardFile 'proguard-rules.pro'
             proguardFile 'proguard-no-obfuscation'

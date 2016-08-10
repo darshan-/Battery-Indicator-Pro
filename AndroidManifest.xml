@@ -4,8 +4,8 @@
     package="com.darshancomputing.BatteryIndicatorPro"
     xmlns:tools="http://schemas.android.com/tools"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
-    android:versionCode="013011"
-    android:versionName="10.0.0-rc1"
+    android:versionCode="013018"
+    android:versionName="10.0.0"
 >
   <application
       android:label="@string/app_full_name"
@@ -114,12 +114,6 @@
       />
     </receiver>
   </application>
-
-  <!-- Rely on build.gradle now -->
-  <!--uses-sdk
-      android:minSdkVersion="13"
-      android:targetSdkVersion="24"
-  /-->
 
   <!-- Permissions now considered "normal", automatically granted on API 23+ -->
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
