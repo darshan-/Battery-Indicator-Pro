@@ -26,14 +26,21 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences sp_main = context.getSharedPreferences(SettingsActivity.SP_MAIN_FILE, 0);
+        SharedPreferences sp_service = context.getSharedPreferences(SettingsActivity.SP_SERVICE_FILE, 0);
 
         String startPref = settings.getString(SettingsActivity.KEY_AUTOSTART, "auto");
 
+        boolean service_desired;
+
+        // Actual "migration" has to be done from main process, so we will read the old value here until such a time as it is migrated.
+        if (! sp_main.getBoolean(SettingsActivity.KEY_MIGRATED_SERVICE_DESIRED, false))
+            service_desired = sp_service.getBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false);
+        else
+            service_desired = sp_main.getBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false);
+
         // Note: Regardless of anything here, Android will start the Service on boot if there are any desktop widgets
-        if (startPref.equals("always") ||
-            (startPref.equals("auto") && sp_main.getBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false))){
-            ComponentName comp = new ComponentName(context.getPackageName(),
-                                                   BatteryInfoService.class.getName());
+        if (startPref.equals("always") || (startPref.equals("auto") && service_desired)){
+            ComponentName comp = new ComponentName(context.getPackageName(), BatteryInfoService.class.getName());
             context.startService(new Intent().setComponent(comp));
         }
 

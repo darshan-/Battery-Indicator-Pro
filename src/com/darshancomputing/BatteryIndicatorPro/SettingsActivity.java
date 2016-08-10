@@ -107,6 +107,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW = "auto_refresh_current_in_main_window";
     public static final String KEY_FIRST_RUN = "first_run";
     public static final String KEY_NOTIFICATION_WIZARD_EVER_RUN = "key_notification_wizard_ever_run";
+    public static final String KEY_MIGRATED_SERVICE_DESIRED = "service_desired_migrated_to_sp_main";
 
     private static final String[] PARENTS    = {KEY_ENABLE_LOGGING,
                                                 KEY_DISPLAY_CURRENT_IN_VITAL_STATS,

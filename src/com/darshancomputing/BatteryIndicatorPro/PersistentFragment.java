@@ -119,6 +119,12 @@ public class PersistentFragment extends Fragment {
         sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
 
         Str.apply(sp_main.edit().putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, true));
+
+        // From now on, BootCompletedReceiver should ignore value in sp_service and use our value.
+        //   We're not removing the value from sp_service, because that would require a commit, and
+        //   the whole point of this is avoiding cross-process writes.
+        if (! sp_main.getBoolean(SettingsActivity.KEY_MIGRATED_SERVICE_DESIRED, false))
+            Str.apply(sp_main.edit().putBoolean(SettingsActivity.KEY_MIGRATED_SERVICE_DESIRED, true));
     }
 
     @Override
