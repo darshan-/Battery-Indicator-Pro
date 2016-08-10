@@ -64,6 +64,7 @@ public class NotificationWizard extends DialogFragment {
     private String[] titles;
     private String[] summaries;
     private ListView lv;
+    private Integer cached_value;
 
     public static final int VALUE_DEFAULT = 0; // Maintain to match index in list
     public static final int VALUE_MINIMAL = 1;
@@ -129,6 +130,9 @@ public class NotificationWizard extends DialogFragment {
     }
 
     private int getValue() {
+        if (cached_value != null)
+            return cached_value;
+
         int priority = Integer.valueOf(pfrag.settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
                                                                 pfrag.str.default_main_notification_priority));
 
@@ -144,6 +148,8 @@ public class NotificationWizard extends DialogFragment {
     }
 
     private void setValue(int value) {
+        cached_value = value;
+
         switch(value) {
         case VALUE_NONE:
             pfrag.sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_WIZARD_VALUE_NONE);
