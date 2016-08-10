@@ -200,10 +200,6 @@
   <string name="pref_notify_status_duration" formatted="false">Pokaż czas stanu</string>
   <string name="pref_notify_status_duration_summary" formatted="false">Pokaż czas od kiedy status się zmienił zamiast prognozy pozostałego czasu?</string>
   <string name="pref_notify_status_duration_help" formatted="false">Włącz to ustawienie, jeśli wolisz główne powiadomienie pokazujące czas od zmiany statusu (np. \"Odłączony przez 5 godzin\"), a nie szacunku czasu pozostałego. Obie informacje są dostępne z głównego okna.</string>
-  <string name="pref_cat_battery_use" formatted="false">Użycie baterii</string>
-  <string name="pref_finish_after_battery_use" formatted="false">Zakończ po uruchomieniu</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">Zakończyć zaraz po uruchomieniu ekranu zużycia baterii?</string>
-  <string name="pref_finish_after_battery_use_help" formatted="false">Jeżeli każde naciśnięcie ekranu ma dla ciebie znaczenie powinieneś włączyć tę opcję. Zabezpieczenia to przed natychmiastowym zamknięciem głównego okna Battery Indicatora przy uruchomieniu Użycia baterii</string>
   <string name="pref_cat_temperature_unit" formatted="false">Jednostka temperatury</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Konwertuj na Fahrenheita</string>
   <string name="pref_convert_to_fahrenheit_help" formatted="false">Android raportuje temperaturę baterii w stopniach Celcjusza. Jeżeli wolisz stopnie Fahrenheita, to zaznacz tą opcję a aplikacja wykona konwersję.</string>

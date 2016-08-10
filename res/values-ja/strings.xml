@@ -239,10 +239,6 @@
   <string name="pref_notify_status_duration" formatted="false">ステータス時間を表示</string>
   <string name="pref_notify_status_duration_summary" formatted="false">見積残り時間ではなく、ステータスが変わってからの時間を表示しますか?</string>
   <string name="pref_notify_status_duration_help" formatted="false">メイン通知で、見積残り時間ではなく、ステータスが変わってからの時間 (\"プラグを抜いてから 5 時間\" など) の表示をお好みの場合は、 この設定を有効にしてください。メインウインドウで両方の情報が入手できます。</string>
-  <string name="pref_cat_battery_use" formatted="false">バッテリーの使用</string>
-  <string name="pref_finish_after_battery_use" formatted="false">起動後に終了する</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">バッテリーの使用を起動した直後にメインウインドウを終了しますか?</string>
-  <string name="pref_finish_after_battery_use_help" formatted="false">それぞれのキーストロークが (またはタッチスクリーンを押すのが) 煩わしい方は、これを有効にしたくなるかもしれません。 これを有効にすると、バッテリーの使用画面を起動した直後に、 BatteryBot のメインウインドウを閉じる、以前の動作のままにします。</string>
   <string name="pref_cat_temperature_unit" formatted="false">温度の単位</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">華氏に変換する</string>
   <string name="pref_convert_to_fahrenheit_help" formatted="false">Android はセ氏でバッテリ温度を報告します。バッテリー温度を華氏で 確認したい場合は、このオプションをチェックすると、アプリが変換します。</string>

@@ -104,10 +104,6 @@
   <string name="pref_max_log_age" formatted="false">日志记录有效期</string>
   <string name="pref_max_log_age_summary" formatted="false">日志记录有效期限：</string>
   <string name="pref_max_log_age_help" formatted="false">若启用本功能，过期日志将在手机充电时被清除。</string>
-  <string name="pref_cat_battery_use" formatted="false">电池使用情况</string>
-  <string name="pref_finish_after_battery_use" formatted="false">启动后退出</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">确认启动电量使用情况界面后退出主窗口？</string>
-  <string name="pref_finish_after_battery_use_help" formatted="false">如果您发现按键（或触摸屏点击）异常，可勾选此项可在启动电量使用情况界面后退出电量指示器主窗口。</string>
   <string name="pref_cat_temperature_unit" formatted="false">温度显示单位</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">确认切换到华氏单位？</string>
   <string name="pref_convert_to_fahrenheit_help" formatted="false">Android系统以摄氏单位报告电池温度信息。若您想使温度信息以华氏单位显示，请勾选此项。</string>

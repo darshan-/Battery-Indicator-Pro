@@ -142,10 +142,6 @@
   <string name="pref_max_log_age" formatted="false">Periodo massimo registro</string>
   <string name="pref_max_log_age_summary" formatted="false">Cancella registri più vecchi di:</string>
   <string name="pref_max_log_age_help" formatted="false">Se il logging è abilitato, ogni volta che colleghi il telefono, i registri più vecchi saranno cancellati.</string>
-  <string name="pref_cat_battery_use" formatted="false">Uso batteria</string>
-  <string name="pref_finish_after_battery_use" formatted="false">Esci dopo l\'avvio</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">Uscire dalla finestra principale immediatamente dopo aver avviato \"Uso Batteria\"?</string>
-  <string name="pref_finish_after_battery_use_help" formatted="false">Se sei una persona per la quale ogni sequenza di tasti (o tocco sullo schermo) è un problema, probabilmente vorrai abilitare questa opzione. Abilitando questa preserva il vecchio comportamento di chiusura della finestra principale di Battery Indicator immediatamente dopo il lancio della schermata Uso Batteria.</string>
   <string name="pref_cat_temperature_unit" formatted="false">Unità temperatura</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Converti in Fahrenheit</string>
   <string name="pref_convert_to_fahrenheit_help" formatted="false">Android riporta la temperatura della batteria in gradi Celsius. Se preferisci vedere la temperatura della batteria in gradi Fahrenheit, spunta questa opzione.</string>

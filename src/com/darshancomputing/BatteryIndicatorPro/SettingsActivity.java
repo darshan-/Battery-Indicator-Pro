@@ -55,7 +55,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_ALARMS_SETTINGS = "alarms_settings";
     public static final String KEY_ALARM_EDIT_SETTINGS = "alarm_edit_settings";
     public static final String KEY_OTHER_SETTINGS = "other_settings";
-    public static final String KEY_FINISH_AFTER_BATTERY_USE = "finish_after_battery_use";
     public static final String KEY_MAIN_NOTIFICATION_PRIORITY = "main_notification_priority";
     public static final String KEY_ENABLE_LOGGING = "enable_logging";
     public static final String KEY_MAX_LOG_AGE = "max_log_age";

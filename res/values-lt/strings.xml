@@ -121,9 +121,6 @@
   <string name="pref_enable_logging_summary" formatted="false">Įrašinėti baterijos būsenos pakitimus?</string>
   <string name="pref_max_log_age" formatted="false">Ilgiausias įrašo gyvavimas</string>
   <string name="pref_max_log_age_summary" formatted="false">Ištrinti senesnius įrašus nei:</string>
-  <string name="pref_cat_battery_use" formatted="false">Baterijos Naudojimas</string>
-  <string name="pref_finish_after_battery_use" formatted="false">Išeiti kai paleidžiama</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">Išeiti iš pagrindinio lango po Baterijos Naudojimo paleidimo?</string>
   <string name="pref_cat_temperature_unit" formatted="false">Temperatūros</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Pakeisti į Farengeitą</string>
   <string name="pref_cat_autostart" formatted="false">Auto-Paleidimas</string>

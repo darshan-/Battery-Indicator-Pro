@@ -110,9 +110,6 @@
   <string name="pref_enable_logging_summary" formatted="false">Beležim spremembo stanj baterije?</string>
   <string name="pref_max_log_age" formatted="false">Največja starost poročila</string>
   <string name="pref_max_log_age_summary" formatted="false">Izbriši poročila starejša od:</string>
-  <string name="pref_cat_battery_use" formatted="false">Poraba baterije</string>
-  <string name="pref_finish_after_battery_use" formatted="false">Zapri po zagonu</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">Zapri glavno okno takoj po zagonu Porabe baterije?</string>
   <string name="pref_cat_temperature_unit" formatted="false">Enota za temperaturo</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Pretvori v Fahrenheit</string>
   <string name="pref_cat_autostart" formatted="false">Samodejni zagon</string>

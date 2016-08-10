@@ -372,36 +372,11 @@ public class CurrentInfoFragment extends Fragment {
         public void onClick(View v) {
             try {
                 startActivity(batteryUseIntent);
-                // TODO: Remove this option and ignore it
-                if (pfrag.settings.getBoolean(SettingsActivity.KEY_FINISH_AFTER_BATTERY_USE, false)) getActivity().finish();
             } catch (Exception e) {
                 battery_use_b.setEnabled(false);
             }
         }
     };
-
-    /*
-        case DIALOG_FIRST_RUN:
-            LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(LAYOUT_INFLATER_SERVICE);
-            View layout = inflater.inflate(R.layout.first_run_message, (LinearLayout) view.findViewById(R.id.layout_root));
-
-            builder.setTitle(pfrag.res.getString(R.string.first_run_title))
-                .setView(layout)
-                .setPositiveButton(pfrag.res.getString(R.string.okay), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface di, int id) {
-                        di.cancel();
-                    }
-                });
-
-            dialog = builder.create();
-            break;
-        default:
-            dialog = null;
-        }
-
-        return dialog;
-    }
-    */
 
     private void mStartActivity(Class c) {
         ComponentName comp = new ComponentName(getActivity().getPackageName(), c.getName());

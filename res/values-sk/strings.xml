@@ -120,9 +120,6 @@
   <string name="pref_max_log_age" formatted="false">Maximálny vek záznamu</string>
   <string name="pref_max_log_age_summary" formatted="false">Zmazať záznamy staršie ako:</string>
   <string name="pref_max_log_age_help" formatted="false">Ak je zapnuté zaznamenávanie, potom kedykoľvek zapojíte telefón do nabíjačky, záznamy staršie ako tento, budú odstránené.</string>
-  <string name="pref_cat_battery_use" formatted="false">Používanie batérie</string>
-  <string name="pref_finish_after_battery_use" formatted="false">Ukončiť po spustení</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">Ukončiť hlavné okno okamžite po spustení Používania batérie?</string>
   <string name="pref_cat_temperature_unit" formatted="false">Jednotky teploty</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Premeniť na Fahrenheity</string>
   <string name="pref_cat_autostart" formatted="false">Automatické spustenie</string>

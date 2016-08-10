@@ -151,9 +151,6 @@
   <string name="pref_enable_logging_summary" formatted="false">Batteriestatusänderungen protokollieren?</string>
   <string name="pref_max_log_age" formatted="false">Maximales Protokollalter</string>
   <string name="pref_max_log_age_summary" formatted="false">Löschen von Protokollen älter als:</string>
-  <string name="pref_cat_battery_use" formatted="false">Akkuverbrauch</string>
-  <string name="pref_finish_after_battery_use" formatted="false">Schließen nach dem Aufrufen</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">Hauptfenster schließen, wenn Akkuverbrauch aufgerufen wird?</string>
   <string name="pref_cat_temperature_unit" formatted="false">Temperatureinheit</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Umrechnen in Fahrenheit</string>
   <string name="pref_cat_autostart" formatted="false">Autostart</string>

@@ -24,15 +24,6 @@
     />
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="@string/pref_cat_battery_use">
-    <CheckBoxPreference
-       android:key="finish_after_battery_use"
-       android:title="@string/pref_finish_after_battery_use"
-       android:summary="@string/pref_finish_after_battery_use_summary"
-       android:defaultValue="false"
-    />
-  </PreferenceCategory>
-
   <PreferenceCategory android:title="@string/pref_cat_temperature_unit">
     <CheckBoxPreference
        android:key="convert_to_fahrenheit"

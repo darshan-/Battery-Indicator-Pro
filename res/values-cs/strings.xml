@@ -117,9 +117,6 @@
   <string name="pref_max_log_age" formatted="false">Maximální stáří záznamů</string>
   <string name="pref_max_log_age_summary" formatted="false">Vymazat záznamy starší než:</string>
   <string name="pref_max_log_age_help" formatted="false">Pokud jsou záznamy povoleny, pak všechny starší budou vždy vymazány.</string>
-  <string name="pref_cat_battery_use" formatted="false">Využití baterie</string>
-  <string name="pref_finish_after_battery_use" formatted="false">Ukončit po spuštění</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">Ukončit hlavní okno ihned jakmile je zobrazeno Využití baterie.</string>
   <string name="pref_cat_temperature_unit" formatted="false">Měrná jednotka teploty</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Změnit na Fahrenheity</string>
   <string name="pref_cat_autostart" formatted="false">Automatické spuštění</string>

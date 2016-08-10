@@ -123,10 +123,6 @@
   <string name="pref_max_log_age" formatted="false">Μέγιστη Περίοδος Καταγραφής</string>
   <string name="pref_max_log_age_summary" formatted="false">Διαγραφή λίστας δεδομένων παλαιότερης από:</string>
   <string name="pref_max_log_age_help" formatted="false">Αν η καταγραφή είναι ενεργοποιημένη, τότε όποτε συνδέετε τη συσκευή στην πρίζα, όλες οι παλαιότερες καταγραφές θα διαγραφούν.</string>
-  <string name="pref_cat_battery_use" formatted="false">Χρήση Μπαταρίας</string>
-  <string name="pref_finish_after_battery_use" formatted="false">Έξοδος μετά την Προβολή</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">Έξοδος από το κυρίως παράθυρο αμέσως μετά την προβολή Χρήσης Μπαταρίας;</string>
-  <string name="pref_finish_after_battery_use_help" formatted="false">Αν είστε κάποιος για τον οποίο κάθε πάτημα πλήκτρου (ή οθόνης) μετρά, θα θέλατε να το ενεργοπιήσετε αυτό. Ενεργοποιώντας το διατηρεί την παλαιότερη συμπεριφορά του να κλείνει το κυρίως παράθυρο του Battery Indicator αμέσως μετά που θα προβληθεί η Οθόνη Χρήσης μπαταρίας.</string>
   <string name="pref_cat_temperature_unit" formatted="false">Μονάδες Θερμοκρασίας</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Μετατροπή σε Φάρεναϊτ</string>
   <string name="pref_convert_to_fahrenheit_help" formatted="false">Το Android αναφέρει τη θερμοκρασία της μπαταρίας σε βαθμούς Κελσίου. Αν προτιμάτε να τη βλέπετε σε Φάρεναϊτ, επιλέξετε αυτήν την επιλογή και η εφαρμογή θα σας τη μετατρέπει.</string>

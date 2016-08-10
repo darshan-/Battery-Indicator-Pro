@@ -132,8 +132,6 @@
   <string name="pref_enable_logging" formatted="false">Kayıt Tutmayı Etkinleştir</string>
   <string name="pref_max_log_age" formatted="false">Maksimum Kayıt Yaşı</string>
   <string name="pref_max_log_age_summary" formatted="false">Şundan eski kayıtları sil:</string>
-  <string name="pref_cat_battery_use" formatted="false">Pil Kullanımı</string>
-  <string name="pref_finish_after_battery_use" formatted="false">Başladıktan Sonra Çık</string>
   <string name="pref_cat_temperature_unit" formatted="false">Sıcaklık Birimi</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Fahrenhayt\'a çevir</string>
   <string name="pref_cat_autostart" formatted="false">Otomatik başlat</string>

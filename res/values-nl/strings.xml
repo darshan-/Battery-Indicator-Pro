@@ -196,10 +196,6 @@
   <string name="pref_notify_status_duration" formatted="false">Laat tijd van status zien</string>
   <string name="pref_notify_status_duration_summary" formatted="false">Laat de tijd zien sinds de laatste statuswijziging in plaats van de resterende tijd?</string>
   <string name="pref_notify_status_duration_help" formatted="false">Stel dit in als je wilt zien hoe lang geleden de laatste statuswijziging was.</string>
-  <string name="pref_cat_battery_use" formatted="false">Batterijgebruik</string>
-  <string name="pref_finish_after_battery_use" formatted="false">Sluiten na starten</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">Hoofdvenster sluiten na bekijken van batterijgebruik</string>
-  <string name="pref_finish_after_battery_use_help" formatted="false">Als je dit aanzet sluit het hoofdvenster meteen na het openen van het batterijgebruik scherm.</string>
   <string name="pref_cat_temperature_unit" formatted="false">Temperatuur</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Converteren naar Fahrenheit</string>
   <string name="pref_convert_to_fahrenheit_help" formatted="false">Android geeft de batterijtemperatuur in graden Celsius. Selecteer deze optie om Fahrenheit te gebruiken.</string>

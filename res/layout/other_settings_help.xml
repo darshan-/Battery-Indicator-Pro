@@ -19,12 +19,6 @@
     <TextView style="@style/help_text" android:text="@string/pref_max_log_age_help" />
 
     <View style="@style/help_cat_pre_margin" />
-    <TextView style="@style/help_cat"  android:text="@string/pref_cat_battery_use" />
-    <View style="@style/help_cat_post_margin" />
-    <TextView style="@style/help_pref" android:text="@string/pref_finish_after_battery_use" />
-    <TextView style="@style/help_text" android:text="@string/pref_finish_after_battery_use_help" />
-
-    <View style="@style/help_cat_pre_margin" />
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_temperature_unit" />
     <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_convert_to_fahrenheit" />

@@ -149,10 +149,6 @@
   <string name="pref_max_log_age" formatted="false">Napló időszaka</string>
   <string name="pref_max_log_age_summary" formatted="false">Törölje az ennél régebbi bejegyzéseket:</string>
   <string name="pref_max_log_age_help" formatted="false">Ha a naplózás engedélyezett, minden esetben, amikor tölteni kezdi a készüléket, az ennél régebbi bejegyzések törlődnek.</string>
-  <string name="pref_cat_battery_use" formatted="false">Akku használat</string>
-  <string name="pref_finish_after_battery_use" formatted="false">Kilépés az akku használat megnyitásakor</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">Kilépjen a fő ablakból amikor megnyitja az Akku használatot?</string>
-  <string name="pref_finish_after_battery_use_help" formatted="false">Ez a funkció azok számára készült, akiknek minden billentyű leütés (vagy képernyő érintés) számít. Ennek bekapcsolása visszaállítja a régi viselkedést, kilép a Battery Indicator fő ablakából az Akku használat képernyő megnyitásakor.</string>
   <string name="pref_cat_temperature_unit" formatted="false">Hőmérséklet mértékegysége</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Fahrenheit használata</string>
   <string name="pref_convert_to_fahrenheit_help" formatted="false">Az Android Celsius°-ban közli a hőmérsékletet. Ha jobban szeretné az akkumlátor hőmérsékletét Fahrenheit-ben látni, kapcsolja be ezt az opciót, és az alkalmásás konvértálni fogja önnek.</string>

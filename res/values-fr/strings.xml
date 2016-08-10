@@ -124,10 +124,6 @@
   <string name="pref_max_log_age" formatted="false">Âge maximal du journal</string>
   <string name="pref_max_log_age_summary" formatted="false">Supprimer les journaux plus ancients que :</string>
   <string name="pref_max_log_age_help" formatted="false">Lorsque la journalisation est activée que vous branchez votre téléphone les journaux les plus vieux sont supprimés.</string>
-  <string name="pref_cat_battery_use" formatted="false">Utilisation de la Batterie</string>
-  <string name="pref_finish_after_battery_use" formatted="false">Quitter après le lancement</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">Quitter la fenêtre principale lorsque l\'utilisation de la batterie est lancé ?</string>
-  <string name="pref_finish_after_battery_use_help" formatted="false">Si vous êtes quelqu\'un pour qui chaque geste compte, vous activerez probablement cette option. L\'activer fermera la fenêtre principale de l\'application lorsque vous lancez l\'écran d\'utilisation de la batterie.</string>
   <string name="pref_cat_temperature_unit" formatted="false">Unité de température</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Convertir en Fahrenheit</string>
   <string name="pref_convert_to_fahrenheit_help" formatted="false">Android donne la température de la batterie en degrés Celsius. Si vous préférez avoir la température en degrés Fahrenheit, cochez cette option et l\'application changera l\'unité pour vous.</string>

@@ -235,10 +235,6 @@
   <string name="pref_notify_status_duration" formatted="false">Показывать продолжительность состояния</string>
   <string name="pref_notify_status_duration_summary" formatted="false">Показывать время с момента изменения состояния или оценку оставшегося времени?</string>
   <string name="pref_notify_status_duration_help" formatted="false">Включите эту опцию, если предпочитаете, чтобы в главном уведомлении было показано время, прошедшее с момента изменения состояния (например, \"Работает от аккумулятора в течение 5 часов\"), а не оценку оставшегося времени работы. Обе характеристики доступны в главном окне приложения.</string>
-  <string name="pref_cat_battery_use" formatted="false">Использование аккумулятора</string>
-  <string name="pref_finish_after_battery_use" formatted="false">Выйти после запуска</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">Закрыть основное окно сразу после запуска \"Использование аккумулятора\"?</string>
-  <string name="pref_finish_after_battery_use_help" formatted="false">Если вы цените каждое свое прикосновение к клавиатуре или экрану, можете включить эту опцию. Таким образом главное окно BattaryBot будет закрыто немедленно после открытия экрана \"Использование аккумулятора\".</string>
   <string name="pref_cat_temperature_unit" formatted="false">Единицы измерения температуры</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">Преобразовать к Фаренгейту</string>
   <string name="pref_convert_to_fahrenheit_help" formatted="false">Система Android сообщает температуру аккумулятора в градусах Цельсия. Если для вас предпочтительнее градусы Фаренгейта, выберите эту опцию, и приложение осуществит преобразование для вас.</string>

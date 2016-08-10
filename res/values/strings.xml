@@ -662,16 +662,6 @@
     of information are available from the main window.
   </string>
 
-  <string formatted="false" name="pref_cat_battery_use">Battery Use</string>
-  <string formatted="false" name="pref_finish_after_battery_use">Exit After Launching</string>
-  <string formatted="false" name="pref_finish_after_battery_use_summary">Exit main window immediately after launching Battery Use?</string>
-  <string formatted="false" name="pref_finish_after_battery_use_help">
-    If you\'re someone for whom every keystroke (or touchscreen press)
-    matters, you might want to enable this.  Enabling this preserves
-    the old behavior of closing BatteryBot\'s main window
-    immediately after launching the Battery Use screen.
-  </string>
-
   <string formatted="false" name="pref_cat_temperature_unit">Temperature Unit</string>
   <string formatted="false" name="pref_convert_to_fahrenheit">Convert to Fahrenheit</string>
   <string formatted="false" name="pref_convert_to_fahrenheit_help">

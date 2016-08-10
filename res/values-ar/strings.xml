@@ -210,10 +210,6 @@
   <string name="pref_notify_status_duration" formatted="false">مدة عرض الحالة</string>
   <string name="pref_notify_status_duration_summary" formatted="false">تظهر منذ متى تم تغيير الوضع بدلا من تقدير الوقت المتبقي؟</string>
   <string name="pref_notify_status_duration_help" formatted="false">تمكين هذا الإعداد إذا كنت تفضل الإخطار الرئيسي لعرض الوقت منذ تغيير حالة (على سبيل المثال، \"موصول لمدة 5 ساعات\") بدلا من تقدير الوقت المتبقي. كل قطعة من المعلومات المتاحة من النافذة الرئيسية.</string>
-  <string name="pref_cat_battery_use" formatted="false">استخدام البطارية</string>
-  <string name="pref_finish_after_battery_use" formatted="false">خروج بعد التشغيل</string>
-  <string name="pref_finish_after_battery_use_summary" formatted="false">خروج الإطار الرئيسي مباشرة بعد تشغيل استخدام البطارية؟</string>
-  <string name="pref_finish_after_battery_use_help" formatted="false">اذا كنت من الاشخاص الاعمال الشاقة سوف تفضل تمكين هذا الخيار</string>
   <string name="pref_cat_temperature_unit" formatted="false">وحدة درجة الحرارة</string>
   <string name="pref_convert_to_fahrenheit" formatted="false">تحويل إلى فهرنهايت</string>
   <string name="pref_convert_to_fahrenheit_help" formatted="false">الاندرويد وحدة قياس حرارته هي الدرجة السليزية اذا كنت تفضل رؤية درجة الحرارة بالفهرنهايت تحقق من هذا الخيار وسوف يحول لتطبيق درجة الحرارة لك</string>
