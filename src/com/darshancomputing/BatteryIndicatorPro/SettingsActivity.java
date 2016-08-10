@@ -541,7 +541,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private void resetService(boolean cancelFirst) {
-        mSharedPreferences.edit().commit(); // Force file to be saved
+        mSharedPreferences.edit().commit(); // commit() synchronously before messaging Service
 
         Message outgoing = Message.obtain();
 
@@ -1002,7 +1002,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             editor.putString(KEY_GREEN_THRESH, res.getString(R.string.default_green_thresh));
         }
 
-        editor.commit();
+        Str.apply(editor);
     }
 
     /* Determine the minimum valid threshold setting for a particular color, based on other active settings,

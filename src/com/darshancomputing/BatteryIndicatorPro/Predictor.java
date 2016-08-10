@@ -50,8 +50,6 @@ public class Predictor {
 
     public void update(BatteryInfo info) {
         pc.update(info, SystemClock.elapsedRealtime());
-        editor.putFloat(KEY_AVERAGE[pc.cur_charging_status],
-                        (float) pc.getLongTermAverage());
-        editor.commit();
+        Str.apply(editor.putFloat(KEY_AVERAGE[pc.cur_charging_status], (float) pc.getLongTermAverage()));
     }
 }

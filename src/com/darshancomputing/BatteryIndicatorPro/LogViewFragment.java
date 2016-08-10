@@ -139,8 +139,7 @@ public class LogViewFragment extends ListFragment {
                                   pfrag.settings.getBoolean(pfrag.str.log_filter_pref_keys[i], true));
         }
 
-        spm_editor.putBoolean("log_filters_migrated_to_sp_main", true);
-        spm_editor.commit();
+        Str.apply(spm_editor.putBoolean("log_filters_migrated_to_sp_main", true));
     }
 
     @Override
@@ -231,7 +230,7 @@ public class LogViewFragment extends ListFragment {
             spm_editor.putBoolean(pfrag.str.log_filter_pref_keys[i], checked_items[i]);
         }
 
-        spm_editor.commit();
+        Str.apply(spm_editor);
 
         reloadList(false);
     }

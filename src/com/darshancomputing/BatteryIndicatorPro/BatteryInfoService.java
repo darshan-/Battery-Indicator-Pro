@@ -26,7 +26,6 @@ import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
@@ -319,6 +318,10 @@ public class BatteryInfoService extends Service {
 
         str = new Str(res); // Language override may have changed
 
+        applyNewSettings(cancelFirst);
+    }
+
+    private void applyNewSettings(boolean cancelFirst) {
         if (cancelFirst) {
             stopForeground(true);
             mainNotificationB = new NotificationCompat.Builder(this);
@@ -352,10 +355,10 @@ public class BatteryInfoService extends Service {
                                           "" + NotificationCompat.PRIORITY_LOW);
         }
 
-        sps_editor.commit();
-        settings_editor.commit();
+        Str.apply(sps_editor);
+        Str.apply(settings_editor);
 
-        reloadSettings(true);
+        applyNewSettings(true);
     }
 
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
@@ -379,8 +382,8 @@ public class BatteryInfoService extends Service {
 
         sps_editor.putInt(LAST_SDK_API, android.os.Build.VERSION.SDK_INT);
 
-        sps_editor.commit();
-        settings_editor.commit();
+        Str.apply(sps_editor);
+        Str.apply(settings_editor);
     }
 
     private void update(Intent intent) {
@@ -478,7 +481,7 @@ public class BatteryInfoService extends Service {
     }
 
     private void syncSpsEditor() {
-        sps_editor.commit();
+        Str.apply(sps_editor);
 
         if (updated_lasts) {
             info.last_status_cTM = now;
@@ -695,7 +698,7 @@ public class BatteryInfoService extends Service {
             icon_set = default_set;
 
             // Writing to settings here should only happen when Service first started, so shouldn't have conflict
-            settings.edit().putString(SettingsActivity.KEY_ICON_SET, default_set).commit();
+            Str.apply(settings.edit().putString(SettingsActivity.KEY_ICON_SET, default_set));
         }
 
         Boolean indicate_charging = settings.getBoolean(SettingsActivity.KEY_INDICATE_CHARGING, true);

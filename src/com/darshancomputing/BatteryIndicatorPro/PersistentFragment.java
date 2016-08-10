@@ -118,7 +118,7 @@ public class PersistentFragment extends Fragment {
 
         sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
 
-        sp_main.edit().putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, true).commit();
+        Str.apply(sp_main.edit().putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, true));
     }
 
     @Override
@@ -128,11 +128,11 @@ public class PersistentFragment extends Fragment {
         if (sp_main.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
             // If you ever need a first-run dialog again, this is when you would show it
 
-            sp_main.edit().putBoolean(SettingsActivity.KEY_FIRST_RUN, false).commit();
+            Str.apply(sp_main.edit().putBoolean(SettingsActivity.KEY_FIRST_RUN, false));
         }
 
         if (! sp_main.getBoolean(SettingsActivity.KEY_NOTIFICATION_WIZARD_EVER_RUN, false)) {
-            sp_main.edit().putBoolean(SettingsActivity.KEY_NOTIFICATION_WIZARD_EVER_RUN, true).commit();
+            Str.apply(sp_main.edit().putBoolean(SettingsActivity.KEY_NOTIFICATION_WIZARD_EVER_RUN, true));
 
             new NotificationWizard().show(getFragmentManager(), "Blarg");
         }
@@ -193,7 +193,7 @@ public class PersistentFragment extends Fragment {
     }
 
     public void closeApp() {
-        sp_main.edit().putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false).commit();
+        Str.apply(sp_main.edit().putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false));
 
         getActivity().finishActivity(1);
 

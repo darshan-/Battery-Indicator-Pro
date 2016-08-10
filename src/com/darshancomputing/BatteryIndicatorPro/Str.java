@@ -15,6 +15,7 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.res.Resources;
+import android.content.SharedPreferences;
 import android.view.WindowManager;
 
 /* TODO?: have a public instance in the service and grab the server's instance from all other classes? */
@@ -226,20 +227,6 @@ public class Str {
         return -1;
     }
 
-    public static void overrideLanguage(Resources res, WindowManager wm, String lang_override) {
-        android.content.res.Configuration conf = res.getConfiguration();
-        if (! lang_override.equals("default")) {
-            conf.locale = SettingsActivity.codeToLocale(lang_override);
-            android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
-            wm.getDefaultDisplay().getMetrics(metrics);
-            res.updateConfiguration(conf, metrics);
-        } else {
-            /* TODO: Somehow set to system default */
-            /* Perhaps showing a confirmation dialog, saying the app needs to close in order for change to take effect.
-               You'd actually do that from SettingsActivity, so execution would never actually get here. */
-        }
-    }
-
     public android.text.Spanned timeRemaining(BatteryInfo info) {
         if (info.prediction.what == BatteryInfo.Prediction.NONE) {
             return android.text.Html.fromHtml("<font color=\"#6fc14b\">" + statuses[info.status] + "</font>");
@@ -273,5 +260,12 @@ public class Str {
             return res.getString(R.string.activity_until_charged);
         else
             return res.getString(R.string.activity_until_drained);
+    }
+
+    public static void apply(SharedPreferences.Editor e) {
+        if (android.os.Build.VERSION.SDK_INT >= 9)
+            e.apply();
+        else
+            e.commit();
     }
 }
