@@ -55,9 +55,6 @@ public class BatteryInfoService extends Service {
     private SharedPreferences sp_service;
     private SharedPreferences.Editor sps_editor;
 
-    private android.os.Vibrator mVibrator;
-    private android.media.AudioManager mAudioManager;
-
     private Resources res;
     private Str str;
     private AlarmDatabase alarms;
@@ -156,9 +153,6 @@ public class BatteryInfoService extends Service {
 
         mNotificationManager = NotificationManagerCompat.from(this);
         mainNotificationB = new NotificationCompat.Builder(this);
-
-        mVibrator = (android.os.Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        mAudioManager = (android.media.AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
@@ -879,9 +873,7 @@ public class BatteryInfoService extends Service {
             nb.setSound(android.net.Uri.parse(ringtone));
 
         if (c.getInt(alarms.INDEX_VIBRATE) == 1)
-            if (mAudioManager.getRingerMode() != mAudioManager.RINGER_MODE_SILENT)
-                /* I couldn't get the Notification to vibrate, so I do it myself... */
-                mVibrator.vibrate(new long[] {0, 200, 200, 400}, -1);
+            nb.setVibrate(new long[] {0, 200, 200, 400});
 
         if (c.getInt(alarms.INDEX_LIGHTS) == 1)
             nb.setDefaults(NotificationCompat.DEFAULT_LIGHTS);

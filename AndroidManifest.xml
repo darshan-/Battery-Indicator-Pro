@@ -4,8 +4,8 @@
     package="com.darshancomputing.BatteryIndicatorPro"
     xmlns:tools="http://schemas.android.com/tools"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
-    android:versionCode="013018"
-    android:versionName="10.0.0"
+    android:versionCode="013019"
+    android:versionName="10.0.1-dev"
 >
   <application
       android:label="@string/app_full_name"
@@ -117,7 +117,6 @@
 
   <!-- Permissions now considered "normal", automatically granted on API 23+ -->
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-  <uses-permission android:name="android.permission.VIBRATE" />
 
   <!-- Permissions now considered "dangerous", which require user permission on API 23+ -->
   <!--uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /--><!-- Implicitly granted with WRITE -->
