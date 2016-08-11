@@ -321,7 +321,7 @@ public class CurrentInfoFragment extends Fragment {
         }
 
         Boolean convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
-                                                        pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
+                                                     pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
         tv_health.setText(pfrag.str.healths[info.health]);
         tv_temp.setText(pfrag.str.formatTemp(info.temperature, convertF));
