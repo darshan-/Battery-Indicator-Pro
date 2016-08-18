@@ -489,23 +489,19 @@ public class BatteryInfoService extends Service {
         mainNotificationTopLine = lineFor(SettingsActivity.KEY_TOP_LINE);
         mainNotificationBottomLine = lineFor(SettingsActivity.KEY_BOTTOM_LINE);
 
-        mainNotificationB.setSmallIcon(iconFor(info.percent));
-
-        if (android.os.Build.VERSION.SDK_INT >= 16) {
-            mainNotificationB.setPriority(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                                                             str.default_main_notification_priority)));
-        }
-
-        mainNotificationB.setOngoing(true);
+        mainNotificationB.setSmallIcon(iconFor(info.percent))
+            .setOngoing(true)
+            .setWhen(0)
+            .setShowWhen(false)
+            .setContentIntent(currentInfoPendingIntent)
+            .setPriority(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
+                                                            str.default_main_notification_priority)))
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
         if (settings.getBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT,
                                 res.getBoolean(R.bool.default_use_system_notification_layout))) {
             mainNotificationB.setContentTitle(mainNotificationTopLine)
-                .setContentText(mainNotificationBottomLine)
-                .setContentIntent(currentInfoPendingIntent);
-
-            if (android.os.Build.VERSION.SDK_INT >= 21)
-                mainNotificationB.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+                .setContentText(mainNotificationBottomLine);
 
             needSetContentAgain = false;
         } else {
@@ -557,8 +553,7 @@ public class BatteryInfoService extends Service {
             if (android.os.Build.VERSION.SDK_INT < 11)
                 needSetContentAgain = true;
 
-            mainNotificationB.setContent(notificationRV)
-                .setContentIntent(currentInfoPendingIntent);
+            mainNotificationB.setContent(notificationRV);
         }
     }
 
