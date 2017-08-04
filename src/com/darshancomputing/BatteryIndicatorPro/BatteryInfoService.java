@@ -470,7 +470,9 @@ public class BatteryInfoService extends Service {
                 rv.setTextViewText(R.id.level, "" + info.percent + str.percent_symbol);
 
             rv.setOnClickPendingIntent(R.id.widget_layout, currentInfoPendingIntent);
-            widgetManager.updateAppWidget(widgetId, rv);
+            try {
+                widgetManager.updateAppWidget(widgetId, rv);
+            } catch(Exception e) {} // Based on crash reports, exception can be thrown that I think is best ignored
         }
     }
 

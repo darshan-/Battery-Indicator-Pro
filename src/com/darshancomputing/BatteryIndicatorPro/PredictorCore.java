@@ -314,6 +314,16 @@ public class PredictorCore {
         for (int i = start; i != ts_head; i += dir_inc) {
             double potential_ms;
 
+            // 20170803:
+            if (i < 0)
+                i = 0;
+            if (i > 100)
+                i = 100;
+            // 20170803:
+            // Timestamps is always length 101, with valid indices of 0-100
+            // dir_inc is either 1 (discharging) or -1 (charging)
+            // if (i + dir_inc) is outside that range, the first branch is taken
+            // so an index out of range in the second branch has to be from i itself
             if ((i == start && use_partial) || (i + dir_inc > 100) || (i + dir_inc < 0))
                 potential_ms = now - timestamps[cur_info.percent];
             else
