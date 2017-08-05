@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2015 Darshan-Josiah Barber
+    Copyright (c) 2010-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,7 +16,6 @@ package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -35,16 +34,6 @@ public class AlarmDatabase {
     public static final String KEY_AUDIO_STREAM = "audio_stream";
     public static final String KEY_VIBRATE      = "vibrate";
     public static final String KEY_LIGHTS       = "lights";
-
-    /* Is this a safe practice, or do I need to use Cursor.getColumnIndexOrThrow()? */
-    public static final int INDEX_ID           = 0;
-    public static final int INDEX_ENABLED      = 1;
-    public static final int INDEX_TYPE         = 2;
-    public static final int INDEX_THRESHOLD    = 3;
-    public static final int INDEX_RINGTONE     = 4;
-    public static final int INDEX_VIBRATE      = 5;
-    public static final int INDEX_LIGHTS       = 6;
-    public static final int INDEX_AUDIO_STREAM = 7;
 
     private final SQLOpenHelper mSQLOpenHelper;
     private SQLiteDatabase rdb;
@@ -221,7 +210,9 @@ public class AlarmDatabase {
         }
     }
 
-    public int addAlarm(Boolean enabled, String type, String threshold, String ringtone, Boolean vibrate, Boolean lights) {
+    public int addAlarm(Boolean enabled, String type, String threshold, String ringtone,
+                        String audio_stream, Boolean vibrate, Boolean lights)
+    {
         openDBs();
 
         try {
@@ -230,6 +221,7 @@ public class AlarmDatabase {
             cv.put(KEY_TYPE, type);
             cv.put(KEY_THRESHOLD, threshold);
             cv.put(KEY_RINGTONE, ringtone);
+            cv.put(KEY_AUDIO_STREAM, audio_stream);
             cv.put(KEY_VIBRATE, vibrate ? 1 : 0);
             cv.put(KEY_LIGHTS, lights ? 1 : 0);
             return (int) wdb.insert(ALARM_TABLE_NAME, null, cv);
@@ -239,7 +231,8 @@ public class AlarmDatabase {
     }
 
     public int addAlarm() {
-        return addAlarm(true, "fully_charged", "", android.provider.Settings.System.DEFAULT_NOTIFICATION_URI.toString(), false, true);
+        return addAlarm(true, "fully_charged", "", android.provider.Settings.System.DEFAULT_NOTIFICATION_URI.toString(),
+                        "notification", false, true);
     }
 
     public int setEnabled(int id, Boolean enabled) {
@@ -337,6 +330,19 @@ public class AlarmDatabase {
         }
     }
 
+    public int setAudioStream(int id, String stream) {
+        ContentValues cv = new ContentValues();
+        cv.put(KEY_AUDIO_STREAM, stream);
+
+        openDBs();
+
+        try {
+            return wdb.update(ALARM_TABLE_NAME, cv, KEY_ID + "=" + id, null);
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
     public void deleteAlarm(int id) {
         openDBs();
 
@@ -372,7 +378,7 @@ public class AlarmDatabase {
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             if (oldVersion == 5 && newVersion == 6) {
-                db.execSQL("ALTER TABLE " + LOG_TABLE_NAME + " ADD COLUMN " + KEY_AUDIO_STREAM + " STRING;");
+                db.execSQL("ALTER TABLE " + ALARM_TABLE_NAME + " ADD COLUMN " + KEY_AUDIO_STREAM + " STRING;");
             } else {
                 db.execSQL("DROP TABLE IF EXISTS " + ALARM_TABLE_NAME);
                 onCreate(db);

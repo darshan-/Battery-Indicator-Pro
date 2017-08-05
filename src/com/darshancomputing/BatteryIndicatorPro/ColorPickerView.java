@@ -6,7 +6,7 @@
 
   This file, or at least the changes from the original are
 
-  Copyright (c) 2013 Darshan-Josiah Barber
+  Copyright (c) 2013-2017 Darshan-Josiah Barber
 
 
   This program is free software: you can redistribute it and/or modify
@@ -33,7 +33,6 @@ import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.RectF;
 import android.graphics.Shader;
-import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.graphics.Shader.TileMode;
 import android.util.AttributeSet;

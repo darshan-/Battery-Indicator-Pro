@@ -6,7 +6,7 @@
 
   This file, or at least the changes from the original are
 
-  Copyright (c) 2013 Darshan-Josiah Barber
+  Copyright (c) 2013-2017 Darshan-Josiah Barber
 
 
   This program is free software: you can redistribute it and/or modify
@@ -32,7 +32,7 @@ import android.view.View;
 
 public class ColorPickerPanelView extends View {
     private final static float BORDER_WIDTH_PX = 1;
-    private float mDensity = 1f;
+    //private float mDensity = 1f;
     private int   mBorderColor = 0xff6E6E6E;
     private int   mColor = 0xff000000;
     private Paint mBorderPaint;
@@ -56,7 +56,7 @@ public class ColorPickerPanelView extends View {
     private void init(){
         mBorderPaint = new Paint();
         mColorPaint = new Paint();
-        mDensity = getContext().getResources().getDisplayMetrics().density;
+        //mDensity = getContext().getResources().getDisplayMetrics().density;
     }
 
     @Override

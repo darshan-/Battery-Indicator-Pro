@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2016 Darshan-Josiah Barber
+    Copyright (c) 2010-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,19 +15,16 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.view.Menu;
@@ -43,12 +40,13 @@ public class AlarmEditActivity extends PreferenceActivity {
     private Cursor mCursor;
     private AlarmAdapter mAdapter;
 
-    public static final String KEY_ENABLED   = "enabled";
-    public static final String KEY_TYPE      = "type";
-    public static final String KEY_THRESHOLD = "threshold";
-    public static final String KEY_RINGTONE  = "ringtone";
-    public static final String KEY_VIBRATE   = "vibrate";
-    public static final String KEY_LIGHTS    = "lights";
+    public static final String KEY_ENABLED      = "enabled";
+    public static final String KEY_TYPE         = "type";
+    public static final String KEY_THRESHOLD    = "threshold";
+    public static final String KEY_RINGTONE     = "ringtone";
+    public static final String KEY_AUDIO_STREAM = "audio_stream";
+    public static final String KEY_VIBRATE      = "vibrate";
+    public static final String KEY_LIGHTS       = "lights";
 
     public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
 
@@ -199,6 +197,26 @@ public class AlarmEditActivity extends PreferenceActivity {
             }
         });
 
+        lp = (ListPreference) mPreferenceScreen.findPreference(KEY_AUDIO_STREAM);
+        if (mAdapter.audio_stream == null)
+            mAdapter.setAudioStream("notification"); // Lazy migration (Service handles null value as default)
+        lp.setValue(mAdapter.audio_stream);
+        updateSummary(lp);
+        lp.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            public boolean onPreferenceChange(Preference pref, Object newValue) {
+                if (mAdapter.audio_stream.equals((String) newValue)) return false;
+
+                System.out.println(".......................... try wdb.update");
+
+                mAdapter.setAudioStream((String) newValue);
+
+                ((ListPreference) pref).setValue((String) newValue);
+                updateSummary((ListPreference) pref);
+
+                return false;
+            }
+        });
+
         cb = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_VIBRATE);
         cb.setChecked(mAdapter.vibrate);
         cb.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
@@ -272,7 +290,7 @@ public class AlarmEditActivity extends PreferenceActivity {
 
     private class AlarmAdapter {
         public int id;
-        public String type, threshold, ringtone;
+        public String type, threshold, ringtone, audio_stream;
         public Boolean enabled, vibrate, lights;
 
         public AlarmAdapter() {
@@ -280,13 +298,14 @@ public class AlarmEditActivity extends PreferenceActivity {
         }
 
         public void requery() {
-                   id = mCursor.getInt   (AlarmDatabase.INDEX_ID);
-                 type = mCursor.getString(AlarmDatabase.INDEX_TYPE);
-            threshold = mCursor.getString(AlarmDatabase.INDEX_THRESHOLD);
-             ringtone = mCursor.getString(AlarmDatabase.INDEX_RINGTONE);
-              enabled = (mCursor.getInt(AlarmDatabase.INDEX_ENABLED) == 1);
-              vibrate = (mCursor.getInt(AlarmDatabase.INDEX_VIBRATE) == 1);
-              lights = (mCursor.getInt(AlarmDatabase.INDEX_LIGHTS) == 1);
+                      id = mCursor.getInt   (mCursor.getColumnIndex(AlarmDatabase.KEY_ID));
+                    type = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_TYPE));
+               threshold = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
+                ringtone = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_RINGTONE));
+            audio_stream = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_AUDIO_STREAM));
+                 enabled = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_ENABLED)) == 1);
+                 vibrate = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_VIBRATE)) == 1);
+                 lights  = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_LIGHTS)) == 1);
          }
 
         public void setEnabled(Boolean b) {
@@ -317,6 +336,11 @@ public class AlarmEditActivity extends PreferenceActivity {
         public void setRingtone(String s) {
             ringtone = s;
             alarms.setRingtone(id, ringtone);
+        }
+
+        public void setAudioStream(String s) {
+            audio_stream = s;
+            alarms.setAudioStream(id, audio_stream);
         }
     }
 }

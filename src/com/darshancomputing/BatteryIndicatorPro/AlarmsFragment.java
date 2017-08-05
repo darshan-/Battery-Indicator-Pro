@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2016 Darshan-Josiah Barber
+    Copyright (c) 2010-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,16 +14,12 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
-import android.app.Activity;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,11 +28,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.View.OnKeyListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,8 +39,8 @@ import android.support.v4.app.Fragment;
 public class AlarmsFragment extends Fragment {
     private static PersistentFragment pfrag;
     private AlarmDatabase alarms;
-    private Resources res;
-    private Str str;
+    //private Resources res;
+    //private Str str;
     private Cursor mCursor;
     private LayoutInflater mInflater;
     private LinearLayout mAlarmsList;
@@ -201,10 +194,10 @@ public class AlarmsFragment extends Fragment {
         final      View summary_box =                  view.findViewById(R.id.alarm_summary_box);
         final CompoundButton toggle = (CompoundButton) view.findViewById(R.id.toggle);
 
-        final int    id  = mCursor.getInt   (AlarmDatabase.INDEX_ID);
-        String     type  = mCursor.getString(AlarmDatabase.INDEX_TYPE);
-        String threshold = mCursor.getString(AlarmDatabase.INDEX_THRESHOLD);
-        Boolean enabled  = (mCursor.getInt(AlarmDatabase.INDEX_ENABLED) == 1);
+        final int     id = mCursor.getInt   (mCursor.getColumnIndex(AlarmDatabase.KEY_ID));
+        String      type = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_TYPE));
+        String threshold = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
+        Boolean  enabled = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_ENABLED)) == 1);
 
         String s = pfrag.str.alarm_types_display[pfrag.str.indexOf(pfrag.str.alarm_type_values, type)];
         if (type.equals("temp_rises")) {

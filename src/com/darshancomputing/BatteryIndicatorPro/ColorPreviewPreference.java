@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2013 Darshan-Josiah Barber
+    Copyright (c) 2010-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,8 +15,6 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.preference.Preference;
 import android.util.AttributeSet;

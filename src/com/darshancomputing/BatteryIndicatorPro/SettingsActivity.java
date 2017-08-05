@@ -25,8 +25,6 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -41,7 +39,6 @@ import android.preference.PreferenceScreen;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.WindowManager;
 import java.util.Locale;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
@@ -276,7 +273,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private static final Object[] EMPTY_OBJECT_ARRAY = {};
-    private static final  Class[]  EMPTY_CLASS_ARRAY = {};
+    private static final  Class<?>[]  EMPTY_CLASS_ARRAY = {};
 
     public class MessageHandler extends Handler {
         @Override

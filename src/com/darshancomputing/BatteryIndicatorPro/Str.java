@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2016 Darshan-Josiah Barber
+    Copyright (c) 2010-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,7 +16,6 @@ package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.res.Resources;
 import android.content.SharedPreferences;
-import android.view.WindowManager;
 
 /* TODO?: have a public instance in the service and grab the server's instance from all other classes? */
 public class Str {

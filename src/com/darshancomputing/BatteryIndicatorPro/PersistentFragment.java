@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2016 Darshan-Josiah Barber
+    Copyright (c) 2009-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
 
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 

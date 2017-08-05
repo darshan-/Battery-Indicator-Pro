@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2016 Darshan-Josiah Barber
+    Copyright (c) 2009-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,25 +14,17 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -68,7 +60,7 @@ public class CurrentInfoFragment extends Fragment {
     private ImageView plugged_icon;
 
     private BatteryInfo info = new BatteryInfo();
-    private CurrentHack currentHack;
+    //private CurrentHack currentHack;
 
     public static boolean awaitingNotificationUnblock;
     public static boolean showingNotificationBlockDialog;
@@ -131,8 +123,9 @@ public class CurrentInfoFragment extends Fragment {
 
         dpScale = getActivity().getResources().getDisplayMetrics().density;
 
-        currentHack = CurrentHack.getInstance(getActivity());
-        currentHack.setPreferFS(pfrag.settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+        //currentHack = CurrentHack.getInstance(getActivity());
+        CurrentHack.getInstance(getActivity()); // Ensure an instance exists?
+        CurrentHack.setPreferFS(pfrag.settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
                                                           pfrag.res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
         setHasOptionsMenu(true);
@@ -347,9 +340,9 @@ public class CurrentInfoFragment extends Fragment {
             Long current = null;
 
             if (pfrag.settings.getBoolean(SettingsActivity.KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW, false))
-                current = currentHack.getAvgCurrent();
+                current = CurrentHack.getAvgCurrent();
             if (current == null) // Either don't prefer avg or avg isn't available
-                current = currentHack.getCurrent();
+                current = CurrentHack.getCurrent();
             if (current != null)
                 s += String.valueOf(current) + "mA";
         } else {
@@ -378,7 +371,7 @@ public class CurrentInfoFragment extends Fragment {
         }
     };
 
-    private void mStartActivity(Class c) {
+    private void mStartActivity(Class<?> c) {
         ComponentName comp = new ComponentName(getActivity().getPackageName(), c.getName());
         //startActivity(new Intent().setComponent(comp));
         startActivityForResult(new Intent().setComponent(comp), 1);

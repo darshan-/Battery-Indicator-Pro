@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Darshan-Josiah Barber
+    Copyright (c) 2016-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,48 +16,17 @@ package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.CursorWrapper;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.os.Messenger;
-import android.util.Log;
-import android.text.method.LinkMovementMethod;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.ListFragment;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.ContextCompat;
 
 public class NotificationWizard extends DialogFragment {
     private static PersistentFragment pfrag;

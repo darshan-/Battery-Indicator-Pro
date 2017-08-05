@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2016 Darshan-Josiah Barber
+    Copyright (c) 2009-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -32,9 +32,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
-import android.os.PowerManager;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -96,7 +93,7 @@ public class BatteryInfoService extends Service {
 
 
     private static final Object[] EMPTY_OBJECT_ARRAY = {};
-    private static final  Class[]  EMPTY_CLASS_ARRAY = {};
+    private static final  Class<?>[]  EMPTY_CLASS_ARRAY = {};
 
     private static final int plainIcon0 = R.drawable.plain000;
     private static final int small_plainIcon0 = R.drawable.small_plain000;
@@ -175,7 +172,7 @@ public class BatteryInfoService extends Service {
 
         widgetManager = AppWidgetManager.getInstance(this);
 
-        Class[] appWidgetProviders = {BatteryInfoAppWidgetProvider.class, /* Circle widget! */
+        Class<?>[] appWidgetProviders = {BatteryInfoAppWidgetProvider.class, /* Circle widget! */
                                              FullAppWidgetProvider.class};
 
         for (int i = 0; i < appWidgetProviders.length; i++) {
@@ -798,7 +795,8 @@ public class BatteryInfoService extends Service {
         if (c != null) {
             sps_editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
             nb = parseAlarmCursor(c);
-            nb.setContentTitle(str.alarm_charge_drops + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol)
+            String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
+            nb.setContentTitle(str.alarm_charge_drops + threshold + str.percent_symbol)
                 .setContentText(str.alarm_text)
                 .setContentIntent(alarmsPendingIntent);
 
@@ -813,7 +811,8 @@ public class BatteryInfoService extends Service {
         if (c != null && info.status != BatteryInfo.STATUS_UNPLUGGED) {
             sps_editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
             nb = parseAlarmCursor(c);
-            nb.setContentTitle(str.alarm_charge_rises + c.getInt(alarms.INDEX_THRESHOLD) + str.percent_symbol)
+            String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
+            nb.setContentTitle(str.alarm_charge_rises + threshold + str.percent_symbol)
                 .setContentText(str.alarm_text)
                 .setContentIntent(alarmsPendingIntent);
 
@@ -831,7 +830,8 @@ public class BatteryInfoService extends Service {
 
             sps_editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
             nb = parseAlarmCursor(c);
-            nb.setContentTitle(str.alarm_temp_rises + str.formatTemp(c.getInt(alarms.INDEX_THRESHOLD), convertF, false))
+            String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
+            nb.setContentTitle(str.alarm_temp_rises + str.formatTemp(Integer.valueOf(threshold), convertF, false))
                 .setContentText(str.alarm_text)
                 .setContentIntent(alarmsPendingIntent);
 
@@ -868,14 +868,19 @@ public class BatteryInfoService extends Service {
         // Use setSound(Uri sound, int streamType)
         // either android.media.AudioManager.STREAM_NOTIFICATION (current, and keep default)
         // or android.media.AudioManager.STREAM_ALARM
-        String ringtone = c.getString(alarms.INDEX_RINGTONE);
+        String ringtone = c.getString(c.getColumnIndex(AlarmDatabase.KEY_RINGTONE));
+        String audio_stream = c.getString(c.getColumnIndex(AlarmDatabase.KEY_AUDIO_STREAM));
+        int stream = android.media.AudioManager.STREAM_NOTIFICATION;
+        if (audio_stream != null && audio_stream.equals("alarm"))
+            stream = android.media.AudioManager.STREAM_ALARM;
         if (! ringtone.equals(""))
-            nb.setSound(android.net.Uri.parse(ringtone));
+            nb.setSound(android.net.Uri.parse(ringtone), stream);
+        System.out.println("...................................... stream: " + stream);
 
-        if (c.getInt(alarms.INDEX_VIBRATE) == 1)
+        if (c.getInt(c.getColumnIndex(AlarmDatabase.KEY_VIBRATE)) == 1)
             nb.setVibrate(new long[] {0, 200, 200, 400});
 
-        if (c.getInt(alarms.INDEX_LIGHTS) == 1)
+        if (c.getInt(c.getColumnIndex(AlarmDatabase.KEY_LIGHTS)) == 1)
             nb.setDefaults(NotificationCompat.DEFAULT_LIGHTS);
 
         return nb;
