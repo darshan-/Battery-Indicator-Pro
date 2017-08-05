@@ -865,6 +865,9 @@ public class BatteryInfoService extends Service {
             .setSmallIcon(R.drawable.stat_notify_alarm)
             .setAutoCancel(true);
 
+        // Use setSound(Uri sound, int streamType)
+        // either android.media.AudioManager.STREAM_NOTIFICATION (current, and keep default)
+        // or android.media.AudioManager.STREAM_ALARM
         String ringtone = c.getString(alarms.INDEX_RINGTONE);
         if (! ringtone.equals(""))
             nb.setSound(android.net.Uri.parse(ringtone));

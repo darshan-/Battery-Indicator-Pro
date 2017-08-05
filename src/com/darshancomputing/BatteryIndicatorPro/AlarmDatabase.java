@@ -24,25 +24,27 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AlarmDatabase {
     private static final String DATABASE_NAME    = "alarms.db";
-    private static final int    DATABASE_VERSION = 5;
+    private static final int    DATABASE_VERSION = 6;
     private static final String ALARM_TABLE_NAME = "alarms";
 
-    public static final String KEY_ID        = "_id";
-    public static final String KEY_ENABLED   = "enabled";
-    public static final String KEY_TYPE      = "type";
-    public static final String KEY_THRESHOLD = "threshold";
-    public static final String KEY_RINGTONE  = "ringtone";
-    public static final String KEY_VIBRATE   = "vibrate";
-    public static final String KEY_LIGHTS    = "lights";
+    public static final String KEY_ID           = "_id";
+    public static final String KEY_ENABLED      = "enabled";
+    public static final String KEY_TYPE         = "type";
+    public static final String KEY_THRESHOLD    = "threshold";
+    public static final String KEY_RINGTONE     = "ringtone";
+    public static final String KEY_AUDIO_STREAM = "audio_stream";
+    public static final String KEY_VIBRATE      = "vibrate";
+    public static final String KEY_LIGHTS       = "lights";
 
     /* Is this a safe practice, or do I need to use Cursor.getColumnIndexOrThrow()? */
-    public static final int INDEX_ID        = 0;
-    public static final int INDEX_ENABLED   = 1;
-    public static final int INDEX_TYPE      = 2;
-    public static final int INDEX_THRESHOLD = 3;
-    public static final int INDEX_RINGTONE  = 4;
-    public static final int INDEX_VIBRATE   = 5;
-    public static final int INDEX_LIGHTS    = 6;
+    public static final int INDEX_ID           = 0;
+    public static final int INDEX_ENABLED      = 1;
+    public static final int INDEX_TYPE         = 2;
+    public static final int INDEX_THRESHOLD    = 3;
+    public static final int INDEX_RINGTONE     = 4;
+    public static final int INDEX_VIBRATE      = 5;
+    public static final int INDEX_LIGHTS       = 6;
+    public static final int INDEX_AUDIO_STREAM = 7;
 
     private final SQLOpenHelper mSQLOpenHelper;
     private SQLiteDatabase rdb;
@@ -355,20 +357,22 @@ public class AlarmDatabase {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL("CREATE TABLE " + ALARM_TABLE_NAME + " ("
-                       + KEY_ID        + " INTEGER PRIMARY KEY,"
-                       + KEY_ENABLED   + " INTEGER,"
-                       + KEY_TYPE      + " STRING,"
-                       + KEY_THRESHOLD + " STRING,"
-                       + KEY_RINGTONE  + " STRING,"
-                       + KEY_VIBRATE   + " INTEGER,"
-                       + KEY_LIGHTS    + " INTEGER"
+            db.execSQL("CREATE TABLE "    + ALARM_TABLE_NAME + " ("
+                       + KEY_ID           + " INTEGER PRIMARY KEY,"
+                       + KEY_ENABLED      + " INTEGER,"
+                       + KEY_TYPE         + " STRING,"
+                       + KEY_THRESHOLD    + " STRING,"
+                       + KEY_RINGTONE     + " STRING,"
+                       + KEY_VIBRATE      + " INTEGER,"
+                       + KEY_LIGHTS       + " INTEGER,"
+                       + KEY_AUDIO_STREAM + " STRING"
                        + ");");
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            if (false) {
+            if (oldVersion == 5 && newVersion == 6) {
+                db.execSQL("ALTER TABLE " + LOG_TABLE_NAME + " ADD COLUMN " + KEY_AUDIO_STREAM + " STRING;");
             } else {
                 db.execSQL("DROP TABLE IF EXISTS " + ALARM_TABLE_NAME);
                 onCreate(db);

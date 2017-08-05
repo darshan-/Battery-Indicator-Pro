@@ -177,6 +177,11 @@
   <string formatted="false" name="alarm_health_failure">"Battery health is: "</string>
   <string formatted="false" name="alarm_text">Select to edit alarms.</string>
 
+  <string formatted="false" name="alarm_audio_stream_notification">Notification</string>
+  <string formatted="false" name="alarm_audio_stream_alarm">Alarm</string>
+  <string formatted="false" name="pref_alarm_audio_stream">Audio Stream</string>
+  <string formatted="false" name="pref_alarm_audio_stream_summary">Use audio stream:</string>
+
   <string formatted="false" name="logs_empty">Logs Are Empty</string>
   <plurals name="n_log_items">
     <item quantity="one">%d Log Item</item>

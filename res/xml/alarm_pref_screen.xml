@@ -46,6 +46,16 @@
         android:title="@string/pref_alarm_ringtone"
     />
 
+    <ListPreference
+        android:key="audio_stream"
+        android:persistent="false"
+        android:entries="@array/alarm_audio_stream_entries"
+        android:entryValues="@array/alarm_audio_stream_values"
+        android:dialogTitle="@string/pref_alarm_audio_stream_summary"
+        android:defaultValue="@string/default_alarm_audio_stream"
+        android:title="@string/pref_alarm_audio_stream"
+    />
+
     <CheckBoxPreference
         android:key="vibrate"
         android:persistent="false"

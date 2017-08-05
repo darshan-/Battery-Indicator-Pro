@@ -337,6 +337,18 @@
     <item>health_failure</item>
   </string-array>
 
+  <string-array name="alarm_audio_stream_values">
+    <item>notification</item>
+    <item>alarm</item>
+  </string-array>
+
+  <string name="default_alarm_audio_stream">notification</string>
+
+  <string-array name="alarm_audio_stream_entries">
+    <item>@string/alarm_audio_stream_notification</item>
+    <item>@string/alarm_audio_stream_alarm</item>
+  </string-array>
+
   <string-array name="boot_pref_values">
     <item>always</item>
     <item>never</item>
