@@ -15,6 +15,7 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.AlarmManager;
+import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
@@ -27,6 +28,9 @@ import android.content.res.Resources;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -44,7 +48,8 @@ import java.util.HashSet;
 public class BatteryInfoService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     private final IntentFilter userPresent    = new IntentFilter(Intent.ACTION_USER_PRESENT);
-    private PendingIntent currentInfoPendingIntent, updatePredictorPendingIntent, alarmsPendingIntent;
+    private PendingIntent currentInfoPendingIntent, updatePredictorPendingIntent, alarmsPendingIntent, alarmsCancelPendingIntent;
+    private Intent alarmsIntent;
 
     private NotificationManagerCompat mNotificationManager;
     private AlarmManager alarmManager;
@@ -74,9 +79,11 @@ public class BatteryInfoService extends Service {
     private static final int NOTIFICATION_ALARM_CHARGE = 3;
     private static final int NOTIFICATION_ALARM_HEALTH = 4;
     private static final int NOTIFICATION_ALARM_TEMP   = 5;
+    private static final int NOTIFICATION_ALARM_ALARM  = 6;
 
     private static final int RC_MAIN   = 100;
-    private static final int RC_ALARMS = 101;
+    private static final int RC_ALARMS_EDIT = 101;
+    private static final int RC_ALARMS_CANCEL = 102;
 
     public static final String KEY_PREVIOUS_CHARGE = "previous_charge";
     public static final String KEY_PREVIOUS_TEMP = "previous_temp";
@@ -88,8 +95,9 @@ public class BatteryInfoService extends Service {
 
     private static final String EXTRA_UPDATE_PREDICTOR = "com.darshancomputing.BatteryBotPro.EXTRA_UPDATE_PREDICTOR";
 
-    public static final String EXTRA_CURRENT_INFO = "com.darshancomputing.BatteryBotPro.EXTRA_CURRENT_INFO";
-    public static final String EXTRA_EDIT_ALARMS  = "com.darshancomputing.BatteryBotPro.EXTRA_EDIT_ALARMS";
+    public static final String EXTRA_CURRENT_INFO  = "com.darshancomputing.BatteryBotPro.EXTRA_CURRENT_INFO";
+    public static final String EXTRA_EDIT_ALARMS   = "com.darshancomputing.BatteryBotPro.EXTRA_EDIT_ALARMS";
+    public static final String EXTRA_CANCEL_ALARMS = "com.darshancomputing.BatteryBotPro.EXTRA_CANCEL_ALARMS";
 
 
     private static final Object[] EMPTY_OBJECT_ARRAY = {};
@@ -106,6 +114,8 @@ public class BatteryInfoService extends Service {
     private RemoteViews notificationRV;
 
     private Predictor predictor;
+
+    private MediaPlayer alarmPlayer = new MediaPlayer();
 
     // Workaround for NotificationCompat.Builder losing custom content view on pre-Honeycomb
     // See https://code.google.com/p/android/issues/detail?id=30495
@@ -167,8 +177,13 @@ public class BatteryInfoService extends Service {
         updatePredictorIntent.putExtra(EXTRA_UPDATE_PREDICTOR, true);
         updatePredictorPendingIntent = PendingIntent.getService(this, 0, updatePredictorIntent, 0);
 
-        Intent alarmsIntent = new Intent(this, BatteryInfoActivity.class).putExtra(EXTRA_EDIT_ALARMS, true);
-        alarmsPendingIntent = PendingIntent.getActivity(this, RC_ALARMS, alarmsIntent, 0);
+        alarmsIntent = new Intent(this, BatteryInfoActivity.class).putExtra(EXTRA_EDIT_ALARMS, true);
+
+        Intent serviceAlarmsIntent = new Intent(this, BatteryInfoService.class).putExtra(EXTRA_EDIT_ALARMS, true);
+        alarmsPendingIntent = PendingIntent.getService(this, RC_ALARMS_EDIT, serviceAlarmsIntent, 0);
+
+        Intent serviceCancelAlarmsIntent = new Intent(this, BatteryInfoService.class).putExtra(EXTRA_CANCEL_ALARMS, true);
+        alarmsCancelPendingIntent = PendingIntent.getService(this, RC_ALARMS_CANCEL, serviceCancelAlarmsIntent, 0);
 
         widgetManager = AppWidgetManager.getInstance(this);
 
@@ -202,15 +217,32 @@ public class BatteryInfoService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        // TODO: Do I need a filter, or is it okay to just update(null) every time?
-        //if (intent != null && intent.getBooleanExtra(EXTRA_UPDATE_PREDICTOR, false))
-        update(null);
+        if (intent != null && intent.getBooleanExtra(EXTRA_EDIT_ALARMS, false)) {
+            alarmPlayer.stop();
+            startActivity(alarmsIntent);
+            return Service.START_STICKY;
+        }
+
+        if (intent != null && intent.getBooleanExtra(EXTRA_CANCEL_ALARMS, false)) {
+            alarmPlayer.stop();
+            return Service.START_STICKY;
+        }
+
+        if (intent != null && intent.getBooleanExtra(EXTRA_UPDATE_PREDICTOR, false))
+            update(null);
 
         return Service.START_STICKY;
     }
 
     @Override
     public IBinder onBind(Intent intent) {
+        // NotificationCompat.Builder nb = makeTestAlarmBuilder();
+        // nb.setContentTitle("Test Title")
+        //     .setContentText("Text content")
+        //     .setContentIntent(alarmsPendingIntent)
+        //     .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+        //notifyAlarm(makeTestAlarmBuilder().build());
+
         return messenger.getBinder();
     }
 
@@ -780,13 +812,13 @@ public class BatteryInfoService extends Service {
             if (c != null) {
                 nb = parseAlarmCursor(c);
                 nb.setContentTitle(str.alarm_fully_charged)
-                    .setContentText(str.alarm_text)
-                    .setContentIntent(alarmsPendingIntent);
+                    .setContentText(str.alarm_text);
 
                 if (android.os.Build.VERSION.SDK_INT >= 21)
                     nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
-                mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
+                //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
+                notifyAlarm(nb.build());
                 c.close();
             }
         }
@@ -797,13 +829,13 @@ public class BatteryInfoService extends Service {
             nb = parseAlarmCursor(c);
             String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
             nb.setContentTitle(str.alarm_charge_drops + threshold + str.percent_symbol)
-                .setContentText(str.alarm_text)
-                .setContentIntent(alarmsPendingIntent);
+                .setContentText(str.alarm_text);
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
                 nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
-            mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
+            //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
+            notifyAlarm(nb.build());
             c.close();
         }
 
@@ -813,13 +845,13 @@ public class BatteryInfoService extends Service {
             nb = parseAlarmCursor(c);
             String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
             nb.setContentTitle(str.alarm_charge_rises + threshold + str.percent_symbol)
-                .setContentText(str.alarm_text)
-                .setContentIntent(alarmsPendingIntent);
+                .setContentText(str.alarm_text);
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
                 nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
-            mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
+            //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
+            notifyAlarm(nb.build());
             c.close();
         }
 
@@ -832,13 +864,13 @@ public class BatteryInfoService extends Service {
             nb = parseAlarmCursor(c);
             String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
             nb.setContentTitle(str.alarm_temp_rises + str.formatTemp(Integer.valueOf(threshold), convertF, false))
-                .setContentText(str.alarm_text)
-                .setContentIntent(alarmsPendingIntent);
+                .setContentText(str.alarm_text);
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
                 nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
-            mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
+            //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
+            notifyAlarm(nb.build());
             c.close();
         }
 
@@ -848,13 +880,13 @@ public class BatteryInfoService extends Service {
                 sps_editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
                 nb = parseAlarmCursor(c);
                 nb.setContentTitle(str.alarm_health_failure + str.healths[info.health])
-                    .setContentText(str.alarm_text)
-                    .setContentIntent(alarmsPendingIntent);
+                    .setContentText(str.alarm_text);
 
                 if (android.os.Build.VERSION.SDK_INT >= 21)
                     nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
-                mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
+                //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
+                notifyAlarm(nb.build());
                 c.close();
             }
         }
@@ -863,19 +895,17 @@ public class BatteryInfoService extends Service {
     private NotificationCompat.Builder parseAlarmCursor(Cursor c) {
         NotificationCompat.Builder nb = new NotificationCompat.Builder(this)
             .setSmallIcon(R.drawable.stat_notify_alarm)
-            .setAutoCancel(true);
+            .setAutoCancel(true)
+            .setContentIntent(alarmsPendingIntent)
+            .setDeleteIntent(alarmsCancelPendingIntent);
 
-        // Use setSound(Uri sound, int streamType)
-        // either android.media.AudioManager.STREAM_NOTIFICATION (current, and keep default)
-        // or android.media.AudioManager.STREAM_ALARM
         String ringtone = c.getString(c.getColumnIndex(AlarmDatabase.KEY_RINGTONE));
         String audio_stream = c.getString(c.getColumnIndex(AlarmDatabase.KEY_AUDIO_STREAM));
-        int stream = android.media.AudioManager.STREAM_NOTIFICATION;
+        int stream = AudioManager.STREAM_NOTIFICATION;
         if (audio_stream != null && audio_stream.equals("alarm"))
-            stream = android.media.AudioManager.STREAM_ALARM;
+            stream = AudioManager.STREAM_ALARM;
         if (! ringtone.equals(""))
-            nb.setSound(android.net.Uri.parse(ringtone), stream);
-        System.out.println("...................................... stream: " + stream);
+            nb.setSound(Uri.parse(ringtone), stream);
 
         if (c.getInt(c.getColumnIndex(AlarmDatabase.KEY_VIBRATE)) == 1)
             nb.setVibrate(new long[] {0, 200, 200, 400});
@@ -885,6 +915,63 @@ public class BatteryInfoService extends Service {
 
         return nb;
     }
+
+    private void notifyAlarm(Notification n) {
+        mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, n);
+        if (n.audioStreamType == AudioManager.STREAM_ALARM)
+            playAlarmMyself(n.sound);
+    }
+
+    private boolean playAlarmMyself(Uri uri) {
+        try {
+            alarmPlayer.setDataSource(this, uri);
+            alarmPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
+            alarmPlayer.prepare();
+            // TODO: Some users want looping as an option, too.  But I'd then need to make it cancelable, which is more work.
+            //     And it could drain the battery if the user doesn't notice it and it keeps going.
+            //     So leave that possibility to be considered another time.
+            //if (loop)
+            //mMediaPlayer.setLooping(true);
+            alarmPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    public void onPrepared(MediaPlayer mp) {
+                        mp.seekTo(0);
+                        mp.start();
+                    }
+
+                });
+            //if (!loop)
+            alarmPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.stop();
+                    }
+
+                });
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    // private NotificationCompat.Builder makeTestAlarmBuilder() {
+    //     return new NotificationCompat.Builder(this)
+    //         .setSmallIcon(R.drawable.stat_notify_alarm)
+    //         .setAutoCancel(true)
+    //         .setSound(Uri.parse("content://media/internal/audio/media/14"), AudioManager.STREAM_ALARM)
+    //         //.setSound(Uri.parse("content://media/external/audio/media/14"), AudioManager.STREAM_ALARM)
+    //         .setContentTitle("Test Title")
+    //         .setContentText("Text content")
+    //         .setContentIntent(alarmsPendingIntent)
+    //         .setDeleteIntent(alarmsCancelPendingIntent)
+    //         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+
+    //     // Uri ringtone = android.media.RingtoneManager
+    //     //     .getDefaultUri(android.media.RingtoneManager.TYPE_NOTIFICATION);
+    //     // int stream = AudioManager.STREAM_ALARM;
+    //     //nb.setSound(ringtone, stream);
+
+    //     //return nb;
+    // }
 
     private String formatTime(Date d) {
         String format = android.provider.Settings.System.getString(getContentResolver(),
