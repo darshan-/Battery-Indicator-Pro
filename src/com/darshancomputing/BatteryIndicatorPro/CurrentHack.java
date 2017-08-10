@@ -40,7 +40,8 @@ class CurrentHack {
 
     protected CurrentHack(Context c) {
         Context context = c.getApplicationContext();
-        batteryManager = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= 21)
+            batteryManager = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
     }
 
     public static CurrentHack getInstance(Context c) {

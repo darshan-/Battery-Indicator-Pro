@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.android.tools.build:gradle:2.3.3'
     }
 }
 
@@ -15,7 +15,7 @@ secureProperties.load(new FileInputStream("secure.properties"))
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    buildToolsVersion "26.0.1"
 
     configurations {
         all*.exclude module: 'support-annotations'
@@ -28,7 +28,7 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 11
+        minSdkVersion 16
         targetSdkVersion 24
 
         vectorDrawables.useSupportLibrary = false
@@ -36,7 +36,10 @@ android {
         resConfigs "ar", "cs", "de", "el", "en", "en-rUS", "es", "es-rUS", "fr", "hu", "it", "ja", "lt", "nl", "pl", "pt", "pt-rBR", "ro", "ru", "sk", "sl", "tr", "zh", "zh-rCN" // Don't use support library translations for languages that the app doesn't have its own translations for
 
         jackOptions {
-            enabled true
+            enabled true //Jack: 2372276; Javac: 2402246
+            //             Jack: 2085576; Javac: 2072368
+            //             Jack: 1982891; Javac: 1969299
+            //             Jack: 1999023; Javac: 2036799 // no-obfuscation
         }
     }
 
@@ -77,6 +80,7 @@ android {
             // shrinkResources true // Only enable on actual release builds
             //proguardFile 'proguard-rules.pro'
             proguardFile 'proguard-no-obfuscation'
+            //proguardFile 'proguard.conf'
         }
     }
 }

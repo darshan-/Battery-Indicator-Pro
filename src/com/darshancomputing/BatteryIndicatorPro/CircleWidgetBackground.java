@@ -69,7 +69,7 @@ class CircleWidgetBackground {
     public void setLevel(int level) {
         if (level < 0) level = 0; // I suspect we might get called with -1 in certain circumstances
 
-        int top_left = 0 + (int) (ARC_STROKE_WIDTH / 2);
+        int top_left = (int) (ARC_STROKE_WIDTH / 2);
         int bottom_right = DIMEN - (int) (ARC_STROKE_WIDTH / 2);
 
         RectF oval = new RectF(top_left, top_left, bottom_right, bottom_right);
