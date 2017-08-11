@@ -6,7 +6,7 @@
 
     This file, or at least the changes from the original are
 
-      Copyright (c) 2013 Darshan-Josiah Barber
+      Copyright (c) 2013-2017 Darshan-Josiah Barber
 
 
     This program is free software: you can redistribute it and/or modify
@@ -29,6 +29,7 @@ import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.LinearLayout;
 
 public class ColorPickerDialog extends Dialog implements ColorPickerView.OnColorChangedListener,
@@ -48,7 +49,9 @@ public class ColorPickerDialog extends Dialog implements ColorPickerView.OnColor
     }
 
     private void init(int color) {
-        getWindow().setFormat(PixelFormat.RGBA_8888); // To fight color banding.
+        Window w = getWindow();
+        if (w != null)
+            w.setFormat(PixelFormat.RGBA_8888); // To fight color banding.
         setUp(color);
     }
 

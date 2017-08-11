@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2016 Darshan-Josiah Barber
+    Copyright (c) 2009-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,14 +14,15 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+//import android.content.pm.PackageInfo;
+//import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -205,7 +206,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private static final int DIALOG_CONFIRM_TEN_PERCENT_ENABLE  = 0;
     private static final int DIALOG_CONFIRM_TEN_PERCENT_DISABLE = 1;
 
-    private Intent biServiceIntent;
     private Messenger serviceMessenger;
     private final Messenger messenger = new Messenger(new MessageHandler());
     private final BatteryInfoService.RemoteConnection serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
@@ -213,7 +213,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private Resources res;
     private PreferenceScreen mPreferenceScreen;
     private SharedPreferences mSharedPreferences;
-    private CurrentHack currentHack;
+    //private CurrentHack currentHack;
 
     private String pref_screen;
 
@@ -232,8 +232,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private int iGreenThresh;
 
     private Boolean ten_percent_mode;
-
-    private String currentPlugin;
 
     private int menu_res = R.menu.settings;
 
@@ -260,7 +258,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         if (ten_percent_mode) {
             for (i = 0; i < tenPercentEntries.length - 1; i++)
-                if (Integer.valueOf(tenPercentEntries[i]) >= Integer.valueOf(x)) break;
+                if (Integer.valueOf(tenPercentEntries[i]) >= x) break;
             j = (100 - y) / 10;
         } else {
             i = (x / 5) - 1;
@@ -272,8 +270,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         return a;
     }
 
-    private static final Object[] EMPTY_OBJECT_ARRAY = {};
-    private static final  Class<?>[]  EMPTY_CLASS_ARRAY = {};
+    //private static final Object[] EMPTY_OBJECT_ARRAY = {};
+    //private static final  Class<?>[]  EMPTY_CLASS_ARRAY = {};
 
     public class MessageHandler extends Handler {
         @Override
@@ -299,22 +297,22 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         */
 
             Boolean hasSettings = false;
-            try {
+        //    try {
         /* TODO: Convert to message
                 hasSettings = biServiceConnection.biService.pluginHasSettings();
         */
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        //    } catch (Exception e) {
+        //        e.printStackTrace();
+        //    }
 
-            if (! hasSettings) {
+        //    if (! hasSettings) {
                 PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_PLUGIN_SETTINGS);
                 cat.removeAll();
                 cat.setLayoutResource(R.layout.hidden);
-            } else {
-                Preference p = (Preference) mPreferenceScreen.findPreference(KEY_PLUGIN_SETTINGS);
-                p.setEnabled(true);
-            }
+        //    } else {
+        //        Preference p = (Preference) mPreferenceScreen.findPreference(KEY_PLUGIN_SETTINGS);
+        //        p.setEnabled(true);
+        //    }
 
             mHandler.removeCallbacks(rShowPluginSettings);
         }
@@ -328,10 +326,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         pref_screen = intent.getStringExtra(EXTRA_SCREEN);
         res = getResources();
 
-        // Stranglely disabled by default for API level 14+
-        if (android.os.Build.VERSION.SDK_INT >= 14) {
-            getActionBar().setHomeButtonEnabled(true);
-            getActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar ab = getActionBar();
+        if (ab != null) {
+            ab.setHomeButtonEnabled(true);
+            ab.setDisplayHomeAsUpEnabled(true);
         }
 
         PreferenceManager pm = getPreferenceManager();
@@ -339,8 +337,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         pm.setSharedPreferencesMode(Context.MODE_MULTI_PROCESS);
         mSharedPreferences = pm.getSharedPreferences();
 
-        currentHack = CurrentHack.getInstance(this);
-        currentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+        //currentHack = CurrentHack.getInstance(this);
+        CurrentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
                                                               res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
         if (pref_screen == null) {
@@ -359,7 +357,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
             ListPreference iconSetPref = (ListPreference) mPreferenceScreen.findPreference(KEY_ICON_SET);
             setPluginPrefEntriesAndValues(iconSetPref);
-            currentPlugin = iconSetPref.getValue();
+            String currentPlugin = iconSetPref.getValue();
             if (currentPlugin == null)
                 currentPlugin = "builtin.plain_number";
 
@@ -457,7 +455,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             setPrefScreen(R.xml.current_hack_pref_screen);
             setWindowSubtitle(res.getString(R.string.current_hack_settings));
 
-            if (currentHack.getCurrent() == null) {
+            if (CurrentHack.getCurrent() == null) {
                 PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_MAIN);
                 cat.removeAll();
                 cat.setLayoutResource(R.layout.none);
@@ -500,7 +498,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         updateConvertFSummary();
 
-        biServiceIntent = new Intent(this, BatteryInfoService.class);
+        Intent biServiceIntent = new Intent(this, BatteryInfoService.class);
         bindService(biServiceIntent, serviceConnection, 0);
     }
 
@@ -655,12 +653,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             startActivity(new Intent().setComponent(comp).putExtra(EXTRA_SCREEN, key));
 
             return true;
-        } else if (key.equals(KEY_PLUGIN_SETTINGS)) {
-            //TODO: convert biServiceConnection.biService.configurePlugin();
-            return true;
-        } else {
-            return false;
-        }
+        } else //TODO: convert biServiceConnection.biService.configurePlugin();
+            return key.equals(KEY_PLUGIN_SETTINGS);
     }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
@@ -749,7 +743,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         }
 
         if (key.equals(KEY_CURRENT_HACK_PREFER_FS))
-            currentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+            CurrentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
                                                                   res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
         for (int i=0; i < RESET_SERVICE.length; i++) {
@@ -770,7 +764,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private void updateConvertFSummary() {
-        Preference pref = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_CONVERT_F);
+        Preference pref = mPreferenceScreen.findPreference(KEY_CONVERT_F);
         if (pref == null) return;
 
         pref.setSummary(res.getString(R.string.currently_using) + " " +
@@ -836,21 +830,21 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             dependent.setEnabled(true);
     }
 
-    private void setEnablednessOfMutuallyExclusive(String key1, String key2) {
-        Preference pref1 = mPreferenceScreen.findPreference(key1);
-        Preference pref2 = mPreferenceScreen.findPreference(key2);
+    // private void setEnablednessOfMutuallyExclusive(String key1, String key2) {
+    //     Preference pref1 = mPreferenceScreen.findPreference(key1);
+    //     Preference pref2 = mPreferenceScreen.findPreference(key2);
 
-        if (pref1 == null) return;
+    //     if (pref1 == null) return;
 
-        if (mSharedPreferences.getBoolean(key1, false))
-            pref2.setEnabled(false);
-        else if (mSharedPreferences.getBoolean(key2, false))
-            pref1.setEnabled(false);
-        else {
-            pref1.setEnabled(true);
-            pref2.setEnabled(true);
-        }
-    }
+    //     if (mSharedPreferences.getBoolean(key1, false))
+    //         pref2.setEnabled(false);
+    //     else if (mSharedPreferences.getBoolean(key2, false))
+    //         pref1.setEnabled(false);
+    //     else {
+    //         pref1.setEnabled(true);
+    //         pref2.setEnabled(true);
+    //     }
+    // }
 
     private void updateListPrefSummary(String key) {
         ListPreference pref;
@@ -943,8 +937,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private void setPluginPrefEntriesAndValues(ListPreference lpref) {
         String prefix = "BI Plugin - ";
 
-        PackageManager pm = getPackageManager();
-        java.util.List<PackageInfo> packages = pm.getInstalledPackages(0);
+        // PackageManager pm = getPackageManager();
+        // java.util.List<PackageInfo> packages = pm.getInstalledPackages(0);
 
         java.util.List<String> entriesList = new java.util.ArrayList<String>();
         java.util.List<String>  valuesList = new java.util.ArrayList<String>();
@@ -957,23 +951,23 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
              valuesList.add(icon_set_values[i]);
         }
 
-        int nPackages = packages.size();
-        nPackages = 0; // TODO: Remove this line to re-enable plugins
-        for (int i=0; i < nPackages; i++) {
-            PackageInfo pi = packages.get(i);
-            if (pi.packageName.matches("com\\.darshancomputing\\.BatteryIndicatorPro\\.IconPluginV1\\..+")){
-                String entry = (String) pm.getApplicationLabel(pi.applicationInfo);
-                if (entry.startsWith(prefix))
-                    //entry = entry.substring(prefix.length());
-                    entry = entry.substring(3); // Strip "BI "
+        // int nPackages = packages.size();
+        // nPackages = 0; // TODO: Remove this line to re-enable plugins
+        // for (int i=0; i < nPackages; i++) {
+        //     PackageInfo pi = packages.get(i);
+        //     if (pi.packageName.matches("com\\.darshancomputing\\.BatteryIndicatorPro\\.IconPluginV1\\..+")){
+        //         String entry = (String) pm.getApplicationLabel(pi.applicationInfo);
+        //         if (entry.startsWith(prefix))
+        //             //entry = entry.substring(prefix.length());
+        //             entry = entry.substring(3); // Strip "BI "
 
-                entriesList.add(entry);
-                 valuesList.add(pi.packageName);
-            }
-        }
+        //         entriesList.add(entry);
+        //          valuesList.add(pi.packageName);
+        //     }
+        // }
 
-        lpref.setEntries    ((String[]) entriesList.toArray(new String[entriesList.size()]));
-        lpref.setEntryValues((String[])  valuesList.toArray(new String[entriesList.size()]));
+        lpref.setEntries    (entriesList.toArray(new String[entriesList.size()]));
+        lpref.setEntryValues(valuesList.toArray(new String[entriesList.size()]));
 
         /* TODO: I think it's safe to skip this: if the previously selected plugin is uninstalled, null
            should be picked up by the Service and converted to proper default, I think/hope.
@@ -1000,7 +994,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             editor.putString(KEY_GREEN_THRESH, res.getString(R.string.default_green_thresh));
         }
 
-        Str.apply(editor);
+        editor.apply();
     }
 
     /* Determine the minimum valid threshold setting for a particular color, based on other active settings,

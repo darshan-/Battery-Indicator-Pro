@@ -24,7 +24,6 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -65,7 +64,7 @@ public class CurrentInfoFragment extends Fragment {
     public static boolean awaitingNotificationUnblock;
     public static boolean showingNotificationBlockDialog;
 
-    private static final String LOG_TAG = "BatteryBot";
+    //private static final String LOG_TAG = "BatteryBot";
 
     private final Handler mHandler = new Handler();
     private final Runnable mARefresher = new Runnable() {
@@ -391,19 +390,8 @@ public class CurrentInfoFragment extends Fragment {
     private void setSizes(Configuration config) {
         boolean portrait = config.orientation == Configuration.ORIENTATION_PORTRAIT;
 
-        int screenWidth, screenHeight;
-
-        if (android.os.Build.VERSION.SDK_INT < 13) {
-            DisplayMetrics metrics = new DisplayMetrics();
-            getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-            screenWidth = metrics.widthPixels;
-            screenHeight = (int) (metrics.heightPixels * 0.95);
-        } else {
-            screenWidth = (int) (config.screenWidthDp * dpScale);
-            screenHeight = (int) (config.screenHeightDp * dpScale);
-        }
-
+        int screenWidth = (int) (config.screenWidthDp * dpScale);
+        int screenHeight = (int) (config.screenHeightDp * dpScale);
 
         int minDimen = Math.min(screenWidth, screenHeight);
         float aspectRatio = (float) screenWidth / screenHeight;

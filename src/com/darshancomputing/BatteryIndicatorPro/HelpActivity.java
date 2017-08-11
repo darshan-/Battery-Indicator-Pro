@@ -14,6 +14,7 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
@@ -32,10 +33,10 @@ public class HelpActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Stranglely disabled by default for API level 14+
-        if (android.os.Build.VERSION.SDK_INT >= 14) {
-            getActionBar().setHomeButtonEnabled(true);
-            getActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar ab = getActionBar();
+        if (ab != null) {
+            ab.setHomeButtonEnabled(true);
+            ab.setDisplayHomeAsUpEnabled(true);
         }
 
         setContentView(R.layout.help);

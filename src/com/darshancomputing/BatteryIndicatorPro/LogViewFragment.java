@@ -62,7 +62,7 @@ public class LogViewFragment extends ListFragment {
     private boolean reversed;
     private boolean noDB;
 
-    private static final String LOG_TAG = "BatteryBot";
+    //private static final String LOG_TAG = "BatteryBot";
 
     private static final String[] CSV_ORDER = {LogDatabase.KEY_TIME, LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, 
                                                LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE};
@@ -130,7 +130,7 @@ public class LogViewFragment extends ListFragment {
                                   pfrag.settings.getBoolean(pfrag.str.log_filter_pref_keys[i], true));
         }
 
-        Str.apply(spm_editor.putBoolean("log_filters_migrated_to_sp_main", true));
+        spm_editor.putBoolean("log_filters_migrated_to_sp_main", true).apply();
     }
 
     @Override
@@ -221,7 +221,7 @@ public class LogViewFragment extends ListFragment {
             spm_editor.putBoolean(pfrag.str.log_filter_pref_keys[i], checked_items[i]);
         }
 
-        Str.apply(spm_editor);
+        spm_editor.apply();
 
         reloadList(false);
     }
@@ -286,7 +286,7 @@ public class LogViewFragment extends ListFragment {
 
             return true;
         case R.id.menu_reverse:
-            reversed = (reversed) ? false : true;
+            reversed = !reversed;
             reloadList(true);
 
             return true;
@@ -327,8 +327,6 @@ public class LogViewFragment extends ListFragment {
                     exportCSV();
                 else
                     Toast.makeText(getActivity(), pfrag.str.no_storage_permission, Toast.LENGTH_SHORT).show();
-
-                return;
             }
         }
     }

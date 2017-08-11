@@ -59,8 +59,8 @@ class BatteryLevel {
         bfo.inTargetDensity = DisplayMetrics.DENSITY_DEFAULT;
         bfo.inSampleSize = inSampleSize;
 
-        battery_top    = bf.decodeResource(res, R.drawable.empty_battery_top   , bfo);
-        battery_body   = bf.decodeResource(res, R.drawable.empty_battery_body  , bfo);
+        battery_top    = BitmapFactory.decodeResource(res, R.drawable.empty_battery_top   , bfo);
+        battery_body   = BitmapFactory.decodeResource(res, R.drawable.empty_battery_body  , bfo);
 
            width = battery_top.getWidth();
            top_h = battery_top.getHeight();

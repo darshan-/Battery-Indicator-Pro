@@ -446,8 +446,7 @@ public class ColorPickerView extends View {
     }
 
     private int getPrefferedHeight() {
-        int height = (int)(200 * mDensity);
-        return height;
+        return (int)(200 * mDensity);
     }
 
     @Override

@@ -7,113 +7,7 @@
     android:versionCode="013025"
     android:versionName="10.0.2-dev"
 >
-  <application
-      android:label="@string/app_full_name"
-      android:icon="@drawable/battery"
-      android:hardwareAccelerated="true"
-      android:process="com.darshancomputing.BatteryBotPro"
-      android:allowBackup="false"
-      android:resizeableActivity="true"
-  >
-    <!--
-        Temporarily put these two lines in <application> above to enable debugging of release build:
 
-        android:debuggable="true"
-        tools:ignore="HardcodedDebugMode"
-    -->
-    <activity
-        android:name=".BatteryInfoActivity"
-        android:label="@string/app_full_name"
-        android:theme="@style/bi_main_theme"
-        android:stateNotNeeded="true"
-        android:launchMode="singleTask"
-    >
-      <intent-filter android:label="@string/app_launcher_name">
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-        <category android:name="android.intent.category.DEFAULT" />
-      </intent-filter>
-    </activity>
-
-    <activity
-        android:name=".SettingsActivity"
-        android:theme="@style/bi_settings_theme"
-        android:excludeFromRecents="true"
-    />
-
-    <activity
-        android:name=".AlarmEditActivity"
-        android:theme="@style/bi_settings_theme"
-        android:excludeFromRecents="true"
-    />
-
-    <activity
-        android:name=".SettingsHelpActivity"
-        android:theme="@style/bi_help_theme"
-        android:stateNotNeeded="true"
-        android:excludeFromRecents="true"
-    />
-
-    <activity
-        android:name=".HelpActivity"
-        android:theme="@style/bi_help_theme"
-        android:stateNotNeeded="true"
-        android:excludeFromRecents="true"
-    />
-
-    <service
-        android:name=".BatteryInfoService"
-        android:process="com.darshancomputing.BatteryBotPro.BIS"
-        android:icon="@drawable/battery"
-    />
-
-    <receiver
-        android:name=".BootCompletedReceiver"
-        android:enabled="true"
-        android:exported="true"
-        android:process="com.darshancomputing.BatteryBotPro.BIS"
-    >
-      <intent-filter>
-        <action android:name="android.intent.action.BOOT_COMPLETED" />
-      </intent-filter>
-      <intent-filter>
-        <action android:name="android.intent.action.PACKAGE_REPLACED" />
-        <data android:scheme="package" android:path="com.darshancomputing.BatteryIndicatorPro" />
-      </intent-filter>
-    </receiver>
-
-    <receiver
-        android:name="BatteryInfoAppWidgetProvider"
-        android:enabled="true"
-        android:exported="true"
-        android:process="com.darshancomputing.BatteryBotPro.BIS"
-        android:label="@string/circle_widget"
-    >
-      <intent-filter>
-        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-      </intent-filter>
-      <meta-data
-          android:name="android.appwidget.provider"
-          android:resource="@xml/circle_app_widget_info"
-      />
-    </receiver>
-
-    <receiver
-        android:name="FullAppWidgetProvider"
-        android:enabled="true"
-        android:exported="true"
-        android:process="com.darshancomputing.BatteryBotPro.BIS"
-        android:label="@string/full_widget"
-    >
-      <intent-filter>
-        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-      </intent-filter>
-      <meta-data
-          android:name="android.appwidget.provider"
-          android:resource="@xml/full_app_widget_info"
-      />
-    </receiver>
-  </application>
 
   <!-- Permissions now considered "normal", automatically granted on API 23+ -->
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -130,4 +24,112 @@
       android:largeScreens="true"
       android:anyDensity="true"
   />
+
+  <application
+    android:label="@string/app_full_name"
+    android:icon="@drawable/battery"
+    android:hardwareAccelerated="true"
+    android:process="com.darshancomputing.BatteryBotPro"
+    android:allowBackup="false"
+    android:resizeableActivity="true"
+    >
+  <!--
+      Temporarily put these two lines in <application> above to enable debugging of release build:
+
+      android:debuggable="true"
+      tools:ignore="HardcodedDebugMode"
+  -->
+  <activity
+      android:name=".BatteryInfoActivity"
+      android:label="@string/app_full_name"
+      android:theme="@style/bi_main_theme"
+      android:stateNotNeeded="true"
+      android:launchMode="singleTask"
+      >
+    <intent-filter android:label="@string/app_launcher_name">
+      <action android:name="android.intent.action.MAIN" />
+      <category android:name="android.intent.category.LAUNCHER" />
+      <category android:name="android.intent.category.DEFAULT" />
+    </intent-filter>
+  </activity>
+
+  <activity
+      android:name=".SettingsActivity"
+      android:theme="@style/bi_settings_theme"
+      android:excludeFromRecents="true"
+      />
+
+  <activity
+      android:name=".AlarmEditActivity"
+      android:theme="@style/bi_settings_theme"
+      android:excludeFromRecents="true"
+      />
+
+  <activity
+      android:name=".SettingsHelpActivity"
+      android:theme="@style/bi_help_theme"
+      android:stateNotNeeded="true"
+      android:excludeFromRecents="true"
+      />
+
+  <activity
+      android:name=".HelpActivity"
+      android:theme="@style/bi_help_theme"
+      android:stateNotNeeded="true"
+      android:excludeFromRecents="true"
+      />
+
+  <service
+      android:name=".BatteryInfoService"
+      android:process="com.darshancomputing.BatteryBotPro.BIS"
+      android:icon="@drawable/battery"
+      />
+
+  <receiver
+      android:name=".BootCompletedReceiver"
+      android:enabled="true"
+      android:exported="true"
+      android:process="com.darshancomputing.BatteryBotPro.BIS"
+      >
+    <intent-filter>
+      <action android:name="android.intent.action.BOOT_COMPLETED" />
+    </intent-filter>
+    <intent-filter>
+      <action android:name="android.intent.action.PACKAGE_REPLACED" />
+      <data android:scheme="package" android:path="com.darshancomputing.BatteryIndicatorPro" />
+    </intent-filter>
+  </receiver>
+
+  <receiver
+      android:name="BatteryInfoAppWidgetProvider"
+      android:enabled="true"
+      android:exported="true"
+      android:process="com.darshancomputing.BatteryBotPro.BIS"
+      android:label="@string/circle_widget"
+      >
+    <intent-filter>
+      <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+    </intent-filter>
+    <meta-data
+        android:name="android.appwidget.provider"
+        android:resource="@xml/circle_app_widget_info"
+        />
+  </receiver>
+
+  <receiver
+      android:name="FullAppWidgetProvider"
+      android:enabled="true"
+      android:exported="true"
+      android:process="com.darshancomputing.BatteryBotPro.BIS"
+      android:label="@string/full_widget"
+      >
+    <intent-filter>
+      <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+    </intent-filter>
+    <meta-data
+        android:name="android.appwidget.provider"
+        android:resource="@xml/full_app_widget_info"
+        />
+  </receiver>
+</application>
 </manifest>

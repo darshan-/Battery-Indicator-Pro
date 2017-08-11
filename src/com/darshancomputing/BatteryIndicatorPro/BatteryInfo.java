@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2013-2015 Darshan-Josiah Barber
+    Copyright (c) 2013-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.util.Log;
+//import android.util.Log;
 
 class BatteryInfo {
     public static final int STATUS_UNPLUGGED     = 0;
@@ -57,7 +57,7 @@ class BatteryInfo {
     private static final String EXTRA_PLUGGED = "plugged";
     private static final String EXTRA_TEMPERATURE = "temperature";
     private static final String EXTRA_VOLTAGE = "voltage";
-    private static final String EXTRA_TECHNOLOGY = "technology";
+    //private static final String EXTRA_TECHNOLOGY = "technology";
 
     private static final String FIELD_PERCENT = "percent";
     private static final String FIELD_STATUS = "status";
@@ -77,7 +77,7 @@ class BatteryInfo {
     private static final String FIELD_PREDICTION_WHAT = "prediction_what";
     private static final String FIELD_PREDICTION_WHEN = "prediction_when";
 
-    private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfo";
+    //private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfo";
 
     public int
         percent,

@@ -6,7 +6,7 @@
 
   This file, or at least the changes from the original are
 
-  Copyright (c) 2013 Darshan-Josiah Barber
+  Copyright (c) 2013-2017 Darshan-Josiah Barber
 
 
   This program is free software: you can redistribute it and/or modify
@@ -39,8 +39,8 @@ import android.widget.LinearLayout;
 
 public class ColorPickerPreference extends Preference implements Preference.OnPreferenceClickListener,
                                                                  ColorPickerDialog.OnColorChangedListener {
-    View mView;
-    ColorPickerDialog mDialog;
+    private View mView;
+    private ColorPickerDialog mDialog;
     private int mValue = Color.BLACK;
     private float mDensity = 0;
 
@@ -206,16 +206,16 @@ public class ColorPickerPreference extends Preference implements Preference.OnPr
             super(superState);
         }
 
-        @SuppressWarnings("unused")
-        public static final Parcelable.Creator<SavedState> CREATOR =
-            new Parcelable.Creator<SavedState>() {
-            public SavedState createFromParcel(Parcel in) {
-                return new SavedState(in);
-            }
+        // @SuppressWarnings("unused")
+        // public static final Parcelable.Creator<SavedState> CREATOR =
+        //     new Parcelable.Creator<SavedState>() {
+        //     public SavedState createFromParcel(Parcel in) {
+        //         return new SavedState(in);
+        //     }
 
-            public SavedState[] newArray(int size) {
-                return new SavedState[size];
-            }
-        };
+        //     public SavedState[] newArray(int size) {
+        //         return new SavedState[size];
+        //     }
+        // };
     }
 }

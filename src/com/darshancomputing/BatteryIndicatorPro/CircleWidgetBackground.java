@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2013-2015 Darshan-Josiah Barber
+    Copyright (c) 2013-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ class CircleWidgetBackground {
     private final int DIMEN;
     private final float ARC_STROKE_WIDTH;
 
-    private static final int BLACK = 0xff000000;
+    //private static final int BLACK = 0xff000000;
     private static final int ICS_BLUE = 0xff33b5e5;
 
     private static final int BG_COLOR = 0xff222222;

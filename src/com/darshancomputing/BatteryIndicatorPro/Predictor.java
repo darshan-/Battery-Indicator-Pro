@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2012-2016 Darshan-Josiah Barber
+    Copyright (c) 2012-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -50,6 +50,6 @@ public class Predictor {
 
     public void update(BatteryInfo info) {
         pc.update(info, SystemClock.elapsedRealtime());
-        Str.apply(editor.putFloat(KEY_AVERAGE[pc.cur_charging_status], (float) pc.getLongTermAverage()));
+        editor.putFloat(KEY_AVERAGE[pc.cur_charging_status], (float) pc.getLongTermAverage()).apply();
     }
 }

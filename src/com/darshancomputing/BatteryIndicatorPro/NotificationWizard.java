@@ -93,9 +93,6 @@ public class NotificationWizard extends DialogFragment {
         summaries = new String[] {pfrag.res.getString(R.string.notification_wizard_summary_default),
                                   pfrag.res.getString(R.string.notification_wizard_summary_minimal),
                                   pfrag.res.getString(R.string.notification_wizard_summary_none)};
-
-        if (android.os.Build.VERSION.SDK_INT < 16)
-            summaries[1] += " " + pfrag.res.getString(R.string.requires_api_level_16);
     }
 
     private int getValue() {
@@ -151,9 +148,6 @@ public class NotificationWizard extends DialogFragment {
 
         @Override
         public boolean isEnabled(int position) {
-            if (position == 1 && android.os.Build.VERSION.SDK_INT < 16)
-                return false;
-
             return true;
         }
 
@@ -169,10 +163,7 @@ public class NotificationWizard extends DialogFragment {
             if (position == getValue())
                 ((ListView) container).setItemChecked(position, true);
 
-            if (position == 1 && android.os.Build.VERSION.SDK_INT < 16)
-                convertView.setEnabled(false);
-            else
-                convertView.setEnabled(true);
+            convertView.setEnabled(true);
 
             return convertView;
         }

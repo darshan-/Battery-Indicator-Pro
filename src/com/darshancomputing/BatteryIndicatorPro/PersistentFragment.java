@@ -117,13 +117,13 @@ public class PersistentFragment extends Fragment {
 
         sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
 
-        Str.apply(sp_main.edit().putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, true));
+        sp_main.edit().putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, true).apply();
 
         // From now on, BootCompletedReceiver should ignore value in sp_service and use our value.
         //   We're not removing the value from sp_service, because that would require a commit, and
         //   the whole point of this is avoiding cross-process writes.
         if (! sp_main.getBoolean(SettingsActivity.KEY_MIGRATED_SERVICE_DESIRED, false))
-            Str.apply(sp_main.edit().putBoolean(SettingsActivity.KEY_MIGRATED_SERVICE_DESIRED, true));
+            sp_main.edit().putBoolean(SettingsActivity.KEY_MIGRATED_SERVICE_DESIRED, true).apply();
     }
 
     @Override
@@ -133,11 +133,11 @@ public class PersistentFragment extends Fragment {
         if (sp_main.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
             // If you ever need a first-run dialog again, this is when you would show it
 
-            Str.apply(sp_main.edit().putBoolean(SettingsActivity.KEY_FIRST_RUN, false));
+            sp_main.edit().putBoolean(SettingsActivity.KEY_FIRST_RUN, false).apply();
         }
 
         if (! sp_main.getBoolean(SettingsActivity.KEY_NOTIFICATION_WIZARD_EVER_RUN, false)) {
-            Str.apply(sp_main.edit().putBoolean(SettingsActivity.KEY_NOTIFICATION_WIZARD_EVER_RUN, true));
+            sp_main.edit().putBoolean(SettingsActivity.KEY_NOTIFICATION_WIZARD_EVER_RUN, true).apply();
 
             new NotificationWizard().show(getFragmentManager(), "Blarg");
         }
@@ -198,7 +198,7 @@ public class PersistentFragment extends Fragment {
     }
 
     public void closeApp() {
-        Str.apply(sp_main.edit().putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false));
+        sp_main.edit().putBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false).apply();
 
         getActivity().finishActivity(1);
 

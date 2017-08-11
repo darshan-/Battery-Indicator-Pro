@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Darshan-Josiah Barber
+    Copyright (c) 2015-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,13 +18,12 @@ package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.Context;
 import android.os.BatteryManager;
-import android.util.Log;
 
 import java.io.File;
 
 // Initially based on CurrentReaderFactory.java from CurrentWidget by Ran Manor (GPL v3)
 class CurrentHack {
-    private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - CurrentHack";
+    //private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - CurrentHack";
     private static final String BUILD_MODEL = android.os.Build.MODEL.toLowerCase(java.util.Locale.ENGLISH);
 
     public static final int HACK_METHOD_NONE = -1;
@@ -113,7 +112,7 @@ class CurrentHack {
         int current = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW);
 
         if (current > Integer.MIN_VALUE)
-            return Long.valueOf(current) / 1000;
+            return (long) current / 1000;
         else
             return null;
     }
@@ -125,7 +124,7 @@ class CurrentHack {
         int current = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_AVERAGE);
 
         if (current > Integer.MIN_VALUE)
-            return Long.valueOf(current) / 1000;
+            return (long) current / 1000;
         else
             return null;
     }

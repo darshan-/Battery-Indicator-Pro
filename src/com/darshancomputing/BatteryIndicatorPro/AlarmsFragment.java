@@ -20,6 +20,7 @@ import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -199,7 +200,7 @@ public class AlarmsFragment extends Fragment {
         String threshold = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
         Boolean  enabled = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_ENABLED)) == 1);
 
-        String s = pfrag.str.alarm_types_display[pfrag.str.indexOf(pfrag.str.alarm_type_values, type)];
+        String s = pfrag.str.alarm_types_display[Str.indexOf(pfrag.str.alarm_type_values, type)];
         if (type.equals("temp_rises")) {
             s += " " + pfrag.str.formatTemp(Integer.valueOf(threshold), convertF, false);
         } else if (type.equals("charge_drops") || type.equals("charge_rises")) {
@@ -229,7 +230,7 @@ public class AlarmsFragment extends Fragment {
 
         summary_box.setOnKeyListener(new OnKeyListener() {
             public boolean onKey(View v, int keyCode, android.view.KeyEvent event) {
-                if (keyCode == event.KEYCODE_DPAD_CENTER && event.getAction() == event.ACTION_DOWN)
+                if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER && event.getAction() == KeyEvent.ACTION_DOWN)
                     v.setPressed(true);
 
                 return false;

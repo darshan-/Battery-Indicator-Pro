@@ -32,7 +32,7 @@ public class BatteryInfoActivity extends FragmentActivity {
     private BatteryInfoPagerAdapter pagerAdapter;
     private ViewPager viewPager;
 
-    private static final String LOG_TAG = "BatteryBot";
+    //private static final String LOG_TAG = "BatteryBot";
 
     public static final int PR_LVF_WRITE_STORAGE = 1;
 

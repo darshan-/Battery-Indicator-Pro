@@ -47,7 +47,7 @@ import java.util.HashSet;
 
 public class BatteryInfoService extends Service {
     private final IntentFilter batteryChanged = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-    private final IntentFilter userPresent    = new IntentFilter(Intent.ACTION_USER_PRESENT);
+    //private final IntentFilter userPresent    = new IntentFilter(Intent.ACTION_USER_PRESENT);
     private PendingIntent currentInfoPendingIntent, updatePredictorPendingIntent, alarmsPendingIntent, alarmsCancelPendingIntent;
     private Intent alarmsIntent;
 
@@ -62,7 +62,7 @@ public class BatteryInfoService extends Service {
     private AlarmDatabase alarms;
     private LogDatabase log_db;
     private BatteryLevel bl;
-    private CurrentHack currentHack;
+    //private CurrentHack currentHack;
     private CircleWidgetBackground cwbg;
     private BatteryInfo info;
     private long now;
@@ -73,13 +73,14 @@ public class BatteryInfoService extends Service {
     private static HashSet<Integer> widgetIds = new HashSet<Integer>();
     private static AppWidgetManager widgetManager;
 
-    private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfoService";
+    //private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfoService";
 
     private static final int NOTIFICATION_PRIMARY      = 1;
-    private static final int NOTIFICATION_ALARM_CHARGE = 3;
-    private static final int NOTIFICATION_ALARM_HEALTH = 4;
-    private static final int NOTIFICATION_ALARM_TEMP   = 5;
-    private static final int NOTIFICATION_ALARM_ALARM  = 6;
+    //private static final int NOTIFICATION_ALARM_CHARGE = 3;
+    //private static final int NOTIFICATION_ALARM_HEALTH = 4;
+    //private static final int NOTIFICATION_ALARM_TEMP   = 5;
+    //private static final int NOTIFICATION_ALARM_ALARM  = 6;
+    private static final int NOTIFICATION_ALARM = 7;
 
     private static final int RC_MAIN   = 100;
     private static final int RC_ALARMS_EDIT = 101;
@@ -100,8 +101,8 @@ public class BatteryInfoService extends Service {
     public static final String EXTRA_CANCEL_ALARMS = "com.darshancomputing.BatteryBotPro.EXTRA_CANCEL_ALARMS";
 
 
-    private static final Object[] EMPTY_OBJECT_ARRAY = {};
-    private static final  Class<?>[]  EMPTY_CLASS_ARRAY = {};
+    //private static final Object[] EMPTY_OBJECT_ARRAY = {};
+    //private static final  Class<?>[]  EMPTY_CLASS_ARRAY = {};
 
     private static final int plainIcon0 = R.drawable.plain000;
     private static final int small_plainIcon0 = R.drawable.small_plain000;
@@ -166,8 +167,8 @@ public class BatteryInfoService extends Service {
         loadSettingsFiles();
         sdkVersioning();
 
-        currentHack = CurrentHack.getInstance(this);
-        currentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+        //currentHack = CurrentHack.getInstance(this);
+        CurrentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
                                                     res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
         Intent currentInfoIntent = new Intent(this, BatteryInfoActivity.class).putExtra(EXTRA_CURRENT_INFO, true);
@@ -336,7 +337,7 @@ public class BatteryInfoService extends Service {
 
     private void reloadSettings(boolean cancelFirst) {
         loadSettingsFiles();
-        currentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+        CurrentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
                                                     res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
         str = new Str(res); // Language override may have changed
@@ -378,8 +379,8 @@ public class BatteryInfoService extends Service {
                                           "" + NotificationCompat.PRIORITY_LOW);
         }
 
-        Str.apply(sps_editor);
-        Str.apply(settings_editor);
+        sps_editor.apply();
+        settings_editor.apply();
 
         applyNewSettings(true);
     }
@@ -405,8 +406,8 @@ public class BatteryInfoService extends Service {
 
         sps_editor.putInt(LAST_SDK_API, android.os.Build.VERSION.SDK_INT);
 
-        Str.apply(sps_editor);
-        Str.apply(settings_editor);
+        sps_editor.apply();
+        settings_editor.apply();
     }
 
     private void update(Intent intent) {
@@ -506,7 +507,7 @@ public class BatteryInfoService extends Service {
     }
 
     private void syncSpsEditor() {
-        Str.apply(sps_editor);
+        sps_editor.apply();
 
         if (updated_lasts) {
             info.last_status_cTM = now;
@@ -674,9 +675,9 @@ public class BatteryInfoService extends Service {
             settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_VITAL_STATS, false)) {
             Long current = null;
             if (settings.getBoolean(SettingsActivity.KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS, false))
-                current = currentHack.getAvgCurrent();
+                current = CurrentHack.getAvgCurrent();
             if (current == null) // Either don't prefer avg or avg isn't available
-                current = currentHack.getCurrent();
+                current = CurrentHack.getCurrent();
             if (current != null)
                 line += " / " + String.valueOf(current) + "mA";
         }
@@ -718,7 +719,7 @@ public class BatteryInfoService extends Service {
             icon_set = default_set;
 
             // Writing to settings here should only happen when Service first started, so shouldn't have conflict
-            Str.apply(settings.edit().putString(SettingsActivity.KEY_ICON_SET, default_set));
+            settings.edit().putString(SettingsActivity.KEY_ICON_SET, default_set).apply();
         }
 
         Boolean indicate_charging = settings.getBoolean(SettingsActivity.KEY_INDICATE_CHARGING, true);
@@ -778,7 +779,7 @@ public class BatteryInfoService extends Service {
 
         /* TODO: Af first glance, I think I want to do this, but think about it a bit and decide for sure... */
         if (info.status != info.last_status && info.status == BatteryInfo.STATUS_UNPLUGGED)
-            mNotificationManager.cancel(NOTIFICATION_ALARM_CHARGE);
+            mNotificationManager.cancel(NOTIFICATION_ALARM);
 
         updated_lasts = true;
         sps_editor.putLong(BatteryInfo.KEY_LAST_STATUS_CTM, now);
@@ -917,7 +918,7 @@ public class BatteryInfoService extends Service {
     }
 
     private void notifyAlarm(Notification n) {
-        mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, n);
+        mNotificationManager.notify(NOTIFICATION_ALARM, n);
         if (n.audioStreamType == AudioManager.STREAM_ALARM)
             playAlarmMyself(n.sound);
     }

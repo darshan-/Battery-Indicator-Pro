@@ -17,7 +17,7 @@ package com.darshancomputing.BatteryIndicatorPro;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.content.SharedPreferences;
+//import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
@@ -25,7 +25,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
+//import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,7 +35,7 @@ public class AlarmEditActivity extends PreferenceActivity {
     private Resources res;
     private Str str;
     private PreferenceScreen mPreferenceScreen;
-    private SharedPreferences settings;
+    //private SharedPreferences settings;
     private AlarmDatabase alarms;
     private Cursor mCursor;
     private AlarmAdapter mAdapter;
@@ -64,7 +64,7 @@ public class AlarmEditActivity extends PreferenceActivity {
         res = getResources();
         str = new Str(res);
         alarms = new AlarmDatabase(this);
-        settings = PreferenceManager.getDefaultSharedPreferences(this);
+        //settings = PreferenceManager.getDefaultSharedPreferences(this);
 
         // Stranglely disabled by default for API level 14+
         if (android.os.Build.VERSION.SDK_INT >= 14) {
@@ -205,8 +205,6 @@ public class AlarmEditActivity extends PreferenceActivity {
         lp.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference pref, Object newValue) {
                 if (mAdapter.audio_stream.equals((String) newValue)) return false;
-
-                System.out.println(".......................... try wdb.update");
 
                 mAdapter.setAudioStream((String) newValue);
 

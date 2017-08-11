@@ -15,7 +15,6 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.res.Resources;
-import android.content.SharedPreferences;
 
 /* TODO?: have a public instance in the service and grab the server's instance from all other classes? */
 public class Str {
@@ -259,12 +258,5 @@ public class Str {
             return res.getString(R.string.activity_until_charged);
         else
             return res.getString(R.string.activity_until_drained);
-    }
-
-    public static void apply(SharedPreferences.Editor e) {
-        if (android.os.Build.VERSION.SDK_INT >= 9)
-            e.apply();
-        else
-            e.commit();
     }
 }
