@@ -26,31 +26,38 @@ class CurrentHack {
     //private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - CurrentHack";
     private static final String BUILD_MODEL = android.os.Build.MODEL.toLowerCase(java.util.Locale.ENGLISH);
 
-    public static final int HACK_METHOD_NONE = -1;
-    public static final int HACK_METHOD_BOTH = 0;
-    public static final int HACK_METHOD_FILE_SYSTEM = 1;
-    public static final int HACK_METHOD_BATTERY_MANAGER = 2;
+    static final int HACK_METHOD_NONE = -1;
+    static final int HACK_METHOD_BOTH = 0;
+    static final int HACK_METHOD_FILE_SYSTEM = 1;
+    static final int HACK_METHOD_BATTERY_MANAGER = 2;
 
     private static BatteryManager batteryManager;
     private static boolean preferFS = false;
     private static int method = HACK_METHOD_NONE;
 
-    private static CurrentHack instance;
+    //private static CurrentHack instance;
 
-    protected CurrentHack(Context c) {
-        Context context = c.getApplicationContext();
-        if (android.os.Build.VERSION.SDK_INT >= 21)
-            batteryManager = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
+    // protected CurrentHack(Context c) {
+    //     Context context = c.getApplicationContext();
+    //     if (android.os.Build.VERSION.SDK_INT >= 21)
+    //         batteryManager = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
+    // }
+
+    // public static CurrentHack getInstance(Context c) {
+    //     if (instance == null)
+    //         instance = new CurrentHack(c);
+
+    //     return instance;
+    // }
+
+    static void setContext(Context c) {
+        if (android.os.Build.VERSION.SDK_INT < 21)
+            return;
+
+        batteryManager = (BatteryManager) c.getApplicationContext().getSystemService(Context.BATTERY_SERVICE);
     }
 
-    public static CurrentHack getInstance(Context c) {
-        if (instance == null)
-            instance = new CurrentHack(c);
-
-        return instance;
-    }
-
-    public static void setPreferFS(boolean pfs) {
+    static void setPreferFS(boolean pfs) {
         preferFS = pfs;
 
         int avail = getHackMethodsAvailable();
@@ -64,7 +71,7 @@ class CurrentHack {
             method = avail; // Only one or none supported
     }
 
-    public static int getHackMethodsAvailable() {
+    static int getHackMethodsAvailable() {
         boolean fs = false, bm = false;
 
         if (getBMCurrent() != null)
@@ -85,7 +92,7 @@ class CurrentHack {
         return HACK_METHOD_NONE;
     }
 
-    public static Long getCurrent() {
+    static Long getCurrent() {
         if (method == HACK_METHOD_NONE)
             return null;
 
@@ -95,7 +102,7 @@ class CurrentHack {
         return getBMCurrent();
     }
 
-    public static Long getAvgCurrent() {
+    static Long getAvgCurrent() {
         if (method == HACK_METHOD_NONE)
             return null;
 
@@ -106,7 +113,7 @@ class CurrentHack {
     }
 
     private static Long getBMCurrent() {
-        if (android.os.Build.VERSION.SDK_INT < 21)
+        if (batteryManager == null)
             return null;
 
         int current = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW);
@@ -118,7 +125,7 @@ class CurrentHack {
     }
 
     private static Long getBMAvgCurrent() {
-        if (android.os.Build.VERSION.SDK_INT < 21)
+        if (batteryManager == null)
             return null;
 
         int current = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_AVERAGE);
@@ -497,7 +504,7 @@ class CurrentHack {
 
     // Based on OneLineReader.java from CurrentWidget by Ran Manor (GPL v3)
     private static class CurrentHackNormalFileReader {
-        public static Long getValue(File f, boolean convertToMillis) {
+        static Long getValue(File f, boolean convertToMillis) {
             String line = null;
             Long value = null;
 
@@ -528,7 +535,7 @@ class CurrentHack {
 
     // Based on BattAttrTextReader.java from CurrentWidget by Ran Manor (GPL v3)
     private static class CurrentHackBattAttrTextReader {
-        public static Long getValue(File f, String dischargeField, String chargeField) {
+        static Long getValue(File f, String dischargeField, String chargeField) {
             String text;
             Long value = null;
 
@@ -579,7 +586,7 @@ class CurrentHack {
 
     // Based on SMTextReader.java from CurrentWidget by Ran Manor (GPL v3)
     private static class CurrentHackSMTextReader {
-        public static Long getValue() {
+        static Long getValue() {
             boolean success = false;
             String text = null;
             Long value = null;

@@ -167,7 +167,7 @@ public class BatteryInfoService extends Service {
         loadSettingsFiles();
         sdkVersioning();
 
-        //currentHack = CurrentHack.getInstance(this);
+        CurrentHack.setContext(this);
         CurrentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
                                                     res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 

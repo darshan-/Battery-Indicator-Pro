@@ -122,8 +122,7 @@ public class CurrentInfoFragment extends Fragment {
 
         dpScale = getActivity().getResources().getDisplayMetrics().density;
 
-        //currentHack = CurrentHack.getInstance(getActivity());
-        CurrentHack.getInstance(getActivity()); // Ensure an instance exists?
+        CurrentHack.setContext(getActivity());
         CurrentHack.setPreferFS(pfrag.settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
                                                           pfrag.res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 

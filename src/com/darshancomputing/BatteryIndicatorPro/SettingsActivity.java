@@ -337,7 +337,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         pm.setSharedPreferencesMode(Context.MODE_MULTI_PROCESS);
         mSharedPreferences = pm.getSharedPreferences();
 
-        //currentHack = CurrentHack.getInstance(this);
+        CurrentHack.setContext(this);
         CurrentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
                                                               res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
