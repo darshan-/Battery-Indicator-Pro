@@ -18,7 +18,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.SystemClock;
 
-public class Predictor {
+class Predictor {
     /* Indexed by PredictorCore.DISCHARGE et al */
     private static final String[] KEY_AVERAGE = { "key_ave_discharge",
                                                   "key_ave_recharge_ac",
@@ -30,7 +30,7 @@ public class Predictor {
 
     private PredictorCore pc;
 
-    public Predictor(Context context) {
+    Predictor(Context context) {
         sp_predictor = context.getSharedPreferences("predictor_sp_store", 0);
         editor = sp_predictor.edit();
 
@@ -44,7 +44,7 @@ public class Predictor {
         pc.setPredictionType(type);
     }
 
-    public void setPredictionType(String type) {
+    void setPredictionType(String type) {
         pc.setPredictionType(Integer.valueOf(type));
     }
 

@@ -21,25 +21,25 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class AlarmDatabase {
+class AlarmDatabase {
     private static final String DATABASE_NAME    = "alarms.db";
     private static final int    DATABASE_VERSION = 6;
     private static final String ALARM_TABLE_NAME = "alarms";
 
-    public static final String KEY_ID           = "_id";
-    public static final String KEY_ENABLED      = "enabled";
-    public static final String KEY_TYPE         = "type";
-    public static final String KEY_THRESHOLD    = "threshold";
-    public static final String KEY_RINGTONE     = "ringtone";
-    public static final String KEY_AUDIO_STREAM = "audio_stream";
-    public static final String KEY_VIBRATE      = "vibrate";
-    public static final String KEY_LIGHTS       = "lights";
+    static final String KEY_ID           = "_id";
+    static final String KEY_ENABLED      = "enabled";
+    static final String KEY_TYPE         = "type";
+    static final String KEY_THRESHOLD    = "threshold";
+    static final String KEY_RINGTONE     = "ringtone";
+    static final String KEY_AUDIO_STREAM = "audio_stream";
+    static final String KEY_VIBRATE      = "vibrate";
+    static final String KEY_LIGHTS       = "lights";
 
     private final SQLOpenHelper mSQLOpenHelper;
     private SQLiteDatabase rdb;
     private SQLiteDatabase wdb;
 
-    public AlarmDatabase(Context context) {
+    AlarmDatabase(Context context) {
         mSQLOpenHelper = new SQLOpenHelper(context);
 
         openDBs();
@@ -70,7 +70,7 @@ public class AlarmDatabase {
             wdb.close();
     }
 
-    public Cursor getAllAlarms(Boolean reversed) {
+    Cursor getAllAlarms(Boolean reversed) {
         String order = "DESC";
         if (reversed) order = "ASC";
 
@@ -83,7 +83,7 @@ public class AlarmDatabase {
         }
     }
 
-    public Cursor getAlarm(int id) {
+    Cursor getAlarm(int id) {
         openDBs();
 
         try {
@@ -95,7 +95,7 @@ public class AlarmDatabase {
         }
     }
 
-    public Boolean anyActiveAlarms() {
+    Boolean anyActiveAlarms() {
         openDBs();
 
         try {
@@ -108,7 +108,7 @@ public class AlarmDatabase {
         }
     }
 
-    public Cursor activeAlarmFull() {
+    Cursor activeAlarmFull() {
         openDBs();
 
         try {
@@ -126,7 +126,7 @@ public class AlarmDatabase {
         }
     }
 
-    public Cursor activeAlarmChargeDrops(int current, int previous) {
+    Cursor activeAlarmChargeDrops(int current, int previous) {
         openDBs();
 
         try {
@@ -148,7 +148,7 @@ public class AlarmDatabase {
         }
     }
 
-    public Cursor activeAlarmChargeRises(int current, int previous) {
+    Cursor activeAlarmChargeRises(int current, int previous) {
         openDBs();
 
         try {
@@ -170,7 +170,7 @@ public class AlarmDatabase {
         }
     }
 
-    public Cursor activeAlarmTempRises(int current, int previous) {
+    Cursor activeAlarmTempRises(int current, int previous) {
         openDBs();
 
         try {
@@ -192,7 +192,7 @@ public class AlarmDatabase {
         }
     }
 
-    public Cursor activeAlarmFailure() {
+    Cursor activeAlarmFailure() {
         openDBs();
 
         try {
@@ -210,7 +210,7 @@ public class AlarmDatabase {
         }
     }
 
-    public int addAlarm(Boolean enabled, String type, String threshold, String ringtone,
+    int addAlarm(Boolean enabled, String type, String threshold, String ringtone,
                         String audio_stream, Boolean vibrate, Boolean lights)
     {
         openDBs();
@@ -230,12 +230,12 @@ public class AlarmDatabase {
         }
     }
 
-    public int addAlarm() {
+    int addAlarm() {
         return addAlarm(true, "fully_charged", "", android.provider.Settings.System.DEFAULT_NOTIFICATION_URI.toString(),
                         "notification", false, true);
     }
 
-    public int setEnabled(int id, Boolean enabled) {
+    int setEnabled(int id, Boolean enabled) {
         ContentValues cv = new ContentValues();
         cv.put(KEY_ENABLED, enabled ? 1 : 0);
 
@@ -248,7 +248,7 @@ public class AlarmDatabase {
         }
     }
 
-    public int setVibrate(int id, Boolean vibrate) {
+    int setVibrate(int id, Boolean vibrate) {
         ContentValues cv = new ContentValues();
         cv.put(KEY_VIBRATE, vibrate ? 1 : 0);
 
@@ -261,7 +261,7 @@ public class AlarmDatabase {
         }
     }
 
-    public int setLights(int id, Boolean lights) {
+    int setLights(int id, Boolean lights) {
         ContentValues cv = new ContentValues();
         cv.put(KEY_LIGHTS, lights ? 1 : 0);
 
@@ -291,7 +291,7 @@ public class AlarmDatabase {
         }
     }
 
-    public int setType(int id, String type) {
+    int setType(int id, String type) {
         ContentValues cv = new ContentValues();
         cv.put(KEY_TYPE, type);
 
@@ -304,7 +304,7 @@ public class AlarmDatabase {
         }
     }
 
-    public int setThreshold(int id, String threshold) {
+    int setThreshold(int id, String threshold) {
         ContentValues cv = new ContentValues();
         cv.put(KEY_THRESHOLD, threshold);
 
@@ -317,7 +317,7 @@ public class AlarmDatabase {
         }
     }
 
-    public int setRingtone(int id, String ringtone) {
+    int setRingtone(int id, String ringtone) {
         ContentValues cv = new ContentValues();
         cv.put(KEY_RINGTONE, ringtone);
 
@@ -330,7 +330,7 @@ public class AlarmDatabase {
         }
     }
 
-    public int setAudioStream(int id, String stream) {
+    int setAudioStream(int id, String stream) {
         ContentValues cv = new ContentValues();
         cv.put(KEY_AUDIO_STREAM, stream);
 
@@ -343,7 +343,7 @@ public class AlarmDatabase {
         }
     }
 
-    public void deleteAlarm(int id) {
+    void deleteAlarm(int id) {
         openDBs();
 
         try {
@@ -357,7 +357,7 @@ public class AlarmDatabase {
     }
 
     private static class SQLOpenHelper extends SQLiteOpenHelper {
-        public SQLOpenHelper(Context context) {
+        SQLOpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
@@ -385,7 +385,7 @@ public class AlarmDatabase {
             }
         }
 
-        public void reset() {
+        void reset() {
             SQLiteDatabase db = getWritableDatabase();
             db.execSQL("DROP TABLE IF EXISTS " + ALARM_TABLE_NAME);
             onCreate(db);

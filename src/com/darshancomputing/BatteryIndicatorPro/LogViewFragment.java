@@ -434,7 +434,7 @@ public class LogViewFragment extends ListFragment {
         private int len;
         private int pos;
 
-        public FilteredCursor(Cursor cursor) {
+        FilteredCursor(Cursor cursor) {
             super(cursor);
 
             shownIDs = new ArrayList<Integer>();
@@ -443,7 +443,7 @@ public class LogViewFragment extends ListFragment {
             refilter();
         }
 
-        public void refilter() {
+        void refilter() {
             if (wrappedCursor.isClosed()) return;
 
             shownIDs.clear();
@@ -566,7 +566,7 @@ public class LogViewFragment extends ListFragment {
     }
 
     private class TimeDeltaCursor extends CursorWrapper {
-        public static final String KEY_TIME_DELTA = "time_delta";
+        static final String KEY_TIME_DELTA = "time_delta";
 
         private Cursor wrappedCursor;
 
@@ -579,7 +579,7 @@ public class LogViewFragment extends ListFragment {
 
         private ArrayList<Long> deltas;
 
-        public TimeDeltaCursor(Cursor cursor) {
+        TimeDeltaCursor(Cursor cursor) {
             super(cursor);
 
             deltas = new ArrayList<Long>();
@@ -646,7 +646,7 @@ public class LogViewFragment extends ListFragment {
             return chrono;
         }
 
-        public void gen_deltas() {
+        void gen_deltas() {
             if (wrappedCursor.isClosed()) return;
 
             deltas.clear();
@@ -753,20 +753,20 @@ public class LogViewFragment extends ListFragment {
     }
 
     private static class LogItemViewHolder {
-        public TextView status_tv;
-        public TextView percent_tv;
-        public TextView time_tv;
-        public TextView temp_volt_tv;
-        public TextView time_diff_tv;
+        TextView status_tv;
+        TextView percent_tv;
+        TextView time_tv;
+        TextView temp_volt_tv;
+        TextView time_diff_tv;
     }
 
     private class LogAdapter extends CursorAdapter {
-        public int statusCodeIndex, chargeIndex, timeIndex, temperatureIndex, voltageIndex, timeDeltaIndex;
-        public DateFormat dateFormat, timeFormat;
+        int statusCodeIndex, chargeIndex, timeIndex, temperatureIndex, voltageIndex, timeDeltaIndex;
+        DateFormat dateFormat, timeFormat;
 
         private Date d = new Date();
 
-        public LogAdapter(Context context, Cursor cursor) {
+        LogAdapter(Context context, Cursor cursor) {
             super(context, cursor);
 
             dateFormat = android.text.format.DateFormat.getDateFormat(context);
@@ -904,14 +904,14 @@ public class LogViewFragment extends ListFragment {
     }
 
     private class Col {
-        public int old_status;
-        public int charged;
-        public int plugged;
-        public int unplugged;
-        public int unknown;
-        public int boot;
+        int old_status;
+        int charged;
+        int plugged;
+        int unplugged;
+        int unknown;
+        int boot;
 
-        public Col() {
+        Col() {
             old_status = pfrag.res.getColor(R.color.log_old_status);
             charged    = pfrag.res.getColor(R.color.log_charged);
             plugged    = pfrag.res.getColor(R.color.log_plugged);

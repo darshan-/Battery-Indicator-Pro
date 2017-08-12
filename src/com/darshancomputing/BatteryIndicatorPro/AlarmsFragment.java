@@ -179,7 +179,7 @@ public class AlarmsFragment extends Fragment {
     }
 
     private class AlarmsObserver extends DataSetObserver {
-        public AlarmsObserver(){
+        AlarmsObserver(){
             super();
         }
 

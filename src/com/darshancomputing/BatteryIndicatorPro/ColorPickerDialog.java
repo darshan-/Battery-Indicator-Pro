@@ -32,18 +32,18 @@ import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 
-public class ColorPickerDialog extends Dialog implements ColorPickerView.OnColorChangedListener,
+class ColorPickerDialog extends Dialog implements ColorPickerView.OnColorChangedListener,
                                                          View.OnClickListener {
     private ColorPickerView mColorPicker;
     private ColorPickerPanelView mOldColor;
     private ColorPickerPanelView mNewColor;
     private OnColorChangedListener mListener;
 
-    public interface OnColorChangedListener {
+    interface OnColorChangedListener {
         public void onColorChanged(int color);
     }
 
-    public ColorPickerDialog(Context context, int initialColor) {
+    ColorPickerDialog(Context context, int initialColor) {
         super(context);
         init(initialColor);
     }
@@ -81,7 +81,7 @@ public class ColorPickerDialog extends Dialog implements ColorPickerView.OnColor
         mNewColor.setColor(color);
     }
 
-    public void setOnColorChangedListener(OnColorChangedListener listener){
+    void setOnColorChangedListener(OnColorChangedListener listener){
         mListener = listener;
     }
 

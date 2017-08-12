@@ -118,18 +118,11 @@ public class BatteryInfoService extends Service {
 
     private MediaPlayer alarmPlayer = new MediaPlayer();
 
-    // Workaround for NotificationCompat.Builder losing custom content view on pre-Honeycomb
-    // See https://code.google.com/p/android/issues/detail?id=30495
-    private boolean needSetContentAgain = false;
-
     private final Handler mHandler = new Handler();
 
     private final Runnable mNotify = new Runnable() {
         public void run() {
             android.app.Notification n = mainNotificationB.build();
-
-            if (needSetContentAgain)
-                n.contentView = notificationRV;
 
             startForeground(NOTIFICATION_PRIMARY, n);
             mHandler.removeCallbacks(mNotify);
@@ -534,8 +527,6 @@ public class BatteryInfoService extends Service {
                                 res.getBoolean(R.bool.default_use_system_notification_layout))) {
             mainNotificationB.setContentTitle(mainNotificationTopLine)
                 .setContentText(mainNotificationBottomLine);
-
-            needSetContentAgain = false;
         } else {
             String icon_area = settings.getString(SettingsActivity.KEY_ICON_AREA, res.getString(R.string.default_icon_area_content));
 
@@ -581,9 +572,6 @@ public class BatteryInfoService extends Service {
                 if (! icon_area.equals("percentage_first"))
                     notificationRV.setInt(R.id.battery, "setBackgroundColor", color);
             }
-
-            if (android.os.Build.VERSION.SDK_INT < 11)
-                needSetContentAgain = true;
 
             mainNotificationB.setContent(notificationRV);
         }
@@ -708,9 +696,7 @@ public class BatteryInfoService extends Service {
 
     // I take advantage of (count on) R.java having resources alphabetical and incrementing by one.
     private int iconFor(int percent) {
-        String default_set = "builtin.classic";
-        if (android.os.Build.VERSION.SDK_INT >= 11)
-            default_set = "builtin.plain_number";
+        String default_set = "builtin.plain_number";
 
         String icon_set = settings.getString(SettingsActivity.KEY_ICON_SET, "null");
         if (! icon_set.startsWith("builtin.")) icon_set = "null"; // TODO: Remove this line to re-enable plugins

@@ -23,9 +23,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 public class ColorPreviewPreference extends Preference {
-    public int redThresh;
-    public int amberThresh;
-    public int greenThresh;
+    int redThresh;
+    int amberThresh;
+    int greenThresh;
 
     public ColorPreviewPreference(Context context) {
         super(context);

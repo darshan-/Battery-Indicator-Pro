@@ -20,30 +20,30 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class LogDatabase {
+class LogDatabase {
     private static final String DATABASE_NAME = "logs.db";
     private static final int DATABASE_VERSION = 4;
     private static final String LOG_TABLE_NAME = "logs";
 
     private static final String KEY_ID = "_id";
-    public  static final String KEY_STATUS_CODE = "status";
-    public  static final String KEY_CHARGE      = "charge";
-    public  static final String KEY_TIME        = "time";
-    public  static final String KEY_TEMPERATURE = "temperature";
-    public  static final String KEY_VOLTAGE     = "voltage";
+    static final String KEY_STATUS_CODE = "status";
+    static final String KEY_CHARGE      = "charge";
+    static final String KEY_TIME        = "time";
+    static final String KEY_TEMPERATURE = "temperature";
+    static final String KEY_VOLTAGE     = "voltage";
 
     // Custom values for logging things other than BatteryInfo; must be negative
-    public static final int STATUS_BOOT_COMPLETED = -1;
+    static final int STATUS_BOOT_COMPLETED = -1;
 
     // Values for status_age
-    public static final int STATUS_NEW = 0;
-    public static final int STATUS_OLD = 1;
+    static final int STATUS_NEW = 0;
+    static final int STATUS_OLD = 1;
 
     private final SQLOpenHelper mSQLOpenHelper;
     private SQLiteDatabase rdb;
     private SQLiteDatabase wdb;
 
-    public LogDatabase(Context context) {
+    LogDatabase(Context context) {
         mSQLOpenHelper = new SQLOpenHelper(context);
 
         openDBs();
@@ -74,7 +74,7 @@ public class LogDatabase {
             wdb.close();
     }
 
-    public Cursor getAllLogs(Boolean reversed) {
+    Cursor getAllLogs(Boolean reversed) {
         String order = "DESC";
         if (reversed) order = "ASC";
 
@@ -87,7 +87,7 @@ public class LogDatabase {
         }
     }
 
-    public void logStatus(BatteryInfo info, long time, int status_age) {
+    void logStatus(BatteryInfo info, long time, int status_age) {
         Boolean duplicate = false;
 
         openDBs();
@@ -118,7 +118,7 @@ public class LogDatabase {
         }
     }
 
-    public void logBoot() {
+    void logBoot() {
         openDBs();
 
         try {
@@ -130,7 +130,7 @@ public class LogDatabase {
         }
     }
 
-    public void prune(int max_hours) {
+    void prune(int max_hours) {
         long currentTM = System.currentTimeMillis();
         long oldest_log = currentTM - ((long) max_hours * 60 * 60 * 1000);
 
@@ -151,7 +151,7 @@ public class LogDatabase {
     }
 
     /* Returns [status, plugged, status_age] */
-    public static int[] decodeStatus(int statusCode) {
+    static int[] decodeStatus(int statusCode) {
         if (statusCode < 0) // Negative status for custom statuses like STATUS_BOOT_COMPLETED
             return new int[]{statusCode, 0, 0};
 
@@ -166,12 +166,12 @@ public class LogDatabase {
         return a;
     }
 
-    public void clearAllLogs() {
+    void clearAllLogs() {
         mSQLOpenHelper.reset();
     }
 
     private static class SQLOpenHelper extends SQLiteOpenHelper {
-        public SQLOpenHelper(Context context) {
+        SQLOpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
@@ -198,7 +198,7 @@ public class LogDatabase {
             }
         }
 
-        public void reset() {
+        void reset() {
             SQLiteDatabase db = getWritableDatabase();
             db.execSQL("DROP TABLE IF EXISTS " + LOG_TABLE_NAME);
             onCreate(db);

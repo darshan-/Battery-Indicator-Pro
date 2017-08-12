@@ -148,7 +148,7 @@ public class ColorPickerPreference extends Preference implements Preference.OnPr
         return false;
     }
 
-    protected void showDialog(Bundle state) {
+    private void showDialog(Bundle state) {
         mDialog = new ColorPickerDialog(getContext(), mValue);
         mDialog.setOnColorChangedListener(this);
         if (state != null) {
@@ -202,7 +202,7 @@ public class ColorPickerPreference extends Preference implements Preference.OnPr
             dest.writeBundle(dialogBundle);
         }
 
-        public SavedState(Parcelable superState) {
+        SavedState(Parcelable superState) {
             super(superState);
         }
 

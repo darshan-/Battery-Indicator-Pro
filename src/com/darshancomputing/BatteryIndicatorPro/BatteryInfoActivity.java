@@ -109,11 +109,11 @@ public class BatteryInfoActivity extends FragmentActivity {
     }
 
     // Must be static in order to avoid leaking reference to outer class (Activity)
-    public static class BatteryInfoPagerAdapter extends FragmentPagerAdapter {
+    private static class BatteryInfoPagerAdapter extends FragmentPagerAdapter {
         private Context context;
         private LogViewFragment logViewFragment;
 
-        public BatteryInfoPagerAdapter(FragmentManager fm) {
+        BatteryInfoPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
@@ -121,7 +121,7 @@ public class BatteryInfoActivity extends FragmentActivity {
             context = c;
         }
 
-        public LogViewFragment getLVF() {
+        LogViewFragment getLVF() {
             return logViewFragment;
         }
 

@@ -14,6 +14,7 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.app.ActionBar;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -66,8 +67,8 @@ public class AlarmEditActivity extends PreferenceActivity {
         alarms = new AlarmDatabase(this);
         //settings = PreferenceManager.getDefaultSharedPreferences(this);
 
-        // Stranglely disabled by default for API level 14+
-        if (android.os.Build.VERSION.SDK_INT >= 14) {
+        ActionBar ab = getActionBar();
+        if (ab != null) {
             getActionBar().setHomeButtonEnabled(true);
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
@@ -288,14 +289,14 @@ public class AlarmEditActivity extends PreferenceActivity {
 
     private class AlarmAdapter {
         public int id;
-        public String type, threshold, ringtone, audio_stream;
-        public Boolean enabled, vibrate, lights;
+        String type, threshold, ringtone, audio_stream;
+        Boolean enabled, vibrate, lights;
 
-        public AlarmAdapter() {
+        AlarmAdapter() {
             requery();
         }
 
-        public void requery() {
+        void requery() {
                       id = mCursor.getInt   (mCursor.getColumnIndex(AlarmDatabase.KEY_ID));
                     type = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_TYPE));
                threshold = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
@@ -311,12 +312,12 @@ public class AlarmEditActivity extends PreferenceActivity {
             alarms.setEnabled(id, enabled);
         }
 
-        public void setVibrate(Boolean b) {
+        void setVibrate(Boolean b) {
             vibrate = b;
             alarms.setVibrate(id, vibrate);
         }
 
-        public void setLights(Boolean b) {
+        void setLights(Boolean b) {
             lights = b;
             alarms.setLights(id, lights);
         }
@@ -326,17 +327,17 @@ public class AlarmEditActivity extends PreferenceActivity {
             alarms.setType(id, type);
         }
 
-        public void setThreshold(String s) {
+        void setThreshold(String s) {
             threshold = s;
             alarms.setThreshold(id, threshold);
         }
 
-        public void setRingtone(String s) {
+        void setRingtone(String s) {
             ringtone = s;
             alarms.setRingtone(id, ringtone);
         }
 
-        public void setAudioStream(String s) {
+        void setAudioStream(String s) {
             audio_stream = s;
             alarms.setAudioStream(id, audio_stream);
         }

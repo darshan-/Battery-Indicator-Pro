@@ -2,89 +2,89 @@
     Copyright (c) 2010-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
+    it under the terms of the GNU General License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+    GNU General License for more details.
 */
 
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.res.Resources;
 
-/* TODO?: have a public instance in the service and grab the server's instance from all other classes? */
-public class Str {
+/* TODO?: have a instance in the service and grab the server's instance from all other classes? */
+class Str {
     private Resources res;
 
-    public String degree_symbol;
-    public String fahrenheit_symbol;
-    public String celsius_symbol;
-    public String volt_symbol;
-    public String percent_symbol;
-    public String since;
-    public String default_status_dur_est;
-    public String default_red_thresh;
-    public String default_amber_thresh;
-    public String default_green_thresh;
-    public String default_max_log_age;
-    public String default_main_notification_priority;
-    public String default_prediction_type;
+    String degree_symbol;
+    String fahrenheit_symbol;
+    String celsius_symbol;
+    String volt_symbol;
+    String percent_symbol;
+    String since;
+    String default_status_dur_est;
+    String default_red_thresh;
+    String default_amber_thresh;
+    String default_green_thresh;
+    String default_max_log_age;
+    String default_main_notification_priority;
+    String default_prediction_type;
 
-    public String logs_empty;
-    public String confirm_clear_logs;
-    public String confirm_ten_percent_enable;
-    public String confirm_ten_percent_disable;
-    public String confirm_ten_percent_hint;
-    public String configure_log_filter;
-    public String yes;
-    public String cancel;
-    public String okay;
+    String logs_empty;
+    String confirm_clear_logs;
+    String confirm_ten_percent_enable;
+    String confirm_ten_percent_disable;
+    String confirm_ten_percent_hint;
+    String configure_log_filter;
+    String yes;
+    String cancel;
+    String okay;
 
-    public String currently_set_to;
-    public String alarm_pref_not_used;
+    String currently_set_to;
+    String alarm_pref_not_used;
 
-    public String silent;
+    String silent;
 
-    public String alarm_fully_charged;
-    public String alarm_charge_drops;
-    public String alarm_charge_rises;
-    public String alarm_temp_rises;
-    public String alarm_health_failure;
-    public String alarm_text;
+    String alarm_fully_charged;
+    String alarm_charge_drops;
+    String alarm_charge_rises;
+    String alarm_temp_rises;
+    String alarm_health_failure;
+    String alarm_text;
 
-    public String inaccessible_storage;
-    public String inaccessible_w_reason;
-    public String read_only_storage;
-    public String no_storage_permission;
-    public String file_written;
+    String inaccessible_storage;
+    String inaccessible_w_reason;
+    String read_only_storage;
+    String no_storage_permission;
+    String file_written;
 
-    public String time;
-    public String date;
-    public String status;
-    public String charge;
-    public String temperature;
-    public String temperature_f;
-    public String voltage;
+    String time;
+    String date;
+    String status;
+    String charge;
+    String temperature;
+    String temperature_f;
+    String voltage;
 
-    public String status_boot_completed;
+    String status_boot_completed;
     
-    public String[] statuses;
-    public String[] log_statuses;
-    public String[] log_statuses_old;
-    public String[] healths;
-    public String[] pluggeds;
-    public String[] alarm_types_display;
-    public String[] alarm_type_entries;
-    public String[] alarm_type_values;
-    public String[] temp_alarm_entries;
-    public String[] temp_alarm_values;
-    public String[] log_filter_pref_keys;
+    String[] statuses;
+    String[] log_statuses;
+    String[] log_statuses_old;
+    String[] healths;
+    String[] pluggeds;
+    String[] alarm_types_display;
+    String[] alarm_type_entries;
+    String[] alarm_type_values;
+    String[] temp_alarm_entries;
+    String[] temp_alarm_values;
+    String[] log_filter_pref_keys;
 
-    public Str(Resources r) {
+    Str(Resources r) {
         res = r;
 
         degree_symbol          = res.getString(R.string.degree_symbol);
@@ -155,45 +155,45 @@ public class Str {
         log_filter_pref_keys = res.getStringArray(R.array.log_filter_pref_keys);
     }
 
-    public String for_n_hours(int n) {
+    String for_n_hours(int n) {
         return String.format(res.getQuantityString(R.plurals.for_n_hours, n), n);
     }
 
-    public String n_hours_m_minutes_long(int n, int m) {
+    String n_hours_m_minutes_long(int n, int m) {
         return (String.format(res.getQuantityString(R.plurals.n_hours_long, n), n) +
                 String.format(res.getQuantityString(R.plurals.n_minutes_long, m), m));
     }
 
-    public String n_minutes_long(int n) {
+    String n_minutes_long(int n) {
         return String.format(res.getQuantityString(R.plurals.n_minutes_long, n), n);
     }
 
-    public String n_hours_m_minutes_medium(int n, int m) {
+    String n_hours_m_minutes_medium(int n, int m) {
         return (String.format(res.getQuantityString(R.plurals.n_hours_medium, n), n) +
                 String.format(res.getQuantityString(R.plurals.n_minutes_medium, m), m));
     }
 
-    public String n_hours_long_m_minutes_medium(int n, int m) {
+    String n_hours_long_m_minutes_medium(int n, int m) {
         return (String.format(res.getQuantityString(R.plurals.n_hours_long, n), n) +
                 String.format(res.getQuantityString(R.plurals.n_minutes_medium, m), m));
     }
 
-    public String n_hours_m_minutes_short(int n, int m) {
+    String n_hours_m_minutes_short(int n, int m) {
         return (String.format(res.getQuantityString(R.plurals.n_hours_short, n), n) +
                 String.format(res.getQuantityString(R.plurals.n_minutes_short, m), m));
     }
 
-    public String n_days_m_hours(int n, int m) {
+    String n_days_m_hours(int n, int m) {
         return (String.format(res.getQuantityString(R.plurals.n_days, n), n) +
                 String.format(res.getQuantityString(R.plurals.n_hours, m), m));
     }
 
-    public String n_log_items(int n) {
+    String n_log_items(int n) {
         return String.format(res.getQuantityString(R.plurals.n_log_items, n), n);
     }
 
     /* temperature is the integer number of tenths of degrees Celcius, as returned by BatteryManager */
-    public String formatTemp(int temperature, boolean convertF, boolean includeTenths) {
+    String formatTemp(int temperature, boolean convertF, boolean includeTenths) {
         double d;
         String s;
 
@@ -210,22 +210,22 @@ public class Str {
         return (includeTenths ? String.valueOf(d) : String.valueOf(java.lang.Math.round(d))) + s;
     }
 
-    public String formatTemp(int temperature, boolean convertF) {
+    String formatTemp(int temperature, boolean convertF) {
         return formatTemp(temperature, convertF, true);
     }
 
-    public String formatVoltage(int voltage) {
+    String formatVoltage(int voltage) {
         return String.valueOf(voltage / 1000.0) + volt_symbol;
     }
 
-    public static int indexOf(String[] a, String key) {
+    static int indexOf(String[] a, String key) {
         for (int i=0, size=a.length; i < size; i++)
             if (key.equals(a[i])) return i;
 
         return -1;
     }
 
-    public android.text.Spanned timeRemaining(BatteryInfo info) {
+    android.text.Spanned timeRemaining(BatteryInfo info) {
         if (info.prediction.what == BatteryInfo.Prediction.NONE) {
             return android.text.Html.fromHtml("<font color=\"#6fc14b\">" + statuses[info.status] + "</font>");
         } else {
@@ -244,14 +244,14 @@ public class Str {
 
     // Shows mdash rather than "Fully Charged" when no prediction.
     //   The widget still wants the old behavior.
-    public android.text.Spanned timeRemainingMainScreen(BatteryInfo info) {
+    android.text.Spanned timeRemainingMainScreen(BatteryInfo info) {
         if (info.prediction.what == BatteryInfo.Prediction.NONE)
             return android.text.Html.fromHtml("&nbsp;&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;");
         else
             return timeRemaining(info);
     }
 
-    public String untilWhat(BatteryInfo info) {
+    String untilWhat(BatteryInfo info) {
         if (info.prediction.what == BatteryInfo.Prediction.NONE)
             return "";
         else if (info.prediction.what == BatteryInfo.Prediction.UNTIL_CHARGED)
