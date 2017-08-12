@@ -52,7 +52,7 @@ class BatteryLevel {
     private BatteryLevel(Context context, int inSampleSize) {
         Resources res = context.getResources();
 
-        BitmapFactory bf = new BitmapFactory();
+        //BitmapFactory bf = new BitmapFactory();
         BitmapFactory.Options bfo = new BitmapFactory.Options();
         bfo.inDensity = DisplayMetrics.DENSITY_DEFAULT;
         bfo.inScaled = false;

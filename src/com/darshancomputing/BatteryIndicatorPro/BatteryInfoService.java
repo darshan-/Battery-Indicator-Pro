@@ -143,7 +143,7 @@ public class BatteryInfoService extends Service {
 
         info = new BatteryInfo();
 
-        messenger = new Messenger(new MessageHandler());
+        messenger = new Messenger(new MessageHandler(this));
         clientMessengers = new java.util.HashSet<Messenger>();
 
         predictor = new Predictor(this);
@@ -240,7 +240,13 @@ public class BatteryInfoService extends Service {
         return messenger.getBinder();
     }
 
-    public class MessageHandler extends Handler {
+    private static class MessageHandler extends Handler {
+        private BatteryInfoService bis;
+
+        MessageHandler(BatteryInfoService s) {
+            bis = s;
+        }
+
         @Override
         public void handleMessage(Message incoming) {
             switch (incoming.what) {
@@ -249,25 +255,25 @@ public class BatteryInfoService extends Service {
                 break;
             case RemoteConnection.SERVICE_REGISTER_CLIENT:
                 clientMessengers.add(incoming.replyTo);
-                sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_BATTERY_INFO_UPDATED, info.toBundle());
+                sendClientMessage(incoming.replyTo, RemoteConnection.CLIENT_BATTERY_INFO_UPDATED, bis.info.toBundle());
                 break;
             case RemoteConnection.SERVICE_UNREGISTER_CLIENT:
                 clientMessengers.remove(incoming.replyTo);
                 break;
             case RemoteConnection.SERVICE_RELOAD_SETTINGS:
-                reloadSettings(false);
+                bis.reloadSettings(false);
                 break;
             case RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS:
-                reloadSettings(true);
+                bis.reloadSettings(true);
                 break;
             case RemoteConnection.SERVICE_WIZARD_VALUE_DEFAULT:
-                wizardValueChanged(NotificationWizard.VALUE_DEFAULT);
+                bis.wizardValueChanged(NotificationWizard.VALUE_DEFAULT);
                 break;
             case RemoteConnection.SERVICE_WIZARD_VALUE_MINIMAL:
-                wizardValueChanged(NotificationWizard.VALUE_MINIMAL);
+                bis.wizardValueChanged(NotificationWizard.VALUE_MINIMAL);
                 break;
             case RemoteConnection.SERVICE_WIZARD_VALUE_NONE:
-                wizardValueChanged(NotificationWizard.VALUE_NONE);
+                bis.wizardValueChanged(NotificationWizard.VALUE_NONE);
                 break;
             default:
                 super.handleMessage(incoming);
@@ -287,25 +293,25 @@ public class BatteryInfoService extends Service {
         try { clientMessenger.send(outgoing); } catch (android.os.RemoteException e) {}
     }
 
-    public static class RemoteConnection implements ServiceConnection {
+    static class RemoteConnection implements ServiceConnection {
         // Messages clients send to the service
-        public static final int SERVICE_CLIENT_CONNECTED = 0;
-        public static final int SERVICE_REGISTER_CLIENT = 1;
-        public static final int SERVICE_UNREGISTER_CLIENT = 2;
-        public static final int SERVICE_RELOAD_SETTINGS = 3;
-        public static final int SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS = 4;
-        public static final int SERVICE_WIZARD_VALUE_DEFAULT = 5;
-        public static final int SERVICE_WIZARD_VALUE_MINIMAL = 6;
-        public static final int SERVICE_WIZARD_VALUE_NONE = 7;
+        static final int SERVICE_CLIENT_CONNECTED = 0;
+        static final int SERVICE_REGISTER_CLIENT = 1;
+        static final int SERVICE_UNREGISTER_CLIENT = 2;
+        static final int SERVICE_RELOAD_SETTINGS = 3;
+        static final int SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS = 4;
+        static final int SERVICE_WIZARD_VALUE_DEFAULT = 5;
+        static final int SERVICE_WIZARD_VALUE_MINIMAL = 6;
+        static final int SERVICE_WIZARD_VALUE_NONE = 7;
 
         // Messages the service sends to clients
-        public static final int CLIENT_SERVICE_CONNECTED = 0;
-        public static final int CLIENT_BATTERY_INFO_UPDATED = 1;
+        static final int CLIENT_SERVICE_CONNECTED = 0;
+        static final int CLIENT_BATTERY_INFO_UPDATED = 1;
 
-        public Messenger serviceMessenger;
+        Messenger serviceMessenger;
         private Messenger clientMessenger;
 
-        public RemoteConnection(Messenger m) {
+        RemoteConnection(Messenger m) {
             clientMessenger = m;
         }
 

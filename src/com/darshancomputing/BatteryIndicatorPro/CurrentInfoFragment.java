@@ -76,6 +76,7 @@ public class CurrentInfoFragment extends Fragment {
 
     @Override
     public void onConfigurationChanged (Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
         setSizes(newConfig);
     }
 
@@ -392,7 +393,7 @@ public class CurrentInfoFragment extends Fragment {
         int screenWidth = (int) (config.screenWidthDp * dpScale);
         int screenHeight = (int) (config.screenHeightDp * dpScale);
 
-        int minDimen = Math.min(screenWidth, screenHeight);
+        //int minDimen = Math.min(screenWidth, screenHeight);
         float aspectRatio = (float) screenWidth / screenHeight;
 
         // System.out.println("...................................................." +

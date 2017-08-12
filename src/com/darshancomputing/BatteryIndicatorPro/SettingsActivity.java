@@ -207,7 +207,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private static final int DIALOG_CONFIRM_TEN_PERCENT_DISABLE = 1;
 
     private Messenger serviceMessenger;
-    private final Messenger messenger = new Messenger(new MessageHandler());
+    private final Messenger messenger = new Messenger(new MessageHandler(this));
     private final BatteryInfoService.RemoteConnection serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
 
     private Resources res;
@@ -273,12 +273,18 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     //private static final Object[] EMPTY_OBJECT_ARRAY = {};
     //private static final  Class<?>[]  EMPTY_CLASS_ARRAY = {};
 
-    public class MessageHandler extends Handler {
+    private static class MessageHandler extends Handler {
+        private SettingsActivity sa;
+
+        MessageHandler(SettingsActivity a) {
+            sa = a;
+        }
+
         @Override
         public void handleMessage(Message incoming) {
             switch (incoming.what) {
             case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
-                serviceMessenger = incoming.replyTo;
+                sa.serviceMessenger = incoming.replyTo;
                 break;
             default:
                 super.handleMessage(incoming);
@@ -296,7 +302,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             }
         */
 
-            Boolean hasSettings = false;
+            //Boolean hasSettings = false;
         //    try {
         /* TODO: Convert to message
                 hasSettings = biServiceConnection.biService.pluginHasSettings();
@@ -935,7 +941,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private void setPluginPrefEntriesAndValues(ListPreference lpref) {
-        String prefix = "BI Plugin - ";
+        //String prefix = "BI Plugin - ";
 
         // PackageManager pm = getPackageManager();
         // java.util.List<PackageInfo> packages = pm.getInstalledPackages(0);

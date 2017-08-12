@@ -30,7 +30,7 @@ import android.support.v4.app.FragmentManager;
 public class PersistentFragment extends Fragment {
     private Intent biServiceIntent;
     private Messenger serviceMessenger;
-    private final MessageHandler messageHandler = new MessageHandler();
+    private final MessageHandler messageHandler = new MessageHandler(this);
     private final Messenger messenger = new Messenger(messageHandler);
     private BatteryInfoService.RemoteConnection serviceConnection;
     private boolean serviceConnected;
@@ -52,25 +52,31 @@ public class PersistentFragment extends Fragment {
         }
     }
 
-    private class MessageHandler extends Handler {
+    private static class MessageHandler extends Handler {
+        PersistentFragment pf;
+
+        MessageHandler(PersistentFragment f) {
+            pf = f;
+        }
+
         @Override
         public void handleMessage(Message incoming) {
-            if (! serviceConnected) {
+            if (! pf.serviceConnected) {
                 //Log.i(LOG_TAG, "serviceConected is false; ignoring message: " + incoming);
                 return;
             }
 
             switch (incoming.what) {
             case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
-                serviceMessenger = incoming.replyTo;
-                sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
+                pf.serviceMessenger = incoming.replyTo;
+                pf.sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_REGISTER_CLIENT);
                 break;
             case BatteryInfoService.RemoteConnection.CLIENT_BATTERY_INFO_UPDATED:
-                if (cif != null)
-                    cif.batteryInfoUpdated(incoming.getData());
+                if (pf.cif != null)
+                    pf.cif.batteryInfoUpdated(incoming.getData());
 
-                if (lvf != null)
-                    lvf.batteryInfoUpdated();
+                if (pf.lvf != null)
+                    pf.lvf.batteryInfoUpdated();
 
                 break;
             default:
@@ -152,6 +158,7 @@ public class PersistentFragment extends Fragment {
 
     @Override
     public void onConfigurationChanged (Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
         updateResources();
     }
 

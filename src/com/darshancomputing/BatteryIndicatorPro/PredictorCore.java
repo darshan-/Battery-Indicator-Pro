@@ -305,7 +305,7 @@ class PredictorCore {
 */
     private double recentAverageByTime(double duration_in_ms) {
         double total_points = 0d;
-        double total_ms = 0d;
+        //double total_ms = 0d;
         double needed_ms = duration_in_ms;
 
         int start = cur_info.percent;
@@ -331,13 +331,13 @@ class PredictorCore {
 
             if (potential_ms > needed_ms) {
                 total_points += needed_ms / potential_ms;
-                total_ms += needed_ms;
+                //total_ms += needed_ms;
                 needed_ms = 0;
                 break;
             }
 
             total_points += 1;
-            total_ms += potential_ms;
+            //total_ms += potential_ms;
             needed_ms -= potential_ms;
         }
 

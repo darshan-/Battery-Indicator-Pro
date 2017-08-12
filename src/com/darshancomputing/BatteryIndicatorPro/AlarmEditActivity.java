@@ -155,7 +155,7 @@ public class AlarmEditActivity extends PreferenceActivity {
         updateSummary(lp);
         lp.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference pref, Object newValue) {
-                if (mAdapter.type.equals((String) newValue)) return false;
+                if (mAdapter.type.equals(newValue)) return false;
 
                 mAdapter.setType((String) newValue);
 
@@ -174,7 +174,7 @@ public class AlarmEditActivity extends PreferenceActivity {
         updateSummary(lp);
         lp.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference pref, Object newValue) {
-                if (mAdapter.threshold.equals((String) newValue)) return false;
+                if (mAdapter.threshold.equals(newValue)) return false;
 
                 mAdapter.setThreshold((String) newValue);
 
@@ -205,7 +205,7 @@ public class AlarmEditActivity extends PreferenceActivity {
         updateSummary(lp);
         lp.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference pref, Object newValue) {
-                if (mAdapter.audio_stream.equals((String) newValue)) return false;
+                if (mAdapter.audio_stream.equals(newValue)) return false;
 
                 mAdapter.setAudioStream((String) newValue);
 

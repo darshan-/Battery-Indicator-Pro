@@ -463,7 +463,7 @@ public class LogViewFragment extends ListFragment {
                 int statusCode    = wrappedCursor.getInt(statusCodeIndex);
                 int[] statusCodes = LogDatabase.decodeStatus(statusCode);
                 int status        = statusCodes[0];
-                int plugged       = statusCodes[1];
+                //int plugged       = statusCodes[1];
                 int status_age    = statusCodes[2];
 
                 if (status == BatteryInfo.STATUS_FULLY_CHARGED && show_fully_charged) {
@@ -595,7 +595,7 @@ public class LogViewFragment extends ListFragment {
             int statusCode    = wrappedCursor.getInt(statusCodeIndex);
             int[] statusCodes = LogDatabase.decodeStatus(statusCode);
             int status        = statusCodes[0];
-            int plugged       = statusCodes[1];
+            //int plugged       = statusCodes[1];
             int status_age    = statusCodes[2];
 
             if (status == BatteryInfo.STATUS_FULLY_CHARGED) {
@@ -709,8 +709,7 @@ public class LogViewFragment extends ListFragment {
             String[] a = super.getColumnNames();
             String[] b = new String[a.length + 1];
 
-            for (int i = 0; i < a.length; i++)
-                b[i] = a[i];
+            System.arraycopy(a, 0, b, 0, a.length);
 
             b[a.length] = deltaColumnName;
 
@@ -898,7 +897,7 @@ public class LogViewFragment extends ListFragment {
             else temp_volt_tv.setText(""); /* TextViews are reused */
 
             int voltage = cursor.getInt(voltageIndex);
-            if (voltage != 0) temp_volt_tv.setText(((String) temp_volt_tv.getText().toString()) +
+            if (voltage != 0) temp_volt_tv.setText(temp_volt_tv.getText().toString() +
                                                    " / " + pfrag.str.formatVoltage(voltage));
         }
     }

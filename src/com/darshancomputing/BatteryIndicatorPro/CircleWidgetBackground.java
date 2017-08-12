@@ -38,7 +38,7 @@ class CircleWidgetBackground {
     private Paint bg_paint, arc_paint;
 
     CircleWidgetBackground(Context context) {
-        Resources res = context.getResources();
+        //Resources res = context.getResources();
 
         canvas = new Canvas();
 
