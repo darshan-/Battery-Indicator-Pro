@@ -63,7 +63,7 @@ public class AlarmEditActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
 
         res = getResources();
-        str = new Str(res);
+        Str.setResources(res);
         alarms = new AlarmDatabase(this);
         //settings = PreferenceManager.getDefaultSharedPreferences(this);
 

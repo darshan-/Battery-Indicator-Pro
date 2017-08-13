@@ -138,7 +138,7 @@ public class BatteryInfoService extends Service {
     @Override
     public void onCreate() {
         res = getResources();
-        str = new Str(res);
+        Str.setResources(res);
         log_db = new LogDatabase(this);
 
         info = new BatteryInfo();
@@ -339,7 +339,7 @@ public class BatteryInfoService extends Service {
         CurrentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
                                                     res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
-        str = new Str(res); // Language override may have changed
+        Str.setResources(res); // Language override may have changed
 
         applyNewSettings(cancelFirst);
     }

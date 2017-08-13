@@ -16,75 +16,74 @@ package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.res.Resources;
 
-/* TODO?: have a instance in the service and grab the server's instance from all other classes? */
 class Str {
-    private Resources res;
+    private static Resources res;
 
-    String degree_symbol;
-    String fahrenheit_symbol;
-    String celsius_symbol;
-    String volt_symbol;
-    String percent_symbol;
-    String since;
-    String default_status_dur_est;
-    String default_red_thresh;
-    String default_amber_thresh;
-    String default_green_thresh;
-    String default_max_log_age;
-    String default_main_notification_priority;
-    String default_prediction_type;
+    static String degree_symbol;
+    static String fahrenheit_symbol;
+    static String celsius_symbol;
+    static String volt_symbol;
+    static String percent_symbol;
+    static String since;
+    static String default_status_dur_est;
+    static String default_red_thresh;
+    static String default_amber_thresh;
+    static String default_green_thresh;
+    static String default_max_log_age;
+    static String default_main_notification_priority;
+    static String default_prediction_type;
 
-    String logs_empty;
-    String confirm_clear_logs;
-    String confirm_ten_percent_enable;
-    String confirm_ten_percent_disable;
-    String confirm_ten_percent_hint;
-    String configure_log_filter;
-    String yes;
-    String cancel;
-    String okay;
+    static String logs_empty;
+    static String confirm_clear_logs;
+    static String confirm_ten_percent_enable;
+    static String confirm_ten_percent_disable;
+    static String confirm_ten_percent_hint;
+    static String configure_log_filter;
+    static String yes;
+    static String cancel;
+    static String okay;
 
-    String currently_set_to;
-    String alarm_pref_not_used;
+    static String currently_set_to;
+    static String alarm_pref_not_used;
 
-    String silent;
+    static String silent;
 
-    String alarm_fully_charged;
-    String alarm_charge_drops;
-    String alarm_charge_rises;
-    String alarm_temp_rises;
-    String alarm_health_failure;
-    String alarm_text;
+    static String alarm_fully_charged;
+    static String alarm_charge_drops;
+    static String alarm_charge_rises;
+    static String alarm_temp_rises;
+    static String alarm_health_failure;
+    static String alarm_text;
 
-    String inaccessible_storage;
-    String inaccessible_w_reason;
-    String read_only_storage;
-    String no_storage_permission;
-    String file_written;
+    static String inaccessible_storage;
+    static String inaccessible_w_reason;
+    static String read_only_storage;
+    static String no_storage_permission;
+    static String file_written;
 
-    String time;
-    String date;
-    String status;
-    String charge;
-    String temperature;
-    String temperature_f;
-    String voltage;
+    static String time;
+    static String date;
+    static String status;
+    static String charge;
+    static String temperature;
+    static String temperature_f;
+    static String voltage;
 
-    String status_boot_completed;
+    static String status_boot_completed;
     
-    String[] statuses;
-    String[] log_statuses;
-    String[] log_statuses_old;
-    String[] healths;
-    String[] pluggeds;
-    String[] alarm_types_display;
-    String[] alarm_type_entries;
-    String[] alarm_type_values;
-    String[] temp_alarm_entries;
-    String[] temp_alarm_values;
-    String[] log_filter_pref_keys;
+    static String[] statuses;
+    static String[] log_statuses;
+    static String[] log_statuses_old;
+    static String[] healths;
+    static String[] pluggeds;
+    static String[] alarm_types_display;
+    static String[] alarm_type_entries;
+    static String[] alarm_type_values;
+    static String[] temp_alarm_entries;
+    static String[] temp_alarm_values;
+    static String[] log_filter_pref_keys;
 
-    Str(Resources r) {
+    static void setResources(Resources r) {
         res = r;
 
         degree_symbol          = res.getString(R.string.degree_symbol);
@@ -155,45 +154,45 @@ class Str {
         log_filter_pref_keys = res.getStringArray(R.array.log_filter_pref_keys);
     }
 
-    String for_n_hours(int n) {
+    static String for_n_hours(int n) {
         return String.format(res.getQuantityString(R.plurals.for_n_hours, n), n);
     }
 
-    String n_hours_m_minutes_long(int n, int m) {
+    static String n_hours_m_minutes_long(int n, int m) {
         return (String.format(res.getQuantityString(R.plurals.n_hours_long, n), n) +
                 String.format(res.getQuantityString(R.plurals.n_minutes_long, m), m));
     }
 
-    String n_minutes_long(int n) {
+    static String n_minutes_long(int n) {
         return String.format(res.getQuantityString(R.plurals.n_minutes_long, n), n);
     }
 
-    String n_hours_m_minutes_medium(int n, int m) {
+    static String n_hours_m_minutes_medium(int n, int m) {
         return (String.format(res.getQuantityString(R.plurals.n_hours_medium, n), n) +
                 String.format(res.getQuantityString(R.plurals.n_minutes_medium, m), m));
     }
 
-    String n_hours_long_m_minutes_medium(int n, int m) {
+    static String n_hours_long_m_minutes_medium(int n, int m) {
         return (String.format(res.getQuantityString(R.plurals.n_hours_long, n), n) +
                 String.format(res.getQuantityString(R.plurals.n_minutes_medium, m), m));
     }
 
-    String n_hours_m_minutes_short(int n, int m) {
+    static String n_hours_m_minutes_short(int n, int m) {
         return (String.format(res.getQuantityString(R.plurals.n_hours_short, n), n) +
                 String.format(res.getQuantityString(R.plurals.n_minutes_short, m), m));
     }
 
-    String n_days_m_hours(int n, int m) {
+    static String n_days_m_hours(int n, int m) {
         return (String.format(res.getQuantityString(R.plurals.n_days, n), n) +
                 String.format(res.getQuantityString(R.plurals.n_hours, m), m));
     }
 
-    String n_log_items(int n) {
+    static String n_log_items(int n) {
         return String.format(res.getQuantityString(R.plurals.n_log_items, n), n);
     }
 
     /* temperature is the integer number of tenths of degrees Celcius, as returned by BatteryManager */
-    String formatTemp(int temperature, boolean convertF, boolean includeTenths) {
+    static String formatTemp(int temperature, boolean convertF, boolean includeTenths) {
         double d;
         String s;
 
@@ -205,16 +204,14 @@ class Str {
             s = degree_symbol + celsius_symbol;
         }
 
-        // Weird: the ternary operator seems to compile down to a "function" that has to return a single particular type
-        //return "" + (includeTenths ? d : java.lang.Math.round(d)) + s;
         return (includeTenths ? String.valueOf(d) : String.valueOf(java.lang.Math.round(d))) + s;
     }
 
-    String formatTemp(int temperature, boolean convertF) {
+    static String formatTemp(int temperature, boolean convertF) {
         return formatTemp(temperature, convertF, true);
     }
 
-    String formatVoltage(int voltage) {
+    static String formatVoltage(int voltage) {
         return String.valueOf(voltage / 1000.0) + volt_symbol;
     }
 
@@ -225,7 +222,7 @@ class Str {
         return -1;
     }
 
-    android.text.Spanned timeRemaining(BatteryInfo info) {
+    static android.text.Spanned timeRemaining(BatteryInfo info) {
         if (info.prediction.what == BatteryInfo.Prediction.NONE) {
             return android.text.Html.fromHtml("<font color=\"#6fc14b\">" + statuses[info.status] + "</font>");
         } else {
@@ -244,14 +241,14 @@ class Str {
 
     // Shows mdash rather than "Fully Charged" when no prediction.
     //   The widget still wants the old behavior.
-    android.text.Spanned timeRemainingMainScreen(BatteryInfo info) {
+    static android.text.Spanned timeRemainingMainScreen(BatteryInfo info) {
         if (info.prediction.what == BatteryInfo.Prediction.NONE)
             return android.text.Html.fromHtml("&nbsp;&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;");
         else
             return timeRemaining(info);
     }
 
-    String untilWhat(BatteryInfo info) {
+    static String untilWhat(BatteryInfo info) {
         if (info.prediction.what == BatteryInfo.Prediction.NONE)
             return "";
         else if (info.prediction.what == BatteryInfo.Prediction.UNTIL_CHARGED)

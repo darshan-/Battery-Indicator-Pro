@@ -164,7 +164,7 @@ public class PersistentFragment extends Fragment {
 
     private void updateResources() {
         res = getActivity().getResources();
-        str = new Str(res);
+        Str.setResources(res);
     }
 
     // Public API starts here for use by BatteryInfoActivity and any of its Fragments

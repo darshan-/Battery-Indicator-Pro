@@ -27,7 +27,7 @@ public class AlarmRingtonePreference extends RingtonePreference {
     public AlarmRingtonePreference(Context c, AttributeSet attrs){
         super(c, attrs);
         context = c;
-        str = new Str(context.getResources());
+        Str.setResources(context.getResources());
     }
 
     @Override

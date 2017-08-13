@@ -615,16 +615,16 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     protected Dialog onCreateDialog(int id) {
         Dialog dialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        Str str = new Str(getResources());
+        Str.setResources(getResources());
 
         switch (id) {
         /* Android saves and reuses these dialogs; we want different titles for each, hence two IDs */
         case DIALOG_CONFIRM_TEN_PERCENT_ENABLE:
         case DIALOG_CONFIRM_TEN_PERCENT_DISABLE:
-            builder.setTitle(ten_percent_mode ? str.confirm_ten_percent_disable : str.confirm_ten_percent_enable)
-                .setMessage(str.confirm_ten_percent_hint)
+            builder.setTitle(ten_percent_mode ? Str.confirm_ten_percent_disable : Str.confirm_ten_percent_enable)
+                .setMessage(Str.confirm_ten_percent_hint)
                 .setCancelable(false)
-                .setPositiveButton(str.yes, new DialogInterface.OnClickListener() {
+                .setPositiveButton(Str.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface di, int id) {
                         ten_percent_mode = ! ten_percent_mode;
                         ((CheckBoxPreference) mPreferenceScreen.findPreference(KEY_TEN_PERCENT_MODE)).setChecked(ten_percent_mode);
@@ -633,7 +633,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                         restartThisScreen();
                     }
                 })
-                .setNegativeButton(str.cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(Str.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface di, int id) {
                         di.cancel();
                     }
