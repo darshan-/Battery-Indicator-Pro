@@ -125,9 +125,9 @@ public class LogViewFragment extends ListFragment {
     private void migrateFiltersToSpMain() {
         SharedPreferences.Editor spm_editor = pfrag.sp_main.edit();
 
-        for (int i = 0; i < pfrag.str.log_filter_pref_keys.length; i++) {
-            spm_editor.putBoolean(pfrag.str.log_filter_pref_keys[i],
-                                  pfrag.settings.getBoolean(pfrag.str.log_filter_pref_keys[i], true));
+        for (int i = 0; i < Str.log_filter_pref_keys.length; i++) {
+            spm_editor.putBoolean(Str.log_filter_pref_keys[i],
+                                  pfrag.settings.getBoolean(Str.log_filter_pref_keys[i], true));
         }
 
         spm_editor.putBoolean("log_filters_migrated_to_sp_main", true).apply();
@@ -185,12 +185,12 @@ public class LogViewFragment extends ListFragment {
     }
 
     public static class ConfigureLogFilterDialogFragment extends DialogFragment {
-        final boolean[] checked_items = new boolean[pfrag.str.log_filter_pref_keys.length];
+        final boolean[] checked_items = new boolean[Str.log_filter_pref_keys.length];
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             for (int i = 0; i < checked_items.length; i++) {
-                checked_items[i] = pfrag.sp_main.getBoolean(pfrag.str.log_filter_pref_keys[i], true);
+                checked_items[i] = pfrag.sp_main.getBoolean(Str.log_filter_pref_keys[i], true);
             }
 
             return new AlertDialog.Builder(getActivity())
@@ -218,7 +218,7 @@ public class LogViewFragment extends ListFragment {
         SharedPreferences.Editor spm_editor = pfrag.sp_main.edit();
 
         for (int i = 0; i < checked_items.length; i++) {
-            spm_editor.putBoolean(pfrag.str.log_filter_pref_keys[i], checked_items[i]);
+            spm_editor.putBoolean(Str.log_filter_pref_keys[i], checked_items[i]);
         }
 
         spm_editor.apply();
@@ -315,9 +315,9 @@ public class LogViewFragment extends ListFragment {
         int count = filteredCursor.getCount();
 
         if (count == 0)
-            header_text.setText(pfrag.str.logs_empty);
+            header_text.setText(Str.logs_empty);
         else
-            header_text.setText(pfrag.str.n_log_items(count));
+            header_text.setText(Str.n_log_items(count));
     }
 
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -326,7 +326,7 @@ public class LogViewFragment extends ListFragment {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                     exportCSV();
                 else
-                    Toast.makeText(getActivity(), pfrag.str.no_storage_permission, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), Str.no_storage_permission, Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -344,10 +344,10 @@ public class LogViewFragment extends ListFragment {
         String state = Environment.getExternalStorageState();
 
         if (state != null && state.equals(Environment.MEDIA_MOUNTED_READ_ONLY)) {
-            Toast.makeText(getActivity(), pfrag.str.read_only_storage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), Str.read_only_storage, Toast.LENGTH_SHORT).show();
             return;
         } else if (state == null || !state.equals(Environment.MEDIA_MOUNTED)) {
-            Toast.makeText(getActivity(), pfrag.str.inaccessible_w_reason + state, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), Str.inaccessible_w_reason + state, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -357,12 +357,12 @@ public class LogViewFragment extends ListFragment {
         File root    = Environment.getExternalStorageDirectory();
         File csvFile = new File(root, csvFileName);
 
-        String[] csvFields = {pfrag.str.date, pfrag.str.time, pfrag.str.status, pfrag.str.charge,
-                              pfrag.str.temperature, pfrag.str.temperature_f, pfrag.str.voltage};
+        String[] csvFields = {Str.date, Str.time, Str.status, Str.charge,
+                              Str.temperature, Str.temperature_f, Str.voltage};
 
         try {
             if (!csvFile.createNewFile() || !csvFile.canWrite()) {
-                Toast.makeText(getActivity(), pfrag.str.inaccessible_storage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), Str.inaccessible_storage, Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -395,14 +395,14 @@ public class LogViewFragment extends ListFragment {
                         status_age  = statusCodes[2];
 
                         if (status == LogDatabase.STATUS_BOOT_COMPLETED)
-                            s = pfrag.str.status_boot_completed;
+                            s = Str.status_boot_completed;
                         else if (status_age == LogDatabase.STATUS_OLD)
-                            s = pfrag.str.log_statuses_old[status];
+                            s = Str.log_statuses_old[status];
                         else
-                            s = pfrag.str.log_statuses[status];
+                            s = Str.log_statuses[status];
 
                         if (plugged > 0)
-                            s += " " + pfrag.str.pluggeds[plugged];
+                            s += " " + Str.pluggeds[plugged];
 
                         buf.write(s + ",");
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_CHARGE)) {
@@ -419,11 +419,11 @@ public class LogViewFragment extends ListFragment {
             }
             buf.close();
         } catch (Exception e) {
-            Toast.makeText(getActivity(), pfrag.str.inaccessible_storage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), Str.inaccessible_storage, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Toast.makeText(getActivity(), pfrag.str.file_written, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), Str.file_written, Toast.LENGTH_SHORT).show();
     }
 
     // Based on http://stackoverflow.com/a/7343721/1427098
@@ -818,13 +818,13 @@ public class LogViewFragment extends ListFragment {
 
             if (status == LogDatabase.STATUS_BOOT_COMPLETED) {
                 status_tv.setTextColor(col.boot);
-                s = pfrag.str.status_boot_completed;
+                s = Str.status_boot_completed;
 
                 time_diff_tv.setVisibility(View.GONE);
             } else if (status_age == LogDatabase.STATUS_OLD) {
                  status_tv.setTextColor(col.old_status);
                 percent_tv.setTextColor(col.old_status);
-                s = pfrag.str.log_statuses_old[status];
+                s = Str.log_statuses_old[status];
 
                 time_diff_tv.setVisibility(View.GONE);
             } else {
@@ -846,7 +846,7 @@ public class LogViewFragment extends ListFragment {
                     percent_tv.setTextColor(col.unknown);
                 }
 
-                s = pfrag.str.log_statuses[status];
+                s = Str.log_statuses[status];
                 long delta;
 
                 switch (status) {
@@ -883,7 +883,7 @@ public class LogViewFragment extends ListFragment {
             }
 
             if (plugged > 0)
-                s += " " + pfrag.str.pluggeds[plugged];
+                s += " " + Str.pluggeds[plugged];
 
             status_tv.setText(s);
 
@@ -893,12 +893,12 @@ public class LogViewFragment extends ListFragment {
             time_tv.setText(dateFormat.format(d) + "  " + timeFormat.format(d));
 
             int temperature = cursor.getInt(temperatureIndex);
-            if (temperature != 0) temp_volt_tv.setText("" + pfrag.str.formatTemp(temperature, convertF));
+            if (temperature != 0) temp_volt_tv.setText("" + Str.formatTemp(temperature, convertF));
             else temp_volt_tv.setText(""); /* TextViews are reused */
 
             int voltage = cursor.getInt(voltageIndex);
             if (voltage != 0) temp_volt_tv.setText(temp_volt_tv.getText().toString() +
-                                                   " / " + pfrag.str.formatVoltage(voltage));
+                                                   " / " + Str.formatVoltage(voltage));
         }
     }
 

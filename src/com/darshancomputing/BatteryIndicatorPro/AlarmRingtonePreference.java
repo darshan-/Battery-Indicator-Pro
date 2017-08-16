@@ -22,7 +22,6 @@ import android.util.AttributeSet;
 public class AlarmRingtonePreference extends RingtonePreference {
     private Uri ringtone;
     private Context context;
-    private Str str;
 
     public AlarmRingtonePreference(Context c, AttributeSet attrs){
         super(c, attrs);
@@ -36,17 +35,18 @@ public class AlarmRingtonePreference extends RingtonePreference {
     }
 
     public void setValue(String s) {
-        String summary = str.currently_set_to;
+        String summary = Str.currently_set_to;
 
         if (s == null || s.equals("")) {
             ringtone = null;
-            summary += str.silent;
+            summary += Str.silent;
         } else {
             ringtone = Uri.parse(s);
+            //System.out.println("..................................... ringtone: " + s);
             android.media.Ringtone r = android.media.RingtoneManager.getRingtone(context, ringtone);
             if (r == null) {
                 ringtone = null;
-                summary += str.silent;
+                summary += Str.silent;
             } else {
                 summary += r.getTitle(context);
             }

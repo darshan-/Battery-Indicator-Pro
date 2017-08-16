@@ -100,7 +100,7 @@ public class NotificationWizard extends DialogFragment {
             return cached_value;
 
         int priority = Integer.valueOf(pfrag.settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                                                pfrag.str.default_main_notification_priority));
+                                                                Str.default_main_notification_priority));
 
         boolean show_notification = pfrag.sp_service.getBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
 

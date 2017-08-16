@@ -1,0 +1,48 @@
+
+TODO for 10.0.2:
+ * Remove sound (or don't include it) from notification when playing it myself
+ * Request/Check for read_external_media
+ * Update documentation
+ * lots of other little things, right?
+
+
+Alarm type:
+  Notification
+  Alarm
+
+Notification is the old way: Played by Android, not looped, standard audio stream
+Alarm is played by the service, loops* until dismissed, uses alarm stream
+
+
+* Some ringtones are set to loop (mostly alarms), but not a 100% mapping.  (Some
+  non-alarms loop forever, and maybe some alarms don't.  And the looping forever
+  also depends on device!)  So my best solution is to set MediaPlayer to looping,
+  so all alarms treated as "alarm" type by my app are looping.  (I can't make
+  looping ringtones non-looping**), but I can make non-looping ones loop.
+
+** I technically have the option to listen to onSeekComplete, so that when the internal
+  looping that I have no control over loops back to 0, I can then call stop.
+  This has the disadvantage of clipping ringtones that have a few internal loops rather
+  than infinite looping.  (Many ringtones are 2-4 loops naturally, which sounds good,
+  and clipping them to one is wonky.)  So I think the best is to have only the two
+  options (Notifiation|Alarm) without an extra (loop|no-loop) setting for alarms.
+  (And there are some folks saying that on some devices onSeekComplete is never called
+  for infinitiely looping sounds, so this isn't trustworthy.)
+
+
+
+
+
+
+Possibly in the future:
+
+Three tabs
+"Logs", "Status", "Alarms"
+
+Action Bar tabs, rather than pager view
+
+NAVIGATION_MODE_TABS
+
+Depricated in API 21, but should work well on API 11+ anyway.
+
+

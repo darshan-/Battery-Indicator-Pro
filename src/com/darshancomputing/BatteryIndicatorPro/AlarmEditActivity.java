@@ -34,7 +34,6 @@ import android.view.MenuItem;
 
 public class AlarmEditActivity extends PreferenceActivity {
     private Resources res;
-    private Str str;
     private PreferenceScreen mPreferenceScreen;
     //private SharedPreferences settings;
     private AlarmDatabase alarms;
@@ -250,17 +249,17 @@ public class AlarmEditActivity extends PreferenceActivity {
             entry = entry.replace("%", "%%");
 
         if (lp.isEnabled())
-            lp.setSummary(str.currently_set_to + entry);
+            lp.setSummary(Str.currently_set_to + entry);
         else
-            lp.setSummary(str.alarm_pref_not_used);
+            lp.setSummary(Str.alarm_pref_not_used);
     }
 
     private void setUpThresholdList(Boolean resetValue) {
         ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_THRESHOLD);
 
         if (mAdapter.type.equals("temp_rises")) {
-            lp.setEntries(str.temp_alarm_entries);
-            lp.setEntryValues(str.temp_alarm_values);
+            lp.setEntries(Str.temp_alarm_entries);
+            lp.setEntryValues(Str.temp_alarm_values);
             lp.setEnabled(true);
 
             if (resetValue) {

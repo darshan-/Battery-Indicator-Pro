@@ -200,9 +200,9 @@ public class AlarmsFragment extends Fragment {
         String threshold = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
         Boolean  enabled = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_ENABLED)) == 1);
 
-        String s = pfrag.str.alarm_types_display[Str.indexOf(pfrag.str.alarm_type_values, type)];
+        String s = Str.alarm_types_display[Str.indexOf(Str.alarm_type_values, type)];
         if (type.equals("temp_rises")) {
-            s += " " + pfrag.str.formatTemp(Integer.valueOf(threshold), convertF, false);
+            s += " " + Str.formatTemp(Integer.valueOf(threshold), convertF, false);
         } else if (type.equals("charge_drops") || type.equals("charge_rises")) {
             s += " " + threshold + "%";
         }

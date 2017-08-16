@@ -43,7 +43,6 @@ public class PersistentFragment extends Fragment {
     public SharedPreferences sp_service;
     public SharedPreferences sp_main;
     public Resources res;
-    public Str str;
 
     private void bindService() {
         if (! serviceConnected) {

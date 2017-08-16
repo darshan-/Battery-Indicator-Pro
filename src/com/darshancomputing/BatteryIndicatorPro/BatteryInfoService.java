@@ -58,7 +58,6 @@ public class BatteryInfoService extends Service {
     private SharedPreferences.Editor sps_editor;
 
     private Resources res;
-    private Str str;
     private AlarmDatabase alarms;
     private LogDatabase log_db;
     private BatteryLevel bl;
@@ -230,12 +229,12 @@ public class BatteryInfoService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        // NotificationCompat.Builder nb = makeTestAlarmBuilder();
-        // nb.setContentTitle("Test Title")
-        //     .setContentText("Text content")
-        //     .setContentIntent(alarmsPendingIntent)
-        //     .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
-        //notifyAlarm(makeTestAlarmBuilder().build());
+        Notification.Builder nb = makeTestAlarmBuilder();
+        nb.setContentTitle("Test Title")
+            .setContentText("Text content")
+            .setContentIntent(alarmsPendingIntent)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+        notifyAlarm(makeTestAlarmBuilder().build());
 
         return messenger.getBinder();
     }
@@ -372,7 +371,7 @@ public class BatteryInfoService extends Service {
         default:
             sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
             int priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                                              str.default_main_notification_priority));
+                                                              Str.default_main_notification_priority));
             if (priority == NotificationCompat.PRIORITY_MIN)
                 settings_editor.putString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
                                           "" + NotificationCompat.PRIORITY_LOW);
@@ -418,7 +417,7 @@ public class BatteryInfoService extends Service {
             info.load(intent, sp_service);
 
         predictor.setPredictionType(settings.getString(SettingsActivity.KEY_PREDICTION_TYPE,
-                                                       str.default_prediction_type));
+                                                       Str.default_prediction_type));
         predictor.update(info);
         info.prediction.updateRelativeTime();
 
@@ -482,21 +481,21 @@ public class BatteryInfoService extends Service {
                     rv.setImageViewBitmap(R.id.battery_level_view, bl.getBitmap());
 
                     if (info.prediction.what == BatteryInfo.Prediction.NONE) {
-                        rv.setTextViewText(R.id.fully_charged, str.timeRemaining(info));
+                        rv.setTextViewText(R.id.fully_charged, Str.timeRemaining(info));
                         rv.setTextViewText(R.id.time_remaining, "");
                         rv.setTextViewText(R.id.until_what, "");
                     } else {
                         rv.setTextViewText(R.id.fully_charged, "");
-                        rv.setTextViewText(R.id.time_remaining, str.timeRemaining(info));
-                        rv.setTextViewText(R.id.until_what, str.untilWhat(info));
+                        rv.setTextViewText(R.id.time_remaining, Str.timeRemaining(info));
+                        rv.setTextViewText(R.id.until_what, Str.untilWhat(info));
                     }
                 }
             }
 
             if (info == null)
-                rv.setTextViewText(R.id.level, "XX" + str.percent_symbol);
+                rv.setTextViewText(R.id.level, "XX" + Str.percent_symbol);
             else
-                rv.setTextViewText(R.id.level, "" + info.percent + str.percent_symbol);
+                rv.setTextViewText(R.id.level, "" + info.percent + Str.percent_symbol);
 
             rv.setOnClickPendingIntent(R.id.widget_layout, currentInfoPendingIntent);
             try {
@@ -526,7 +525,7 @@ public class BatteryInfoService extends Service {
             .setShowWhen(false)
             .setContentIntent(currentInfoPendingIntent)
             .setPriority(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                                            str.default_main_notification_priority)))
+                                                            Str.default_main_notification_priority)))
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
         if (settings.getBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT,
@@ -553,7 +552,7 @@ public class BatteryInfoService extends Service {
             notificationRV.setImageViewBitmap(R.id.battery, bl.getBitmap());
             bl.setLevel(info.percent);
 
-            notificationRV.setTextViewText(R.id.percent, "" + info.percent + str.percent_symbol);
+            notificationRV.setTextViewText(R.id.percent, "" + info.percent + Str.percent_symbol);
             notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTopLine));
             notificationRV.setTextViewText(R.id.bottom_line, mainNotificationBottomLine);
 
@@ -632,21 +631,21 @@ public class BatteryInfoService extends Service {
         BatteryInfo.RelativeTime predicted = info.prediction.last_rtime;
 
         if (info.prediction.what == BatteryInfo.Prediction.NONE) {
-            line = str.statuses[info.status];
+            line = Str.statuses[info.status];
         } else {
             if (predicted.days > 0)
-                line = str.n_days_m_hours(predicted.days, predicted.hours);
+                line = Str.n_days_m_hours(predicted.days, predicted.hours);
             else if (predicted.hours > 0) {
                 String verbosity = settings.getString(SettingsActivity.KEY_TIME_REMAINING_VERBOSITY,
                                                       res.getString(R.string.default_time_remaining_verbosity));
                 if (verbosity.equals("condensed"))
-                    line = str.n_hours_m_minutes_medium(predicted.hours, predicted.minutes);
+                    line = Str.n_hours_m_minutes_medium(predicted.hours, predicted.minutes);
                 else if (verbosity.equals("verbose"))
-                    line = str.n_hours_m_minutes_long(predicted.hours, predicted.minutes);
+                    line = Str.n_hours_m_minutes_long(predicted.hours, predicted.minutes);
                 else
-                    line = str.n_hours_long_m_minutes_medium(predicted.hours, predicted.minutes);
+                    line = Str.n_hours_long_m_minutes_medium(predicted.hours, predicted.minutes);
             } else
-                line = str.n_minutes_long(predicted.minutes);
+                line = Str.n_minutes_long(predicted.minutes);
 
             if (info.prediction.what == BatteryInfo.Prediction.UNTIL_CHARGED)
                 line += res.getString(R.string.notification_until_charged);
@@ -661,10 +660,10 @@ public class BatteryInfoService extends Service {
         Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
                                                res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
-        String line = str.healths[info.health] + " / " + str.formatTemp(info.temperature, convertF);
+        String line = Str.healths[info.health] + " / " + Str.formatTemp(info.temperature, convertF);
 
         if (info.voltage > 500)
-            line += " / " + str.formatVoltage(info.voltage);
+            line += " / " + Str.formatVoltage(info.voltage);
         if (settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
             settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_VITAL_STATS, false)) {
             Long current = null;
@@ -686,12 +685,12 @@ public class BatteryInfoService extends Service {
     private String statusDurationLine() {
         long statusDuration = now - info.last_status_cTM;
         int statusDurationHours = (int) ((statusDuration + (1000 * 60 * 30)) / (1000 * 60 * 60));
-        String line = str.statuses[info.status] + " ";
+        String line = Str.statuses[info.status] + " ";
 
         if (statusDuration < 1000 * 60 * 60)
-            line += str.since + " " + formatTime(new Date(info.last_status_cTM));
+            line += Str.since + " " + formatTime(new Date(info.last_status_cTM));
         else
-            line += str.for_n_hours(statusDurationHours);
+            line += Str.for_n_hours(statusDurationHours);
 
         return line;
     }
@@ -726,16 +725,16 @@ public class BatteryInfoService extends Service {
             return R.drawable.w000 + info.percent;
         } else {
             if (settings.getBoolean(SettingsActivity.KEY_RED, res.getBoolean(R.bool.default_use_red)) &&
-                info.percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, str.default_red_thresh)) &&
+                info.percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, Str.default_red_thresh)) &&
                 info.percent <= SettingsActivity.RED_ICON_MAX) {
                 return R.drawable.r000 + info.percent - 0;
             } else if (settings.getBoolean(SettingsActivity.KEY_AMBER, res.getBoolean(R.bool.default_use_amber)) &&
-                       info.percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_AMBER_THRESH, str.default_amber_thresh)) &&
+                       info.percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_AMBER_THRESH, Str.default_amber_thresh)) &&
                        info.percent <= SettingsActivity.AMBER_ICON_MAX &&
                        info.percent >= SettingsActivity.AMBER_ICON_MIN){
                 return R.drawable.a000 + info.percent - 0;
             } else if (settings.getBoolean(SettingsActivity.KEY_GREEN, res.getBoolean(R.bool.default_use_green)) &&
-                       info.percent >= Integer.valueOf(settings.getString(SettingsActivity.KEY_GREEN_THRESH, str.default_green_thresh)) &&
+                       info.percent >= Integer.valueOf(settings.getString(SettingsActivity.KEY_GREEN_THRESH, Str.default_green_thresh)) &&
                        info.percent >= SettingsActivity.GREEN_ICON_MIN) {
                 return R.drawable.g020 + info.percent - 20;
             } else {
@@ -758,7 +757,7 @@ public class BatteryInfoService extends Service {
             log_db.logStatus(info, now, LogDatabase.STATUS_NEW);
 
             if (info.status != info.last_status && info.last_status == BatteryInfo.STATUS_UNPLUGGED)
-                log_db.prune(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAX_LOG_AGE, str.default_max_log_age)));
+                log_db.prune(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAX_LOG_AGE, Str.default_max_log_age)));
         }
 
         if (settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
@@ -804,8 +803,8 @@ public class BatteryInfoService extends Service {
             c = alarms.activeAlarmFull();
             if (c != null) {
                 nb = parseAlarmCursor(c);
-                nb.setContentTitle(str.alarm_fully_charged)
-                    .setContentText(str.alarm_text);
+                nb.setContentTitle(Str.alarm_fully_charged)
+                    .setContentText(Str.alarm_text);
 
                 if (android.os.Build.VERSION.SDK_INT >= 21)
                     nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
@@ -821,8 +820,8 @@ public class BatteryInfoService extends Service {
             sps_editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
             nb = parseAlarmCursor(c);
             String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
-            nb.setContentTitle(str.alarm_charge_drops + threshold + str.percent_symbol)
-                .setContentText(str.alarm_text);
+            nb.setContentTitle(Str.alarm_charge_drops + threshold + Str.percent_symbol)
+                .setContentText(Str.alarm_text);
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
                 nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
@@ -837,8 +836,8 @@ public class BatteryInfoService extends Service {
             sps_editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
             nb = parseAlarmCursor(c);
             String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
-            nb.setContentTitle(str.alarm_charge_rises + threshold + str.percent_symbol)
-                .setContentText(str.alarm_text);
+            nb.setContentTitle(Str.alarm_charge_rises + threshold + Str.percent_symbol)
+                .setContentText(Str.alarm_text);
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
                 nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
@@ -856,8 +855,8 @@ public class BatteryInfoService extends Service {
             sps_editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
             nb = parseAlarmCursor(c);
             String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
-            nb.setContentTitle(str.alarm_temp_rises + str.formatTemp(Integer.valueOf(threshold), convertF, false))
-                .setContentText(str.alarm_text);
+            nb.setContentTitle(Str.alarm_temp_rises + Str.formatTemp(Integer.valueOf(threshold), convertF, false))
+                .setContentText(Str.alarm_text);
 
             if (android.os.Build.VERSION.SDK_INT >= 21)
                 nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
@@ -872,8 +871,8 @@ public class BatteryInfoService extends Service {
             if (c != null) {
                 sps_editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
                 nb = parseAlarmCursor(c);
-                nb.setContentTitle(str.alarm_health_failure + str.healths[info.health])
-                    .setContentText(str.alarm_text);
+                nb.setContentTitle(Str.alarm_health_failure + Str.healths[info.health])
+                    .setContentText(Str.alarm_text);
 
                 if (android.os.Build.VERSION.SDK_INT >= 21)
                     nb.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
@@ -916,6 +915,7 @@ public class BatteryInfoService extends Service {
     }
 
     private boolean playAlarmMyself(Uri uri) {
+        System.out.println("..................................... playAlarmMyself");
         try {
             alarmPlayer.setDataSource(this, uri);
             alarmPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
@@ -924,10 +924,12 @@ public class BatteryInfoService extends Service {
             //     And it could drain the battery if the user doesn't notice it and it keeps going.
             //     So leave that possibility to be considered another time.
             //if (loop)
-            //mMediaPlayer.setLooping(true);
+            //alarmPlayer.setLooping(false);
             alarmPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                     public void onPrepared(MediaPlayer mp) {
-                        mp.seekTo(0);
+                        System.out.println("..................................... onPrepepared (start)");
+                        //mp.seekTo(0);
+                        mp.setLooping(false);
                         mp.start();
                     }
 
@@ -935,6 +937,7 @@ public class BatteryInfoService extends Service {
             //if (!loop)
             alarmPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     public void onCompletion(MediaPlayer mp) {
+                        System.out.println("..................................... onCompletion (stop)");
                         mp.stop();
                     }
 
@@ -946,25 +949,25 @@ public class BatteryInfoService extends Service {
         return true;
     }
 
-    // private NotificationCompat.Builder makeTestAlarmBuilder() {
-    //     return new NotificationCompat.Builder(this)
-    //         .setSmallIcon(R.drawable.stat_notify_alarm)
-    //         .setAutoCancel(true)
-    //         .setSound(Uri.parse("content://media/internal/audio/media/14"), AudioManager.STREAM_ALARM)
-    //         //.setSound(Uri.parse("content://media/external/audio/media/14"), AudioManager.STREAM_ALARM)
-    //         .setContentTitle("Test Title")
-    //         .setContentText("Text content")
-    //         .setContentIntent(alarmsPendingIntent)
-    //         .setDeleteIntent(alarmsCancelPendingIntent)
-    //         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+    private Notification.Builder makeTestAlarmBuilder() {
+        return new Notification.Builder(this)
+            .setSmallIcon(R.drawable.stat_notify_alarm)
+            .setAutoCancel(true)
+            //.setSound(Uri.parse("content://media/internal/audio/media/13"), AudioManager.STREAM_ALARM)
+            .setSound(Uri.parse("content://media/external/audio/media/18"), AudioManager.STREAM_ALARM)
+            .setContentTitle("Test Title")
+            .setContentText("Text content")
+            .setContentIntent(alarmsPendingIntent)
+            .setDeleteIntent(alarmsCancelPendingIntent)
+            .setVisibility(Notification.VISIBILITY_PUBLIC);
 
-    //     // Uri ringtone = android.media.RingtoneManager
-    //     //     .getDefaultUri(android.media.RingtoneManager.TYPE_NOTIFICATION);
-    //     // int stream = AudioManager.STREAM_ALARM;
-    //     //nb.setSound(ringtone, stream);
+        // Uri ringtone = android.media.RingtoneManager
+        //     .getDefaultUri(android.media.RingtoneManager.TYPE_NOTIFICATION);
+        // int stream = AudioManager.STREAM_ALARM;
+        //nb.setSound(ringtone, stream);
 
-    //     //return nb;
-    // }
+        //return nb;
+    }
 
     private String formatTime(Date d) {
         String format = android.provider.Settings.System.getString(getContentResolver(),
