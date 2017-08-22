@@ -13,7 +13,7 @@
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
   <!-- Permissions now considered "dangerous", which require user permission on API 23+ -->
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <!--uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /-->
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
   <uses-feature android:name="android.hardware.touchscreen" android:required="false" />

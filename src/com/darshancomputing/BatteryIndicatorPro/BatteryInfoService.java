@@ -229,12 +229,12 @@ public class BatteryInfoService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        Notification.Builder nb = makeTestAlarmBuilder();
-        nb.setContentTitle("Test Title")
-            .setContentText("Text content")
-            .setContentIntent(alarmsPendingIntent)
-            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
-        notifyAlarm(makeTestAlarmBuilder().build());
+        // Notification.Builder nb = makeTestAlarmBuilder();
+        // nb.setContentTitle("Test Title")
+        //     .setContentText("Text content")
+        //     .setContentIntent(alarmsPendingIntent)
+        //     .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+        // notifyAlarm(makeTestAlarmBuilder().build());
 
         return messenger.getBinder();
     }
@@ -892,10 +892,10 @@ public class BatteryInfoService extends Service {
             .setDeleteIntent(alarmsCancelPendingIntent);
 
         String ringtone = c.getString(c.getColumnIndex(AlarmDatabase.KEY_RINGTONE));
-        String audio_stream = c.getString(c.getColumnIndex(AlarmDatabase.KEY_AUDIO_STREAM));
+        //String audio_stream = c.getString(c.getColumnIndex(AlarmDatabase.KEY_AUDIO_STREAM));
         int stream = AudioManager.STREAM_NOTIFICATION;
-        if (audio_stream != null && audio_stream.equals("alarm"))
-            stream = AudioManager.STREAM_ALARM;
+        //if (audio_stream != null && audio_stream.equals("alarm"))
+        //    stream = AudioManager.STREAM_ALARM;
         if (! ringtone.equals(""))
             nb.setSound(Uri.parse(ringtone), stream);
 
@@ -910,10 +910,11 @@ public class BatteryInfoService extends Service {
 
     private void notifyAlarm(Notification n) {
         mNotificationManager.notify(NOTIFICATION_ALARM, n);
-        if (n.audioStreamType == AudioManager.STREAM_ALARM)
-            playAlarmMyself(n.sound);
+        // if (n.audioStreamType == AudioManager.STREAM_ALARM)
+        //     playAlarmMyself(n.sound);
     }
 
+    /*
     private boolean playAlarmMyself(Uri uri) {
         System.out.println("..................................... playAlarmMyself");
         try {
@@ -948,7 +949,9 @@ public class BatteryInfoService extends Service {
 
         return true;
     }
+    */
 
+    /*
     private Notification.Builder makeTestAlarmBuilder() {
         return new Notification.Builder(this)
             .setSmallIcon(R.drawable.stat_notify_alarm)
@@ -968,6 +971,7 @@ public class BatteryInfoService extends Service {
 
         //return nb;
     }
+    */
 
     private String formatTime(Date d) {
         String format = android.provider.Settings.System.getString(getContentResolver(),

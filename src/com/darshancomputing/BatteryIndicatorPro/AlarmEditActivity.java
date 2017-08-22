@@ -197,6 +197,7 @@ public class AlarmEditActivity extends PreferenceActivity {
             }
         });
 
+        /*
         lp = (ListPreference) mPreferenceScreen.findPreference(KEY_AUDIO_STREAM);
         if (mAdapter.audio_stream == null)
             mAdapter.setAudioStream("notification"); // Lazy migration (Service handles null value as default)
@@ -214,6 +215,7 @@ public class AlarmEditActivity extends PreferenceActivity {
                 return false;
             }
         });
+        */
 
         cb = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_VIBRATE);
         cb.setChecked(mAdapter.vibrate);
@@ -300,7 +302,7 @@ public class AlarmEditActivity extends PreferenceActivity {
                     type = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_TYPE));
                threshold = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
                 ringtone = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_RINGTONE));
-            audio_stream = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_AUDIO_STREAM));
+          //audio_stream = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_AUDIO_STREAM));
                  enabled = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_ENABLED)) == 1);
                  vibrate = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_VIBRATE)) == 1);
                  lights  = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_LIGHTS)) == 1);
@@ -336,9 +338,9 @@ public class AlarmEditActivity extends PreferenceActivity {
             alarms.setRingtone(id, ringtone);
         }
 
-        void setAudioStream(String s) {
-            audio_stream = s;
-            alarms.setAudioStream(id, audio_stream);
-        }
+        // void setAudioStream(String s) {
+        //     audio_stream = s;
+        //     alarms.setAudioStream(id, audio_stream);
+        // }
     }
 }

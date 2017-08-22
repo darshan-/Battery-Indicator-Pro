@@ -23,7 +23,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 class AlarmDatabase {
     private static final String DATABASE_NAME    = "alarms.db";
-    private static final int    DATABASE_VERSION = 6;
+    private static final int    DATABASE_VERSION = 5;//6;
     private static final String ALARM_TABLE_NAME = "alarms";
 
     static final String KEY_ID           = "_id";
@@ -31,7 +31,7 @@ class AlarmDatabase {
     static final String KEY_TYPE         = "type";
     static final String KEY_THRESHOLD    = "threshold";
     static final String KEY_RINGTONE     = "ringtone";
-    static final String KEY_AUDIO_STREAM = "audio_stream";
+    //static final String KEY_AUDIO_STREAM = "audio_stream";
     static final String KEY_VIBRATE      = "vibrate";
     static final String KEY_LIGHTS       = "lights";
 
@@ -211,7 +211,7 @@ class AlarmDatabase {
     }
 
     int addAlarm(Boolean enabled, String type, String threshold, String ringtone,
-                        String audio_stream, Boolean vibrate, Boolean lights)
+                 /*String audio_stream,*/ Boolean vibrate, Boolean lights)
     {
         openDBs();
 
@@ -221,7 +221,7 @@ class AlarmDatabase {
             cv.put(KEY_TYPE, type);
             cv.put(KEY_THRESHOLD, threshold);
             cv.put(KEY_RINGTONE, ringtone);
-            cv.put(KEY_AUDIO_STREAM, audio_stream);
+            //cv.put(KEY_AUDIO_STREAM, audio_stream);
             cv.put(KEY_VIBRATE, vibrate ? 1 : 0);
             cv.put(KEY_LIGHTS, lights ? 1 : 0);
             return (int) wdb.insert(ALARM_TABLE_NAME, null, cv);
@@ -231,7 +231,7 @@ class AlarmDatabase {
     }
 
     int addAlarm() {
-        return addAlarm(true, "fully_charged", "", android.provider.Settings.System.DEFAULT_NOTIFICATION_URI.toString(),
+        return addAlarm(true, "fully_charged", "", /*android.provider.Settings.System.DEFAULT_NOTIFICATION_URI.toString(),*/
                         "notification", false, true);
     }
 
@@ -330,7 +330,7 @@ class AlarmDatabase {
         }
     }
 
-    int setAudioStream(int id, String stream) {
+    /*int setAudioStream(int id, String stream) {
         ContentValues cv = new ContentValues();
         cv.put(KEY_AUDIO_STREAM, stream);
 
@@ -341,7 +341,7 @@ class AlarmDatabase {
         } catch (Exception e) {
             return -1;
         }
-    }
+    }*/
 
     void deleteAlarm(int id) {
         openDBs();
@@ -370,19 +370,20 @@ class AlarmDatabase {
                        + KEY_THRESHOLD    + " STRING,"
                        + KEY_RINGTONE     + " STRING,"
                        + KEY_VIBRATE      + " INTEGER,"
-                       + KEY_LIGHTS       + " INTEGER,"
-                       + KEY_AUDIO_STREAM + " STRING"
+                       + KEY_LIGHTS       + " INTEGER"
+                       //+ KEY_LIGHTS       + " INTEGER,"
+                       //+ KEY_AUDIO_STREAM + " STRING"
                        + ");");
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            if (oldVersion == 5 && newVersion == 6) {
-                db.execSQL("ALTER TABLE " + ALARM_TABLE_NAME + " ADD COLUMN " + KEY_AUDIO_STREAM + " STRING;");
-            } else {
+            //if (oldVersion == 5 && newVersion == 6) {
+            //    db.execSQL("ALTER TABLE " + ALARM_TABLE_NAME + " ADD COLUMN " + KEY_AUDIO_STREAM + " STRING;");
+            //} else {
                 db.execSQL("DROP TABLE IF EXISTS " + ALARM_TABLE_NAME);
                 onCreate(db);
-            }
+            //}
         }
 
         void reset() {
