@@ -2,6 +2,8 @@
 TODO for 10.0.2:
  * Remove sound (or don't include it) from notification when playing it myself
  * Request/Check for read_external_media
+   Ideally upon attempt to set ringtone to one external one?
+   Or keep it simple, less fine-grained?
  * Update documentation
  * lots of other little things, right?
 
