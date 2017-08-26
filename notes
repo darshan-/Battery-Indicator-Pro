@@ -6,9 +6,10 @@ TODO for 10.0.2:
    Or keep it simple, less fine-grained?
  * Update documentation
  * lots of other little things, right?
-
  * Light / dark theme option, and/or choose notification background color
    (See BB email from Geoffrey Santoro)
+ * Alarm type for inadequate charging (Probably a drop of 5+ points while status charging)
+   (See BB email from Paul Mitchell)
 
 
 Alarm type:
