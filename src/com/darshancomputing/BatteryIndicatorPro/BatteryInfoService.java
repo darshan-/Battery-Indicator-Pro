@@ -29,7 +29,7 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
+//import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -97,7 +97,7 @@ public class BatteryInfoService extends Service {
 
     public static final String EXTRA_CURRENT_INFO  = "com.darshancomputing.BatteryBotPro.EXTRA_CURRENT_INFO";
     public static final String EXTRA_EDIT_ALARMS   = "com.darshancomputing.BatteryBotPro.EXTRA_EDIT_ALARMS";
-    public static final String EXTRA_CANCEL_ALARMS = "com.darshancomputing.BatteryBotPro.EXTRA_CANCEL_ALARMS";
+    //public static final String EXTRA_CANCEL_ALARMS = "com.darshancomputing.BatteryBotPro.EXTRA_CANCEL_ALARMS";
 
 
     //private static final Object[] EMPTY_OBJECT_ARRAY = {};
@@ -115,7 +115,7 @@ public class BatteryInfoService extends Service {
 
     private Predictor predictor;
 
-    private MediaPlayer alarmPlayer = new MediaPlayer();
+    //private MediaPlayer alarmPlayer = new MediaPlayer();
 
     private final Handler mHandler = new Handler();
 
@@ -175,8 +175,8 @@ public class BatteryInfoService extends Service {
         Intent serviceAlarmsIntent = new Intent(this, BatteryInfoService.class).putExtra(EXTRA_EDIT_ALARMS, true);
         alarmsPendingIntent = PendingIntent.getService(this, RC_ALARMS_EDIT, serviceAlarmsIntent, 0);
 
-        Intent serviceCancelAlarmsIntent = new Intent(this, BatteryInfoService.class).putExtra(EXTRA_CANCEL_ALARMS, true);
-        alarmsCancelPendingIntent = PendingIntent.getService(this, RC_ALARMS_CANCEL, serviceCancelAlarmsIntent, 0);
+        // Intent serviceCancelAlarmsIntent = new Intent(this, BatteryInfoService.class).putExtra(EXTRA_CANCEL_ALARMS, true);
+        // alarmsCancelPendingIntent = PendingIntent.getService(this, RC_ALARMS_CANCEL, serviceCancelAlarmsIntent, 0);
 
         widgetManager = AppWidgetManager.getInstance(this);
 
@@ -210,16 +210,16 @@ public class BatteryInfoService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent != null && intent.getBooleanExtra(EXTRA_EDIT_ALARMS, false)) {
-            alarmPlayer.stop();
-            startActivity(alarmsIntent);
-            return Service.START_STICKY;
-        }
+        // if (intent != null && intent.getBooleanExtra(EXTRA_EDIT_ALARMS, false)) {
+        //     alarmPlayer.stop();
+        //     startActivity(alarmsIntent);
+        //     return Service.START_STICKY;
+        // }
 
-        if (intent != null && intent.getBooleanExtra(EXTRA_CANCEL_ALARMS, false)) {
-            alarmPlayer.stop();
-            return Service.START_STICKY;
-        }
+        // if (intent != null && intent.getBooleanExtra(EXTRA_CANCEL_ALARMS, false)) {
+        //     alarmPlayer.stop();
+        //     return Service.START_STICKY;
+        // }
 
         if (intent != null && intent.getBooleanExtra(EXTRA_UPDATE_PREDICTOR, false))
             update(null);
@@ -888,8 +888,8 @@ public class BatteryInfoService extends Service {
         NotificationCompat.Builder nb = new NotificationCompat.Builder(this)
             .setSmallIcon(R.drawable.stat_notify_alarm)
             .setAutoCancel(true)
-            .setContentIntent(alarmsPendingIntent)
-            .setDeleteIntent(alarmsCancelPendingIntent);
+            .setContentIntent(alarmsPendingIntent);
+            //.setDeleteIntent(alarmsCancelPendingIntent);
 
         String ringtone = c.getString(c.getColumnIndex(AlarmDatabase.KEY_RINGTONE));
         //String audio_stream = c.getString(c.getColumnIndex(AlarmDatabase.KEY_AUDIO_STREAM));
