@@ -1,11 +1,29 @@
-
-TODO for 10.0.2:
+Alarm audio stream:
  * Remove sound (or don't include it) from notification when playing it myself
  * Request/Check for read_external_media
    Ideally upon attempt to set ringtone to one external one?
    Or keep it simple, less fine-grained?
  * Update documentation
- * lots of other little things, right?
+
+Possibly this:
+  Setting in "Other Settings"
+    "Enable Assertive Alarms"
+  Setting that to true shows a pop up (something else does this, right?)
+    (Yeah, Enable 10% mode has a pop-up verifiation, so can base on that code)
+  Pop up states that Assertive mode may drain battery, because it will loop the
+    alarm sound until the user dismisses it.  It also plays the alarm on the
+    alarm channel rather than the default notification channel (so on most devices
+    it should make a sound when all sounds but alarms are silenced).  If
+    Assertive Alarms are enabled, any alarm can select between standard alarm
+    or assertive alarm, and the default is still the standard.  Enabling this
+    also requires read access to sdcard, as many versions of Android have
+    alarm ringtones only accessible that way.  If you revoke access to external
+    media, an assertive alarm may not work.
+  If they say yes, request read external media access
+  If access is granted (either due to user interacation or because already granted), turn on setting
+  If access is not granted, or if they cancel, leave setting off.
+
+Other:
  * Light / dark theme option, and/or choose notification background color
    (See BB email from Geoffrey Santoro)
  * Alarm type for inadequate charging (Probably a drop of 5+ points while status charging)

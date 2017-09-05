@@ -4,8 +4,8 @@
     package="com.darshancomputing.BatteryIndicatorPro"
     xmlns:tools="http://schemas.android.com/tools"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
-    android:versionCode="013030"
-    android:versionName="10.0.4"
+    android:versionCode="0160001"
+    android:versionName="11.0.0-dev"
 >
 
 
@@ -95,8 +95,8 @@
       <action android:name="android.intent.action.BOOT_COMPLETED" />
     </intent-filter>
     <intent-filter>
-      <action android:name="android.intent.action.PACKAGE_REPLACED" />
-      <data android:scheme="package" android:path="com.darshancomputing.BatteryIndicatorPro" />
+      <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+      <!--data android:scheme="package" android:path="com.darshancomputing.BatteryIndicatorPro" /-->
     </intent-filter>
   </receiver>
 
