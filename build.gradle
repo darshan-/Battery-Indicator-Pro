@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.android.tools.build:gradle:2.3.3'
     }
 }
 
@@ -15,7 +15,7 @@ secureProperties.load(new FileInputStream("secure.properties"))
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    buildToolsVersion "26.0.1"
 
     configurations {
         all*.exclude module: 'support-annotations'

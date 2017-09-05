@@ -9,6 +9,10 @@
 -dontoptimize
 -dontpreverify
 
+# https://stackoverflow.com/questions/38024139/android-app-crash-why-there-is-unknown-source-instead-of-line-number
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile
+
 -keepattributes *Annotation*
 -keep public class com.google.vending.licensing.ILicensingService
 -keep public class com.android.vending.licensing.ILicensingService
