@@ -14,7 +14,7 @@ Properties secureProperties = new Properties()
 secureProperties.load(new FileInputStream("secure.properties"))
 
 android {
-    compileSdkVersion 24
+    compileSdkVersion 26
     buildToolsVersion "26.0.1"
 
     configurations {
@@ -22,25 +22,22 @@ android {
     }
 
     dependencies {
-        compile('com.android.support:support-v4:24.1.1') {
+        compile('com.android.support:support-v4:26.0.1') {
             exclude module:'support-annotations'
         }
     }
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 26
 
         vectorDrawables.useSupportLibrary = false
 
         resConfigs "ar", "cs", "de", "el", "en", "en-rUS", "es", "es-rUS", "fr", "hu", "it", "ja", "lt", "nl", "pl", "pt", "pt-rBR", "ro", "ru", "sk", "sl", "tr", "zh", "zh-rCN" // Don't use support library translations for languages that the app doesn't have its own translations for
 
-        jackOptions {
-            enabled true //Jack: 2372276; Javac: 2402246
-            //             Jack: 2085576; Javac: 2072368
-            //             Jack: 1982891; Javac: 1969299
-            //             Jack: 1999023; Javac: 2036799 // no-obfuscation
-        }
+        //jackOptions {
+        //    enabled true
+        //}
     }
 
     compileOptions {
@@ -87,6 +84,13 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+repositories {
+    maven {
+        url 'https://maven.google.com'
+        // Alternative URL is 'https://dl.google.com/dl/android/maven2/'
+    }
 }
 
 gradle.projectsEvaluated {

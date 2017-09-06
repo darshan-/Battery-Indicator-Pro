@@ -64,6 +64,9 @@
     unblock notifications for BatteryBot.
   </string>
 
+  <string formatted="false" name="main_notif_chan_name">Main Notification</string>
+  <!--string formatted="false" name="main_notif_chan_desc">Channel for the main BatteryBot notification</string-->
+
   <string formatted="false" name="confirm_clear_logs">Really clear all logs?</string>
 
   <string formatted="false" name="configure_log_filter">Show which log items?</string>

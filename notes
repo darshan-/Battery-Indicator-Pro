@@ -28,6 +28,9 @@ Other:
    (See BB email from Geoffrey Santoro)
  * Alarm type for inadequate charging (Probably a drop of 5+ points while status charging)
    (See BB email from Paul Mitchell)
+ * Priority doesn't mean anything on Oreo?  Need to set up different channel, or something?
+   - Disable priority setting on 26+?
+ * Notification channels may be alternate method to have alarm stream?
 
 
 Alarm type:

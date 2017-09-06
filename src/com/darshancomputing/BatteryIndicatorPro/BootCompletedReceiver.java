@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2016 Darshan-Josiah Barber
+    Copyright (c) 2009-2017 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -41,7 +41,10 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         // Note: Regardless of anything here, Android will start the Service on boot if there are any desktop widgets
         if (startPref.equals("always") || (startPref.equals("auto") && service_desired)){
             ComponentName comp = new ComponentName(context.getPackageName(), BatteryInfoService.class.getName());
-            context.startService(new Intent().setComponent(comp));
+            if (android.os.Build.VERSION.SDK_INT < 26)
+                context.startService(new Intent().setComponent(comp));
+            else
+                context.startForegroundService(new Intent().setComponent(comp));
         }
 
         // This receiver is called on PACKAGE_REPLACED, too, but we don't want to log boot in that case
