@@ -237,8 +237,8 @@ public class BatteryInfoService extends Service {
         //     return Service.START_STICKY;
         // }
 
-        if (intent != null && intent.getBooleanExtra(EXTRA_UPDATE_PREDICTOR, false))
-            update(null);
+        // Always update
+        update(null);
 
         return Service.START_STICKY;
     }
