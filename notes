@@ -31,6 +31,9 @@ Other:
  * Priority doesn't mean anything on Oreo?  Need to set up different channel, or something?
    - Disable priority setting on 26+?
  * Notification channels may be alternate method to have alarm stream?
+ * Notification Wizard needs to be different on Oreo
+ * Update Alarms to use channels
+ * Any other notifications?
 
 
 Alarm type:

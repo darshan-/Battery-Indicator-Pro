@@ -92,20 +92,19 @@ public class LogViewFragment extends ListFragment {
     public void onAttach(android.app.Activity a) {
         super.onAttach(a);
 
-        pfrag = PersistentFragment.getInstance(getFragmentManager());
-
         logs = new LogDatabase(getActivity().getApplicationContext());
         completeCursor = logs.getAllLogs(false);
 
         if (completeCursor == null) {
             noDB = true;
-            return;
+        } else {
+            timeDeltaCursor = new TimeDeltaCursor(completeCursor);
+            filteredCursor = new FilteredCursor(timeDeltaCursor);
+
+            mAdapter = new LogAdapter(a, filteredCursor);
         }
 
-        timeDeltaCursor = new TimeDeltaCursor(completeCursor);
-        filteredCursor = new FilteredCursor(timeDeltaCursor);
-
-        mAdapter = new LogAdapter(a, filteredCursor);
+        pfrag = PersistentFragment.getInstance(getFragmentManager());
     }
 
     @Override

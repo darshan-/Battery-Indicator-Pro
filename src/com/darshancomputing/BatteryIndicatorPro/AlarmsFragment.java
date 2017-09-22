@@ -83,19 +83,18 @@ public class AlarmsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        pfrag = PersistentFragment.getInstance(getFragmentManager());
-
         setHasOptionsMenu(true);
         //setRetainInstance(true);
 
         alarms = new AlarmDatabase(getActivity().getApplicationContext());
         mCursor = alarms.getAllAlarms(true);
 
-        convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
-                                             pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
-
         if (mCursor != null)
             mCursor.registerDataSetObserver(new AlarmsObserver());
+
+        pfrag = PersistentFragment.getInstance(getFragmentManager());
+        convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+                                             pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
     }
 
     private void populateList() {
