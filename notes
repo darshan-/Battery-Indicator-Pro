@@ -1,3 +1,25 @@
+Playing audio myself bugs me in several ways
+  Complex and error prone: What if user is on phone?  Play sound anyway?
+    Need permission to see if on phone?
+  Battery drain if loop for long time?
+  Messy and wrong feeling.
+
+
+Two things people want, that I'm trying to solve here:
+  * Ability to override Do Not Disturb
+  * Ability to have alarm keep going
+
+
+Do Not Disturb is likely to be workable with Notification Channels
+  Might not count as alarm?  Just priority high?  Not sure.  Maybe perfect, maybe good enough.
+
+Maybe have option to repeat alarm every minute until alarm is dismissed.
+Less potential for battery drain, simpler in some ways, maybe good enough.
+
+
+
+
+
 Alarm audio stream:
  * Remove sound (or don't include it) from notification when playing it myself
  * Request/Check for read_external_media
