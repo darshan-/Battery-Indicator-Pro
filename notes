@@ -1,3 +1,18 @@
+
+
+GitHub feature requests.  Particularly #4.
+
+
+
+crash (and then fine, but still a crash and crash pop-up notification)
+  on boot on P2 if a widget is present.  My initial guess is that when
+  a widget is present, Android starts BB itself, and then we get
+  boot completed receiver, which trys to starts service, but it can't
+  becaues that's already in process.  So first go at fixing is to do
+  something in BCR to not try to start if already starting, or to
+  simply wrap try/catch around startService...
+
+
 Playing audio myself bugs me in several ways
   Complex and error prone: What if user is on phone?  Play sound anyway?
     Need permission to see if on phone?
