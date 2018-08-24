@@ -1,10 +1,15 @@
 buildscript {
     repositories {
+        mavenCentral()
+        google()
+        maven {
+            url "https://jitpack.io"
+        }
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.1.0'
     }
 }
 
@@ -14,22 +19,22 @@ Properties secureProperties = new Properties()
 secureProperties.load(new FileInputStream("secure.properties"))
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    compileSdkVersion 28
+    buildToolsVersion "27.0.3"
 
     configurations {
         all*.exclude module: 'support-annotations'
     }
 
     dependencies {
-        compile('com.android.support:support-v4:26.0.1') {
+        compile('com.android.support:support-v4:27.1.1') {
             exclude module:'support-annotations'
         }
     }
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 28
 
         vectorDrawables.useSupportLibrary = false
 
@@ -87,10 +92,14 @@ dependencies {
 }
 
 repositories {
+    mavenCentral()
+    google()
     maven {
         url 'https://maven.google.com'
         // Alternative URL is 'https://dl.google.com/dl/android/maven2/'
+        url "https://jitpack.io"
     }
+    jcenter()
 }
 
 gradle.projectsEvaluated {

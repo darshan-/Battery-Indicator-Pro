@@ -156,7 +156,8 @@ public class BatteryInfoService extends Service {
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         CharSequence main_notif_chan_name = getString(R.string.main_notif_chan_name);
         //String main_notif_chan_desc = getString(R.string.main_notif_chan_desc);
-        int importance = NotificationManager.IMPORTANCE_LOW; // TODO: Different default?  User-configurable? (less than default for no sound)
+        System.out.println("..................................... Service.onCreate");
+        int importance = NotificationManager.IMPORTANCE_MIN; // TODO: Different default?  User-configurable? (less than default for no sound)
         NotificationChannel mChannel = new NotificationChannel(main_notif_chan_id, main_notif_chan_name, importance);
         //mChannel.setDescription(main_notif_chan_desc);
         //mChannel.setSound(Uri.EMPTY);
