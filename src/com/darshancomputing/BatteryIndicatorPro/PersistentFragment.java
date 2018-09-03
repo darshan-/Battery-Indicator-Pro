@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2017 Darshan-Josiah Barber
+    Copyright (c) 2009-2018 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -139,12 +139,6 @@ public class PersistentFragment extends Fragment {
             // If you ever need a first-run dialog again, this is when you would show it
 
             sp_main.edit().putBoolean(SettingsActivity.KEY_FIRST_RUN, false).apply();
-        }
-
-        if (! sp_main.getBoolean(SettingsActivity.KEY_NOTIFICATION_WIZARD_EVER_RUN, false)) {
-            sp_main.edit().putBoolean(SettingsActivity.KEY_NOTIFICATION_WIZARD_EVER_RUN, true).apply();
-
-            new NotificationWizard().show(getFragmentManager(), "Blarg");
         }
     }
 

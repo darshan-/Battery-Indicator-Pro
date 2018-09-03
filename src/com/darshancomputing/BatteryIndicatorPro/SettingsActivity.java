@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2017 Darshan-Josiah Barber
+    Copyright (c) 2009-2018 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -104,7 +104,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW = "prefer_current_avg_in_main_window";
     public static final String KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW = "auto_refresh_current_in_main_window";
     public static final String KEY_FIRST_RUN = "first_run";
-    public static final String KEY_NOTIFICATION_WIZARD_EVER_RUN = "key_notification_wizard_ever_run";
     public static final String KEY_MIGRATED_SERVICE_DESIRED = "service_desired_migrated_to_sp_main";
 
     private static final String[] PARENTS    = {KEY_ENABLE_LOGGING,
@@ -380,14 +379,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 if (currentPlugin.equals("builtin.classic")) {
                     cat.setLayoutResource(R.layout.none);
 
-                    if (android.os.Build.VERSION.SDK_INT < 21) {
-                        cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CLASSIC_COLOR_MODE);
-                        cat.removeAll();
-                        cat.setLayoutResource(R.layout.none);
-                    }
-
-                    if (android.os.Build.VERSION.SDK_INT >= 21 &&
-                        !mSharedPreferences.getBoolean(KEY_CLASSIC_COLOR_MODE, false)) {
+                    if (!mSharedPreferences.getBoolean(KEY_CLASSIC_COLOR_MODE, false)) {
                         cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
                         cat.removeAll();
                         cat.setLayoutResource(R.layout.none);

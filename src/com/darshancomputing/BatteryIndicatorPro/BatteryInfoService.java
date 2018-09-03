@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2017 Darshan-Josiah Barber
+    Copyright (c) 2009-2018 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -282,15 +282,6 @@ public class BatteryInfoService extends Service {
             case RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS:
                 bis.reloadSettings(true);
                 break;
-            case RemoteConnection.SERVICE_WIZARD_VALUE_DEFAULT:
-                bis.wizardValueChanged(NotificationWizard.VALUE_DEFAULT);
-                break;
-            case RemoteConnection.SERVICE_WIZARD_VALUE_MINIMAL:
-                bis.wizardValueChanged(NotificationWizard.VALUE_MINIMAL);
-                break;
-            case RemoteConnection.SERVICE_WIZARD_VALUE_NONE:
-                bis.wizardValueChanged(NotificationWizard.VALUE_NONE);
-                break;
             default:
                 super.handleMessage(incoming);
             }
@@ -316,9 +307,6 @@ public class BatteryInfoService extends Service {
         static final int SERVICE_UNREGISTER_CLIENT = 2;
         static final int SERVICE_RELOAD_SETTINGS = 3;
         static final int SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS = 4;
-        static final int SERVICE_WIZARD_VALUE_DEFAULT = 5;
-        static final int SERVICE_WIZARD_VALUE_MINIMAL = 6;
-        static final int SERVICE_WIZARD_VALUE_NONE = 7;
 
         // Messages the service sends to clients
         static final int CLIENT_SERVICE_CONNECTED = 0;
@@ -369,37 +357,6 @@ public class BatteryInfoService extends Service {
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
     }
 
-    private void wizardValueChanged(int value) {
-        SharedPreferences.Editor sps_editor = sp_service.edit();
-        SharedPreferences.Editor settings_editor = settings.edit();
-
-        // Writing to settings here should only happen when Wizard open, so shouldn't have conflict
-        switch(value) {
-        case NotificationWizard.VALUE_NONE:
-            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, false);
-
-            break;
-        case NotificationWizard.VALUE_MINIMAL:
-            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
-            settings_editor.putString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                      "" + Notification.PRIORITY_MIN);
-
-            break;
-        default:
-            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
-            int priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                                              Str.default_main_notification_priority));
-            if (priority == Notification.PRIORITY_MIN)
-                settings_editor.putString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                          "" + Notification.PRIORITY_LOW);
-        }
-
-        sps_editor.apply();
-        settings_editor.apply();
-
-        applyNewSettings(true);
-    }
-
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context c, Intent intent) {
@@ -415,7 +372,7 @@ public class BatteryInfoService extends Service {
         SharedPreferences.Editor settings_editor = settings.edit();
 
         // Writing to settings here should only happen when Service first started, so shouldn't have conflict
-        if (sp_service.getInt(LAST_SDK_API, 0) < 21 && android.os.Build.VERSION.SDK_INT >= 21) {
+        if (sp_service.getInt(LAST_SDK_API, 0) < 21) {
             settings_editor.putBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, true);
         }
 
@@ -737,8 +694,7 @@ public class BatteryInfoService extends Service {
             return ((info.status == BatteryInfo.STATUS_CHARGING && indicate_charging) ? chargingIcon0 : plainIcon0) + info.percent;
         } else if (icon_set.equals("builtin.smaller_number")) {
             return ((info.status == BatteryInfo.STATUS_CHARGING && indicate_charging) ? small_chargingIcon0 : small_plainIcon0) + info.percent;
-        } else if (android.os.Build.VERSION.SDK_INT >= 21 &&
-                   !settings.getBoolean(SettingsActivity.KEY_CLASSIC_COLOR_MODE, false)) {
+        } else if (!settings.getBoolean(SettingsActivity.KEY_CLASSIC_COLOR_MODE, false)) {
             // Classic set is desired, but colors break notification icons on API level 21+
             return R.drawable.w000 + info.percent;
         } else {
@@ -824,8 +780,7 @@ public class BatteryInfoService extends Service {
                 nb.setContentTitle(Str.alarm_fully_charged)
                     .setContentText(Str.alarm_text);
 
-                if (android.os.Build.VERSION.SDK_INT >= 21)
-                    nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+                nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
                 //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
                 notifyAlarm(nb.build());
@@ -841,8 +796,7 @@ public class BatteryInfoService extends Service {
             nb.setContentTitle(Str.alarm_charge_drops + threshold + Str.percent_symbol)
                 .setContentText(Str.alarm_text);
 
-            if (android.os.Build.VERSION.SDK_INT >= 21)
-                nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+            nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
             //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
             notifyAlarm(nb.build());
@@ -857,8 +811,7 @@ public class BatteryInfoService extends Service {
             nb.setContentTitle(Str.alarm_charge_rises + threshold + Str.percent_symbol)
                 .setContentText(Str.alarm_text);
 
-            if (android.os.Build.VERSION.SDK_INT >= 21)
-                nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+            nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
             //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
             notifyAlarm(nb.build());
@@ -876,8 +829,7 @@ public class BatteryInfoService extends Service {
             nb.setContentTitle(Str.alarm_temp_rises + Str.formatTemp(Integer.valueOf(threshold), convertF, false))
                 .setContentText(Str.alarm_text);
 
-            if (android.os.Build.VERSION.SDK_INT >= 21)
-                nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+            nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
             //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
             notifyAlarm(nb.build());
@@ -892,8 +844,7 @@ public class BatteryInfoService extends Service {
                 nb.setContentTitle(Str.alarm_health_failure + Str.healths[info.health])
                     .setContentText(Str.alarm_text);
 
-                if (android.os.Build.VERSION.SDK_INT >= 21)
-                    nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+                nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
                 //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
                 notifyAlarm(nb.build());

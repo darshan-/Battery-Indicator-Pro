@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2017 Darshan-Josiah Barber
+    Copyright (c) 2009-2018 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -168,10 +168,6 @@ public class CurrentInfoFragment extends Fragment {
         inflater.inflate(R.menu.main, menu);
     }
 
-    public void showNotificationWizard() {
-        new NotificationWizard().show(getFragmentManager(), "nwf");
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -189,9 +185,6 @@ public class CurrentInfoFragment extends Fragment {
             return true;
         case R.id.menu_help:
             mStartActivity(HelpActivity.class);
-            return true;
-        case R.id.menu_notification_wizard:
-            showNotificationWizard();
             return true;
         case R.id.menu_rate_and_review:
             try {

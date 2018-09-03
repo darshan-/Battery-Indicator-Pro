@@ -15,13 +15,6 @@
   />
 
   <item
-      android:id="@+id/menu_notification_wizard"
-      android:icon="@drawable/ic_menu_notifications"
-      android:title="@string/menu_notification_wizard"
-      android:showAsAction="never"
-  />
-
-  <item
       android:id="@+id/menu_rate_and_review"
       android:icon="@android:drawable/btn_star_big_off"
       android:title="@string/menu_rate_and_review"
