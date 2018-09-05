@@ -17,6 +17,8 @@ package com.darshancomputing.BatteryIndicatorPro;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -334,6 +336,24 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             ab.setHomeButtonEnabled(true);
             ab.setDisplayHomeAsUpEnabled(true);
         }
+
+        //NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        //NotificationChannel mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.MAIN_CHAN_ID);
+        //boolean mainNotifsEnabled = mainChan.getImportance() > 0 && mNotificationManager.areNotificationsEnabled();
+        //boolean mainNotifsEnabled = checkMainNotifsEnabled();
+        boolean mainNotifsEnabled = BatteryInfoService.checkMainNotifsEnabled(this);
+        //int mainImport = mainChan.getImportance();
+        //boolean notifsEnabled = mNotificationManager.areNotificationsEnabled();
+        //boolean mainNotifsEnabled = mainImport > 0 && notifsEnabled;
+
+        // Probably do this:
+        //  For Main Notification and Status Bar Icon screens,
+        //  Have alternate layout that includes a message and a button (maybe just one thing, a preference with
+        //   the message that responds when pressed) to system settings.
+        //  Then onResume needs to see if we're at one of those screens, and if mainNotifsEnabled has changed,
+        //    call restartThisScreen().
+        //  Well onResume can call checkMainNotifsEnabled(), and if it differs from mainNotifsEnabled, do nothing else
+        //    call restartThisScreen();
 
         PreferenceManager pm = getPreferenceManager();
         pm.setSharedPreferencesName(SETTINGS_FILE);

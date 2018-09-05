@@ -80,7 +80,7 @@ public class BatteryInfoService extends Service {
     //private static final int NOTIFICATION_ALARM_ALARM  = 6;
     private static final int NOTIFICATION_ALARM = 7;
 
-    private static final String main_notif_chan_id = "main_notif_chan_id";
+    public static final String MAIN_CHAN_ID = "main";
 
 
     private static final int RC_MAIN   = 100;
@@ -158,7 +158,7 @@ public class BatteryInfoService extends Service {
         //String main_notif_chan_desc = getString(R.string.main_notif_chan_desc);
         System.out.println("..................................... Service.onCreate");
         int importance = NotificationManager.IMPORTANCE_MIN; // TODO: Different default?  User-configurable? (less than default for no sound)
-        NotificationChannel mChannel = new NotificationChannel(main_notif_chan_id, main_notif_chan_name, importance);
+        NotificationChannel mChannel = new NotificationChannel(MAIN_CHAN_ID, main_notif_chan_name, importance);
         //mChannel.setDescription(main_notif_chan_desc);
         //mChannel.setSound(Uri.EMPTY);
         mChannel.setSound(null, null);
@@ -382,6 +382,12 @@ public class BatteryInfoService extends Service {
         settings_editor.apply();
     }
 
+    public static boolean checkMainNotifsEnabled(Context context) {
+        NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationChannel mainChan = mNotificationManager.getNotificationChannel(MAIN_CHAN_ID);
+        return mainChan.getImportance() > 0 && mNotificationManager.areNotificationsEnabled();
+    }
+
     private void update(Intent intent) {
         now = System.currentTimeMillis();
         sps_editor = sp_service.edit();
@@ -497,7 +503,7 @@ public class BatteryInfoService extends Service {
             .setOngoing(true)
             .setWhen(0)
             .setShowWhen(false)
-            .setChannelId(main_notif_chan_id)
+            .setChannelId(MAIN_CHAN_ID)
             .setContentIntent(currentInfoPendingIntent)
             .setVisibility(Notification.VISIBILITY_PUBLIC);
 
