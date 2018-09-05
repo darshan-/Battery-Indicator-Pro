@@ -340,8 +340,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         //NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         //NotificationChannel mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.MAIN_CHAN_ID);
         //boolean mainNotifsEnabled = mainChan.getImportance() > 0 && mNotificationManager.areNotificationsEnabled();
-        //boolean mainNotifsEnabled = checkMainNotifsEnabled();
-        boolean mainNotifsEnabled = BatteryInfoService.checkMainNotifsEnabled(this);
+        boolean appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
+        boolean mainNotifsEnabled = mainChan.getImportance() > 0; // TODO: && appNotifsEnabled //??
+        //boolean mainNotifsEnabled = BatteryInfoService.checkMainNotifsEnabled(this);
         //int mainImport = mainChan.getImportance();
         //boolean notifsEnabled = mNotificationManager.areNotificationsEnabled();
         //boolean mainNotifsEnabled = mainImport > 0 && notifsEnabled;
@@ -354,6 +355,12 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         //    call restartThisScreen().
         //  Well onResume can call checkMainNotifsEnabled(), and if it differs from mainNotifsEnabled, do nothing else
         //    call restartThisScreen();
+        //
+        // Actually, I think if we don't set a channel on the Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS Intent,
+        //   hopefully we go the the app's overall settings.
+        // So we need to distinguish channel being importance NONE from all notifications being disabled, and:
+        //   1) Maybe show a slightly different message
+        //   2) Definitely link to either app notification settings or channel notification settings
 
         PreferenceManager pm = getPreferenceManager();
         pm.setSharedPreferencesName(SETTINGS_FILE);
