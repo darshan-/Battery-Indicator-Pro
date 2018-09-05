@@ -189,10 +189,6 @@
   <string name="white" formatted="false">ابيض</string>
   <string name="ics_blue" formatted="false">نظام الاندرويد ايس كريم ساندويش ازرق</string>
   <string name="custom" formatted="false">مخصص</string>
-  <string name="pref_cat_notification_priority" formatted="false">اولوية الاشعار</string>
-  <string name="pref_cat_notification_priority_help" formatted="false">الجيلي بين واعلى(ANDROID 4.1)الاشعارات يمكن ان تملك اولوية المؤثرات لايمكن توليدها الا في العام\n\nالضبط المصغر ويمكن عرضه في بعض الاحيان في شريط الاشعارات اسحب الشريط للاسفل\n\nالضبط الواطئ بحيث تكون الاشعارات في الاعلى بشكل اوتوماتيكي وانه رائع\n\nالضبط الاعتيادي هو ايضا في الاعلى لكن بشكل افتراضي للجهاز وسوف يشكل تغيير في العرض\n\nملاحظة قد تختلف الاعدادات من جهاز لاخر وانه مضمونا</string>
-  <string name="pref_main_notification_priority" formatted="false">اولوية الاشعارات الرئيسية</string>
-  <string name="pref_main_notification_priority_help" formatted="false">تعيين الأولوية للاشعار الرئيسي. لا تتأثرالمنبهات ، والإضافات، وأية إخطارات أخرى بواسطة هذا الإعداد، ولكنها قد تكون في المستقبل قد شكلي الأولوية.</string>
   <string name="pref_cat_icon_set" formatted="false">ضبط ايقونة</string>
   <string name="pref_icon_set" formatted="false">ضبط الايقونة</string>
   <string name="pref_icon_set_help" formatted="false">الاندرويد يأتي بنسخ عديدة ولاتوجد ايقونة تعمل بشكل كامل على كل الاجهزة المستخدمين المحترفين يمكنهم جلب بعض الاضافات للحصول على خيارات اكثر لكن توجد ثلاث خيارات هي التي تعمل على كل الاجهزة\n\nالشكل الكلاسيكي هو الافتراضي والاصلي الذي يأتي منذ 2009 مع نسخة اندرويد3.0 القديمة والتي تسمى بقرص العسل و يجعل ايقونة الاشعارات سهلة القراءة\n\nشكل الارقام الكبيرة والتي تأتي لجميع الهواتف الجديدة لكن هناك هواتف ضغيرة وجديدة مما يؤدي الى عدم تركيب الارقام بشكل مناسب\n\nشكل الارقام الصغيرة وهوه مايفضله الذي يتركون شكل الارقام الكبيرة بسب عدم التركيب بشكل جيد لهواتفهم\n\nاذا كنت قد اشتريت النسخة الكاملة لهذا التطبيق فسوف تحصل على اضافات مجانية اضغط على خيارات واضغط على الحصول على اضافات مجانية او اضغط على الخيارات السريعة الموجودة في الشريط للهواتف الجديدة</string>
@@ -298,11 +294,6 @@
   <string name="age_2_weeks" formatted="false">اسبوعين</string>
   <string name="age_3_weeks" formatted="false">ثلاث اسابيع</string>
   <string name="age_4_weeks" formatted="false">اربعة اسابيع</string>
-  <string name="notification_priority_max" formatted="false">ممتلىء</string>
-  <string name="notification_priority_high" formatted="false">عالي</string>
-  <string name="notification_priority_default" formatted="false">افتراضي</string>
-  <string name="notification_priority_low" formatted="false">واطىء</string>
-  <string name="notification_priority_min" formatted="false">مصغر</string>
   <string name="icon_set_classic" formatted="false">كلاسيك</string>
   <string name="icon_set_plain" formatted="false">رقم كبير</string>
   <string name="icon_set_smaller" formatted="false">رقم صغير</string>

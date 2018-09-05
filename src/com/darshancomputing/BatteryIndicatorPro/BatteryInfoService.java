@@ -499,12 +499,9 @@ public class BatteryInfoService extends Service {
             .setShowWhen(false)
             .setChannelId(main_notif_chan_id)
             .setContentIntent(currentInfoPendingIntent)
-            .setPriority(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                                            Str.default_main_notification_priority)))
             .setVisibility(Notification.VISIBILITY_PUBLIC);
 
-        if (settings.getBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT,
-                                res.getBoolean(R.bool.default_use_system_notification_layout))) {
+        if (settings.getBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, true)) {
             mainNotificationB.setContentTitle(mainNotificationTopLine)
                 .setContentText(mainNotificationBottomLine);
         } else {

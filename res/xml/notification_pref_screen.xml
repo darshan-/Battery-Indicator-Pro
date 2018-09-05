@@ -11,7 +11,7 @@
        android:key="use_system_notification_layout"
        android:title="@string/pref_use_system_notification_layout"
        android:summary="@string/pref_use_system_notification_layout_summary"
-       android:defaultValue="@bool/default_use_system_notification_layout"
+       android:defaultValue="true"
     />
   </PreferenceCategory>
 
@@ -107,17 +107,6 @@
         android:key="custom_bottom_line_color"
         android:title="@string/pref_custom_bottom_line_color"
         android:defaultValue="@color/main_notification_default_custom_text_color"
-    />
-  </PreferenceCategory>
-
-  <PreferenceCategory android:title="@string/pref_cat_notification_priority">
-    <ListPreference
-       android:key="main_notification_priority"
-       android:title="@string/pref_main_notification_priority"
-       android:entries="@array/notification_priority_entries"
-       android:entryValues="@array/notification_priority_values"
-       android:defaultValue="@string/default_main_notification_priority"
-       android:enabled="@bool/api_level_16_plus"
     />
   </PreferenceCategory>
 </PreferenceScreen>

@@ -195,10 +195,6 @@
   <string name="white" formatted="false">白</string>
   <string name="ics_blue" formatted="false">Android ICS 青</string>
   <string name="custom" formatted="false">カスタマイズ...</string>
-  <string name="pref_cat_notification_priority" formatted="false">通知の優先度</string>
-  <string name="pref_cat_notification_priority_help" formatted="false">Android 4.1 以上 (Jelly Bean 以降) では、通知に優先度を設定することができます。 優先度を変更した場合の影響は保証されていませんが、一般的には次のようになります:\n\n• \"最低\" に設定すると、ほとんどの場合、ステータスバーのアイコンを削除しますが、 プルダウン通知トレイ内に通知が表示されます。\n\n• \"低\" に設定すると、新しいメールなどの他の通知を、BatteryBot 通知の上部に 表示できるようになります。メールのように通知が展開可能な場合に適しています (トップの通知のときに展開可能通知は自動的に展開されます)。\n\n優先度が \"デフォルト\" 以上は、通常トップ通知として BatteryBot が残りますが、 より高い優先度のものがあればそうならない場合があります。\n\nまた、動作はデバイス間で異なる場合があるため、確実に保証するものではありません。</string>
-  <string name="pref_main_notification_priority" formatted="false">メイン通知の優先度</string>
-  <string name="pref_main_notification_priority_help" formatted="false">メイン通知の優先度を設定します。アラーム、プラグイン、およびその他の通知は、 この設定の影響を受けませんが、将来的には優先度が設定可能になるかもしれません。</string>
   <string name="pref_cat_icon_set" formatted="false">アイコンセット</string>
   <string name="pref_icon_set" formatted="false">アイコンセット</string>
   <string name="pref_icon_set_help" formatted="false">Android は多くの種類があるため、すべてのデバイス上でうまく動作する完全な アイコンセットはありません。プロ ユーザーは、より多くのオプションを含んだ プラグインを使用することができますが、ほぼすべてのデバイスに対して 少なくとも一つは良いオプションを提供しなければならないため、 3 つの組み込みアイコンセットがあります。\n\n\"クラシック\" は、2009年からのオリジナルアイコンセットです。 古いデバイスで使用する場合は最高の選択ですが、新しいバージョンの Android (Android 3.0, Honeycom 以降) では通知アイコンが小さく、 暗くなり、非常に見づらくなります。\n\n\"数字のみ\" は、すべての新しい Android デバイスのデフォルトです。 小さく、暗く表示された後に、非常に大きな白い数字で、 はっきり表示されます。 充電中は数字の下に稲妻が表示されます。\n\n\"小さい数字\" は \"数字のみ\" の小さいものです。 いくつかの新しいデバイスでは、これまでの Android のようにアイコンが 小さくならないため、\"数字のみ\" では非常に大きな数字が コミカルに表示されます。\n\nもしあなたが BatteryBot Pro のアイコン プラグインを インストールされると、これら中から選択することができます (メニューボタンを押して、プラグインを入手 から、無料のプラグインを 入手することができます。または新しいデバイスではアクションバーで プラグインを入手 ボタンを押してください)。</string>
@@ -330,11 +326,6 @@
   <string name="age_2_weeks" formatted="false">2 週間</string>
   <string name="age_3_weeks" formatted="false">3 週間</string>
   <string name="age_4_weeks" formatted="false">4 週間</string>
-  <string name="notification_priority_max" formatted="false">最高</string>
-  <string name="notification_priority_high" formatted="false">高</string>
-  <string name="notification_priority_default" formatted="false">デフォルト</string>
-  <string name="notification_priority_low" formatted="false">低</string>
-  <string name="notification_priority_min" formatted="false">最低</string>
   <string name="icon_set_classic" formatted="false">クラシック</string>
   <string name="icon_set_plain" formatted="false">数字のみ</string>
   <string name="icon_set_smaller" formatted="false">小さい数字</string>

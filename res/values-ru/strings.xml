@@ -191,10 +191,6 @@
   <string name="white" formatted="false">Белый</string>
   <string name="ics_blue" formatted="false">Android ICS синий</string>
   <string name="custom" formatted="false">Настраиваемый...</string>
-  <string name="pref_cat_notification_priority" formatted="false">Приоритет уведомления</string>
-  <string name="pref_cat_notification_priority_help" formatted="false">Начиная с Android версии Jelly Bean и выше (Android 4.1 и выше), для уведомлений возможна установка приоритета. Результат изменения приоритета не гарантируется, но в целом:\n\n• Установка приоритета на \"Минимум\" в большинстве случаев должна приводить к удалению значка с панели уведомлений, но по-прежнему показывать уведомление на опускающейся шторке.\n\n• Установка приоритета в \"Низкий\" должна допускать появление других уведомлений, таких как уведомления о поступившей электронной почте, над уведомлением BatteryBot. Это прекрасно в таких случаях, как электронная почта, где уведомления являются растяжимыми (они автоматически растягиваются, если являются самыми верхними).\n\nПриоритеты \"По умолчанию\" и выше обычно делают уведомление BatteryBot самым верхним, но я могу представить ситуации, в которых более высокие приоритеты могут это изменить.\n\nИ еще раз: точное поведение может варьироваться в зависимости от устройства и не гарантируется.</string>
-  <string name="pref_main_notification_priority" formatted="false">Приоритет главного уведомления</string>
-  <string name="pref_main_notification_priority_help" formatted="false">Установите приоритет главного уведомления. Предупреждения, плагины и другие уведомления не зависят от этой настройки, но в будущем, возможно, и для них можно будет установить приоритет.</string>
   <string name="pref_cat_icon_set" formatted="false">Набор значков</string>
   <string name="pref_icon_set" formatted="false">Набор значков</string>
   <string name="pref_icon_set_help" formatted="false">Существует много вариантов системы Android, поэтому не существует набора значков, который был бы идеален для любого устройства. Пользователи версии Pro могут использовать плагины, но и в текущей версии есть три набора значков, которые позволят получить хороший результат практически для любого устройства.\n\n\"Классический\" - оригинальный набор значков с 2009 года. До сих пор является самым подходящим для старых устройств, но в более новых версиях Android (начиная с Android 3.0, Honeycomb) значки сжимаются и тускнут, что затрудняет их восприятие.\n\n\"Просто число\" - набор значков по умолчанию для всех современных устройств. Это очень большие белые цифры, которые хорошо читаются даже будучи сжатыми и тусклыми. Во время зарядки под цифрами показывается молния.\n\n\"Мелкие цифры\" - то же, что и \"Просто число\", но мельче. Дело в том, что некоторые современные устройства не масштабируют значки и очень крупные цифры в наборе \"Просто число\" выглядят на таких устройствах комично.\n\nЕсли вы установили плагины значков для BatteryBot Pro (нажмите MENU, затем \"Получить плагины\" для доступа к бесплатным плагинам или просто нажмите \"Получить плагины\" на панели действий на новых устройствах), вы можете выбрать дополнительные значки.</string>
@@ -326,11 +322,6 @@
   <string name="age_2_weeks" formatted="false">2 недели</string>
   <string name="age_3_weeks" formatted="false">3 недели</string>
   <string name="age_4_weeks" formatted="false">4 недели</string>
-  <string name="notification_priority_max" formatted="false">Максимальный</string>
-  <string name="notification_priority_high" formatted="false">Высокий</string>
-  <string name="notification_priority_default" formatted="false">По умолчанию</string>
-  <string name="notification_priority_low" formatted="false">Низкий</string>
-  <string name="notification_priority_min" formatted="false">Минимальный</string>
   <string name="icon_set_classic" formatted="false">Классический</string>
   <string name="icon_set_plain" formatted="false">Просто число</string>
   <string name="icon_set_smaller" formatted="false">Мелкие цифры</string>

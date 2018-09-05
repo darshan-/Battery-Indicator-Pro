@@ -31,11 +31,5 @@
 
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_notification_appearance" />
     <TextView style="@style/help_text" android:text="@string/pref_cat_notification_appearance_help" />
-
-    <View style="@style/help_cat_pre_margin" />
-    <TextView style="@style/help_cat"  android:text="@string/pref_cat_notification_priority" />
-    <TextView style="@style/help_text" android:text="@string/pref_cat_notification_priority_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_main_notification_priority" />
-    <TextView style="@style/help_text" android:text="@string/pref_main_notification_priority_help" />
   </LinearLayout>
 </ScrollView>

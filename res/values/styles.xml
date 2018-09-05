@@ -43,13 +43,26 @@
     <item name="android:lineSpacingMultiplier">1.1</item>
   </style>
 
-  <style name="bi_help_theme" parent="@android:style/Theme.Light">
+  <style name="bi_help_theme" parent="@android:style/Theme.Material.Light">
   </style>
 
-  <style name="bi_main_theme" parent="@android:style/Theme">
+  <style name="bi_main_theme" parent="@android:style/Theme.Material">
   </style>
 
-  <style name="bi_settings_theme" parent="@android:style/Theme">
+  <style name="bi_settings_theme" parent="@android:style/Theme.Material">
+  </style>
+
+  <style name="NotificationTextIcon" parent="NotificationTitle">
+    <item name="android:textColor">@color/main_notification_default_custom_text_color</item>
+  </style>
+
+  <dimen name="main_notification_text_padding_left">10dp</dimen>
+
+  <color name="main_notification_default_custom_text_color">#fff</color>
+  <bool name="default_show_box_around_icon_area">true</bool>
+
+  <style name="SelectableItem">
+    <item name="android:background">?android:attr/selectableItemBackground</item>
   </style>
 
   <dimen name="compound_button_width">68dp</dimen>
@@ -57,10 +70,6 @@
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">@dimen/compound_button_width</item>
     <item name="android:paddingLeft">8dp</item>
-  </style>
-
-  <style name="SelectableItem">
-    <item name="android:background">@android:drawable/list_selector_background</item>
   </style>
 
   <color name="android_green">#A4C639</color>
@@ -100,16 +109,9 @@
     <item name="android:textSize">17dp</item>
   </style>
 
-  <style name="NotificationTextIcon" parent="NotificationTitle">
-  </style>
-
-  <dimen name="main_notification_text_padding_left">3dp</dimen>
-
   <color name="notification_box_default_color">#222</color>
-  <color name="main_notification_default_custom_text_color">#000</color>
-  <bool name="default_show_box_around_icon_area">false</bool>
 
-  <dimen name="widget_margin">8dp</dimen>
+  <dimen name="widget_margin">0dp</dimen>
 
   <style name="divider">
     <item name="android:layout_width">match_parent</item>

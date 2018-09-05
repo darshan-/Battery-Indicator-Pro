@@ -164,7 +164,6 @@
   <string name="age_2_weeks" formatted="false">二周</string>
   <string name="age_3_weeks" formatted="false">三周</string>
   <string name="age_4_weeks" formatted="false">四周</string>
-  <string name="notification_priority_default" formatted="false">預設</string>
   <string name="icon_set_classic" formatted="false">經典圖示</string>
   <string name="icon_set_plain" formatted="false">普通數字圖示</string>
   <string name="icon_set_smaller" formatted="false">小數字圖示</string>

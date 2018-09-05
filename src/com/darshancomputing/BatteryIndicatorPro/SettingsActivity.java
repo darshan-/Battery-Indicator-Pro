@@ -53,7 +53,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_ALARMS_SETTINGS = "alarms_settings";
     public static final String KEY_ALARM_EDIT_SETTINGS = "alarm_edit_settings";
     public static final String KEY_OTHER_SETTINGS = "other_settings";
-    public static final String KEY_MAIN_NOTIFICATION_PRIORITY = "main_notification_priority";
     public static final String KEY_ENABLE_LOGGING = "enable_logging";
     public static final String KEY_MAX_LOG_AGE = "max_log_age";
     public static final String KEY_ICON_PLUGIN = "icon_plugin";
@@ -145,7 +144,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     private static final String[] LIST_PREFS = {KEY_AUTOSTART, KEY_STATUS_DUR_EST,
                                                 KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
-                                                KEY_MAIN_NOTIFICATION_PRIORITY, KEY_ICON_SET,
+                                                KEY_ICON_SET,
                                                 KEY_MAX_LOG_AGE, KEY_ICON_AREA, KEY_TOP_LINE, KEY_BOTTOM_LINE,
                                                 KEY_TIME_REMAINING_VERBOSITY,
                                                 KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
@@ -173,8 +172,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_PREDICTION_TYPE
     };
 
-    private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_MAIN_NOTIFICATION_PRIORITY,
-                                                                            KEY_ICON_AREA,
+    private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_ICON_AREA,
                                                                             KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
                                                                             KEY_NOTIFICATION_TOP_LINE_COLOR,
                                                                             KEY_NOTIFICATION_BOTTOM_LINE_COLOR,

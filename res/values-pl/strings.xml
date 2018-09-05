@@ -179,10 +179,6 @@
   <string name="white" formatted="false">Biały</string>
   <string name="ics_blue" formatted="false">Android ICS Niebieski</string>
   <string name="custom" formatted="false">Własny...</string>
-  <string name="pref_cat_notification_priority" formatted="false">Priorytet powiadomienia</string>
-  <string name="pref_cat_notification_priority_help" formatted="false">Na Jelly Bean i wyżej (Android 4.1 i powyżej), powiadomienia mogą mieć ustawiony priorytet. Efekt(y) zmiany priorytetu nie są gwarantowane, ale ogólnie:\n\n• Ustawienie na \"Minimum\" powinno w większości przypadków usunąć ikonę na pasku stanu, ale wciąż pokazywać powiadomienie w rozwijanym pasku notyfikacji.\n\n• Ustawienie na \"Low\" powinny umożliwić innym powiadamianie (np. nowe wiadomości e-mail) nad powiadomieniem BatteryBot. To jest fajne w przypadkach takich np. jak e-mail, w którym powiadomienie jest rozwijane (rozszerzalne powiadomienia są automatycznie rozwijane, gdy są na górze).\n\nPriorytet \"Default\" zazwyczaj zostawia BatteryBot u samej góry, ale są przypadki, gdzie wyższe priorytety to zmieniają.\n\nPowtarzam, dokładne zachowanie może ulec zmianie i nie jest gwarantowane.</string>
-  <string name="pref_main_notification_priority" formatted="false">Główny priorytet powiadomienia</string>
-  <string name="pref_main_notification_priority_help" formatted="false">Ustaw priorytet głównego powiadomienia. Alarmy, wtyczki oraz wszelkie inne powiadomienia nie mają wpływu na to ustawienie, ale mogą w przyszłości konfigurowalny priorytet.</string>
   <string name="pref_cat_icon_set" formatted="false">Zestaw ikon</string>
   <string name="pref_icon_set" formatted="false">Zestaw ikon</string>
   <string name="pref_icon_set_help" formatted="false">Android jest w wielu wersjach, więc nie istnieje jeden idealny zestaw ikon, który działa dobrze na każdym urządzeniu. Użytkownicy wersji Pro mogą korzystać z wtyczek, aby uzyskać więcej opcji, ale do dyspozycji są trzy wbudowane zestawy ikon, które powinny być chociaż jeden dobrym rozwiązaniem dla praktycznie każdego urządzenia.\n\n\"Klasyczny\" to oryginalny zestaw ikon z 2009 roku. Jest wciąż najlepsza dla starszych urządzeń, ale nowsze wersje Androida (począwszy od Android 3.0, Honeycomb) kurczą i przyciemniają ikony powiadomień, co czyni ten zestaw bardzo trudnym do odczytania.\n\n\"Zwykły numer\" jest domyślne dla wszystkich nowych urządzeń z systemem Android. Jest to bardzo duży biały numer, który jest dobrze widoczny nawet po skurczeniu i przyciemnieniu. Podczas ładowania pod numerkiem pokazuje się \"błyskawica\".\n\n\"Mniejszy numer\" jest jak \"Plain number\" ale mniejszy, bo niektóre nowsze urządzenia nie kurczą ikonek jak seryjny Android i \"Plain number\" robi się bardzo duży.\n\nJeśli masz jakieś wtyczki ikon do BatteryBot Pro zainstalowane (naciśnij przycisk MENU, a następnie Pobierz Wtyczki by otrzymać darmowe wtyczki) to możesz wybrać spośród nich tutaj.</string>
@@ -281,11 +277,6 @@
   <string name="age_2_weeks" formatted="false">2 tygodnie</string>
   <string name="age_3_weeks" formatted="false">3 tygodnie</string>
   <string name="age_4_weeks" formatted="false">4 tygodnie</string>
-  <string name="notification_priority_max" formatted="false">Maksymalny</string>
-  <string name="notification_priority_high" formatted="false">Wysoki</string>
-  <string name="notification_priority_default" formatted="false">Domyślny</string>
-  <string name="notification_priority_low" formatted="false">Niski</string>
-  <string name="notification_priority_min" formatted="false">Minimalny</string>
   <string name="icon_set_classic" formatted="false">Klasyczny</string>
   <string name="icon_set_plain" formatted="false">Zwykły numer</string>
   <string name="icon_set_smaller" formatted="false">Mniejszy numer</string>

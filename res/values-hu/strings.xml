@@ -229,11 +229,6 @@
   <string name="age_2_weeks" formatted="false">2 hét</string>
   <string name="age_3_weeks" formatted="false">3 hét</string>
   <string name="age_4_weeks" formatted="false">4 hét</string>
-  <string name="notification_priority_max" formatted="false">Maximum</string>
-  <string name="notification_priority_high" formatted="false">Magas</string>
-  <string name="notification_priority_default" formatted="false">Alapértelmezett</string>
-  <string name="notification_priority_low" formatted="false">Alacsony</string>
-  <string name="notification_priority_min" formatted="false">Minimum</string>
   <string name="icon_set_classic" formatted="false">Klasszikus</string>
   <string name="icon_set_plain" formatted="false">Egyszerű számok</string>
   <string name="icon_set_smaller" formatted="false">Kisebb számok</string>

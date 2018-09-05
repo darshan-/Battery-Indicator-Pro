@@ -203,11 +203,6 @@
   <string name="age_2_weeks" formatted="false">2 Wochen</string>
   <string name="age_3_weeks" formatted="false">3 Wochen</string>
   <string name="age_4_weeks" formatted="false">4 Wochen</string>
-  <string name="notification_priority_max" formatted="false">Maximum</string>
-  <string name="notification_priority_high" formatted="false">Hoch</string>
-  <string name="notification_priority_default" formatted="false">Standard</string>
-  <string name="notification_priority_low" formatted="false">Wenig</string>
-  <string name="notification_priority_min" formatted="false">Minimum</string>
   <string name="icon_set_classic" formatted="false">Klassik</string>
   <string name="icon_set_smaller" formatted="false">kleinere Nummer</string>
   <plurals name="n_log_items">

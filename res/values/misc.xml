@@ -316,19 +316,6 @@
 
   <string name="default_max_log_age">672</string>
 
-  <string-array name="notification_priority_values">
-    <item>2</item>
-    <item>1</item>
-    <item>0</item>
-    <item>-1</item>
-    <item>-2</item>
-  </string-array>
-
-  <string name ="default_main_notification_priority">-1</string>
-
-  <string formatted="false" name="pref_main_notification_priority_summary">@string/pref_main_notification_priority</string>
-
-
   <string-array name="alarm_type_values">
     <item>fully_charged</item>
     <item>charge_drops</item>
@@ -392,9 +379,6 @@
 
   <bool name="long_activity_names">true</bool>
   <bool name="show_main_title">false</bool>
-  <bool name="api_level_14_plus">false</bool>
-  <bool name="api_level_16_plus">false</bool>
-  <bool name="api_level_21_plus">false</bool>
 
   <string name="help_translators_list">
     Matthew McBaul(包明)
@@ -508,14 +492,6 @@
     <item>@string/age_4_weeks</item>
   </string-array>
 
-  <string-array name="notification_priority_entries">
-    <item>@string/notification_priority_max</item>
-    <item>@string/notification_priority_high</item>
-    <item>@string/notification_priority_default</item>
-    <item>@string/notification_priority_low</item>
-    <item>@string/notification_priority_min</item>
-  </string-array>
-
   <string-array name="icon_set_entries">
     <item>@string/icon_set_classic</item>
     <item>@string/icon_set_plain</item>
@@ -602,9 +578,7 @@
 
   <string name="default_prediction_type">-3</string>
 
-  <bool name="default_use_system_notification_layout">true</bool>
-
   <bool name="default_convert_to_fahrenheit">false</bool>
 
-  <bool name="default_prefer_fs_current_hack">true</bool>
+  <bool name="default_prefer_fs_current_hack">false</bool>
 </resources>

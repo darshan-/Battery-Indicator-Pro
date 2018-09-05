@@ -175,10 +175,6 @@
   <string name="white" formatted="false">Wit</string>
   <string name="ics_blue" formatted="false">Blauw</string>
   <string name="custom" formatted="false">Aangepast...</string>
-  <string name="pref_cat_notification_priority" formatted="false">Prioriteit van melding</string>
-  <string name="pref_cat_notification_priority_help" formatted="false">Bij Android 4.1 en hoger hebben meldingen een prioriteit. Deze kun je hier aanpassen.\n\n- Minimaal verwijderd het statusicoon maar laat de melding nog wel zien in de meldingslijst.\n- Laag laat andere meldingen zoals email zien voor de Battery Indicator melding. - Standaard is standaard.\n- Hoog laat Battery Indicator als eerste zien.</string>
-  <string name="pref_main_notification_priority" formatted="false">Prioriteit van melding</string>
-  <string name="pref_main_notification_priority_help" formatted="false">Stel de prioriteit van de melding in. Deze instelling heeft geen effect op alarmen, plugins en andere meldingen.</string>
   <string name="pref_cat_icon_set" formatted="false">Iconen</string>
   <string name="pref_icon_set" formatted="false">Iconen</string>
   <string name="pref_icon_set_help" formatted="false">Er zijn verschillende soorten Android, dus er is niet een perfecte set iconen die overal goed werken. Je kunt plugins gebruiken voor meer iconen, maar er zijn nu 3 standaard opties./n /n</string>
@@ -277,11 +273,6 @@
   <string name="age_2_weeks" formatted="false">2 weken</string>
   <string name="age_3_weeks" formatted="false">3 weken</string>
   <string name="age_4_weeks" formatted="false">4 weken</string>
-  <string name="notification_priority_max" formatted="false">Maximaal</string>
-  <string name="notification_priority_high" formatted="false">Hoog</string>
-  <string name="notification_priority_default" formatted="false">Standaard</string>
-  <string name="notification_priority_low" formatted="false">Laag</string>
-  <string name="notification_priority_min" formatted="false">Minimaal</string>
   <string name="icon_set_classic" formatted="false">Klassiek</string>
   <string name="icon_set_plain" formatted="false">Cijfer</string>
   <string name="icon_set_smaller" formatted="false">Kleiner cijfer</string>
