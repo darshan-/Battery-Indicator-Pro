@@ -1,0 +1,14 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory android:title="@string/notifications_disabled_cat">
+    <Preference
+        android:key="enable_notifications_button"
+        android:layout="@layout/enable_notifications_button"
+    />
+
+    <Preference
+        android:key="enable_notifications_summary"
+        android:layout="@layout/enable_notifications_summary"
+        android:enabled="false"
+    />
+  </PreferenceCategory>
+</PreferenceScreen>

@@ -214,13 +214,11 @@ public class CurrentInfoFragment extends Fragment {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface di, int id) {
                             final Intent i = new Intent();
-                            i.setAction(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            i.addCategory(Intent.CATEGORY_DEFAULT);
-                            i.setData(Uri.parse("package:" + getActivity().getPackageName()));
+                            i.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                            i.putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, getActivity().getPackageName());
                             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            //i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                             i.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-                            getActivity().startActivity(i);
+                            startActivity(i);
 
                             CurrentInfoFragment.awaitingNotificationUnblock = true;
                             CurrentInfoFragment.showingNotificationBlockDialog = false;

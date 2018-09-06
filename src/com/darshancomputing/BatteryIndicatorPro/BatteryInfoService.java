@@ -382,8 +382,7 @@ public class BatteryInfoService extends Service {
         settings_editor.apply();
     }
 
-    public static boolean checkMainNotifsEnabled(Context context) {
-        NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+    private boolean areMainNotifsEnabled() {
         NotificationChannel mainChan = mNotificationManager.getNotificationChannel(MAIN_CHAN_ID);
         return mainChan.getImportance() > 0 && mNotificationManager.areNotificationsEnabled();
     }

@@ -120,4 +120,7 @@
     <item name="android:layout_marginRight">7dp</item>
     <item name="android:background">?android:attr/listDivider</item>
   </style>
+
+  <dimen name="tls_button_fs">16sp</dimen>
+  <dimen name="tls_button_height">65dp</dimen>
 </resources>

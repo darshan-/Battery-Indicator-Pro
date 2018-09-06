@@ -37,8 +37,8 @@
     prevent BatteryBot from showing any notifications: the main
     notification and any alarms you have set will all be blocked.\n
 
-    \nSince BatteryBot already allows you to turn the main
-    notification on or off as well as temporarily disable any alarms
+    \nSince BatteryBot allows you to turn the main notification on or off
+    separately, as well as temporarily disable any alarms
     you\'ve created, it is stongly recommended that you unblock the
     BatteryBot notifications.  While they are blocked, it will appear
     that BatteryBot is broken.\n
@@ -329,6 +329,8 @@
     that page.  Simply press MENU then Help (on tablets, MENU isn\'t necessary) to get
     help from whatever settings page you are on.
   </string>
+
+  <string formatted="false" name="notifications_disabled_cat">Notifications Disabled</string>
 
   <string formatted="false" name="notification_settings">Main Notification</string>
   <string formatted="false" name="notification_settings_summary">Configure the main notification</string>

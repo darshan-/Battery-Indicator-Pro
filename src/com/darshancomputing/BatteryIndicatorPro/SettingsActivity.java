@@ -212,6 +212,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private Resources res;
     private PreferenceScreen mPreferenceScreen;
     private SharedPreferences mSharedPreferences;
+    private NotificationManager mNotificationManager;
+    private NotificationChannel mainChan;
+    private boolean appNotifsEnabled;
+    private boolean mainNotifsEnabled;
+
     //private CurrentHack currentHack;
 
     private String pref_screen;
@@ -337,11 +342,12 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             ab.setDisplayHomeAsUpEnabled(true);
         }
 
-        //NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        //NotificationChannel mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.MAIN_CHAN_ID);
+        mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.MAIN_CHAN_ID);
         //boolean mainNotifsEnabled = mainChan.getImportance() > 0 && mNotificationManager.areNotificationsEnabled();
-        boolean appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
-        boolean mainNotifsEnabled = mainChan.getImportance() > 0; // TODO: && appNotifsEnabled //??
+
+        appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
+        mainNotifsEnabled = mainChan.getImportance() > 0; // TODO: && appNotifsEnabled //??
         //boolean mainNotifsEnabled = BatteryInfoService.checkMainNotifsEnabled(this);
         //int mainImport = mainChan.getImportance();
         //boolean notifsEnabled = mNotificationManager.areNotificationsEnabled();
@@ -374,6 +380,15 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (pref_screen == null) {
             setPrefScreen(R.xml.main_pref_screen);
             setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
+        } else if ((pref_screen.equals(KEY_STATUS_BAR_ICON_SETTINGS) ||
+                    pref_screen.equals(KEY_NOTIFICATION_SETTINGS)) &&
+                   (!appNotifsEnabled || !mainNotifsEnabled)) {
+            setPrefScreen(R.xml.main_notifs_disabled_pref_screen);
+            if (!appNotifsEnabled) {
+                // Set both texts
+            } else {
+                // Set both texts other way
+            }
         } else if (pref_screen.equals(KEY_STATUS_BAR_ICON_SETTINGS)) {
             setPrefScreen(R.xml.status_bar_icon_pref_screen);
             setWindowSubtitle(res.getString(R.string.status_bar_icon_settings));
@@ -1058,5 +1073,21 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         cpbPref.redThresh   =   redEnabled ?   iRedThresh :   0;
         cpbPref.amberThresh = amberEnabled ? iAmberThresh :   0;
         cpbPref.greenThresh = greenEnabled ? iGreenThresh : 100;
+    }
+
+    public void enableNotifsButtonClick(android.view.View v) {
+        Intent intent;
+
+        if (!appNotifsEnabled) {
+            intent = new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+        } else {
+            intent = new Intent(android.provider.Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+            intent.putExtra(android.provider.Settings.EXTRA_CHANNEL_ID, mainChan.getId());
+        }
+
+        intent.putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, getPackageName());
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        startActivity(intent);
     }
 }
