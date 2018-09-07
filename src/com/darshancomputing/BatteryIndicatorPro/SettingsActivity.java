@@ -106,6 +106,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW = "auto_refresh_current_in_main_window";
     public static final String KEY_FIRST_RUN = "first_run";
     public static final String KEY_MIGRATED_SERVICE_DESIRED = "service_desired_migrated_to_sp_main";
+    public static final String KEY_APP_NOTIFS_DISABLED_B = "enable_notifications_button";
+    public static final String KEY_APP_NOTIFS_DISABLED_SUMMARY = "enable_notifications_summary";
 
     private static final String[] PARENTS    = {KEY_ENABLE_LOGGING,
                                                 KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
@@ -379,10 +381,14 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                     pref_screen.equals(KEY_NOTIFICATION_SETTINGS)) &&
                    (!appNotifsEnabled || !mainNotifsEnabled)) {
             setPrefScreen(R.xml.main_notifs_disabled_pref_screen);
+            Preference prefb = mPreferenceScreen.findPreference(KEY_APP_NOTIFS_DISABLED_B);
+            Preference prefs = mPreferenceScreen.findPreference(KEY_APP_NOTIFS_DISABLED_SUMMARY);
             if (!appNotifsEnabled) {
-                // Set both texts
+                prefs.setSummary(R.string.app_notifs_disabled_summary);
+                // Get button from prefb and set its text
             } else {
-                // Set both texts other way
+                prefs.setSummary(R.string.main_notifs_disabled_summary);
+                // Get button from prefb and set its text
             }
         } else if (pref_screen.equals(KEY_STATUS_BAR_ICON_SETTINGS)) {
             setPrefScreen(R.xml.status_bar_icon_pref_screen);
