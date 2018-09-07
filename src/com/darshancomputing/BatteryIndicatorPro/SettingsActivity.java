@@ -344,14 +344,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.MAIN_CHAN_ID);
-        //boolean mainNotifsEnabled = mainChan.getImportance() > 0 && mNotificationManager.areNotificationsEnabled();
 
         appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
-        mainNotifsEnabled = mainChan.getImportance() > 0; // TODO: && appNotifsEnabled //??
-        //boolean mainNotifsEnabled = BatteryInfoService.checkMainNotifsEnabled(this);
-        //int mainImport = mainChan.getImportance();
-        //boolean notifsEnabled = mNotificationManager.areNotificationsEnabled();
-        //boolean mainNotifsEnabled = mainImport > 0 && notifsEnabled;
+        mainNotifsEnabled = mainChan.getImportance() > 0;
 
         // Probably do this:
         //  For Main Notification and Status Bar Icon screens,
@@ -602,7 +597,14 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     protected void onResume() {
         super.onResume();
 
-        mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
+        // Turns out mainChan is unchangeable, so getImportance() just returns the importance at the time getNotificationChannel was called
+        mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.MAIN_CHAN_ID);
+
+        if (appNotifsEnabled != mNotificationManager.areNotificationsEnabled() ||
+            mainNotifsEnabled != mainChan.getImportance() > 0) // Doesn't seem worth checking which screen
+            restartThisScreen();
+        else
+            mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
