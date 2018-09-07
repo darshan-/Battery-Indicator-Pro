@@ -350,21 +350,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
         mainNotifsEnabled = mainChan.getImportance() > 0;
 
-        // Probably do this:
-        //  For Main Notification and Status Bar Icon screens,
-        //  Have alternate layout that includes a message and a button (maybe just one thing, a preference with
-        //   the message that responds when pressed) to system settings.
-        //  Then onResume needs to see if we're at one of those screens, and if mainNotifsEnabled has changed,
-        //    call restartThisScreen().
-        //  Well onResume can call checkMainNotifsEnabled(), and if it differs from mainNotifsEnabled, do nothing else
-        //    call restartThisScreen();
-        //
-        // Actually, I think if we don't set a channel on the Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS Intent,
-        //   hopefully we go the the app's overall settings.
-        // So we need to distinguish channel being importance NONE from all notifications being disabled, and:
-        //   1) Maybe show a slightly different message
-        //   2) Definitely link to either app notification settings or channel notification settings
-
         PreferenceManager pm = getPreferenceManager();
         pm.setSharedPreferencesName(SETTINGS_FILE);
         pm.setSharedPreferencesMode(Context.MODE_MULTI_PROCESS);
@@ -385,10 +370,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             Preference prefs = mPreferenceScreen.findPreference(KEY_APP_NOTIFS_DISABLED_SUMMARY);
             if (!appNotifsEnabled) {
                 prefs.setSummary(R.string.app_notifs_disabled_summary);
-                // Get button from prefb and set its text
+                prefb.setSummary(R.string.app_notifs_disabled_b);
             } else {
                 prefs.setSummary(R.string.main_notifs_disabled_summary);
-                // Get button from prefb and set its text
+                prefb.setSummary(R.string.main_notifs_disabled_b);
             }
         } else if (pref_screen.equals(KEY_STATUS_BAR_ICON_SETTINGS)) {
             setPrefScreen(R.xml.status_bar_icon_pref_screen);
