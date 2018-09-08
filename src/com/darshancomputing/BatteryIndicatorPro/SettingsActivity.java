@@ -435,7 +435,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.MAIN_CHAN_ID);
 
         if (appNotifsEnabled != mNotificationManager.areNotificationsEnabled() ||
-            mainNotifsEnabled != mainChan.getImportance() > 0){ // Doesn't seem worth checking which screen
+            mainNotifsEnabled != mainChan.getImportance() > 0) { // Doesn't seem worth checking which screen
             resetService();
             restartThisScreen();
         } else {

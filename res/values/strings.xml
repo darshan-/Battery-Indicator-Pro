@@ -318,9 +318,12 @@
 
   <string formatted="false" name="notifications_disabled_cat">Notifications Disabled</string>
   <string formatted="false" name="app_notifs_disabled_b">Enable App Notifications</string>
-  <string formatted="false" name="app_notifs_disabled_summary">You have disabled all notifications for this app.  Please enable them to acess these settings.</string>
+  <string formatted="false" name="app_notifs_disabled_summary">You have disabled all notifications for this app.  Please enable them to access these settings.</string>
   <string formatted="false" name="main_notifs_disabled_b">Enable Main Notification</string>
   <string formatted="false" name="main_notifs_disabled_summary">You have disabled the main notification for this app.  Please enable it to access these settings.</string>
+  <string formatted="false" name="app_notifs_alarms_disabled_summary">You have disabled all notifications for this app.  Please enable them to access your alarms.</string>
+  <string formatted="false" name="alarm_notifs_disabled_b">Enable Alarms</string>
+  <string formatted="false" name="alarm_notifs_disabled_summary">You have disabled the alarm notification channel for this app.  Please enable it to access your alarms.</string>
 
   <string formatted="false" name="notification_settings">Main Notification</string>
   <string formatted="false" name="notification_settings_summary">Configure the main notification</string>

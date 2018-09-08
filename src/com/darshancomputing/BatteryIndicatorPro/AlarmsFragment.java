@@ -33,6 +33,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -66,13 +67,24 @@ public class AlarmsFragment extends Fragment {
         alarmChan = mNotificationManager.getNotificationChannel(BatteryInfoService.ALARM_CHAN_ID);
 
         appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
-        alarmNotifsEnabled = alarmChan != null && alarmChan.getImportance() > 0;
+        alarmNotifsEnabled = alarmChan == null || alarmChan.getImportance() > 0; // null okay, just not created yet, so not blocked
 
         if (!appNotifsEnabled || !alarmNotifsEnabled) {
             mInflater = inflater;
             View view = mInflater.inflate(R.layout.alarms_no_notifs, container, false);
 
-            view.findViewById(R.id.enable_notifs_button).setOnClickListener(new OnClickListener() {
+            Button b = view.findViewById(R.id.enable_notifs_button);
+            TextView tv = view.findViewById(R.id.enable_notifs_summary);
+
+            if (!appNotifsEnabled) {
+                b.setText(R.string.app_notifs_disabled_b);
+                tv.setText(R.string.app_notifs_alarms_disabled_summary);
+            } else {
+                b.setText(R.string.alarm_notifs_disabled_b);
+                tv.setText(R.string.alarm_notifs_disabled_summary);
+            }
+
+            b.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
                     Intent intent;
 
@@ -163,6 +175,17 @@ public class AlarmsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        // Turns out alarmChan is unchangeable, so getImportance() just returns the importance at the time getNotificationChannel was called
+        alarmChan = mNotificationManager.getNotificationChannel(BatteryInfoService.ALARM_CHAN_ID);
+
+        if (appNotifsEnabled != mNotificationManager.areNotificationsEnabled() ||
+            alarmNotifsEnabled != (alarmChan == null || alarmChan.getImportance() > 0)) {
+            Intent intent = new Intent(getActivity(), BatteryInfoActivity.class).putExtra(BatteryInfoService.EXTRA_EDIT_ALARMS, true);
+            startActivity(intent);
+            getActivity().finish();
+            return;
+        }
 
         convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
                                              pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
