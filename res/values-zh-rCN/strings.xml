@@ -14,8 +14,6 @@
   <string name="confirm_close" formatted="false">确认退出？</string>
   <string name="confirm_close_hint" formatted="false">电量指示器将完全退出，通知栏电量指示图标将不再显示。 如果您想让本程序后台运行，可以单击手机“返回”键关闭主窗口。</string>
   <string name="confirm_clear_logs" formatted="false">确认清理所有日志？</string>
-  <string name="confirm_ten_percent_enable" formatted="false">确认开启10%模式？</string>
-  <string name="confirm_ten_percent_disable" formatted="false">确认开启10%模式</string>
   <string name="okay" formatted="false">完成</string>
   <string name="none" formatted="false">无</string>
   <string name="menu_settings" formatted="false">设置项</string>
@@ -85,7 +83,6 @@
   <string name="help_cat_translations" formatted="false">多语言化</string>
   <string name="help_subcat_translators" formatted="false">翻译志愿者名单</string>
   <string name="help_cat_contact" formatted="false">联系方式</string>
-  <string name="pref_hint" formatted="false"><b>提示：</b>单击“菜单”获取帮助。</string>
   <string name="settings_overview" formatted="false">预览</string>
   <string name="settings_overview_help" formatted="false">设置项包括如下所述的三个独立页面。各页面的帮助信息独立显示，在“菜单”-“帮助”内容中可获取当前页面的帮助信息。</string>
   <string name="alarm_settings_subtitle" formatted="false">警报器设置</string>
@@ -117,34 +114,7 @@
   <string name="pref_cat_plugin_settings" formatted="false">插件设置</string>
   <string name="pref_plugin_settings" formatted="false">插件设置</string>
   <string name="pref_plugin_settings_summary" formatted="false">修改此插件的设置</string>
-  <string name="pref_cat_color" formatted="false">图标颜色</string>
-  <string name="pref_cat_color_help" formatted="false">为保证电量指示器的二进制数据包尺寸最小化，对图标颜色做出如下限制：红色图标标示最大值为30%剩余电量，黄色图标标示最大值为50%剩余电量，绿色图标标示最小值为20%剩余电量。开发者相信如此的限制能满足99%的用户需求。 为保证用户能够最大限度的自定义该软件，各色彩等级可单独的开启或关闭。最高可实现四级色彩显示，绿色图标表示电量充足，接着以灰色、黄色和红色显示剩余电量等级。大部分用户会将黄色标示上限及绿色标示下限设置为相同值，这样将跳过灰色标示。</string>
-  <string name="pref_color_preview" formatted="false">色彩预览</string>
-  <string name="pref_color_preview_help" formatted="false">色彩预览功能可将您的设置效果及时以视觉方式呈现。 该功能在10%步进模式下无实际意义，将不可用。</string>
-  <string name="pref_red" formatted="false">使用红色图标</string>
-  <string name="pref_red_summary" formatted="false">确认在电量低时使用红色图标？</string>
-  <string name="pref_red_help" formatted="false">设置是否在剩余电量低于设置阀值时使用红色图标。</string>
-  <string name="pref_red_thresh" formatted="false">红色图标阀值</string>
-  <string name="pref_red_thresh_summary" formatted="false">剩余电量低于多少百分比时使用红色图标？</string>
-  <string name="pref_red_thresh_summary10" formatted="false">剩余电量等于或低于多少百分比时使用红色图标？</string>
-  <string name="pref_red_thresh_help" formatted="false">设置剩余电量低于（10%步进模式中为“等于或低于”）该设置值时使用红色图标。 该选项能在可选范围内（5%步进）提供红色图标阀值设置值选项。 在10%步进模式下，该设置项内容可能略有不同。</string>
-  <string name="pref_amber" formatted="false">使用黄色图标</string>
-  <string name="pref_amber_summary" formatted="false">确认在电量较少时使用黄色图标？</string>
-  <string name="pref_amber_help" formatted="false">设置是否在剩余电量低于设置阀值时使用黄色图标。</string>
-  <string name="pref_amber_thresh" formatted="false">黄色图标阀值</string>
-  <string name="pref_amber_thresh_summary" formatted="false">剩余电量低于多少百分比时使用黄色图标？</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">剩余电量等于或低于多少百分比时使用黄色图标？</string>
-  <string name="pref_amber_thresh_help" formatted="false">设置剩余电量低于（10%步进模式中为“等于或低于”）该设置值时使用黄色图标。 该选项能在可选范围内（5%步进）提供黄色图标阀值设置值选项。设置值下限为红色图标（若已开启）设置阀值+5%，例如红色图标阀值为15%，则该设置项选择下限为20%。\n在10%步进模式下，该设置项内容可能略有不同。</string>
-  <string name="pref_green" formatted="false">使用绿色图标</string>
-  <string name="pref_green_summary" formatted="false">确认在电量充足时使用绿色图标？</string>
-  <string name="pref_green_help" formatted="false">设置是否在剩余电量高于设置阀值时使用绿色图标。</string>
-  <string name="pref_green_thresh" formatted="false">绿色图标阀值</string>
-  <string name="pref_green_thresh_summary" formatted="false">剩余电量等于或高于多少百分比时使用绿色图标？</string>
-  <string name="pref_green_thresh_help" formatted="false">设置剩余电量等于或高于该设置值时使用绿色图标。 该选项能在可选范围内（5%步进）提供绿色图标阀值设置值选项。设置值下限为红色或黄色图标最大阀值，例如黄色图标阀值为40%，则设置项选择下限为40%。\n在10%步进模式下，该设置项内容可能略有不同。</string>
   <string name="pref_cat_device_specific" formatted="false">特殊设备设置</string>
-  <string name="pref_ten_percent_mode" formatted="false">10%步进模式</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">请先阅读帮助信息！</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b>注意：</b> 改动该选项设置状态将重置图标颜色设置内容！ 该选项将清除图标色彩设置内容以保证10%步进类型设备显示正常。根据用户反馈，该类设备包括以下型号： • Motorola Droid （最初版本） • Motorola Droid X • Motorola Droid 2 • Motorola Defy • Samsung Moment 除以上型号之外，其余设备均为1%步进报告类型，因此均<i>不用</i>开启此项功能。</string>
   <string name="alarms_overview" formatted="false">概述</string>
   <string name="alarms_overview_help" formatted="false">在本页面您可以添加一个新的警报器，以及快速启用、禁用或删除一个已存在的警报器。\n\n按“添加警报器”按钮可以创建一个新的警报器，之后您将进入设置页面去设置新建的警报器。\n\n在“添加警报器”按钮的下方是您已创建的所有警报器的列表\n\n·点击警报器即可设置 ·长按可以删除(也可以在设置页面中按菜单键选择删除。) ·点击警报器左边的图标可以禁用或启用警报器(也可以在设置页面中选择。)</string>
   <string name="pref_alarm_enabled" formatted="false">启用警报器</string>

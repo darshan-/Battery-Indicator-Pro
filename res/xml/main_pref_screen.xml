@@ -1,18 +1,5 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
   <Preference
-     android:title="@string/pref_hint"
-     android:layout="@layout/hint"
-     android:enabled="false"
-     android:selectable="false"
-  />
-
-  <Preference
-     android:layout="@layout/divider_after_hint"
-     android:enabled="false"
-     android:selectable="false"
-  />
-
-  <Preference
      android:key="notification_settings"
      android:title="@string/notification_settings"
      android:summary="@string/notification_settings_summary"

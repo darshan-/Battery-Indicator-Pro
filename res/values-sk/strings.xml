@@ -14,9 +14,6 @@
   <string name="confirm_close" formatted="false">Naozaj zavrieť?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator bude úplne zatvorený a nebudete ho viac vidieť ani v notifikačnej lište.\n\nAk len chcete odísť z hlavného okna a nechať indikátor spustený, stlačte Zrušiť a potom stlačte na vašom telefóne tlačidlo späť pre odídenie z hlavného okna.</string>
   <string name="confirm_clear_logs" formatted="false">Naozaj odstrániť všetky záznamy?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Naozaj zapnúť 10% mód?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Naozaj vypnúť 10% mód?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Upozornenie: Zmena tohto nastavenia (zapnutie aj vypnutie) resetuje vaše nastavenia farieb.\n\nAk máte Motorolu Droid, Droid X, Droid 2, Defy, alebo Samsung Moment, mali by ste toto nastavenie zapnúť keď prvý krát spúšťate aplikáciu, a potom to nechať tak. VŠETKY ostatné telefóny, pokiaľ viem, by mali vždy nechať toto nastavenie vypnuté.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Nič</string>
   <string name="menu_settings" formatted="false">Nastavenia</string>
@@ -104,7 +101,6 @@
   <string name="help_cat_translations" formatted="false">Preklady</string>
   <string name="help_subcat_translators" formatted="false">Prekladatelia</string>
   <string name="help_cat_contact" formatted="false">Kontakt</string>
-  <string name="pref_hint" formatted="false">Nápoveda: pre pomoc stlačte MENU.</string>
   <string name="settings_overview" formatted="false">Prehľad</string>
   <string name="settings_overview_help" formatted="false">Nastavenia sú zoradené do troch samostaných stránok ako je popísané nižšie. Každá stránka má vlastnú stránku pomoci popisujúcu nastavenia na konkrétnej stránke. Jednoducho stlačte MENU a potom Pomocník (na tabletoch MENU nie je požadované) aby ste našli pomoc na ktorejkoľvek stránke.</string>
   <string name="alarm_settings_subtitle" formatted="false">Nastavenie upozornení</string>
@@ -125,28 +121,7 @@
   <string name="pref_cat_autostart" formatted="false">Automatické spustenie</string>
   <string name="pref_autostart_at_boot" formatted="false">Spustiť automaticky po zapnutí</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">Spustiť Battery Indicator keď zariadenie štartuje:</string>
-  <string name="pref_cat_color" formatted="false">Farba ikonky</string>
-  <string name="pref_color_preview" formatted="false">Ukážka farby</string>
-  <string name="pref_red" formatted="false">Používať červenú ikonu</string>
-  <string name="pref_red_summary" formatted="false">Používať červenú ikonu keď je vybitá batéria?</string>
-  <string name="pref_red_help" formatted="false">Použiť alebo nepoužiť červenú ikonu pod určenou hranicou.</string>
-  <string name="pref_red_thresh" formatted="false">Červená hranica</string>
-  <string name="pref_red_thresh_summary" formatted="false">Červená ikona pod koľkými %:</string>
-  <string name="pref_red_thresh_summary10" formatted="false">Červená ikona na alebo pod koľkými %:</string>
-  <string name="pref_amber" formatted="false">Používať Jantárovú ikonu</string>
-  <string name="pref_amber_summary" formatted="false">Používať jantárovú ikonu, keď je batéria v strede?</string>
-  <string name="pref_amber_help" formatted="false">Použiť alebo nepoužiť jantárovú ikonu pod určenou hranicou.</string>
-  <string name="pref_amber_thresh" formatted="false">Jantárová hranica</string>
-  <string name="pref_amber_thresh_summary" formatted="false">Jantárová pod koľkými %:</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">Jantárová ikona na alebo pod koľkými %:</string>
-  <string name="pref_green" formatted="false">Používať zelenú ikonu</string>
-  <string name="pref_green_summary" formatted="false">Používať zelenú ikonu, keď je batéria plná?</string>
-  <string name="pref_green_help" formatted="false">Použiť alebo nepoužiť zelenú ikonu pod určenou hranicou.</string>
-  <string name="pref_green_thresh" formatted="false">Zelená hranica</string>
-  <string name="pref_green_thresh_summary" formatted="false">Zelená, pod koľkými %:</string>
   <string name="pref_cat_device_specific" formatted="false">Nastavenia špecifické pre konkrétne zariadenia</string>
-  <string name="pref_ten_percent_mode" formatted="false">10% mód</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Čítaj najprv pomocníka!</string>
   <string name="alarms_overview" formatted="false">Prehľad upozornení</string>
   <string name="pref_alarm_enabled" formatted="false">Zapnúť upozornenie</string>
   <string name="pref_alarm_enabled_help" formatted="false">Ak chcete dočasne vypnúť alarm bez znovuvytvárania nového, keď ho budete potrebovať, môžete ho vypnúť a zapnúť alebo tu alebo na stránke alarmov.</string>

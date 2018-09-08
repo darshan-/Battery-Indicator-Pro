@@ -96,7 +96,6 @@
   <string name="help_subcat_translators" formatted="false">翻譯志願者名單</string>
   <string name="help_cat_contact" formatted="false">聯繫方式</string>
   <string name="help_contact" formatted="false">如果您有任何問題或建議，請寄<a href="mailto:support@batterybot.info">email給我</a>。</string>
-  <string name="pref_hint" formatted="false"><b>提示：</b>單擊「選單」獲取說明。</string>
   <string name="settings_overview" formatted="false">預覽</string>
   <string name="settings_overview_help" formatted="false">設定包括如下所述的三個獨立頁面。各頁面的說明信息獨立顯示，在「選單」-「說明」內容中可獲取當前頁面的說明信息。</string>
   <string name="other_settings" formatted="false">其他設定</string>
@@ -120,34 +119,7 @@
   <string name="pref_autostart_at_boot_summary" formatted="false">確認允許電量指示器開機時自動啟動？</string>
   <string name="pref_autostart_at_boot_help" formatted="false">設定是否允許電量指示器在開機時自動啟動。\n\n」關機前運行中」選項僅在手動關閉電量指示器時有效。若您使用其他方式，如使用任務殺手進行關閉，則本程序無法確認是否由您關閉，選擇該方式後仍會在開機時自動啟動。</string>
   <string name="pref_cat_language" formatted="false">語言</string>
-  <string name="pref_cat_color" formatted="false">圖標顏色</string>
-  <string name="pref_cat_color_help" formatted="false">為保證電量指示器的二進制數據包尺寸最小化，對圖標顏色做出如下限制：紅色圖標標示最大值為30%剩餘電量，黃色圖標標示最大值為50%剩餘電量，綠色圖標標示最小值為20%剩餘電量。開發者相信如此的限制能滿足99%的用戶需求。\n\n為保證用戶能夠最大限度的自定義該軟體，各色彩等級可單獨的開啟或關閉。最高可實現四級色彩顯示，綠色圖標表示電量充足，接著以灰色、黃色和紅色顯示剩餘電量等級。大部分用戶會將黃色標示上限及綠色標示下限設定為相同值，這樣將跳過灰色標示。</string>
-  <string name="pref_color_preview" formatted="false">色彩預覽</string>
-  <string name="pref_color_preview_help" formatted="false">色彩預覽功能可將您的設定效果及時以視覺方式呈現。\n\n該功能在10%步進模式下無實際意義，將不可用。</string>
-  <string name="pref_red" formatted="false">使用紅色圖標</string>
-  <string name="pref_red_summary" formatted="false">確認在電量低時使用紅色圖標？</string>
-  <string name="pref_red_help" formatted="false">設定是否在剩餘電量低於設定閥值時使用紅色圖標。</string>
-  <string name="pref_red_thresh" formatted="false">紅色圖標閥值</string>
-  <string name="pref_red_thresh_summary" formatted="false">剩餘電量低於多少百分比時使用紅色圖標？</string>
-  <string name="pref_red_thresh_summary10" formatted="false">剩餘電量等於或低於多少百分比時使用紅色圖標？</string>
-  <string name="pref_red_thresh_help" formatted="false">設定剩餘電量低於（10%步進模式中為「等於或低於」）該設定值時使用紅色圖標。\n\n該選項能在可選範圍內（5%步進）提供紅色圖標閥值設定值選項。\n\n在10%步進模式下，該設定內容可能略有不同。</string>
-  <string name="pref_amber" formatted="false">使用黃色圖標</string>
-  <string name="pref_amber_summary" formatted="false">確認在電量較少時使用黃色圖標？</string>
-  <string name="pref_amber_help" formatted="false">設定是否在剩餘電量低於設定閥值時使用黃色圖標。</string>
-  <string name="pref_amber_thresh" formatted="false">黃色圖標閥值</string>
-  <string name="pref_amber_thresh_summary" formatted="false">剩餘電量低於多少百分比時使用黃色圖標？</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">剩餘電量等於或低於多少百分比時使用黃色圖標？</string>
-  <string name="pref_amber_thresh_help" formatted="false">設定剩餘電量低於（10%步進模式中為「等於或低於」）該設定值時使用黃色圖標。\n\n該選項能在可選範圍內（5%步進）提供黃色圖標閥值設定值選項。設定值下限為紅色圖標（若已開啟）設定閥值+5%，例如紅色圖標閥值為15%，則該設定選擇下限為20%。\\n在10%步進模式下，該設定內容可能略有不同。</string>
-  <string name="pref_green" formatted="false">使用綠色圖標</string>
-  <string name="pref_green_summary" formatted="false">確認在電量充足時使用綠色圖標？</string>
-  <string name="pref_green_help" formatted="false">設定是否在剩餘電量高於設定閥值時使用綠色圖標。</string>
-  <string name="pref_green_thresh" formatted="false">綠色圖標閥值</string>
-  <string name="pref_green_thresh_summary" formatted="false">剩餘電量等於或高於多少百分比時使用綠色圖標？</string>
-  <string name="pref_green_thresh_help" formatted="false">設定剩餘電量等於或高於該設定值時使用綠色圖標。\n\n該選項能在可選範圍內（5%步進）提供綠色圖標閥值設定值選項。設定值下限為紅色或黃色圖標最大閥值，例如黃色圖標閥值為40%，則設定選擇下限為40%。\\n在10%步進模式下，該設定內容可能略有不同。</string>
   <string name="pref_cat_device_specific" formatted="false">特殊設備設定</string>
-  <string name="pref_ten_percent_mode" formatted="false">10%步進模式</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">請先閱讀說明信息！</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b>注意：</b> 改動該選項設定狀態將重置圖標顏色設定內容！\n\n該選項將清除圖標色彩設定內容以保證10%步進類型設備顯示正常。根據用戶反饋，該類設備包括以下型號：\n\n‧ Motorola Droid （最初版本）\n‧ Motorola Droid X\n‧ Motorola Droid 2\n• Motorola Defy\n‧ Samsung Moment\n\n除以上型號之外，其餘設備均為1%步進報告類型，因此均<i>不用</i>開啟此項功能。</string>
   <string name="boot_pref_always" formatted="false">始終</string>
   <string name="boot_pref_never" formatted="false">從不</string>
   <string name="boot_pref_if_running" formatted="false">關機時運行</string>

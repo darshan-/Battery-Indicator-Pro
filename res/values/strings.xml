@@ -54,18 +54,6 @@
 
   <string formatted="false" name="configure_log_filter">Show which log items?</string>
 
-  <string formatted="false" name="confirm_ten_percent_enable">Really enable 10% Mode?</string>
-  <string formatted="false" name="confirm_ten_percent_disable">Really disable 10% Mode?</string>
-  <string formatted="false" name="confirm_ten_percent_hint">
-    Warning: Changing this setting (both enabling and disabling it)
-    will reset your color settings.\n
-
-    \nIf you have a Motorola Droid, Droid X, Droid 2, Defy,
-    or Samsung Moment, you should turn
-    this on when you first get the app, and then leave it alone.  All
-    other devices, as far as I know, should always leave this off.
-  </string>
-
   <string formatted="false" name="okay">Okay</string>
   <string formatted="false" name="none">None</string>
 
@@ -320,8 +308,6 @@
     <a href="mailto:support@batterybot.info">email me</a>.
   </string>
 
-  <string formatted="false" name="pref_hint">Hint: Press MENU for help.</string>
-
   <string formatted="false" name="settings_overview">Overview</string>
   <string formatted="false" name="settings_overview_help">
     The settings are organized into separate pages, as described
@@ -378,7 +364,7 @@
   <string formatted="false" name="pref_please_upgrade">
     The Pro version has many more settings and features, including
     current (mA) information,
-    colorful icons, alarms,
+    alarms,
     battery state logging,
     and more.
   </string>
@@ -701,124 +687,8 @@
   <string formatted="false" name="pref_plugin_settings">Plugin Settings</string>
   <string formatted="false" name="pref_plugin_settings_summary">Edit settings for this plugin</string>
 
-  <string formatted="false" name="pref_classic_color_mode">Force Classic Color Mode</string>
-  <string formatted="false" name="pref_classic_color_mode_summary">
-    This usually does not work; please read the help
-  </string>
-  <string formatted="false" name="pref_classic_color_mode_help">
-    Starting with Android 5.0 (Lollipop), colored notification icons
-    officially no longer work on Android, making the Classic icon show
-    up as solid white. So by default, on these devices the app uses a
-    plain white outline with white number.\n
-
-    \nHowever, not all devices follow the spec, so this is not
-    necessary and does not work correctly everywhere.  You can try to
-    make the Classic icon set work in the classic way by turning this
-    option on.  Remember, on most devices this will just make the icon
-    turn solid white.
-  </string>
-  <string formatted="false" name="pref_cat_color">Icon Color</string>
-  <string formatted="false" name="pref_cat_color_help">
-    In order to keep the binary package for BatteryBot
-    reasonably small, there are some limitations for the colors.  At
-    the time of writing, you can have a red icon as high as 30%, an
-    amber icon as high as 50%, and a green icon as low as 20%.  I
-    think these are reasonable compromises that should work for 99% of
-    users.\n
-
-    \nTo give you maximum control, the colors can be turned on or off
-    independently.  This means that you can have as much as a
-    four-tiered color scheme, where the icon is green when it is very
-    full, then grayscale, then amber, then red.  Of course, most
-    people probably have the amber and green thresholds set to the
-    same value, so that the icon is never grayscale.
-  </string>
-  <string formatted="false" name="pref_color_preview">Color Preview</string>
-  <string formatted="false" name="pref_color_preview_help">
-    The color preview will hopefully make it really easy to visualize
-    what effect your color settings will have.\n
-
-    \nThis doesn\'t exist in 10% mode, because it just wouldn\'t make
-    sense.
-  </string>
-  <string formatted="false" name="pref_red">Use Red Icon</string>
-  <string formatted="false" name="pref_red_summary">Use red icon when charge is low?</string>
-  <string formatted="false" name="pref_red_help">
-    Whether or not to use a red icon below the specified threshold.
-  </string>
-  <string formatted="false" name="pref_red_thresh">Red Threshold</string>
-  <string formatted="false" name="pref_red_thresh_summary">Red icon below what charge percentage:</string>
-  <string formatted="false" name="pref_red_thresh_summary10">Red icon at or below what charge percentage:</string>
-  <string formatted="false" name="pref_red_thresh_help">Specifies the charge level which
-    the icon should turn red below (or <i>at</i>, in 10% Mode).\n
-
-    \nThe options for the red threshold include all the values (in
-    multiples of 5) for which there are red icons available.\n
-
-    \nIn 10% Mode, things work slightly differently but should be
-    self-explanatory.
-  </string>
-  <string formatted="false" name="pref_amber">Use Amber Icon</string>
-  <string formatted="false" name="pref_amber_summary">Use amber icon when charge is medium?</string>
-  <string formatted="false" name="pref_amber_help">
-    Whether or not to use an amber icon below the specified threshold.
-  </string>
-  <string formatted="false" name="pref_amber_thresh">Amber Threshold</string>
-  <string formatted="false" name="pref_amber_thresh_summary">Amber icon below what charge percentage:</string>
-  <string formatted="false" name="pref_amber_thresh_summary10">Amber icon at or below what charge percentage:</string>
-  <string formatted="false" name="pref_amber_thresh_help">Specifies the charge level
-    which the icon should turn amber below (or <i>at</i>, in 10%
-    Mode).\n
-
-    \nThe options for the amber threshold include all the values (in
-    multiples of 5) for which there are amber icons available,
-    starting 5 percentage points above the red threshold (if there is
-    one).  For example, if you have the red threshold set to 15, then
-    your lowest option here will be 20.\n
-
-    \nIn 10% Mode, things work slightly differently but should be
-    self-explanatory.
-  </string>
-  <string formatted="false" name="pref_green">Use Green Icon</string>
-  <string formatted="false" name="pref_green_summary">Use green icon when charge is high?</string>
-  <string formatted="false" name="pref_green_help">
-    Whether or not to use a green icon at or above the specified threshold.
-  </string>
-  <string formatted="false" name="pref_green_thresh">Green Threshold</string>
-  <string formatted="false" name="pref_green_thresh_summary">Green icon at or above what charge percentage:</string>
-  <string formatted="false" name="pref_green_thresh_help">Specifies the charge level
-    which the icon should be green at or above.\n
-
-    \nThe options for the green threshold include all the values (in
-    multiples of 5) for which there are green icons available,
-    starting at the highest active threshold you have set for red or
-    amber.  For example, if you have the amber threshold set to 40,
-    then your lowest option here will be 40.\n
-
-    \nIn 10% Mode, things work slightly differently but should be
-    self-explanatory.
-  </string>
-
   <string formatted="false" name="pref_cat_device_specific">Device Specific Settings</string>
   <!--string name="pref_cat_device_specific_help"></string-->
-  <string formatted="false" name="pref_ten_percent_mode">10% Mode</string>
-  <string formatted="false" name="pref_ten_percent_mode_summary">Read the help first!</string>
-  <string formatted="false" name="pref_ten_percent_mode_help"><b>Note:</b>
-    Checking or unchecking this will reset your icon color settings!\n
-
-    \nThis setting cleans up the Icon Color settings to make more sense
-    on devices that only show their charge level in 10% increments.
-    According to user reports, that includes these devices:\n
-
-    \n• Motorola Droid (original)
-    \n• Motorola Droid X
-    \n• Motorola Droid 2
-    \n• Motorola Defy
-    \n• Samsung Moment\n
-
-    \nAs far as I\'m aware, all other devices report every 1%, and so
-    should <i>not</i> turn this on.
-  </string>
 
   <string formatted="false" name="alarms_overview">Alarms Overview</string>
   <string formatted="false" name="alarms_overview_help">

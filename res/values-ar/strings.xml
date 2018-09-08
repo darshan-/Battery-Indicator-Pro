@@ -17,9 +17,6 @@
   <string name="confirm_close_hint" formatted="false">برنامج المؤشر سوف يتم غلقه بشكل تام ولن تراه في شريط الاشعارات\n\nاذا اردت ان تغادر البرنامج وتريد ان يبقى المؤشر مشغل اضغط على الغاء وبعدها اظغط على زر الرجوع للمغادرة البرنامج</string>
   <string name="confirm_clear_logs" formatted="false">هل تريد مسح السجلات ؟</string>
   <string name="configure_log_filter" formatted="false">رؤية عناصر السجلات؟</string>
-  <string name="confirm_ten_percent_enable" formatted="false">هل تريد تمكين نمط 10% ؟</string>
-  <string name="confirm_ten_percent_disable" formatted="false">هل تريد تعطيل نمط 10% ؟</string>
-  <string name="confirm_ten_percent_hint" formatted="false">تحذير:تغيير هذه الاعدادات(اي تمكينها وتعطيلها) سوف يعيد الوان الاعدادات\n\nاذا كنت تملك هاتف موتولارلا او اكس او 2 او دايفي او سامسونغ مومينت يجب عليك تشغيل هذا الاعداد عندما تحصل على هذا التطبيق لاول مرةومن ثم اتركه’اما الهواتف الاخرى فلا يجب التلاعب بهذا الاعداد ويجب تركه في حالة الايقاف</string>
   <string name="okay" formatted="false">موافق</string>
   <string name="none" formatted="false">لا\ولاواحد</string>
   <string name="tab_current_info" formatted="false">معلومات الحالية</string>
@@ -130,7 +127,6 @@
   <string name="help_subcat_translators" formatted="false">المترجمين</string>
   <string name="help_cat_contact" formatted="false">للتواصل</string>
   <string name="help_contact" formatted="false">اذا كنت تملك اسئلة او مشاكل رجاء <a href="mailto:support@batterybot.info">راسلني على</a>.\n</string>
-  <string name="pref_hint" formatted="false">تلميح:اضغط على الخيارات للمساعدة</string>
   <string name="settings_overview" formatted="false">نظرة عامة</string>
   <string name="settings_overview_help" formatted="false">الاعدادات منفصلة كما موضح ادناه واذا اردت ان تدخل لاعدادات الصفحة ببساطة اضغط على زر الخيارات الموجودة في هاتفك للحصل على مساعدة اما على الاجهزة اللوحية فأن زر الخيارات غير ضروري</string>
   <string name="notification_settings" formatted="false">الاشعارات الرئيسية</string>
@@ -228,34 +224,7 @@
   <string name="pref_cat_plugin_settings" formatted="false">اعدادات البرنامج المساعد</string>
   <string name="pref_plugin_settings" formatted="false">اعدادات البرنامج المساعد</string>
   <string name="pref_plugin_settings_summary" formatted="false">تعديل إعدادات هذا البرنامج المساعد</string>
-  <string name="pref_cat_color" formatted="false">لون الايقونة</string>
-  <string name="pref_cat_color_help" formatted="false">من أجل الحفاظ على الحزمة ثنائي صغيرة الحجم بشكل معقول، وهناك بعض القيود للألوان. في وقت كتابة هذا التقرير، هل يمكن أن يكون رمز أحمر تصل إلى 30٪، وهو رمز الاصفر تصل إلى 50٪، وأيقونة خضراء منخفضة تصل إلى 20٪. أعتقد أن هذه هي التنازلات المعقولة التي يجب أن تعمل لمدة 99٪ من المستخدمين\n\nلتعطيك أقصى قدر من السيطرة، يمكن أن تحول الألوان أو إيقاف تشغيلها بشكل مستقل. هذا يعني أنك يمكن أن يكون بقدر ما نظام ألوان أربعة مستويات، حيث الرمز هو أخضر عندما يكون كامل جدا، ثم تدرج الرمادي، ثم الأصفر، ثم الأحمر. بطبيعة الحال، فإن معظم الناس لديهم على الارجح عتبات الاصفر والأخضر تعيين إلى نفس القيمة، بحيث يتم أبدا رمز الرمادي.</string>
-  <string name="pref_color_preview" formatted="false">معاينة الالوان</string>
-  <string name="pref_color_preview_help" formatted="false">نأمل من معاينة الالوان ان تختار الالوان التي سوف تظهر على هاتفك\n\n10%غير قابلة لتخصيص لانها اداء النظام اي لا معنى لها</string>
-  <string name="pref_red" formatted="false">استخدام الايقونة الحمراء</string>
-  <string name="pref_red_summary" formatted="false">استخدام الايقونة الحمراء عندما يكون الشحن واطئ</string>
-  <string name="pref_red_help" formatted="false">ام تريد استخدام اللون الاحمر عند نسبة محددة</string>
-  <string name="pref_red_thresh" formatted="false">نسبة الاحمر</string>
-  <string name="pref_red_thresh_summary" formatted="false">ماهي النسبة المسوؤلة الواطئة لاظهار اللون الاحمر:</string>
-  <string name="pref_red_thresh_summary10" formatted="false">ماهي النسبة المسوؤلة الواطئة او اقل لاظهار اللون الاحمر:</string>
-  <string name="pref_red_thresh_help" formatted="false">في وضع اللون الاحمر يشغل في حالات \"عند او في \" في 10\n\nخيارات النسبة المئوية للون الاحمر تشمل مضاعافات رقم 5 ويمكن عندها توفر الايقونة الحمراء\n\n10% لايوجد له نسبة ولا يحتاج لتفسير</string>
-  <string name="pref_amber" formatted="false">استخدام الايقونة الصفراء</string>
-  <string name="pref_amber_summary" formatted="false">استخدام الايقونة الصفراء عندما يكون الشحن متوسط؟</string>
-  <string name="pref_amber_help" formatted="false">ام تريد استخدام اللون الاصفر عند نسبة محددة</string>
-  <string name="pref_amber_thresh" formatted="false">نسبة الاصفر</string>
-  <string name="pref_amber_thresh_summary" formatted="false">ماهي النسبة المسوؤلةالواطئة لاظهار اللون الاحمر:</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">ماهي النسبة المسوؤلة الواطئة ام اقل لاظهار اللون الاحمر:</string>
-  <string name="pref_amber_thresh_help" formatted="false">في وضع اللون الاصفر يشغل في حالات \"عند او في \" في 10\n\nخيارات النسبة المئوية للون الاحمر تشمل مضاعافات رقم 5 ويمكن عندها توفر الايقونة الصفراءعلى سبيل المثال، إذا قمت بتعيين عتبة الحمراء إلى 15، ثم الخيار الاقل هنا سيكون 20\n\n10% لايوجد له نسبة ولا يحتاج لتفسير</string>
-  <string name="pref_green" formatted="false">استخدام الايقونة الخضراء</string>
-  <string name="pref_green_summary" formatted="false">استخدام الايقونة الخضراء عندما يكون الشحن عالي؟</string>
-  <string name="pref_green_help" formatted="false">ام تريد استخدام اللون الاخضر عند نسبة محددة</string>
-  <string name="pref_green_thresh" formatted="false">نسبة الاخضر</string>
-  <string name="pref_green_thresh_summary" formatted="false">استخدام اللون الاخضر عندما يكون الشحن عند نسبة معين او اعلى:</string>
-  <string name="pref_green_thresh_help" formatted="false">حدد مستوى شحن التي ينبغي أن تكون عليه الايقونة خضراء عند أو فوق\n\nالخيارات لنسبة الخضراء تشمل جميع القيم في مضاعفات رقم 5 التي توجد الرموز الخضراء المتاحة، بدءا من أعلى عتبة بالموقع الذي تم إعداده للأحمر أو الاصفر. على سبيل المثال، إذا قمت بتعيين عتبة الاصفر إلى 40، ثم الخيار الاقل هنا سوف تكون 40\n\n10% لايوجد له نسبة ولا يحتاج لتفسير</string>
   <string name="pref_cat_device_specific" formatted="false">اعدادات النظام المعينة</string>
-  <string name="pref_ten_percent_mode" formatted="false">10% نمط</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">!اقرا المساعدة اولا</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b> ملاحظة: </b> سوف يتم فحص أو إلغاء تحديد هذا إعادة تعيين إعدادات لون الرمز الخاص بك\n\nهذا الإعداد ينظف إعدادات ايقونة الالوان ليكون أكثر منطقية على الأجهزة التي تظهر فقط في مستوى شحن 10٪ زيادات. وفقا لتقارير وقوائم، التي تضم هذه الأجهزة\n\nموتولارا الاصلي\nموتولارا اكس\nموتولارا 2\nموتولارا ديفي\nسامسونج مومينت\n\nبقدر ما انا اعلم جميع الهواتف الاخرى تخطأ بنسبة 1% لذا يجب عدم التلاعب بهذا الاعدادات</string>
   <string name="alarms_overview" formatted="false">النظرة العامة على المنبهات</string>
   <string name="alarms_overview_help" formatted="false">هذه الصفحة تؤدي الى اعدادات المنبهات للتمكين والتعطيل السريع او حذف المنبه\n\nلاضافة منبه جديد اضغط على كلمة اضافة منبه وهذا سوف يؤديك الى اعدادات المنبه لاختيار المنبه الجديد راجع قسم مساعده للحصول على التفاصيل\n\nاسفل كلمة اضافة منبه هذه قائمة تحتوي على المنبهات التي قمت بأنشاها\n\nلتعديل على منبه اضغط عليه فقط\nلحذف منبه ضغطة طويلة عليه واختر حذف المنبه ويمكنك حذفها من قائمة الاعدادات الرئيسية واختيار خذف المنبه\nللتبديل بسرعة ما إذا تم تمكين التنبيه، اضغط على أيقونة المنبه على يسار النص التنبيه يمكنك أيضا تمكين أو تعطيل التنبيه من صفحة إعدادات التنبيه الفردية</string>
   <string name="pref_alarm_enabled" formatted="false">تمكين التنبيه</string>

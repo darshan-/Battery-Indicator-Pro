@@ -17,9 +17,6 @@
   <string name="confirm_close_hint" formatted="false">Battery Indicator wird komplett beendet, somit wird auch die Anzeige im Statusbalken verschwinden.\n\nWenn Sie nur das Fenster schließen wollen und die Anzeige im Statusbalken behalten, dann drücken Sie \"Abbrechen\" und benutzen Sie die \"ZURÜCK\"-Schaltfläche ihres Gerätes.</string>
   <string name="confirm_clear_logs" formatted="false">Wirklich alle Protokolle löschen?</string>
   <string name="configure_log_filter" formatted="false">Welche Elemente sollen angezeigt werden?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Soll der 10%-Modus wirklich eingeschaltet werden?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Soll der 10%-Modus wirklich ausgeschaltet werden?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Warnung: Das Ändern dieser Einstellung (sowohl das Ein-, als auch das Ausschalten) führt dazu, dass die Farbeinstellungen zurückgesetzt werden.\n\nBei den Modellen Motorola Droid, Droid X, Droid 2, Defy und dem Samsung Moment, sollten Sie diese Einstellung von Anfang an einschalten. Bei allen anderen Geräten kann es meines Wissens nach immer ausgeschaltet bleiben.</string>
   <string name="okay" formatted="false">Okay</string>
   <string name="none" formatted="false">Keine(n)</string>
   <string name="tab_current_info" formatted="false">Aktuelle Info</string>
@@ -125,7 +122,6 @@
   <string name="help_subcat_translators" formatted="false">Übersetzer</string>
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="help_contact" formatted="false">Wenn Sie eine Frage,ein Problem oder einen Kommentar haben, teilen Sie es uns bitte unter <a href="mailto:support@batterybot.info">E-Mail</a>.</string>
-  <string name="pref_hint" formatted="false">Tip: MENÜ drücken für Hilfe.</string>
   <string name="settings_overview" formatted="false">Übersicht</string>
   <string name="settings_overview_help" formatted="false">Die Einstellungen sind unterteilt in separate Seiten (siehe unten stehende Beschreibung). Jede Seite enthält eine eigene Hilfe-Seite, welche die Einstellungen beschreibt. Drücken Sie einfach MENÜ, danach Hilfe (auf Tablets entfällt das Drücken des MENÜ-Buttons), um Hilfe für jedwede Einstellung zu erhalten.</string>
   <string name="notification_settings" formatted="false">Benachrichtigungen</string>
@@ -156,24 +152,7 @@
   <string name="pref_cat_autostart" formatted="false">Autostart</string>
   <string name="pref_autostart_at_boot" formatted="false">Autostart beim Gerätestart</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">Battery Indicator starten wenn Gerät startet:</string>
-  <string name="pref_cat_color" formatted="false">Icon Farbe</string>
-  <string name="pref_color_preview" formatted="false">Farbvorschau</string>
-  <string name="pref_red" formatted="false">Rotes Icon anzeigen</string>
-  <string name="pref_red_summary" formatted="false">Rotes Icon anzeigen, bei geringer Ladung?</string>
-  <string name="pref_red_thresh" formatted="false">Grenzwert für rot</string>
-  <string name="pref_red_thresh_summary" formatted="false">Rotes Icon bei Ladung unter (Prozent):</string>
-  <string name="pref_amber" formatted="false">Gelbes Icon anzeigen</string>
-  <string name="pref_amber_summary" formatted="false">Gelbes Icon anzeigen, bei mittlerer Ladung?</string>
-  <string name="pref_amber_thresh" formatted="false">Grenzwert für gelb</string>
-  <string name="pref_amber_thresh_summary" formatted="false">Gelbes Icon bei Ladung unter (Prozent):</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">Gelbes Icon bei Ladung unter oder gleich (Prozent):</string>
-  <string name="pref_green" formatted="false">Grünes Icon anzeigen</string>
-  <string name="pref_green_summary" formatted="false">Grünes Icon anzeigen, bei hoher Ladung?</string>
-  <string name="pref_green_thresh" formatted="false">Grenzwert für grün</string>
-  <string name="pref_green_thresh_summary" formatted="false">Grünes Icon bei Ladung unter oder gleich (Prozent):</string>
   <string name="pref_cat_device_specific" formatted="false">Geräte abhängige Einstellungen</string>
-  <string name="pref_ten_percent_mode" formatted="false">10% Modus</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Zuerst die Hilfe lesen!</string>
   <string name="alarms_overview" formatted="false">Übersicht Alarme</string>
   <string name="pref_alarm_enabled" formatted="false">Alarm einschalten</string>
   <string name="pref_cat_alarm_conditions" formatted="false">Alarm-Bedingungen</string>

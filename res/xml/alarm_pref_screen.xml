@@ -1,17 +1,4 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-  <Preference
-     android:title="@string/pref_hint"
-     android:layout="@layout/hint"
-     android:enabled="false"
-     android:selectable="false"
-  />
-
-  <Preference
-     android:layout="@layout/divider_after_hint"
-     android:enabled="false"
-     android:selectable="false"
-  />
-
   <CheckBoxPreference
       android:key="enabled"
       android:persistent="false"

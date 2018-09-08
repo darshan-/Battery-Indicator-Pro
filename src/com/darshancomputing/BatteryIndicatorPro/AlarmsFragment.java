@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2017 Darshan-Josiah Barber
+    Copyright (c) 2010-2018 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,7 +14,10 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.DataSetObserver;
@@ -50,9 +53,23 @@ public class AlarmsFragment extends Fragment {
     private int curId; /* The alarm id for the View that was just long-pressed */
     private int curIndex; /* The ViewGroup index of the currently focused item (to set focus after deletion) */
 
+    private NotificationManager mNotificationManager;
+    private NotificationChannel mainChan;
+    private boolean appNotifsEnabled;
+    private boolean mainNotifsEnabled;
+
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+
+        mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.MAIN_CHAN_ID);
+
+        appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
+        mainNotifsEnabled = mainChan.getImportance() > 0;
+
+        if (!appNotifsEnabled || !mainNotifsEnabled) {
+        }
 
         mInflater = inflater;
         View view = mInflater.inflate(R.layout.alarms, container, false);

@@ -13,9 +13,6 @@
   <string name="confirm_close" formatted="false">Deseja realmente fechar?</string>
   <string name="confirm_close_hint" formatted="false">O Estado da Bateria será fechado completamente, e não será mais exibido na barra de estado.\n\nSe quiser sair da janela principal e manter o indicador rodando, aperte Cancelar e depois a tecla BACK do seu aparelho.</string>
   <string name="confirm_clear_logs" formatted="false">Limpar todos os logs?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Ativar mesmo o modo 10%?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Desativar mesmo o modo 10%?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Aviso: Mudar esta definição (tanto ativando como desativando) vai resetar as configurações de cor.\n\nSe você possui um Motorola Droid, Droid X, Droid 2, Defy, ou um Samsung Moment, você deve ativar essa opção quando instalar o aplicativo, e depois não mexer mais. Em outros aparelhos, até onde sei, essa opção deve estar sempre desativada.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Nenhum</string>
   <string name="menu_settings" formatted="false">Configurações</string>
@@ -72,7 +69,6 @@
   <string name="help_cat_translations" formatted="false">Traduções</string>
   <string name="help_subcat_translators" formatted="false">Tradutores</string>
   <string name="help_cat_contact" formatted="false">Contato</string>
-  <string name="pref_hint" formatted="false">Sugestão: Pressiona a tecla MENU para ajuda.</string>
   <string name="settings_overview" formatted="false">Visão Geral</string>
   <string name="alarm_settings_subtitle" formatted="false">Definições dos alarmes</string>
   <string name="alarm_settings" formatted="false">Alarmes</string>

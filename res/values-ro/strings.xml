@@ -14,9 +14,6 @@
   <string name="confirm_close" formatted="false">Sigur inchideti?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator se va inchide complet. Informatiile despre baterie nu vor mai fi afisate in bara de stare a telefonului./n Daca doriti sa inchideti fereastra principala, pastrand afisarea informatiilor despre baterie, apasati Anuleaza si apoi butonul BACK al telefonului.</string>
   <string name="confirm_clear_logs" formatted="false">Sigur stergeti toate logurile?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Sigur activati modul 10%?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Sigur dezactivati modul 10%</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Avertisment: Schimbarea acestei setari (fie activarea fie dezactivarea ei) va reseta schema de culori.\nDaca aveti un Motorola Droid, Droid X, Droid 2, Defy, sau Samsung Moment, ar trebui sa activati aceasta setare imediat dupa prima instalare a aplicatiei si sa nu o modificati ulterior. Pentru toate celelalte dispozitive, din cate stim pana acum, aceasta setare nu ar trebui activata.</string>
   <string name="okay" formatted="false">Okay</string>
   <string name="none" formatted="false">Nimic/Gol</string>
   <string name="tab_current_info" formatted="false">Informatie actuala</string>

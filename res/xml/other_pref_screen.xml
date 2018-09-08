@@ -1,11 +1,4 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-  <Preference
-     android:title="@string/pref_hint"
-     android:layout="@layout/hint"
-     android:enabled="false"
-     android:selectable="false"
-  />
-
   <PreferenceCategory android:title="@string/pref_cat_logging">
     <CheckBoxPreference
        android:key="enable_logging"

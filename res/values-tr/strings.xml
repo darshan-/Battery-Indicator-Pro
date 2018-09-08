@@ -15,9 +15,6 @@
   <string name="confirm_close_hint" formatted="false">Battery Indicator tamamen kapatıldı, ve artık durum çubuğunda görmeyeceksin.\n\nEğer sadece ana pencereden çıkmayı ama göstergenin çalışmaya devam etmesini istiyorsan, İPTAL tuşuna bas ve daha sonra cihazın BACK (GERİ) tuşuna basarak ana pencereden çık.</string>
   <string name="confirm_clear_logs" formatted="false">Tüm günlükleri gerçekten temizle?</string>
   <string name="configure_log_filter" formatted="false">Hangi günlük öğeleri gösterilsin?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Gerçekten %10 modunu etkinleştir?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Gerçekten %10 modununu etkisiz kıl?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Uyarı: Bu ayarı değiştirmek (etkinleştirmek ya da etkisiz kılmak) renk ayarlarını sıfırlayacaktır.\n\nEğer Motorola Droid, Droid X, Droid 2, Defy, ya da Samsung Moment\'e sahipsen, uygulamayı ilk aldığında bu ayarı etkinleştirmelisin, ve sonra o şekilde bırakmalısın. Tüm diğer cihaz sahipleri, bildiğim kadarıyla, bu ayarı kapalı olarak bırakmalıdır.</string>
   <string name="okay" formatted="false">Tamam</string>
   <string name="none" formatted="false">Hiçbiri</string>
   <string name="menu_settings" formatted="false">Ayarlar</string>
@@ -115,7 +112,6 @@
   <string name="help_translations" formatted="false">Bu uygulamayı diğer dillere çevirmek için yardıma ihtiyacım var. Eğer yardım etmek isterseniz, lütfen bana bir <a href="mailto:support%2Btranslations@batterybot.info">eposta gönderin</a>. (Bu adres yalnızca çeviri içidir; Tüm diğer sorular için aşağıda İletişim bölümüne bakın.) Aksini tercih etmediğiniz sürece, yardımlarınız için adınızı bu bölümdeki teşekkür kısmına ekleyeceğim.</string>
   <string name="help_subcat_translators" formatted="false">Çevirmenler</string>
   <string name="help_cat_contact" formatted="false">Kişi</string>
-  <string name="pref_hint" formatted="false">İpucu: Yardım için MENU tuşuna bas.</string>
   <string name="settings_overview" formatted="false">Genel Bakış</string>
   <string name="settings_overview_help" formatted="false">Aşağıda açıklandığı gibi, Ayarlar dört ayrı sayfa içerisinden düzenlenebilir. Her sayfa ayarları açıklayan kendi yardım sayfasına sahiptir. Bulunduğunuz sayfada hangi ayar için yardım almak istiyorsanız sadece MENU tuşuna basın (tabletler için, Menu gereklli değildir).</string>
   <string name="alarm_settings_subtitle" formatted="false">Alarm Ayarları</string>
@@ -138,23 +134,7 @@
   <string name="pref_cat_plugin_settings" formatted="false">Eklenti ayarları</string>
   <string name="pref_plugin_settings" formatted="false">Eklenti ayarları</string>
   <string name="pref_plugin_settings_summary" formatted="false">Bu eklenti için ayarları düzenle</string>
-  <string name="pref_cat_color" formatted="false">İkon rengi</string>
-  <string name="pref_color_preview" formatted="false">Renk Önizleme</string>
-  <string name="pref_red" formatted="false">Kırmızı ikonu kullan</string>
-  <string name="pref_red_summary" formatted="false">Şarj düşükken kırmızı ikonu kullanmak ister misin?</string>
-  <string name="pref_red_help" formatted="false">Belirlenmiş eşiğin altındayken kırmızı ikonu kullanıp kullanmama.</string>
-  <string name="pref_red_thresh" formatted="false">Kırmızı eşik</string>
-  <string name="pref_red_thresh_summary" formatted="false">Şarj şu yüzdenin altındayken kırmızı ikonu kullan:</string>
-  <string name="pref_red_thresh_summary10" formatted="false">Şarj şu yüzdede ya da daha aşağıdaysa kırmızı ikonu kullan:</string>
-  <string name="pref_amber" formatted="false">Sarı İkonu Kullan</string>
-  <string name="pref_amber_summary" formatted="false">Şarj orta seviyedeyken kehribar renkli simgeyi kullan?</string>
-  <string name="pref_amber_thresh" formatted="false">Kehribar eşiği</string>
-  <string name="pref_green" formatted="false">Yeşil İkonu Kullan</string>
-  <string name="pref_green_summary" formatted="false">Şarj yüksek iken yeşil ikonu kullanmak ister misin?</string>
-  <string name="pref_green_thresh" formatted="false">Yeşil Eşik</string>
   <string name="pref_cat_device_specific" formatted="false">Cihaza Özel Ayarlar</string>
-  <string name="pref_ten_percent_mode" formatted="false">%10 Modu</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Önce yardım bölümünü oku!</string>
   <string name="pref_alarm_enabled" formatted="false">Alarmı Etkinleştir</string>
   <string name="pref_cat_alarm_conditions" formatted="false">Alarm Koşulları</string>
   <string name="pref_cat_alarm_conditions_help" formatted="false">Burada hangi koşulların alarm tetikleyeceğini kontrol edebilirsiniz.</string>

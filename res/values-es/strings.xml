@@ -15,8 +15,6 @@
   <string name="confirm_close_hint" formatted="false">Battery Indicator se cerrará completamente, y dejará de aparecer en la barra de estado.\n\nSi solamente desea abandonar la ventana principal pero manteniendo activo el indicador, pulse la tecla VOLVER de su teléfono.</string>
   <string name="confirm_clear_logs" formatted="false">¿Está seguro de que desea borrar el registro?</string>
   <string name="configure_log_filter" formatted="false">¿Que registro desea ver?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">¿Activar realmente el modo 10%?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">¿Desactivar realmente el modo 10%?</string>
   <string name="okay" formatted="false">Ok</string>
   <string name="none" formatted="false">Ninguno</string>
   <string name="tab_current_info" formatted="false">Informacion actual</string>
@@ -111,7 +109,6 @@
   <string name="help_translations" formatted="false">Necesito ayuda para traducir la aplicación a otros idiomas. Si quieres ayudar, por favor mándame un <a href="mailto:support%2Btranslations@batterybot.info">email</a>. Salvo que prefieras que no lo haga, añadiré tu nombre a esta sección como agradecimiento por tu ayuda.</string>
   <string name="help_subcat_translators" formatted="false">Traductores</string>
   <string name="help_cat_contact" formatted="false">Contacto</string>
-  <string name="pref_hint" formatted="false">Pulse MENU para ver la ayuda.</string>
   <string name="settings_overview" formatted="false">Visión general</string>
   <string name="settings_overview_help" formatted="false">Los ajustes están divididos en tres páginas, y cada una de ellas tiene su propia página de ayuda describiendo los ajustes que se pueden realizar en ella. Pulse MENU-Ayuda para obtener ayuda de la página concreta en la que esté.</string>
   <string name="notification_settings" formatted="false">Notificaciones</string>
@@ -135,34 +132,7 @@
   <string name="pref_autostart_at_boot" formatted="false">Autoarrancar al inicio</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">¿Arrancar Battery Indicator al encender el dispositivo?</string>
   <string name="pref_autostart_at_boot_help" formatted="false">Controla si Battery Indicator arranca automáticamente cuando se enciende el dispositivo.\n\nLa opción \"Si estaba ejecutándose al apagar\" recuerda la última vez que ha iniciado o cerrado manualmente Battery Indicator. Si ha matado el proceso de Battery Indicator por otro medio, como un gestor de tareas, Battery Indicator no sabrá que lo ha parado y arrancará automáticamente al inicio aunque tenga marcada esta opción.</string>
-  <string name="pref_cat_color" formatted="false">Icono coloreado</string>
-  <string name="pref_cat_color_help" formatted="false">De cara a mantener el paquete de Battery Indicator razonablemente ligero, hay algunas limitaciones para los colores. Actualmente se puede tener el icono rojo hasta el 30%, el ámbar hasta el 50% y el verde desde el 20%. Creo que son compromisos razonables que deben funcionar para el 99% de los usuarios.\n\nPara dar al usuario el máximo control posible, los colores pueden ser apagados y encendidos individualmente. Esto efectivamente significa que puede tener incluso un esquema de cuatro colores, en el que el icono sea verde si la batería está muy cargada, luego gris, luego ámbar y finalmente rojo. En cualquier caso, la mayoría de la gente tendrá establecidos los umbrales para el icono ámbar y el verde en el mismo valor, por lo que el icon no llegará nunca a ser gris.</string>
-  <string name="pref_color_preview" formatted="false">Vista previa del color</string>
-  <string name="pref_color_preview_help" formatted="false">Esta previsualización hace más sencillo comprobar qué efecto tendrán los ajustes de color que haya sleccionado.\n\nEsto no existe en modo 10%, porque sencillamente no tiene sentido.</string>
-  <string name="pref_red" formatted="false">Usar icono rojo</string>
-  <string name="pref_red_summary" formatted="false">¿Usar icono rojo cuando la carga es baja?</string>
-  <string name="pref_red_help" formatted="false">Indica si usar o no un icono rojo cuando se esté por debajo del umbral especificado.</string>
-  <string name="pref_red_thresh" formatted="false">Umbral para rojo</string>
-  <string name="pref_red_thresh_summary" formatted="false">¿Mostrar icono rojo por debajo de qué porcentaje de carga?</string>
-  <string name="pref_red_thresh_summary10" formatted="false">¿Mostrar icono rojo si el nivel de carga está en o por debajo de qué valor?</string>
-  <string name="pref_red_thresh_help" formatted="false">Especifica el nivel de carga bajo el que el icono debe volverse rojo (o en el que debe volverse rojo, en Modo 10%).\n\nLas opciones para el umbral de rojo incluyen todos los valores (en múltiplos de 5) para los que hay iconos rojos disponibles.\n\nEn modo 10% el funcionamiento es ligeramente distinto, pero debe ser autoexplicativo.</string>
-  <string name="pref_amber" formatted="false">Usar icono ámbar</string>
-  <string name="pref_amber_summary" formatted="false">¿Usar icono ámbar cuando la carga es media?</string>
-  <string name="pref_amber_help" formatted="false">Indica si usar o no un icono ámbar cuando se esté por debajo del umbral especificado.</string>
-  <string name="pref_amber_thresh" formatted="false">Umbral para ámbar</string>
-  <string name="pref_amber_thresh_summary" formatted="false">¿Mostrar icono ámbar por debajo de qué porcentaje de carga?</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">¿Mostrar icono ámbar si el nivel de carga está en o por debajo de qué valor?</string>
-  <string name="pref_amber_thresh_help" formatted="false">Especifica el nivel de carga bajo el que el icono debe volverse ámbar (o en el que debe volverse ámbar, en Modo 10%).\n\nLas opciones para el umbral de ámbar incluyen todos los valores (en múltiplos de 5) para los que hay iconos ámbar disponibles, empezando 5 puntos por encima del umbral de rojo, si hay uno. Por ejemplo, si tiene establecido el umbral de rojo en 15, la opción más baja aquí será 20.\n\nEn modo 10% el funcionamiento es ligeramente distinto, pero debe ser autoexplicativo.</string>
-  <string name="pref_green" formatted="false">Usar icono verde</string>
-  <string name="pref_green_summary" formatted="false">¿Usar icono verde cuando la carga es alta?</string>
-  <string name="pref_green_help" formatted="false">Indica si usar o no un icono verde cuando se esté en el umbral especificado o por encima del mismo.</string>
-  <string name="pref_green_thresh" formatted="false">Umbral para verde</string>
-  <string name="pref_green_thresh_summary" formatted="false">¿Mostrar Icono verde por encima de qué porcentaje de carga?</string>
-  <string name="pref_green_thresh_help" formatted="false">Especifica el nivel de carga a partir del cual que el icono debe volverse verde.\n\nLas opciones para el umbral de verde incluyen todos los valores (en múltiplos de 5) para los que hay iconos verdes disponibles, empezando 5 puntos por encima del umbral más alto establecido para rojo o ambar. de rojo, si hay uno. Por ejemplo, si tiene establecido el umbral de ámbar en 40, la opción más baja aquí será 40.\n\nEn modo 10% el funcionamiento es ligeramente distinto, pero debe ser autoexplicativo.</string>
   <string name="pref_cat_device_specific" formatted="false">Ajustes para dispositivos específicos</string>
-  <string name="pref_ten_percent_mode" formatted="false">Modo 10%</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">¡Lea la ayuda primero!</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b>Nota:</b> ¡Marcar o desmarcar esto reiniciará sus ajustes de color de iconos!\n\nEsta opción limpia los ajustes de color de iconos para que tengan más sentido en dispositivos que sólo muestran el nivel de carga en incrementos del 10%. Según los datos proporcionados por los usuarios, esto incluye los siguientes dispositivos:\n\n• Motorola Droid (original)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nHasta donde yo sé, todos los demás dispositivos informan cada 1%, y <i>no</i> debería activar esta opción si tiene uno de ellos.</string>
   <string name="boot_pref_always" formatted="false">Siempre</string>
   <string name="boot_pref_never" formatted="false">Nunca</string>
   <string name="boot_pref_if_running" formatted="false">Si estaba ejecutándose al apagar</string>

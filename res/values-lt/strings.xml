@@ -14,9 +14,6 @@
   <string name="confirm_close" formatted="false">Tikrai Uždaryti?</string>
   <string name="confirm_close_hint" formatted="false">Baterijos Indikatorius bus visiškai uždarytas ir Jūs jo nebematysite savo būsenos juostoje.\n\nJei jus tiesiog norite palikti pagrindinį langą ir leisti indikatoriui toliau veikti, paspauskite Nutraukti ir tada paspauskite Grįžti mygtuką, ant savo telefono.</string>
   <string name="confirm_clear_logs" formatted="false">Ar tikrai ištrinti visus įrašus?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Ar tikrai įjungti 10% Režimą?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Ar tikrai išjungti 10% Režimą?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Įspėjimas: Keičiant šį nustatymą (jį įjungiant ir išjungiant), anuliuosis spalvų pasirinkimai.\n\nJei Jūs turite: Motorola Droid, Droid X, Droid 2, Defy, ar Samsung Moment prietaisą, Jums reikėtų tai įjungti ir palikti. Visų kitų prietaisų turėtojai, galite palikti išjungtą.</string>
   <string name="okay" formatted="false">Gerai</string>
   <string name="none" formatted="false">Nė Vienas</string>
   <string name="menu_settings" formatted="false">Nustatymai</string>
@@ -104,7 +101,6 @@
   <string name="help_cat_translations" formatted="false">Vertimai</string>
   <string name="help_subcat_translators" formatted="false">Vertėjai</string>
   <string name="help_cat_contact" formatted="false">Kontaktai</string>
-  <string name="pref_hint" formatted="false">Patarimas: Spauskite MENU pagalbai.</string>
   <string name="settings_overview" formatted="false">Apžvalga</string>
   <string name="settings_overview_help" formatted="false">Nustatymai yra sugrupuoti į keturis atskirus puslapius, aprašytus žemiau. Kiekvienas puslapis turi savo pagalbos puslapį, kuriame aprašyti galimi nustatymai ir jų reikšmės. Paprasčiausiai spauskite MENU mygtuką, tada \"Pagalba\" (planšetiniuose kompiuteriuose, MENU nėra būtinas), kad gautumėte informaciją apie kiekvieną puslapyje esantį nustatymą.</string>
   <string name="alarm_settings_subtitle" formatted="false">Aliarmo Nustatymai</string>
@@ -133,28 +129,7 @@
   <string name="pref_cat_plugin_settings" formatted="false">Papildinių Nustatymai</string>
   <string name="pref_plugin_settings" formatted="false">Papildinio Nustatymai</string>
   <string name="pref_plugin_settings_summary" formatted="false">Koreguoti nustatymus šiam papildiniui.</string>
-  <string name="pref_cat_color" formatted="false">Ikonų Spalvos</string>
-  <string name="pref_color_preview" formatted="false">Spalvų Peržiūra</string>
-  <string name="pref_red" formatted="false">Naudoti Raudoną Ikoną</string>
-  <string name="pref_red_summary" formatted="false">Naudoti raudoną ikoną kai mažas baterijos lygis?</string>
-  <string name="pref_red_help" formatted="false">Naudoti ar ne raudoną ikoną, kai įkrovimas žemiau lygio.</string>
-  <string name="pref_red_thresh" formatted="false">Raudona Riba</string>
-  <string name="pref_red_thresh_summary" formatted="false">Raudona ikona, kai įkrovimas žemiau:</string>
-  <string name="pref_red_thresh_summary10" formatted="false">Raudona ikona ties ar žemiau ribos:</string>
-  <string name="pref_amber" formatted="false">Naudoti Geltoną Ikoną</string>
-  <string name="pref_amber_summary" formatted="false">Naudoti geltoną ikoną, kai vidutinis baterijos lygis?</string>
-  <string name="pref_amber_help" formatted="false">Naudoti ar ne geltoną ikoną, kai įkrovimas žemiau lygio.</string>
-  <string name="pref_amber_thresh" formatted="false">Geltona Riba</string>
-  <string name="pref_amber_thresh_summary" formatted="false">Geltona ikona, kai įkrovimas žemiau:</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">Geltona ikona ties ar žemiau ribos:</string>
-  <string name="pref_green" formatted="false">Naudoti Žalią Ikoną</string>
-  <string name="pref_green_summary" formatted="false">Naudoti žalią ikoną, kai aukštas baterijos lygis?</string>
-  <string name="pref_green_help" formatted="false">Naudoti ar ne žalią ikoną, kai įkrovimas žemiau lygio.</string>
-  <string name="pref_green_thresh" formatted="false">Žalia Riba</string>
-  <string name="pref_green_thresh_summary" formatted="false">Žalia ikona, kai įkrovimo lygis ties ar aukščiau:</string>
   <string name="pref_cat_device_specific" formatted="false">Specifiniai Prietaiso Nustatymai</string>
-  <string name="pref_ten_percent_mode" formatted="false">10% Režimas</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Pirmiausiai perskaitykite pagalbą!</string>
   <string name="alarms_overview" formatted="false">Aliarmų Peržiūra</string>
   <string name="pref_alarm_enabled" formatted="false">Įjungti Aliarmą</string>
   <string name="pref_cat_alarm_conditions" formatted="false">Aliarmo Sąlygos</string>

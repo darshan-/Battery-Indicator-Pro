@@ -15,9 +15,6 @@
   <string name="confirm_close_hint" formatted="false">Battery Indicator zal volledig worden afgesloten, en het statusbalkicoon zal ook weggaan.\n\nWil je alleen dit venster sluiten en de indicator actief houden, druk dan op \'Annuleren\' en druk op de TERUG knop om het venster te sluiten.</string>
   <string name="confirm_clear_logs" formatted="false">Alle logboeken verwijderen?</string>
   <string name="configure_log_filter" formatted="false">Welke logitems laten zien?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">10% Modus activeren?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">10% Modus deactiveren?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Waarschuwing: Met het wijzigen van deze instelling (activeren en deactiveren) zullen de kleurinstellingen gereset worden.\n\nAls je een Motorola Droid, Droid X, Droid 2, Defy of Samsung Moment hebt: deze functie na installatie van de applicatie aanzetten. Alle andere telefoons: deze functie uit laten staan.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Geen</string>
   <string name="tab_current_info" formatted="false">Huidige informatie</string>
@@ -116,7 +113,6 @@
   <string name="help_translations" formatted="false">Ik heb hulp nodig het vertalen van deze app naar andere talen. Als u wilt helpen, stuur me een <a href="mailto:support%2Btranslations@batterybot.info">e-mail</a>. Tenzij u het liever niet wilt, zal ik uw naam toevoegen aan deze sectie ter bevestiging van uw hulp.</string>
   <string name="help_subcat_translators" formatted="false">Vertalers</string>
   <string name="help_cat_contact" formatted="false">Contact</string>
-  <string name="pref_hint" formatted="false">(Druk op MENU voor help)</string>
   <string name="settings_overview" formatted="false">Overzicht</string>
   <string name="settings_overview_help" formatted="false">De instellingen zijn verdeeld over drie verschillende pagina\'s, zoals onder beschreven. Elke pagina heeft zijn eigen helppagina over de instellingen op die pagina. Druk op MENU en dan Help voor help.</string>
   <string name="notification_settings" formatted="false">Hoofdmelding</string>
@@ -207,34 +203,7 @@
   <string name="pref_cat_plugin_settings" formatted="false">Instellingen voor plugins</string>
   <string name="pref_plugin_settings" formatted="false">Instellingen voor plugins</string>
   <string name="pref_plugin_settings_summary" formatted="false">Instellingen voor deze plugin veranderen</string>
-  <string name="pref_cat_color" formatted="false">Kleur van icoon</string>
-  <string name="pref_cat_color_help" formatted="false">Om Battery Indicator klein te houden zijn er niet veel kleuren beschikbaar. Voor de maximale controle kunnen alle kleuren onafhankelijk van elkaar worden ingesteld.</string>
-  <string name="pref_color_preview" formatted="false">Voorbeeld van kleuren</string>
-  <string name="pref_color_preview_help" formatted="false">Het kleurvoorbeeld is ervoor bedoeld om zichtbaar te maken wat voor effect de kleurinstellingen zulllen hebben.</string>
-  <string name="pref_red" formatted="false">Rode icoon gebruiken</string>
-  <string name="pref_red_summary" formatted="false">Rode icoon gebruiken als batterij bijna leeg is</string>
-  <string name="pref_red_help" formatted="false">Kies of je een rood icoon wilt laten zien onder een bepaald niveau.</string>
-  <string name="pref_red_thresh" formatted="false">Voorwaarde voor rode icoon</string>
-  <string name="pref_red_thresh_summary" formatted="false">Rode icoon gebruiken onder dit ladingsniveau:</string>
-  <string name="pref_red_thresh_summary10" formatted="false">Rode icoon gebruiken bij of onder dit ladingsniveau:</string>
-  <string name="pref_red_thresh_help" formatted="false">Hier kun je instellen wanneer het icoon rood moet worden.</string>
-  <string name="pref_amber" formatted="false">Oranje icoon gebruiken</string>
-  <string name="pref_amber_summary" formatted="false">Oranje icoon gebruiken als lading gemiddeld is</string>
-  <string name="pref_amber_help" formatted="false">Kies of je een oranje icoon wilt laten zien onder een bepaald niveau.</string>
-  <string name="pref_amber_thresh" formatted="false">Voorwaarde voor oranje icoon</string>
-  <string name="pref_amber_thresh_summary" formatted="false">Oranje icoon gebruiken onder dit ladingsniveau:</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">Oranje icoon gebruiken bij of onder dit ladingsniveau:</string>
-  <string name="pref_amber_thresh_help" formatted="false">Hier kun je instellen wanneer het icoon geel moet worden.</string>
-  <string name="pref_green" formatted="false">Groene icoon gebruiken</string>
-  <string name="pref_green_summary" formatted="false">Groene icoon gebruiken als lading hoog is</string>
-  <string name="pref_green_help" formatted="false">Kies of je een groen icoon wilt laten zien op of boven een bepaald niveau.</string>
-  <string name="pref_green_thresh" formatted="false">Voorwaarde voor groene icoon</string>
-  <string name="pref_green_thresh_summary" formatted="false">Groene icoon gebruiken bij of boven dit ladingsniveau:</string>
-  <string name="pref_green_thresh_help" formatted="false">Hier kun je instellen wanneer het icoon groen moet worden.</string>
   <string name="pref_cat_device_specific" formatted="false">Apparaatspecifieke instellingen</string>
-  <string name="pref_ten_percent_mode" formatted="false">10% modus</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Lees eerst de help!</string>
-  <string name="pref_ten_percent_mode_help" formatted="false">Pas op: Als je dit verandert worden je kleurinstellingen verwijderd! Deze instelling past de andere instellingen aan voor apparaten die alleen veranderen in 10% weergeven.</string>
   <string name="alarms_overview" formatted="false">Overzicht van alarmen</string>
   <string name="alarms_overview_help" formatted="false">Op deze pagina kun je alarmen toevoegen, in of uitschakelen en verwijderen.</string>
   <string name="pref_alarm_enabled" formatted="false">Alarm inschakelen</string>

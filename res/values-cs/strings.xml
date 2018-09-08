@@ -13,9 +13,6 @@
   <string name="confirm_close" formatted="false">Opravdu ukončit ?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator bude ukončen a již více neuvidíte stav baterie.\n\nPro návrat zpět bez ukončení aplikace stiskněte Zrušit a poté klávesu ZPĚT na přístroji.</string>
   <string name="confirm_clear_logs" formatted="false">Opravdu vymazat všechny záznamy ?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Opravdu povolit 10% Mode?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Opravdu zakázat 10% Mode?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Upozornění: Změnou tohoto nastavení resetujete nastavení barevného schématu.\n\nPokud vlastníte přístroj Motorola Droid, Droid X, Droid 2, Defy, nebo Samsung Moment, měli by jste toto nastavení zapnout při prvním spuštění aplikace a ponechat zapnuté. Všechny ostatní telefony, pokud vím, by měly mít toto nastavení vypnuto.</string>
   <string name="okay" formatted="false">O.K.</string>
   <string name="menu_settings" formatted="false">Nastavení</string>
   <string name="menu_close" formatted="false">Zavřít</string>
@@ -99,7 +96,6 @@
   <string name="help_cat_translations" formatted="false">Překlady</string>
   <string name="help_subcat_translators" formatted="false">Překladatelé</string>
   <string name="help_cat_contact" formatted="false">Kontakt</string>
-  <string name="pref_hint" formatted="false">Tip: Stiskněte MENU pro nápovědu.</string>
   <string name="settings_overview" formatted="false">Přehled</string>
   <string name="settings_overview_help" formatted="false">Nastavení jsou rozdělena do tří oddělených stránek, tak jak je popsáno níže. Každá stránka má svou vlastní nápovědu popisující dostupná nastavení. Jednoduše stikněte MENU pro popis jednotlivých nastavení dostupných na stránce nastavení.</string>
   <string name="alarm_settings_subtitle" formatted="false">Nastavení upozornění</string>
@@ -122,22 +118,6 @@
   <string name="pref_cat_autostart" formatted="false">Automatické spuštění</string>
   <string name="pref_autostart_at_boot" formatted="false">Automatické spuštění při startu telefonu</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">Spustit Battery Indicator jakmile je zařízení spuštěno:</string>
-  <string name="pref_cat_color" formatted="false">Barva Ikony</string>
-  <string name="pref_color_preview" formatted="false">Náhled barev</string>
-  <string name="pref_red" formatted="false">Použít červenou ikonu</string>
-  <string name="pref_red_summary" formatted="false">Použít červenou ikonu jakmile je stav nabití nízký ?</string>
-  <string name="pref_red_thresh" formatted="false">Práh pro červenou ikonu</string>
-  <string name="pref_red_thresh_summary" formatted="false">Použít červenou ikonu jakmile je nabití níže než:</string>
-  <string name="pref_red_thresh_summary10" formatted="false">Použít červenou ikonu jakmile je nabití níže než:</string>
-  <string name="pref_amber" formatted="false">Použít oranžovou ikonu</string>
-  <string name="pref_amber_summary" formatted="false">Použít oranžovou ikonu když je stav nabití střední ?</string>
-  <string name="pref_amber_thresh" formatted="false">Práh pro oranžovou ikonu</string>
-  <string name="pref_amber_thresh_summary" formatted="false">Použít oranžovou ikonu jakmile je nabití níže než:</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">Použít oraznžovou ikonu jakmile je nabití níže než:</string>
-  <string name="pref_green" formatted="false">Použít zelenou ikonu</string>
-  <string name="pref_green_summary" formatted="false">Použít zelenou ikonu když je stav nabití vysoký ?</string>
-  <string name="pref_green_thresh" formatted="false">Práh pro zelenou ikonu</string>
-  <string name="pref_green_thresh_summary" formatted="false">Použít zelenou ikonu jakmile je nabití vyšší než:</string>
   <string name="pref_cat_device_specific" formatted="false">Nastavení specifických přístrojů</string>
   <string name="alarms_overview" formatted="false">Přehled upozornění</string>
   <string name="pref_alarm_enabled" formatted="false">Povolit upozorňování</string>

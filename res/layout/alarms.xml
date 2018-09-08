@@ -10,10 +10,6 @@
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
   >
-    <include layout="@layout/hint" />
-
-    <include layout="@layout/divider_after_hint" />
-
     <LinearLayout android:id="@+id/add_alarm"
                   style="@style/SelectableItem"
                   android:clickable="true"

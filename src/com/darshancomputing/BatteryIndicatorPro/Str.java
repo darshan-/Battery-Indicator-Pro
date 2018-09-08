@@ -26,17 +26,11 @@ class Str {
     static String percent_symbol;
     static String since;
     static String default_status_dur_est;
-    static String default_red_thresh;
-    static String default_amber_thresh;
-    static String default_green_thresh;
     static String default_max_log_age;
     static String default_prediction_type;
 
     static String logs_empty;
     static String confirm_clear_logs;
-    static String confirm_ten_percent_enable;
-    static String confirm_ten_percent_disable;
-    static String confirm_ten_percent_hint;
     static String configure_log_filter;
     static String yes;
     static String cancel;
@@ -92,9 +86,6 @@ class Str {
         percent_symbol         = res.getString(R.string.percent_symbol);
         since                  = res.getString(R.string.since);
         default_status_dur_est = res.getString(R.string.default_status_dur_est);
-        default_red_thresh     = res.getString(R.string.default_red_thresh);
-        default_amber_thresh   = res.getString(R.string.default_amber_thresh);
-        default_green_thresh   = res.getString(R.string.default_green_thresh);
         default_max_log_age    = res.getString(R.string.default_max_log_age);
         default_prediction_type = res.getString(R.string.default_prediction_type);
 
@@ -103,10 +94,6 @@ class Str {
         yes                = res.getString(R.string.yes);
         cancel             = res.getString(R.string.cancel);
         okay               = res.getString(R.string.okay);
-
-        confirm_ten_percent_enable  = res.getString(R.string.confirm_ten_percent_enable);
-        confirm_ten_percent_disable = res.getString(R.string.confirm_ten_percent_disable);
-        confirm_ten_percent_hint    = res.getString(R.string.confirm_ten_percent_hint);
 
         configure_log_filter = res.getString(R.string.configure_log_filter);
 

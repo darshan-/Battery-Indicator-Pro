@@ -1,11 +1,4 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-  <Preference
-     android:title="@string/pref_hint"
-     android:layout="@layout/hint"
-     android:enabled="false"
-     android:selectable="false"
-  />
-
   <PreferenceCategory android:title="@string/pref_cat_icon_set">
     <ListPreference
        android:key="icon_set"
@@ -36,73 +29,6 @@
         android:title="@string/pref_indicate_charging"
         android:summary="@string/pref_indicate_charging_summary"
         android:defaultValue="true"
-    />
-  </PreferenceCategory>
-
-  <PreferenceCategory
-      android:key="category_classic_color_mode"
-      android:title="@string/pref_classic_color_mode"
-  >
-    <CheckBoxPreference
-       android:key="classic_color_mode"
-       android:title="@string/pref_classic_color_mode"
-       android:summary="@string/pref_classic_color_mode_summary"
-       android:defaultValue="false"
-    />
-  </PreferenceCategory>
-
-  <PreferenceCategory
-      android:key="category_color"
-      android:title="@string/pref_cat_color"
-  >
-    <com.darshancomputing.BatteryIndicatorPro.ColorPreviewPreference
-       android:key="color_preview"
-       android:title="@string/pref_color_preview"
-       android:layout="@layout/color_preview_pref"
-       android:enabled="false"
-       android:selectable="false"
-    />
-    <CheckBoxPreference
-       android:key="use_red"
-       android:title="@string/pref_red"
-       android:summary="@string/pref_red_summary"
-       android:defaultValue="@bool/default_use_red"
-    />
-    <ListPreference
-       android:key="red_threshold"
-       android:title="@string/pref_red_thresh"
-       android:dialogTitle="@string/pref_red_thresh_summary"
-       android:defaultValue="@string/default_red_thresh"
-    />
-    <CheckBoxPreference
-       android:key="use_amber"
-       android:title="@string/pref_amber"
-       android:summary="@string/pref_amber_summary"
-       android:defaultValue="@bool/default_use_amber"
-    />
-    <ListPreference
-       android:key="amber_threshold"
-       android:title="@string/pref_amber_thresh"
-       android:dialogTitle="@string/pref_amber_thresh_summary"
-       android:defaultValue="@string/default_amber_thresh"
-    />
-    <CheckBoxPreference
-       android:key="use_green"
-       android:title="@string/pref_green"
-       android:summary="@string/pref_green_summary"
-       android:defaultValue="@bool/default_use_green"
-    />
-    <ListPreference
-       android:key="green_threshold"
-       android:title="@string/pref_green_thresh"
-       android:dialogTitle="@string/pref_green_thresh_summary"
-       android:defaultValue="@string/default_green_thresh"
-    />
-    <CheckBoxPreference
-       android:key="ten_percent_mode"
-       android:title="@string/pref_ten_percent_mode"
-       android:summary="@string/pref_ten_percent_mode_summary"
-       android:defaultValue="false"
     />
   </PreferenceCategory>
 </PreferenceScreen>

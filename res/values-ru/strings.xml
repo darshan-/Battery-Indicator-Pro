@@ -15,9 +15,6 @@
   <string name="confirm_close_hint" formatted="false">BatteryBot будет полностью закрыт и Вы более не увидите индикатор в строке состояния. Виджеты рабочего стола работать не будут.\n\nЕсли Вы хотите только выйти из главного окна и оставить индикатор работающим, нажмите \"Отмена\" и после этого нажмите кнопку \"Назад\" вашего устройства.\n\nЕсли вы хотите скрыть уведомление, но оставить виджеты работающими, нажмите \"Отмена\" и затем \"Скрыть уведомление\".</string>
   <string name="confirm_clear_logs" formatted="false">Действительно очистить журнал?</string>
   <string name="configure_log_filter" formatted="false">Какие элементы журнала показывать?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Действительно включить режим 10%?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Действительно выключить режим 10%?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Предупреждение: Изменение этой настройки (её включение и выключение) сбросит Ваши цветовые настройки программы.\n\nЕсли Вы являетесь владельцем Motorola Droid, Droid X, Droid 2, Defy или Samsung Moment, Вы обязательно должны включить данную настройку сразу же после установки этого приложения. Для остальных устройств данную настройку следует отключить.</string>
   <string name="okay" formatted="false">Да</string>
   <string name="none" formatted="false">Нет</string>
   <string name="tab_current_info" formatted="false">Текущая информация</string>
@@ -129,7 +126,6 @@
   <string name="help_subcat_translators" formatted="false">Переводчики</string>
   <string name="help_cat_contact" formatted="false">Контакты</string>
   <string name="help_contact" formatted="false">Если у вас есть вопросы, проблемы или комментарии, пожалуйста <a href="mailto:support@batterybot.info">напишите мне</a>.</string>
-  <string name="pref_hint" formatted="false">Подсказка: Для вызова помощи нажмите MENU.</string>
   <string name="settings_overview" formatted="false">Обзор</string>
   <string name="settings_overview_help" formatted="false">Все настройки разбиты на несколько страниц. Каждая страница настроек имеет свою соответствующую страницу помощи. Просто нажмите MENU, затем Help (MENU на планшетах не обязательно) для получения справки по настройкам текущей страницы.</string>
   <string name="notification_settings" formatted="false">Основное уведомление</string>
@@ -253,37 +249,7 @@
   <string name="pref_cat_plugin_settings" formatted="false">Настройки плагинов</string>
   <string name="pref_plugin_settings" formatted="false">Настройки плагинов</string>
   <string name="pref_plugin_settings_summary" formatted="false">Редактировать настройки для плагина</string>
-  <string name="pref_classic_color_mode" formatted="false">Применить классический цветовой режим</string>
-  <string name="pref_classic_color_mode_summary" formatted="false">Это обычно не работает; пожалуйста, прочтите справку</string>
-  <string name="pref_classic_color_mode_help" formatted="false">Начиная с Android 5.0 (Lollipop), цветные значки уведомлений официально больше не поддерживаются, при этом классический значок BatteryBot выглядит сплошным белым. Поэтому на подобных устройствах приложение использует простой белый контур с белыми цифрами.\n\nОднако, не все устройства строго следуют спецификациям, поэтому сказанное выше не является обязательным не везде работает корректно. Вы можете попробовать настроить стандартное отображение классического набора значков включением этой опции. Помните, что на большинстве устройств это только приведет к тому, что значок станет сплошным белым.</string>
-  <string name="pref_cat_color" formatted="false">Цвет значка</string>
-  <string name="pref_cat_color_help" formatted="false">Для того, чтобы сохранить двоичный пакет BatteryBot достаточно маленьким, накладываются определенные ограничения на использование цветов. В настоящий момент красный значок не может быть выше 30%, янтарный - не выше 50%, зеленый - не ниже 20%. Я полагаю, что это разумный компромисс, который должен устроить 99% пользователей.\n\nДля того, чтобы предоставить вам максимальную гибкость в настройке, цвета могут включаться и выключаться независимо друг от друга. Это означает, что у вас есть четырехярусная цветовая схема, в которой значок имеет зеленый цвет, когда аккумулятор полностью заряжен, затем серый, затем янтарный, затем красный. Большинство людей, вероятно, пороговые значения для янтарного и зеленого устанавливают в одно значение, поэтому значок никогда не будет серым.</string>
-  <string name="pref_color_preview" formatted="false">Предварительный просмотр цвета</string>
-  <string name="pref_color_preview_help" formatted="false">Предварительный просмотр позволит увидеть эффект настроек цвета.\n\nНе существует в режиме 10%, т.к. в этом нет смысла.</string>
-  <string name="pref_red" formatted="false">Использовать красный значок</string>
-  <string name="pref_red_summary" formatted="false">Использовать красный значок при низком заряде?</string>
-  <string name="pref_red_help" formatted="false">Использовать или нет красный значок при заряде ниже заданного порога.</string>
-  <string name="pref_red_thresh" formatted="false">Порог для красного</string>
-  <string name="pref_red_thresh_summary" formatted="false">Процент заряда, ниже которого цвет значка - красный:</string>
-  <string name="pref_red_thresh_summary10" formatted="false">Процент заряда, не выше которого цвет значка - красный:</string>
-  <string name="pref_red_thresh_help" formatted="false">Указывает уровень заряда, ниже которого (или <i>ровно</i>, в 10% режиме) значок должен быть красным.\n\nОпции для порога красного значка включают все значения (кратные 5) для которых доступны красные значки.\n\nИзменения для режима 10% незначительны и очевидны.</string>
-  <string name="pref_amber" formatted="false">Использовать янтарный значок</string>
-  <string name="pref_amber_summary" formatted="false">Использовать янтарный значок при среднем уровне заряда?</string>
-  <string name="pref_amber_help" formatted="false">Использовать или нет янтарный значок при уровне заряда ниже порогового.</string>
-  <string name="pref_amber_thresh" formatted="false">Порог для янтарного</string>
-  <string name="pref_amber_thresh_summary" formatted="false">Процент заряда, ниже которого цвет значка - янтарный:</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">Процент заряда, не выше которого цвет значка - янтарный:</string>
-  <string name="pref_amber_thresh_help" formatted="false">Указывает уровень заряда, ниже которого (или <i>ровно</i>, в 10% режиме) значок должен быть янтарным.\n\nОпции для порога янтарного включают все значения (кратные 5) для которых доступны янтарные значки, начиная с 5 процентных пунктов выше порога для красного (если он есть). Например, если порог для красного - 15, то минимальное доступное значение будет равно 20.\n\nИзменения для режима 10% незначительны и очевидны.</string>
-  <string name="pref_green" formatted="false">Использовать зеленый значок</string>
-  <string name="pref_green_summary" formatted="false">Использовать зеленый значок при высоком уровне заряда?</string>
-  <string name="pref_green_help" formatted="false">Использовать или нет зеленый значок при уровне заряда не ниже порогового.</string>
-  <string name="pref_green_thresh" formatted="false">Порог для зеленого</string>
-  <string name="pref_green_thresh_summary" formatted="false">Процент заряда, не ниже которого цвет значка - зеленый:</string>
-  <string name="pref_green_thresh_help" formatted="false">Указывает уровень заряда, не ниже которого значок должен быть зеленым.\n\nОпции для порога зеленого включают все значения (кратные 5) для которых доступны зеленые значки, начиная с самого высокого действующего порога, установленного для красного или янтарного. Например, если порог для янтарного установлен в 40, то минимальное доступное значение для зеленого равно 40.\n\nИзменения для режима 10% незначительны и очевидны.</string>
   <string name="pref_cat_device_specific" formatted="false">Настройки для конкретных устройств</string>
-  <string name="pref_ten_percent_mode" formatted="false">10% режим</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Сначала прочтите справку!</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b>Учтите:</b> Изменение этой опции сбросит ваши настройки цветов значка!\n\nЭта настройка упрощает установки цветов значка. Это важно для устройств, которые выдают величину заряда с шагом 10%. По сообщениям пользователей, к таким устройствам относятся:\n\n• Motorola Droid (original)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nНасколько мне известно, все остальные устройства выдают показания с шагом 1%, поэтому <i>не</i> включайте ее.</string>
   <string name="alarms_overview" formatted="false">Обзор предупреждений</string>
   <string name="alarms_overview_help" formatted="false">На этой странице можно добавить новые предупреждения, быстро включить или выключить существующие предупреждения, а также удалить их.\n\nДля добавления нажмите \"Добавить предупреждение\" — будет создано новое предупреждение и открыта страница, на которой вы можете произвести настройки нового предупреждения. Подробности - в справке на соответствующей странице.\n\nНиже кнопки \"Добавить предупреждение\" имеется список уже созданных предупреждений.\n\n• Для изменения существующего предупреждения просто коснитесь его.\n• Для удаления существующего предупреждения прикоснитесь и задержите палец на нем, затем выберите \"Удалить предупреждение\". (Удалить предупреждение также можно на странице настроек предупреждения нажав MENU, затем \"Удалить предупреждение\".)\n• Для быстрого переключения предупреждения нажмите значок часов слева от названия предупреждения. (Включить или выключить предупреждение также можно на странице настроек предупреждения.)</string>
   <string name="pref_alarm_enabled" formatted="false">Включить предупреждение</string>
