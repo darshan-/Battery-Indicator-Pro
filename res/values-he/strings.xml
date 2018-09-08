@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_launcher_name" formatted="false">בוט-סוללה</string>
+  <string name="settings_activity_subtitle" formatted="false">הגדרות</string>
+  <string name="help_activity_subtitle" formatted="false">עזרה</string>
+  <string name="log_view_activity_subtitle" formatted="false">יומן-רישום</string>
+  <string name="app_full_name_free" formatted="false">בוט-סוללה</string>
+  <string name="battery_use_b" formatted="false">הצגת השימוש בסוללה</string>
+  <string name="upgrade_donate_b" formatted="false">שדרוג/תרומה</string>
+  <string name="circle_widget" formatted="false">עיגול בוט-סוללה</string>
+  <string name="full_widget" formatted="false">בוט-סוללה מלא</string>
+  <string name="confirm_disable_hint" formatted="false">טיפ: ניתן לבטל את הודעת האישור בהגדרות</string>
+  <string name="yes" formatted="false">כן</string>
+  <string name="cancel" formatted="false">ביטול</string>
+  <string name="confirm_close" formatted="false">לסגור באמת?</string>
+  <string name="notifications_disabled" formatted="false">הודעות אינן מאופשרות!</string>
+  <string name="confirm_clear_logs" formatted="false">באמת למחוק את כל יומני הרישום?</string>
+  <string name="configure_log_filter" formatted="false">אילו רישומות מיומן הרישום להציג?</string>
+  <string name="okay" formatted="false">אישור</string>
+  <string name="none" formatted="false">אף אחד</string>
+  <string name="tab_current_info" formatted="false">המידע הנוכחי</string>
+  <string name="tab_history" formatted="false">היסטוריה</string>
+  <string name="notification_until_charged" formatted="false">" עד לסיום הטעינה"</string>
+  <string name="notification_until_drained" formatted="false">" נותרו"</string>
+  <string name="activity_until_charged" formatted="false">עד לסיום הטעינה</string>
+  <string name="activity_until_drained" formatted="false">עד לריקון</string>
+  <string name="menu_settings" formatted="false">הגדרות</string>
+  <string name="menu_close" formatted="false">סגירה</string>
+  <string name="menu_help" formatted="false">עזרה</string>
+  <string name="menu_clear" formatted="false">ניקוי</string>
+  <string name="menu_reverse" formatted="false">בסדר הפוך</string>
+  <string name="menu_log_filter" formatted="false">מסנן</string>
+  <string name="menu_export" formatted="false">ייצוא ל-CSV</string>
+  <string name="menu_delete_alarm" formatted="false">מחיקת התרעה</string>
+  <string name="percent_symbol" formatted="false">%</string>
+  <string name="fahrenheit" formatted="false">פארנהייט</string>
+  <string name="celsius" formatted="false">צלזיוס</string>
+  <string name="fully_charged_in" formatted="false">טעינה מלאה תוך:</string>
+  <string name="light_usage" formatted="false">שימוש קל שנותר:</string>
+  <string name="normal_usage" formatted="false">שימוש רגיל שנותר:</string>
+  <string name="heavy_usage" formatted="false">שימוש רב שנותר:</string>
+  <string name="constant_usage" formatted="false">שימוש רצוף שנותר:</string>
+  <string name="press_back_to_leave" formatted="false">לחצו על \'חזרה\' ליציאה.</string>
+  <string name="press_menu_for_more" formatted="false">לחצו על \'תפריט\' לפריטים נוספים</string>
+  <string name="date" formatted="false">תאריך</string>
+  <string name="time" formatted="false">שעה</string>
+  <string name="status" formatted="false">מצב</string>
+  <string name="status_unplugged" formatted="false">לא מחובר</string>
+  <string name="status_unknown" formatted="false">לא ידוע</string>
+  <string name="status_charging" formatted="false">בטעינה</string>
+  <string name="status_discharging" formatted="false">בשימוש</string>
+  <string name="status_not_charging" formatted="false">לא בטעינה</string>
+  <string name="status_fully_charged" formatted="false">טעינה מלאה</string>
+  <string name="status_plugged_in" formatted="false">מחובר</string>
+  <string name="status_boot_completed" formatted="false">עליית המערכת הסתיימה</string>
+  <string name="health_unknown" formatted="false">לא-ידוע</string>
+  <string name="health_good" formatted="false">בריאות טובה</string>
+  <string name="health_overheat" formatted="false">התחממות-יתר</string>
+  <string name="health_dead" formatted="false">"מתה"</string>
+  <string name="health_overvoltage" formatted="false">מתח-יתר</string>
+  <string name="health_failure" formatted="false">כשל</string>
+  <string name="health_cold" formatted="false">קר</string>
+  <string name="plugged_unplugged" formatted="false">לא-מחובר</string>
+  <string name="plugged_ac" formatted="false">(זרם חילופין)</string>
+  <string name="plugged_wireless" formatted="false">(אלחוטי)</string>
+  <string name="alarm_type_fully_charged" formatted="false">טעונה במלואה</string>
+  <string name="alarm_type_charge_drops" formatted="false">המטען נמוך מ-</string>
+  <string name="alarm_type_charge_rises" formatted="false">המטען גבוה מ-</string>
+  <string name="alarm_type_temperature_rises" formatted="false">הטמפרטורה גבוהה מ-</string>
+  <string name="alarm_type_health_failure" formatted="false">כשל בריאותי</string>
+  <string name="alarm_type_entry_fully_charged" formatted="false">טעינה מלאה הושלמה</string>
+  <string name="alarm_type_entry_charge_drops" formatted="false">המטען פחות מ-</string>
+  <string name="alarm_type_entry_charge_rises" formatted="false">המטען יותר מ-</string>
+  <string name="alarm_type_entry_temperature_rises" formatted="false">הטמפרטורה גבוהה מ-</string>
+  <string name="alarm_type_entry_health_failure" formatted="false">בריאות לא-טובה</string>
+  <string name="alarm_fully_charged" formatted="false">הסוללה טעונה כעת במלואה</string>
+  <string name="alarm_charge_drops" formatted="false">"מטען הסוללה מתחת ל-"</string>
+  <string name="alarm_charge_rises" formatted="false">"מטען הסוללה מעל "</string>
+  <string name="alarm_temp_rises" formatted="false">"טמפרטורת הסוללה גבוהה מ-"</string>
+  <string name="alarm_health_failure" formatted="false">"בריאות הסוללה היא:"</string>
+  <string name="alarm_text" formatted="false">ביחרו לעריכת התראות</string>
+  <string name="logs_empty" formatted="false">יומני הרישום ריקים</string>
+  <string name="after_n_hours_unplugged" formatted="false">כעבור %1.1f שעות ללא טעינה</string>
+  <string name="after_n_hours_plugged_in" formatted="false">כעבור %1.1f שעות בטעינה</string>
+  <string name="discharging_from" formatted="false">בפריקה מ</string>
+  <string name="charging_from" formatted="false">בטעינה מ</string>
+  <string name="fully_charged" formatted="false">טעונה במלואה</string>
+  <string name="since" formatted="false">מ</string>
+  <string name="dialog_color_picker" formatted="false">בחירת צבע</string>
+  <string name="press_color_to_apply" formatted="false">החלת צבע קודם או חדש:</string>
+  <string name="currently_using" formatted="false">כעת בשימוש</string>
+  <string name="currently_set_to" formatted="false">"כעת מכוון ל: "</string>
+  <string name="currently_disabled" formatted="false">אינו מאופשר כעת</string>
+  <string name="help_cat_version" formatted="false">גרסה</string>
+  <string name="help_cat_faq" formatted="false">שאלות נפוצות ותשובות</string>
+  <string name="help_cat_open_source" formatted="false">קוד פתוח</string>
+  <string name="help_cat_donate" formatted="false">תרומה</string>
+  <string name="help_cat_privacy" formatted="false">פרטיות</string>
+  <string name="alarm_settings_subtitle" formatted="false">הגדרות התראה</string>
+  <string name="alarm_settings" formatted="false">התראות</string>
+  <string name="other_settings" formatted="false">הגדרות אחרות</string>
+  <string name="add_alarm" formatted="false">הוספת התראה</string>
+  <string name="pref_cat_notification_layout" formatted="false">פריסה</string>
+  <string name="pref_cat_notification_content" formatted="false">תוכן</string>
+  <string name="pref_icon_area_content" formatted="false">תוכן אזור הסמל</string>
+  <string name="battery_graphic" formatted="false">גרפיקת הסוללה</string>
+  <string name="charge_percentage" formatted="false">אחוזי טעינה</string>
+  <string name="percentage_first" formatted="false">אחוזים, סוללה</string>
+  <string name="battery_first" formatted="false">סוללה, אחוזים</string>
+  <string name="pref_top_line_content" formatted="false">תוכן השורה העליונה</string>
+  <string name="pref_bottom_line_content" formatted="false">תוכן השורה התחתונה</string>
+  <string name="time_remaining" formatted="false">משך הזמן שנותר</string>
+  <string name="condensed" formatted="false">דחוס</string>
+  <string name="normal" formatted="false">רגיל</string>
+  <string name="verbose" formatted="false">מילולי</string>
+  <string name="pref_cat_notification_appearance" formatted="false">חזות</string>
+  <string name="pref_notification_percentage_text_color" formatted="false">צבע מלל האחוזים</string>
+  <string name="pref_custom_percentage_text_color" formatted="false">צבע אחוזים מותאם</string>
+  <string name="pref_notification_top_line_color" formatted="false">צבע מלל השורה העליונה</string>
+  <string name="pref_custom_top_line_color" formatted="false">צבע השורה העליונה מותאם</string>
+  <string name="pref_notification_bottom_line_color" formatted="false">צבע מלל השורה התחתונה</string>
+  <string name="pref_custom_bottom_line_color" formatted="false">צבע השורה התחתונה מותאם</string>
+  <string name="pref_show_box_around_icon_area" formatted="false">הצגת מסגרת סביב אזור הסמל</string>
+  <string name="pref_show_box_around_icon_area_summary" formatted="false">להציג מסגרת צבע באזור הסמל?</string>
+  <string name="system_default" formatted="false">ברירת-המחדל של המערכת</string>
+  <string name="black" formatted="false">שחור</string>
+  <string name="white" formatted="false">לבן</string>
+  <string name="ics_blue" formatted="false">כחול של אנדרואיד ICS</string>
+  <string name="custom" formatted="false">מותאם...</string>
+  <string name="pref_cat_icon_set" formatted="false">ערכת סמלים</string>
+  <string name="pref_icon_set" formatted="false">ערכת סמלים</string>
+  <string name="pref_cat_current_hack_main" formatted="false">בקרה ראשית</string>
+</resources>
