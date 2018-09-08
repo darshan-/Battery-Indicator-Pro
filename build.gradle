@@ -27,7 +27,7 @@ android {
     }
 
     dependencies {
-        compile('com.android.support:support-v4:27.1.1') {
+        implementation('com.android.support:support-v4:27.1.1') {
             exclude module:'support-annotations'
         }
     }
@@ -88,7 +88,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 repositories {
