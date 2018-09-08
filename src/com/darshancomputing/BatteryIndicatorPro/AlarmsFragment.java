@@ -54,21 +54,43 @@ public class AlarmsFragment extends Fragment {
     private int curIndex; /* The ViewGroup index of the currently focused item (to set focus after deletion) */
 
     private NotificationManager mNotificationManager;
-    private NotificationChannel mainChan;
+    private NotificationChannel alarmChan;
     private boolean appNotifsEnabled;
-    private boolean mainNotifsEnabled;
+    private boolean alarmNotifsEnabled;
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-        mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.MAIN_CHAN_ID);
+        alarmChan = mNotificationManager.getNotificationChannel(BatteryInfoService.ALARM_CHAN_ID);
 
         appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
-        mainNotifsEnabled = mainChan.getImportance() > 0;
+        alarmNotifsEnabled = alarmChan != null && alarmChan.getImportance() > 0;
 
-        if (!appNotifsEnabled || !mainNotifsEnabled) {
+        if (!appNotifsEnabled || !alarmNotifsEnabled) {
+            mInflater = inflater;
+            View view = mInflater.inflate(R.layout.alarms_no_notifs, container, false);
+
+            view.findViewById(R.id.enable_notifs_button).setOnClickListener(new OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent;
+
+                    if (!appNotifsEnabled) {
+                        intent = new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                    } else {
+                        intent = new Intent(android.provider.Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+                        intent.putExtra(android.provider.Settings.EXTRA_CHANNEL_ID, alarmChan.getId());
+                    }
+
+                    intent.putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, getActivity().getPackageName());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                    startActivity(intent);
+                }
+            });
+
+            return view;
         }
 
         mInflater = inflater;
@@ -115,6 +137,8 @@ public class AlarmsFragment extends Fragment {
     }
 
     private void populateList() {
+        if (!appNotifsEnabled || !alarmNotifsEnabled) return;
+
         mAlarmsList.removeAllViews();
 
         if (mCursor != null && mCursor.moveToFirst()) {

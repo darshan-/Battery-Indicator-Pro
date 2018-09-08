@@ -81,6 +81,7 @@ public class BatteryInfoService extends Service {
     private static final int NOTIFICATION_ALARM = 7;
 
     public static final String MAIN_CHAN_ID = "main";
+    public static final String ALARM_CHAN_ID = "alarm";
 
 
     private static final int RC_MAIN   = 100;
