@@ -121,11 +121,6 @@
   <string name="pref_alarm_threshold" formatted="false">阀值</string>
   <string name="alarm_pref_not_used" formatted="false">此警报器类型无法使用</string>
   <string name="pref_alarm_threshold_summary" formatted="false">警报阀值</string>
-  <string name="pref_cat_notification_settings" formatted="false">通知设置</string>
-  <string name="pref_alarm_ringtone" formatted="false">铃声</string>
-  <string name="silent" formatted="false">静音</string>
-  <string name="pref_alarm_vibrate" formatted="false">震动</string>
-  <string name="pref_alarm_lights" formatted="false">闪光</string>
   <string name="boot_pref_always" formatted="false">始终</string>
   <string name="boot_pref_never" formatted="false">从不</string>
   <string name="boot_pref_if_running" formatted="false">关机时运行</string>

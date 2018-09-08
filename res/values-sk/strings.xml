@@ -133,13 +133,6 @@
   <string name="alarm_pref_not_used" formatted="false">Nepoužité pre tento typ upozornenia</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Hranica upozornenia:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Pre upozornenia nabitia a teploty, potrebujete nastaviť hranicu teploty alebo hranicu nabitia, ktorá spustí upozornenie.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Nastavenia oznámení</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Tu môžete kontrolovať rôzne hľadiská oznámení upozorenia, ktoré je vytvorené na oznamovanie, keď je spustené upozornenie.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Zvonenie</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Tu môžete kontrolovať ktorý zvuk prehrať, keď je spustené upozornenie. Vyberte \"Tichý\", ak nechcete prehrať zvuk.</string>
-  <string name="silent" formatted="false">Tichý</string>
-  <string name="pref_alarm_vibrate" formatted="false">Vibrovať</string>
-  <string name="pref_alarm_lights" formatted="false">Blikať svetlom</string>
   <string name="boot_pref_always" formatted="false">Vždy</string>
   <string name="boot_pref_never" formatted="false">Nikdy</string>
   <string name="boot_pref_if_running" formatted="false">Ak je spustený pri vypínaní</string>

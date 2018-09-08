@@ -161,11 +161,6 @@
   <string name="pref_alarm_threshold" formatted="false">Grenzwert</string>
   <string name="alarm_pref_not_used" formatted="false">Nicht benutzt für diesen Alarmtyp</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Alarm-Grenzwert:</string>
-  <string name="pref_cat_notification_settings" formatted="false">Benachrichtigungs Einstellungen</string>
-  <string name="pref_alarm_ringtone" formatted="false">Klingelton</string>
-  <string name="silent" formatted="false">Stumm</string>
-  <string name="pref_alarm_vibrate" formatted="false">Vibration</string>
-  <string name="pref_alarm_lights" formatted="false">Lampe</string>
   <string name="boot_pref_always" formatted="false">Immer</string>
   <string name="boot_pref_never" formatted="false">Nie</string>
   <string name="boot_pref_if_running" formatted="false">Wenn es beim Herunterfahren läuft</string>

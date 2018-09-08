@@ -146,15 +146,6 @@
   <string name="alarm_pref_not_used" formatted="false">Non utilisé par ce type d\'alarme</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Seuil de l\'alarme :</string>
   <string name="pref_alarm_threshold_help" formatted="false">Pour les alarmes de charge et de température vous devez définir la température ou le niveau de charge qui déclenchera l\'alarme.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Paramètres de notification</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">C\'est ici que vous pourrez accéder à tous les paramètres de notifications qui vous permettent de savoir qu\'une alarme a été déclenchée.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Sonnerie</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Ici, vous pouvez définir quelle sonnerie sera jouée lorsque l\'alarme sera déclenchée. Sélectionnez \"Silence\" si vous souhaitez qu\'aucun son ne soit joué.</string>
-  <string name="silent" formatted="false">Silence</string>
-  <string name="pref_alarm_vibrate" formatted="false">Vibreur</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">Si tout va bien, activer cette option fera vibrer votre appareil quand l\'alarme est déclenchée, sauf si l\'appareil est en silencieux, sauf si vous avez activé les vibrations en silencieux. En d\'autres mots, ça devrait se comporter correctement en fonction de la configuration de votre appareil. Si cela ne fonctionne pas correctement, veuillez me contacter par email.</string>
-  <string name="pref_alarm_lights" formatted="false">Éclairage de la DEL</string>
-  <string name="pref_alarm_lights_help" formatted="false">Défini si la notification doit activer la diode principale de votre appareil. Il s\'agit généralement d\'éclairer la DEL ou le trackball. Notez que cette option n\'a pas toujours fonctionné sur les appareils Android que j\'ai utilisé. Si l\'option est active, l\'application demande à Android d\'allumer la diode mais cela n\'est pas toujours effectif.</string>
   <string name="boot_pref_always" formatted="false">Toujours</string>
   <string name="boot_pref_never" formatted="false">Jamais</string>
   <string name="boot_pref_if_running" formatted="false">Si fonctionne lors de l\'arrêt</string>

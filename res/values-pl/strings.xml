@@ -13,6 +13,7 @@
   <string name="cancel" formatted="false">Anuluj</string>
   <string name="confirm_close" formatted="false">Zamknąć?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator zostanie zamknięty i nie będziesz widział statusu w powiadomieniach.\n\nJeżeli chcesz widzieć status, zostaw program uruchomiony naciskając Anuluj a następnie przycisk Wstecz.</string>
+  <string name="notifications_disabled" formatted="false">Powiadomienia są wyłączone!</string>
   <string name="confirm_clear_logs" formatted="false">Usunąć wszystkie logi?</string>
   <string name="configure_log_filter" formatted="false">Co pokazać w dzienniku?</string>
   <string name="okay" formatted="false">OK</string>
@@ -221,15 +222,6 @@
   <string name="alarm_pref_not_used" formatted="false">Nie używane przez ten typ alarmu</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Poziom alarmu:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Dla ładowania i temperatury alarmów, należy ustawić poziom temperatury lub ładowania, który wywoła alarm.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Ustawienia powiadomień</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Tu możesz kontrolować różne aspekty powiadomień alarmowych, które są tworzone by powiadamiać kiedy alarm zostanie wyzwolony.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Dzwonek</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Tutaj można kontrolować, który dźwięk odtwarzany będzie w momencie alarmu. Wybierz \"Wyciszony\", jeśli nie chcesz odtwarzać dźwięku.</string>
-  <string name="silent" formatted="false">Wyciszony</string>
-  <string name="pref_alarm_vibrate" formatted="false">Wibracja</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">Jeśli wszystko pójdzie dobrze, ustawienie tej opcji sprawi, że urządzenie będzie wibrować podczas alarmu, chyba że urządzenie jest w trybie wyciszonym, chyba że urządzenie skonfigurować w wibracje nawet w trybie cichym. Innymi słowy, należy zrobić to, czego się spodziewać. Proszę napisz do mnie, jeśli coś pójdzie źle.</string>
-  <string name="pref_alarm_lights" formatted="false">Flash</string>
-  <string name="pref_alarm_lights_help" formatted="false">Określa, czy powiadomienie powinno włączyć światła urządzenia domyślnie. Na ogół miga dioda LED lub trackball. Może być taka sytuacja, że system Android poprosi o zezwolenie na użycie światła urządzenia, ale nie zawsze tak musi być.</string>
   <string name="boot_pref_always" formatted="false">Zawsze</string>
   <string name="boot_pref_never" formatted="false">Nigdy</string>
   <string name="boot_pref_if_running" formatted="false">Jeżeli uruchomiona przy wyłączaniu</string>
@@ -247,8 +239,8 @@
   <string name="age_3_weeks" formatted="false">3 tygodnie</string>
   <string name="age_4_weeks" formatted="false">4 tygodnie</string>
   <string name="icon_set_classic" formatted="false">Klasyczny</string>
-  <string name="icon_set_plain" formatted="false">Zwykły numer</string>
-  <string name="icon_set_smaller" formatted="false">Mniejszy numer</string>
+  <string name="icon_set_plain" formatted="false">Zwykła liczba</string>
+  <string name="icon_set_smaller" formatted="false">Mniejsza liczba</string>
   <plurals name="n_log_items">
     <item quantity="one">%d Log</item>
     <item quantity="other">%d Logów</item>

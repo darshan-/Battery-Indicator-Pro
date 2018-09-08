@@ -217,15 +217,6 @@
   <string name="alarm_pref_not_used" formatted="false">Niet gebruikt voor dit alarmtype</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Voorwaarde voor alarm:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Voor lading en temperatuuralarmen moet je de lading of temperatuur instellen waarop het alarm afgaat.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Meldingsinstellingen</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Hier kun je verschillende aspecten van de alarmmelding instellen.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Beltoon</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Kies welk geluid moet worden gebruikt voor het alarm. Kies \'Stil\' voor geen geluid.</string>
-  <string name="silent" formatted="false">Stil</string>
-  <string name="pref_alarm_vibrate" formatted="false">Trillen</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">Als het goed is laat deze optie het apparaat trillen als het alarm afgaat.</string>
-  <string name="pref_alarm_lights" formatted="false">LED activeren</string>
-  <string name="pref_alarm_lights_help" formatted="false">Stelt in of de melding het lampje op je apparaat moet laten knipperen. (Niet alle apparaten hebben zo\'n lampje.)</string>
   <string name="boot_pref_always" formatted="false">Altijd</string>
   <string name="boot_pref_never" formatted="false">Nooit</string>
   <string name="boot_pref_if_running" formatted="false">Wanneer ingeschakeld bij afsluiten</string>

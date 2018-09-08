@@ -238,15 +238,6 @@
   <string name="alarm_pref_not_used" formatted="false">لا تستخدم لهذا النوع التنبيه</string>
   <string name="pref_alarm_threshold_summary" formatted="false">نسبة التنبيه:</string>
   <string name="pref_alarm_threshold_help" formatted="false">للرسوم ودرجة الحرارة وأجهزة الإنذار، تحتاج إلى ضبط على مستوى درجة الحرارة أو شحن من شأنها أن تؤدي إلى التنبيه</string>
-  <string name="pref_cat_notification_settings" formatted="false">اعدادات الاشعارات</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">هذا هو المكان الذي يمكن التحقق من الجوانب المختلفة للاشعارات الخاصة بالتنبيه يتم إنشاؤه لإشعارك  عندما ينبهك الانذار.</string>
-  <string name="pref_alarm_ringtone" formatted="false">نغمة</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">هنا يمكنك ادارة النغمة التي تسمعها عندما ينبهك التطبيق اختر صامت اذا لم ترد سماع النغمة</string>
-  <string name="silent" formatted="false">صامت</string>
-  <string name="pref_alarm_vibrate" formatted="false">اهتزاز</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">إذا سارت الامور بشكل جيد، سوف يحدد هذا الخيار جعل الجهاز يهتز عندما يتم تشغيل الإنذار، ما لم يكون الجهاز في الوضع الصامت، إلا إذا كنت تملك جهاز ليهتز حتى في وضع الصامت. وبعبارة أخرى، ينبغي أن تفعل ما كنت تتوقع. يرجى مراسلتي لي إذا ما سارت الأمور على العكس.</string>
-  <string name="pref_alarm_lights" formatted="false">الفلاش</string>
-  <string name="pref_alarm_lights_help" formatted="false">ما إذا كان شعارات  يجب تمكين مجموعات الاضواء الافتراضية للجهاز. هذا الوميض عموما LED أو كرة التتبع. لاحظ أن كل جهاز أندرويد لقد استخدم وكانت الاخطاء طفيفة في هذا القسم. إذا كان لديك فحص هذا، ثم سوف يطلب شعارات  أندرويد إلى وميض الأضواء، ولكن قد لا يحدث دائما في الواقع.</string>
   <string name="boot_pref_always" formatted="false">دائما</string>
   <string name="boot_pref_never" formatted="false">ابدا</string>
   <string name="boot_pref_if_running" formatted="false">اذا كان مغلق</string>

@@ -148,15 +148,6 @@
   <string name="alarm_pref_not_used" formatted="false">Δε χρησιμοποιείται για αυτόν τον τύπο ειδοποίησης</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Όριο Ειδιποίησης:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Για τις ειδοποιήσεις φόρτισης και θερμοκρασίας, πρέπει να καθορίσετε το όριο φόρτισης ή θερμοκρασίας το οποίο θα ενεργοποιεί την ειδοποίηση.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Ρυθμίσεις Ειδοποίησης</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Εδώ μπορείτε να ελέγχετε διάφορα θέματα που αφορούν την ειδοποίηση που δημιουργείται για να σας ενημερώσει πότε ειδοποίηση ενεργοποιήθηκε.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Ήχος Κλήσης</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Εδώ ελέγχετε τον ήχο που ακούγεται όταν ενεργοποιείται μια ειδοποίηση. Επιλέξτε \"Σιωπηλό\" αν δε θέλετε να ακούγεται ήχος κατά την ενεργοποίηση μιας ειδοποίησης.</string>
-  <string name="silent" formatted="false">Σιωπηλό</string>
-  <string name="pref_alarm_vibrate" formatted="false">Δόνηση</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">Αν όλα πάνε καλά, ρυθμίζοντας αυτήν την επιλογή η συσκευή θα δονείται όταν η ειδοποίηση ενεργοποιείται, εκτός και αν η συσκευή βρίσκεται σε Αθόρυβη Λειτουργία, πλην όμως αν έχετε ρυθμίσει τη συσκευή να δονείται κατά την Αθόρυβη Λειτουργία. Με άλλα λόγια, θα κάνει ό,τι περιμένετε να κάνει. Παρακαλώ στείλτε μου email αν κάτι πάει στραβά.</string>
-  <string name="pref_alarm_lights" formatted="false">Άναμμα Φώτων</string>
-  <string name="pref_alarm_lights_help" formatted="false">Καθορίζει κατά πόσο η ειδοποίηση θα ενεργοποιεί το προεπιλεγμένο φως ειδοποίησης του τηλεφώνου σας. Αυτό γενικά ανάβει κάποιο LED ή κάποιο πλήκτρο πλοήγησης. Σημειώστε ότι κάθε συσκευή Android που δοκίμασα συμπεριφερόταν και διαφορετικά και ίσως με μερικά προβλήματα σε αυτό το θέμα. Αν έχετε ενεργοποιημένη την επιλογή αυτή, τότε η ειδοποίηση θα ζητήσει απο το Android να ανάψει το φως εδοποίησης της συσκευής, αλλά αυτό μπορεί και να μη συμβεί στην πραγματικότητα.</string>
   <string name="boot_pref_always" formatted="false">Πάντα</string>
   <string name="boot_pref_never" formatted="false">Ποτέ</string>
   <string name="boot_pref_if_running" formatted="false">Αν ήταν ενεργό στην απενεργοποίηση</string>

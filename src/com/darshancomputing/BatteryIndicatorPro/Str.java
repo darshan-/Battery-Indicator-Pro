@@ -39,8 +39,6 @@ class Str {
     static String currently_set_to;
     static String alarm_pref_not_used;
 
-    static String silent;
-
     static String alarm_fully_charged;
     static String alarm_charge_drops;
     static String alarm_charge_rises;
@@ -99,8 +97,6 @@ class Str {
 
         currently_set_to    = res.getString(R.string.currently_set_to);
         alarm_pref_not_used = res.getString(R.string.alarm_pref_not_used);
-
-        silent = res.getString(R.string.silent);
 
         alarm_fully_charged  = res.getString(R.string.alarm_fully_charged);
         alarm_charge_drops   = res.getString(R.string.alarm_charge_drops);

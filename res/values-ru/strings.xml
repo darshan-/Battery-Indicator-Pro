@@ -263,15 +263,6 @@
   <string name="alarm_pref_not_used" formatted="false">Не используется для этого типа предупреждения</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Порог срабатывания:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Для предупреждений о заряде и температуре необходимо установить температуру или уровень заряда, приводящих к возникновению предупреждения.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Настройки уведомлений</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Настройка параметров уведомлений, возникающих при наступлении определенных событий.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Мелодия</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Настройка мелодии, которая прозвучит при возникновении предупреждения. Выберите \'Беззвучно\', если вы не хотите получать звуковые уведомления.</string>
-  <string name="silent" formatted="false">Беззвучно</string>
-  <string name="pref_alarm_vibrate" formatted="false">Вибрация</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">Если все идет нормально, выбор этой опции приведет к вибрации устройства в случае возникновения предупреждения, если устройство не находится в беззвучном режиме или вы настроили устройство так, чтобы оно вибрировало даже в беззвучном режиме. Другими словами, должно происходить то, что вы ожидаете. Сообщите мне, если что-то пойдет не так.</string>
-  <string name="pref_alarm_lights" formatted="false">Световой индикатор</string>
-  <string name="pref_alarm_lights_help" formatted="false">Устанавливает, должно ли уведомление включать световой индикатор устройства по умолчанию. Обычно это приводит к мерцанию светодиода. Имейте в виду, что любое Android-устройство, которое я использовал, было немного \"глючным\" в этой части. Если будет выбрана данная настройка, уведомление обратится к Android с запросом на включение светового индикатора, но не всегда в действительности это произойдет.</string>
   <string name="boot_pref_always" formatted="false">Всегда</string>
   <string name="boot_pref_never" formatted="false">Никогда</string>
   <string name="boot_pref_if_running" formatted="false">Если было запущено при выключении</string>

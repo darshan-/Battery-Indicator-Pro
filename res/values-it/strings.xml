@@ -167,15 +167,6 @@
   <string name="alarm_pref_not_used" formatted="false">Non utilizzato per questo tipo di allarme</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Soglia allarme:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Per gli allarmi di carica e temperatura, è necessario impostare la temperatura o il livello di carica per innescare l\' allarme.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Impostazioni notifica</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Qui è possibile controllare vari aspetti della notifica di allarme che hai creato per avvertirti quando un allarme viene innescato.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Suoneria</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Qui è possibile controllare quale suono da riprodurre quando l\'allarme è attivato. Selezionare \"Silenzioso\" se non si vuole nessun suono.</string>
-  <string name="silent" formatted="false">Silenzioso</string>
-  <string name="pref_alarm_vibrate" formatted="false">Vibrazione</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">Se tutto va bene, questa opzione farà vibrare il dispositivo quando l\'allarme è attivato, a meno che il dispositivo è in modalità silenziosa, a meno che non abbiate impostato il dispositivo a vibrare anche in modalità silenziosa. In altre parole, essa dovrebbe fare ciò che ci si aspetta. Se qualcosa non va vi invito a segnalarmelo.</string>
-  <string name="pref_alarm_lights" formatted="false">Torcie</string>
-  <string name="pref_alarm_lights_help" formatted="false">Stabilisce se la notifica debba accendere la luce del dispositivo. In genere questo fa lampeggiare un LED o la trackball. Nota che ogni dispositivo Android che ho usato si è comportato in modo anomalo in questo ambito. Se avete selezionato l\'opzione, la notifica chiederà ad Android di far lampeggiare la luce, ma non è detto che ciò accada.</string>
   <string name="boot_pref_always" formatted="false">Sempre</string>
   <string name="boot_pref_never" formatted="false">Mai</string>
   <string name="boot_pref_if_running" formatted="false">Se è in esecuzione allo spegnimento</string>

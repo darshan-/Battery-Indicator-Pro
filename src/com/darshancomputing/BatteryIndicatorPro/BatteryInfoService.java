@@ -32,6 +32,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.media.AudioManager;
 //import android.media.MediaPlayer;
+import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -156,18 +157,21 @@ public class BatteryInfoService extends Service {
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         CharSequence main_notif_chan_name = getString(R.string.main_notif_chan_name);
-        //String main_notif_chan_desc = getString(R.string.main_notif_chan_desc);
-        System.out.println("..................................... Service.onCreate");
-        int importance = NotificationManager.IMPORTANCE_MIN; // TODO: Different default?  User-configurable? (less than default for no sound)
-        NotificationChannel mChannel = new NotificationChannel(MAIN_CHAN_ID, main_notif_chan_name, importance);
-        //mChannel.setDescription(main_notif_chan_desc);
-        //mChannel.setSound(Uri.EMPTY);
+        NotificationChannel mChannel = new NotificationChannel(MAIN_CHAN_ID, main_notif_chan_name, NotificationManager.IMPORTANCE_MIN);
         mChannel.setSound(null, null);
         mChannel.enableLights(false);
-        //mChannel.setLightColor(Color.RED);
         mChannel.enableVibration(false);
-        //mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
         mNotificationManager.createNotificationChannel(mChannel);
+
+        Uri ringtone = android.media.RingtoneManager.getDefaultUri(android.media.RingtoneManager.TYPE_ALARM);
+        CharSequence alarm_notif_chan_name = getString(R.string.alarm_notif_chan_name);
+        NotificationChannel aChannel = new NotificationChannel(ALARM_CHAN_ID, alarm_notif_chan_name, NotificationManager.IMPORTANCE_HIGH);
+        aChannel.setSound(ringtone, new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM).build());
+        aChannel.enableLights(true);
+        aChannel.setLightColor(android.graphics.Color.RED);
+        aChannel.enableVibration(true);
+        aChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+        mNotificationManager.createNotificationChannel(aChannel);
 
         mainNotificationB = new Notification.Builder(this);
 
@@ -840,24 +844,11 @@ public class BatteryInfoService extends Service {
 
     private Notification.Builder parseAlarmCursor(Cursor c) {
         Notification.Builder nb = new Notification.Builder(this)
+            .setChannelId(ALARM_CHAN_ID)
             .setSmallIcon(R.drawable.stat_notify_alarm)
             .setAutoCancel(true)
+            .setPriority(Notification.PRIORITY_HIGH)
             .setContentIntent(alarmsPendingIntent);
-            //.setDeleteIntent(alarmsCancelPendingIntent);
-
-        String ringtone = c.getString(c.getColumnIndex(AlarmDatabase.KEY_RINGTONE));
-        //String audio_stream = c.getString(c.getColumnIndex(AlarmDatabase.KEY_AUDIO_STREAM));
-        int stream = AudioManager.STREAM_NOTIFICATION;
-        //if (audio_stream != null && audio_stream.equals("alarm"))
-        //    stream = AudioManager.STREAM_ALARM;
-        if (! ringtone.equals(""))
-            nb.setSound(Uri.parse(ringtone), stream);
-
-        if (c.getInt(c.getColumnIndex(AlarmDatabase.KEY_VIBRATE)) == 1)
-            nb.setVibrate(new long[] {0, 200, 200, 400});
-
-        if (c.getInt(c.getColumnIndex(AlarmDatabase.KEY_LIGHTS)) == 1)
-            nb.setDefaults(Notification.DEFAULT_LIGHTS);
 
         return nb;
     }

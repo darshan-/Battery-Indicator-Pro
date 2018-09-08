@@ -174,15 +174,6 @@
   <string name="alarm_pref_not_used" formatted="false">Nem használt ehhez a riasztás típushoz</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Riasztási küszöb:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Töltési és hőfok riasztásokhoz be kell állítania a riasztási küszöbszinteket.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Értesítés beállítások</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Itt beállíthatja a jelzések módját, amelyek akkor következnek be, ha a készülék risztást küld.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Csengőhang</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Itt kiválaszthatja, hogy melyik hang szólaljon meg riasztáskor. Ha nem akar hallható riasztást, válassza a \"Nincs hang\" opciót.</string>
-  <string name="silent" formatted="false">Nincs hang</string>
-  <string name="pref_alarm_vibrate" formatted="false">Rezgés</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">Ha minden jól megy, akkor a készülék rezeg riasztáskor, kivéve, ha néma módban van, és a a rezgések tiltottak néma módban. Más szóval az csinálja, amit elvár. Kérem értesítsen, ha valami balul sül el!</string>
-  <string name="pref_alarm_lights" formatted="false">Fényjelzés</string>
-  <string name="pref_alarm_lights_help" formatted="false">Beállítja, hogy az értesítés használja-e a készülék alapértelmezett fényét. Ez általában a LED vagy a trackball villogását eredményezi.Minden Androidos eszköz, amit használtam ebben a tekintetben kissé hibás volt. Ha ezt bejelölöd, az értesítés arra utasítja az Androidot, hogy villogtassa a fényt, de egyes esetekben mégsem következik be.</string>
   <string name="boot_pref_always" formatted="false">Mindig</string>
   <string name="boot_pref_never" formatted="false">Soha</string>
   <string name="boot_pref_if_running" formatted="false">Ha kikapcsoláskor aktív</string>

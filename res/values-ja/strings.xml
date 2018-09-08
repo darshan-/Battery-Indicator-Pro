@@ -267,15 +267,6 @@
   <string name="alarm_pref_not_used" formatted="false">このアラームの種類では使用しません</string>
   <string name="pref_alarm_threshold_summary" formatted="false">アラームのしきい値:</string>
   <string name="pref_alarm_threshold_help" formatted="false">充電の状態と温度のアラームには、アラームを発生する 温度や充電のレベルを設定する必要があります。</string>
-  <string name="pref_cat_notification_settings" formatted="false">通知設定</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">ここではアラームが発生したときに、作成されたアラーム通知を さまざまな面でコントロールすることができます。</string>
-  <string name="pref_alarm_ringtone" formatted="false">着信音</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">ここではアラームが発生したときに、どのサウンドを再生するか コントロールすることができます。サウンドが再生されるように する場合は、\'サイレント\' を選択してください。</string>
-  <string name="silent" formatted="false">サイレント</string>
-  <string name="pref_alarm_vibrate" formatted="false">バイブレート</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">このオプションを設定すると、デバイスがサイレントモードでない限り、 サイレントモードでも振動するに設定したデバイスを含めて、 アラームが発生すると、デバイスが振動します。 言い換えれば、あなたが期待する通りに設定する必要があります。 何か不明な場合は、私にメールしてください。</string>
-  <string name="pref_alarm_lights" formatted="false">ライトを点滅</string>
-  <string name="pref_alarm_lights_help" formatted="false">通知が、デバイスのデフォルトのライトを有効にするかどうかを設定します。 これは一般的に LED またはトラックボールを点滅します。私が使用した Android デバイスの一部で、この箇所に少しバグが含まれていました。 ご利用にあたってご注意ください。これをチェックした場合、 通知は Android にライトを点滅させるように要求しますが、 必ずしも実際には行われない場合があります。</string>
   <string name="boot_pref_always" formatted="false">常に</string>
   <string name="boot_pref_never" formatted="false">なし</string>
   <string name="boot_pref_if_running" formatted="false">シャットダウン時に実行中の場合</string>

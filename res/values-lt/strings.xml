@@ -140,13 +140,6 @@
   <string name="alarm_pref_not_used" formatted="false">Nenaudojama šiam aliarmo tipui</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Aliarmo riba:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Įkrovimo ir temperatūros aliarmams Jūs turite nustatyti temperatūros arba įkrovimo lygį, kuris iškvies aliarmą.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Perspėjimų Nustatymai</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Čia galite valdyti įvairius aspektus, kurie parodys perspėjimą, kai bus iškviestas aliarmas.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Skambutis</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Čia galite nustatyti koks skambutis bus grojamas, kai iškviečiamas aliarmas. Pasirinkite \"Tyla\" jei nenorite, kad būtų grojamas skambutis.</string>
-  <string name="silent" formatted="false">Tyla</string>
-  <string name="pref_alarm_vibrate" formatted="false">Vibruoti</string>
-  <string name="pref_alarm_lights" formatted="false">Mirksinčios Lemputės</string>
   <string name="boot_pref_always" formatted="false">Visada</string>
   <string name="boot_pref_never" formatted="false">Niekada</string>
   <string name="boot_pref_if_running" formatted="false">Jei veikia išjungiant</string>

@@ -145,12 +145,6 @@
   <string name="alarm_pref_not_used" formatted="false">Bu alarm türü için kullanılmıyor</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Alarm eşiği:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Şarj ve sıcaklık alarmı için, şarj ve ya sıcaklık alarmını tetikleyecek seviyeleri belirlemeye ihtiyacınız var.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Bildirim Ayarları</string>
-  <string name="pref_alarm_ringtone" formatted="false">Zil sesi</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Buradan alarmın hangi ses ile çalacağını seçersiniz. Eğer ses istemiyorsanız \'Sessiz\' i seçiniz.</string>
-  <string name="silent" formatted="false">Sessiz</string>
-  <string name="pref_alarm_vibrate" formatted="false">Titreşim</string>
-  <string name="pref_alarm_lights" formatted="false">Flaş Işığı</string>
   <string name="boot_pref_always" formatted="false">Daima</string>
   <string name="boot_pref_never" formatted="false">Asla</string>
   <string name="boot_pref_if_running" formatted="false">Eğer kapalıyken çalışıyorsa</string>
