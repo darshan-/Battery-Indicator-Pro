@@ -847,7 +847,6 @@ public class BatteryInfoService extends Service {
             .setChannelId(ALARM_CHAN_ID)
             .setSmallIcon(R.drawable.stat_notify_alarm)
             .setAutoCancel(true)
-            .setPriority(Notification.PRIORITY_HIGH)
             .setContentIntent(alarmsPendingIntent);
 
         return nb;
