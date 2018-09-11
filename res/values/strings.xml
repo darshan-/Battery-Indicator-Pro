@@ -373,6 +373,10 @@
   </string>
 
   <string formatted="false" name="add_alarm">Add alarm</string>
+  <string formatted="false" name="menu_alarm_channel">Alarm Channel Settings</string>
+
+  <string formatted="false" name="pref_cat_channel_settings">Notification Channel Settings</string>
+  <string formatted="false" name="pref_manage_main_channel">Manage Main Channel</string>
 
   <string formatted="false" name="pref_cat_notification_layout">Layout</string>
   <string formatted="false" name="pref_use_system_notification_layout">Use System Layout</string>

@@ -14,9 +14,9 @@
                 android:clickable="false"
                 android:longClickable="false"
  >
-    <ToggleButton android:id="@+id/toggle"
-                  style="@style/alarm_list_item_toggle"
-                  android:layout_gravity="center"
+    <Switch android:id="@+id/toggle"
+            style="@style/alarm_list_item_toggle"
+            android:layout_gravity="center"
     />
 
     <LinearLayout android:id="@+id/alarm_summary_box"

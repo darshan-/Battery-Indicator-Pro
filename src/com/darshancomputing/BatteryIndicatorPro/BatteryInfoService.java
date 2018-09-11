@@ -31,7 +31,6 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.media.AudioManager;
-//import android.media.MediaPlayer;
 import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Bundle;
@@ -119,8 +118,6 @@ public class BatteryInfoService extends Service {
 
     private Predictor predictor;
 
-    //private MediaPlayer alarmPlayer = new MediaPlayer();
-
     private final Handler mHandler = new Handler();
 
     private final Runnable mNotify = new Runnable() {
@@ -161,6 +158,7 @@ public class BatteryInfoService extends Service {
         mChannel.setSound(null, null);
         mChannel.enableLights(false);
         mChannel.enableVibration(false);
+        mChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
         mNotificationManager.createNotificationChannel(mChannel);
 
         Uri ringtone = android.media.RingtoneManager.getDefaultUri(android.media.RingtoneManager.TYPE_ALARM);
@@ -171,6 +169,7 @@ public class BatteryInfoService extends Service {
         aChannel.setLightColor(android.graphics.Color.RED);
         aChannel.enableVibration(true);
         aChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+        aChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
         mNotificationManager.createNotificationChannel(aChannel);
 
         mainNotificationB = new Notification.Builder(this);
@@ -771,7 +770,6 @@ public class BatteryInfoService extends Service {
 
                 nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
-                //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
                 notifyAlarm(nb.build());
                 c.close();
             }
@@ -787,7 +785,6 @@ public class BatteryInfoService extends Service {
 
             nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
-            //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
             notifyAlarm(nb.build());
             c.close();
         }
@@ -802,7 +799,6 @@ public class BatteryInfoService extends Service {
 
             nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
-            //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
             notifyAlarm(nb.build());
             c.close();
         }
@@ -820,7 +816,6 @@ public class BatteryInfoService extends Service {
 
             nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
-            //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
             notifyAlarm(nb.build());
             c.close();
         }
@@ -835,7 +830,6 @@ public class BatteryInfoService extends Service {
 
                 nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
-                //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
                 notifyAlarm(nb.build());
                 c.close();
             }
@@ -847,7 +841,6 @@ public class BatteryInfoService extends Service {
             .setChannelId(ALARM_CHAN_ID)
             .setSmallIcon(R.drawable.stat_notify_alarm)
             .setAutoCancel(true)
-            .setPriority(Notification.PRIORITY_HIGH)
             .setContentIntent(alarmsPendingIntent);
 
         return nb;
@@ -855,68 +848,7 @@ public class BatteryInfoService extends Service {
 
     private void notifyAlarm(Notification n) {
         mNotificationManager.notify(NOTIFICATION_ALARM, n);
-        // if (n.audioStreamType == AudioManager.STREAM_ALARM)
-        //     playAlarmMyself(n.sound);
     }
-
-    /*
-    private boolean playAlarmMyself(Uri uri) {
-        System.out.println("..................................... playAlarmMyself");
-        try {
-            alarmPlayer.setDataSource(this, uri);
-            alarmPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
-            alarmPlayer.prepare();
-            // TODO: Some users want looping as an option, too.  But I'd then need to make it cancelable, which is more work.
-            //     And it could drain the battery if the user doesn't notice it and it keeps going.
-            //     So leave that possibility to be considered another time.
-            //if (loop)
-            //alarmPlayer.setLooping(false);
-            alarmPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                    public void onPrepared(MediaPlayer mp) {
-                        System.out.println("..................................... onPrepepared (start)");
-                        //mp.seekTo(0);
-                        mp.setLooping(false);
-                        mp.start();
-                    }
-
-                });
-            //if (!loop)
-            alarmPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    public void onCompletion(MediaPlayer mp) {
-                        System.out.println("..................................... onCompletion (stop)");
-                        mp.stop();
-                    }
-
-                });
-        } catch (Exception e) {
-            return false;
-        }
-
-        return true;
-    }
-    */
-
-    /*
-    private Notification.Builder makeTestAlarmBuilder() {
-        return new Notification.Builder(this)
-            .setSmallIcon(R.drawable.stat_notify_alarm)
-            .setAutoCancel(true)
-            //.setSound(Uri.parse("content://media/internal/audio/media/13"), AudioManager.STREAM_ALARM)
-            .setSound(Uri.parse("content://media/external/audio/media/18"), AudioManager.STREAM_ALARM)
-            .setContentTitle("Test Title")
-            .setContentText("Text content")
-            .setContentIntent(alarmsPendingIntent)
-            .setDeleteIntent(alarmsCancelPendingIntent)
-            .setVisibility(Notification.VISIBILITY_PUBLIC);
-
-        // Uri ringtone = android.media.RingtoneManager
-        //     .getDefaultUri(android.media.RingtoneManager.TYPE_NOTIFICATION);
-        // int stream = AudioManager.STREAM_ALARM;
-        //nb.setSound(ringtone, stream);
-
-        //return nb;
-    }
-    */
 
     private String formatTime(Date d) {
         String format = android.provider.Settings.System.getString(getContentResolver(),

@@ -313,6 +313,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             setPrefScreen(R.xml.notification_pref_screen);
             setWindowSubtitle(res.getString(R.string.notification_settings));
 
+            Preference prefb = mPreferenceScreen.findPreference(KEY_APP_NOTIFS_DISABLED_B);
+            prefb.setSummary(R.string.pref_manage_main_channel);
+
             if (mSharedPreferences.getBoolean(KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, false)) {
                 PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_NOTIFICATION_APPEARANCE);
                 cat.removeAll();
