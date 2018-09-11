@@ -166,9 +166,9 @@ public class BatteryInfoService extends Service {
         NotificationChannel aChannel = new NotificationChannel(ALARM_CHAN_ID, alarm_notif_chan_name, NotificationManager.IMPORTANCE_HIGH);
         aChannel.setSound(ringtone, new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM).build());
         aChannel.enableLights(true);
-        aChannel.setLightColor(android.graphics.Color.RED);
+        aChannel.setLightColor(0xff33b5e5);
         aChannel.enableVibration(true);
-        aChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+        aChannel.setVibrationPattern(new long[]{0, 500, 500, 500, 500, 1000, 1000, 1000, 1000});
         aChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
         mNotificationManager.createNotificationChannel(aChannel);
 

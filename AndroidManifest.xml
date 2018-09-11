@@ -12,6 +12,7 @@
   <!-- Permissions now considered "normal", automatically granted on API 23+ -->
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
   <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /><!-- Required on API 28+ -->
+  <uses-permission android:name="android.permission.VIBRATE" />
 
   <!-- Permissions now considered "dangerous", which require user permission on API 23+ -->
   <!--uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /-->
