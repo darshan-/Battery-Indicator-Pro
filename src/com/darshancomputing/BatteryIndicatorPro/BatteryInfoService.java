@@ -161,10 +161,10 @@ public class BatteryInfoService extends Service {
         mChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
         mNotificationManager.createNotificationChannel(mChannel);
 
-        Uri ringtone = android.media.RingtoneManager.getDefaultUri(android.media.RingtoneManager.TYPE_ALARM);
+        Uri ringtone = android.media.RingtoneManager.getDefaultUri(android.media.RingtoneManager.TYPE_NOTIFICATION);
         CharSequence alarm_notif_chan_name = getString(R.string.alarm_notif_chan_name);
         NotificationChannel aChannel = new NotificationChannel(ALARM_CHAN_ID, alarm_notif_chan_name, NotificationManager.IMPORTANCE_HIGH);
-        aChannel.setSound(ringtone, new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM).build());
+        aChannel.setSound(ringtone, new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_NOTIFICATION_EVENT).build());
         aChannel.enableLights(true);
         aChannel.setLightColor(0xff33b5e5);
         aChannel.enableVibration(true);
