@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2017 Darshan-Josiah Barber
+    Copyright (c) 2010-2018 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -208,13 +208,16 @@ public class AlarmEditActivity extends PreferenceActivity {
     private void setUpThresholdList(Boolean resetValue) {
         ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_THRESHOLD);
 
-        if (mAdapter.type.equals("temp_rises")) {
+        if (mAdapter.type.equals("temp_drops") || mAdapter.type.equals("temp_rises")) {
             lp.setEntries(Str.temp_alarm_entries);
             lp.setEntryValues(Str.temp_alarm_values);
             lp.setEnabled(true);
 
             if (resetValue) {
-                mAdapter.setThreshold("460");
+                if (mAdapter.type.equals("temp_drops"))
+                    mAdapter.setThreshold("60");
+                else
+                    mAdapter.setThreshold("460");
                 lp.setValue(mAdapter.threshold);
             }
         } else if (mAdapter.type.equals("charge_drops") || mAdapter.type.equals("charge_rises")) {

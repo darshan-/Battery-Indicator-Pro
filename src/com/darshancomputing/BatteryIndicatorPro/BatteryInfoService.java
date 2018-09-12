@@ -820,6 +820,23 @@ public class BatteryInfoService extends Service {
             c.close();
         }
 
+        c = alarms.activeAlarmTempDrops(info.temperature, sp_service.getInt(KEY_PREVIOUS_TEMP, 1));
+        if (c != null) {
+            Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+                                                   res.getBoolean(R.bool.default_convert_to_fahrenheit));
+
+            sps_editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
+            nb = parseAlarmCursor(c);
+            String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
+            nb.setContentTitle(Str.alarm_temp_drops + Str.formatTemp(Integer.valueOf(threshold), convertF, false))
+                .setContentText(Str.alarm_text);
+
+            nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+
+            notifyAlarm(nb.build());
+            c.close();
+        }
+
         if (info.health > BatteryInfo.HEALTH_GOOD && info.health != sp_service.getInt(KEY_PREVIOUS_HEALTH, BatteryInfo.HEALTH_GOOD)) {
             c = alarms.activeAlarmFailure();
             if (c != null) {

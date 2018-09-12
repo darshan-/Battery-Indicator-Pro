@@ -252,6 +252,21 @@
   </string-array>
 
   <string-array name="temp_alarm_entries">
+    <item>0°C / 32°F</item>
+    <item>2°C / 36°F</item>
+    <item>4°C / 39°F</item>
+    <item>6°C / 43°F</item>
+    <item>8°C / 46°F</item>
+    <item>10°C / 50°F</item>
+    <item>12°C / 54°F</item>
+    <item>14°C / 57°F</item>
+    <item>16°C / 61°F</item>
+    <item>18°C / 64°F</item>
+    <item>20°C / 68°F</item>
+    <item>22°C / 72°F</item>
+    <item>24°C / 75°F</item>
+    <item>26°C / 79°F</item>
+    <item>28°C / 82°F</item>
     <item>30°C / 86°F</item>
     <item>32°C / 90°F</item>
     <item>34°C / 93°F</item>
@@ -270,6 +285,21 @@
     <item>60°C / 140°F</item>
   </string-array>
   <string-array name="temp_alarm_values">
+    <item>0</item>
+    <item>20</item>
+    <item>40</item>
+    <item>60</item>
+    <item>80</item>
+    <item>100</item>
+    <item>120</item>
+    <item>140</item>
+    <item>160</item>
+    <item>180</item>
+    <item>200</item>
+    <item>220</item>
+    <item>240</item>
+    <item>260</item>
+    <item>280</item>
     <item>300</item>
     <item>320</item>
     <item>340</item>
@@ -310,21 +340,10 @@
     <item>fully_charged</item>
     <item>charge_drops</item>
     <item>charge_rises</item>
+    <item>temp_drops</item>
     <item>temp_rises</item>
     <item>health_failure</item>
   </string-array>
-
-  <!--string-array name="alarm_audio_stream_values">
-    <item>notification</item>
-    <item>alarm</item>
-  </string-array>
-
-  <string name="default_alarm_audio_stream">notification</string>
-
-  <string-array name="alarm_audio_stream_entries">
-    <item>@string/alarm_audio_stream_notification</item>
-    <item>@string/alarm_audio_stream_alarm</item>
-  </string-array-->
 
   <string-array name="boot_pref_values">
     <item>always</item>
@@ -446,6 +465,7 @@
     <item>@string/alarm_type_fully_charged</item>
     <item>@string/alarm_type_charge_drops</item>
     <item>@string/alarm_type_charge_rises</item>
+    <item>@string/alarm_type_temperature_drops</item>
     <item>@string/alarm_type_temperature_rises</item>
     <item>@string/alarm_type_health_failure</item>
   </string-array>
@@ -453,6 +473,7 @@
     <item>@string/alarm_type_entry_fully_charged</item>
     <item>@string/alarm_type_entry_charge_drops</item>
     <item>@string/alarm_type_entry_charge_rises</item>
+    <item>@string/alarm_type_entry_temperature_drops</item>
     <item>@string/alarm_type_entry_temperature_rises</item>
     <item>@string/alarm_type_entry_health_failure</item>
   </string-array>

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2017 Darshan-Josiah Barber
+    Copyright (c) 2010-2018 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -178,6 +178,28 @@ class AlarmDatabase {
                                     "='temp_rises' AND ENABLED=1 AND " +
                                     KEY_THRESHOLD + "<"  + current + " AND " +
                                     KEY_THRESHOLD + ">=" + previous +
+                                    " LIMIT 1", null);
+
+            if (c.getCount() == 0) {
+                c.close();
+                return null;
+            }
+
+            c.moveToFirst();
+            return c;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    Cursor activeAlarmTempDrops(int current, int previous) {
+        openDBs();
+
+        try {
+            Cursor c = rdb.rawQuery("SELECT * FROM " + ALARM_TABLE_NAME + " WHERE "+ KEY_TYPE +
+                                    "='temp_drops' AND ENABLED=1 AND " +
+                                    KEY_THRESHOLD + ">"  + current + " AND " +
+                                    KEY_THRESHOLD + "<=" + previous +
                                     " LIMIT 1", null);
 
             if (c.getCount() == 0) {

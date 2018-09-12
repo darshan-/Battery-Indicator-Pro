@@ -135,25 +135,23 @@
   <string formatted="false" name="alarm_type_fully_charged">Fully charged</string>
   <string formatted="false" name="alarm_type_charge_drops">Charge drops below</string>
   <string formatted="false" name="alarm_type_charge_rises">Charge rises above</string>
+  <string formatted="false" name="alarm_type_temperature_drops">Temperature drops below</string>
   <string formatted="false" name="alarm_type_temperature_rises">Temperature rises above</string>
   <string formatted="false" name="alarm_type_health_failure">Health failure</string>
   <string formatted="false" name="alarm_type_entry_fully_charged">Becomes fully charged</string>
   <string formatted="false" name="alarm_type_entry_charge_drops">Charge drops below...</string>
   <string formatted="false" name="alarm_type_entry_charge_rises">Charge rises above...</string>
+  <string formatted="false" name="alarm_type_entry_temperature_drops">Temperature drops below...</string>
   <string formatted="false" name="alarm_type_entry_temperature_rises">Temperature rises above...</string>
   <string formatted="false" name="alarm_type_entry_health_failure">Health fails</string>
 
   <string formatted="false" name="alarm_fully_charged">Battery is now fully charged</string>
   <string formatted="false" name="alarm_charge_drops">"Battery charge is below "</string>
   <string formatted="false" name="alarm_charge_rises">"Battery charge is above "</string>
+  <string formatted="false" name="alarm_temp_drops">"Battery temp. is below "</string>
   <string formatted="false" name="alarm_temp_rises">"Battery temp. is above "</string>
   <string formatted="false" name="alarm_health_failure">"Battery health is: "</string>
   <string formatted="false" name="alarm_text">Select to edit alarms.</string>
-
-  <!--string formatted="false" name="alarm_audio_stream_notification">Notification</string>
-  <string formatted="false" name="alarm_audio_stream_alarm">Alarm</string>
-  <string formatted="false" name="pref_alarm_audio_stream">Audio Stream</string>
-  <string formatted="false" name="pref_alarm_audio_stream_summary">Use audio stream:</string-->
 
   <string formatted="false" name="logs_empty">Logs Are Empty</string>
   <plurals name="n_log_items">

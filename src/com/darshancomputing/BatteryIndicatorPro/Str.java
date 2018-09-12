@@ -42,6 +42,7 @@ class Str {
     static String alarm_fully_charged;
     static String alarm_charge_drops;
     static String alarm_charge_rises;
+    static String alarm_temp_drops;
     static String alarm_temp_rises;
     static String alarm_health_failure;
     static String alarm_text;
@@ -101,6 +102,7 @@ class Str {
         alarm_fully_charged  = res.getString(R.string.alarm_fully_charged);
         alarm_charge_drops   = res.getString(R.string.alarm_charge_drops);
         alarm_charge_rises   = res.getString(R.string.alarm_charge_rises);
+        alarm_temp_drops     = res.getString(R.string.alarm_temp_drops);
         alarm_temp_rises     = res.getString(R.string.alarm_temp_rises);
         alarm_health_failure = res.getString(R.string.alarm_health_failure);
         alarm_text           = res.getString(R.string.alarm_text);
