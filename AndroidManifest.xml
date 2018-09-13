@@ -4,8 +4,8 @@
     package="com.darshancomputing.BatteryIndicatorPro"
     xmlns:tools="http://schemas.android.com/tools"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
-    android:versionCode="0160001"
-    android:versionName="11.0.0-dev"
+    android:versionCode="0260002"
+    android:versionName="11.0.0"
 >
 
 
@@ -34,6 +34,7 @@
     android:process="com.darshancomputing.BatteryBotPro"
     android:allowBackup="false"
     android:resizeableActivity="true"
+    android:supportsRtl="true"
     >
   <!--
       Temporarily put these two lines in <application> above to enable debugging of release build:
