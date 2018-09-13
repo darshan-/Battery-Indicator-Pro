@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Based on code from the Android Open Source Project, 
+<!-- Based on code from the Android Open Source Project,
       originally licensed under the Apache License, Version 2.0 -->
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
