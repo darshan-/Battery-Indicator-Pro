@@ -15,9 +15,6 @@
   <string name="confirm_close_hint" formatted="false">Battery Indicator tamamen kapatıldı, ve artık durum çubuğunda görmeyeceksin.\n\nEğer sadece ana pencereden çıkmayı ama göstergenin çalışmaya devam etmesini istiyorsan, İPTAL tuşuna bas ve daha sonra cihazın BACK (GERİ) tuşuna basarak ana pencereden çık.</string>
   <string name="confirm_clear_logs" formatted="false">Tüm günlükleri gerçekten temizle?</string>
   <string name="configure_log_filter" formatted="false">Hangi günlük öğeleri gösterilsin?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Gerçekten %10 modunu etkinleştir?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Gerçekten %10 modununu etkisiz kıl?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Uyarı: Bu ayarı değiştirmek (etkinleştirmek ya da etkisiz kılmak) renk ayarlarını sıfırlayacaktır.\n\nEğer Motorola Droid, Droid X, Droid 2, Defy, ya da Samsung Moment\'e sahipsen, uygulamayı ilk aldığında bu ayarı etkinleştirmelisin, ve sonra o şekilde bırakmalısın. Tüm diğer cihaz sahipleri, bildiğim kadarıyla, bu ayarı kapalı olarak bırakmalıdır.</string>
   <string name="okay" formatted="false">Tamam</string>
   <string name="none" formatted="false">Hiçbiri</string>
   <string name="menu_settings" formatted="false">Ayarlar</string>
@@ -124,8 +121,6 @@
   <string name="other_settings" formatted="false">Diğer Ayarlar</string>
   <string name="pref_cat_more_settings_in_pro" formatted="false">Pro da fazla ayarlar</string>
   <string name="add_alarm" formatted="false">Alarm ekle</string>
-  <string name="pref_cat_notification_priority" formatted="false">bildirim Önceliği</string>
-  <string name="pref_main_notification_priority" formatted="false">Temel Bildirim Önceliği</string>
   <string name="pref_icon_set" formatted="false">Simge ayarla</string>
   <string name="pref_cat_charging_indicator" formatted="false">Şarj oluyor Göstergesi</string>
   <string name="pref_cat_logging" formatted="false">Kayıt Tutma</string>
@@ -155,8 +150,6 @@
   <string name="pref_green_summary" formatted="false">Şarj yüksek iken yeşil ikonu kullanmak ister misin?</string>
   <string name="pref_green_thresh" formatted="false">Yeşil Eşik</string>
   <string name="pref_cat_device_specific" formatted="false">Cihaza Özel Ayarlar</string>
-  <string name="pref_ten_percent_mode" formatted="false">%10 Modu</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Önce yardım bölümünü oku!</string>
   <string name="pref_alarm_enabled" formatted="false">Alarmı Etkinleştir</string>
   <string name="pref_cat_alarm_conditions" formatted="false">Alarm Koşulları</string>
   <string name="pref_cat_alarm_conditions_help" formatted="false">Burada hangi koşulların alarm tetikleyeceğini kontrol edebilirsiniz.</string>
@@ -167,12 +160,6 @@
   <string name="alarm_pref_not_used" formatted="false">Bu alarm türü için kullanılmıyor</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Alarm eşiği:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Şarj ve sıcaklık alarmı için, şarj ve ya sıcaklık alarmını tetikleyecek seviyeleri belirlemeye ihtiyacınız var.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Bildirim Ayarları</string>
-  <string name="pref_alarm_ringtone" formatted="false">Zil sesi</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Buradan alarmın hangi ses ile çalacağını seçersiniz. Eğer ses istemiyorsanız \'Sessiz\' i seçiniz.</string>
-  <string name="silent" formatted="false">Sessiz</string>
-  <string name="pref_alarm_vibrate" formatted="false">Titreşim</string>
-  <string name="pref_alarm_lights" formatted="false">Flaş Işığı</string>
   <string name="boot_pref_always" formatted="false">Daima</string>
   <string name="boot_pref_never" formatted="false">Asla</string>
   <string name="boot_pref_if_running" formatted="false">Eğer kapalıyken çalışıyorsa</string>
@@ -189,11 +176,6 @@
   <string name="age_2_weeks" formatted="false">2 hafta</string>
   <string name="age_3_weeks" formatted="false">3 hafta</string>
   <string name="age_4_weeks" formatted="false">4 hafta</string>
-  <string name="notification_priority_max" formatted="false">En fazla</string>
-  <string name="notification_priority_high" formatted="false">Yüksek</string>
-  <string name="notification_priority_default" formatted="false">Varsayılan</string>
-  <string name="notification_priority_low" formatted="false">Düşük</string>
-  <string name="notification_priority_min" formatted="false">En az</string>
   <string name="icon_set_classic" formatted="false">Klasik</string>
   <string name="icon_set_smaller" formatted="false">Daha Küçük Numara</string>
   <plurals name="for_n_hours">

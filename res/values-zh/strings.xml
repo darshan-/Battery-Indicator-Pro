@@ -145,9 +145,6 @@
   <string name="pref_green_thresh_summary" formatted="false">剩餘電量等於或高於多少百分比時使用綠色圖標？</string>
   <string name="pref_green_thresh_help" formatted="false">設定剩餘電量等於或高於該設定值時使用綠色圖標。\n\n該選項能在可選範圍內（5%步進）提供綠色圖標閥值設定值選項。設定值下限為紅色或黃色圖標最大閥值，例如黃色圖標閥值為40%，則設定選擇下限為40%。\\n在10%步進模式下，該設定內容可能略有不同。</string>
   <string name="pref_cat_device_specific" formatted="false">特殊設備設定</string>
-  <string name="pref_ten_percent_mode" formatted="false">10%步進模式</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">請先閱讀說明信息！</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b>注意：</b> 改動該選項設定狀態將重置圖標顏色設定內容！\n\n該選項將清除圖標色彩設定內容以保證10%步進類型設備顯示正常。根據用戶反饋，該類設備包括以下型號：\n\n‧ Motorola Droid （最初版本）\n‧ Motorola Droid X\n‧ Motorola Droid 2\n• Motorola Defy\n‧ Samsung Moment\n\n除以上型號之外，其餘設備均為1%步進報告類型，因此均<i>不用</i>開啟此項功能。</string>
   <string name="boot_pref_always" formatted="false">始終</string>
   <string name="boot_pref_never" formatted="false">從不</string>
   <string name="boot_pref_if_running" formatted="false">關機時運行</string>
@@ -164,7 +161,6 @@
   <string name="age_2_weeks" formatted="false">二周</string>
   <string name="age_3_weeks" formatted="false">三周</string>
   <string name="age_4_weeks" formatted="false">四周</string>
-  <string name="notification_priority_default" formatted="false">預設</string>
   <string name="icon_set_classic" formatted="false">經典圖示</string>
   <string name="icon_set_plain" formatted="false">普通數字圖示</string>
   <string name="icon_set_smaller" formatted="false">小數字圖示</string>

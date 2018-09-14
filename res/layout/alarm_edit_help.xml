@@ -21,15 +21,5 @@
     <TextView style="@style/help_text" android:text="@string/pref_alarm_type_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_alarm_threshold" />
     <TextView style="@style/help_text" android:text="@string/pref_alarm_threshold_help" />
-
-    <View style="@style/help_cat_pre_margin" />
-    <TextView style="@style/help_cat"  android:text="@string/pref_cat_notification_settings" />
-    <TextView style="@style/help_text" android:text="@string/pref_cat_notification_settings_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_alarm_ringtone" />
-    <TextView style="@style/help_text" android:text="@string/pref_alarm_ringtone_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_alarm_vibrate" />
-    <TextView style="@style/help_text" android:text="@string/pref_alarm_vibrate_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_alarm_lights" />
-    <TextView style="@style/help_text" android:text="@string/pref_alarm_lights_help" />
   </LinearLayout>
 </ScrollView>

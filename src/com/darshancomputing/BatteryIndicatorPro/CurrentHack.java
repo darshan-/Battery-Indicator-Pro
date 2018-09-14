@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2017 Darshan-Josiah Barber
+    Copyright (c) 2015-2018 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -51,9 +51,6 @@ class CurrentHack {
     // }
 
     static void setContext(Context c) {
-        if (android.os.Build.VERSION.SDK_INT < 21)
-            return;
-
         batteryManager = (BatteryManager) c.getApplicationContext().getSystemService(Context.BATTERY_SERVICE);
     }
 

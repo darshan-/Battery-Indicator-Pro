@@ -17,9 +17,6 @@
   <string name="confirm_close_hint" formatted="false">برنامج المؤشر سوف يتم غلقه بشكل تام ولن تراه في شريط الاشعارات\n\nاذا اردت ان تغادر البرنامج وتريد ان يبقى المؤشر مشغل اضغط على الغاء وبعدها اظغط على زر الرجوع للمغادرة البرنامج</string>
   <string name="confirm_clear_logs" formatted="false">هل تريد مسح السجلات ؟</string>
   <string name="configure_log_filter" formatted="false">رؤية عناصر السجلات؟</string>
-  <string name="confirm_ten_percent_enable" formatted="false">هل تريد تمكين نمط 10% ؟</string>
-  <string name="confirm_ten_percent_disable" formatted="false">هل تريد تعطيل نمط 10% ؟</string>
-  <string name="confirm_ten_percent_hint" formatted="false">تحذير:تغيير هذه الاعدادات(اي تمكينها وتعطيلها) سوف يعيد الوان الاعدادات\n\nاذا كنت تملك هاتف موتولارلا او اكس او 2 او دايفي او سامسونغ مومينت يجب عليك تشغيل هذا الاعداد عندما تحصل على هذا التطبيق لاول مرةومن ثم اتركه’اما الهواتف الاخرى فلا يجب التلاعب بهذا الاعداد ويجب تركه في حالة الايقاف</string>
   <string name="okay" formatted="false">موافق</string>
   <string name="none" formatted="false">لا\ولاواحد</string>
   <string name="tab_current_info" formatted="false">معلومات الحالية</string>
@@ -189,10 +186,6 @@
   <string name="white" formatted="false">ابيض</string>
   <string name="ics_blue" formatted="false">نظام الاندرويد ايس كريم ساندويش ازرق</string>
   <string name="custom" formatted="false">مخصص</string>
-  <string name="pref_cat_notification_priority" formatted="false">اولوية الاشعار</string>
-  <string name="pref_cat_notification_priority_help" formatted="false">الجيلي بين واعلى(ANDROID 4.1)الاشعارات يمكن ان تملك اولوية المؤثرات لايمكن توليدها الا في العام\n\nالضبط المصغر ويمكن عرضه في بعض الاحيان في شريط الاشعارات اسحب الشريط للاسفل\n\nالضبط الواطئ بحيث تكون الاشعارات في الاعلى بشكل اوتوماتيكي وانه رائع\n\nالضبط الاعتيادي هو ايضا في الاعلى لكن بشكل افتراضي للجهاز وسوف يشكل تغيير في العرض\n\nملاحظة قد تختلف الاعدادات من جهاز لاخر وانه مضمونا</string>
-  <string name="pref_main_notification_priority" formatted="false">اولوية الاشعارات الرئيسية</string>
-  <string name="pref_main_notification_priority_help" formatted="false">تعيين الأولوية للاشعار الرئيسي. لا تتأثرالمنبهات ، والإضافات، وأية إخطارات أخرى بواسطة هذا الإعداد، ولكنها قد تكون في المستقبل قد شكلي الأولوية.</string>
   <string name="pref_cat_icon_set" formatted="false">ضبط ايقونة</string>
   <string name="pref_icon_set" formatted="false">ضبط الايقونة</string>
   <string name="pref_icon_set_help" formatted="false">الاندرويد يأتي بنسخ عديدة ولاتوجد ايقونة تعمل بشكل كامل على كل الاجهزة المستخدمين المحترفين يمكنهم جلب بعض الاضافات للحصول على خيارات اكثر لكن توجد ثلاث خيارات هي التي تعمل على كل الاجهزة\n\nالشكل الكلاسيكي هو الافتراضي والاصلي الذي يأتي منذ 2009 مع نسخة اندرويد3.0 القديمة والتي تسمى بقرص العسل و يجعل ايقونة الاشعارات سهلة القراءة\n\nشكل الارقام الكبيرة والتي تأتي لجميع الهواتف الجديدة لكن هناك هواتف ضغيرة وجديدة مما يؤدي الى عدم تركيب الارقام بشكل مناسب\n\nشكل الارقام الصغيرة وهوه مايفضله الذي يتركون شكل الارقام الكبيرة بسب عدم التركيب بشكل جيد لهواتفهم\n\nاذا كنت قد اشتريت النسخة الكاملة لهذا التطبيق فسوف تحصل على اضافات مجانية اضغط على خيارات واضغط على الحصول على اضافات مجانية او اضغط على الخيارات السريعة الموجودة في الشريط للهواتف الجديدة</string>
@@ -257,9 +250,6 @@
   <string name="pref_green_thresh_summary" formatted="false">استخدام اللون الاخضر عندما يكون الشحن عند نسبة معين او اعلى:</string>
   <string name="pref_green_thresh_help" formatted="false">حدد مستوى شحن التي ينبغي أن تكون عليه الايقونة خضراء عند أو فوق\n\nالخيارات لنسبة الخضراء تشمل جميع القيم في مضاعفات رقم 5 التي توجد الرموز الخضراء المتاحة، بدءا من أعلى عتبة بالموقع الذي تم إعداده للأحمر أو الاصفر. على سبيل المثال، إذا قمت بتعيين عتبة الاصفر إلى 40، ثم الخيار الاقل هنا سوف تكون 40\n\n10% لايوجد له نسبة ولا يحتاج لتفسير</string>
   <string name="pref_cat_device_specific" formatted="false">اعدادات النظام المعينة</string>
-  <string name="pref_ten_percent_mode" formatted="false">10% نمط</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">!اقرا المساعدة اولا</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b> ملاحظة: </b> سوف يتم فحص أو إلغاء تحديد هذا إعادة تعيين إعدادات لون الرمز الخاص بك\n\nهذا الإعداد ينظف إعدادات ايقونة الالوان ليكون أكثر منطقية على الأجهزة التي تظهر فقط في مستوى شحن 10٪ زيادات. وفقا لتقارير وقوائم، التي تضم هذه الأجهزة\n\nموتولارا الاصلي\nموتولارا اكس\nموتولارا 2\nموتولارا ديفي\nسامسونج مومينت\n\nبقدر ما انا اعلم جميع الهواتف الاخرى تخطأ بنسبة 1% لذا يجب عدم التلاعب بهذا الاعدادات</string>
   <string name="alarms_overview" formatted="false">النظرة العامة على المنبهات</string>
   <string name="alarms_overview_help" formatted="false">هذه الصفحة تؤدي الى اعدادات المنبهات للتمكين والتعطيل السريع او حذف المنبه\n\nلاضافة منبه جديد اضغط على كلمة اضافة منبه وهذا سوف يؤديك الى اعدادات المنبه لاختيار المنبه الجديد راجع قسم مساعده للحصول على التفاصيل\n\nاسفل كلمة اضافة منبه هذه قائمة تحتوي على المنبهات التي قمت بأنشاها\n\nلتعديل على منبه اضغط عليه فقط\nلحذف منبه ضغطة طويلة عليه واختر حذف المنبه ويمكنك حذفها من قائمة الاعدادات الرئيسية واختيار خذف المنبه\nللتبديل بسرعة ما إذا تم تمكين التنبيه، اضغط على أيقونة المنبه على يسار النص التنبيه يمكنك أيضا تمكين أو تعطيل التنبيه من صفحة إعدادات التنبيه الفردية</string>
   <string name="pref_alarm_enabled" formatted="false">تمكين التنبيه</string>
@@ -273,15 +263,6 @@
   <string name="alarm_pref_not_used" formatted="false">لا تستخدم لهذا النوع التنبيه</string>
   <string name="pref_alarm_threshold_summary" formatted="false">نسبة التنبيه:</string>
   <string name="pref_alarm_threshold_help" formatted="false">للرسوم ودرجة الحرارة وأجهزة الإنذار، تحتاج إلى ضبط على مستوى درجة الحرارة أو شحن من شأنها أن تؤدي إلى التنبيه</string>
-  <string name="pref_cat_notification_settings" formatted="false">اعدادات الاشعارات</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">هذا هو المكان الذي يمكن التحقق من الجوانب المختلفة للاشعارات الخاصة بالتنبيه يتم إنشاؤه لإشعارك  عندما ينبهك الانذار.</string>
-  <string name="pref_alarm_ringtone" formatted="false">نغمة</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">هنا يمكنك ادارة النغمة التي تسمعها عندما ينبهك التطبيق اختر صامت اذا لم ترد سماع النغمة</string>
-  <string name="silent" formatted="false">صامت</string>
-  <string name="pref_alarm_vibrate" formatted="false">اهتزاز</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">إذا سارت الامور بشكل جيد، سوف يحدد هذا الخيار جعل الجهاز يهتز عندما يتم تشغيل الإنذار، ما لم يكون الجهاز في الوضع الصامت، إلا إذا كنت تملك جهاز ليهتز حتى في وضع الصامت. وبعبارة أخرى، ينبغي أن تفعل ما كنت تتوقع. يرجى مراسلتي لي إذا ما سارت الأمور على العكس.</string>
-  <string name="pref_alarm_lights" formatted="false">الفلاش</string>
-  <string name="pref_alarm_lights_help" formatted="false">ما إذا كان شعارات  يجب تمكين مجموعات الاضواء الافتراضية للجهاز. هذا الوميض عموما LED أو كرة التتبع. لاحظ أن كل جهاز أندرويد لقد استخدم وكانت الاخطاء طفيفة في هذا القسم. إذا كان لديك فحص هذا، ثم سوف يطلب شعارات  أندرويد إلى وميض الأضواء، ولكن قد لا يحدث دائما في الواقع.</string>
   <string name="boot_pref_always" formatted="false">دائما</string>
   <string name="boot_pref_never" formatted="false">ابدا</string>
   <string name="boot_pref_if_running" formatted="false">اذا كان مغلق</string>
@@ -298,11 +279,6 @@
   <string name="age_2_weeks" formatted="false">اسبوعين</string>
   <string name="age_3_weeks" formatted="false">ثلاث اسابيع</string>
   <string name="age_4_weeks" formatted="false">اربعة اسابيع</string>
-  <string name="notification_priority_max" formatted="false">ممتلىء</string>
-  <string name="notification_priority_high" formatted="false">عالي</string>
-  <string name="notification_priority_default" formatted="false">افتراضي</string>
-  <string name="notification_priority_low" formatted="false">واطىء</string>
-  <string name="notification_priority_min" formatted="false">مصغر</string>
   <string name="icon_set_classic" formatted="false">كلاسيك</string>
   <string name="icon_set_plain" formatted="false">رقم كبير</string>
   <string name="icon_set_smaller" formatted="false">رقم صغير</string>

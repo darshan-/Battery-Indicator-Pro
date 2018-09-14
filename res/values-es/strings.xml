@@ -15,8 +15,6 @@
   <string name="confirm_close_hint" formatted="false">Battery Indicator se cerrará completamente, y dejará de aparecer en la barra de estado.\n\nSi solamente desea abandonar la ventana principal pero manteniendo activo el indicador, pulse la tecla VOLVER de su teléfono.</string>
   <string name="confirm_clear_logs" formatted="false">¿Está seguro de que desea borrar el registro?</string>
   <string name="configure_log_filter" formatted="false">¿Que registro desea ver?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">¿Activar realmente el modo 10%?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">¿Desactivar realmente el modo 10%?</string>
   <string name="okay" formatted="false">Ok</string>
   <string name="none" formatted="false">Ninguno</string>
   <string name="tab_current_info" formatted="false">Informacion actual</string>
@@ -160,9 +158,6 @@
   <string name="pref_green_thresh_summary" formatted="false">¿Mostrar Icono verde por encima de qué porcentaje de carga?</string>
   <string name="pref_green_thresh_help" formatted="false">Especifica el nivel de carga a partir del cual que el icono debe volverse verde.\n\nLas opciones para el umbral de verde incluyen todos los valores (en múltiplos de 5) para los que hay iconos verdes disponibles, empezando 5 puntos por encima del umbral más alto establecido para rojo o ambar. de rojo, si hay uno. Por ejemplo, si tiene establecido el umbral de ámbar en 40, la opción más baja aquí será 40.\n\nEn modo 10% el funcionamiento es ligeramente distinto, pero debe ser autoexplicativo.</string>
   <string name="pref_cat_device_specific" formatted="false">Ajustes para dispositivos específicos</string>
-  <string name="pref_ten_percent_mode" formatted="false">Modo 10%</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">¡Lea la ayuda primero!</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b>Nota:</b> ¡Marcar o desmarcar esto reiniciará sus ajustes de color de iconos!\n\nEsta opción limpia los ajustes de color de iconos para que tengan más sentido en dispositivos que sólo muestran el nivel de carga en incrementos del 10%. Según los datos proporcionados por los usuarios, esto incluye los siguientes dispositivos:\n\n• Motorola Droid (original)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nHasta donde yo sé, todos los demás dispositivos informan cada 1%, y <i>no</i> debería activar esta opción si tiene uno de ellos.</string>
   <string name="boot_pref_always" formatted="false">Siempre</string>
   <string name="boot_pref_never" formatted="false">Nunca</string>
   <string name="boot_pref_if_running" formatted="false">Si estaba ejecutándose al apagar</string>

@@ -28,24 +28,7 @@
     button to leave the main window.\n
 
     \nIf you want to hide the notification but keep widgets running,
-    press Cancel and then run the Notification Wizard to hide the notification.
-  </string>
-
-  <string formatted="false" name="notification_wizard_title">
-    How would you like to see the main BatteryBot notification?
-  </string>
-  <string formatted="false" name="notification_wizard_title_default">Default</string>
-  <string formatted="false" name="notification_wizard_title_minimal">Minimal</string>
-  <string formatted="false" name="notification_wizard_title_none">None</string>
-  <string formatted="false" name="notification_wizard_summary_default">
-    Battery percentage in status bar in addition to tray notification
-  </string>
-  <string formatted="false" name="notification_wizard_summary_minimal">
-    Just notification in tray, nothing in status bar
-  </string>
-  <string formatted="false" name="requires_api_level_16">(Requires Android 4.1+)</string>
-  <string formatted="false" name="notification_wizard_summary_none">
-    For those who only use the desktop widgets and/or main screen
+    press Cancel and then change the settings to hide the notification.
   </string>
 
   <string formatted="false" name="notifications_disabled">Notifications are disabled!</string>
@@ -54,8 +37,8 @@
     prevent BatteryBot from showing any notifications: the main
     notification and any alarms you have set will all be blocked.\n
 
-    \nSince BatteryBot already allows you to turn the main
-    notification on or off as well as temporarily disable any alarms
+    \nSince BatteryBot allows you to turn the main notification on or off
+    separately, as well as temporarily disable any alarms
     you\'ve created, it is stongly recommended that you unblock the
     BatteryBot notifications.  While they are blocked, it will appear
     that BatteryBot is broken.\n
@@ -65,23 +48,11 @@
   </string>
 
   <string formatted="false" name="main_notif_chan_name">Main Notification</string>
-  <!--string formatted="false" name="main_notif_chan_desc">Channel for the main BatteryBot notification</string-->
+  <string formatted="false" name="alarm_notif_chan_name">Battery Alarms</string>
 
   <string formatted="false" name="confirm_clear_logs">Really clear all logs?</string>
 
   <string formatted="false" name="configure_log_filter">Show which log items?</string>
-
-  <string formatted="false" name="confirm_ten_percent_enable">Really enable 10% Mode?</string>
-  <string formatted="false" name="confirm_ten_percent_disable">Really disable 10% Mode?</string>
-  <string formatted="false" name="confirm_ten_percent_hint">
-    Warning: Changing this setting (both enabling and disabling it)
-    will reset your color settings.\n
-
-    \nIf you have a Motorola Droid, Droid X, Droid 2, Defy,
-    or Samsung Moment, you should turn
-    this on when you first get the app, and then leave it alone.  All
-    other devices, as far as I know, should always leave this off.
-  </string>
 
   <string formatted="false" name="okay">Okay</string>
   <string formatted="false" name="none">None</string>
@@ -98,7 +69,6 @@
   <string formatted="false" name="menu_close">Close</string>
   <string formatted="false" name="menu_help">Help</string>
   <string formatted="false" name="menu_rate_and_review">Rate &amp; Review</string>
-  <string formatted="false" name="menu_notification_wizard">Notification Wizard</string>
   <string formatted="false" name="menu_clear">Clear</string>
   <string formatted="false" name="menu_reverse">Reverse Order</string>
   <string formatted="false" name="menu_log_filter">Filter</string>
@@ -165,17 +135,20 @@
   <string formatted="false" name="alarm_type_fully_charged">Fully charged</string>
   <string formatted="false" name="alarm_type_charge_drops">Charge drops below</string>
   <string formatted="false" name="alarm_type_charge_rises">Charge rises above</string>
+  <string formatted="false" name="alarm_type_temperature_drops">Temperature drops below</string>
   <string formatted="false" name="alarm_type_temperature_rises">Temperature rises above</string>
   <string formatted="false" name="alarm_type_health_failure">Health failure</string>
   <string formatted="false" name="alarm_type_entry_fully_charged">Becomes fully charged</string>
   <string formatted="false" name="alarm_type_entry_charge_drops">Charge drops below...</string>
   <string formatted="false" name="alarm_type_entry_charge_rises">Charge rises above...</string>
+  <string formatted="false" name="alarm_type_entry_temperature_drops">Temperature drops below...</string>
   <string formatted="false" name="alarm_type_entry_temperature_rises">Temperature rises above...</string>
   <string formatted="false" name="alarm_type_entry_health_failure">Health fails</string>
 
   <string formatted="false" name="alarm_fully_charged">Battery is now fully charged</string>
   <string formatted="false" name="alarm_charge_drops">"Battery charge is below "</string>
   <string formatted="false" name="alarm_charge_rises">"Battery charge is above "</string>
+  <string formatted="false" name="alarm_temp_drops">"Battery temp. is below "</string>
   <string formatted="false" name="alarm_temp_rises">"Battery temp. is above "</string>
   <string formatted="false" name="alarm_health_failure">"Battery health is: "</string>
   <string formatted="false" name="alarm_text">Select to edit alarms.</string>
@@ -348,6 +321,15 @@
     help from whatever settings page you are on.
   </string>
 
+  <string formatted="false" name="notifications_disabled_cat">Notifications Disabled</string>
+  <string formatted="false" name="app_notifs_disabled_b">Enable App Notifications</string>
+  <string formatted="false" name="app_notifs_disabled_summary">You have disabled all notifications for this app.  Please enable them to access these settings.</string>
+  <string formatted="false" name="main_notifs_disabled_b">Enable Main Notification</string>
+  <string formatted="false" name="main_notifs_disabled_summary">You have disabled the main notification for this app.  Please enable it to access these settings.</string>
+  <string formatted="false" name="app_notifs_alarms_disabled_summary">You have disabled all notifications for this app.  Please enable them to access your alarms.</string>
+  <string formatted="false" name="alarm_notifs_disabled_b">Enable Alarms</string>
+  <string formatted="false" name="alarm_notifs_disabled_summary">You have disabled the alarm notification channel for this app.  Please enable it to access your alarms.</string>
+
   <string formatted="false" name="notification_settings">Main Notification</string>
   <string formatted="false" name="notification_settings_summary">Configure the main notification</string>
   <string formatted="false" name="notification_settings_help">
@@ -396,6 +378,10 @@
   </string>
 
   <string formatted="false" name="add_alarm">Add alarm</string>
+  <string formatted="false" name="menu_alarm_channel">Alarm Channel Settings</string>
+
+  <string formatted="false" name="pref_cat_channel_settings">Notification Channel Settings</string>
+  <string formatted="false" name="pref_manage_main_channel">Manage Main Channel</string>
 
   <string formatted="false" name="pref_cat_notification_layout">Layout</string>
   <string formatted="false" name="pref_use_system_notification_layout">Use System Layout</string>
@@ -483,30 +469,6 @@
   <string formatted="false" name="white">White</string>
   <string formatted="false" name="ics_blue">Android ICS Blue</string>
   <string formatted="false" name="custom">Custom...</string>
-
-  <string formatted="false" name="pref_cat_notification_priority">Notification Priority</string>
-  <string formatted="false" name="pref_cat_notification_priority_help">
-    On Jelly Bean and up (Android 4.1 and over), notifications can have a priority set.
-    The effect(s) of changing the priority are not guaranteed, but in general:\n
-
-    \n• Setting it to \"Minimum\" should in most cases remove the status bar icon but
-    still show the notification in the pull-down notification tray.\n
-
-    \n• Setting it to \"Low\" should allow other notifications, such as new email, to appear
-    above the BatteryBot notification. This is nice in cases like email where the
-    notification is expandable (expandable notifications are automatically expanded when
-    they are the top notification).\n
-
-    \nPriorities \"Default\" and above seem to usually leave BatteryBot as the top
-    notification, but I imagine there are edge cases where the higher priorities make a difference.\n
-
-    \nAgain, the exact behavior may vary between devices and is not guaranteed.
-  </string>
-  <string formatted="false" name="pref_main_notification_priority">Main Notification Priority</string>
-  <string formatted="false" name="pref_main_notification_priority_help">
-    Set the priority of the main notification.  Alarms, plugins, and any other notifications are not
-    affected by this setting, but they may in the future have configurable priority.
-  </string>
 
   <string formatted="false" name="pref_cat_icon_set">Icon Set</string>
   <string formatted="false" name="pref_icon_set">Icon Set</string>
@@ -837,24 +799,6 @@
 
   <string formatted="false" name="pref_cat_device_specific">Device Specific Settings</string>
   <!--string name="pref_cat_device_specific_help"></string-->
-  <string formatted="false" name="pref_ten_percent_mode">10% Mode</string>
-  <string formatted="false" name="pref_ten_percent_mode_summary">Read the help first!</string>
-  <string formatted="false" name="pref_ten_percent_mode_help"><b>Note:</b>
-    Checking or unchecking this will reset your icon color settings!\n
-
-    \nThis setting cleans up the Icon Color settings to make more sense
-    on devices that only show their charge level in 10% increments.
-    According to user reports, that includes these devices:\n
-
-    \n• Motorola Droid (original)
-    \n• Motorola Droid X
-    \n• Motorola Droid 2
-    \n• Motorola Defy
-    \n• Samsung Moment\n
-
-    \nAs far as I\'m aware, all other devices report every 1%, and so
-    should <i>not</i> turn this on.
-  </string>
 
   <string formatted="false" name="alarms_overview">Alarms Overview</string>
   <string formatted="false" name="alarms_overview_help">
@@ -915,39 +859,6 @@
     or charge level that will trigger the alarm.
   </string>
 
-  <string formatted="false" name="pref_cat_notification_settings">Notification Settings</string>
-  <string formatted="false" name="pref_cat_notification_settings_help">This is where you
-  can control various aspects of the alarm notification that is
-  created to notify you when an alarm has been triggered.
-  </string>
-  <string formatted="false" name="pref_alarm_ringtone">Ringtone</string>
-  <!--string name="pref_alarm_ringtone_summary"></string-->
-  <string formatted="false" name="pref_alarm_ringtone_help">
-    Here you can control which sound to play when the alarm is
-    triggered.  Select \'Silent\' if you don\'t want a sound to be
-    played.
-  </string>
-  <string formatted="false" name="silent">Silent</string>
-  <string formatted="false" name="pref_alarm_vibrate">Vibrate</string>
-  <!--string name="pref_alarm_vibrate_summary"></string-->
-  <string formatted="false" name="pref_alarm_vibrate_help">
-    If all goes well, setting this option will make the device vibrate
-    when the alarm is triggered, unless the device is in Silent Mode,
-    unless you have the device set up to vibrate even in Silent Mode.
-    In other words, it should do what you expect.  Please email me if
-    something goes astray.
-  </string>
-  <string formatted="false" name="pref_alarm_lights">Flash Lights</string>
-  <!--string name="pref_alarm_lights_summary"></string-->
-  <string formatted="false" name="pref_alarm_lights_help">
-    Sets whether the notification should enable the device\'s default
-    lights.  This generally flashes an LED or trackball.  Note that
-    every Android device I\'ve used has been slightly buggy in this
-    department.  If you have this checked, then the notification will
-    request Android to flash lights, but it might not always actually
-    happen.
-  </string>
-
   <string formatted="false" name="boot_pref_always">Always</string>
   <string formatted="false" name="boot_pref_never">Never</string>
   <string formatted="false" name="boot_pref_if_running">If running on shutdown</string>
@@ -966,12 +877,6 @@
   <string formatted="false" name="age_2_weeks">2 weeks</string>
   <string formatted="false" name="age_3_weeks">3 weeks</string>
   <string formatted="false" name="age_4_weeks">4 weeks</string>
-
-  <string formatted="false" name="notification_priority_max">Maximum</string>
-  <string formatted="false" name="notification_priority_high">High</string>
-  <string formatted="false" name="notification_priority_default">Default</string>
-  <string formatted="false" name="notification_priority_low">Low</string>
-  <string formatted="false" name="notification_priority_min">Minimum</string>
 
   <string formatted="false" name="icon_set_classic">Classic</string>
   <string formatted="false" name="icon_set_plain">Plain Number</string>

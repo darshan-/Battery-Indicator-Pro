@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2017 Darshan-Josiah Barber
+    Copyright (c) 2010-2018 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,7 +14,10 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.DataSetObserver;
@@ -30,6 +33,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -50,9 +54,56 @@ public class AlarmsFragment extends Fragment {
     private int curId; /* The alarm id for the View that was just long-pressed */
     private int curIndex; /* The ViewGroup index of the currently focused item (to set focus after deletion) */
 
+    private NotificationManager mNotificationManager;
+    private NotificationChannel alarmChan;
+    private boolean appNotifsEnabled;
+    private boolean alarmNotifsEnabled;
+
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+
+        mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        alarmChan = mNotificationManager.getNotificationChannel(BatteryInfoService.ALARM_CHAN_ID);
+
+        appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
+        alarmNotifsEnabled = alarmChan == null || alarmChan.getImportance() > 0; // null okay, just not created yet, so not blocked
+
+        if (!appNotifsEnabled || !alarmNotifsEnabled) {
+            mInflater = inflater;
+            View view = mInflater.inflate(R.layout.alarms_no_notifs, container, false);
+
+            Button b = view.findViewById(R.id.enable_notifs_button);
+            TextView tv = view.findViewById(R.id.enable_notifs_summary);
+
+            if (!appNotifsEnabled) {
+                b.setText(R.string.app_notifs_disabled_b);
+                tv.setText(R.string.app_notifs_alarms_disabled_summary);
+            } else {
+                b.setText(R.string.alarm_notifs_disabled_b);
+                tv.setText(R.string.alarm_notifs_disabled_summary);
+            }
+
+            b.setOnClickListener(new OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent;
+
+                    if (!appNotifsEnabled) {
+                        intent = new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                    } else {
+                        intent = new Intent(android.provider.Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+                        intent.putExtra(android.provider.Settings.EXTRA_CHANNEL_ID, alarmChan.getId());
+                    }
+
+                    intent.putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, getActivity().getPackageName());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                    startActivity(intent);
+                }
+            });
+
+            return view;
+        }
 
         mInflater = inflater;
         View view = mInflater.inflate(R.layout.alarms, container, false);
@@ -98,6 +149,8 @@ public class AlarmsFragment extends Fragment {
     }
 
     private void populateList() {
+        if (!appNotifsEnabled || !alarmNotifsEnabled) return;
+
         mAlarmsList.removeAllViews();
 
         if (mCursor != null && mCursor.moveToFirst()) {
@@ -123,6 +176,17 @@ public class AlarmsFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
+        // Turns out alarmChan is unchangeable, so getImportance() just returns the importance at the time getNotificationChannel was called
+        alarmChan = mNotificationManager.getNotificationChannel(BatteryInfoService.ALARM_CHAN_ID);
+
+        if (appNotifsEnabled != mNotificationManager.areNotificationsEnabled() ||
+            alarmNotifsEnabled != (alarmChan == null || alarmChan.getImportance() > 0)) {
+            Intent intent = new Intent(getActivity(), BatteryInfoActivity.class).putExtra(BatteryInfoService.EXTRA_EDIT_ALARMS, true);
+            startActivity(intent);
+            getActivity().finish();
+            return;
+        }
+
         convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
                                              pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
@@ -139,15 +203,25 @@ public class AlarmsFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
 
-        inflater.inflate(R.menu.settings, menu);
+        inflater.inflate(R.menu.alarms, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
         case R.id.menu_help:
             ComponentName comp = new ComponentName(getActivity().getPackageName(), SettingsHelpActivity.class.getName());
-            Intent intent = new Intent().setComponent(comp).putExtra(SettingsActivity.EXTRA_SCREEN, SettingsActivity.KEY_ALARMS_SETTINGS);
+            intent = new Intent().setComponent(comp).putExtra(SettingsActivity.EXTRA_SCREEN, SettingsActivity.KEY_ALARMS_SETTINGS);
+            startActivity(intent);
+
+            return true;
+        case R.id.menu_alarm_channel:
+            intent = new Intent(android.provider.Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+            intent.putExtra(android.provider.Settings.EXTRA_CHANNEL_ID, alarmChan.getId());
+            intent.putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, getActivity().getPackageName());
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
             startActivity(intent);
 
             return true;
@@ -200,7 +274,7 @@ public class AlarmsFragment extends Fragment {
         Boolean  enabled = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_ENABLED)) == 1);
 
         String s = Str.alarm_types_display[Str.indexOf(Str.alarm_type_values, type)];
-        if (type.equals("temp_rises")) {
+        if (type.equals("temp_drops") || type.equals("temp_rises")) {
             s += " " + Str.formatTemp(Integer.valueOf(threshold), convertF, false);
         } else if (type.equals("charge_drops") || type.equals("charge_rises")) {
             s += " " + threshold + "%";

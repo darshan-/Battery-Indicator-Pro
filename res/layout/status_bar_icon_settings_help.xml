@@ -45,7 +45,5 @@
     <TextView style="@style/help_text" android:text="@string/pref_green_help" />
     <TextView style="@style/help_pref" android:text="@string/pref_green_thresh" />
     <TextView style="@style/help_text" android:text="@string/pref_green_thresh_help" />
-    <TextView style="@style/help_pref" android:text="@string/pref_ten_percent_mode" />
-    <TextView style="@style/help_text" android:text="@string/pref_ten_percent_mode_help" />
   </LinearLayout>
 </ScrollView>

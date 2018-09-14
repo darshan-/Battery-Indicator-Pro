@@ -13,11 +13,9 @@
   <string name="cancel" formatted="false">Anuluj</string>
   <string name="confirm_close" formatted="false">Zamknąć?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator zostanie zamknięty i nie będziesz widział statusu w powiadomieniach.\n\nJeżeli chcesz widzieć status, zostaw program uruchomiony naciskając Anuluj a następnie przycisk Wstecz.</string>
+  <string name="notifications_disabled" formatted="false">Powiadomienia są wyłączone!</string>
   <string name="confirm_clear_logs" formatted="false">Usunąć wszystkie logi?</string>
   <string name="configure_log_filter" formatted="false">Co pokazać w dzienniku?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Włączyć tryb 10%?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Wyłączyć tryb 10%</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Uwaga: Zmiana tego ustawienia (zarówno włączenie jak i wyłączenie) zresetuje ustawienia koloru.\n\nJeżeli posiadasz Motorolę Droid, Droid X, Droid 2, Defy, lub Samsunga Moment, przy pierwszym uruchomieniu aplikacji powinieneś włączyć i zostawić tę opcję. Użytkownicy pozostałych urządzeń powinni zostawić opcję wyłączoną.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Żaden</string>
   <string name="tab_current_info" formatted="false">Aktualny stan</string>
@@ -179,10 +177,6 @@
   <string name="white" formatted="false">Biały</string>
   <string name="ics_blue" formatted="false">Android ICS Niebieski</string>
   <string name="custom" formatted="false">Własny...</string>
-  <string name="pref_cat_notification_priority" formatted="false">Priorytet powiadomienia</string>
-  <string name="pref_cat_notification_priority_help" formatted="false">Na Jelly Bean i wyżej (Android 4.1 i powyżej), powiadomienia mogą mieć ustawiony priorytet. Efekt(y) zmiany priorytetu nie są gwarantowane, ale ogólnie:\n\n• Ustawienie na \"Minimum\" powinno w większości przypadków usunąć ikonę na pasku stanu, ale wciąż pokazywać powiadomienie w rozwijanym pasku notyfikacji.\n\n• Ustawienie na \"Low\" powinny umożliwić innym powiadamianie (np. nowe wiadomości e-mail) nad powiadomieniem BatteryBot. To jest fajne w przypadkach takich np. jak e-mail, w którym powiadomienie jest rozwijane (rozszerzalne powiadomienia są automatycznie rozwijane, gdy są na górze).\n\nPriorytet \"Default\" zazwyczaj zostawia BatteryBot u samej góry, ale są przypadki, gdzie wyższe priorytety to zmieniają.\n\nPowtarzam, dokładne zachowanie może ulec zmianie i nie jest gwarantowane.</string>
-  <string name="pref_main_notification_priority" formatted="false">Główny priorytet powiadomienia</string>
-  <string name="pref_main_notification_priority_help" formatted="false">Ustaw priorytet głównego powiadomienia. Alarmy, wtyczki oraz wszelkie inne powiadomienia nie mają wpływu na to ustawienie, ale mogą w przyszłości konfigurowalny priorytet.</string>
   <string name="pref_cat_icon_set" formatted="false">Zestaw ikon</string>
   <string name="pref_icon_set" formatted="false">Zestaw ikon</string>
   <string name="pref_icon_set_help" formatted="false">Android jest w wielu wersjach, więc nie istnieje jeden idealny zestaw ikon, który działa dobrze na każdym urządzeniu. Użytkownicy wersji Pro mogą korzystać z wtyczek, aby uzyskać więcej opcji, ale do dyspozycji są trzy wbudowane zestawy ikon, które powinny być chociaż jeden dobrym rozwiązaniem dla praktycznie każdego urządzenia.\n\n\"Klasyczny\" to oryginalny zestaw ikon z 2009 roku. Jest wciąż najlepsza dla starszych urządzeń, ale nowsze wersje Androida (począwszy od Android 3.0, Honeycomb) kurczą i przyciemniają ikony powiadomień, co czyni ten zestaw bardzo trudnym do odczytania.\n\n\"Zwykły numer\" jest domyślne dla wszystkich nowych urządzeń z systemem Android. Jest to bardzo duży biały numer, który jest dobrze widoczny nawet po skurczeniu i przyciemnieniu. Podczas ładowania pod numerkiem pokazuje się \"błyskawica\".\n\n\"Mniejszy numer\" jest jak \"Plain number\" ale mniejszy, bo niektóre nowsze urządzenia nie kurczą ikonek jak seryjny Android i \"Plain number\" robi się bardzo duży.\n\nJeśli masz jakieś wtyczki ikon do BatteryBot Pro zainstalowane (naciśnij przycisk MENU, a następnie Pobierz Wtyczki by otrzymać darmowe wtyczki) to możesz wybrać spośród nich tutaj.</string>
@@ -240,9 +234,6 @@
   <string name="pref_green_thresh_summary" formatted="false">Czerwona ikona gdy poziom powyżej:</string>
   <string name="pref_green_thresh_help" formatted="false">Określa przy jakim poziomie kolor zmienia się na zielony (albo <i>na</i>, w trybie 10%).\n\nW trybie 10% rzeczy działają trochę inaczej, ale to samo się wyjaśnia.</string>
   <string name="pref_cat_device_specific" formatted="false">Ustawienia specyficzne dla urządzenia</string>
-  <string name="pref_ten_percent_mode" formatted="false">Tryb 10%</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Przeczytaj najpierw pomoc!</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b>Pamiętaj:</b> Zaznaczenie lub nie skasuje ustawienia kolorów!\n\nTa opcja czyści ustawienia kolorów ikony dla urządzeń wskazujących poziom ci 10% (by miało to sens). W nawiązaniu do wpisów użytkowników urządzeń:\n\n• Motorola Droid (original)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nJak wiadomo inne urządzenia pokazujące poziom co 1% <i>nie powinni</i> tego włączać.</string>
   <string name="alarms_overview" formatted="false">Alarmy</string>
   <string name="alarms_overview_help" formatted="false">Tutaj możesz dodawać nowe alarmy, szybko włączać lub wyłączać już istniejące albo je usuwać.\n\nAby dodać alarm wciśnij \"Dodaj alarm\" — to utworzy nowy alarm i zabierze do ustawień, gdzie możesz kontrolować ustawienia dla nowego alarmu. Zobacz pomoc dla tej strony po więcej szczegółow.\n\nPoniżej przycisku \"Dodaj alarm\" jest lista wszystkich alarmów, które już stworzyłeś.\n\n• Aby edytować istniejący alarm, kliknij na niego.\n• Aby usunąć alarm, naciśnij i przytrzymaj go, a następnie wybierz \"Usuń alarm\".\n• Aby włączyć/wyłączyć alarm, naciśnij ikonę budzika po lewej obok tekstu alarmu.</string>
   <string name="pref_alarm_enabled" formatted="false">Włącz alarm</string>
@@ -256,15 +247,6 @@
   <string name="alarm_pref_not_used" formatted="false">Nie używane przez ten typ alarmu</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Poziom alarmu:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Dla ładowania i temperatury alarmów, należy ustawić poziom temperatury lub ładowania, który wywoła alarm.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Ustawienia powiadomień</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Tu możesz kontrolować różne aspekty powiadomień alarmowych, które są tworzone by powiadamiać kiedy alarm zostanie wyzwolony.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Dzwonek</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Tutaj można kontrolować, który dźwięk odtwarzany będzie w momencie alarmu. Wybierz \"Wyciszony\", jeśli nie chcesz odtwarzać dźwięku.</string>
-  <string name="silent" formatted="false">Wyciszony</string>
-  <string name="pref_alarm_vibrate" formatted="false">Wibracja</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">Jeśli wszystko pójdzie dobrze, ustawienie tej opcji sprawi, że urządzenie będzie wibrować podczas alarmu, chyba że urządzenie jest w trybie wyciszonym, chyba że urządzenie skonfigurować w wibracje nawet w trybie cichym. Innymi słowy, należy zrobić to, czego się spodziewać. Proszę napisz do mnie, jeśli coś pójdzie źle.</string>
-  <string name="pref_alarm_lights" formatted="false">Flash</string>
-  <string name="pref_alarm_lights_help" formatted="false">Określa, czy powiadomienie powinno włączyć światła urządzenia domyślnie. Na ogół miga dioda LED lub trackball. Może być taka sytuacja, że system Android poprosi o zezwolenie na użycie światła urządzenia, ale nie zawsze tak musi być.</string>
   <string name="boot_pref_always" formatted="false">Zawsze</string>
   <string name="boot_pref_never" formatted="false">Nigdy</string>
   <string name="boot_pref_if_running" formatted="false">Jeżeli uruchomiona przy wyłączaniu</string>
@@ -281,14 +263,9 @@
   <string name="age_2_weeks" formatted="false">2 tygodnie</string>
   <string name="age_3_weeks" formatted="false">3 tygodnie</string>
   <string name="age_4_weeks" formatted="false">4 tygodnie</string>
-  <string name="notification_priority_max" formatted="false">Maksymalny</string>
-  <string name="notification_priority_high" formatted="false">Wysoki</string>
-  <string name="notification_priority_default" formatted="false">Domyślny</string>
-  <string name="notification_priority_low" formatted="false">Niski</string>
-  <string name="notification_priority_min" formatted="false">Minimalny</string>
   <string name="icon_set_classic" formatted="false">Klasyczny</string>
-  <string name="icon_set_plain" formatted="false">Zwykły numer</string>
-  <string name="icon_set_smaller" formatted="false">Mniejszy numer</string>
+  <string name="icon_set_plain" formatted="false">Zwykła liczba</string>
+  <string name="icon_set_smaller" formatted="false">Mniejsza liczba</string>
   <plurals name="n_log_items">
     <item quantity="one">%d Log</item>
     <item quantity="other">%d Logów</item>

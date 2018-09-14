@@ -35,37 +35,4 @@
         android:title="@string/pref_alarm_threshold"
     />
   </PreferenceCategory>
-
-  <PreferenceCategory android:title="@string/pref_cat_notification_settings">
-    <com.darshancomputing.BatteryIndicatorPro.AlarmRingtonePreference
-        android:key="ringtone"
-        android:persistent="false"
-        android:ringtoneType="notification|alarm"
-        android:showDefault="true"
-        android:showSilent="true"
-        android:title="@string/pref_alarm_ringtone"
-    />
-
-    <!--ListPreference
-        android:key="audio_stream"
-        android:persistent="false"
-        android:entries="@array/alarm_audio_stream_entries"
-        android:entryValues="@array/alarm_audio_stream_values"
-        android:dialogTitle="@string/pref_alarm_audio_stream_summary"
-        android:defaultValue="@string/default_alarm_audio_stream"
-        android:title="@string/pref_alarm_audio_stream"
-    /-->
-
-    <CheckBoxPreference
-        android:key="vibrate"
-        android:persistent="false"
-        android:title="@string/pref_alarm_vibrate"
-    />
-
-    <CheckBoxPreference
-        android:key="lights"
-        android:persistent="false"
-        android:title="@string/pref_alarm_lights"
-    />
-  </PreferenceCategory>
 </PreferenceScreen>

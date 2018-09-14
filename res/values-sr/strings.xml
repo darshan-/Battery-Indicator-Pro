@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_full_name" formatted="false">BatteryBot Pro</string>
+  <string name="app_launcher_name" formatted="false">BatteryBot</string>
+  <string name="settings_activity_subtitle" formatted="false">Podešavanja</string>
+  <string name="help_activity_subtitle" formatted="false">Pomoć</string>
+  <string name="log_view_activity_subtitle" formatted="false">Evidencija radnji</string>
+  <string name="app_full_name_free" formatted="false">BatteryBot</string>
+  <string name="battery_use_b" formatted="false">Vidi potrošnju baterije</string>
+  <string name="upgrade_donate_b" formatted="false">Plaćena verzija/Donirajte...</string>
+  <string name="circle_widget" formatted="false">BatteryBot krug</string>
+  <string name="full_widget" formatted="false">Veliki vidžet</string>
+  <string name="confirm_disable_hint" formatted="false">Savet: U podešavanjima možete isključiti prozor za potvrdu...</string>
+  <string name="yes" formatted="false">Da</string>
+  <string name="cancel" formatted="false">Otkaži</string>
+  <string name="confirm_close" formatted="false">Da li ste sigurni da hoćete da isključite?</string>
+  <string name="confirm_close_hint" formatted="false">Ukoliko odlučite da nastavite BatteryBot će u potpunosti biti isključen i više ga nećete videti u statusnoj traci. Nijedan vidžet neće raditi.\n\nUkoliko samo želite da izađete iz glavnog prozora aplikacije i nastavite sa korišćenjem aplikacije, pritisnite \"Otkaži\" i dugme za vraćanje unazad na vašem telefonu.\n\nUkoliko želite da sklonite obaveštenje, a da vidžeti ostanu aktivni, pritisnite \"Otkaži\" i zatim pokrenite \"Čarobnjak za obaveštenja\".</string>
+  <string name="notifications_disabled" formatted="false">Obaveštenja su onemogućena!</string>
+  <string name="notifications_disabled_message" formatted="false">Blokirali ste sva obaveštenja od BatteryBot-a. BatteryBot neće moći da prikaže nijedno obaveštenje: glavno obaveštenje i alarmi ukoliko ste ih podesili će takođe biti blokirani.\n\nPošto možete glavno obaveštenje možete uključiti i isključiti, kao i privremeno onemogućiti alarme, toplo preporučujemo da odblokirate BatteryBot obaveštenja. Ukoliko sva obaveštenja budu blokirana izgledaće kao da je BatteryBot prestao da radi.\n\nPritiskom na dugme OK pristupićete sistemskim podešavanjima gde možete ponovo uključiti obaveštenja za BatteryBot.</string>
+  <string name="confirm_clear_logs" formatted="false">Da li ste sigurni da želite da izbrišete celu evidenciju radnji?</string>
+  <string name="configure_log_filter" formatted="false">Odaberite unose u evidenciju koje želite da budu prikazani?</string>
+  <string name="okay" formatted="false">U redu</string>
+  <string name="none" formatted="false">Ništa</string>
+  <string name="tab_current_info" formatted="false">Trenutne informacije</string>
+  <string name="tab_history" formatted="false">Istorija</string>
+  <string name="notification_until_charged" formatted="false">" do pune baterije"</string>
+  <string name="notification_until_drained" formatted="false">" preostalo"</string>
+  <string name="activity_until_charged" formatted="false">do pune baterije</string>
+  <string name="activity_until_drained" formatted="false">dok se baterija ne isprazni</string>
+  <string name="menu_settings" formatted="false">Podešavanja</string>
+  <string name="menu_close" formatted="false">Zatvori</string>
+  <string name="menu_help" formatted="false">Pomoć</string>
+  <string name="menu_rate_and_review" formatted="false">Ocena i komentari</string>
+  <string name="menu_clear" formatted="false">Izbriši</string>
+  <string name="menu_reverse" formatted="false">Obrni redosled</string>
+  <string name="menu_log_filter" formatted="false">Filter</string>
+  <string name="menu_export" formatted="false">Izvezi CSV</string>
+  <string name="menu_delete_alarm" formatted="false">Izbriši alarm</string>
+  <string name="menu_get_plugins" formatted="false">Nabavi dokatke</string>
+  <string name="percent_symbol" formatted="false">%</string>
+  <string name="degree_symbol" formatted="false">°</string>
+  <string name="fahrenheit" formatted="false">Farenhajt/a</string>
+  <string name="fahrenheit_symbol" formatted="false">F</string>
+  <string name="celsius" formatted="false">Celzijus/a</string>
+  <string name="celsius_symbol" formatted="false">C</string>
+  <string name="volt_symbol" formatted="false">V</string>
+  <string name="fully_charged_in" formatted="false">Potpuno napunjeno za</string>
+  <string name="light_usage" formatted="false">Preostalo vreme sa umerenim korišćenjem:</string>
+  <string name="normal_usage" formatted="false">Preostalo vreme sa prosečnim korišćenjem:</string>
+  <string name="heavy_usage" formatted="false">Preostalo vreme sa obimnim korišćenjem:</string>
+  <string name="constant_usage" formatted="false">Preostalo vreme sa korišćenjem u kontinuitetu:</string>
+  <string name="press_back_to_leave" formatted="false">Za izlazak iz aplikacijeritisnite dugme za vraćanje unazad.</string>
+  <string name="press_menu_for_more" formatted="false">Za više opcija pritisnite MENU dugme.</string>
+  <string name="inaccessible_storage" formatted="false">Aplikacija ne može da pistupi SD kartici.</string>
+  <string name="inaccessible_w_reason" formatted="false">Aplikacija ne može da pistupi SD kartici.</string>
+  <string name="read_only_storage" formatted="false">Podaci na SD kartici se mogu samo pregledati.</string>
+  <string name="no_storage_permission" formatted="false">Nije dobijena dozvola za skladištenje.</string>
+  <string name="file_written" formatted="false">Dokument je uspešno upisan u rut SD kartice.</string>
+  <string name="date" formatted="false">datum</string>
+  <string name="time" formatted="false">vreme</string>
+  <string name="status" formatted="false">status</string>
+  <string name="charge" formatted="false">procenat_baterije</string>
+  <string name="temperature" formatted="false">stepeni_celzijusa</string>
+  <string name="temperature_f" formatted="false">stepeni_farenhajta</string>
+  <string name="voltage" formatted="false">volti</string>
+  <string name="current" formatted="false">miliampera</string>
+  <string name="status_unplugged" formatted="false">Isključen sa punjenja</string>
+  <string name="status_unknown" formatted="false">Nepoznato</string>
+  <string name="status_charging" formatted="false">Punjenje u toku</string>
+  <string name="status_discharging" formatted="false">Prazni se</string>
+  <string name="status_not_charging" formatted="false">Ne puni se</string>
+  <string name="status_fully_charged" formatted="false">100% puno</string>
+  <string name="status_plugged_in" formatted="false">Stavljen na punjenje</string>
+  <string name="status_boot_completed" formatted="false">Pokretanje završeno</string>
+  <string name="health_unknown" formatted="false">Nepoznato</string>
+  <string name="health_good" formatted="false">Dobro stanje</string>
+  <string name="health_overheat" formatted="false">Pregrevanje</string>
+  <string name="health_dead" formatted="false">Propala</string>
+  <string name="health_overvoltage" formatted="false">Prenapon</string>
+  <string name="health_failure" formatted="false">Greška</string>
+  <string name="health_cold" formatted="false">Hladno</string>
+  <string name="plugged_unplugged" formatted="false">Isključeno s punjenja</string>
+  <string name="plugged_ac" formatted="false">(AC)</string>
+  <string name="plugged_usb" formatted="false">(USB)</string>
+  <string name="plugged_unknown" formatted="false">(?)</string>
+  <string name="plugged_wireless" formatted="false">(Bežično)</string>
+  <string name="alarm_type_fully_charged" formatted="false">100% puno</string>
+  <string name="alarm_type_charge_drops" formatted="false">Procenat padne ispod</string>
+  <string name="alarm_type_charge_rises" formatted="false">Procenat pređe iznad</string>
+  <string name="alarm_type_temperature_rises" formatted="false">Temperatura pređe iznad</string>
+  <string name="alarm_type_health_failure" formatted="false">Stanje baterije narušeno</string>
+  <string name="alarm_type_entry_fully_charged" formatted="false">Kad se 100% nanpuni</string>
+  <string name="alarm_type_entry_charge_drops" formatted="false">Procenat baterije padne ispod...</string>
+  <string name="alarm_type_entry_charge_rises" formatted="false">Procenat baterije pređe iznad...</string>
+  <string name="alarm_type_entry_temperature_rises" formatted="false">Temperatura pređe iznad</string>
+  <string name="alarm_type_entry_health_failure" formatted="false">Baterija zakaže</string>
+  <string name="alarm_fully_charged" formatted="false">Baterija je sada 100% napunjena</string>
+  <string name="alarm_charge_drops" formatted="false">"Procenat baterije ispod "</string>
+  <string name="alarm_charge_rises" formatted="false">"Procenat baterije iznad "</string>
+  <string name="alarm_temp_rises" formatted="false">"Temperatura baterije iznad "</string>
+  <string name="alarm_health_failure" formatted="false">"Stanje baterije : "</string>
+  <string name="alarm_text" formatted="false">Obeležite alarme koje želite da izmenite.</string>
+  <string name="logs_empty" formatted="false">Evidencija je prazna</string>
+  <string name="after_n_hours_unplugged" formatted="false">Nakon %1.1f sat/i/a na bateriji</string>
+  <string name="after_n_hours_plugged_in" formatted="false">Nakon %1.1f sat/i/a na punjenju</string>
+  <string name="discharging_from" formatted="false">Prazni se od</string>
+  <string name="charging_from" formatted="false">Puni se od</string>
+  <string name="fully_charged" formatted="false">100% puno</string>
+  <string name="since" formatted="false">Od</string>
+  <string name="dialog_color_picker" formatted="false">Izaberi boju</string>
+  <string name="press_color_to_apply" formatted="false">Primeni staru ili novu boju:</string>
+  <string name="currently_using" formatted="false">Trenutno koristi</string>
+  <string name="currently_set_to" formatted="false">"Trenutno podešeno na : "</string>
+  <string name="currently_disabled" formatted="false">Trenutno deaktivirano</string>
+  <string name="help_cat_version" formatted="false">Verzija</string>
+  <string name="help_cat_changelog" formatted="false">Evidencija izmena</string>
+  <string name="help_changelog" formatted="false">Molimo pogledajte <a href="https://www.batterybot.info/evidencijaizmena">online Changelog</a>.</string>
+  <string name="help_cat_faq" formatted="false">Često postavljana pitanja</string>
+  <string name="help_faq" formatted="false">Molimo pogledajte <a href="https://www.batterybot.info/faq">online FAQ</a>.</string>
+  <string name="help_cat_google_plus" formatted="false">Gugl Plus stranica</string>
+  <string name="help_google_plus" formatted="false">Pratite nas na <a href="https://www.google.com/+BatterybotInfoAndroid">Google Plus Page</a> za saopštenja i ankete.</string>
+  <string name="help_cat_website" formatted="false">Vebsajt</string>
+  <string name="help_website" formatted="false">Više informacija možete naći na <a href="https://www.batterybot.info/">BatteryBot website</a>.</string>
+  <string name="help_cat_open_source" formatted="false">Otvorenog koda</string>
+  <string name="help_open_source" formatted="false">Ovaj projekat je otvorenog koda, što znači da možete <a href="https://www.batterybot.info/sourcecode">download the source code</a>.\n\nViše of Darshan Computing poslovnoj filozofiji možete pročitati na <a href="https://www.darshancomputing.com">Darshan Computing, LLC website</a>. (Summary: Always user-first, ad-free, and useful free version. Open source by default.)</string>
+  <string name="help_cat_donate" formatted="false">Donirajte</string>
+  <string name="help_donate" formatted="false">Molimo vas da razmislite od doniranju tako što ćete se opredeliti za plaćenu verziju na <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro Version</a>.</string>
+  <string name="help_cat_privacy" formatted="false">Privatnost</string>
+  <string name="help_privacy" formatted="false">BatteryBot ne prikuplja, čuva ili prenosi vaše lične podatke.</string>
+  <string name="help_cat_no_warranty" formatted="false">Bez garancije</string>
+  <string name="help_cat_acknowledgments" formatted="false">Želimo da se zahvalimo</string>
+  <string name="help_cat_translations" formatted="false">Prevodioci</string>
+  <string name="help_translations" formatted="false">Treba mi pomoć pri prevođenju ove aplikacije na nove jezike i održavanju trenutnih prevoda. Ukoliko želite da pomognete, molim vas da mi pošaljete <a href="mailto:support%2Btranslations@batterybot.info">email</a>. Kao zahvalnicu za vašu pomoć, molim vas da mi navedete kako želite da vaše ime bude zavedeno, ukoliko je to ono što želite.</string>
+  <string name="help_subcat_translators" formatted="false">Prvodioci</string>
+  <string name="help_cat_contact" formatted="false">Kontakt</string>
+  <string name="help_contact" formatted="false">Ukoliko imate pitanje, neki problem ili komentar, molim vas pišite mi na <a href="mailto:support@batterybot.info">email me</a>.</string>
+  <string name="pref_hint" formatted="false">Pomoć: Pritisnite MENU za pomoć.</string>
+  <string name="settings_overview" formatted="false">Pregled</string>
+  <string name="notification_settings" formatted="false">Glavno obaveštenje</string>
+  <string name="notification_settings_summary" formatted="false">Podesite glavno obaveštenje</string>
+  <string name="notification_settings_help" formatted="false">Možete da podesite koji sadržaj želite da bude prikazan u delu za notifikacije i da menjate njegog izgled.</string>
+  <string name="status_bar_icon_settings" formatted="false">Ikonica statusne trake</string>
+  <string name="status_bar_icon_settings_summary" formatted="false">Promenite podešavanja ikonice</string>
+  <string name="status_bar_icon_settings_help" formatted="false">Možete da odaberete koju ikonicu ćete koristiti, kao i da promenite podešavanja za ikonicu (npr. boju).</string>
+  <string name="current_hack_settings" formatted="false">Trenutni (mA) hack</string>
+  <string name="current_hack_settings_summary" formatted="false">Napredna podešavanja za omogućavanje podataka o mA</string>
+  <string name="alarm_settings_subtitle" formatted="false">Podešavanja alarma</string>
+  <string name="alarm_settings" formatted="false">Alarmi</string>
+  <string name="alarm_settings_summary" formatted="false">Podešavanja obaveštenja u slučaju prazne/pune baterije</string>
+  <string name="alarm_settings_help" formatted="false">Možete da podesite da vas BatteryBot obavesti kada procenat baterije dosegne određeni nivo (npr. baterija je u potpunosti napunjena, procenat baterije padne ispod 20%).</string>
+  <string name="other_settings" formatted="false">Druga podešavanja</string>
+  <string name="other_settings_help" formatted="false">Sva druga podešavanja su na ovoj stranici, uključujući evidenciju stanja, režim zaključanog ekrana, jedinicu temperature, samopokretanje i drugo.</string>
+  <string name="pref_cat_more_settings_in_pro" formatted="false">Više podešavanja je dostupno u plaćenoj vezriji</string>
+  <string name="pref_please_upgrade" formatted="false">Plaćena verzija ima dosta više podešavanja i opcija, uključujući trenutni podatak od mA, ikonice u boji, alarme, evidenciju stanja baterije i drugo.</string>
+  <string name="add_alarm" formatted="false">Dodaj alarm</string>
+  <string name="pref_cat_notification_layout" formatted="false">Izgled</string>
+  <string name="pref_use_system_notification_layout" formatted="false">Koristi sistemski podešen izgled</string>
+  <string name="pref_use_system_notification_layout_summary" formatted="false">Da li želite da koristite sistemski podešen izgled ili prilagođeni BatteryBot izgled?</string>
+  <string name="pref_cat_notification_content" formatted="false">Sadržaj</string>
+  <string name="charge_percentage" formatted="false">Procenat baterije</string>
+  <string name="percentage_first" formatted="false">Procenat, baterija</string>
+  <string name="battery_first" formatted="false">Baterija, procenat</string>
+  <string name="pref_top_line_content" formatted="false">Sadržaj gornje trake</string>
+  <string name="pref_bottom_line_content" formatted="false">Sadržaj donje trake</string>
+  <string name="pref_bottom_line_content_help" formatted="false">Na raspolaganju su vam iste opcije i za donju i za gornju traku</string>
+  <string name="time_remaining" formatted="false">Preostalo vreme</string>
+  <string name="normal" formatted="false">Normalno</string>
+  <string name="pref_cat_notification_appearance" formatted="false">Izgled</string>
+  <string name="pref_notification_percentage_text_color" formatted="false">Boja teksta za procenat</string>
+  <string name="pref_custom_percentage_text_color" formatted="false">Personalizovana broja teksta za procenat</string>
+  <string name="pref_notification_top_line_color" formatted="false">Boja teksta gornje trake</string>
+  <string name="pref_custom_top_line_color" formatted="false">Personalizovana boja gornje trake</string>
+  <string name="pref_notification_bottom_line_color" formatted="false">Boja teksta donje trake</string>
+  <string name="pref_custom_bottom_line_color" formatted="false">Personalizovana boja donje trake</string>
+  <string name="pref_show_box_around_icon_area" formatted="false">Prikaži okvir oko ikonice</string>
+  <string name="pref_show_box_around_icon_area_summary" formatted="false">Prikaži u boji okvir oko ikonice?</string>
+  <string name="system_default" formatted="false">Sistemska podešavanja</string>
+  <string name="black" formatted="false">Crno</string>
+  <string name="white" formatted="false">Belo</string>
+  <string name="ics_blue" formatted="false">Plavi android ICS</string>
+  <string name="custom" formatted="false">Personalizovano...</string>
+  <string name="pref_cat_icon_set" formatted="false">Set ikonica</string>
+  <string name="pref_icon_set" formatted="false">Set ikonica</string>
+  <string name="pref_cat_current_hack_main" formatted="false">Glavna komanda</string>
+  <string name="pref_cat_current_hack_unsupported" formatted="false">Trenutni (mA) hak nije podržan</string>
+  <string name="pref_current_hack_unsupported" formatted="false">Izvinite, trenutni Trenutni (mA) hak nije podržan na ovom uređaju.</string>
+  <string name="current_hack_maybe_supported" formatted="false">Hak MOŽDA bude radio na ovom uređaju.</string>
+  <string name="pref_enable_current_hack" formatted="false">Omogući hak</string>
+  <string name="pref_enable_current_hack_summary" formatted="false">Pokušaj da omogućiš trenutni (mA) hak?</string>
+  <string name="pref_enable_current_hack_help" formatted="false">Kada je ovo podešavanje omogućeno, druga podešavanja u vezi haka neće biti u funkciji.</string>
+  <string name="pref_current_hack_prefer_fs" formatted="false">Biram stari hak metod</string>
+  <string name="pref_current_hack_prefer_fs_summary" formatted="false">Biram stariji hak zasnovan na sistemu datoteka?</string>
+  <string name="pref_cat_current_hack_notification" formatted="false">Obaveštenje</string>
+  <string name="pref_display_current_in_vital_stats" formatted="false">Prikaži u statistici</string>
+  <string name="pref_display_current_in_vital_stats_summary" formatted="false">Prikaži trenutno stanje (mA) u glavnim obaveštenjima statistike?</string>
+  <string name="pref_cat_current_hack_main_window" formatted="false">Glavni prozor</string>
+  <string name="pref_display_current_in_main_window" formatted="false">Prikaži u glavnom prozoru</string>
+  <string name="pref_display_current_in_main_window_summary" formatted="false">Prikaži trenutno stanje (mA) u glavnom prozoru?</string>
+  <string name="pref_prefer_current_avg_in_vital_stats" formatted="false">Biram prosek u statistici</string>
+  <string name="pref_prefer_current_avg_in_vital_stats_summary" formatted="false">Pokušaj da koristiš prosek u glavnim obaveštenjima statistike?</string>
+  <string name="pref_prefer_current_avg_in_main_window" formatted="false">Biram prosek u glavnom prozoru</string>
+  <string name="pref_prefer_current_avg_in_main_window_summary" formatted="false">Pokušaj da koristiš šrosek u glavnom prozoru?</string>
+  <string name="pref_auto_refresh_current_in_main_window" formatted="false">Automatski osveši mA u glavnom prozoru</string>
+  <string name="pref_auto_refresh_current_in_main_window_summary" formatted="false">Automatski osveži mA na svake dve sekunde?</string>
+  <string name="pref_cat_charging_indicator" formatted="false">Indikator punjenja</string>
+  <string name="pref_indicate_charging" formatted="false">Označi punjenje</string>
+  <string name="pref_indicate_charging_summary" formatted="false">Izmeni ikonicu da označi kada je na punjenju?</string>
+  <string name="pref_cat_logging" formatted="false">Evidencija</string>
+  <string name="pref_enable_logging" formatted="false">Omogući evidenciju</string>
+  <string name="pref_enable_logging_summary" formatted="false">Evidentiraj promene u stanju baterije?</string>
+  <string name="pref_enable_logging_help" formatted="false">Ukoliko je omogućeno, BatteryBot će evidentirati promene u stanju baterije.</string>
+  <string name="pref_max_log_age" formatted="false">Maksimalno vreme evidentiranja unosa</string>
+  <string name="pref_max_log_age_summary" formatted="false">Obriši evidenciju unosa stariju od:</string>
+  <string name="pref_max_log_age_help" formatted="false">Ukoliko je evidentiranje unosa omogućeno, kad god stavite uređaj na punjenje, starije evidencije unosa će biti obrisane.</string>
+  <string name="pref_notify_status_duration" formatted="false">Prikaži trajanje statusa</string>
+  <string name="pref_cat_temperature_unit" formatted="false">Jedinica temperature</string>
+  <string name="pref_convert_to_fahrenheit" formatted="false">Pretvori u farenhajte</string>
+  <string name="pref_cat_autostart" formatted="false">Pokreni automatski</string>
+  <string name="pref_autostart_at_boot" formatted="false">Pokreni automatski pri paljenju</string>
+  <string name="pref_autostart_at_boot_summary" formatted="false">Pokreni BatteryBot kada se uređaj upali:</string>
+  <string name="predictor_sensitive" formatted="false">Osetljivo</string>
+  <string name="predictor_conservative" formatted="false">Štedljivo</string>
+  <string name="predictor_since_status_change" formatted="false">Otkad se status promenio</string>
+  <string name="predictor_long_term_ave" formatted="false">Dugoročni prosek</string>
+  <string name="pref_cat_predictor" formatted="false">Procena preostalog vremena</string>
+  <string name="pref_prediction_type" formatted="false">Vrsta procene</string>
+  <string name="lang_system_selected" formatted="false">Sistemski odabrano</string>
+  <string name="pref_cat_language" formatted="false">Jezik</string>
+  <string name="pref_language_override" formatted="false">Preinači jezik</string>
+  <string name="pref_language_override_summary" formatted="false">Odaberi jezik:</string>
+  <string name="pref_cat_plugin_settings" formatted="false">Podešavanje dodataka</string>
+  <string name="pref_plugin_settings" formatted="false">Podešavanje dodataka</string>
+  <string name="pref_plugin_settings_summary" formatted="false">Izmeni podešavanja za ovaj dodatak</string>
+  <string name="pref_classic_color_mode" formatted="false">Nametni standardnu temu</string>
+  <string name="pref_classic_color_mode_summary" formatted="false">Ovo obično ne pomaže; molimo vas pročitajte uputstva</string>
+  <string name="pref_cat_color" formatted="false">Boja ikonice</string>
+  <string name="pref_color_preview" formatted="false">Primeni boju nakratko</string>
+  <string name="pref_red" formatted="false">Koristi crvenu ikonicu</string>
+  <string name="pref_red_summary" formatted="false">Koristi ikonicu kada je procenat nizak?</string>
+  <string name="pref_red_help" formatted="false">Primeniti ili ne primeniti crvenu ikonicu kada punjenje padne ispod određene granice.</string>
+  <string name="pref_red_thresh" formatted="false">Crvena granica</string>
+  <string name="pref_red_thresh_summary" formatted="false">Primeniti crvenu ikonicu kada procenat padnje ispod;</string>
+  <string name="pref_red_thresh_summary10" formatted="false">Primeniti crvenu ikonicu kada procenat dođe do, ili padne ispod određene granice:</string>
+  <string name="pref_amber" formatted="false">Koristi narandžastu ikonicu</string>
+  <string name="pref_amber_summary" formatted="false">Koristi narandžastu ikonicu kada je procenat baterije na 50%?</string>
+  <string name="pref_amber_help" formatted="false">Primeniti ili ne primeniti narandžastu ikonicu kada punjenje padne ispod određene granice.</string>
+  <string name="pref_amber_thresh" formatted="false">Narandžasta granica</string>
+  <string name="pref_amber_thresh_summary" formatted="false">Primeniti narandžastu ikonicu kada procenat padnje ispod;</string>
+  <string name="pref_amber_thresh_summary10" formatted="false">Primeniti crvenu ikonicu kada procenat dođe do, ili padne ispod određene granice:</string>
+  <string name="pref_green" formatted="false">Koristi zelenu ikonicu</string>
+  <string name="pref_green_summary" formatted="false">Koristi zelenu ikonu kada je procenat baterije visok?</string>
+  <string name="pref_green_help" formatted="false">Primeniti ili ne primeniti zelenu ikonicu kada punjenje iznad određene granice.</string>
+  <string name="pref_green_thresh" formatted="false">Zelena granica</string>
+  <string name="pref_green_thresh_summary" formatted="false">Zelena ikonica iznad kog procenta:</string>
+  <string name="pref_cat_device_specific" formatted="false">Podešavanja vezana za ovaj uređaj</string>
+  <string name="alarms_overview" formatted="false">Pregled alarma</string>
+  <string name="pref_alarm_enabled" formatted="false">Omogući alarm</string>
+  <string name="pref_cat_alarm_conditions" formatted="false">Uslovi za aktivaciju alarma</string>
+  <string name="pref_cat_alarm_conditions_help" formatted="false">Ovde možete da kontrolišete koji uslovi će aktivirati alarm.</string>
+  <string name="pref_alarm_type" formatted="false">Vrsta alarma</string>
+  <string name="pref_alarm_type_summary" formatted="false">Pokreni alarm kada je baterija:</string>
+  <string name="pref_alarm_threshold" formatted="false">Granica</string>
+  <string name="alarm_pref_not_used" formatted="false">Ne koristi se za ovaj tip alarma</string>
+  <string name="pref_alarm_threshold_summary" formatted="false">Granice alarma:</string>
+  <string name="pref_alarm_threshold_help" formatted="false">Kad su u pitanju alarm za procenat baterije i alarm za temperaturu, potrebno je podesiti nivo temperature ili procenta baterije koji će pokrenuti alarm.</string>
+  <string name="boot_pref_always" formatted="false">Uvek</string>
+  <string name="boot_pref_never" formatted="false">Nikad</string>
+  <string name="boot_pref_if_running" formatted="false">Ukoliko radi u trenutku gašenja</string>
+  <string name="status_dur_always" formatted="false">Uvek</string>
+  <string name="status_dur_after_1h" formatted="false">Nakon sat vremena</string>
+  <string name="status_dur_after_2h" formatted="false">Nakon 2 sata</string>
+  <string name="status_dur_after_3h" formatted="false">Nakon 3 sata</string>
+  <string name="status_dur_after_6h" formatted="false">Nakon 6 sati</string>
+  <string name="status_dur_after_12h" formatted="false">Nakon 12 sati</string>
+  <string name="age_1_day" formatted="false">1 dan</string>
+  <string name="age_2_days" formatted="false">2 dana</string>
+  <string name="age_4_days" formatted="false">4 dana</string>
+  <string name="age_1_week" formatted="false">Nedelju dana</string>
+  <string name="age_2_weeks" formatted="false">Dve nedelje</string>
+  <string name="age_3_weeks" formatted="false">Tri nedelje</string>
+  <string name="age_4_weeks" formatted="false">Mesec dana</string>
+  <string name="icon_set_classic" formatted="false">Klasično</string>
+  <string name="icon_set_plain" formatted="false">Običan broj</string>
+  <string name="icon_set_smaller" formatted="false">Manji broj</string>
+  <plurals name="n_log_items">
+    <item quantity="zero">evidencionih unosa</item>
+    <item quantity="one">%d evidencioni unos</item>
+    <item quantity="two">%d evidenciona unosa</item>
+    <item quantity="few">%d evidencionih unosa</item>
+    <item quantity="many">%d evidencionih unosa</item>
+    <item quantity="other">%d evidencionih unosa</item>
+  </plurals>
+  <plurals name="n_hours_long">
+    <item quantity="zero">n_sat</item>
+    <item quantity="one">"%d sat, "</item>
+    <item quantity="two">"%d sata, "</item>
+    <item quantity="few">"%d sata/i, "</item>
+    <item quantity="many">"%d sata/i, "</item>
+    <item quantity="other">"%d sati, "</item>
+  </plurals>
+  <plurals name="n_minutes_long">
+    <item quantity="zero">"%d sati, "</item>
+    <item quantity="one">%d minut</item>
+    <item quantity="two">%d minuta</item>
+    <item quantity="few">%d minuta</item>
+    <item quantity="many">%d minuta</item>
+    <item quantity="other">%d minuta</item>
+  </plurals>
+  <plurals name="n_hours_medium">
+    <item quantity="zero">n_sata/i</item>
+    <item quantity="one">"%d h, "</item>
+    <item quantity="two">"%d h, "</item>
+    <item quantity="few">"%d h, "</item>
+    <item quantity="many">"%d h, "</item>
+    <item quantity="other">"%d h, "</item>
+  </plurals>
+  <plurals name="n_minutes_medium">
+    <item quantity="zero">"%d min, "</item>
+    <item quantity="one">%d min.</item>
+    <item quantity="two">%d min.</item>
+    <item quantity="few">%d min.</item>
+    <item quantity="many">%d min.</item>
+    <item quantity="other">%d min.</item>
+  </plurals>
+  <plurals name="n_hours_short">
+    <item quantity="zero">%d h</item>
+    <item quantity="one">%d h</item>
+    <item quantity="two">%d h</item>
+    <item quantity="few">%d h</item>
+    <item quantity="many">%d h</item>
+    <item quantity="other">"%dh "</item>
+  </plurals>
+  <plurals name="n_minutes_short">
+    <item quantity="zero">"%dmin "</item>
+    <item quantity="one">"%dmin "</item>
+    <item quantity="two">"%dmin "</item>
+    <item quantity="few">"%dmin "</item>
+    <item quantity="many">"%dmin "</item>
+    <item quantity="other">%dm</item>
+  </plurals>
+  <plurals name="n_days">
+    <item quantity="zero">n_dana</item>
+    <item quantity="one">"%d dan, "</item>
+    <item quantity="two">"%d dana, "</item>
+    <item quantity="few">"%d dana, "</item>
+    <item quantity="many">"%d dana, "</item>
+    <item quantity="other">"%d dana, "</item>
+  </plurals>
+  <plurals name="n_hours">
+    <item quantity="zero">"%d dana, "</item>
+    <item quantity="one">%d sat</item>
+    <item quantity="two">%d sata/i</item>
+    <item quantity="few">%d sata/i</item>
+    <item quantity="many">%d sata/i</item>
+    <item quantity="other">%d sata/i</item>
+  </plurals>
+  <plurals name="for_n_hours">
+    <item quantity="zero">Za_n_sata/i</item>
+    <item quantity="one">Za %d sat</item>
+    <item quantity="two">Za %d sata</item>
+    <item quantity="few">Za %d sata/i</item>
+    <item quantity="many">Za %d sata/i</item>
+    <item quantity="other">Za %d sata/i</item>
+  </plurals>
+</resources>

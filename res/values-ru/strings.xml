@@ -15,9 +15,6 @@
   <string name="confirm_close_hint" formatted="false">BatteryBot будет полностью закрыт и Вы более не увидите индикатор в строке состояния. Виджеты рабочего стола работать не будут.\n\nЕсли Вы хотите только выйти из главного окна и оставить индикатор работающим, нажмите \"Отмена\" и после этого нажмите кнопку \"Назад\" вашего устройства.\n\nЕсли вы хотите скрыть уведомление, но оставить виджеты работающими, нажмите \"Отмена\" и затем \"Скрыть уведомление\".</string>
   <string name="confirm_clear_logs" formatted="false">Действительно очистить журнал?</string>
   <string name="configure_log_filter" formatted="false">Какие элементы журнала показывать?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Действительно включить режим 10%?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Действительно выключить режим 10%?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Предупреждение: Изменение этой настройки (её включение и выключение) сбросит Ваши цветовые настройки программы.\n\nЕсли Вы являетесь владельцем Motorola Droid, Droid X, Droid 2, Defy или Samsung Moment, Вы обязательно должны включить данную настройку сразу же после установки этого приложения. Для остальных устройств данную настройку следует отключить.</string>
   <string name="okay" formatted="false">Да</string>
   <string name="none" formatted="false">Нет</string>
   <string name="tab_current_info" formatted="false">Текущая информация</string>
@@ -191,10 +188,6 @@
   <string name="white" formatted="false">Белый</string>
   <string name="ics_blue" formatted="false">Android ICS синий</string>
   <string name="custom" formatted="false">Настраиваемый...</string>
-  <string name="pref_cat_notification_priority" formatted="false">Приоритет уведомления</string>
-  <string name="pref_cat_notification_priority_help" formatted="false">Начиная с Android версии Jelly Bean и выше (Android 4.1 и выше), для уведомлений возможна установка приоритета. Результат изменения приоритета не гарантируется, но в целом:\n\n• Установка приоритета на \"Минимум\" в большинстве случаев должна приводить к удалению значка с панели уведомлений, но по-прежнему показывать уведомление на опускающейся шторке.\n\n• Установка приоритета в \"Низкий\" должна допускать появление других уведомлений, таких как уведомления о поступившей электронной почте, над уведомлением BatteryBot. Это прекрасно в таких случаях, как электронная почта, где уведомления являются растяжимыми (они автоматически растягиваются, если являются самыми верхними).\n\nПриоритеты \"По умолчанию\" и выше обычно делают уведомление BatteryBot самым верхним, но я могу представить ситуации, в которых более высокие приоритеты могут это изменить.\n\nИ еще раз: точное поведение может варьироваться в зависимости от устройства и не гарантируется.</string>
-  <string name="pref_main_notification_priority" formatted="false">Приоритет главного уведомления</string>
-  <string name="pref_main_notification_priority_help" formatted="false">Установите приоритет главного уведомления. Предупреждения, плагины и другие уведомления не зависят от этой настройки, но в будущем, возможно, и для них можно будет установить приоритет.</string>
   <string name="pref_cat_icon_set" formatted="false">Набор значков</string>
   <string name="pref_icon_set" formatted="false">Набор значков</string>
   <string name="pref_icon_set_help" formatted="false">Существует много вариантов системы Android, поэтому не существует набора значков, который был бы идеален для любого устройства. Пользователи версии Pro могут использовать плагины, но и в текущей версии есть три набора значков, которые позволят получить хороший результат практически для любого устройства.\n\n\"Классический\" - оригинальный набор значков с 2009 года. До сих пор является самым подходящим для старых устройств, но в более новых версиях Android (начиная с Android 3.0, Honeycomb) значки сжимаются и тускнут, что затрудняет их восприятие.\n\n\"Просто число\" - набор значков по умолчанию для всех современных устройств. Это очень большие белые цифры, которые хорошо читаются даже будучи сжатыми и тусклыми. Во время зарядки под цифрами показывается молния.\n\n\"Мелкие цифры\" - то же, что и \"Просто число\", но мельче. Дело в том, что некоторые современные устройства не масштабируют значки и очень крупные цифры в наборе \"Просто число\" выглядят на таких устройствах комично.\n\nЕсли вы установили плагины значков для BatteryBot Pro (нажмите MENU, затем \"Получить плагины\" для доступа к бесплатным плагинам или просто нажмите \"Получить плагины\" на панели действий на новых устройствах), вы можете выбрать дополнительные значки.</string>
@@ -285,9 +278,6 @@
   <string name="pref_green_thresh_summary" formatted="false">Процент заряда, не ниже которого цвет значка - зеленый:</string>
   <string name="pref_green_thresh_help" formatted="false">Указывает уровень заряда, не ниже которого значок должен быть зеленым.\n\nОпции для порога зеленого включают все значения (кратные 5) для которых доступны зеленые значки, начиная с самого высокого действующего порога, установленного для красного или янтарного. Например, если порог для янтарного установлен в 40, то минимальное доступное значение для зеленого равно 40.\n\nИзменения для режима 10% незначительны и очевидны.</string>
   <string name="pref_cat_device_specific" formatted="false">Настройки для конкретных устройств</string>
-  <string name="pref_ten_percent_mode" formatted="false">10% режим</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Сначала прочтите справку!</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b>Учтите:</b> Изменение этой опции сбросит ваши настройки цветов значка!\n\nЭта настройка упрощает установки цветов значка. Это важно для устройств, которые выдают величину заряда с шагом 10%. По сообщениям пользователей, к таким устройствам относятся:\n\n• Motorola Droid (original)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nНасколько мне известно, все остальные устройства выдают показания с шагом 1%, поэтому <i>не</i> включайте ее.</string>
   <string name="alarms_overview" formatted="false">Обзор предупреждений</string>
   <string name="alarms_overview_help" formatted="false">На этой странице можно добавить новые предупреждения, быстро включить или выключить существующие предупреждения, а также удалить их.\n\nДля добавления нажмите \"Добавить предупреждение\" — будет создано новое предупреждение и открыта страница, на которой вы можете произвести настройки нового предупреждения. Подробности - в справке на соответствующей странице.\n\nНиже кнопки \"Добавить предупреждение\" имеется список уже созданных предупреждений.\n\n• Для изменения существующего предупреждения просто коснитесь его.\n• Для удаления существующего предупреждения прикоснитесь и задержите палец на нем, затем выберите \"Удалить предупреждение\". (Удалить предупреждение также можно на странице настроек предупреждения нажав MENU, затем \"Удалить предупреждение\".)\n• Для быстрого переключения предупреждения нажмите значок часов слева от названия предупреждения. (Включить или выключить предупреждение также можно на странице настроек предупреждения.)</string>
   <string name="pref_alarm_enabled" formatted="false">Включить предупреждение</string>
@@ -301,15 +291,6 @@
   <string name="alarm_pref_not_used" formatted="false">Не используется для этого типа предупреждения</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Порог срабатывания:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Для предупреждений о заряде и температуре необходимо установить температуру или уровень заряда, приводящих к возникновению предупреждения.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Настройки уведомлений</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Настройка параметров уведомлений, возникающих при наступлении определенных событий.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Мелодия</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Настройка мелодии, которая прозвучит при возникновении предупреждения. Выберите \'Беззвучно\', если вы не хотите получать звуковые уведомления.</string>
-  <string name="silent" formatted="false">Беззвучно</string>
-  <string name="pref_alarm_vibrate" formatted="false">Вибрация</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">Если все идет нормально, выбор этой опции приведет к вибрации устройства в случае возникновения предупреждения, если устройство не находится в беззвучном режиме или вы настроили устройство так, чтобы оно вибрировало даже в беззвучном режиме. Другими словами, должно происходить то, что вы ожидаете. Сообщите мне, если что-то пойдет не так.</string>
-  <string name="pref_alarm_lights" formatted="false">Световой индикатор</string>
-  <string name="pref_alarm_lights_help" formatted="false">Устанавливает, должно ли уведомление включать световой индикатор устройства по умолчанию. Обычно это приводит к мерцанию светодиода. Имейте в виду, что любое Android-устройство, которое я использовал, было немного \"глючным\" в этой части. Если будет выбрана данная настройка, уведомление обратится к Android с запросом на включение светового индикатора, но не всегда в действительности это произойдет.</string>
   <string name="boot_pref_always" formatted="false">Всегда</string>
   <string name="boot_pref_never" formatted="false">Никогда</string>
   <string name="boot_pref_if_running" formatted="false">Если было запущено при выключении</string>
@@ -326,11 +307,6 @@
   <string name="age_2_weeks" formatted="false">2 недели</string>
   <string name="age_3_weeks" formatted="false">3 недели</string>
   <string name="age_4_weeks" formatted="false">4 недели</string>
-  <string name="notification_priority_max" formatted="false">Максимальный</string>
-  <string name="notification_priority_high" formatted="false">Высокий</string>
-  <string name="notification_priority_default" formatted="false">По умолчанию</string>
-  <string name="notification_priority_low" formatted="false">Низкий</string>
-  <string name="notification_priority_min" formatted="false">Минимальный</string>
   <string name="icon_set_classic" formatted="false">Классический</string>
   <string name="icon_set_plain" formatted="false">Просто число</string>
   <string name="icon_set_smaller" formatted="false">Мелкие цифры</string>

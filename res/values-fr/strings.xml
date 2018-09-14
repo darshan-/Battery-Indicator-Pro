@@ -14,9 +14,6 @@
   <string name="confirm_close" formatted="false">Fermer l\'application ?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator va être complètement fermé et l\'indicateur de batterie va être retiré de la barre d\'état.\n\nSi vous souhaitez juste fermer la fenêtre principale et garder l\'indicateur de batterie affiché, appuyez sur Annuler et pressez simplement le bouton retour de votre téléphone.</string>
   <string name="confirm_clear_logs" formatted="false">Voulez-vous vraiment vider les journaux ?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Activer le \"Mode 10%\" ?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Désactiver le \"Mode 10%\" ?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Attention : Activer ou désactiver ce paramètre réinitialisera vos paramètres de couleurs.\n\nSi vous avez un Motorola Droid, Droid X, Droid 2, Defy, ou un Samsung Moment, vous devez activer cette option dès le début et la laisser activée. Pour tous les autres téléphones, autant que je sache, il faut la laisser désactivée.</string>
   <string name="okay" formatted="false">Ok</string>
   <string name="none" formatted="false">Aucun</string>
   <string name="menu_settings" formatted="false">Paramètres</string>
@@ -161,9 +158,6 @@
   <string name="pref_green_thresh_summary" formatted="false">Afficher l\'icône orange au dessus de quel pourcentage ?</string>
   <string name="pref_green_thresh_help" formatted="false">Spécifie le niveau de charge au dessus duquel (ou <i>auquel</i>, en mode 10%) l\'icône doit passer au vert.\n\nVous pouvez choisir n\'importe quel nombre (multiple de 5) supérieur au seuil orange et rouge pour lequel l\'icône verte sera affichée. Par exemple si l\'icône orange s\'affiche à 40%, le minimum disponible pour l\'icône verte sera 40%.\n\nEn mode 10% les choses sont un peu différentes mais restent triviales.</string>
   <string name="pref_cat_device_specific" formatted="false">Paramètres spécifiques au matériel</string>
-  <string name="pref_ten_percent_mode" formatted="false">Mode 10%</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Lisez l\'aide avant tout !</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b>Note:</b> Cocher ou décocher cette option réinitialisera vos paramètres des couleurs de l\'icône.\n\nCe paramètre permet de définir plus précisément les seuils de coloration de l\'icône pour les appareils qui délivrent leur taux de charge tout les 10%. Voici la liste (non exhaustive) de ces appareils :\n\n• Motorola Droid (original)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nAutant que je sache tous les autres téléphones délivrent leur taux de charge tous les 1%, cependant si ce n\'est pas le cas pour le votre activez cette option.</string>
   <string name="alarms_overview" formatted="false">Aperçu des alarmes</string>
   <string name="alarms_overview_help" formatted="false">Cette page vous permet d\'ajouter de nouvelles alarmes, activer ou désactiver rapidement les alarmes existantes, ou supprimer des alarmes.\n\nPour ajouter une nouvelle alarme, appuyez sur \"Ajouter une alarme\" - cela va créer une nouvelle alarme et vous amène à la page de paramètres, où vous pouvez contrôler les paramètres de la nouvelle alarme. Voir l\'aide sur cette page pour plus de détails.\n\nSous le bouton \"Ajouter une alarme\" se trouve la liste de toutes les alarmes que vous avez créé.\n\n• Pour modifier une alarme existante, il suffit de la sélectionner.\n• Pour supprimer une alarme, il faut effectuer un appui long sur une alarme, puis sélectionner \"Supprimer l\'alarme\". (Vous pouvez également supprimer une alarme à partir de la page des paramètres individuels de l\'alarme en appuyant sur MENU, puis sur \"Supprimer l\'alarme\".)\n• Pour basculer rapidement si une alarme est activée, il faut appuyer sur l\'icône horloge située à la gauche du texte de l\'alarme. (Vous pouvez également activer ou désactiver une alarme à partir de la page des paramètres individuels de l\'alarme.)</string>
   <string name="pref_alarm_enabled" formatted="false">Activer l\'alarme</string>
@@ -177,15 +171,6 @@
   <string name="alarm_pref_not_used" formatted="false">Non utilisé par ce type d\'alarme</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Seuil de l\'alarme :</string>
   <string name="pref_alarm_threshold_help" formatted="false">Pour les alarmes de charge et de température vous devez définir la température ou le niveau de charge qui déclenchera l\'alarme.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Paramètres de notification</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">C\'est ici que vous pourrez accéder à tous les paramètres de notifications qui vous permettent de savoir qu\'une alarme a été déclenchée.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Sonnerie</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Ici, vous pouvez définir quelle sonnerie sera jouée lorsque l\'alarme sera déclenchée. Sélectionnez \"Silence\" si vous souhaitez qu\'aucun son ne soit joué.</string>
-  <string name="silent" formatted="false">Silence</string>
-  <string name="pref_alarm_vibrate" formatted="false">Vibreur</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">Si tout va bien, activer cette option fera vibrer votre appareil quand l\'alarme est déclenchée, sauf si l\'appareil est en silencieux, sauf si vous avez activé les vibrations en silencieux. En d\'autres mots, ça devrait se comporter correctement en fonction de la configuration de votre appareil. Si cela ne fonctionne pas correctement, veuillez me contacter par email.</string>
-  <string name="pref_alarm_lights" formatted="false">Éclairage de la DEL</string>
-  <string name="pref_alarm_lights_help" formatted="false">Défini si la notification doit activer la diode principale de votre appareil. Il s\'agit généralement d\'éclairer la DEL ou le trackball. Notez que cette option n\'a pas toujours fonctionné sur les appareils Android que j\'ai utilisé. Si l\'option est active, l\'application demande à Android d\'allumer la diode mais cela n\'est pas toujours effectif.</string>
   <string name="boot_pref_always" formatted="false">Toujours</string>
   <string name="boot_pref_never" formatted="false">Jamais</string>
   <string name="boot_pref_if_running" formatted="false">Si fonctionne lors de l\'arrêt</string>

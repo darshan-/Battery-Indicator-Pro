@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2017 Darshan-Josiah Barber
+    Copyright (c) 2009-2018 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.media.AudioManager;
-//import android.media.MediaPlayer;
+import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -80,7 +80,8 @@ public class BatteryInfoService extends Service {
     //private static final int NOTIFICATION_ALARM_ALARM  = 6;
     private static final int NOTIFICATION_ALARM = 7;
 
-    private static final String main_notif_chan_id = "main_notif_chan_id";
+    public static final String MAIN_CHAN_ID = "main";
+    public static final String ALARM_CHAN_ID = "alarm";
 
 
     private static final int RC_MAIN   = 100;
@@ -116,8 +117,6 @@ public class BatteryInfoService extends Service {
     private RemoteViews notificationRV;
 
     private Predictor predictor;
-
-    //private MediaPlayer alarmPlayer = new MediaPlayer();
 
     private final Handler mHandler = new Handler();
 
@@ -155,17 +154,23 @@ public class BatteryInfoService extends Service {
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         CharSequence main_notif_chan_name = getString(R.string.main_notif_chan_name);
-        //String main_notif_chan_desc = getString(R.string.main_notif_chan_desc);
-        int importance = NotificationManager.IMPORTANCE_LOW; // TODO: Different default?  User-configurable? (less than default for no sound)
-        NotificationChannel mChannel = new NotificationChannel(main_notif_chan_id, main_notif_chan_name, importance);
-        //mChannel.setDescription(main_notif_chan_desc);
-        //mChannel.setSound(Uri.EMPTY);
+        NotificationChannel mChannel = new NotificationChannel(MAIN_CHAN_ID, main_notif_chan_name, NotificationManager.IMPORTANCE_LOW);
         mChannel.setSound(null, null);
         mChannel.enableLights(false);
-        //mChannel.setLightColor(Color.RED);
         mChannel.enableVibration(false);
-        //mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+        mChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
         mNotificationManager.createNotificationChannel(mChannel);
+
+        Uri ringtone = android.media.RingtoneManager.getDefaultUri(android.media.RingtoneManager.TYPE_NOTIFICATION);
+        CharSequence alarm_notif_chan_name = getString(R.string.alarm_notif_chan_name);
+        NotificationChannel aChannel = new NotificationChannel(ALARM_CHAN_ID, alarm_notif_chan_name, NotificationManager.IMPORTANCE_HIGH);
+        aChannel.setSound(ringtone, new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_NOTIFICATION_EVENT).build());
+        aChannel.enableLights(true);
+        aChannel.setLightColor(0xff33b5e5);
+        aChannel.enableVibration(true);
+        aChannel.setVibrationPattern(new long[]{0, 500, 500, 500, 500, 1000, 1000, 1000, 1000});
+        aChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+        mNotificationManager.createNotificationChannel(aChannel);
 
         mainNotificationB = new Notification.Builder(this);
 
@@ -281,15 +286,6 @@ public class BatteryInfoService extends Service {
             case RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS:
                 bis.reloadSettings(true);
                 break;
-            case RemoteConnection.SERVICE_WIZARD_VALUE_DEFAULT:
-                bis.wizardValueChanged(NotificationWizard.VALUE_DEFAULT);
-                break;
-            case RemoteConnection.SERVICE_WIZARD_VALUE_MINIMAL:
-                bis.wizardValueChanged(NotificationWizard.VALUE_MINIMAL);
-                break;
-            case RemoteConnection.SERVICE_WIZARD_VALUE_NONE:
-                bis.wizardValueChanged(NotificationWizard.VALUE_NONE);
-                break;
             default:
                 super.handleMessage(incoming);
             }
@@ -315,9 +311,6 @@ public class BatteryInfoService extends Service {
         static final int SERVICE_UNREGISTER_CLIENT = 2;
         static final int SERVICE_RELOAD_SETTINGS = 3;
         static final int SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS = 4;
-        static final int SERVICE_WIZARD_VALUE_DEFAULT = 5;
-        static final int SERVICE_WIZARD_VALUE_MINIMAL = 6;
-        static final int SERVICE_WIZARD_VALUE_NONE = 7;
 
         // Messages the service sends to clients
         static final int CLIENT_SERVICE_CONNECTED = 0;
@@ -368,37 +361,6 @@ public class BatteryInfoService extends Service {
         registerReceiver(mBatteryInfoReceiver, batteryChanged);
     }
 
-    private void wizardValueChanged(int value) {
-        SharedPreferences.Editor sps_editor = sp_service.edit();
-        SharedPreferences.Editor settings_editor = settings.edit();
-
-        // Writing to settings here should only happen when Wizard open, so shouldn't have conflict
-        switch(value) {
-        case NotificationWizard.VALUE_NONE:
-            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, false);
-
-            break;
-        case NotificationWizard.VALUE_MINIMAL:
-            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
-            settings_editor.putString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                      "" + Notification.PRIORITY_MIN);
-
-            break;
-        default:
-            sps_editor.putBoolean(BatteryInfoService.KEY_SHOW_NOTIFICATION, true);
-            int priority = Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                                              Str.default_main_notification_priority));
-            if (priority == Notification.PRIORITY_MIN)
-                settings_editor.putString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                          "" + Notification.PRIORITY_LOW);
-        }
-
-        sps_editor.apply();
-        settings_editor.apply();
-
-        applyNewSettings(true);
-    }
-
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context c, Intent intent) {
@@ -414,7 +376,7 @@ public class BatteryInfoService extends Service {
         SharedPreferences.Editor settings_editor = settings.edit();
 
         // Writing to settings here should only happen when Service first started, so shouldn't have conflict
-        if (sp_service.getInt(LAST_SDK_API, 0) < 21 && android.os.Build.VERSION.SDK_INT >= 21) {
+        if (sp_service.getInt(LAST_SDK_API, 0) < 21) {
             settings_editor.putBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, true);
         }
 
@@ -539,14 +501,11 @@ public class BatteryInfoService extends Service {
             .setOngoing(true)
             .setWhen(0)
             .setShowWhen(false)
-            .setChannelId(main_notif_chan_id)
+            .setChannelId(MAIN_CHAN_ID)
             .setContentIntent(currentInfoPendingIntent)
-            .setPriority(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAIN_NOTIFICATION_PRIORITY,
-                                                            Str.default_main_notification_priority)))
             .setVisibility(Notification.VISIBILITY_PUBLIC);
 
-        if (settings.getBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT,
-                                res.getBoolean(R.bool.default_use_system_notification_layout))) {
+        if (settings.getBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, true)) {
             mainNotificationB.setContentTitle(mainNotificationTopLine)
                 .setContentText(mainNotificationBottomLine);
         } else {
@@ -736,8 +695,7 @@ public class BatteryInfoService extends Service {
             return ((info.status == BatteryInfo.STATUS_CHARGING && indicate_charging) ? chargingIcon0 : plainIcon0) + info.percent;
         } else if (icon_set.equals("builtin.smaller_number")) {
             return ((info.status == BatteryInfo.STATUS_CHARGING && indicate_charging) ? small_chargingIcon0 : small_plainIcon0) + info.percent;
-        } else if (android.os.Build.VERSION.SDK_INT >= 21 &&
-                   !settings.getBoolean(SettingsActivity.KEY_CLASSIC_COLOR_MODE, false)) {
+        } else if (!settings.getBoolean(SettingsActivity.KEY_CLASSIC_COLOR_MODE, false)) {
             // Classic set is desired, but colors break notification icons on API level 21+
             return R.drawable.w000 + info.percent;
         } else {
@@ -823,10 +781,8 @@ public class BatteryInfoService extends Service {
                 nb.setContentTitle(Str.alarm_fully_charged)
                     .setContentText(Str.alarm_text);
 
-                if (android.os.Build.VERSION.SDK_INT >= 21)
-                    nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+                nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
-                //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
                 notifyAlarm(nb.build());
                 c.close();
             }
@@ -840,10 +796,8 @@ public class BatteryInfoService extends Service {
             nb.setContentTitle(Str.alarm_charge_drops + threshold + Str.percent_symbol)
                 .setContentText(Str.alarm_text);
 
-            if (android.os.Build.VERSION.SDK_INT >= 21)
-                nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+            nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
-            //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
             notifyAlarm(nb.build());
             c.close();
         }
@@ -856,10 +810,8 @@ public class BatteryInfoService extends Service {
             nb.setContentTitle(Str.alarm_charge_rises + threshold + Str.percent_symbol)
                 .setContentText(Str.alarm_text);
 
-            if (android.os.Build.VERSION.SDK_INT >= 21)
-                nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+            nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
-            //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
             notifyAlarm(nb.build());
             c.close();
         }
@@ -875,10 +827,25 @@ public class BatteryInfoService extends Service {
             nb.setContentTitle(Str.alarm_temp_rises + Str.formatTemp(Integer.valueOf(threshold), convertF, false))
                 .setContentText(Str.alarm_text);
 
-            if (android.os.Build.VERSION.SDK_INT >= 21)
-                nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+            nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
-            //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
+            notifyAlarm(nb.build());
+            c.close();
+        }
+
+        c = alarms.activeAlarmTempDrops(info.temperature, sp_service.getInt(KEY_PREVIOUS_TEMP, 1));
+        if (c != null) {
+            Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+                                                   res.getBoolean(R.bool.default_convert_to_fahrenheit));
+
+            sps_editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
+            nb = parseAlarmCursor(c);
+            String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
+            nb.setContentTitle(Str.alarm_temp_drops + Str.formatTemp(Integer.valueOf(threshold), convertF, false))
+                .setContentText(Str.alarm_text);
+
+            nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+
             notifyAlarm(nb.build());
             c.close();
         }
@@ -891,10 +858,8 @@ public class BatteryInfoService extends Service {
                 nb.setContentTitle(Str.alarm_health_failure + Str.healths[info.health])
                     .setContentText(Str.alarm_text);
 
-                if (android.os.Build.VERSION.SDK_INT >= 21)
-                    nb.setVisibility(Notification.VISIBILITY_PUBLIC);
+                nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
-                //mNotificationManager.notify(NOTIFICATION_ALARM_CHARGE, nb.build());
                 notifyAlarm(nb.build());
                 c.close();
             }
@@ -903,92 +868,17 @@ public class BatteryInfoService extends Service {
 
     private Notification.Builder parseAlarmCursor(Cursor c) {
         Notification.Builder nb = new Notification.Builder(this)
+            .setChannelId(ALARM_CHAN_ID)
             .setSmallIcon(R.drawable.stat_notify_alarm)
             .setAutoCancel(true)
             .setContentIntent(alarmsPendingIntent);
-            //.setDeleteIntent(alarmsCancelPendingIntent);
-
-        String ringtone = c.getString(c.getColumnIndex(AlarmDatabase.KEY_RINGTONE));
-        //String audio_stream = c.getString(c.getColumnIndex(AlarmDatabase.KEY_AUDIO_STREAM));
-        int stream = AudioManager.STREAM_NOTIFICATION;
-        //if (audio_stream != null && audio_stream.equals("alarm"))
-        //    stream = AudioManager.STREAM_ALARM;
-        if (! ringtone.equals(""))
-            nb.setSound(Uri.parse(ringtone), stream);
-
-        if (c.getInt(c.getColumnIndex(AlarmDatabase.KEY_VIBRATE)) == 1)
-            nb.setVibrate(new long[] {0, 200, 200, 400});
-
-        if (c.getInt(c.getColumnIndex(AlarmDatabase.KEY_LIGHTS)) == 1)
-            nb.setDefaults(Notification.DEFAULT_LIGHTS);
 
         return nb;
     }
 
     private void notifyAlarm(Notification n) {
         mNotificationManager.notify(NOTIFICATION_ALARM, n);
-        // if (n.audioStreamType == AudioManager.STREAM_ALARM)
-        //     playAlarmMyself(n.sound);
     }
-
-    /*
-    private boolean playAlarmMyself(Uri uri) {
-        System.out.println("..................................... playAlarmMyself");
-        try {
-            alarmPlayer.setDataSource(this, uri);
-            alarmPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
-            alarmPlayer.prepare();
-            // TODO: Some users want looping as an option, too.  But I'd then need to make it cancelable, which is more work.
-            //     And it could drain the battery if the user doesn't notice it and it keeps going.
-            //     So leave that possibility to be considered another time.
-            //if (loop)
-            //alarmPlayer.setLooping(false);
-            alarmPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                    public void onPrepared(MediaPlayer mp) {
-                        System.out.println("..................................... onPrepepared (start)");
-                        //mp.seekTo(0);
-                        mp.setLooping(false);
-                        mp.start();
-                    }
-
-                });
-            //if (!loop)
-            alarmPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    public void onCompletion(MediaPlayer mp) {
-                        System.out.println("..................................... onCompletion (stop)");
-                        mp.stop();
-                    }
-
-                });
-        } catch (Exception e) {
-            return false;
-        }
-
-        return true;
-    }
-    */
-
-    /*
-    private Notification.Builder makeTestAlarmBuilder() {
-        return new Notification.Builder(this)
-            .setSmallIcon(R.drawable.stat_notify_alarm)
-            .setAutoCancel(true)
-            //.setSound(Uri.parse("content://media/internal/audio/media/13"), AudioManager.STREAM_ALARM)
-            .setSound(Uri.parse("content://media/external/audio/media/18"), AudioManager.STREAM_ALARM)
-            .setContentTitle("Test Title")
-            .setContentText("Text content")
-            .setContentIntent(alarmsPendingIntent)
-            .setDeleteIntent(alarmsCancelPendingIntent)
-            .setVisibility(Notification.VISIBILITY_PUBLIC);
-
-        // Uri ringtone = android.media.RingtoneManager
-        //     .getDefaultUri(android.media.RingtoneManager.TYPE_NOTIFICATION);
-        // int stream = AudioManager.STREAM_ALARM;
-        //nb.setSound(ringtone, stream);
-
-        //return nb;
-    }
-    */
 
     private String formatTime(Date d) {
         String format = android.provider.Settings.System.getString(getContentResolver(),

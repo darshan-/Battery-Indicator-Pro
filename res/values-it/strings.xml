@@ -15,9 +15,6 @@
   <string name="confirm_close_hint" formatted="false">Battery Indicator sarà completamente chiuso, e non sarà più visualizzato nella barra di stato.\n\nSe si desidera solo abbandonare la finestra principale e mantenere l\'indicatore in esecuzione, premere Annulla e quindi premere il pulsante INDIETRO del tuo cellulare per uscire dalla finestra principale.</string>
   <string name="confirm_clear_logs" formatted="false">Vuoi davvero cancellare tutto il registro?</string>
   <string name="configure_log_filter" formatted="false">Quali log mostrare?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Vuoi davvero attivare la modalità 10%?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Vuoi davvero disattivare la modalità 10%?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Attenzione: La modifica di questa impostazione (attivazione e disattivazione) resetterà le tue impostazioni di colore.\n\nSe hai un Motorola Droid, Droid X, Droid 2, Defy, o un Samsung Moment, devi impostarlo ON appena ottenuta l\'app, e lasciarlo così. Tutti gli altri dispositivi, per quanto ne so, dovrebbero sempre lasciare questo su OFF.</string>
   <string name="okay" formatted="false">Ok</string>
   <string name="none" formatted="false">Nessuno</string>
   <string name="tab_current_info" formatted="false">Info correnti</string>
@@ -182,9 +179,6 @@
   <string name="pref_green_thresh_summary" formatted="false">Icona verde al di sopra di quale percentuale di carica?</string>
   <string name="pref_green_thresh_help" formatted="false">Specifica il livello di carica al di sopra del quale l\' icona diventerà verde.\n\nLe opzioni per la soglia verde includono tutti i valori ( multipli di 5) per cui ci sono icone verdi disponibili, partendo dalla soglia massima attiva che hai impostato rossa o ambra. Per esempio, se hai la soglia ambra impostata a 40, l\' opzione più bassa qui sarà 40.\n\nIn Modalità 10%, le cose funzionano in modo leggermente diverso ma dovrebbe essere ovvio.</string>
   <string name="pref_cat_device_specific" formatted="false">Impostazioni specifiche dispositivo</string>
-  <string name="pref_ten_percent_mode" formatted="false">Modalità 10%</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Leggi prima l\'help!</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b>Nota:</b> Selezionalo o deselezionalo, in questo modo verranno ripristinate le impostazioni del colore icona!\n\nQuesta impostazione elimina le impostazioni del Colore Icona che hanno senso su quei dispositivi che mostrano solo il livello di carica con incremento del 10%. Secondo i commenti degli utenti, questi dispositivi sono:\n\n• Motorola Droid (original)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\nPer quanto si sappia, tutti gli altri dispositivi segnalano ogni 1%, quindi <i>non</i> deve essere attivata.</string>
   <string name="alarms_overview" formatted="false">Panoramica allarmi</string>
   <string name="alarms_overview_help" formatted="false">Questa pagina ti permette di aggiungere nuovi allarmi, abilitare o disabilitare rapidamente gli allarmi esistenti, o cancellare gli allarmi.\n\nPer aggiungere un nuovo allarme, premere \"Aggiungi allarme\" — questo creerà un nuovo allarme e ti porterà alla pagina impostazioni dell\'allarme, dove si possono controllare le impostazioni per il nuovo allarme. Vedere l\'aiuto in tale pagina per maggiori dettagli.\n\nSotto il pulsante \"Aggiungi allarme\" c\'è un elenco di tutti gli allarmi che hai creato.\n\n• Per modificare un allarme esistente, basta selezionarlo.\n• Per cancellare un allarme, tenere premuto a lungo, poi selezionare \"Cancella allarme\". (Potete anche cancellare un allarme della pagina impostazioni individuali sveglia premendo MENU e poi \"Cancella allarmi\"). • Per alternare rapidamente se un allarme viene attivato, premere l\'icona sveglia a sinistra del testo la sveglia. (È anche possibile attivare o disattivare un allarme da parte delle singole impostazioni della sveglia pagina).</string>
   <string name="pref_alarm_enabled" formatted="false">Attiva allarme</string>
@@ -198,15 +192,6 @@
   <string name="alarm_pref_not_used" formatted="false">Non utilizzato per questo tipo di allarme</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Soglia allarme:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Per gli allarmi di carica e temperatura, è necessario impostare la temperatura o il livello di carica per innescare l\' allarme.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Impostazioni notifica</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Qui è possibile controllare vari aspetti della notifica di allarme che hai creato per avvertirti quando un allarme viene innescato.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Suoneria</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Qui è possibile controllare quale suono da riprodurre quando l\'allarme è attivato. Selezionare \"Silenzioso\" se non si vuole nessun suono.</string>
-  <string name="silent" formatted="false">Silenzioso</string>
-  <string name="pref_alarm_vibrate" formatted="false">Vibrazione</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">Se tutto va bene, questa opzione farà vibrare il dispositivo quando l\'allarme è attivato, a meno che il dispositivo è in modalità silenziosa, a meno che non abbiate impostato il dispositivo a vibrare anche in modalità silenziosa. In altre parole, essa dovrebbe fare ciò che ci si aspetta. Se qualcosa non va vi invito a segnalarmelo.</string>
-  <string name="pref_alarm_lights" formatted="false">Torcie</string>
-  <string name="pref_alarm_lights_help" formatted="false">Stabilisce se la notifica debba accendere la luce del dispositivo. In genere questo fa lampeggiare un LED o la trackball. Nota che ogni dispositivo Android che ho usato si è comportato in modo anomalo in questo ambito. Se avete selezionato l\'opzione, la notifica chiederà ad Android di far lampeggiare la luce, ma non è detto che ciò accada.</string>
   <string name="boot_pref_always" formatted="false">Sempre</string>
   <string name="boot_pref_never" formatted="false">Mai</string>
   <string name="boot_pref_if_running" formatted="false">Se è in esecuzione allo spegnimento</string>

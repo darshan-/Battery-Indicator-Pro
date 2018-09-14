@@ -13,9 +13,6 @@
   <string name="confirm_close" formatted="false">Opravdu ukončit ?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator bude ukončen a již více neuvidíte stav baterie.\n\nPro návrat zpět bez ukončení aplikace stiskněte Zrušit a poté klávesu ZPĚT na přístroji.</string>
   <string name="confirm_clear_logs" formatted="false">Opravdu vymazat všechny záznamy ?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Opravdu povolit 10% Mode?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Opravdu zakázat 10% Mode?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Upozornění: Změnou tohoto nastavení resetujete nastavení barevného schématu.\n\nPokud vlastníte přístroj Motorola Droid, Droid X, Droid 2, Defy, nebo Samsung Moment, měli by jste toto nastavení zapnout při prvním spuštění aplikace a ponechat zapnuté. Všechny ostatní telefony, pokud vím, by měly mít toto nastavení vypnuto.</string>
   <string name="okay" formatted="false">O.K.</string>
   <string name="menu_settings" formatted="false">Nastavení</string>
   <string name="menu_close" formatted="false">Zavřít</string>
@@ -151,15 +148,6 @@
   <string name="alarm_pref_not_used" formatted="false">Není použito pro tento druh upozornění.</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Práh pro upozornění:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Pro upozorňování vzathující se k úrovni nabití nebo teplotě musíte nastavit práh, který spustí upozornění.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Nastavení upozorňování</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Zde můžete nastavit různé aspekty chování při upozornění, které jste si předem nastavili.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Vyzvánění</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Zde můžete nastavit jaký zvuk bude přehrán při alarmu. Zvolte Ticho pokud si nepřejete žádný zvuk.</string>
-  <string name="silent" formatted="false">Ticho</string>
-  <string name="pref_alarm_vibrate" formatted="false">Vibrace</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">Pokud vše poběží tak jak má, pak toto nastavení zapne vibrace při spuštění alarmu, pokud ovšem není aktuálně nastaven Silent Mode, pokud tedy nemáte ovšem povoleny vibrace v Silent Modu. Jinými slovy, mělo by to dělat co od této funkce očekávate. Pokud ne, pak mi napište email.</string>
-  <string name="pref_alarm_lights" formatted="false">Blikání osvětlení</string>
-  <string name="pref_alarm_lights_help" formatted="false">Nastavte jestliže chcete použít upozornění pomocí osvětlení. Standardně bliká LED dioda nebo trackball. Mé zkušenosti ovšem ukazují, že skoro každé zařízení mělo problémy s tímto nastavením. Pokud tedy zaškrtnete používání této funkce, pak systém upozornění bude žádat Váš Android o blikání osvětlení, ale je bez záruky, že to bude fungovat...</string>
   <string name="boot_pref_always" formatted="false">Vždy</string>
   <string name="boot_pref_never" formatted="false">Nikdy</string>
   <string name="boot_pref_if_running" formatted="false">Ručně</string>

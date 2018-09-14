@@ -2,35 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <item
       android:id="@+id/menu_settings"
-      android:icon="@+android:drawable/ic_menu_preferences"
+      android:icon="@android:drawable/ic_menu_preferences"
       android:title="@string/menu_settings"
       android:showAsAction="never"
   />
 
   <item
-      android:id="@+id/menu_notification_wizard"
-      android:icon="@drawable/ic_menu_notifications"
-      android:title="@string/menu_notification_wizard"
-      android:showAsAction="never"
-  />
-
-  <item
       android:id="@+id/menu_help"
-      android:icon="@+android:drawable/ic_menu_help"
+      android:icon="@android:drawable/ic_menu_help"
       android:title="@string/menu_help"
       android:showAsAction="never"
   />
 
   <item
       android:id="@+id/menu_rate_and_review"
-      android:icon="@+android:drawable/btn_star_big_off"
+      android:icon="@android:drawable/btn_star_big_off"
       android:title="@string/menu_rate_and_review"
       android:showAsAction="never"
   />
 
   <item
       android:id="@+id/menu_close"
-      android:icon="@+android:drawable/ic_menu_close_clear_cancel"
+      android:icon="@android:drawable/ic_menu_close_clear_cancel"
       android:title="@string/menu_close"
       android:showAsAction="never"
   />

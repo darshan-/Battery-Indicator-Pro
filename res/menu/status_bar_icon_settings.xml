@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <item
       android:id="@+id/menu_get_plugins"
-      android:icon="@+android:drawable/ic_menu_add"
+      android:icon="@android:drawable/ic_menu_add"
       android:title="@string/menu_get_plugins"
       android:visible="false"
       android:enabled="false"
@@ -10,7 +10,7 @@
 
   <item
       android:id="@+id/menu_help"
-      android:icon="@+android:drawable/ic_menu_help"
+      android:icon="@android:drawable/ic_menu_help"
       android:title="@string/menu_help"
   />
 </menu>

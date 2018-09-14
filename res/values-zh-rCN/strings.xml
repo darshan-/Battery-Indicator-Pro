@@ -14,8 +14,6 @@
   <string name="confirm_close" formatted="false">确认退出？</string>
   <string name="confirm_close_hint" formatted="false">电量指示器将完全退出，通知栏电量指示图标将不再显示。 如果您想让本程序后台运行，可以单击手机“返回”键关闭主窗口。</string>
   <string name="confirm_clear_logs" formatted="false">确认清理所有日志？</string>
-  <string name="confirm_ten_percent_enable" formatted="false">确认开启10%模式？</string>
-  <string name="confirm_ten_percent_disable" formatted="false">确认开启10%模式</string>
   <string name="okay" formatted="false">完成</string>
   <string name="none" formatted="false">无</string>
   <string name="menu_settings" formatted="false">设置项</string>
@@ -142,20 +140,12 @@
   <string name="pref_green_thresh_summary" formatted="false">剩余电量等于或高于多少百分比时使用绿色图标？</string>
   <string name="pref_green_thresh_help" formatted="false">设置剩余电量等于或高于该设置值时使用绿色图标。 该选项能在可选范围内（5%步进）提供绿色图标阀值设置值选项。设置值下限为红色或黄色图标最大阀值，例如黄色图标阀值为40%，则设置项选择下限为40%。\n在10%步进模式下，该设置项内容可能略有不同。</string>
   <string name="pref_cat_device_specific" formatted="false">特殊设备设置</string>
-  <string name="pref_ten_percent_mode" formatted="false">10%步进模式</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">请先阅读帮助信息！</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b>注意：</b> 改动该选项设置状态将重置图标颜色设置内容！ 该选项将清除图标色彩设置内容以保证10%步进类型设备显示正常。根据用户反馈，该类设备包括以下型号： • Motorola Droid （最初版本） • Motorola Droid X • Motorola Droid 2 • Motorola Defy • Samsung Moment 除以上型号之外，其余设备均为1%步进报告类型，因此均<i>不用</i>开启此项功能。</string>
   <string name="alarms_overview" formatted="false">概述</string>
   <string name="alarms_overview_help" formatted="false">在本页面您可以添加一个新的警报器，以及快速启用、禁用或删除一个已存在的警报器。\n\n按“添加警报器”按钮可以创建一个新的警报器，之后您将进入设置页面去设置新建的警报器。\n\n在“添加警报器”按钮的下方是您已创建的所有警报器的列表\n\n·点击警报器即可设置 ·长按可以删除(也可以在设置页面中按菜单键选择删除。) ·点击警报器左边的图标可以禁用或启用警报器(也可以在设置页面中选择。)</string>
   <string name="pref_alarm_enabled" formatted="false">启用警报器</string>
   <string name="pref_alarm_threshold" formatted="false">阀值</string>
   <string name="alarm_pref_not_used" formatted="false">此警报器类型无法使用</string>
   <string name="pref_alarm_threshold_summary" formatted="false">警报阀值</string>
-  <string name="pref_cat_notification_settings" formatted="false">通知设置</string>
-  <string name="pref_alarm_ringtone" formatted="false">铃声</string>
-  <string name="silent" formatted="false">静音</string>
-  <string name="pref_alarm_vibrate" formatted="false">震动</string>
-  <string name="pref_alarm_lights" formatted="false">闪光</string>
   <string name="boot_pref_always" formatted="false">始终</string>
   <string name="boot_pref_never" formatted="false">从不</string>
   <string name="boot_pref_if_running" formatted="false">关机时运行</string>

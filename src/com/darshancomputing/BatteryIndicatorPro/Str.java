@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2017 Darshan-Josiah Barber
+    Copyright (c) 2010-2018 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General License as published by
@@ -30,14 +30,10 @@ class Str {
     static String default_amber_thresh;
     static String default_green_thresh;
     static String default_max_log_age;
-    static String default_main_notification_priority;
     static String default_prediction_type;
 
     static String logs_empty;
     static String confirm_clear_logs;
-    static String confirm_ten_percent_enable;
-    static String confirm_ten_percent_disable;
-    static String confirm_ten_percent_hint;
     static String configure_log_filter;
     static String yes;
     static String cancel;
@@ -46,11 +42,10 @@ class Str {
     static String currently_set_to;
     static String alarm_pref_not_used;
 
-    static String silent;
-
     static String alarm_fully_charged;
     static String alarm_charge_drops;
     static String alarm_charge_rises;
+    static String alarm_temp_drops;
     static String alarm_temp_rises;
     static String alarm_health_failure;
     static String alarm_text;
@@ -97,7 +92,6 @@ class Str {
         default_amber_thresh   = res.getString(R.string.default_amber_thresh);
         default_green_thresh   = res.getString(R.string.default_green_thresh);
         default_max_log_age    = res.getString(R.string.default_max_log_age);
-        default_main_notification_priority = res.getString(R.string.default_main_notification_priority);
         default_prediction_type = res.getString(R.string.default_prediction_type);
 
         logs_empty         = res.getString(R.string.logs_empty);
@@ -106,20 +100,15 @@ class Str {
         cancel             = res.getString(R.string.cancel);
         okay               = res.getString(R.string.okay);
 
-        confirm_ten_percent_enable  = res.getString(R.string.confirm_ten_percent_enable);
-        confirm_ten_percent_disable = res.getString(R.string.confirm_ten_percent_disable);
-        confirm_ten_percent_hint    = res.getString(R.string.confirm_ten_percent_hint);
-
         configure_log_filter = res.getString(R.string.configure_log_filter);
 
         currently_set_to    = res.getString(R.string.currently_set_to);
         alarm_pref_not_used = res.getString(R.string.alarm_pref_not_used);
 
-        silent = res.getString(R.string.silent);
-
         alarm_fully_charged  = res.getString(R.string.alarm_fully_charged);
         alarm_charge_drops   = res.getString(R.string.alarm_charge_drops);
         alarm_charge_rises   = res.getString(R.string.alarm_charge_rises);
+        alarm_temp_drops     = res.getString(R.string.alarm_temp_drops);
         alarm_temp_rises     = res.getString(R.string.alarm_temp_rises);
         alarm_health_failure = res.getString(R.string.alarm_health_failure);
         alarm_text           = res.getString(R.string.alarm_text);

@@ -14,9 +14,6 @@
   <string name="confirm_close" formatted="false">Tikrai Uždaryti?</string>
   <string name="confirm_close_hint" formatted="false">Baterijos Indikatorius bus visiškai uždarytas ir Jūs jo nebematysite savo būsenos juostoje.\n\nJei jus tiesiog norite palikti pagrindinį langą ir leisti indikatoriui toliau veikti, paspauskite Nutraukti ir tada paspauskite Grįžti mygtuką, ant savo telefono.</string>
   <string name="confirm_clear_logs" formatted="false">Ar tikrai ištrinti visus įrašus?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Ar tikrai įjungti 10% Režimą?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Ar tikrai išjungti 10% Režimą?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Įspėjimas: Keičiant šį nustatymą (jį įjungiant ir išjungiant), anuliuosis spalvų pasirinkimai.\n\nJei Jūs turite: Motorola Droid, Droid X, Droid 2, Defy, ar Samsung Moment prietaisą, Jums reikėtų tai įjungti ir palikti. Visų kitų prietaisų turėtojai, galite palikti išjungtą.</string>
   <string name="okay" formatted="false">Gerai</string>
   <string name="none" formatted="false">Nė Vienas</string>
   <string name="menu_settings" formatted="false">Nustatymai</string>
@@ -153,8 +150,6 @@
   <string name="pref_green_thresh" formatted="false">Žalia Riba</string>
   <string name="pref_green_thresh_summary" formatted="false">Žalia ikona, kai įkrovimo lygis ties ar aukščiau:</string>
   <string name="pref_cat_device_specific" formatted="false">Specifiniai Prietaiso Nustatymai</string>
-  <string name="pref_ten_percent_mode" formatted="false">10% Režimas</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Pirmiausiai perskaitykite pagalbą!</string>
   <string name="alarms_overview" formatted="false">Aliarmų Peržiūra</string>
   <string name="pref_alarm_enabled" formatted="false">Įjungti Aliarmą</string>
   <string name="pref_cat_alarm_conditions" formatted="false">Aliarmo Sąlygos</string>
@@ -165,13 +160,6 @@
   <string name="alarm_pref_not_used" formatted="false">Nenaudojama šiam aliarmo tipui</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Aliarmo riba:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Įkrovimo ir temperatūros aliarmams Jūs turite nustatyti temperatūros arba įkrovimo lygį, kuris iškvies aliarmą.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Perspėjimų Nustatymai</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Čia galite valdyti įvairius aspektus, kurie parodys perspėjimą, kai bus iškviestas aliarmas.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Skambutis</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Čia galite nustatyti koks skambutis bus grojamas, kai iškviečiamas aliarmas. Pasirinkite \"Tyla\" jei nenorite, kad būtų grojamas skambutis.</string>
-  <string name="silent" formatted="false">Tyla</string>
-  <string name="pref_alarm_vibrate" formatted="false">Vibruoti</string>
-  <string name="pref_alarm_lights" formatted="false">Mirksinčios Lemputės</string>
   <string name="boot_pref_always" formatted="false">Visada</string>
   <string name="boot_pref_never" formatted="false">Niekada</string>
   <string name="boot_pref_if_running" formatted="false">Jei veikia išjungiant</string>

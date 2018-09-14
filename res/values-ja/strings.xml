@@ -17,9 +17,6 @@
   <string name="confirm_close_hint" formatted="false">BatteryBot は完全に閉じます。ステータスバーに 表示されなくなります。\n\nメインウインドウから離れるだけで、インジケーターの 実行を続ける場合は、キャンセルまたはデバイスの戻る ボタンを押してください。</string>
   <string name="confirm_clear_logs" formatted="false">ログをすべてクリアしてもよろしいですか?</string>
   <string name="configure_log_filter" formatted="false">どのログ項目を表示しますか?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">10% モードを有効にしますか?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">10% モードを無効にしますか?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">警告: この設定を変更すると (有効および無効) 色の設定がリセットされます。\n\nMotorola Droid, Droid X, Droid 2, Defy, または Samsung Moment をお持ちの場合は、アプリの導入時に 最初にこれをオンにして、そのままにする必要があります。 その他のデバイスでは私の知る限り常にオフにします。</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">なし</string>
   <string name="tab_current_info" formatted="false">現在の情報</string>
@@ -195,10 +192,6 @@
   <string name="white" formatted="false">白</string>
   <string name="ics_blue" formatted="false">Android ICS 青</string>
   <string name="custom" formatted="false">カスタマイズ...</string>
-  <string name="pref_cat_notification_priority" formatted="false">通知の優先度</string>
-  <string name="pref_cat_notification_priority_help" formatted="false">Android 4.1 以上 (Jelly Bean 以降) では、通知に優先度を設定することができます。 優先度を変更した場合の影響は保証されていませんが、一般的には次のようになります:\n\n• \"最低\" に設定すると、ほとんどの場合、ステータスバーのアイコンを削除しますが、 プルダウン通知トレイ内に通知が表示されます。\n\n• \"低\" に設定すると、新しいメールなどの他の通知を、BatteryBot 通知の上部に 表示できるようになります。メールのように通知が展開可能な場合に適しています (トップの通知のときに展開可能通知は自動的に展開されます)。\n\n優先度が \"デフォルト\" 以上は、通常トップ通知として BatteryBot が残りますが、 より高い優先度のものがあればそうならない場合があります。\n\nまた、動作はデバイス間で異なる場合があるため、確実に保証するものではありません。</string>
-  <string name="pref_main_notification_priority" formatted="false">メイン通知の優先度</string>
-  <string name="pref_main_notification_priority_help" formatted="false">メイン通知の優先度を設定します。アラーム、プラグイン、およびその他の通知は、 この設定の影響を受けませんが、将来的には優先度が設定可能になるかもしれません。</string>
   <string name="pref_cat_icon_set" formatted="false">アイコンセット</string>
   <string name="pref_icon_set" formatted="false">アイコンセット</string>
   <string name="pref_icon_set_help" formatted="false">Android は多くの種類があるため、すべてのデバイス上でうまく動作する完全な アイコンセットはありません。プロ ユーザーは、より多くのオプションを含んだ プラグインを使用することができますが、ほぼすべてのデバイスに対して 少なくとも一つは良いオプションを提供しなければならないため、 3 つの組み込みアイコンセットがあります。\n\n\"クラシック\" は、2009年からのオリジナルアイコンセットです。 古いデバイスで使用する場合は最高の選択ですが、新しいバージョンの Android (Android 3.0, Honeycom 以降) では通知アイコンが小さく、 暗くなり、非常に見づらくなります。\n\n\"数字のみ\" は、すべての新しい Android デバイスのデフォルトです。 小さく、暗く表示された後に、非常に大きな白い数字で、 はっきり表示されます。 充電中は数字の下に稲妻が表示されます。\n\n\"小さい数字\" は \"数字のみ\" の小さいものです。 いくつかの新しいデバイスでは、これまでの Android のようにアイコンが 小さくならないため、\"数字のみ\" では非常に大きな数字が コミカルに表示されます。\n\nもしあなたが BatteryBot Pro のアイコン プラグインを インストールされると、これら中から選択することができます (メニューボタンを押して、プラグインを入手 から、無料のプラグインを 入手することができます。または新しいデバイスではアクションバーで プラグインを入手 ボタンを押してください)。</string>
@@ -289,9 +282,6 @@
   <string name="pref_green_thresh_summary" formatted="false">残量が次のパーセント以上のとき緑のアイコンにします:</string>
   <string name="pref_green_thresh_help" formatted="false">それ以上のときに、アイコンを緑に変える充電レベルを指定します。\n\n緑のしきい値のオプションには、緑のアイコンで利用可能な 赤と黄色で設定した高いほうの有効なしきい値から始まる、 すべての値 (5の倍数) が含まれています。 例えば、黄色のしきい値を 40 に設定した場合は、 ここで最も低いオプションは 40 のようになります。\n\n10% モードは、若干動作が異なりますが、各自でご確認の上 ご利用ください。</string>
   <string name="pref_cat_device_specific" formatted="false">デバイス固有の設定</string>
-  <string name="pref_ten_percent_mode" formatted="false">10% モード</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">はじめにヘルプをお読みください!</string>
-  <string name="pref_ten_percent_mode_help" formatted="false"><b>注意:</b> これをチェックしたりチェックをオフにすると、アイコンの色の設定がリセットされます!\n\nこの設定はアイコンの色の設定をクリーンアップして、 10% 刻みでのみ充電レベルを表示するデバイス上で効果があります。 ユーザーの報告によると、以下のデバイスが含まれます:\n\n• Motorola Droid (オリジナル)\n• Motorola Droid X\n• Motorola Droid 2\n• Motorola Defy\n• Samsung Moment\n\n私の知る限り、他のデバイスはすべて 1% ごとに報告するため、 これをオンにする必要は<i>ありません</i>。</string>
   <string name="alarms_overview" formatted="false">アラームの概要</string>
   <string name="alarms_overview_help" formatted="false">このページで、新しいアラームを追加する、既存のアラームをすばやく 有効または無効にする、アラームを削除することができます。\n\n新しいアラームを追加するには、\"アラームを追加\" を押します - これで、新しいアラームを作成して、アラーム設定ページへ移動します。 そこで新しいアラームの設定を変更することができます。 詳細については、そのページのヘルプを参照してください。\n\n作成したすべてのアラームのリストの下に \"\アラームを追加\"\ ボタンがあります\n\n• 既存のアラームを編集するには、それを押すだけです。\n• 削除するには、それを長押しします。その後 \"アラームを削除\" を選択します。 (個々のアラーム設定ページから、メニューを押して、 その後 \"アラームを削除\" でアラームを削除することもできます。)\n• すばやくアラームを有効にするかどうかを切り替えるには、 アラームテキストの左側の、目覚まし時計のアイコンを押します。 (また、個々のアラーム設定ページから、アラームを有効または 無効にすることもできます。)</string>
   <string name="pref_alarm_enabled" formatted="false">アラームを有効にする</string>
@@ -305,15 +295,6 @@
   <string name="alarm_pref_not_used" formatted="false">このアラームの種類では使用しません</string>
   <string name="pref_alarm_threshold_summary" formatted="false">アラームのしきい値:</string>
   <string name="pref_alarm_threshold_help" formatted="false">充電の状態と温度のアラームには、アラームを発生する 温度や充電のレベルを設定する必要があります。</string>
-  <string name="pref_cat_notification_settings" formatted="false">通知設定</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">ここではアラームが発生したときに、作成されたアラーム通知を さまざまな面でコントロールすることができます。</string>
-  <string name="pref_alarm_ringtone" formatted="false">着信音</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">ここではアラームが発生したときに、どのサウンドを再生するか コントロールすることができます。サウンドが再生されるように する場合は、\'サイレント\' を選択してください。</string>
-  <string name="silent" formatted="false">サイレント</string>
-  <string name="pref_alarm_vibrate" formatted="false">バイブレート</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">このオプションを設定すると、デバイスがサイレントモードでない限り、 サイレントモードでも振動するに設定したデバイスを含めて、 アラームが発生すると、デバイスが振動します。 言い換えれば、あなたが期待する通りに設定する必要があります。 何か不明な場合は、私にメールしてください。</string>
-  <string name="pref_alarm_lights" formatted="false">ライトを点滅</string>
-  <string name="pref_alarm_lights_help" formatted="false">通知が、デバイスのデフォルトのライトを有効にするかどうかを設定します。 これは一般的に LED またはトラックボールを点滅します。私が使用した Android デバイスの一部で、この箇所に少しバグが含まれていました。 ご利用にあたってご注意ください。これをチェックした場合、 通知は Android にライトを点滅させるように要求しますが、 必ずしも実際には行われない場合があります。</string>
   <string name="boot_pref_always" formatted="false">常に</string>
   <string name="boot_pref_never" formatted="false">なし</string>
   <string name="boot_pref_if_running" formatted="false">シャットダウン時に実行中の場合</string>
@@ -330,11 +311,6 @@
   <string name="age_2_weeks" formatted="false">2 週間</string>
   <string name="age_3_weeks" formatted="false">3 週間</string>
   <string name="age_4_weeks" formatted="false">4 週間</string>
-  <string name="notification_priority_max" formatted="false">最高</string>
-  <string name="notification_priority_high" formatted="false">高</string>
-  <string name="notification_priority_default" formatted="false">デフォルト</string>
-  <string name="notification_priority_low" formatted="false">低</string>
-  <string name="notification_priority_min" formatted="false">最低</string>
   <string name="icon_set_classic" formatted="false">クラシック</string>
   <string name="icon_set_plain" formatted="false">数字のみ</string>
   <string name="icon_set_smaller" formatted="false">小さい数字</string>

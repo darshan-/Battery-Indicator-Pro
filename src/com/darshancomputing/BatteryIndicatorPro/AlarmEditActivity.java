@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2017 Darshan-Josiah Barber
+    Copyright (c) 2010-2018 Darshan-Josiah Barber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -183,57 +183,6 @@ public class AlarmEditActivity extends PreferenceActivity {
                 return false;
             }
         });
-
-        AlarmRingtonePreference rp = (AlarmRingtonePreference) mPreferenceScreen.findPreference(KEY_RINGTONE);
-        rp.setValue(mAdapter.ringtone);
-        rp.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-            public boolean onPreferenceChange(Preference pref, Object newValue) {
-                if (mAdapter.ringtone.equals(newValue)) return false;
-
-                mAdapter.setRingtone((String) newValue);
-                ((AlarmRingtonePreference) pref).setValue((String) newValue);
-
-                return false;
-            }
-        });
-
-        /*
-        lp = (ListPreference) mPreferenceScreen.findPreference(KEY_AUDIO_STREAM);
-        if (mAdapter.audio_stream == null)
-            mAdapter.setAudioStream("notification"); // Lazy migration (Service handles null value as default)
-        lp.setValue(mAdapter.audio_stream);
-        updateSummary(lp);
-        lp.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-            public boolean onPreferenceChange(Preference pref, Object newValue) {
-                if (mAdapter.audio_stream.equals(newValue)) return false;
-
-                mAdapter.setAudioStream((String) newValue);
-
-                ((ListPreference) pref).setValue((String) newValue);
-                updateSummary((ListPreference) pref);
-
-                return false;
-            }
-        });
-        */
-
-        cb = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_VIBRATE);
-        cb.setChecked(mAdapter.vibrate);
-        cb.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-            public boolean onPreferenceChange(Preference pref, Object newValue) {
-                mAdapter.setVibrate((Boolean) newValue);
-                return true;
-            }
-        });
-
-        cb = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_LIGHTS);
-        cb.setChecked(mAdapter.lights);
-        cb.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-            public boolean onPreferenceChange(Preference pref, Object newValue) {
-                mAdapter.setLights((Boolean) newValue);
-                return true;
-            }
-        });
     }
 
     private void updateSummary(ListPreference lp) {
@@ -259,13 +208,16 @@ public class AlarmEditActivity extends PreferenceActivity {
     private void setUpThresholdList(Boolean resetValue) {
         ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_THRESHOLD);
 
-        if (mAdapter.type.equals("temp_rises")) {
+        if (mAdapter.type.equals("temp_drops") || mAdapter.type.equals("temp_rises")) {
             lp.setEntries(Str.temp_alarm_entries);
             lp.setEntryValues(Str.temp_alarm_values);
             lp.setEnabled(true);
 
             if (resetValue) {
-                mAdapter.setThreshold("460");
+                if (mAdapter.type.equals("temp_drops"))
+                    mAdapter.setThreshold("60");
+                else
+                    mAdapter.setThreshold("460");
                 lp.setValue(mAdapter.threshold);
             }
         } else if (mAdapter.type.equals("charge_drops") || mAdapter.type.equals("charge_rises")) {

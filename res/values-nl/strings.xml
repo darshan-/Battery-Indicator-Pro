@@ -15,9 +15,6 @@
   <string name="confirm_close_hint" formatted="false">Battery Indicator zal volledig worden afgesloten, en het statusbalkicoon zal ook weggaan.\n\nWil je alleen dit venster sluiten en de indicator actief houden, druk dan op \'Annuleren\' en druk op de TERUG knop om het venster te sluiten.</string>
   <string name="confirm_clear_logs" formatted="false">Alle logboeken verwijderen?</string>
   <string name="configure_log_filter" formatted="false">Welke logitems laten zien?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">10% Modus activeren?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">10% Modus deactiveren?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Waarschuwing: Met het wijzigen van deze instelling (activeren en deactiveren) zullen de kleurinstellingen gereset worden.\n\nAls je een Motorola Droid, Droid X, Droid 2, Defy of Samsung Moment hebt: deze functie na installatie van de applicatie aanzetten. Alle andere telefoons: deze functie uit laten staan.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Geen</string>
   <string name="tab_current_info" formatted="false">Huidige informatie</string>
@@ -175,10 +172,6 @@
   <string name="white" formatted="false">Wit</string>
   <string name="ics_blue" formatted="false">Blauw</string>
   <string name="custom" formatted="false">Aangepast...</string>
-  <string name="pref_cat_notification_priority" formatted="false">Prioriteit van melding</string>
-  <string name="pref_cat_notification_priority_help" formatted="false">Bij Android 4.1 en hoger hebben meldingen een prioriteit. Deze kun je hier aanpassen.\n\n- Minimaal verwijderd het statusicoon maar laat de melding nog wel zien in de meldingslijst.\n- Laag laat andere meldingen zoals email zien voor de Battery Indicator melding. - Standaard is standaard.\n- Hoog laat Battery Indicator als eerste zien.</string>
-  <string name="pref_main_notification_priority" formatted="false">Prioriteit van melding</string>
-  <string name="pref_main_notification_priority_help" formatted="false">Stel de prioriteit van de melding in. Deze instelling heeft geen effect op alarmen, plugins en andere meldingen.</string>
   <string name="pref_cat_icon_set" formatted="false">Iconen</string>
   <string name="pref_icon_set" formatted="false">Iconen</string>
   <string name="pref_icon_set_help" formatted="false">Er zijn verschillende soorten Android, dus er is niet een perfecte set iconen die overal goed werken. Je kunt plugins gebruiken voor meer iconen, maar er zijn nu 3 standaard opties./n /n</string>
@@ -236,9 +229,6 @@
   <string name="pref_green_thresh_summary" formatted="false">Groene icoon gebruiken bij of boven dit ladingsniveau:</string>
   <string name="pref_green_thresh_help" formatted="false">Hier kun je instellen wanneer het icoon groen moet worden.</string>
   <string name="pref_cat_device_specific" formatted="false">Apparaatspecifieke instellingen</string>
-  <string name="pref_ten_percent_mode" formatted="false">10% modus</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Lees eerst de help!</string>
-  <string name="pref_ten_percent_mode_help" formatted="false">Pas op: Als je dit verandert worden je kleurinstellingen verwijderd! Deze instelling past de andere instellingen aan voor apparaten die alleen veranderen in 10% weergeven.</string>
   <string name="alarms_overview" formatted="false">Overzicht van alarmen</string>
   <string name="alarms_overview_help" formatted="false">Op deze pagina kun je alarmen toevoegen, in of uitschakelen en verwijderen.</string>
   <string name="pref_alarm_enabled" formatted="false">Alarm inschakelen</string>
@@ -252,15 +242,6 @@
   <string name="alarm_pref_not_used" formatted="false">Niet gebruikt voor dit alarmtype</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Voorwaarde voor alarm:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Voor lading en temperatuuralarmen moet je de lading of temperatuur instellen waarop het alarm afgaat.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Meldingsinstellingen</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Hier kun je verschillende aspecten van de alarmmelding instellen.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Beltoon</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Kies welk geluid moet worden gebruikt voor het alarm. Kies \'Stil\' voor geen geluid.</string>
-  <string name="silent" formatted="false">Stil</string>
-  <string name="pref_alarm_vibrate" formatted="false">Trillen</string>
-  <string name="pref_alarm_vibrate_help" formatted="false">Als het goed is laat deze optie het apparaat trillen als het alarm afgaat.</string>
-  <string name="pref_alarm_lights" formatted="false">LED activeren</string>
-  <string name="pref_alarm_lights_help" formatted="false">Stelt in of de melding het lampje op je apparaat moet laten knipperen. (Niet alle apparaten hebben zo\'n lampje.)</string>
   <string name="boot_pref_always" formatted="false">Altijd</string>
   <string name="boot_pref_never" formatted="false">Nooit</string>
   <string name="boot_pref_if_running" formatted="false">Wanneer ingeschakeld bij afsluiten</string>
@@ -277,11 +258,6 @@
   <string name="age_2_weeks" formatted="false">2 weken</string>
   <string name="age_3_weeks" formatted="false">3 weken</string>
   <string name="age_4_weeks" formatted="false">4 weken</string>
-  <string name="notification_priority_max" formatted="false">Maximaal</string>
-  <string name="notification_priority_high" formatted="false">Hoog</string>
-  <string name="notification_priority_default" formatted="false">Standaard</string>
-  <string name="notification_priority_low" formatted="false">Laag</string>
-  <string name="notification_priority_min" formatted="false">Minimaal</string>
   <string name="icon_set_classic" formatted="false">Klassiek</string>
   <string name="icon_set_plain" formatted="false">Cijfer</string>
   <string name="icon_set_smaller" formatted="false">Kleiner cijfer</string>

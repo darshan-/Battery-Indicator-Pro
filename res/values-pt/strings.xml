@@ -12,9 +12,6 @@
   <string name="confirm_close" formatted="false">Fechar mesmo?</string>
   <string name="confirm_close_hint" formatted="false">O Estado da Bateria vai ser fechado completamente, e não o vais ver na tua barra de estado.\n\nSe apenas queres sair da janela principal e manter o indicador, toca em Cancel e depois carrega na tecla Back do teu aparelho.</string>
   <string name="confirm_clear_logs" formatted="false">Limpar todos os relatórios?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Activar mesmo o modo 10%?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Desactivar mesmo o modo 10%?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Aviso: Mudar esta definição (tanto desactivar como activar) vai repor as tuas definições de cor.\n\nSe tens um Motorola Droid, Droid X, Droid 2, Defy, ou um Samsung Moment, deves activar isto quando instalares a aplicação, e depois não lhe mexer mais. Nos outros telemóveis, pelo que sei, deves deixar isto sempre desactivado.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Nenhum</string>
   <string name="menu_settings" formatted="false">Definições</string>

@@ -1,10 +1,10 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-  <Preference
-     android:title="@string/pref_hint"
-     android:layout="@layout/hint"
-     android:enabled="false"
-     android:selectable="false"
-  />
+  <PreferenceCategory android:title="@string/pref_cat_channel_settings">
+    <Preference
+        android:key="enable_notifications_button"
+        android:layout="@layout/enable_notifications_button"
+    />
+  </PreferenceCategory>
 
   <PreferenceCategory android:title="@string/pref_cat_notification_layout">
     <CheckBoxPreference
@@ -107,17 +107,6 @@
         android:key="custom_bottom_line_color"
         android:title="@string/pref_custom_bottom_line_color"
         android:defaultValue="@color/main_notification_default_custom_text_color"
-    />
-  </PreferenceCategory>
-
-  <PreferenceCategory android:title="@string/pref_cat_notification_priority">
-    <ListPreference
-       android:key="main_notification_priority"
-       android:title="@string/pref_main_notification_priority"
-       android:entries="@array/notification_priority_entries"
-       android:entryValues="@array/notification_priority_values"
-       android:defaultValue="@string/default_main_notification_priority"
-       android:enabled="@bool/api_level_16_plus"
     />
   </PreferenceCategory>
 </PreferenceScreen>

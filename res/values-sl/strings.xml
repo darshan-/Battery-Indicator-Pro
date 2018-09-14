@@ -14,8 +14,6 @@
   <string name="confirm_close" formatted="false">Ste prepričani da želite zapreti?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator bo popolnoma zaprt in ga ne boste več videli v statusni vrstici.\n\nČe bi radi zaprli le glavno okno in pustili indikator zagnan, pritisnite Prekliči in nato samo pritisnite tipko NAZAJ na napravi da zapustite glavno okno.</string>
   <string name="confirm_clear_logs" formatted="false">Ste prepričani da želite izbrisati vsa poročila?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Ste prepričani da želite omogočiti 10% način?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Ste prepričani da želite onemogočiti 10% način?</string>
   <string name="okay" formatted="false">Vredu</string>
   <string name="none" formatted="false">Noben</string>
   <string name="menu_settings" formatted="false">Nastavitve</string>
@@ -137,8 +135,6 @@
   <string name="pref_green_thresh" formatted="false">Zelena meja</string>
   <string name="pref_green_thresh_summary" formatted="false">Zelena ikona na in nad mejo procentov:</string>
   <string name="pref_cat_device_specific" formatted="false">Nastavitve za specifično napravo</string>
-  <string name="pref_ten_percent_mode" formatted="false">10% način</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Preberite pomoč prvo!</string>
   <string name="alarms_overview" formatted="false">Pregled alarmov</string>
   <string name="pref_alarm_enabled" formatted="false">Omogoči alarm</string>
   <string name="pref_cat_alarm_conditions" formatted="false">Stanje alarmov</string>
@@ -147,10 +143,6 @@
   <string name="pref_alarm_threshold" formatted="false">Meja</string>
   <string name="alarm_pref_not_used" formatted="false">Se ne uporablja za to vrsto alarma.</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Meja alarma:</string>
-  <string name="pref_cat_notification_settings" formatted="false">Nastavitve obvestil</string>
-  <string name="pref_alarm_ringtone" formatted="false">Melodija</string>
-  <string name="silent" formatted="false">Tiho</string>
-  <string name="pref_alarm_vibrate" formatted="false">Vibriranje</string>
   <string name="boot_pref_always" formatted="false">Vedno</string>
   <string name="boot_pref_never" formatted="false">Nikoli</string>
   <string name="boot_pref_if_running" formatted="false">Če je zagnano ob izklopu</string>

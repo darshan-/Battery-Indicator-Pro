@@ -14,9 +14,6 @@
   <string name="confirm_close" formatted="false">Naozaj zavrieť?</string>
   <string name="confirm_close_hint" formatted="false">Battery Indicator bude úplne zatvorený a nebudete ho viac vidieť ani v notifikačnej lište.\n\nAk len chcete odísť z hlavného okna a nechať indikátor spustený, stlačte Zrušiť a potom stlačte na vašom telefóne tlačidlo späť pre odídenie z hlavného okna.</string>
   <string name="confirm_clear_logs" formatted="false">Naozaj odstrániť všetky záznamy?</string>
-  <string name="confirm_ten_percent_enable" formatted="false">Naozaj zapnúť 10% mód?</string>
-  <string name="confirm_ten_percent_disable" formatted="false">Naozaj vypnúť 10% mód?</string>
-  <string name="confirm_ten_percent_hint" formatted="false">Upozornenie: Zmena tohto nastavenia (zapnutie aj vypnutie) resetuje vaše nastavenia farieb.\n\nAk máte Motorolu Droid, Droid X, Droid 2, Defy, alebo Samsung Moment, mali by ste toto nastavenie zapnúť keď prvý krát spúšťate aplikáciu, a potom to nechať tak. VŠETKY ostatné telefóny, pokiaľ viem, by mali vždy nechať toto nastavenie vypnuté.</string>
   <string name="okay" formatted="false">OK</string>
   <string name="none" formatted="false">Nič</string>
   <string name="menu_settings" formatted="false">Nastavenia</string>
@@ -145,8 +142,6 @@
   <string name="pref_green_thresh" formatted="false">Zelená hranica</string>
   <string name="pref_green_thresh_summary" formatted="false">Zelená, pod koľkými %:</string>
   <string name="pref_cat_device_specific" formatted="false">Nastavenia špecifické pre konkrétne zariadenia</string>
-  <string name="pref_ten_percent_mode" formatted="false">10% mód</string>
-  <string name="pref_ten_percent_mode_summary" formatted="false">Čítaj najprv pomocníka!</string>
   <string name="alarms_overview" formatted="false">Prehľad upozornení</string>
   <string name="pref_alarm_enabled" formatted="false">Zapnúť upozornenie</string>
   <string name="pref_alarm_enabled_help" formatted="false">Ak chcete dočasne vypnúť alarm bez znovuvytvárania nového, keď ho budete potrebovať, môžete ho vypnúť a zapnúť alebo tu alebo na stránke alarmov.</string>
@@ -158,13 +153,6 @@
   <string name="alarm_pref_not_used" formatted="false">Nepoužité pre tento typ upozornenia</string>
   <string name="pref_alarm_threshold_summary" formatted="false">Hranica upozornenia:</string>
   <string name="pref_alarm_threshold_help" formatted="false">Pre upozornenia nabitia a teploty, potrebujete nastaviť hranicu teploty alebo hranicu nabitia, ktorá spustí upozornenie.</string>
-  <string name="pref_cat_notification_settings" formatted="false">Nastavenia oznámení</string>
-  <string name="pref_cat_notification_settings_help" formatted="false">Tu môžete kontrolovať rôzne hľadiská oznámení upozorenia, ktoré je vytvorené na oznamovanie, keď je spustené upozornenie.</string>
-  <string name="pref_alarm_ringtone" formatted="false">Zvonenie</string>
-  <string name="pref_alarm_ringtone_help" formatted="false">Tu môžete kontrolovať ktorý zvuk prehrať, keď je spustené upozornenie. Vyberte \"Tichý\", ak nechcete prehrať zvuk.</string>
-  <string name="silent" formatted="false">Tichý</string>
-  <string name="pref_alarm_vibrate" formatted="false">Vibrovať</string>
-  <string name="pref_alarm_lights" formatted="false">Blikať svetlom</string>
   <string name="boot_pref_always" formatted="false">Vždy</string>
   <string name="boot_pref_never" formatted="false">Nikdy</string>
   <string name="boot_pref_if_running" formatted="false">Ak je spustený pri vypínaní</string>
