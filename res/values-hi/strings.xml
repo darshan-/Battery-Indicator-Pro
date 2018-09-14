@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_full_name" formatted="false">बैटरीबोट प्रो</string>
+  <string name="app_launcher_name" formatted="false">बैटरीबोट</string>
+  <string name="settings_activity_subtitle" formatted="false">सेटिंग</string>
+  <string name="help_activity_subtitle" formatted="false">मदद</string>
+  <string name="log_view_activity_subtitle" formatted="false">लॉग्स</string>
+  <string name="app_full_name_free" formatted="false">बैटरीबोट</string>
+  <string name="battery_use_b" formatted="false">बैटरी उपयोग देखें</string>
+  <string name="upgrade_donate_b" formatted="false">उन्नयन या दान के लिए</string>
+  <string name="circle_widget" formatted="false">बैटरीबोट वृत्त</string>
+  <string name="full_widget" formatted="false">पूर्ण बैटरी</string>
+  <string name="confirm_disable_hint" formatted="false">सुझाव: सेटिंग्स में इस पुष्टिकरण संवाद अक्षम करें ...</string>
+  <string name="yes" formatted="false">हां</string>
+  <string name="cancel" formatted="false">निष्क्रिय</string>
+  <string name="confirm_close" formatted="false">वास्तव मे बंद करें</string>
+  <string name="confirm_close_hint" formatted="false">बैटरीबोट। पूरी तरह से बंद कर दिया जाएगा, और आप किसी भी अधिक अपनी स्थिति के बार में यह नहीं देख सकेंगे। किसी भी डेस्कटॉप विगेट्स बेकार हो जाएगा।\n\nतुम सिर्फ मुख्य विंडो छोड़ दो और चल सेवा को बनाए रखना चाहते हैं, तो प्रेस रद्द करें और फिर बस मुख्य विंडो को छोड़ने के लिए अपनी डिवाइस की पीठ बटन दबाएँ।\n\nआप अधिसूचना को छिपाने लेकिन चल विगेट्स रखना चाहते हैं, प्रेस रद्द करें और उसके बाद अधिसूचना छुपाएं।</string>
+  <string name="confirm_clear_logs" formatted="false">वास्तव में सब साफ़ लॉग?</string>
+  <string name="pref_time_remaining_verbosity_help" formatted="false">उपकरण सभी आकृति और आकार में आते हैं, तो सबसे अनुवाद समय शेष अनुमान सूचना क्षेत्र में आराम से फिट बैठता है कि यह सुनिश्चित करने के लिए लघु रूपों का उपयोग करने की आवश्यकता है। यह अभी भी फिट नहीं है, तो आप गाढ़ा प्रारूप के लिए विकल्प चुन सकते हैं। आप कमरे के पास बहुत है, तो आप वाचाल सेटिंग पसंद हो सकता है।</string>
+</resources>

@@ -4,28 +4,30 @@
   <string-array name="lang_values">
     <item>default</item>
     <item>en</item>
-    <item>cs</item>
-    <item>de</item>
-    <item>es</item>
-    <item>fr</item>
-    <item>hu</item>
-    <item>it</item>
-    <item>iw</item>
-    <item>nl</item>
-    <item>pl</item>
-    <item>pt_BR</item>
+    <item>sr</item>
     <item>pt</item>
     <item>ru</item>
-    <item>sk</item>
-    <item>tr</item>
-    <item>zh_CN</item>
-    <item>zh</item>
     <item>ro</item>
+    <item>iw</item>
+    <item>zh_CN</item>
+    <item>cs</item>
     <item>el</item>
-    <item>lt</item>
-    <item>ar</item>
+    <item>it</item>
     <item>sl</item>
-    <item>sr</item>
+    <item>zh</item>
+    <item>lt</item>
+    <item>fr</item>
+    <item>pt_BR</item>
+    <item>nl</item>
+    <item>sk</item>
+    <item>hi</item>
+    <item>de</item>
+    <item>es</item>
+    <item>hu</item>
+    <item>ar</item>
+    <item>fa</item>
     <item>ja</item>
+    <item>pl</item>
+    <item>tr</item>
   </string-array>
 </resources>

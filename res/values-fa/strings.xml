@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_full_name" formatted="false">باتری پات پروپرو</string>
+  <string name="app_launcher_name" formatted="false">باتری پات پرو</string>
+  <string name="settings_activity_subtitle" formatted="false">تنظیمات</string>
+  <string name="help_activity_subtitle" formatted="false">کمک</string>
+  <string name="log_view_activity_subtitle" formatted="false">گزارشها</string>
+  <string name="app_full_name_free" formatted="false">باتری پات</string>
+  <string name="battery_use_b" formatted="false">نمایش کاربرد باتری</string>
+  <string name="upgrade_donate_b" formatted="false">بروزرسانی/اهدا ...</string>
+  <string name="circle_widget" formatted="false">چرخه باتری پات</string>
+  <string name="full_widget" formatted="false">باتری پات کامل</string>
+  <string name="confirm_disable_hint" formatted="false">راهنمایی : نافعالسازی تاییدیه در تنظیماتری</string>
+  <string name="yes" formatted="false">آری</string>
+  <string name="cancel" formatted="false">لغو</string>
+  <string name="confirm_close" formatted="false">بستن</string>
+</resources>

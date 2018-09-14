@@ -154,7 +154,7 @@ public class BatteryInfoService extends Service {
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         CharSequence main_notif_chan_name = getString(R.string.main_notif_chan_name);
-        NotificationChannel mChannel = new NotificationChannel(MAIN_CHAN_ID, main_notif_chan_name, NotificationManager.IMPORTANCE_MIN);
+        NotificationChannel mChannel = new NotificationChannel(MAIN_CHAN_ID, main_notif_chan_name, NotificationManager.IMPORTANCE_LOW);
         mChannel.setSound(null, null);
         mChannel.enableLights(false);
         mChannel.enableVibration(false);
@@ -700,8 +700,26 @@ public class BatteryInfoService extends Service {
             return ((info.status == BatteryInfo.STATUS_CHARGING && indicate_charging) ? chargingIcon0 : plainIcon0) + info.percent;
         } else if (icon_set.equals("builtin.smaller_number")) {
             return ((info.status == BatteryInfo.STATUS_CHARGING && indicate_charging) ? small_chargingIcon0 : small_plainIcon0) + info.percent;
-        } else {
+        } else if (!settings.getBoolean(SettingsActivity.KEY_CLASSIC_COLOR_MODE, false)) {
+            // Classic set is desired, but colors break notification icons on API level 21+
             return R.drawable.w000 + info.percent;
+        } else {
+            if (settings.getBoolean(SettingsActivity.KEY_RED, res.getBoolean(R.bool.default_use_red)) &&
+                info.percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_RED_THRESH, Str.default_red_thresh)) &&
+                info.percent <= SettingsActivity.RED_ICON_MAX) {
+                return R.drawable.r000 + info.percent - 0;
+            } else if (settings.getBoolean(SettingsActivity.KEY_AMBER, res.getBoolean(R.bool.default_use_amber)) &&
+                       info.percent < Integer.valueOf(settings.getString(SettingsActivity.KEY_AMBER_THRESH, Str.default_amber_thresh)) &&
+                       info.percent <= SettingsActivity.AMBER_ICON_MAX &&
+                       info.percent >= SettingsActivity.AMBER_ICON_MIN){
+                return R.drawable.a000 + info.percent - 0;
+            } else if (settings.getBoolean(SettingsActivity.KEY_GREEN, res.getBoolean(R.bool.default_use_green)) &&
+                       info.percent >= Integer.valueOf(settings.getString(SettingsActivity.KEY_GREEN_THRESH, Str.default_green_thresh)) &&
+                       info.percent >= SettingsActivity.GREEN_ICON_MIN) {
+                return R.drawable.g020 + info.percent - 20;
+            } else {
+                return R.drawable.b000 + info.percent;
+            }
         }
     }
 

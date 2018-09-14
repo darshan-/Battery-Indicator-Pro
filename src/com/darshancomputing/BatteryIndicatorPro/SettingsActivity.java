@@ -63,6 +63,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_NOTIFY_STATUS_DURATION = "notify_status_duration";
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_PREDICTION_TYPE = "prediction_type";
+    public static final String KEY_CLASSIC_COLOR_MODE = "classic_color_mode";
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
     public static final String KEY_CAT_CHARGING_INDICATOR = "category_charging_indicator";
     public static final String KEY_CAT_PLUGIN_SETTINGS = "category_plugin_settings";
@@ -95,8 +96,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW = "auto_refresh_current_in_main_window";
     public static final String KEY_FIRST_RUN = "first_run";
     public static final String KEY_MIGRATED_SERVICE_DESIRED = "service_desired_migrated_to_sp_main";
-    public static final String KEY_APP_NOTIFS_DISABLED_B = "enable_notifications_button";
-    public static final String KEY_APP_NOTIFS_DISABLED_SUMMARY = "enable_notifications_summary";
+    public static final String KEY_ENABLE_NOTIFS_B = "enable_notifications_button";
+    public static final String KEY_ENABLE_NOTIFS_SUMMARY = "enable_notifications_summary";
 
     private static final String[] PARENTS    = {KEY_ENABLE_LOGGING,
                                                 KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
@@ -130,6 +131,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     };
 
     private static final String[] LIST_PREFS = {KEY_AUTOSTART, KEY_STATUS_DUR_EST,
+                                                KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
                                                 KEY_ICON_SET,
                                                 KEY_MAX_LOG_AGE, KEY_ICON_AREA, KEY_TOP_LINE, KEY_BOTTOM_LINE,
                                                 KEY_TIME_REMAINING_VERBOSITY,
@@ -166,6 +168,24 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
 
+    public static final int   RED = 0;
+    public static final int AMBER = 1;
+    public static final int GREEN = 2;
+
+    /* Red must go down to 0 and green must go up to 100,
+       which is why they aren't listed here. */
+    public static final int   RED_ICON_MAX = 30;
+    public static final int AMBER_ICON_MIN =  0;
+    public static final int AMBER_ICON_MAX = 50;
+    public static final int GREEN_ICON_MIN = 20;
+
+    public static final int   RED_SETTING_MIN =  5;
+    public static final int   RED_SETTING_MAX = 30;
+    public static final int AMBER_SETTING_MIN = 10;
+    public static final int AMBER_SETTING_MAX = 50;
+    public static final int GREEN_SETTING_MIN = 20;
+    /* public static final int GREEN_SETTING_MAX = 100; /* TODO: use this, and possibly set it to 95. */
+
     private Messenger serviceMessenger;
     private final Messenger messenger = new Messenger(new MessageHandler(this));
     private final BatteryInfoService.RemoteConnection serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
@@ -178,11 +198,41 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private boolean appNotifsEnabled;
     private boolean mainNotifsEnabled;
 
-    //private CurrentHack currentHack;
-
     private String pref_screen;
 
+    private ColorPreviewPreference cpbPref;
+
+    private ListPreference   redThresh;
+    private ListPreference amberThresh;
+    private ListPreference greenThresh;
+
+    private Boolean   redEnabled;
+    private Boolean amberEnabled;
+    private Boolean greenEnabled;
+
+    private int   iRedThresh;
+    private int iAmberThresh;
+    private int iGreenThresh;
+
     private int menu_res = R.menu.settings;
+
+    private static final String[] fivePercents = {
+        "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
+        "55", "60", "65", "70", "75", "80", "85", "90", "95", "100"};
+
+    /* Returns a two-item array of the start and end indices into the above arrays. */
+    private int[] indices(int x, int y) {
+        int[] a = new int[2];
+        int i; /* How many values to remove from the front */
+        int j; /* How many values to remove from the end   */
+
+        i = (x / 5) - 1;
+        j = (100 - y) / 5;
+
+        a[0] = i;
+        a[1] = j;
+        return a;
+    }
 
     //private static final Object[] EMPTY_OBJECT_ARRAY = {};
     //private static final  Class<?>[]  EMPTY_CLASS_ARRAY = {};
@@ -274,8 +324,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                     pref_screen.equals(KEY_NOTIFICATION_SETTINGS)) &&
                    (!appNotifsEnabled || !mainNotifsEnabled)) {
             setPrefScreen(R.xml.main_notifs_disabled_pref_screen);
-            Preference prefb = mPreferenceScreen.findPreference(KEY_APP_NOTIFS_DISABLED_B);
-            Preference prefs = mPreferenceScreen.findPreference(KEY_APP_NOTIFS_DISABLED_SUMMARY);
+            Preference prefb = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_B);
+            Preference prefs = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_SUMMARY);
+
             if (!appNotifsEnabled) {
                 prefs.setSummary(R.string.app_notifs_disabled_summary);
                 prefb.setSummary(R.string.app_notifs_disabled_b);
@@ -288,6 +339,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             setWindowSubtitle(res.getString(R.string.status_bar_icon_settings));
 
             menu_res = R.menu.status_bar_icon_settings;
+
+            cpbPref     = (ColorPreviewPreference) mPreferenceScreen.findPreference(KEY_COLOR_PREVIEW);
 
             ListPreference iconSetPref = (ListPreference) mPreferenceScreen.findPreference(KEY_ICON_SET);
             setPluginPrefEntriesAndValues(iconSetPref);
@@ -303,17 +356,40 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             if (currentPlugin.equals("builtin.classic")) {
                 cat.setLayoutResource(R.layout.none);
 
+                if (!mSharedPreferences.getBoolean(KEY_CLASSIC_COLOR_MODE, false)) {
+                    cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
+                    cat.removeAll();
+                    cat.setLayoutResource(R.layout.none);
+                } else {
+                    redEnabled   = mSharedPreferences.getBoolean(  KEY_RED, false);
+                    amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
+                    greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
+
+                    iRedThresh   = Integer.valueOf(  redThresh.getValue()); /* Entries don't exist yet */
+                    iAmberThresh = Integer.valueOf(amberThresh.getValue());
+                    iGreenThresh = Integer.valueOf(greenThresh.getValue());
+
+                    validateColorPrefs(null);
+                }
+
                 cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CHARGING_INDICATOR);
                 cat.removeAll();
                 cat.setLayoutResource(R.layout.none);
             } else {
                 cat.setLayoutResource(R.layout.hidden);
+
+                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
+                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CLASSIC_COLOR_MODE);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
             }
         } else if (pref_screen.equals(KEY_NOTIFICATION_SETTINGS)) {
             setPrefScreen(R.xml.notification_pref_screen);
             setWindowSubtitle(res.getString(R.string.notification_settings));
 
-            Preference prefb = mPreferenceScreen.findPreference(KEY_APP_NOTIFS_DISABLED_B);
+            Preference prefb = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_B);
             prefb.setSummary(R.string.pref_manage_main_channel);
 
             if (mSharedPreferences.getBoolean(KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, false)) {
@@ -502,6 +578,31 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
 
+        if (key.equals(KEY_RED)) {
+            redEnabled = mSharedPreferences.getBoolean(KEY_RED, false);
+        } else if (key.equals(KEY_AMBER)) {
+            amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
+        } else if (key.equals(KEY_GREEN)) {
+            greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
+        } else if (key.equals(KEY_RED_THRESH)) {
+            iRedThresh = Integer.valueOf((String) redThresh.getEntry());
+        } else if (key.equals(KEY_AMBER_THRESH)) {
+            iAmberThresh = Integer.valueOf((String) amberThresh.getEntry());
+        } else if (key.equals(KEY_GREEN_THRESH)) {
+            iGreenThresh = Integer.valueOf((String) greenThresh.getEntry());
+        }
+
+        if (key.equals(KEY_RED) || key.equals(KEY_RED_THRESH) ||
+            key.equals(KEY_AMBER) || key.equals(KEY_AMBER_THRESH) ||
+            key.equals(KEY_GREEN) || key.equals(KEY_GREEN_THRESH)) {
+            validateColorPrefs(key);
+        }
+
+        if (key.equals(KEY_CLASSIC_COLOR_MODE)) {
+            resetService();
+            restartThisScreen(); // To show/hide icon-set/plugin settings
+        }
+
         if (key.equals(KEY_ICON_SET)) {
             resetService();
             restartThisScreen(); // To show/hide icon-set/plugin settings
@@ -661,6 +762,67 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         }
     }
 
+    private void validateColorPrefs(String changedKey) {
+        if (redThresh == null) return;
+        String lowest;
+
+        if (changedKey == null) {
+            setColorPrefEntriesAndValues(redThresh, RED_SETTING_MIN, RED_SETTING_MAX);
+
+            /* Older version had a higher max; user's setting could be too high. */
+            if (iRedThresh > RED_SETTING_MAX) {
+                redThresh.setValue("" + RED_SETTING_MAX);
+                iRedThresh = RED_SETTING_MAX;
+            }
+        }
+
+        if (changedKey == null || changedKey.equals(KEY_RED) || changedKey.equals(KEY_RED_THRESH) ||
+            changedKey.equals(KEY_AMBER)) {
+            if (amberEnabled) {
+                lowest = setColorPrefEntriesAndValues(amberThresh, determineMin(AMBER), AMBER_SETTING_MAX);
+
+                if (iAmberThresh < Integer.valueOf(lowest)) {
+                    amberThresh.setValue(lowest);
+                    iAmberThresh = Integer.valueOf(lowest);
+                    updateListPrefSummary(KEY_AMBER_THRESH);
+                }
+            }
+        }
+
+        if (changedKey == null || !changedKey.equals(KEY_GREEN_THRESH)) {
+            if (greenEnabled) {
+                lowest = setColorPrefEntriesAndValues(greenThresh, determineMin(GREEN), 100);
+
+                if (iGreenThresh < Integer.valueOf(lowest)) {
+                    greenThresh.setValue(lowest);
+                    iGreenThresh = Integer.valueOf(lowest);
+                    updateListPrefSummary(KEY_GREEN_THRESH);
+                }
+            }
+        }
+
+        updateColorPreviewBar();
+    }
+
+    /* Does the obvious and returns the lowest value. */
+    private String setColorPrefEntriesAndValues(ListPreference lpref, int min, int max) {
+        String[] entries, values;
+        int i, j;
+        int[] a;
+
+        a = indices(min, max);
+        i = a[0];
+        j = a[1];
+
+        entries = values = new String[fivePercents.length - i - j];
+        System.arraycopy(fivePercents, i, entries, 0, entries.length);
+
+        lpref.setEntries(entries);
+        lpref.setEntryValues(values);
+
+        return values[0];
+    }
+
     private void setPluginPrefEntriesAndValues(ListPreference lpref) {
         java.util.List<String> entriesList = new java.util.ArrayList<String>();
         java.util.List<String>  valuesList = new java.util.ArrayList<String>();
@@ -680,6 +842,15 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public void enableNotifsButtonClick(android.view.View v) {
         Intent intent;
 
+        editor.putString(  KEY_RED_THRESH, res.getString(R.string.default_red_thresh  ));
+        editor.putString(KEY_AMBER_THRESH, res.getString(R.string.default_amber_thresh));
+        editor.putString(KEY_GREEN_THRESH, res.getString(R.string.default_green_thresh));
+
+        editor.apply();
+    }
+
+    public void enableNotifsButtonClick(android.view.View v) {
+        Intent intent;
         if (!appNotifsEnabled) {
             intent = new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
         } else {
@@ -691,5 +862,41 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         startActivity(intent);
+    }
+
+    /* Determine the minimum valid threshold setting for a particular color, based on other active settings,
+         with red being independent, amber depending on red, and green depending on both others. */
+    private int determineMin(int color) {
+        switch (color) {
+        case RED:
+            return RED_SETTING_MIN;
+        case AMBER:
+            if (redEnabled)
+                /* In 10% mode, we might want +10, but xToY10() will sort it out if +5 is too small. */
+                return java.lang.Math.max(iRedThresh + 5, AMBER_SETTING_MIN);
+            else
+                return AMBER_SETTING_MIN;
+        case GREEN:
+            int i;
+
+            if (amberEnabled)
+                i = iAmberThresh;
+            else if (redEnabled)
+                i = iRedThresh;
+            else
+                return GREEN_SETTING_MIN;
+
+            return java.lang.Math.max(i, GREEN_SETTING_MIN);
+        default:
+                return GREEN_SETTING_MIN;
+        }
+    }
+
+    private void updateColorPreviewBar() {
+        if (cpbPref == null) return;
+
+        cpbPref.redThresh   =   redEnabled ?   iRedThresh :   0;
+        cpbPref.amberThresh = amberEnabled ? iAmberThresh :   0;
+        cpbPref.greenThresh = greenEnabled ? iGreenThresh : 100;
     }
 }

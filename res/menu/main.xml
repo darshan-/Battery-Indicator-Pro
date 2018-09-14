@@ -5,6 +5,7 @@
       android:icon="@android:drawable/ic_menu_preferences"
       android:title="@string/menu_settings"
       android:showAsAction="always"
+
   />
 
   <item
