@@ -35,4 +35,11 @@
         android:title="@string/pref_alarm_threshold"
     />
   </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/pref_cat_channel_settings">
+    <Preference
+        android:key="channel_settings_button"
+        android:layout="@layout/enable_notifications_button"
+    />
+  </PreferenceCategory>
 </PreferenceScreen>

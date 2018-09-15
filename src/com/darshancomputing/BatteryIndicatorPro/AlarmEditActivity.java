@@ -48,6 +48,8 @@ public class AlarmEditActivity extends PreferenceActivity {
     public static final String KEY_TYPE         = "type";
     public static final String KEY_THRESHOLD    = "threshold";
 
+    public static final String KEY_CHAN_SETTINGS_B = "channel_settings_button";
+
     public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
 
     private static final String[] chargeEntries = {
@@ -109,6 +111,8 @@ public class AlarmEditActivity extends PreferenceActivity {
         mCursor.moveToFirst();
         mAdapter.requery();
 
+        Preference prefb = mPreferenceScreen.findPreference(KEY_CHAN_SETTINGS_B);
+
         if (chanDisabled) {
             Preference p = mPreferenceScreen.findPreference(KEY_ENABLED);
             p.setEnabled(false);
@@ -116,6 +120,8 @@ public class AlarmEditActivity extends PreferenceActivity {
             p.setEnabled(false);
             p = mPreferenceScreen.findPreference(KEY_THRESHOLD);
             p.setEnabled(false);
+
+            prefb.setSummary(R.string.alarm_chan_disabled_b);
         } else {
             Preference p = mPreferenceScreen.findPreference(KEY_ENABLED);
             p.setEnabled(true);
@@ -123,6 +129,8 @@ public class AlarmEditActivity extends PreferenceActivity {
             p.setEnabled(true);
 
             setUpThresholdList(false);
+
+            prefb.setSummary(R.string.alarm_chan_settings_b);
         }
     }
 
@@ -293,5 +301,18 @@ public class AlarmEditActivity extends PreferenceActivity {
             threshold = s;
             alarms.setThreshold(id, threshold);
         }
+    }
+
+    public void enableNotifsButtonClick(android.view.View v) {
+        if (mAdapter.type == null)
+            return;
+
+        Intent intent;
+        intent = new Intent(android.provider.Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+        intent.putExtra(android.provider.Settings.EXTRA_CHANNEL_ID, mAdapter.type);
+        intent.putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, getPackageName());
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        startActivity(intent);
     }
 }
