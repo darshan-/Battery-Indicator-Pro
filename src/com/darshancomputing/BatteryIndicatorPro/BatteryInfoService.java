@@ -81,12 +81,14 @@ public class BatteryInfoService extends Service {
     public static final String CHAN_ID_OLD_ALARM = "alarm";
 
     public static final String CHAN_ID_MAIN = "main_002";
-    public static final String CHAN_ID_A_CHARGED = "alarm_charged";
-    public static final String CHAN_ID_A_CDROP = "alarm_charge_drops";
-    public static final String CHAN_ID_A_CRISE = "alarm_charge_rises";
-    public static final String CHAN_ID_A_TDROP = "alarm_temp_drops";
-    public static final String CHAN_ID_A_TRISE = "alarm_temp_rises";
-    public static final String CHAN_ID_A_HFAIL = "alarm_health_fails";
+
+    // Important: Make sure alarm notification channel IDs and alarm type database values always match
+    public static final String CHAN_ID_A_CHARGED = "fully_charged";
+    public static final String CHAN_ID_A_CDROP = "charge_drops";
+    public static final String CHAN_ID_A_CRISE = "charge_rises";
+    public static final String CHAN_ID_A_TDROP = "temp_drops";
+    public static final String CHAN_ID_A_TRISE = "temp_rises";
+    public static final String CHAN_ID_A_HFAIL = "health_failure";
 
     public static final String CHAN_GROUP_ID_ALARMS = "alarms";
 

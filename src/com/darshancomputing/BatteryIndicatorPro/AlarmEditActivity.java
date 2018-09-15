@@ -15,7 +15,10 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.ActionBar;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 //import android.content.SharedPreferences;
@@ -39,14 +42,11 @@ public class AlarmEditActivity extends PreferenceActivity {
     private AlarmDatabase alarms;
     private Cursor mCursor;
     private AlarmAdapter mAdapter;
+    private NotificationManager mNotificationManager;
 
     public static final String KEY_ENABLED      = "enabled";
     public static final String KEY_TYPE         = "type";
     public static final String KEY_THRESHOLD    = "threshold";
-    public static final String KEY_RINGTONE     = "ringtone";
-    public static final String KEY_AUDIO_STREAM = "audio_stream";
-    public static final String KEY_VIBRATE      = "vibrate";
-    public static final String KEY_LIGHTS       = "lights";
 
     public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
 
@@ -57,6 +57,8 @@ public class AlarmEditActivity extends PreferenceActivity {
         "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
         "55", "60", "65", "70", "75", "80", "85", "90", "95", "99"};
 
+    private boolean chanDisabled;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +67,8 @@ public class AlarmEditActivity extends PreferenceActivity {
         Str.setResources(res);
         alarms = new AlarmDatabase(this);
         //settings = PreferenceManager.getDefaultSharedPreferences(this);
+
+        mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         ActionBar ab = getActionBar();
         if (ab != null) {
@@ -100,9 +104,26 @@ public class AlarmEditActivity extends PreferenceActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         mCursor.requery();
         mCursor.moveToFirst();
         mAdapter.requery();
+
+        if (chanDisabled) {
+            Preference p = mPreferenceScreen.findPreference(KEY_ENABLED);
+            p.setEnabled(false);
+            p = mPreferenceScreen.findPreference(KEY_TYPE);
+            p.setEnabled(false);
+            p = mPreferenceScreen.findPreference(KEY_THRESHOLD);
+            p.setEnabled(false);
+        } else {
+            Preference p = mPreferenceScreen.findPreference(KEY_ENABLED);
+            p.setEnabled(true);
+            p = mPreferenceScreen.findPreference(KEY_TYPE);
+            p.setEnabled(true);
+
+            setUpThresholdList(false);
+        }
     }
 
     @Override
@@ -242,8 +263,8 @@ public class AlarmEditActivity extends PreferenceActivity {
 
     private class AlarmAdapter {
         public int id;
-        String type, threshold, ringtone, audio_stream;
-        Boolean enabled, vibrate, lights;
+        String type, threshold;
+        Boolean enabled;
 
         AlarmAdapter() {
             requery();
@@ -253,26 +274,14 @@ public class AlarmEditActivity extends PreferenceActivity {
                       id = mCursor.getInt   (mCursor.getColumnIndex(AlarmDatabase.KEY_ID));
                     type = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_TYPE));
                threshold = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
-                ringtone = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_RINGTONE));
-          //audio_stream = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_AUDIO_STREAM));
                  enabled = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_ENABLED)) == 1);
-                 vibrate = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_VIBRATE)) == 1);
-                 lights  = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_LIGHTS)) == 1);
+
+            chanDisabled = mNotificationManager.getNotificationChannel(type).getImportance() == 0;
          }
 
         public void setEnabled(Boolean b) {
             enabled = b;
             alarms.setEnabled(id, enabled);
-        }
-
-        void setVibrate(Boolean b) {
-            vibrate = b;
-            alarms.setVibrate(id, vibrate);
-        }
-
-        void setLights(Boolean b) {
-            lights = b;
-            alarms.setLights(id, lights);
         }
 
         public void setType(String s) {
@@ -284,15 +293,5 @@ public class AlarmEditActivity extends PreferenceActivity {
             threshold = s;
             alarms.setThreshold(id, threshold);
         }
-
-        void setRingtone(String s) {
-            ringtone = s;
-            alarms.setRingtone(id, ringtone);
-        }
-
-        // void setAudioStream(String s) {
-        //     audio_stream = s;
-        //     alarms.setAudioStream(id, audio_stream);
-        // }
     }
 }

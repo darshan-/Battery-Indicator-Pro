@@ -346,6 +346,7 @@
 
   <string name="default_max_log_age">672</string>
 
+  <!-- Important: Make sure alarm notification channel IDs and alarm type database values always match -->
   <string-array name="alarm_type_values">
     <item>fully_charged</item>
     <item>charge_drops</item>
