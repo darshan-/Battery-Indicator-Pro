@@ -42,6 +42,9 @@ import android.widget.Toast;
 
 import android.support.v4.app.Fragment;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AlarmsFragment extends Fragment {
     private static PersistentFragment pfrag;
     private AlarmDatabase alarms;
@@ -59,6 +62,22 @@ public class AlarmsFragment extends Fragment {
     private NotificationChannelGroup alarmChanGroup;
     private boolean appNotifsEnabled;
     private boolean alarmNotifsEnabled;
+
+    private static final Map<String, String> alarmTypes = makeAlarmTypes();
+    private Map<String, Boolean> chanDisabled = new HashMap<String, Boolean>();
+
+    private static Map<String, String> makeAlarmTypes() {
+        Map<String, String> myMap = new HashMap<String, String>();
+
+        myMap.put("fully_charged", "alarm_charged");
+        myMap.put("charge_drops", "alarm_charge_drops");
+        myMap.put("charge_rises", "alarm_charge_rises");
+        myMap.put("temp_drops", "alarm_temp_drops");
+        myMap.put("temp_rises", "alarm_temp_rises");
+        myMap.put("health_failure", "alarm_health_fails");
+
+        return myMap;
+    }
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -182,6 +201,12 @@ public class AlarmsFragment extends Fragment {
             return;
         }
 
+        NotificationChannel chan;
+        for (String chan_id : BatteryInfoService.ALARM_CHAN_IDS) {
+            chan = mNotificationManager.getNotificationChannel(chan_id);
+            chanDisabled.put(chan_id, chan.getImportance() == 0);
+        }
+
         convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
                                              pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
@@ -302,5 +327,8 @@ public class AlarmsFragment extends Fragment {
                 startActivity(new Intent().setComponent(comp).putExtra(AlarmEditActivity.EXTRA_ALARM_ID, id));
             }
         });
+
+        if (chanDisabled.get(alarmTypes.get(type)))
+            toggle.setEnabled(false);
     }
 }

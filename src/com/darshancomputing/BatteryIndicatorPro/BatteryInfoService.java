@@ -90,6 +90,9 @@ public class BatteryInfoService extends Service {
 
     public static final String CHAN_GROUP_ID_ALARMS = "alarms";
 
+    public static final String[] ALARM_CHAN_IDS = {CHAN_ID_A_CHARGED, CHAN_ID_A_CDROP, CHAN_ID_A_CRISE,
+                                                   CHAN_ID_A_TDROP, CHAN_ID_A_TRISE, CHAN_ID_A_HFAIL};
+
     private static final int RC_MAIN   = 100;
     private static final int RC_ALARMS_EDIT = 101;
     private static final int RC_ALARMS_CANCEL = 102;
@@ -163,14 +166,13 @@ public class BatteryInfoService extends Service {
         CharSequence channel_group_name_alarms = getString(R.string.channel_group_name_alarms);
         mNotificationManager.createNotificationChannelGroup(new NotificationChannelGroup(CHAN_GROUP_ID_ALARMS, channel_group_name_alarms));
 
-        String[] alarm_chan_ids = {CHAN_ID_A_CHARGED, CHAN_ID_A_CDROP, CHAN_ID_A_CRISE, CHAN_ID_A_TDROP, CHAN_ID_A_TRISE, CHAN_ID_A_HFAIL};
         int[] alarm_chan_names = {R.string.alarm_type_fully_charged, R.string.alarm_type_charge_drops, R.string.alarm_type_charge_rises,
                                   R.string.alarm_type_temperature_drops, R.string.alarm_type_temperature_rises, R.string.alarm_type_health_failure};
 
-        for (int i = 0; i < alarm_chan_ids.length; i++) {
+        for (int i = 0; i < ALARM_CHAN_IDS.length; i++) {
             Uri ringtone = android.media.RingtoneManager.getDefaultUri(android.media.RingtoneManager.TYPE_NOTIFICATION);
             CharSequence chan_name = getString(alarm_chan_names[i]);
-            ch = new NotificationChannel(alarm_chan_ids[i], chan_name, NotificationManager.IMPORTANCE_HIGH);
+            ch = new NotificationChannel(ALARM_CHAN_IDS[i], chan_name, NotificationManager.IMPORTANCE_HIGH);
             ch.setSound(ringtone, new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_NOTIFICATION_EVENT).build());
             ch.enableLights(true);
             ch.setLightColor(0xff33b5e5);
