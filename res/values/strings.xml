@@ -48,7 +48,7 @@
   </string>
 
   <string formatted="false" name="main_notif_chan_name">Main Notification</string>
-  <string formatted="false" name="alarm_notif_chan_name">Battery Alarms</string>
+  <string formatted="false" name="channel_group_name_alarms">Alarms</string>
 
   <string formatted="false" name="confirm_clear_logs">Really clear all logs?</string>
 
@@ -328,7 +328,7 @@
   <string formatted="false" name="main_notifs_disabled_summary">You have disabled the main notification for this app.  Please enable it to access these settings.</string>
   <string formatted="false" name="app_notifs_alarms_disabled_summary">You have disabled all notifications for this app.  Please enable them to access your alarms.</string>
   <string formatted="false" name="alarm_notifs_disabled_b">Enable Alarms</string>
-  <string formatted="false" name="alarm_notifs_disabled_summary">You have disabled the alarm notification channel for this app.  Please enable it to access your alarms.</string>
+  <string formatted="false" name="alarm_notifs_disabled_summary">You have disabled the alarm notification group for this app.  Please enable it to access your alarms.</string>
 
   <string formatted="false" name="notification_settings">Main Notification</string>
   <string formatted="false" name="notification_settings_summary">Configure the main notification</string>

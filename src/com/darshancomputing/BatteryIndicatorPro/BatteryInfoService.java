@@ -17,6 +17,7 @@ package com.darshancomputing.BatteryIndicatorPro;
 import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
+import android.app.NotificationChannelGroup;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -74,15 +75,20 @@ public class BatteryInfoService extends Service {
     //private static final String LOG_TAG = "com.darshancomputing.BatteryIndicatorPro - BatteryInfoService";
 
     private static final int NOTIFICATION_PRIMARY      = 1;
-    //private static final int NOTIFICATION_ALARM_CHARGE = 3;
-    //private static final int NOTIFICATION_ALARM_HEALTH = 4;
-    //private static final int NOTIFICATION_ALARM_TEMP   = 5;
-    //private static final int NOTIFICATION_ALARM_ALARM  = 6;
     private static final int NOTIFICATION_ALARM = 7;
 
-    public static final String MAIN_CHAN_ID = "main";
-    public static final String ALARM_CHAN_ID = "alarm";
+    public static final String CHAN_ID_OLD_MAIN = "main";
+    public static final String CHAN_ID_OLD_ALARM = "alarm";
 
+    public static final String CHAN_ID_MAIN = "main_002";
+    public static final String CHAN_ID_A_CHARGED = "alarm_charged";
+    public static final String CHAN_ID_A_CDROP = "alarm_charge_drops";
+    public static final String CHAN_ID_A_CRISE = "alarm_charge_rises";
+    public static final String CHAN_ID_A_TDROP = "alarm_temp_drops";
+    public static final String CHAN_ID_A_TRISE = "alarm_temp_rises";
+    public static final String CHAN_ID_A_HFAIL = "alarm_health_fails";
+
+    public static final String CHAN_GROUP_ID_ALARMS = "alarms";
 
     private static final int RC_MAIN   = 100;
     private static final int RC_ALARMS_EDIT = 101;
@@ -135,6 +141,47 @@ public class BatteryInfoService extends Service {
         }
     };
 
+    private void setUpChannels() {
+        if (mNotificationManager == null)
+            mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        mNotificationManager.deleteNotificationChannel(CHAN_ID_OLD_MAIN);
+        mNotificationManager.deleteNotificationChannel(CHAN_ID_OLD_ALARM);
+
+        int main_importance = NotificationManager.IMPORTANCE_MIN;
+        if (android.os.Build.VERSION.SDK_INT < 28) {
+            main_importance = NotificationManager.IMPORTANCE_LOW;
+        }
+        CharSequence main_notif_chan_name = getString(R.string.main_notif_chan_name);
+        NotificationChannel ch = new NotificationChannel(CHAN_ID_MAIN, main_notif_chan_name, main_importance);
+        ch.setSound(null, null);
+        ch.enableLights(false);
+        ch.enableVibration(false);
+        ch.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+        mNotificationManager.createNotificationChannel(ch);
+
+        CharSequence channel_group_name_alarms = getString(R.string.channel_group_name_alarms);
+        mNotificationManager.createNotificationChannelGroup(new NotificationChannelGroup(CHAN_GROUP_ID_ALARMS, channel_group_name_alarms));
+
+        String[] alarm_chan_ids = {CHAN_ID_A_CHARGED, CHAN_ID_A_CDROP, CHAN_ID_A_CRISE, CHAN_ID_A_TDROP, CHAN_ID_A_TRISE, CHAN_ID_A_HFAIL};
+        int[] alarm_chan_names = {R.string.alarm_type_fully_charged, R.string.alarm_type_charge_drops, R.string.alarm_type_charge_rises,
+                                  R.string.alarm_type_temperature_drops, R.string.alarm_type_temperature_rises, R.string.alarm_type_health_failure};
+
+        for (int i = 0; i < alarm_chan_ids.length; i++) {
+            Uri ringtone = android.media.RingtoneManager.getDefaultUri(android.media.RingtoneManager.TYPE_NOTIFICATION);
+            CharSequence chan_name = getString(alarm_chan_names[i]);
+            ch = new NotificationChannel(alarm_chan_ids[i], chan_name, NotificationManager.IMPORTANCE_HIGH);
+            ch.setSound(ringtone, new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_NOTIFICATION_EVENT).build());
+            ch.enableLights(true);
+            ch.setLightColor(0xff33b5e5);
+            ch.enableVibration(true);
+            ch.setVibrationPattern(new long[]{0, 500, 500, 500, 500, 1000, 1000, 1000, 1000});
+            ch.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+            ch.setGroup(CHAN_GROUP_ID_ALARMS);
+            mNotificationManager.createNotificationChannel(ch);
+        }
+    }
+
     @Override
     public void onCreate() {
         res = getResources();
@@ -153,28 +200,10 @@ public class BatteryInfoService extends Service {
         alarms = new AlarmDatabase(this);
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        CharSequence main_notif_chan_name = getString(R.string.main_notif_chan_name);
-        NotificationChannel mChannel = new NotificationChannel(MAIN_CHAN_ID, main_notif_chan_name, NotificationManager.IMPORTANCE_LOW);
-        mChannel.setSound(null, null);
-        mChannel.enableLights(false);
-        mChannel.enableVibration(false);
-        mChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
-        mNotificationManager.createNotificationChannel(mChannel);
-
-        Uri ringtone = android.media.RingtoneManager.getDefaultUri(android.media.RingtoneManager.TYPE_NOTIFICATION);
-        CharSequence alarm_notif_chan_name = getString(R.string.alarm_notif_chan_name);
-        NotificationChannel aChannel = new NotificationChannel(ALARM_CHAN_ID, alarm_notif_chan_name, NotificationManager.IMPORTANCE_HIGH);
-        aChannel.setSound(ringtone, new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_NOTIFICATION_EVENT).build());
-        aChannel.enableLights(true);
-        aChannel.setLightColor(0xff33b5e5);
-        aChannel.enableVibration(true);
-        aChannel.setVibrationPattern(new long[]{0, 500, 500, 500, 500, 1000, 1000, 1000, 1000});
-        aChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
-        mNotificationManager.createNotificationChannel(aChannel);
-
         mainNotificationB = new Notification.Builder(this);
-
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        setUpChannels();
 
         loadSettingsFiles();
         sdkVersioning();
@@ -501,7 +530,7 @@ public class BatteryInfoService extends Service {
             .setOngoing(true)
             .setWhen(0)
             .setShowWhen(false)
-            .setChannelId(MAIN_CHAN_ID)
+            .setChannelId(CHAN_ID_MAIN)
             .setContentIntent(currentInfoPendingIntent)
             .setVisibility(Notification.VISIBILITY_PUBLIC);
 
@@ -779,7 +808,8 @@ public class BatteryInfoService extends Service {
             if (c != null) {
                 nb = parseAlarmCursor(c);
                 nb.setContentTitle(Str.alarm_fully_charged)
-                    .setContentText(Str.alarm_text);
+                    .setContentText(Str.alarm_text)
+                    .setChannelId(CHAN_ID_A_CHARGED);
 
                 nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
@@ -794,7 +824,8 @@ public class BatteryInfoService extends Service {
             nb = parseAlarmCursor(c);
             String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
             nb.setContentTitle(Str.alarm_charge_drops + threshold + Str.percent_symbol)
-                .setContentText(Str.alarm_text);
+                .setContentText(Str.alarm_text)
+                .setChannelId(CHAN_ID_A_CDROP);
 
             nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
@@ -808,7 +839,8 @@ public class BatteryInfoService extends Service {
             nb = parseAlarmCursor(c);
             String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
             nb.setContentTitle(Str.alarm_charge_rises + threshold + Str.percent_symbol)
-                .setContentText(Str.alarm_text);
+                .setContentText(Str.alarm_text)
+                .setChannelId(CHAN_ID_A_CRISE);
 
             nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
@@ -825,7 +857,8 @@ public class BatteryInfoService extends Service {
             nb = parseAlarmCursor(c);
             String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
             nb.setContentTitle(Str.alarm_temp_rises + Str.formatTemp(Integer.valueOf(threshold), convertF, false))
-                .setContentText(Str.alarm_text);
+                .setContentText(Str.alarm_text)
+                .setChannelId(CHAN_ID_A_TRISE);
 
             nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
@@ -842,7 +875,8 @@ public class BatteryInfoService extends Service {
             nb = parseAlarmCursor(c);
             String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
             nb.setContentTitle(Str.alarm_temp_drops + Str.formatTemp(Integer.valueOf(threshold), convertF, false))
-                .setContentText(Str.alarm_text);
+                .setContentText(Str.alarm_text)
+                .setChannelId(CHAN_ID_A_TDROP);
 
             nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
@@ -856,7 +890,8 @@ public class BatteryInfoService extends Service {
                 sps_editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
                 nb = parseAlarmCursor(c);
                 nb.setContentTitle(Str.alarm_health_failure + Str.healths[info.health])
-                    .setContentText(Str.alarm_text);
+                    .setContentText(Str.alarm_text)
+                    .setChannelId(CHAN_ID_A_HFAIL);
 
                 nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
@@ -868,7 +903,6 @@ public class BatteryInfoService extends Service {
 
     private Notification.Builder parseAlarmCursor(Cursor c) {
         Notification.Builder nb = new Notification.Builder(this)
-            .setChannelId(ALARM_CHAN_ID)
             .setSmallIcon(R.drawable.stat_notify_alarm)
             .setAutoCancel(true)
             .setContentIntent(alarmsPendingIntent);

@@ -6,11 +6,4 @@
       android:title="@string/menu_help"
       android:showAsAction="always|withText"
   />
-
-  <item
-      android:id="@+id/menu_alarm_channel"
-      android:icon="@android:drawable/ic_menu_preferences"
-      android:title="@string/menu_alarm_channel"
-      android:showAsAction="never"
-  />
 </menu>

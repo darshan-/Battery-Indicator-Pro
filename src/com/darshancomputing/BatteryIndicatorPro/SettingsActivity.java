@@ -320,7 +320,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         }
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.MAIN_CHAN_ID);
+        mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.CHAN_ID_MAIN);
 
         appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
         mainNotifsEnabled = mainChan.getImportance() > 0;
@@ -531,7 +531,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         super.onResume();
 
         // Turns out mainChan is unchangeable, so getImportance() just returns the importance at the time getNotificationChannel was called
-        mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.MAIN_CHAN_ID);
+        mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.CHAN_ID_MAIN);
 
         if (appNotifsEnabled != mNotificationManager.areNotificationsEnabled() ||
             mainNotifsEnabled != mainChan.getImportance() > 0) { // Doesn't seem worth checking which screen

@@ -15,6 +15,7 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.app.NotificationChannel;
+import android.app.NotificationChannelGroup;
 import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -55,7 +56,7 @@ public class AlarmsFragment extends Fragment {
     private int curIndex; /* The ViewGroup index of the currently focused item (to set focus after deletion) */
 
     private NotificationManager mNotificationManager;
-    private NotificationChannel alarmChan;
+    private NotificationChannelGroup alarmChanGroup;
     private boolean appNotifsEnabled;
     private boolean alarmNotifsEnabled;
 
@@ -64,10 +65,10 @@ public class AlarmsFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-        alarmChan = mNotificationManager.getNotificationChannel(BatteryInfoService.ALARM_CHAN_ID);
+        alarmChanGroup = mNotificationManager.getNotificationChannelGroup(BatteryInfoService.CHAN_GROUP_ID_ALARMS);
 
         appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
-        alarmNotifsEnabled = alarmChan == null || alarmChan.getImportance() > 0; // null okay, just not created yet, so not blocked
+        alarmNotifsEnabled = alarmChanGroup == null || !alarmChanGroup.isBlocked(); // null okay, just not created yet, so not blocked
 
         if (!appNotifsEnabled || !alarmNotifsEnabled) {
             mInflater = inflater;
@@ -88,13 +89,7 @@ public class AlarmsFragment extends Fragment {
                 public void onClick(View v) {
                     Intent intent;
 
-                    if (!appNotifsEnabled) {
-                        intent = new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-                    } else {
-                        intent = new Intent(android.provider.Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
-                        intent.putExtra(android.provider.Settings.EXTRA_CHANNEL_ID, alarmChan.getId());
-                    }
-
+                    intent = new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
                     intent.putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, getActivity().getPackageName());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
@@ -177,10 +172,10 @@ public class AlarmsFragment extends Fragment {
         super.onResume();
 
         // Turns out alarmChan is unchangeable, so getImportance() just returns the importance at the time getNotificationChannel was called
-        alarmChan = mNotificationManager.getNotificationChannel(BatteryInfoService.ALARM_CHAN_ID);
+        alarmChanGroup = mNotificationManager.getNotificationChannelGroup(BatteryInfoService.CHAN_GROUP_ID_ALARMS);
 
         if (appNotifsEnabled != mNotificationManager.areNotificationsEnabled() ||
-            alarmNotifsEnabled != (alarmChan == null || alarmChan.getImportance() > 0)) {
+            alarmNotifsEnabled != (alarmChanGroup == null || !alarmChanGroup.isBlocked())) {
             Intent intent = new Intent(getActivity(), BatteryInfoActivity.class).putExtra(BatteryInfoService.EXTRA_EDIT_ALARMS, true);
             startActivity(intent);
             getActivity().finish();
@@ -213,15 +208,6 @@ public class AlarmsFragment extends Fragment {
         case R.id.menu_help:
             ComponentName comp = new ComponentName(getActivity().getPackageName(), SettingsHelpActivity.class.getName());
             intent = new Intent().setComponent(comp).putExtra(SettingsActivity.EXTRA_SCREEN, SettingsActivity.KEY_ALARMS_SETTINGS);
-            startActivity(intent);
-
-            return true;
-        case R.id.menu_alarm_channel:
-            intent = new Intent(android.provider.Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
-            intent.putExtra(android.provider.Settings.EXTRA_CHANNEL_ID, alarmChan.getId());
-            intent.putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, getActivity().getPackageName());
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
             startActivity(intent);
 
             return true;
