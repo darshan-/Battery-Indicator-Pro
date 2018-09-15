@@ -4,8 +4,8 @@
     package="com.darshancomputing.BatteryIndicatorPro"
     xmlns:tools="http://schemas.android.com/tools"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
-    android:versionCode="026003"
-    android:versionName="11.0.1-beta1"
+    android:versionCode="026005"
+    android:versionName="11.0.1-beta2"
 >
 
 
