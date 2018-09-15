@@ -44,6 +44,7 @@ import android.support.v4.app.Fragment;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 public class AlarmsFragment extends Fragment {
     private static PersistentFragment pfrag;
@@ -65,15 +66,30 @@ public class AlarmsFragment extends Fragment {
 
     private Map<String, Boolean> chanDisabled = new HashMap<String, Boolean>();
 
+    private NotificationChannelGroup getAlarmChanGroup() {
+        if (android.os.Build.VERSION.SDK_INT >= 28)
+            return mNotificationManager.getNotificationChannelGroup(BatteryInfoService.CHAN_GROUP_ID_ALARMS);
+
+        List<NotificationChannelGroup> groups = mNotificationManager.getNotificationChannelGroups();
+        if (groups.size() > 0)
+            return groups.get(0);
+        else
+            return null;
+    }
+
+    private boolean getAlarmNotifsEnabled() {
+        return android.os.Build.VERSION.SDK_INT < 28 || alarmChanGroup == null || !alarmChanGroup.isBlocked();
+    }
+
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-        alarmChanGroup = mNotificationManager.getNotificationChannelGroup(BatteryInfoService.CHAN_GROUP_ID_ALARMS);
+        alarmChanGroup = getAlarmChanGroup();
 
         appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
-        alarmNotifsEnabled = alarmChanGroup == null || !alarmChanGroup.isBlocked(); // null okay, just not created yet, so not blocked
+        alarmNotifsEnabled = getAlarmNotifsEnabled();
 
         if (!appNotifsEnabled || !alarmNotifsEnabled) {
             mInflater = inflater;
@@ -177,10 +193,10 @@ public class AlarmsFragment extends Fragment {
         super.onResume();
 
         // Turns out alarmChan is unchangeable, so getImportance() just returns the importance at the time getNotificationChannel was called
-        alarmChanGroup = mNotificationManager.getNotificationChannelGroup(BatteryInfoService.CHAN_GROUP_ID_ALARMS);
+        alarmChanGroup = getAlarmChanGroup();
 
         if (appNotifsEnabled != mNotificationManager.areNotificationsEnabled() ||
-            alarmNotifsEnabled != (alarmChanGroup == null || !alarmChanGroup.isBlocked())) {
+            alarmNotifsEnabled != getAlarmNotifsEnabled() {
             Intent intent = new Intent(getActivity(), BatteryInfoActivity.class).putExtra(BatteryInfoService.EXTRA_EDIT_ALARMS, true);
             startActivity(intent);
             getActivity().finish();
