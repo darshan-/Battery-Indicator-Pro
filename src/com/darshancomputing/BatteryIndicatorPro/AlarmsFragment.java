@@ -196,7 +196,7 @@ public class AlarmsFragment extends Fragment {
         alarmChanGroup = getAlarmChanGroup();
 
         if (appNotifsEnabled != mNotificationManager.areNotificationsEnabled() ||
-            alarmNotifsEnabled != getAlarmNotifsEnabled() {
+            alarmNotifsEnabled != getAlarmNotifsEnabled()) {
             Intent intent = new Intent(getActivity(), BatteryInfoActivity.class).putExtra(BatteryInfoService.EXTRA_EDIT_ALARMS, true);
             startActivity(intent);
             getActivity().finish();
