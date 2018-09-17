@@ -335,8 +335,6 @@
   <string name="default_green_thresh">@string/default_amber_thresh</string>
   <string name="default_green_thresh10">50</string>
 
-  <bool   name="default_show_notification_time">false</bool>
-
   <string name="default_status_dur_est"     >12</string>
   <bool   name="default_show_charge_time"   >true</bool>
   <bool   name="default_show_light_usage"   >true</bool>

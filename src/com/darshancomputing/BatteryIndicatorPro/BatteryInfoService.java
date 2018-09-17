@@ -103,7 +103,6 @@ public class BatteryInfoService extends Service {
     public static final String KEY_PREVIOUS_TEMP = "previous_temp";
     public static final String KEY_PREVIOUS_HEALTH = "previous_health";
     public static final String KEY_SERVICE_DESIRED = "serviceDesired";
-    public static final String KEY_SHOW_NOTIFICATION = "show_notification";
     public static final String LAST_SDK_API = "last_sdk_api";
 
 
@@ -130,15 +129,6 @@ public class BatteryInfoService extends Service {
     private Predictor predictor;
 
     private final Handler mHandler = new Handler();
-
-    private final Runnable mNotify = new Runnable() {
-        public void run() {
-            android.app.Notification n = mainNotificationB.build();
-
-            startForeground(NOTIFICATION_PRIMARY, n);
-            mHandler.removeCallbacks(mNotify);
-        }
-    };
 
     private final Runnable runRenotify = new Runnable() {
         public void run() {
@@ -221,7 +211,7 @@ public class BatteryInfoService extends Service {
 
         Intent updatePredictorIntent = new Intent(this, BatteryInfoService.class);
         updatePredictorIntent.putExtra(EXTRA_UPDATE_PREDICTOR, true);
-        updatePredictorPendingIntent = PendingIntent.getService(this, 0, updatePredictorIntent, 0);
+        updatePredictorPendingIntent = PendingIntent.getService(this, 0, updatePredictorIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         alarmsIntent = new Intent(this, BatteryInfoActivity.class).putExtra(EXTRA_EDIT_ALARMS, true);
 
@@ -254,7 +244,6 @@ public class BatteryInfoService extends Service {
         alarmManager.cancel(updatePredictorPendingIntent);
         alarms.close();
         unregisterReceiver(mBatteryInfoReceiver);
-        mHandler.removeCallbacks(mNotify);
         mHandler.removeCallbacks(runRenotify);
         mNotificationManager.cancelAll();
         log_db.close();
@@ -437,10 +426,8 @@ public class BatteryInfoService extends Service {
         else
             handleUpdateWithSameStatus();
 
-        if (sp_service.getBoolean(KEY_SHOW_NOTIFICATION, true)) {
-            prepareNotification();
-            doNotify();
-        }
+        prepareNotification();
+        startForeground(NOTIFICATION_PRIMARY, mainNotificationB.build());
 
         if (alarms.anyActiveAlarms())
             handleAlarms();
@@ -454,7 +441,9 @@ public class BatteryInfoService extends Service {
             sendClientMessage(messenger, RemoteConnection.CLIENT_BATTERY_INFO_UPDATED, info.toBundle());
         }
 
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME, android.os.SystemClock.elapsedRealtime() + (2 * 60 * 1000), updatePredictorPendingIntent);
+        try { // Some reports on Developer console, don't make much sense.  Better not to crash and live without predictor update.
+            alarmManager.set(AlarmManager.ELAPSED_REALTIME, android.os.SystemClock.elapsedRealtime() + (2 * 60 * 1000), updatePredictorPendingIntent);
+        } catch (Exception e) {}
     }
 
     private void updateWidgets(BatteryInfo info) {
@@ -704,10 +693,6 @@ public class BatteryInfoService extends Service {
         return line;
     }
 
-    private void doNotify() {
-        mHandler.post(mNotify);
-    }
-
     // I take advantage of (count on) R.java having resources alphabetical and incrementing by one.
     private int iconFor(int percent) {
         String default_set = "builtin.plain_number";
@@ -936,7 +921,7 @@ public class BatteryInfoService extends Service {
             widgetIds.add(appWidgetIds[i]);
         }
 
-        context.startService(new Intent(context, BatteryInfoService.class));
+        context.startForegroundService(new Intent(context, BatteryInfoService.class));
     }
 
     public static void onWidgetDeleted(Context context, int[] appWidgetIds) {

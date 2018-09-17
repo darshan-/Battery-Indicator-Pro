@@ -515,7 +515,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         try {
             serviceMessenger.send(outgoing);
         } catch (Exception e) {
-            startService(new Intent(this, BatteryInfoService.class));
+            startForegroundService(new Intent(this, BatteryInfoService.class));
         }
     }
 

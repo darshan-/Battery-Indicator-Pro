@@ -100,7 +100,7 @@ public class PersistentFragment extends Fragment {
         serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
 
         biServiceIntent = new Intent(getActivity(), BatteryInfoService.class);
-        getActivity().startService(biServiceIntent);
+        getActivity().startForegroundService(biServiceIntent);
         bindService();
 
         loadSettingsFiles();
