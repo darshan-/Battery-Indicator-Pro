@@ -33,6 +33,7 @@ class CurrentHack {
 
     private static BatteryManager batteryManager;
     private static boolean preferFS = false;
+    private static int multiplier = 1;
     private static int method = HACK_METHOD_NONE;
 
     //private static CurrentHack instance;
@@ -66,6 +67,10 @@ class CurrentHack {
                 method = HACK_METHOD_BATTERY_MANAGER;
         else
             method = avail; // Only one or none supported
+    }
+
+    static void setMultiplier(int m) {
+        multiplier = m;
     }
 
     static int getHackMethodsAvailable() {
@@ -116,7 +121,7 @@ class CurrentHack {
         int current = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW);
 
         if (current > Integer.MIN_VALUE)
-            return (long) current / 1000;
+            return (long) current * multiplier / 1000;
         else
             return null;
     }
@@ -128,7 +133,7 @@ class CurrentHack {
         int current = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_AVERAGE);
 
         if (current > Integer.MIN_VALUE)
-            return (long) current / 1000;
+            return (long) current * multiplier / 1000;
         else
             return null;
     }
@@ -522,8 +527,11 @@ class CurrentHack {
                     //Log.e(LOG_TAG, "Error parsing normal current hack file");
                 }
 
+                if (value != null)
+                    value *= multiplier;
+
                 if (convertToMillis && value != null)
-                    value = value / 1000;
+                    value /= 1000;
             }
 
             return value;
@@ -577,6 +585,9 @@ class CurrentHack {
                 //e.printStackTrace();
             }
 
+            if (value != null)
+                value *= multiplier;
+
             return value;
         }
     }
@@ -616,6 +627,9 @@ class CurrentHack {
                     //Log.e(LOG_TAG, "Error parsing SMText current hack file");
                 }
             }
+
+            if (value != null)
+                value *= multiplier;
 
             return value;
         }

@@ -599,6 +599,17 @@
     <item>-2</item>
   </string-array>
 
+  <string-array name="current_hack_multiplier_entries_values">
+    <item>1</item>
+    <item>-1</item>
+    <item>10</item>
+    <item>-10</item>
+    <item>100</item>
+    <item>-100</item>
+    <item>1000</item>
+    <item>-1000</item>
+  </string-array>
+
   <string name="default_prediction_type">-3</string>
 
   <bool name="default_convert_to_fahrenheit">false</bool>

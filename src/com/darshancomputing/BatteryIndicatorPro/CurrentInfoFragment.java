@@ -124,10 +124,17 @@ public class CurrentInfoFragment extends Fragment {
         dpScale = getActivity().getResources().getDisplayMetrics().density;
 
         CurrentHack.setContext(getActivity());
-        CurrentHack.setPreferFS(pfrag.settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
-                                                          pfrag.res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        CurrentHack.setPreferFS(pfrag.settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+                                                          pfrag.res.getBoolean(R.bool.default_prefer_fs_current_hack)));
+        CurrentHack.setMultiplier(Integer.valueOf(pfrag.settings.getString(SettingsActivity.KEY_CURRENT_HACK_MULTIPLIER, "1")));
     }
 
     @Override

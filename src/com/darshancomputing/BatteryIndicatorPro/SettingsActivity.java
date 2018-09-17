@@ -96,6 +96,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_CAT_CURRENT_HACK_UNSUPPORTED = "category_current_hack_unsupported";
     public static final String KEY_ENABLE_CURRENT_HACK = "enable_current_hack";
     public static final String KEY_CURRENT_HACK_PREFER_FS = "current_hack_prefer_fs";
+    public static final String KEY_CURRENT_HACK_MULTIPLIER = "current_hack_multiplier";
     public static final String KEY_CAT_CURRENT_HACK_NOTIFICATION = "category_current_hack_notification";
     public static final String KEY_DISPLAY_CURRENT_IN_VITAL_STATS = "display_current_in_vital_stats";
     public static final String KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS = "prefer_current_avg_in_vital_stats";
@@ -124,6 +125,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     };
 
     private static final String[] CURRENT_HACK_DEPENDENTS = {KEY_CURRENT_HACK_PREFER_FS,
+                                                             KEY_CURRENT_HACK_MULTIPLIER,
                                                              KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
                                                              KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
                                                              KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW,
@@ -148,6 +150,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     private static final String[] LIST_PREFS = {KEY_AUTOSTART, KEY_STATUS_DUR_EST,
                                                 KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
                                                 KEY_ICON_SET,
+                                                KEY_CURRENT_HACK_MULTIPLIER,
                                                 KEY_MAX_LOG_AGE, KEY_ICON_AREA, KEY_TOP_LINE, KEY_BOTTOM_LINE,
                                                 KEY_TIME_REMAINING_VERBOSITY,
                                                 KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
@@ -170,6 +173,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_CUSTOM_BOTTOM_LINE_COLOR,
                                                    KEY_ENABLE_CURRENT_HACK,
                                                    KEY_CURRENT_HACK_PREFER_FS,
+                                                   KEY_CURRENT_HACK_MULTIPLIER,
                                                    KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
                                                    KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
                                                    KEY_PREDICTION_TYPE

@@ -23,6 +23,14 @@
         android:summary="@string/pref_current_hack_prefer_fs_summary"
         android:defaultValue="@bool/default_prefer_fs_current_hack"
     />
+
+    <ListPreference
+       android:key="current_hack_multiplier"
+       android:title="@string/pref_current_hack_multiplier"
+       android:entries="@array/current_hack_multiplier_entries_values"
+       android:entryValues="@array/current_hack_multiplier_entries_values"
+       android:defaultValue="1"
+    />
   </PreferenceCategory>
 
   <PreferenceCategory

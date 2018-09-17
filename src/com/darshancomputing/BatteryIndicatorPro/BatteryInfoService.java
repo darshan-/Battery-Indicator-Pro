@@ -205,6 +205,7 @@ public class BatteryInfoService extends Service {
         CurrentHack.setContext(this);
         CurrentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
                                                     res.getBoolean(R.bool.default_prefer_fs_current_hack)));
+        CurrentHack.setMultiplier(Integer.valueOf(settings.getString(SettingsActivity.KEY_CURRENT_HACK_MULTIPLIER, "1")));
 
         Intent currentInfoIntent = new Intent(this, BatteryInfoActivity.class).putExtra(EXTRA_CURRENT_INFO, true);
         currentInfoPendingIntent = PendingIntent.getActivity(this, RC_MAIN, currentInfoIntent, 0);
@@ -368,6 +369,7 @@ public class BatteryInfoService extends Service {
         loadSettingsFiles();
         CurrentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
                                                     res.getBoolean(R.bool.default_prefer_fs_current_hack)));
+        CurrentHack.setMultiplier(Integer.valueOf(settings.getString(SettingsActivity.KEY_CURRENT_HACK_MULTIPLIER, "1")));
 
         Str.setResources(res); // Language override may have changed
 

@@ -535,6 +535,22 @@
     your device.
   </string>
 
+  <string formatted="false" name="pref_current_hack_multiplier">Multiplier</string>
+  <string formatted="false" name="pref_current_hack_multiplier_help">
+    Some devices report milliamperes rather than microamperes as the
+    API calls for.  Same devices swap the sign of the value reported.
+    Some users prefer the opposite sign of correctly reported values.
+    To help accommodate situations like these, you can multiply the
+    result of the API call by the value here.\n
+
+    \nIf your device always displays 0 mA, for example, you could try
+    using a multiplier of 1000.  If the API call returns 450
+    microamperes, that multiplier will get the app to show the value
+    as 450 mA rather than 0 mA.  If the API call returns 0
+    microamperes, of course, the multiplier won\'t change the final
+    display value of 0 mA.
+  </string>
+
   <string formatted="false" name="pref_cat_current_hack_notification">Notification</string>
   <string formatted="false" name="pref_display_current_in_vital_stats">Display in vital stats</string>
   <string formatted="false" name="pref_display_current_in_vital_stats_summary">
