@@ -111,21 +111,35 @@ public class AlarmEditActivity extends PreferenceActivity {
         mCursor.moveToFirst();
         mAdapter.requery();
 
+        matchEnabled();
+    }
+
+    private void matchEnabled() {
         Preference prefb = mPreferenceScreen.findPreference(KEY_CHAN_SETTINGS_B);
 
         if (chanDisabled) {
             Preference p = mPreferenceScreen.findPreference(KEY_ENABLED);
             p.setEnabled(false);
-            p = mPreferenceScreen.findPreference(KEY_TYPE);
-            p.setEnabled(false);
-            p = mPreferenceScreen.findPreference(KEY_THRESHOLD);
-            p.setEnabled(false);
+            ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_THRESHOLD);
+            //p = mPreferenceScreen.findPreference(KEY_THRESHOLD);
+            lp.setEnabled(false);
 
-            prefb.setSummary(R.string.alarm_chan_disabled_b);
+            //android.text.Spannable txt = (android.text.Spannable) sum;
+            android.text.Spannable txt = new android.text.SpannableString(getString(R.string.alarm_chan_disabled_b));
+            /*prefb.setSummary(R.string.alarm_chan_settings_b);
+            android.text.Spannable old = new android.text.SpannableString(prefb.getSummary());
+            Object[] spans = old.getSpans(0, old.length(), Object.class);
+            for (Object o : spans) {
+                txt.setSpan(o, 0, txt.length(), 0);
+            }*/
+            //txt.setSpan(new android.text.style.ForegroundColorSpan(0xffee4444), 0, txt.length(), 0);
+            txt.setSpan(new android.text.style.ForegroundColorSpan(0xffff2222), 0, txt.length(), 0);
+            //txt.setSpan(new android.text.style.ForegroundColorSpan(0xffffffff), 0, txt.length(), 0);
+            //txt.setSpan(new android.text.style.ForegroundColorSpan(0xffff0000), 0, txt.length(), 0);
+            //txt.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD), 0, txt.length(), 0);
+            prefb.setSummary(txt);
         } else {
             Preference p = mPreferenceScreen.findPreference(KEY_ENABLED);
-            p.setEnabled(true);
-            p = mPreferenceScreen.findPreference(KEY_TYPE);
             p.setEnabled(true);
 
             setUpThresholdList(false);
@@ -191,6 +205,8 @@ public class AlarmEditActivity extends PreferenceActivity {
                 updateSummary((ListPreference) pref);
 
                 setUpThresholdList(true);
+
+                matchEnabled(); // Call after setUpThresholdList, to make sure to disable if necessary
 
                 return false;
             }
@@ -294,6 +310,7 @@ public class AlarmEditActivity extends PreferenceActivity {
 
         public void setType(String s) {
             type = s;
+            chanDisabled = mNotificationManager.getNotificationChannel(type).getImportance() == 0;
             alarms.setType(id, type);
         }
 
