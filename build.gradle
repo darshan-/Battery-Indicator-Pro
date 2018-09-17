@@ -38,7 +38,7 @@ android {
 
         vectorDrawables.useSupportLibrary = false
 
-        resConfigs "ar", "cs", "de", "el", "en", "en-rUS", "es", "es-rUS", "fr", "hu", "it", "iw", "ja", "lt", "nl", "pl", "pt", "pt-rBR", "ro", "ru", "sk", "sl", "sr", "tr", "zh", "zh-rCN" // Don't use support library translations for languages that the app doesn't have its own translations for
+        resConfigs "ar", "cs", "de", "el", "en", "en-rUS", "es", "es-rUS", "fa", "fr", "hi", "hu", "it", "iw", "ja", "lt", "nl", "pl", "pt", "pt-rBR", "ro", "ru", "sk", "sl", "sr", "tr", "zh", "zh-rCN" // Don't use support library translations for languages that the app doesn't have its own translations for
 
         //jackOptions {
         //    enabled true
