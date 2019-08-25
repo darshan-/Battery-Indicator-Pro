@@ -6,7 +6,7 @@
 
     This file, or at least the changes from the original are
 
-      Copyright (c) 2013-2017 Darshan-Josiah Barber
+      Copyright (c) 2013-2017 Darshan Computing, LLC
 
 
     This program is free software: you can redistribute it and/or modify
