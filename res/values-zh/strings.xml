@@ -80,8 +80,6 @@
   <string name="help_changelog" formatted="false">請造訪一下<a href="https://www.batterybot.info/changelog">線上的更新日誌</a></string>
   <string name="help_cat_faq" formatted="false">常見問答集</string>
   <string name="help_faq" formatted="false">請造訪一下<a href="https://www.batterybot.info/faq">線上的常見問答集</a>。</string>
-  <string name="help_cat_google_plus" formatted="false">Google+ 頁面</string>
-  <string name="help_google_plus" formatted="false">考慮一下追蹤我們的<a href="https://www.google.com/+BatterybotInfoAndroid">Google+ 頁面</a>以接收新公告及投票。</string>
   <string name="help_cat_website" formatted="false">網站</string>
   <string name="help_website" formatted="false">更多資訊在<a href="https://www.batterybot.info/">BatteryBot 的網站</a>。</string>
   <string name="help_cat_open_source" formatted="false">開放原始碼</string>

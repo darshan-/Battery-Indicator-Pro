@@ -117,8 +117,6 @@
   <string name="help_changelog" formatted="false">Molimo pogledajte <a href="https://www.batterybot.info/evidencijaizmena">online Changelog</a>.</string>
   <string name="help_cat_faq" formatted="false">Često postavljana pitanja</string>
   <string name="help_faq" formatted="false">Molimo pogledajte <a href="https://www.batterybot.info/faq">online FAQ</a>.</string>
-  <string name="help_cat_google_plus" formatted="false">Gugl Plus stranica</string>
-  <string name="help_google_plus" formatted="false">Pratite nas na <a href="https://www.google.com/+BatterybotInfoAndroid">Google Plus Page</a> za saopštenja i ankete.</string>
   <string name="help_cat_website" formatted="false">Vebsajt</string>
   <string name="help_website" formatted="false">Više informacija možete naći na <a href="https://www.batterybot.info/">BatteryBot website</a>.</string>
   <string name="help_cat_open_source" formatted="false">Otvorenog koda</string>

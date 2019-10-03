@@ -25,7 +25,7 @@ import android.widget.TextView;
 
 public class HelpActivity extends Activity {
     private static final int[] HAS_LINKS = {R.id.changelog, R.id.faq, R.id.website,
-                                            R.id.google_plus,
+                                            R.id.other_apps,
                                             R.id.open_source, R.id.acknowledgments,
                                             R.id.translations, R.id.contact};
 

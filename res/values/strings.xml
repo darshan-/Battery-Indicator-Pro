@@ -234,12 +234,6 @@
     Please see the <a href="https://www.batterybot.info/faq">online FAQ</a>.
   </string>
 
-  <string formatted="false" name="help_cat_google_plus">Google Plus Page</string>
-  <string formatted="false" name="help_google_plus">Consider
-    folowing the <a href="https://www.google.com/+BatterybotInfoAndroid">Google Plus Page</a>
-    for announcements and polls.
-  </string>
-
   <string formatted="false" name="help_cat_website">Website</string>
   <string formatted="false" name="help_website">More
     infomation is available at the <a href="https://www.batterybot.info/">BatteryBot website</a>.
@@ -247,7 +241,7 @@
 
   <string formatted="false" name="help_cat_open_source">Open Source</string>
   <string formatted="false" name="help_open_source">This
-    is an open source project, which means you can <a href="https://www.batterybot.info/sourcecode">download the source
+    is an open-source project, which means you can <a href="https://www.batterybot.info/sourcecode">download the source
     code</a>.\n
 
     \nYou can read more about the Darshan Computing business
@@ -261,6 +255,17 @@
   <string formatted="false" name="help_donate">Please
     consider donating by upgrading to the <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">Pro
     Version</a>.
+  </string>
+
+  <string formatted="false" name="help_cat_other_apps">My Other Apps</string>
+  <string formatted="false" name="help_other_apps"><a
+    href="market://details?id=com.darshancomputing.tuner">Noteworthy Instrument Tuner</a>
+  is an open-source, ad-free tuner for tuning guitars, ukuleles, and just about any other instrument.\n
+
+  \n<a href="market://details?id=com.swapadoodle.android">Swap-a-Doodle!</a>
+  is a free, fun, and playful social drawing app—create animations just by doodling, and
+  share them with your friends.  Or create together by drawing on the doodles they send you,
+  or even doodling with them in real time.
   </string>
 
   <string formatted="false" name="help_cat_privacy">Privacy</string>
@@ -284,8 +289,8 @@
     app would only be available in English without the generous
     assistance of the volunteer translators.  Thanks!\n
 
-    \nMany thanks are due to Google and all of the open-source coders
-    who made the Android platform and this app possible.\n
+    \nMany thanks are due to all of the open-source coders
+    who made this app possible, and who inspired me to create it as open-source itself.\n
 
     \nThe launcher icon (the upright battery you see in the Market) is
     based on an icon from <a href="http://www.oxygen-icons.org">the
@@ -374,7 +379,7 @@
   <string formatted="false" name="pref_please_upgrade">
     The Pro version has many more settings and features, including
     current (mA) information,
-    colorful icons, alarms,
+    alarms,
     battery state logging,
     and more.
   </string>

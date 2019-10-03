@@ -23,6 +23,9 @@
     <TextView style="@style/help_cat"  android:text="@string/help_cat_open_source" />
     <TextView android:id="@+id/open_source" style="@style/help_text" android:text="@string/help_open_source" />
 
+    <TextView style="@style/help_cat"  android:text="@string/help_cat_other_apps" />
+    <TextView android:id="@+id/other_apps" style="@style/help_text" android:text="@string/help_other_apps" />
+
     <TextView style="@style/help_cat"  android:text="@string/help_cat_acknowledgments" />
     <TextView android:id="@+id/acknowledgments" style="@style/help_text" android:text="@string/help_acknowledgments" />
 
@@ -36,9 +39,6 @@
 
     <TextView style="@style/help_cat"  android:text="@string/help_cat_website" />
     <TextView android:id="@+id/website" style="@style/help_text" android:text="@string/help_website" />
-
-    <TextView style="@style/help_cat"  android:text="@string/help_cat_google_plus" />
-    <TextView android:id="@+id/google_plus" style="@style/help_text" android:text="@string/help_google_plus" />
 
     <TextView style="@style/help_cat"  android:text="@string/help_cat_privacy" />
     <TextView style="@style/help_text" android:text="@string/help_privacy" />
