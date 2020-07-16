@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2018 Darshan Computing, LLC
+    Copyright (c) 2009-2020 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -37,8 +37,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 
 public class CurrentInfoFragment extends Fragment {
     private static PersistentFragment pfrag;
@@ -103,7 +103,7 @@ public class CurrentInfoFragment extends Fragment {
 
         setSizes(getActivity().getResources().getConfiguration());
 
-        if (! android.support.v4.app.NotificationManagerCompat.from(getActivity()).areNotificationsEnabled() &&
+        if (! androidx.core.app.NotificationManagerCompat.from(getActivity()).areNotificationsEnabled() &&
             ! showingNotificationBlockDialog)
         {
             showingNotificationBlockDialog = true;

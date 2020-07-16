@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2018 Darshan Computing, LLC
+    Copyright (c) 2009-2020 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,8 +24,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 public class PersistentFragment extends Fragment {
     private Intent biServiceIntent;

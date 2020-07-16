@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2017 Darshan Computing, LLC
+    Copyright (c) 2010-2020 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -42,10 +42,10 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.ListFragment;
-import android.support.v4.content.ContextCompat;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.ListFragment;
+import androidx.core.content.ContextCompat;
 
 public class LogViewFragment extends ListFragment {
     private static PersistentFragment pfrag;

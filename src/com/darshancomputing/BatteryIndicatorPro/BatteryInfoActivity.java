@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2013-2017 Darshan Computing, LLC
+    Copyright (c) 2013-2020 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,12 +21,12 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerTabStrip;
-import android.support.v4.view.ViewPager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.PagerTabStrip;
+import androidx.viewpager.widget.ViewPager;
 
 public class BatteryInfoActivity extends FragmentActivity {
     private BatteryInfoPagerAdapter pagerAdapter;
