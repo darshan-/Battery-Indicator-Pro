@@ -9,7 +9,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath 'com.android.tools.build:gradle:4.0.0'
     }
 }
 
@@ -19,7 +19,7 @@ Properties secureProperties = new Properties()
 secureProperties.load(new FileInputStream("secure.properties"))
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
     //buildToolsVersion "27.0.3" // With Android plugin 3.0.0+, automatically uses latest now
 
     configurations {
@@ -27,14 +27,14 @@ android {
     }
 
     dependencies {
-        implementation('com.android.support:support-v4:27.1.1') {
+        implementation('com.android.support:support-v4:28.0.0') { // Then AndroidX?
             exclude module:'support-annotations'
         }
     }
 
     defaultConfig {
         minSdkVersion 26
-        targetSdkVersion 28
+        targetSdkVersion 30
 
         vectorDrawables.useSupportLibrary = false
 
