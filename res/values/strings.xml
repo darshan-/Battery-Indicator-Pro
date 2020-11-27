@@ -164,8 +164,14 @@
     <item quantity="other">%d Log Items</item>
   </plurals>
 
+  <!-- Keeping these in for now to satisfy linter with default language of unused strings. -->
   <string formatted="true" name="after_n_hours_unplugged">After %1.1f hours unplugged</string>
   <string formatted="true" name="after_n_hours_plugged_in">After %1.1f hours plugged in</string>
+
+  <string formatted="true" name="after_nh_mm_unplugged">After %dh %dm unplugged</string>
+  <string formatted="true" name="after_nh_mm_plugged_in">After %dh %dm plugged in</string>
+  <string formatted="true" name="after_nm_ms_unplugged">After %dm %ds unplugged</string>
+  <string formatted="true" name="after_nm_ms_plugged_in">After %dm %ds plugged in</string>
 
   <plurals name="n_hours_long">
     <item quantity="one">"%d hour, "</item>

@@ -847,7 +847,7 @@ public class LogViewFragment extends ListFragment {
                 }
 
                 s = Str.log_statuses[status];
-                long delta;
+                long delta, secs, mins;
 
                 switch (status) {
                 case 0:
@@ -859,8 +859,15 @@ public class LogViewFragment extends ListFragment {
                         break;
                     }
 
-                    time_diff_tv.setText(String.format(pfrag.res.getString(R.string.after_n_hours_plugged_in),
-                                                       delta / 1000.0 / 60.0 / 60.0));
+                    secs = delta / 1000;
+                    mins = secs / 60;
+
+                    if (mins >= 60)
+                        time_diff_tv.setText(String.format(pfrag.res.getString(R.string.after_nh_mm_plugged_in),
+                                                           mins / 60, mins % 60));
+                    else
+                        time_diff_tv.setText(String.format(pfrag.res.getString(R.string.after_nm_ms_plugged_in),
+                                                           mins, secs % 60));
 
                     time_diff_tv.setVisibility(View.VISIBLE);
                     break;
@@ -872,8 +879,15 @@ public class LogViewFragment extends ListFragment {
                         break;
                     }
 
-                    time_diff_tv.setText(String.format(pfrag.res.getString(R.string.after_n_hours_unplugged),
-                                                       delta / 1000.0 / 60.0 / 60.0));
+                    secs = delta / 1000;
+                    mins = secs / 60;
+
+                    if (mins >= 60)
+                        time_diff_tv.setText(String.format(pfrag.res.getString(R.string.after_nh_mm_unplugged),
+                                                           mins / 60, mins % 60));
+                    else
+                        time_diff_tv.setText(String.format(pfrag.res.getString(R.string.after_nm_ms_unplugged),
+                                                           mins, secs % 60));
 
                     time_diff_tv.setVisibility(View.VISIBLE);
                     break;
