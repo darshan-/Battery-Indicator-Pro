@@ -410,18 +410,33 @@ public class CurrentInfoFragment extends Fragment {
         int vital_icon_height, vital_text_height;
 
         if (portrait) {
-            plugged_icon_height = (int) (screenHeight * 0.1);
+            if (aspectRatio > 0.53) { // More classically shaped devices
+                plugged_icon_height = (int) (screenHeight * 0.08);
 
-            time_remaining_text_height = (int) (screenHeight * 0.048);
-            until_what_text_height = (int) (screenHeight * 0.032);
+                time_remaining_text_height = (int) (screenHeight * 0.048);
+                until_what_text_height = (int) (screenHeight * 0.032);
 
-            status_text_height = (int) (screenHeight * 0.04);
+                status_text_height = (int) (screenHeight * 0.04);
 
-            bu_height = (int) (screenHeight * 0.14);
-            bu_text_height = (int) (screenHeight * 0.035);
+                bu_height = (int) (screenHeight * 0.14);
+                bu_text_height = (int) (screenHeight * 0.035);
 
-            vital_icon_height = (int) (screenHeight * 0.05);
-            vital_text_height = (int) (screenHeight * 0.03);
+                vital_icon_height = (int) (screenHeight * 0.05);
+                vital_text_height = (int) (screenHeight * 0.03);
+            } else { // More modern, tall/skinny phones
+                plugged_icon_height = (int) (screenWidth * 0.16);
+
+                time_remaining_text_height = (int) (screenWidth * 0.075);
+                until_what_text_height = (int) (screenWidth * 0.05);
+
+                status_text_height = (int) (screenWidth * 0.065);
+
+                bu_height = (int) (screenWidth * 0.22);
+                bu_text_height = (int) (screenWidth * 0.055);
+
+                vital_icon_height = (int) (screenWidth * 0.085);
+                vital_text_height = (int) (screenWidth * 0.055);
+            }
         } else {
             plugged_icon_height = (int) (screenHeight * 0.11);
 
