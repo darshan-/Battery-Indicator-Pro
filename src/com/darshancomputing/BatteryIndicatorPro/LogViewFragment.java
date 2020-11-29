@@ -39,7 +39,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import androidx.core.app.ActivityCompat;
@@ -68,6 +70,8 @@ public class LogViewFragment extends ListFragment {
                                                LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE};
 
     private static final String P_WRITE_STORAGE = android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
+    private static final String KEY_SHOW_SECONDS = "show_seconds";
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -262,11 +266,20 @@ public class LogViewFragment extends ListFragment {
             menu.findItem(R.id.menu_export).setEnabled(true);
             menu.findItem(R.id.menu_reverse).setEnabled(true);
         }
+
+        if (pfrag.sp_main.getBoolean(KEY_SHOW_SECONDS, false)) {
+            menu.findItem(R.id.menu_show_seconds).setVisible(false);
+            menu.findItem(R.id.menu_hide_seconds).setVisible(true);
+        } else {
+            menu.findItem(R.id.menu_show_seconds).setVisible(true);
+            menu.findItem(R.id.menu_hide_seconds).setVisible(false);
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         DialogFragment df;
+        SharedPreferences.Editor spm_editor;
 
         switch (item.getItemId()) {
         case R.id.menu_clear:
@@ -288,6 +301,22 @@ public class LogViewFragment extends ListFragment {
         case R.id.menu_reverse:
             reversed = !reversed;
             reloadList(true);
+
+            return true;
+        case R.id.menu_show_seconds:
+            spm_editor = pfrag.sp_main.edit();
+            spm_editor.putBoolean(KEY_SHOW_SECONDS, true);
+            spm_editor.apply();
+
+            reloadList(false);
+
+            return true;
+        case R.id.menu_hide_seconds:
+            spm_editor = pfrag.sp_main.edit();
+            spm_editor.putBoolean(KEY_SHOW_SECONDS, false);
+            spm_editor.apply();
+
+            reloadList(false);
 
             return true;
         default:
@@ -451,13 +480,14 @@ public class LogViewFragment extends ListFragment {
             int wrappedCursorPos = wrappedCursor.getPosition();
             int statusCodeIndex = wrappedCursor.getColumnIndexOrThrow(LogDatabase.KEY_STATUS_CODE);
 
-            boolean show_plugged_in    = pfrag.sp_main.getBoolean("plugged_in",    true);
-            boolean show_unplugged     = pfrag.sp_main.getBoolean("unplugged",     true);
-            boolean show_charging      = pfrag.sp_main.getBoolean("charging",      true);
-            boolean show_discharging   = pfrag.sp_main.getBoolean("discharging",   true);
-            boolean show_fully_charged = pfrag.sp_main.getBoolean("fully_charged", true);
+            boolean show_plugged_in    = pfrag.sp_main.getBoolean("plugged_in",     true);
+            boolean show_unplugged     = pfrag.sp_main.getBoolean("unplugged",      true);
+            boolean show_charging      = pfrag.sp_main.getBoolean("charging",       true);
+            boolean show_discharging   = pfrag.sp_main.getBoolean("discharging",    true);
+            boolean show_fully_charged = pfrag.sp_main.getBoolean("fully_charged" , true);
             boolean show_boot          = pfrag.sp_main.getBoolean("boot_completed", true);
-            boolean show_unknown       = pfrag.sp_main.getBoolean("unknown",       true);
+            boolean show_unknown       = pfrag.sp_main.getBoolean("unknown",        true);
+            boolean show_not_charging  = pfrag.sp_main.getBoolean("not_charging",   true);
 
             for (wrappedCursor.moveToFirst(); !wrappedCursor.isAfterLast(); wrappedCursor.moveToNext()) {
                 int statusCode    = wrappedCursor.getInt(statusCodeIndex);
@@ -470,9 +500,10 @@ public class LogViewFragment extends ListFragment {
                     shownIDs.add(wrappedCursor.getPosition());
                 } else if (status == LogDatabase.STATUS_BOOT_COMPLETED && show_boot) {
                     shownIDs.add(wrappedCursor.getPosition());
+                } else if (status == BatteryInfo.STATUS_NOT_CHARGING && show_not_charging) {
+                    shownIDs.add(wrappedCursor.getPosition());
                 } else if ((status == BatteryInfo.STATUS_UNKNOWN ||
                             status == BatteryInfo.STATUS_DISCHARGING ||
-                            status == BatteryInfo.STATUS_NOT_CHARGING ||
                             status > BatteryInfo.STATUS_MAX) &&
                            show_unknown) {
                     shownIDs.add(wrappedCursor.getPosition());
@@ -759,6 +790,34 @@ public class LogViewFragment extends ListFragment {
         TextView time_diff_tv;
     }
 
+    // Based on https://stackoverflow.com/a/23438859/1427098
+    private static String timeDateStringFromDate(Context ctx, Date d) {
+        final String AM = new SimpleDateFormat().getDateFormatSymbols().getAmPmStrings()[Calendar.AM];
+        final String PM = new SimpleDateFormat().getDateFormatSymbols().getAmPmStrings()[Calendar.PM];
+
+        String androidDateTime = android.text.format.DateFormat.getTimeFormat(ctx).format(d);
+        String javaDateTime = DateFormat.getDateTimeInstance().format(d);
+        String AmPm = "";
+
+        if (!Character.isDigit(androidDateTime.charAt(androidDateTime.length() - 1))) {
+            if (androidDateTime.contains(AM))
+                AmPm = " " + AM;
+            else
+                AmPm = " " + PM;
+
+            androidDateTime = androidDateTime.replace(AmPm, "");
+        }
+
+        if (!Character.isDigit(javaDateTime.charAt(javaDateTime.length() - 1))) {
+            javaDateTime = javaDateTime.replace(" " + AM, "");
+            javaDateTime = javaDateTime.replace(" " + PM, "");
+        }
+
+        javaDateTime = javaDateTime.substring(javaDateTime.length() - 3);
+
+        return androidDateTime.concat(javaDateTime).concat(AmPm);
+    }
+
     private class LogAdapter extends CursorAdapter {
         int statusCodeIndex, chargeIndex, timeIndex, temperatureIndex, voltageIndex, timeDeltaIndex;
         DateFormat dateFormat, timeFormat;
@@ -904,7 +963,11 @@ public class LogViewFragment extends ListFragment {
             percent_tv.setText("" + cursor.getInt(chargeIndex) + "%");
 
             d.setTime(cursor.getLong(timeIndex));
-            time_tv.setText(dateFormat.format(d) + "  " + timeFormat.format(d));
+
+            if (pfrag.sp_main.getBoolean(KEY_SHOW_SECONDS, false))
+                time_tv.setText(dateFormat.format(d) + "  " + timeDateStringFromDate(context, d));
+            else
+                time_tv.setText(dateFormat.format(d) + "  " + timeFormat.format(d));
 
             int temperature = cursor.getInt(temperatureIndex);
             if (temperature != 0) temp_volt_tv.setText("" + Str.formatTemp(temperature, convertF));

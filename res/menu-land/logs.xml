@@ -18,13 +18,27 @@
       android:id="@+id/menu_log_filter"
       android:icon="@android:drawable/ic_menu_view"
       android:title="@string/menu_log_filter"
-      android:showAsAction="always"
+      android:showAsAction="always|withText"
   />
 
   <item
       android:id="@+id/menu_reverse"
       android:icon="@android:drawable/ic_menu_revert"
       android:title="@string/menu_reverse"
-      android:showAsAction="always"
+      android:showAsAction="always|withText"
+  />
+
+  <item
+      android:id="@+id/menu_show_seconds"
+      android:icon="@android:drawable/ic_menu_view"
+      android:title="@string/menu_show_seconds"
+      android:showAsAction="never"
+  />
+
+  <item
+      android:id="@+id/menu_hide_seconds"
+      android:icon="@android:drawable/ic_menu_view"
+      android:title="@string/menu_hide_seconds"
+      android:showAsAction="never"
   />
 </menu>

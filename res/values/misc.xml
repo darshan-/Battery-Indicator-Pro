@@ -384,6 +384,7 @@
     <item>unplugged</item>
     <item>charging</item>
     <item>discharging</item>
+    <item>not_charging</item>
     <item>fully_charged</item>
     <item>boot_completed</item>
     <item>unknown</item>
@@ -433,16 +434,16 @@
     <item>@string/status_unplugged</item>
     <item>@string/status_unknown</item>
     <item>@string/status_plugged_in</item>
-    <item>@string/status_unknown</item>
-    <item>@string/status_unknown</item>
+    <item>@string/status_discharging</item>
+    <item>@string/status_not_charging</item>
     <item>@string/status_fully_charged</item>
   </string-array>
   <string-array name="log_statuses_old"><!-- The same as above, worded for old Log screen statuses -->
     <item>@string/status_discharging</item><!-- E.g., Unplugged is called Discharging after the first time it is logged -->
     <item>@string/status_unknown</item>
     <item>@string/status_charging</item>
-    <item>@string/status_unknown</item>
-    <item>@string/status_unknown</item>
+    <item>@string/status_discharging</item>
+    <item>@string/status_not_charging</item>
     <item>@string/status_fully_charged</item>
   </string-array>
   <string-array name="log_filters">
@@ -450,6 +451,7 @@
     <item>@string/status_unplugged</item>
     <item>@string/status_charging</item>
     <item>@string/status_discharging</item>
+    <item>@string/status_not_charging</item>
     <item>@string/status_fully_charged</item>
     <item>@string/status_boot_completed</item>
     <item>@string/status_unknown</item>

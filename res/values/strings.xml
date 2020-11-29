@@ -75,6 +75,8 @@
   <string formatted="false" name="menu_export">Export CSV</string>
   <string formatted="false" name="menu_delete_alarm">Delete Alarm</string>
   <string formatted="false" name="menu_get_plugins">Get Plugins</string>
+  <string formatted="false" name="menu_show_seconds">Show Seconds</string>
+  <string formatted="false" name="menu_hide_seconds">Hide Seconds</string>
 
   <string formatted="false" name="percent_symbol">%</string>
   <string formatted="false" name="degree_symbol">°</string>
@@ -168,10 +170,10 @@
   <string formatted="true" name="after_n_hours_unplugged">After %1.1f hours unplugged</string>
   <string formatted="true" name="after_n_hours_plugged_in">After %1.1f hours plugged in</string>
 
-  <string formatted="true" name="after_nh_mm_unplugged">After %dh %dm unplugged</string>
-  <string formatted="true" name="after_nh_mm_plugged_in">After %dh %dm plugged in</string>
-  <string formatted="true" name="after_nm_ms_unplugged">After %dm %ds unplugged</string>
-  <string formatted="true" name="after_nm_ms_plugged_in">After %dm %ds plugged in</string>
+  <string formatted="true" name="after_nh_mm_unplugged">After %1$dh %2$dm unplugged</string>
+  <string formatted="true" name="after_nh_mm_plugged_in">After %1$dh %2$dm plugged in</string>
+  <string formatted="true" name="after_nm_ms_unplugged">After %1$dm %2$ds unplugged</string>
+  <string formatted="true" name="after_nm_ms_plugged_in">After %1$dm %2$ds plugged in</string>
 
   <plurals name="n_hours_long">
     <item quantity="one">"%d hour, "</item>
