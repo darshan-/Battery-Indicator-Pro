@@ -34,7 +34,15 @@
     android:allowBackup="false"
     android:resizeableActivity="true"
     android:supportsRtl="true"
+    android:requestLegacyExternalStorage="true"
     >
+  <!--
+      Requesting legacy external storage is easy, reasonable, and appropriate for now:
+
+      android:requestLegacyExternalStorage="true"
+
+      But at some point I'll want/need to move to scoped storage.
+  -->
   <!--
       Temporarily put these two lines in <application> above to enable debugging of release build:
 
