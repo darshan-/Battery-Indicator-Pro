@@ -365,15 +365,11 @@ public class LogViewFragment extends ListFragment {
         intent.setType("text/csv");
         intent.putExtra(Intent.EXTRA_TITLE, csvFileName);
 
-        // What kind of initial URI can I use?  What's closest to current default, root of "SD Card"?
-        //intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, pickerInitialUri);
-
         startActivityForResult(intent, CREATE_CSV_FILE);
     }
 
 
     private void exportCSV() {
-        // Maybe use public static String getExternalStorageState (File path)
         String state = Environment.getExternalStorageState();
 
         if (state != null && state.equals(Environment.MEDIA_MOUNTED_READ_ONLY)) {
@@ -408,13 +404,6 @@ public class LogViewFragment extends ListFragment {
             ParcelFileDescriptor pfd = getActivity().getContentResolver().openFileDescriptor(uri, "w");
             FileWriter fileWriter = new FileWriter(pfd.getFileDescriptor());
             BufferedWriter buf = new BufferedWriter(fileWriter);
-
-            // This doesn't seem worth pulling in another androidx thing for:
-            // androidx.documentfile.provider.DocumentFile df = androidx.documentfile.provider.DocumentFile.fromSingleUri(uri);
-            // if (!df.canWrite()) {
-            //     Toast.makeText(getActivity(), Str.inaccessible_storage, Toast.LENGTH_SHORT).show();
-            //     return;
-            // }
 
             int cols = csvFields.length;
             int i;
