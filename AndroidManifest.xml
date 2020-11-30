@@ -13,10 +13,6 @@
   <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /><!-- Required on API 28+ -->
   <uses-permission android:name="android.permission.VIBRATE" />
 
-  <!-- Permissions now considered "dangerous", which require user permission on API 23+ -->
-  <!--uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /-->
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
   <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 
   <supports-screens
@@ -34,15 +30,7 @@
     android:allowBackup="false"
     android:resizeableActivity="true"
     android:supportsRtl="true"
-    android:requestLegacyExternalStorage="true"
     >
-  <!--
-      Requesting legacy external storage is easy, reasonable, and appropriate for now:
-
-      android:requestLegacyExternalStorage="true"
-
-      But at some point I'll want/need to move to scoped storage.
-  -->
   <!--
       Temporarily put these two lines in <application> above to enable debugging of release build:
 

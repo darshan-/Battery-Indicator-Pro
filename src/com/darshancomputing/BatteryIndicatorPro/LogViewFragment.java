@@ -18,12 +18,15 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.CursorWrapper;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.ParcelFileDescriptor;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -69,9 +72,9 @@ public class LogViewFragment extends ListFragment {
     private static final String[] CSV_ORDER = {LogDatabase.KEY_TIME, LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, 
                                                LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE};
 
-    private static final String P_WRITE_STORAGE = android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-
     private static final String KEY_SHOW_SECONDS = "show_seconds";
+
+    private static final int CREATE_CSV_FILE = 1;
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -349,27 +352,28 @@ public class LogViewFragment extends ListFragment {
             header_text.setText(Str.n_log_items(count));
     }
 
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case BatteryInfoActivity.PR_LVF_WRITE_STORAGE: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                    exportCSV();
-                else
-                    Toast.makeText(getActivity(), Str.no_storage_permission, Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
     public void batteryInfoUpdated() {
         reloadList(false);
     }
 
-    private void exportCSV() {
-        if (ContextCompat.checkSelfPermission(getActivity(), P_WRITE_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(), new String[]{P_WRITE_STORAGE}, BatteryInfoActivity.PR_LVF_WRITE_STORAGE);
-            return;
-        }
+    private void createNewCSVFile() {
+        Date d = new Date();
+        String csvFileName = "BatteryIndicatorPro-Logs-" + d.getTime() + ".csv";
 
+        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("text/csv");
+        intent.putExtra(Intent.EXTRA_TITLE, csvFileName);
+
+        // What kind of initial URI can I use?  What's closest to current default, root of "SD Card"?
+        //intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, pickerInitialUri);
+
+        startActivityForResult(intent, CREATE_CSV_FILE);
+    }
+
+
+    private void exportCSV() {
+        // Maybe use public static String getExternalStorageState (File path)
         String state = Environment.getExternalStorageState();
 
         if (state != null && state.equals(Environment.MEDIA_MOUNTED_READ_ONLY)) {
@@ -380,22 +384,37 @@ public class LogViewFragment extends ListFragment {
             return;
         }
 
-        Date d = new Date();
-        String csvFileName = "BatteryIndicatorPro-Logs-" + d.getTime() + ".csv";
+        createNewCSVFile();
+    }
 
-        File root    = Environment.getExternalStorageDirectory();
-        File csvFile = new File(root, csvFileName);
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
+        if (requestCode != CREATE_CSV_FILE)
+            return;
+
+        if (resultData == null) {
+            // Probably have a better message, although I'm not sure what the deal is if this is null.
+            Toast.makeText(getActivity(), Str.inaccessible_storage, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Date d = new Date();
+        Uri uri = resultData.getData();
 
         String[] csvFields = {Str.date, Str.time, Str.status, Str.charge,
                               Str.temperature, Str.temperature_f, Str.voltage};
 
         try {
-            if (!csvFile.createNewFile() || !csvFile.canWrite()) {
-                Toast.makeText(getActivity(), Str.inaccessible_storage, Toast.LENGTH_SHORT).show();
-                return;
-            }
+            ParcelFileDescriptor pfd = getActivity().getContentResolver().openFileDescriptor(uri, "w");
+            FileWriter fileWriter = new FileWriter(pfd.getFileDescriptor());
+            BufferedWriter buf = new BufferedWriter(fileWriter);
 
-            BufferedWriter buf = new BufferedWriter(new FileWriter(csvFile));
+            // This doesn't seem worth pulling in another androidx thing for:
+            // androidx.documentfile.provider.DocumentFile df = androidx.documentfile.provider.DocumentFile.fromSingleUri(uri);
+            // if (!df.canWrite()) {
+            //     Toast.makeText(getActivity(), Str.inaccessible_storage, Toast.LENGTH_SHORT).show();
+            //     return;
+            // }
 
             int cols = csvFields.length;
             int i;
@@ -446,7 +465,10 @@ public class LogViewFragment extends ListFragment {
                 }
                 buf.write("\r\n");
             }
+
             buf.close();
+            fileWriter.close();
+            pfd.close();
         } catch (Exception e) {
             Toast.makeText(getActivity(), Str.inaccessible_storage, Toast.LENGTH_SHORT).show();
             return;
