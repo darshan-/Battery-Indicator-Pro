@@ -357,8 +357,8 @@ public class LogViewFragment extends ListFragment {
     }
 
     private void createNewCSVFile() {
-        Date d = new Date();
-        String csvFileName = "BatteryIndicatorPro-Logs-" + d.getTime() + ".csv";
+        String ts = new java.text.SimpleDateFormat("yyyy-MM-dd-HHmmss-SSS").format(new Date());
+        String csvFileName = "BatteryBot_Pro-Logs-" + ts + ".csv";
 
         Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -389,8 +389,7 @@ public class LogViewFragment extends ListFragment {
             return;
 
         if (resultData == null) {
-            // Probably have a better message, although I'm not sure what the deal is if this is null.
-            Toast.makeText(getActivity(), Str.inaccessible_storage, Toast.LENGTH_SHORT).show();
+            // User cancelled / backed out, rather than selecting a location.  Doing nothing is most user-friendly / expected thing.
             return;
         }
 
