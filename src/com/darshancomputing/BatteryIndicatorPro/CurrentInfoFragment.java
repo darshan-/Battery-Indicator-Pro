@@ -411,12 +411,12 @@ public class CurrentInfoFragment extends Fragment {
 
         if (portrait) {
             if (aspectRatio > 0.53) { // More classically shaped devices
-                plugged_icon_height = (int) (screenHeight * 0.08);
+                plugged_icon_height = (int) (screenHeight * 0.075);
 
-                time_remaining_text_height = (int) (screenHeight * 0.048);
-                until_what_text_height = (int) (screenHeight * 0.032);
+                time_remaining_text_height = (int) (screenHeight * 0.044);
+                until_what_text_height = (int) (screenHeight * 0.028);
 
-                status_text_height = (int) (screenHeight * 0.04);
+                status_text_height = (int) (screenHeight * 0.035);
 
                 bu_height = (int) (screenHeight * 0.14);
                 bu_text_height = (int) (screenHeight * 0.035);
