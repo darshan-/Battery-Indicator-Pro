@@ -43,13 +43,13 @@
     <item name="android:lineSpacingMultiplier">1.1</item>
   </style>
 
-  <style name="bi_help_theme" parent="@android:style/Theme.Light">
+  <style name="bi_help_theme" parent="@android:style/Theme.Material.Light">
   </style>
 
-  <style name="bi_main_theme" parent="@android:style/Theme">
+  <style name="bi_main_theme" parent="@android:style/Theme.Material">
   </style>
 
-  <style name="bi_settings_theme" parent="@android:style/Theme">
+  <style name="bi_settings_theme" parent="@android:style/Theme.Material">
   </style>
 
   <dimen name="compound_button_width">68dp</dimen>
@@ -60,8 +60,9 @@
   </style>
 
   <style name="SelectableItem">
-    <item name="android:background">@android:drawable/list_selector_background</item>
+    <item name="android:background">?android:attr/selectableItemBackground</item>
   </style>
+
 
   <color name="android_green">#A4C639</color>
   <color name="ics_blue">#33b5E5</color>
@@ -91,25 +92,20 @@
 
   <dimen name="battery_padding">10dp</dimen>
 
-  <style name="NotificationText">
-    <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
-  </style>
-  <style name="NotificationTitle">
-    <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
-    <item name="android:textStyle">bold</item>
-    <item name="android:textSize">17dp</item>
-  </style>
+  <style name="NotificationText" parent="android:TextAppearance.StatusBar.EventContent" />
+  <style name="NotificationTitle" parent="android:TextAppearance.StatusBar.EventContent.Title" />
 
   <style name="NotificationTextIcon" parent="NotificationTitle">
+    <item name="android:textColor">@color/main_notification_default_custom_text_color</item>
   </style>
 
-  <dimen name="main_notification_text_padding_left">3dp</dimen>
+  <dimen name="main_notification_text_padding_left">10dp</dimen>
 
   <color name="notification_box_default_color">#222</color>
   <color name="main_notification_default_custom_text_color">#000</color>
-  <bool name="default_show_box_around_icon_area">false</bool>
+  <bool name="default_show_box_around_icon_area">true</bool>
 
-  <dimen name="widget_margin">8dp</dimen>
+  <dimen name="widget_margin">0dp</dimen>
 
   <style name="divider">
     <item name="android:layout_width">match_parent</item>

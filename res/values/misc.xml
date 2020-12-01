@@ -398,9 +398,6 @@
 
   <bool name="long_activity_names">true</bool>
   <bool name="show_main_title">false</bool>
-  <bool name="api_level_14_plus">false</bool>
-  <bool name="api_level_16_plus">false</bool>
-  <bool name="api_level_21_plus">false</bool>
 
   <string name="help_translators_list">
     Matthew McBaul(包明)
@@ -616,5 +613,7 @@
 
   <bool name="default_convert_to_fahrenheit">false</bool>
 
-  <bool name="default_prefer_fs_current_hack">true</bool>
+  <bool name="default_prefer_fs_current_hack">false</bool>
+
+  <bool name="default_use_system_notification_layout">true</bool>
 </resources>
