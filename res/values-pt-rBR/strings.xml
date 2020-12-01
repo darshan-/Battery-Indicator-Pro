@@ -69,7 +69,6 @@
   <string name="help_cat_translations" formatted="false">Traduções</string>
   <string name="help_subcat_translators" formatted="false">Tradutores</string>
   <string name="help_cat_contact" formatted="false">Contato</string>
-  <string name="pref_hint" formatted="false">Sugestão: Pressiona a tecla MENU para ajuda.</string>
   <string name="settings_overview" formatted="false">Visão Geral</string>
   <string name="alarm_settings_subtitle" formatted="false">Definições dos alarmes</string>
   <string name="alarm_settings" formatted="false">Alarmes</string>

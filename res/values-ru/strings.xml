@@ -126,7 +126,6 @@
   <string name="help_subcat_translators" formatted="false">Переводчики</string>
   <string name="help_cat_contact" formatted="false">Контакты</string>
   <string name="help_contact" formatted="false">Если у вас есть вопросы, проблемы или комментарии, пожалуйста <a href="mailto:support@batterybot.info">напишите мне</a>.</string>
-  <string name="pref_hint" formatted="false">Подсказка: Для вызова помощи нажмите MENU.</string>
   <string name="settings_overview" formatted="false">Обзор</string>
   <string name="settings_overview_help" formatted="false">Все настройки разбиты на несколько страниц. Каждая страница настроек имеет свою соответствующую страницу помощи. Просто нажмите MENU, затем Help (MENU на планшетах не обязательно) для получения справки по настройкам текущей страницы.</string>
   <string name="notification_settings" formatted="false">Основное уведомление</string>

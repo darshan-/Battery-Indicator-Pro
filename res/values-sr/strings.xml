@@ -132,7 +132,6 @@
   <string name="help_subcat_translators" formatted="false">Prvodioci</string>
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="help_contact" formatted="false">Ukoliko imate pitanje, neki problem ili komentar, molim vas pišite mi na <a href="mailto:support@batterybot.info">email me</a>.</string>
-  <string name="pref_hint" formatted="false">Pomoć: Pritisnite MENU za pomoć.</string>
   <string name="settings_overview" formatted="false">Pregled</string>
   <string name="notification_settings" formatted="false">Glavno obaveštenje</string>
   <string name="notification_settings_summary" formatted="false">Podesite glavno obaveštenje</string>

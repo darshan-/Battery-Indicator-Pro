@@ -324,8 +324,6 @@
     <a href="mailto:support@batterybot.info">email me</a>.
   </string>
 
-  <string formatted="false" name="pref_hint">Hint: Press MENU for help.</string>
-
   <string formatted="false" name="settings_overview">Overview</string>
   <string formatted="false" name="settings_overview_help">
     The settings are organized into separate pages, as described

@@ -122,7 +122,6 @@
   <string name="help_subcat_translators" formatted="false">Übersetzer</string>
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="help_contact" formatted="false">Wenn Sie eine Frage,ein Problem oder einen Kommentar haben, teilen Sie es uns bitte unter <a href="mailto:support@batterybot.info">E-Mail</a>.</string>
-  <string name="pref_hint" formatted="false">Tip: MENÜ drücken für Hilfe.</string>
   <string name="settings_overview" formatted="false">Übersicht</string>
   <string name="settings_overview_help" formatted="false">Die Einstellungen sind unterteilt in separate Seiten (siehe unten stehende Beschreibung). Jede Seite enthält eine eigene Hilfe-Seite, welche die Einstellungen beschreibt. Drücken Sie einfach MENÜ, danach Hilfe (auf Tablets entfällt das Drücken des MENÜ-Buttons), um Hilfe für jedwede Einstellung zu erhalten.</string>
   <string name="notification_settings" formatted="false">Benachrichtigungen</string>

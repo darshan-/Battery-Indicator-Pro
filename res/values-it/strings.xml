@@ -116,7 +116,6 @@
   <string name="help_translations" formatted="false">Abbiamo bisogno di aiuto per tradurre questa applicazione in altre lingue. Se ci vuoi aiutare, inviaci una <a href="mailto:support%2Btranslations@batterybot.info">email</a>. A meno che non si voglia, il tuo nome verrà aggiunto in questa sezione come riconoscimento per il tuo aiuto.</string>
   <string name="help_subcat_translators" formatted="false">Traduttori</string>
   <string name="help_cat_contact" formatted="false">Contatti</string>
-  <string name="pref_hint" formatted="false">Suggerimento: Premi MENU per aiuto.</string>
   <string name="settings_overview" formatted="false">Panoramica</string>
   <string name="settings_overview_help" formatted="false">Le impostazioni sono organizzate in tre pagine separate, descritte qui di seguito. Ogni pagina ha una sua pagina di aiuto che descrive le impostazioni. Basta premere MENU\' - Aiuto per ottenere aiuto su qualunque impostazione presente nella pagina.</string>
   <string name="notification_settings" formatted="false">Notifiche principali</string>

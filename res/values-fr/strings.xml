@@ -102,7 +102,6 @@
   <string name="help_translations" formatted="false">J\'ai besoin d\'aide pour traduire l\'application dans d\'autres langues. Si vous souhaitez m\'aider, vous pouvez m\'envoyer un <a href="mailto:support%2Btranslations@batterybot.info">email</a>. À moins que vous ne le souhaitiez pas, j\'ajouterais votre nom à la section suivante en guise de reconnaissance pour votre aide.</string>
   <string name="help_subcat_translators" formatted="false">Traducteurs</string>
   <string name="help_cat_contact" formatted="false">Contact</string>
-  <string name="pref_hint" formatted="false">Appuyez sur MENU pour afficher l\'aide.</string>
   <string name="settings_overview" formatted="false">Aperçu</string>
   <string name="settings_overview_help" formatted="false">Les paramètres sont organisés en quatre parties (décrites ci-dessous). Chaque partie possède sa propre page d\'aide la décrivant. Appuyez simplement sur MENU (sur les tablettes, MENU n\'est pas nécessaire) puis Aide pour obtenir de l\'aide concernant la page sur laquelle vous êtes.</string>
   <string name="alarm_settings_subtitle" formatted="false">Paramètres des alarmes</string>

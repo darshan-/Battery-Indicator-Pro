@@ -83,7 +83,6 @@
   <string name="help_cat_translations" formatted="false">多语言化</string>
   <string name="help_subcat_translators" formatted="false">翻译志愿者名单</string>
   <string name="help_cat_contact" formatted="false">联系方式</string>
-  <string name="pref_hint" formatted="false"><b>提示：</b>单击“菜单”获取帮助。</string>
   <string name="settings_overview" formatted="false">预览</string>
   <string name="settings_overview_help" formatted="false">设置项包括如下所述的三个独立页面。各页面的帮助信息独立显示，在“菜单”-“帮助”内容中可获取当前页面的帮助信息。</string>
   <string name="alarm_settings_subtitle" formatted="false">警报器设置</string>

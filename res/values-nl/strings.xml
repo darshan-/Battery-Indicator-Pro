@@ -113,7 +113,6 @@
   <string name="help_translations" formatted="false">Ik heb hulp nodig het vertalen van deze app naar andere talen. Als u wilt helpen, stuur me een <a href="mailto:support%2Btranslations@batterybot.info">e-mail</a>. Tenzij u het liever niet wilt, zal ik uw naam toevoegen aan deze sectie ter bevestiging van uw hulp.</string>
   <string name="help_subcat_translators" formatted="false">Vertalers</string>
   <string name="help_cat_contact" formatted="false">Contact</string>
-  <string name="pref_hint" formatted="false">(Druk op MENU voor help)</string>
   <string name="settings_overview" formatted="false">Overzicht</string>
   <string name="settings_overview_help" formatted="false">De instellingen zijn verdeeld over drie verschillende pagina\'s, zoals onder beschreven. Elke pagina heeft zijn eigen helppagina over de instellingen op die pagina. Druk op MENU en dan Help voor help.</string>
   <string name="notification_settings" formatted="false">Hoofdmelding</string>

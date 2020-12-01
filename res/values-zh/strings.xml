@@ -94,7 +94,6 @@
   <string name="help_subcat_translators" formatted="false">翻譯志願者名單</string>
   <string name="help_cat_contact" formatted="false">聯繫方式</string>
   <string name="help_contact" formatted="false">如果您有任何問題或建議，請寄<a href="mailto:support@batterybot.info">email給我</a>。</string>
-  <string name="pref_hint" formatted="false"><b>提示：</b>單擊「選單」獲取說明。</string>
   <string name="settings_overview" formatted="false">預覽</string>
   <string name="settings_overview_help" formatted="false">設定包括如下所述的三個獨立頁面。各頁面的說明信息獨立顯示，在「選單」-「說明」內容中可獲取當前頁面的說明信息。</string>
   <string name="other_settings" formatted="false">其他設定</string>

@@ -128,7 +128,6 @@
   <string name="help_subcat_translators" formatted="false">翻訳者</string>
   <string name="help_cat_contact" formatted="false">問い合わせ</string>
   <string name="help_contact" formatted="false">もし、 質問、問題、またはコメントなどがあれば、 <a href="mailto:support@batterybot.info">私にメール</a> をお送りください。</string>
-  <string name="pref_hint" formatted="false">ヒント: ヘルプはメニューを押してください。</string>
   <string name="settings_overview" formatted="false">概要</string>
   <string name="settings_overview_help" formatted="false">下記のように、設定は別のページにまとめられています。 各ページに、 そのページの設定を記載した、独自のヘルプページがあります。 ヘルプを表示するには、今いる設定ページでメニューを押すだけです。 (タブレットではメニューは必要ありません)</string>
   <string name="notification_settings" formatted="false">メイン通知</string>

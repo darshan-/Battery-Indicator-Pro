@@ -101,7 +101,6 @@
   <string name="help_cat_translations" formatted="false">Preklady</string>
   <string name="help_subcat_translators" formatted="false">Prekladatelia</string>
   <string name="help_cat_contact" formatted="false">Kontakt</string>
-  <string name="pref_hint" formatted="false">Nápoveda: pre pomoc stlačte MENU.</string>
   <string name="settings_overview" formatted="false">Prehľad</string>
   <string name="settings_overview_help" formatted="false">Nastavenia sú zoradené do troch samostaných stránok ako je popísané nižšie. Každá stránka má vlastnú stránku pomoci popisujúcu nastavenia na konkrétnej stránke. Jednoducho stlačte MENU a potom Pomocník (na tabletoch MENU nie je požadované) aby ste našli pomoc na ktorejkoľvek stránke.</string>
   <string name="alarm_settings_subtitle" formatted="false">Nastavenie upozornení</string>

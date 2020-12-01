@@ -127,7 +127,6 @@
   <string name="help_subcat_translators" formatted="false">المترجمين</string>
   <string name="help_cat_contact" formatted="false">للتواصل</string>
   <string name="help_contact" formatted="false">اذا كنت تملك اسئلة او مشاكل رجاء <a href="mailto:support@batterybot.info">راسلني على</a>.\n</string>
-  <string name="pref_hint" formatted="false">تلميح:اضغط على الخيارات للمساعدة</string>
   <string name="settings_overview" formatted="false">نظرة عامة</string>
   <string name="settings_overview_help" formatted="false">الاعدادات منفصلة كما موضح ادناه واذا اردت ان تدخل لاعدادات الصفحة ببساطة اضغط على زر الخيارات الموجودة في هاتفك للحصل على مساعدة اما على الاجهزة اللوحية فأن زر الخيارات غير ضروري</string>
   <string name="notification_settings" formatted="false">الاشعارات الرئيسية</string>

@@ -118,7 +118,6 @@
   <string name="help_subcat_translators" formatted="false">Tłumacze</string>
   <string name="help_cat_contact" formatted="false">Kontakt</string>
   <string name="help_contact" formatted="false">Jeśli masz pytanie, problem lub uwagi, proszę <a href="mailto:support@batterybot.info">napisz do mnie</a>.</string>
-  <string name="pref_hint" formatted="false">Podpowiedź: Naciśnij MENU po pomoc.</string>
   <string name="settings_overview" formatted="false">Przegląd</string>
   <string name="settings_overview_help" formatted="false">Ustawienia są posegregowane na 4 osobne strony. Każda strona ma własną pomoc, która opisuje ustawienia na niej. Po prostu naciśnij MENU a następnie Pomoc (na tabletach MENU nie jest wymagane) aby ją uzyskać.</string>
   <string name="notification_settings" formatted="false">Główne powiadomienia</string>

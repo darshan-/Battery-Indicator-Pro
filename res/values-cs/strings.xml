@@ -96,7 +96,6 @@
   <string name="help_cat_translations" formatted="false">Překlady</string>
   <string name="help_subcat_translators" formatted="false">Překladatelé</string>
   <string name="help_cat_contact" formatted="false">Kontakt</string>
-  <string name="pref_hint" formatted="false">Tip: Stiskněte MENU pro nápovědu.</string>
   <string name="settings_overview" formatted="false">Přehled</string>
   <string name="settings_overview_help" formatted="false">Nastavení jsou rozdělena do tří oddělených stránek, tak jak je popsáno níže. Každá stránka má svou vlastní nápovědu popisující dostupná nastavení. Jednoduše stikněte MENU pro popis jednotlivých nastavení dostupných na stránce nastavení.</string>
   <string name="alarm_settings_subtitle" formatted="false">Nastavení upozornění</string>
