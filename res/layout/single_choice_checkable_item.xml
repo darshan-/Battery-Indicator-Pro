@@ -34,7 +34,7 @@
         android:layout_marginBottom="6dip"
         android:duplicateParentState="true"
         android:layout_weight="1">
-        <TextView android:id="@+android:id/title"
+        <TextView android:id="@android:id/title"
             android:duplicateParentState="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:ellipsize="marquee"
             android:fadingEdge="horizontal" />
-        <TextView android:id="@+android:id/summary"
+        <TextView android:id="@android:id/summary"
             android:duplicateParentState="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -14,8 +14,6 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.text.method.MovementMethod;
@@ -23,7 +21,10 @@ import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class HelpActivity extends Activity {
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class HelpActivity extends AppCompatActivity {
     private static final int[] HAS_LINKS = {R.id.changelog, R.id.faq, R.id.website,
                                             R.id.other_apps,
                                             R.id.open_source, R.id.acknowledgments,
@@ -33,7 +34,7 @@ public class HelpActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ActionBar ab = getActionBar();
+        ActionBar ab = getSupportActionBar();
         if (ab != null) {
             ab.setHomeButtonEnabled(true);
             ab.setDisplayHomeAsUpEnabled(true);

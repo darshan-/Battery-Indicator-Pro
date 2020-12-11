@@ -43,10 +43,10 @@
     <item name="android:lineSpacingMultiplier">1.1</item>
   </style>
 
-  <style name="bi_help_theme" parent="@android:style/Theme.Material.Light">
+  <style name="bi_help_theme" parent="Theme.MaterialComponents.Light">
   </style>
 
-  <style name="bi_main_theme" parent="@android:style/Theme.Material">
+  <style name="bi_main_theme" parent="Theme.MaterialComponents.DayNight">
   </style>
 
   <style name="bi_settings_theme" parent="@android:style/Theme.Material">
