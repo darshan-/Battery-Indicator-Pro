@@ -25,7 +25,7 @@
               android:layout_height="0px"
               android:layout_weight="0.5"
               android:gravity="center_horizontal|bottom"
-              android:textColor="#fff"
+              android:textColor="?android:attr/textColorPrimary"
               android:textSize="0px"
     />
 
@@ -54,7 +54,7 @@
 	          android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:gravity="center_horizontal|bottom"
-                  android:textColor="#fff"
+                  android:textColor="?android:attr/textColorPrimary"
                   android:textSize="0px"
         />
 
@@ -62,7 +62,7 @@
 	          android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:gravity="center_horizontal|top"
-                  android:textColor="#fff"
+                  android:textColor="?android:attr/textColorPrimary"
                   android:textSize="0px"
         />
       </LinearLayout>

@@ -31,7 +31,8 @@ android {
         implementation "androidx.fragment:fragment:1.2.5"
         implementation "androidx.viewpager:viewpager:1.0.0"
 
-        implementation "com.google.android.material:material:1.2.1"
+        implementation "androidx.appcompat:appcompat:1.2.0"
+        implementation "androidx.appcompat:appcompat-resources:1.2.0"
     }
 
     defaultConfig {

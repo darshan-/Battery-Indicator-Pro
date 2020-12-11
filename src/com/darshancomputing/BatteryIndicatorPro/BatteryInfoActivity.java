@@ -59,6 +59,13 @@ public class BatteryInfoActivity extends AppCompatActivity {
     }
 
     @Override
+    public void setTheme(int themeResId) {
+        super.setTheme(themeResId);
+
+        // Change anything that needs to be manually changed to accommodate theme
+    }
+
+    @Override
     public void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 

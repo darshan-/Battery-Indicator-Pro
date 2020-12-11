@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal|top"
                 android:paddingTop="5dp"
-                android:textColor="#fff"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="0px"
       />
     </LinearLayout>

@@ -27,7 +27,7 @@
 
   <TextView android:id="@+id/time_diff"
             android:textSize="14dp"
-            android:textColor="#fff"
+            android:textColor="?android:attr/textColorPrimary"
             android:paddingTop="0dp"
             android:paddingBottom="0dp"
             android:paddingLeft="25dp"
