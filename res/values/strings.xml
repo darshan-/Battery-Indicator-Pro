@@ -393,6 +393,10 @@
   <string formatted="false" name="add_alarm">Add alarm</string>
   <string formatted="false" name="menu_alarm_channel">Alarm Channel Settings</string>
 
+  <string formatted="false" name="pref_cat_ui_color">UI Color</string>
+  <string formatted="false" name="pref_ui_color">@string/pref_cat_ui_color</string>
+  <string formatted="false" name="pref_ui_color_summary">Primary Color Throughout App</string>
+
   <string formatted="false" name="pref_cat_channel_settings">Notification Channel Settings</string>
   <string formatted="false" name="pref_manage_main_channel">Manage Main Channel</string>
 

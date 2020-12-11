@@ -46,7 +46,7 @@
   <style name="bi_help_theme" parent="Theme.AppCompat.Light">
   </style>
 
-  <style name="bi_main_theme" parent="Theme.AppCompat.DayNight">
+  <style name="bi_main_theme" parent="Theme.MaterialComponents.DayNight">
   </style>
 
   <style name="bi_settings_theme" parent="@android:style/Theme.Material">
@@ -68,6 +68,7 @@
   <color name="ics_blue">#33b5E5</color>
   <color name="my_yellow">#E8D018</color>
   <color name="my_darker_yellow">#D0BF27</color>
+  <color name="col2020">#3b7bda</color>
 
   <color name="time_til_charged">@color/my_yellow</color>
   <color name="light_usage">#cccc7e</color>

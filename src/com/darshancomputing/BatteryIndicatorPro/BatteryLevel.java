@@ -29,6 +29,7 @@ class BatteryLevel {
     private Canvas canvas;
     private Paint fill_paint, bitmap_paint;
     private static Bitmap battery_top, battery_body, battery;
+    private int mLevel, mColor;
 
     static final int SIZE_LARGE = 1;
     static final int SIZE_NOTIFICATION = 4;
@@ -73,7 +74,8 @@ class BatteryLevel {
         canvas.setBitmap(battery);
 
         fill_paint = new Paint();
-        fill_paint.setColor(0xaa33b5e5);
+        //fill_paint.setColor(0xaa33b5e5);
+        mColor = 0xaa33b5e5;
         fill_paint.setAntiAlias(true);
         fill_paint.setStrokeCap(Paint.Cap.ROUND);
         fill_paint.setStrokeJoin(Paint.Join.ROUND);
@@ -85,8 +87,14 @@ class BatteryLevel {
         bitmap_paint.setDither(true);
     }
 
+    public void setColor(int color) {
+        mColor = color;
+        setLevel(mLevel);
+    }
+
     public void setLevel(int level) {
         if (level < 0) level = 0; // I suspect we might get called with -1 in certain circumstances
+        mLevel = level;
 
         int rect_top = top_h + (body_h * (100 - level) / 100);
         int rect_bottom = top_h + body_h;
@@ -95,6 +103,8 @@ class BatteryLevel {
 
         canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR);
 
+        System.out.println(".......................................................: mColor: " + mColor);
+        fill_paint.setColor(mColor);
         canvas.drawRoundRect(body_rect, 7.5f, 7.5f, fill_paint);
 
         canvas.drawBitmap(battery_top   , 0, 0             , bitmap_paint);

@@ -32,13 +32,17 @@ public class BatteryInfoActivity extends AppCompatActivity {
     private BatteryInfoPagerAdapter pagerAdapter;
     private ViewPager viewPager;
 
+    public BatteryLevel bl;
+
     //private static final String LOG_TAG = "BatteryBot";
 
     public static final int PR_LVF_WRITE_STORAGE = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.bi_main_theme);
         super.onCreate(savedInstanceState);
+
 
         PersistentFragment.getInstance(getSupportFragmentManager()); // Calling here ensures PF created before other Fragments?
 
@@ -51,18 +55,43 @@ public class BatteryInfoActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(pagerAdapter);
 
-        PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
-        tabStrip.setTabIndicatorColor(0x33b5e5);
+        //tabStrip.setTabIndicatorColor(0x33b5e5);
+        //tabStrip.setTabIndicatorColor(0xbb3388);
 
         viewPager.setCurrentItem(1);
         routeIntent(getIntent());
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
+
+        //android.content.SharedPreferences settings = getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
+        //int c = settings.getInt(SettingsActivity.KEY_UI_COLOR, R.color.col2020);
+        int c = getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS)
+            .getInt(SettingsActivity.KEY_UI_COLOR, R.color.col2020);
+        tabStrip.setTabIndicatorColor(c);
+
+        bl = BatteryLevel.getInstance(this, PersistentFragment.getInstance(getSupportFragmentManager())
+                                      .res.getInteger(R.integer.bl_inSampleSize));
+        bl.setColor(c);
+    }
+
+    @Override
     public void setTheme(int themeResId) {
         super.setTheme(themeResId);
 
-        // Change anything that needs to be manually changed to accommodate theme
+        System.out.println(".......................................................: setTheme()");
+        if (bl != null) {
+            System.out.println(".......................................................: We have bl");
+            android.util.TypedValue outValue = new android.util.TypedValue();
+            getTheme().resolveAttribute(android.R.attr.colorAccent, outValue, true);
+            System.out.println(".......................................................: outValue.data: " + outValue.data);
+            bl.setColor(outValue.data);
+        }
+        System.out.println(".......................................................: end of setTheme");
     }
 
     @Override

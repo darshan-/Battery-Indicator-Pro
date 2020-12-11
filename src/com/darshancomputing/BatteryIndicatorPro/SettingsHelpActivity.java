@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2017 Darshan Computing, LLC
+    Copyright (c) 2010-2020 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,7 +14,6 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -25,7 +24,10 @@ import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class SettingsHelpActivity extends Activity {
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SettingsHelpActivity extends AppCompatActivity {
     private Resources res;
     private int[] has_links = {};
 
@@ -37,7 +39,7 @@ public class SettingsHelpActivity extends Activity {
         String pref_screen = intent.getStringExtra(SettingsActivity.EXTRA_SCREEN);
         res = getResources();
 
-        ActionBar ab = getActionBar();
+        ActionBar ab = getSupportActionBar();
         if (ab != null) {
             ab.setHomeButtonEnabled(true);
             ab.setDisplayHomeAsUpEnabled(true);

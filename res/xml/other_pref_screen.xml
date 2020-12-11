@@ -1,4 +1,12 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory android:title="@string/pref_cat_ui_color">
+    <com.darshancomputing.BatteryIndicatorPro.ColorPickerPreference
+        android:key="ui_color"
+        android:title="@string/pref_ui_color"
+        android:defaultValue="@color/col2020"
+    />
+  </PreferenceCategory>
+
   <PreferenceCategory android:title="@string/pref_cat_logging">
     <CheckBoxPreference
        android:key="enable_logging"

@@ -108,6 +108,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final String KEY_MIGRATED_SERVICE_DESIRED = "service_desired_migrated_to_sp_main";
     public static final String KEY_ENABLE_NOTIFS_B = "enable_notifications_button";
     public static final String KEY_ENABLE_NOTIFS_SUMMARY = "enable_notifications_summary";
+    public static final String KEY_UI_COLOR = "ui_color";
 
     private static final String[] PARENTS    = {KEY_ENABLE_LOGGING,
                                                 KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
