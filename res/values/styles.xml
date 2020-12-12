@@ -46,7 +46,7 @@
   <style name="bi_help_theme" parent="Theme.AppCompat.Light">
   </style>
 
-  <style name="bi_main_theme" parent="Theme.MaterialComponents.DayNight">
+  <style name="bi_main_theme" parent="Theme.AppCompat.DayNight">
   </style>
 
   <style name="bi_settings_theme" parent="@android:style/Theme.Material">
@@ -63,6 +63,9 @@
     <item name="android:background">?android:attr/selectableItemBackground</item>
   </style>
 
+
+  <!-- Recorder: 000, Signal: #121212, Play Store: #212227, Settings: #22272b -->
+  <!--color name="drive_night_bg">#202125</color -->
 
   <color name="android_green">#A4C639</color>
   <color name="ics_blue">#33b5E5</color>

@@ -177,6 +177,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                                                    KEY_CURRENT_HACK_MULTIPLIER,
                                                    KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
                                                    KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
+                                                   KEY_UI_COLOR,
                                                    KEY_PREDICTION_TYPE
     };
 

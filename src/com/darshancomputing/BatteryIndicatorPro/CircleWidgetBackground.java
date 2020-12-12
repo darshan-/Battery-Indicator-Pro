@@ -36,6 +36,7 @@ class CircleWidgetBackground {
     private Bitmap bitmap;
     private Canvas canvas;
     private Paint bg_paint, arc_paint;
+    private int mLevel, mColor;
 
     CircleWidgetBackground(Context context) {
         //Resources res = context.getResources();
@@ -56,7 +57,8 @@ class CircleWidgetBackground {
         bg_paint.setDither(true);
 
         arc_paint = new Paint();
-        arc_paint.setColor(ARC_COLOR);
+        //arc_paint.setColor(ARC_COLOR);
+        mColor = ARC_COLOR;
         arc_paint.setAntiAlias(true);
         arc_paint.setStrokeWidth(ARC_STROKE_WIDTH);
         arc_paint.setStyle(Paint.Style.STROKE);
@@ -66,8 +68,14 @@ class CircleWidgetBackground {
         //setLevel(100); // TODO: Would this be helpful?
     }
 
+    public void setColor(int color) {
+        mColor = color;
+        setLevel(mLevel);
+    }
+
     public void setLevel(int level) {
         if (level < 0) level = 0; // I suspect we might get called with -1 in certain circumstances
+        mLevel = level;
 
         int top_left = (int) (ARC_STROKE_WIDTH / 2);
         int bottom_right = DIMEN - (int) (ARC_STROKE_WIDTH / 2);
@@ -77,6 +85,7 @@ class CircleWidgetBackground {
         canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR);
 
         canvas.drawArc(oval, 0.0f, 360.0f, true, bg_paint);
+        arc_paint.setColor(mColor);
         canvas.drawArc(oval, -90.0f, level * 360.0f / 100.0f, false, arc_paint);
 
         //if (android.os.Build.VERSION.SDK_INT >= 11) { // Resizeable widgets

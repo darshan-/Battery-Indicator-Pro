@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2018 Darshan Computing, LLC
+    Copyright (c) 2009-2020 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -457,6 +457,10 @@ public class BatteryInfoService extends Service {
         if (info == null) {
             cwbg.setLevel(0);
         } else {
+            int c = settings.getInt(SettingsActivity.KEY_UI_COLOR, R.color.col2020);
+            bl.setColor(c);
+            cwbg.setColor(c);
+
             bl.setLevel(info.percent);
             cwbg.setLevel(info.percent);
         }

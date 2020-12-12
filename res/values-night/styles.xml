@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="bi_main_theme" parent="Theme.AppCompat.DayNight">
+    <item name="android:windowBackground">#121212</item>
+  </style>
+</resources>
