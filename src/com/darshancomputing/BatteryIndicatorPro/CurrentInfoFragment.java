@@ -21,7 +21,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
+//import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -60,7 +60,7 @@ public class CurrentInfoFragment extends Fragment {
     private ImageView plugged_icon;
     private BatteryInfoActivity bia;
 
-    private Drawable d_unplugged, d_not_unplugged;
+    //private Drawable d_unplugged, d_not_unplugged;
 
     private BatteryInfo info = new BatteryInfo();
     //private CurrentHack currentHack;
@@ -141,10 +141,10 @@ public class CurrentInfoFragment extends Fragment {
         //     d.setTint(c);
         //     iv.setImageDrawable(d);
         // }
-        d_unplugged = getActivity().getDrawable(R.drawable.unplugged);
-        d_unplugged.setTint(c);
-        d_not_unplugged = getActivity().getDrawable(R.drawable.not_unplugged);
-        d_not_unplugged.setTint(c);
+        //d_unplugged = getActivity().getDrawable(R.drawable.unplugged);
+        //d_unplugged.setTint(c);
+        //d_not_unplugged = getActivity().getDrawable(R.drawable.not_unplugged);
+        //d_not_unplugged.setTint(c);
 
         bindButtons();
 
@@ -376,9 +376,9 @@ public class CurrentInfoFragment extends Fragment {
             tv_voltage.setText(Str.formatVoltage(info.voltage));
 
         if (info.last_status == BatteryInfo.STATUS_UNPLUGGED)
-            plugged_icon.setImageDrawable(d_unplugged);
+            plugged_icon.setImageResource(R.drawable.unplugged);
         else
-            plugged_icon.setImageDrawable(d_not_unplugged);
+            plugged_icon.setImageResource(R.drawable.not_unplugged);
 
         refreshCurrent();
     }

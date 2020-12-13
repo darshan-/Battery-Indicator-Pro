@@ -4,5 +4,5 @@
     <item name="android:windowBackground">#121212</item>
   </style>
 
-  <color name="icon_tint">#ccc</color>
+  <color name="icon_tint">#eee</color>
 </resources>
