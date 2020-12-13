@@ -25,7 +25,7 @@
                  android:duplicateParentState="true"
                  android:gravity="center"
                  android:scaleType="fitCenter"
-                 android:src="@drawable/add_alarm"
+                 android:src="@drawable/wrapped_add_alarm"
       />
 
       <TextView android:id="@+id/add_alarm_tv"

@@ -17,14 +17,14 @@
 
   <item
       android:id="@+id/menu_log_filter"
-      android:icon="@android:drawable/ic_menu_view"
+      android:icon="@drawable/menu_filter"
       android:title="@string/menu_log_filter"
       app:showAsAction="always"
   />
 
   <item
       android:id="@+id/menu_reverse"
-      android:icon="@android:drawable/ic_menu_revert"
+      android:icon="@drawable/menu_reverse"
       android:title="@string/menu_reverse"
       app:showAsAction="always"
   />

@@ -63,6 +63,7 @@
     <item name="android:background">?android:attr/selectableItemBackground</item>
   </style>
 
+  <color name="menu_icon_tint">#333</color>
   <color name="icon_tint">#484848</color>
 
   <!-- Recorder: 000, Signal: #121212, Play Store: #212227, Settings: #22272b -->

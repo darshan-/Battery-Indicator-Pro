@@ -3,7 +3,7 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
   <item
       android:id="@+id/menu_help"
-      android:icon="@android:drawable/ic_menu_help"
+      android:icon="@drawable/menu_info"
       android:title="@string/menu_help"
       app:showAsAction="always|withText"
   />

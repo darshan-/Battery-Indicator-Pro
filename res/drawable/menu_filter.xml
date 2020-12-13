@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item>
+    <bitmap android:src="@drawable/menu_filter_base"
+            android:tint="@color/menu_icon_tint"
+    />
+  </item>
+</layer-list>

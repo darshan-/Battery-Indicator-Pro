@@ -92,34 +92,8 @@ public class CurrentInfoFragment extends Fragment {
         blv = (ImageView) view.findViewById(R.id.battery_level_view);
         blv.setImageBitmap(bl.getBitmap());
 
-        int c = pfrag.settings.getInt(SettingsActivity.KEY_UI_COLOR, R.color.col2020);
+        int c = pfrag.settings.getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
         bl.setColor(c);
-
-        //System.out.println(".|.....................................................: We have bl");
-        //android.util.TypedValue outValue = new android.util.TypedValue();
-        //boolean suc = getActivity().getTheme().resolveAttribute(R.attr.colorAccent, outValue, true);
-        ////boolean suc = getActivity().getTheme().resolveAttribute(android.R.attr.colorPrimary, outValue, true);
-        //System.out.println(".|.....................................................: " +
-        //                   "suc: " + suc + ", outValue.data: " + outValue.data);
-        //bl.setColor(outValue.data);
-
-        /*
-        android.content.res.TypedArray a = getActivity().obtainStyledAttributes(null, new int[] { android.R.attr.colorAccent });
-        int color = a.getColor(0, 0);
-        a.recycle();
-        System.out.println(".|>.....................................................: styled:: " + color);
-        bl.setColor(color);
-
-        android.content.res.TypedArray a2 = getActivity().getTheme().obtainStyledAttributes(null, new int[] { android.R.attr.colorAccent }, 0, 0);
-        int color2 = a2.getColor(0, 0);
-        a2.recycle();
-        System.out.println(".|>.....................................................: styled:: " + color2);
-        bl.setColor(color2);
-        */
-
-        
-        //bia = (BatteryInfoActivity) getActivity();
-        //bia.bl = bl;
 
         battery_use_b = (Button) view.findViewById(R.id.battery_use_b);
 
@@ -131,20 +105,6 @@ public class CurrentInfoFragment extends Fragment {
         tv_voltage = (TextView) view.findViewById(R.id.voltage);
         tv_current = (TextView) view.findViewById(R.id.current);
         plugged_icon = (ImageView) view.findViewById(R.id.plugged_icon);
-
-
-        // ImageView iv;
-        // Drawable d;
-        // for (int id : new int[]{R.id.clock, R.id.temp_icon, R.id.health_icon, R.id.voltage_icon, R.id.current_icon}) {
-        //     iv = (ImageView) view.findViewById(id);
-        //     d = iv.getDrawable();
-        //     d.setTint(c);
-        //     iv.setImageDrawable(d);
-        // }
-        //d_unplugged = getActivity().getDrawable(R.drawable.unplugged);
-        //d_unplugged.setTint(c);
-        //d_not_unplugged = getActivity().getDrawable(R.drawable.not_unplugged);
-        //d_not_unplugged.setTint(c);
 
         bindButtons();
 
@@ -181,8 +141,6 @@ public class CurrentInfoFragment extends Fragment {
         CurrentHack.setContext(getActivity());
 
         setHasOptionsMenu(true);
-
-        System.out.println(".|>.....................................................: onCreate");
     }
 
     @Override
@@ -333,6 +291,8 @@ public class CurrentInfoFragment extends Fragment {
 
     private void handleUpdatedBatteryInfo() {
         bl.setLevel(info.percent);
+        int c = pfrag.settings.getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
+        bl.setColor(c);
         blv.invalidate();
 
         TextView tv = (TextView) view.findViewById(R.id.level);

@@ -68,10 +68,8 @@ public class BatteryInfoActivity extends AppCompatActivity {
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
 
-        //android.content.SharedPreferences settings = getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
-        //int c = settings.getInt(SettingsActivity.KEY_UI_COLOR, R.color.col2020);
         int c = getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS)
-            .getInt(SettingsActivity.KEY_UI_COLOR, R.color.col2020);
+            .getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
         tabStrip.setTabIndicatorColor(c);
 
         bl = BatteryLevel.getInstance(this, PersistentFragment.getInstance(getSupportFragmentManager())
@@ -79,24 +77,15 @@ public class BatteryInfoActivity extends AppCompatActivity {
         bl.setColor(c);
     }
 
+
     // Actually, Activity is re-created.  If I ever want to handle day-night configuration change myself,
     //  Then I'll want this.  But right now it's pointless; it's called before Activity is there yet, so
     //    I can't do anything with the views, and the views will pull in correct colors and everything anyway,
     //    since it's recreated.
+    //
     // @Override
     // public void setTheme(int themeResId) {
     //     super.setTheme(themeResId);
-
-    //     System.out.println(".......................................................: setTheme()");
-    //     if (bl != null) {
-    //         System.out.println(".......................................................: We have bl");
-    //         android.util.TypedValue outValue = new android.util.TypedValue();
-    //         getTheme().resolveAttribute(android.R.attr.colorAccent, outValue, true);
-    //         System.out.println(".......................................................: outValue.data: " + outValue.data);
-    //         bl.setColor(outValue.data);
-    //     }
-        
-    //     System.out.println(".......................................................: end of setTheme");
     // }
 
     @Override

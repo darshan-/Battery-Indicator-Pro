@@ -103,7 +103,6 @@ class BatteryLevel {
 
         canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR);
 
-        System.out.println(".......................................................: mColor: " + mColor);
         fill_paint.setColor(mColor);
         canvas.drawRoundRect(body_rect, 7.5f, 7.5f, fill_paint);
 

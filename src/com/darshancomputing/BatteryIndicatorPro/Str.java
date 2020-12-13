@@ -19,6 +19,8 @@ import android.content.res.Resources;
 class Str {
     private static Resources res;
 
+    static int def_ui_color;
+
     static String degree_symbol;
     static String fahrenheit_symbol;
     static String celsius_symbol;
@@ -80,6 +82,8 @@ class Str {
 
     static void setResources(Resources r) {
         res = r;
+
+        def_ui_color = res.getColor(R.color.col2020);
 
         degree_symbol          = res.getString(R.string.degree_symbol);
         fahrenheit_symbol      = res.getString(R.string.fahrenheit_symbol);

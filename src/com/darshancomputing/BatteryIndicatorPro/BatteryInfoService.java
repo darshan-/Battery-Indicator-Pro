@@ -457,7 +457,7 @@ public class BatteryInfoService extends Service {
         if (info == null) {
             cwbg.setLevel(0);
         } else {
-            int c = settings.getInt(SettingsActivity.KEY_UI_COLOR, R.color.col2020);
+            int c = settings.getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
             bl.setColor(c);
             cwbg.setColor(c);
 
@@ -556,6 +556,7 @@ public class BatteryInfoService extends Service {
 
             notificationRV.setImageViewBitmap(R.id.battery, bl.getBitmap());
             bl.setLevel(info.percent);
+            // TODO: Set bl color here too?
 
             notificationRV.setTextViewText(R.id.percent, "" + info.percent + Str.percent_symbol);
             notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTopLine));
