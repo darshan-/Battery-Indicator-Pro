@@ -3,4 +3,6 @@
   <style name="bi_main_theme" parent="Theme.AppCompat.DayNight">
     <item name="android:windowBackground">#121212</item>
   </style>
+
+  <color name="icon_tint">#ccc</color>
 </resources>

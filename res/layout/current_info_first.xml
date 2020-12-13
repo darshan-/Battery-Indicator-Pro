@@ -44,6 +44,7 @@
                  android:padding="2dp"
                  android:gravity="center"
                  android:src="@drawable/clock"
+                 android:tint="@color/icon_tint"
       />
 
       <LinearLayout android:orientation="vertical"

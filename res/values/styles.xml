@@ -63,6 +63,7 @@
     <item name="android:background">?android:attr/selectableItemBackground</item>
   </style>
 
+  <color name="icon_tint">#666</color>
 
   <!-- Recorder: 000, Signal: #121212, Play Store: #212227, Settings: #22272b -->
   <!--color name="drive_night_bg">#202125</color -->
