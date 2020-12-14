@@ -23,12 +23,14 @@ import android.view.ViewGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+//import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerTabStrip;
 import androidx.viewpager.widget.ViewPager;
 
 public class BatteryInfoActivity extends AppCompatActivity {
+//public class BatteryInfoActivity extends FragmentActivity {
     private BatteryInfoPagerAdapter pagerAdapter;
     private ViewPager viewPager;
 
@@ -40,6 +42,7 @@ public class BatteryInfoActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        //setTheme(android.R.style.Theme_DeviceDefault);
         setTheme(R.style.bi_main_theme);
         super.onCreate(savedInstanceState);
 
@@ -55,8 +58,10 @@ public class BatteryInfoActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(pagerAdapter);
 
+        PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
         //tabStrip.setTabIndicatorColor(0x33b5e5);
         //tabStrip.setTabIndicatorColor(0xbb3388);
+        tabStrip.setTabIndicatorColor(0x039be5);
 
         viewPager.setCurrentItem(1);
         routeIntent(getIntent());
@@ -66,11 +71,11 @@ public class BatteryInfoActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
+        //PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
 
         int c = getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS)
             .getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
-        tabStrip.setTabIndicatorColor(c);
+        //tabStrip.setTabIndicatorColor(c);
 
         bl = BatteryLevel.getInstance(this, PersistentFragment.getInstance(getSupportFragmentManager())
                                       .res.getInteger(R.integer.bl_inSampleSize));

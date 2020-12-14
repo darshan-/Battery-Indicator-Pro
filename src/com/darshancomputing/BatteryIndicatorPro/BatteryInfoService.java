@@ -39,6 +39,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -457,6 +458,19 @@ public class BatteryInfoService extends Service {
         if (info == null) {
             cwbg.setLevel(0);
         } else {
+            // ContextThemeWrapper contextThemeWrapper = new
+            //     ContextThemeWrapper(this, android.R.style.Theme_DeviceDefault);
+            // android.util.TypedValue outValue = new android.util.TypedValue();
+            // boolean suc = contextThemeWrapper.getTheme().resolveAttribute(android.R.attr.colorAccent, outValue, true);
+
+            //boolean suc = getActivity().getTheme().resolveAttribute(R.attr.colorAccent, outValue, true);
+            //boolean suc = getActivity().getTheme().resolveAttribute(android.R.attr.colorPrimary, outValue, true);
+            // System.out.println(".|.....................................................: " +
+            //                    "suc: " + suc + ", outValue.data: " + outValue.data);
+            // bl.setColor(outValue.data);
+            // cwbg.setColor(outValue.data);
+
+
             int c = settings.getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
             bl.setColor(c);
             cwbg.setColor(c);

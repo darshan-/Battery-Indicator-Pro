@@ -202,6 +202,7 @@ public class CurrentInfoFragment extends Fragment {
             //  to work even if the screen rotates.  Even if it rotates many times back and forth, only the
             //  first Fragment is leaked, which will do the closing if Okay is pressed.  Once the dialog is
             //  gone (even if canceled), then the it and the leaked Fragment will be garbage collected.
+            df.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_DeviceDefault);
             df.setTargetFragment(this, 0);
             df.show(getFragmentManager(), "TODO: What is this string for?2");
             return true;
