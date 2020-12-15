@@ -20,6 +20,7 @@ class Str {
     private static Resources res;
 
     static int def_ui_color;
+    static int accent_color;
 
     static String degree_symbol;
     static String fahrenheit_symbol;
@@ -84,6 +85,7 @@ class Str {
         res = r;
 
         def_ui_color = res.getColor(R.color.col2020);
+        accent_color = res.getColor(R.color.accent);
 
         degree_symbol          = res.getString(R.string.degree_symbol);
         fahrenheit_symbol      = res.getString(R.string.fahrenheit_symbol);

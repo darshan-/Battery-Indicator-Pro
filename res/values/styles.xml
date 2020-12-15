@@ -48,13 +48,35 @@
   </style>
 
   <style name="bi_base_theme" parent="Theme.AppCompat.DayNight">
-    <item name="colorAccent">#039be5</item>
+    <!--item name="colorAccent">#039be5</item-->
+    <!--item name="colorAccent">#3c91c6</item-->
+    <item name="colorAccent">@color/accent</item>
+    <item name="android:alertDialogTheme">@style/dialog_theme</item>
   </style>
 
   <style name="bi_main_theme" parent="bi_base_theme">
   </style>
 
+  <style name="dialog_theme" parent="@android:style/ThemeOverlay.Material.Dialog.Alert">
+  <!--style name="dialog_theme" parent="Theme.AppCompat.DayNight.Dialog.Alert"-->
+    <!--item name="android:windowBackground">#eee</item-->
+
+    <!--
+        Note we need to set both with and without android: namespace.
+        Checkboxes (and probably other things) use colorAccent (I guess because of AppCompat),
+        while Okay/Cancel (and probably other things) use android:colorAccent.
+    -->
+    <item name="android:colorAccent">@color/dc_light_blue</item>
+    <item name="colorAccent">@color/dc_light_blue</item>
+  </style>
+
+  <!--
+      Note the lack of some kind of AppCompatPreferenceActivity means we can't use
+      an AppCompat theme, so we need android: namespace for items.
+  -->
+  <!--style name="bi_settings_theme" parent="Theme.AppCompat.DayNight"-->
   <style name="bi_settings_theme" parent="@android:style/Theme.Material">
+    <item name="android:colorAccent">@color/dc_light_blue</item>
   </style>
 
   <dimen name="compound_button_width">68dp</dimen>
@@ -74,6 +96,9 @@
   <!-- Recorder: 000, Signal: #121212, Play Store: #212227, Settings: #22272b -->
   <!--color name="drive_night_bg">#202125</color -->
 
+  <!--color name="accent">#266ec6</color-->
+  <!--color name="accent">#5086e8</color-->
+  <color name="accent">@color/dc_bright_light_blue</color>
   <color name="android_green">#A4C639</color>
   <color name="android_green_darker">#7cbc1d</color>
   <color name="ics_blue">#33b5E5</color>
@@ -82,6 +107,17 @@
   <!--color name="my_darker_darker_yellow">#C2B025</color-->
   <color name="my_darker_darker_yellow">#d3c314</color>
   <color name="col2020">#3b7bda</color>
+
+  <color name="dc_pink">#9c94db</color>
+
+  <color name="dc_blue">#248</color>
+  <color name="dc_light_blue">#586fb8</color>
+  <!--color name="dc_bright_light_blue">#6d90fa</color-->
+  <color name="dc_bright_light_blue">#79a3ff</color>
+  <color name="dc_dark_blue">#001e5a</color>
+  <color name="dc_blueviolet">#7f75cf</color>
+  <color name="dc_light_blueviolet">#b1a4ff</color>
+  <color name="dc_dark_blueviolet">#4e499d</color>
 
   <color name="time_til_charged">@color/my_yellow</color>
   <color name="light_usage">#cccc7e</color>

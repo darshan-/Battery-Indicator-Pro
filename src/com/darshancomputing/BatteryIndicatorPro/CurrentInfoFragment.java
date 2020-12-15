@@ -202,8 +202,8 @@ public class CurrentInfoFragment extends Fragment {
             //  to work even if the screen rotates.  Even if it rotates many times back and forth, only the
             //  first Fragment is leaked, which will do the closing if Okay is pressed.  Once the dialog is
             //  gone (even if canceled), then the it and the leaked Fragment will be garbage collected.
-            df.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_DeviceDefault);
             df.setTargetFragment(this, 0);
+            //df.setStyle(DialogFragment.STYLE_NORMAL, R.style.dialog_theme);
             df.show(getFragmentManager(), "TODO: What is this string for?2");
             return true;
         case R.id.menu_help:
@@ -263,6 +263,12 @@ public class CurrentInfoFragment extends Fragment {
     }
 
     public static class ConfirmCloseDialogFragment extends DialogFragment {
+        // @Override
+        // public void onCreate(Bundle savedInstanceState) {
+        //     super.onCreate(savedInstanceState);
+        //     setStyle(DialogFragment.STYLE_NORMAL, R.style.dialog_theme);
+        // }
+
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             return new AlertDialog.Builder(getActivity())
@@ -282,6 +288,9 @@ public class CurrentInfoFragment extends Fragment {
                         }
                     })
                 .create();
+            //d.getWindow().setLayout(400, 800);
+            //return d;
+
         }
     }
 

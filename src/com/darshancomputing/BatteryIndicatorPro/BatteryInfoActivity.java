@@ -58,10 +58,11 @@ public class BatteryInfoActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(pagerAdapter);
 
-        PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
+        //PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
         //tabStrip.setTabIndicatorColor(0x33b5e5);
         //tabStrip.setTabIndicatorColor(0xbb3388);
-        tabStrip.setTabIndicatorColor(0x039be5);
+        //tabStrip.setTabIndicatorColor(0x039be5);
+        //tabStrip.setTabIndicatorColor(0x3c91c6);
 
         viewPager.setCurrentItem(1);
         routeIntent(getIntent());
@@ -71,7 +72,9 @@ public class BatteryInfoActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        //PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
+        PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
+        tabStrip.setTabIndicatorColor(Str.accent_color);
+        System.out.println(".....................------------ Str.accent_color: " + Str.accent_color);
 
         int c = getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS)
             .getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);

@@ -2,10 +2,28 @@
 <resources>
   <style name="bi_main_theme" parent="bi_base_theme">
     <item name="android:windowBackground">#121212</item>
+    <!--item name="colorAccent">@color/dc_light_blue</item-->
+  </style>
+
+  <style name="dialog_theme" parent="@android:style/ThemeOverlay.Material.Dialog.Alert">
+  <!--style name="dialog_theme" parent="Theme.AppCompat.Dialog.Alert"-->
+    <!--item name="android:windowBackground">#444</item-->
+    <item name="android:textColorPrimary">#eee</item>
+
+    <!--
+        Note we need to set both with and without android: namespace.
+        Checkboxes (and probably other things) use colorAccent (I guess because of AppCompat),
+        while Okay/Cancel (and probably other things) use android:colorAccent.
+    -->
+    <item name="android:colorAccent">@color/dc_bright_light_blue</item>
+    <item name="colorAccent">@color/dc_bright_light_blue</item>
   </style>
 
   <color name="menu_icon_tint">#ccc</color>
   <color name="icon_tint">#eee</color>
+
+  <color name="accent">@color/dc_light_blue</color>
+  <!--color name="accent">#5f9aff</color-->
 
   <color name="log_unplugged">@color/my_darker_yellow</color>
   <color name="log_plugged">#5f97ac</color>
