@@ -12,8 +12,9 @@
     <item name="android:paddingBottom">2dp</item>
     <item name="android:gravity">center_horizontal</item>
     <!--item name="android:background">?android:attr/colorActivatedHighlight</item-->
-    <item name="android:background">#039be5</item>
-    <item name="android:textColor">#111</item>
+    <!--item name="android:background">#039be5</item-->
+    <item name="android:background">@color/help_cat_bg</item>
+    <item name="android:textColor">@color/help_cat_text</item>
     <item name="android:textSize">16sp</item>
     <item name="android:textStyle">bold</item>
   </style>
@@ -29,8 +30,8 @@
     <item name="android:paddingTop">1dp</item>
     <item name="android:paddingBottom">1dp</item>
     <item name="android:gravity">center_horizontal</item>
-    <item name="android:background">#CCC</item>
-    <item name="android:textColor">#111</item>
+    <item name="android:background">@color/help_pref_bg</item>
+    <item name="android:textColor">@color/help_pref_text</item>
     <item name="android:textSize">14sp</item>
     <item name="android:textStyle">bold</item>
   </style>
@@ -45,6 +46,8 @@
   </style>
 
   <style name="bi_help_theme" parent="Theme.AppCompat.DayNight">
+    <item name="android:colorAccent">@color/help_accent</item>
+    <item name="colorAccent">@color/help_accent</item>
   </style>
 
   <style name="bi_base_theme" parent="Theme.AppCompat.DayNight">
@@ -75,6 +78,7 @@
       an AppCompat theme, so we need android: namespace for items.
   -->
   <!--style name="bi_settings_theme" parent="Theme.AppCompat.DayNight"-->
+  <!--style name="bi_settings_theme" parent="@android:style/Theme.Material"-->
   <style name="bi_settings_theme" parent="@android:style/Theme.Material">
     <item name="android:colorAccent">@color/dc_light_blue</item>
   </style>
@@ -112,12 +116,19 @@
 
   <color name="dc_blue">#248</color>
   <color name="dc_light_blue">#586fb8</color>
+  <color name="dc_lighter_blue">#8a9deb</color>
   <!--color name="dc_bright_light_blue">#6d90fa</color-->
   <color name="dc_bright_light_blue">#79a3ff</color>
   <color name="dc_dark_blue">#001e5a</color>
   <color name="dc_blueviolet">#7f75cf</color>
   <color name="dc_light_blueviolet">#b1a4ff</color>
   <color name="dc_dark_blueviolet">#4e499d</color>
+
+  <color name="help_cat_bg">@color/dc_light_blue</color>
+  <color name="help_cat_text">@color/dc_dark_blue</color>
+  <color name="help_pref_bg">@color/dc_dark_blue</color>
+  <color name="help_pref_text">@color/dc_dark_blue</color>
+  <color name="help_accent">@color/dc_dark_blue</color>
 
   <color name="time_til_charged">@color/my_yellow</color>
   <color name="light_usage">#cccc7e</color>
