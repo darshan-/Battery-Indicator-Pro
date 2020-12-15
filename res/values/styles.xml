@@ -41,6 +41,7 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:paddingTop">7dp</item>
     <item name="android:paddingBottom">7dp</item>
+    <item name="android:textColor">@color/help_text</item>
     <item name="android:textSize">14sp</item>
     <item name="android:lineSpacingMultiplier">1.1</item>
   </style>
@@ -80,7 +81,7 @@
   <!--style name="bi_settings_theme" parent="Theme.AppCompat.DayNight"-->
   <!--style name="bi_settings_theme" parent="@android:style/Theme.Material"-->
   <style name="bi_settings_theme" parent="@android:style/Theme.Material">
-    <item name="android:colorAccent">@color/dc_light_blue</item>
+    <item name="android:colorAccent">@color/dc_bright_light_blue</item>
   </style>
 
   <dimen name="compound_button_width">68dp</dimen>
@@ -124,11 +125,12 @@
   <color name="dc_light_blueviolet">#b1a4ff</color>
   <color name="dc_dark_blueviolet">#4e499d</color>
 
-  <color name="help_cat_bg">@color/dc_light_blue</color>
-  <color name="help_cat_text">@color/dc_dark_blue</color>
-  <color name="help_pref_bg">@color/dc_dark_blue</color>
-  <color name="help_pref_text">@color/dc_dark_blue</color>
-  <color name="help_accent">@color/dc_dark_blue</color>
+  <color name="help_cat_bg">@color/dc_blue</color>
+  <color name="help_cat_text">#f0f0f0</color>
+  <color name="help_pref_bg">@color/dc_light_blue</color>
+  <color name="help_pref_text">#f8f8f8</color>
+  <color name="help_accent">@color/dc_dark_blueviolet</color>
+  <color name="help_text">#111</color>
 
   <color name="time_til_charged">@color/my_yellow</color>
   <color name="light_usage">#cccc7e</color>

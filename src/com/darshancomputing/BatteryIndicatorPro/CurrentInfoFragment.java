@@ -92,8 +92,9 @@ public class CurrentInfoFragment extends Fragment {
         blv = (ImageView) view.findViewById(R.id.battery_level_view);
         blv.setImageBitmap(bl.getBitmap());
 
-        int c = pfrag.settings.getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
-        bl.setColor(c);
+        //int c = pfrag.settings.getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
+        //bl.setColor(c);
+        //bl.setColor(Str.accent_color);
 
         battery_use_b = (Button) view.findViewById(R.id.battery_use_b);
 
@@ -301,8 +302,9 @@ public class CurrentInfoFragment extends Fragment {
 
     private void handleUpdatedBatteryInfo() {
         bl.setLevel(info.percent);
-        int c = pfrag.settings.getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
-        bl.setColor(c);
+        //int c = pfrag.settings.getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
+        //bl.setColor(c);
+        bl.setColor(Str.accent_color);
         blv.invalidate();
 
         TextView tv = (TextView) view.findViewById(R.id.level);

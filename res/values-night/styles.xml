@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <style name="bi_main_theme" parent="bi_base_theme">
-    <item name="android:windowBackground">#121212</item>
+    <item name="android:windowBackground">#181818</item>
     <!--item name="colorAccent">@color/dc_light_blue</item-->
   </style>
 
@@ -32,8 +32,9 @@
   <color name="log_old_status">#ccc</color>
 
   <color name="help_cat_bg">@color/dc_blue</color>
-  <color name="help_cat_text">#ccc</color>
+  <color name="help_cat_text">#fff</color>
   <color name="help_pref_bg">@color/dc_lighter_blue</color>
-  <color name="help_pref_text">@color/dc_dark_blue</color>
+  <color name="help_pref_text">#111</color>
   <color name="help_accent">@color/dc_lighter_blue</color>
+  <color name="help_text">#eee</color>
 </resources>

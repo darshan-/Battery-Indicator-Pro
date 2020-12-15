@@ -471,9 +471,11 @@ public class BatteryInfoService extends Service {
             // cwbg.setColor(outValue.data);
 
 
-            int c = settings.getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
-            bl.setColor(c);
-            cwbg.setColor(c);
+            //int c = settings.getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
+            //bl.setColor(c);
+            //cwbg.setColor(c);
+            bl.setColor(Str.accent_color);
+            cwbg.setColor(Str.accent_color);
 
             bl.setLevel(info.percent);
             cwbg.setLevel(info.percent);
