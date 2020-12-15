@@ -75,9 +75,12 @@
   <!--color name="drive_night_bg">#202125</color -->
 
   <color name="android_green">#A4C639</color>
+  <color name="android_green_darker">#7cbc1d</color>
   <color name="ics_blue">#33b5E5</color>
   <color name="my_yellow">#E8D018</color>
   <color name="my_darker_yellow">#D0BF27</color>
+  <!--color name="my_darker_darker_yellow">#C2B025</color-->
+  <color name="my_darker_darker_yellow">#d3c314</color>
   <color name="col2020">#3b7bda</color>
 
   <color name="time_til_charged">@color/my_yellow</color>
@@ -86,11 +89,11 @@
   <color name="heavy_usage">@color/my_yellow</color>
   <color name="constant_usage">#DD961B</color>
 
-  <color name="log_unplugged">@color/my_darker_yellow</color>
-  <color name="log_plugged">#5f97ac</color>
-  <color name="log_charged">@color/android_green</color>
-  <color name="log_unknown">#f66</color>
-  <color name="log_old_status">#ccc</color>
+  <color name="log_unplugged">@color/my_darker_darker_yellow</color>
+  <color name="log_plugged">#70b2ca</color>
+  <color name="log_charged">@color/android_green_darker</color>
+  <color name="log_unknown">#cf3c3c</color>
+  <color name="log_old_status">#666</color>
   <color name="log_boot_completed">#886bc7</color>
 
   <!--color name="heavy_usage">#DD901C</color-->

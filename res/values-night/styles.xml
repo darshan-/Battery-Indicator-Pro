@@ -6,4 +6,10 @@
 
   <color name="menu_icon_tint">#ccc</color>
   <color name="icon_tint">#eee</color>
+
+  <color name="log_unplugged">@color/my_darker_yellow</color>
+  <color name="log_plugged">#5f97ac</color>
+  <color name="log_charged">@color/android_green</color>
+  <color name="log_unknown">#f66</color>
+  <color name="log_old_status">#ccc</color>
 </resources>
