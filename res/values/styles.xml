@@ -103,7 +103,7 @@
 
   <!--color name="accent">#266ec6</color-->
   <!--color name="accent">#5086e8</color-->
-  <color name="accent">@color/dc_bright_light_blue</color>
+  <color name="accent">@color/dc_sat_light_blue</color>
   <color name="android_green">#A4C639</color>
   <color name="android_green_darker">#7cbc1d</color>
   <color name="ics_blue">#33b5E5</color>
@@ -118,6 +118,7 @@
   <color name="dc_blue">#248</color>
   <color name="dc_light_blue">#586fb8</color>
   <color name="dc_lighter_blue">#8a9deb</color>
+  <color name="dc_sat_light_blue">#3a5ab8</color>
   <!--color name="dc_bright_light_blue">#6d90fa</color-->
   <color name="dc_bright_light_blue">#79a3ff</color>
   <color name="dc_dark_blue">#001e5a</color>
