@@ -68,7 +68,6 @@ class BatteryLevel {
         canvas.setBitmap(battery);
 
         paint = new Paint();
-        mColor = 0xff586fb8;
         paint.setAntiAlias(true);
         paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setStrokeJoin(Paint.Join.ROUND);
@@ -86,24 +85,50 @@ class BatteryLevel {
 
         mLevel = level;
 
-        int sw = (int) STROKE_WIDTH;
+        float sw = STROKE_WIDTH;
+        float radius = sw*0.5f;
+        int isw = (int) sw;
+
         RectF outline_rect = new RectF(sw/2, TOP_HEIGHT + sw/2, WIDTH-sw/2, TOTAL_HEIGHT-sw/2);
         canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR);
 
         paint.setColor(mColor);
         paint.setStyle(Paint.Style.STROKE);
-        canvas.drawRoundRect(outline_rect, sw, sw, paint);
+        paint.setStrokeWidth(STROKE_WIDTH);
+        canvas.drawRoundRect(outline_rect, radius, radius, paint);
 
-        int top = TOP_HEIGHT + sw/2 + (BODY_HEIGHT * (100-level) / 100);
-        RectF fill_rect = new RectF(sw/2, top, WIDTH-sw/2, TOTAL_HEIGHT-sw/2);
+        // int top = TOP_HEIGHT + half_sw + (BODY_HEIGHT * (100-level) / 100);
+        // RectF fill_rect = new RectF(sw/2, top, WIDTH-sw/2, TOTAL_HEIGHT-sw/2);
         // Draw line across top to level out rounding?
+
+        //int top = TOP_HEIGHT + (int) sw + (BODY_HEIGHT * (100-level) / 100);
+        int top = TOP_HEIGHT + isw + ((BODY_HEIGHT-2*isw) * (100-level) / 100);
+        RectF fill_rect = new RectF(0, top, WIDTH, TOTAL_HEIGHT);
 
         paint.setStyle(Paint.Style.FILL);
         canvas.drawRoundRect(fill_rect, sw, sw, paint);
 
         int top_left = (WIDTH - TOP_WIDTH) / 2;
         RectF top_rect = new RectF(top_left, 0, top_left+TOP_WIDTH, TOP_HEIGHT+sw);
-        canvas.drawRoundRect(top_rect, sw, sw, paint);
+        canvas.drawRoundRect(top_rect, radius, radius, paint);
+
+        // level 100 should draw at: TOP_HEIGHT + sw/2
+        // level 0 should(?) draw at: TOTAL_HEIGHT + sw/2
+        // level = 50;
+        // top = TOP_HEIGHT + half_sw + (BODY_HEIGHT * (100-level) / 100);
+        // paint.setColor(0x88ff0000);
+        // canvas.drawLine(0, top, WIDTH, top, paint);
+
+        //level = 0;
+        //top = TOP_HEIGHT + half_sw + (BODY_HEIGHT * (100-level) / 100);
+        //top = TOTAL_HEIGHT + half_sw;
+        //fill_rect = new RectF(sw/2, top, WIDTH-sw/2, TOTAL_HEIGHT-sw/2);
+
+        // level = 50;
+        // top = TOP_HEIGHT + isw + ((BODY_HEIGHT-2*isw) * (100-level) / 100);
+        // fill_rect = new RectF(0, top, WIDTH, TOTAL_HEIGHT);
+        // paint.setColor(0x88ff0000);
+        // canvas.drawRoundRect(fill_rect, radius, radius, paint);
     }
 
     Bitmap getBitmap() {
