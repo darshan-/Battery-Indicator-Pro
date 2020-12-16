@@ -15,7 +15,10 @@
                android:layout_width="0px"
                android:layout_weight="0.3"
                android:scaleType="fitCenter"
-               android:padding="8dp"
+               android:paddingTop="16dp"
+               android:paddingBottom="16dp"
+               android:paddingLeft="4dp"
+               android:paddingRight="4dp"
     />
 
     <TextView android:id="@+id/level"

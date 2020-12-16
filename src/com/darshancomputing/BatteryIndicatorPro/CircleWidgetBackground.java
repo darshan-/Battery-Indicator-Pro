@@ -27,15 +27,11 @@ class CircleWidgetBackground {
     private final int DIMEN;
     private final float ARC_STROKE_WIDTH;
 
-    //private static final int BLACK = 0xff000000;
     private static final int ICS_BLUE = 0xff33b5e5;
-
-    private static final int BG_COLOR = 0xff222222;
-    private static final int ARC_COLOR = ICS_BLUE;
 
     private Bitmap bitmap;
     private Canvas canvas;
-    private Paint bg_paint, arc_paint;
+    private Paint arc_paint;
     private int mLevel, mColor;
 
     private Resources res;
@@ -52,21 +48,11 @@ class CircleWidgetBackground {
         bitmap = Bitmap.createBitmap(DIMEN, DIMEN, Bitmap.Config.ARGB_8888);
         canvas.setBitmap(bitmap);
 
-        bg_paint = new Paint();
-        bg_paint.setAntiAlias(true);
-        bg_paint.setStyle(Paint.Style.FILL);
-        bg_paint.setDither(true);
-
         arc_paint = new Paint();
-        //arc_paint.setColor(ARC_COLOR);
-        mColor = ARC_COLOR;
         arc_paint.setAntiAlias(true);
         arc_paint.setStrokeWidth(ARC_STROKE_WIDTH);
         arc_paint.setStyle(Paint.Style.STROKE);
-        //arc_paint.setStrokeCap(Paint.Cap.ROUND);
         arc_paint.setDither(true);
-
-        //setLevel(100); // TODO: Would this be helpful?
     }
 
     public void setColor(int color) {
@@ -74,31 +60,17 @@ class CircleWidgetBackground {
         setLevel(mLevel);
     }
 
-    // public int getInnerWidth() {
-    //     int top_left = (int) (ARC_STROKE_WIDTH / 2);
-    //     int bottom_right = DIMEN - (int) (ARC_STROKE_WIDTH / 2);
-    // }
-
     public void setLevel(int level) {
         if (level < 0) level = 0; // I suspect we might get called with -1 in certain circumstances
         mLevel = level;
-
-        bg_paint.setColor(res.getColor(R.color.windowBackground));
 
         int top_left = (int) (ARC_STROKE_WIDTH / 2);
         int bottom_right = DIMEN - (int) (ARC_STROKE_WIDTH / 2);
 
         RectF oval = new RectF(top_left, top_left, bottom_right, bottom_right);
 
-        canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR);
-
-        //canvas.drawArc(oval, 0.0f, 360.0f, true, bg_paint);
         arc_paint.setColor(mColor);
         canvas.drawArc(oval, -90.0f, level * 360.0f / 100.0f, false, arc_paint);
-
-        //if (android.os.Build.VERSION.SDK_INT >= 11) { // Resizeable widgets
-        //    canvas.drawText(R.id.level, "" + info.percent + str.percent_symbol);
-        //}
     }
 
     Bitmap getBitmap() {

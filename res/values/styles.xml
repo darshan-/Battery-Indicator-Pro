@@ -51,36 +51,28 @@
     <item name="colorAccent">@color/help_accent</item>
   </style>
 
-  <style name="bi_base_theme" parent="Theme.AppCompat.DayNight">
-    <!--item name="colorAccent">#039be5</item-->
-    <!--item name="colorAccent">#3c91c6</item-->
+  <style name="bi_main_theme" parent="Theme.AppCompat.DayNight">
     <item name="android:windowBackground">@color/windowBackground</item>
     <item name="colorAccent">@color/accent</item>
     <item name="android:alertDialogTheme">@style/dialog_theme</item>
   </style>
 
-  <style name="bi_main_theme" parent="bi_base_theme">
-  </style>
-
   <style name="dialog_theme" parent="@android:style/ThemeOverlay.Material.Dialog.Alert">
-  <!--style name="dialog_theme" parent="Theme.AppCompat.DayNight.Dialog.Alert"-->
-    <!--item name="android:windowBackground">#eee</item-->
+    <item name="android:textColorPrimary">@color/dialog_text</item>
 
     <!--
-        Note we need to set both with and without android: namespace.
+        Note that we need to set both with and without android: namespace.
         Checkboxes (and probably other things) use colorAccent (I guess because of AppCompat),
         while Okay/Cancel (and probably other things) use android:colorAccent.
     -->
-    <item name="android:colorAccent">@color/dc_light_blue</item>
-    <item name="colorAccent">@color/dc_light_blue</item>
+    <item name="android:colorAccent">@color/dialog_accent</item>
+    <item name="colorAccent">@color/dialog_accent</item>
   </style>
 
   <!--
       Note the lack of some kind of AppCompatPreferenceActivity means we can't use
       an AppCompat theme, so we need android: namespace for items.
   -->
-  <!--style name="bi_settings_theme" parent="Theme.AppCompat.DayNight"-->
-  <!--style name="bi_settings_theme" parent="@android:style/Theme.Material"-->
   <style name="bi_settings_theme" parent="@android:style/Theme.Material">
     <item name="android:colorAccent">@color/dc_bright_light_blue</item>
   </style>
@@ -99,18 +91,15 @@
   <color name="menu_icon_tint">#333</color>
   <color name="icon_tint">#484848</color>
 
-  <!-- Recorder: 000, Signal: #121212, Play Store: #212227, Settings: #22272b -->
-  <!--color name="drive_night_bg">#202125</color -->
+  <color name="dialog_accent">@color/dc_light_blue</color>
+  <color name="dialog_text">#000</color>
 
-  <!--color name="accent">#266ec6</color-->
-  <!--color name="accent">#5086e8</color-->
   <color name="accent">@color/dc_sat_light_blue</color>
   <color name="android_green">#A4C639</color>
   <color name="android_green_darker">#7cbc1d</color>
   <color name="ics_blue">#33b5E5</color>
   <color name="my_yellow">#E8D018</color>
   <color name="my_darker_yellow">#D0BF27</color>
-  <!--color name="my_darker_darker_yellow">#C2B025</color-->
   <color name="my_darker_darker_yellow">#d3c314</color>
   <color name="col2020">#3b7bda</color>
 
@@ -121,6 +110,7 @@
 
   <color name="dc_blue">#248</color>
   <color name="dc_light_blue">#586fb8</color>
+  <color name="dc_light2_blue">#5773c9</color>
   <color name="dc_lighter_blue">#8a9deb</color>
   <color name="dc_sat_light_blue">#3a5ab8</color>
   <!--color name="dc_bright_light_blue">#6d90fa</color-->

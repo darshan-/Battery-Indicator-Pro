@@ -60,8 +60,6 @@ public class CurrentInfoFragment extends Fragment {
     private ImageView plugged_icon;
     private BatteryInfoActivity bia;
 
-    //private Drawable d_unplugged, d_not_unplugged;
-
     private BatteryInfo info = new BatteryInfo();
     //private CurrentHack currentHack;
 
@@ -91,10 +89,6 @@ public class CurrentInfoFragment extends Fragment {
         bl = BatteryLevel.getInstance(getActivity(), pfrag.res.getInteger(R.integer.bl_inSampleSize));
         blv = (ImageView) view.findViewById(R.id.battery_level_view);
         blv.setImageBitmap(bl.getBitmap());
-
-        //int c = pfrag.settings.getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
-        //bl.setColor(c);
-        //bl.setColor(Str.accent_color);
 
         battery_use_b = (Button) view.findViewById(R.id.battery_use_b);
 
@@ -204,7 +198,6 @@ public class CurrentInfoFragment extends Fragment {
             //  first Fragment is leaked, which will do the closing if Okay is pressed.  Once the dialog is
             //  gone (even if canceled), then the it and the leaked Fragment will be garbage collected.
             df.setTargetFragment(this, 0);
-            //df.setStyle(DialogFragment.STYLE_NORMAL, R.style.dialog_theme);
             df.show(getFragmentManager(), "TODO: What is this string for?2");
             return true;
         case R.id.menu_help:
@@ -264,12 +257,6 @@ public class CurrentInfoFragment extends Fragment {
     }
 
     public static class ConfirmCloseDialogFragment extends DialogFragment {
-        // @Override
-        // public void onCreate(Bundle savedInstanceState) {
-        //     super.onCreate(savedInstanceState);
-        //     setStyle(DialogFragment.STYLE_NORMAL, R.style.dialog_theme);
-        // }
-
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             return new AlertDialog.Builder(getActivity())
@@ -289,9 +276,6 @@ public class CurrentInfoFragment extends Fragment {
                         }
                     })
                 .create();
-            //d.getWindow().setLayout(400, 800);
-            //return d;
-
         }
     }
 
