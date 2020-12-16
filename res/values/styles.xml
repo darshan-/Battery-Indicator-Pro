@@ -54,6 +54,7 @@
   <style name="bi_base_theme" parent="Theme.AppCompat.DayNight">
     <!--item name="colorAccent">#039be5</item-->
     <!--item name="colorAccent">#3c91c6</item-->
+    <item name="android:windowBackground">@color/windowBackground</item>
     <item name="colorAccent">@color/accent</item>
     <item name="android:alertDialogTheme">@style/dialog_theme</item>
   </style>
@@ -112,6 +113,9 @@
   <!--color name="my_darker_darker_yellow">#C2B025</color-->
   <color name="my_darker_darker_yellow">#d3c314</color>
   <color name="col2020">#3b7bda</color>
+
+  <color name="windowBackground">#fafafa</color>
+  <color name="widgetTextColor">#111</color>
 
   <color name="dc_pink">#9c94db</color>
 

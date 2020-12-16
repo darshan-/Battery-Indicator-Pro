@@ -22,7 +22,7 @@
               android:layout_height="fill_parent"
 	      android:layout_width="wrap_content"
               android:gravity="center_horizontal|center_vertical"
-              android:textColor="#fff"
+              android:textColor="@color/widgetTextColor"
               android:textSize="40dp"
               android:text="XX%"
     />

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2013-2017 Darshan Computing, LLC
+    Copyright (c) 2013-2020 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.Context;
-//import android.content.res.Resources;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -38,8 +38,10 @@ class CircleWidgetBackground {
     private Paint bg_paint, arc_paint;
     private int mLevel, mColor;
 
+    private Resources res;
+
     CircleWidgetBackground(Context context) {
-        //Resources res = context.getResources();
+        res = context.getResources();
 
         canvas = new Canvas();
 
@@ -51,7 +53,6 @@ class CircleWidgetBackground {
         canvas.setBitmap(bitmap);
 
         bg_paint = new Paint();
-        bg_paint.setColor(BG_COLOR);
         bg_paint.setAntiAlias(true);
         bg_paint.setStyle(Paint.Style.FILL);
         bg_paint.setDither(true);
@@ -73,9 +74,16 @@ class CircleWidgetBackground {
         setLevel(mLevel);
     }
 
+    // public int getInnerWidth() {
+    //     int top_left = (int) (ARC_STROKE_WIDTH / 2);
+    //     int bottom_right = DIMEN - (int) (ARC_STROKE_WIDTH / 2);
+    // }
+
     public void setLevel(int level) {
         if (level < 0) level = 0; // I suspect we might get called with -1 in certain circumstances
         mLevel = level;
+
+        bg_paint.setColor(res.getColor(R.color.windowBackground));
 
         int top_left = (int) (ARC_STROKE_WIDTH / 2);
         int bottom_right = DIMEN - (int) (ARC_STROKE_WIDTH / 2);
@@ -84,7 +92,7 @@ class CircleWidgetBackground {
 
         canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR);
 
-        canvas.drawArc(oval, 0.0f, 360.0f, true, bg_paint);
+        //canvas.drawArc(oval, 0.0f, 360.0f, true, bg_paint);
         arc_paint.setColor(mColor);
         canvas.drawArc(oval, -90.0f, level * 360.0f / 100.0f, false, arc_paint);
 

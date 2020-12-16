@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <style name="bi_main_theme" parent="bi_base_theme">
+  <!--style name="bi_main_theme" parent="bi_base_theme">
     <item name="android:windowBackground">#181818</item>
-    <!--item name="colorAccent">@color/dc_light_blue</item-->
-  </style>
+  </style-->
 
   <style name="dialog_theme" parent="@android:style/ThemeOverlay.Material.Dialog.Alert">
   <!--style name="dialog_theme" parent="Theme.AppCompat.Dialog.Alert"-->
@@ -21,6 +20,9 @@
 
   <color name="menu_icon_tint">#ccc</color>
   <color name="icon_tint">#eee</color>
+
+  <color name="windowBackground">#181818</color>
+  <color name="widgetTextColor">#eee</color>
 
   <color name="accent">@color/dc_light_blue</color>
   <!--color name="accent">#5f9aff</color-->

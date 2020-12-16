@@ -5,20 +5,32 @@
              android:padding="@dimen/widget_margin"
              android:id="@+id/widget_layout"
 >
-  <ImageView android:id="@+id/circle_widget_image_view"
-             android:layout_width="fill_parent"
-             android:layout_height="fill_parent"
-             android:scaleType="centerInside"
-             android:src="@drawable/circle"
-  />
+  <!--LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/circle"
+  -->
+    <ImageView 
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:scaleType="centerInside"
+               android:src="@drawable/circle"
+               android:padding="2.5dp"
+    />
+    <ImageView android:id="@+id/circle_widget_image_view"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:scaleType="centerInside"
+               android:src="@drawable/circle"
+    />
+  <!--/LinearLayout-->
 
     <TextView android:id="@+id/level"
 	      android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:gravity="center"
-              android:textColor="#fff"
+              android:textColor="@color/widgetTextColor"
               android:textSize="20dp"
               android:text="XX%"
     />
-  <!--/LinearLayout-->
 </FrameLayout>

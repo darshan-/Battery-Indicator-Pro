@@ -254,6 +254,15 @@ public class BatteryInfoService extends Service {
         stopForeground(true);
     }
 
+    // @Override
+    // public void setTheme(int themeResId) {
+    //     super.setTheme(themeResId);
+    //     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
+    //     System.out.println("-    Service.setTheme() called.");
+    //     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
+    //     cwbg.redraw();
+    // }
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         // if (intent != null && intent.getBooleanExtra(EXTRA_EDIT_ALARMS, false)) {
