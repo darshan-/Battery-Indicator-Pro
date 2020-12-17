@@ -103,10 +103,10 @@ class BatteryLevel {
 
         //int top = TOP_HEIGHT + (int) sw + (BODY_HEIGHT * (100-level) / 100);
         int top = TOP_HEIGHT + isw + ((BODY_HEIGHT-2*isw) * (100-level) / 100);
-        RectF fill_rect = new RectF(0, top, WIDTH, TOTAL_HEIGHT);
+        RectF fill_rect = new RectF(0, top, WIDTH, TOTAL_HEIGHT-sw);
 
         paint.setStyle(Paint.Style.FILL);
-        canvas.drawRoundRect(fill_rect, sw, sw, paint);
+        canvas.drawRoundRect(fill_rect, 0, 0, paint);
 
         int top_left = (WIDTH - TOP_WIDTH) / 2;
         RectF top_rect = new RectF(top_left, 0, top_left+TOP_WIDTH, TOP_HEIGHT+sw);
