@@ -27,8 +27,6 @@ class CircleWidgetBackground {
     private final int DIMEN;
     private final float ARC_STROKE_WIDTH;
 
-    private static final int ICS_BLUE = 0xff33b5e5;
-
     private Bitmap bitmap;
     private Canvas canvas;
     private Paint arc_paint;

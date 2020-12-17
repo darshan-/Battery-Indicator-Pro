@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2013-2017 Darshan Computing, LLC
+    Copyright (c) 2013-2020 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,36 +34,56 @@ class BatteryLevel {
     static final int SIZE_NOTIFICATION = 4;
 
 
-    private final int WIDTH = 240;
-    private final int BODY_HEIGHT = 420;
-    private final int TOP_WIDTH = 100;
-    private final int TOP_HEIGHT = 30;
-    private final int TOTAL_HEIGHT = BODY_HEIGHT + TOP_HEIGHT;
-    private final float STROKE_WIDTH = 20f;
+    private static final float FACTOR_LARGE = 33.25f;
+    private static final float FACTOR_SMALL = 13.33f;
 
-    private static BatteryLevel[] instances = new BatteryLevel[]{null, null, null, null, null}; // So that [1], [2], and [4] exist
+    private final float factor_width = 12.0f;
+    private final float factor_bod_h = 21.0f;
+    private final float factor_top_w = 5.0f;
+    private final float factor_top_h = 1.5f;
+    private final float factor_stroke = 1.0f;
 
-    // Get rid of inSampleSize, I think!
-    public static BatteryLevel getInstance(Context context, int inSampleSize) {
-        if (inSampleSize < 0 || inSampleSize >= instances.length)
-            return null;
+    private final int width;
+    private final int bod_h;
+    private final int top_w;
+    private final int top_h;
+    private final int total_h;
+    private final int stroke_w;
 
-        if (instances[inSampleSize] == null)
-            instances[inSampleSize] = new BatteryLevel(context, inSampleSize);
+    private static BatteryLevel largeInstance; // For main activity
+    private static BatteryLevel smallInstance; // For widgets and notifications
 
-        return instances[inSampleSize];
+    public static BatteryLevel getLargeInstance(Context context) {
+        if (largeInstance != null)
+            return largeInstance;
+
+        largeInstance = new BatteryLevel(context, FACTOR_LARGE);
+
+        return largeInstance;
     }
 
-    public static BatteryLevel getInstance(Context context) {
-        return getInstance(context, SIZE_LARGE);
+    public static BatteryLevel getSmallInstance(Context context) {
+        if (smallInstance != null)
+            return smallInstance;
+
+        smallInstance = new BatteryLevel(context, FACTOR_SMALL);
+
+        return smallInstance;
     }
 
-    private BatteryLevel(Context context, int inSampleSize) {
+    private BatteryLevel(Context context, float size_factor) {
         Resources res = context.getResources();
+
+        width = (int) (size_factor * factor_width);
+        bod_h = (int) (size_factor * factor_bod_h);
+        top_w = (int) (size_factor * factor_top_w);
+        top_h = (int) (size_factor * factor_top_h);
+        total_h = (int) (bod_h + top_h);
+        stroke_w = (int) (size_factor * factor_stroke);
 
         canvas = new Canvas();
 
-        battery = Bitmap.createBitmap(WIDTH, TOTAL_HEIGHT, Bitmap.Config.ARGB_8888);
+        battery = Bitmap.createBitmap(width, total_h, Bitmap.Config.ARGB_8888);
         battery.setDensity(DisplayMetrics.DENSITY_DEFAULT);
         canvas.setBitmap(battery);
 
@@ -72,7 +92,7 @@ class BatteryLevel {
         paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setStrokeJoin(Paint.Join.ROUND);
         paint.setDither(true);
-        paint.setStrokeWidth(STROKE_WIDTH);
+        paint.setStrokeWidth(stroke_w);
     }
 
     public void setColor(int color) {
@@ -85,50 +105,27 @@ class BatteryLevel {
 
         mLevel = level;
 
-        float sw = STROKE_WIDTH;
-        float radius = sw*0.5f;
-        int isw = (int) sw;
+        float hsw = stroke_w*0.5f;
+        int isw = (int) stroke_w;
+        float radius = hsw;
 
-        RectF outline_rect = new RectF(sw/2, TOP_HEIGHT + sw/2, WIDTH-sw/2, TOTAL_HEIGHT-sw/2);
+        RectF outline_rect = new RectF(hsw, top_h+hsw, width-hsw, total_h-hsw);
         canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR);
 
         paint.setColor(mColor);
         paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(STROKE_WIDTH);
+        paint.setStrokeWidth(stroke_w);
         canvas.drawRoundRect(outline_rect, radius, radius, paint);
 
-        // int top = TOP_HEIGHT + half_sw + (BODY_HEIGHT * (100-level) / 100);
-        // RectF fill_rect = new RectF(sw/2, top, WIDTH-sw/2, TOTAL_HEIGHT-sw/2);
-        // Draw line across top to level out rounding?
-
-        //int top = TOP_HEIGHT + (int) sw + (BODY_HEIGHT * (100-level) / 100);
-        int top = TOP_HEIGHT + isw + ((BODY_HEIGHT-2*isw) * (100-level) / 100);
-        RectF fill_rect = new RectF(sw, top, WIDTH-sw, TOTAL_HEIGHT-sw);
+        int top = top_h + isw + ((bod_h-2*isw) * (100-level) / 100);
+        RectF fill_rect = new RectF(stroke_w, top, width-stroke_w, total_h-stroke_w);
 
         paint.setStyle(Paint.Style.FILL);
         canvas.drawRoundRect(fill_rect, 0, 0, paint);
 
-        int top_left = (WIDTH - TOP_WIDTH) / 2;
-        RectF top_rect = new RectF(top_left, 0, top_left+TOP_WIDTH, TOP_HEIGHT+sw);
+        int top_left = (width - top_w) / 2;
+        RectF top_rect = new RectF(top_left, 0, top_left+top_w, top_h+stroke_w);
         canvas.drawRoundRect(top_rect, radius, radius, paint);
-
-        // level 100 should draw at: TOP_HEIGHT + sw/2
-        // level 0 should(?) draw at: TOTAL_HEIGHT + sw/2
-        // level = 50;
-        // top = TOP_HEIGHT + half_sw + (BODY_HEIGHT * (100-level) / 100);
-        // paint.setColor(0x88ff0000);
-        // canvas.drawLine(0, top, WIDTH, top, paint);
-
-        //level = 0;
-        //top = TOP_HEIGHT + half_sw + (BODY_HEIGHT * (100-level) / 100);
-        //top = TOTAL_HEIGHT + half_sw;
-        //fill_rect = new RectF(sw/2, top, WIDTH-sw/2, TOTAL_HEIGHT-sw/2);
-
-        // level = 50;
-        // top = TOP_HEIGHT + isw + ((BODY_HEIGHT-2*isw) * (100-level) / 100);
-        // fill_rect = new RectF(0, top, WIDTH, TOTAL_HEIGHT);
-        // paint.setColor(0x88ff0000);
-        // canvas.drawRoundRect(fill_rect, radius, radius, paint);
     }
 
     Bitmap getBitmap() {

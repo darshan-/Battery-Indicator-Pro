@@ -190,7 +190,7 @@ public class BatteryInfoService extends Service {
         clientMessengers = new java.util.HashSet<Messenger>();
 
         predictor = new Predictor(this);
-        bl = BatteryLevel.getInstance(this, BatteryLevel.SIZE_NOTIFICATION);
+        bl = BatteryLevel.getSmallInstance(this);
         cwbg = new CircleWidgetBackground(this);
 
         alarms = new AlarmDatabase(this);
@@ -458,24 +458,8 @@ public class BatteryInfoService extends Service {
         if (info == null) {
             cwbg.setLevel(0);
         } else {
-            // ContextThemeWrapper contextThemeWrapper = new
-            //     ContextThemeWrapper(this, android.R.style.Theme_DeviceDefault);
-            // android.util.TypedValue outValue = new android.util.TypedValue();
-            // boolean suc = contextThemeWrapper.getTheme().resolveAttribute(android.R.attr.colorAccent, outValue, true);
-
-            //boolean suc = getActivity().getTheme().resolveAttribute(R.attr.colorAccent, outValue, true);
-            //boolean suc = getActivity().getTheme().resolveAttribute(android.R.attr.colorPrimary, outValue, true);
-            // System.out.println(".|.....................................................: " +
-            //                    "suc: " + suc + ", outValue.data: " + outValue.data);
-            // bl.setColor(outValue.data);
-            // cwbg.setColor(outValue.data);
-
-
-            //int c = settings.getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
-            //bl.setColor(c);
-            //cwbg.setColor(c);
             bl.setColor(Str.accent_color);
-            cwbg.setColor(Str.accent_color);
+            cwbg.setColor(0xff79a3ff);
 
             bl.setLevel(info.percent);
             cwbg.setLevel(info.percent);

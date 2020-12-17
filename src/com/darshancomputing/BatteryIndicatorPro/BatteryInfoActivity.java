@@ -34,8 +34,6 @@ public class BatteryInfoActivity extends AppCompatActivity {
     private BatteryInfoPagerAdapter pagerAdapter;
     private ViewPager viewPager;
 
-    public BatteryLevel bl;
-
     //private static final String LOG_TAG = "BatteryBot";
 
     public static final int PR_LVF_WRITE_STORAGE = 1;
@@ -58,12 +56,6 @@ public class BatteryInfoActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(pagerAdapter);
 
-        //PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
-        //tabStrip.setTabIndicatorColor(0x33b5e5);
-        //tabStrip.setTabIndicatorColor(0xbb3388);
-        //tabStrip.setTabIndicatorColor(0x039be5);
-        //tabStrip.setTabIndicatorColor(0x3c91c6);
-
         viewPager.setCurrentItem(1);
         routeIntent(getIntent());
     }
@@ -74,17 +66,8 @@ public class BatteryInfoActivity extends AppCompatActivity {
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
         tabStrip.setTabIndicatorColor(Str.accent_color);
-        System.out.println(".....................------------ Str.accent_color: " + Str.accent_color);
 
-        int c = getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS)
-            .getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
-        //tabStrip.setTabIndicatorColor(c);
-
-        bl = BatteryLevel.getInstance(this, PersistentFragment.getInstance(getSupportFragmentManager())
-                                      .res.getInteger(R.integer.bl_inSampleSize));
-        bl.setColor(c);
     }
-
 
     // Actually, Activity is re-created.  If I ever want to handle day-night configuration change myself,
     //  Then I'll want this.  But right now it's pointless; it's called before Activity is there yet, so

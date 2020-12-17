@@ -86,7 +86,7 @@ public class CurrentInfoFragment extends Fragment {
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.current_info, container, false);
 
-        bl = BatteryLevel.getInstance(getActivity(), pfrag.res.getInteger(R.integer.bl_inSampleSize));
+        bl = BatteryLevel.getLargeInstance(getActivity());
         blv = (ImageView) view.findViewById(R.id.battery_level_view);
         blv.setImageBitmap(bl.getBitmap());
 
@@ -120,9 +120,6 @@ public class CurrentInfoFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-
-        if (bia != null)
-            bia.bl = null;
     }
 
     @Override
