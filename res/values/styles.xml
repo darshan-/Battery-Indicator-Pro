@@ -8,32 +8,22 @@
   <style name="help_cat">
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:paddingTop">2dp</item>
-    <item name="android:paddingBottom">2dp</item>
-    <item name="android:gravity">center_horizontal</item>
-    <!--item name="android:background">?android:attr/colorActivatedHighlight</item-->
-    <!--item name="android:background">#039be5</item-->
-    <item name="android:background">@color/help_cat_bg</item>
-    <item name="android:textColor">@color/help_cat_text</item>
-    <item name="android:textSize">16sp</item>
-    <item name="android:textStyle">bold</item>
+    <item name="android:paddingTop">20dp</item>
+    <item name="android:textColor">@color/primary_text</item>
+    <item name="android:textSize">28sp</item>
   </style>
 
   <style name="help_cat_post_margin">
     <item name="android:layout_width">fill_parent</item>
-    <item name="android:layout_height">10dp</item>
+    <item name="android:layout_height">0dp</item>
   </style>
 
   <style name="help_pref">
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:paddingTop">1dp</item>
-    <item name="android:paddingBottom">1dp</item>
-    <item name="android:gravity">center_horizontal</item>
-    <item name="android:background">@color/help_pref_bg</item>
-    <item name="android:textColor">@color/help_pref_text</item>
-    <item name="android:textSize">14sp</item>
-    <item name="android:textStyle">bold</item>
+    <item name="android:paddingTop">8dp</item>
+    <item name="android:textColor">@color/primary_text</item>
+    <item name="android:textSize">20sp</item>
   </style>
 
   <style name="help_text">
@@ -41,19 +31,29 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:paddingTop">7dp</item>
     <item name="android:paddingBottom">7dp</item>
-    <item name="android:textColor">@color/primary_text</item>
-    <item name="android:textSize">14sp</item>
+    <item name="android:textColor">@color/help_text</item>
+    <item name="android:textSize">15sp</item>
     <item name="android:lineSpacingMultiplier">1.1</item>
   </style>
 
+  <style name="help_ll">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingTop">0dp</item>
+    <item name="android:paddingBottom">20dp</item>
+    <item name="android:paddingLeft">20dp</item>
+    <item name="android:paddingRight">20dp</item>
+  </style>
+
   <style name="bi_help_theme" parent="Theme.AppCompat.DayNight">
-    <item name="android:windowBackground">@color/windowBackground</item>
+    <item name="android:fontFamily">sans-serif"</item>
+    <item name="android:windowBackground">@color/helpWindowBackground</item>
     <item name="android:colorAccent">@color/help_accent</item>
     <item name="colorAccent">@color/help_accent</item>
-    <item name="colorPrimary">@color/status_bar</item>
-    <item name="colorPrimaryDark">@color/status_bar</item>
+    <item name="colorPrimary">@color/helpWindowBackground</item>
+    <item name="colorPrimaryDark">@color/helpWindowBackground</item>
     <item name="android:windowLightStatusBar">@bool/windowLightStatusBar</item>
-    <item name="android:navigationBarColor">@color/windowBackground</item>
+    <item name="android:navigationBarColor">@color/helpWindowBackground</item>
     <item name="android:windowLightNavigationBar">@bool/windowLightStatusBar</item>
   </style>
 
@@ -144,6 +144,7 @@
 
   <color name="secondary_text">#666</color>
   <color name="primary_text">#111</color>
+  <color name="help_text">#222</color>
 
   <color name="accent">@color/dc_sat_light_blue</color>
   <color name="android_green">#A4C639</color>
@@ -156,6 +157,7 @@
 
   <color name="windowBackground">#fafafa</color>
   <color name="widgetTextColor">#111</color>
+  <color name="helpWindowBackground">@color/windowBackground</color>
 
   <color name="dc_pink">#9c94db</color>
 
@@ -172,9 +174,9 @@
   <color name="dc_dark_blueviolet">#4e499d</color>
 
   <color name="help_cat_bg">@color/dc_blue</color>
-  <color name="help_cat_text">#f0f0f0</color>
+  <color name="help_cat_text">#000</color>
   <color name="help_pref_bg">@color/dc_light_blue</color>
-  <color name="help_pref_text">#f8f8f8</color>
+  <color name="help_pref_text">#000</color>
   <color name="help_accent">@color/dc_dark_blueviolet</color>
 
   <color name="time_til_charged">@color/my_yellow</color>

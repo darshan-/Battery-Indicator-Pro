@@ -43,6 +43,8 @@ public class HelpActivity extends AppCompatActivity {
 
         setContentView(R.layout.help);
 
+        setTitle(getResources().getString(R.string.help_activity_subtitle));
+
         TextView tv;
         MovementMethod linkMovement = LinkMovementMethod.getInstance();
 
