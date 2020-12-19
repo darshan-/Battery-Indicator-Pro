@@ -38,6 +38,7 @@ public class HelpActivity extends AppCompatActivity {
         if (ab != null) {
             ab.setHomeButtonEnabled(true);
             ab.setDisplayHomeAsUpEnabled(true);
+            ab.setElevation(0);
         }
 
         setContentView(R.layout.help);

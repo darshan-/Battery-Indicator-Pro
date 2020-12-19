@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <color name="button_color">#333</color>
+
   <color name="dialog_accent">#4f70d3</color>
   <color name="dialog_text">#eee</color>
+
+  <color name="secondary_text">#999</color>
+  <color name="primary_text">#eee</color>
 
   <color name="menu_icon_tint">#ccc</color>
   <color name="icon_tint">#eee</color>
@@ -23,5 +28,8 @@
   <color name="help_pref_bg">@color/dc_lighter_blue</color>
   <color name="help_pref_text">#111</color>
   <color name="help_accent">@color/dc_lighter_blue</color>
-  <color name="help_text">#eee</color>
+
+  <color name="status_bar">@color/windowBackground</color>
+
+  <bool name="windowLightStatusBar">false</bool>
 </resources>

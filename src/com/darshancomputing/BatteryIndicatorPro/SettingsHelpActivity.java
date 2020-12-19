@@ -43,6 +43,7 @@ public class SettingsHelpActivity extends AppCompatActivity {
         if (ab != null) {
             ab.setHomeButtonEnabled(true);
             ab.setDisplayHomeAsUpEnabled(true);
+            ab.setElevation(0);
         }
 
         if (pref_screen == null) {

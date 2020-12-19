@@ -41,21 +41,40 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:paddingTop">7dp</item>
     <item name="android:paddingBottom">7dp</item>
-    <item name="android:textColor">@color/help_text</item>
+    <item name="android:textColor">@color/primary_text</item>
     <item name="android:textSize">14sp</item>
     <item name="android:lineSpacingMultiplier">1.1</item>
   </style>
 
   <style name="bi_help_theme" parent="Theme.AppCompat.DayNight">
+    <item name="android:windowBackground">@color/windowBackground</item>
     <item name="android:colorAccent">@color/help_accent</item>
     <item name="colorAccent">@color/help_accent</item>
+    <item name="colorPrimary">@color/status_bar</item>
+    <item name="colorPrimaryDark">@color/status_bar</item>
+    <item name="android:windowLightStatusBar">@bool/windowLightStatusBar</item>
+    <item name="android:navigationBarColor">@color/windowBackground</item>
+    <item name="android:windowLightNavigationBar">@bool/windowLightStatusBar</item>
   </style>
 
   <style name="bi_main_theme" parent="Theme.AppCompat.DayNight">
     <item name="android:windowBackground">@color/windowBackground</item>
     <item name="colorAccent">@color/accent</item>
     <item name="android:alertDialogTheme">@style/dialog_theme</item>
+    <item name="colorPrimary">@color/status_bar</item>
+    <item name="colorPrimaryDark">@color/status_bar</item>
+    <item name="android:windowLightStatusBar">@bool/windowLightStatusBar</item>
+    <item name="android:navigationBarColor">@color/windowBackground</item>
+    <item name="android:windowLightNavigationBar">@bool/windowLightStatusBar</item>
+    <item name="colorButtonNormal">@color/button_color</item>
+    <item name="android:textColorPrimary">@color/primary_text</item>
+    <item name="android:textColorSecondary">@color/primary_text</item>
   </style>
+
+  <bool name="windowLightStatusBar">true</bool>
+
+  <!-- shadow under app bar? -->
+  <color name="status_bar">@color/windowBackground</color>
 
   <style name="dialog_theme" parent="@android:style/ThemeOverlay.Material.Dialog.Alert">
     <item name="android:textColorPrimary">@color/dialog_text</item>
@@ -74,7 +93,18 @@
       an AppCompat theme, so we need android: namespace for items.
   -->
   <style name="bi_settings_theme" parent="@android:style/Theme.Material">
-    <item name="android:colorAccent">@color/dc_bright_light_blue</item>
+    <item name="android:colorAccent">@color/accent</item>
+    <item name="android:isLightTheme">@bool/windowLightStatusBar</item>
+    <item name="android:colorBackground">@color/windowBackground</item>
+    <item name="android:windowBackground">@color/windowBackground</item>
+    <item name="android:windowLightStatusBar">@bool/windowLightStatusBar</item>
+    <item name="android:navigationBarColor">@color/windowBackground</item>
+    <item name="android:windowLightNavigationBar">@bool/windowLightStatusBar</item>
+    <item name="android:textColorPrimary">@color/primary_text</item>
+    <item name="android:textColorSecondary">@color/secondary_text</item>
+    <item name="android:colorButtonNormal">@color/button_color</item>
+    <item name="android:listDivider">@color/windowBackground</item>
+    <item name="android:dividerHeight">1dp</item>
   </style>
 
   <dimen name="compound_button_width">68dp</dimen>
@@ -91,8 +121,13 @@
   <color name="menu_icon_tint">#333</color>
   <color name="icon_tint">#484848</color>
 
+  <color name="button_color">#ccc</color>
+
   <color name="dialog_accent">@color/dc_light_blue</color>
   <color name="dialog_text">#000</color>
+
+  <color name="secondary_text">#666</color>
+  <color name="primary_text">#111</color>
 
   <color name="accent">@color/dc_sat_light_blue</color>
   <color name="android_green">#A4C639</color>
@@ -125,7 +160,6 @@
   <color name="help_pref_bg">@color/dc_light_blue</color>
   <color name="help_pref_text">#f8f8f8</color>
   <color name="help_accent">@color/dc_dark_blueviolet</color>
-  <color name="help_text">#111</color>
 
   <color name="time_til_charged">@color/my_yellow</color>
   <color name="light_usage">#cccc7e</color>
