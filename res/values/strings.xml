@@ -3,7 +3,7 @@
   <string formatted="false" name="app_full_name">BatteryBot Pro</string>
   <string formatted="false" name="app_launcher_name">BatteryBot</string>
   <string formatted="false" name="settings_activity_subtitle">Settings</string>
-  <string formatted="false" name="help_activity_subtitle">Help</string>
+  <string formatted="false" name="help_activity_subtitle">BatteryBot Help</string>
   <string formatted="false" name="log_view_activity_subtitle">Logs</string>
 
   <string formatted="false" name="app_full_name_free">BatteryBot</string>
@@ -233,13 +233,13 @@
   <string formatted="false" name="help_cat_version">Version</string>
 
   <string formatted="false" name="help_cat_changelog">Changelog</string>
-  <string formatted="false" name="help_changelog">
-    Please see the <a href="https://www.batterybot.info/changelog">online Changelog</a>.
+  <string formatted="false" name="help_changelog">Please
+    see the <a href="https://www.batterybot.info/changelog">online Changelog</a>.
   </string>
 
   <string formatted="false" name="help_cat_faq">Frequently Asked Questions</string>
-  <string formatted="false" name="help_faq">
-    Please see the <a href="https://www.batterybot.info/faq">online FAQ</a>.
+  <string formatted="false" name="help_faq">Please
+    see the <a href="https://www.batterybot.info/faq">online FAQ</a>.
   </string>
 
   <string formatted="false" name="help_cat_website">Website</string>
@@ -356,11 +356,11 @@
   <string formatted="false" name="current_hack_settings">Current (mA) Hack</string>
   <string formatted="false" name="current_hack_settings_summary">Advanced settings for enabling mA info</string>
   <string formatted="false" name="current_hack_settings_help">
-    Android does NOT provide a means for apps to access information
+    Android does not provide a means for apps to access information
     about the battery current.  However, a hack is available
     that allows many devices to potentially get this information.\n
 
-    \nThis is NOT guaranteed to work.  It may not work at all or it
+    \nThis is not guaranteed to work.  It may not work at all or it
     may appear to work but only result in nonsense values.\n
 
     \nSettings to turn on the hack, if possible, and control how it is

@@ -3,14 +3,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
 >
-  <LinearLayout android:orientation="vertical"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-  >
+  <LinearLayout style="@style/help_ll" android:orientation="vertical">
     <TextView style="@style/help_cat"  android:text="@string/pref_cat_icon_set" />
     <View style="@style/help_cat_post_margin" />
     <TextView style="@style/help_pref" android:text="@string/pref_icon_set" />
