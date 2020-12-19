@@ -44,7 +44,7 @@ public class BatteryInfoActivity extends AppCompatActivity {
         setTheme(R.style.bi_main_theme);
         super.onCreate(savedInstanceState);
 
-
+        getSupportActionBar().setElevation(0);
         PersistentFragment.getInstance(getSupportFragmentManager()); // Calling here ensures PF created before other Fragments?
 
         setContentView(R.layout.battery_info);

@@ -42,6 +42,9 @@ import android.preference.PreferenceScreen;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
+
 import java.util.Locale;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
@@ -323,7 +326,15 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         if (ab != null) {
             ab.setHomeButtonEnabled(true);
             ab.setDisplayHomeAsUpEnabled(true);
+            ab.setElevation(0);
         }
+
+        int c = getResources().getColor(R.color.windowBackground);
+        getActionBar().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(c));
+        Window w = getWindow();
+        w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        w.setStatusBarColor(c);
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.CHAN_ID_MAIN);

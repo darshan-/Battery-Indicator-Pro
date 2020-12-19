@@ -34,6 +34,8 @@ import android.preference.PreferenceScreen;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 public class AlarmEditActivity extends PreferenceActivity {
     private Resources res;
@@ -74,9 +76,17 @@ public class AlarmEditActivity extends PreferenceActivity {
 
         ActionBar ab = getActionBar();
         if (ab != null) {
-            getActionBar().setHomeButtonEnabled(true);
-            getActionBar().setDisplayHomeAsUpEnabled(true);
+            ab.setHomeButtonEnabled(true);
+            ab.setDisplayHomeAsUpEnabled(true);
+            ab.setElevation(0);
         }
+
+        int c = getResources().getColor(R.color.windowBackground);
+        getActionBar().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(c));
+        Window w = getWindow();
+        w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        w.setStatusBarColor(c);
 
         mCursor = alarms.getAlarm(getIntent().getIntExtra(EXTRA_ALARM_ID, -1));
         mAdapter = new AlarmAdapter();
