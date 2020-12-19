@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
     android:versionCode="026015"
-    android:versionName="11.1.0-dev"
+    android:versionName="12.0.0-dev"
 >
 
   <!-- Permissions now considered "normal", automatically granted on API 23+ -->

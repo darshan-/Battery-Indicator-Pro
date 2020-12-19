@@ -31,5 +31,6 @@
 
   <color name="status_bar">@color/windowBackground</color>
 
+  <color name="colorBackground">@color/button_color</color>
   <bool name="windowLightStatusBar">false</bool>
 </resources>
