@@ -326,10 +326,9 @@
 
   <string formatted="false" name="settings_overview">Overview</string>
   <string formatted="false" name="settings_overview_help">
-    The settings are organized into separate pages, as described
-    below.  Each page has its own help page describing the settings on
-    that page.  Simply press MENU then Help (on tablets, MENU isn\'t necessary) to get
-    help from whatever settings page you are on.
+    BatteryBot\'s settings are organized into separate pages as described
+    below.  Each page of settings has its own help page describing the
+    settings available there.
   </string>
 
   <string formatted="false" name="notifications_disabled_cat">Notifications Disabled</string>

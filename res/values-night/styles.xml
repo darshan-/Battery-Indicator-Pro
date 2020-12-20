@@ -15,7 +15,7 @@
   <color name="windowBackground">#181818</color>
   <color name="widgetTextColor">#eee</color>
 
-  <color name="helpWindowBackground">#333</color>
+  <color name="helpWindowBackground">#222</color>
 
   <color name="accent">@color/dc_light2_blue</color>
   <!--color name="accent">#5f9aff</color-->
