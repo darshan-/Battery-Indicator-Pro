@@ -475,12 +475,16 @@ public class BatteryInfoService extends Service {
 
             if (initLayout == R.layout.circle_app_widget) {
                 rv = new RemoteViews(getPackageName(), R.layout.circle_app_widget);
-                rv.setImageViewBitmap(R.id.circle_widget_image_view, cwbg.getBitmap());
+
+                if (info == null)
+                    rv.setImageViewResource(R.id.circle_widget_image_view, R.drawable.empty);
+                else
+                    rv.setImageViewBitmap(R.id.circle_widget_image_view, cwbg.getBitmap());
             } else {
                 rv = new RemoteViews(getPackageName(), R.layout.full_app_widget);
 
                 if (info == null) {
-                    rv.setImageViewBitmap(R.id.battery_level_view, cwbg.getBitmap());
+                    rv.setImageViewResource(R.id.battery_level_view, R.drawable.empty);
                     rv.setTextViewText(R.id.fully_charged, "");
                     rv.setTextViewText(R.id.time_remaining, "");
                     rv.setTextViewText(R.id.until_what, "");
