@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2018 Darshan Computing, LLC
+    Copyright (c) 2009-2020 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,7 +14,6 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.NotificationChannel;
@@ -47,7 +46,10 @@ import android.view.WindowManager;
 
 import java.util.Locale;
 
-public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SettingsActivity extends AppCompatActivity {
     public static final String SETTINGS_FILE = "com.darshancomputing.BatteryIndicatorPro_preferences";
     public static final String SP_SERVICE_FILE = "sp_store";   // Only write from Service process
     public static final String SP_MAIN_FILE = "sp_store_main"; // Only write from main process
@@ -212,10 +214,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     public static final int GREEN_SETTING_MIN = 20;
     /* public static final int GREEN_SETTING_MAX = 100; /* TODO: use this, and possibly set it to 95. */
 
-    private Messenger serviceMessenger;
-    private final Messenger messenger = new Messenger(new MessageHandler(this));
-    private final BatteryInfoService.RemoteConnection serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
-
     private Resources res;
     private PreferenceScreen mPreferenceScreen;
     private SharedPreferences mSharedPreferences;
@@ -263,57 +261,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     //private static final Object[] EMPTY_OBJECT_ARRAY = {};
     //private static final  Class<?>[]  EMPTY_CLASS_ARRAY = {};
 
-    private static class MessageHandler extends Handler {
-        private SettingsActivity sa;
-
-        MessageHandler(SettingsActivity a) {
-            sa = a;
-        }
-
-        @Override
-        public void handleMessage(Message incoming) {
-            switch (incoming.what) {
-            case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
-                sa.serviceMessenger = incoming.replyTo;
-                break;
-            default:
-                super.handleMessage(incoming);
-            }
-        }
-    }
-
-    private final Handler mHandler = new Handler();
-    Runnable rShowPluginSettings = new Runnable() {
-        public void run() {
-        /* TODO: Convert to message
-            if (biServiceConnection.biService == null) {
-                bindService(biServiceIntent, biServiceConnection, 0);
-                return;
-            }
-        */
-
-            //Boolean hasSettings = false;
-        //    try {
-        /* TODO: Convert to message
-                hasSettings = biServiceConnection.biService.pluginHasSettings();
-        */
-        //    } catch (Exception e) {
-        //        e.printStackTrace();
-        //    }
-
-        //    if (! hasSettings) {
-                PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_PLUGIN_SETTINGS);
-                cat.removeAll();
-                cat.setLayoutResource(R.layout.hidden);
-        //    } else {
-        //        Preference p = (Preference) mPreferenceScreen.findPreference(KEY_PLUGIN_SETTINGS);
-        //        p.setEnabled(true);
-        //    }
-
-            mHandler.removeCallbacks(rShowPluginSettings);
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -322,15 +269,18 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         pref_screen = intent.getStringExtra(EXTRA_SCREEN);
         res = getResources();
 
-        ActionBar ab = getActionBar();
+        ActionBar ab = getSupportActionBar();
         if (ab != null) {
             ab.setHomeButtonEnabled(true);
             ab.setDisplayHomeAsUpEnabled(true);
             ab.setElevation(0);
+
+
+            //getActionBar().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(c));
+
         }
 
         int c = getResources().getColor(R.color.windowBackground);
-        getActionBar().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(c));
         Window w = getWindow();
         w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -342,147 +292,12 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
         mainNotifsEnabled = mainChan.getImportance() > 0;
 
-        PreferenceManager pm = getPreferenceManager();
-        pm.setSharedPreferencesName(SETTINGS_FILE);
-        pm.setSharedPreferencesMode(Context.MODE_MULTI_PROCESS);
-        mSharedPreferences = pm.getSharedPreferences();
+        setContentView(R.layout.prefs);
 
-        CurrentHack.setContext(this);
-        CurrentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
-                                                              res.getBoolean(R.bool.default_prefer_fs_current_hack)));
-
-        if (pref_screen == null) {
-            setPrefScreen(R.xml.main_pref_screen);
-            setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
-        } else if ((pref_screen.equals(KEY_STATUS_BAR_ICON_SETTINGS) ||
-                    pref_screen.equals(KEY_NOTIFICATION_SETTINGS)) &&
-                   (!appNotifsEnabled || !mainNotifsEnabled)) {
-            setPrefScreen(R.xml.main_notifs_disabled_pref_screen);
-            Preference prefb = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_B);
-            Preference prefs = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_SUMMARY);
-            if (!appNotifsEnabled) {
-                prefs.setSummary(R.string.app_notifs_disabled_summary);
-                prefb.setSummary(R.string.app_notifs_disabled_b);
-            } else {
-                prefs.setSummary(R.string.main_notifs_disabled_summary);
-                prefb.setSummary(R.string.main_notifs_disabled_b);
-            }
-        } else if (pref_screen.equals(KEY_STATUS_BAR_ICON_SETTINGS)) {
-            setPrefScreen(R.xml.status_bar_icon_pref_screen);
-            setWindowSubtitle(res.getString(R.string.status_bar_icon_settings));
-
-            menu_res = R.menu.status_bar_icon_settings;
-
-            cpbPref     = (ColorPreviewPreference) mPreferenceScreen.findPreference(KEY_COLOR_PREVIEW);
-
-            ListPreference iconSetPref = (ListPreference) mPreferenceScreen.findPreference(KEY_ICON_SET);
-            setPluginPrefEntriesAndValues(iconSetPref);
-            String currentPlugin = iconSetPref.getValue();
-            if (currentPlugin == null)
-                currentPlugin = "builtin.plain_number";
-
-            redThresh   = (ListPreference) mPreferenceScreen.findPreference(KEY_RED_THRESH);
-            amberThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_AMBER_THRESH);
-            greenThresh = (ListPreference) mPreferenceScreen.findPreference(KEY_GREEN_THRESH);
-
-            PreferenceCategory cat;
-
-            cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_PLUGIN_SETTINGS);
-            cat.removeAll();
-
-            if (currentPlugin.equals("builtin.classic")) {
-                cat.setLayoutResource(R.layout.none);
-
-                if (!mSharedPreferences.getBoolean(KEY_CLASSIC_COLOR_MODE, false)) {
-                    cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
-                    cat.removeAll();
-                    cat.setLayoutResource(R.layout.none);
-                } else {
-                    redEnabled   = mSharedPreferences.getBoolean(  KEY_RED, false);
-                    amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
-                    greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
-
-                    iRedThresh   = Integer.valueOf(  redThresh.getValue()); /* Entries don't exist yet */
-                    iAmberThresh = Integer.valueOf(amberThresh.getValue());
-                    iGreenThresh = Integer.valueOf(greenThresh.getValue());
-
-                    validateColorPrefs(null);
-                }
-
-                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CHARGING_INDICATOR);
-                cat.removeAll();
-                cat.setLayoutResource(R.layout.none);
-            } else {
-                cat.setLayoutResource(R.layout.hidden);
-
-                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_COLOR);
-                cat.removeAll();
-                cat.setLayoutResource(R.layout.none);
-                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CLASSIC_COLOR_MODE);
-                cat.removeAll();
-                cat.setLayoutResource(R.layout.none);
-            }
-        } else if (pref_screen.equals(KEY_NOTIFICATION_SETTINGS)) {
-            setPrefScreen(R.xml.notification_pref_screen);
-            setWindowSubtitle(res.getString(R.string.notification_settings));
-
-            Preference prefb = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_B);
-            prefb.setSummary(R.string.pref_manage_main_channel);
-
-            if (mSharedPreferences.getBoolean(KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, false)) {
-                PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_NOTIFICATION_APPEARANCE);
-                cat.removeAll();
-                cat.setLayoutResource(R.layout.none);
-            }
-        } else if (pref_screen.equals(KEY_CURRENT_HACK_SETTINGS)) {
-            setPrefScreen(R.xml.current_hack_pref_screen);
-            setWindowSubtitle(res.getString(R.string.current_hack_settings));
-
-            if (CurrentHack.getCurrent() == null) {
-                PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_MAIN);
-                cat.removeAll();
-                cat.setLayoutResource(R.layout.none);
-                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_NOTIFICATION);
-                cat.removeAll();
-                cat.setLayoutResource(R.layout.none);
-                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_MAIN_WINDOW);
-                cat.removeAll();
-                cat.setLayoutResource(R.layout.none);
-            } else {
-                PreferenceCategory cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_UNSUPPORTED);
-                cat.removeAll();
-                cat.setLayoutResource(R.layout.none);
-            }
-        } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
-            setPrefScreen(R.xml.other_pref_screen);
-            setWindowSubtitle(res.getString(R.string.other_settings));
-        } else {
-            setPrefScreen(R.xml.main_pref_screen);
-        }
-
-        for (int i=0; i < PARENTS.length; i++)
-            setEnablednessOfDeps(i);
-
-        for (int i=0; i < INVERSE_PARENTS.length; i++)
-            setEnablednessOfInverseDeps(i);
-
-        for (int i=0; i < COLOR_PARENTS.length; i++)
-            setEnablednessOfColorDeps(i);
-
-        for (int i=0; i < LIST_PREFS.length; i++)
-            updateListPrefSummary(LIST_PREFS[i]);
-
-        if (pref_screen != null &&
-            pref_screen.equals(KEY_CURRENT_HACK_SETTINGS) &&
-            !mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))
-            setEnablednessOfCurrentHackDeps(false);
-
-        setEnablednessOfPercentageTextColor();
-
-        updateConvertFSummary();
-
-        Intent biServiceIntent = new Intent(this, BatteryInfoService.class);
-        bindService(biServiceIntent, serviceConnection, 0);
+        getSupportFragmentManager()
+            .beginTransaction()
+            .replace(R.id.settings, new SettingsFragment())
+            .commit();
     }
 
     public static Locale codeToLocale (String code) {
@@ -502,68 +317,22 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     private void setPrefScreen(int resource) {
-        addPreferencesFromResource(resource);
-
-        mPreferenceScreen  = getPreferenceScreen();
-    }
-
-    private void restartThisScreen() {
-        ComponentName comp = new ComponentName(getPackageName(), SettingsActivity.class.getName());
-        Intent intent = new Intent().setComponent(comp);
-        intent.putExtra(EXTRA_SCREEN, pref_screen);
-        startActivity(intent);
-        finish();
-    }
-
-    private void resetService() {
-        resetService(false);
-    }
-
-    private void resetService(boolean cancelFirst) {
-        mSharedPreferences.edit().commit(); // commit() synchronously before messaging Service
-
-        Message outgoing = Message.obtain();
-
-        if (cancelFirst)
-            outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS;
-        else
-            outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_RELOAD_SETTINGS;
-
-        try {
-            serviceMessenger.send(outgoing);
-        } catch (Exception e) {
-            startForegroundService(new Intent(this, BatteryInfoService.class));
-        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-        if (serviceConnection != null) unbindService(serviceConnection);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        // Turns out mainChan is unchangeable, so getImportance() just returns the importance at the time getNotificationChannel was called
-        mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.CHAN_ID_MAIN);
-
-        if (appNotifsEnabled != mNotificationManager.areNotificationsEnabled() ||
-            mainNotifsEnabled != mainChan.getImportance() > 0) { // Doesn't seem worth checking which screen
-            resetService();
-            restartThisScreen();
-        } else {
-            mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
-        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-
-        mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -606,109 +375,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             return true;
         } else //TODO: convert biServiceConnection.biService.configurePlugin();
             return key.equals(KEY_PLUGIN_SETTINGS);
-    }
-
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
-
-        if (key.equals(KEY_RED)) {
-            redEnabled = mSharedPreferences.getBoolean(KEY_RED, false);
-        } else if (key.equals(KEY_AMBER)) {
-            amberEnabled = mSharedPreferences.getBoolean(KEY_AMBER, false);
-        } else if (key.equals(KEY_GREEN)) {
-            greenEnabled = mSharedPreferences.getBoolean(KEY_GREEN, false);
-        } else if (key.equals(KEY_RED_THRESH)) {
-            iRedThresh = Integer.valueOf((String) redThresh.getEntry());
-        } else if (key.equals(KEY_AMBER_THRESH)) {
-            iAmberThresh = Integer.valueOf((String) amberThresh.getEntry());
-        } else if (key.equals(KEY_GREEN_THRESH)) {
-            iGreenThresh = Integer.valueOf((String) greenThresh.getEntry());
-        }
-
-        if (key.equals(KEY_RED) || key.equals(KEY_RED_THRESH) ||
-            key.equals(KEY_AMBER) || key.equals(KEY_AMBER_THRESH) ||
-            key.equals(KEY_GREEN) || key.equals(KEY_GREEN_THRESH)) {
-            validateColorPrefs(key);
-        }
-
-        if (key.equals(KEY_CLASSIC_COLOR_MODE)) {
-            resetService();
-            restartThisScreen(); // To show/hide icon-set/plugin settings
-        }
-
-        if (key.equals(KEY_ICON_SET)) {
-            resetService();
-            restartThisScreen(); // To show/hide icon-set/plugin settings
-        }
-
-        if (key.equals(KEY_USE_SYSTEM_NOTIFICATION_LAYOUT))
-            restartThisScreen();
-
-        if (key.equals(KEY_ICON_AREA))
-            setEnablednessOfPercentageTextColor();
-
-        for (int i=0; i < PARENTS.length; i++) {
-            if (key.equals(PARENTS[i])) {
-                setEnablednessOfDeps(i);
-                break;
-            }
-        }
-
-        for (int i=0; i < INVERSE_PARENTS.length; i++) {
-            if (key.equals(INVERSE_PARENTS[i])) {
-                setEnablednessOfInverseDeps(i);
-                break;
-            }
-        }
-
-        for (int i=0; i < COLOR_PARENTS.length; i++) {
-            if (key.equals(COLOR_PARENTS[i])) {
-                setEnablednessOfColorDeps(i);
-                break;
-            }
-        }
-
-        for (int i=0; i < LIST_PREFS.length; i++) {
-            if (key.equals(LIST_PREFS[i])) {
-                updateListPrefSummary(LIST_PREFS[i]);
-                break;
-            }
-        }
-
-        if (key.equals(KEY_CONVERT_F)) {
-            updateConvertFSummary();
-        }
-
-        if (key.equals(KEY_ENABLE_CURRENT_HACK)) {
-            if (mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))
-                setEnablednessOfCurrentHackDeps(true);
-
-            for (int i=0; i < PARENTS.length; i++)
-                setEnablednessOfDeps(i);
-
-            if (!mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))
-                setEnablednessOfCurrentHackDeps(false);
-        }
-
-        if (key.equals(KEY_CURRENT_HACK_PREFER_FS))
-            CurrentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
-                                                                  res.getBoolean(R.bool.default_prefer_fs_current_hack)));
-
-        for (int i=0; i < RESET_SERVICE.length; i++) {
-            if (key.equals(RESET_SERVICE[i])) {
-                resetService();
-                break;
-            }
-        }
-
-        for (int i=0; i < RESET_SERVICE_WITH_CANCEL_NOTIFICATION.length; i++) {
-            if (key.equals(RESET_SERVICE_WITH_CANCEL_NOTIFICATION[i])) {
-                resetService(true);
-                break;
-            }
-        }
-
-        mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
     private void updateConvertFSummary() {

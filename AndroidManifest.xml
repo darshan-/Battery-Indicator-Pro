@@ -53,7 +53,7 @@
 
   <activity
       android:name=".SettingsActivity"
-      android:theme="@style/bi_settings_theme"
+      android:theme="@style/bi_main_theme"
       android:excludeFromRecents="true"
       />
 
