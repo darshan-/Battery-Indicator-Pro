@@ -32,7 +32,6 @@
   <string name="menu_log_filter" formatted="false">Фильтр</string>
   <string name="menu_export" formatted="false">Экспортировать в CSV</string>
   <string name="menu_delete_alarm" formatted="false">Удалить предупреждение</string>
-  <string name="menu_get_plugins" formatted="false">Получить плагины</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Фаренгейт</string>

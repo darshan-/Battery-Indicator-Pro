@@ -34,7 +34,6 @@
   <string name="menu_log_filter" formatted="false">フィルター</string>
   <string name="menu_export" formatted="false">CSV をエクスポート</string>
   <string name="menu_delete_alarm" formatted="false">アラームを削除</string>
-  <string name="menu_get_plugins" formatted="false">プラグインを入手</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">華氏</string>

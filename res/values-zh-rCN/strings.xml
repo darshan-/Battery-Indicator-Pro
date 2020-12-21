@@ -23,7 +23,6 @@
   <string name="menu_reverse" formatted="false">反向排序</string>
   <string name="menu_export" formatted="false">导出至CSV</string>
   <string name="menu_delete_alarm" formatted="false">删除</string>
-  <string name="menu_get_plugins" formatted="false">获取插件</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">华氏温度</string>

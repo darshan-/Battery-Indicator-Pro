@@ -23,7 +23,6 @@
   <string name="menu_reverse" formatted="false">Opačné poradie</string>
   <string name="menu_export" formatted="false">Exportovať CSV</string>
   <string name="menu_delete_alarm" formatted="false">Vymazať upozornenie</string>
-  <string name="menu_get_plugins" formatted="false">Pridať rozšírenia</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Fahrenheit</string>

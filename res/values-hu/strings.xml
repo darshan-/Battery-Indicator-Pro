@@ -24,7 +24,6 @@
   <string name="menu_reverse" formatted="false">Fordított sorrend</string>
   <string name="menu_export" formatted="false">CSV Exportálás</string>
   <string name="menu_delete_alarm" formatted="false">Risztás törlése</string>
-  <string name="menu_get_plugins" formatted="false">Bővítmények hozzáadása</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Fahrenheit</string>

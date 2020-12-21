@@ -23,7 +23,6 @@
   <string name="menu_reverse" formatted="false">Obratni vrstni red</string>
   <string name="menu_export" formatted="false">Izvozi CVS</string>
   <string name="menu_delete_alarm" formatted="false">Zbriši alarm</string>
-  <string name="menu_get_plugins" formatted="false">Pridobi vtičnike</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Fahrenheit</string>
