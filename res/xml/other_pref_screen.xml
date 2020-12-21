@@ -1,23 +1,24 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-  <PreferenceCategory android:title="@string/pref_cat_ui_color">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+  <!--PreferenceCategory app:title="@string/pref_cat_ui_color">
     <com.darshancomputing.BatteryIndicatorPro.ColorPickerPreference
-        android:key="ui_color"
-        android:title="@string/pref_ui_color"
+        app:key="ui_color"
+        app:title="@string/pref_ui_color"
         android:defaultValue="@color/col2020"
     />
-  </PreferenceCategory>
+  </PreferenceCategory-->
 
-  <PreferenceCategory android:title="@string/pref_cat_logging">
+  <PreferenceCategory app:title="@string/pref_cat_logging">
     <CheckBoxPreference
-       android:key="enable_logging"
-       android:title="@string/pref_enable_logging"
-       android:summary="@string/pref_enable_logging_summary"
+       app:key="enable_logging"
+       app:title="@string/pref_enable_logging"
+       app:summary="@string/pref_enable_logging_summary"
        android:defaultValue="true"
     />
 
     <ListPreference
-       android:key="max_log_age"
-       android:title="@string/pref_max_log_age"
+       app:key="max_log_age"
+       app:title="@string/pref_max_log_age"
        android:entries="@array/max_log_age_entries"
        android:entryValues="@array/max_log_age_values"
        android:dialogTitle="@string/pref_max_log_age_summary"
@@ -25,18 +26,18 @@
     />
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="@string/pref_cat_temperature_unit">
+  <PreferenceCategory app:title="@string/pref_cat_temperature_unit">
     <CheckBoxPreference
-       android:key="convert_to_fahrenheit"
-       android:title="@string/pref_convert_to_fahrenheit"
+       app:key="convert_to_fahrenheit"
+       app:title="@string/pref_convert_to_fahrenheit"
        android:defaultValue="@bool/default_convert_to_fahrenheit"
     />
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="@string/pref_cat_autostart">
+  <PreferenceCategory app:title="@string/pref_cat_autostart">
     <ListPreference
-       android:key="autostart"
-       android:title="@string/pref_autostart_at_boot"
+       app:key="autostart"
+       app:title="@string/pref_autostart_at_boot"
        android:entries="@array/boot_pref_entries"
        android:entryValues="@array/boot_pref_values"
        android:dialogTitle="@string/pref_autostart_at_boot_summary"
@@ -44,20 +45,20 @@
     />
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="@string/pref_cat_predictor">
+  <PreferenceCategory app:title="@string/pref_cat_predictor">
     <ListPreference
-       android:key="prediction_type"
-       android:title="@string/pref_prediction_type"
+       app:key="prediction_type"
+       app:title="@string/pref_prediction_type"
        android:entries="@array/prediction_type_entries"
        android:entryValues="@array/prediction_type_values"
        android:defaultValue="@string/default_prediction_type"
     />
   </PreferenceCategory>
 
-  <!--PreferenceCategory android:title="@string/pref_cat_language">
+  <!--PreferenceCategory app:title="@string/pref_cat_language">
     <ListPreference
-       android:key="language_override"
-       android:title="@string/pref_language_override"
+       app:key="language_override"
+       app:title="@string/pref_language_override"
        android:entryValues="@array/lang_values"
        android:dialogTitle="@string/pref_language_override_summary"
        android:defaultValue="default"
