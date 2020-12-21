@@ -585,10 +585,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             startActivity(intent);
 
             return true;
-        case R.id.menu_get_plugins:
-            startActivity(new Intent(Intent.ACTION_VIEW, android.net.Uri.parse
-                                     ("http://bi-icon-plugins.darshancomputing.com/")));
-            return true;
         case android.R.id.home:
             finish();
             return true;

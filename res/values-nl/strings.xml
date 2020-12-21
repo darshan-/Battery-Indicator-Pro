@@ -32,7 +32,6 @@
   <string name="menu_log_filter" formatted="false">Filter</string>
   <string name="menu_export" formatted="false">Exporteren als CSV</string>
   <string name="menu_delete_alarm" formatted="false">Alarm verwijderen</string>
-  <string name="menu_get_plugins" formatted="false">Plugins ophalen</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Fahrenheit</string>

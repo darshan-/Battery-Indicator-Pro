@@ -23,7 +23,6 @@
   <string name="menu_reverse" formatted="false">Atvirkštinė Tvarka</string>
   <string name="menu_export" formatted="false">Eksportuoti CSV</string>
   <string name="menu_delete_alarm" formatted="false">Ištrinti Aliarmą</string>
-  <string name="menu_get_plugins" formatted="false">Gauti Papildinių</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Farengeitas</string>

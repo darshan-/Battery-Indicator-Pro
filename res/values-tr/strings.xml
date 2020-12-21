@@ -25,7 +25,6 @@
   <string name="menu_log_filter" formatted="false">Filtrele</string>
   <string name="menu_export" formatted="false">CSV\'yi dışarı çıkar</string>
   <string name="menu_delete_alarm" formatted="false">Alarm Sil</string>
-  <string name="menu_get_plugins" formatted="false">Eklentiler Edin</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Fahrenhayt</string>

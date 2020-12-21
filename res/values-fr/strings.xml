@@ -23,7 +23,6 @@
   <string name="menu_reverse" formatted="false">Inverser l\'ordre</string>
   <string name="menu_export" formatted="false">Exporter en CSV</string>
   <string name="menu_delete_alarm" formatted="false">Supprimer l\'alarme</string>
-  <string name="menu_get_plugins" formatted="false">Obtenir des plugins</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Fahrenheit</string>

@@ -31,7 +31,6 @@
   <string name="menu_log_filter" formatted="false">Filtru</string>
   <string name="menu_export" formatted="false">Exporta CSV</string>
   <string name="menu_delete_alarm" formatted="false">Sterge Alarma</string>
-  <string name="menu_get_plugins" formatted="false">Mai multe Plug-in-uri</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">°</string>
   <string name="fahrenheit" formatted="false">Fahrenheit</string>

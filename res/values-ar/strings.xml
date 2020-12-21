@@ -34,7 +34,6 @@
   <string name="menu_log_filter" formatted="false">تحديد</string>
   <string name="menu_export" formatted="false">csv تصدير</string>
   <string name="menu_delete_alarm" formatted="false">حذف التنبيه</string>
-  <string name="menu_get_plugins" formatted="false">الحصول على اضافات</string>
   <string name="percent_symbol" formatted="false">%</string>
   <string name="degree_symbol" formatted="false">درجة</string>
   <string name="fahrenheit" formatted="false">فهرنهايت</string>
