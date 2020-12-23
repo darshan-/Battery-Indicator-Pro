@@ -67,6 +67,8 @@ class CircleWidgetBackground {
 
         RectF oval = new RectF(top_left, top_left, bottom_right, bottom_right);
 
+        canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR);
+
         arc_paint.setColor(mColor);
         canvas.drawArc(oval, -90.0f, level * 360.0f / 100.0f, false, arc_paint);
     }

@@ -14,13 +14,10 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 //import android.content.pm.PackageInfo;
 //import android.content.pm.PackageManager;
@@ -54,6 +51,8 @@ public class SettingsActivity extends AppCompatActivity {
     public static final String SP_SERVICE_FILE = "sp_store";   // Only write from Service process
     public static final String SP_MAIN_FILE = "sp_store_main"; // Only write from main process
 
+    public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
+
     public static final String KEY_NOTIFICATION_SETTINGS = "notification_settings";
     public static final String KEY_STATUS_BAR_ICON_SETTINGS = "status_bar_icon_settings";
     public static final String KEY_CURRENT_HACK_SETTINGS = "current_hack_settings";
@@ -76,13 +75,6 @@ public class SettingsActivity extends AppCompatActivity {
     public static final String KEY_CAT_PLUGIN_SETTINGS = "category_plugin_settings";
     public static final String KEY_PLUGIN_SETTINGS = "plugin_settings";
     public static final String KEY_INDICATE_CHARGING = "indicate_charging";
-    public static final String KEY_RED = "use_red";
-    public static final String KEY_RED_THRESH = "red_threshold";
-    public static final String KEY_AMBER = "use_amber";
-    public static final String KEY_AMBER_THRESH = "amber_threshold";
-    public static final String KEY_GREEN = "use_green";
-    public static final String KEY_GREEN_THRESH = "green_threshold";
-    public static final String KEY_COLOR_PREVIEW = "color_preview";
     public static final String KEY_USE_SYSTEM_NOTIFICATION_LAYOUT = "use_system_notification_layout";
     public static final String KEY_ICON_AREA = "icon_area";
     public static final String KEY_TOP_LINE = "top_line";
@@ -113,106 +105,6 @@ public class SettingsActivity extends AppCompatActivity {
     public static final String KEY_MIGRATED_SERVICE_DESIRED = "service_desired_migrated_to_sp_main";
     public static final String KEY_ENABLE_NOTIFS_B = "enable_notifications_button";
     public static final String KEY_ENABLE_NOTIFS_SUMMARY = "enable_notifications_summary";
-    public static final String KEY_UI_COLOR = "ui_color";
-
-    private static final String[] PARENTS    = {KEY_ENABLE_LOGGING,
-                                                KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
-                                                KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW,
-                                                KEY_RED,
-                                                KEY_AMBER,
-                                                KEY_GREEN
-    };
-    private static final String[][] DEPENDENTS = {{KEY_MAX_LOG_AGE},
-                                                  {KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS},
-                                                  {KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW, KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW},
-                                                  {KEY_RED_THRESH},
-                                                  {KEY_AMBER_THRESH},
-                                                  {KEY_GREEN_THRESH}
-    };
-
-    private static final String[] CURRENT_HACK_DEPENDENTS = {KEY_CURRENT_HACK_PREFER_FS,
-                                                             KEY_CURRENT_HACK_MULTIPLIER,
-                                                             KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
-                                                             KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
-                                                             KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW,
-                                                             KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW,
-                                                             KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW
-    };
-
-    private static final String[] INVERSE_PARENTS    = {KEY_USE_SYSTEM_NOTIFICATION_LAYOUT
-    };
-    private static final String[] INVERSE_DEPENDENTS = {KEY_ICON_AREA
-    };
-
-    private static final String[] COLOR_PARENTS    = {KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
-                                                      KEY_NOTIFICATION_TOP_LINE_COLOR,
-                                                      KEY_NOTIFICATION_BOTTOM_LINE_COLOR
-    };
-    private static final String[] COLOR_DEPENDENTS = {KEY_CUSTOM_PERCENTAGE_TEXT_COLOR,
-                                                      KEY_CUSTOM_TOP_LINE_COLOR,
-                                                      KEY_CUSTOM_BOTTOM_LINE_COLOR
-    };
-
-    private static final String[] LIST_PREFS = {KEY_AUTOSTART, KEY_STATUS_DUR_EST,
-                                                KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
-                                                KEY_ICON_SET,
-                                                KEY_CURRENT_HACK_MULTIPLIER,
-                                                KEY_MAX_LOG_AGE, KEY_ICON_AREA, KEY_TOP_LINE, KEY_BOTTOM_LINE,
-                                                KEY_TIME_REMAINING_VERBOSITY,
-                                                KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
-                                                KEY_NOTIFICATION_TOP_LINE_COLOR,
-                                                KEY_NOTIFICATION_BOTTOM_LINE_COLOR,
-                                                KEY_PREDICTION_TYPE
-    };
-
-    private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_NOTIFY_STATUS_DURATION,
-                                                   KEY_RED, KEY_RED_THRESH,
-                                                   KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
-                                                   KEY_ICON_SET,
-                                                   KEY_INDICATE_CHARGING,
-                                                   KEY_TOP_LINE, KEY_BOTTOM_LINE,
-                                                   KEY_ENABLE_LOGGING,
-                                                   KEY_TIME_REMAINING_VERBOSITY,
-                                                   KEY_STATUS_DURATION_IN_VITAL_SIGNS,
-                                                   KEY_CUSTOM_PERCENTAGE_TEXT_COLOR,
-                                                   KEY_CUSTOM_TOP_LINE_COLOR,
-                                                   KEY_CUSTOM_BOTTOM_LINE_COLOR,
-                                                   KEY_ENABLE_CURRENT_HACK,
-                                                   KEY_CURRENT_HACK_PREFER_FS,
-                                                   KEY_CURRENT_HACK_MULTIPLIER,
-                                                   KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
-                                                   KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
-                                                   KEY_UI_COLOR,
-                                                   KEY_PREDICTION_TYPE
-    };
-
-    private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_ICON_AREA,
-                                                                            KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
-                                                                            KEY_NOTIFICATION_TOP_LINE_COLOR,
-                                                                            KEY_NOTIFICATION_BOTTOM_LINE_COLOR,
-                                                                            KEY_SHOW_BOX_AROUND_ICON_AREA,
-                                                                            KEY_USE_SYSTEM_NOTIFICATION_LAYOUT
-    };
-
-    public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
-
-    public static final int   RED = 0;
-    public static final int AMBER = 1;
-    public static final int GREEN = 2;
-
-    /* Red must go down to 0 and green must go up to 100,
-       which is why they aren't listed here. */
-    public static final int   RED_ICON_MAX = 30;
-    public static final int AMBER_ICON_MIN =  0;
-    public static final int AMBER_ICON_MAX = 50;
-    public static final int GREEN_ICON_MIN = 20;
-
-    public static final int   RED_SETTING_MIN =  5;
-    public static final int   RED_SETTING_MAX = 30;
-    public static final int AMBER_SETTING_MIN = 10;
-    public static final int AMBER_SETTING_MAX = 50;
-    public static final int GREEN_SETTING_MIN = 20;
-    /* public static final int GREEN_SETTING_MAX = 100; /* TODO: use this, and possibly set it to 95. */
 
     private Resources res;
     private PreferenceScreen mPreferenceScreen;
@@ -224,42 +116,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private String pref_screen;
 
-    private ColorPreviewPreference cpbPref;
-
-    private ListPreference   redThresh;
-    private ListPreference amberThresh;
-    private ListPreference greenThresh;
-
-    private Boolean   redEnabled;
-    private Boolean amberEnabled;
-    private Boolean greenEnabled;
-
-    private int   iRedThresh;
-    private int iAmberThresh;
-    private int iGreenThresh;
-
     private int menu_res = R.menu.settings;
-
-    private static final String[] fivePercents = {
-        "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
-        "55", "60", "65", "70", "75", "80", "85", "90", "95", "100"};
-
-    /* Returns a two-item array of the start and end indices into the above arrays. */
-    private int[] indices(int x, int y) {
-        int[] a = new int[2];
-        int i; /* How many values to remove from the front */
-        int j; /* How many values to remove from the end   */
-
-        i = (x / 5) - 1;
-        j = (100 - y) / 5;
-
-        a[0] = i;
-        a[1] = j;
-        return a;
-    }
-
-    //private static final Object[] EMPTY_OBJECT_ARRAY = {};
-    //private static final  Class<?>[]  EMPTY_CLASS_ARRAY = {};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -275,9 +132,7 @@ public class SettingsActivity extends AppCompatActivity {
             ab.setDisplayHomeAsUpEnabled(true);
             ab.setElevation(0);
 
-
             //getActionBar().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(c));
-
         }
 
         int c = getResources().getColor(R.color.windowBackground);
@@ -294,19 +149,27 @@ public class SettingsActivity extends AppCompatActivity {
 
         setContentView(R.layout.prefs);
 
-        getSupportFragmentManager()
-            .beginTransaction()
-            .replace(R.id.settings, new SettingsFragment())
-            .commit();
-    }
+        SettingsFragment frag;
+        if (savedInstanceState == null) {
+            frag = new SettingsFragment();
 
-    public static Locale codeToLocale (String code) {
-        String[] parts = code.split("_");
+            getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.settings, frag, "")
+                .commit();
+        } else {
+            frag = (SettingsFragment) getSupportFragmentManager().findFragmentByTag("");
+        }
 
-        if (parts.length > 1)
-            return new Locale(parts[0], parts[1]);
-        else
-            return new Locale(parts[0]);
+        if (pref_screen == null) {
+            frag.setScreen(R.xml.main_pref_screen);
+            setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
+        } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
+            frag.setScreen(R.xml.other_pref_screen);
+            setWindowSubtitle(res.getString(R.string.other_settings));
+        } else {
+            frag.setScreen(R.xml.main_pref_screen);
+        }
     }
 
     private void setWindowSubtitle(String subtitle) {
@@ -314,9 +177,6 @@ public class SettingsActivity extends AppCompatActivity {
             setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
         else
             setTitle(subtitle);
-    }
-
-    private void setPrefScreen(int resource) {
     }
 
     @Override
@@ -360,289 +220,5 @@ public class SettingsActivity extends AppCompatActivity {
         default:
             return super.onOptionsItemSelected(item);
         }
-    }
-
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        String key = preference.getKey();
-        if (key == null) {
-            return false;
-        } else if (key.equals(KEY_NOTIFICATION_SETTINGS) || key.equals(KEY_STATUS_BAR_ICON_SETTINGS) ||
-                   key.equals(KEY_CURRENT_HACK_SETTINGS) ||
-                   key.equals(KEY_OTHER_SETTINGS)) {
-            ComponentName comp = new ComponentName(getPackageName(), SettingsActivity.class.getName());
-            startActivity(new Intent().setComponent(comp).putExtra(EXTRA_SCREEN, key));
-
-            return true;
-        } else //TODO: convert biServiceConnection.biService.configurePlugin();
-            return key.equals(KEY_PLUGIN_SETTINGS);
-    }
-
-    private void updateConvertFSummary() {
-        Preference pref = mPreferenceScreen.findPreference(KEY_CONVERT_F);
-        if (pref == null) return;
-
-        pref.setSummary(res.getString(R.string.currently_using) + " " +
-                        (mSharedPreferences.getBoolean(KEY_CONVERT_F, res.getBoolean(R.bool.default_convert_to_fahrenheit)) ?
-                         res.getString(R.string.fahrenheit) : res.getString(R.string.celsius)));
-    }
-
-    private void setEnablednessOfDeps(int index) {
-        for (int i = 0; i < DEPENDENTS[index].length; i++) {
-            Preference dependent = mPreferenceScreen.findPreference(DEPENDENTS[index][i]);
-            if (dependent == null) return;
-
-            if (mSharedPreferences.getBoolean(PARENTS[index], false))
-                dependent.setEnabled(true);
-            else
-                dependent.setEnabled(false);
-
-            updateListPrefSummary(DEPENDENTS[index][i]);
-        }
-    }
-
-    private void setEnablednessOfCurrentHackDeps(boolean enabled) {
-        for (int i = 0; i < CURRENT_HACK_DEPENDENTS.length; i++) {
-            Preference dependent = mPreferenceScreen.findPreference(CURRENT_HACK_DEPENDENTS[i]);
-
-            if (dependent == null) return;
-
-            dependent.setEnabled(enabled);
-        }
-    }
-
-    private void setEnablednessOfInverseDeps(int index) {
-        Preference dependent = mPreferenceScreen.findPreference(INVERSE_DEPENDENTS[index]);
-        if (dependent == null) return;
-
-        if (mSharedPreferences.getBoolean(INVERSE_PARENTS[index], false))
-            dependent.setEnabled(false);
-        else
-            dependent.setEnabled(true);
-
-        updateListPrefSummary(INVERSE_DEPENDENTS[index]);
-    }
-
-    private void setEnablednessOfColorDeps(int index) {
-        Preference dependent = mPreferenceScreen.findPreference(COLOR_DEPENDENTS[index]);
-        if (dependent == null) return;
-
-        if (mSharedPreferences.getString(COLOR_PARENTS[index], "default").equals("custom"))
-            dependent.setEnabled(true);
-        else
-            dependent.setEnabled(false);
-
-        updateListPrefSummary(COLOR_DEPENDENTS[index]);
-    }
-
-    private void setEnablednessOfPercentageTextColor() {
-        Preference dependent = mPreferenceScreen.findPreference(KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR);
-        if (dependent == null) return;
-
-        if (mSharedPreferences.getString(KEY_ICON_AREA, res.getString(R.string.default_icon_area_content)) .equals("graphic"))
-            dependent.setEnabled(false);
-        else
-            dependent.setEnabled(true);
-    }
-
-    // private void setEnablednessOfMutuallyExclusive(String key1, String key2) {
-    //     Preference pref1 = mPreferenceScreen.findPreference(key1);
-    //     Preference pref2 = mPreferenceScreen.findPreference(key2);
-
-    //     if (pref1 == null) return;
-
-    //     if (mSharedPreferences.getBoolean(key1, false))
-    //         pref2.setEnabled(false);
-    //     else if (mSharedPreferences.getBoolean(key2, false))
-    //         pref1.setEnabled(false);
-    //     else {
-    //         pref1.setEnabled(true);
-    //         pref2.setEnabled(true);
-    //     }
-    // }
-
-    private void updateListPrefSummary(String key) {
-        ListPreference pref;
-        try { /* Code is simplest elsewhere if we call this on all dependents, but some aren't ListPreferences. */
-            pref = (ListPreference) mPreferenceScreen.findPreference(key);
-        } catch (java.lang.ClassCastException e) {
-            return;
-        }
-
-        if (pref == null) return;
-
-        if (pref.isEnabled()) {
-            pref.setSummary(res.getString(R.string.currently_set_to) + pref.getEntry());
-        } else {
-            pref.setSummary(res.getString(R.string.currently_disabled));
-        }
-    }
-
-    private void validateColorPrefs(String changedKey) {
-        if (redThresh == null) return;
-        String lowest;
-
-        if (changedKey == null) {
-            setColorPrefEntriesAndValues(redThresh, RED_SETTING_MIN, RED_SETTING_MAX);
-
-            /* Older version had a higher max; user's setting could be too high. */
-            if (iRedThresh > RED_SETTING_MAX) {
-                redThresh.setValue("" + RED_SETTING_MAX);
-                iRedThresh = RED_SETTING_MAX;
-            }
-        }
-
-        if (changedKey == null || changedKey.equals(KEY_RED) || changedKey.equals(KEY_RED_THRESH) ||
-            changedKey.equals(KEY_AMBER)) {
-            if (amberEnabled) {
-                lowest = setColorPrefEntriesAndValues(amberThresh, determineMin(AMBER), AMBER_SETTING_MAX);
-
-                if (iAmberThresh < Integer.valueOf(lowest)) {
-                    amberThresh.setValue(lowest);
-                    iAmberThresh = Integer.valueOf(lowest);
-                    updateListPrefSummary(KEY_AMBER_THRESH);
-                }
-            }
-        }
-
-        if (changedKey == null || !changedKey.equals(KEY_GREEN_THRESH)) {
-            if (greenEnabled) {
-                lowest = setColorPrefEntriesAndValues(greenThresh, determineMin(GREEN), 100);
-
-                if (iGreenThresh < Integer.valueOf(lowest)) {
-                    greenThresh.setValue(lowest);
-                    iGreenThresh = Integer.valueOf(lowest);
-                    updateListPrefSummary(KEY_GREEN_THRESH);
-                }
-            }
-        }
-
-        updateColorPreviewBar();
-    }
-
-    /* Does the obvious and returns the lowest value. */
-    private String setColorPrefEntriesAndValues(ListPreference lpref, int min, int max) {
-        String[] entries, values;
-        int i, j;
-        int[] a;
-
-        a = indices(min, max);
-        i = a[0];
-        j = a[1];
-
-        entries = values = new String[fivePercents.length - i - j];
-        System.arraycopy(fivePercents, i, entries, 0, entries.length);
-
-        lpref.setEntries(entries);
-        lpref.setEntryValues(values);
-
-        return values[0];
-    }
-
-    private void setPluginPrefEntriesAndValues(ListPreference lpref) {
-        //String prefix = "BI Plugin - ";
-
-        // PackageManager pm = getPackageManager();
-        // java.util.List<PackageInfo> packages = pm.getInstalledPackages(0);
-
-        java.util.List<String> entriesList = new java.util.ArrayList<String>();
-        java.util.List<String>  valuesList = new java.util.ArrayList<String>();
-
-        String[] icon_set_entries = res.getStringArray(R.array.icon_set_entries);
-        String[] icon_set_values  = res.getStringArray(R.array.icon_set_values);
-
-        for (int i = 0; i < icon_set_entries.length; i++) {
-            entriesList.add(icon_set_entries[i]);
-             valuesList.add(icon_set_values[i]);
-        }
-
-        // int nPackages = packages.size();
-        // nPackages = 0; // TODO: Remove this line to re-enable plugins
-        // for (int i=0; i < nPackages; i++) {
-        //     PackageInfo pi = packages.get(i);
-        //     if (pi.packageName.matches("com\\.darshancomputing\\.BatteryIndicatorPro\\.IconPluginV1\\..+")){
-        //         String entry = (String) pm.getApplicationLabel(pi.applicationInfo);
-        //         if (entry.startsWith(prefix))
-        //             //entry = entry.substring(prefix.length());
-        //             entry = entry.substring(3); // Strip "BI "
-
-        //         entriesList.add(entry);
-        //          valuesList.add(pi.packageName);
-        //     }
-        // }
-
-        lpref.setEntries    (entriesList.toArray(new String[entriesList.size()]));
-        lpref.setEntryValues(valuesList.toArray(new String[entriesList.size()]));
-
-        /* TODO: I think it's safe to skip this: if the previously selected plugin is uninstalled, null
-           should be picked up by the Service and converted to proper default, I think/hope.
-        // If the previously selected plugin was uninstalled, revert to "None"
-        //if (! valuesList.contains(lpref.getValue())) lpref.setValueIndex(0);
-        if (lpref.getEntry() == null) lpref.setValueIndex(0);
-        */
-    }
-
-    private void resetColorsToDefaults() {
-        SharedPreferences.Editor editor = mSharedPreferences.edit();
-
-        editor.putBoolean(KEY_RED,   res.getBoolean(R.bool.default_use_red));
-        editor.putBoolean(KEY_AMBER, res.getBoolean(R.bool.default_use_amber));
-        editor.putBoolean(KEY_GREEN, res.getBoolean(R.bool.default_use_green));
-
-        editor.putString(  KEY_RED_THRESH, res.getString(R.string.default_red_thresh  ));
-        editor.putString(KEY_AMBER_THRESH, res.getString(R.string.default_amber_thresh));
-        editor.putString(KEY_GREEN_THRESH, res.getString(R.string.default_green_thresh));
-
-        editor.apply();
-    }
-
-    public void enableNotifsButtonClick(android.view.View v) {
-        Intent intent;
-        if (!appNotifsEnabled) {
-            intent = new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-        } else {
-            intent = new Intent(android.provider.Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
-            intent.putExtra(android.provider.Settings.EXTRA_CHANNEL_ID, mainChan.getId());
-        }
-
-        intent.putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, getPackageName());
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-        startActivity(intent);
-    }
-
-    /* Determine the minimum valid threshold setting for a particular color, based on other active settings,
-         with red being independent, amber depending on red, and green depending on both others. */
-    private int determineMin(int color) {
-        switch (color) {
-        case RED:
-            return RED_SETTING_MIN;
-        case AMBER:
-            if (redEnabled)
-                /* In 10% mode, we might want +10, but xToY10() will sort it out if +5 is too small. */
-                return java.lang.Math.max(iRedThresh + 5, AMBER_SETTING_MIN);
-            else
-                return AMBER_SETTING_MIN;
-        case GREEN:
-            int i;
-
-            if (amberEnabled)
-                i = iAmberThresh;
-            else if (redEnabled)
-                i = iRedThresh;
-            else
-                return GREEN_SETTING_MIN;
-
-            return java.lang.Math.max(i, GREEN_SETTING_MIN);
-        default:
-                return GREEN_SETTING_MIN;
-        }
-    }
-
-    private void updateColorPreviewBar() {
-        if (cpbPref == null) return;
-
-        cpbPref.redThresh   =   redEnabled ?   iRedThresh :   0;
-        cpbPref.amberThresh = amberEnabled ? iAmberThresh :   0;
-        cpbPref.greenThresh = greenEnabled ? iGreenThresh : 100;
     }
 }
