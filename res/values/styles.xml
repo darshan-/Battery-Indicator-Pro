@@ -73,6 +73,11 @@
     <item name="android:textColorSecondary">@color/primary_text</item>
   </style>
 
+  <style name="bi_settings_theme" parent="bi_main_theme">
+    <item name="colorAccent">@color/settings_accent</item>
+    <item name="android:textColorSecondary">@color/secondary_text</item>
+  </style>
+
   <bool name="windowLightStatusBar">true</bool>
 
   <color name="status_bar">@color/windowBackground</color>
@@ -111,6 +116,7 @@
   <color name="primary_text">#111</color>
   <color name="help_text">#222</color>
 
+  <color name="settings_accent">@color/accent</color>
   <color name="accent">@color/dc_sat_light_blue</color>
   <color name="android_green">#A4C639</color>
   <color name="android_green_darker">#7cbc1d</color>

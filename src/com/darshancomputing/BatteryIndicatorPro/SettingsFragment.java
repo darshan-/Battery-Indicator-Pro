@@ -44,7 +44,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
 
-public class SettingsFragment extends PreferenceFragmentCompat {
+public class SettingsFragment extends PreferenceFragmentCompat implements OnSharedPreferenceChangeListener {
     public static final String SETTINGS_FILE = "com.darshancomputing.BatteryIndicatorPro_preferences";
     public static final String SP_SERVICE_FILE = "sp_store";   // Only write from Service process
     public static final String SP_MAIN_FILE = "sp_store_main"; // Only write from main process
@@ -191,6 +191,10 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
 
+    private Messenger serviceMessenger;
+    private final Messenger messenger = new Messenger(new MessageHandler(this));
+    private final BatteryInfoService.RemoteConnection serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
+
     private Resources res;
     private PreferenceScreen mPreferenceScreen;
     private SharedPreferences mSharedPreferences;
@@ -203,9 +207,24 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     private int menu_res = R.menu.settings;
 
-    private static final String[] fivePercents = {
-        "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
-        "55", "60", "65", "70", "75", "80", "85", "90", "95", "100"};
+    private static class MessageHandler extends Handler {
+        private SettingsFragment sa;
+
+        MessageHandler(SettingsFragment a) {
+            sa = a;
+        }
+
+        @Override
+        public void handleMessage(Message incoming) {
+            switch (incoming.what) {
+            case BatteryInfoService.RemoteConnection.CLIENT_SERVICE_CONNECTED:
+                sa.serviceMessenger = incoming.replyTo;
+                break;
+            default:
+                super.handleMessage(incoming);
+            }
+        }
+    }
 
     public void setScreen(int screen) {
         pref_screen = screen;
@@ -218,32 +237,93 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         res = getResources();
 
+        PreferenceManager pm = getPreferenceManager();
+        pm.setSharedPreferencesName(SETTINGS_FILE);
+        pm.setSharedPreferencesMode(Context.MODE_MULTI_PROCESS);
+        mSharedPreferences = pm.getSharedPreferences();
+
         if (pref_screen > 0)
             setPreferences();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.CHAN_ID_MAIN);
+
+        // if (appNotifsEnabled != mNotificationManager.areNotificationsEnabled() ||
+        //     mainNotifsEnabled != mainChan.getImportance() > 0) { // Doesn't seem worth checking which screen
+        //     resetService();
+        //     restartThisScreen();
+        // } else {
+        //     mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
+        // }
+        mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    private void restartThisScreen() {
+        ComponentName comp = new ComponentName(getActivity().getPackageName(), SettingsActivity.class.getName());
+        Intent intent = new Intent().setComponent(comp);
+        intent.putExtra(EXTRA_SCREEN, pref_screen);
+        startActivity(intent);
+        getActivity().finish();
+    }
+
+    private void resetService() {
+        resetService(false);
+    }
+
+    private void resetService(boolean cancelFirst) {
+        mSharedPreferences.edit().commit(); // commit() synchronously before messaging Service
+
+        Message outgoing = Message.obtain();
+
+        if (cancelFirst)
+            outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS;
+        else
+            outgoing.what = BatteryInfoService.RemoteConnection.SERVICE_RELOAD_SETTINGS;
+
+        try {
+            serviceMessenger.send(outgoing);
+        } catch (Exception e) {
+            getActivity().startForegroundService(new Intent(getActivity(), BatteryInfoService.class));
+        }
+    }
+
     private void setPreferences() {
         setPreferencesFromResource(pref_screen, null);
+        mPreferenceScreen = getPreferenceScreen();
+
+        for (int i=0; i < PARENTS.length; i++)
+            setEnablednessOfDeps(i);
+
+        for (int i=0; i < INVERSE_PARENTS.length; i++)
+            setEnablednessOfInverseDeps(i);
+
+        for (int i=0; i < COLOR_PARENTS.length; i++)
+            setEnablednessOfColorDeps(i);
 
         for (int i=0; i < LIST_PREFS.length; i++)
             updateListPrefSummary(LIST_PREFS[i]);
-    }
 
-    private void updateListPrefSummary(String key) {
-        ListPreference pref;
-        try { /* Code is simplest elsewhere if we call this on all dependents, but some aren't ListPreferences. */
-            pref = (ListPreference) getPreferenceScreen().findPreference(key);
-        } catch (java.lang.ClassCastException e) {
-            return;
-        }
+        if (pref_screen == R.xml.current_hack_pref_screen &&
+            !mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))
+            setEnablednessOfCurrentHackDeps(false);
 
-        if (pref == null) return;
+        setEnablednessOfPercentageTextColor();
 
-        if (pref.isEnabled()) {
-            pref.setSummary(res.getString(R.string.currently_set_to) + pref.getEntry());
-        } else {
-            pref.setSummary(res.getString(R.string.currently_disabled));
-        }
+        updateConvertFSummary();
+
+        Intent biServiceIntent = new Intent(getActivity(), BatteryInfoService.class);
+        getActivity().bindService(biServiceIntent, serviceConnection, 0);
     }
 
     public boolean onPreferenceTreeClick(Preference preference) {
@@ -259,5 +339,188 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             return true;
         } else //TODO: convert biServiceConnection.biService.configurePlugin();
             return key.equals(KEY_PLUGIN_SETTINGS);
+    }
+
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
+
+        if (key.equals(KEY_CLASSIC_COLOR_MODE)) {
+            resetService();
+            restartThisScreen(); // To show/hide icon-set/plugin settings
+        }
+
+        if (key.equals(KEY_ICON_SET)) {
+            resetService();
+            restartThisScreen(); // To show/hide icon-set/plugin settings
+        }
+
+        if (key.equals(KEY_USE_SYSTEM_NOTIFICATION_LAYOUT))
+            restartThisScreen();
+
+        if (key.equals(KEY_ICON_AREA))
+            setEnablednessOfPercentageTextColor();
+
+        for (int i=0; i < PARENTS.length; i++) {
+            if (key.equals(PARENTS[i])) {
+                setEnablednessOfDeps(i);
+                break;
+            }
+        }
+
+        for (int i=0; i < INVERSE_PARENTS.length; i++) {
+            if (key.equals(INVERSE_PARENTS[i])) {
+                setEnablednessOfInverseDeps(i);
+                break;
+            }
+        }
+
+        for (int i=0; i < COLOR_PARENTS.length; i++) {
+            if (key.equals(COLOR_PARENTS[i])) {
+                setEnablednessOfColorDeps(i);
+                break;
+            }
+        }
+
+        for (int i=0; i < LIST_PREFS.length; i++) {
+            if (key.equals(LIST_PREFS[i])) {
+                updateListPrefSummary(LIST_PREFS[i]);
+                break;
+            }
+        }
+
+        if (key.equals(KEY_CONVERT_F)) {
+            updateConvertFSummary();
+        }
+
+        if (key.equals(KEY_ENABLE_CURRENT_HACK)) {
+            if (mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))
+                setEnablednessOfCurrentHackDeps(true);
+
+            for (int i=0; i < PARENTS.length; i++)
+                setEnablednessOfDeps(i);
+
+            if (!mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))
+                setEnablednessOfCurrentHackDeps(false);
+        }
+
+        if (key.equals(KEY_CURRENT_HACK_PREFER_FS))
+            CurrentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+                                                                  res.getBoolean(R.bool.default_prefer_fs_current_hack)));
+
+        for (int i=0; i < RESET_SERVICE.length; i++) {
+            if (key.equals(RESET_SERVICE[i])) {
+                resetService();
+                break;
+            }
+        }
+
+        for (int i=0; i < RESET_SERVICE_WITH_CANCEL_NOTIFICATION.length; i++) {
+            if (key.equals(RESET_SERVICE_WITH_CANCEL_NOTIFICATION[i])) {
+                resetService(true);
+                break;
+            }
+        }
+
+        mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
+    }
+
+    private void updateConvertFSummary() {
+        Preference pref = mPreferenceScreen.findPreference(KEY_CONVERT_F);
+        if (pref == null) return;
+
+        pref.setSummary(res.getString(R.string.currently_using) + " " +
+                        (mSharedPreferences.getBoolean(KEY_CONVERT_F, res.getBoolean(R.bool.default_convert_to_fahrenheit)) ?
+                         res.getString(R.string.fahrenheit) : res.getString(R.string.celsius)));
+    }
+
+    private void setEnablednessOfDeps(int index) {
+        for (int i = 0; i < DEPENDENTS[index].length; i++) {
+            Preference dependent = mPreferenceScreen.findPreference(DEPENDENTS[index][i]);
+            if (dependent == null) return;
+
+            if (mSharedPreferences.getBoolean(PARENTS[index], false))
+                dependent.setEnabled(true);
+            else
+                dependent.setEnabled(false);
+
+            updateListPrefSummary(DEPENDENTS[index][i]);
+        }
+    }
+
+    private void setEnablednessOfCurrentHackDeps(boolean enabled) {
+        for (int i = 0; i < CURRENT_HACK_DEPENDENTS.length; i++) {
+            Preference dependent = mPreferenceScreen.findPreference(CURRENT_HACK_DEPENDENTS[i]);
+
+            if (dependent == null) return;
+
+            dependent.setEnabled(enabled);
+        }
+    }
+
+    private void setEnablednessOfInverseDeps(int index) {
+        Preference dependent = mPreferenceScreen.findPreference(INVERSE_DEPENDENTS[index]);
+        if (dependent == null) return;
+
+        if (mSharedPreferences.getBoolean(INVERSE_PARENTS[index], false))
+            dependent.setEnabled(false);
+        else
+            dependent.setEnabled(true);
+
+        updateListPrefSummary(INVERSE_DEPENDENTS[index]);
+    }
+
+    private void setEnablednessOfColorDeps(int index) {
+        Preference dependent = mPreferenceScreen.findPreference(COLOR_DEPENDENTS[index]);
+        if (dependent == null) return;
+
+        if (mSharedPreferences.getString(COLOR_PARENTS[index], "default").equals("custom"))
+            dependent.setEnabled(true);
+        else
+            dependent.setEnabled(false);
+
+        updateListPrefSummary(COLOR_DEPENDENTS[index]);
+    }
+
+    private void setEnablednessOfPercentageTextColor() {
+        Preference dependent = mPreferenceScreen.findPreference(KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR);
+        if (dependent == null) return;
+
+        if (mSharedPreferences.getString(KEY_ICON_AREA, res.getString(R.string.default_icon_area_content)) .equals("graphic"))
+            dependent.setEnabled(false);
+        else
+            dependent.setEnabled(true);
+    }
+
+    // private void setEnablednessOfMutuallyExclusive(String key1, String key2) {
+    //     Preference pref1 = mPreferenceScreen.findPreference(key1);
+    //     Preference pref2 = mPreferenceScreen.findPreference(key2);
+
+    //     if (pref1 == null) return;
+
+    //     if (mSharedPreferences.getBoolean(key1, false))
+    //         pref2.setEnabled(false);
+    //     else if (mSharedPreferences.getBoolean(key2, false))
+    //         pref1.setEnabled(false);
+    //     else {
+    //         pref1.setEnabled(true);
+    //         pref2.setEnabled(true);
+    //     }
+    // }
+
+    private void updateListPrefSummary(String key) {
+        ListPreference pref;
+        try { /* Code is simplest elsewhere if we call this on all dependents, but some aren't ListPreferences. */
+            pref = (ListPreference) mPreferenceScreen.findPreference(key);
+        } catch (java.lang.ClassCastException e) {
+            return;
+        }
+
+        if (pref == null) return;
+
+        if (pref.isEnabled()) {
+            pref.setSummary(res.getString(R.string.currently_set_to) + pref.getEntry());
+        } else {
+            pref.setSummary(res.getString(R.string.currently_disabled));
+        }
     }
 }
