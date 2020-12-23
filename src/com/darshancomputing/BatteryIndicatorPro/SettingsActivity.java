@@ -197,4 +197,10 @@ public class SettingsActivity extends AppCompatActivity {
             return super.onOptionsItemSelected(item);
         }
     }
+
+    public void enableNotifsButtonClick(android.view.View v) {
+        System.out.println(".................................................. enableNotifsButtonClick");
+        //frag.enableNotifsButtonClick(v);
+        frag.enableNotifsButtonClick();
+    }
 }
