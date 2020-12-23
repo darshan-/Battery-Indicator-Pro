@@ -1,0 +1,263 @@
+/*
+    Copyright (c) 2009-2020 Darshan Computing, LLC
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+*/
+
+package com.darshancomputing.BatteryIndicatorPro;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+//import android.content.pm.PackageInfo;
+//import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Messenger;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
+
+import java.util.Locale;
+
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceManager;
+import androidx.preference.PreferenceScreen;
+
+public class SettingsFragment extends PreferenceFragmentCompat {
+    public static final String SETTINGS_FILE = "com.darshancomputing.BatteryIndicatorPro_preferences";
+    public static final String SP_SERVICE_FILE = "sp_store";   // Only write from Service process
+    public static final String SP_MAIN_FILE = "sp_store_main"; // Only write from main process
+
+    public static final String KEY_NOTIFICATION_SETTINGS = "notification_settings";
+    public static final String KEY_STATUS_BAR_ICON_SETTINGS = "status_bar_icon_settings";
+    public static final String KEY_CURRENT_HACK_SETTINGS = "current_hack_settings";
+    public static final String KEY_ALARMS_SETTINGS = "alarms_settings";
+    public static final String KEY_ALARM_EDIT_SETTINGS = "alarm_edit_settings";
+    public static final String KEY_OTHER_SETTINGS = "other_settings";
+    public static final String KEY_ENABLE_LOGGING = "enable_logging";
+    public static final String KEY_MAX_LOG_AGE = "max_log_age";
+    public static final String KEY_ICON_PLUGIN = "icon_plugin";
+    public static final String KEY_ICON_SET = "icon_set";
+    public static final String KEY_CONVERT_F = "convert_to_fahrenheit";
+    public static final String KEY_NOTIFY_STATUS_DURATION = "notify_status_duration";
+    public static final String KEY_AUTOSTART = "autostart";
+    public static final String KEY_PREDICTION_TYPE = "prediction_type";
+    public static final String KEY_CLASSIC_COLOR_MODE = "classic_color_mode";
+    public static final String KEY_STATUS_DUR_EST = "status_dur_est";
+    public static final String KEY_CAT_CLASSIC_COLOR_MODE = "category_classic_color_mode";
+    public static final String KEY_CAT_COLOR = "category_color";
+    public static final String KEY_CAT_CHARGING_INDICATOR = "category_charging_indicator";
+    public static final String KEY_CAT_PLUGIN_SETTINGS = "category_plugin_settings";
+    public static final String KEY_PLUGIN_SETTINGS = "plugin_settings";
+    public static final String KEY_INDICATE_CHARGING = "indicate_charging";
+    public static final String KEY_RED = "use_red";
+    public static final String KEY_RED_THRESH = "red_threshold";
+    public static final String KEY_AMBER = "use_amber";
+    public static final String KEY_AMBER_THRESH = "amber_threshold";
+    public static final String KEY_GREEN = "use_green";
+    public static final String KEY_GREEN_THRESH = "green_threshold";
+    public static final String KEY_COLOR_PREVIEW = "color_preview";
+    public static final String KEY_USE_SYSTEM_NOTIFICATION_LAYOUT = "use_system_notification_layout";
+    public static final String KEY_ICON_AREA = "icon_area";
+    public static final String KEY_TOP_LINE = "top_line";
+    public static final String KEY_BOTTOM_LINE = "bottom_line";
+    public static final String KEY_TIME_REMAINING_VERBOSITY = "time_remaining_verbosity";
+    public static final String KEY_STATUS_DURATION_IN_VITAL_SIGNS = "status_duration_in_vital_signs";
+    public static final String KEY_CAT_NOTIFICATION_APPEARANCE = "category_notification_appearance";
+    public static final String KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR = "notification_percentage_text_color";
+    public static final String KEY_CUSTOM_PERCENTAGE_TEXT_COLOR = "custom_percentage_text_color";
+    public static final String KEY_SHOW_BOX_AROUND_ICON_AREA = "show_box_around_icon_area";
+    public static final String KEY_NOTIFICATION_TOP_LINE_COLOR = "notification_top_line_color";
+    public static final String KEY_CUSTOM_TOP_LINE_COLOR = "custom_top_line_color";
+    public static final String KEY_NOTIFICATION_BOTTOM_LINE_COLOR = "notification_bottom_line_color";
+    public static final String KEY_CUSTOM_BOTTOM_LINE_COLOR = "custom_bottom_line_color";
+    public static final String KEY_CAT_CURRENT_HACK_MAIN = "category_current_hack_main";
+    public static final String KEY_CAT_CURRENT_HACK_UNSUPPORTED = "category_current_hack_unsupported";
+    public static final String KEY_ENABLE_CURRENT_HACK = "enable_current_hack";
+    public static final String KEY_CURRENT_HACK_PREFER_FS = "current_hack_prefer_fs";
+    public static final String KEY_CURRENT_HACK_MULTIPLIER = "current_hack_multiplier";
+    public static final String KEY_CAT_CURRENT_HACK_NOTIFICATION = "category_current_hack_notification";
+    public static final String KEY_DISPLAY_CURRENT_IN_VITAL_STATS = "display_current_in_vital_stats";
+    public static final String KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS = "prefer_current_avg_in_vital_stats";
+    public static final String KEY_CAT_CURRENT_HACK_MAIN_WINDOW = "category_current_hack_main_window";
+    public static final String KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW = "display_current_in_main_window";
+    public static final String KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW = "prefer_current_avg_in_main_window";
+    public static final String KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW = "auto_refresh_current_in_main_window";
+    public static final String KEY_FIRST_RUN = "first_run";
+    public static final String KEY_MIGRATED_SERVICE_DESIRED = "service_desired_migrated_to_sp_main";
+    public static final String KEY_ENABLE_NOTIFS_B = "enable_notifications_button";
+    public static final String KEY_ENABLE_NOTIFS_SUMMARY = "enable_notifications_summary";
+    public static final String KEY_UI_COLOR = "ui_color";
+
+    private static final String[] PARENTS    = {KEY_ENABLE_LOGGING,
+                                                KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
+                                                KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW,
+                                                KEY_RED,
+                                                KEY_AMBER,
+                                                KEY_GREEN
+    };
+    private static final String[][] DEPENDENTS = {{KEY_MAX_LOG_AGE},
+                                                  {KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS},
+                                                  {KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW, KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW},
+                                                  {KEY_RED_THRESH},
+                                                  {KEY_AMBER_THRESH},
+                                                  {KEY_GREEN_THRESH}
+    };
+
+    private static final String[] CURRENT_HACK_DEPENDENTS = {KEY_CURRENT_HACK_PREFER_FS,
+                                                             KEY_CURRENT_HACK_MULTIPLIER,
+                                                             KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
+                                                             KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
+                                                             KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW,
+                                                             KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW,
+                                                             KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW
+    };
+
+    private static final String[] INVERSE_PARENTS    = {KEY_USE_SYSTEM_NOTIFICATION_LAYOUT
+    };
+    private static final String[] INVERSE_DEPENDENTS = {KEY_ICON_AREA
+    };
+
+    private static final String[] COLOR_PARENTS    = {KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
+                                                      KEY_NOTIFICATION_TOP_LINE_COLOR,
+                                                      KEY_NOTIFICATION_BOTTOM_LINE_COLOR
+    };
+    private static final String[] COLOR_DEPENDENTS = {KEY_CUSTOM_PERCENTAGE_TEXT_COLOR,
+                                                      KEY_CUSTOM_TOP_LINE_COLOR,
+                                                      KEY_CUSTOM_BOTTOM_LINE_COLOR
+    };
+
+    private static final String[] LIST_PREFS = {KEY_AUTOSTART, KEY_STATUS_DUR_EST,
+                                                KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
+                                                KEY_ICON_SET,
+                                                KEY_CURRENT_HACK_MULTIPLIER,
+                                                KEY_MAX_LOG_AGE, KEY_ICON_AREA, KEY_TOP_LINE, KEY_BOTTOM_LINE,
+                                                KEY_TIME_REMAINING_VERBOSITY,
+                                                KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
+                                                KEY_NOTIFICATION_TOP_LINE_COLOR,
+                                                KEY_NOTIFICATION_BOTTOM_LINE_COLOR,
+                                                KEY_PREDICTION_TYPE
+    };
+
+    private static final String[] RESET_SERVICE = {KEY_CONVERT_F, KEY_NOTIFY_STATUS_DURATION,
+                                                   KEY_RED, KEY_RED_THRESH,
+                                                   KEY_AMBER, KEY_AMBER_THRESH, KEY_GREEN, KEY_GREEN_THRESH,
+                                                   KEY_ICON_SET,
+                                                   KEY_INDICATE_CHARGING,
+                                                   KEY_TOP_LINE, KEY_BOTTOM_LINE,
+                                                   KEY_ENABLE_LOGGING,
+                                                   KEY_TIME_REMAINING_VERBOSITY,
+                                                   KEY_STATUS_DURATION_IN_VITAL_SIGNS,
+                                                   KEY_CUSTOM_PERCENTAGE_TEXT_COLOR,
+                                                   KEY_CUSTOM_TOP_LINE_COLOR,
+                                                   KEY_CUSTOM_BOTTOM_LINE_COLOR,
+                                                   KEY_ENABLE_CURRENT_HACK,
+                                                   KEY_CURRENT_HACK_PREFER_FS,
+                                                   KEY_CURRENT_HACK_MULTIPLIER,
+                                                   KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
+                                                   KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
+                                                   KEY_UI_COLOR,
+                                                   KEY_PREDICTION_TYPE
+    };
+
+    private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_ICON_AREA,
+                                                                            KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
+                                                                            KEY_NOTIFICATION_TOP_LINE_COLOR,
+                                                                            KEY_NOTIFICATION_BOTTOM_LINE_COLOR,
+                                                                            KEY_SHOW_BOX_AROUND_ICON_AREA,
+                                                                            KEY_USE_SYSTEM_NOTIFICATION_LAYOUT
+    };
+
+    public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
+
+    private Resources res;
+    private PreferenceScreen mPreferenceScreen;
+    private SharedPreferences mSharedPreferences;
+    private NotificationManager mNotificationManager;
+    private NotificationChannel mainChan;
+    private boolean appNotifsEnabled;
+    private boolean mainNotifsEnabled;
+
+    private int pref_screen;
+
+    private int menu_res = R.menu.settings;
+
+    private static final String[] fivePercents = {
+        "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
+        "55", "60", "65", "70", "75", "80", "85", "90", "95", "100"};
+
+    public void setScreen(int screen) {
+        pref_screen = screen;
+
+        if (res != null)
+            setPreferences();
+    }
+
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        res = getResources();
+
+        if (pref_screen > 0)
+            setPreferences();
+    }
+
+    private void setPreferences() {
+        setPreferencesFromResource(pref_screen, null);
+
+        for (int i=0; i < LIST_PREFS.length; i++)
+            updateListPrefSummary(LIST_PREFS[i]);
+    }
+
+    private void updateListPrefSummary(String key) {
+        ListPreference pref;
+        try { /* Code is simplest elsewhere if we call this on all dependents, but some aren't ListPreferences. */
+            pref = (ListPreference) getPreferenceScreen().findPreference(key);
+        } catch (java.lang.ClassCastException e) {
+            return;
+        }
+
+        if (pref == null) return;
+
+        if (pref.isEnabled()) {
+            pref.setSummary(res.getString(R.string.currently_set_to) + pref.getEntry());
+        } else {
+            pref.setSummary(res.getString(R.string.currently_disabled));
+        }
+    }
+
+    public boolean onPreferenceTreeClick(Preference preference) {
+        String key = preference.getKey();
+        if (key == null) {
+            return false;
+        } else if (key.equals(KEY_NOTIFICATION_SETTINGS) || key.equals(KEY_STATUS_BAR_ICON_SETTINGS) ||
+                   key.equals(KEY_CURRENT_HACK_SETTINGS) ||
+                   key.equals(KEY_OTHER_SETTINGS)) {
+            ComponentName comp = new ComponentName(getActivity().getPackageName(), SettingsActivity.class.getName());
+            startActivity(new Intent().setComponent(comp).putExtra(EXTRA_SCREEN, key));
+
+            return true;
+        } else //TODO: convert biServiceConnection.biService.configurePlugin();
+            return key.equals(KEY_PLUGIN_SETTINGS);
+    }
+}

@@ -75,7 +75,6 @@
 
   <bool name="windowLightStatusBar">true</bool>
 
-  <!-- shadow under app bar? -->
   <color name="status_bar">@color/windowBackground</color>
 
   <style name="dialog_theme" parent="AlertDialog.AppCompat">
@@ -83,49 +82,7 @@
     <item name="android:isLightTheme">@bool/windowLightStatusBar</item>
     <item name="android:colorAccent">@color/accent</item>
     <item name="colorAccent">@color/accent</item>
-    <!--item name="android:textColorPrimary">@color/primary_text</item>
-    <item name="android:textColorSecondary">@color/secondary_text</item-->
     <item name="android:windowBackground">@color/dialog_background</item>
-  </style>
-
-  <!--style name="dialog_style" parent="AlertDialog.AppCompat"-->
-  <style name="dialog_style" parent="Theme.AppCompat.Light.Dialog.Alert">
-    <!--
-        Note that we need to set both with and without android: namespace.
-        Checkboxes (and probably other things) use colorAccent (I guess because of AppCompat),
-        while Okay/Cancel (and probably other things) use android:colorAccent.
-    -->
-    <item name="android:windowIsFloating">true</item>
-    <item name="android:isLightTheme">@bool/windowLightStatusBar</item>
-    <item name="android:colorAccent">@color/accent</item>
-    <item name="colorAccent">@color/accent</item>
-    <!--item name="android:textColorPrimary">@color/primary_text</item>
-    <item name="android:textColorSecondary">@color/secondary_text</item>
-    <item name="android:windowBackground">@color/windowBackground</item-->
-  </style>
-  <!--style name="dialog_theme" parent="@android:style/ThemeOverlay.Material.Dialog.Alert">
-    <item name="android:textColorPrimary">@color/dialog_text</item>
-    <item name="android:colorAccent">@color/dialog_accent</item>
-    <item name="colorAccent">@color/dialog_accent</item>
-  </style-->
-  <!--
-      Note the lack of some kind of AppCompatPreferenceActivity means we can't use
-      an AppCompat theme, so we need android: namespace for items.
-  -->
-  <style name="bi_settings_theme" parent="@android:style/Theme.Material">
-    <item name="android:colorAccent">@color/accent</item>
-    <item name="android:isLightTheme">@bool/windowLightStatusBar</item>
-    <item name="android:colorBackground">@color/colorBackground</item>
-    <item name="android:windowBackground">@color/windowBackground</item>
-    <item name="android:windowLightStatusBar">@bool/windowLightStatusBar</item>
-    <item name="android:navigationBarColor">@color/windowBackground</item>
-    <item name="android:windowLightNavigationBar">@bool/windowLightStatusBar</item>
-    <item name="android:textColorPrimary">@color/primary_text</item>
-    <item name="android:textColorSecondary">@color/secondary_text</item>
-    <item name="android:colorButtonNormal">@color/button_color</item>
-    <item name="android:listDivider">@color/windowBackground</item>
-    <item name="android:dividerHeight">1dp</item>
-    <item name="android:alertDialogTheme">@style/dialog_theme</item>
   </style>
 
   <color name="colorBackground">@color/windowBackground</color>
