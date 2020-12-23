@@ -3,6 +3,7 @@
     <Preference
         android:key="enable_notifications_button"
         android:layout="@layout/enable_notifications_button"
+        android:selectable="false"
     />
   </PreferenceCategory>
 

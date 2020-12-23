@@ -37,7 +37,7 @@ import java.util.Locale;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
+//import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
@@ -313,7 +313,8 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
 
         if (pref_res == R.xml.main_notifs_disabled_pref_screen) {
             Preference prefb = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_B);
-            prefb.setOnPreferenceClickListener(notifChanBListener);
+            //prefb.setEnabled(false);
+            //prefb.setOnPreferenceClickListener(notifChanBListener);
             Preference prefs = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_SUMMARY);
 
             if (!appNotifsEnabled) {
@@ -343,7 +344,8 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
             }
         } else if (pref_screen == R.xml.notification_pref_screen) {
             Preference prefb = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_B);
-            prefb.setOnPreferenceClickListener(notifChanBListener);
+            //prefb.setEnabled(false);
+            //prefb.setOnPreferenceClickListener(notifChanBListener);
 
             prefb.setSummary(R.string.pref_manage_main_channel);
 
@@ -610,7 +612,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         lpref.setEntryValues(valuesList.toArray(new String[entriesList.size()]));
     }
 
-    private void enableNotifsButtonClick() {
+    public void enableNotifsButtonClick() {
         Intent intent;
         if (!appNotifsEnabled) {
             intent = new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
@@ -625,11 +627,15 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         startActivity(intent);
     }
 
-    private final OnPreferenceClickListener notifChanBListener = new OnPreferenceClickListener() {
-        @Override
-        public boolean onPreferenceClick(Preference p) {
-            enableNotifsButtonClick();
-            return true;
-        }
-    };
+    // private final OnPreferenceClickListener notifChanBListener = new OnPreferenceClickListener() {
+    //     @Override
+    //     public boolean onPreferenceClick(Preference p) {
+    //         enableNotifsButtonClick();
+    //         return true;
+    //     }
+    // };
+
+    // public void enableNotifsButtonClick(android.view.View v) {
+    //     System.out.println(".................................................. FRenableNotifsButtonClick");
+    // }
 }
