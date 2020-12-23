@@ -8,7 +8,7 @@
   <Button android:id="@android:id/summary"
           android:layout_height="@dimen/tls_button_height"
           android:layout_width="wrap_content"
-          android:layout_marginLeft="70dp"
+          android:layout_marginLeft="69dp"
           android:layout_gravity="center_horizontal"
           android:textSize="@dimen/tls_button_fs"
           android:textAllCaps="false"
