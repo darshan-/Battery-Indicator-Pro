@@ -107,6 +107,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Resources res;
     private String pref_screen;
     private int menu_res = R.menu.settings;
+    private SettingsFragment frag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,7 +132,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         setContentView(R.layout.prefs);
 
-        SettingsFragment frag;
         if (savedInstanceState == null) {
             frag = new SettingsFragment();
 
