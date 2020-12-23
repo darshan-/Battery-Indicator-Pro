@@ -164,6 +164,26 @@ public class SettingsActivity extends AppCompatActivity {
         if (pref_screen == null) {
             frag.setScreen(R.xml.main_pref_screen);
             setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
+        } else if ((pref_screen.equals(KEY_STATUS_BAR_ICON_SETTINGS) ||
+                    pref_screen.equals(KEY_NOTIFICATION_SETTINGS)) &&
+                   (!appNotifsEnabled || !mainNotifsEnabled)) {
+            frag.setScreen(R.xml.main_notifs_disabled_pref_screen);
+
+            // TODO: We're not setting window title here?
+            // TODO: probably in fragment (but maybe from here?) set the prefs as in old way
+        } else if (pref_screen.equals(KEY_STATUS_BAR_ICON_SETTINGS)) {
+            frag.setScreen(R.xml.status_bar_icon_pref_screen);
+            setWindowSubtitle(res.getString(R.string.status_bar_icon_settings));
+
+            // TODO: Setup for parity with old way.
+        } else if (pref_screen.equals(KEY_NOTIFICATION_SETTINGS)) {
+            frag.setScreen(R.xml.notification_pref_screen);
+            setWindowSubtitle(res.getString(R.string.notification_settings));
+            // TODO: Setup for parity with old way.
+        } else if (pref_screen.equals(KEY_CURRENT_HACK_SETTINGS)) {
+            frag.setScreen(R.xml.current_hack_pref_screen);
+            setWindowSubtitle(res.getString(R.string.current_hack_settings));
+            // TODO: Setup for parity with old way.
         } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
             frag.setScreen(R.xml.other_pref_screen);
             setWindowSubtitle(res.getString(R.string.other_settings));

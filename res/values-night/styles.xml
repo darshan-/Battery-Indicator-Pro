@@ -18,6 +18,7 @@
 
   <color name="helpWindowBackground">#222</color>
 
+  <color name="settings_accent">@color/dc_bright_light_blue</color>
   <color name="accent">@color/dc_light2_blue</color>
   <!--color name="accent">#5f9aff</color-->
 
