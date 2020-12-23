@@ -245,9 +245,6 @@
   <string name="pref_language_override" formatted="false">Переопределить язык</string>
   <string name="pref_language_override_summary" formatted="false">Выберите язык:</string>
   <string name="pref_language_override_help" formatted="false">Если перевод на ваш язык неполон или неточен и вы хотели бы пользоваться другим, возможно, более хорошим переводом, вы можете сделать этот выбор здесь.</string>
-  <string name="pref_cat_plugin_settings" formatted="false">Настройки плагинов</string>
-  <string name="pref_plugin_settings" formatted="false">Настройки плагинов</string>
-  <string name="pref_plugin_settings_summary" formatted="false">Редактировать настройки для плагина</string>
   <string name="pref_classic_color_mode" formatted="false">Применить классический цветовой режим</string>
   <string name="pref_classic_color_mode_summary" formatted="false">Это обычно не работает; пожалуйста, прочтите справку</string>
   <string name="pref_classic_color_mode_help" formatted="false">Начиная с Android 5.0 (Lollipop), цветные значки уведомлений официально больше не поддерживаются, при этом классический значок BatteryBot выглядит сплошным белым. Поэтому на подобных устройствах приложение использует простой белый контур с белыми цифрами.\n\nОднако, не все устройства строго следуют спецификациям, поэтому сказанное выше не является обязательным не везде работает корректно. Вы можете попробовать настроить стандартное отображение классического набора значков включением этой опции. Помните, что на большинстве устройств это только приведет к тому, что значок станет сплошным белым.</string>

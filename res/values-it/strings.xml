@@ -149,9 +149,6 @@
   <string name="pref_language_override" formatted="false">Sovrascrittura lingua</string>
   <string name="pref_language_override_summary" formatted="false">Seleziona lingua:</string>
   <string name="pref_language_override_help" formatted="false">Se la traduzione è incompleta o inesatta e preferite un\'altra, forse migliore traduzione, si può scegliere di farlo qui.</string>
-  <string name="pref_cat_plugin_settings" formatted="false">Impostazioni plugin</string>
-  <string name="pref_plugin_settings" formatted="false">Impostazioni plugin</string>
-  <string name="pref_plugin_settings_summary" formatted="false">Modifica le impostazioni per questo plugin</string>
   <string name="pref_cat_color" formatted="false">Colore icona</string>
   <string name="pref_cat_color_help" formatted="false">Al fine di mantenere il pacchetto dei binari di Battery Indicator ragionevolemente piccolo, ci sono alcune limitazioni per i colori. Al momento in cui scriviamo, è possibile avere un\' icona rossa fino al 30%, una ambra fino 50%, e una verde se è minore di un 20% rispetto al 100%. Penso che questi siano compromessi ragionevoli che dovrebbero funzionare per il 99% degli utenti.\n\nPer darvi il massimo controllo, i colori possono essere attivati o disattivati in modo independente. Questo significa che si può avere una combinazione di colori a quattro livelli, dove l\' icona verde significa batteria completamente carica , poi in scala di grigi, poi ambra, poi rossa. Naturalmente, la maggior parte delle persone probabilemte hanno impostato le soglie ambra e verde allo stesso valoree, in modo da non avere mai l\' icona in scala di grigi.</string>
   <string name="pref_color_preview" formatted="false">Anteprima colori</string>

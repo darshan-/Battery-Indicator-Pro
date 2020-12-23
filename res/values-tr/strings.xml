@@ -130,9 +130,6 @@
   <string name="pref_cat_autostart" formatted="false">Otomatik başlat</string>
   <string name="pref_autostart_at_boot" formatted="false">Açılışta otomatik başlat</string>
   <string name="pref_cat_language" formatted="false">Dil</string>
-  <string name="pref_cat_plugin_settings" formatted="false">Eklenti ayarları</string>
-  <string name="pref_plugin_settings" formatted="false">Eklenti ayarları</string>
-  <string name="pref_plugin_settings_summary" formatted="false">Bu eklenti için ayarları düzenle</string>
   <string name="pref_cat_color" formatted="false">İkon rengi</string>
   <string name="pref_color_preview" formatted="false">Renk Önizleme</string>
   <string name="pref_red" formatted="false">Kırmızı ikonu kullan</string>

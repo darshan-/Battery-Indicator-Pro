@@ -220,9 +220,6 @@
   <string name="pref_language_override" formatted="false">تجاوز اللغة</string>
   <string name="pref_language_override_summary" formatted="false">اختر اللغة:</string>
   <string name="pref_language_override_help" formatted="false">إذا كانت الترجمة إلى لغتك غير مكتملة أو غير دقيقة وكنت تفضل آخرى، ربما أفضل ترجمة، قد تختار القيام بذلك هنا.</string>
-  <string name="pref_cat_plugin_settings" formatted="false">اعدادات البرنامج المساعد</string>
-  <string name="pref_plugin_settings" formatted="false">اعدادات البرنامج المساعد</string>
-  <string name="pref_plugin_settings_summary" formatted="false">تعديل إعدادات هذا البرنامج المساعد</string>
   <string name="pref_cat_color" formatted="false">لون الايقونة</string>
   <string name="pref_cat_color_help" formatted="false">من أجل الحفاظ على الحزمة ثنائي صغيرة الحجم بشكل معقول، وهناك بعض القيود للألوان. في وقت كتابة هذا التقرير، هل يمكن أن يكون رمز أحمر تصل إلى 30٪، وهو رمز الاصفر تصل إلى 50٪، وأيقونة خضراء منخفضة تصل إلى 20٪. أعتقد أن هذه هي التنازلات المعقولة التي يجب أن تعمل لمدة 99٪ من المستخدمين\n\nلتعطيك أقصى قدر من السيطرة، يمكن أن تحول الألوان أو إيقاف تشغيلها بشكل مستقل. هذا يعني أنك يمكن أن يكون بقدر ما نظام ألوان أربعة مستويات، حيث الرمز هو أخضر عندما يكون كامل جدا، ثم تدرج الرمادي، ثم الأصفر، ثم الأحمر. بطبيعة الحال، فإن معظم الناس لديهم على الارجح عتبات الاصفر والأخضر تعيين إلى نفس القيمة، بحيث يتم أبدا رمز الرمادي.</string>
   <string name="pref_color_preview" formatted="false">معاينة الالوان</string>

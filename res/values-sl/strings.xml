@@ -113,9 +113,6 @@
   <string name="pref_autostart_at_boot_summary" formatted="false">Zaženi Battery Indicator ko se naprava zažene:</string>
   <string name="pref_cat_language" formatted="false">Jezik</string>
   <string name="pref_language_override_summary" formatted="false">Izberi jezik:</string>
-  <string name="pref_cat_plugin_settings" formatted="false">Nastavitve vtičnikov</string>
-  <string name="pref_plugin_settings" formatted="false">Nastavitve vtičnikov</string>
-  <string name="pref_plugin_settings_summary" formatted="false">Uredi nastavitve za ta vtičnik</string>
   <string name="pref_cat_color" formatted="false">Barva ikone</string>
   <string name="pref_color_preview" formatted="false">Predogled barve</string>
   <string name="pref_red" formatted="false">Uporabi rdečo ikono</string>

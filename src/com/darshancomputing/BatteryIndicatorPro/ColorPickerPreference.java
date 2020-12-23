@@ -6,7 +6,7 @@
 
   This file, or at least the changes from the original are
 
-  Copyright (c) 2013-2017 Darshan Computing, LLC
+  Copyright (c) 2013-2020 Darshan Computing, LLC
 
 
   This program is free software: you can redistribute it and/or modify
@@ -31,11 +31,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.preference.Preference;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import androidx.preference.Preference;
 
 public class ColorPickerPreference extends Preference implements Preference.OnPreferenceClickListener,
                                                                  ColorPickerDialog.OnColorChangedListener {
@@ -75,9 +76,9 @@ public class ColorPickerPreference extends Preference implements Preference.OnPr
     }
 
     @Override
-    protected void onBindView(View view) {
-        super.onBindView(view);
-        mView = view;
+    public void onBindViewHolder(androidx.preference.PreferenceViewHolder holder) {
+        super.onBindViewHolder(holder);
+        mView = holder.itemView;
         setPreviewColor();
     }
 

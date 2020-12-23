@@ -199,9 +199,6 @@
   <string name="pref_language_override" formatted="false">Andere taal gebruiken</string>
   <string name="pref_language_override_summary" formatted="false">Taal selecteren:</string>
   <string name="pref_language_override_help" formatted="false">Hier kun je een andere taal kiezen.</string>
-  <string name="pref_cat_plugin_settings" formatted="false">Instellingen voor plugins</string>
-  <string name="pref_plugin_settings" formatted="false">Instellingen voor plugins</string>
-  <string name="pref_plugin_settings_summary" formatted="false">Instellingen voor deze plugin veranderen</string>
   <string name="pref_cat_color" formatted="false">Kleur van icoon</string>
   <string name="pref_cat_color_help" formatted="false">Om Battery Indicator klein te houden zijn er niet veel kleuren beschikbaar. Voor de maximale controle kunnen alle kleuren onafhankelijk van elkaar worden ingesteld.</string>
   <string name="pref_color_preview" formatted="false">Voorbeeld van kleuren</string>

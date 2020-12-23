@@ -157,9 +157,6 @@
   <string name="pref_language_override" formatted="false">Nyelv megváltoztatása</string>
   <string name="pref_language_override_summary" formatted="false">Válasszon nyelvet:</string>
   <string name="pref_language_override_help" formatted="false">Ha az ön nyelvre fordítás hiányos vagy pontatlan, és jobban szeretne másikat, itt választhat egyet.</string>
-  <string name="pref_cat_plugin_settings" formatted="false">Bővítmény beállítások</string>
-  <string name="pref_plugin_settings" formatted="false">Bővítmény beállítások</string>
-  <string name="pref_plugin_settings_summary" formatted="false">Bővítmény beállításainak szerkesztése</string>
   <string name="pref_cat_color" formatted="false">Ikon színe</string>
   <string name="pref_color_preview" formatted="false">Szín előnézet</string>
   <string name="pref_color_preview_help" formatted="false">A szín előnézet remélhetőleg könnyebbé teszi a beállítások áttekintését\n\nEz nem létezik 10%-os módban, mert egyszerűen nem lenne értelme.</string>
