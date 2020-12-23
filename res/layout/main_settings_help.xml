@@ -4,8 +4,7 @@
             android:layout_height="fill_parent"
 >
   <LinearLayout style="@style/help_ll" android:orientation="vertical">
-    <!--TextView style="@style/help_cat"  android:text="@string/settings_overview" /-->
-    <TextView style="@style/help_text" android:text=" " />
+    <TextView style="@style/help_cat"  android:text="@string/settings_overview" />
     <TextView style="@style/help_text" android:text="@string/settings_overview_help" />
 
     <TextView style="@style/help_cat" android:text="@string/notification_settings" />

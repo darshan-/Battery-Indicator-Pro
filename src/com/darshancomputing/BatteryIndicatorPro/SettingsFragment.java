@@ -19,8 +19,6 @@ import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-//import android.content.pm.PackageInfo;
-//import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -39,6 +37,7 @@ import java.util.Locale;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
@@ -256,9 +255,9 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
             mainNotifsEnabled != mainChan.getImportance() > 0) { // Doesn't seem worth checking which screen
             resetService();
             setPreferences();
-        } else {
-            mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
         }
+
+        mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -289,6 +288,10 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         }
     }
 
+    // pref_screen is the screen we're conceptually on, while
+    // pref_res is the actual resource we're loading.
+    // In the case of disabled notifications, for example, we'll load the disabled notifs resource, but
+    //   we still want to "be on" whichever page we're on.
     private void setPreferences() {
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
         mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.CHAN_ID_MAIN);
@@ -296,18 +299,21 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
         mainNotifsEnabled = mainChan.getImportance() > 0;
 
+        int pref_res = pref_screen;
+
         if ((pref_screen == R.xml.status_bar_icon_pref_screen || pref_screen == R.xml.notification_pref_screen) &&
             (!appNotifsEnabled || !mainNotifsEnabled)) {
-            pref_screen = R.xml.main_notifs_disabled_pref_screen;
+            pref_res = R.xml.main_notifs_disabled_pref_screen;
         }
 
-        setPreferencesFromResource(pref_screen, null);
+        setPreferencesFromResource(pref_res, null);
         mPreferenceScreen = getPreferenceScreen();
 
         PreferenceCategory cat;
 
-        if (pref_screen == R.xml.main_notifs_disabled_pref_screen) {
+        if (pref_res == R.xml.main_notifs_disabled_pref_screen) {
             Preference prefb = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_B);
+            prefb.setOnPreferenceClickListener(notifChanBListener);
             Preference prefs = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_SUMMARY);
 
             if (!appNotifsEnabled) {
@@ -337,6 +343,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
             }
         } else if (pref_screen == R.xml.notification_pref_screen) {
             Preference prefb = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_B);
+            prefb.setOnPreferenceClickListener(notifChanBListener);
 
             prefb.setSummary(R.string.pref_manage_main_channel);
 
@@ -407,7 +414,8 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
 
         if (key.equals(KEY_CLASSIC_COLOR_MODE)) {
             resetService();
-            setPreferences(); // To show/hide icon-set/plugin settings
+            //(No longer have actual colors, so settings page doesn't change.)
+            //setPreferences(); // To show/hide icon-set/plugin settings
         }
 
         if (key.equals(KEY_ICON_SET)) {
@@ -602,7 +610,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         lpref.setEntryValues(valuesList.toArray(new String[entriesList.size()]));
     }
 
-    public void enableNotifsButtonClick(android.view.View v) {
+    private void enableNotifsButtonClick() {
         Intent intent;
         if (!appNotifsEnabled) {
             intent = new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
@@ -616,4 +624,12 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         startActivity(intent);
     }
+
+    private final OnPreferenceClickListener notifChanBListener = new OnPreferenceClickListener() {
+        @Override
+        public boolean onPreferenceClick(Preference p) {
+            enableNotifsButtonClick();
+            return true;
+        }
+    };
 }
