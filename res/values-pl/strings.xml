@@ -204,9 +204,6 @@
   <string name="pref_language_override" formatted="false">Wymuś język</string>
   <string name="pref_language_override_summary" formatted="false">Wybierz język</string>
   <string name="pref_language_override_help" formatted="false">Jeżeli tłumaczenie w twoim języku jest nieskończone lub niedokładne i chciałbyś zmienić na prawdopodobnie lepsze, możesz to zrobić tutaj.</string>
-  <string name="pref_cat_plugin_settings" formatted="false">Ustawienia dodatków</string>
-  <string name="pref_plugin_settings" formatted="false">Ustawienia dodatków</string>
-  <string name="pref_plugin_settings_summary" formatted="false">Zmień ustawienia dla tego dodatku</string>
   <string name="pref_cat_color" formatted="false">Kolor ikony</string>
   <string name="pref_cat_color_help" formatted="false">Aby zmniejszyć miejsce jakie zajmuje program, ustawiłem limit kolorów. W chwili pisania czerwony kolor oznacza 30%, bursztynowy 50% a zielony 20%. Myślę, że jest to racjonalne ustawienie i powinno działać dla 99% użytkowników.\n\nAby dać maksimum kontroli, kolory mogą być zmieniane niezależnie.</string>
   <string name="pref_color_preview" formatted="false">Podgląd koloru</string>

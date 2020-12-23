@@ -224,9 +224,6 @@
   <string name="pref_cat_language" formatted="false">Jezik</string>
   <string name="pref_language_override" formatted="false">Preinači jezik</string>
   <string name="pref_language_override_summary" formatted="false">Odaberi jezik:</string>
-  <string name="pref_cat_plugin_settings" formatted="false">Podešavanje dodataka</string>
-  <string name="pref_plugin_settings" formatted="false">Podešavanje dodataka</string>
-  <string name="pref_plugin_settings_summary" formatted="false">Izmeni podešavanja za ovaj dodatak</string>
   <string name="pref_classic_color_mode" formatted="false">Nametni standardnu temu</string>
   <string name="pref_classic_color_mode_summary" formatted="false">Ovo obično ne pomaže; molimo vas pročitajte uputstva</string>
   <string name="pref_cat_color" formatted="false">Boja ikonice</string>

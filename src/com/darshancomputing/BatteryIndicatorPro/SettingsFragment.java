@@ -250,16 +250,15 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
     public void onResume() {
         super.onResume();
 
-        // mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.CHAN_ID_MAIN);
+        mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.CHAN_ID_MAIN);
 
-        // if (appNotifsEnabled != mNotificationManager.areNotificationsEnabled() ||
-        //     mainNotifsEnabled != mainChan.getImportance() > 0) { // Doesn't seem worth checking which screen
-        //     resetService();
-        //     restartThisScreen();
-        // } else {
-        //     mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
-        // }
-        mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
+        if (appNotifsEnabled != mNotificationManager.areNotificationsEnabled() ||
+            mainNotifsEnabled != mainChan.getImportance() > 0) { // Doesn't seem worth checking which screen
+            resetService();
+            setPreferences();
+        } else {
+            mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
+        }
     }
 
     @Override
@@ -267,14 +266,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         super.onPause();
 
         mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
-    }
-
-    private void restartThisScreen() {
-        ComponentName comp = new ComponentName(getActivity().getPackageName(), SettingsActivity.class.getName());
-        Intent intent = new Intent().setComponent(comp);
-        intent.putExtra(EXTRA_SCREEN, pref_screen);
-        startActivity(intent);
-        getActivity().finish();
     }
 
     private void resetService() {
@@ -299,8 +290,79 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
     }
 
     private void setPreferences() {
+        mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.CHAN_ID_MAIN);
+
+        appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
+        mainNotifsEnabled = mainChan.getImportance() > 0;
+
+        if ((pref_screen == R.xml.status_bar_icon_pref_screen || pref_screen == R.xml.notification_pref_screen) &&
+            (!appNotifsEnabled || !mainNotifsEnabled)) {
+            pref_screen = R.xml.main_notifs_disabled_pref_screen;
+        }
+
         setPreferencesFromResource(pref_screen, null);
         mPreferenceScreen = getPreferenceScreen();
+
+        PreferenceCategory cat;
+
+        if (pref_screen == R.xml.main_notifs_disabled_pref_screen) {
+            Preference prefb = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_B);
+            Preference prefs = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_SUMMARY);
+
+            if (!appNotifsEnabled) {
+                prefs.setSummary(R.string.app_notifs_disabled_summary);
+                prefb.setSummary(R.string.app_notifs_disabled_b);
+            } else {
+                prefs.setSummary(R.string.main_notifs_disabled_summary);
+                prefb.setSummary(R.string.main_notifs_disabled_b);
+            }
+        } else if (pref_screen == R.xml.status_bar_icon_pref_screen) {
+            ListPreference iconSetPref = (ListPreference) mPreferenceScreen.findPreference(KEY_ICON_SET);
+            setPluginPrefEntriesAndValues(iconSetPref);
+
+            String currentPlugin = iconSetPref.getValue();
+
+            if (currentPlugin == null)
+                currentPlugin = "builtin.plain_number";
+
+            if (currentPlugin.equals("builtin.classic")) {
+                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CHARGING_INDICATOR);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
+            } else {
+                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CLASSIC_COLOR_MODE);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
+            }
+        } else if (pref_screen == R.xml.notification_pref_screen) {
+            Preference prefb = mPreferenceScreen.findPreference(KEY_ENABLE_NOTIFS_B);
+
+            prefb.setSummary(R.string.pref_manage_main_channel);
+
+            if (mSharedPreferences.getBoolean(KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, false)) {
+                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_NOTIFICATION_APPEARANCE);
+
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
+            }
+        } else if (pref_screen == R.xml.current_hack_pref_screen) {
+            if (CurrentHack.getCurrent() == null) {
+                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_MAIN);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
+                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_NOTIFICATION);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
+                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_MAIN_WINDOW);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
+            } else {
+                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_UNSUPPORTED);
+                cat.removeAll();
+                cat.setLayoutResource(R.layout.none);
+            }
+        }
 
         for (int i=0; i < PARENTS.length; i++)
             setEnablednessOfDeps(i);
@@ -314,8 +376,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         for (int i=0; i < LIST_PREFS.length; i++)
             updateListPrefSummary(LIST_PREFS[i]);
 
-        if (pref_screen == R.xml.current_hack_pref_screen &&
-            !mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))
+        if (pref_screen == R.xml.current_hack_pref_screen && !mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))
             setEnablednessOfCurrentHackDeps(false);
 
         setEnablednessOfPercentageTextColor();
@@ -346,16 +407,16 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
 
         if (key.equals(KEY_CLASSIC_COLOR_MODE)) {
             resetService();
-            restartThisScreen(); // To show/hide icon-set/plugin settings
+            setPreferences(); // To show/hide icon-set/plugin settings
         }
 
         if (key.equals(KEY_ICON_SET)) {
             resetService();
-            restartThisScreen(); // To show/hide icon-set/plugin settings
+            setPreferences(); // To show/hide icon-set/plugin settings
         }
 
         if (key.equals(KEY_USE_SYSTEM_NOTIFICATION_LAYOUT))
-            restartThisScreen();
+            setPreferences(); // Quite a few different settings on the screen for this
 
         if (key.equals(KEY_ICON_AREA))
             setEnablednessOfPercentageTextColor();
@@ -522,5 +583,37 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         } else {
             pref.setSummary(res.getString(R.string.currently_disabled));
         }
+    }
+
+    // TODO: Now that plugins have long been unsupported, get rid of this and just do normal list pref?
+    private void setPluginPrefEntriesAndValues(ListPreference lpref) {
+        java.util.List<String> entriesList = new java.util.ArrayList<String>();
+        java.util.List<String>  valuesList = new java.util.ArrayList<String>();
+
+        String[] icon_set_entries = res.getStringArray(R.array.icon_set_entries);
+        String[] icon_set_values  = res.getStringArray(R.array.icon_set_values);
+
+        for (int i = 0; i < icon_set_entries.length; i++) {
+            entriesList.add(icon_set_entries[i]);
+             valuesList.add(icon_set_values[i]);
+        }
+
+        lpref.setEntries    (entriesList.toArray(new String[entriesList.size()]));
+        lpref.setEntryValues(valuesList.toArray(new String[entriesList.size()]));
+    }
+
+    public void enableNotifsButtonClick(android.view.View v) {
+        Intent intent;
+        if (!appNotifsEnabled) {
+            intent = new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+        } else {
+            intent = new Intent(android.provider.Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+            intent.putExtra(android.provider.Settings.EXTRA_CHANNEL_ID, mainChan.getId());
+        }
+
+        intent.putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, getActivity().getPackageName());
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        startActivity(intent);
     }
 }

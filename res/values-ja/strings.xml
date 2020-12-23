@@ -247,9 +247,6 @@
   <string name="pref_language_override" formatted="false">言語の上書き</string>
   <string name="pref_language_override_summary" formatted="false">言語を選択:</string>
   <string name="pref_language_override_help" formatted="false">ご利用の言語の翻訳が不完全または不正確で、別の言語での ご利用をお好みの場合、ここで選択することができます。</string>
-  <string name="pref_cat_plugin_settings" formatted="false">プラグイン設定</string>
-  <string name="pref_plugin_settings" formatted="false">プラグイン設定</string>
-  <string name="pref_plugin_settings_summary" formatted="false">このプラグインの設定を編集します</string>
   <string name="pref_classic_color_mode" formatted="false">強制的にクラシックカラーモードにする</string>
   <string name="pref_classic_color_mode_summary" formatted="false">これは通常動作しません。ヘルプをお読みください</string>
   <string name="pref_classic_color_mode_help" formatted="false">Android 5.0 (Lollipop) から、着色された通知アイコンはもはや公式には Android 上で動作しません。クラシックアイコンは白い四角としてを表示されます。そのためデフォルトでは、これらのデバイス上で、アプリは白い番号と白いアウトラインを使用します。\n\nしかし、すべてのデバイスが仕様に従っているわけではないので、これは必要ではなく、すべてにおいて正常に動作するわけではありません。このオプションをオンにすることによって、クラシックな方法で、クラシックアイコンセットを動作させてみることができます。覚えておいてほしいのは、ほとんどのデバイスでこれはアイコンがただの白い四角になります、。</string>

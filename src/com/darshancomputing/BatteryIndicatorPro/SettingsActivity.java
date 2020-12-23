@@ -19,8 +19,6 @@ import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-//import android.content.pm.PackageInfo;
-//import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -107,15 +105,7 @@ public class SettingsActivity extends AppCompatActivity {
     public static final String KEY_ENABLE_NOTIFS_SUMMARY = "enable_notifications_summary";
 
     private Resources res;
-    private PreferenceScreen mPreferenceScreen;
-    private SharedPreferences mSharedPreferences;
-    private NotificationManager mNotificationManager;
-    private NotificationChannel mainChan;
-    private boolean appNotifsEnabled;
-    private boolean mainNotifsEnabled;
-
     private String pref_screen;
-
     private int menu_res = R.menu.settings;
 
     @Override
@@ -131,8 +121,6 @@ public class SettingsActivity extends AppCompatActivity {
             ab.setHomeButtonEnabled(true);
             ab.setDisplayHomeAsUpEnabled(true);
             ab.setElevation(0);
-
-            //getActionBar().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(c));
         }
 
         int c = getResources().getColor(R.color.windowBackground);
@@ -140,12 +128,6 @@ public class SettingsActivity extends AppCompatActivity {
         w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         w.setStatusBarColor(c);
-
-        mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.CHAN_ID_MAIN);
-
-        appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
-        mainNotifsEnabled = mainChan.getImportance() > 0;
 
         setContentView(R.layout.prefs);
 
@@ -164,31 +146,21 @@ public class SettingsActivity extends AppCompatActivity {
         if (pref_screen == null) {
             frag.setScreen(R.xml.main_pref_screen);
             setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
-        } else if ((pref_screen.equals(KEY_STATUS_BAR_ICON_SETTINGS) ||
-                    pref_screen.equals(KEY_NOTIFICATION_SETTINGS)) &&
-                   (!appNotifsEnabled || !mainNotifsEnabled)) {
-            frag.setScreen(R.xml.main_notifs_disabled_pref_screen);
-
-            // TODO: We're not setting window title here?
-            // TODO: probably in fragment (but maybe from here?) set the prefs as in old way
         } else if (pref_screen.equals(KEY_STATUS_BAR_ICON_SETTINGS)) {
             frag.setScreen(R.xml.status_bar_icon_pref_screen);
             setWindowSubtitle(res.getString(R.string.status_bar_icon_settings));
-
-            // TODO: Setup for parity with old way.
         } else if (pref_screen.equals(KEY_NOTIFICATION_SETTINGS)) {
             frag.setScreen(R.xml.notification_pref_screen);
             setWindowSubtitle(res.getString(R.string.notification_settings));
-            // TODO: Setup for parity with old way.
         } else if (pref_screen.equals(KEY_CURRENT_HACK_SETTINGS)) {
             frag.setScreen(R.xml.current_hack_pref_screen);
             setWindowSubtitle(res.getString(R.string.current_hack_settings));
-            // TODO: Setup for parity with old way.
         } else if (pref_screen.equals(KEY_OTHER_SETTINGS)) {
             frag.setScreen(R.xml.other_pref_screen);
             setWindowSubtitle(res.getString(R.string.other_settings));
         } else {
             frag.setScreen(R.xml.main_pref_screen);
+            setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
         }
     }
 
@@ -197,22 +169,6 @@ public class SettingsActivity extends AppCompatActivity {
             setTitle(res.getString(R.string.app_full_name) + " - " + subtitle);
         else
             setTitle(subtitle);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
     }
 
     @Override

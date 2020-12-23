@@ -110,9 +110,6 @@
   <string name="lang_system_selected" formatted="false">系统选择</string>
   <string name="pref_cat_language" formatted="false">语言</string>
   <string name="pref_language_override_summary" formatted="false">选择语言:</string>
-  <string name="pref_cat_plugin_settings" formatted="false">插件设置</string>
-  <string name="pref_plugin_settings" formatted="false">插件设置</string>
-  <string name="pref_plugin_settings_summary" formatted="false">修改此插件的设置</string>
   <string name="pref_cat_color" formatted="false">图标颜色</string>
   <string name="pref_cat_color_help" formatted="false">为保证电量指示器的二进制数据包尺寸最小化，对图标颜色做出如下限制：红色图标标示最大值为30%剩余电量，黄色图标标示最大值为50%剩余电量，绿色图标标示最小值为20%剩余电量。开发者相信如此的限制能满足99%的用户需求。 为保证用户能够最大限度的自定义该软件，各色彩等级可单独的开启或关闭。最高可实现四级色彩显示，绿色图标表示电量充足，接着以灰色、黄色和红色显示剩余电量等级。大部分用户会将黄色标示上限及绿色标示下限设置为相同值，这样将跳过灰色标示。</string>
   <string name="pref_color_preview" formatted="false">色彩预览</string>
