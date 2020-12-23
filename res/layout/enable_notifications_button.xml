@@ -3,20 +3,17 @@
               android:orientation="horizontal"
               android:layout_height="wrap_content"
               android:layout_width="fill_parent"
-              android:weightSum="1"
+              android:paddingBottom="10dp"
 >
-  <TextView android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.15"
-   />
-
   <Button android:id="@android:id/summary"
           android:layout_height="@dimen/tls_button_height"
-          android:layout_width="0px"
-          android:layout_weight="0.7"
+          android:layout_width="wrap_content"
+          android:layout_marginLeft="70dp"
           android:layout_gravity="center_horizontal"
           android:textSize="@dimen/tls_button_fs"
           android:textAllCaps="false"
+          android:paddingLeft="25dp"
+          android:paddingRight="25dp"
           android:onClick="enableNotifsButtonClick"
   />
 </LinearLayout>
