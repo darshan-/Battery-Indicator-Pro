@@ -2,8 +2,9 @@
 <resources>
   <color name="button_color">#444</color>
 
-  <color name="dialog_background">#444</color>
-  <color name="dialog_accent">#4f70d3</color>
+  <color name="dialog_background">#2a2a2a</color>
+  <!--color name="dialog_accent">#4f70d3</color-->
+  <color name="dialog_accent">#5f80e3</color>
   <color name="dialog_text">#eee</color>
 
   <color name="secondary_text">#999</color>
