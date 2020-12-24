@@ -151,21 +151,6 @@
   <string name="pref_cat_autostart" formatted="false">Autostart</string>
   <string name="pref_autostart_at_boot" formatted="false">Autostart beim Gerätestart</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">Battery Indicator starten wenn Gerät startet:</string>
-  <string name="pref_cat_color" formatted="false">Icon Farbe</string>
-  <string name="pref_color_preview" formatted="false">Farbvorschau</string>
-  <string name="pref_red" formatted="false">Rotes Icon anzeigen</string>
-  <string name="pref_red_summary" formatted="false">Rotes Icon anzeigen, bei geringer Ladung?</string>
-  <string name="pref_red_thresh" formatted="false">Grenzwert für rot</string>
-  <string name="pref_red_thresh_summary" formatted="false">Rotes Icon bei Ladung unter (Prozent):</string>
-  <string name="pref_amber" formatted="false">Gelbes Icon anzeigen</string>
-  <string name="pref_amber_summary" formatted="false">Gelbes Icon anzeigen, bei mittlerer Ladung?</string>
-  <string name="pref_amber_thresh" formatted="false">Grenzwert für gelb</string>
-  <string name="pref_amber_thresh_summary" formatted="false">Gelbes Icon bei Ladung unter (Prozent):</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">Gelbes Icon bei Ladung unter oder gleich (Prozent):</string>
-  <string name="pref_green" formatted="false">Grünes Icon anzeigen</string>
-  <string name="pref_green_summary" formatted="false">Grünes Icon anzeigen, bei hoher Ladung?</string>
-  <string name="pref_green_thresh" formatted="false">Grenzwert für grün</string>
-  <string name="pref_green_thresh_summary" formatted="false">Grünes Icon bei Ladung unter oder gleich (Prozent):</string>
   <string name="pref_cat_device_specific" formatted="false">Geräte abhängige Einstellungen</string>
   <string name="alarms_overview" formatted="false">Übersicht Alarme</string>
   <string name="pref_alarm_enabled" formatted="false">Alarm einschalten</string>

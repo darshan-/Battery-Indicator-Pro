@@ -250,30 +250,6 @@
   <string name="pref_classic_color_mode" formatted="false">強制的にクラシックカラーモードにする</string>
   <string name="pref_classic_color_mode_summary" formatted="false">これは通常動作しません。ヘルプをお読みください</string>
   <string name="pref_classic_color_mode_help" formatted="false">Android 5.0 (Lollipop) から、着色された通知アイコンはもはや公式には Android 上で動作しません。クラシックアイコンは白い四角としてを表示されます。そのためデフォルトでは、これらのデバイス上で、アプリは白い番号と白いアウトラインを使用します。\n\nしかし、すべてのデバイスが仕様に従っているわけではないので、これは必要ではなく、すべてにおいて正常に動作するわけではありません。このオプションをオンにすることによって、クラシックな方法で、クラシックアイコンセットを動作させてみることができます。覚えておいてほしいのは、ほとんどのデバイスでこれはアイコンがただの白い四角になります、。</string>
-  <string name="pref_cat_color" formatted="false">アイコンの色</string>
-  <string name="pref_cat_color_help" formatted="false">BatteryBot のバイナリパッケージを適切に小さくするために、 色に関していくつかの制限があります。現時点では、 30% 高い赤のアイコン、50% 高い黄色のアイコン、 20% 低い緑のアイコンを使用することができます。 99% のユーザーにとって、利用する上で合理的なものと考えます。\n\n独立して色をオンまたはオフにして、最大限にコントロールすることができます。 つまり、完全にフル充電のときにはアイコンが緑、その後グレースケール、 その後黄色、その後赤、という 4 段と多くのカラースキームを持つことができます。 もちろん、ほとんどの人は、アイコンがグレースケールにならないように、 おそらく黄色と緑に同じしきい値を設定するでしょう。</string>
-  <string name="pref_color_preview" formatted="false">色のプレビュー</string>
-  <string name="pref_color_preview_help" formatted="false">色のプレビューは、色の設定の結果を 簡単に視覚化して確認することができます。\n\n意味がないため、これは 10% モードにはありません。</string>
-  <string name="pref_red" formatted="false">赤のアイコンを使用する</string>
-  <string name="pref_red_summary" formatted="false">残量が少ない時に赤のアイコンを使用しますか?</string>
-  <string name="pref_red_help" formatted="false">指定したしきい値を下回ったときに、赤のアイコンを使用するかどうかを指定します。</string>
-  <string name="pref_red_thresh" formatted="false">赤のしきい値</string>
-  <string name="pref_red_thresh_summary" formatted="false">残量が次のパーセントを下回ると赤のアイコンにします:</string>
-  <string name="pref_red_thresh_summary10" formatted="false">残量が次のパーセント以下になると赤のアイコンにします:</string>
-  <string name="pref_red_thresh_help" formatted="false">下回ったときに (10% モードでは、<i>その値</i>) アイコンを赤に変える充電レベルを指定します。\n\n赤のしきい値のオプションには、赤のアイコンで利用可能な すべての値 (5の倍数) が含まれています。\n\n10% モードは、若干動作が異なりますが、各自でご確認の上 ご利用ください。</string>
-  <string name="pref_amber" formatted="false">黄色のアイコンを使用する</string>
-  <string name="pref_amber_summary" formatted="false">残量が中間の時に黄色のアイコンを使用しますか?</string>
-  <string name="pref_amber_help" formatted="false">指定したしきい値を下回ったときに、黄色のアイコンを使用するかどうかを指定します。</string>
-  <string name="pref_amber_thresh" formatted="false">黄色のしきい値</string>
-  <string name="pref_amber_thresh_summary" formatted="false">残量が次のパーセントを下回ると黄色のアイコンにします:</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">残量が次のパーセント以下になると黄色のアイコンにします:</string>
-  <string name="pref_amber_thresh_help" formatted="false">下回ったときに (10% モードでは、<i>その値</i>) アイコンを黄色に変える 充電レベルを指定します。\n\n黄色のしきい値のオプションには、黄色のアイコンで利用可能な (存在する場合) 赤のしきい値を 5% ポイント上回ったところから始まる、 すべての値 (5の倍数) が含まれています。 例えば、赤のしきい値を 15 に設定した場合は、 ここで最も低いオプションは 20 のようになります。\n\n10% モードは、若干動作が異なりますが、各自でご確認の上 ご利用ください。</string>
-  <string name="pref_green" formatted="false">緑のアイコンを使用する</string>
-  <string name="pref_green_summary" formatted="false">残量が多い時に緑のアイコンを使用しますか?</string>
-  <string name="pref_green_help" formatted="false">指定したしきい値以上のときに、緑のアイコンを使用するかどうかを指定します。</string>
-  <string name="pref_green_thresh" formatted="false">緑のしきい値</string>
-  <string name="pref_green_thresh_summary" formatted="false">残量が次のパーセント以上のとき緑のアイコンにします:</string>
-  <string name="pref_green_thresh_help" formatted="false">それ以上のときに、アイコンを緑に変える充電レベルを指定します。\n\n緑のしきい値のオプションには、緑のアイコンで利用可能な 赤と黄色で設定した高いほうの有効なしきい値から始まる、 すべての値 (5の倍数) が含まれています。 例えば、黄色のしきい値を 40 に設定した場合は、 ここで最も低いオプションは 40 のようになります。\n\n10% モードは、若干動作が異なりますが、各自でご確認の上 ご利用ください。</string>
   <string name="pref_cat_device_specific" formatted="false">デバイス固有の設定</string>
   <string name="alarms_overview" formatted="false">アラームの概要</string>
   <string name="alarms_overview_help" formatted="false">このページで、新しいアラームを追加する、既存のアラームをすばやく 有効または無効にする、アラームを削除することができます。\n\n新しいアラームを追加するには、\"アラームを追加\" を押します - これで、新しいアラームを作成して、アラーム設定ページへ移動します。 そこで新しいアラームの設定を変更することができます。 詳細については、そのページのヘルプを参照してください。\n\n作成したすべてのアラームのリストの下に \"\アラームを追加\"\ ボタンがあります\n\n• 既存のアラームを編集するには、それを押すだけです。\n• 削除するには、それを長押しします。その後 \"アラームを削除\" を選択します。 (個々のアラーム設定ページから、メニューを押して、 その後 \"アラームを削除\" でアラームを削除することもできます。)\n• すばやくアラームを有効にするかどうかを切り替えるには、 アラームテキストの左側の、目覚まし時計のアイコンを押します。 (また、個々のアラーム設定ページから、アラームを有効または 無効にすることもできます。)</string>

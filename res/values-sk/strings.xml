@@ -120,25 +120,6 @@
   <string name="pref_cat_autostart" formatted="false">Automatické spustenie</string>
   <string name="pref_autostart_at_boot" formatted="false">Spustiť automaticky po zapnutí</string>
   <string name="pref_autostart_at_boot_summary" formatted="false">Spustiť Battery Indicator keď zariadenie štartuje:</string>
-  <string name="pref_cat_color" formatted="false">Farba ikonky</string>
-  <string name="pref_color_preview" formatted="false">Ukážka farby</string>
-  <string name="pref_red" formatted="false">Používať červenú ikonu</string>
-  <string name="pref_red_summary" formatted="false">Používať červenú ikonu keď je vybitá batéria?</string>
-  <string name="pref_red_help" formatted="false">Použiť alebo nepoužiť červenú ikonu pod určenou hranicou.</string>
-  <string name="pref_red_thresh" formatted="false">Červená hranica</string>
-  <string name="pref_red_thresh_summary" formatted="false">Červená ikona pod koľkými %:</string>
-  <string name="pref_red_thresh_summary10" formatted="false">Červená ikona na alebo pod koľkými %:</string>
-  <string name="pref_amber" formatted="false">Používať Jantárovú ikonu</string>
-  <string name="pref_amber_summary" formatted="false">Používať jantárovú ikonu, keď je batéria v strede?</string>
-  <string name="pref_amber_help" formatted="false">Použiť alebo nepoužiť jantárovú ikonu pod určenou hranicou.</string>
-  <string name="pref_amber_thresh" formatted="false">Jantárová hranica</string>
-  <string name="pref_amber_thresh_summary" formatted="false">Jantárová pod koľkými %:</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">Jantárová ikona na alebo pod koľkými %:</string>
-  <string name="pref_green" formatted="false">Používať zelenú ikonu</string>
-  <string name="pref_green_summary" formatted="false">Používať zelenú ikonu, keď je batéria plná?</string>
-  <string name="pref_green_help" formatted="false">Použiť alebo nepoužiť zelenú ikonu pod určenou hranicou.</string>
-  <string name="pref_green_thresh" formatted="false">Zelená hranica</string>
-  <string name="pref_green_thresh_summary" formatted="false">Zelená, pod koľkými %:</string>
   <string name="pref_cat_device_specific" formatted="false">Nastavenia špecifické pre konkrétne zariadenia</string>
   <string name="alarms_overview" formatted="false">Prehľad upozornení</string>
   <string name="pref_alarm_enabled" formatted="false">Zapnúť upozornenie</string>

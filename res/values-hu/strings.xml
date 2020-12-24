@@ -157,29 +157,6 @@
   <string name="pref_language_override" formatted="false">Nyelv megváltoztatása</string>
   <string name="pref_language_override_summary" formatted="false">Válasszon nyelvet:</string>
   <string name="pref_language_override_help" formatted="false">Ha az ön nyelvre fordítás hiányos vagy pontatlan, és jobban szeretne másikat, itt választhat egyet.</string>
-  <string name="pref_cat_color" formatted="false">Ikon színe</string>
-  <string name="pref_color_preview" formatted="false">Szín előnézet</string>
-  <string name="pref_color_preview_help" formatted="false">A szín előnézet remélhetőleg könnyebbé teszi a beállítások áttekintését\n\nEz nem létezik 10%-os módban, mert egyszerűen nem lenne értelme.</string>
-  <string name="pref_red" formatted="false">Vörös ikon használata</string>
-  <string name="pref_red_summary" formatted="false">Vörös legyen az ikon, amikor a töltöttség alacsony?</string>
-  <string name="pref_red_help" formatted="false">Használhat egy vörös ikont, ha a töltöttségi szint a megadott küszöbérték alá megy.</string>
-  <string name="pref_red_thresh" formatted="false">Vörös küszöbszint</string>
-  <string name="pref_red_thresh_summary" formatted="false">Vörös ikon ennyi %-os töltöttség alatt:</string>
-  <string name="pref_red_thresh_summary10" formatted="false">Vörös ikon ennél vagy ennél alacsonyabb töltöttségnél:</string>
-  <string name="pref_red_thresh_help" formatted="false">Megadhatja az értéket, ami alatt (10%-os módban már ennél) az ikon pirosra váltson.\n\nA küszöbérték alatt minden érték pirosan fog megjelenni.\n\nA 10%-os módban a dolgok némileg másképp működnek, de maguktól értetődők.</string>
-  <string name="pref_amber" formatted="false">Sárga ikon használata</string>
-  <string name="pref_amber_summary" formatted="false">Sárga legyen az ikon, amikor a töltöttség közepes?</string>
-  <string name="pref_amber_help" formatted="false">Használhat egy sárga ikont, ha a töltöttségi szint a megadott küszöbérték alá megy.</string>
-  <string name="pref_amber_thresh" formatted="false">Sárga küszöbszint</string>
-  <string name="pref_amber_thresh_summary" formatted="false">Sárga ikon ennyi %-os töltöttség alatt:</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">Sárga ikon ennél vagy ennél alacsonyabb töltöttségnél:</string>
-  <string name="pref_amber_thresh_help" formatted="false">Megadhatja az értéket, ami alatt (10%-os módban már ennél) az ikon sárgára váltson.\n\nAz ikon 5%-kal magasabb szinttől lehet sárga, amit a vörös felső határának beállított. Például ha az ikon 15%-ig vörös, akkor a legkisebb megadható érték 20% lesz.\n\nA 10%-os módban a dolgok némileg másképp működnek, de maguktól értetődők.</string>
-  <string name="pref_green" formatted="false">Zöld ikon használata</string>
-  <string name="pref_green_summary" formatted="false">Zöld legyen az ikon, amikor a töltöttség magas?</string>
-  <string name="pref_green_help" formatted="false">Használhat egy zöld ikont, ha a töltöttségi szint a megadott küszöbérték alá megy.</string>
-  <string name="pref_green_thresh" formatted="false">Zöld szín határa</string>
-  <string name="pref_green_thresh_summary" formatted="false">Zöld ikon ennyi %-os töltöttség felett:</string>
-  <string name="pref_green_thresh_help" formatted="false">Megadja a töltöttségi szintet, ami fölött az ikon zöld legyen.\n\nAz ikon attól a szinttől lehet zöld, amit a sárga felső határának beállított. Például ha az ikon 40%-tól sárga, akkor a legkisebb megadható érték 40% lesz.\n\nA 10%-os módban a dolgok némileg másképp működnek, de maguktól értetődők.</string>
   <string name="pref_cat_device_specific" formatted="false">Eszközre jellemző beállítások</string>
   <string name="alarms_overview" formatted="false">Riasztások áttekintése</string>
   <string name="pref_alarm_enabled" formatted="false">Riasztás enegedélyezése</string>
