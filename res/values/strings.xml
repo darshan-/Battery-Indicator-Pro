@@ -370,8 +370,8 @@
   <string formatted="false" name="alarm_settings_summary">Control notifications for low/full battery</string>
   <string formatted="false" name="alarm_settings_help">
     You can have BatteryBot notify you when your battery level
-    reaches a certain point (e.g., the battery becomes fully charged,
-    the battery level drops below 20%).
+    reaches a certain condition (e.g., the battery becomes fully charged,
+    the battery level drops below 20%, and many others).
   </string>
   <string formatted="false" name="other_settings">Other Settings</string>
   <string formatted="false" name="other_settings_help">
@@ -736,87 +736,6 @@
     option on.  Remember, on most devices this will just make the icon
     turn solid white.
   </string>
-  <string formatted="false" name="pref_cat_color">Icon Color</string>
-  <string formatted="false" name="pref_cat_color_help">
-    In order to keep the binary package for BatteryBot
-    reasonably small, there are some limitations for the colors.  At
-    the time of writing, you can have a red icon as high as 30%, an
-    amber icon as high as 50%, and a green icon as low as 20%.  I
-    think these are reasonable compromises that should work for 99% of
-    users.\n
-
-    \nTo give you maximum control, the colors can be turned on or off
-    independently.  This means that you can have as much as a
-    four-tiered color scheme, where the icon is green when it is very
-    full, then grayscale, then amber, then red.  Of course, most
-    people probably have the amber and green thresholds set to the
-    same value, so that the icon is never grayscale.
-  </string>
-  <string formatted="false" name="pref_color_preview">Color Preview</string>
-  <string formatted="false" name="pref_color_preview_help">
-    The color preview will hopefully make it really easy to visualize
-    what effect your color settings will have.\n
-
-    \nThis doesn\'t exist in 10% mode, because it just wouldn\'t make
-    sense.
-  </string>
-  <string formatted="false" name="pref_red">Use Red Icon</string>
-  <string formatted="false" name="pref_red_summary">Use red icon when charge is low?</string>
-  <string formatted="false" name="pref_red_help">
-    Whether or not to use a red icon below the specified threshold.
-  </string>
-  <string formatted="false" name="pref_red_thresh">Red Threshold</string>
-  <string formatted="false" name="pref_red_thresh_summary">Red icon below what charge percentage:</string>
-  <string formatted="false" name="pref_red_thresh_summary10">Red icon at or below what charge percentage:</string>
-  <string formatted="false" name="pref_red_thresh_help">Specifies the charge level which
-    the icon should turn red below (or <i>at</i>, in 10% Mode).\n
-
-    \nThe options for the red threshold include all the values (in
-    multiples of 5) for which there are red icons available.\n
-
-    \nIn 10% Mode, things work slightly differently but should be
-    self-explanatory.
-  </string>
-  <string formatted="false" name="pref_amber">Use Amber Icon</string>
-  <string formatted="false" name="pref_amber_summary">Use amber icon when charge is medium?</string>
-  <string formatted="false" name="pref_amber_help">
-    Whether or not to use an amber icon below the specified threshold.
-  </string>
-  <string formatted="false" name="pref_amber_thresh">Amber Threshold</string>
-  <string formatted="false" name="pref_amber_thresh_summary">Amber icon below what charge percentage:</string>
-  <string formatted="false" name="pref_amber_thresh_summary10">Amber icon at or below what charge percentage:</string>
-  <string formatted="false" name="pref_amber_thresh_help">Specifies the charge level
-    which the icon should turn amber below (or <i>at</i>, in 10%
-    Mode).\n
-
-    \nThe options for the amber threshold include all the values (in
-    multiples of 5) for which there are amber icons available,
-    starting 5 percentage points above the red threshold (if there is
-    one).  For example, if you have the red threshold set to 15, then
-    your lowest option here will be 20.\n
-
-    \nIn 10% Mode, things work slightly differently but should be
-    self-explanatory.
-  </string>
-  <string formatted="false" name="pref_green">Use Green Icon</string>
-  <string formatted="false" name="pref_green_summary">Use green icon when charge is high?</string>
-  <string formatted="false" name="pref_green_help">
-    Whether or not to use a green icon at or above the specified threshold.
-  </string>
-  <string formatted="false" name="pref_green_thresh">Green Threshold</string>
-  <string formatted="false" name="pref_green_thresh_summary">Green icon at or above what charge percentage:</string>
-  <string formatted="false" name="pref_green_thresh_help">Specifies the charge level
-    which the icon should be green at or above.\n
-
-    \nThe options for the green threshold include all the values (in
-    multiples of 5) for which there are green icons available,
-    starting at the highest active threshold you have set for red or
-    amber.  For example, if you have the amber threshold set to 40,
-    then your lowest option here will be 40.\n
-
-    \nIn 10% Mode, things work slightly differently but should be
-    self-explanatory.
-  </string>
 
   <string formatted="false" name="pref_cat_device_specific">Device Specific Settings</string>
   <!--string name="pref_cat_device_specific_help"></string-->
@@ -838,8 +757,8 @@
     \n• To delete an alarm, long-press it, then select \"Delete
     Alarm\".  (You can also delete an alarm from the individual alarm
     settings page by pressing MENU then \"Delete Alarm\".)
-    \n• To quickly toggle whether an alarm is enabled, press the alarm
-    clock icon to the left of the alarm text.  (You can also enable or
+    \n• To easily toggle whether an alarm is enabled, press the toggle
+    switch to the side of the alarm text.  (You can also enable or
     disable an alarm from the individual alarm settings page.)
   </string>
 

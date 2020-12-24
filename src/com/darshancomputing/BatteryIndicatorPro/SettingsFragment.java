@@ -626,16 +626,4 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         startActivity(intent);
     }
-
-    // private final OnPreferenceClickListener notifChanBListener = new OnPreferenceClickListener() {
-    //     @Override
-    //     public boolean onPreferenceClick(Preference p) {
-    //         enableNotifsButtonClick();
-    //         return true;
-    //     }
-    // };
-
-    // public void enableNotifsButtonClick(android.view.View v) {
-    //     System.out.println(".................................................. FRenableNotifsButtonClick");
-    // }
 }

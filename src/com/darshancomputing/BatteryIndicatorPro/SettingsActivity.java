@@ -199,8 +199,6 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void enableNotifsButtonClick(android.view.View v) {
-        System.out.println(".................................................. enableNotifsButtonClick");
-        //frag.enableNotifsButtonClick(v);
         frag.enableNotifsButtonClick();
     }
 }
