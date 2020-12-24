@@ -226,25 +226,6 @@
   <string name="pref_language_override_summary" formatted="false">Odaberi jezik:</string>
   <string name="pref_classic_color_mode" formatted="false">Nametni standardnu temu</string>
   <string name="pref_classic_color_mode_summary" formatted="false">Ovo obično ne pomaže; molimo vas pročitajte uputstva</string>
-  <string name="pref_cat_color" formatted="false">Boja ikonice</string>
-  <string name="pref_color_preview" formatted="false">Primeni boju nakratko</string>
-  <string name="pref_red" formatted="false">Koristi crvenu ikonicu</string>
-  <string name="pref_red_summary" formatted="false">Koristi ikonicu kada je procenat nizak?</string>
-  <string name="pref_red_help" formatted="false">Primeniti ili ne primeniti crvenu ikonicu kada punjenje padne ispod određene granice.</string>
-  <string name="pref_red_thresh" formatted="false">Crvena granica</string>
-  <string name="pref_red_thresh_summary" formatted="false">Primeniti crvenu ikonicu kada procenat padnje ispod;</string>
-  <string name="pref_red_thresh_summary10" formatted="false">Primeniti crvenu ikonicu kada procenat dođe do, ili padne ispod određene granice:</string>
-  <string name="pref_amber" formatted="false">Koristi narandžastu ikonicu</string>
-  <string name="pref_amber_summary" formatted="false">Koristi narandžastu ikonicu kada je procenat baterije na 50%?</string>
-  <string name="pref_amber_help" formatted="false">Primeniti ili ne primeniti narandžastu ikonicu kada punjenje padne ispod određene granice.</string>
-  <string name="pref_amber_thresh" formatted="false">Narandžasta granica</string>
-  <string name="pref_amber_thresh_summary" formatted="false">Primeniti narandžastu ikonicu kada procenat padnje ispod;</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">Primeniti crvenu ikonicu kada procenat dođe do, ili padne ispod određene granice:</string>
-  <string name="pref_green" formatted="false">Koristi zelenu ikonicu</string>
-  <string name="pref_green_summary" formatted="false">Koristi zelenu ikonu kada je procenat baterije visok?</string>
-  <string name="pref_green_help" formatted="false">Primeniti ili ne primeniti zelenu ikonicu kada punjenje iznad određene granice.</string>
-  <string name="pref_green_thresh" formatted="false">Zelena granica</string>
-  <string name="pref_green_thresh_summary" formatted="false">Zelena ikonica iznad kog procenta:</string>
   <string name="pref_cat_device_specific" formatted="false">Podešavanja vezana za ovaj uređaj</string>
   <string name="alarms_overview" formatted="false">Pregled alarma</string>
   <string name="pref_alarm_enabled" formatted="false">Omogući alarm</string>

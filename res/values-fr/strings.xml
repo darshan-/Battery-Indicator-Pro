@@ -131,30 +131,6 @@
   <string name="pref_language_override" formatted="false">Outrepasser la langue</string>
   <string name="pref_language_override_summary" formatted="false">Sélectionnez une langue :</string>
   <string name="pref_language_override_help" formatted="false">Si la traduction dans votre langue est incomplète ou inexacte et que vous préférez en utiliser une autre, potentiellement meilleure, vous pouvez le faire ici.</string>
-  <string name="pref_cat_color" formatted="false">Couleur de l\'icône</string>
-  <string name="pref_cat_color_help" formatted="false">Afin de garder le fichier de l\'application le plus petit possible, j\'ai posé quelques limitations pour les couleurs. À l\'heure où j\'écris, vous pouvez assigner l\'icône rouge jusqu\'à un maximum de 30%, l\'icône orange jusqu\'à un maximum de 50% et l\'icone verte entre 20% et 100%. Je pense que ces limitations sont raisonables et qu\'elles conviendront à 99% des utilisateurs.\n\nAfin de vous laisser un maximum de contrôle, les couleurs peuvent être activées/désactivées indépendamment. Ce qui veux dire que vous pouvez avoir jusqu\'à 4 niveaux de couleurs, partant du vert quand la batterie est complètement chargée, puis grise, puis orange et enfin rouge. Biensûr la plupart des utilisateurs auront fixé la limite inférieure du vert et supérieure de l\'orange à la même valeur ce qui fait que l\'icône ne sera jamais grise.</string>
-  <string name="pref_color_preview" formatted="false">Aperçu des couleurs</string>
-  <string name="pref_color_preview_help" formatted="false">L\'aperçu des couleurs est prévu pour visualiser facilement vos paramètres afin de déterminer s\'ils vous conviennent.\n\nL\'aperçu n\'existe pas avec le mode 10% car le résultat n\'aurait pas de sens.</string>
-  <string name="pref_red" formatted="false">Utiliser l\'icône rouge</string>
-  <string name="pref_red_summary" formatted="false">Utiliser l\'icône rouge lorsque la charge est faible ?</string>
-  <string name="pref_red_help" formatted="false">Utiliser ou non l\'icône rouge en dessous du seuil spécifié.</string>
-  <string name="pref_red_thresh" formatted="false">Seuil rouge</string>
-  <string name="pref_red_thresh_summary" formatted="false">Afficher l\'icône rouge en dessous de quel pourcentage ?</string>
-  <string name="pref_red_thresh_summary10" formatted="false">Afficher l\'icône rouge en dessous ou à quel pourcentage ?</string>
-  <string name="pref_red_thresh_help" formatted="false">Spécifie le niveau de charge en dessous duquel (ou <i>auquel</i>, en mode 10%) l\'icône doit passer au rouge.\n\nVous pouvez choisir n\'importe quel nombre (multiple de 5) pour lequel l\'icône rouge sera affichée.\n\nEn mode 10% les choses sont un peu différentes mais restent triviales.</string>
-  <string name="pref_amber" formatted="false">Utiliser l\'icône orange</string>
-  <string name="pref_amber_summary" formatted="false">Utiliser l\'icône orange lorsque la charge est moyenne ?</string>
-  <string name="pref_amber_help" formatted="false">Utiliser ou non l\'icône orange en dessous du seuil spécifié.</string>
-  <string name="pref_amber_thresh" formatted="false">Seuil orange</string>
-  <string name="pref_amber_thresh_summary" formatted="false">Afficher l\'icône orange en dessous de quel pourcentage ?</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">Afficher l\'icône orange en dessous ou à quel pourcentage ?</string>
-  <string name="pref_amber_thresh_help" formatted="false">Spécifie le niveau de charge en dessous duquel (ou <i>auquel</i>, en mode 10%) l\'icône doit passer au orange.\n\nVous pouvez choisir n\'importe quel nombre (multiple de 5) pour lequel l\'icône orange sera affichée.\n\nEn mode 10% les choses sont un peu différentes mais restent triviales.</string>
-  <string name="pref_green" formatted="false">Utiliser l\'icône verte</string>
-  <string name="pref_green_summary" formatted="false">Utiliser l\'icône verte lorsque la charge est haute ?</string>
-  <string name="pref_green_help" formatted="false">Utiliser ou non l\'icône verte au dessus du seuil spécifié.</string>
-  <string name="pref_green_thresh" formatted="false">Seuil vert</string>
-  <string name="pref_green_thresh_summary" formatted="false">Afficher l\'icône orange au dessus de quel pourcentage ?</string>
-  <string name="pref_green_thresh_help" formatted="false">Spécifie le niveau de charge au dessus duquel (ou <i>auquel</i>, en mode 10%) l\'icône doit passer au vert.\n\nVous pouvez choisir n\'importe quel nombre (multiple de 5) supérieur au seuil orange et rouge pour lequel l\'icône verte sera affichée. Par exemple si l\'icône orange s\'affiche à 40%, le minimum disponible pour l\'icône verte sera 40%.\n\nEn mode 10% les choses sont un peu différentes mais restent triviales.</string>
   <string name="pref_cat_device_specific" formatted="false">Paramètres spécifiques au matériel</string>
   <string name="alarms_overview" formatted="false">Aperçu des alarmes</string>
   <string name="alarms_overview_help" formatted="false">Cette page vous permet d\'ajouter de nouvelles alarmes, activer ou désactiver rapidement les alarmes existantes, ou supprimer des alarmes.\n\nPour ajouter une nouvelle alarme, appuyez sur \"Ajouter une alarme\" - cela va créer une nouvelle alarme et vous amène à la page de paramètres, où vous pouvez contrôler les paramètres de la nouvelle alarme. Voir l\'aide sur cette page pour plus de détails.\n\nSous le bouton \"Ajouter une alarme\" se trouve la liste de toutes les alarmes que vous avez créé.\n\n• Pour modifier une alarme existante, il suffit de la sélectionner.\n• Pour supprimer une alarme, il faut effectuer un appui long sur une alarme, puis sélectionner \"Supprimer l\'alarme\". (Vous pouvez également supprimer une alarme à partir de la page des paramètres individuels de l\'alarme en appuyant sur MENU, puis sur \"Supprimer l\'alarme\".)\n• Pour basculer rapidement si une alarme est activée, il faut appuyer sur l\'icône horloge située à la gauche du texte de l\'alarme. (Vous pouvez également activer ou désactiver une alarme à partir de la page des paramètres individuels de l\'alarme.)</string>

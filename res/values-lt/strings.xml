@@ -125,25 +125,6 @@
   <string name="pref_cat_language" formatted="false">Kalba</string>
   <string name="pref_language_override" formatted="false">Kalbos Nepaisymas</string>
   <string name="pref_language_override_summary" formatted="false">Pasirinkti kalbą:</string>
-  <string name="pref_cat_color" formatted="false">Ikonų Spalvos</string>
-  <string name="pref_color_preview" formatted="false">Spalvų Peržiūra</string>
-  <string name="pref_red" formatted="false">Naudoti Raudoną Ikoną</string>
-  <string name="pref_red_summary" formatted="false">Naudoti raudoną ikoną kai mažas baterijos lygis?</string>
-  <string name="pref_red_help" formatted="false">Naudoti ar ne raudoną ikoną, kai įkrovimas žemiau lygio.</string>
-  <string name="pref_red_thresh" formatted="false">Raudona Riba</string>
-  <string name="pref_red_thresh_summary" formatted="false">Raudona ikona, kai įkrovimas žemiau:</string>
-  <string name="pref_red_thresh_summary10" formatted="false">Raudona ikona ties ar žemiau ribos:</string>
-  <string name="pref_amber" formatted="false">Naudoti Geltoną Ikoną</string>
-  <string name="pref_amber_summary" formatted="false">Naudoti geltoną ikoną, kai vidutinis baterijos lygis?</string>
-  <string name="pref_amber_help" formatted="false">Naudoti ar ne geltoną ikoną, kai įkrovimas žemiau lygio.</string>
-  <string name="pref_amber_thresh" formatted="false">Geltona Riba</string>
-  <string name="pref_amber_thresh_summary" formatted="false">Geltona ikona, kai įkrovimas žemiau:</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">Geltona ikona ties ar žemiau ribos:</string>
-  <string name="pref_green" formatted="false">Naudoti Žalią Ikoną</string>
-  <string name="pref_green_summary" formatted="false">Naudoti žalią ikoną, kai aukštas baterijos lygis?</string>
-  <string name="pref_green_help" formatted="false">Naudoti ar ne žalią ikoną, kai įkrovimas žemiau lygio.</string>
-  <string name="pref_green_thresh" formatted="false">Žalia Riba</string>
-  <string name="pref_green_thresh_summary" formatted="false">Žalia ikona, kai įkrovimo lygis ties ar aukščiau:</string>
   <string name="pref_cat_device_specific" formatted="false">Specifiniai Prietaiso Nustatymai</string>
   <string name="alarms_overview" formatted="false">Aliarmų Peržiūra</string>
   <string name="pref_alarm_enabled" formatted="false">Įjungti Aliarmą</string>

@@ -130,20 +130,6 @@
   <string name="pref_cat_autostart" formatted="false">Otomatik başlat</string>
   <string name="pref_autostart_at_boot" formatted="false">Açılışta otomatik başlat</string>
   <string name="pref_cat_language" formatted="false">Dil</string>
-  <string name="pref_cat_color" formatted="false">İkon rengi</string>
-  <string name="pref_color_preview" formatted="false">Renk Önizleme</string>
-  <string name="pref_red" formatted="false">Kırmızı ikonu kullan</string>
-  <string name="pref_red_summary" formatted="false">Şarj düşükken kırmızı ikonu kullanmak ister misin?</string>
-  <string name="pref_red_help" formatted="false">Belirlenmiş eşiğin altındayken kırmızı ikonu kullanıp kullanmama.</string>
-  <string name="pref_red_thresh" formatted="false">Kırmızı eşik</string>
-  <string name="pref_red_thresh_summary" formatted="false">Şarj şu yüzdenin altındayken kırmızı ikonu kullan:</string>
-  <string name="pref_red_thresh_summary10" formatted="false">Şarj şu yüzdede ya da daha aşağıdaysa kırmızı ikonu kullan:</string>
-  <string name="pref_amber" formatted="false">Sarı İkonu Kullan</string>
-  <string name="pref_amber_summary" formatted="false">Şarj orta seviyedeyken kehribar renkli simgeyi kullan?</string>
-  <string name="pref_amber_thresh" formatted="false">Kehribar eşiği</string>
-  <string name="pref_green" formatted="false">Yeşil İkonu Kullan</string>
-  <string name="pref_green_summary" formatted="false">Şarj yüksek iken yeşil ikonu kullanmak ister misin?</string>
-  <string name="pref_green_thresh" formatted="false">Yeşil Eşik</string>
   <string name="pref_cat_device_specific" formatted="false">Cihaza Özel Ayarlar</string>
   <string name="pref_alarm_enabled" formatted="false">Alarmı Etkinleştir</string>
   <string name="pref_cat_alarm_conditions" formatted="false">Alarm Koşulları</string>

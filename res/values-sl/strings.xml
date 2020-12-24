@@ -113,22 +113,6 @@
   <string name="pref_autostart_at_boot_summary" formatted="false">Zaženi Battery Indicator ko se naprava zažene:</string>
   <string name="pref_cat_language" formatted="false">Jezik</string>
   <string name="pref_language_override_summary" formatted="false">Izberi jezik:</string>
-  <string name="pref_cat_color" formatted="false">Barva ikone</string>
-  <string name="pref_color_preview" formatted="false">Predogled barve</string>
-  <string name="pref_red" formatted="false">Uporabi rdečo ikono</string>
-  <string name="pref_red_summary" formatted="false">Uporabim rdečo ikono ko je stanje nizko?</string>
-  <string name="pref_red_thresh" formatted="false">Rdeča meja</string>
-  <string name="pref_red_thresh_summary" formatted="false">Rdeča ikona pod mejo procentov:</string>
-  <string name="pref_red_thresh_summary10" formatted="false">Rdeča ikona na in pod mejo procentov:</string>
-  <string name="pref_amber" formatted="false">Uporabi oranžno ikono</string>
-  <string name="pref_amber_summary" formatted="false">Uporabim oranžno ikono ko je stanje srednje?</string>
-  <string name="pref_amber_thresh" formatted="false">Oranžna meja</string>
-  <string name="pref_amber_thresh_summary" formatted="false">Oranžna ikona pod mejo procentov:</string>
-  <string name="pref_amber_thresh_summary10" formatted="false">Oranžna ikona na in pod mejo procentov:</string>
-  <string name="pref_green" formatted="false">Uporabi zeleno ikono</string>
-  <string name="pref_green_summary" formatted="false">Uporabim zeleno ikono ko je stanje visoko?</string>
-  <string name="pref_green_thresh" formatted="false">Zelena meja</string>
-  <string name="pref_green_thresh_summary" formatted="false">Zelena ikona na in nad mejo procentov:</string>
   <string name="pref_cat_device_specific" formatted="false">Nastavitve za specifično napravo</string>
   <string name="alarms_overview" formatted="false">Pregled alarmov</string>
   <string name="pref_alarm_enabled" formatted="false">Omogoči alarm</string>
