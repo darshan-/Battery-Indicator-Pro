@@ -117,6 +117,7 @@
 
   <color name="secondary_text">#666</color>
   <color name="primary_text">#111</color>
+  <color name="mid_text">#383838</color>
   <color name="help_text">#222</color>
 
   <color name="settings_accent">@color/accent</color>

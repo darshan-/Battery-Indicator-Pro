@@ -9,6 +9,7 @@
 
   <color name="secondary_text">#999</color>
   <color name="primary_text">#eee</color>
+  <color name="mid_text">#b8b8b8</color>
   <color name="help_text">#eee</color>
 
   <color name="menu_icon_tint">#ccc</color>
