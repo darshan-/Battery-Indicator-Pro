@@ -6,14 +6,16 @@
               android:paddingBottom="10dp"
 >
   <Button android:id="@android:id/summary"
-          android:layout_height="@dimen/tls_button_height"
           android:layout_width="wrap_content"
+          android:layout_height="40dp"
           android:layout_marginLeft="69dp"
           android:layout_gravity="center_horizontal"
-          android:textSize="@dimen/tls_button_fs"
           android:textAllCaps="false"
-          android:paddingLeft="25dp"
-          android:paddingRight="25dp"
+          android:paddingLeft="15dp"
+          android:paddingRight="15dp"
           android:onClick="enableNotifsButtonClick"
+          android:textColor="@color/windowBackground"
+          android:background="@drawable/button"
+          android:foreground="?attr/selectableItemBackground"
   />
 </LinearLayout>
