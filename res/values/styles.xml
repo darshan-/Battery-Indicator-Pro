@@ -85,12 +85,19 @@
 
   <color name="status_bar">@color/windowBackground</color>
 
+  <style name="dialog_title_style">
+    <item name="android:textColor">@color/dialog_title</item>
+    <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+  </style>
+
   <style name="dialog_theme" parent="AlertDialog.AppCompat">
     <item name="android:windowIsFloating">true</item>
     <item name="android:isLightTheme">@bool/windowLightStatusBar</item>
     <item name="android:colorAccent">@color/dialog_accent</item>
     <item name="colorAccent">@color/dialog_accent</item>
     <item name="android:windowBackground">@color/dialog_background</item>
+    <item name="android:windowTitleStyle">@style/dialog_title_style</item>
+    <item name="android:textColorPrimary">@color/dialog_primary_text</item>
   </style>
 
   <color name="colorBackground">@color/windowBackground</color>
@@ -115,6 +122,8 @@
   <color name="dialog_accent">@color/dc_light_blue</color>
   <color name="dialog_text">#000</color>
 
+  <color name="dialog_title">#000</color>
+  <color name="dialog_primary_text">#222</color>
   <color name="secondary_text">#666</color>
   <color name="primary_text">#111</color>
   <color name="mid_text">#383838</color>
