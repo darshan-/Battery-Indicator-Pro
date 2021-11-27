@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2020 Darshan Computing, LLC
+    Copyright (c) 2010-2021 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -13,6 +13,27 @@
 */
 
 package com.darshancomputing.BatteryIndicatorPro;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+//import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
+//import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -28,6 +49,32 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AlarmEditActivity extends AppCompatActivity {
+    private Resources res;
+    private PreferenceScreen mPreferenceScreen;
+    //private SharedPreferences settings;
+    private AlarmDatabase alarms;
+    private Cursor mCursor;
+    private AlarmAdapter mAdapter;
+    private NotificationManager mNotificationManager;
+    private AlarmEditFragment frag;
+
+    public static final String KEY_ENABLED      = "enabled";
+    public static final String KEY_TYPE         = "type";
+    public static final String KEY_THRESHOLD    = "threshold";
+
+    public static final String KEY_CHAN_SETTINGS_B = "channel_settings_button";
+
+    public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
+
+    private static final String[] chargeEntries = {
+        "5%", "10%", "15%", "20%", "25%", "30%", "35%", "40%", "45%", "50%",
+        "55%", "60%", "65%", "70%", "75%", "80%", "85%", "90%", "95%", "99%"};
+    private static final String[] chargeValues = {
+        "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
+        "55", "60", "65", "70", "75", "80", "85", "90", "95", "99"};
+
+    private boolean chanDisabled;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,17 +101,17 @@ public class AlarmEditActivity extends AppCompatActivity {
         setContentView(R.layout.prefs);
 
         if (savedInstanceState == null) {
-            frag = new SettingsFragment();
+            frag = new AlarmEditFragment();
 
             getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.settings, frag, "")
                 .commit();
         } else {
-            frag = (SettingsFragment) getSupportFragmentManager().findFragmentByTag("");
+            frag = (AlarmEditFragment) getSupportFragmentManager().findFragmentByTag("");
         }
 
-        frag.setScreen(R.xml.main_pref_screen);
+        frag.setScreen();
     }
 
     private void setWindowSubtitle(String subtitle) {
@@ -100,6 +147,41 @@ public class AlarmEditActivity extends AppCompatActivity {
             return true;
         default:
             return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private class AlarmAdapter {
+        public int id;
+        String type, threshold;
+        Boolean enabled;
+
+        AlarmAdapter() {
+            requery();
+        }
+
+        void requery() {
+                      id = mCursor.getInt   (mCursor.getColumnIndex(AlarmDatabase.KEY_ID));
+                    type = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_TYPE));
+               threshold = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
+                 enabled = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_ENABLED)) == 1);
+
+            chanDisabled = mNotificationManager.getNotificationChannel(type).getImportance() == 0;
+         }
+
+        public void setEnabled(Boolean b) {
+            enabled = b;
+            alarms.setEnabled(id, enabled);
+        }
+
+        public void setType(String s) {
+            type = s;
+            chanDisabled = mNotificationManager.getNotificationChannel(type).getImportance() == 0;
+            alarms.setType(id, type);
+        }
+
+        void setThreshold(String s) {
+            threshold = s;
+            alarms.setThreshold(id, threshold);
         }
     }
 
