@@ -25,6 +25,14 @@
 
   <PreferenceCategory android:title="@string/pref_cat_channel_settings">
     <Preference
+        android:key="alarm_chan_disabled"
+        android:summary="@string/alarm_chan_disabled"
+        android:layout="@layout/alarm_chan_disabled"
+        android:enabled="false"
+        android:visibility="invisible"
+    />
+
+    <Preference
         android:key="channel_settings_button"
         android:layout="@layout/enable_notifications_button"
     />

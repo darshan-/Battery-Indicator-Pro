@@ -338,6 +338,7 @@
   <string formatted="false" name="app_notifs_alarms_disabled_summary">You have disabled all notifications for this app.  Please enable them to access your alarms.</string>
   <string formatted="false" name="alarm_notifs_disabled_b">Enable Alarms</string>
   <string formatted="false" name="alarm_notifs_disabled_summary">You have disabled the alarm notification group for this app.  Please enable it to access your alarms.</string>
+  <string formatted="false" name="alarm_chan_disabled">You have disabled notifications for this alarm type.  Please enable them to use this type of alarm.</string>
   <string formatted="false" name="alarm_chan_disabled_b">Enable This Alarm Type</string>
   <string formatted="false" name="alarm_chan_settings_b">Manage This Alarm Type</string>
 

@@ -57,6 +57,7 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
     public static final String KEY_TYPE         = "type";
     public static final String KEY_THRESHOLD    = "threshold";
 
+    public static final String KEY_CHAN_DISABLED   = "alarm_chan_disabled";
     public static final String KEY_CHAN_SETTINGS_B = "channel_settings_button";
 
     public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
@@ -91,7 +92,15 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
 
         setPreferences();
         mPreferenceScreen = getPreferenceScreen();
-        syncValuesAndSetListeners();
+        // Setting visible to false here seems, at least on Pixel 6, to default to not taking up space,
+        //   but it'll animate it in if necessary.  That's kinda nice in a way, though I'd be fine either way
+        //   if there weren't animations.  But given that animations seem to just happen, kinda nice is WAY
+        //   better than super awful, and it's super awful, in the normal case of the channel not being
+        //   disabled, to default to *showing* the message briefly, and conspicuously animating it away.  This
+        //   way it's a slight win to draw more attention to the channel being disabled, if it is.  But in any
+        //   case, again, it's infinitely better than the other way around: always animating it away in an
+        //   annoying and confusing fashion when everything is normal.
+        mPreferenceScreen.findPreference(KEY_CHAN_DISABLED).setVisible(false);
     }
 
     @Override
@@ -110,11 +119,13 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
         mAdapter.requery();
 
         matchEnabled();
+        syncValuesAndSetListeners();
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        mCursor.deactivate();
     }
 
     private void syncValuesAndSetListeners() {
@@ -130,6 +141,7 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
         ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_TYPE);
         lp.setValue(mAdapter.type);
         updateSummary(lp);
+
         lp.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference pref, Object newValue) {
                 if (mAdapter.type.equals(newValue)) return false;
@@ -172,23 +184,12 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
             Preference p = mPreferenceScreen.findPreference(KEY_ENABLED);
             p.setEnabled(false);
             ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_THRESHOLD);
-            //p = mPreferenceScreen.findPreference(KEY_THRESHOLD);
             lp.setEnabled(false);
 
-            //android.text.Spannable txt = (android.text.Spannable) sum;
-            android.text.Spannable txt = new android.text.SpannableString(getString(R.string.alarm_chan_disabled_b));
-            /*prefb.setSummary(R.string.alarm_chan_settings_b);
-            android.text.Spannable old = new android.text.SpannableString(prefb.getSummary());
-            Object[] spans = old.getSpans(0, old.length(), Object.class);
-            for (Object o : spans) {
-                txt.setSpan(o, 0, txt.length(), 0);
-            }*/
-            //txt.setSpan(new android.text.style.ForegroundColorSpan(0xffee4444), 0, txt.length(), 0);
-            txt.setSpan(new android.text.style.ForegroundColorSpan(0xffff2222), 0, txt.length(), 0);
-            //txt.setSpan(new android.text.style.ForegroundColorSpan(0xffffffff), 0, txt.length(), 0);
-            //txt.setSpan(new android.text.style.ForegroundColorSpan(0xffff0000), 0, txt.length(), 0);
-            //txt.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD), 0, txt.length(), 0);
-            prefb.setSummary(txt);
+            prefb.setSummary(R.string.alarm_chan_disabled_b);
+
+            p = mPreferenceScreen.findPreference(KEY_CHAN_DISABLED);
+            p.setVisible(true);
         } else {
             Preference p = mPreferenceScreen.findPreference(KEY_ENABLED);
             p.setEnabled(true);
@@ -196,6 +197,9 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
             setUpThresholdList(false);
 
             prefb.setSummary(R.string.alarm_chan_settings_b);
+
+            p = mPreferenceScreen.findPreference(KEY_CHAN_DISABLED);
+            p.setVisible(false);
         }
     }
 
@@ -304,18 +308,5 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         startActivity(intent);
-
-        // Intent intent;
-        // if (!appNotifsEnabled) {
-        //     intent = new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-        // } else {
-        //     intent = new Intent(android.provider.Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
-        //     intent.putExtra(android.provider.Settings.EXTRA_CHANNEL_ID, mainChan.getId());
-        // }
-
-        // intent.putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, getActivity().getPackageName());
-        // intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        // intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-        // startActivity(intent);
     }
 }

@@ -75,16 +75,16 @@ public class AlarmEditActivity extends AppCompatActivity {
 
         setContentView(R.layout.prefs);
 
-        if (savedInstanceState == null) {
+        // if (savedInstanceState == null) {
             frag = new AlarmEditFragment();
 
             getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.settings, frag, "")
+                .replace(R.id.settings, frag, "aef")
                 .commit();
-        } else {
-            frag = (AlarmEditFragment) getSupportFragmentManager().findFragmentByTag("");
-        }
+        //} else {
+        //    frag = (AlarmEditFragment) getSupportFragmentManager().findFragmentByTag("aef");
+        //}
 
         frag.setScreen();
     }
