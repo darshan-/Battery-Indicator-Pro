@@ -139,7 +139,7 @@ public class AlarmsFragment extends Fragment {
                     Toast.makeText(getActivity(), "Error!", Toast.LENGTH_SHORT).show();
                 }
                 ComponentName comp = new ComponentName(getActivity().getPackageName(), AlarmEditActivity.class.getName());
-                startActivity(new Intent().setComponent(comp).putExtra(AlarmEditActivity.EXTRA_ALARM_ID, id));
+                startActivity(new Intent().setComponent(comp).putExtra(AlarmEditFragment.EXTRA_ALARM_ID, id));
             }
         });
 
@@ -326,7 +326,7 @@ public class AlarmsFragment extends Fragment {
         summary_box.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 ComponentName comp = new ComponentName(getActivity().getPackageName(), AlarmEditActivity.class.getName());
-                startActivity(new Intent().setComponent(comp).putExtra(AlarmEditActivity.EXTRA_ALARM_ID, id));
+                startActivity(new Intent().setComponent(comp).putExtra(AlarmEditFragment.EXTRA_ALARM_ID, id));
             }
         });
 

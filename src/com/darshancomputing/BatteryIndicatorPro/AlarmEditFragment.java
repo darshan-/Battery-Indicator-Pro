@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -37,6 +38,7 @@ import java.util.Locale;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceChangeListener;
 //import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
@@ -45,6 +47,30 @@ import androidx.preference.PreferenceScreen;
 
 public class AlarmEditFragment extends PreferenceFragmentCompat {
     private Resources res;
+
+    private PreferenceScreen mPreferenceScreen;
+    private AlarmDatabase alarms;
+    private Cursor mCursor;
+    private AlarmAdapter mAdapter;
+    private NotificationManager mNotificationManager;
+
+    public static final String KEY_ENABLED      = "enabled";
+    public static final String KEY_TYPE         = "type";
+    public static final String KEY_THRESHOLD    = "threshold";
+
+    public static final String KEY_CHAN_SETTINGS_B = "channel_settings_button";
+
+    public static final String EXTRA_ALARM_ID = "com.darshancomputing.BatteryIndicatorPro.AlarmID";
+
+    private static final String[] chargeEntries = {
+        "5%", "10%", "15%", "20%", "25%", "30%", "35%", "40%", "45%", "50%",
+        "55%", "60%", "65%", "70%", "75%", "80%", "85%", "90%", "95%", "99%"};
+    private static final String[] chargeValues = {
+        "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
+        "55", "60", "65", "70", "75", "80", "85", "90", "95", "99"};
+
+    // I'll keep track per alarm chan type, right?
+    private boolean chanDisabled;
 
     public void setScreen() {
         if (res != null)
@@ -58,6 +84,7 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         res = getResources();
+        alarms = new AlarmDatabase(getActivity());
 
         setPreferences();
     }
@@ -72,7 +99,181 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
         super.onPause();
     }
 
-    // See old syncValuesAndSetListeners()
+    private void syncValuesAndSetListeners() {
+        CheckBoxPreference cb = (CheckBoxPreference) mPreferenceScreen.findPreference(KEY_ENABLED);
+        cb.setChecked(mAdapter.enabled);
+        cb.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            public boolean onPreferenceChange(Preference pref, Object newValue) {
+                mAdapter.setEnabled((Boolean) newValue);
+                return true;
+            }
+        });
+
+        ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_TYPE);
+        lp.setValue(mAdapter.type);
+        updateSummary(lp);
+        lp.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            public boolean onPreferenceChange(Preference pref, Object newValue) {
+                if (mAdapter.type.equals(newValue)) return false;
+
+                mAdapter.setType((String) newValue);
+
+                ((ListPreference) pref).setValue((String) newValue);
+                updateSummary((ListPreference) pref);
+
+                setUpThresholdList(true);
+
+                matchEnabled(); // Call after setUpThresholdList, to make sure to disable if necessary
+
+                return false;
+            }
+        });
+
+        lp = (ListPreference) mPreferenceScreen.findPreference(KEY_THRESHOLD);
+        setUpThresholdList(false);
+        lp.setValue(mAdapter.threshold);
+        updateSummary(lp);
+        lp.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            public boolean onPreferenceChange(Preference pref, Object newValue) {
+                if (mAdapter.threshold.equals(newValue)) return false;
+
+                mAdapter.setThreshold((String) newValue);
+
+                ((ListPreference) pref).setValue((String) newValue);
+                updateSummary((ListPreference) pref);
+
+                return false;
+            }
+        });
+    }
+
+    private void matchEnabled() {
+        Preference prefb = mPreferenceScreen.findPreference(KEY_CHAN_SETTINGS_B);
+
+        if (chanDisabled) {
+            Preference p = mPreferenceScreen.findPreference(KEY_ENABLED);
+            p.setEnabled(false);
+            ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_THRESHOLD);
+            //p = mPreferenceScreen.findPreference(KEY_THRESHOLD);
+            lp.setEnabled(false);
+
+            //android.text.Spannable txt = (android.text.Spannable) sum;
+            android.text.Spannable txt = new android.text.SpannableString(getString(R.string.alarm_chan_disabled_b));
+            /*prefb.setSummary(R.string.alarm_chan_settings_b);
+            android.text.Spannable old = new android.text.SpannableString(prefb.getSummary());
+            Object[] spans = old.getSpans(0, old.length(), Object.class);
+            for (Object o : spans) {
+                txt.setSpan(o, 0, txt.length(), 0);
+            }*/
+            //txt.setSpan(new android.text.style.ForegroundColorSpan(0xffee4444), 0, txt.length(), 0);
+            txt.setSpan(new android.text.style.ForegroundColorSpan(0xffff2222), 0, txt.length(), 0);
+            //txt.setSpan(new android.text.style.ForegroundColorSpan(0xffffffff), 0, txt.length(), 0);
+            //txt.setSpan(new android.text.style.ForegroundColorSpan(0xffff0000), 0, txt.length(), 0);
+            //txt.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD), 0, txt.length(), 0);
+            prefb.setSummary(txt);
+        } else {
+            Preference p = mPreferenceScreen.findPreference(KEY_ENABLED);
+            p.setEnabled(true);
+
+            setUpThresholdList(false);
+
+            prefb.setSummary(R.string.alarm_chan_settings_b);
+        }
+    }
+
+    public void deleteAlarm() {
+        alarms.deleteAlarm(mAdapter.id);
+    }
+
+    private void updateSummary(ListPreference lp) {
+        Boolean formatterUsed;
+
+        lp.setSummary("%%");
+        if (lp.getSummary().length() == 2)
+            formatterUsed = false;
+        else
+            formatterUsed = true;
+
+        String entry = (String) lp.getEntry();
+        if (entry == null) entry = "";
+        if (formatterUsed)
+            entry = entry.replace("%", "%%");
+
+        if (lp.isEnabled())
+            lp.setSummary(Str.currently_set_to + entry);
+        else
+            lp.setSummary(Str.alarm_pref_not_used);
+    }
+
+    private void setUpThresholdList(Boolean resetValue) {
+        ListPreference lp = (ListPreference) mPreferenceScreen.findPreference(KEY_THRESHOLD);
+
+        if (mAdapter.type.equals("temp_drops") || mAdapter.type.equals("temp_rises")) {
+            lp.setEntries(Str.temp_alarm_entries);
+            lp.setEntryValues(Str.temp_alarm_values);
+            lp.setEnabled(true);
+
+            if (resetValue) {
+                if (mAdapter.type.equals("temp_drops"))
+                    mAdapter.setThreshold("60");
+                else
+                    mAdapter.setThreshold("460");
+                lp.setValue(mAdapter.threshold);
+            }
+        } else if (mAdapter.type.equals("charge_drops") || mAdapter.type.equals("charge_rises")) {
+            lp.setEntries(chargeEntries);
+            lp.setEntryValues(chargeValues);
+            lp.setEnabled(true);
+
+            if (resetValue) {
+                if (mAdapter.type.equals("charge_drops"))
+                    mAdapter.setThreshold("20");
+                else
+                    mAdapter.setThreshold("90");
+                        
+                lp.setValue(mAdapter.threshold);
+            }
+        } else {
+            lp.setEnabled(false);
+        }
+
+        updateSummary(lp);
+    }
+
+    private class AlarmAdapter {
+        public int id;
+        String type, threshold;
+        Boolean enabled;
+
+        AlarmAdapter() {
+            requery();
+        }
+
+        void requery() {
+                      id = mCursor.getInt   (mCursor.getColumnIndex(AlarmDatabase.KEY_ID));
+                    type = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_TYPE));
+               threshold = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
+                 enabled = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_ENABLED)) == 1);
+
+            chanDisabled = mNotificationManager.getNotificationChannel(type).getImportance() == 0;
+         }
+
+        public void setEnabled(Boolean b) {
+            enabled = b;
+            alarms.setEnabled(id, enabled);
+        }
+
+        public void setType(String s) {
+            type = s;
+            chanDisabled = mNotificationManager.getNotificationChannel(type).getImportance() == 0;
+            alarms.setType(id, type);
+        }
+
+        void setThreshold(String s) {
+            threshold = s;
+            alarms.setThreshold(id, threshold);
+        }
+    }
 
     // Do I need/want to set this up to go to the paricular alarm channel, if app channel is unblocked
     //   but alarm channel is?  Seem like it?
