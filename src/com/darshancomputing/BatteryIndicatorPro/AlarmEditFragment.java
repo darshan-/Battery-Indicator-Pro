@@ -21,7 +21,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
@@ -69,7 +68,6 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
         "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
         "55", "60", "65", "70", "75", "80", "85", "90", "95", "99"};
 
-    // I'll keep track per alarm chan type, right?
     private boolean chanDisabled;
 
     public void setScreen() {
@@ -86,12 +84,32 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
         res = getResources();
         alarms = new AlarmDatabase(getActivity());
 
+        mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        mCursor = alarms.getAlarm(getActivity().getIntent().getIntExtra(EXTRA_ALARM_ID, -1));
+        mAdapter = new AlarmAdapter();
+
         setPreferences();
+        mPreferenceScreen = getPreferenceScreen();
+        syncValuesAndSetListeners();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mCursor.close();
+        alarms.close();
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
+        mCursor.requery();
+        mCursor.moveToFirst();
+        mAdapter.requery();
+
+        matchEnabled();
     }
 
     @Override
@@ -275,9 +293,18 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
         }
     }
 
-    // Do I need/want to set this up to go to the paricular alarm channel, if app channel is unblocked
-    //   but alarm channel is?  Seem like it?
     public void enableNotifsButtonClick() {
+        if (mAdapter.type == null)
+            return;
+
+        Intent intent;
+        intent = new Intent(android.provider.Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+        intent.putExtra(android.provider.Settings.EXTRA_CHANNEL_ID, mAdapter.type);
+        intent.putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, getActivity().getPackageName());
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        startActivity(intent);
+
         // Intent intent;
         // if (!appNotifsEnabled) {
         //     intent = new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
