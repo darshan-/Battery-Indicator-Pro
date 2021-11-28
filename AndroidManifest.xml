@@ -43,6 +43,7 @@
       android:theme="@style/bi_main_theme"
       android:stateNotNeeded="true"
       android:launchMode="singleTask"
+      android:exported="true"
       >
     <intent-filter android:label="@string/app_launcher_name">
       <action android:name="android.intent.action.MAIN" />
@@ -55,12 +56,14 @@
       android:name=".SettingsActivity"
       android:theme="@style/bi_settings_theme"
       android:excludeFromRecents="true"
+      android:exported="false"
       />
 
   <activity
       android:name=".AlarmEditActivity"
       android:theme="@style/bi_settings_theme"
       android:excludeFromRecents="true"
+      android:exported="false"
       />
 
   <activity
@@ -68,6 +71,7 @@
       android:theme="@style/bi_help_theme"
       android:stateNotNeeded="true"
       android:excludeFromRecents="true"
+      android:exported="false"
       />
 
   <activity
@@ -75,6 +79,7 @@
       android:theme="@style/bi_help_theme"
       android:stateNotNeeded="true"
       android:excludeFromRecents="true"
+      android:exported="false"
       />
 
   <service

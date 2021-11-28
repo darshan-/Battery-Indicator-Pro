@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2020 Darshan Computing, LLC
+    Copyright (c) 2009-2021 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -210,17 +210,17 @@ public class BatteryInfoService extends Service {
         CurrentHack.setMultiplier(Integer.valueOf(settings.getString(SettingsActivity.KEY_CURRENT_HACK_MULTIPLIER, "1")));
 
         Intent currentInfoIntent = new Intent(this, BatteryInfoActivity.class).putExtra(EXTRA_CURRENT_INFO, true);
-        currentInfoPendingIntent = PendingIntent.getActivity(this, RC_MAIN, currentInfoIntent, 0);
+        currentInfoPendingIntent = PendingIntent.getActivity(this, RC_MAIN, currentInfoIntent, PendingIntent.FLAG_IMMUTABLE);
 
         Intent updatePredictorIntent = new Intent(this, BatteryInfoService.class);
         updatePredictorIntent.putExtra(EXTRA_UPDATE_PREDICTOR, true);
-        updatePredictorPendingIntent = PendingIntent.getService(this, 0, updatePredictorIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        updatePredictorPendingIntent = PendingIntent.getService(this, 0, updatePredictorIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         alarmsIntent = new Intent(this, BatteryInfoActivity.class).putExtra(EXTRA_EDIT_ALARMS, true);
 
         Intent serviceAlarmsIntent = new Intent(this, BatteryInfoService.class).putExtra(EXTRA_EDIT_ALARMS, true);
         //alarmsPendingIntent = PendingIntent.getService(this, RC_ALARMS_EDIT, serviceAlarmsIntent, 0);
-        alarmsPendingIntent = PendingIntent.getActivity(this, RC_ALARMS_EDIT, alarmsIntent, 0);
+        alarmsPendingIntent = PendingIntent.getActivity(this, RC_ALARMS_EDIT, alarmsIntent, PendingIntent.FLAG_IMMUTABLE);
 
         // Intent serviceCancelAlarmsIntent = new Intent(this, BatteryInfoService.class).putExtra(EXTRA_CANCEL_ALARMS, true);
         // alarmsCancelPendingIntent = PendingIntent.getService(this, RC_ALARMS_CANCEL, serviceCancelAlarmsIntent, 0);
