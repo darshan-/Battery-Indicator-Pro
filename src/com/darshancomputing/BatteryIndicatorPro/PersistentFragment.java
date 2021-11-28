@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2020 Darshan Computing, LLC
+    Copyright (c) 2009-2021 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -127,18 +127,18 @@ public class PersistentFragment extends Fragment {
         // From now on, BootCompletedReceiver should ignore value in sp_service and use our value.
         //   We're not removing the value from sp_service, because that would require a commit, and
         //   the whole point of this is avoiding cross-process writes.
-        if (! sp_main.getBoolean(SettingsActivity.KEY_MIGRATED_SERVICE_DESIRED, false))
-            sp_main.edit().putBoolean(SettingsActivity.KEY_MIGRATED_SERVICE_DESIRED, true).apply();
+        if (! sp_main.getBoolean(SettingsFragment.KEY_MIGRATED_SERVICE_DESIRED, false))
+            sp_main.edit().putBoolean(SettingsFragment.KEY_MIGRATED_SERVICE_DESIRED, true).apply();
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
-        if (sp_main.getBoolean(SettingsActivity.KEY_FIRST_RUN, true)) {
+        if (sp_main.getBoolean(SettingsFragment.KEY_FIRST_RUN, true)) {
             // If you ever need a first-run dialog again, this is when you would show it
 
-            sp_main.edit().putBoolean(SettingsActivity.KEY_FIRST_RUN, false).apply();
+            sp_main.edit().putBoolean(SettingsFragment.KEY_FIRST_RUN, false).apply();
         }
     }
 
@@ -182,9 +182,9 @@ public class PersistentFragment extends Fragment {
     }
 
     public void loadSettingsFiles() {
-        settings = getActivity().getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
-        sp_service = getActivity().getSharedPreferences(SettingsActivity.SP_SERVICE_FILE, Context.MODE_MULTI_PROCESS);
-        sp_main = getActivity().getSharedPreferences(SettingsActivity.SP_MAIN_FILE, Context.MODE_MULTI_PROCESS);
+        settings = getActivity().getSharedPreferences(SettingsFragment.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
+        sp_service = getActivity().getSharedPreferences(SettingsFragment.SP_SERVICE_FILE, Context.MODE_MULTI_PROCESS);
+        sp_main = getActivity().getSharedPreferences(SettingsFragment.SP_MAIN_FILE, Context.MODE_MULTI_PROCESS);
     }
 
     public void sendServiceMessage(int what) {

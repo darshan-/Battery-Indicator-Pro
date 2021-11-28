@@ -420,7 +420,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         }
 
         if (key.equals(KEY_CURRENT_HACK_PREFER_FS))
-            CurrentHack.setPreferFS(mSharedPreferences.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+            CurrentHack.setPreferFS(mSharedPreferences.getBoolean(KEY_CURRENT_HACK_PREFER_FS,
                                                                   res.getBoolean(R.bool.default_prefer_fs_current_hack)));
 
         for (int i=0; i < RESET_SERVICE.length; i++) {

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2020 Darshan Computing, LLC
+    Copyright (c) 2010-2021 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -49,24 +49,24 @@ public class SettingsHelpActivity extends AppCompatActivity {
         if (pref_screen == null) {
             setContentView(R.layout.main_settings_help);
             setWindowSubtitle(res.getString(R.string.settings_activity_subtitle));
-        } else if (pref_screen.equals(SettingsActivity.KEY_NOTIFICATION_SETTINGS)) {
+        } else if (pref_screen.equals(SettingsFragment.KEY_NOTIFICATION_SETTINGS)) {
             setContentView(R.layout.notification_settings_help);
             setWindowSubtitle(res.getString(R.string.notification_settings));
-        } else if (pref_screen.equals(SettingsActivity.KEY_STATUS_BAR_ICON_SETTINGS)) {
+        } else if (pref_screen.equals(SettingsFragment.KEY_STATUS_BAR_ICON_SETTINGS)) {
             setContentView(R.layout.status_bar_icon_settings_help);
             setWindowSubtitle(res.getString(R.string.status_bar_icon_settings));
-        } else if (pref_screen.equals(SettingsActivity.KEY_CURRENT_HACK_SETTINGS)) {
+        } else if (pref_screen.equals(SettingsFragment.KEY_CURRENT_HACK_SETTINGS)) {
             setContentView(R.layout.current_hack_settings_help);
             setWindowSubtitle(res.getString(R.string.current_hack_settings));
-        } else if (pref_screen.equals(SettingsActivity.KEY_OTHER_SETTINGS)) {
+        } else if (pref_screen.equals(SettingsFragment.KEY_OTHER_SETTINGS)) {
             setContentView(R.layout.other_settings_help);
             setWindowSubtitle(res.getString(R.string.other_settings));
 
             has_links = new int[] {};
-        } else if (pref_screen.equals(SettingsActivity.KEY_ALARMS_SETTINGS)) {
+        } else if (pref_screen.equals(SettingsFragment.KEY_ALARMS_SETTINGS)) {
             setContentView(R.layout.alarm_settings_help);
             setWindowSubtitle(res.getString(R.string.alarm_settings));
-        } else if (pref_screen.equals(SettingsActivity.KEY_ALARM_EDIT_SETTINGS)) {
+        } else if (pref_screen.equals(SettingsFragment.KEY_ALARM_EDIT_SETTINGS)) {
             setContentView(R.layout.alarm_edit_help);
             setWindowSubtitle(res.getString(R.string.alarm_settings_subtitle));
         } else {

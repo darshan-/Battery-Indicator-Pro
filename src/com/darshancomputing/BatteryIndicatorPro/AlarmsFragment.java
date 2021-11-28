@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2020 Darshan Computing, LLC
+    Copyright (c) 2010-2021 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -160,7 +160,7 @@ public class AlarmsFragment extends Fragment {
             mCursor.registerDataSetObserver(new AlarmsObserver());
 
         pfrag = PersistentFragment.getInstance(getFragmentManager());
-        convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+        convertF = pfrag.settings.getBoolean(SettingsFragment.KEY_CONVERT_F,
                                              pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
     }
 
@@ -209,7 +209,7 @@ public class AlarmsFragment extends Fragment {
             chanDisabled.put(chan_id, chan.getImportance() == 0);
         }
 
-        convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+        convertF = pfrag.settings.getBoolean(SettingsFragment.KEY_CONVERT_F,
                                              pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
         if (mCursor != null) mCursor.requery();
@@ -234,7 +234,7 @@ public class AlarmsFragment extends Fragment {
         switch (item.getItemId()) {
         case R.id.menu_help:
             ComponentName comp = new ComponentName(getActivity().getPackageName(), SettingsHelpActivity.class.getName());
-            intent = new Intent().setComponent(comp).putExtra(SettingsActivity.EXTRA_SCREEN, SettingsActivity.KEY_ALARMS_SETTINGS);
+            intent = new Intent().setComponent(comp).putExtra(SettingsActivity.EXTRA_SCREEN, SettingsFragment.KEY_ALARMS_SETTINGS);
             startActivity(intent);
 
             return true;

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2020 Darshan Computing, LLC
+    Copyright (c) 2010-2021 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -121,7 +121,7 @@ public class LogViewFragment extends ListFragment {
 
         setHasOptionsMenu(true);
 
-        convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+        convertF = pfrag.settings.getBoolean(SettingsFragment.KEY_CONVERT_F,
                                                 pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
         col = new Col();
 
@@ -156,7 +156,7 @@ public class LogViewFragment extends ListFragment {
 
         pfrag.setLVF(this);
 
-        convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+        convertF = pfrag.settings.getBoolean(SettingsFragment.KEY_CONVERT_F,
                                              pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
     }
 

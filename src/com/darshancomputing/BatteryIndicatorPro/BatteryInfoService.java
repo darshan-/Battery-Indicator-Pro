@@ -205,9 +205,9 @@ public class BatteryInfoService extends Service {
         sdkVersioning();
 
         CurrentHack.setContext(this);
-        CurrentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+        CurrentHack.setPreferFS(settings.getBoolean(SettingsFragment.KEY_CURRENT_HACK_PREFER_FS,
                                                     res.getBoolean(R.bool.default_prefer_fs_current_hack)));
-        CurrentHack.setMultiplier(Integer.valueOf(settings.getString(SettingsActivity.KEY_CURRENT_HACK_MULTIPLIER, "1")));
+        CurrentHack.setMultiplier(Integer.valueOf(settings.getString(SettingsFragment.KEY_CURRENT_HACK_MULTIPLIER, "1")));
 
         Intent currentInfoIntent = new Intent(this, BatteryInfoActivity.class).putExtra(EXTRA_CURRENT_INFO, true);
         currentInfoPendingIntent = PendingIntent.getActivity(this, RC_MAIN, currentInfoIntent, PendingIntent.FLAG_IMMUTABLE);
@@ -363,15 +363,15 @@ public class BatteryInfoService extends Service {
     }
 
     private void loadSettingsFiles() {
-        settings = getSharedPreferences(SettingsActivity.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
-        sp_service = getSharedPreferences(SettingsActivity.SP_SERVICE_FILE, Context.MODE_MULTI_PROCESS);
+        settings = getSharedPreferences(SettingsFragment.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
+        sp_service = getSharedPreferences(SettingsFragment.SP_SERVICE_FILE, Context.MODE_MULTI_PROCESS);
     }
 
     private void reloadSettings(boolean cancelFirst) {
         loadSettingsFiles();
-        CurrentHack.setPreferFS(settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+        CurrentHack.setPreferFS(settings.getBoolean(SettingsFragment.KEY_CURRENT_HACK_PREFER_FS,
                                                     res.getBoolean(R.bool.default_prefer_fs_current_hack)));
-        CurrentHack.setMultiplier(Integer.valueOf(settings.getString(SettingsActivity.KEY_CURRENT_HACK_MULTIPLIER, "1")));
+        CurrentHack.setMultiplier(Integer.valueOf(settings.getString(SettingsFragment.KEY_CURRENT_HACK_MULTIPLIER, "1")));
 
         Str.setResources(res); // Language override may have changed
 
@@ -403,7 +403,7 @@ public class BatteryInfoService extends Service {
 
         // Writing to settings here should only happen when Service first started, so shouldn't have conflict
         // if (sp_service.getInt(LAST_SDK_API, 0) < 21) {
-        //     settings_editor.putBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, true);
+        //     settings_editor.putBoolean(SettingsFragment.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, true);
         // }
 
         sps_editor.putInt(LAST_SDK_API, android.os.Build.VERSION.SDK_INT);
@@ -420,7 +420,7 @@ public class BatteryInfoService extends Service {
         if (intent != null)
             info.load(intent, sp_service);
 
-        predictor.setPredictionType(settings.getString(SettingsActivity.KEY_PREDICTION_TYPE,
+        predictor.setPredictionType(settings.getString(SettingsFragment.KEY_PREDICTION_TYPE,
                                                        Str.default_prediction_type));
         predictor.update(info);
         info.prediction.updateRelativeTime();
@@ -527,8 +527,8 @@ public class BatteryInfoService extends Service {
     }
 
     private void prepareNotification() {
-        mainNotificationTopLine = lineFor(SettingsActivity.KEY_TOP_LINE);
-        mainNotificationBottomLine = lineFor(SettingsActivity.KEY_BOTTOM_LINE);
+        mainNotificationTopLine = lineFor(SettingsFragment.KEY_TOP_LINE);
+        mainNotificationBottomLine = lineFor(SettingsFragment.KEY_BOTTOM_LINE);
 
         mainNotificationB.setSmallIcon(iconFor(info.percent))
             .setOngoing(true)
@@ -576,7 +576,7 @@ public class BatteryInfoService extends Service {
     }
 
     private String lineFor(String key) {
-        String req = settings.getString(key, key.equals(SettingsActivity.KEY_TOP_LINE) ? "remaining" : "vitals");
+        String req = settings.getString(key, key.equals(SettingsFragment.KEY_TOP_LINE) ? "remaining" : "vitals");
 
         if (req.equals("remaining"))
             return predictionLine();
@@ -596,7 +596,7 @@ public class BatteryInfoService extends Service {
             if (predicted.days > 0)
                 line = Str.n_days_m_hours(predicted.days, predicted.hours);
             else if (predicted.hours > 0) {
-                String verbosity = settings.getString(SettingsActivity.KEY_TIME_REMAINING_VERBOSITY,
+                String verbosity = settings.getString(SettingsFragment.KEY_TIME_REMAINING_VERBOSITY,
                                                       res.getString(R.string.default_time_remaining_verbosity));
                 if (verbosity.equals("condensed"))
                     line = Str.n_hours_m_minutes_medium(predicted.hours, predicted.minutes);
@@ -617,24 +617,24 @@ public class BatteryInfoService extends Service {
     }
 
     private String vitalStatsLine() {
-        Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+        Boolean convertF = settings.getBoolean(SettingsFragment.KEY_CONVERT_F,
                                                res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
         String line = Str.healths[info.health] + " / " + Str.formatTemp(info.temperature, convertF);
 
         if (info.voltage > 500)
             line += " / " + Str.formatVoltage(info.voltage);
-        if (settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
-            settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_VITAL_STATS, false)) {
+        if (settings.getBoolean(SettingsFragment.KEY_ENABLE_CURRENT_HACK, false) &&
+            settings.getBoolean(SettingsFragment.KEY_DISPLAY_CURRENT_IN_VITAL_STATS, false)) {
             Long current = null;
-            if (settings.getBoolean(SettingsActivity.KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS, false))
+            if (settings.getBoolean(SettingsFragment.KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS, false))
                 current = CurrentHack.getAvgCurrent();
             if (current == null) // Either don't prefer avg or avg isn't available
                 current = CurrentHack.getCurrent();
             if (current != null)
                 line += " / " + String.valueOf(current) + "mA";
         }
-        if (settings.getBoolean(SettingsActivity.KEY_STATUS_DURATION_IN_VITAL_SIGNS, false)) {
+        if (settings.getBoolean(SettingsFragment.KEY_STATUS_DURATION_IN_VITAL_SIGNS, false)) {
             float statusDurationHours = (now - info.last_status_cTM) / (60 * 60 * 1000f);
             line += " / " + String.format("%.1f", statusDurationHours) + "h"; // TODO: Translatable 'h'
         }
@@ -659,23 +659,23 @@ public class BatteryInfoService extends Service {
     private int iconFor(int percent) {
         String default_set = "builtin.plain_number";
 
-        String icon_set = settings.getString(SettingsActivity.KEY_ICON_SET, "null");
+        String icon_set = settings.getString(SettingsFragment.KEY_ICON_SET, "null");
         if (! icon_set.startsWith("builtin.")) icon_set = "null"; // TODO: Remove this line to re-enable plugins
 
         if (icon_set.equals("null")) {
             icon_set = default_set;
 
             // Writing to settings here should only happen when Service first started, so shouldn't have conflict
-            settings.edit().putString(SettingsActivity.KEY_ICON_SET, default_set).apply();
+            settings.edit().putString(SettingsFragment.KEY_ICON_SET, default_set).apply();
         }
 
-        Boolean indicate_charging = settings.getBoolean(SettingsActivity.KEY_INDICATE_CHARGING, true);
+        Boolean indicate_charging = settings.getBoolean(SettingsFragment.KEY_INDICATE_CHARGING, true);
 
         if (icon_set.equals("builtin.plain_number")) {
             return ((info.status == BatteryInfo.STATUS_CHARGING && indicate_charging) ? chargingIcon0 : plainIcon0) + info.percent;
         } else if (icon_set.equals("builtin.smaller_number")) {
             return ((info.status == BatteryInfo.STATUS_CHARGING && indicate_charging) ? small_chargingIcon0 : small_plainIcon0) + info.percent;
-        } else if (!settings.getBoolean(SettingsActivity.KEY_CLASSIC_COLOR_MODE, false)) {
+        } else if (!settings.getBoolean(SettingsFragment.KEY_CLASSIC_COLOR_MODE, false)) {
             return R.drawable.w000 + info.percent;
         } else {
             return R.drawable.b000 + info.percent;
@@ -692,15 +692,15 @@ public class BatteryInfoService extends Service {
     }
 
     private void handleUpdateWithChangedStatus() {
-        if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, true)) {
+        if (settings.getBoolean(SettingsFragment.KEY_ENABLE_LOGGING, true)) {
             log_db.logStatus(info, now, LogDatabase.STATUS_NEW);
 
             if (info.status != info.last_status && info.last_status == BatteryInfo.STATUS_UNPLUGGED)
-                log_db.prune(Integer.valueOf(settings.getString(SettingsActivity.KEY_MAX_LOG_AGE, Str.default_max_log_age)));
+                log_db.prune(Integer.valueOf(settings.getString(SettingsFragment.KEY_MAX_LOG_AGE, Str.default_max_log_age)));
         }
 
-        if (settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
-            settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_VITAL_STATS, false)) {
+        if (settings.getBoolean(SettingsFragment.KEY_ENABLE_CURRENT_HACK, false) &&
+            settings.getBoolean(SettingsFragment.KEY_DISPLAY_CURRENT_IN_VITAL_STATS, false)) {
             mHandler.postDelayed(runRenotify, 1000);
             mHandler.postDelayed(runRenotify, 3000);
             mHandler.postDelayed(runRenotify, 9000);
@@ -722,7 +722,7 @@ public class BatteryInfoService extends Service {
     }
 
     private void handleUpdateWithSameStatus() {
-        if (settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, true))
+        if (settings.getBoolean(SettingsFragment.KEY_ENABLE_LOGGING, true))
             log_db.logStatus(info, now, LogDatabase.STATUS_OLD);
 
         if (info.percent % 10 == 0) {
@@ -785,7 +785,7 @@ public class BatteryInfoService extends Service {
 
         c = alarms.activeAlarmTempRises(info.temperature, sp_service.getInt(KEY_PREVIOUS_TEMP, 1));
         if (c != null) {
-            Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+            Boolean convertF = settings.getBoolean(SettingsFragment.KEY_CONVERT_F,
                                                    res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
             sps_editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
@@ -803,7 +803,7 @@ public class BatteryInfoService extends Service {
 
         c = alarms.activeAlarmTempDrops(info.temperature, sp_service.getInt(KEY_PREVIOUS_TEMP, 1));
         if (c != null) {
-            Boolean convertF = settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+            Boolean convertF = settings.getBoolean(SettingsFragment.KEY_CONVERT_F,
                                                    res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
             sps_editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);

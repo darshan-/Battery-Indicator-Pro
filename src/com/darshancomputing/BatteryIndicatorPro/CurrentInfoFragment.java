@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2020 Darshan Computing, LLC
+    Copyright (c) 2009-2021 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -139,9 +139,9 @@ public class CurrentInfoFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        CurrentHack.setPreferFS(pfrag.settings.getBoolean(SettingsActivity.KEY_CURRENT_HACK_PREFER_FS,
+        CurrentHack.setPreferFS(pfrag.settings.getBoolean(SettingsFragment.KEY_CURRENT_HACK_PREFER_FS,
                                                           pfrag.res.getBoolean(R.bool.default_prefer_fs_current_hack)));
-        CurrentHack.setMultiplier(Integer.valueOf(pfrag.settings.getString(SettingsActivity.KEY_CURRENT_HACK_MULTIPLIER, "1")));
+        CurrentHack.setMultiplier(Integer.valueOf(pfrag.settings.getString(SettingsFragment.KEY_CURRENT_HACK_MULTIPLIER, "1")));
     }
 
     @Override
@@ -161,9 +161,9 @@ public class CurrentInfoFragment extends Fragment {
         info.load(pfrag.sp_service);
         handleUpdatedBatteryInfo();
 
-        if (pfrag.settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
-            pfrag.settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW, false) &&
-            pfrag.settings.getBoolean(SettingsActivity.KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW, false))
+        if (pfrag.settings.getBoolean(SettingsFragment.KEY_ENABLE_CURRENT_HACK, false) &&
+            pfrag.settings.getBoolean(SettingsFragment.KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW, false) &&
+            pfrag.settings.getBoolean(SettingsFragment.KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW, false))
             mHandler.postDelayed(mARefresher, 2000);
     }
 
@@ -283,7 +283,7 @@ public class CurrentInfoFragment extends Fragment {
 
     private void handleUpdatedBatteryInfo() {
         bl.setLevel(info.percent);
-        //int c = pfrag.settings.getInt(SettingsActivity.KEY_UI_COLOR, Str.def_ui_color);
+        //int c = pfrag.settings.getInt(SettingsFragment.KEY_UI_COLOR, Str.def_ui_color);
         //bl.setColor(c);
         bl.setColor(Str.accent_color);
         blv.invalidate();
@@ -320,7 +320,7 @@ public class CurrentInfoFragment extends Fragment {
             tv.setText(s);
         }
 
-        Boolean convertF = pfrag.settings.getBoolean(SettingsActivity.KEY_CONVERT_F,
+        Boolean convertF = pfrag.settings.getBoolean(SettingsFragment.KEY_CONVERT_F,
                                                      pfrag.res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
         tv_health.setText(Str.healths[info.health]);
@@ -339,14 +339,14 @@ public class CurrentInfoFragment extends Fragment {
     private void refreshCurrent() {
         String s = "";
 
-        if (pfrag.settings.getBoolean(SettingsActivity.KEY_ENABLE_CURRENT_HACK, false) &&
-            pfrag.settings.getBoolean(SettingsActivity.KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW, false))
+        if (pfrag.settings.getBoolean(SettingsFragment.KEY_ENABLE_CURRENT_HACK, false) &&
+            pfrag.settings.getBoolean(SettingsFragment.KEY_DISPLAY_CURRENT_IN_MAIN_WINDOW, false))
         {
             current_icon.setVisibility(View.VISIBLE);
 
             Long current = null;
 
-            if (pfrag.settings.getBoolean(SettingsActivity.KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW, false))
+            if (pfrag.settings.getBoolean(SettingsFragment.KEY_PREFER_CURRENT_AVG_IN_MAIN_WINDOW, false))
                 current = CurrentHack.getAvgCurrent();
             if (current == null) // Either don't prefer avg or avg isn't available
                 current = CurrentHack.getCurrent();

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2018 Darshan Computing, LLC
+    Copyright (c) 2009-2021 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,15 +25,15 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences sp_main = context.getSharedPreferences(SettingsActivity.SP_MAIN_FILE, 0);
-        SharedPreferences sp_service = context.getSharedPreferences(SettingsActivity.SP_SERVICE_FILE, 0);
+        SharedPreferences sp_main = context.getSharedPreferences(SettingsFragment.SP_MAIN_FILE, 0);
+        SharedPreferences sp_service = context.getSharedPreferences(SettingsFragment.SP_SERVICE_FILE, 0);
 
-        String startPref = settings.getString(SettingsActivity.KEY_AUTOSTART, "auto");
+        String startPref = settings.getString(SettingsFragment.KEY_AUTOSTART, "auto");
 
         boolean service_desired;
 
         // Actual "migration" has to be done from main process, so we will read the old value here until such a time as it is migrated.
-        if (! sp_main.getBoolean(SettingsActivity.KEY_MIGRATED_SERVICE_DESIRED, false))
+        if (! sp_main.getBoolean(SettingsFragment.KEY_MIGRATED_SERVICE_DESIRED, false))
             service_desired = sp_service.getBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false);
         else
             service_desired = sp_main.getBoolean(BatteryInfoService.KEY_SERVICE_DESIRED, false);
@@ -45,7 +45,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         }
 
         // This receiver is called on PACKAGE_REPLACED, too, but we don't want to log boot in that case
-        if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction()) && settings.getBoolean(SettingsActivity.KEY_ENABLE_LOGGING, true))
+        if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction()) && settings.getBoolean(SettingsFragment.KEY_ENABLE_LOGGING, true))
             new LogDatabase(context).logBoot();
     }
 }

@@ -113,7 +113,7 @@ public class AlarmEditActivity extends AppCompatActivity {
         case R.id.menu_help:
             ComponentName comp = new ComponentName(getPackageName(), SettingsHelpActivity.class.getName());
             Intent intent = new Intent().setComponent(comp).putExtra(SettingsActivity.EXTRA_SCREEN,
-                                                                     SettingsActivity.KEY_ALARM_EDIT_SETTINGS);
+                                                                     SettingsFragment.KEY_ALARM_EDIT_SETTINGS);
             startActivity(intent);
 
             return true;
