@@ -102,8 +102,6 @@
   <string name="charging_from" formatted="false">充電開始</string>
   <string name="fully_charged" formatted="false">フル充電</string>
   <string name="since" formatted="false">から</string>
-  <string name="dialog_color_picker" formatted="false">色を選択</string>
-  <string name="press_color_to_apply" formatted="false">古いまたは新しい色を適用:</string>
   <string name="currently_using" formatted="false">現在使用中</string>
   <string name="currently_set_to" formatted="false">"現在の設定: "</string>
   <string name="currently_disabled" formatted="false">現在無効</string>

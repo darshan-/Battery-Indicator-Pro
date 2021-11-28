@@ -100,8 +100,6 @@
   <string name="charging_from" formatted="false">Заряжается от</string>
   <string name="fully_charged" formatted="false">Полностью заряжен</string>
   <string name="since" formatted="false">После</string>
-  <string name="dialog_color_picker" formatted="false">Выберите цвет</string>
-  <string name="press_color_to_apply" formatted="false">Применить старый или новый цвет:</string>
   <string name="currently_using" formatted="false">Сейчас использует</string>
   <string name="currently_set_to" formatted="false">"Текущая настройка: "</string>
   <string name="currently_disabled" formatted="false">Сейчас отключен</string>

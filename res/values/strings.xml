@@ -221,10 +221,6 @@
     <item quantity="one">For %d Hour</item>
     <item quantity="other">For %d Hours</item>
   </plurals>
-
-  <string name="dialog_color_picker">Choose Color</string>
-  <string name="press_color_to_apply">Apply old or new color:</string>
-
   <string formatted="false" name="currently_using">Currently using</string>
   <string formatted="false" name="currently_set_to">"Currently set to: "</string>
   <string formatted="false" name="currently_disabled">Currently Disabled</string>
@@ -391,7 +387,6 @@
   <string formatted="false" name="menu_alarm_channel">Alarm Channel Settings</string>
 
   <string formatted="false" name="pref_cat_ui_color">UI Color</string>
-  <string formatted="false" name="pref_ui_color">@string/pref_cat_ui_color</string>
   <string formatted="false" name="pref_ui_color_summary">Primary Color Throughout App</string>
 
   <string formatted="false" name="pref_cat_channel_settings">Notification Channel Settings</string>

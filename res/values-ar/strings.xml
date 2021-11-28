@@ -101,8 +101,6 @@
   <string name="charging_from" formatted="false">شحن من</string>
   <string name="fully_charged" formatted="false">الشحن كامل</string>
   <string name="since" formatted="false">منذ</string>
-  <string name="dialog_color_picker" formatted="false">اختر الوان</string>
-  <string name="press_color_to_apply" formatted="false">تطبيق الالوان القديمة او الجديدة:</string>
   <string name="currently_using" formatted="false">تستخدم حاليا</string>
   <string name="currently_set_to" formatted="false">"حاليا ضبط الى: "</string>
   <string name="currently_disabled" formatted="false">معطل حاليا</string>

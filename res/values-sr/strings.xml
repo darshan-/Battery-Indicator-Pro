@@ -106,8 +106,6 @@
   <string name="charging_from" formatted="false">Puni se od</string>
   <string name="fully_charged" formatted="false">100% puno</string>
   <string name="since" formatted="false">Od</string>
-  <string name="dialog_color_picker" formatted="false">Izaberi boju</string>
-  <string name="press_color_to_apply" formatted="false">Primeni staru ili novu boju:</string>
   <string name="currently_using" formatted="false">Trenutno koristi</string>
   <string name="currently_set_to" formatted="false">"Trenutno podešeno na : "</string>
   <string name="currently_disabled" formatted="false">Trenutno deaktivirano</string>

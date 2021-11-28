@@ -92,8 +92,6 @@
   <string name="charging_from" formatted="false">Cargando desde</string>
   <string name="fully_charged" formatted="false">Cargado</string>
   <string name="since" formatted="false">desde</string>
-  <string name="dialog_color_picker" formatted="false">Elegir color</string>
-  <string name="press_color_to_apply" formatted="false">A`plicar color viejo o nuevo</string>
   <string name="currently_using" formatted="false">Usando actualmente</string>
   <string name="currently_set_to" formatted="false">"Seleccionado:"</string>
   <string name="currently_disabled" formatted="false">Desactivado</string>

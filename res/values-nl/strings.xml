@@ -96,8 +96,6 @@
   <string name="charging_from" formatted="false">Aan het opladen vanaf</string>
   <string name="fully_charged" formatted="false">Volledig opgeladen</string>
   <string name="since" formatted="false">sinds</string>
-  <string name="dialog_color_picker" formatted="false">Kleur selecteren</string>
-  <string name="press_color_to_apply" formatted="false">Oude of nieuwe kleur toepassen:</string>
   <string name="currently_using" formatted="false">Je gebruikt nu</string>
   <string name="currently_set_to" formatted="false">"Ingesteld op: "</string>
   <string name="currently_disabled" formatted="false">Momenteel uitgeschakeld</string>

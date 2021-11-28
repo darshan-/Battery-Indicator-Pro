@@ -99,8 +99,6 @@
   <string name="charging_from" formatted="false">Lädt von</string>
   <string name="fully_charged" formatted="false">Voll geladen</string>
   <string name="since" formatted="false">Seit</string>
-  <string name="dialog_color_picker" formatted="false">Farbe auswählen</string>
-  <string name="press_color_to_apply" formatted="false">Übernehme alte oder neue Farbe</string>
   <string name="currently_using" formatted="false">Im Moment in Benutzung</string>
   <string name="currently_set_to" formatted="false">"Im Moment gesetzt auf: "</string>
   <string name="currently_disabled" formatted="false">Im Moment ausgeschalten</string>

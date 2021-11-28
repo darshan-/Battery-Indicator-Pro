@@ -92,8 +92,6 @@
   <string name="charging_from" formatted="false">den şarj ediliyor</string>
   <string name="fully_charged" formatted="false">Şarj Tam Dolu</string>
   <string name="since" formatted="false">den itibaren</string>
-  <string name="dialog_color_picker" formatted="false">Renk Seç</string>
-  <string name="press_color_to_apply" formatted="false">Eski veya yeni rengi uygula:</string>
   <string name="currently_using" formatted="false">Şu an kullanılıyor</string>
   <string name="currently_set_to" formatted="false">"Şu an buna ayarlı: "</string>
   <string name="currently_disabled" formatted="false">Şu An Etkin Değil</string>

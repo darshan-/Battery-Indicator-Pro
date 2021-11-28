@@ -4,8 +4,6 @@
 
 # -keep class **.R$*
 
--keep class com.darshancomputing.BatteryIndicatorPro.ColorPickerView$OnColorChangedListener
-
 # Optimizations: If you don't want to optimize, use the
 # proguard-android.txt configuration file instead of this one, which
 # turns off the optimization flags.  Adding optimization introduces

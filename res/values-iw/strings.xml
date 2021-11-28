@@ -86,8 +86,6 @@
   <string name="charging_from" formatted="false">בטעינה מ</string>
   <string name="fully_charged" formatted="false">טעונה במלואה</string>
   <string name="since" formatted="false">מ</string>
-  <string name="dialog_color_picker" formatted="false">בחירת צבע</string>
-  <string name="press_color_to_apply" formatted="false">החלת צבע קודם או חדש:</string>
   <string name="currently_using" formatted="false">כעת בשימוש</string>
   <string name="currently_set_to" formatted="false">"כעת מכוון ל: "</string>
   <string name="currently_disabled" formatted="false">אינו מאופשר כעת</string>
