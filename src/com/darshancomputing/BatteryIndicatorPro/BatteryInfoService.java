@@ -402,9 +402,9 @@ public class BatteryInfoService extends Service {
         SharedPreferences.Editor settings_editor = settings.edit();
 
         // Writing to settings here should only happen when Service first started, so shouldn't have conflict
-        if (sp_service.getInt(LAST_SDK_API, 0) < 21) {
-            settings_editor.putBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, true);
-        }
+        // if (sp_service.getInt(LAST_SDK_API, 0) < 21) {
+        //     settings_editor.putBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, true);
+        // }
 
         sps_editor.putInt(LAST_SDK_API, android.os.Build.VERSION.SDK_INT);
 
@@ -538,58 +538,8 @@ public class BatteryInfoService extends Service {
             .setContentIntent(currentInfoPendingIntent)
             .setVisibility(Notification.VISIBILITY_PUBLIC);
 
-        if (settings.getBoolean(SettingsActivity.KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, true)) {
-            mainNotificationB.setContentTitle(mainNotificationTopLine)
-                .setContentText(mainNotificationBottomLine);
-        } else {
-            String icon_area = settings.getString(SettingsActivity.KEY_ICON_AREA, res.getString(R.string.default_icon_area_content));
-
-            int layout_id = R.layout.main_notification;
-            if (icon_area.equals("percentage_first"))
-                layout_id = R.layout.main_notification_percentage_first;
-
-            notificationRV = new RemoteViews(getPackageName(), layout_id);
-
-            if (icon_area.equals("percentage")) {
-                notificationRV.setViewVisibility(R.id.percent, View.VISIBLE);
-                notificationRV.setViewVisibility(R.id.battery, View.GONE);
-            } else if (icon_area.equals("graphic")) {
-                notificationRV.setViewVisibility(R.id.percent, View.GONE);
-                notificationRV.setViewVisibility(R.id.battery, View.VISIBLE);
-            }
-
-            notificationRV.setImageViewBitmap(R.id.battery, bl.getBitmap());
-            bl.setLevel(info.percent);
-            // TODO: Set bl color here too?
-
-            notificationRV.setTextViewText(R.id.percent, "" + info.percent + Str.percent_symbol);
-            notificationRV.setTextViewText(R.id.top_line, android.text.Html.fromHtml(mainNotificationTopLine));
-            notificationRV.setTextViewText(R.id.bottom_line, mainNotificationBottomLine);
-
-            int color;
-            color = colorFor(SettingsActivity.KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR, SettingsActivity.KEY_CUSTOM_PERCENTAGE_TEXT_COLOR);
-            if (color != 0)
-                notificationRV.setTextColor(R.id.percent, color);
-            color = colorFor(SettingsActivity.KEY_NOTIFICATION_TOP_LINE_COLOR, SettingsActivity.KEY_CUSTOM_TOP_LINE_COLOR);
-            if (color != 0)
-                notificationRV.setTextColor(R.id.top_line, color);
-            color = colorFor(SettingsActivity.KEY_NOTIFICATION_BOTTOM_LINE_COLOR, SettingsActivity.KEY_CUSTOM_BOTTOM_LINE_COLOR);
-            if (color != 0)
-                notificationRV.setTextColor(R.id.bottom_line, color);
-
-            boolean default_show_box = res.getBoolean(R.bool.default_show_box_around_icon_area);
-            boolean show_box = settings.getBoolean(SettingsActivity.KEY_SHOW_BOX_AROUND_ICON_AREA, default_show_box);
-
-            if (show_box) {
-                color = res.getColor(R.color.notification_box_default_color);
-                if (! icon_area.equals("battery_first"))
-                    notificationRV.setInt(R.id.percent, "setBackgroundColor", color);
-                if (! icon_area.equals("percentage_first"))
-                    notificationRV.setInt(R.id.battery, "setBackgroundColor", color);
-            }
-
-            mainNotificationB.setContent(notificationRV);
-        }
+        mainNotificationB.setContentTitle(mainNotificationTopLine)
+            .setContentText(mainNotificationBottomLine);
     }
 
     // Since alpha values aren't permitted, return 0 for default

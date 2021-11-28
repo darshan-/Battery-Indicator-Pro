@@ -252,8 +252,7 @@
     code</a>.\n
 
     \nYou can read more about the Darshan Computing business
-    philosophy at the <a
-    href="https://www.darshancomputing.com">Darshan Computing, LLC
+    philosophy at the <a href="https://www.darshancomputing.com">Darshan Computing, LLC
     website</a>.  (Summary: Always user-first, ad-free, and useful
     free version.  Open source by default.)
   </string>
@@ -265,8 +264,7 @@
   </string>
 
   <string formatted="false" name="help_cat_other_apps">My Other Apps</string>
-  <string formatted="false" name="help_other_apps"><a
-    href="market://details?id=com.darshancomputing.tuner">Noteworthy Instrument Tuner</a>
+  <string formatted="false" name="help_other_apps"><a href="market://details?id=com.darshancomputing.tuner">Noteworthy Instrument Tuner</a>
   is an open-source, ad-free tuner for tuning guitars, ukuleles, and just about any other instrument.\n
 
   \n<a href="market://details?id=com.swapadoodle.android">Swap-a-Doodle!</a>
@@ -345,7 +343,7 @@
   <string formatted="false" name="notification_settings">Main Notification</string>
   <string formatted="false" name="notification_settings_summary">Configure the main notification</string>
   <string formatted="false" name="notification_settings_help">
-    You can configure which content to show in the pull-down notification and control its appearance.
+    You can configure which content to show in the pull-down notification.
   </string>
   <string formatted="false" name="status_bar_icon_settings">Status Bar Icon</string>
   <string formatted="false" name="status_bar_icon_settings_summary">Control icon sets</string>
@@ -399,33 +397,7 @@
   <string formatted="false" name="pref_cat_channel_settings">Notification Channel Settings</string>
   <string formatted="false" name="pref_manage_main_channel">Manage Main Channel</string>
 
-  <string formatted="false" name="pref_cat_notification_layout">Layout</string>
-  <string formatted="false" name="pref_use_system_notification_layout">Use System Layout</string>
-  <string formatted="false" name="pref_use_system_notification_layout_summary">Use system notification layout rather than custom BatteryBot layout?</string>
-  <string formatted="false" name="pref_use_system_notification_layout_help">
-    If enabled, the system notification layout will be used instead of
-    BatteryBot\'s custom layout. The system layout is less
-    customizable, but a small minority of devices don\'t report
-    default colors properly, making the custom layout ugly or hard to
-    read. Other devices use an unusual layout, making the custom
-    layout not fit in. Selecting this option will ensure that the
-    notification will look like any other notification.\n
-
-    \nNote that this will result in having the status bar icon used in
-    the notification.
-  </string>
-
   <string formatted="false" name="pref_cat_notification_content">Content</string>
-  <string formatted="false" name="pref_icon_area_content">Icon Area Content</string>
-  <string formatted="false" name="pref_icon_area_content_help">
-    Choose what you wish to see at the left end of the notification in the icon area.
-    You can have just the battery graphic, just the textual charge percentage, or both, in either order.
-  </string>
-  <string formatted="false" name="battery_graphic">Battery Graphic</string>
-  <string formatted="false" name="charge_percentage">Charge Percentage</string>
-  <string formatted="false" name="percentage_first">Percentage, Battery</string>
-  <string formatted="false" name="battery_first">Battery, Percentage</string>
-
   <string formatted="false" name="pref_top_line_content">Top Line Content</string>
   <string formatted="false" name="pref_top_line_content_help">
     Configure what goes in the top line of the notification: estimated
@@ -460,24 +432,6 @@
   <string formatted="false" name="pref_status_duration_in_vital_signs_help">
     If set, the vital signs line will also include the number of hours
     since the device became unplugged, plugged in, or fully charged.
-  </string>
-
-  <string formatted="false" name="pref_cat_notification_appearance">Appearance</string>
-  <string formatted="false" name="pref_cat_notification_appearance_help">
-    You can override the colors for the notification text if the defaults are hard to read
-    or if you just prefer something different.  You can also choose to override whether or not
-    to show a box around the icon area.
-  </string>
-
-  <string formatted="false" name="pref_notification_percentage_text_color">Percentage Text Color</string>
-  <string formatted="false" name="pref_custom_percentage_text_color">Custom Percentage Color</string>
-  <string formatted="false" name="pref_notification_top_line_color">Top Line Text Color</string>
-  <string formatted="false" name="pref_custom_top_line_color">Custom Top Line Color</string>
-  <string formatted="false" name="pref_notification_bottom_line_color">Bottom Line Text Color</string>
-  <string formatted="false" name="pref_custom_bottom_line_color">Custom Bottom Line Color</string>
-  <string formatted="false" name="pref_show_box_around_icon_area">Show Box Around Icon Area</string>
-  <string formatted="false" name="pref_show_box_around_icon_area_summary">
-    Show background color box in icon area?
   </string>
 
   <string formatted="false" name="system_default">System Default</string>

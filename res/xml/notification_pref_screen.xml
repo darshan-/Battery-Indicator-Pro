@@ -7,24 +7,7 @@
     />
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="@string/pref_cat_notification_layout">
-    <CheckBoxPreference
-       android:key="use_system_notification_layout"
-       android:title="@string/pref_use_system_notification_layout"
-       android:summary="@string/pref_use_system_notification_layout_summary"
-       android:defaultValue="@bool/default_use_system_notification_layout"
-    />
-  </PreferenceCategory>
-
   <PreferenceCategory android:title="@string/pref_cat_notification_content">
-    <ListPreference
-       android:key="icon_area"
-       android:title="@string/pref_icon_area_content"
-       android:entries="@array/icon_area_content_entries"
-       android:entryValues="@array/icon_area_content_values"
-       android:defaultValue="@string/default_icon_area_content"
-    />
-
     <ListPreference
        android:key="top_line"
        android:title="@string/pref_top_line_content"
@@ -54,60 +37,6 @@
        android:title="@string/pref_status_duration_in_vital_signs"
        android:summary="@string/pref_status_duration_in_vital_signs_summary"
        android:defaultValue="false"
-    />
-  </PreferenceCategory>
-
-  <PreferenceCategory
-      android:key="category_notification_appearance"
-      android:title="@string/pref_cat_notification_appearance"
-  >
-    <ListPreference
-       android:key="notification_percentage_text_color"
-       android:title="@string/pref_notification_percentage_text_color"
-       android:entries="@array/notification_text_color_entries"
-       android:entryValues="@array/notification_text_color_values"
-       android:defaultValue="default"
-    />
-
-    <com.darshancomputing.BatteryIndicatorPro.ColorPickerPreference
-        android:key="custom_percentage_text_color"
-        android:title="@string/pref_custom_percentage_text_color"
-        android:defaultValue="@color/main_notification_default_custom_text_color"
-    />
-
-    <CheckBoxPreference
-       android:key="show_box_around_icon_area"
-       android:title="@string/pref_show_box_around_icon_area"
-       android:summary="@string/pref_show_box_around_icon_area_summary"
-       android:defaultValue="@bool/default_show_box_around_icon_area"
-    />
-
-    <ListPreference
-       android:key="notification_top_line_color"
-       android:title="@string/pref_notification_top_line_color"
-       android:entries="@array/notification_text_color_entries"
-       android:entryValues="@array/notification_text_color_values"
-       android:defaultValue="default"
-    />
-
-    <com.darshancomputing.BatteryIndicatorPro.ColorPickerPreference
-        android:key="custom_top_line_color"
-        android:title="@string/pref_custom_top_line_color"
-        android:defaultValue="@color/main_notification_default_custom_text_color"
-    />
-
-    <ListPreference
-       android:key="notification_bottom_line_color"
-       android:title="@string/pref_notification_bottom_line_color"
-       android:entries="@array/notification_text_color_entries"
-       android:entryValues="@array/notification_text_color_values"
-       android:defaultValue="default"
-    />
-
-    <com.darshancomputing.BatteryIndicatorPro.ColorPickerPreference
-        android:key="custom_bottom_line_color"
-        android:title="@string/pref_custom_bottom_line_color"
-        android:defaultValue="@color/main_notification_default_custom_text_color"
     />
   </PreferenceCategory>
 </PreferenceScreen>

@@ -145,17 +145,7 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Больше настроек в версии Pro</string>
   <string name="pref_please_upgrade" formatted="false">В версии Pro значительно больше настроек и функций, включая информацию о токе аккумулятора (mA), полноцветные значки, предупреждения, журнал состояния аккумулятора, автоматическое/ручное отключение блокировки экрана и многое другое.</string>
   <string name="add_alarm" formatted="false">Добавить предупреждение</string>
-  <string name="pref_cat_notification_layout" formatted="false">Разметка</string>
-  <string name="pref_use_system_notification_layout" formatted="false">Использовать системную разметку</string>
-  <string name="pref_use_system_notification_layout_summary" formatted="false">Использовать системную разметку уведомлений вместо настраиваемой?</string>
-  <string name="pref_use_system_notification_layout_help" formatted="false">Если включено, будет использоваться системная разметка уведомлений вместо настраиваемой в BatteryBot. Системная разметка настраивается не столь гибко, однако некоторые устройства не передают правильно цвета по умолчанию, что приводит к тому, что пользовательская разметка выглядит некрасиво или получается трудночитаемой. В некоторых устройствах используется особая разметка, что приводит к тому, что настраиваемая разметка уведомлений вообще не годится. Выбор данной опции гарантирует, что уведомление программы будет выглядеть так же, как и любое другое.\n\nУчтите, что это приведет к отображению значка панели уведомлений в самом уведомлении.</string>
   <string name="pref_cat_notification_content" formatted="false">Содержание</string>
-  <string name="pref_icon_area_content" formatted="false">Содержание области значка</string>
-  <string name="pref_icon_area_content_help" formatted="false">Укажите, что вы хотите видеть с левой стороны уведомления в области значка. Это может быть только изображение батарейки, только заряд аккумулятора в процентах или то и другое в любом порядке.</string>
-  <string name="battery_graphic" formatted="false">Изображение батарейки</string>
-  <string name="charge_percentage" formatted="false">Заряд в процентах</string>
-  <string name="percentage_first" formatted="false">Проценты, Батарейка</string>
-  <string name="battery_first" formatted="false">Батарейка, Проценты</string>
   <string name="pref_top_line_content" formatted="false">Содержимое верхней строчки</string>
   <string name="pref_top_line_content_help" formatted="false">Настройте содержимое верхней строчки уведомления: оценка оставшегося времени (настраивается отдельно), время, прошедшее с момента изменения состояния (заряжается, работает от аккумулятора или полностью заряжен), или критически важные параметры аккумулятора (состояние, температура и напряжение).</string>
   <string name="pref_bottom_line_content" formatted="false">Содержимое нижней строчки</string>
@@ -171,16 +161,6 @@
   <string name="pref_status_duration_in_vital_signs" formatted="false">Продолжительность состояния в терминах критически важных параметров</string>
   <string name="pref_status_duration_in_vital_signs_summary" formatted="false">Включать время с момента изменения состояния критически важных параметров?</string>
   <string name="pref_status_duration_in_vital_signs_help" formatted="false">Если выбрано, строка критически важных параметров также будет включать время, прошедшее с момента отключения или подключения зарядного устройства или с момента полной зарядки аккумулятора.</string>
-  <string name="pref_cat_notification_appearance" formatted="false">Внешний вид</string>
-  <string name="pref_cat_notification_appearance_help" formatted="false">Можно переопределить цвета для текста уведомления, если цвета по умолчанию читаются с трудом или вы просто предпочитаете нечто другое. Вы также можете включить/выключить показ рамки вокруг области значка.</string>
-  <string name="pref_notification_percentage_text_color" formatted="false">Цвет текста процентов</string>
-  <string name="pref_custom_percentage_text_color" formatted="false">Настраиваемый цвет текста процентов</string>
-  <string name="pref_notification_top_line_color" formatted="false">Цвет текста верхней строчки</string>
-  <string name="pref_custom_top_line_color" formatted="false">Настраиваемый цвет текста верхней строчки</string>
-  <string name="pref_notification_bottom_line_color" formatted="false">Цвет текста нижней строчки</string>
-  <string name="pref_custom_bottom_line_color" formatted="false">Настраиваемый цвет текста нижней строчки</string>
-  <string name="pref_show_box_around_icon_area" formatted="false">Показать рамку вокруг области значка</string>
-  <string name="pref_show_box_around_icon_area_summary" formatted="false">Показать прямоугольник фонового цвета в области значка?</string>
   <string name="system_default" formatted="false">Системные умолчания</string>
   <string name="black" formatted="false">Черный</string>
   <string name="white" formatted="false">Белый</string>

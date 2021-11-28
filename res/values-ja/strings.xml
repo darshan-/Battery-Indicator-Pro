@@ -147,17 +147,7 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">プロバージョンの追加設定</string>
   <string name="pref_please_upgrade" formatted="false">プロバージョンには、 カラフルなアイコン、アラーム、 バッテリーステータスのロギング、自動/手動のロック画面無効化、 充電/放電残の見積など、多くの追加設定や機能があります。</string>
   <string name="add_alarm" formatted="false">アラームを追加</string>
-  <string name="pref_cat_notification_layout" formatted="false">レイアウト</string>
-  <string name="pref_use_system_notification_layout" formatted="false">システムのレイアウトを使用する</string>
-  <string name="pref_use_system_notification_layout_summary" formatted="false">BatteryBot のカスタムレイアウトではなく、システムの通知レイアウトを使用しますか?</string>
-  <string name="pref_use_system_notification_layout_help" formatted="false">有効にした場合、BatteryBot のカスタムレイアウトではなく、 システムの通知レイアウトを使用します。システムレイアウトはあまり カスタマイズできませんが、一部のデバイスではデフォルトの色を 正しく表示しないため、カスタムレイアウトが見づらくまたは読みづらく なります。他に一般的ではないレイアウトのデバイスは、カスタムレイアウトが フィットしないことがあります。このオプションを選択すると、 通知が、他の通知のように表示されることを保証します。\n\n通知で使用されるステータスバーアイコンが表示されるようになることとに ご注意ください。</string>
   <string name="pref_cat_notification_content" formatted="false">コンテンツ</string>
-  <string name="pref_icon_area_content" formatted="false">アイコンエリアのコンテンツ</string>
-  <string name="pref_icon_area_content_help" formatted="false">アイコンエリアにある通知の左端に表示したいものを選択してください。 バッテリー画像のみ、残量パーセントの文字のみ、または両方をいずれかの順序で表示することができます。</string>
-  <string name="battery_graphic" formatted="false">バッテリー画像</string>
-  <string name="charge_percentage" formatted="false">残量パーセント</string>
-  <string name="percentage_first" formatted="false">パーセント、バッテリー</string>
-  <string name="battery_first" formatted="false">バッテリー、パーセント</string>
   <string name="pref_top_line_content" formatted="false">最上行のコンテンツ</string>
   <string name="pref_top_line_content_help" formatted="false">通知の最上行の表示を設定します: 見積残り時間 (他の場所で設定可能)、 ステータスが変わってからの時間 (プラグを挿す、抜く、またはフル充電)、 またはバッテリーバイタルサイン (バッテリーの健康状態、温度、および電圧)。</string>
   <string name="pref_bottom_line_content" formatted="false">最下行のコンテンツ</string>
@@ -173,16 +163,6 @@
   <string name="pref_status_duration_in_vital_signs" formatted="false">バイタルサインにステータスの期間を含める</string>
   <string name="pref_status_duration_in_vital_signs_summary" formatted="false">バイタルサインにステータスが変わってからの時間を含めますか?</string>
   <string name="pref_status_duration_in_vital_signs_help" formatted="false">設定した場合は、デバイスのプラグを抜いた、挿した、またはフル充電 されてからの時間が、バイタルサインの行に含まれます。</string>
-  <string name="pref_cat_notification_appearance" formatted="false">外観</string>
-  <string name="pref_cat_notification_appearance_help" formatted="false">デフォルトの色では読むのが難しい、または別の色がお好みの場合は、 通知文字の色を上書きして変更することができます。また、アイコンエリアの周りに ボックスを表示するかどうかを選択できます。</string>
-  <string name="pref_notification_percentage_text_color" formatted="false">パーセントの文字色</string>
-  <string name="pref_custom_percentage_text_color" formatted="false">パーセントの色をカスタマイズ</string>
-  <string name="pref_notification_top_line_color" formatted="false">最上行の文字色</string>
-  <string name="pref_custom_top_line_color" formatted="false">最上行の色をカスタマイズ</string>
-  <string name="pref_notification_bottom_line_color" formatted="false">最下行の文字色</string>
-  <string name="pref_custom_bottom_line_color" formatted="false">最下行の色をカスタマイズ</string>
-  <string name="pref_show_box_around_icon_area" formatted="false">アイコンエリアの周りにボックスを表示</string>
-  <string name="pref_show_box_around_icon_area_summary" formatted="false">アイコンエリアに背景色を表示しますか?</string>
   <string name="system_default" formatted="false">システムデフォルト</string>
   <string name="black" formatted="false">黒</string>
   <string name="white" formatted="false">白</string>

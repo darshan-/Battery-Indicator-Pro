@@ -129,17 +129,7 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Meer instellingen in Battery Indicator Pro!</string>
   <string name="pref_please_upgrade" formatted="false">De Pro versie heeft veel meer instellingen en mogelijkheden, waaronder gekleurde icoontjes, alarmen, thema\'s, logboeken, schermvergrendeling voorkomen, geschatte tijd resterend en meer!</string>
   <string name="add_alarm" formatted="false">Alarm toevoegen</string>
-  <string name="pref_cat_notification_layout" formatted="false">Layout</string>
-  <string name="pref_use_system_notification_layout" formatted="false">Gebruik standaardlayout</string>
-  <string name="pref_use_system_notification_layout_summary" formatted="false">Wilt u de standaardlayout van android gebruiken voor meldingen?</string>
-  <string name="pref_use_system_notification_layout_help" formatted="false">Wanneer ingeschakeld zal de standaardlayout van Android gebruikt worden voor meldingen in plaats van BatteryBot\'s aangepaste layout.</string>
   <string name="pref_cat_notification_content" formatted="false">Inhoud</string>
-  <string name="pref_icon_area_content" formatted="false">Icooninhoud</string>
-  <string name="pref_icon_area_content_help" formatted="false">Kies wat je wilt zien aan de linkerkant van de melding.</string>
-  <string name="battery_graphic" formatted="false">Batterijicoon</string>
-  <string name="charge_percentage" formatted="false">Ladingsniveau</string>
-  <string name="percentage_first" formatted="false">Percentage, batterij</string>
-  <string name="battery_first" formatted="false">Batterij, percentage</string>
   <string name="pref_top_line_content" formatted="false">Inhoud van bovenste lijn</string>
   <string name="pref_top_line_content_help" formatted="false">Kies wat je wilt zien in de bovenste regel van de melding.</string>
   <string name="pref_bottom_line_content" formatted="false">Inhoud van onderste lijn</string>
@@ -155,16 +145,6 @@
   <string name="pref_status_duration_in_vital_signs" formatted="false">Tijd van status</string>
   <string name="pref_status_duration_in_vital_signs_summary" formatted="false">Laat tijd sinds wijziging zien in de onderste regel van de melding?</string>
   <string name="pref_status_duration_in_vital_signs_help" formatted="false">Stel dit in om de tijd sinds de laatste statuswijziging te laten zien in de onderste regel.</string>
-  <string name="pref_cat_notification_appearance" formatted="false">Uiterlijk</string>
-  <string name="pref_cat_notification_appearance_help" formatted="false">Je kunt de kleuren voor de meldingstekst instellen.</string>
-  <string name="pref_notification_percentage_text_color" formatted="false">Kleur van percentage</string>
-  <string name="pref_custom_percentage_text_color" formatted="false">Aangepaste kleur van percentage</string>
-  <string name="pref_notification_top_line_color" formatted="false">Kleur van bovenste lijn</string>
-  <string name="pref_custom_top_line_color" formatted="false">Aangepaste kleur van bovenste lijn</string>
-  <string name="pref_notification_bottom_line_color" formatted="false">Kleur van onderste lijn</string>
-  <string name="pref_custom_bottom_line_color" formatted="false">Aangepaste kleur van onderste lijn</string>
-  <string name="pref_show_box_around_icon_area" formatted="false">Icoon omlijnen</string>
-  <string name="pref_show_box_around_icon_area_summary" formatted="false">Laat achtergrond zien bij icoon?</string>
   <string name="system_default" formatted="false">Standaard</string>
   <string name="black" formatted="false">Zwart</string>
   <string name="white" formatted="false">Wit</string>

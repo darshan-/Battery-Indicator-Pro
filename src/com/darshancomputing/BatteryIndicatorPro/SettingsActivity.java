@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2020 Darshan Computing, LLC
+    Copyright (c) 2009-2021 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -73,20 +73,10 @@ public class SettingsActivity extends AppCompatActivity {
     public static final String KEY_CAT_PLUGIN_SETTINGS = "category_plugin_settings";
     public static final String KEY_PLUGIN_SETTINGS = "plugin_settings";
     public static final String KEY_INDICATE_CHARGING = "indicate_charging";
-    public static final String KEY_USE_SYSTEM_NOTIFICATION_LAYOUT = "use_system_notification_layout";
-    public static final String KEY_ICON_AREA = "icon_area";
     public static final String KEY_TOP_LINE = "top_line";
     public static final String KEY_BOTTOM_LINE = "bottom_line";
     public static final String KEY_TIME_REMAINING_VERBOSITY = "time_remaining_verbosity";
     public static final String KEY_STATUS_DURATION_IN_VITAL_SIGNS = "status_duration_in_vital_signs";
-    public static final String KEY_CAT_NOTIFICATION_APPEARANCE = "category_notification_appearance";
-    public static final String KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR = "notification_percentage_text_color";
-    public static final String KEY_CUSTOM_PERCENTAGE_TEXT_COLOR = "custom_percentage_text_color";
-    public static final String KEY_SHOW_BOX_AROUND_ICON_AREA = "show_box_around_icon_area";
-    public static final String KEY_NOTIFICATION_TOP_LINE_COLOR = "notification_top_line_color";
-    public static final String KEY_CUSTOM_TOP_LINE_COLOR = "custom_top_line_color";
-    public static final String KEY_NOTIFICATION_BOTTOM_LINE_COLOR = "notification_bottom_line_color";
-    public static final String KEY_CUSTOM_BOTTOM_LINE_COLOR = "custom_bottom_line_color";
     public static final String KEY_CAT_CURRENT_HACK_MAIN = "category_current_hack_main";
     public static final String KEY_CAT_CURRENT_HACK_UNSUPPORTED = "category_current_hack_unsupported";
     public static final String KEY_ENABLE_CURRENT_HACK = "enable_current_hack";

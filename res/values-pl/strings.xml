@@ -134,17 +134,7 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Więcej ustawień w wersji Pro</string>
   <string name="pref_please_upgrade" formatted="false">Wersja Pro ma wiele innych ustawień, włączając w to kolorowe ikony, wtyczki z ikonami, alarmy, tematy, zapisywanie stanu baterii w logach, auto/ ręczne wyłączenie blokady ekranu, przybliżone czasy ładowania/rozładowania i wiele więcej.</string>
   <string name="add_alarm" formatted="false">Dodaj alarm</string>
-  <string name="pref_cat_notification_layout" formatted="false">Kompozycja</string>
-  <string name="pref_use_system_notification_layout" formatted="false">Użyj wyglądu systemowego</string>
-  <string name="pref_use_system_notification_layout_summary" formatted="false">Użyć systemowego wyglądu notyfikacji zamiast wyglądu BatteryBot?</string>
-  <string name="pref_use_system_notification_layout_help" formatted="false">Jeśli opcja jest włączona, stosowany będzie wygląd systemowy notyfikacji zamiast niestandardowego układu BatteryBot. Wygląd systemowy jest mniej konfigurowalny, ale niewielka część urządzeń nie zgłasza domyślnych kolorów poprawnie, przez co wygląd jest brzydki lub ciężko cokolwiek odczytać. Inne urządzenia wykorzystują nietypowy wygląd, czyniąc układ niestandardowy zbyt dużym. Wybór tej opcji zapewni, że powiadomienie będzie wyglądać jak te inne.\n\nNote that this will result in having the status bar icon used in the notification.</string>
   <string name="pref_cat_notification_content" formatted="false">Treść</string>
-  <string name="pref_icon_area_content" formatted="false">Zawartość obszaru ikony</string>
-  <string name="pref_icon_area_content_help" formatted="false">Wybierz co chcesz zobaczyć po lewej stronie powiadomienia w notyfikacjach po rozwinięciu. Możesz wybrać tylko grafikę baterii, tekstowy procent naładowania lub oba w dowolnej kolejności.</string>
-  <string name="battery_graphic" formatted="false">Bateria graficzna</string>
-  <string name="charge_percentage" formatted="false">Procent naładowania</string>
-  <string name="percentage_first" formatted="false">Procent, bateria</string>
-  <string name="battery_first" formatted="false">Bateria, procent</string>
   <string name="pref_top_line_content" formatted="false">Zawartość górnego wiersza</string>
   <string name="pref_top_line_content_help" formatted="false">Skonfiguruj co się ma pojawiać w górnym wierszu: szacowany pozostały czas (konfigurowalne w innym miejscu), czas od zmiany stanu (podłączony, odłączony, w pełni naładowany) lub stan baterii (zdrowie baterii, temperatura i napięcie).</string>
   <string name="pref_bottom_line_content" formatted="false">Zawartość dolnego wiersza</string>
@@ -160,16 +150,6 @@
   <string name="pref_status_duration_in_vital_signs" formatted="false">Czas trwania w stanie zdrowia</string>
   <string name="pref_status_duration_in_vital_signs_summary" formatted="false">Uwzględnić czas od zmiany stanu w stanie zdrowia?</string>
   <string name="pref_status_duration_in_vital_signs_help" formatted="false">Jeśli ustawisz, linia stanu zdrowia będzie zawierała również kiedy urządzenie zostało odłączone, podłączone lub w pełni naładowane.</string>
-  <string name="pref_cat_notification_appearance" formatted="false">Wygląd</string>
-  <string name="pref_cat_notification_appearance_help" formatted="false">Możesz zmienić kolory dla tekstu powiadomienia jeśli domyślne są nieczytelne lub jeśli po prostu wolisz coś innego. Możesz również wybrać, zastąpić lub pokazać ramkę wokół obszaru ikon.</string>
-  <string name="pref_notification_percentage_text_color" formatted="false">Kolor procentów</string>
-  <string name="pref_custom_percentage_text_color" formatted="false">Własne kolory procentów</string>
-  <string name="pref_notification_top_line_color" formatted="false">Kolor tekstu górnego wiersza</string>
-  <string name="pref_custom_top_line_color" formatted="false">Własny kolor tekstu górnego wiersza</string>
-  <string name="pref_notification_bottom_line_color" formatted="false">Kolor tekstu dolnego wiersza</string>
-  <string name="pref_custom_bottom_line_color" formatted="false">Własny kolor tekstu dolnego wiersza</string>
-  <string name="pref_show_box_around_icon_area" formatted="false">Pokaż pole wokół obszaru ikony</string>
-  <string name="pref_show_box_around_icon_area_summary" formatted="false">Pokazać kolorowe pole w obszarze ikony?</string>
   <string name="system_default" formatted="false">Ustawienia domyślne</string>
   <string name="black" formatted="false">Czarny</string>
   <string name="white" formatted="false">Biały</string>

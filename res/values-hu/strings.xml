@@ -121,10 +121,6 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">További beállítások a Pro verzióban</string>
   <string name="pref_please_upgrade" formatted="false">A Pro verzió számos további beállítással és funkcióval rendelkezik. Pl. zöld, sárga és vörös ikon, riasztások, ablak témák, akku állapot naplózása, képernyőzár kézi és automatikus tiltása, becslés a hátralévő töltési vagy használati időre, stb.</string>
   <string name="add_alarm" formatted="false">Riasztás hozzáadása</string>
-  <string name="pref_cat_notification_layout" formatted="false">Elrendezés</string>
-  <string name="pref_use_system_notification_layout" formatted="false">Alap elredndezés használata</string>
-  <string name="pref_use_system_notification_layout_summary" formatted="false">Alap elrendezés használata a BatteryBot-elrendezés helyett</string>
-  <string name="battery_graphic" formatted="false">Akku ikon kinézete</string>
   <string name="time_remaining" formatted="false">Hátralévő idő</string>
   <string name="system_default" formatted="false">Alapértelmezett</string>
   <string name="black" formatted="false">Fekete</string>

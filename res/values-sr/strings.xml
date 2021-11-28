@@ -149,27 +149,12 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Više podešavanja je dostupno u plaćenoj vezriji</string>
   <string name="pref_please_upgrade" formatted="false">Plaćena verzija ima dosta više podešavanja i opcija, uključujući trenutni podatak od mA, ikonice u boji, alarme, evidenciju stanja baterije i drugo.</string>
   <string name="add_alarm" formatted="false">Dodaj alarm</string>
-  <string name="pref_cat_notification_layout" formatted="false">Izgled</string>
-  <string name="pref_use_system_notification_layout" formatted="false">Koristi sistemski podešen izgled</string>
-  <string name="pref_use_system_notification_layout_summary" formatted="false">Da li želite da koristite sistemski podešen izgled ili prilagođeni BatteryBot izgled?</string>
   <string name="pref_cat_notification_content" formatted="false">Sadržaj</string>
-  <string name="charge_percentage" formatted="false">Procenat baterije</string>
-  <string name="percentage_first" formatted="false">Procenat, baterija</string>
-  <string name="battery_first" formatted="false">Baterija, procenat</string>
   <string name="pref_top_line_content" formatted="false">Sadržaj gornje trake</string>
   <string name="pref_bottom_line_content" formatted="false">Sadržaj donje trake</string>
   <string name="pref_bottom_line_content_help" formatted="false">Na raspolaganju su vam iste opcije i za donju i za gornju traku</string>
   <string name="time_remaining" formatted="false">Preostalo vreme</string>
   <string name="normal" formatted="false">Normalno</string>
-  <string name="pref_cat_notification_appearance" formatted="false">Izgled</string>
-  <string name="pref_notification_percentage_text_color" formatted="false">Boja teksta za procenat</string>
-  <string name="pref_custom_percentage_text_color" formatted="false">Personalizovana broja teksta za procenat</string>
-  <string name="pref_notification_top_line_color" formatted="false">Boja teksta gornje trake</string>
-  <string name="pref_custom_top_line_color" formatted="false">Personalizovana boja gornje trake</string>
-  <string name="pref_notification_bottom_line_color" formatted="false">Boja teksta donje trake</string>
-  <string name="pref_custom_bottom_line_color" formatted="false">Personalizovana boja donje trake</string>
-  <string name="pref_show_box_around_icon_area" formatted="false">Prikaži okvir oko ikonice</string>
-  <string name="pref_show_box_around_icon_area_summary" formatted="false">Prikaži u boji okvir oko ikonice?</string>
   <string name="system_default" formatted="false">Sistemska podešavanja</string>
   <string name="black" formatted="false">Crno</string>
   <string name="white" formatted="false">Belo</string>

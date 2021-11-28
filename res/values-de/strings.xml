@@ -133,11 +133,6 @@
   <string name="pref_cat_more_settings_in_pro" formatted="false">Mehr Einstellungen in der Pro-Version</string>
   <string name="pref_please_upgrade" formatted="false">Die Pro-Version hat mehr Einstellungen und Funktionen, wie grüne, gelbe und rote Icons, Alarme, Window-Themes, Batteriestatus-Protokollierung, automatische/manuelle Bildschirmsperre Abschaltung, Lade-/Entladezeit-Schätzung und mehr.</string>
   <string name="add_alarm" formatted="false">Alarm hinzufügen</string>
-  <string name="pref_use_system_notification_layout_summary" formatted="false">Das System Benachrichtigungs-Layout bevorzugen.</string>
-  <string name="battery_graphic" formatted="false">Akkudarstellung</string>
-  <string name="charge_percentage" formatted="false">Aufladung Prozent</string>
-  <string name="percentage_first" formatted="false">Prozentanteil, Akku</string>
-  <string name="battery_first" formatted="false">Akku, Prozentanteil</string>
   <string name="time_remaining" formatted="false">Verbleibende Restlaufzeit</string>
   <string name="time_since_status_change" formatted="false">Vergangene Zeit seit Statusänderung</string>
   <string name="vital_signs" formatted="false">Vitalzeichen</string>

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2020 Darshan Computing, LLC
+    Copyright (c) 2009-2021 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -77,20 +77,10 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
     public static final String KEY_GREEN = "use_green";
     public static final String KEY_GREEN_THRESH = "green_threshold";
     public static final String KEY_COLOR_PREVIEW = "color_preview";
-    public static final String KEY_USE_SYSTEM_NOTIFICATION_LAYOUT = "use_system_notification_layout";
-    public static final String KEY_ICON_AREA = "icon_area";
     public static final String KEY_TOP_LINE = "top_line";
     public static final String KEY_BOTTOM_LINE = "bottom_line";
     public static final String KEY_TIME_REMAINING_VERBOSITY = "time_remaining_verbosity";
     public static final String KEY_STATUS_DURATION_IN_VITAL_SIGNS = "status_duration_in_vital_signs";
-    public static final String KEY_CAT_NOTIFICATION_APPEARANCE = "category_notification_appearance";
-    public static final String KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR = "notification_percentage_text_color";
-    public static final String KEY_CUSTOM_PERCENTAGE_TEXT_COLOR = "custom_percentage_text_color";
-    public static final String KEY_SHOW_BOX_AROUND_ICON_AREA = "show_box_around_icon_area";
-    public static final String KEY_NOTIFICATION_TOP_LINE_COLOR = "notification_top_line_color";
-    public static final String KEY_CUSTOM_TOP_LINE_COLOR = "custom_top_line_color";
-    public static final String KEY_NOTIFICATION_BOTTOM_LINE_COLOR = "notification_bottom_line_color";
-    public static final String KEY_CUSTOM_BOTTOM_LINE_COLOR = "custom_bottom_line_color";
     public static final String KEY_CAT_CURRENT_HACK_MAIN = "category_current_hack_main";
     public static final String KEY_CAT_CURRENT_HACK_UNSUPPORTED = "category_current_hack_unsupported";
     public static final String KEY_ENABLE_CURRENT_HACK = "enable_current_hack";
@@ -133,29 +123,17 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
                                                              KEY_AUTO_REFRESH_CURRENT_IN_MAIN_WINDOW
     };
 
-    private static final String[] INVERSE_PARENTS    = {KEY_USE_SYSTEM_NOTIFICATION_LAYOUT
+    private static final String[] INVERSE_PARENTS    = {
     };
-    private static final String[] INVERSE_DEPENDENTS = {KEY_ICON_AREA
-    };
-
-    private static final String[] COLOR_PARENTS    = {KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
-                                                      KEY_NOTIFICATION_TOP_LINE_COLOR,
-                                                      KEY_NOTIFICATION_BOTTOM_LINE_COLOR
-    };
-    private static final String[] COLOR_DEPENDENTS = {KEY_CUSTOM_PERCENTAGE_TEXT_COLOR,
-                                                      KEY_CUSTOM_TOP_LINE_COLOR,
-                                                      KEY_CUSTOM_BOTTOM_LINE_COLOR
+    private static final String[] INVERSE_DEPENDENTS = {
     };
 
     private static final String[] LIST_PREFS = {KEY_AUTOSTART, KEY_STATUS_DUR_EST,
                                                 KEY_RED_THRESH, KEY_AMBER_THRESH, KEY_GREEN_THRESH,
                                                 KEY_ICON_SET,
                                                 KEY_CURRENT_HACK_MULTIPLIER,
-                                                KEY_MAX_LOG_AGE, KEY_ICON_AREA, KEY_TOP_LINE, KEY_BOTTOM_LINE,
+                                                KEY_MAX_LOG_AGE, KEY_TOP_LINE, KEY_BOTTOM_LINE,
                                                 KEY_TIME_REMAINING_VERBOSITY,
-                                                KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
-                                                KEY_NOTIFICATION_TOP_LINE_COLOR,
-                                                KEY_NOTIFICATION_BOTTOM_LINE_COLOR,
                                                 KEY_PREDICTION_TYPE
     };
 
@@ -168,9 +146,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
                                                    KEY_ENABLE_LOGGING,
                                                    KEY_TIME_REMAINING_VERBOSITY,
                                                    KEY_STATUS_DURATION_IN_VITAL_SIGNS,
-                                                   KEY_CUSTOM_PERCENTAGE_TEXT_COLOR,
-                                                   KEY_CUSTOM_TOP_LINE_COLOR,
-                                                   KEY_CUSTOM_BOTTOM_LINE_COLOR,
                                                    KEY_ENABLE_CURRENT_HACK,
                                                    KEY_CURRENT_HACK_PREFER_FS,
                                                    KEY_CURRENT_HACK_MULTIPLIER,
@@ -180,12 +155,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
                                                    KEY_PREDICTION_TYPE
     };
 
-    private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {KEY_ICON_AREA,
-                                                                            KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR,
-                                                                            KEY_NOTIFICATION_TOP_LINE_COLOR,
-                                                                            KEY_NOTIFICATION_BOTTOM_LINE_COLOR,
-                                                                            KEY_SHOW_BOX_AROUND_ICON_AREA,
-                                                                            KEY_USE_SYSTEM_NOTIFICATION_LAYOUT
+    private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {
     };
 
     public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
@@ -348,13 +318,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
             //prefb.setOnPreferenceClickListener(notifChanBListener);
 
             prefb.setSummary(R.string.pref_manage_main_channel);
-
-            if (mSharedPreferences.getBoolean(KEY_USE_SYSTEM_NOTIFICATION_LAYOUT, false)) {
-                cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_NOTIFICATION_APPEARANCE);
-
-                cat.removeAll();
-                cat.setLayoutResource(R.layout.none);
-            }
         } else if (pref_screen == R.xml.current_hack_pref_screen) {
             if (CurrentHack.getCurrent() == null) {
                 cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_MAIN);
@@ -379,16 +342,11 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         for (int i=0; i < INVERSE_PARENTS.length; i++)
             setEnablednessOfInverseDeps(i);
 
-        for (int i=0; i < COLOR_PARENTS.length; i++)
-            setEnablednessOfColorDeps(i);
-
         for (int i=0; i < LIST_PREFS.length; i++)
             updateListPrefSummary(LIST_PREFS[i]);
 
         if (pref_screen == R.xml.current_hack_pref_screen && !mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))
             setEnablednessOfCurrentHackDeps(false);
-
-        setEnablednessOfPercentageTextColor();
 
         updateConvertFSummary();
 
@@ -425,12 +383,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
             setPreferences(); // To show/hide icon-set/plugin settings
         }
 
-        if (key.equals(KEY_USE_SYSTEM_NOTIFICATION_LAYOUT))
-            setPreferences(); // Quite a few different settings on the screen for this
-
-        if (key.equals(KEY_ICON_AREA))
-            setEnablednessOfPercentageTextColor();
-
         for (int i=0; i < PARENTS.length; i++) {
             if (key.equals(PARENTS[i])) {
                 setEnablednessOfDeps(i);
@@ -441,13 +393,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         for (int i=0; i < INVERSE_PARENTS.length; i++) {
             if (key.equals(INVERSE_PARENTS[i])) {
                 setEnablednessOfInverseDeps(i);
-                break;
-            }
-        }
-
-        for (int i=0; i < COLOR_PARENTS.length; i++) {
-            if (key.equals(COLOR_PARENTS[i])) {
-                setEnablednessOfColorDeps(i);
                 break;
             }
         }
@@ -538,28 +483,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
             dependent.setEnabled(true);
 
         updateListPrefSummary(INVERSE_DEPENDENTS[index]);
-    }
-
-    private void setEnablednessOfColorDeps(int index) {
-        Preference dependent = mPreferenceScreen.findPreference(COLOR_DEPENDENTS[index]);
-        if (dependent == null) return;
-
-        if (mSharedPreferences.getString(COLOR_PARENTS[index], "default").equals("custom"))
-            dependent.setEnabled(true);
-        else
-            dependent.setEnabled(false);
-
-        updateListPrefSummary(COLOR_DEPENDENTS[index]);
-    }
-
-    private void setEnablednessOfPercentageTextColor() {
-        Preference dependent = mPreferenceScreen.findPreference(KEY_NOTIFICATION_PERCENTAGE_TEXT_COLOR);
-        if (dependent == null) return;
-
-        if (mSharedPreferences.getString(KEY_ICON_AREA, res.getString(R.string.default_icon_area_content)) .equals("graphic"))
-            dependent.setEnabled(false);
-        else
-            dependent.setEnabled(true);
     }
 
     // private void setEnablednessOfMutuallyExclusive(String key1, String key2) {
