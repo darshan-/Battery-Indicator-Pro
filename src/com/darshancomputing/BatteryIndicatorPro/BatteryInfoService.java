@@ -31,7 +31,6 @@ import android.content.res.Resources;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.media.AudioManager;
 import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,8 +38,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
-import android.view.ContextThemeWrapper;
-import android.view.View;
 import android.widget.RemoteViews;
 
 import java.util.Date;

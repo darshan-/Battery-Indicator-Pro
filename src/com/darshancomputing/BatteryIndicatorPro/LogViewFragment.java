@@ -19,7 +19,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.CursorWrapper;
@@ -39,7 +38,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -47,10 +45,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.ListFragment;
-import androidx.core.content.ContextCompat;
 
 public class LogViewFragment extends ListFragment {
     private static PersistentFragment pfrag;
