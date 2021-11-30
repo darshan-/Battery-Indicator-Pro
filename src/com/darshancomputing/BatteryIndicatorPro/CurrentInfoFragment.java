@@ -17,6 +17,7 @@ package com.darshancomputing.BatteryIndicatorPro;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -25,6 +26,7 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -65,6 +67,9 @@ public class CurrentInfoFragment extends Fragment {
 
     public static boolean awaitingNotificationUnblock;
     public static boolean showingNotificationBlockDialog;
+
+    public static boolean awaitingUnoptimization;
+    public static boolean showingBatteryOptimizedDialog;
 
     //private static final String LOG_TAG = "BatteryBot";
 
@@ -112,6 +117,16 @@ public class CurrentInfoFragment extends Fragment {
             DialogFragment df = new NotificationsDisabledDialogFragment();
             df.setTargetFragment(this, 0);
             df.show(getFragmentManager(), "TODO: What is this string for?3");
+        }
+
+        PowerManager pm = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
+        if (!pm.isIgnoringBatteryOptimizations("com.darshancomputing.BatteryIndicatorPro") &&
+            !showingBatteryOptimizedDialog)
+        {
+            showingBatteryOptimizedDialog = true;
+            DialogFragment df = new BatteryOptimizedDialogFragment();
+            df.setTargetFragment(this, 0);
+            df.show(getFragmentManager(), "TODO: What is this string for?4");
         }
 
         return view;
@@ -245,6 +260,58 @@ public class CurrentInfoFragment extends Fragment {
                         public void onClick(DialogInterface di, int id) {
                             CurrentInfoFragment.awaitingNotificationUnblock = false;
                             CurrentInfoFragment.showingNotificationBlockDialog = false;
+
+                            di.cancel();
+                        }
+                    })
+                .create();
+        }
+    }
+
+    public static class BatteryOptimizedDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            return new AlertDialog.Builder(getActivity())
+                .setTitle(pfrag.res.getString(R.string.battery_optimized))
+                .setMessage(pfrag.res.getString(R.string.battery_optimized_message))
+                .setPositiveButton(pfrag.res.getString(android.R.string.ok),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            final Intent i = new Intent(
+                                android.provider.Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                                Uri.parse("package:" + getActivity().getPackageName()));
+                            try {
+                                startActivity(i);
+                            } catch (android.content.ActivityNotFoundException e) {
+                                // Some devices don't support that request, and this is better than nothing
+                                final Intent i2 = new Intent();
+                                i2.setAction(android.provider.Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+                                i2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                i2.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                                try {
+                                    startActivity(i2);
+                                } catch (android.content.ActivityNotFoundException e2) {
+                                    // And on truly broken devices, I guess just opening root of system settings is worth doing?
+                                    // Inspired by https://github.com/kontalk/androidclient/commit/be78119687940545d3613ae0d4280f4068125f6a
+                                    final Intent i3 = new Intent();
+                                    i3.setAction(android.provider.Settings.ACTION_SETTINGS);
+                                    i3.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    i3.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                                    startActivity(i3);
+                                }
+                            }
+
+                            CurrentInfoFragment.awaitingUnoptimization = true;
+                            CurrentInfoFragment.showingBatteryOptimizedDialog = false;
+
+                            di.cancel();
+                        }
+                    })
+                .setNegativeButton(pfrag.res.getString(R.string.cancel),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface di, int id) {
+                            CurrentInfoFragment.awaitingUnoptimization = false;
+                            CurrentInfoFragment.showingBatteryOptimizedDialog = false;
 
                             di.cancel();
                         }

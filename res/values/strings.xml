@@ -47,6 +47,20 @@
     unblock notifications for BatteryBot.
   </string>
 
+  <string formatted="false" name="battery_optimized">BatteryBot restricted!</string>
+  <string formatted="false" name="battery_optimized_message">
+    BatteryBot is restricted from running correctly.  This \"battery optimization\"
+    is an Android feature designed to restrict poorly designed apps to prevent them
+    from using too much battery in the background.\n
+
+    \nBatteryBot, however, is a well-designed app that must run unrestricted in
+    the background in order to function properly.  It is extremely efficient and
+    will not reduce your battery life.\n
+
+    \nPlease press OK to be taken to the system settings where you can
+    disable battery optimization for BatteryBot.
+  </string>
+
   <string formatted="false" name="main_notif_chan_name">Main Notification</string>
   <string formatted="false" name="channel_group_name_alarms">Alarms</string>
 
