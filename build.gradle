@@ -21,7 +21,7 @@ secureProperties.load(new FileInputStream("secure.properties"))
 android {
     namespace "com.darshancomputing.BatteryIndicatorPro"
 
-    compileSdkVersion 34
+    compileSdkVersion 33
     //buildToolsVersion "27.0.3" // With Android plugin 3.0.0+, automatically uses latest now
 
     configurations {
@@ -39,13 +39,13 @@ android {
 
         implementation "androidx.preference:preference:1.2.1"
 
-        // Many core libraries now need this; build fails otherwise
+        // Many core libraries now need this; build fails without it
         implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.0"))
     }
 
     defaultConfig {
         minSdkVersion 26
-        targetSdkVersion 34
+        targetSdkVersion 33
 
         vectorDrawables.useSupportLibrary = false
 

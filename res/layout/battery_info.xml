@@ -11,7 +11,7 @@
                                        android:layout_height="0px"
                                        android:layout_weight="1"
   >
-    <androidx.viewpager.widget.PagerTabStrip android:id="@+id/pager_tab_strip"
+    <androidx.viewpager.widget.PagerTitleStrip android:id="@+id/pager_tab_strip"
                                              android:layout_width="match_parent"
                                              android:layout_height="wrap_content"
                                              android:layout_gravity="top"

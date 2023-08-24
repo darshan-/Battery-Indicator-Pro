@@ -27,6 +27,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerTabStrip;
+import androidx.viewpager.widget.PagerTitleStrip;
 import androidx.viewpager.widget.ViewPager;
 
 public class BatteryInfoActivity extends AppCompatActivity {
@@ -64,9 +65,12 @@ public class BatteryInfoActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
-        tabStrip.setTabIndicatorColor(Str.accent_color);
+        // PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
+        // tabStrip.setTabIndicatorColor(Str.accent_color);
 
+        PagerTitleStrip tabStrip = (PagerTitleStrip) findViewById(R.id.pager_tab_strip);
+        //tabStrip.setTextColor(Str.accent_color);
+        tabStrip.setTextSize(android.util.TypedValue.COMPLEX_UNIT_DIP, 16);
     }
 
     // Actually, Activity is re-created.  If I ever want to handle day-night configuration change myself,
