@@ -280,29 +280,36 @@ public class LogViewFragment extends ListFragment {
         DialogFragment df;
         SharedPreferences.Editor spm_editor;
 
-        switch (item.getItemId()) {
-        case R.id.menu_clear:
+        if (item.getItemId() == R.id.menu_clear) {
             df = new ConfirmClearLogsDialogFragment();
             df.setTargetFragment(this, 0);
             df.show(getFragmentManager(), "TODO: What is this string for?");
 
             return true;
-        case R.id.menu_log_filter:
+        }
+
+        if (item.getItemId() == R.id.menu_log_filter) {
             df = new ConfigureLogFilterDialogFragment();
             df.setTargetFragment(this, 0);
             df.show(getFragmentManager(), "TODO: What is this string for?2");
 
             return true;
-        case R.id.menu_export:
+        }
+
+        if (item.getItemId() == R.id.menu_export) {
             exportCSV();
 
             return true;
-        case R.id.menu_reverse:
+        }
+
+        if (item.getItemId() == R.id.menu_reverse) {
             reversed = !reversed;
             reloadList(true);
 
             return true;
-        case R.id.menu_show_seconds:
+        }
+
+        if (item.getItemId() == R.id.menu_show_seconds) {
             spm_editor = pfrag.sp_main.edit();
             spm_editor.putBoolean(KEY_SHOW_SECONDS, true);
             spm_editor.apply();
@@ -310,7 +317,9 @@ public class LogViewFragment extends ListFragment {
             reloadList(false);
 
             return true;
-        case R.id.menu_hide_seconds:
+        }
+
+        if (item.getItemId() == R.id.menu_hide_seconds) {
             spm_editor = pfrag.sp_main.edit();
             spm_editor.putBoolean(KEY_SHOW_SECONDS, false);
             spm_editor.apply();
@@ -318,9 +327,9 @@ public class LogViewFragment extends ListFragment {
             reloadList(false);
 
             return true;
-        default:
-            return super.onOptionsItemSelected(item);
         }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void reloadList(Boolean newQuery){

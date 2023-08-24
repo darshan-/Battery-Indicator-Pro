@@ -199,11 +199,13 @@ public class CurrentInfoFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        case R.id.menu_settings:
+        if (item.getItemId() == R.id.menu_settings) {
             mStartActivity(SettingsActivity.class);
+
             return true;
-        case R.id.menu_close:
+        }
+
+        if (item.getItemId() == R.id.menu_close) {
             DialogFragment df = new ConfirmCloseDialogFragment();
             // Setting target to this leaks the Fragment, but that's sort of good, as it allows pressing Okay
             //  to work even if the screen rotates.  Even if it rotates many times back and forth, only the
@@ -211,21 +213,28 @@ public class CurrentInfoFragment extends Fragment {
             //  gone (even if canceled), then the it and the leaked Fragment will be garbage collected.
             df.setTargetFragment(this, 0);
             df.show(getFragmentManager(), "TODO: What is this string for?2");
+
             return true;
-        case R.id.menu_help:
+        }
+
+        if (item.getItemId() == R.id.menu_help) {
             mStartActivity(HelpActivity.class);
+
             return true;
-        case R.id.menu_rate_and_review:
+        }
+
+        if (item.getItemId() == R.id.menu_rate_and_review) {
             try {
                 startActivity(new Intent(Intent.ACTION_VIEW,
                                          Uri.parse("market://details?id=com.darshancomputing.BatteryIndicatorPro")));
             } catch (Exception e) {
                 Toast.makeText(getActivity(), "Sorry, can't launch Market!", Toast.LENGTH_SHORT).show();
             }
+
             return true;
-        default:
-            return super.onOptionsItemSelected(item);
         }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

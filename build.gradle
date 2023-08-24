@@ -9,7 +9,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.3'
+        classpath 'com.android.tools.build:gradle:8.1.1'
     }
 }
 
@@ -19,7 +19,9 @@ Properties secureProperties = new Properties()
 secureProperties.load(new FileInputStream("secure.properties"))
 
 android {
-    compileSdkVersion 31
+    namespace "com.darshancomputing.BatteryIndicatorPro"
+
+    compileSdkVersion 34
     //buildToolsVersion "27.0.3" // With Android plugin 3.0.0+, automatically uses latest now
 
     configurations {

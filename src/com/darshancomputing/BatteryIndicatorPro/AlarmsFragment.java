@@ -231,34 +231,30 @@ public class AlarmsFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
-        switch (item.getItemId()) {
-        case R.id.menu_help:
+        if (item.getItemId() == R.id.menu_help) {
             ComponentName comp = new ComponentName(getActivity().getPackageName(), SettingsHelpActivity.class.getName());
             intent = new Intent().setComponent(comp).putExtra(SettingsActivity.EXTRA_SCREEN, SettingsFragment.KEY_ALARMS_SETTINGS);
             startActivity(intent);
 
             return true;
-        default:
-            return super.onOptionsItemSelected(item);
         }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onContextItemSelected(final MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.delete_alarm:
-                alarms.deleteAlarm(curId);
-                if (mCursor != null) mCursor.requery();
+        if (item.getItemId() == R.id.delete_alarm) {
+            alarms.deleteAlarm(curId);
+            if (mCursor != null) mCursor.requery();
 
-                int childCount = mAlarmsList.getChildCount();
-                if (curIndex < childCount)
-                    mAlarmsList.getChildAt(curIndex).findViewById(R.id.alarm_summary_box).requestFocus();
-                else if (childCount > 0)
-                    mAlarmsList.getChildAt(curIndex - 1).findViewById(R.id.alarm_summary_box).requestFocus();
+            int childCount = mAlarmsList.getChildCount();
+            if (curIndex < childCount)
+                mAlarmsList.getChildAt(curIndex).findViewById(R.id.alarm_summary_box).requestFocus();
+            else if (childCount > 0)
+                mAlarmsList.getChildAt(curIndex - 1).findViewById(R.id.alarm_summary_box).requestFocus();
 
-                return true;
-            default:
-                break;
+            return true;
         }
 
         return super.onContextItemSelected(item);

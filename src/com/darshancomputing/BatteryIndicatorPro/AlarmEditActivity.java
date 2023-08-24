@@ -98,24 +98,29 @@ public class AlarmEditActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        case R.id.menu_delete:
+        if (item.getItemId() == R.id.menu_delete) {
             frag.deleteAlarm();
             finish();
+
             return true;
-        case R.id.menu_help:
+        }
+
+        if (item.getItemId() == R.id.menu_help) {
             ComponentName comp = new ComponentName(getPackageName(), SettingsHelpActivity.class.getName());
             Intent intent = new Intent().setComponent(comp).putExtra(SettingsActivity.EXTRA_SCREEN,
                                                                      SettingsFragment.KEY_ALARM_EDIT_SETTINGS);
             startActivity(intent);
 
             return true;
-        case android.R.id.home:
-            finish();
-            return true;
-        default:
-            return super.onOptionsItemSelected(item);
         }
+
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void enableNotifsButtonClick(android.view.View v) {
