@@ -48,7 +48,7 @@
   </style>
 
   <style name="bi_help_theme" parent="Theme.AppCompat.DayNight">
-    <item name="android:fontFamily">sans-serif-light"</item>
+    <item name="android:fontFamily">sans-serif-light</item>
     <item name="android:windowBackground">@color/helpWindowBackground</item>
     <item name="android:colorAccent">@color/help_accent</item>
     <item name="colorAccent">@color/help_accent</item>

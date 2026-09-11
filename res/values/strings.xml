@@ -682,7 +682,7 @@
     If the translation to your language is incomplete or inaccurate
     and you would prefer another, possibly better translation, you may
     choose to do so here.
-  </string>x
+  </string>
 
   <string formatted="false" name="pref_classic_color_mode">Force Classic Color Mode</string>
   <string formatted="false" name="pref_classic_color_mode_summary">

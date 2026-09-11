@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
-    android:versionCode="026017"
-    android:versionName="12.0.1-dev"
+    android:versionCode="026018"
+    android:versionName="12.1.0"
 >
 
   <!-- Permissions now considered "normal", automatically granted on API 23+ -->
@@ -15,6 +15,9 @@
   <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
   <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+
+  <!-- Apparently this is needed now?  Haven't checked docs in a while to catch platform changes... -->
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
   <supports-screens
       android:smallScreens="true"
