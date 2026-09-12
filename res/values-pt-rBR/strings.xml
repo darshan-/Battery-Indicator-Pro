@@ -1,90 +1,737 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_full_name" formatted="false">BatteryBot Pro</string>
-  <string name="app_launcher_name" formatted="false">BatteryBot</string>
-  <string name="help_activity_subtitle" formatted="false">Ajuda</string>
-  <string name="log_view_activity_subtitle" formatted="false">Logs</string>
-  <string name="app_full_name_free" formatted="false">BatteryBot</string>
-  <string name="battery_use_b" formatted="false">Exibir Uso da Bateria</string>
-  <string name="upgrade_donate_b" formatted="false">Fazer Upgrade/Doar...</string>
-  <string name="confirm_disable_hint" formatted="false">Sugestão: Essa confirmação pode ser desativada nas configurações...</string>
-  <string name="yes" formatted="false">Sim</string>
-  <string name="cancel" formatted="false">Cancelar</string>
-  <string name="confirm_close" formatted="false">Deseja realmente fechar?</string>
-  <string name="confirm_close_hint" formatted="false">O Estado da Bateria será fechado completamente, e não será mais exibido na barra de estado.\n\nSe quiser sair da janela principal e manter o indicador rodando, aperte Cancelar e depois a tecla BACK do seu aparelho.</string>
-  <string name="confirm_clear_logs" formatted="false">Limpar todos os logs?</string>
-  <string name="okay" formatted="false">OK</string>
-  <string name="none" formatted="false">Nenhum</string>
-  <string name="menu_settings" formatted="false">Configurações</string>
-  <string name="menu_close" formatted="false">Fechar</string>
-  <string name="menu_help" formatted="false">Ajuda</string>
-  <string name="menu_clear" formatted="false">Limpar</string>
-  <string name="menu_reverse" formatted="false">Ordem contrária</string>
-  <string name="menu_export" formatted="false">Exportar CSV</string>
-  <string name="menu_delete_alarm" formatted="false">Apagar Alarme</string>
-  <string name="percent_symbol" formatted="false">%</string>
-  <string name="degree_symbol" formatted="false">º</string>
-  <string name="fahrenheit" formatted="false">Fahrenheit</string>
-  <string name="fahrenheit_symbol" formatted="false">F</string>
-  <string name="celsius" formatted="false">Celsius</string>
-  <string name="celsius_symbol" formatted="false">C</string>
-  <string name="volt_symbol" formatted="false">V</string>
-  <string name="fully_charged_in" formatted="false">Carregado em:</string>
-  <string name="light_usage" formatted="false">Uso leve restante:</string>
-  <string name="normal_usage" formatted="false">Uso normal restante:</string>
-  <string name="heavy_usage" formatted="false">Uso intenso restante:</string>
-  <string name="constant_usage" formatted="false">Uso constante restante:</string>
-  <string name="press_back_to_leave" formatted="false">Pressione BACK para sair.</string>
-  <string name="press_menu_for_more" formatted="false">Pressione MENU para mais opções.</string>
-  <string name="inaccessible_storage" formatted="false">Cartão SD inacessível</string>
-  <string name="inaccessible_w_reason" formatted="false">Cartão SD inacessível:</string>
-  <string name="read_only_storage" formatted="false">Cartão SD é apenas de leitura.</string>
-  <string name="file_written" formatted="false">Arquivo salvo com sucesso na raíz do Cartão SD.</string>
-  <string name="date" formatted="false">data</string>
-  <string name="time" formatted="false">hora</string>
-  <string name="status" formatted="false">estado</string>
-  <string name="charge" formatted="false">charge_percentage</string>
-  <string name="temperature" formatted="false">degrees_celsius</string>
-  <string name="voltage" formatted="false">volts</string>
-  <string name="alarm_fully_charged" formatted="false">Bateria está completamente carregada</string>
-  <string name="alarm_charge_drops" formatted="false">"Carga da bateria abaixo de "</string>
-  <string name="alarm_charge_rises" formatted="false">"Carga da bateria acima de "</string>
-  <string name="alarm_temp_rises" formatted="false">"Temp. bateria acima de "</string>
-  <string name="alarm_health_failure" formatted="false">"Saúde da bateria é: "</string>
-  <string name="alarm_text" formatted="false">Selecione para editar alarmes.</string>
-  <string name="logs_empty" formatted="false">Não existem relatórios</string>
-  <string name="discharging_from" formatted="false">Descarregando de</string>
-  <string name="charging_from" formatted="false">Carregando de</string>
-  <string name="fully_charged" formatted="false">Completamente Carregado</string>
-  <string name="since" formatted="false">Desde</string>
-  <string name="currently_using" formatted="false">Usando</string>
-  <string name="currently_set_to" formatted="false">"Definido para: "</string>
-  <string name="currently_disabled" formatted="false">Desativado</string>
-  <string name="help_cat_version" formatted="false">Versão</string>
-  <string name="help_cat_changelog" formatted="false">Relatório das mudanças</string>
-  <string name="help_changelog" formatted="false">Veja o <a href="https://www.batterybot.info/changelog">histórico de mudanças na página do projeto</a>.</string>
-  <string name="help_cat_no_warranty" formatted="false">Sem Garantia</string>
-  <string name="help_cat_acknowledgments" formatted="false">Agradecimentos</string>
-  <string name="help_cat_translations" formatted="false">Traduções</string>
-  <string name="help_subcat_translators" formatted="false">Tradutores</string>
-  <string name="help_cat_contact" formatted="false">Contato</string>
-  <string name="settings_overview" formatted="false">Visão Geral</string>
-  <string name="alarm_settings_subtitle" formatted="false">Definições dos alarmes</string>
-  <string name="alarm_settings" formatted="false">Alarmes</string>
-  <string name="alarm_settings_summary" formatted="false">Controlar notificações para a bateria baixa/cheia</string>
-  <string name="other_settings" formatted="false">Outras Configurações</string>
-  <string name="pref_cat_more_settings_in_pro" formatted="false">Mais Configurações na versão Pro</string>
-  <string name="add_alarm" formatted="false">Adicionar alarme</string>
-  <string name="pref_cat_logging" formatted="false">Relatórios</string>
-  <string name="pref_enable_logging" formatted="false">Ativar Relatórios</string>
-  <string name="pref_enable_logging_summary" formatted="false">Registrar mudanças no estado da bateria?</string>
-  <string name="pref_max_log_age" formatted="false">Idade Máxima dos Relatórios</string>
-  <string name="pref_max_log_age_summary" formatted="false">Apagar relatórios mais velhos que:</string>
-  <string name="age_1_day" formatted="false">1 dia</string>
-  <string name="age_2_days" formatted="false">2 dias</string>
-  <string name="age_4_days" formatted="false">4 dias</string>
-  <string name="age_1_week" formatted="false">1 semana</string>
-  <string name="age_2_weeks" formatted="false">2 semanas</string>
-  <string name="age_3_weeks" formatted="false">3 semanas</string>
-  <string name="age_4_weeks" formatted="false">4 semanas</string>
+  <string formatted="false" name="settings_activity_subtitle">Configurações</string>
+  <string formatted="false" name="help_activity_subtitle">Ajuda do BatteryBot</string>
+  <string formatted="false" name="log_view_activity_subtitle">Registros</string>
+
+  <string formatted="false" name="battery_use_b">Visualizar uso da bateria</string>
+  <string formatted="false" name="upgrade_donate_b">Atualizar/Doar...</string>
+  <string formatted="false" name="circle_widget">BatteryBot em círculo</string>
+  <string formatted="false" name="full_widget">BatteryBot completo</string>
+  <string formatted="false" name="confirm_disable_hint">
+    Dica: Desative esse dialogo de confirmação nas configurações...
+  </string>
+  <string formatted="false" name="yes">Sim</string>
+  <string formatted="false" name="cancel">Cancelar</string>
+
+  <string formatted="false" name="confirm_close">Realmente fechar?</string>
+  <string formatted="false" name="confirm_close_hint">
+    O BatteryBot será completamente fechado, e você não poderá
+    mais vê-lo na barra de status. Qualquer widget da tela inicial ficará inútil.\n
+
+    \nSe você só quer fechar a janela principal e manter o serviço em execução, toque em
+    Cancelar e toque no botão de VOLTAR do seu dispositivo para sair da janela principal.\n
+
+    \nSe você quer esconder a notificação mas manter os widgets funcionando,
+    toque em Cancelar e altere as configurações para esconder a notificação.
+  </string>
+
+  <string formatted="false" name="notifications_disabled">As notificações estão desativadas!</string>
+  <string formatted="false" name="notifications_disabled_message">
+    Você bloqueou todas as notificações do BatteryBot. Isso impede que o
+    BatteryBot mostre qualquer notificação: a notificação principal e qualquer alarme
+    que você configurou serão bloqueados.\n
+
+    \nComo o BatteryBot permite que você habilite a notificação principal
+    separadamente, como também desativar temporariamente qualquer
+    alarme que você criou, é fortemente recomendado que você permita as notificações
+    do BatteryBot. Enquanto estiverem bloqueadas, parecerá que o BatteryBot está quebrado.\n
+    
+    \nPor favor, toque no OK para ir para as configurações do sistema onde você
+    pode permitir as notificações do BatteryBot.
+  </string>
+
+  <string formatted="false" name="battery_optimized">O BatteryBot está restrito!</string>
+  <string formatted="false" name="battery_optimized_message">
+    O BatteryBot está restringido e não pode ser executado corretamente. As \"otimizações de bateria\"
+    são um recurso do Android feito para fazer com que apps mal desenhados não usem muita bateria em segundo plano.\n
+
+    \nPorém, o BatteryBot é um app bem desenhado que precisa ser executado sem restrições em
+    segundo plano para que funcione corretamente. É extremamente eficiente e não diminuirá a vida da sua bateria.\n
+    
+    \nPor favor, toque no OK para ir para as configurações do sistema onde você pode
+    desativar as otimizações de bateria para o BatteryBot.
+  </string>
+
+  <string formatted="false" name="main_notif_chan_name">Notificação principal</string>
+  <string formatted="false" name="channel_group_name_alarms">Alarmes</string>
+
+  <string formatted="false" name="confirm_clear_logs">Realmente limpar todos os registros?</string>
+
+  <string formatted="false" name="configure_log_filter">Mostrar quais itens dos registros?</string>
+
+  <string formatted="false" name="okay">Ok</string>
+  <string formatted="false" name="none">Nenhum</string>
+
+  <string formatted="false" name="tab_current_info">Informações atuais</string>
+  <string formatted="false" name="tab_history">Histórico</string>
+
+  <string formatted="false" name="notification_until_charged">" para carregar"</string>
+  <string formatted="false" name="notification_until_drained">" restantes"</string>
+  <string formatted="false" name="activity_until_charged">para carregar</string>
+  <string formatted="false" name="activity_until_drained">para acabar</string>
+
+  <string formatted="false" name="menu_settings">Configurações</string>
+  <string formatted="false" name="menu_close">Fechar</string>
+  <string formatted="false" name="menu_help">Ajuda</string>
+  <string formatted="false" name="menu_rate_and_review">Avaliar</string>
+  <string formatted="false" name="menu_clear">Limpar</string>
+  <string formatted="false" name="menu_reverse">Ordem inversa</string>
+  <string formatted="false" name="menu_log_filter">Filtro</string>
+  <string formatted="false" name="menu_export">Exportar como CSV</string>
+  <string formatted="false" name="menu_delete_alarm">Apagar alarme</string>
+  <string formatted="false" name="menu_show_seconds">Mostrar segundos</string>
+  <string formatted="false" name="menu_hide_seconds">Ocultar segundos</string>
+
+  <string formatted="false" name="fully_charged_in">Estará carregado por completo em:</string>
+  <string formatted="false" name="light_usage">Uso leve restante:</string>
+  <string formatted="false" name="normal_usage">Uso normal restante:</string>
+  <string formatted="false" name="heavy_usage">Uso pesado restante:</string>
+  <string formatted="false" name="constant_usage">Uso constante restante:</string>
+
+  <string formatted="false" name="press_back_to_leave">Toque em VOLTAR para sair.</string>
+  <string formatted="false" name="press_menu_for_more">Toque em MENU para mais itens.</string>
+
+  <string formatted="false" name="inaccessible_storage">O cartão SD está inacessível.</string>
+  <string formatted="false" name="inaccessible_w_reason">O cartão SD está inacessível: </string>
+  <string formatted="false" name="read_only_storage">O cartão SD é de somente leitura.</string>
+  <string formatted="false" name="no_storage_permission">A permissão de armazenamento não foi concedida.</string>
+  <string formatted="false" name="file_written">Arquivo gravado com sucesso no local selecionado.</string>
+
+  <string formatted="false" name="status_unplugged">Desconectado</string>
+  <string formatted="false" name="status_unknown">Desconhecido</string>
+  <string formatted="false" name="status_charging">Carregando</string>
+  <string formatted="false" name="status_discharging">Descarregando</string>
+  <string formatted="false" name="status_not_charging">Não carregando</string>
+  <string formatted="false" name="status_fully_charged">Carregado por completo</string>
+  <string formatted="false" name="status_plugged_in">Conectado</string>
+
+  <string formatted="false" name="status_boot_completed">Boot concluído</string>
+
+  <string formatted="false" name="health_unknown">Desconhecida</string>
+  <string formatted="false" name="health_good">Saúde boa</string>
+  <string formatted="false" name="health_overheat">Sobreaquecida</string>
+  <string formatted="false" name="health_dead">Morta</string>
+  <string formatted="false" name="health_overvoltage">Sobretensão</string>
+  <string formatted="false" name="health_failure">Falha</string>
+  <string formatted="false" name="health_cold">Fria</string>
+  <string formatted="false" name="plugged_unplugged">Desconectado</string>
+  <string formatted="false" name="plugged_ac">(AC)</string>
+  <string formatted="false" name="plugged_usb">(USB)</string>
+  <string formatted="false" name="plugged_unknown">(?)</string>
+  <string formatted="false" name="plugged_wireless">(Sem-fio)</string>
+
+  <string formatted="false" name="alarm_type_fully_charged">Carregado por completo</string>
+  <string formatted="false" name="alarm_type_charge_drops">Carga fica abaixo de</string>
+  <string formatted="false" name="alarm_type_charge_rises">Carga fica acima de</string>
+  <string formatted="false" name="alarm_type_temperature_drops">Temperatura fica abaixo de</string>
+  <string formatted="false" name="alarm_type_temperature_rises">Temperatura fica acima de</string>
+  <string formatted="false" name="alarm_type_health_failure">Falha de saúde</string>
+  <string formatted="false" name="alarm_type_entry_fully_charged">Fica carregada por completo</string>
+  <string formatted="false" name="alarm_type_entry_charge_drops">Carga fica abaixo de...</string>
+  <string formatted="false" name="alarm_type_entry_charge_rises">Carga fica acima de...</string>
+  <string formatted="false" name="alarm_type_entry_temperature_drops">Temperatura fica abaixo de...</string>
+  <string formatted="false" name="alarm_type_entry_temperature_rises">Temperatura fica acima de...</string>
+  <string formatted="false" name="alarm_type_entry_health_failure">Falhas de saúde</string>
+
+  <string formatted="false" name="alarm_fully_charged">A bateria está carregada por completo</string>
+  <string formatted="false" name="alarm_charge_drops">"A carga da bateria está abaixo de "</string>
+  <string formatted="false" name="alarm_charge_rises">"A carga da bateria está acima de "</string>
+  <string formatted="false" name="alarm_temp_drops">"A temp. da bateria está abaixo de "</string>
+  <string formatted="false" name="alarm_temp_rises">"A temp. da bateria está abaixo de "</string>
+  <string formatted="false" name="alarm_health_failure">"A saúde da bateria está: "</string>
+  <string formatted="false" name="alarm_text">Selecione para editar alarmes.</string>
+
+  <!--string formatted="false" name="alarm_audio_stream_notification">Notification</string>
+  <string formatted="false" name="alarm_audio_stream_alarm">Alarm</string>
+  <string formatted="false" name="pref_alarm_audio_stream">Audio Stream</string>
+  <string formatted="false" name="pref_alarm_audio_stream_summary">Use audio stream:</string-->
+
+  <string formatted="false" name="logs_empty">Os registros estão vazios</string>
+  <plurals name="n_log_items">
+    <item quantity="one">%d item dos registros</item>
+    <item quantity="many">%d de itens dos registros</item>
+    <item quantity="other">%d itens dos registros</item>
+  </plurals>
+
+  <!-- Keeping these in for now to satisfy linter with default language of unused strings. -->
+  <string formatted="true" name="after_n_hours_unplugged">Ao ficar por %1.1f horas desconectado</string>
+  <string formatted="true" name="after_n_hours_plugged_in">Ao ficar por %1.1f horas conectado</string>
+
+  <string formatted="true" name="after_nh_mm_unplugged">Após %1$dh %2$dm desconectado</string>
+  <string formatted="true" name="after_nh_mm_plugged_in">Após %1$dh %2$dm conectado</string>
+  <string formatted="true" name="after_nm_ms_unplugged">Após %1$dm %2$ds desconectado</string>
+  <string formatted="true" name="after_nm_ms_plugged_in">Após %1$dm %2$ds conectado</string>
+
+  <plurals name="n_hours_long">
+    <item quantity="one">"%d hora, "</item>
+    <item quantity="many">"%d de horas, "</item>
+    <item quantity="other">"%d horas, "</item>
+  </plurals>
+
+  <plurals name="n_minutes_long">
+    <item quantity="one">%d minuto</item>
+    <item quantity="many">%d de minutos</item>
+    <item quantity="other">%d minutos</item>
+  </plurals>
+
+  <plurals name="n_hours_medium">
+    <item quantity="one">"%d hr, "</item>
+    <item quantity="many">"%d de hrs, "</item>
+    <item quantity="other">"%d hrs, "</item>
+  </plurals>
+
+  <plurals name="n_minutes_medium">
+    <item quantity="one">%d min.</item>
+    <item quantity="many">%d de mins.</item>
+    <item quantity="other">%d mins.</item>
+  </plurals>
+
+  <plurals name="n_hours_short">
+    <item quantity="other">"%dh "</item>
+  </plurals>
+
+  <plurals name="n_minutes_short">
+    <item quantity="other">%dm</item>
+  </plurals>
+
+  <plurals name="n_days">
+    <item quantity="one">"%d dia, "</item>
+    <item quantity="many">"%d de dias, "</item>
+    <item quantity="other">"%d dias, "</item>
+  </plurals>
+
+  <plurals name="n_hours">
+    <item quantity="one">%d hora</item>
+    <item quantity="many">%d de horas</item>
+    <item quantity="other">%d horas</item>
+  </plurals>
+
+  <string formatted="false" name="discharging_from">Descarregando desde</string>
+  <string formatted="false" name="charging_from">Carregando desde</string>
+  <string formatted="false" name="fully_charged">Carregada por completo</string>
+
+  <string formatted="false" name="since">Desde</string>
+  <plurals name="for_n_hours">
+    <item quantity="one">Por %d hora</item>
+    <item quantity="many">Por %d de horas</item>
+    <item quantity="other">Por %d horas</item>
+  </plurals>
+  <string formatted="false" name="currently_using">No momento, usando</string>
+  <string formatted="false" name="currently_set_to">"No momento, definido para: "</string>
+  <string formatted="false" name="currently_disabled">No momento, desativado</string>
+
+  <string formatted="false" name="help_cat_version">Versão</string>
+
+  <string formatted="false" name="help_cat_changelog">Registro de alterações</string>
+  <string formatted="false" name="help_changelog">Por favor
+    visite o <a href="https://www.batterybot.info/changelog">registro de alterações on-line</a>.
+  </string>
+
+  <string formatted="false" name="help_cat_faq">Perguntas frequentes</string>
+  <string formatted="false" name="help_faq">Por favor
+    visite <a href="https://www.batterybot.info/faq">as perguntas frequentes on-line</a>.
+  </string>
+
+  <string formatted="false" name="help_cat_website">Site</string>
+  <string formatted="false" name="help_website">Mais
+    informações estão disponíveis no <a href="https://www.batterybot.info/">site do BatteryBot</a>.
+  </string>
+
+  <string formatted="false" name="help_cat_open_source">Código aberto</string>
+  <string formatted="false" name="help_open_source">Esse
+    é um projeto de código aberto, o que significa que você pode <a href="https://www.batterybot.info/sourcecode">baixar o código-fonte</a>.\n
+
+    \nVocê por ler mais sobre a filosofia da empresa Darshan Computing
+    no <a href="https://www.darshancomputing.com">site do Darshan Computing, LLC
+    </a>.  (Resumo: Sempre o usuário na frente, sem publicidade, e versão 
+    grátis útil. Código aberto por padrão.)
+  </string>
+
+  <string formatted="false" name="help_cat_donate">Doar</string>
+  <string formatted="false" name="help_donate">Por favor
+    considere doar ao atualizar para a <a href="market://details?id=com.darshancomputing.BatteryIndicatorPro">versão
+    Pro</a>.
+  </string>
+
+  <string formatted="false" name="help_cat_other_apps">Meus outros apps</string>
+
+  <string formatted="false" name="help_cat_privacy">Privacidade</string>
+  <string formatted="false" name="help_privacy">
+    O BatteryBot não coleta, armazena, ou transmite qualquer informação pessoal.
+  </string>
+
+  <string formatted="false" name="help_cat_no_warranty">Nenhuma garantia</string>
+  <string formatted="false" name="help_no_warranty">
+    Esse software é distribuído na esperança que seja útil, mas
+    SEM QUALQUER GARANTIA; sem mesmo a garantia subentendida de
+    COMERCIALIZAÇÃO ou ENQUADRO EM UM PROPÓSITO ESPECÍFICO.\n
+
+    \nMesmo que eu tente o meu melhor para fazer com que funcione bem e não
+    cause problemas, eu não sou responsável por qualquer dano ou inconveniência
+    que ele pode causar em qualquer situação.
+  </string>
+
+  <string formatted="false" name="help_cat_acknowledgments">Agradecimentos</string>
+  <string formatted="false" name="help_acknowledgments">Esse
+  app só estaria disponível em inglês se não fosse pelos tradutores
+  voluntários. Obrigado!\n
+
+    \nMuitos agradecimentos são por causa de desenvolvedores de código aberto
+    que fizeram com que esse app fosse possível, e que me inspiraram criar o app como código-aberto.\n
+
+    \nO ícone da launcher (a bateria na vertical que você vê na loja) é
+    baseada em um ícone do <a href="http://www.oxygen-icons.org">tema de ícones Oxygen</a>
+    e é usado sob a licença
+    <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common
+      Attribution-ShareAlike 3.0</a>.
+  </string>
+
+  <string formatted="false" name="help_cat_translations">Traduções</string>
+  <string formatted="false" name="help_translations">Eu
+  preciso de ajuda para traduzir esse app para novos idiomas
+  e manter as traduções atuais. Se você gostaria de ajudar, por favor me envie um 
+  <a href="mailto:support%2Btranslations@batterybot.info">e-mail</a>.
+  Por favor se você quer ou não, e como quer o seu nome nessa seção de agradecimentos da sua ajuda.
+  </string>
+
+  <string formatted="false" name="help_subcat_translators">Tradutores</string>
+
+  <string formatted="false" name="help_cat_contact">Contato</string>
+  <string formatted="false" name="help_contact">Se
+  você tiver alguma pergunta, problema, ou comentário, por favor
+    <a href="mailto:support@batterybot.info">me envie um e-mail</a>.
+  </string>
+
+  <string formatted="false" name="settings_overview">Visualização geral</string>
+  <string formatted="false" name="settings_overview_help">
+    As configurações do BatteryBot são organizadas em páginas separadas
+    como descritas abaixo. Cada página das configurações tem sua própria página de ajuda descrevendo
+    as configurações disponíveis nela.
+  </string>
+
+  <string formatted="false" name="notifications_disabled_cat">Notificações desativadas</string>
+  <string formatted="false" name="app_notifs_disabled_b">Ativar as notificações do app</string>
+  <string formatted="false" name="app_notifs_disabled_summary">Você desativou todas as notificações desse app. Por favor ative elas para acessar essas configurações.</string>
+  <string formatted="false" name="main_notifs_disabled_b">Ativar notificação principal</string>
+  <string formatted="false" name="main_notifs_disabled_summary">Você desativou a notificação principal desse app. Por favor ative ela novamente para acessar essas configurações.</string>
+  <string formatted="false" name="app_notifs_alarms_disabled_summary">Você desativou todas as notificações desse app. Por favor ative elas novamente para acessar os seus alarmes.</string>
+  <string formatted="false" name="alarm_notifs_disabled_b">Ativar alarmes</string>
+  <string formatted="false" name="alarm_notifs_disabled_summary">Você desativou o grupo de notificações dos alarmes desse app. Por favor ative ele novamente para acessar os seus alarmes.</string>
+  <string formatted="false" name="alarm_chan_disabled">Você desativou as notificações para esse tipo de alarme. Por favor ative elas novamente para usar esse tipo de alarme.</string>
+  <string formatted="false" name="alarm_chan_disabled_b">Ativar esse tipo de alarme</string>
+  <string formatted="false" name="alarm_chan_settings_b">Gerenciar esse tipo de alarme</string>
+
+  <string formatted="false" name="notification_settings">Notificação principal</string>
+  <string formatted="false" name="notification_settings_summary">Configure a notificação principal</string>
+  <string formatted="false" name="notification_settings_help">
+    Você pode configurar qual conteúdo mostrar na notificação.
+  </string>
+  <string formatted="false" name="status_bar_icon_settings">Ícone da barra de status</string>
+  <string formatted="false" name="status_bar_icon_settings_summary">Controle o conjunto de ícones</string>
+  <string formatted="false" name="status_bar_icon_settings_help">
+    Você pode selecionar qual conjunto de ícones usar e mudar as configurações para aquele conjunto de ícones (exemplo: as cores).
+  </string>
+  <string formatted="false" name="current_hack_settings">Gambiarra de corrente elétrica (mA)</string>
+  <string formatted="false" name="current_hack_settings_summary">Configurações avançadas para ativar as informações de mA</string>
+  <string formatted="false" name="current_hack_settings_help">
+    O Android não fornece um método para que apps acessem as informações
+    corrente elétrica atual da bateria. Porém, uma gambiarra existe que permite
+    que muitos dispositivos acessem essa informação.
+
+    \nPode ser que isso não funcione. Pode não funcionar por completo, ou
+    você parecer funcionar mas resultar em valores sem sentido.\n
+
+    \nConfigurações para ativar a gambiarra, e se possível, controlar como ela
+    é usada, estão disponíveis nessa seção.
+  </string>
+
+  <string formatted="false" name="alarm_settings_subtitle">Configurações de alarme</string>
+  <string formatted="false" name="alarm_settings">Alarmes</string>
+  <string formatted="false" name="alarm_settings_summary">Controle notificações de bateria fraca/completa</string>
+  <string formatted="false" name="alarm_settings_help">
+    Você pode fazer com que o BatteryBot te notifique quando o nível da bateria
+    chega à uma certa condição (por exemplo, se a bateria ser carregada por completo,
+    ou se o nível da bateria fica abaixo de 20%, entre outras.)
+  </string>
+  <string formatted="false" name="other_settings">Outras configurações</string>
+  <string formatted="false" name="other_settings_help">
+    Todas as outras configurações estão nessa página, incluindo a coleta de registros,
+    tela de bloqueio, unidade de temperatura, início automático, e mais.
+  </string>
+
+  <string formatted="false" name="pref_cat_more_settings_in_pro">Mais configurações no Pro</string>
+  <string formatted="false" name="pref_please_upgrade">
+    A versão Pro tem muitas mais configurações e mais recursos, incluindo
+    informações de corrente elétrica (mA),
+    alarmes,
+    coleta de registros do estado da bateria,
+    e mais.
+  </string>
+
+  <string formatted="false" name="add_alarm">Adicionar alarme</string>
+  <string formatted="false" name="menu_alarm_channel">Configurações do canal de alarme</string>
+
+  <string formatted="false" name="pref_cat_ui_color">Cor da interface</string>
+  <string formatted="false" name="pref_ui_color_summary">A cor primária do app</string>
+
+  <string formatted="false" name="pref_cat_channel_settings">Configurações dos canais de notificação</string>
+  <string formatted="false" name="pref_manage_main_channel">Gerenciar o canal principal</string>
+
+  <string formatted="false" name="pref_cat_notification_content">Conteúdo</string>
+  <string formatted="false" name="pref_top_line_content">Conteúdo da linha superior</string>
+  <string formatted="false" name="pref_top_line_content_help">
+    Configure o que vai na linha superior da notificação: tempo
+    de bateria restante, a quanto tempo desde que o estado mudou (carregando, descarregando,
+    carregado por completo), ou os sinais vitais da bateria (saúde da bateria, temperatura, voltagem).
+  </string>
+  <string formatted="false" name="pref_bottom_line_content">Conteúdo da linha inferior</string>
+  <string formatted="false" name="pref_bottom_line_content_help">
+    Você tem as mesmas opções para a linha inferior como tem para a linha superior.
+  </string>
+  <string formatted="false" name="time_remaining">Tempo restante</string>
+  <string formatted="false" name="time_since_status_change">Tempo desde a última mudança de estado</string>
+  <string formatted="false" name="vital_signs">Sinais vitais</string>
+
+  <string formatted="false" name="pref_time_remaining_verbosity">Verbosidade do tempo restante</string>
+  <string formatted="false" name="pref_time_remaining_verbosity_help">
+    Os dispositivos vem em todos os tamanhos e formatos, então as traduções
+    tem que usar abreviações para garantir que a estimativa de tempo restante
+    cabe na área de notificação de forma confortável. Se não cabe, você pode
+    escolher não usar o formato compacto. Se você tem bastante espaço, você
+    pode preferir a configuração verbosa.
+  </string>
+  <string formatted="false" name="condensed">Compacta</string>
+  <string formatted="false" name="normal">Normal</string>
+  <string formatted="false" name="verbose">Verbosa</string>
+
+  <string formatted="false" name="pref_status_duration_in_vital_signs">Duração do estado nos sinais vitais</string>
+  <string formatted="false" name="pref_status_duration_in_vital_signs_summary">
+    Incluir o tempo desde a última alteração de estado nos sinais vitais?
+  </string>
+  <string formatted="false" name="pref_status_duration_in_vital_signs_help">
+    Se configurado, a linha de sinais vitais também incluirá o número de horas
+    desde que o dispositivo foi desconectado, conectado, ou carregado por completo.
+  </string>
+
+  <string formatted="false" name="system_default">Padrão do sistema</string>
+  <string formatted="false" name="black">Preto</string>
+  <string formatted="false" name="white">Branco</string>
+  <string formatted="false" name="ics_blue">Azul do Android ICS</string>
+  <string formatted="false" name="custom">Personalizado...</string>
+
+  <string formatted="false" name="pref_cat_icon_set">Conjunto de ícones</string>
+  <string formatted="false" name="pref_icon_set">Conjunto de ícones</string>
+  <string formatted="false" name="pref_icon_set_help">
+    O Android vem em vários sabores, então não há um único conjunto de ícones
+    perfeito que funciona em todos os dispositivos. Há três conjuntos de ícones
+    que devem fornece pelo menos uma opção boa para a maioria dos dispositivos.\n
+
+    \n\"Clássico\" é o conjunto de ícones original de 2009. Ele ainda é o melhor para
+    dispositivos antigos, mas versões mais recentes do Android (desde o 3.0, Honeycomb) diminuem e
+    escurecem os ícones de notificação, fazendo esse conjunto difícil de ler.\n
+
+    \n\"Número básico\" é o padrão para todas as versões mais recentes do Android.
+    É um grande número branco que aparece bem mesmo após ser diminuído e escurecido.
+    Ele mostra um raio abaixo do número durante o carregamento.\n
+
+    \n\"Número menor\" é como o \"Número básico\" mas menor, porque
+    alguns dispositivos mais novos não realmente diminuem o ícone como o Android
+    stock faz, e o número grande do \"Número básico\" pode aparecer muito grande nesses dispositivos.
+  </string>
+
+  <string formatted="false" name="pref_cat_current_hack_main">Controle principal</string>
+  <string formatted="false" name="pref_cat_current_hack_unsupported">Gambiarra de corrente elétrica (mA) não suportada</string>
+
+  <string formatted="false" name="pref_current_hack_unsupported">Desculpe, a gambiarra de corrente elétrica (mA) não é suportada nesse dispositivo.</string>
+  <string formatted="false" name="current_hack_maybe_supported">A gambiarra PODE OU NÃO funcionar neste dispositivo.</string>
+
+  <string formatted="false" name="pref_enable_current_hack">Ativar gambiarra</string>
+  <string formatted="false" name="pref_enable_current_hack_summary">
+    Tentar ativar a gambiarra de corrente elétrica (mA)?
+  </string>
+  <string formatted="false" name="pref_enable_current_hack_help">
+    Quando essa configuração está ativada, as outras opções da gambiarra
+    ficarão disponíveis.
+  </string>
+
+  <string formatted="false" name="pref_current_hack_prefer_fs">Preferir a gambiarra antiga</string>
+  <string formatted="false" name="pref_current_hack_prefer_fs_summary">
+    Prefere a gambiarra antiga, baseada no sistema de arquivos?
+  </string>
+  <string formatted="false" name="pref_current_hack_prefer_fs_help">
+    Desde o Lollipop (Android 5.0), O Android fornece uma opção
+    menos \'gambiarra\' de acessar as informações de corrente elétrica (mA),
+    diretamente do BatteryManager do sistema. Porém, ainda é possível que não funcione
+    completamente ou bem. Até o Nougat (Android 7.0), o método antigo (baseado no sistema de arquivos)
+    parece funcionar melhor na maioria dos dispositivos, então ele continua sendo o padrão em dispositivos
+    rodando uma versão do Android mais velha que a 7.0.\n
+
+    \nEssa configuração padrão é só uma dica para qual método preferir; você pode
+    tentar mudá-la se a gambiarra não está funcionando bem no seu dispositivo.
+  </string>
+
+  <string formatted="false" name="pref_current_hack_multiplier">Multiplicador</string>
+  <string formatted="false" name="pref_current_hack_multiplier_help">
+    Alguns dispositivos relatam milliamperes em vez de microamperes como a API pede.
+    Os mesmos dispositivos trocam o símbolo do valor relatado.
+    Alguns usuários preferem usar o símbolo oposto dos valores relatados corretamente.
+    Para ajudar acomodar situações como essas, você pode multiplicar o resultado
+    da API pelo valor aqui.\n_days
+
+    \nSe o seu dispositivo mostra por exemplo, 0 mA, você pode tentar usar um multiplicador
+    de 1000. Se a API retornar 450 microamperes, o multiplicador faz com que o app mostre o valor
+    como 450mA em vez de 0mA. Se a API retorna 0 microamperes, claro, o multiplicador não mudará o
+    valor final de 0 mA.
+  </string>
+
+  <string formatted="false" name="pref_cat_current_hack_notification">Notificação</string>
+  <string formatted="false" name="pref_display_current_in_vital_stats">Exibir nas estatísticas vitais</string>
+  <string formatted="false" name="pref_display_current_in_vital_stats_summary">
+    Exibir a corrente elétrica (mA) nas estatísticas vitais da notificação principal?
+  </string>
+  <string formatted="false" name="pref_display_current_in_vital_stats_help">
+    Quando ativado, a gambiarra será usada e mostrará o resultado na notificação
+    principal, na linha das estatísticas vitais. Observe que você deve ter
+    a notificação principal configurada para exibir estatísticas vitais para ver isso.
+    Esse valor só será atualizado quando o sistema enviar novas informações da bateria.\n
+
+    \nNa maioria dos dispositivos, um valor negativo indica um gasto da bateria, e um valor positivo indica
+    que a bateria está sendo carregada. Porém, nem todos os dispositivos geram valores dessa maneira. 
+  </string>
+
+  <string formatted="false" name="pref_cat_current_hack_main_window">Janela principal</string>
+  <string formatted="false" name="pref_display_current_in_main_window">Exibir na janela principal</string>
+  <string formatted="false" name="pref_display_current_in_main_window_summary">
+    Exibir corrente elétrica (mA) na janela principal?
+  </string>
+  <string formatted="false" name="pref_display_current_in_main_window_help">
+    Quando ativado, a gambiarra será usada e mostrará o resultado na
+    janela principal. Esse valor será atualizado quando o sistema enviar
+    informações novas da bateria, mas você pode recarregar o valor a qualquer momento
+    simplesmente tocando no valor exibido. (Observe que alguns dispositivos raramente
+    ou nunca atualizam os dados interiores, então esse valor pode não mudar ao tocar.)\n
+
+    \nNa maioria dos dispositivos, um valor negativo indica um gasto da bateria, e um valor positivo indica
+    que a bateria está sendo carregada. Porém, nem todos os dispositivos geram valores dessa maneira. 
+  </string>
+
+  <string formatted="false" name="pref_prefer_current_avg_in_vital_stats">Preferir média nas estatísticas vitais</string>
+  <string formatted="false" name="pref_prefer_current_avg_in_vital_stats_summary">
+    Tentar usar o current_avg nas estatísticas vitais da notificação principal?
+  </string>
+  <string formatted="false" name="pref_prefer_current_avg_in_main_window">Preferir média na tela principal</string>
+  <string formatted="false" name="pref_prefer_current_avg_in_main_window_summary">
+    Tentar usar o current_avg na tela principal?
+  </string>
+
+  <string formatted="false" name="pref_prefer_current_avg_help">
+    Alguns sistemas tem mais uma gambiarra disponível, que fornece uma
+    média recente da corrente elétrica em vez de uma leitura instantânea dela.
+    O que isso significa é que isso varia de dispositivo para dispositivo, e só está
+    disponível em alguns. Isso pode te dar um valor mais estável (se tudo dar certo),
+    pode te dar o mesmo valor, ou pode te dar um valor instável (neste caso você deve desativar essa opção).
+  </string>
+
+  <string formatted="false" name="pref_auto_refresh_current_in_main_window">Recarregar mA automaticamente na janela principal</string>
+  <string formatted="false" name="pref_auto_refresh_current_in_main_window_summary">
+    Recarregar mA automaticamente a cada 2 segundos?
+  </string>
+  <string formatted="false" name="pref_auto_refresh_current_in_main_window_help">
+    Se você configurou a gambiarra para que o mA seja exibido na tela principal, você
+    pode recarregar o valor simplesmente ao tocar nele. Se você quiser ver atualizações
+    frequentes sem precisar tocá-lo, você pode ativar essa opção para recarregar o valor
+    automaticamente a cada dois segundos enquanto a janela estiver visível.\n
+
+    \nObserve que alguns dispositivos raramente ou nunca atualizam os dados internos, então esse
+    valor pode não mudar mesmo quando o app está recarregando o valor exibido para corresponder o valor
+    retornado pelo sistema.
+  </string>
+
+  <string formatted="false" name="pref_cat_charging_indicator">Indicador de carregamento</string>
+  <string formatted="false" name="pref_indicate_charging">Indicar carregamento</string>
+  <string formatted="false" name="pref_indicate_charging_summary">Alterar o ícone para indicar quando está carregando?</string>
+  <string formatted="false" name="pref_indicate_charging_help">
+    Alguns conjuntos de ícones indicam quando a bateria está sendo carregada,
+    por exemplo, mostrando um raio abaixo do número. Desative essa configuração
+    se você prefere que isso não aconteça.
+  </string>
+
+  <string formatted="false" name="pref_cat_logging">Coleta de registros</string>
+  <string formatted="false" name="pref_enable_logging">Ativar coleta de registros</string>
+  <string formatted="false" name="pref_enable_logging_summary">Registrar mudanças no estado da bateria?</string>
+  <string formatted="false" name="pref_enable_logging_help">
+    Se ativado, o BatteryBot registrará mudanças no estado da bateria.
+  </string>
+  <string formatted="false" name="pref_max_log_age">Idade máxima dos registros</string>
+  <string formatted="false" name="pref_max_log_age_summary">Apagar registros mais velhos que:</string>
+  <string formatted="false" name="pref_max_log_age_help">
+    Se a coleta de registros está ativada, quando você conectar o seu dispositivo, registros
+    mais velhos que isso serão apagados.
+  </string>
+  <string formatted="false" name="pref_notify_status_duration">Mostrar duração do estado</string>
+  <string formatted="false" name="pref_notify_status_duration_summary">Mostrar o tempo desde quando o estado mudou em vez da estimativa de tempo restante?</string>
+  <string formatted="false" name="pref_notify_status_duration_help">
+    Ative essa configuração se você prefere que a notificação principal mostre
+    o tempo desde quando o estado mudou (exemplo: \"Desconectado por 5 horas\") em vez
+    da estimativa de tempo restante. As duas informações estão disponíveis na janela principal.
+  </string>
+
+  <string formatted="false" name="pref_cat_temperature_unit">Unidade de temperatura</string>
+  <string formatted="false" name="pref_convert_to_fahrenheit">Converter para Fahrenheit</string>
+  <string formatted="false" name="pref_convert_to_fahrenheit_help">
+    O Android retorna a temperatura em graus Celsius. Se você prefere
+    ver a temperatura da bateria em graus Fahrenheit, marque essa opção e o app
+    converterá ela pra você.
+  </string>
+
+  <string formatted="false" name="pref_cat_autostart">Início automático</string>
+  <string formatted="false" name="pref_autostart_at_boot">Iniciar automaticamente no boot</string>
+  <string formatted="false" name="pref_autostart_at_boot_summary">Iniciar o BatteryBot quando o dispositivo liga:</string>
+  <string formatted="false" name="pref_autostart_at_boot_help">
+    Controla se o BatteryBot deve iniciar sozinho automaticamente quando
+    o dispositivo liga.\n
+
+    \nA opção \"Se executando no desligamento\" trabalha da forma em qual você
+    mais recentemente iniciou ou parou o BatteryBot.
+    Se você encerrar o BatteryBot por algum outro método, como um
+    encerrador de tarefas, o BatteryBot não sabe que você o parou, e ele
+    ainda irá iniciar ao ligar se você configurou assim.\n
+
+    \nOBSERVAÇÃO: O Android sempre iniciará o BatteryBot ao ligar se você tem
+    widgets na tela inicial. Neste caso, as configurações são irrelevantes.
+  </string>
+
+  <string formatted="false" name="predictor_sensitive">Sensível</string>
+  <string formatted="false" name="predictor_conservative">Conservador</string>
+  <string formatted="false" name="predictor_since_status_change">Desde a mudança do estado</string>
+  <string formatted="false" name="predictor_long_term_ave">Média de longo prazo</string>
+
+  <string formatted="false" name="pref_cat_predictor">Estimativas de tempo restante</string>
+  <string formatted="false" name="pref_prediction_type">Tipo de estimativa</string>
+  <string formatted="false" name="pref_prediction_type_help">
+    Aqui você pode selecionar como o BatteryBot Pro estima o seu tempo restante de bateria ou
+    para que a bateria seja carregada por completo.\n_days
+
+    \nO algoritmo \"Sensível\" é baseado de forma estrita nos últimos cinco minutos
+    de uso. Se a sua preocupação principal é \"Quanto tempo minha bateria durará
+    se eu continuar fazendo o que estou fazendo?\" então essa opção é para você.
+
+    \nO algoritmo \"Conservador\" é o padrão. Também é baseado no uso recente, mas
+    ele tenta não variar muito da média de longo prazo.\n
+
+    \nSelecione \"Desde a mudança do estado\" para que a estimativa seja
+    baseada somente na sua sessão atual.\n
+
+    \nFinalmente, você pode ter a estimativa baseada puramente no seu uso a longo prazo.
+  </string>
+
+  <string formatted="false" name="lang_system_selected">Selecionado pelo sistema</string>
+  <string formatted="false" name="pref_cat_language">Idioma</string>
+  <string formatted="false" name="pref_language_override">Alterar idioma</string>
+  <string formatted="false" name="pref_language_override_summary">Selecionar idioma:</string>
+  <string formatted="false" name="pref_language_override_help">
+    Se a tradução para o seu idioma está incompleta ou imprecisa, e você
+    prefere uma outra, que pode ser melhor, você pode fazer isso aqui. (Desculpe! --Tradutor)
+  </string>x
+
+  <string formatted="false" name="pref_classic_color_mode">Forçar modo de cor clássica</string>
+  <string formatted="false" name="pref_classic_color_mode_summary">
+    Isso normalmente não funciona; leia o manual de ajuda
+  </string>
+  <string formatted="false" name="pref_classic_color_mode_help">
+    Desde o Android 5.0, os ícones coloridos de notificação não funcionam
+    mais no Android, fazendo com que o ícone Clássico seja exibido como um branco sólido.
+    Por padrão, nestes dispositivos, o app usa um contorno em branco
+    sólido com o número branco.\n
+
+    \nPorém, nem todos os dispositivos seguem as diretrizes, então isso
+    não é necessário e não funciona corretamente para tudo. Você pode tentar
+    fazer o conjunto de ícones Clássico funcionar do modo clássico ativando essa opção.
+    Lembre-se, na maioria dos dispositivos isso simplesmente fará com
+    que o ícone seja branco sólido.
+  </string>
+
+  <string formatted="false" name="pref_cat_device_specific">Configurações específicas ao dispositivo</string>
+  <!--string name="pref_cat_device_specific_help"></string-->
+
+  <string formatted="false" name="alarms_overview">Visão geral dos alarmes</string>
+  <string formatted="false" name="alarms_overview_help">
+    Essa página permite que você adicione novos alarmes, ativar e desativar alarmes
+    existentes, ou apagar alarmes.\n
+
+    \nPara adicionar um alarme novo, toque em \"Adicionar alarme\" — isso criará um novo
+    alarme e te levará para a página de configurações do alarme, onde você
+    controlar as configurações do alarme novo. Veja a ajuda naquela página
+    para mais detalhes.\n_days
+
+    \nAbaixo do botão de \"Adicionar alarme\", há uma lista de alarmes que
+    você criou.\n
+
+    \n• Para editar um alarme existente, toque nele.
+    \n• Para apagar um alarme, pressione nele, e então selecione \"Apagar alarme\". (Você
+    também pode apagar um alarme da página de configurações individual do alarme, tocando em MENU e então
+    em \"Apagar alarme\".)
+    \n• Para habilitar um alarme, toque no alternador ao lado do texto do alarme. (Você também pode ativar
+    ou desativar um alarme pela página de configurações individual do alarme.)
+
+  </string>
+
+  <string formatted="false" name="pref_alarm_enabled">Ativar alarme</string>
+  <!--string name="pref_alarm_enabled_summary"></string-->
+  <string formatted="false" name="pref_alarm_enabled_help">Se você quer desativar
+  um alarme temporariamente, sem precisar criá-lo novamente quando você
+  querer ele novamente, você pode desativá-lo ou ativá-lo aqui ou na tela de alarmes principal.
+  </string>
+
+  <string formatted="false" name="pref_cat_alarm_conditions">Condições do alarme</string>
+  <string formatted="false" name="pref_cat_alarm_conditions_help">Aqui é aonde você pode
+  controlar quais são as condições para acionar o alarme.
+  </string>
+  <string formatted="false" name="pref_alarm_type">Tipo de alarme</string>
+  <string formatted="false" name="pref_alarm_type_summary">Acionar o alarme quando a bateria:</string>
+  <string formatted="false" name="pref_alarm_type_help">Atualmente, há cinco tipos
+    de alarmes que você pode selecionar.\n
+
+    \nO alarme de \"Fica carregada por completo\" te notificará quando
+    o estado da bateria muda de \"Carregando\" para \"Carregado por completo\".
+    Observe que em muitos dispositivos, isso não é necessariamente a mesma coisa que
+    estar com 100% de bateria.\n
+
+    \nOs alarmes de carga e temperatura precisam que você configure um ponto
+    abaixo, após selecionar o tipo do alarme.\n
+
+    \nO alarme de \"Falhas de saúde\" te notificará se a saúde da sua bateria
+    se torna algo diferente de \"Desconhecida\" ou \"Saúde boa\", como relatado pelo Android.
+  </string>
+  <string formatted="false" name="pref_alarm_threshold">Ponto</string>
+  <string formatted="false" name="alarm_pref_not_used">Não usado por esse tipo de alarme</string>
+  <string formatted="false" name="pref_alarm_threshold_summary">Ponto do alarme:</string>
+  <string formatted="false" name="pref_alarm_threshold_help">
+    Para alarmes de carga e temperatura, você precisa definir a temperatura
+    ou nível de carga que acionam o alarme.
+  </string>
+
+  <string formatted="false" name="boot_pref_always">Sempre</string>
+  <string formatted="false" name="boot_pref_never">Nunca</string>
+  <string formatted="false" name="boot_pref_if_running">Se executando no desligamento</string>
+
+  <string formatted="false" name="status_dur_always">Sempre</string>
+  <string formatted="false" name="status_dur_after_1h">Após 1 hora</string>
+  <string formatted="false" name="status_dur_after_2h">Após 2 horas</string>
+  <string formatted="false" name="status_dur_after_3h">Após 3 horas</string>
+  <string formatted="false" name="status_dur_after_6h">Após 6 horas</string>
+  <string formatted="false" name="status_dur_after_12h">Após 12 horas</string>
+
+  <string formatted="false" name="age_1_day">1 dia</string>
+  <string formatted="false" name="age_2_days">2 dias</string>
+  <string formatted="false" name="age_4_days">4 dias</string>
+  <string formatted="false" name="age_1_week">1 semana</string>
+  <string formatted="false" name="age_2_weeks">2 semanas</string>
+  <string formatted="false" name="age_3_weeks">3 semanas</string>
+  <string formatted="false" name="age_4_weeks">4 semanas</string>
+
+  <string formatted="false" name="icon_set_classic">Clássico</string>
+  <string formatted="false" name="icon_set_plain">Número básico</string>
+  <string formatted="false" name="icon_set_smaller">Número menor</string>
 </resources>
