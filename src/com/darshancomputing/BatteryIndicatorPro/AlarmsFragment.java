@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2021 Darshan Computing, LLC
+    Copyright (c) 2010-2026 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -151,7 +151,6 @@ public class AlarmsFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
-        //setRetainInstance(true);
 
         alarms = new AlarmDatabase(getActivity().getApplicationContext());
         mCursor = alarms.getAllAlarms(true);

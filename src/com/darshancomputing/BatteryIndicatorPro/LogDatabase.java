@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2020 Darshan Computing, LLC
+    Copyright (c) 2010-2026 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -62,7 +62,7 @@ class LogDatabase {
             try {
                 wdb = mSQLOpenHelper.getWritableDatabase();
             } catch (SQLiteException e) {
-                rdb = null;
+                wdb = null;
             }
         }
     }

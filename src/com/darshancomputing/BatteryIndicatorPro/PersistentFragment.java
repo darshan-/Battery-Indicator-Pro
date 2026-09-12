@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2021 Darshan Computing, LLC
+    Copyright (c) 2009-2026 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -94,8 +94,6 @@ public class PersistentFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setRetainInstance(true);
 
         serviceConnection = new BatteryInfoService.RemoteConnection(messenger);
 
