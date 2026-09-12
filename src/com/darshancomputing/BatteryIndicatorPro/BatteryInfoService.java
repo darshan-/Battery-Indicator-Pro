@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2021 Darshan Computing, LLC
+    Copyright (c) 2009-2026 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -130,7 +130,7 @@ public class BatteryInfoService extends Service {
 
     private final Runnable runRenotify = new Runnable() {
         public void run() {
-            registerReceiver(mBatteryInfoReceiver, batteryChanged);
+            registerReceiver(mBatteryInfoReceiver, batteryChanged, Context.RECEIVER_NOT_EXPORTED);
         }
     };
 
@@ -193,7 +193,7 @@ public class BatteryInfoService extends Service {
         alarms = new AlarmDatabase(this);
 
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mainNotificationB = new Notification.Builder(this);
+        mainNotificationB = new Notification.Builder(this, CHAN_ID_MAIN);
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         setUpChannels();
@@ -235,7 +235,7 @@ public class BatteryInfoService extends Service {
             }
         }
 
-        Intent bc_intent = registerReceiver(mBatteryInfoReceiver, batteryChanged);
+        Intent bc_intent = registerReceiver(mBatteryInfoReceiver, batteryChanged, Context.RECEIVER_NOT_EXPORTED);
         info.load(bc_intent, sp_service);
     }
 
@@ -360,8 +360,8 @@ public class BatteryInfoService extends Service {
     }
 
     private void loadSettingsFiles() {
-        settings = getSharedPreferences(SettingsFragment.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
-        sp_service = getSharedPreferences(SettingsFragment.SP_SERVICE_FILE, Context.MODE_MULTI_PROCESS);
+        settings = getSharedPreferences(SettingsFragment.SETTINGS_FILE, Context.MODE_PRIVATE);
+        sp_service = getSharedPreferences(SettingsFragment.SP_SERVICE_FILE, Context.MODE_PRIVATE);
     }
 
     private void reloadSettings(boolean cancelFirst) {
@@ -378,10 +378,10 @@ public class BatteryInfoService extends Service {
     private void applyNewSettings(boolean cancelFirst) {
         if (cancelFirst) {
             stopForeground(true);
-            mainNotificationB = new Notification.Builder(this);
+            mainNotificationB = new Notification.Builder(this, CHAN_ID_MAIN);
         }
 
-        registerReceiver(mBatteryInfoReceiver, batteryChanged);
+        registerReceiver(mBatteryInfoReceiver, batteryChanged, Context.RECEIVER_NOT_EXPORTED);
     }
 
     private final BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
@@ -738,10 +738,9 @@ public class BatteryInfoService extends Service {
         if (info.status == BatteryInfo.STATUS_FULLY_CHARGED && info.status != info.last_status) {
             c = alarms.activeAlarmFull();
             if (c != null) {
-                nb = parseAlarmCursor(c);
+                nb = parseAlarmCursor(c, CHAN_ID_A_CHARGED);
                 nb.setContentTitle(Str.alarm_fully_charged)
-                    .setContentText(Str.alarm_text)
-                    .setChannelId(CHAN_ID_A_CHARGED);
+                    .setContentText(Str.alarm_text);
 
                 nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
@@ -753,11 +752,10 @@ public class BatteryInfoService extends Service {
         c = alarms.activeAlarmChargeDrops(info.percent, previous_charge);
         if (c != null) {
             sps_editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
-            nb = parseAlarmCursor(c);
+            nb = parseAlarmCursor(c, CHAN_ID_A_CDROP);
             String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
             nb.setContentTitle(Str.alarm_charge_drops + threshold + Str.percent_symbol)
-                .setContentText(Str.alarm_text)
-                .setChannelId(CHAN_ID_A_CDROP);
+                .setContentText(Str.alarm_text);
 
             nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
@@ -768,11 +766,10 @@ public class BatteryInfoService extends Service {
         c = alarms.activeAlarmChargeRises(info.percent, previous_charge);
         if (c != null && info.status != BatteryInfo.STATUS_UNPLUGGED) {
             sps_editor.putInt(KEY_PREVIOUS_CHARGE, info.percent);
-            nb = parseAlarmCursor(c);
+            nb = parseAlarmCursor(c, CHAN_ID_A_CRISE);
             String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
             nb.setContentTitle(Str.alarm_charge_rises + threshold + Str.percent_symbol)
-                .setContentText(Str.alarm_text)
-                .setChannelId(CHAN_ID_A_CRISE);
+                .setContentText(Str.alarm_text);
 
             nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
@@ -786,11 +783,10 @@ public class BatteryInfoService extends Service {
                                                    res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
             sps_editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
-            nb = parseAlarmCursor(c);
+            nb = parseAlarmCursor(c, CHAN_ID_A_TRISE);
             String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
             nb.setContentTitle(Str.alarm_temp_rises + Str.formatTemp(Integer.valueOf(threshold), convertF, false))
-                .setContentText(Str.alarm_text)
-                .setChannelId(CHAN_ID_A_TRISE);
+                .setContentText(Str.alarm_text);
 
             nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
@@ -804,11 +800,10 @@ public class BatteryInfoService extends Service {
                                                    res.getBoolean(R.bool.default_convert_to_fahrenheit));
 
             sps_editor.putInt(KEY_PREVIOUS_TEMP, info.temperature);
-            nb = parseAlarmCursor(c);
+            nb = parseAlarmCursor(c, CHAN_ID_A_TDROP);
             String threshold = c.getString(c.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
             nb.setContentTitle(Str.alarm_temp_drops + Str.formatTemp(Integer.valueOf(threshold), convertF, false))
-                .setContentText(Str.alarm_text)
-                .setChannelId(CHAN_ID_A_TDROP);
+                .setContentText(Str.alarm_text);
 
             nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
@@ -820,10 +815,9 @@ public class BatteryInfoService extends Service {
             c = alarms.activeAlarmFailure();
             if (c != null) {
                 sps_editor.putInt(KEY_PREVIOUS_HEALTH, info.health);
-                nb = parseAlarmCursor(c);
+                nb = parseAlarmCursor(c, CHAN_ID_A_HFAIL);
                 nb.setContentTitle(Str.alarm_health_failure + Str.healths[info.health])
-                    .setContentText(Str.alarm_text)
-                    .setChannelId(CHAN_ID_A_HFAIL);
+                    .setContentText(Str.alarm_text);
 
                 nb.setVisibility(Notification.VISIBILITY_PUBLIC);
 
@@ -833,8 +827,8 @@ public class BatteryInfoService extends Service {
         }
     }
 
-    private Notification.Builder parseAlarmCursor(Cursor c) {
-        Notification.Builder nb = new Notification.Builder(this)
+    private Notification.Builder parseAlarmCursor(Cursor c, String channelId) {
+        Notification.Builder nb = new Notification.Builder(this, channelId)
             .setSmallIcon(R.drawable.stat_notify_alarm)
             .setAutoCancel(true)
             .setContentIntent(alarmsPendingIntent);

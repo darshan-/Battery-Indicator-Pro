@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2021 Darshan Computing, LLC
+    Copyright (c) 2009-2026 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,15 +18,20 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public class SettingsActivity extends AppCompatActivity {
     public static final String EXTRA_SCREEN = "com.darshancomputing.BatteryIndicatorPro.PrefScreen";
@@ -35,6 +40,37 @@ public class SettingsActivity extends AppCompatActivity {
     private String pref_screen;
     private int menu_res = R.menu.settings;
     private SettingsFragment frag;
+
+    private void fixAPI35EdgeToEdgeLayout() {
+        View root = findViewById(android.R.id.content);
+
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+                Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                v.setPadding(v.getPaddingLeft(), bars.top, v.getPaddingRight(), bars.bottom);
+
+                return WindowInsetsCompat.CONSUMED;
+            });
+
+        // View root = findViewById(android.R.id.content);
+
+        // TypedValue tv = new TypedValue();
+        // int actionBarHeight = 0;
+        // if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+        //     actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
+        // }
+
+        // final int abHeight = actionBarHeight;
+        // ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+        //         Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+        //         v.setPadding(
+        //                      bars.left,
+        //                      bars.top + abHeight,
+        //                      bars.right,
+        //                      bars.bottom
+        //                      );
+        //         return insets;
+        //     });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +91,10 @@ public class SettingsActivity extends AppCompatActivity {
         Window w = getWindow();
         w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        w.setStatusBarColor(c);
 
         setContentView(R.layout.prefs);
+
+        fixAPI35EdgeToEdgeLayout();
 
         if (savedInstanceState == null) {
             frag = new SettingsFragment();

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2013-2020 Darshan Computing, LLC
+    Copyright (c) 2013-2026 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,14 +14,22 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 //import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -39,16 +47,54 @@ public class BatteryInfoActivity extends AppCompatActivity {
 
     public static final int PR_LVF_WRITE_STORAGE = 1;
 
+    private void fixAPI35EdgeToEdgeLayout() {
+        View root = findViewById(android.R.id.content);
+
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(v.getPaddingLeft(), bars.top, v.getPaddingRight(), bars.bottom);
+
+            return WindowInsetsCompat.CONSUMED;
+        });
+
+        // View root = findViewById(android.R.id.content);
+
+        // TypedValue tv = new TypedValue();
+        // int actionBarHeight = 0;
+        // if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+        //     actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
+        // }
+
+        // final int abHeight = actionBarHeight;
+        // ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+        //         Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+        //         v.setPadding(
+        //                      bars.left,
+        //                      bars.top + abHeight,
+        //                      bars.right,
+        //                      bars.bottom
+        //                      );
+        //         return insets;
+        //     });
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         //setTheme(android.R.style.Theme_DeviceDefault);
         setTheme(R.style.bi_main_theme);
         super.onCreate(savedInstanceState);
 
+        if (Build.VERSION.SDK_INT >= 33 &&
+            checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
+        }
+
         getSupportActionBar().setElevation(0);
         PersistentFragment.getInstance(getSupportFragmentManager()); // Calling here ensures PF created before other Fragments?
 
         setContentView(R.layout.battery_info);
+
+        fixAPI35EdgeToEdgeLayout();
 
         pagerAdapter = new BatteryInfoPagerAdapter(getSupportFragmentManager());
 
@@ -130,7 +176,10 @@ public class BatteryInfoActivity extends AppCompatActivity {
 
                 if (lvf != null)
                     lvf.onRequestPermissionsResult(requestCode, permissions, grantResults);
+                break;
             }
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2021 Darshan Computing, LLC
+    Copyright (c) 2009-2026 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -171,7 +171,7 @@ public class CurrentInfoFragment extends Fragment {
             pfrag.sendServiceMessage(BatteryInfoService.RemoteConnection.SERVICE_CANCEL_NOTIFICATION_AND_RELOAD_SETTINGS);
         }
 
-        Intent bc_intent = getActivity().registerReceiver(null, batteryChangedFilter);
+        Intent bc_intent = getActivity().registerReceiver(null, batteryChangedFilter, Context.RECEIVER_NOT_EXPORTED);
         info.load(bc_intent);
         info.load(pfrag.sp_service);
         handleUpdatedBatteryInfo();

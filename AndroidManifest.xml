@@ -2,22 +2,20 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:sharedUserId="com.darshancomputing.BatteryIndicatorPro"
-    android:versionCode="026018"
-    android:versionName="12.1.0"
+    android:versionCode="026019"
+    android:versionName="12.1.0-dev"
 >
 
-  <!-- Permissions now considered "normal", automatically granted on API 23+ -->
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /><!-- Required on API 28+ -->
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
   <uses-permission android:name="android.permission.VIBRATE" />
 
   <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
-  <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
-
-  <!-- Apparently this is needed now?  Haven't checked docs in a while to catch platform changes... -->
   <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+  <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 
   <supports-screens
       android:smallScreens="true"
@@ -29,23 +27,16 @@
   <application
     android:label="@string/app_full_name"
     android:icon="@drawable/battery"
-    android:hardwareAccelerated="true"
     android:process="com.darshancomputing.BatteryBotPro"
     android:allowBackup="false"
     android:resizeableActivity="true"
     android:supportsRtl="true"
     >
-  <!--
-      Temporarily put these two lines in <application> above to enable debugging of release build:
 
-      android:debuggable="true"
-      tools:ignore="HardcodedDebugMode"
-  -->
   <activity
       android:name=".BatteryInfoActivity"
       android:label="@string/app_full_name"
       android:theme="@style/bi_main_theme"
-      android:stateNotNeeded="true"
       android:launchMode="singleTask"
       android:exported="true"
       >
@@ -73,7 +64,6 @@
   <activity
       android:name=".SettingsHelpActivity"
       android:theme="@style/bi_help_theme"
-      android:stateNotNeeded="true"
       android:excludeFromRecents="true"
       android:exported="false"
       />
@@ -81,7 +71,6 @@
   <activity
       android:name=".HelpActivity"
       android:theme="@style/bi_help_theme"
-      android:stateNotNeeded="true"
       android:excludeFromRecents="true"
       android:exported="false"
       />
@@ -90,6 +79,7 @@
       android:name=".BatteryInfoService"
       android:process="com.darshancomputing.BatteryBotPro.BIS"
       android:icon="@drawable/battery"
+      android:foregroundServiceType="dataSync"
       />
 
   <receiver
@@ -103,7 +93,6 @@
     </intent-filter>
     <intent-filter>
       <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-      <!--data android:scheme="package" android:path="com.darshancomputing.BatteryIndicatorPro" /-->
     </intent-filter>
   </receiver>
 
