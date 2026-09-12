@@ -17,24 +17,12 @@ package com.darshancomputing.BatteryIndicatorPro;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.res.Resources;
-//import android.content.SharedPreferences;
 import android.os.Bundle;
-//import android.preference.PreferenceManager;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
