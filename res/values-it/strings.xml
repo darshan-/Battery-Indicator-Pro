@@ -152,7 +152,6 @@
   <string name="alarm_charge_drops" formatted="false">"La carica della batteria è inferiore a "</string>
   <string name="alarm_charge_rises" formatted="false">"La carica della batteria è superiore a "</string>
   <string name="alarm_temp_rises" formatted="false">"La temp. della batteria è superiore a "</string>
-  <string name="alarm_temp_rises" formatted="false">"La temp. della batteria è inferiore a "</string>
   <string name="alarm_health_failure" formatted="false">"La salute della batteria è: "</string>
   <string name="alarm_text" formatted="false">Seleziona per modificare gli allarmi.</string>
   
@@ -269,7 +268,7 @@
   <string name="settings_overview" formatted="false">Panoramica</string>
   <string name="settings_overview_help" formatted="false">Le impostazioni sono organizzate in tre pagine separate, descritte qui di seguito. Ogni pagina ha una sua pagina di aiuto che descrive le impostazioni. Basta premere MENU\' - Aiuto per ottenere aiuto su qualunque impostazione presente nella pagina.</string>
   
-  <string formatted="false" name="notifications_disabled_cat">Notifiche disabilitate/string>
+  <string formatted="false" name="notifications_disabled_cat">Notifiche disabilitate</string>
   <string formatted="false" name="app_notifs_disabled_b">Abilita noticfiche dell\'applicazione</string>
   <string formatted="false" name="app_notifs_disabled_summary">Hai disabilitato tutte le notifiche per questa app.  Perfavore abilitale per accedere a queste impostazioni.</string>
   <string formatted="false" name="main_notifs_disabled_b">Abilita le notifiche principali</string>
@@ -511,9 +510,6 @@
   <string name="pref_enable_logging" formatted="false">Abilita registro</string>
   <string name="pref_enable_logging_summary" formatted="false">Registrare i cambiamenti di stato della batteria?</string>
   <string name="pref_enable_logging_help" formatted="false">Se abilitato, Battery Indicator registrerà i cambiamenti dello stato della batteria (es. il telefono è scollegato o è completamente carico). Puoi vedere il registro dalla finestra principale (premi MENU\' e poi seleziona Logs; nei tablet MENU\' non è necessario).</string>
-  <string name="pref_max_log_age" formatted="false">Periodo massimo registro</string>
-  <string name="pref_max_log_age_summary" formatted="false">Cancella registri più vecchi di:</string>
-  <string name="pref_max_log_age_help" formatted="false">Se il logging è abilitato, ogni volta che colleghi il telefono, i registri più vecchi saranno cancellati.</string>
   <string formatted="false" name="pref_max_log_age">Età massima del registro</string>
   <string formatted="false" name="pref_max_log_age_summary">Elimina i registri più vecchi di:</string>
   <string formatted="false" name="pref_max_log_age_help">
@@ -620,12 +616,4 @@
   <string name="age_2_weeks" formatted="false">2 settimane</string>
   <string name="age_3_weeks" formatted="false">3 settimane</string>
   <string name="age_4_weeks" formatted="false">4 settimane</string>
-  <plurals name="n_log_items">
-    <item quantity="one">%d elemento log</item>
-    <item quantity="other">%d elementi log</item>
-  </plurals>
-  <plurals name="for_n_hours">
-    <item quantity="one">Per %d ora</item>
-    <item quantity="other">Per %d ore</item>
-  </plurals>
 </resources>
