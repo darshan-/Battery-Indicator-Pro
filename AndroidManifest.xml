@@ -8,7 +8,7 @@
 
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
   <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
   <uses-permission android:name="android.permission.VIBRATE" />
 
   <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
@@ -79,8 +79,12 @@
       android:name=".BatteryInfoService"
       android:process="com.darshancomputing.BatteryBotPro.BIS"
       android:icon="@drawable/battery"
-      android:foregroundServiceType="dataSync"
-      />
+      android:foregroundServiceType="specialUse"
+      >
+    <property
+        android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+        android:value="Real-time battery monitoring, indicator notification, and threshold alarms" />
+  </service>
 
   <receiver
       android:name=".BootCompletedReceiver"
