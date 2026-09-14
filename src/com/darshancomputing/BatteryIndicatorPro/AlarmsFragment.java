@@ -205,7 +205,7 @@ public class AlarmsFragment extends Fragment {
         NotificationChannel chan;
         for (String chan_id : BatteryInfoService.ALARM_CHAN_IDS) {
             chan = mNotificationManager.getNotificationChannel(chan_id);
-            chanDisabled.put(chan_id, chan.getImportance() == 0);
+            chanDisabled.put(chan_id, (chan == null) || (chan.getImportance() == 0));
         }
 
         convertF = pfrag.settings.getBoolean(SettingsFragment.KEY_CONVERT_F,

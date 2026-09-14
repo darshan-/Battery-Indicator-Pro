@@ -134,35 +134,34 @@ public class BatteryInfoService extends Service {
         }
     };
 
-    private void setUpChannels() {
-        if (mNotificationManager == null)
-            mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+    public static void setUpChannels(Context context) {
+        NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        mNotificationManager.deleteNotificationChannel(CHAN_ID_OLD_MAIN);
-        mNotificationManager.deleteNotificationChannel(CHAN_ID_OLD_ALARM);
+        nm.deleteNotificationChannel(CHAN_ID_OLD_MAIN);
+        nm.deleteNotificationChannel(CHAN_ID_OLD_ALARM);
 
         int main_importance = NotificationManager.IMPORTANCE_MIN;
         if (android.os.Build.VERSION.SDK_INT < 28) {
             main_importance = NotificationManager.IMPORTANCE_LOW;
         }
-        CharSequence main_notif_chan_name = getString(R.string.main_notif_chan_name);
+        CharSequence main_notif_chan_name = context.getString(R.string.main_notif_chan_name);
         NotificationChannel ch = new NotificationChannel(CHAN_ID_MAIN, main_notif_chan_name, main_importance);
         ch.setSound(null, null);
         ch.enableLights(false);
         ch.enableVibration(false);
         ch.setShowBadge(false);
         ch.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
-        mNotificationManager.createNotificationChannel(ch);
+        nm.createNotificationChannel(ch);
 
-        CharSequence channel_group_name_alarms = getString(R.string.channel_group_name_alarms);
-        mNotificationManager.createNotificationChannelGroup(new NotificationChannelGroup(CHAN_GROUP_ID_ALARMS, channel_group_name_alarms));
+        CharSequence channel_group_name_alarms = context.getString(R.string.channel_group_name_alarms);
+        nm.createNotificationChannelGroup(new NotificationChannelGroup(CHAN_GROUP_ID_ALARMS, channel_group_name_alarms));
 
         int[] alarm_chan_names = {R.string.alarm_type_fully_charged, R.string.alarm_type_charge_drops, R.string.alarm_type_charge_rises,
                                   R.string.alarm_type_temperature_drops, R.string.alarm_type_temperature_rises, R.string.alarm_type_health_failure};
 
         for (int i = 0; i < ALARM_CHAN_IDS.length; i++) {
             Uri ringtone = android.media.RingtoneManager.getDefaultUri(android.media.RingtoneManager.TYPE_NOTIFICATION);
-            CharSequence chan_name = getString(alarm_chan_names[i]);
+            CharSequence chan_name = context.getString(alarm_chan_names[i]);
             ch = new NotificationChannel(ALARM_CHAN_IDS[i], chan_name, NotificationManager.IMPORTANCE_HIGH);
             ch.setSound(ringtone, new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_NOTIFICATION_EVENT).build());
             ch.enableLights(true);
@@ -171,7 +170,7 @@ public class BatteryInfoService extends Service {
             ch.setVibrationPattern(new long[]{0, 500, 500, 500, 500, 1000, 1000, 1000, 1000});
             ch.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
             ch.setGroup(CHAN_GROUP_ID_ALARMS);
-            mNotificationManager.createNotificationChannel(ch);
+            nm.createNotificationChannel(ch);
         }
     }
 
@@ -196,7 +195,7 @@ public class BatteryInfoService extends Service {
         mainNotificationB = new Notification.Builder(this, CHAN_ID_MAIN);
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-        setUpChannels();
+        setUpChannels(this);
 
         loadSettingsFiles();
         sdkVersioning();

@@ -96,6 +96,8 @@ public class BatteryInfoActivity extends AppCompatActivity {
 
         fixAPI35EdgeToEdgeLayout();
 
+        BatteryInfoService.setUpChannels(this);
+
         pagerAdapter = new BatteryInfoPagerAdapter(getSupportFragmentManager());
 
         pagerAdapter.setContext(this);

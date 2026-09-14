@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2009-2021 Darshan Computing, LLC
+    Copyright (c) 2009-2026 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -215,7 +215,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.CHAN_ID_MAIN);
 
         if (appNotifsEnabled != mNotificationManager.areNotificationsEnabled() ||
-            mainNotifsEnabled != mainChan.getImportance() > 0) { // Doesn't seem worth checking which screen
+            mainNotifsEnabled != (mainChan != null && mainChan.getImportance() > 0)) { // Doesn't seem worth checking which screen
             resetService();
             setPreferences();
         }
@@ -260,7 +260,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         mainChan = mNotificationManager.getNotificationChannel(BatteryInfoService.CHAN_ID_MAIN);
 
         appNotifsEnabled = mNotificationManager.areNotificationsEnabled();
-        mainNotifsEnabled = mainChan.getImportance() > 0;
+        mainNotifsEnabled = (mainChan != null) && (mainChan.getImportance() > 0);
 
         int pref_res = pref_screen;
 
@@ -525,7 +525,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         }
 
         lpref.setEntries    (entriesList.toArray(new String[entriesList.size()]));
-        lpref.setEntryValues(valuesList.toArray(new String[entriesList.size()]));
+        lpref.setEntryValues(valuesList.toArray(new String[valuesList.size()]));
     }
 
     public void enableNotifsButtonClick() {

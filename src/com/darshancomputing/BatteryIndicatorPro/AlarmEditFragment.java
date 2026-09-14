@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2010-2021 Darshan Computing, LLC
+    Copyright (c) 2010-2026 Darshan Computing, LLC
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,6 +14,7 @@
 
 package com.darshancomputing.BatteryIndicatorPro;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
@@ -238,7 +239,7 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
                     mAdapter.setThreshold("20");
                 else
                     mAdapter.setThreshold("90");
-                        
+
                 lp.setValue(mAdapter.threshold);
             }
         } else {
@@ -263,8 +264,9 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
                threshold = mCursor.getString(mCursor.getColumnIndex(AlarmDatabase.KEY_THRESHOLD));
                  enabled = (mCursor.getInt(mCursor.getColumnIndex(AlarmDatabase.KEY_ENABLED)) == 1);
 
-            chanDisabled = mNotificationManager.getNotificationChannel(type).getImportance() == 0;
-         }
+            NotificationChannel ch = mNotificationManager.getNotificationChannel(type);
+            chanDisabled = (ch == null) || (ch.getImportance() == 0);
+        }
 
         public void setEnabled(Boolean b) {
             enabled = b;
@@ -273,7 +275,8 @@ public class AlarmEditFragment extends PreferenceFragmentCompat {
 
         public void setType(String s) {
             type = s;
-            chanDisabled = mNotificationManager.getNotificationChannel(type).getImportance() == 0;
+            NotificationChannel ch = mNotificationManager.getNotificationChannel(type);
+            chanDisabled = (ch == null) || (ch.getImportance() == 0);
             alarms.setType(id, type);
         }
 
