@@ -45,7 +45,7 @@ public class BatteryInfoActivity extends AppCompatActivity {
 
     //private static final String LOG_TAG = "BatteryBot";
 
-    public static final int PR_LVF_WRITE_STORAGE = 1;
+    public static final int PR_POST_NOTIFICATIONS = 1;
 
     private void fixAPI35EdgeToEdgeLayout() {
         View root = findViewById(android.R.id.content);
@@ -86,7 +86,7 @@ public class BatteryInfoActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= 33 &&
             checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
+            requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, PR_POST_NOTIFICATIONS);
         }
 
         getSupportActionBar().setElevation(0);
@@ -173,13 +173,6 @@ public class BatteryInfoActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
-            case PR_LVF_WRITE_STORAGE: {
-                LogViewFragment lvf = pagerAdapter.getLVF();
-
-                if (lvf != null)
-                    lvf.onRequestPermissionsResult(requestCode, permissions, grantResults);
-                break;
-            }
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
