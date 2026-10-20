@@ -37,6 +37,34 @@
     />
   </PreferenceCategory>
 
+  <PreferenceCategory app:title="@string/pref_cat_battery">
+    <EditTextPreference
+       app:key="design_capacity_mah"
+       app:title="@string/pref_design_capacity"
+       app:dialogTitle="@string/pref_design_capacity_dialog"
+    />
+
+    <Preference
+       app:key="calibrate_readings"
+       app:title="@string/calibration_title"
+       app:summary="@string/calibration_summary_none"
+    />
+
+    <CheckBoxPreference
+       app:key="dual_cell_current"
+       app:title="@string/pref_dual_cell_current"
+       app:summary="@string/pref_dual_cell_current_summary"
+       android:defaultValue="false"
+    />
+
+    <CheckBoxPreference
+       app:key="dual_cell_voltage"
+       app:title="@string/pref_dual_cell_voltage"
+       app:summary="@string/pref_dual_cell_voltage_summary"
+       android:defaultValue="false"
+    />
+  </PreferenceCategory>
+
   <PreferenceCategory app:title="@string/pref_cat_predictor">
     <ListPreference
        app:key="prediction_type"

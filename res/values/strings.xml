@@ -785,4 +785,106 @@
   <string formatted="false" name="icon_set_classic">Classic</string>
   <string formatted="false" name="icon_set_plain">Plain Number</string>
   <string formatted="false" name="icon_set_smaller">Smaller Number</string>
+
+  <!-- Battery details (cycle count, mAh usage, estimated health) -->
+  <string name="battery_details">Battery Details</string>
+  <string name="details_since">Since status changed %1$dh %2$dm ago:</string>
+  <string name="details_used">Used: %d mAh</string>
+  <string name="details_added">Added: %d mAh</string>
+  <string name="details_screen_on">Screen on: %1$dh %2$dm, %3$s</string>
+  <string name="details_screen_off">Screen off: %1$dh %2$dm, %3$s</string>
+  <string name="usage_used">used %d mAh</string>
+  <string name="usage_added">added %d mAh</string>
+  <string name="usage_avg">%1$s (%2$d mA average)</string>
+  <string name="details_no_counter">This device doesn\'t report its charge counter, so usage in mAh and capacity estimates aren\'t available.</string>
+  <string name="details_charge_now">Charge now: %d mAh</string>
+  <plurals name="details_est_capacity">
+    <item quantity="one">Estimated full capacity: %1$d mAh (from %2$d charge)</item>
+    <item quantity="other">Estimated full capacity: %1$d mAh (from %2$d charges)</item>
+  </plurals>
+  <string name="details_no_estimate" formatted="false">Estimated full capacity: not measured yet. Charge by 20% or more in one go to measure it.</string>
+  <string name="details_health">Design capacity: %1$d mAh, so health is about %2$d%%</string>
+  <string name="details_no_design">Set your battery\'s design capacity in Settings, Other Settings, to see health as a percentage.</string>
+  <string name="details_cycles">Charge cycles: %d</string>
+  <string name="details_charging_mode">Charging mode: %s</string>
+  <string name="details_estimate_note">Estimates come from the phone\'s fuel gauge and can be off by several percent.</string>
+  <string-array name="charging_states">
+    <item>Unknown</item>
+    <item>Normal</item>
+    <item>Paused (too cold)</item>
+    <item>Paused (too hot)</item>
+    <item>Long life (limited charge)</item>
+    <item>Adaptive</item>
+  </string-array>
+  <string name="nav_now">Now</string>
+  <string name="alarms_empty">No alarms yet. Add one to get notified when the battery is full, or when charge or temperature crosses a level you choose.</string>
+  <string name="chart_title">Last 24 hours</string>
+  <string name="chart_ago_24h">24h ago</string>
+  <string name="chart_ago_12h">12h</string>
+  <string name="chart_now">Now</string>
+  <string name="chart_empty">Not enough history yet. The graph fills in as the battery level changes.</string>
+
+  <!-- Main screen tiles and usage card -->
+  <string name="tile_health">Health</string>
+  <string name="tile_capacity">Capacity</string>
+  <string name="tile_cycles">Cycles</string>
+  <string name="tile_current">Current</string>
+  <string name="tile_charge_rate">Charge rate</string>
+  <string name="tile_drain_rate">Drain rate</string>
+  <string name="tile_temperature">Temperature</string>
+  <string name="tile_voltage">Voltage</string>
+  <string name="tile_condition">Condition</string>
+  <string name="tile_charging_mode">Charging mode</string>
+  <string name="mah_value">%d mAh</string>
+  <string name="ma_value">%d mA</string>
+  <string name="percent_value">%d%%</string>
+  <string name="usage_title_used">Used since unplugged</string>
+  <string name="usage_title_added">Added since plugged in</string>
+  <string name="usage_title_other">Since status changed</string>
+  <string name="usage_legend_on">Screen on %1$dh %2$dm</string>
+  <string name="usage_legend_off">Screen off %1$dh %2$dm</string>
+  <string name="usage_legend_avg">%1$s · %2$d mA</string>
+  <string name="status_chip">%1$s · %2$dh %3$dm</string>
+  <string name="pref_cat_battery">Battery</string>
+  <string name="pref_design_capacity">Design capacity (mAh)</string>
+  <string name="pref_design_capacity_dialog">Your battery\'s rated capacity from the phone\'s spec sheet, used to show estimated health</string>
+  <string name="csv_charge_mah">Charge (mAh)</string>
+  <string name="csv_current_ma">Current (mA)</string>
+
+  <!-- Calibration of current readings and two-cell battery corrections -->
+  <string name="calibration_title">Calibrate battery readings</string>
+  <string name="calibration_intro">Phones report battery current in different units and with different signs. BatteryBot can measure how yours reports it, so charge and drain rates show correctly. It takes about 10 seconds while the phone runs on battery.</string>
+  <string name="calibration_unplug">Unplug the charger to start. Measuring only works while the phone runs on battery.</string>
+  <string name="calibration_measuring">Measuring. Keep the phone unplugged and the screen on.</string>
+  <string name="calibration_replugged">The charger was connected, so measuring stopped. Unplug it to start again.</string>
+  <string name="calibration_unsupported">This phone doesn\'t report battery current, so there\'s nothing to calibrate. You can still correct the voltage below if it looks doubled.</string>
+  <string name="calibration_zero">The phone reported 0 mA the whole time, so its current readings can\'t be calibrated.</string>
+  <string name="calibration_done">Here\'s how your phone reports current. Save to use these settings from now on.</string>
+  <string name="calibration_unit_label">Unit</string>
+  <string name="calibration_unit_ua">Microamps (standard)</string>
+  <string name="calibration_unit_ma">Milliamps</string>
+  <string name="calibration_unit_na">Nanoamps</string>
+  <string name="calibration_sign_label">While on battery</string>
+  <string name="calibration_sign_standard">Negative (standard)</string>
+  <string name="calibration_sign_flipped">Positive, so BatteryBot will flip the sign</string>
+  <string name="calibration_drain_label">Drain right now</string>
+  <string name="calibration_dual_current_hint">Use this if capacity shows about half of what your battery should hold. Doubles current, mAh used and capacity. The phone reports %1$d mAh at full charge; design capacity is %2$d mAh.</string>
+  <string name="calibration_dual_current_hint_plain">Use this if capacity shows about half of what your battery should hold. Doubles current, mAh used and capacity.</string>
+  <string name="calibration_dual_voltage_hint">The phone reports %1$.2f V. A single cell is about 3.5 to 4.5 V, so a reading over 7 V is two cells added together.</string>
+  <string name="calibration_start">Start</string>
+  <string name="calibration_save">Save</string>
+  <string name="calibration_not_now">Not now</string>
+  <string name="calibration_saved">Calibration saved</string>
+  <string name="calibration_summary_none">Not calibrated. Measures how this phone reports current.</string>
+  <string name="calibration_summary_done">Calibrated: %1$s, %2$s</string>
+  <string name="calibration_summary_sign_standard">standard sign</string>
+  <string name="calibration_summary_sign_flipped">sign flipped</string>
+  <string name="pref_dual_cell_current">Two-cell battery: double current</string>
+  <string name="pref_dual_cell_current_summary">For phones that report half the current and capacity of a two-cell battery</string>
+  <string name="pref_dual_cell_voltage">Two-cell battery: halve voltage</string>
+  <string name="design_capacity_detected">%d mAh, from the system. Enter a value to override it.</string>
+  <string name="design_capacity_manual">%d mAh</string>
+  <string name="design_capacity_manual_detected">%1$d mAh, entered by you. The system says %2$d mAh; clear the value to use that.</string>
+  <string name="design_capacity_not_set">Not set. This phone doesn\'t declare its capacity, so enter it from the spec sheet.</string>
+  <string name="pref_dual_cell_voltage_summary">For phones that report over 7 V because both cells are added together</string>
 </resources>

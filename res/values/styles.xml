@@ -11,7 +11,8 @@
     <item name="android:paddingTop">24dp</item>
     <item name="android:paddingBottom">6dp</item>
     <item name="android:textColor">@color/primary_text</item>
-    <item name="android:textSize">28sp</item>
+    <item name="android:fontFamily">sans-serif-medium</item>
+    <item name="android:textSize">24sp</item>
   </style>
 
   <style name="help_cat_post_margin">
@@ -48,7 +49,10 @@
   </style>
 
   <style name="bi_help_theme" parent="Theme.AppCompat.DayNight">
-    <item name="android:fontFamily">sans-serif-light</item>
+    <item name="android:fontFamily">sans-serif</item>
+    <item name="android:textColorPrimary">@color/primary_text</item>
+    <item name="android:textColorSecondary">@color/secondary_text</item>
+    <item name="android:textColorLink">@color/overview_green</item>
     <item name="android:windowBackground">@color/helpWindowBackground</item>
     <item name="android:colorAccent">@color/help_accent</item>
     <item name="colorAccent">@color/help_accent</item>
@@ -60,7 +64,9 @@
   </style>
 
   <style name="bi_main_theme" parent="Theme.AppCompat.DayNight">
+    <item name="android:fontFamily">sans-serif</item>
     <item name="android:windowBackground">@color/windowBackground</item>
+    <item name="android:colorAccent">@color/accent</item>
     <item name="colorAccent">@color/accent</item>
     <item name="android:alertDialogTheme">@style/dialog_theme</item>
     <item name="colorPrimary">@color/status_bar</item>
@@ -70,7 +76,8 @@
     <item name="android:windowLightNavigationBar">@bool/windowLightStatusBar</item>
     <item name="colorButtonNormal">@color/button_color</item>
     <item name="android:textColorPrimary">@color/primary_text</item>
-    <item name="android:textColorSecondary">@color/primary_text</item>
+    <item name="android:textColorSecondary">@color/secondary_text</item>
+    <item name="android:textColorLink">@color/accent</item>
     <item name="android:textAllCaps">false</item>
   </style>
 
@@ -82,6 +89,32 @@
   </style>
 
   <bool name="windowLightStatusBar">true</bool>
+
+  <style name="bottom_nav_item">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_weight">1</item>
+    <item name="android:orientation">vertical</item>
+    <item name="android:gravity">center_horizontal</item>
+    <item name="android:paddingTop">8dp</item>
+    <item name="android:paddingBottom">6dp</item>
+    <item name="android:clickable">true</item>
+    <item name="android:focusable">true</item>
+    <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
+  </style>
+
+  <style name="bottom_nav_icon">
+    <item name="android:layout_width">24dp</item>
+    <item name="android:layout_height">24dp</item>
+    <item name="android:importantForAccessibility">no</item>
+  </style>
+
+  <style name="bottom_nav_label">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginTop">2dp</item>
+    <item name="android:textSize">12sp</item>
+  </style>
 
   <color name="status_bar">@color/windowBackground</color>
 
@@ -95,7 +128,7 @@
     <item name="android:isLightTheme">@bool/windowLightStatusBar</item>
     <item name="android:colorAccent">@color/dialog_accent</item>
     <item name="colorAccent">@color/dialog_accent</item>
-    <item name="android:windowBackground">@color/dialog_background</item>
+    <item name="android:windowBackground">@drawable/product_dialog_background</item>
     <item name="android:windowTitleStyle">@style/dialog_title_style</item>
     <item name="android:textColorPrimary">@color/dialog_primary_text</item>
   </style>
@@ -113,24 +146,27 @@
     <item name="android:background">?android:attr/selectableItemBackground</item>
   </style>
 
-  <color name="menu_icon_tint">#333</color>
-  <color name="icon_tint">#484848</color>
+  <color name="menu_icon_tint">@color/overview_ink</color>
+  <color name="icon_tint">@color/overview_green</color>
+  <color name="card_background">@color/product_surface</color>
+  <color name="ring_track">@color/overview_track</color>
+  <color name="bar_secondary">@color/overview_muted</color>
 
-  <color name="button_color">#ccc</color>
+  <color name="button_color">@color/overview_track</color>
 
   <color name="dialog_background">@color/windowBackground</color>
-  <color name="dialog_accent">@color/dc_light_blue</color>
-  <color name="dialog_text">#000</color>
+  <color name="dialog_accent">@color/overview_green</color>
+  <color name="dialog_text">@color/overview_ink</color>
 
-  <color name="dialog_title">#000</color>
-  <color name="dialog_primary_text">#222</color>
-  <color name="secondary_text">#666</color>
-  <color name="primary_text">#111</color>
-  <color name="mid_text">#383838</color>
-  <color name="help_text">#222</color>
+  <color name="dialog_title">@color/overview_ink</color>
+  <color name="dialog_primary_text">@color/overview_ink</color>
+  <color name="secondary_text">@color/overview_muted</color>
+  <color name="primary_text">@color/overview_ink</color>
+  <color name="mid_text">@color/overview_muted</color>
+  <color name="help_text">@color/overview_ink</color>
 
   <color name="settings_accent">@color/accent</color>
-  <color name="accent">@color/dc_sat_light_blue</color>
+  <color name="accent">@color/overview_green</color>
   <color name="android_green">#A4C639</color>
   <color name="android_green_darker">#7cbc1d</color>
   <color name="ics_blue">#33b5E5</color>
@@ -139,7 +175,7 @@
   <color name="my_darker_darker_yellow">#d3c314</color>
   <color name="col2020">#3b7bda</color>
 
-  <color name="windowBackground">#fafafa</color>
+  <color name="windowBackground">@color/overview_background</color>
   <color name="widgetTextColor">#111</color>
   <color name="helpWindowBackground">@color/windowBackground</color>
 
@@ -161,7 +197,7 @@
   <color name="help_cat_text">#000</color>
   <color name="help_pref_bg">@color/dc_light_blue</color>
   <color name="help_pref_text">#000</color>
-  <color name="help_accent">@color/dc_dark_blueviolet</color>
+  <color name="help_accent">@color/overview_green</color>
 
   <color name="time_til_charged">@color/my_yellow</color>
   <color name="light_usage">#cccc7e</color>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="overview_background">#111A15</color>
+  <color name="overview_ink">#EEF5EF</color>
+  <color name="overview_muted">#B1BEB5</color>
+  <color name="overview_green">#A7D8B0</color>
+  <color name="overview_track">#253A2D</color>
+  <color name="overview_divider">#2C3C31</color>
+  <color name="overview_button_text">#153722</color>
+  <color name="overview_low">#FFB4AB</color>
+</resources>

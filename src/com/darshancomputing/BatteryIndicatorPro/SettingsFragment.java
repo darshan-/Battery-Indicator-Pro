@@ -28,6 +28,8 @@ import android.os.Message;
 import android.os.Messenger;
 
 
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 //import androidx.preference.Preference.OnPreferenceClickListener;
@@ -36,7 +38,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
 
-public class SettingsFragment extends PreferenceFragmentCompat implements OnSharedPreferenceChangeListener {
+public class SettingsFragment extends ProductPreferenceFragment implements OnSharedPreferenceChangeListener {
     public static final String SETTINGS_FILE = "com.darshancomputing.BatteryIndicatorPro_preferences";
     public static final String SP_SERVICE_FILE = "sp_store";   // Only write from Service process
     public static final String SP_MAIN_FILE = "sp_store_main"; // Only write from main process
@@ -55,6 +57,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
     public static final String KEY_NOTIFY_STATUS_DURATION = "notify_status_duration";
     public static final String KEY_AUTOSTART = "autostart";
     public static final String KEY_PREDICTION_TYPE = "prediction_type";
+    public static final String KEY_DESIGN_CAPACITY_MAH = "design_capacity_mah";
     public static final String KEY_CLASSIC_COLOR_MODE = "classic_color_mode";
     public static final String KEY_STATUS_DUR_EST = "status_dur_est";
     public static final String KEY_CAT_CLASSIC_COLOR_MODE = "category_classic_color_mode";
@@ -145,7 +148,19 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
                                                    KEY_DISPLAY_CURRENT_IN_VITAL_STATS,
                                                    KEY_PREFER_CURRENT_AVG_IN_VITAL_STATS,
                                                    KEY_UI_COLOR,
-                                                   KEY_PREDICTION_TYPE
+                                                   KEY_PREDICTION_TYPE,
+                                                   Calibration.KEY_DUAL_CELL_CURRENT,
+                                                   Calibration.KEY_DUAL_CELL_VOLTAGE,
+                                                   Calibration.KEY_SIGN,
+                                                   Calibration.KEY_RAW_PER_MA
+    };
+
+    // Changing any of these changes how readings are corrected in this process too
+    private static final String[] CALIBRATION_KEYS = {KEY_CURRENT_HACK_MULTIPLIER,
+                                                      Calibration.KEY_DUAL_CELL_CURRENT,
+                                                      Calibration.KEY_DUAL_CELL_VOLTAGE,
+                                                      Calibration.KEY_SIGN,
+                                                      Calibration.KEY_RAW_PER_MA
     };
 
     private static final String[] RESET_SERVICE_WITH_CANCEL_NOTIFICATION = {
@@ -204,8 +219,40 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         pm.setSharedPreferencesMode(Context.MODE_MULTI_PROCESS);
         mSharedPreferences = pm.getSharedPreferences();
 
+        getChildFragmentManager().setFragmentResultListener(CalibrationDialogFragment.RESULT_KEY, this,
+                                                            (requestKey, result) -> onCalibrationSaved());
+
         if (pref_screen > 0)
             setPreferences();
+    }
+
+    // The dialog wrote the settings directly, so the checkboxes on screen need refreshing
+    private void onCalibrationSaved() {
+        String[] keys = {Calibration.KEY_DUAL_CELL_CURRENT, Calibration.KEY_DUAL_CELL_VOLTAGE};
+        for (String key : keys) {
+            CheckBoxPreference pref = (CheckBoxPreference) mPreferenceScreen.findPreference(key);
+            if (pref != null) pref.setChecked(mSharedPreferences.getBoolean(key, false));
+        }
+
+        updateCalibrationSummary();
+        resetService();
+    }
+
+    private void updateCalibrationSummary() {
+        Preference pref = mPreferenceScreen.findPreference(Calibration.KEY_CALIBRATE);
+        if (pref == null) return;
+
+        if (!mSharedPreferences.getBoolean(Calibration.KEY_CALIBRATED, false)) {
+            pref.setSummary(R.string.calibration_summary_none);
+            return;
+        }
+
+        int rawPerMa = mSharedPreferences.getInt(Calibration.KEY_RAW_PER_MA, Calibration.RAW_PER_MA_UA);
+        boolean flipped = mSharedPreferences.getInt(Calibration.KEY_SIGN, 1) == -1;
+        pref.setSummary(res.getString(R.string.calibration_summary_done,
+                                      res.getString(CalibrationDialogFragment.unitName(rawPerMa)),
+                                      res.getString(flipped ? R.string.calibration_summary_sign_flipped :
+                                                    R.string.calibration_summary_sign_standard)));
     }
 
     @Override
@@ -311,6 +358,24 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
             //prefb.setOnPreferenceClickListener(notifChanBListener);
 
             prefb.setSummary(R.string.pref_manage_main_channel);
+        } else if (pref_screen == R.xml.other_pref_screen) {
+            EditTextPreference capPref = (EditTextPreference) mPreferenceScreen.findPreference(KEY_DESIGN_CAPACITY_MAH);
+            int detected = DesignCapacity.systemMah(getActivity());
+            capPref.setOnBindEditTextListener(editText -> {
+                editText.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
+                if (detected > 0) editText.setHint(String.valueOf(detected));
+            });
+            // An entered value overrides the one the system declares; clearing it goes back to that
+            capPref.setSummaryProvider(p -> {
+                int manual = DesignCapacity.manualMah(mSharedPreferences);
+                if (manual > 0)
+                    return res.getString(detected > 0 ? R.string.design_capacity_manual_detected :
+                                         R.string.design_capacity_manual, manual, detected);
+                if (detected > 0)
+                    return res.getString(R.string.design_capacity_detected, detected);
+                return res.getString(R.string.design_capacity_not_set);
+            });
+            updateCalibrationSummary();
         } else if (pref_screen == R.xml.current_hack_pref_screen) {
             if (CurrentHack.getCurrent() == null) {
                 cat = (PreferenceCategory) mPreferenceScreen.findPreference(KEY_CAT_CURRENT_HACK_MAIN);
@@ -357,6 +422,10 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
             ComponentName comp = new ComponentName(getActivity().getPackageName(), SettingsActivity.class.getName());
             startActivity(new Intent().setComponent(comp).putExtra(EXTRA_SCREEN, key));
 
+            return true;
+        } else if (key.equals(Calibration.KEY_CALIBRATE)) {
+            if (getChildFragmentManager().findFragmentByTag(CalibrationDialogFragment.TAG) == null)
+                new CalibrationDialogFragment().show(getChildFragmentManager(), CalibrationDialogFragment.TAG);
             return true;
         } else //TODO: convert biServiceConnection.biService.configurePlugin();
             return key.equals(KEY_PLUGIN_SETTINGS);
@@ -410,6 +479,13 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
 
             if (!mSharedPreferences.getBoolean(KEY_ENABLE_CURRENT_HACK, false))
                 setEnablednessOfCurrentHackDeps(false);
+        }
+
+        for (String k : CALIBRATION_KEYS) {
+            if (key.equals(k)) {
+                Calibration.apply(mSharedPreferences);
+                break;
+            }
         }
 
         if (key.equals(KEY_CURRENT_HACK_PREFER_FS))

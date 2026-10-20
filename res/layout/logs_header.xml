@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="vertical"
->
-  <TextView android:id="@+id/header_text"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:padding="10dp"
-            android:textSize="18dp"
-            android:textStyle="bold"
-  />
-
-  <View style="@style/divider"/>
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:paddingTop="16dp" android:paddingBottom="20dp">
+  <TextView style="@style/product_page_title" android:text="@string/product_history_title" />
+  <TextView style="@style/product_page_caption" android:text="@string/product_history_caption" />
+  <TextView android:id="@+id/header_text" android:layout_width="wrap_content"
+      android:layout_height="wrap_content" android:layout_marginTop="16dp"
+      android:fontFamily="sans-serif-medium" android:textSize="13sp"
+      android:textColor="@color/overview_green" />
+  <TextView android:id="@+id/history_empty" style="@style/product_page_caption"
+      android:layout_marginTop="20dp" android:text="@string/product_history_empty" android:visibility="gone" />
 </LinearLayout>

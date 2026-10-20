@@ -31,7 +31,7 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 
-public class AlarmEditFragment extends PreferenceFragmentCompat {
+public class AlarmEditFragment extends ProductPreferenceFragment {
     private Resources res;
 
     private PreferenceScreen mPreferenceScreen;

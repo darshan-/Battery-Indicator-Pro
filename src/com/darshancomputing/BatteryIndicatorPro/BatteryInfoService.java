@@ -33,11 +33,13 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.media.AudioAttributes;
 import android.net.Uri;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
+import android.os.PowerManager;
 import android.widget.RemoteViews;
 
 import java.util.Date;
@@ -125,6 +127,9 @@ public class BatteryInfoService extends Service {
     private RemoteViews notificationRV;
 
     private Predictor predictor;
+    private UsageTracker usageTracker;
+    private BatteryManager batteryManager;
+    private PowerManager powerManager;
 
     private final Handler mHandler = new Handler();
 
@@ -200,10 +205,14 @@ public class BatteryInfoService extends Service {
         loadSettingsFiles();
         sdkVersioning();
 
+        usageTracker = new UsageTracker(this, sp_service);
+        batteryManager = (BatteryManager) getSystemService(Context.BATTERY_SERVICE);
+        powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+
         CurrentHack.setContext(this);
         CurrentHack.setPreferFS(settings.getBoolean(SettingsFragment.KEY_CURRENT_HACK_PREFER_FS,
                                                     res.getBoolean(R.bool.default_prefer_fs_current_hack)));
-        CurrentHack.setMultiplier(Integer.valueOf(settings.getString(SettingsFragment.KEY_CURRENT_HACK_MULTIPLIER, "1")));
+        Calibration.apply(settings);
 
         Intent currentInfoIntent = new Intent(this, BatteryInfoActivity.class).putExtra(EXTRA_CURRENT_INFO, true);
         currentInfoPendingIntent = PendingIntent.getActivity(this, RC_MAIN, currentInfoIntent, PendingIntent.FLAG_IMMUTABLE);
@@ -236,6 +245,10 @@ public class BatteryInfoService extends Service {
 
         Intent bc_intent = registerReceiver(mBatteryInfoReceiver, batteryChanged, Context.RECEIVER_NOT_EXPORTED);
         info.load(bc_intent, sp_service);
+
+        IntentFilter screenFilter = new IntentFilter(Intent.ACTION_SCREEN_ON);
+        screenFilter.addAction(Intent.ACTION_SCREEN_OFF);
+        registerReceiver(mScreenReceiver, screenFilter, Context.RECEIVER_NOT_EXPORTED);
     }
 
     @Override
@@ -243,6 +256,7 @@ public class BatteryInfoService extends Service {
         alarmManager.cancel(updatePredictorPendingIntent);
         alarms.close();
         unregisterReceiver(mBatteryInfoReceiver);
+        unregisterReceiver(mScreenReceiver);
         mHandler.removeCallbacks(runRenotify);
         mNotificationManager.cancelAll();
         log_db.close();
@@ -359,7 +373,8 @@ public class BatteryInfoService extends Service {
     }
 
     private void loadSettingsFiles() {
-        settings = getSharedPreferences(SettingsFragment.SETTINGS_FILE, Context.MODE_PRIVATE);
+        // Written by the UI process; MULTI_PROCESS re-reads the file when it changed, so reloads see new values
+        settings = getSharedPreferences(SettingsFragment.SETTINGS_FILE, Context.MODE_MULTI_PROCESS);
         sp_service = getSharedPreferences(SettingsFragment.SP_SERVICE_FILE, Context.MODE_PRIVATE);
     }
 
@@ -367,7 +382,7 @@ public class BatteryInfoService extends Service {
         loadSettingsFiles();
         CurrentHack.setPreferFS(settings.getBoolean(SettingsFragment.KEY_CURRENT_HACK_PREFER_FS,
                                                     res.getBoolean(R.bool.default_prefer_fs_current_hack)));
-        CurrentHack.setMultiplier(Integer.valueOf(settings.getString(SettingsFragment.KEY_CURRENT_HACK_MULTIPLIER, "1")));
+        Calibration.apply(settings);
 
         Str.setResources(res); // Language override may have changed
 
@@ -389,6 +404,14 @@ public class BatteryInfoService extends Service {
             if (! Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) return;
 
             update(intent);
+        }
+    };
+
+    // Screen changes split usage into screen-on and screen-off buckets, so sample right at the switch
+    private final BroadcastReceiver mScreenReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context c, Intent intent) {
+            usageTracker.sample(info, Intent.ACTION_SCREEN_ON.equals(intent.getAction()));
         }
     };
 
@@ -416,9 +439,19 @@ public class BatteryInfoService extends Service {
         if (intent != null)
             info.load(intent, sp_service);
 
+        usageTracker.sample(info, powerManager.isInteractive());
+
         predictor.setPredictionType(settings.getString(SettingsFragment.KEY_PREDICTION_TYPE,
                                                        Str.default_prediction_type));
         predictor.update(info);
+
+        // Android's own estimate (API 28+) knows about charger wattage and charging curves, so prefer it
+        if (info.status == BatteryInfo.STATUS_CHARGING && android.os.Build.VERSION.SDK_INT >= 28) {
+            long ms = batteryManager.computeChargeTimeRemaining();
+            if (ms > 0)
+                info.prediction.when = android.os.SystemClock.elapsedRealtime() + ms;
+        }
+
         info.prediction.updateRelativeTime();
 
         if (statusHasChanged())
@@ -688,6 +721,8 @@ public class BatteryInfoService extends Service {
     }
 
     private void handleUpdateWithChangedStatus() {
+        usageTracker.startSession(info);
+
         if (settings.getBoolean(SettingsFragment.KEY_ENABLE_LOGGING, true)) {
             log_db.logStatus(info, now, LogDatabase.STATUS_NEW);
 
@@ -857,7 +892,12 @@ public class BatteryInfoService extends Service {
             widgetIds.add(appWidgetIds[i]);
         }
 
-        context.startForegroundService(new Intent(context, BatteryInfoService.class));
+        try {
+            context.startForegroundService(new Intent(context, BatteryInfoService.class));
+        } catch (IllegalStateException e) {
+            // ForegroundServiceStartNotAllowedException (API 31+) when the widget update arrives while
+            //  we're in the background; the service will start next time the app or boot receiver runs.
+        }
     }
 
     public static void onWidgetDeleted(Context context, int[] appWidgetIds) {

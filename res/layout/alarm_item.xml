@@ -2,47 +2,57 @@
 <!-- Based on code from the Android Open Source Project,
       originally licensed under the Apache License, Version 2.0 -->
 
+<!-- Keep summary_box exactly two levels below the root: AlarmsFragment finds the row via getParent().getParent() -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="8dp"
               android:orientation="vertical"
+              android:background="@drawable/card_background"
 >
-  <LinearLayout android:layout_width="fill_parent"
+  <LinearLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:focusable="false"
                 android:clickable="false"
                 android:longClickable="false"
  >
-    <Switch android:id="@+id/toggle"
-            style="@style/alarm_list_item_toggle"
-            android:layout_gravity="center"
-    />
-
     <LinearLayout android:id="@+id/alarm_summary_box"
                   style="@style/SelectableItem"
-                  android:gravity="center"
                   android:orientation="vertical"
-                  android:layout_width="fill_parent"
-                  android:layout_height="fill_parent"
+                  android:gravity="center_vertical"
+                  android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="1"
+                  android:paddingLeft="16dp"
+                  android:paddingTop="16dp"
+                  android:paddingBottom="16dp"
+                  android:paddingRight="8dp"
+                  android:minHeight="76dp"
                   android:focusable="true"
                   android:clickable="true"
                   android:longClickable="true"
     >
       <TextView android:id="@+id/alarm_summary"
-                android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="6dp"
                 android:textSize="16sp"
-                android:layout_gravity="center_vertical"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="?android:attr/textColorPrimary"
                 android:duplicateParentState="true"
                 android:focusable="false"
                 android:clickable="false"
                 android:longClickable="false"
       />
     </LinearLayout>
-  </LinearLayout>
 
-  <View style="@style/divider"/>
+    <androidx.appcompat.widget.SwitchCompat android:id="@+id/toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="16dp"
+            android:minHeight="48dp"
+    />
+  </LinearLayout>
 </LinearLayout>

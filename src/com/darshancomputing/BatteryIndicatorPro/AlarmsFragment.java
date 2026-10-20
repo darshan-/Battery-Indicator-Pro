@@ -176,6 +176,10 @@ public class AlarmsFragment extends Fragment {
                 mCursor.moveToNext();
             }
         }
+
+        View empty = ((View) mAlarmsList.getParent()).findViewById(R.id.alarms_empty);
+        if (empty != null)
+            empty.setVisibility(mAlarmsList.getChildCount() == 0 ? View.VISIBLE : View.GONE);
     }
 
     @Override
@@ -292,6 +296,7 @@ public class AlarmsFragment extends Fragment {
         summary_tv.setText(summary);
 
         toggle.setChecked(enabled);
+        toggle.setContentDescription(summary_tv.getText());
 
         toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

@@ -58,6 +58,7 @@ public class LogViewFragment extends ListFragment {
     private LayoutInflater mInflater;
     private LogAdapter mAdapter;
     private TextView header_text;
+    private View emptyMessage;
     private Boolean convertF;
 
     private boolean reversed;
@@ -66,7 +67,8 @@ public class LogViewFragment extends ListFragment {
     //private static final String LOG_TAG = "BatteryBot";
 
     private static final String[] CSV_ORDER = {LogDatabase.KEY_TIME, LogDatabase.KEY_STATUS_CODE, LogDatabase.KEY_CHARGE, 
-                                               LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE};
+                                               LogDatabase.KEY_TEMPERATURE, LogDatabase.KEY_VOLTAGE,
+                                               LogDatabase.KEY_CHARGE_MAH, LogDatabase.KEY_CURRENT_MA};
 
     private static final String KEY_SHOW_SECONDS = "show_seconds";
 
@@ -74,12 +76,13 @@ public class LogViewFragment extends ListFragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.history, container, false);
 
         mInflater = inflater;
 
         View logs_header = View.inflate(getActivity(), R.layout.logs_header, null);
         header_text = (TextView) logs_header.findViewById(R.id.header_text);
+        emptyMessage = logs_header.findViewById(R.id.history_empty);
         ListView lv = (ListView) view.findViewById(android.R.id.list);
         lv.addHeaderView(logs_header, null, false);
         lv.setFastScrollEnabled(true);
@@ -349,6 +352,8 @@ public class LogViewFragment extends ListFragment {
     }
 
     private void setHeaderText() {
+        if (emptyMessage != null)
+            emptyMessage.setVisibility(filteredCursor == null || filteredCursor.getCount() == 0 ? View.VISIBLE : View.GONE);
         int count = filteredCursor.getCount();
 
         if (count == 0)
@@ -402,7 +407,8 @@ public class LogViewFragment extends ListFragment {
         Uri uri = resultData.getData();
 
         String[] csvFields = {Str.date, Str.time, Str.status, Str.charge,
-                              Str.temperature, Str.temperature_f, Str.voltage};
+                              Str.temperature, Str.temperature_f, Str.voltage,
+                              getString(R.string.csv_charge_mah), getString(R.string.csv_current_ma)};
 
         try {
             ParcelFileDescriptor pfd = getActivity().getContentResolver().openFileDescriptor(uri, "w");
@@ -453,7 +459,14 @@ public class LogViewFragment extends ListFragment {
                         buf.write(String.valueOf(temperature / 10.0) + ",");
                         buf.write(String.valueOf(java.lang.Math.round(temperature * 9 / 5.0) / 10.0 + 32.0) + ",");
                     } else if (CSV_ORDER[i].equals(LogDatabase.KEY_VOLTAGE)) {
-                        buf.write(String.valueOf(completeCursor.getInt(mAdapter.voltageIndex) / 1000.0));
+                        buf.write(String.valueOf(completeCursor.getInt(mAdapter.voltageIndex) / 1000.0) + ",");
+                    } else if (CSV_ORDER[i].equals(LogDatabase.KEY_CHARGE_MAH)) {
+                        if (!completeCursor.isNull(mAdapter.chargeMahIndex))
+                            buf.write(String.valueOf(completeCursor.getInt(mAdapter.chargeMahIndex)));
+                        buf.write(",");
+                    } else if (CSV_ORDER[i].equals(LogDatabase.KEY_CURRENT_MA)) {
+                        if (!completeCursor.isNull(mAdapter.currentMaIndex))
+                            buf.write(String.valueOf(completeCursor.getInt(mAdapter.currentMaIndex)));
                     }
                 }
                 buf.write("\r\n");
@@ -803,6 +816,7 @@ public class LogViewFragment extends ListFragment {
         TextView time_tv;
         TextView temp_volt_tv;
         TextView time_diff_tv;
+        View status_dot;
     }
 
     // Based on https://stackoverflow.com/a/23438859/1427098
@@ -835,6 +849,7 @@ public class LogViewFragment extends ListFragment {
 
     private class LogAdapter extends CursorAdapter {
         int statusCodeIndex, chargeIndex, timeIndex, temperatureIndex, voltageIndex, timeDeltaIndex;
+        int chargeMahIndex, currentMaIndex;
         DateFormat dateFormat, timeFormat;
 
         private Date d = new Date();
@@ -850,6 +865,8 @@ public class LogViewFragment extends ListFragment {
                    timeIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_TIME);
             temperatureIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_TEMPERATURE);
                 voltageIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_VOLTAGE);
+              chargeMahIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_CHARGE_MAH);
+              currentMaIndex = cursor.getColumnIndexOrThrow(LogDatabase.KEY_CURRENT_MA);
               timeDeltaIndex = cursor.getColumnIndexOrThrow(TimeDeltaCursor.KEY_TIME_DELTA);
         }
 
@@ -862,6 +879,7 @@ public class LogViewFragment extends ListFragment {
             vh.time_tv = (TextView) v.findViewById(R.id.time);
             vh.temp_volt_tv = (TextView) v.findViewById(R.id.temp_volt);
             vh.time_diff_tv = (TextView) v.findViewById(R.id.time_diff);
+            vh.status_dot = v.findViewById(R.id.status_dot);
 
             v.setTag(vh);
 
@@ -974,6 +992,9 @@ public class LogViewFragment extends ListFragment {
                 s += " " + Str.pluggeds[plugged];
 
             status_tv.setText(s);
+            vh.status_dot.getBackground().mutate().setTint(status_tv.getCurrentTextColor());
+            status_tv.setTextColor(context.getResources().getColor(R.color.primary_text));
+            percent_tv.setTextColor(context.getResources().getColor(R.color.overview_green));
 
             percent_tv.setText("" + cursor.getInt(chargeIndex) + "%");
 
@@ -984,13 +1005,19 @@ public class LogViewFragment extends ListFragment {
             else
                 time_tv.setText(dateFormat.format(d) + "  " + timeFormat.format(d));
 
+            // Readings under the level: temperature, voltage and charge, whichever were logged
+            java.util.List<String> readings = new java.util.ArrayList<String>();
+
             int temperature = cursor.getInt(temperatureIndex);
-            if (temperature != 0) temp_volt_tv.setText("" + Str.formatTemp(temperature, convertF));
-            else temp_volt_tv.setText(""); /* TextViews are reused */
+            if (temperature != 0) readings.add(Str.formatTemp(temperature, convertF));
 
             int voltage = cursor.getInt(voltageIndex);
-            if (voltage != 0) temp_volt_tv.setText(temp_volt_tv.getText().toString() +
-                                                   " / " + Str.formatVoltage(voltage));
+            if (voltage != 0) readings.add(Str.formatVoltage(voltage));
+
+            if (!cursor.isNull(chargeMahIndex))
+                readings.add(pfrag.res.getString(R.string.mah_value, cursor.getInt(chargeMahIndex)));
+
+            temp_volt_tv.setText(android.text.TextUtils.join(" · ", readings)); /* TextViews are reused, so always set */
         }
     }
 

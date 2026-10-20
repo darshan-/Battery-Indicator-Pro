@@ -25,7 +25,7 @@
               android:layout_marginTop="6dp"
               android:layout_marginBottom="6dp"
               android:textSize="13sp"
-              android:textColor="#eee"
+              android:textColor="@color/primary_text"
               android:lineSpacingMultiplier="1.1"
     />
   </LinearLayout>

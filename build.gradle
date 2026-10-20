@@ -3,7 +3,12 @@ plugins {
 }
 
 Properties secureProperties = new Properties()
-secureProperties.load(new FileInputStream("secure.properties"))
+File secureFile = file("secure.properties")
+File releaseKeystore = file("../private/my-release-key.keystore")
+boolean hasReleaseSigning = secureFile.exists() && releaseKeystore.exists()
+if (hasReleaseSigning) {
+    secureFile.withInputStream { secureProperties.load(it) }
+}
 
 android {
     namespace "com.darshancomputing.BatteryIndicatorPro"
@@ -39,17 +44,21 @@ android {
     }
 
     signingConfigs {
-        release {
-            storeFile file("../private/my-release-key.keystore")
-            storePassword secureProperties['key.store.password']
-            keyAlias "alias_name"
-            keyPassword secureProperties['key.alias.password']
+        if (hasReleaseSigning) {
+            release {
+                storeFile releaseKeystore
+                storePassword secureProperties['key.store.password']
+                keyAlias "alias_name"
+                keyPassword secureProperties['key.alias.password']
+            }
         }
     }
 
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            // Without secure.properties and the keystore, release builds come out unsigned
+            if (hasReleaseSigning)
+                signingConfig signingConfigs.release
             minifyEnabled true
             proguardFile 'proguard-no-obfuscation'
         }

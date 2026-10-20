@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:paddingLeft="12dp"
+              android:paddingRight="12dp"
+              android:paddingTop="10dp"
+              android:paddingBottom="12dp"
+              android:background="@drawable/card_background"
+>
+  <TextView android:id="@+id/tile_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/secondary_text"
+  />
+  <TextView android:id="@+id/tile_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textSize="18sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="?android:attr/textColorPrimary"
+  />
+</LinearLayout>

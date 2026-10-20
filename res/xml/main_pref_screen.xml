@@ -2,24 +2,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
   <Preference
      app:key="notification_settings"
+     app:widgetLayout="@layout/preference_chevron"
      app:title="@string/notification_settings"
      app:summary="@string/notification_settings_summary"
   />
 
   <Preference
      app:key="status_bar_icon_settings"
+     app:widgetLayout="@layout/preference_chevron"
      app:title="@string/status_bar_icon_settings"
      app:summary="@string/status_bar_icon_settings_summary"
   />
 
   <Preference
      app:key="current_hack_settings"
+     app:widgetLayout="@layout/preference_chevron"
      app:title="@string/current_hack_settings"
      app:summary="@string/current_hack_settings_summary"
   />
 
   <Preference
      app:key="other_settings"
+     app:widgetLayout="@layout/preference_chevron"
      app:title="@string/other_settings"
   />
 </PreferenceScreen>
