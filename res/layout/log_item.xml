@@ -1,56 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical"
-              android:paddingRight="10dp"
->
-  <RelativeLayout android:layout_width="fill_parent" 
-                  android:layout_height="fill_parent"
-                  android:padding="5dp"
-  >
-    <TextView android:id="@+id/status"
-              android:textSize="18dp"
-              android:textStyle="bold"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentLeft="true" 
-    />
-
-    <TextView android:id="@+id/percent"
-              android:textSize="18dp"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentRight="true" 
-    />
-  </RelativeLayout>
-
-  <TextView android:id="@+id/time_diff"
-            android:textSize="14dp"
-            android:textColor="?android:attr/textColorPrimary"
-            android:paddingTop="0dp"
-            android:paddingBottom="0dp"
-            android:paddingLeft="25dp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-  />
-
-  <RelativeLayout android:layout_width="fill_parent" 
-                  android:layout_height="fill_parent"
-                  android:padding="5dp"
-  >
-    <TextView android:id="@+id/time"
-              android:textSize="16dp"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentLeft="true" 
-    />
-
-    <TextView android:id="@+id/temp_volt"
-              android:textSize="16dp"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentRight="true" 
-    />
-  </RelativeLayout>
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="16dp" android:background="@drawable/card_background">
+  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:orientation="horizontal" android:gravity="center_vertical">
+    <View android:id="@+id/status_dot" android:layout_width="8dp" android:layout_height="8dp"
+        android:layout_marginEnd="10dp" android:background="@drawable/status_dot"
+        android:importantForAccessibility="no" />
+    <TextView android:id="@+id/status" android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_weight="1" android:textSize="16sp" android:fontFamily="sans-serif-medium"
+        android:textColor="@color/primary_text" />
+    <TextView android:id="@+id/percent" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginStart="12dp" android:textSize="25sp" android:fontFamily="sans-serif-medium"
+        android:textColor="@color/overview_green" />
+  </LinearLayout>
+  <TextView android:id="@+id/time" android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:layout_marginTop="5dp" android:textSize="13sp" android:textColor="@color/secondary_text" />
+  <TextView android:id="@+id/time_diff" android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:layout_marginTop="4dp" android:textSize="13sp" android:textColor="@color/secondary_text" />
+  <TextView android:id="@+id/temp_volt" android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:layout_marginTop="10dp" android:textSize="13sp" android:lineSpacingExtra="2dp"
+      android:textColor="@color/secondary_text" />
 </LinearLayout>

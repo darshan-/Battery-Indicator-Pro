@@ -11,7 +11,7 @@
             android:paddingTop="8dp"
             android:singleLine="true"
             android:textSize="18sp"
-            android:textColor="#fff"
+            android:textColor="@color/primary_text"
             android:gravity="center_horizontal"
   />
 

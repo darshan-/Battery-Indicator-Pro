@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content">
+  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+    <LinearLayout android:id="@+id/usage_card" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:padding="16dp" android:background="@drawable/card_background" android:clickable="true" android:focusable="true" android:visibility="gone">
+      <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:id="@+id/usage_title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="15sp" android:textColor="?android:attr/textColorPrimary" />
+        <TextView android:id="@+id/usage_total" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="15sp" android:textColor="?android:attr/textColorPrimary" />
+      </LinearLayout>
+      <LinearLayout android:id="@+id/usage_bar" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="8dp" android:layout_marginTop="12dp" android:layout_marginBottom="10dp" android:background="@drawable/bar_track">
+        <View android:id="@+id/usage_bar_on" android:layout_width="0dp" android:layout_height="match_parent" android:background="@color/accent" />
+        <View android:id="@+id/usage_bar_off" android:layout_width="0dp" android:layout_height="match_parent" android:background="@color/bar_secondary" />
+      </LinearLayout>
+      <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:id="@+id/usage_on" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="12sp" android:textColor="@color/secondary_text" />
+        <TextView android:id="@+id/usage_off" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="end" android:textSize="12sp" android:textColor="@color/secondary_text" />
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/tiles" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" />
+    <LinearLayout android:id="@+id/chart_card" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:padding="16dp" android:background="@drawable/card_background">
+      <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10dp" android:textSize="15sp" android:textColor="?android:attr/textColorPrimary" android:text="@string/chart_title" />
+      <com.darshancomputing.BatteryIndicatorPro.LevelChartView android:id="@+id/level_chart" android:layout_width="match_parent" android:layout_height="120dp" />
+      <LinearLayout android:id="@+id/chart_axis" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:paddingStart="30dp">
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="@color/secondary_text" android:text="@string/chart_ago_24h" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center_horizontal" android:textSize="11sp" android:textColor="@color/secondary_text" android:text="@string/chart_ago_12h" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="end" android:textSize="11sp" android:textColor="@color/secondary_text" android:text="@string/chart_now" />
+      </LinearLayout>
+      <TextView android:id="@+id/chart_empty" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textSize="12sp" android:textColor="@color/secondary_text" android:text="@string/chart_empty" android:visibility="gone" />
+    </LinearLayout>
+    <TextView android:id="@+id/details_summary" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:textSize="14sp" android:textColor="?android:attr/textColorPrimary" android:lineSpacingExtra="4dp" />
+  </LinearLayout>
+</ScrollView>

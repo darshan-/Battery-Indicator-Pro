@@ -16,6 +16,7 @@ package com.darshancomputing.BatteryIndicatorPro;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.os.SystemClock;
 //import android.util.Log;
@@ -28,6 +29,13 @@ class BatteryInfo {
     static final int STATUS_NOT_CHARGING  = 4;
     static final int STATUS_FULLY_CHARGED = 5;
     static final int STATUS_MAX = STATUS_FULLY_CHARGED;
+
+    // 2 when the device reports both cells of a two-cell battery in series (see Calibration)
+    private static int voltageDivisor = 1;
+
+    static void setVoltageDivisor(int d) {
+        voltageDivisor = d > 0 ? d : 1;
+    }
 
     static final int PLUGGED_UNPLUGGED = 0;
     //static final int PLUGGED_AC        = 1;
@@ -44,6 +52,14 @@ class BatteryInfo {
     //static final int HEALTH_FAILURE     = 6;
     static final int HEALTH_COLD        = 7;
     static final int HEALTH_MAX         = HEALTH_COLD;
+
+    // Values of BatteryManager.EXTRA_CHARGING_STATUS (API 34+); they mirror the health HAL's
+    //  BatteryChargingState, which has no public constants in the SDK.
+    static final int CHARGING_STATE_NORMAL    = 1;
+    static final int CHARGING_STATE_TOO_COLD  = 2;
+    static final int CHARGING_STATE_TOO_HOT   = 3;
+    static final int CHARGING_STATE_LONG_LIFE = 4;
+    static final int CHARGING_STATE_ADAPTIVE  = 5;
 
     static final String KEY_LAST_STATUS_CTM = "last_status_cTM";
     static final String KEY_LAST_STATUS = "last_status";
@@ -71,6 +87,16 @@ class BatteryInfo {
 
     private static final String FIELD_LAST_STATUS_CTM = "last_status_cTM";
 
+    private static final String FIELD_CYCLE_COUNT = "cycle_count";
+    private static final String FIELD_CHARGING_STATE = "charging_state";
+    private static final String FIELD_CHARGE_COUNTER = "charge_counter_uah";
+    private static final String FIELD_SCREEN_ON_DRAIN = "screen_on_drain_uah";
+    private static final String FIELD_SCREEN_ON_MS = "screen_on_ms";
+    private static final String FIELD_SCREEN_OFF_DRAIN = "screen_off_drain_uah";
+    private static final String FIELD_SCREEN_OFF_MS = "screen_off_ms";
+    private static final String FIELD_EST_CAPACITY = "est_capacity_uah";
+    private static final String FIELD_EST_CAPACITY_SAMPLES = "est_capacity_samples";
+
     private static final String FIELD_PREDICTION_DAYS = "prediction_days";
     private static final String FIELD_PREDICTION_HOURS = "prediction_hours";
     private static final String FIELD_PREDICTION_MINUTES = "prediction_minutes";
@@ -92,6 +118,20 @@ class BatteryInfo {
 
     long last_status_cTM;
     Prediction prediction = new Prediction();
+
+    // -1 when the device doesn't report them (cycle count and charging state need API 34+)
+    int cycle_count = -1;
+    int charging_state = -1;
+    long charge_counter_uah = -1;
+
+    // Charge drained since the last status change, split by screen state; negative while charging.
+    //  Filled in by UsageTracker in the Service.
+    long screen_on_drain_uah, screen_on_ms;
+    long screen_off_drain_uah, screen_off_ms;
+
+    // Full-charge capacity estimated from past charge sessions; -1 until one has been measured
+    long est_capacity_uah = -1;
+    int est_capacity_samples;
 
     class Prediction {
         static final int NONE          = 0;
@@ -154,11 +194,15 @@ class BatteryInfo {
         health = intent.getIntExtra(EXTRA_HEALTH, HEALTH_UNKNOWN);
         plugged = intent.getIntExtra(EXTRA_PLUGGED, PLUGGED_UNKNOWN);
         temperature = intent.getIntExtra(EXTRA_TEMPERATURE, 0);
-        voltage = intent.getIntExtra(EXTRA_VOLTAGE, 0);
+        voltage = intent.getIntExtra(EXTRA_VOLTAGE, 0) / voltageDivisor;
         //technology = intent.getStringExtra(EXTRA_TECHNOLOGY);
 
+        if (android.os.Build.VERSION.SDK_INT >= 34) {
+            cycle_count = intent.getIntExtra(BatteryManager.EXTRA_CYCLE_COUNT, -1);
+            charging_state = intent.getIntExtra(BatteryManager.EXTRA_CHARGING_STATUS, -1);
+        }
+
         percent = level * 100 / scale;
-        percent = attemptOnePercentHack(percent);
         if (percent > 100) percent = 100;
         if (percent < 0  ) percent = 0; // Developer console shows negative percent can actually be reported
 
@@ -199,6 +243,16 @@ class BatteryInfo {
 
         bundle.putLong(FIELD_LAST_STATUS_CTM, last_status_cTM);
 
+        bundle.putInt(FIELD_CYCLE_COUNT, cycle_count);
+        bundle.putInt(FIELD_CHARGING_STATE, charging_state);
+        bundle.putLong(FIELD_CHARGE_COUNTER, charge_counter_uah);
+        bundle.putLong(FIELD_SCREEN_ON_DRAIN, screen_on_drain_uah);
+        bundle.putLong(FIELD_SCREEN_ON_MS, screen_on_ms);
+        bundle.putLong(FIELD_SCREEN_OFF_DRAIN, screen_off_drain_uah);
+        bundle.putLong(FIELD_SCREEN_OFF_MS, screen_off_ms);
+        bundle.putLong(FIELD_EST_CAPACITY, est_capacity_uah);
+        bundle.putInt(FIELD_EST_CAPACITY_SAMPLES, est_capacity_samples);
+
         bundle.putInt(FIELD_PREDICTION_DAYS, prediction.last_rtime.days);
         bundle.putInt(FIELD_PREDICTION_HOURS, prediction.last_rtime.hours);
         bundle.putInt(FIELD_PREDICTION_MINUTES, prediction.last_rtime.minutes);
@@ -222,50 +276,21 @@ class BatteryInfo {
 
         last_status_cTM = bundle.getLong(FIELD_LAST_STATUS_CTM);
 
+        cycle_count = bundle.getInt(FIELD_CYCLE_COUNT, -1);
+        charging_state = bundle.getInt(FIELD_CHARGING_STATE, -1);
+        charge_counter_uah = bundle.getLong(FIELD_CHARGE_COUNTER, -1);
+        screen_on_drain_uah = bundle.getLong(FIELD_SCREEN_ON_DRAIN);
+        screen_on_ms = bundle.getLong(FIELD_SCREEN_ON_MS);
+        screen_off_drain_uah = bundle.getLong(FIELD_SCREEN_OFF_DRAIN);
+        screen_off_ms = bundle.getLong(FIELD_SCREEN_OFF_MS);
+        est_capacity_uah = bundle.getLong(FIELD_EST_CAPACITY, -1);
+        est_capacity_samples = bundle.getInt(FIELD_EST_CAPACITY_SAMPLES);
+
         prediction.last_rtime.days = bundle.getInt(FIELD_PREDICTION_DAYS);
         prediction.last_rtime.hours = bundle.getInt(FIELD_PREDICTION_HOURS);
         prediction.last_rtime.minutes = bundle.getInt(FIELD_PREDICTION_MINUTES);
 
         prediction.what = bundle.getInt( FIELD_PREDICTION_WHAT);
         prediction.when = bundle.getLong(FIELD_PREDICTION_WHEN);
-    }
-
-    private static int attemptOnePercentHack(int percent) {
-        java.io.File hack_file = new java.io.File("/sys/class/power_supply/battery/charge_counter");
-
-        if (hack_file.exists()) {
-            try {
-                java.io.FileReader fReader = new java.io.FileReader(hack_file);
-                java.io.BufferedReader bReader = new java.io.BufferedReader(fReader, 8);
-                String line = bReader.readLine();
-                bReader.close();
-
-                int charge_counter = Integer.valueOf(line);
-
-                if (charge_counter < percent + 10 && charge_counter > percent - 10) {
-                    if (charge_counter > 100) // This happens
-                        charge_counter = 100;
-
-                    if (charge_counter < 0)   // This could happen?
-                        charge_counter = 0;
-
-                    percent = charge_counter;
-                } else {
-                    /* The Log messages are only really useful to me and might as well be left hardwired here in English. */
-                    // Log.e(LOG_TAG, "charge_counter file exists but with value " + charge_counter + " which is inconsistent with percent: " + percent);
-                }
-            } catch (java.io.FileNotFoundException e) {
-                //Log.e(LOG_TAG, "charge_counter file doesn't exist");
-                //e.printStackTrace();
-            } catch (java.io.IOException e) {
-                //Log.e(LOG_TAG, "Error reading charge_counter file");
-                //e.printStackTrace();
-            } catch (NumberFormatException e) {
-                //Log.e(LOG_TAG, "Read charge_counter file but couldn't convert contents to int");
-                //e.printStackTrace();
-            }
-        }
-
-        return percent;
     }
 }

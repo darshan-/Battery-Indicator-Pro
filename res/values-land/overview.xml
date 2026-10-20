@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="overview_gauge_size">180dp</dimen>
+</resources>

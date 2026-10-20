@@ -1,24 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/main_layout"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
->
-  <include layout="@layout/current_info_first"
-           android:layout_height="0dp"
-           android:layout_width="fill_parent"
-           android:layout_weight="0.45"
-  />
-
-  <include layout="@layout/current_info_second"
-           android:layout_height="0dp"
-           android:layout_width="fill_parent"
-           android:layout_weight="0.53"
-  />
-
-  <View android:layout_height="0dp"
-        android:layout_width="fill_parent"
-        android:layout_weight="0.02"
-  />
-</LinearLayout>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true" android:background="@color/overview_background" android:clipToPadding="false">
+  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:orientation="vertical" android:paddingStart="24dp" android:paddingEnd="24dp"
+      android:paddingTop="10dp" android:paddingBottom="12dp">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/overview_title" android:textColor="@color/overview_muted" android:textSize="15sp"/>
+    <FrameLayout android:id="@+id/gauge_group" android:layout_width="@dimen/overview_gauge_size"
+        android:layout_height="@dimen/overview_gauge_size" android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp" android:importantForAccessibility="yes">
+      <com.darshancomputing.BatteryIndicatorPro.RingGaugeView android:id="@+id/ring_gauge"
+          android:layout_width="match_parent" android:layout_height="match_parent" android:importantForAccessibility="no"/>
+      <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+          android:layout_gravity="center" android:gravity="center_horizontal" android:orientation="vertical"
+          android:paddingStart="24dp" android:paddingEnd="24dp" android:importantForAccessibility="noHideDescendants">
+        <TextView android:id="@+id/level" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black" android:includeFontPadding="false" android:textSize="64sp" android:singleLine="true"
+            android:textColor="@color/overview_ink"/>
+        <TextView android:id="@+id/status_chip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:textSize="16sp" android:fontFamily="sans-serif-medium"
+            android:gravity="center" android:textColor="@color/overview_muted"/>
+      </LinearLayout>
+    </FrameLayout>
+    <TextView android:id="@+id/time_remaining" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="12dp" android:gravity="center" android:textSize="22sp"
+        android:fontFamily="sans-serif-medium" android:textColor="@color/overview_ink"/>
+    <TextView android:id="@+id/until_what" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="5dp" android:gravity="center" android:textSize="13sp" android:textColor="@color/overview_muted"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:layout_marginTop="16dp">
+<View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/overview_divider"/>
+      <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+<LinearLayout style="@style/overview_stat">
+      <ImageView style="@style/overview_stat_icon" android:src="@drawable/temp"/>
+      <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+        <TextView style="@style/overview_label" android:text="@string/tile_temperature"/>
+        <TextView android:id="@+id/overview_temperature" style="@style/overview_value"/>
+      </LinearLayout>
+    </LinearLayout><View android:layout_width="1dp" android:layout_height="48dp" android:layout_gravity="center_vertical" android:layout_marginEnd="14dp" android:background="@color/overview_divider"/><LinearLayout style="@style/overview_stat">
+      <ImageView style="@style/overview_stat_icon" android:src="@drawable/ic_overview_health"/>
+      <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+        <TextView style="@style/overview_label" android:text="@string/overview_health"/>
+        <TextView android:id="@+id/overview_health_value" style="@style/overview_value"/>
+      </LinearLayout>
+    </LinearLayout>
+      </LinearLayout>
+<View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/overview_divider"/>
+      <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+<LinearLayout style="@style/overview_stat">
+      <ImageView style="@style/overview_stat_icon" android:src="@drawable/voltage"/>
+      <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+        <TextView style="@style/overview_label" android:text="@string/tile_voltage"/>
+        <TextView android:id="@+id/overview_voltage" style="@style/overview_value"/>
+      </LinearLayout>
+    </LinearLayout><View android:layout_width="1dp" android:layout_height="48dp" android:layout_gravity="center_vertical" android:layout_marginEnd="14dp" android:background="@color/overview_divider"/><LinearLayout style="@style/overview_stat">
+      <ImageView style="@style/overview_stat_icon" android:src="@drawable/ic_overview_current"/>
+      <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+        <TextView android:id="@+id/overview_current_label" style="@style/overview_label" android:text="@string/tile_current"/>
+        <TextView android:id="@+id/overview_current" style="@style/overview_value"/>
+      </LinearLayout>
+    </LinearLayout>
+      </LinearLayout>
+<View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/overview_divider"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/battery_details" android:layout_width="match_parent" android:layout_height="48dp"
+        android:orientation="horizontal" android:gravity="center_vertical" android:clickable="true" android:focusable="true"
+        android:background="?android:attr/selectableItemBackground">
+      <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+          android:text="@string/overview_details" android:textColor="@color/overview_green" android:textSize="15sp"
+          android:fontFamily="sans-serif-medium"/>
+      <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_overview_chevron"
+          android:tint="@color/overview_muted" android:importantForAccessibility="no"/>
+    </LinearLayout>
+<View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/overview_divider"/>
+    <Button android:id="@+id/battery_use_b" android:layout_width="match_parent" android:layout_height="50dp"
+        android:layout_marginTop="12dp" android:background="@drawable/overview_button" android:backgroundTint="@null"
+        android:text="@string/overview_battery_use" android:textColor="@color/overview_button_text" android:textSize="16sp"
+        android:stateListAnimator="@null" android:elevation="0dp"
+        android:fontFamily="sans-serif-medium" android:textAllCaps="false"/>
+  </LinearLayout>
+</ScrollView>

@@ -22,7 +22,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 class LogDatabase {
     private static final String DATABASE_NAME = "logs.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
     private static final String LOG_TABLE_NAME = "logs";
 
     private static final String KEY_ID = "_id";
@@ -31,6 +31,8 @@ class LogDatabase {
     static final String KEY_TIME        = "time";
     static final String KEY_TEMPERATURE = "temperature";
     static final String KEY_VOLTAGE     = "voltage";
+    static final String KEY_CHARGE_MAH  = "charge_mah"; // Fuel gauge charge counter; NULL if unsupported
+    static final String KEY_CURRENT_MA  = "current_ma"; // Negative while discharging on most devices; NULL if unsupported
 
     // Custom values for logging things other than BatteryInfo; must be negative
     static final int STATUS_BOOT_COMPLETED = -1;
@@ -74,6 +76,33 @@ class LogDatabase {
             wdb.close();
     }
 
+    // Level history for the chart, oldest first, as {time, percent, status} rows. Includes the last
+    //  row before `since` (when there is one) so the line can start at the chart's left edge.
+    java.util.List<long[]> getLevelHistory(long since) {
+        java.util.List<long[]> points = new java.util.ArrayList<long[]>();
+        String cols = "SELECT " + KEY_TIME + "," + KEY_CHARGE + "," + KEY_STATUS_CODE + " FROM " + LOG_TABLE_NAME
+            + " WHERE " + KEY_STATUS_CODE + " >= 0 AND " + KEY_TIME;
+        String[] args = {String.valueOf(since)};
+
+        openDBs();
+
+        try {
+            Cursor c = rdb.rawQuery(cols + " < ? ORDER BY " + KEY_TIME + " DESC LIMIT 1", args);
+            if (c.moveToFirst())
+                points.add(new long[]{c.getLong(0), c.getInt(1), decodeStatus(c.getInt(2))[0]});
+            c.close();
+
+            c = rdb.rawQuery(cols + " >= ? ORDER BY " + KEY_TIME + " ASC", args);
+            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext())
+                points.add(new long[]{c.getLong(0), c.getInt(1), decodeStatus(c.getInt(2))[0]});
+            c.close();
+        } catch (Exception e) {
+            // No chart is better than a crash
+        }
+
+        return points;
+    }
+
     Cursor getAllLogs(Boolean reversed) {
         String order = "DESC";
         if (reversed) order = "ASC";
@@ -107,10 +136,16 @@ class LogDatabase {
                     duplicate = true;
             }
 
-            if (! duplicate)
+            if (! duplicate) {
+                String charge_mah = info.charge_counter_uah >= 0 ? String.valueOf(info.charge_counter_uah / 1000) : "NULL";
+                Long current = CurrentHack.getCurrent();
+                String current_ma = current != null ? String.valueOf(current) : "NULL";
+
                 wdb.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (NULL, "
                             + encodeStatus(info.status, info.plugged, status_age) + " ," + info.percent + " ," + time
-                            + " ," + info.temperature + " ," + info.voltage + ")");
+                            + " ," + info.temperature + " ," + info.voltage
+                            + " ," + charge_mah + " ," + current_ma + ")");
+            }
 
             lastLog.close();
         } catch (Exception e) {
@@ -124,7 +159,7 @@ class LogDatabase {
         try {
             wdb.execSQL("INSERT INTO " + LOG_TABLE_NAME + " VALUES (NULL, "
                         + STATUS_BOOT_COMPLETED + ",NULL," + System.currentTimeMillis()
-                        + ",NULL,NULL)");
+                        + ",NULL,NULL,NULL,NULL)");
         } catch (Exception e) {
             // Maybe storage is full?  Okay to drop this log rather than crash.
         }
@@ -183,15 +218,29 @@ class LogDatabase {
                        + KEY_CHARGE      + " INTEGER,"
                        + KEY_TIME        + " INTEGER,"
                        + KEY_TEMPERATURE + " INTEGER,"
-                       + KEY_VOLTAGE     + " INTEGER"
+                       + KEY_VOLTAGE     + " INTEGER,"
+                       + KEY_CHARGE_MAH  + " INTEGER,"
+                       + KEY_CURRENT_MA  + " INTEGER"
                        + ");");
+            createIndex(db);
+        }
+
+        // Every query sorts by time, and months of logs make that slow without an index
+        private void createIndex(SQLiteDatabase db) {
+            db.execSQL("CREATE INDEX IF NOT EXISTS " + LOG_TABLE_NAME + "_time_idx ON " + LOG_TABLE_NAME + " (" + KEY_TIME + ");");
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            if (oldVersion == 3 && newVersion == 4) {
-                db.execSQL("ALTER TABLE " + LOG_TABLE_NAME + " ADD COLUMN " + KEY_TEMPERATURE + " INTEGER;");
-                db.execSQL("ALTER TABLE " + LOG_TABLE_NAME + " ADD COLUMN " + KEY_VOLTAGE     + " INTEGER;");
+            if (oldVersion == 3 || oldVersion == 4) {
+                if (oldVersion == 3) {
+                    db.execSQL("ALTER TABLE " + LOG_TABLE_NAME + " ADD COLUMN " + KEY_TEMPERATURE + " INTEGER;");
+                    db.execSQL("ALTER TABLE " + LOG_TABLE_NAME + " ADD COLUMN " + KEY_VOLTAGE     + " INTEGER;");
+                }
+
+                db.execSQL("ALTER TABLE " + LOG_TABLE_NAME + " ADD COLUMN " + KEY_CHARGE_MAH + " INTEGER;");
+                db.execSQL("ALTER TABLE " + LOG_TABLE_NAME + " ADD COLUMN " + KEY_CURRENT_MA + " INTEGER;");
+                createIndex(db);
             } else {
                 db.execSQL("DROP TABLE IF EXISTS " + LOG_TABLE_NAME);
                 onCreate(db);

@@ -41,7 +41,12 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         // Note: Regardless of anything here, Android will start the Service on boot if there are any desktop widgets
         if (startPref.equals("always") || (startPref.equals("auto") && service_desired)){
             ComponentName comp = new ComponentName(context.getPackageName(), BatteryInfoService.class.getName());
-            context.startForegroundService(new Intent().setComponent(comp));
+            try {
+                context.startForegroundService(new Intent().setComponent(comp));
+            } catch (IllegalStateException e) {
+                // A widget can make Android start the service at boot before we get here; a second start
+                //  attempt from the background must not crash the app (see notes)
+            }
         }
 
         // This receiver is called on PACKAGE_REPLACED, too, but we don't want to log boot in that case

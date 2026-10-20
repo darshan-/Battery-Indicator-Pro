@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Google Material Symbols, Apache-2.0. Source: fonts.gstatic.com/s/i/short-term/release/materialsymbolsoutlined/chevron_right/default/24px.svg -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="960" android:viewportHeight="960">
+  <group android:translateX="-0.0" android:translateY="960.0">
+    <path android:fillColor="#FF000000" android:pathData="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
+  </group>
+</vector>

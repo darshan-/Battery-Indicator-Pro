@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="overview_background">#F7F9F7</color>
+  <color name="overview_ink">#17251D</color>
+  <color name="overview_muted">#64726B</color>
+  <color name="overview_green">#2C6B4B</color>
+  <color name="overview_track">#E1EBE5</color>
+  <color name="overview_divider">#DFE7E1</color>
+  <color name="overview_button_text">#FFFFFF</color>
+  <color name="overview_low">#B3261E</color>
+  <dimen name="overview_gauge_size">228dp</dimen>
+
+  <string name="overview_title">Battery overview</string>
+  <string name="overview_nav">Overview</string>
+  <string name="overview_health">Health</string>
+  <string name="overview_health_good">Good</string>
+  <string name="overview_not_reported">Not reported</string>
+  <string name="overview_time_left">About %1$s left</string>
+  <string name="overview_time_to_full">About %1$s until full</string>
+  <string name="overview_time_days">%1$d d %2$d h</string>
+  <string name="overview_time_hours">%1$d h %2$d min</string>
+  <string name="overview_time_minutes">%d min</string>
+  <string name="overview_estimate_caption">Estimated from battery activity</string>
+  <string name="overview_estimating">Estimating time remaining</string>
+  <string name="overview_estimate_pending">Updates as battery readings arrive</string>
+  <string name="overview_fully_charged">Fully charged</string>
+  <string name="overview_ready">Ready to unplug</string>
+  <string name="overview_details">Battery details</string>
+  <string name="overview_battery_use">View battery use</string>
+  <string name="overview_gauge_description">Battery level: %d percent</string>
+  <string name="overview_voltage_value">%1$.2f V</string>
+  <string name="overview_details_reading">%1$s: %2$s</string>
+
+  <style name="overview_label">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">13sp</item>
+    <item name="android:textColor">@color/overview_muted</item>
+  </style>
+  <style name="overview_value">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginTop">3dp</item>
+    <item name="android:fontFamily">sans-serif-medium</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:textColor">@color/overview_ink</item>
+  </style>
+  <style name="overview_stat_icon">
+    <item name="android:layout_width">28dp</item>
+    <item name="android:layout_height">30dp</item>
+    <item name="android:layout_marginEnd">12dp</item>
+    <item name="android:tint">@color/overview_green</item>
+    <item name="android:importantForAccessibility">no</item>
+  </style>
+  <style name="overview_stat">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_weight">1</item>
+    <item name="android:orientation">horizontal</item>
+    <item name="android:gravity">center_vertical</item>
+    <item name="android:paddingTop">12dp</item>
+    <item name="android:paddingBottom">12dp</item>
+  </style>
+</resources>

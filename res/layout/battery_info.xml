@@ -1,22 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:padding="4dip"
-              android:gravity="center_horizontal"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
->
-  <androidx.viewpager.widget.ViewPager android:id="@+id/pager"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="0px"
-                                       android:layout_weight="1"
-  >
-    <androidx.viewpager.widget.PagerTitleStrip android:id="@+id/pager_tab_strip"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="wrap_content"
-                                             android:layout_gravity="top"
-                                             android:paddingTop="4dp"
-                                             android:paddingBottom="4dp"
-    />
-  </androidx.viewpager.widget.ViewPager>
+<?xml version='1.0' encoding='utf-8'?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="match_parent">
+  <androidx.viewpager.widget.ViewPager android:id="@+id/pager" android:layout_width="match_parent" android:layout_height="0px" android:layout_weight="1" />
+  <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/ring_track" />
+  <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/navigation_shell">
+    <com.darshancomputing.BatteryIndicatorPro.NavigationMotionView android:id="@+id/navigation_motion" android:layout_width="match_parent" android:layout_height="32dp" android:importantForAccessibility="no" android:layout_marginTop="10dp" />
+    <LinearLayout android:id="@+id/bottom_nav" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingTop="2dp" android:paddingBottom="2dp">
+      <LinearLayout android:id="@+id/nav_now" style="@style/bottom_nav_item">
+        <ImageView style="@style/bottom_nav_icon" android:src="@drawable/ic_overview_home" android:id="@+id/nav_now_icon" android:layout_width="64dp" android:layout_height="32dp" android:padding="4dp" />
+        <TextView style="@style/bottom_nav_label" android:text="@string/overview_nav" />
+      </LinearLayout>
+      <LinearLayout android:id="@+id/nav_history" style="@style/bottom_nav_item">
+        <ImageView style="@style/bottom_nav_icon" android:src="@drawable/ic_nav_history" android:id="@+id/nav_history_icon" android:layout_width="64dp" android:layout_height="32dp" android:padding="4dp" />
+        <TextView style="@style/bottom_nav_label" android:text="@string/tab_history" />
+      </LinearLayout>
+      <LinearLayout android:id="@+id/nav_alarms" style="@style/bottom_nav_item">
+        <ImageView style="@style/bottom_nav_icon" android:src="@drawable/ic_nav_alarms" android:id="@+id/nav_alarms_icon" android:layout_width="64dp" android:layout_height="32dp" android:padding="4dp" />
+        <TextView style="@style/bottom_nav_label" android:text="@string/alarm_settings" />
+      </LinearLayout>
+    </LinearLayout>
+  </FrameLayout>
 </LinearLayout>

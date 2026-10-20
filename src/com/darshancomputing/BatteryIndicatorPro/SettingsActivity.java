@@ -45,8 +45,8 @@ public class SettingsActivity extends AppCompatActivity {
         View root = findViewById(android.R.id.content);
 
         ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
-                Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-                v.setPadding(v.getPaddingLeft(), bars.top, v.getPaddingRight(), bars.bottom);
+                Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout());
+                v.setPadding(bars.left, bars.top, bars.right, bars.bottom);
 
                 return WindowInsetsCompat.CONSUMED;
             });

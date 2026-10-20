@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <!-- Shared screen styles extend the approved green Overview design. -->
+  <color name="product_surface">#EFF4F0</color>
+  <style name="product_page_title">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">26sp</item>
+    <item name="android:fontFamily">sans-serif-medium</item>
+    <item name="android:textColor">@color/overview_ink</item>
+    <item name="android:accessibilityHeading" tools:targetApi="28">true</item>
+  </style>
+  <style name="product_page_caption">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginTop">6dp</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:textColor">@color/overview_muted</item>
+    <item name="android:lineSpacingExtra">3dp</item>
+  </style>
+  <string name="product_history_title">Battery history</string>
+  <string name="product_history_caption">Charging and battery level over time.</string>
+  <string name="product_alarms_title">Battery alarms</string>
+  <string name="product_alarms_caption">Alerts for battery level, temperature, and charging.</string>
+  <string name="product_alarms_empty_title">No alarms yet</string>
+  <string name="product_alarms_empty_caption">Choose a battery level or temperature, then customize the alert.</string>
+  <string name="product_history_empty">New battery readings will appear here. Check the filters if existing readings are hidden.</string>
+</resources>
